@@ -2799,6 +2799,11 @@ body {
   display: block;
   break-inside: avoid;
   transition: all var(--duration) var(--ease);
+  cursor: zoom-in;
+}
+
+video.photo-item {
+  cursor: pointer;
 }
 
 .photo-item:hover {

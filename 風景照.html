@@ -176,13 +176,29 @@
           function loadBatch() {
             const end = Math.min(loaded + BATCH_SIZE, allPhotos.length);
             for (let i = loaded; i < end; i++) {
-              const img = document.createElement('img');
-              img.src = allPhotos[i];
-              img.className = 'photo-item';
-              img.alt = `海風風景照 ${i + 1}`;
-              img.loading = 'lazy';
-              img.onerror = function() { this.style.display = 'none'; };
-              grid.appendChild(img);
+              const isVideo = allPhotos[i].includes('.mp4');
+              if (isVideo) {
+                const vid = document.createElement('video');
+                vid.src = allPhotos[i];
+                vid.className = 'photo-item';
+                vid.alt = `海風風景照 ${i + 1}`;
+                vid.muted = true;
+                vid.loop = true;
+                vid.playsInline = true;
+                vid.preload = 'metadata';
+                vid.onmouseenter = function() { this.play(); };
+                vid.onmouseleave = function() { this.pause(); this.currentTime = 0; };
+                vid.onerror = function() { this.style.display = 'none'; };
+                grid.appendChild(vid);
+              } else {
+                const img = document.createElement('img');
+                img.src = allPhotos[i];
+                img.className = 'photo-item';
+                img.alt = `海風風景照 ${i + 1}`;
+                img.loading = 'lazy';
+                img.onerror = function() { this.style.display = 'none'; };
+                grid.appendChild(img);
+              }
             }
             loaded = end;
             counter.textContent = `${loaded} / ${allPhotos.length}`;
