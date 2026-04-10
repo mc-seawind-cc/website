@@ -180,18 +180,53 @@ function createHeroParticles() {
   const container = document.getElementById('particles');
   if (!container) return;
   const isMobile = window.innerWidth < 768;
-  const count = isMobile ? 20 : 50;
+  const count = isMobile ? 30 : 80;
   for (let i = 0; i < count; i++) {
     const p = document.createElement('div');
     p.className = 'particle';
     p.style.left = Math.random() * 100 + '%';
-    p.style.animationDuration = (6 + Math.random() * 10) + 's';
-    p.style.animationDelay = (Math.random() * 12) + 's';
-    const size = 2 + Math.random() * 4;
-    p.style.width = p.style.height = size + 'px';
-    p.style.opacity = 0.3 + Math.random() * 0.5;
+    p.style.animationDuration = (0.4 + Math.random() * 0.6) + 's';
+    p.style.animationDelay = (Math.random() * 3) + 's';
+    const h = 12 + Math.random() * 14;
+    p.style.height = h + 'px';
+    p.style.width = '1.5px';
+    p.style.opacity = 0.3 + Math.random() * 0.4;
     container.appendChild(p);
   }
+
+  // Rain ambient sound (Web Audio API)
+  try {
+    const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+    const bufferSize = 2 * audioCtx.sampleRate;
+    const buffer = audioCtx.createBuffer(1, bufferSize, audioCtx.sampleRate);
+    const data = buffer.getChannelData(0);
+    for (let i = 0; i < bufferSize; i++) {
+      data[i] = (Math.random() * 2 - 1) * 0.3;
+    }
+    const noise = audioCtx.createBufferSource();
+    noise.buffer = buffer;
+    noise.loop = true;
+    const filter = audioCtx.createBiquadFilter();
+    filter.type = 'lowpass';
+    filter.frequency.value = 600;
+    const gain = audioCtx.createGain();
+    gain.gain.value = 0;
+    noise.connect(filter);
+    filter.connect(gain);
+    gain.connect(audioCtx.destination);
+    noise.start();
+
+    // Fade in on first user interaction
+    const fadeIn = () => {
+      gain.gain.linearRampToValueAtTime(0.06, audioCtx.currentTime + 2);
+      document.removeEventListener('click', fadeIn);
+      document.removeEventListener('keydown', fadeIn);
+      document.removeEventListener('touchstart', fadeIn);
+    };
+    document.addEventListener('click', fadeIn, { once: true });
+    document.addEventListener('keydown', fadeIn, { once: true });
+    document.addEventListener('touchstart', fadeIn, { once: true });
+  } catch(e) {}
 }
 
 // --- Hero Typewriter (staged with thinking dots) ---
