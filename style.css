@@ -821,6 +821,7 @@ body {
   margin: 0 auto;
   padding: var(--space-2xl) var(--space-xl);
   position: relative;
+  background: linear-gradient(180deg, var(--deep) 0%, #0a0f18 30%, #070c14 60%, #050910 100%);
 }
 
 .content-section::before {
@@ -3827,6 +3828,10 @@ body {
   background: var(--deep);
 }
 
+[data-theme="light"] .content-section {
+  background: linear-gradient(180deg, var(--deep) 0%, #e8ecf2 30%, #dde2ea 60%, #d5dae4 100%);
+}
+
 [data-theme="light"] .content-section::before {
   background: rgba(0, 0, 0, 0.03);
 }
@@ -4376,7 +4381,7 @@ body {
   left: 10%;
 }
 
-/* --- Hero Title --- */
+/* --- Nav Link Underline Animation --- */
 
 /* --- Photo Item Hover --- */
 .photo-item {
