@@ -1617,7 +1617,7 @@ button:focus-visible {
 .section-divider::after {
   content: '';
   display: block;
-  width: 0;
+  width: 60px;
   height: 2px;
   margin: 0 auto;
   background: linear-gradient(90deg, transparent, var(--sky), transparent);
@@ -5223,13 +5223,15 @@ video.photo-item {
 /* --- Photo Date Card --- */
 .photo-date-card {
   text-align: center;
-  padding: 10px 20px;
-  margin-bottom: var(--space-lg);
+  padding: 12px 24px;
+  margin: 0 auto var(--space-lg);
+  max-width: 400px;
   background: rgba(157, 175, 255, 0.06);
   border: 1px solid rgba(157, 175, 255, 0.12);
   border-radius: var(--radius-md);
   font-size: 0.85rem;
   color: var(--fog);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
 }
 
 [data-theme="light"] .photo-date-card {
