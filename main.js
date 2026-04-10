@@ -94,7 +94,8 @@ document.addEventListener('DOMContentLoaded', () => {
     document.addEventListener('click', loadMusicPlayer, { once: true });
     document.addEventListener('keydown', loadMusicPlayer, { once: true });
     document.addEventListener('touchstart', loadMusicPlayer, { once: true });
-    setTimeout(loadMusicPlayer, 5000);
+    window.addEventListener('scroll', loadMusicPlayer, { once: true, passive: true });
+    setTimeout(loadMusicPlayer, 2000);
 
     createParticles();
     createHeroParticles();
@@ -352,8 +353,11 @@ function createHeroParticles() {
 function initTypewriter() {
   const el = document.getElementById('heroSubtitle');
   if (!el) return;
+  // Prevent double-init
+  if (el.dataset.typed) return;
+  el.dataset.typed = '1';
 
-  // MC-style tick sound (real audio files)
+  // MC-style tick sound
   const tickSounds = ['assets/sounds/tick1.mp3', 'assets/sounds/tick2.mp3', 'assets/sounds/tick3.mp3'];
   const tickAudio = tickSounds.map(src => {
     const a = new Audio(src);
@@ -371,38 +375,35 @@ function initTypewriter() {
     } catch(e) {}
   }
 
+  el.textContent = '';
+
   const cursor = document.createElement('span');
   cursor.className = 'cursor';
   cursor.textContent = '_';
   el.appendChild(cursor);
 
   const mainText = document.createTextNode('');
-  el.insertBefore(mainText, thinkingDots);
+  el.insertBefore(mainText, cursor);
 
-  const speed = 120;
-  const cursorChar = '_';
-
-  // Phase 1: show blinking cursor prompt
-  const promptText = document.createTextNode(cursorChar);
-  el.insertBefore(promptText, cursor);
-
-  // Phase 2: after delay, clear prompt and type
-  setTimeout(() => {
-    promptText.textContent = '';
-    typeMain('在風與海之間，有一個可以長久生存的地方', 0, () => {
-      // Phase 3: done — cursor keeps blinking
-    });
-  }, 1800);
+  const speed = 100;
 
   function typeMain(text, idx, cb) {
     if (idx < text.length) {
       mainText.textContent += text[idx];
       playTick();
-      setTimeout(() => typeMain(text, idx + 1, cb), speed);
+      setTimeout(() => typeMain(text, idx + 1, cb), speed + Math.random() * 40);
     } else {
       cb();
     }
   }
+
+  // Start typing after a short pause
+  setTimeout(() => {
+    typeMain('在風與海之間，有一個可以長久生存的地方', 0, () => {
+      // Done — cursor keeps blinking
+    });
+  }, 400);
+}
 }
 
 // --- Copy Server IP ---
