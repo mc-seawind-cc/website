@@ -3998,8 +3998,12 @@ body {
 }
 
 [data-theme="light"] .hero-tips {
-  background: none;
-  border-color: transparent;
+  background: rgba(255, 255, 255, 0.85);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: var(--radius-lg);
+  padding: 10px 18px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  backdrop-filter: blur(8px);
 }
 
 [data-theme="light"] .home-intro {
@@ -4101,7 +4105,7 @@ body {
 }
 
 [data-theme="light"] .hero-title {
-  background: linear-gradient(135deg, var(--cloud) 0%, #4a6cf7 40%, #2d8a5e 60%, var(--cloud) 100%);
+  background: linear-gradient(135deg, var(--cloud) 0%, var(--sky) 35%, var(--foam) 65%, var(--cloud) 100%);
   background-size: 200% 200%;
   -webkit-background-clip: text;
   background-clip: text;
@@ -4110,7 +4114,7 @@ body {
 }
 
 [data-theme="light"] .hero-title::after {
-  background: linear-gradient(135deg, #4a6cf7, #2d8a5e);
+  background: linear-gradient(135deg, var(--sky), var(--foam));
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
