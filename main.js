@@ -82,6 +82,25 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // --- Deferred: Non-critical features ---
   const deferredInit = () => {
+    // Lazy-load music player on first interaction or after 3s
+    let musicLoaded = false;
+    function loadMusicPlayer() {
+      if (musicLoaded) return;
+      musicLoaded = true;
+      const css = document.createElement('link');
+      css.rel = 'stylesheet';
+      css.href = 'music-player.css';
+      document.head.appendChild(css);
+      const js = document.createElement('script');
+      js.src = 'music-player.js';
+      js.defer = true;
+      document.body.appendChild(js);
+    }
+    document.addEventListener('click', loadMusicPlayer, { once: true });
+    document.addEventListener('keydown', loadMusicPlayer, { once: true });
+    document.addEventListener('touchstart', loadMusicPlayer, { once: true });
+    setTimeout(loadMusicPlayer, 5000);
+
     createParticles();
     createHeroParticles();
 
