@@ -2679,19 +2679,20 @@ button:focus-visible {
 /* --- Rain Effect --- */
 #particles .particle {
   position: absolute;
-  width: 1.5px;
-  height: 18px;
-  background: linear-gradient(to bottom, transparent, rgba(174, 194, 224, 0.5));
+  width: 2px;
+  height: 28px;
+  background: linear-gradient(to bottom, transparent, rgba(174, 194, 224, 0.7));
   border-radius: 0 0 1px 1px;
   animation: rain-fall linear infinite;
   pointer-events: none;
+  transform: rotate(15deg);
 }
 
 @keyframes rain-fall {
-  0%   { transform: translateY(-10vh) translateX(0); opacity: 0; }
-  5%   { opacity: 0.7; }
-  90%  { opacity: 0.5; }
-  100% { transform: translateY(100vh) translateX(-20px); opacity: 0; }
+  0%   { transform: rotate(15deg) translateY(-10vh) translateX(0); opacity: 0; }
+  5%   { opacity: 0.8; }
+  90%  { opacity: 0.6; }
+  100% { transform: rotate(15deg) translateY(100vh) translateX(-40px); opacity: 0; }
 }
 
 /* --- Wind Sway Title --- */

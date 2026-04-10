@@ -187,10 +187,10 @@ function createHeroParticles() {
     p.style.left = Math.random() * 100 + '%';
     p.style.animationDuration = (0.4 + Math.random() * 0.6) + 's';
     p.style.animationDelay = (Math.random() * 3) + 's';
-    const h = 12 + Math.random() * 14;
+    const h = 20 + Math.random() * 20;
     p.style.height = h + 'px';
-    p.style.width = '1.5px';
-    p.style.opacity = 0.3 + Math.random() * 0.4;
+    p.style.width = '2px';
+    p.style.opacity = 0.4 + Math.random() * 0.5;
     container.appendChild(p);
   }
 
