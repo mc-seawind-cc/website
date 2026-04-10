@@ -170,14 +170,14 @@
           result.push('<li>' + t.replace(/^[\s]*[•\-\*]\s+/, '') + '</li>');
         } else if (t === '') {
           if (inList) { result.push('</ul>'); inList = false; }
-          result.push('<br>');
+          result.push('</p><p style="margin-top:6px;">');
         } else {
           if (inList) { result.push('</ul>'); inList = false; }
           result.push(t);
         }
       });
       if (inList) result.push('</ul>');
-      return result.join('\n');
+      return '<p>' + result.join('\n') + '</p>';
     }
 
     // Filter buttons
