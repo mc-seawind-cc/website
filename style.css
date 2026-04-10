@@ -5314,6 +5314,41 @@ video.photo-item {
   transform: scale(1.03);
 }
 
+.photo-cover-download {
+  position: absolute;
+  bottom: 12px;
+  right: 12px;
+  background: rgba(22, 27, 34, 0.85);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: #c9d1d9;
+  padding: 6px 14px;
+  border-radius: 8px;
+  font-size: 0.8rem;
+  text-decoration: none;
+  transition: all 0.2s;
+  z-index: 2;
+}
+
+.photo-cover-download:hover {
+  background: rgba(22, 27, 34, 0.95);
+  color: #fff;
+  border-color: rgba(157, 175, 255, 0.4);
+  transform: translateY(-1px);
+}
+
+[data-theme="light"] .photo-cover-download {
+  background: rgba(255, 255, 255, 0.9);
+  border-color: rgba(0, 0, 0, 0.1);
+  color: #1f2328;
+}
+
+[data-theme="light"] .photo-cover-download:hover {
+  background: #fff;
+  color: #000;
+}
+
 .photo-carousel {
   overflow: hidden;
   border-radius: var(--radius-lg);
