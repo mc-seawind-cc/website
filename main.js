@@ -87,26 +87,6 @@ document.addEventListener('DOMContentLoaded', () => {
     musicJs.src = 'music-player.js';
     document.body.appendChild(musicJs);
 
-    // Standalone rain toggle button (left of music player)
-    const rainBtn = document.createElement('button');
-    rainBtn.id = 'rainToggle';
-    rainBtn.className = 'rain-toggle active';
-    rainBtn.title = '雨聲';
-    rainBtn.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/></svg>';
-    document.body.appendChild(rainBtn);
-    rainBtn.addEventListener('click', () => {
-      if (!window._rainGain || !window._rainCtx) return;
-      if (window._rainOn) {
-        window._rainGain.gain.linearRampToValueAtTime(0, window._rainCtx.currentTime + 1);
-        window._rainOn = false;
-        rainBtn.classList.remove('active');
-      } else {
-        window._rainGain.gain.linearRampToValueAtTime(0.15, window._rainCtx.currentTime + 1);
-        window._rainOn = true;
-        rainBtn.classList.add('active');
-      }
-    });
-
     createParticles();
     createHeroParticles();
 
@@ -150,6 +130,26 @@ document.addEventListener('DOMContentLoaded', () => {
     initGeneralLightbox();
     initGuideSidebar();
   };
+
+  // Standalone rain toggle button (left of music player)
+  const rainBtn = document.createElement('button');
+  rainBtn.id = 'rainToggle';
+  rainBtn.className = 'rain-toggle active';
+  rainBtn.title = '雨聲';
+  rainBtn.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/></svg>';
+  document.body.appendChild(rainBtn);
+  rainBtn.addEventListener('click', () => {
+    if (!window._rainGain || !window._rainCtx) return;
+    if (window._rainOn) {
+      window._rainGain.gain.linearRampToValueAtTime(0, window._rainCtx.currentTime + 1);
+      window._rainOn = false;
+      rainBtn.classList.remove('active');
+    } else {
+      window._rainGain.gain.linearRampToValueAtTime(0.15, window._rainCtx.currentTime + 1);
+      window._rainOn = true;
+      rainBtn.classList.add('active');
+    }
+  });
 
   // Use requestIdleCallback if available, otherwise setTimeout
   if ('requestIdleCallback' in window) {
