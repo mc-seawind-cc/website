@@ -113,10 +113,9 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
 
-    initTypewriter();
-    fetchServerStatus();
+    // Hero click-to-reveal
+    initHeroReveal();
     initBulletinBoard();
-    initTips();
 
     // Hero Scroll Down
     const scrollBtn = document.querySelector('.hero-scroll');
@@ -152,6 +151,51 @@ document.addEventListener('DOMContentLoaded', () => {
     setTimeout(deferredInit, 100);
   }
 });
+
+// --- Hero Click-to-Reveal ---
+function initHeroReveal() {
+  const heroContent = document.getElementById('heroContent');
+  if (!heroContent) return;
+
+  let revealed = false;
+
+  function revealHero() {
+    if (revealed) return;
+    revealed = true;
+    heroContent.classList.remove('hero-collapsed');
+
+    // Start typewriter, server status, and tips after reveal
+    setTimeout(() => initTypewriter(), 200);
+    fetchServerStatus();
+    initTips();
+  }
+
+  // Click anywhere on hero to reveal
+  heroContent.addEventListener('click', (e) => {
+    // Don't trigger if clicking a link or button
+    if (e.target.closest('a, button, .info-card-copy')) return;
+    revealHero();
+  });
+
+  // Also allow clicking the prompt specifically
+  const prompt = document.getElementById('heroPrompt');
+  if (prompt) {
+    prompt.addEventListener('click', (e) => {
+      e.stopPropagation();
+      revealHero();
+    });
+  }
+
+  // Keyboard: Enter or Space to reveal
+  document.addEventListener('keydown', (e) => {
+    if (!revealed && (e.key === 'Enter' || e.key === ' ')) {
+      // Only if not typing in an input
+      if (e.target.tagName !== 'INPUT' && e.target.tagName !== 'TEXTAREA') {
+        revealHero();
+      }
+    }
+  });
+}
 
 function initBackToTop() {
   const btn = document.createElement('button');

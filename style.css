@@ -669,6 +669,78 @@ button:focus-visible {
   padding: 0 24px;
 }
 
+/* Collapsed state — click to reveal */
+.hero-collapsed .hero-subtitle,
+.hero-collapsed .hero-actions,
+.hero-collapsed .hero-info,
+.hero-collapsed .hero-tips {
+  opacity: 0;
+  transform: translateY(12px);
+  pointer-events: none;
+  transition: none;
+}
+
+.hero-collapsed ~ .hero-scroll {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Prompt cursor */
+.hero-prompt {
+  display: inline-block;
+  font-size: 1.4rem;
+  color: var(--sky);
+  font-weight: 400;
+  animation: blink 0.8s step-end infinite;
+  margin-top: 12px;
+  cursor: pointer;
+}
+
+.hero-collapsed .hero-prompt {
+  opacity: 1;
+  transform: none;
+}
+
+.hero-content:not(.hero-collapsed) .hero-prompt {
+  opacity: 0;
+  transform: scale(0.5);
+  transition: all 0.3s ease;
+  pointer-events: none;
+  position: absolute;
+}
+
+/* Reveal animation when expanded */
+.hero-content:not(.hero-collapsed) .hero-subtitle,
+.hero-content:not(.hero-collapsed) .hero-actions,
+.hero-content:not(.hero-collapsed) .hero-info,
+.hero-content:not(.hero-collapsed) .hero-tips {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.hero-content:not(.hero-collapsed) .hero-subtitle {
+  transition: opacity 0.5s ease 0.1s, transform 0.5s ease 0.1s;
+}
+
+.hero-content:not(.hero-collapsed) .hero-actions {
+  transition: opacity 0.5s ease 0.3s, transform 0.5s ease 0.3s;
+}
+
+.hero-content:not(.hero-collapsed) .hero-info {
+  transition: opacity 0.5s ease 0.5s, transform 0.5s ease 0.5s;
+}
+
+.hero-content:not(.hero-collapsed) .hero-tips {
+  transition: opacity 0.5s ease 0.7s, transform 0.5s ease 0.7s;
+}
+
+.hero-content:not(.hero-collapsed) ~ .hero-scroll {
+  opacity: 1;
+  pointer-events: auto;
+  transition: opacity 0.5s ease 0.9s;
+}
+
 /* 文字背後的半透明底層，增加辨識度 */
 .hero-content::before {
   content: '';
