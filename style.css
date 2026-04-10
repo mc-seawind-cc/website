@@ -2512,6 +2512,11 @@ body {
   flex-shrink: 0;
   border-radius: 6px;
   object-fit: contain;
+  filter: brightness(0.9);
+}
+
+[data-theme="light"] .link-favicon {
+  filter: brightness(1);
 }
 
 .link-card h3 {
