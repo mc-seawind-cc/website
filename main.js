@@ -271,8 +271,8 @@ function initHeroReveal() {
     }
   });
 
-  // Auto-reveal after 1.5s if user hasn't interacted
-  setTimeout(() => revealHero(), 1500);
+  // Auto-reveal after 0.3s if user hasn't interacted
+  setTimeout(() => revealHero(), 300);
 }
 
 function initBackToTop() {
@@ -523,7 +523,7 @@ function initBulletinBoard() {
       const regular = items.filter(i => !i.pinned);
       const maxRegular = Math.max(0, MAX_TOTAL - pinned.length);
       // header row
-      let html = '<div class="bulletin-header"><span>主旨</span><span>類型</span><span>編號</span><span></span></div>';
+      let html = '<div class="bulletin-header"><span>主旨</span><span>類型</span><span>編號</span><span>日期</span><span></span></div>';
       // Pinned items first (always visible)
       pinned.forEach((item, i) => {
         html += `
@@ -532,6 +532,7 @@ function initBulletinBoard() {
               <span class="b-title">📌 ${item.title}</span>
               <span class="b-tag tag-${item.tag}">${item.tag}</span>
               <span class="b-id">${item.id}</span>
+              <span class="b-date-col">${item.date}</span>
               <span class="b-arrow">▾</span>
             </button>
             <div class="bulletin-body" style="text-align:center;">
@@ -547,6 +548,7 @@ function initBulletinBoard() {
               <span class="b-title">${item.title}</span>
               <span class="b-tag tag-${item.tag}">${item.tag}</span>
               <span class="b-id">${item.id}</span>
+              <span class="b-date-col">${item.date}</span>
               <span class="b-arrow">▾</span>
             </button>
             <div class="bulletin-body">
