@@ -693,9 +693,8 @@ function initPhotoGallery() {
         container.innerHTML = '<div class="photo-placeholder">暫無照片</div>';
         return;
       }
-      // Shuffle and take 20
-      const shuffled = [...data.photos].sort(() => Math.random() - 0.5);
-      photos = shuffled.slice(0, 20);
+      // Shuffle all photos
+      photos = [...data.photos].sort(() => Math.random() - 0.5);
       buildCarousel();
     })
     .catch(err => {
