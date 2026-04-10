@@ -5498,6 +5498,8 @@ video.photo-item {
   overflow: hidden;
   border-radius: var(--radius-lg);
   position: relative;
+  margin: 0 calc(-1 * var(--space-xl));
+  padding: 0 var(--space-xl);
 }
 
 .photo-carousel-track {
@@ -5506,7 +5508,7 @@ video.photo-item {
 }
 
 .carousel-slide {
-  flex: 0 0 calc(100% / 3);
+  flex: 0 0 20%;
   padding: 0 var(--space-sm);
   box-sizing: border-box;
   min-width: 0;
@@ -5555,6 +5557,10 @@ video.photo-item {
 }
 
 @media (max-width: 768px) {
+  .photo-carousel {
+    margin: 0 calc(-1 * var(--space-sm));
+    padding: 0 var(--space-sm);
+  }
   .carousel-slide {
     flex: 0 0 100%;
     padding: 0;
