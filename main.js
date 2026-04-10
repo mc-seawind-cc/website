@@ -43,17 +43,17 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // --- Scroll Fade-In ---
-  const observer = new IntersectionObserver((entries) => {
+  // --- Scroll Reveal Animations ---
+  const revealObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
         entry.target.classList.add('visible');
-        observer.unobserve(entry.target);
+        revealObserver.unobserve(entry.target);
       }
     });
   }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
 
-  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+  document.querySelectorAll('.fade-in, .slide-up, .zoom-in, .slide-left, .slide-right, .reveal-up').forEach(el => revealObserver.observe(el));
 
   // --- Nav Scroll Shadow ---
   const nav = document.querySelector('.nav');
