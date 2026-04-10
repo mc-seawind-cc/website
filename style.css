@@ -5238,7 +5238,7 @@ video.photo-item {
 }
 .photo-float-counter {
   position: fixed;
-  bottom: 76px;
+  bottom: 140px;
   right: 20px;
   z-index: 900;
   padding: 8px 14px;

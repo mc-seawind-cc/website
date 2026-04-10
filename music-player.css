@@ -1,7 +1,7 @@
 /* 海風 Music Player Widget */
 #musicPlayer {
   position: fixed;
-  bottom: 20px;
+  bottom: 72px;
   right: 20px;
   z-index: 999;
   font-family: var(--font-body);
