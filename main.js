@@ -101,6 +101,9 @@ document.addEventListener('DOMContentLoaded', () => {
   // --- Photo Gallery ---
   initPhotoGallery();
 
+  // --- Postcard Lightbox ---
+  initPostcardLightbox();
+
   // --- General Lightbox (lore pages etc.) ---
   initGeneralLightbox();
 });
@@ -295,6 +298,46 @@ function initTips() {
   }
   showTip();
   setInterval(showTip, 4000);
+}
+
+// --- Postcard Lightbox ---
+function initPostcardLightbox() {
+  const grid = document.getElementById('postcardGrid');
+  if (!grid) return;
+
+  const lightbox = document.getElementById('lightbox');
+  const lightboxImg = document.getElementById('lightboxImg');
+  const lightboxClose = document.getElementById('lightboxClose');
+  const lightboxPrev = document.getElementById('lightboxPrev');
+  const lightboxNext = document.getElementById('lightboxNext');
+  const lightboxCounter = document.getElementById('lightboxCounter');
+  if (!lightbox) return;
+
+  function getImages() {
+    return Array.from(grid.querySelectorAll('.postcard-item img'));
+  }
+
+  let idx = 0;
+
+  function show(i) {
+    const imgs = getImages();
+    if (!imgs.length) return;
+    if (i < 0) i = imgs.length - 1;
+    if (i >= imgs.length) i = 0;
+    idx = i;
+    lightboxImg.src = imgs[idx].src;
+    if (lightboxCounter) lightboxCounter.textContent = `${idx + 1} / ${imgs.length}`;
+  }
+
+  grid.addEventListener('click', e => {
+    const img = e.target.closest('.postcard-item img');
+    if (img) {
+      const imgs = getImages();
+      const vi = imgs.indexOf(img);
+      show(vi >= 0 ? vi : 0);
+      lightbox.classList.add('open');
+    }
+  });
 }
 
 // --- General Lightbox (for lore pages etc.) ---

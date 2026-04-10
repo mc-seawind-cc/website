@@ -821,7 +821,7 @@ body {
   margin: 0 auto;
   padding: var(--space-2xl) var(--space-xl);
   position: relative;
-  background: linear-gradient(180deg, var(--deep) 0%, #0a0f18 30%, #070c14 60%, #050910 100%);
+  background: linear-gradient(180deg, var(--deep) 0%, #0d1420 15%, #0a0f18 50%, #070c14 100%);
 }
 
 .content-section::before {
@@ -4564,9 +4564,11 @@ body {
   flex: 0 0 calc(100% / 3);
   padding: 0 var(--space-sm);
   box-sizing: border-box;
+  min-width: 0;
 }
 
 .carousel-slide img {
+  display: block;
   width: 100%;
   aspect-ratio: 16 / 10;
   object-fit: cover;
