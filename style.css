@@ -2506,6 +2506,14 @@ body {
   flex-shrink: 0;
 }
 
+.link-favicon {
+  width: 32px;
+  height: 32px;
+  flex-shrink: 0;
+  border-radius: 6px;
+  object-fit: contain;
+}
+
 .link-card h3 {
   font-size: 0.95rem;
   font-weight: 700;
