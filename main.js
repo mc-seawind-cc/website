@@ -236,9 +236,28 @@ function initBulletinBoard() {
     .then(data => {
       const MAX_SHOW = 7;
       const items = data.announcements;
+      // Separate pinned and regular
+      const pinned = items.filter(i => i.pinned);
+      const regular = items.filter(i => !i.pinned);
       // header row
       let html = '<div class="bulletin-header"><span>主旨</span><span>類型</span><span></span></div>';
-      items.slice(0, MAX_SHOW).forEach((item, i) => {
+      // Pinned items first (always visible)
+      pinned.forEach((item, i) => {
+        html += `
+          <div class="bulletin-item pinned" data-index="${i}">
+            <button class="bulletin-toggle" onclick="this.parentElement.classList.toggle('open')">
+              <span class="b-title">📌 ${item.title}</span>
+              <span class="b-tag tag-${item.tag}">${item.tag}</span>
+              <span class="b-arrow">▾</span>
+            </button>
+            <div class="bulletin-body">
+              <div class="b-date">📅 ${item.date} · ${item.id}</div>
+              <div class="b-content">${item.content.replace(/\n/g, '<br>')}</div>
+            </div>
+          </div>`;
+      });
+      // Regular items (limited)
+      regular.slice(0, MAX_SHOW).forEach((item, i) => {
         html += `
           <div class="bulletin-item" data-index="${i}">
             <button class="bulletin-toggle" onclick="this.parentElement.classList.toggle('open')">
@@ -248,11 +267,11 @@ function initBulletinBoard() {
             </button>
             <div class="bulletin-body">
               <div class="b-date">📅 ${item.date} · ${item.id}</div>
-              <div class="b-content">${item.content}</div>
+              <div class="b-content">${item.content.replace(/\n/g, '<br>')}</div>
             </div>
           </div>`;
       });
-      if (items.length > MAX_SHOW) {
+      if (regular.length > MAX_SHOW) {
         html += `<div class="bulletin-more"><a href="announcements.html" class="btn btn-outline">查看全部公告 (${items.length} 則) →</a></div>`;
       }
       board.innerHTML = html;
