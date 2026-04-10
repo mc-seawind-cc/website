@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="color-scheme" content="dark light">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>海風 SeaWind 官方網站</title>
+  <meta name="description" content="在風與海之間，有一個可以長久生存的地方。一個自由、友善、輕鬆的 Minecraft 養老建築生存伺服器。">
+  <link rel="icon" href="assets/img/logo.png">
+  <meta property="og:title" content="海風 SeaWind 官方網站">
+  <meta property="og:description" content="在風與海之間，有一個可以長久生存的地方。一個自由、友善、輕鬆的 Minecraft 養老建築生存伺服器。">
+  <meta property="og:image" content="assets/img/logo.png">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.seawind.cc">
+  <meta name="twitter:card" content="summary">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&family=Noto+Serif+TC:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="music-player.css">
+</head>
+<body>
+  <div class="bg-atmosphere"></div>
+
+  <nav class="nav">
+    <a href="首頁.html" class="nav-logo">
+      <img src="assets/img/logo.png" alt="海風" class="nav-logo-img" width="32" height="32" fetchpriority="high">
+      <span>海風伺服器</span>
+    </a>
+    <div class="nav-right">
+      <ul class="nav-links">
+        <li><a href="首頁.html">首頁</a></li>
+        <li><a href="公告.html">公告</a></li>
+        <li class="nav-dropdown">
+          <a href="文化藝廊.html" class="nav-dropdown-toggle">關於 <span class="arrow">▾</span></a>
+          <ul class="dropdown-menu">
+            <li><a href="文化藝廊.html">文化藝廊</a></li>
+            <li><a href="風景照.html">風景照</a></li>
+            <li><a href="海風社區.html">海風社區</a></li>
+            <li><a href="海風團隊.html">海風團隊</a></li>
+          </ul>
+        </li>
+        <li><a href="海風指南.html">海風指南</a></li>
+        <li class="nav-dropdown">
+          <a href="玩家須知.html" class="nav-dropdown-toggle">社群須知 <span class="arrow">▾</span></a>
+          <ul class="dropdown-menu">
+            <li><a href="玩家須知.html">玩家須知</a></li>
+            <li><a href="管理規則.html">管理規則</a></li>
+            <li><a href="公務人員須知.html">公務人員須知</a></li>
+            <li><a href="服務條款.html">服務條款</a></li>
+            <li><a href="隱私權政策.html">隱私權政策</a></li>
+          </ul>
+        </li>
+        <li><a href="會員.html">會員</a></li>
+        <li><a href="相關連結.html">相關連結</a></li>
+        <li class="nav-dropdown">
+          <a href="合作夥伴.html" class="nav-dropdown-toggle">資料中心 <span class="arrow">▾</span></a>
+          <ul class="dropdown-menu">
+            <li><a href="合作夥伴.html">合作夥伴</a></li>
+            <li><a href="違規處分.html">違規處分</a></li>
+          </ul>
+        </li>
+      </ul>
+      <button class="nav-theme" id="themeToggle" aria-label="切換主題"></button>
+      <button class="nav-toggle" aria-label="選單">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <div class="page">
+    <!-- ═══ Hero ═══ -->
+    <section class="hero">
+      <div class="hero-particles" id="particles"></div>
+      <div class="hero-content hero-entrance">
+        <h1 class="hero-title">海風</h1>
+        <p class="hero-subtitle" id="heroSubtitle"></p>
+        <div class="hero-actions">
+          <a href="海風指南.html" class="btn btn-primary">開始冒險</a>
+          <a href="https://discord.gg/HdS2HrJEH7" target="_blank" class="btn btn-outline">加入社群</a>
+        </div>
+        <div class="hero-info">
+          <div class="info-card info-card-copy" onclick="copyServerIP()" title="點擊複製">
+            <span class="info-label">伺服器位址</span>
+            <span class="info-value" id="serverIP">seawind.cc</span>
+            <span class="copy-hint" id="copyHint">已複製 ✓</span>
+          </div>
+          <div class="info-card">
+            <span class="info-label">連線版本</span>
+            <span class="info-value">1.21.6 ~ 26.x</span>
+          </div>
+          <div class="info-card">
+            <span class="info-label">伺服器狀態</span>
+            <span class="info-value" id="serverStatus">查詢中...</span>
+          </div>
+        </div>
+        <!-- 提示輪播 -->
+        <div class="hero-tips">
+          <span class="hero-tips-hash">#</span>
+          <div class="tips-text" id="tipsText"></div>
+        </div>
+      </div>
+      <div class="hero-scroll">
+        <span>向下探索</span>
+        <div class="scroll-arrow">↓</div>
+      </div>
+    </section>
+
+    <div class="content-section" id="about">
+
+      <!-- ═══ 公告欄 ═══ -->
+      <div class="section-header reveal-up" style="margin-top: var(--space-xl);">
+        <h2>公告欄</h2>
+        <div class="section-divider"></div>
+      </div>
+      <div id="bulletinBoard" class="bulletin-board reveal-up">
+        <div class="skeleton skeleton-line medium"></div>
+        <div class="skeleton skeleton-line short"></div>
+        <div class="skeleton skeleton-line"></div>
+        <div class="skeleton skeleton-line medium"></div>
+        <div class="skeleton skeleton-line short"></div>
+      </div>
+
+      <!-- ═══ 海風特色 ═══ -->
+      <div class="section-header reveal-up" style="margin-top: var(--space-xl);">
+        <h2>海風特色</h2>
+        <div class="section-divider"></div>
+      </div>
+      <div class="feature-grid feature-grid-3 slide-up stagger">
+        <div class="feature-card" style="--card-accent: var(--sand);">
+          <div class="feature-card-icon"><img src="assets/img/icons/diamond_axe.png" alt="建築" width="32" height="32"></div>
+          <h4>建築養老</h4>
+          <p>沒有 PvP 強迫，沒有怪物攻城。安心蓋你的房子，打造你的世界。</p>
+        </div>
+        <div class="feature-card" style="--card-accent: var(--foam);">
+          <div class="feature-card-icon"><img src="assets/img/icons/emerald.png" alt="免費" width="32" height="32"></div>
+          <h4>免費功能多</h4>
+          <p>領地、任務、稱號、箱子商店、倉庫、傳送、連鎖挖礦——全部免費開放。</p>
+        </div>
+        <div class="feature-card" style="--card-accent: var(--sky);">
+          <div class="feature-card-icon"><img src="assets/img/icons/bed.png" alt="慢節奏" width="32" height="32"></div>
+          <h4>慢節奏生存</h4>
+          <p>礦物代換、鑽石貨幣。不需要肝，不需要課金，慢慢玩就好。</p>
+        </div>
+        <div class="feature-card" style="--card-accent: var(--lavender);">
+          <div class="feature-card-icon"><img src="assets/img/icons/campfire.png" alt="社區" width="32" height="32"></div>
+          <h4>海風社區</h4>
+          <p>高自由度玩法，經營自己的社區，透明公正的管理制度，玩家意見即時回饋，共建海風文化。</p>
+        </div>
+        <div class="feature-card" style="--card-accent: var(--teal);">
+          <div class="feature-card-icon"><img src="assets/img/icons/shield.png" alt="穩定" width="32" height="32"></div>
+          <h4>長期穩定</h4>
+          <p>不刪檔、不跑路，持續營運更新，讓你的努力不會白費。</p>
+        </div>
+        <div class="feature-card" style="--card-accent: var(--ice);">
+          <div class="feature-card-icon"><img src="assets/img/icons/book.png" alt="介面" width="32" height="32"></div>
+          <h4>中文化介面</h4>
+          <p>介面選單都有設計過，大部分是中文而且不會太難看，新手也能輕鬆上手。</p>
+        </div>
+      </div>
+
+      <!-- ═══ 伺服器資訊 ═══ -->
+      <div class="section-header reveal-up" style="margin-top: var(--space-xl);">
+        <h2>伺服器資訊</h2>
+        <div class="section-divider"></div>
+      </div>
+      <div class="feature-grid feature-grid-4 zoom-in stagger">
+        <div class="feature-card" style="--card-accent: var(--teal);">
+          <div class="feature-card-icon"><img src="assets/img/icons/compass.gif" alt="地區" width="32" height="32"></div>
+          <h4>地區</h4>
+          <p>🇹🇼 台灣</p>
+        </div>
+        <div class="feature-card" style="--card-accent: var(--ice);">
+          <div class="feature-card-icon"><img src="assets/img/icons/clock.gif" alt="延遲" width="32" height="32"></div>
+          <h4>延遲</h4>
+          <p>&lt;100ms</p>
+        </div>
+        <div class="feature-card" style="--card-accent: var(--foam);">
+          <div class="feature-card-icon"><img src="assets/img/icons/book.png" alt="版本" width="32" height="32"></div>
+          <h4>遊戲版本</h4>
+          <p>1.21.11(群騎紛爭)</p>
+        </div>
+        <div class="feature-card" style="--card-accent: var(--lavender);">
+          <div class="feature-card-icon"><img src="assets/img/icons/crying_obsidian.png" alt="分流" width="32" height="32"></div>
+          <h4>分流</h4>
+          <p>養老 × 生電</p>
+        </div>
+      </div>
+
+      <!-- ═══ 文化藝廊精選 ═══ -->
+      <div class="section-header reveal-up" style="margin-top: var(--space-xl);">
+        <h2>文化藝廊精選</h2>
+        <div class="section-divider"></div>
+      </div>
+      <div class="lore-preview-grid slide-up stagger">
+        <a href="lore/索西斯墓.html" class="lore-preview-card">
+          <img src="https://cdn.discordapp.com/attachments/1362100396834684978/1362100397820608634/6aef7aa8cb5085bb.png?ex=69d9cc19&is=69d87a99&hm=c56ed03b3c848579e4b390074c959c6e432020393fe11d27f7f0ef6dcb474122" alt="索西斯墓" loading="lazy">
+          <div class="lore-preview-info">
+            <span class="lore-preview-tag">建築 × 故事</span>
+            <h4>索西斯墓</h4>
+            <p>山涯下的墓園，三段截然不同的人生在此長眠。</p>
+          </div>
+        </a>
+        <a href="lore/邊境之村.html" class="lore-preview-card">
+          <img src="https://cdn.discordapp.com/attachments/1361746791585943594/1361747031781150941/34126480f562b85e.png?ex=69d9d480&is=69d88300&hm=c56bcd463eaa7c125dfcd4e1bfeb4b0126ce97d3383e32134ae525d49efa9242" alt="邊境之村" loading="lazy">
+          <div class="lore-preview-info">
+            <span class="lore-preview-tag">建築 × 故事</span>
+            <h4>邊境之村</h4>
+            <p>雪與山崖的村落，被貶者如何在荒蕪之地鑿出活路。</p>
+          </div>
+        </a>
+        <a href="lore/瑟爾納大橋.html" class="lore-preview-card">
+          <img src="https://cdn.discordapp.com/attachments/1360653043523256430/1360653048275533915/2.png?ex=69d9ce26&is=69d87ca6&hm=3da22a8b204b733d3a02e777f4fea0590042c24897d22e3cfdadd6d06df30455" alt="瑟爾納大橋" loading="lazy">
+          <div class="lore-preview-info">
+            <span class="lore-preview-tag">建築 × 故事</span>
+            <h4>瑟爾納大橋</h4>
+            <p>雲彼之間的遠古遺存，比山脈更古老的沉默等待。</p>
+          </div>
+        </a>
+      </div>
+      <div class="section-actions slide-left">
+        <a href="文化藝廊.html" class="btn btn-outline">瀏覽全部作品 →</a>
+      </div>
+
+      <!-- ═══ 海風景觀明信片 ═══ -->
+      <div class="section-header reveal-up" style="margin-top: var(--space-xl);">
+        <h2>海風景觀明信片</h2>
+        <div class="section-divider"></div>
+      </div>
+      <div class="postcard-section reveal-up">
+        <div class="postcard-grid" id="postcardGrid">
+          <div class="postcard-item">
+            <img src="https://truth.bahamut.com.tw/s01/202506/forum/18673/1d210be83f8c3ee04acc643fb749295d.JPG" alt="海風景觀明信片" loading="lazy">
+          </div>
+          <div class="postcard-item">
+            <img src="https://truth.bahamut.com.tw/s01/202506/forum/18673/f69b93378fb5c63a7096114f8487a3e0.JPG" alt="海風景觀明信片" loading="lazy">
+          </div>
+          <div class="postcard-item">
+            <img src="https://truth.bahamut.com.tw/s01/202506/forum/18673/2315f22005d81ceb0729879da90fc159.JPG" alt="海風景觀明信片" loading="lazy">
+          </div>
+          <div class="postcard-item">
+            <img src="https://truth.bahamut.com.tw/s01/202506/forum/18673/c6324111585f3a8840ee47e6fd13a989.JPG" alt="海風景觀明信片" loading="lazy">
+          </div>
+          <div class="postcard-item">
+            <img src="https://truth.bahamut.com.tw/s01/202506/forum/18673/9f7780af55bcaf0af27b8546f450ee33.JPG" alt="海風景觀明信片" loading="lazy">
+          </div>
+        </div>
+      </div>
+
+      <!-- ═══ 風景照 ═══ -->
+      <div class="section-header reveal-up" style="margin-top: var(--space-xl);">
+        <h2>風景照</h2>
+        <div class="section-divider"></div>
+      </div>
+      <div class="reveal-up">
+        <div class="photo-carousel" id="photoCarousel">
+          <div class="photo-carousel-track" id="carouselTrack"></div>
+          <div class="photo-carousel-dots" id="carouselDots"></div>
+        </div>
+        <div class="section-actions">
+          <a href="風景照.html" class="btn btn-outline">瀏覽全部照片 →</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <span class="footer-logo">海風伺服器 seawind.cc</span>
+        <p>跟隨風抵達海的彼端，有片陸地等你啟程</p>
+      </div>
+      <div class="footer-links">
+        <a href="玩家須知.html">社群須知</a>
+        <a href="服務條款.html">服務條款</a>
+        <a href="隱私權政策.html">隱私權政策</a>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2026 海風伺服器 · 非 Mojang 官方營運 · service@seawind.cc</p>
+      </div>
+    </div>
+  </footer>
+
+  <p class="page-revise">網站最後修改日期 2026.04.11</p>
+
+  <script src="tips.js"></script>
+  <script src="main.js"></script>
+  <script src="music-player.js"></script>
+
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox">
+    <button class="lightbox-close" id="lightboxClose">✕</button>
+    <button class="lightbox-prev" id="lightboxPrev">‹</button>
+    <button class="lightbox-next" id="lightboxNext">›</button>
+    <img class="lightbox-img" id="lightboxImg" src="" alt="">
+    <div class="lightbox-counter" id="lightboxCounter"></div>
+  </div>
+</body>
+</html>
