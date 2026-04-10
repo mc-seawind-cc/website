@@ -311,9 +311,8 @@ function initPhotoGallery() {
   const lightboxNext = document.getElementById('lightboxNext');
   const lightboxCounter = document.getElementById('lightboxCounter');
 
-  const BATCH_SIZE = 12; // 每批載入張數
+  const BATCH_SIZE = 12;
 
-  // 直接用相對路徑，photos.json 在網站根目錄
   fetch('photos.json')
     .then(r => {
       if (!r.ok) throw new Error(`photos.json 載入失敗 (${r.status})`);
@@ -327,109 +326,109 @@ function initPhotoGallery() {
       container.innerHTML = '';
       const grid = document.createElement('div');
       grid.className = 'photo-grid';
-
-      data.photos.forEach((src, i) => {
-        const img = document.createElement('img');
-        img.src = src;
-        img.className = 'photo-item';
-        img.alt = `海風照片 ${i + 1}`;
-        img.loading = 'lazy';
-        if (i >= BATCH_SIZE) img.style.display = 'none';
-        img.onerror = function() {
-          this.style.display = 'none';
-          console.warn(`照片載入失敗: ${this.src}`);
-        };
-        grid.appendChild(img);
-      });
       container.appendChild(grid);
 
-      // 「載入更多」按鈕
-      if (data.photos.length > BATCH_SIZE) {
-        const btn = document.createElement('button');
-        btn.className = 'btn btn-outline photo-more-btn';
-        let loaded = BATCH_SIZE;
-        function updateBtn() {
-          const remaining = data.photos.length - loaded;
-          if (remaining <= 0) { btn.remove(); return; }
-          btn.textContent = `載入更多（${remaining} 張）`;
+      let loaded = 0;
+
+      function loadBatch() {
+        const end = Math.min(loaded + BATCH_SIZE, data.photos.length);
+        for (let i = loaded; i < end; i++) {
+          const img = document.createElement('img');
+          img.src = data.photos[i];
+          img.className = 'photo-item';
+          img.alt = `海風風景照 ${i + 1}`;
+          img.loading = 'lazy';
+          img.onerror = function() { this.style.display = 'none'; };
+          grid.appendChild(img);
         }
-        updateBtn();
-        btn.addEventListener('click', () => {
-          const items = grid.querySelectorAll('.photo-item');
-          const end = Math.min(loaded + BATCH_SIZE, items.length);
-          for (let i = loaded; i < end; i++) {
-            items[i].style.display = '';
-          }
-          loaded = end;
-          updateBtn();
-        });
-        container.appendChild(btn);
+        loaded = end;
+
+        // 還有更多照片時，顯示載入感應器
+        if (loaded < data.photos.length) {
+          updateSentinel();
+        } else if (sentinel) {
+          sentinel.remove();
+          sentinel = null;
+        }
+
+        // 更新計數
+        if (counterEl) {
+          counterEl.textContent = `${loaded} / ${data.photos.length}`;
+        }
       }
 
+      // 計數器
+      const counterEl = document.createElement('div');
+      counterEl.className = 'photo-counter';
+      counterEl.textContent = `0 / ${data.photos.length}`;
+      container.appendChild(counterEl);
+
+      // 無限滾動感應器
+      var sentinel = null;
+      function updateSentinel() {
+        if (sentinel) sentinel.remove();
+        sentinel = document.createElement('div');
+        sentinel.className = 'photo-sentinel';
+        sentinel.innerHTML = '<div class="photo-loading">載入中⋯</div>';
+        container.appendChild(sentinel);
+
+        const observer = new IntersectionObserver((entries) => {
+          if (entries[0].isIntersecting) {
+            observer.disconnect();
+            setTimeout(loadBatch, 300);
+          }
+        }, { rootMargin: '200px' });
+        observer.observe(sentinel);
+      }
+
+      // 載入第一批
+      loadBatch();
       setupLightbox();
     })
     .catch(err => {
       console.error('照片廊載入錯誤:', err);
       container.innerHTML = '<div class="photo-placeholder">照片載入失敗，請稍後再試</div>';
-      setupLightbox();
     });
 
   function setupLightbox() {
-    const allPhotos = container.querySelectorAll('.photo-item');
-    if (!allPhotos.length || !lightbox) return;
+    if (!lightbox) return;
+
+    function getVisible() {
+      return Array.from(container.querySelectorAll('.photo-item')).filter(
+        img => img.style.display !== 'none' && img.naturalWidth > 0
+      );
+    }
+
     let idx = 0;
 
     function show(i) {
-      // 只在可見的照片中循環
-      const visible = Array.from(allPhotos).filter(img => img.style.display !== 'none');
+      const visible = getVisible();
       if (!visible.length) return;
-      let vi = visible.indexOf(allPhotos[idx < allPhotos.length ? idx : 0]);
-      if (vi === -1) vi = 0;
       if (i < 0) i = visible.length - 1;
       if (i >= visible.length) i = 0;
-      idx = Array.from(allPhotos).indexOf(visible[i]);
-      lightboxImg.src = visible[i].src;
-      if (lightboxCounter) lightboxCounter.textContent = `${i + 1} / ${visible.length}`;
+      idx = i;
+      lightboxImg.src = visible[idx].src;
+      if (lightboxCounter) lightboxCounter.textContent = `${idx + 1} / ${visible.length}`;
     }
 
     container.addEventListener('click', e => {
       if (e.target.classList.contains('photo-item')) {
-        const visible = Array.from(allPhotos).filter(img => img.style.display !== 'none');
-        idx = Array.from(allPhotos).indexOf(e.target);
-        let vi = visible.indexOf(e.target);
-        if (vi === -1) vi = 0;
-        show(vi);
+        const visible = getVisible();
+        const vi = visible.indexOf(e.target);
+        show(vi >= 0 ? vi : 0);
         lightbox.classList.add('open');
       }
     });
 
     lightboxClose?.addEventListener('click', () => lightbox.classList.remove('open'));
-    lightboxPrev?.addEventListener('click', e => {
-      e.stopPropagation();
-      const visible = Array.from(allPhotos).filter(img => img.style.display !== 'none');
-      let vi = visible.indexOf(allPhotos[idx]);
-      show(vi - 1);
-    });
-    lightboxNext?.addEventListener('click', e => {
-      e.stopPropagation();
-      const visible = Array.from(allPhotos).filter(img => img.style.display !== 'none');
-      let vi = visible.indexOf(allPhotos[idx]);
-      show(vi + 1);
-    });
+    lightboxPrev?.addEventListener('click', e => { e.stopPropagation(); show(idx - 1); });
+    lightboxNext?.addEventListener('click', e => { e.stopPropagation(); show(idx + 1); });
     lightbox.addEventListener('click', e => { if (e.target === lightbox) lightbox.classList.remove('open'); });
     document.addEventListener('keydown', e => {
       if (!lightbox.classList.contains('open')) return;
       if (e.key === 'Escape') lightbox.classList.remove('open');
-      if (e.key === 'ArrowLeft') {
-        const visible = Array.from(allPhotos).filter(img => img.style.display !== 'none');
-        let vi = visible.indexOf(allPhotos[idx]);
-        show(vi - 1);
-      }
-      if (e.key === 'ArrowRight') {
-        const visible = Array.from(allPhotos).filter(img => img.style.display !== 'none');
-        let vi = visible.indexOf(allPhotos[idx]);
-        show(vi + 1);
-      }
+      if (e.key === 'ArrowLeft') show(idx - 1);
+      if (e.key === 'ArrowRight') show(idx + 1);
     });
   }
 }

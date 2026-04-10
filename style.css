@@ -2672,6 +2672,30 @@ body {
   margin: var(--space-lg) auto 0;
 }
 
+.photo-sentinel {
+  padding: var(--space-lg) 0;
+}
+
+.photo-loading {
+  text-align: center;
+  color: var(--fog);
+  font-size: 0.85rem;
+  animation: pulse-fade 1.5s ease-in-out infinite;
+}
+
+@keyframes pulse-fade {
+  0%, 100% { opacity: 0.5; }
+  50% { opacity: 1; }
+}
+
+.photo-counter {
+  text-align: center;
+  color: var(--fog);
+  font-size: 0.78rem;
+  margin-top: var(--space-md);
+  opacity: 0.7;
+}
+
 /* Load More */
 .load-more-btn {
   display: block;
