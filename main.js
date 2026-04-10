@@ -238,6 +238,43 @@ function initBulletinBoard() {
     .then(r => r.json())
     .then(data => {
       const MAX_SHOW = 100;
+
+      // Markdown to HTML converter
+      function md2html(text) {
+        if (!text) return '';
+        let html = text;
+        // Images: ![alt](url)
+        html = html.replace(/!\[([^\]]*)\]\(([^)]+)\)/g, '<img src="$2" alt="$1" loading="lazy" style="max-width:100%;border-radius:8px;margin:8px 0;">');
+        // Links: [text](url)
+        html = html.replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" target="_blank" rel="noopener">$1</a>');
+        // Bold
+        html = html.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
+        // Italic
+        html = html.replace(/\*(.+?)\*/g, '<em>$1</em>');
+        // Inline code
+        html = html.replace(/`(.+?)`/g, '<code style="background:rgba(157,175,255,0.1);padding:2px 6px;border-radius:4px;font-size:0.9em;">$1</code>');
+        // Lines
+        const lines = html.split('\n');
+        let result = [];
+        let inList = false;
+        lines.forEach(line => {
+          const trimmed = line.trim();
+          // Bullet points: • - *
+          if (/^[\s]*[•\-\*]\s/.test(trimmed)) {
+            if (!inList) { result.push('<ul style="padding-left:1.2em;margin:4px 0;">'); inList = true; }
+            result.push('<li>' + trimmed.replace(/^[\s]*[•\-\*]\s+/, '') + '</li>');
+          } else if (trimmed === '') {
+            if (inList) { result.push('</ul>'); inList = false; }
+            result.push('<br>');
+          } else {
+            if (inList) { result.push('</ul>'); inList = false; }
+            result.push(trimmed);
+          }
+        });
+        if (inList) result.push('</ul>');
+        return result.join('\n');
+      }
+
       const items = data.announcements;
       // Separate pinned and regular
       const pinned = items.filter(i => i.pinned);
@@ -254,7 +291,7 @@ function initBulletinBoard() {
               <span class="b-arrow">▾</span>
             </button>
             <div class="bulletin-body" style="text-align:center;">
-              <div class="b-content">${item.content.replace(/\n/g, '<br>')}</div>
+              <div class="b-content">${md2html(item.content)}</div>
             </div>
           </div>`;
       });
@@ -269,12 +306,12 @@ function initBulletinBoard() {
             </button>
             <div class="bulletin-body">
               <div class="b-date">📅 ${item.date} · ${item.id}</div>
-              <div class="b-content">${item.content.replace(/\n/g, '<br>')}</div>
+              <div class="b-content">${md2html(item.content)}</div>
             </div>
           </div>`;
       });
       if (regular.length > MAX_SHOW) {
-        html += `<div class="bulletin-more"><a href="announcements.html" class="btn btn-outline">查看全部公告 (${items.length} 則) →</a></div>`;
+        html += `<div class="bulletin-more"><a href="公告.html" class="btn btn-outline">查看全部公告 (${items.length} 則) →</a></div>`;
       }
       board.innerHTML = html;
     })
