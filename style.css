@@ -3813,3 +3813,384 @@ body {
 [data-theme="light"] .text-highlight {
   color: #b8860b;
 }
+
+/* ═══ Light Theme — Comprehensive Fixes ═══ */
+
+[data-theme="light"] .nav {
+  background: rgba(240, 242, 245, 0.7);
+  border-bottom-color: rgba(0, 0, 0, 0.06);
+}
+
+[data-theme="light"] .nav-logo-img {
+  border-color: rgba(0, 0, 0, 0.08);
+}
+
+[data-theme="light"] .page {
+  background: var(--deep);
+}
+
+[data-theme="light"] .content-section::before {
+  background: rgba(0, 0, 0, 0.03);
+}
+
+[data-theme="light"] .section-header h2 {
+  color: var(--cloud);
+}
+
+[data-theme="light"] .section-divider {
+  background: linear-gradient(90deg, transparent, rgba(157, 175, 255, 0.3), transparent);
+}
+
+[data-theme="light"] .page-hero {
+  background: linear-gradient(180deg, rgba(157, 175, 255, 0.06), transparent);
+}
+
+[data-theme="light"] .page-hero h1 {
+  color: var(--cloud);
+}
+
+[data-theme="light"] .section-tag {
+  color: var(--sky);
+  background: rgba(157, 175, 255, 0.1);
+}
+
+[data-theme="light"] .section-desc {
+  color: var(--fog);
+}
+
+[data-theme="light"] .intro-block {
+  background: rgba(0, 0, 0, 0.02);
+  border-color: rgba(0, 0, 0, 0.05);
+}
+
+[data-theme="light"] .intro-slogan {
+  color: var(--fog);
+}
+
+[data-theme="light"] .intro-lead {
+  color: var(--cloud);
+}
+
+[data-theme="light"] .text-accent {
+  color: var(--sky);
+}
+
+[data-theme="light"] .info-card {
+  background: rgba(0, 0, 0, 0.03);
+  border-color: rgba(0, 0, 0, 0.06);
+}
+
+[data-theme="light"] .info-label {
+  color: var(--fog);
+}
+
+[data-theme="light"] .info-value {
+  color: var(--cloud);
+}
+
+[data-theme="light"] .hero {
+  background: linear-gradient(180deg, var(--deep) 0%, var(--ocean) 100%);
+}
+
+[data-theme="light"] .hero::before {
+  background: radial-gradient(ellipse 600px 400px at 50% 50%, rgba(157, 175, 255, 0.08) 0%, transparent 70%);
+}
+
+[data-theme="light"] .hero::after {
+  background: radial-gradient(ellipse 400px 300px at 30% 60%, rgba(168, 230, 207, 0.05) 0%, transparent 70%);
+}
+
+[data-theme="light"] .hero-title {
+  color: var(--cloud);
+  text-shadow: 0 2px 16px rgba(0, 0, 0, 0.06);
+}
+
+[data-theme="light"] .hero-subtitle {
+  color: var(--fog);
+}
+
+[data-theme="light"] .hero-scroll span {
+  color: var(--fog);
+}
+
+[data-theme="light"] .hero-scroll .scroll-arrow {
+  color: var(--fog);
+}
+
+[data-theme="light"] .bulletin-board {
+  background: rgba(0, 0, 0, 0.015);
+  border-color: rgba(0, 0, 0, 0.06);
+}
+
+[data-theme="light"] .bulletin-toggle {
+  color: var(--cloud);
+}
+
+[data-theme="light"] .bulletin-toggle:hover {
+  background: rgba(0, 0, 0, 0.03);
+}
+
+[data-theme="light"] .bulletin-body {
+  background: rgba(0, 0, 0, 0.02);
+  border-color: rgba(0, 0, 0, 0.05);
+}
+
+[data-theme="light"] .bulletin-body .b-date {
+  color: var(--fog);
+}
+
+[data-theme="light"] .bulletin-body .b-content {
+  color: var(--cloud);
+}
+
+[data-theme="light"] .tag-公告 { background: rgba(157, 175, 255, 0.15); color: #4a6cf7; }
+[data-theme="light"] .tag-活動 { background: rgba(168, 230, 207, 0.2); color: #2d8a5e; }
+[data-theme="light"] .tag-更新 { background: rgba(222, 172, 128, 0.2); color: #b87333; }
+[data-theme="light"] .tag-維護 { background: rgba(255, 182, 193, 0.2); color: #c44569; }
+
+[data-theme="light"] .feature-card h4 {
+  color: var(--cloud);
+}
+
+[data-theme="light"] .feature-card p {
+  color: var(--fog);
+}
+
+[data-theme="light"] .feature-card-icon {
+  background: rgba(0, 0, 0, 0.04);
+}
+
+[data-theme="light"] .lore-preview-card {
+  background: rgba(0, 0, 0, 0.02);
+  border-color: rgba(0, 0, 0, 0.06);
+}
+
+[data-theme="light"] .lore-preview-card:hover {
+  background: rgba(0, 0, 0, 0.04);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+}
+
+[data-theme="light"] .lore-preview-tag {
+  color: var(--sky);
+  background: rgba(157, 175, 255, 0.12);
+}
+
+[data-theme="light"] .lore-preview-card h4 {
+  color: var(--cloud);
+}
+
+[data-theme="light"] .lore-preview-card p {
+  color: var(--fog);
+}
+
+[data-theme="light"] .photo-placeholder {
+  background: rgba(0, 0, 0, 0.02);
+  border-color: rgba(0, 0, 0, 0.06);
+  color: var(--fog);
+}
+
+[data-theme="light"] .photo-counter {
+  color: var(--fog);
+}
+
+[data-theme="light"] .photo-loading {
+  color: var(--fog);
+}
+
+[data-theme="light"] .link-card {
+  background: rgba(0, 0, 0, 0.02);
+  border-color: rgba(0, 0, 0, 0.06);
+}
+
+[data-theme="light"] .link-card:hover {
+  background: rgba(0, 0, 0, 0.04);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+}
+
+[data-theme="light"] .link-card h3 {
+  color: var(--cloud);
+}
+
+[data-theme="light"] .link-card p {
+  color: var(--fog);
+}
+
+[data-theme="light"] .link-badge {
+  background: rgba(0, 0, 0, 0.06);
+  color: var(--fog);
+}
+
+[data-theme="light"] .badge-building {
+  background: rgba(222, 172, 128, 0.15);
+  color: #b87333;
+}
+
+[data-theme="light"] .footer {
+  background: var(--ocean);
+  border-top-color: rgba(0, 0, 0, 0.08);
+}
+
+[data-theme="light"] .footer-brand .footer-logo {
+  color: var(--cloud);
+}
+
+[data-theme="light"] .footer-brand p {
+  color: var(--fog);
+}
+
+[data-theme="light"] .footer-links a {
+  color: var(--fog);
+}
+
+[data-theme="light"] .footer-links a:hover {
+  color: var(--sky);
+}
+
+[data-theme="light"] .footer-bottom p {
+  color: var(--fog);
+}
+
+[data-theme="light"] .page-revise {
+  color: var(--fog);
+}
+
+[data-theme="light"] .guide-nav {
+  border-top-color: rgba(0, 0, 0, 0.06);
+}
+
+[data-theme="light"] .back-link {
+  color: var(--sky);
+}
+
+[data-theme="light"] .article-cover {
+  border-color: rgba(0, 0, 0, 0.06);
+}
+
+[data-theme="light"] .article-hero h1 {
+  color: var(--cloud);
+}
+
+[data-theme="light"] .article-subtitle {
+  color: var(--fog);
+}
+
+[data-theme="light"] .article-body h2 {
+  color: var(--cloud);
+  border-bottom-color: rgba(0, 0, 0, 0.06);
+}
+
+[data-theme="light"] .article-body h3 {
+  color: var(--cloud);
+}
+
+[data-theme="light"] .article-body p {
+  color: var(--cloud);
+}
+
+[data-theme="light"] .article-body ul li {
+  color: var(--cloud);
+}
+
+[data-theme="light"] .article-body em {
+  color: var(--fog);
+}
+
+[data-theme="light"] .article-footer {
+  border-top-color: rgba(0, 0, 0, 0.06);
+  color: var(--fog);
+}
+
+[data-theme="light"] .lore-card-tag {
+  color: var(--sky);
+  background: rgba(157, 175, 255, 0.12);
+}
+
+[data-theme="light"] .section-actions {
+  border-top-color: rgba(0, 0, 0, 0.06);
+}
+
+[data-theme="light"] .lightbox {
+  background: rgba(240, 242, 245, 0.95);
+}
+
+[data-theme="light"] .lightbox-close {
+  color: var(--cloud);
+  background: rgba(0, 0, 0, 0.06);
+}
+
+[data-theme="light"] .lightbox-prev,
+[data-theme="light"] .lightbox-next {
+  color: var(--cloud);
+  background: rgba(0, 0, 0, 0.06);
+}
+
+[data-theme="light"] .lightbox-counter {
+  color: var(--fog);
+  background: rgba(0, 0, 0, 0.06);
+}
+
+[data-theme="light"] .btn-primary {
+  background: var(--sky);
+  color: #fff;
+}
+
+[data-theme="light"] .btn-primary:hover {
+  background: #8aa0ff;
+}
+
+[data-theme="light"] .btn-outline {
+  border-color: rgba(157, 175, 255, 0.4);
+  color: var(--sky);
+}
+
+[data-theme="light"] .btn-outline:hover {
+  background: rgba(157, 175, 255, 0.1);
+}
+
+[data-theme="light"] .cursor {
+  background: var(--sky);
+}
+
+[data-theme="light"] .particle {
+  background: rgba(157, 175, 255, 0.4);
+}
+
+[data-theme="light"] .copy-hint {
+  background: rgba(168, 230, 207, 0.2);
+  color: #2d8a5e;
+}
+
+/* ═══ Light Theme — Mobile Fixes ═══ */
+
+@media (max-width: 768px) {
+  [data-theme="light"] .nav-links {
+    background: rgba(240, 242, 245, 0.97);
+    border-bottom-color: rgba(0, 0, 0, 0.06);
+  }
+
+  [data-theme="light"] .nav-links a {
+    color: var(--cloud);
+  }
+
+  [data-theme="light"] .nav-links a:hover,
+  [data-theme="light"] .nav-links a.active {
+    color: var(--sky);
+    background: rgba(157, 175, 255, 0.08);
+  }
+
+  [data-theme="light"] .nav-dropdown .dropdown-menu {
+    background: rgba(0, 0, 0, 0.02);
+  }
+
+  [data-theme="light"] .nav-dropdown .dropdown-menu li a {
+    color: var(--fog);
+  }
+
+  [data-theme="light"] .nav-dropdown .dropdown-menu li a:hover {
+    color: var(--sky);
+  }
+
+  [data-theme="light"] .nav-toggle span {
+    background: var(--cloud);
+  }
+}
