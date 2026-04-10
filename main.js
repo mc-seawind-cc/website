@@ -218,7 +218,7 @@ function createHeroParticles() {
 
     // Fade in on first user interaction
     const fadeIn = () => {
-      gain.gain.linearRampToValueAtTime(0.06, audioCtx.currentTime + 2);
+      gain.gain.linearRampToValueAtTime(0.15, audioCtx.currentTime + 2);
       document.removeEventListener('click', fadeIn);
       document.removeEventListener('keydown', fadeIn);
       document.removeEventListener('touchstart', fadeIn);
