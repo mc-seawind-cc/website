@@ -13,13 +13,44 @@
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://www.seawind.cc">
   <meta name="twitter:card" content="summary">
+  <meta name="theme-color" content="#0d1117">
+  <!-- DNS Prefetch -->
+  <link rel="dns-prefetch" href="//cdn.discordapp.com">
+  <link rel="dns-prefetch" href="//truth.bahamut.com.tw">
+  <link rel="dns-prefetch" href="//api.mcsrvstat.us">
+  <!-- Preload hero image -->
+  <link rel="preload" as="image" href="assets/img/homeHero.png" fetchpriority="high">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&family=Noto+Serif+TC:wght@400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="music-player.css">
+  <!-- JSON-LD 結構化資料 -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "海風 SeaWind 官方網站",
+    "url": "https://www.seawind.cc",
+    "description": "在風與海之間，有一個可以長久生存的地方。一個自由、友善、輕鬆的 Minecraft 養老建築生存伺服器。"
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "海風 SeaWind",
+    "url": "https://www.seawind.cc",
+    "logo": "https://www.seawind.cc/assets/img/logo.png",
+    "sameAs": ["https://discord.gg/HdS2HrJEH7"]
+  }
+  </script>
 </head>
 <body>
+  <!-- Skip to content (accessibility) -->
+  <a href="#about" class="skip-link">跳到主要內容</a>
+  <!-- Scroll Progress Bar -->
+  <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
   <div class="bg-atmosphere"></div>
 
   <nav class="nav">
@@ -91,7 +122,7 @@
           </div>
           <div class="info-card">
             <span class="info-label">伺服器狀態</span>
-            <span class="info-value" id="serverStatus">查詢中...</span>
+            <span class="info-value" id="serverStatus" aria-live="polite" role="status">查詢中...</span>
           </div>
         </div>
         <!-- 提示輪播 -->
@@ -113,7 +144,7 @@
         <h2>公告欄</h2>
         <div class="section-divider"></div>
       </div>
-      <div id="bulletinBoard" class="bulletin-board reveal-up">
+      <div id="bulletinBoard" class="bulletin-board reveal-up" role="feed" aria-label="公告列表">
         <div class="skeleton skeleton-line medium"></div>
         <div class="skeleton skeleton-line short"></div>
         <div class="skeleton skeleton-line"></div>
@@ -275,6 +306,7 @@
         <a href="玩家須知.html">社群須知</a>
         <a href="服務條款.html">服務條款</a>
         <a href="隱私權政策.html">隱私權政策</a>
+        <a href="https://discord.gg/HdS2HrJEH7" target="_blank" rel="noopener">Discord</a>
       </div>
       <div class="footer-bottom">
         <p>© 2026 海風伺服器 · 非 Mojang 官方營運 · service@seawind.cc</p>

@@ -27,9 +27,13 @@ document.addEventListener('DOMContentLoaded', () => {
   if (toggle && links) {
     toggle.addEventListener('click', () => {
       links.classList.toggle('open');
+      toggle.classList.toggle('active');
     });
     links.querySelectorAll('a:not(.nav-dropdown-toggle)').forEach(a => {
-      a.addEventListener('click', () => links.classList.remove('open'));
+      a.addEventListener('click', () => {
+        links.classList.remove('open');
+        toggle.classList.remove('active');
+      });
     });
   }
 
@@ -61,11 +65,19 @@ document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('.fade-in:not(.visible), .slide-up:not(.visible), .zoom-in:not(.visible), .slide-left:not(.visible), .slide-right:not(.visible), .reveal-up:not(.visible)').forEach(el => el.classList.add('visible'));
   }, 3000);
 
-  // --- Nav Scroll Shadow ---
+  // --- Nav Scroll Shadow + Scroll Progress ---
   const nav = document.querySelector('.nav');
+  const scrollProgress = document.getElementById('scrollProgress');
   if (nav) {
     window.addEventListener('scroll', () => {
       nav.classList.toggle('scrolled', window.scrollY > 60);
+      // Update scroll progress bar
+      if (scrollProgress) {
+        const scrollTop = window.scrollY;
+        const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+        const progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+        scrollProgress.style.width = progress + '%';
+      }
     }, { passive: true });
   }
 
@@ -112,6 +124,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const navEl = document.querySelector('.nav');
     if (links && links.classList.contains('open') && !navEl.contains(e.target)) {
       links.classList.remove('open');
+      toggle.classList.remove('active');
     }
   });
 
@@ -254,9 +267,11 @@ function copyServerIP() {
 function fetchServerStatus() {
   const statusEl = document.getElementById('serverStatus');
   if (!statusEl) return;
+  statusEl.classList.add('status-loading');
   fetch('https://api.mcsrvstat.us/3/seawind.cc')
     .then(res => res.json())
     .then(data => {
+      statusEl.classList.remove('status-loading');
       if (data.online) {
         const players = data.players ? data.players.online : 0;
         const max = data.players ? data.players.max : 0;
@@ -267,7 +282,11 @@ function fetchServerStatus() {
         statusEl.className = 'info-value status-offline';
       }
     })
-    .catch(() => { statusEl.textContent = '查詢失敗'; statusEl.className = 'info-value'; });
+    .catch(() => {
+      statusEl.classList.remove('status-loading');
+      statusEl.textContent = '查詢失敗';
+      statusEl.className = 'info-value';
+    });
 }
 
 // --- Bulletin Board ---
@@ -405,6 +424,10 @@ function initPostcardLightbox() {
     if (lightboxCounter) lightboxCounter.textContent = `${idx + 1} / ${imgs.length}`;
   }
 
+  function closeLightbox() {
+    lightbox.classList.remove('open');
+  }
+
   grid.addEventListener('click', e => {
     const img = e.target.closest('.postcard-item img');
     if (img) {
@@ -413,6 +436,24 @@ function initPostcardLightbox() {
       show(vi >= 0 ? vi : 0);
       lightbox.classList.add('open');
     }
+  });
+
+  // Navigation buttons
+  if (lightboxClose) lightboxClose.addEventListener('click', closeLightbox);
+  if (lightboxPrev) lightboxPrev.addEventListener('click', () => show(idx - 1));
+  if (lightboxNext) lightboxNext.addEventListener('click', () => show(idx + 1));
+
+  // Keyboard navigation
+  document.addEventListener('keydown', (e) => {
+    if (!lightbox.classList.contains('open')) return;
+    if (e.key === 'Escape') closeLightbox();
+    if (e.key === 'ArrowLeft') show(idx - 1);
+    if (e.key === 'ArrowRight') show(idx + 1);
+  });
+
+  // Click backdrop to close
+  lightbox.addEventListener('click', (e) => {
+    if (e.target === lightbox) closeLightbox();
   });
 }
 
@@ -423,7 +464,6 @@ function initGeneralLightbox() {
   // Only run on pages that don't have photoGrid (lore pages)
   if (document.getElementById('photoGrid')) return;
 
-  const lightboxImg = document.getElementById('lightboxImg');
   const lightboxClose = document.getElementById('lightboxClose');
 
   function closeLightbox() {
