@@ -413,7 +413,7 @@ const MUSIC_PLAYER = (() => {
     createUI();
     bindEvents();
 
-    document.getElementById('mpTitle').textContent = '海風電台';
+    document.getElementById('mpTitle').textContent = '音樂撥放器';
 
     const tag = document.createElement('script');
     tag.src = 'https://www.youtube.com/iframe_api';
