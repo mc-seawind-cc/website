@@ -527,7 +527,7 @@ function initBulletinBoard() {
       // Pinned items first (always visible)
       pinned.forEach((item, i) => {
         html += `
-          <div class="bulletin-item pinned" data-index="${i}">
+          <div class="bulletin-item pinned open" data-index="${i}">
             <button class="bulletin-toggle" onclick="const wasOpen=this.parentElement.classList.contains('open');this.closest('.bulletin-board').querySelectorAll('.bulletin-item.open').forEach(e=>e.classList.remove('open'));if(!wasOpen)this.parentElement.classList.add('open')">
               <span class="b-title">📌 ${item.title}</span>
               <span class="b-tag tag-${item.tag}">${item.tag}</span>

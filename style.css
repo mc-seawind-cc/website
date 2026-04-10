@@ -5189,6 +5189,23 @@ video.photo-item {
   background: rgba(157, 175, 255, 0.04);
 }
 
+.bulletin-item.pinned .bulletin-toggle .b-title {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--sky);
+}
+
+.bulletin-item.pinned .bulletin-body {
+  background: rgba(157, 175, 255, 0.03);
+  border-top: 1px solid rgba(157, 175, 255, 0.1);
+}
+
+.bulletin-item.pinned .b-content {
+  font-size: 0.95rem;
+  line-height: 2;
+  padding: 4px 0;
+}
+
 /* --- Bulletin More Link --- */
 .bulletin-more {
   text-align: center;

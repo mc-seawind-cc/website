@@ -218,7 +218,7 @@
       const regular = filtered.filter(i => !i.pinned);
       pinned.forEach((item, i) => {
         html += `
-          <div class="bulletin-item pinned" data-index="${i}">
+          <div class="bulletin-item pinned open" data-index="${i}">
             <button class="bulletin-toggle" onclick="this.parentElement.classList.toggle('open')">
               <span class="b-title">📌 ${item.title}</span>
               <span class="b-tag tag-${item.tag}">${item.tag}</span>
