@@ -314,7 +314,7 @@ function initBulletinBoard() {
   fetch('announcements.json')
     .then(r => r.json())
     .then(data => {
-      const MAX_SHOW = 6;
+      const MAX_TOTAL = 5;
 
       // Markdown to HTML converter
       function md2html(text) {
@@ -356,6 +356,7 @@ function initBulletinBoard() {
       // Separate pinned and regular
       const pinned = items.filter(i => i.pinned);
       const regular = items.filter(i => !i.pinned);
+      const maxRegular = Math.max(0, MAX_TOTAL - pinned.length);
       // header row
       let html = '<div class="bulletin-header"><span>主旨</span><span>類型</span><span></span></div>';
       // Pinned items first (always visible)
@@ -373,7 +374,7 @@ function initBulletinBoard() {
           </div>`;
       });
       // Regular items (limited)
-      regular.slice(0, MAX_SHOW).forEach((item, i) => {
+      regular.slice(0, maxRegular).forEach((item, i) => {
         html += `
           <div class="bulletin-item" data-index="${i}">
             <button class="bulletin-toggle" onclick="const wasOpen=this.parentElement.classList.contains('open');this.closest('.bulletin-board').querySelectorAll('.bulletin-item.open').forEach(e=>e.classList.remove('open'));if(!wasOpen)this.parentElement.classList.add('open')">
@@ -387,7 +388,7 @@ function initBulletinBoard() {
             </div>
           </div>`;
       });
-      if (regular.length > MAX_SHOW) {
+      if (regular.length > maxRegular) {
         html += `<div class="bulletin-more"><a href="公告.html" class="btn btn-outline">查看全部公告 (${items.length} 則) →</a></div>`;
       }
       board.innerHTML = html;

@@ -5492,8 +5492,9 @@ video.photo-item {
 }
 .back-to-top {
   position: fixed;
-  bottom: 2rem;
-  right: 2rem;
+  bottom: 1.5rem;
+  left: 50%;
+  transform: translateX(-50%) translateY(16px);
   z-index: 900;
   width: 44px;
   height: 44px;
@@ -5508,7 +5509,6 @@ video.photo-item {
   align-items: center;
   justify-content: center;
   opacity: 0;
-  transform: translateY(16px);
   pointer-events: none;
   transition: opacity 0.3s var(--ease), transform 0.3s var(--ease), background 0.2s;
   will-change: opacity, transform;
@@ -5516,7 +5516,7 @@ video.photo-item {
 
 .back-to-top.visible {
   opacity: 1;
-  transform: translateY(0);
+  transform: translateX(-50%) translateY(0);
   pointer-events: auto;
 }
 
@@ -5538,8 +5538,7 @@ video.photo-item {
 
 @media (max-width: 768px) {
   .back-to-top {
-    bottom: 1.2rem;
-    right: 1.2rem;
+    bottom: 1rem;
     width: 40px;
     height: 40px;
   }
