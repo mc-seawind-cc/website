@@ -99,6 +99,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // --- Photo Gallery ---
   initPhotoGallery();
+
+  // --- General Lightbox (lore pages etc.) ---
+  initGeneralLightbox();
 });
 
 function createParticles() {
@@ -268,6 +271,32 @@ function initTips() {
   }
   showTip();
   setInterval(showTip, 4000);
+}
+
+// --- General Lightbox (for lore pages etc.) ---
+function initGeneralLightbox() {
+  const lightbox = document.getElementById('lightbox');
+  if (!lightbox) return;
+  // Only run on pages that don't have photoGrid (lore pages)
+  if (document.getElementById('photoGrid')) return;
+
+  const lightboxImg = document.getElementById('lightboxImg');
+  const lightboxClose = document.getElementById('lightboxClose');
+
+  function closeLightbox() {
+    lightbox.classList.remove('open');
+  }
+
+  if (lightboxClose) {
+    lightboxClose.addEventListener('click', closeLightbox);
+  }
+  lightbox.addEventListener('click', function(e) {
+    if (e.target === lightbox) closeLightbox();
+  });
+  document.addEventListener('keydown', function(e) {
+    if (!lightbox.classList.contains('open')) return;
+    if (e.key === 'Escape') closeLightbox();
+  });
 }
 
 // --- Photo Gallery (fixed path resolution) ---

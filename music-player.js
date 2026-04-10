@@ -134,7 +134,6 @@ const MUSIC_PLAYER = (() => {
     if (!player || !playerReady) return;
     try {
       const time = player.getCurrentTime ? player.getCurrentTime() : 0;
-      if (time < 0.5) return;
       const data = player.getVideoData ? player.getVideoData() : {};
       const vid = data.video_id || currentVideoId || '';
       const track = findTrack(vid);
@@ -145,6 +144,7 @@ const MUSIC_PLAYER = (() => {
         displayTitle: displayTitle,
         time: time,
         playing: isPlaying,
+        muted: muted,
         volume: player.getVolume ? player.getVolume() : 30,
         ts: Date.now()
       }));
@@ -348,14 +348,27 @@ const MUSIC_PLAYER = (() => {
         document.getElementById('mpTitle').textContent = saved.displayTitle;
       }
 
+      // 恢復靜音狀態
+      if (saved.muted === true) {
+        muted = true;
+        try { player.mute(); } catch(e) {}
+      } else if (saved.muted === false) {
+        muted = false;
+        try { player.unMute(); } catch(e) {}
+      }
+
       player.loadVideoById(saved.videoId);
       const shouldPlay = saved.playing;
       const resumeTime = saved.time || 0;
 
       setTimeout(function() {
         try {
-          if (resumeTime > 1) player.seekTo(resumeTime, true);
-          if (shouldPlay) player.playVideo();
+          if (resumeTime > 0.5) player.seekTo(resumeTime, true);
+          if (shouldPlay) {
+            player.playVideo();
+          } else {
+            player.pauseVideo();
+          }
         } catch(e) {}
       }, 800);
       startTitlePolling();
@@ -391,6 +404,7 @@ const MUSIC_PLAYER = (() => {
     if (event.data === YT.PlayerState.PAUSED) {
       isPlaying = false;
       updatePlayBtn(false);
+      saveState(); // 立即保存暫停狀態
     }
   }
 
