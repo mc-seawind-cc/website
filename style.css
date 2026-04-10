@@ -822,8 +822,6 @@ body {
   padding: var(--space-2xl) var(--space-xl);
   position: relative;
   background: linear-gradient(180deg, #0d1117 0%, #0c1018 20%, #090e16 50%, #070b12 100%);
-  content-visibility: auto;
-  contain-intrinsic-size: auto 800px;
 }
 
 .content-section::before {
@@ -5132,13 +5130,9 @@ body {
 }
 
 /* ═══ Performance: content-visibility for below-fold ═══ */
-.lore-preview-grid,
-.postcard-section,
-.photo-carousel,
-.feature-grid,
 .footer {
   content-visibility: auto;
-  contain-intrinsic-size: auto 400px;
+  contain-intrinsic-size: auto 200px;
 }
 
 .lore-preview-card,
