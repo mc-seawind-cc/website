@@ -3557,6 +3557,9 @@ video.photo-item {
 /* --- Guide TOC (compact) --- */
 .guide-toc {
   margin-top: var(--space-lg);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-md);
 }
 
 .toc-card {
@@ -3564,7 +3567,6 @@ video.photo-item {
   border: 1px solid rgba(255, 255, 255, 0.06);
   border-radius: 16px;
   padding: 20px;
-  margin-bottom: var(--space-md);
   transition: all var(--duration) var(--ease);
 }
 
@@ -5613,6 +5615,12 @@ video.photo-item {
 
 .carousel-dot:hover {
   background: var(--fog);
+}
+
+@media (max-width: 768px) {
+  .guide-toc {
+    grid-template-columns: 1fr;
+  }
 }
 
 @media (max-width: 768px) {
