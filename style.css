@@ -1943,15 +1943,62 @@ button:focus-visible {
 .rules-intro a {
   color: var(--sky);
   text-decoration: none;
+  border-bottom: 1px solid rgba(157, 175, 255, 0.3);
+  padding: 0;
+  display: inline;
+  background: none;
+  border-radius: 0;
 }
 
 .rules-intro a:hover {
-  text-decoration: underline;
+  text-decoration: none;
+  border-bottom-color: var(--sky);
+}
+
+.lore-block a {
+  color: var(--sky);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(157, 175, 255, 0.3);
+  padding: 0;
+  display: inline;
+  background: none;
+  border-radius: 0;
+}
+
+.lore-block a:hover {
+  text-decoration: none;
+  border-bottom-color: var(--sky);
+}
+
+.steps a {
+  color: var(--sky);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(157, 175, 255, 0.3);
+  padding: 0;
+  display: inline;
+  background: none;
+  border-radius: 0;
+}
+
+.steps a:hover {
+  border-bottom-color: var(--sky);
 }
 
 [data-theme="light"] .rules-intro {
   background: rgba(157, 175, 255, 0.05);
   border-color: rgba(157, 175, 255, 0.1);
+}
+
+[data-theme="light"] .rules-intro a,
+[data-theme="light"] .lore-block a,
+[data-theme="light"] .steps a {
+  border-bottom-color: rgba(87, 138, 255, 0.3);
+}
+
+[data-theme="light"] .rules-intro a:hover,
+[data-theme="light"] .lore-block a:hover,
+[data-theme="light"] .steps a:hover {
+  border-bottom-color: var(--ocean-blue);
 }
 
 .rules-container {
