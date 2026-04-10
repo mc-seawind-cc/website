@@ -329,5 +329,20 @@
     <img class="lightbox-img" id="lightboxImg" src="" alt="">
     <div class="lightbox-counter" id="lightboxCounter"></div>
   </div>
+
+  <script>
+    fetch("https://api.github.com/repos/mc-seawind-cc/website/deployments?per_page=1", { method: "HEAD" })
+      .then(r => {
+        const link = r.headers.get("Link") || "";
+        const match = link.match(/page=(\d+)>; rel="last"/);
+        const count = match ? match[1] : "—";
+        const el = document.getElementById("deployCount");
+        if (el) el.innerHTML = `🛠️ 已部署 <strong>${count}</strong> 次 · <a href="https://github.com/mc-seawind-cc/website/deployments" target="_blank" rel="noopener" style="color:var(--sky);text-decoration:none;">GitHub</a>`;
+      })
+      .catch(() => {
+        const el = document.getElementById("deployCount");
+        if (el) el.innerHTML = "🛠️ 部署次數載入失敗";
+      });
+  </script>
 </body>
 </html>
