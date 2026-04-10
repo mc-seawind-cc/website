@@ -4374,20 +4374,7 @@ body {
   left: 10%;
 }
 
-/* --- Hero Title Shimmer --- */
-@keyframes shimmer {
-  0% { background-position: -200% center; }
-  100% { background-position: 200% center; }
-}
-
-.hero-title {
-  background: linear-gradient(90deg, var(--white) 0%, var(--sky) 25%, var(--foam) 50%, var(--white) 75%, var(--sky) 100%);
-  background-size: 200% auto;
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  animation: shimmer 6s linear infinite;
-}
+/* --- Hero Title --- */
 
 /* --- Photo Item Hover --- */
 .photo-item {
