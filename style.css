@@ -4820,3 +4820,49 @@ body {
     aspect-ratio: 16 / 9;
   }
 }
+
+/* --- Community Grid --- */
+.community-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-md);
+}
+
+.community-card {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  padding: var(--space-md) var(--space-lg);
+  background: rgba(157, 175, 255, 0.04);
+  border: 1px solid rgba(157, 175, 255, 0.08);
+  border-radius: var(--radius-md);
+  text-decoration: none;
+  color: var(--cloud);
+  transition: all 0.3s var(--ease);
+}
+
+.community-card:hover {
+  background: rgba(157, 175, 255, 0.08);
+  border-color: rgba(157, 175, 255, 0.2);
+  transform: translateY(-2px);
+}
+
+.community-icon {
+  font-size: 1.3rem;
+  flex-shrink: 0;
+}
+
+.community-name {
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+[data-theme="light"] .community-card {
+  background: rgba(0, 0, 0, 0.02);
+  border-color: rgba(0, 0, 0, 0.08);
+}
+
+[data-theme="light"] .community-card:hover {
+  background: rgba(0, 0, 0, 0.04);
+  border-color: rgba(0, 0, 0, 0.15);
+}

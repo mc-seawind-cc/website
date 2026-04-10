@@ -4,11 +4,11 @@
   <meta charset="UTF-8">
   <meta name="color-scheme" content="dark light">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>合作夥伴 — 海風</title>
-  <meta name="description" content="與海風合作的伺服器、社群和創作者。">
+  <title>相關連結 — 資料中心 — 海風</title>
+  <meta name="description" content="海風伺服器社群媒體與相關連結。">
   <link rel="icon" href="assets/img/logo.png">
-  <meta property="og:title" content="合作夥伴 — 海風">
-  <meta property="og:description" content="海風伺服器合作夥伴與友站。">
+  <meta property="og:title" content="相關連結 — 資料中心 — 海風">
+  <meta property="og:description" content="海風伺服器相關連結與社群資源。">
   <meta property="og:image" content="assets/img/logo.png">
   <meta property="og:type" content="website">
   <meta name="twitter:card" content="summary">
@@ -50,9 +50,15 @@
           </ul>
         </li>
         <li><a href="members.html">會員</a></li>
-        <li><a href="partners.html" class="active">合作夥伴</a></li>
-        <li><a href="links.html" class="nav-discord">相關連結</a></li>
-      </ul>
+        <li class="nav-dropdown">
+          <a href="links.html" class="nav-dropdown-toggle">資料中心 <span class="arrow">▾</span></a>
+          <ul class="dropdown-menu">
+            <li><a href="partners.html">相關連結</a></li>
+            <li><a href="links.html">合作夥伴</a></li>
+            <li><a href="violations.html">違規處分</a></li>
+          </ul>
+        </li>
+
       <button class="nav-theme" id="themeToggle" aria-label="切換主題"></button>
       <button class="nav-toggle" aria-label="選單"><span></span><span></span><span></span></button>
     </div>
@@ -60,72 +66,107 @@
 
   <div class="page">
     <div class="page-hero">
-      <span class="section-tag">🤝 合作夥伴</span>
-      <h1>合作夥伴</h1>
-      <p class="section-desc">海風與不同社群合作，共同打造更豐富的遊戲體驗。</p>
+      <span class="section-tag">🔗 相關連結</span>
+      <h1>相關連結</h1>
+      <p class="section-desc">找到我們在各個平台上的足跡。</p>
       <div class="section-divider" style="margin: var(--space-lg) auto 0;"></div>
     </div>
 
     <div class="content-section">
-      <div class="partner-list fade-in">
-        <a href="partner-mcu.html" class="partner-row">
-          <div class="partner-row-info">
-            <h3>MCU — 麥塊社群聯合會</h3>
-            <p>以 Discord 為核心的 Minecraft 交流平台，提供技術交流、委託中介與合作媒合。</p>
-          </div>
-          <div class="partner-badges">
-            <span class="partner-row-badge">社群平台</span>
-            <span class="partner-row-badge">Minecraft</span>
-          </div>
-        </a>
-        <a href="https://dctw.xyz/" target="_blank" class="partner-row">
-          <div class="partner-row-info">
-            <h3>DCTW</h3>
-            <p>全台最完善的 Discord 宣傳平台。穩定運行、介面美觀，提供數據分析與評論系統。</p>
-          </div>
-          <span class="partner-row-badge">宣傳平台</span>
-        </a>
-        <a href="https://discord.gg/Z2xyR57FPy" target="_blank" class="partner-row">
-          <div class="partner-row-info">
-            <h3>冰鳥國 Ice Bird Country</h3>
-            <p>溫馨的小社群，你的第二個遊樂天地。</p>
-          </div>
-          <span class="partner-row-badge">Discord</span>
-        </a>
-        <a href="https://discord.gg/ar2cmH5wMX" target="_blank" class="partner-row">
-          <div class="partner-row-info">
-            <h3>狐緣神社 Kitsune Shrine <span class="partner-tag">免費Nitro</span></h3>
-            <p>可愛 × 互動 × 狐狸等級 × 遊戲娛樂，找屬於你的狐族朋友，度過每個暖暖的夜晚。</p>
-            <div class="partner-inline-detail">
-              <strong>【特色玩法】</strong>
-              <span>✦ 等級系統 × 精品抽獎 × 神社小舖</span>
-              <span>✦ 專屬身分組 × 可愛貼圖 × 成就系統</span>
-              <span>✦ 深夜聊天 × 免費Nitro × 免費遊戲點數</span>
-            </div>
-          </div>
-          <div class="partner-badges">
-            <span class="partner-row-badge">Discord</span>
-          </div>
-        </a>
-        <a href="https://discord.gg/Zc7vwaFeyR" target="_blank" class="partner-row">
-          <div class="partner-row-info">
-            <h3>蔚藍幻境</h3>
-            <p>目前為測試階段，不保證檔案保留，可能會視情況進行刪檔。</p>
-          </div>
-          <span class="partner-row-badge">Minecraft</span>
-        </a>
-      </div>
 
-      <!-- 想加入？ -->
-      <div class="fade-in" style="margin-top: var(--space-2xl);">
-        <div style="padding: var(--space-lg); background: rgba(157, 175, 255, 0.04); border: 1px solid rgba(157, 175, 255, 0.1); border-radius: var(--radius-md);">
-          <p style="color: var(--sky); font-weight: 600; margin-bottom: var(--space-sm);">📬 想成為合作夥伴？</p>
-          <p style="color: var(--cloud); font-size: 0.9rem; line-height: 1.8;">
-            如果你是伺服器管理者、社群組織者或 Minecraft 創作者，歡迎透過 <a href="https://discord.gg/HdS2HrJEH7" style="color: var(--sky);">Discord</a> 聯繫我們，或寄信至 <a href="mailto:service@seawind.cc" style="color: var(--sky);">service@seawind.cc</a>。
-          </p>
+      <!-- 官方平台 -->
+      <div class="links-group fade-in">
+        <h2>🌐 官方平台</h2>
+        <div class="links-grid">
+          <a href="https://www.seawind.cc" target="_blank" class="link-card">
+            <img class="link-favicon" src="https://www.google.com/s2/favicons?domain=www.seawind.cc&sz=64" alt="" width="32" height="32">
+            <div>
+              <h3>官方網站</h3>
+              <p>www.seawind.cc</p>
+            </div>
+          </a>
+          <a href="https://discord.gg/HdS2HrJEH7" target="_blank" class="link-card">
+            <img class="link-favicon" src="https://www.google.com/s2/favicons?domain=discord.com&sz=64" alt="" width="32" height="32">
+            <div>
+              <h3>Discord</h3>
+              <p>加入社群聊天</p>
+            </div>
+          </a>
+          <a href="https://www.threads.com/@mc.seawind.cc?hl=zh-tw" target="_blank" class="link-card">
+            <img class="link-favicon" src="https://www.google.com/s2/favicons?domain=www.threads.com&sz=64" alt="" width="32" height="32">
+            <div>
+              <h3>Threads</h3>
+              <p>@mc.seawind.cc</p>
+            </div>
+          </a>
+          <a href="https://www.instagram.com/mc.seawind.cc?igsh=MWRiNnNidDF6bWo1Ng==" target="_blank" class="link-card">
+            <img class="link-favicon" src="https://www.google.com/s2/favicons?domain=www.instagram.com&sz=64" alt="" width="32" height="32">
+            <div>
+              <h3>Instagram</h3>
+              <p>@mc.seawind.cc</p>
+            </div>
+          </a>
+          <a href="https://pin.it/6TZRm2tBw" target="_blank" class="link-card">
+            <img class="link-favicon" src="https://www.google.com/s2/favicons?domain=pinterest.com&sz=64" alt="" width="32" height="32">
+            <div>
+              <h3>Pinterest</h3>
+              <p>海風圖庫</p>
+            </div>
+          </a>
         </div>
       </div>
 
+      <!-- 伺服器列表 -->
+      <div class="links-group fade-in">
+        <h2>📋 伺服器列表</h2>
+        <div class="links-grid">
+          <a href="https://forum.gamer.com.tw/C.php?bsn=18673&snA=204176&tnum=1&subbsn=18" target="_blank" class="link-card">
+            <img class="link-favicon" src="https://www.google.com/s2/favicons?domain=forum.gamer.com.tw&sz=64" alt="" width="32" height="32">
+            <div>
+              <h3>巴哈姆特</h3>
+              <p>招生貼文</p>
+            </div>
+          </a>
+          <a href="https://www.mc-list.xyz/1914/info" target="_blank" class="link-card">
+            <img class="link-favicon" src="https://www.google.com/s2/favicons?domain=www.mc-list.xyz&sz=64" alt="" width="32" height="32">
+            <div>
+              <h3>McList</h3>
+              <p>伺服器列表</p>
+            </div>
+          </a>
+          <a href="https://discordservers.tw/servers/1266311059552342078" target="_blank" class="link-card">
+            <img class="link-favicon" src="https://www.google.com/s2/favicons?domain=discordservers.tw&sz=64" alt="" width="32" height="32">
+            <div>
+              <h3>DiscordTW</h3>
+              <p>伺服器列表</p>
+            </div>
+          </a>
+          <a href="https://dctw.xyz/servers/1266311059552342078" target="_blank" class="link-card">
+            <img class="link-favicon" src="https://www.google.com/s2/favicons?domain=dctw.xyz&sz=64" alt="" width="32" height="32">
+            <div>
+              <h3>DCTW</h3>
+              <p>伺服器列表</p>
+            </div>
+          </a>
+          <a href="https://www.mcsv.top/server/seawind.cc" target="_blank" class="link-card">
+            <img class="link-favicon" src="https://www.google.com/s2/favicons?domain=www.mcsv.top&sz=64" alt="" width="32" height="32">
+            <div>
+              <h3>麥塊 TOP</h3>
+              <p>伺服器列表</p>
+            </div>
+          </a>
+        </div>
+      </div>
+
+      <!-- 聯絡 -->
+      <div class="fade-in" style="margin-top: var(--space-2xl);">
+        <div style="padding: var(--space-lg); background: rgba(157, 175, 255, 0.04); border: 1px solid rgba(157, 175, 255, 0.1); border-radius: var(--radius-md); text-align: center;">
+          <p style="color: var(--sky); font-weight: 600; margin-bottom: var(--space-sm);">📬 聯絡我們</p>
+          <p style="color: var(--cloud); font-size: 0.95rem;">
+            聯絡信箱：<a href="mailto:service@seawind.cc" style="color: var(--sky);">service@seawind.cc</a>
+          </p>
+        </div>
+      </div>
     </div>
   </div>
 
