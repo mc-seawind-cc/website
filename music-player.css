@@ -109,6 +109,16 @@
   background: rgba(157, 175, 255, 0.25);
 }
 
+.mp-rain {
+  opacity: 0.5;
+}
+
+.mp-rain.active {
+  opacity: 1;
+  color: var(--sky);
+  background: rgba(157, 175, 255, 0.12);
+}
+
 .mp-volume {
   display: flex;
   align-items: center;

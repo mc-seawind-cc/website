@@ -214,6 +214,9 @@ const MUSIC_PLAYER = (() => {
         </div>
         <div class="mp-body" id="mpBody">
           <div class="mp-controls">
+            <button class="mp-ctrl mp-rain" id="mpRain" title="雨聲">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/></svg>
+            </button>
             <button class="mp-ctrl" id="mpPrev" title="上一首">
               <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M6 6h2v12H6zm3.5 6 8.5 6V6z"/></svg>
             </button>
@@ -269,6 +272,25 @@ const MUSIC_PLAYER = (() => {
       e.stopPropagation();
       nextTrack();
     });
+    // Rain toggle
+    var rainBtn = document.getElementById('mpRain');
+    if (rainBtn) {
+      rainBtn.addEventListener('click', function(e) {
+        e.stopPropagation();
+        if (!window._rainGain || !window._rainCtx) return;
+        if (window._rainOn) {
+          window._rainGain.gain.linearRampToValueAtTime(0, window._rainCtx.currentTime + 1);
+          window._rainOn = false;
+          rainBtn.classList.remove('active');
+        } else {
+          window._rainGain.gain.linearRampToValueAtTime(0.15, window._rainCtx.currentTime + 1);
+          window._rainOn = true;
+          rainBtn.classList.add('active');
+        }
+      });
+      // Set initial state
+      if (window._rainOn) rainBtn.classList.add('active');
+    }
     document.getElementById('mpVol').addEventListener('input', function(e) {
       if (player && playerReady) {
         player.setVolume(parseInt(e.target.value));

@@ -82,20 +82,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // --- Deferred: Non-critical features ---
   const deferredInit = () => {
-    // Lazy-load music player on first interaction or after 5s
-    let musicLoaded = false;
-    function loadMusicPlayer() {
-      if (musicLoaded) return;
-      musicLoaded = true;
-      const js = document.createElement('script');
-      js.src = 'music-player.js';
-      document.body.appendChild(js);
-    }
-    document.addEventListener('click', loadMusicPlayer, { once: true });
-    document.addEventListener('keydown', loadMusicPlayer, { once: true });
-    document.addEventListener('touchstart', loadMusicPlayer, { once: true });
-    window.addEventListener('scroll', loadMusicPlayer, { once: true, passive: true });
-    setTimeout(loadMusicPlayer, 2000);
+    // Load music player immediately
+    const musicJs = document.createElement('script');
+    musicJs.src = 'music-player.js';
+    document.body.appendChild(musicJs);
 
     createParticles();
     createHeroParticles();
@@ -227,14 +217,20 @@ function initHeroReveal() {
     initTips();
   }
 
-  // Click anywhere on hero to reveal
+  // Click, scroll, or keyboard to reveal
+  function bindReveal(handler) {
+    handler.addEventListener('click', revealHero);
+  }
+
   heroContent.addEventListener('click', (e) => {
-    // Don't trigger if clicking a link or button
     if (e.target.closest('a, button, .info-card-copy')) return;
     revealHero();
   });
 
-  // Also allow clicking the prompt specifically
+  // Scroll = reveal
+  window.addEventListener('scroll', () => revealHero(), { passive: true });
+
+  // Prompt click
   const prompt = document.getElementById('heroPrompt');
   if (prompt) {
     prompt.addEventListener('click', (e) => {
@@ -243,10 +239,9 @@ function initHeroReveal() {
     });
   }
 
-  // Keyboard: Enter or Space to reveal
+  // Keyboard
   document.addEventListener('keydown', (e) => {
     if (!revealed && (e.key === 'Enter' || e.key === ' ')) {
-      // Only if not typing in an input
       if (e.target.tagName !== 'INPUT' && e.target.tagName !== 'TEXTAREA') {
         revealHero();
       }
@@ -336,12 +331,15 @@ function createHeroParticles() {
     gain.connect(audioCtx.destination);
     noise.start();
 
+    // Expose for rain toggle
+    window._rainCtx = audioCtx;
+    window._rainGain = gain;
+    window._rainOn = false;
+
     // Fade in on first user interaction
     const fadeIn = () => {
+      window._rainOn = true;
       gain.gain.linearRampToValueAtTime(0.15, audioCtx.currentTime + 2);
-      document.removeEventListener('click', fadeIn);
-      document.removeEventListener('keydown', fadeIn);
-      document.removeEventListener('touchstart', fadeIn);
     };
     document.addEventListener('click', fadeIn, { once: true });
     document.addEventListener('keydown', fadeIn, { once: true });
