@@ -5729,8 +5729,8 @@ video.photo-item {
 /* Rain toggle button (left of music player) */
 .rain-toggle {
   position: fixed;
-  bottom: 78px;
-  right: 248px;
+  bottom: 130px;
+  right: 24px;
   z-index: 998;
   width: 40px;
   height: 40px;
@@ -5775,6 +5775,15 @@ video.photo-item {
 [data-theme="light"] .rain-toggle.active {
   color: var(--sky);
   background: rgba(157, 175, 255, 0.1);
+}
+
+@media (max-width: 768px) {
+  .rain-toggle {
+    bottom: 72px;
+    right: 14px;
+    width: 34px;
+    height: 34px;
+  }
 }
 
 .back-to-top {
@@ -5852,7 +5861,6 @@ video.photo-item {
 }
 
 /* Below-fold sections get content-visibility */
-.bulletin-board,
 .lore-preview-grid,
 .postcard-section,
 .photo-carousel {
