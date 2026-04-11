@@ -159,7 +159,7 @@
       "tag": "維護",
       "id": "#0121",
       "title": "伺服器維護",
-      "content": "• 預計維護 1~4 小時。\n![附圖](https://cdn.discordapp.com/attachments/1270267062308175922/1482064784093483169/image.png?ex=69d9d923&is=69d887a3&hm=412b3b3bd2237bac5d433311c2988175c956e151717fc56a04bf5ea16aa49f8f&)"
+      "content": "• 預計維護 1~4 小時。\n"
     },
     {
       "date": "115.03.13",
@@ -236,7 +236,7 @@
       "tag": "更新",
       "id": "#0268",
       "title": "小更新",
-      "content": "• 調整公告訊息格式。\n• 修正格式。\n• 新增會員福利「[隱藏裝備](https://discord.com/channels/1266311059552342078/1479055103322226698)」。\n• 修復頻道主題顯示錯誤的問題。\n• 修復玩家列表[tab]顯示錯誤的問題。\n• 修復領地系統訊息錯字。\n• 修改遊戲機制。\n  - 寶庫冷卻時間\n    - 一般寶庫：1小時\n    - 不詳寶庫：5小時\n  - 切石機配方：新增木製品\n  - 界伏盒：放置的界伏盒會顯示自訂名稱。\n• 於分流二安裝[盔甲座編輯器](https://discord.com/channels/1266311059552342078/1479132923058716754)。\n![盔甲座編輯器](https://cdn.discordapp.com/attachments/1270267126011396152/1479133085772677281/image.png?ex=69da6388&is=69d91208&hm=2105056a853bb40a01d010369e184982842ab2afbd9a1890cea28a627d62c3fd&)"
+      "content": "• 調整公告訊息格式。\n• 修正格式。\n• 新增會員福利「[隱藏裝備](https://discord.com/channels/1266311059552342078/1479055103322226698)」。\n• 修復頻道主題顯示錯誤的問題。\n• 修復玩家列表[tab]顯示錯誤的問題。\n• 修復領地系統訊息錯字。\n• 修改遊戲機制。\n  - 寶庫冷卻時間\n    - 一般寶庫：1小時\n    - 不詳寶庫：5小時\n  - 切石機配方：新增木製品\n  - 界伏盒：放置的界伏盒會顯示自訂名稱。\n• 於分流二安裝[盔甲座編輯器](https://discord.com/channels/1266311059552342078/1479132923058716754)。\n![盔甲座編輯器](assets/migrated/announcements/1270267126011396152_1479133085772677281.webp"
     },
     {
       "date": "115.03.05",
@@ -285,7 +285,7 @@
       "tag": "更新",
       "id": "#0261",
       "title": "小更新",
-      "content": "• 新增或更新任務內容。\n  - 重生點新增[冒險任務](https://discord.com/channels/1266311059552342078/1396398116332109934)地點，可獲取「螢光魷魚」稱號，已獲取玩家則保留稱號。\n• 修復拼字錯誤。\n• 頻道合併調整。\n![附圖](https://cdn.discordapp.com/attachments/1270267126011396152/1474030550460268636/image.png?ex=69da486d&is=69d8f6ed&hm=59a5414d5b184bac4308b902ff362887fe24920a6da8b673ed12a39983a72f1c&)"
+      "content": "• 新增或更新任務內容。\n  - 重生點新增[冒險任務](https://discord.com/channels/1266311059552342078/1396398116332109934)地點，可獲取「螢光魷魚」稱號，已獲取玩家則保留稱號。\n• 修復拼字錯誤。\n• 頻道合併調整。\n![附圖](assets/migrated/announcements/1270267126011396152_1474030550460268636.webp"
     },
     {
       "date": "115.02.14",
@@ -306,14 +306,14 @@
       "tag": "更新",
       "id": "#0258",
       "title": "領地更新",
-      "content": "• 新增四個權限。\n• 修正分流一領地的隨機傳送指令[/rtp]傳送距離：\n  - 主世界大小±40萬，距離 1,000~200,000。\n  - 地獄大小±10萬，距離 1,500~50,000。\n  - 終界大小±20萬，距離 1,000~10,000。\n  - 每次冷卻 15 秒。\n![附圖1](https://cdn.discordapp.com/attachments/1270267126011396152/1468303456761676012/image.png?ex=69d9e1e7&is=69d89067&hm=109fe8821f79d38a233cbc5ad9574c32ca789b082e6e5280f1a45911ea89164f&)\n![附圖2](https://cdn.discordapp.com/attachments/1270267126011396152/1468303457235767419/image.png?ex=69d9e1e7&is=69d89067&hm=034abe9a827a3d767aeaa8e211e95c805639456ab8b6e69e2bd9e1b57752653e&)\n![附圖3](https://cdn.discordapp.com/attachments/1270267126011396152/1468303457617186948/image.png?ex=69d9e1e8&is=69d89068&hm=c54cf8dd31f7b5ae9beee909a0b8d7cff3a0d427d924ab92dbfbcb61c9242dec&)\n![附圖4](https://cdn.discordapp.com/attachments/1270267126011396152/1468303457973964982/image.png?ex=69d9e1e8&is=69d89068&hm=ffa7aa3768564c16b998bfc12631a47e875dedff3373d6a8029503fa4a3de6f2&)\n![附圖5](https://cdn.discordapp.com/attachments/1270267126011396152/1468303458548453610/image.png?ex=69d9e1e8&is=69d89068&hm=cc356e0903d091d51b2af7d86d19ad07fa5455ff7da18d9b50dc5257ef31ea57&)"
+      "content": "• 新增四個權限。\n• 修正分流一領地的隨機傳送指令[/rtp]傳送距離：\n  - 主世界大小±40萬，距離 1,000~200,000。\n  - 地獄大小±10萬，距離 1,500~50,000。\n  - 終界大小±20萬，距離 1,000~10,000。\n  - 每次冷卻 15 秒。\n\n![附圖2](https://cdn.discordapp.com/attachments/1270267126011396152/1468303457235767419/image.png?ex=69d9e1e7&is=69d89067&hm=034abe9a827a3d767aeaa8e211e95c805639456ab8b6e69e2bd9e1b57752653e&)\n![附圖3](https://cdn.discordapp.com/attachments/1270267126011396152/1468303457617186948/image.png?ex=69d9e1e8&is=69d89068&hm=c54cf8dd31f7b5ae9beee909a0b8d7cff3a0d427d924ab92dbfbcb61c9242dec&)\n![附圖4](https://cdn.discordapp.com/attachments/1270267126011396152/1468303457973964982/image.png?ex=69d9e1e8&is=69d89068&hm=ffa7aa3768564c16b998bfc12631a47e875dedff3373d6a8029503fa4a3de6f2&)\n![附圖5](https://cdn.discordapp.com/attachments/1270267126011396152/1468303458548453610/image.png?ex=69d9e1e8&is=69d89068&hm=cc356e0903d091d51b2af7d86d19ad07fa5455ff7da18d9b50dc5257ef31ea57&)"
     },
     {
       "date": "115.02.04",
       "tag": "更新",
       "id": "#0257",
       "title": "領地小修復",
-      "content": "• 修復在[動作欄](https://zh.minecraft.wiki/w/动作栏)顯示格式錯誤的問題。\n  - 原本把通知由聊天室轉到動作欄，但格式沒改。\n![附圖1](https://cdn.discordapp.com/attachments/1270267126011396152/1468292401855725882/image.png?ex=69d9d79c&is=69d8861c&hm=02fa00a5b963b23d291c80e8faee0220878ab3462c2949d603a26823052c95f6&)\n![附圖2](https://cdn.discordapp.com/attachments/1270267126011396152/1468292402572689509/image.png?ex=69d9d79c&is=69d8861c&hm=1e49179e05d8dc6af481c6eaa7526cdb56a17b9040a5305624df658f276f61e5&)"
+      "content": "• 修復在[動作欄](https://zh.minecraft.wiki/w/动作栏)顯示格式錯誤的問題。\n  - 原本把通知由聊天室轉到動作欄，但格式沒改。\n\n![附圖2](https://cdn.discordapp.com/attachments/1270267126011396152/1468292402572689509/image.png?ex=69d9d79c&is=69d8861c&hm=1e49179e05d8dc6af481c6eaa7526cdb56a17b9040a5305624df658f276f61e5&)"
     },
     {
       "date": "115.01.18",
@@ -439,7 +439,7 @@
       "tag": "活動",
       "id": "#0024",
       "title": "第四屆攝影大賽結束！",
-      "content": "恭喜作品〈陰間〉榮獲本屆海風攝影大賽冠軍！\n• 獎勵發放陸續中，請在信箱查收。\n• 佳作：〈一切歸零，但希望從未離開〉、〈火光之後〉、〈奈何橋〉、〈黎明的啟程〉，刊登至 Pinterest 並獲得 3000 風幣。\n• 第五屆主題：「尾聲，新生」\n  以年頭的結束與新故事的開始為題，盡情發揮！\n![第五屆攝影大賽](https://cdn.discordapp.com/attachments/1270267176812806255/1434454635954966539/image.png?ex=69daaabc&is=69d9593c&hm=90ca9ba8970bda17fa19a67bf37048e4ee5897a57200635c7a7da72dfee57fda&)"
+      "content": "恭喜作品〈陰間〉榮獲本屆海風攝影大賽冠軍！\n• 獎勵發放陸續中，請在信箱查收。\n• 佳作：〈一切歸零，但希望從未離開〉、〈火光之後〉、〈奈何橋〉、〈黎明的啟程〉，刊登至 Pinterest 並獲得 3000 風幣。\n• 第五屆主題：「尾聲，新生」\n  以年頭的結束與新故事的開始為題，盡情發揮！\n![第五屆攝影大賽](assets/migrated/misc/1270267176812806255_1434454635954966539.webp"
     },
     {
       "date": "115.01.01",
