@@ -453,34 +453,47 @@ function initBulletinBoard() {
       function md2html(text) {
         if (!text) return '';
         let html = text;
-        // Images: ![alt](url)
         html = html.replace(/!\[([^\]]*)\]\(([^)]+)\)/g, '<img src="$2" alt="$1" loading="lazy" style="max-width:100%;border-radius:8px;margin:8px 0;">');
-        // Links: [text](url)
         html = html.replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" target="_blank" rel="noopener">$1</a>');
-        // Bold
         html = html.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
-        // Italic
         html = html.replace(/\*(.+?)\*/g, '<em>$1</em>');
-        // Inline code
-        html = html.replace(/`(.+?)`/g, '<code style="background:rgba(157,175,255,0.1);padding:2px 6px;border-radius:4px;font-size:0.9em;">$1</code>');
-        // Split into paragraphs by double newline
+        html = html.replace(/~~(.+?)~~/g, '<del>$1</del>');
+        html = html.replace(/__(.+?)__/g, '<u>$1</u>');
+        html = html.replace(/\|\|(.+?)\|\|/g, '<span style="background:var(--cloud);color:transparent;border-radius:3px;padding:0 4px;cursor:pointer" onclick="this.style.color=this.style.color?\'\':\'var(--deep)\'" title="點擊顯示">$1</span>');
+        html = html.replace(/`([^`]+)`/g, '<code style="background:rgba(157,175,255,0.1);padding:2px 6px;border-radius:4px;font-size:0.9em;">$1</code>');
+        html = html.replace(/^###\s+(.+)$/gm, '<h4>$1</h4>');
+        html = html.replace(/^##\s+(.+)$/gm, '<h3>$1</h3>');
+        html = html.replace(/^#\s+(.+)$/gm, '<h2>$1</h2>');
+        html = html.replace(/^-#\s+(.+)$/gm, '<small style="color:var(--fog);font-size:0.8em">$1</small>');
         const paragraphs = html.split(/\n\n+/);
         let result = [];
         paragraphs.forEach(para => {
           const lines = para.split('\n');
           let paraHtml = [];
-          let inList = false;
+          let inList = false, listType = '';
           lines.forEach(line => {
             const trimmed = line.trim();
-            if (/^[\s]*[•\-\*]\s/.test(trimmed)) {
-              if (!inList) { paraHtml.push('<ul style="padding-left:1.2em;margin:4px 0;">'); inList = true; }
-              paraHtml.push('<li>' + trimmed.replace(/^[\s]*[•\-\*]\s+/, '') + '</li>');
+            if (/^[•\-\*]\s/.test(trimmed)) {
+              if (!inList || listType !== 'ul') {
+                if (inList) paraHtml.push('</' + listType + '>');
+                paraHtml.push('<ul style="padding-left:1.2em;margin:4px 0;">'); inList = true; listType = 'ul';
+              }
+              paraHtml.push('<li>' + trimmed.replace(/^[•\-\*]\s+/, '') + '</li>');
+            } else if (/^\d+\.\s/.test(trimmed)) {
+              if (!inList || listType !== 'ol') {
+                if (inList) paraHtml.push('</' + listType + '>');
+                paraHtml.push('<ol style="padding-left:1.2em;margin:4px 0;">'); inList = true; listType = 'ol';
+              }
+              paraHtml.push('<li>' + trimmed.replace(/^\d+\.\s+/, '') + '</li>');
+            } else if (trimmed.startsWith('<h')) {
+              if (inList) { paraHtml.push('</' + listType + '>'); inList = false; }
+              paraHtml.push(trimmed);
             } else {
-              if (inList) { paraHtml.push('</ul>'); inList = false; }
+              if (inList) { paraHtml.push('</' + listType + '>'); inList = false; }
               paraHtml.push(trimmed);
             }
           });
-          if (inList) paraHtml.push('</ul>');
+          if (inList) paraHtml.push('</' + listType + '>');
           result.push('<p>' + paraHtml.join('<br>') + '</p>');
         });
         return result.join('');
