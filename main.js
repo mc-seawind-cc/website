@@ -343,9 +343,60 @@ function createHeroParticles() {
   } catch(e) {}
 }
 
-// --- Hero Typewriter (disabled) ---
+// --- Hero Typewriter (staged with thinking dots) ---
 function initTypewriter() {
-  return; // typewriter effect removed
+  const el = document.getElementById('heroSubtitle');
+  if (!el) return;
+  // Prevent double-init
+  if (el.dataset.typed) return;
+  el.dataset.typed = '1';
+
+  // MC-style tick sound
+  const tickSounds = ['assets/sounds/tick1.mp3', 'assets/sounds/tick2.mp3', 'assets/sounds/tick3.mp3'];
+  const tickAudio = tickSounds.map(src => {
+    const a = new Audio(src);
+    a.volume = 0.8;
+    a.preload = 'auto';
+    return a;
+  });
+  let tickIdx = 0;
+  function playTick() {
+    try {
+      const a = tickAudio[tickIdx % tickAudio.length];
+      a.currentTime = 0;
+      a.play().catch(() => {});
+      tickIdx++;
+    } catch(e) {}
+  }
+
+  el.textContent = '';
+
+  const cursor = document.createElement('span');
+  cursor.className = 'cursor';
+  cursor.textContent = '_';
+  el.appendChild(cursor);
+
+  const mainText = document.createTextNode('');
+  el.insertBefore(mainText, cursor);
+
+  const speed = 100;
+
+  function typeMain(text, idx, cb) {
+    if (idx < text.length) {
+      mainText.textContent += text[idx];
+      playTick();
+      setTimeout(() => typeMain(text, idx + 1, cb), speed + Math.random() * 40);
+    } else {
+      cb();
+    }
+  }
+
+  // Start typing after a short pause
+  setTimeout(() => {
+    typeMain('在風與海之間，有一個可以長久生存的地方', 0, () => {
+      // Done — cursor keeps blinking
+    });
+  }, 400);
 }
   if (!el) return;
   // Prevent double-init
