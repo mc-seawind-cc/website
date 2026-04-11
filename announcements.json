@@ -115,6 +115,14 @@
       "images": []
     },
     {
+      "date": "115.04.02",
+      "tag": "活動",
+      "id": "活動#0031(舊)",
+      "title": "生存起源-第一階段",
+      "content": "",
+      "images": []
+    },
+    {
       "date": "115.04.01",
       "tag": "更新",
       "id": "#0280",
@@ -422,6 +430,14 @@
       "images": []
     },
     {
+      "date": "115.01.01",
+      "tag": "活動",
+      "id": "活動#0030(舊)",
+      "title": "2026新年快樂新活動",
+      "content": "",
+      "images": []
+    },
+    {
       "date": "114.12.28",
       "tag": "更新",
       "id": "#0254",
@@ -603,12 +619,30 @@
       ]
     },
     {
+      "date": "114.09.07",
+      "tag": "活動",
+      "id": "活動#0028(舊)",
+      "title": "第三屆攝影大賽結束！",
+      "content": "",
+      "images": []
+    },
+    {
       "date": "114.09.02",
       "tag": "更新",
       "id": "#0109",
       "title": "清空倉庫",
       "content": "",
       "images": []
+    },
+    {
+      "date": "114.09.02",
+      "tag": "活動",
+      "id": "活動#0029(舊)",
+      "title": "第四屆攝影大賽結束！",
+      "content": "",
+      "images": [
+        "assets/announcements/evt_活動0029舊_4aa53f05.webp"
+      ]
     },
     {
       "date": "114.09.01",
@@ -765,6 +799,16 @@
       "images": []
     },
     {
+      "date": "114.08.01",
+      "tag": "活動",
+      "id": "活動#0026(舊)",
+      "title": "第二屆攝影大賽結束！",
+      "content": "",
+      "images": [
+        "assets/announcements/evt_活動0026舊_3d3eecaf.webp"
+      ]
+    },
+    {
       "date": "114.07.29",
       "tag": "更新",
       "id": "#0224",
@@ -888,6 +932,30 @@
       "id": "#0214",
       "title": "蜂聊郵政",
       "content": "",
+      "images": []
+    },
+    {
+      "date": "114.07.01",
+      "tag": "活動",
+      "id": "活動#0023(舊)",
+      "title": "第一屆攝影大賽結束！",
+      "content": "",
+      "images": []
+    },
+    {
+      "date": "114.07.01",
+      "tag": "活動",
+      "id": "活動#0024(舊)",
+      "title": "第一屆攝影大賽結束！",
+      "content": "@活動通知",
+      "images": []
+    },
+    {
+      "date": "114.07.01",
+      "tag": "活動",
+      "id": "活動#0025(舊)",
+      "title": "第一屆攝影大賽結束！",
+      "content": "@活動通知",
       "images": []
     },
     {
@@ -1125,6 +1193,22 @@
       "images": []
     },
     {
+      "date": "114.05.17",
+      "tag": "活動",
+      "id": "活動#0021(舊)",
+      "title": "攝影大賽",
+      "content": "",
+      "images": []
+    },
+    {
+      "date": "114.05.17",
+      "tag": "活動",
+      "id": "活動#0022(舊)",
+      "title": "攝影大賽",
+      "content": "@活動通知",
+      "images": []
+    },
+    {
       "date": "114.05.16",
       "tag": "更新",
       "id": "#0191",
@@ -1217,6 +1301,27 @@
       "title": "基岩版皮膚",
       "content": "",
       "images": []
+    },
+    {
+      "date": "114.05.02",
+      "tag": "活動",
+      "id": "活動#0020(舊)",
+      "title": "RICH",
+      "content": "",
+      "images": [
+        "assets/announcements/evt_活動0020舊_b7d0a391.webp"
+      ]
+    },
+    {
+      "date": "114.05.02",
+      "tag": "活動",
+      "id": "活動#0027(舊)",
+      "title": "海風誕辰系列活動",
+      "content": "",
+      "images": [
+        "assets/announcements/evt_活動0027舊_330f3ae1.webp",
+        "assets/announcements/evt_活動0027舊_77ab7834.webp"
+      ]
     },
     {
       "date": "114.05.01",
@@ -1359,6 +1464,14 @@
       "images": []
     },
     {
+      "date": "114.04.15",
+      "tag": "活動",
+      "id": "活動#0019(舊)",
+      "title": "活動參與統計",
+      "content": "",
+      "images": []
+    },
+    {
       "date": "114.04.14",
       "tag": "更新",
       "id": "#0171",
@@ -1444,6 +1557,17 @@
       "images": []
     },
     {
+      "date": "114.04.07",
+      "tag": "活動",
+      "id": "活動#0018(舊)",
+      "title": "紅蓮煉獄",
+      "content": "",
+      "images": [
+        "assets/announcements/evt_活動0018舊_8e33217a.webp",
+        "assets/announcements/evt_活動0018舊_bea939a2.webp"
+      ]
+    },
+    {
       "date": "114.04.06",
       "tag": "更新",
       "id": "#0095",
@@ -1481,6 +1605,27 @@
       ]
     },
     {
+      "date": "114.04.04",
+      "tag": "活動",
+      "id": "活動#0016(舊)",
+      "title": "懷舊之旅準備啟程！",
+      "content": "",
+      "images": [
+        "assets/announcements/evt_活動0016舊_445743de.webp"
+      ]
+    },
+    {
+      "date": "114.04.04",
+      "tag": "活動",
+      "id": "活動#0017(舊)",
+      "title": "MCU聯合盃參賽資訊",
+      "content": "",
+      "images": [
+        "assets/announcements/evt_活動0017舊_04a8ff60.webp",
+        "assets/announcements/evt_活動0017舊_d4f278bc.webp"
+      ]
+    },
+    {
       "date": "114.04.03",
       "tag": "更新",
       "id": "#0164",
@@ -1513,6 +1658,14 @@
       "tag": "更新",
       "id": "#0163",
       "title": "遊戲聊天頻道更動",
+      "content": "",
+      "images": []
+    },
+    {
+      "date": "114.04.02",
+      "tag": "活動",
+      "id": "活動#0015(舊)",
+      "title": "海風號-懷舊之旅",
       "content": "",
       "images": []
     },
@@ -1698,6 +1851,24 @@
       "id": "#0147",
       "title": "完了&#215;4",
       "content": "",
+      "images": []
+    },
+    {
+      "date": "114.03.19",
+      "tag": "活動",
+      "id": "活動#0013(舊)",
+      "title": "第一屆MCU聯合盃MBR麥塊大逃殺競賽",
+      "content": "",
+      "images": [
+        "assets/announcements/evt_活動0013舊_c270274b.webp"
+      ]
+    },
+    {
+      "date": "114.03.19",
+      "tag": "活動",
+      "id": "活動#0014(舊)",
+      "title": "第一屆MCU聯合盃MBR麥塊大逃殺競賽",
+      "content": "@活動通知",
       "images": []
     },
     {
@@ -1913,6 +2084,25 @@
       "images": []
     },
     {
+      "date": "114.02.26",
+      "tag": "活動",
+      "id": "活動#0011(舊)",
+      "title": "獵殺時刻",
+      "content": "",
+      "images": []
+    },
+    {
+      "date": "114.02.26",
+      "tag": "活動",
+      "id": "活動#0012(舊)",
+      "title": "獵殺時刻",
+      "content": "@活動通知",
+      "images": [
+        "assets/announcements/evt_活動0012舊_040059d2.webp",
+        "assets/announcements/evt_活動0012舊_ef36ff86.webp"
+      ]
+    },
+    {
       "date": "114.02.24",
       "tag": "更新",
       "id": "#0135",
@@ -2007,6 +2197,14 @@
       "images": []
     },
     {
+      "date": "114.01.25",
+      "tag": "活動",
+      "id": "活動#0010(舊)",
+      "title": "壓歲錢抽獎",
+      "content": "",
+      "images": []
+    },
+    {
       "date": "114.01.24",
       "tag": "更新",
       "id": "#0072",
@@ -2051,6 +2249,14 @@
       "tag": "維護",
       "id": "維護#0023(舊)",
       "title": "版本升級",
+      "content": "",
+      "images": []
+    },
+    {
+      "date": "114.01.21",
+      "tag": "活動",
+      "id": "活動#0009(舊)",
+      "title": "UHC",
       "content": "",
       "images": []
     },
@@ -2241,6 +2447,14 @@
       "images": []
     },
     {
+      "date": "113.12.31",
+      "tag": "活動",
+      "id": "活動#0008(舊)",
+      "title": "海風跨年煙火",
+      "content": "",
+      "images": []
+    },
+    {
       "date": "113.12.30",
       "tag": "更新",
       "id": "#0063",
@@ -2322,6 +2536,14 @@
       "images": []
     },
     {
+      "date": "113.12.23",
+      "tag": "活動",
+      "id": "活動#0007(舊)",
+      "title": "聖誕快樂！",
+      "content": "",
+      "images": []
+    },
+    {
       "date": "113.12.22",
       "tag": "更新",
       "id": "",
@@ -2376,6 +2598,14 @@
         "assets/announcements/ann__a32b3cd5.webp",
         "assets/announcements/ann__8c9d50e0.webp"
       ]
+    },
+    {
+      "date": "113.12.14",
+      "tag": "活動",
+      "id": "活動#0006(舊)",
+      "title": "海風聖誕村",
+      "content": "",
+      "images": []
     },
     {
       "date": "113.12.13",
@@ -2782,6 +3012,14 @@
       "images": []
     },
     {
+      "date": "113.11.03",
+      "tag": "活動",
+      "id": "活動#0005(舊)",
+      "title": "遲來的萬聖節活動！",
+      "content": "",
+      "images": []
+    },
+    {
       "date": "113.11.02",
       "tag": "維護",
       "id": "#0044",
@@ -3083,6 +3321,25 @@
       "images": []
     },
     {
+      "date": "113.09.22",
+      "tag": "活動",
+      "id": "活動#0002(舊)",
+      "title": "岩漿尋寶大冒險！",
+      "content": "",
+      "images": []
+    },
+    {
+      "date": "113.09.22",
+      "tag": "活動",
+      "id": "活動#0003(舊)",
+      "title": "岩漿尋寶大冒險！",
+      "content": "[https://discord.gg/HdS2HrJEH7?event=1287710510028034059](https://discord.gg/HdS2HrJEH7?event=1287710510028034059)",
+      "images": [
+        "assets/announcements/evt_活動0003舊_ea8f43b0.webp",
+        "assets/announcements/evt_活動0003舊_c5554fd5.webp"
+      ]
+    },
+    {
       "date": "113.09.21",
       "tag": "更新",
       "id": "",
@@ -3138,6 +3395,24 @@
       "images": [
         "assets/announcements/ann__4671294f.webp"
       ]
+    },
+    {
+      "date": "113.09.16",
+      "tag": "活動",
+      "id": "活動#0001(舊)",
+      "title": "別踩白塊！",
+      "content": "",
+      "images": [
+        "assets/announcements/evt_活動0001舊_4c8aa6d4.webp"
+      ]
+    },
+    {
+      "date": "113.09.16",
+      "tag": "活動",
+      "id": "活動#0004(舊)",
+      "title": "給我那個魚",
+      "content": "",
+      "images": []
     },
     {
       "date": "113.09.15",
