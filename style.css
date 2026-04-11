@@ -406,3 +406,12 @@
   .bulletin-toggle .b-tag { font-size: 0.6rem; padding: 1px 6px; }
   .bulletin-toggle .b-title { font-size: 0.82rem; padding: 0 8px; }
 }
+
+/* 修復：.char 繼承父層漸層文字效果 */
+.hero-title .char {
+  -webkit-text-fill-color: inherit;
+  display: inline-block;
+  animation: wind-sway 4s ease-in-out infinite;
+  animation-delay: calc(var(--i) * 0.6s);
+  transform-origin: bottom center;
+}

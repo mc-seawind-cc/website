@@ -439,104 +439,106 @@ function fetchServerStatus() {
     });
 }
 
-// --- Bulletin Board ---
+// --- Bulletin Board (首頁公告欄) ---
 function initBulletinBoard() {
   const board = document.getElementById('bulletinBoard');
   if (!board) return;
   fetch(SW_BASE + 'announcements.json')
     .then(r => r.json())
     .then(data => {
-      const MAX_TOTAL = 100;
+      const MAX_TOTAL = 10;
 
-      // Markdown to HTML converter
+      /* Discord Markdown → HTML */
       function md2html(text) {
         if (!text) return '';
         let html = text;
-        html = html.replace(/!\[([^\]]*)\]\(([^)]+)\)/g, '<img src="$2" alt="$1" loading="lazy" style="max-width:100%;border-radius:8px;margin:8px 0;">');
+        html = html.replace(/^(>+)\s*(.*)$/gm, (m, arrows, content) => {
+          return content.trim() ? `<blockquote class="ann-quote" data-depth="${arrows.length}">${content}</blockquote>` : '';
+        });
+        html = html.replace(/!\[([^\]]*)\]\(([^)]+)\)/g, '<img src="$2" alt="$1" loading="lazy" class="ann-img">');
         html = html.replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" target="_blank" rel="noopener">$1</a>');
         html = html.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
-        html = html.replace(/\*(.+?)\*/g, '<em>$1</em>');
+        html = html.replace(/(?<!\*)\*(?!\*)(.+?)(?<!\*)\*(?!\*)/g, '<em>$1</em>');
         html = html.replace(/~~(.+?)~~/g, '<del>$1</del>');
         html = html.replace(/__(.+?)__/g, '<u>$1</u>');
-        html = html.replace(/\|\|(.+?)\|\|/g, '<span style="background:var(--cloud);color:transparent;border-radius:3px;padding:0 4px;cursor:pointer" onclick="this.style.color=this.style.color?\'\':\'var(--deep)\'" title="點擊顯示">$1</span>');
-        html = html.replace(/`([^`]+)`/g, '<code style="background:rgba(157,175,255,0.1);padding:2px 6px;border-radius:4px;font-size:0.9em;">$1</code>');
+        html = html.replace(/\|\|(.+?)\|\|/g, '<span class="ann-spoiler" onclick="this.classList.toggle(\'revealed\')" title="點擊顯示">$1</span>');
+        html = html.replace(/``\s*(.+?)\s*``/g, '<code>$1</code>');
+        html = html.replace(/`([^`]+)`/g, (m, code) => '<code>' + code.trim() + '</code>');
         html = html.replace(/^###\s+(.+)$/gm, '<h4>$1</h4>');
         html = html.replace(/^##\s+(.+)$/gm, '<h3>$1</h3>');
         html = html.replace(/^#\s+(.+)$/gm, '<h2>$1</h2>');
-        html = html.replace(/^-#\s+(.+)$/gm, '<small style="color:var(--fog);font-size:0.8em">$1</small>');
-        const paragraphs = html.split(/\n\n+/);
+        html = html.replace(/^-#\s+(.+)$/gm, '<small class="ann-small">$1</small>');
+        const blocks = html.split(/\n\n+/);
         let result = [];
-        paragraphs.forEach(para => {
-          const lines = para.split('\n');
-          let paraHtml = [];
-          let inList = false, listType = '';
+        blocks.forEach(block => {
+          const lines = block.split('\n');
+          let parts = [], inList = false, listType = '';
           lines.forEach(line => {
-            const trimmed = line.trim();
-            if (/^[•\-\*]\s/.test(trimmed)) {
-              if (!inList || listType !== 'ul') {
-                if (inList) paraHtml.push('</' + listType + '>');
-                paraHtml.push('<ul style="padding-left:1.2em;margin:4px 0;">'); inList = true; listType = 'ul';
-              }
-              paraHtml.push('<li>' + trimmed.replace(/^[•\-\*]\s+/, '') + '</li>');
-            } else if (/^\d+\.\s/.test(trimmed)) {
-              if (!inList || listType !== 'ol') {
-                if (inList) paraHtml.push('</' + listType + '>');
-                paraHtml.push('<ol style="padding-left:1.2em;margin:4px 0;">'); inList = true; listType = 'ol';
-              }
-              paraHtml.push('<li>' + trimmed.replace(/^\d+\.\s+/, '') + '</li>');
-            } else if (trimmed.startsWith('<h')) {
-              if (inList) { paraHtml.push('</' + listType + '>'); inList = false; }
-              paraHtml.push(trimmed);
-            } else {
-              if (inList) { paraHtml.push('</' + listType + '>'); inList = false; }
-              paraHtml.push(trimmed);
-            }
+            const t = line.trim();
+            if (t.startsWith('<blockquote')) { if (inList) { parts.push('</' + listType + '>'); inList = false; } parts.push(t); }
+            else if (/^\s{2,}[•\-\*]\s/.test(t)) { if (!inList) { parts.push('<ul>'); inList = true; listType = 'ul'; } parts.push('<li class="ann-sub-item">' + t.replace(/^\s*[•\-\*]\s+/, '') + '</li>'); }
+            else if (/^[•\-\*]\s/.test(t)) { if (!inList || listType !== 'ul') { if (inList) parts.push('</' + listType + '>'); parts.push('<ul>'); inList = true; listType = 'ul'; } parts.push('<li>' + t.replace(/^[•\-\*]\s+/, '') + '</li>'); }
+            else if (/^\d+\.\s/.test(t)) { if (!inList || listType !== 'ol') { if (inList) parts.push('</' + listType + '>'); parts.push('<ol>'); inList = true; listType = 'ol'; } parts.push('<li>' + t.replace(/^\d+\.\s+/, '') + '</li>'); }
+            else if (t.startsWith('<h') || t.startsWith('<small')) { if (inList) { parts.push('</' + listType + '>'); inList = false; } parts.push(t); }
+            else if (t) { if (inList) { parts.push('</' + listType + '>'); inList = false; } parts.push(t); }
           });
-          if (inList) paraHtml.push('</' + listType + '>');
-          result.push('<p>' + paraHtml.join('<br>') + '</p>');
+          if (inList) parts.push('</' + listType + '>');
+          if (parts.length) result.push('<p>' + parts.join('<br>') + '</p>');
         });
         return result.join('');
       }
 
+      const tagIcons = { '公告': '📢', '更新': '🔧', '維護': '🛠', '活動': '🎉' };
       const items = data.announcements;
-      // Separate pinned and regular
       const pinned = items.filter(i => i.pinned);
       const regular = items.filter(i => !i.pinned);
       const maxRegular = Math.max(0, MAX_TOTAL - pinned.length);
       let html = '';
-      // Pinned items first (always visible)
+
+      function toggleItem() {
+        const wasOpen = this.parentElement.classList.contains('open');
+        this.closest('.bulletin-board').querySelectorAll('.bulletin-item.open').forEach(e => {
+          e.classList.remove('open');
+          e.querySelector('.bulletin-toggle').setAttribute('aria-expanded', 'false');
+        });
+        if (!wasOpen) {
+          this.parentElement.classList.add('open');
+          this.setAttribute('aria-expanded', 'true');
+        }
+      }
+
       pinned.forEach((item, i) => {
-        html += `
-          <div class="bulletin-item pinned open" data-tag="${item.tag || '公告'}" data-index="${i}">
-            <button class="bulletin-toggle" aria-expanded="true" onclick="const wasOpen=this.parentElement.classList.contains('open');this.closest('.bulletin-board').querySelectorAll('.bulletin-item.open').forEach(e=>{e.classList.remove('open');e.querySelector('.bulletin-toggle').setAttribute('aria-expanded','false');});if(!wasOpen){this.parentElement.classList.add('open');this.setAttribute('aria-expanded','true');}">
-              <span class="b-date">${item.date}</span>
-              <span class="b-title">📌 ${item.title}</span>
-              <span class="b-arrow">▾</span>
-            </button>
-            <div class="bulletin-body">
-              <div class="b-content">${md2html(item.content)}</div>
-            </div>
-          </div>`;
+        const icon = tagIcons[item.tag] || '📌';
+        html += `<div class="bulletin-item pinned open" data-tag="${item.tag || '公告'}" data-index="${i}">
+          <button class="bulletin-toggle" aria-expanded="true">
+            <span class="b-left"><span class="b-icon">${icon}</span><span class="b-date">${item.date}</span></span>
+            <span class="b-title">${item.title}</span>
+            <span class="b-right"><span class="b-id">${item.id || ''}</span><span class="b-arrow">▾</span></span>
+          </button>
+          <div class="bulletin-body"><div class="b-content">${md2html(item.content)}</div></div>
+        </div>`;
       });
-      // Regular items (limited)
       regular.slice(0, maxRegular).forEach((item, i) => {
-        html += `
-          <div class="bulletin-item" data-tag="${item.tag || '更新'}" data-index="${i}">
-            <button class="bulletin-toggle" aria-expanded="false" onclick="const wasOpen=this.parentElement.classList.contains('open');this.closest('.bulletin-board').querySelectorAll('.bulletin-item.open').forEach(e=>{e.classList.remove('open');e.querySelector('.bulletin-toggle').setAttribute('aria-expanded','false');});if(!wasOpen){this.parentElement.classList.add('open');this.setAttribute('aria-expanded','true');}">
-              <span class="b-date">${item.date}</span>
-              <span class="b-title">${item.title}</span>
-              <span class="b-tag tag-${item.tag || '更新'}">${item.tag || '更新'}</span>
-              <span class="b-arrow">▾</span>
-            </button>
-            <div class="bulletin-body">
-              <div class="b-content">${md2html(item.content)}</div>
-            </div>
-          </div>`;
+        const tag = item.tag || '更新';
+        const icon = tagIcons[tag] || '📝';
+        html += `<div class="bulletin-item" data-tag="${tag}" data-index="${i}">
+          <button class="bulletin-toggle" aria-expanded="false">
+            <span class="b-left"><span class="b-icon">${icon}</span><span class="b-date">${item.date}</span></span>
+            <span class="b-title">${item.title}</span>
+            <span class="b-right"><span class="b-id">${item.id || ''}</span><span class="b-tag tag-${tag}">${tag}</span><span class="b-arrow">▾</span></span>
+          </button>
+          <div class="bulletin-body"><div class="b-content">${md2html(item.content)}</div></div>
+        </div>`;
       });
       if (regular.length > maxRegular) {
         html += `<div class="bulletin-more"><a href="公告.html" class="btn btn-outline">查看全部公告 (${items.length} 則) →</a></div>`;
       }
       board.innerHTML = html;
+
+      // Bind click handlers
+      board.querySelectorAll('.bulletin-toggle').forEach(btn => {
+        btn.addEventListener('click', toggleItem);
+      });
     })
     .catch(() => { board.innerHTML = '<p style="text-align:center;color:var(--fog);padding:20px;">公告載入失敗</p>'; });
 }
