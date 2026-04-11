@@ -245,13 +245,13 @@
       filtered.forEach((item, i) => {
         const pinned = item.pinned ? ' pinned open' : '';
         const pinIcon = item.pinned ? '📌 ' : '';
+        const tag = item.tag || '更新';
         html += `
-          <div class="bulletin-item${pinned}" data-index="${i}">
+          <div class="bulletin-item${pinned}" data-tag="${tag}" data-index="${i}">
             <button class="bulletin-toggle" onclick="this.parentElement.classList.toggle('open')">
-              <span class="b-date-hint">${item.date}</span>
+              <span class="b-date">${item.date}</span>
               <span class="b-title">${pinIcon}${item.title}</span>
-              <span class="b-tag tag-${item.tag}">${item.tag}</span>
-              <span class="b-id">${item.id}</span>
+              <span class="b-tag tag-${tag}">${tag}</span>
               <span class="b-arrow">▾</span>
             </button>
             <div class="bulletin-body">

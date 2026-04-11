@@ -504,17 +504,17 @@ function initBulletinBoard() {
       const pinned = items.filter(i => i.pinned);
       const regular = items.filter(i => !i.pinned);
       const maxRegular = Math.max(0, MAX_TOTAL - pinned.length);
-      // header row
-      let html = '<div class="bulletin-header"><span>主旨</span><span>類型</span><span>編號</span><span>日期</span><span></span></div>';
+      let html = '';
       // Pinned items first (always visible)
       pinned.forEach((item, i) => {
         html += `
-          <div class="bulletin-item pinned open" data-index="${i}">
+          <div class="bulletin-item pinned open" data-tag="${item.tag || '公告'}" data-index="${i}">
             <button class="bulletin-toggle" aria-expanded="true" onclick="const wasOpen=this.parentElement.classList.contains('open');this.closest('.bulletin-board').querySelectorAll('.bulletin-item.open').forEach(e=>{e.classList.remove('open');e.querySelector('.bulletin-toggle').setAttribute('aria-expanded','false');});if(!wasOpen){this.parentElement.classList.add('open');this.setAttribute('aria-expanded','true');}">
+              <span class="b-date">${item.date}</span>
               <span class="b-title">📌 ${item.title}</span>
               <span class="b-arrow">▾</span>
             </button>
-            <div class="bulletin-body" style="text-align:center;">
+            <div class="bulletin-body">
               <div class="b-content">${md2html(item.content)}</div>
             </div>
           </div>`;
@@ -522,16 +522,14 @@ function initBulletinBoard() {
       // Regular items (limited)
       regular.slice(0, maxRegular).forEach((item, i) => {
         html += `
-          <div class="bulletin-item" data-index="${i}">
+          <div class="bulletin-item" data-tag="${item.tag || '更新'}" data-index="${i}">
             <button class="bulletin-toggle" aria-expanded="false" onclick="const wasOpen=this.parentElement.classList.contains('open');this.closest('.bulletin-board').querySelectorAll('.bulletin-item.open').forEach(e=>{e.classList.remove('open');e.querySelector('.bulletin-toggle').setAttribute('aria-expanded','false');});if(!wasOpen){this.parentElement.classList.add('open');this.setAttribute('aria-expanded','true');}">
+              <span class="b-date">${item.date}</span>
               <span class="b-title">${item.title}</span>
-              <span class="b-tag tag-${item.tag}">${item.tag}</span>
-              <span class="b-id">${item.id}</span>
-              <span class="b-date-col">${item.date}</span>
+              <span class="b-tag tag-${item.tag || '更新'}">${item.tag || '更新'}</span>
               <span class="b-arrow">▾</span>
             </button>
             <div class="bulletin-body">
-              <div class="b-date">📅 ${item.date} · ${item.id}</div>
               <div class="b-content">${md2html(item.content)}</div>
             </div>
           </div>`;
