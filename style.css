@@ -2869,6 +2869,14 @@ button:focus-visible {
   white-space: pre-line;
 }
 
+.bulletin-body .b-content p {
+  margin-bottom: 0.6em;
+}
+
+.bulletin-body .b-content p:last-child {
+  margin-bottom: 0;
+}
+
 .tag-公告 {
   background: rgba(87, 138, 255, 0.15);
   color: #8ab4ff;
