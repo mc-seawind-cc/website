@@ -463,26 +463,27 @@ function initBulletinBoard() {
         html = html.replace(/\*(.+?)\*/g, '<em>$1</em>');
         // Inline code
         html = html.replace(/`(.+?)`/g, '<code style="background:rgba(157,175,255,0.1);padding:2px 6px;border-radius:4px;font-size:0.9em;">$1</code>');
-        // Lines
-        const lines = html.split('\n');
+        // Split into paragraphs by double newline
+        const paragraphs = html.split(/\n\n+/);
         let result = [];
-        let inList = false;
-        lines.forEach(line => {
-          const trimmed = line.trim();
-          // Bullet points: • - *
-          if (/^[\s]*[•\-\*]\s/.test(trimmed)) {
-            if (!inList) { result.push('<ul style="padding-left:1.2em;margin:4px 0;">'); inList = true; }
-            result.push('<li>' + trimmed.replace(/^[\s]*[•\-\*]\s+/, '') + '</li>');
-          } else if (trimmed === '') {
-            if (inList) { result.push('</ul>'); inList = false; }
-            result.push('</p><p style="margin-top:6px;">');
-          } else {
-            if (inList) { result.push('</ul>'); inList = false; }
-            result.push(trimmed);
-          }
+        paragraphs.forEach(para => {
+          const lines = para.split('\n');
+          let paraHtml = [];
+          let inList = false;
+          lines.forEach(line => {
+            const trimmed = line.trim();
+            if (/^[\s]*[•\-\*]\s/.test(trimmed)) {
+              if (!inList) { paraHtml.push('<ul style="padding-left:1.2em;margin:4px 0;">'); inList = true; }
+              paraHtml.push('<li>' + trimmed.replace(/^[\s]*[•\-\*]\s+/, '') + '</li>');
+            } else {
+              if (inList) { paraHtml.push('</ul>'); inList = false; }
+              paraHtml.push(trimmed);
+            }
+          });
+          if (inList) paraHtml.push('</ul>');
+          result.push('<p>' + paraHtml.join('<br>') + '</p>');
         });
-        if (inList) result.push('</ul>');
-        return '<p>' + result.join('\n') + '</p>';
+        return result.join('');
       }
 
       const items = data.announcements;

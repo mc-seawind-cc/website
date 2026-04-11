@@ -159,23 +159,25 @@
       html = html.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
       html = html.replace(/\*(.+?)\*/g, '<em>$1</em>');
       html = html.replace(/`(.+?)`/g, '<code style="background:rgba(157,175,255,0.1);padding:2px 6px;border-radius:4px;font-size:0.9em;">$1</code>');
-      const lines = html.split('\n');
-      let result = [], inList = false;
-      lines.forEach(line => {
-        const t = line.trim();
-        if (/^[\s]*[•\-\*]\s/.test(t)) {
-          if (!inList) { result.push('<ul style="padding-left:1.2em;margin:4px 0;">'); inList = true; }
-          result.push('<li>' + t.replace(/^[\s]*[•\-\*]\s+/, '') + '</li>');
-        } else if (t === '') {
-          if (inList) { result.push('</ul>'); inList = false; }
-          result.push('</p><p style="margin-top:6px;">');
-        } else {
-          if (inList) { result.push('</ul>'); inList = false; }
-          result.push(t);
-        }
+      const paragraphs = html.split(/\n\n+/);
+      let result = [];
+      paragraphs.forEach(para => {
+        const lines = para.split('\n');
+        let paraHtml = [], inList = false;
+        lines.forEach(line => {
+          const t = line.trim();
+          if (/^[\s]*[•\-\*]\s/.test(t)) {
+            if (!inList) { paraHtml.push('<ul style="padding-left:1.2em;margin:4px 0;">'); inList = true; }
+            paraHtml.push('<li>' + t.replace(/^[\s]*[•\-\*]\s+/, '') + '</li>');
+          } else {
+            if (inList) { paraHtml.push('</ul>'); inList = false; }
+            paraHtml.push(t);
+          }
+        });
+        if (inList) paraHtml.push('</ul>');
+        result.push('<p>' + paraHtml.join('<br>') + '</p>');
       });
-      if (inList) result.push('</ul>');
-      return '<p>' + result.join('\n') + '</p>';
+      return result.join('');
     }
 
     // Filter buttons
