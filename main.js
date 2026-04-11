@@ -2,6 +2,13 @@
    海風 Seabreeze — Main Scripts
    ═══════════════════════════════════════════ */
 
+// 自動偵測子目錄深度，產生正確的 base path
+const SW_BASE = (() => {
+  const path = location.pathname;
+  if (path.includes('/guide/') || path.includes('/lore/')) return '../';
+  return '';
+})();
+
 document.addEventListener('DOMContentLoaded', () => {
   // --- Critical: Theme Toggle (first paint) ---
   const themeBtn = document.getElementById('themeToggle');
@@ -84,7 +91,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const deferredInit = () => {
     // Load music player immediately
     const musicJs = document.createElement('script');
-    musicJs.src = 'music-player.js';
+    musicJs.src = SW_BASE + 'music-player.js';
     document.body.appendChild(musicJs);
 
     createParticles();
@@ -437,7 +444,7 @@ function fetchServerStatus() {
 function initBulletinBoard() {
   const board = document.getElementById('bulletinBoard');
   if (!board) return;
-  fetch('announcements.json')
+  fetch(SW_BASE + 'announcements.json')
     .then(r => r.json())
     .then(data => {
       const MAX_TOTAL = 100;
@@ -723,7 +730,7 @@ function initPhotoGallery() {
   let current = 0;
   let timer = null;
 
-  fetch('photos.json')
+  fetch(SW_BASE + 'photos.json')
     .then(r => {
       if (!r.ok) throw new Error('photos.json 載入失敗');
       return r.json();

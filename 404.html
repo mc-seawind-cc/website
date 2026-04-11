@@ -10,79 +10,306 @@
   <meta name="theme-color" content="#0d1117">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=260411c">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;800&family=Noto+Serif+TC:wght@700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css?v=260411d">
   <style>
-    .error-page {
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    .ocean-page {
       min-height: 100vh;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
+      position: relative;
+      overflow: hidden;
+      background: linear-gradient(180deg, #0a0e1a 0%, #0d1b2a 30%, #1b2838 60%, #0d1117 100%);
+    }
+
+    /* Stars */
+    .ocean-stars {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+    }
+    .star {
+      position: absolute;
+      width: 2px;
+      height: 2px;
+      background: #fff;
+      border-radius: 50%;
+      animation: twinkle 3s ease-in-out infinite alternate;
+    }
+    @keyframes twinkle {
+      0% { opacity: 0.2; }
+      100% { opacity: 0.8; }
+    }
+
+    /* Moon */
+    .ocean-moon {
+      position: absolute;
+      top: 12%;
+      right: 18%;
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 35% 35%, #f5f0d0, #e8d88e, #c9a84c);
+      box-shadow: 0 0 60px 20px rgba(245, 240, 200, 0.15), 0 0 120px 40px rgba(245, 240, 200, 0.06);
+      animation: moon-glow 6s ease-in-out infinite alternate;
+    }
+    @keyframes moon-glow {
+      0% { box-shadow: 0 0 60px 20px rgba(245, 240, 200, 0.15), 0 0 120px 40px rgba(245, 240, 200, 0.06); }
+      100% { box-shadow: 0 0 80px 30px rgba(245, 240, 200, 0.2), 0 0 140px 50px rgba(245, 240, 200, 0.08); }
+    }
+
+    /* Waves */
+    .ocean-waves {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 35%;
+      overflow: hidden;
+    }
+    .wave {
+      position: absolute;
+      bottom: 0;
+      left: -10%;
+      width: 120%;
+      height: 100%;
+    }
+    .wave svg {
+      position: absolute;
+      bottom: 0;
+      width: 200%;
+      animation: wave-drift linear infinite;
+    }
+    .wave-1 svg {
+      animation-duration: 12s;
+      fill: rgba(87, 138, 255, 0.08);
+    }
+    .wave-2 svg {
+      animation-duration: 16s;
+      animation-direction: reverse;
+      fill: rgba(168, 230, 207, 0.06);
+    }
+    .wave-3 svg {
+      animation-duration: 20s;
+      fill: rgba(157, 175, 255, 0.04);
+    }
+    @keyframes wave-drift {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    /* Water shimmer */
+    .ocean-surface {
+      position: absolute;
+      bottom: 28%;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: linear-gradient(90deg,
+        transparent 0%,
+        rgba(157, 175, 255, 0.15) 20%,
+        rgba(168, 230, 207, 0.25) 50%,
+        rgba(157, 175, 255, 0.15) 80%,
+        transparent 100%
+      );
+      animation: shimmer-move 4s ease-in-out infinite alternate;
+    }
+    @keyframes shimmer-move {
+      0% { opacity: 0.5; transform: scaleX(0.95); }
+      100% { opacity: 1; transform: scaleX(1.05); }
+    }
+
+    /* Content */
+    .ocean-content {
+      position: relative;
+      z-index: 10;
       text-align: center;
       padding: 2rem;
-      position: relative;
-      z-index: 2;
+      margin-bottom: 15vh;
     }
+
     .error-code {
-      font-size: clamp(6rem, 15vw, 10rem);
+      font-size: clamp(7rem, 18vw, 12rem);
       font-weight: 800;
-      background: linear-gradient(135deg, var(--sky), var(--foam), var(--sky));
-      background-size: 200% 100%;
+      font-family: 'Noto Serif TC', serif;
+      background: linear-gradient(180deg, rgba(255,255,255,0.9) 0%, rgba(157,175,255,0.5) 100%);
       -webkit-background-clip: text;
       background-clip: text;
       -webkit-text-fill-color: transparent;
-      animation: error-shimmer 4s ease-in-out infinite;
       line-height: 1;
       margin-bottom: 0.5rem;
+      letter-spacing: 0.1em;
+      text-shadow: none;
+      filter: drop-shadow(0 4px 30px rgba(157, 175, 255, 0.2));
     }
-    @keyframes error-shimmer {
-      0%, 100% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-    }
-    .error-title {
-      font-size: 1.5rem;
+
+    .ocean-title {
+      font-size: clamp(1.2rem, 3vw, 1.6rem);
       font-weight: 700;
-      color: var(--white);
-      margin-bottom: 0.75rem;
+      color: rgba(255, 255, 255, 0.85);
+      margin-bottom: 1rem;
+      letter-spacing: 0.15em;
     }
-    .error-desc {
-      color: var(--fog);
-      font-size: 1rem;
-      max-width: 400px;
-      line-height: 1.7;
-      margin-bottom: 2rem;
+
+    .ocean-desc {
+      color: rgba(255, 255, 255, 0.45);
+      font-size: clamp(0.85rem, 1.5vw, 1rem);
+      max-width: 380px;
+      margin: 0 auto 2rem;
+      line-height: 2;
     }
-    .error-actions {
+
+    .ocean-actions {
       display: flex;
       gap: 1rem;
       flex-wrap: wrap;
       justify-content: center;
     }
-    .error-wave {
+
+    .ocean-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 14px 28px;
+      border-radius: 12px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      text-decoration: none;
+      font-family: 'Noto Sans TC', sans-serif;
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+    .ocean-btn-primary {
+      background: linear-gradient(135deg, rgba(87, 138, 255, 0.3), rgba(168, 230, 207, 0.2));
+      border: 1px solid rgba(157, 175, 255, 0.3);
+      color: #c8deff;
+      backdrop-filter: blur(8px);
+    }
+    .ocean-btn-primary:hover {
+      background: linear-gradient(135deg, rgba(87, 138, 255, 0.45), rgba(168, 230, 207, 0.3));
+      border-color: rgba(157, 175, 255, 0.5);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba(87, 138, 255, 0.2);
+    }
+    .ocean-btn-ghost {
+      background: transparent;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      color: rgba(255, 255, 255, 0.5);
+    }
+    .ocean-btn-ghost:hover {
+      border-color: rgba(255, 255, 255, 0.25);
+      color: rgba(255, 255, 255, 0.7);
+      transform: translateY(-2px);
+    }
+
+    /* Lighthouse */
+    .ocean-lighthouse {
       position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      height: 120px;
-      opacity: 0.06;
-      pointer-events: none;
+      bottom: 30%;
+      right: 12%;
+      z-index: 5;
+      opacity: 0.15;
+    }
+    .lighthouse-beam {
+      position: absolute;
+      bottom: 30px;
+      left: 50%;
+      width: 200px;
+      height: 4px;
+      background: linear-gradient(90deg, rgba(255,255,200,0.6), transparent);
+      transform-origin: left center;
+      animation: beam-rotate 8s linear infinite;
+    }
+    @keyframes beam-rotate {
+      0% { transform: rotate(-30deg); }
+      50% { transform: rotate(30deg); }
+      100% { transform: rotate(-30deg); }
+    }
+
+    @media (max-width: 768px) {
+      .ocean-moon { width: 50px; height: 50px; top: 8%; right: 10%; }
+      .ocean-lighthouse { display: none; }
     }
   </style>
 </head>
 <body>
-  <div class="bg-atmosphere"></div>
-  <div class="error-page">
-    <div class="error-code">404</div>
-    <h1 class="error-title">航向未知的海域</h1>
-    <p class="error-desc">看來這片海域沒有陸地。<br>別擔心，讓風帶你回到正確的航線。</p>
-    <div class="error-actions">
-      <a href="首頁.html" class="btn btn-primary">返回首頁</a>
-      <a href="https://discord.gg/HdS2HrJEH7" target="_blank" class="btn btn-outline">加入社群</a>
+  <div class="ocean-page">
+
+    <!-- Stars -->
+    <div class="ocean-stars" id="stars"></div>
+
+    <!-- Moon -->
+    <div class="ocean-moon"></div>
+
+    <!-- Lighthouse -->
+    <div class="ocean-lighthouse">
+      <svg width="30" height="60" viewBox="0 0 30 60" fill="none">
+        <rect x="11" y="20" width="8" height="40" fill="rgba(255,255,255,0.3)" rx="1"/>
+        <rect x="8" y="10" width="14" height="12" fill="rgba(255,255,255,0.25)" rx="2"/>
+        <rect x="12" y="2" width="6" height="10" fill="rgba(255,255,200,0.4)" rx="3"/>
+        <circle cx="15" cy="7" r="3" fill="rgba(255,255,200,0.6)"/>
+      </svg>
+      <div class="lighthouse-beam"></div>
     </div>
-    <svg class="error-wave" viewBox="0 0 1440 120" preserveAspectRatio="none">
-      <path d="M0,60 C360,120 720,0 1080,60 C1260,90 1380,30 1440,60 L1440,120 L0,120Z" fill="var(--sky)"/>
-    </svg>
+
+    <!-- Ocean surface line -->
+    <div class="ocean-surface"></div>
+
+    <!-- Waves -->
+    <div class="ocean-waves">
+      <div class="wave wave-1">
+        <svg viewBox="0 0 1440 200" preserveAspectRatio="none">
+          <path d="M0,100 C240,150 480,50 720,100 C960,150 1200,50 1440,100 L1440,200 L0,200Z"/>
+          <path d="M1440,100 C1680,150 1920,50 2160,100 C2400,150 2640,50 2880,100 L2880,200 L1440,200Z"/>
+        </svg>
+      </div>
+      <div class="wave wave-2">
+        <svg viewBox="0 0 1440 200" preserveAspectRatio="none">
+          <path d="M0,120 C360,80 720,160 1080,120 C1260,100 1380,140 1440,120 L1440,200 L0,200Z"/>
+          <path d="M1440,120 C1800,80 2160,160 2520,120 C2700,100 2820,140 2880,120 L2880,200 L1440,200Z"/>
+        </svg>
+      </div>
+      <div class="wave wave-3">
+        <svg viewBox="0 0 1440 200" preserveAspectRatio="none">
+          <path d="M0,140 C180,120 360,160 540,140 C720,120 900,160 1080,140 C1260,120 1380,150 1440,140 L1440,200 L0,200Z"/>
+          <path d="M1440,140 C1620,120 1800,160 1980,140 C2160,120 2340,160 2520,140 C2700,120 2820,150 2880,140 L2880,200 L1440,200Z"/>
+        </svg>
+      </div>
+    </div>
+
+    <!-- Content -->
+    <div class="ocean-content">
+      <div class="error-code">404</div>
+      <h1 class="ocean-title">您已航向未知的海域</h1>
+      <p class="ocean-desc">看來這片海域沒有陸地。<br>別擔心，讓風帶你回到正確的航線。</p>
+      <div class="ocean-actions">
+        <a href="首頁.html" class="ocean-btn ocean-btn-primary">返回首頁</a>
+        <a href="https://discord.gg/HdS2HrJEH7" target="_blank" class="ocean-btn ocean-btn-ghost">加入社群</a>
+      </div>
+    </div>
+
   </div>
+
+  <script>
+    // Generate stars
+    const starsEl = document.getElementById('stars');
+    if (starsEl) {
+      for (let i = 0; i < 80; i++) {
+        const s = document.createElement('div');
+        s.className = 'star';
+        s.style.left = Math.random() * 100 + '%';
+        s.style.top = Math.random() * 60 + '%';
+        s.style.width = (1 + Math.random() * 2) + 'px';
+        s.style.height = s.style.width;
+        s.style.animationDelay = (Math.random() * 3) + 's';
+        s.style.animationDuration = (2 + Math.random() * 3) + 's';
+        starsEl.appendChild(s);
+      }
+    }
+  </script>
 </body>
 </html>
