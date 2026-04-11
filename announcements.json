@@ -22,9 +22,7 @@
       "id": "#0286",
       "title": "地圖加修復錯誤",
       "content": "- 修復同步聊天訊息延遲問題。\n- 新增[地圖]系統。\n  - 僅限 Java 版本可用。\n  - 透過快速動作鍵G、遊戲目錄點擊更多詳情開啟。",
-      "images": [
-        "https://cdn.discordapp.com/attachments/1270267126011396152/1491008352304496650/image.png?ex=69db673c&is=69da15bc&hm=1857675b5f4c0e9f7fec5b59736f26cad66c71924901e5bf53f382508d46cf6b&"
-      ]
+      "images": []
     },
     {
       "date": "115.04.05",
@@ -73,8 +71,7 @@
       "title": "暫時更名",
       "content": "- 暫時更新伺服器如圖。",
       "images": [
-        "https://cdn.discordapp.com/attachments/1270267126011396152/1488578615409901669/image.png?ex=69db221e&is=69d9d09e&hm=5680fcc2b1d35bcef8463a7837a9f8b890f7c94cb440603e69cb343b80f26087&",
-        "https://cdn.discordapp.com/attachments/1270267126011396152/1488578615716220979/image.png?ex=69db221e&is=69d9d09e&hm=c2b150fc8166e08af9f6d9be5ad60446570008df9869ffeae77bf91f35dba99d&"
+        "assets/announcements/ann_aac822fe.webp"
       ]
     },
     {
@@ -172,7 +169,7 @@
       "title": "小更新",
       "content": "- 調整公告訊息格式。\n- 修正  格式。\n- 新增會員福利「[隱藏裝備](https://discord.com/channels/1266311059552342078/1479055103322226698)」\n。\n- 修復  頻道主題顯示錯誤的問題。\n- 修復玩家列表[tab]顯示錯誤的問題。\n- 修復領地系統訊息錯字。\n- 修改遊戲機制。\n  - 寶庫冷卻時間\n    - 一般寶庫：`` 1小時 ``\n    - 不詳寶庫：`` 5小時 ``\n  - 切石機配方\n    - 新增木製品\n  - 界伏盒\n    - 放置的界伏盒會顯示自訂名稱。\n- 於分流二安裝[盔甲座編輯器](https://discord.com/channels/1266311059552342078/1479132923058716754)。",
       "images": [
-        "https://cdn.discordapp.com/attachments/1270267126011396152/1479133085772677281/image.png?ex=69db0c48&is=69d9bac8&hm=4a786a58a28a8fd4d38230f1e30310158c8a06f710f89708158aca9c27a4302e&"
+        "assets/announcements/ann_fd59d1e9.webp"
       ]
     },
     {
@@ -182,9 +179,7 @@
       "title": "小更新",
       "content": "> 1. 停用傷害顯示器。\n> 2. 重生點建築「雲隱匠作」\n啟用。\n>   - 可兌換「邦布魔杖」\n和「盔甲座編輯器」\n。\n> 3. 調整領地權限「方塊互動-總開關」\n描述如附圖1。\n> 4. 調整任務進度描述如附圖2。\n> 5. 盔甲座編輯器上線；工具見附圖3。",
       "images": [
-        "https://cdn.discordapp.com/attachments/1270267126011396152/1478782222537588797/1.png?ex=69db1704&is=69d9c584&hm=56deb0eac493c7c8508f7c25bea0a4f69ca9299e3139e0d1f0980ae08dbca636&",
-        "https://cdn.discordapp.com/attachments/1270267126011396152/1478782223078522981/2.png?ex=69db1704&is=69d9c584&hm=349b6e4480b51eb4ba765e3ef9d623b5feef0a9f74554f3afc2cc6d8320deb13&",
-        "https://cdn.discordapp.com/attachments/1270267126011396152/1478782223544221828/3.png?ex=69db1704&is=69d9c584&hm=bdfcd4d745399ed9e0547412efbcd071ea8696ee2c0800f4ba290c1fcce0b347&"
+        "assets/announcements/ann_974a5f4b.webp"
       ]
     },
     {
@@ -226,8 +221,7 @@
       "title": "小更新",
       "content": "> 1. 新增或更新任務內容。\n>   - 重生點新增[冒險任務](https://discord.com/channels/1266311059552342078/1396398116332109934)地點，可獲取[螢光魷魚]稱號，已獲取玩家則保留稱號。\n> 2. 修復拼字錯誤。\n> 3. 將  合併進  。\n> 4. 將  、  合併進  。",
       "images": [
-        "https://cdn.discordapp.com/attachments/1270267126011396152/1474030550095368392/image.png?ex=69db99ed&is=69da486d&hm=c2c1d090cbbe17dcc9c47e4792a0587c14d4d3dcb69aa023bca7e5b27b2b87fc&",
-        "https://cdn.discordapp.com/attachments/1270267126011396152/1474030550460268636/image.png?ex=69db99ed&is=69da486d&hm=9a899aac3b8d75b73999414ca9ad09dfdbfe52850a6c70c6cee17c8c257a2641&"
+        "assets/announcements/ann_06057dc8.webp"
       ]
     },
     {
@@ -253,8 +247,7 @@
       "title": "領地小修復",
       "content": "> 1. 修復在[動作欄]([連結](https://zh.minecraft.wiki/w/动作栏))顯示格式錯誤的問題。\n>   - 原本把通知由聊天室轉到動作欄，但格式沒改。",
       "images": [
-        "https://cdn.discordapp.com/attachments/1270267126011396152/1468292401855725882/image.png?ex=69db291c&is=69d9d79c&hm=142bd9dfda71ed26c1e21dbb6440acb221f3e070b5f53b3618f84b78671cfc6d&",
-        "https://cdn.discordapp.com/attachments/1270267126011396152/1468292402572689509/image.png?ex=69db291c&is=69d9d79c&hm=5c0a09186de281960d96b2efc7cf6454918232f67118e996fbae0cc329bd9e2e&"
+        "assets/announcements/ann_e4367bf8.webp"
       ]
     },
     {
@@ -264,11 +257,9 @@
       "title": "領地更新",
       "content": "> 1. 新增四個權限。\n> 2. 修正分流一領地的隨機傳送指令[/rtp]傳送距離。\n>   - 主世界大小±40萬，距離 1,000~200,000 。\n>   - 地獄大小±10萬，距離 1,500~50,000 。\n>   - 終界大小±20萬，距離  1,000~10,000 。\n>   - 每次冷卻 15 秒。",
       "images": [
-        "https://cdn.discordapp.com/attachments/1270267126011396152/1468303456761676012/image.png?ex=69db3367&is=69d9e1e7&hm=61c3216fea606e2315b6b71f6cd0d4a38001d0c5e91d522cacd1b431a3cad0ff&",
-        "https://cdn.discordapp.com/attachments/1270267126011396152/1468303457235767419/image.png?ex=69db3367&is=69d9e1e7&hm=601a8de0ae819c858e3b5a393c11a98608ea7f95c5203364b0f4f59d424e72c0&",
-        "https://cdn.discordapp.com/attachments/1270267126011396152/1468303457617186948/image.png?ex=69db3368&is=69d9e1e8&hm=9a63a83c8e1a0b22db10c0bb3ca368dbeaeebaa3c1509e445aaf168690f6b101&",
-        "https://cdn.discordapp.com/attachments/1270267126011396152/1468303457973964982/image.png?ex=69db3368&is=69d9e1e8&hm=f16b72894d9845b8da06ce0de99a0a786ee5c543628dc50373c4d1e0020e25ba&",
-        "https://cdn.discordapp.com/attachments/1270267126011396152/1468303458548453610/image.png?ex=69db3368&is=69d9e1e8&hm=8ba4dbc373420e8ac7c1c99a11225b6165f7b4b18e0edfa5662b2e187ed33f7d&"
+        "assets/announcements/ann_8baebfe7.webp",
+        "assets/announcements/ann_4f50363b.webp",
+        "assets/announcements/ann_80d5481f.webp"
       ]
     },
     {
@@ -397,9 +388,7 @@
       "id": "#0240",
       "title": "規則與倉庫更新",
       "content": "> 1. 更新  。\n>   - 第三章為「違規處理」\n。\n>   - 第四章為「伺服器聲明」\n。\n>   - 將宣傳相關移動至第一章。\n> 2. 修改預設倉庫數量和介面如附圖。\n>   - 大倉庫：`` 16 ``個。\n>   - 小倉庫：``  8 ``個。",
-      "images": [
-        "https://cdn.discordapp.com/attachments/1270267126011396152/1417096672093278289/image.png?ex=69db759f&is=69da241f&hm=d99f5bce5e93efef20f7fc43bd03bedfd179e3e2890bfacdf097279d90fd705f&"
-      ]
+      "images": []
     },
     {
       "date": "114.09.15",
@@ -408,8 +397,7 @@
       "title": "選單更新",
       "content": "> 1. 更新選單傳送頁面如圖。\n> 2. 更新選單內社群須知。",
       "images": [
-        "https://cdn.discordapp.com/attachments/1270267126011396152/1417168444838907934/image.png?ex=69db0fb6&is=69d9be36&hm=0c588806b545027adce53cdc962f9f33e951751bef0cb948ae9f0276ea423728&",
-        "https://cdn.discordapp.com/attachments/1270267126011396152/1417168445224521769/image.png?ex=69db0fb7&is=69d9be37&hm=383b56c2d58f4cb2bfc76096d6202de3748931ac75a2ae24766d5f58e30709cd&"
+        "assets/announcements/ann_db6b2c87.webp"
       ]
     },
     {
@@ -419,7 +407,7 @@
       "title": "郵政介面更新",
       "content": "> 1. 把草稿按鈕加入了郵政介面。\n>   - 預設郵標改為「空白地圖」\n。\n>   - 其他就自己看，沒什麼改。",
       "images": [
-        "https://cdn.discordapp.com/attachments/1270267126011396152/1416442772034158734/image.png?ex=69db0ee1&is=69d9bd61&hm=7538a9c9c7ea33a38f0bbb836966b2b18ad7477cd968ae68cf4a0a9d98d3f171&"
+        "assets/announcements/ann_897d6124.webp"
       ]
     },
     {
@@ -429,9 +417,7 @@
       "title": "任務更新",
       "content": "> 1. 更新每日任務內容，已移除所有任務，目前只新增了大約50個任務。\n>   - [每日任務表]([連結](https://seawind-cc.notion.site/269fa143253b803b89a5e873008dbad5?v=269fa143253b804db95b000c7bec97b7&source=copy_link))。\n>   - [每日任務討論區](https://discord.com/channels/1266311059552342078/1415219518652813354)。\n> 2. 任務更新及部分內容如圖：",
       "images": [
-        "https://cdn.discordapp.com/attachments/1270267126011396152/1416064054237073478/image.png?ex=69daffab&is=69d9ae2b&hm=b28404de4101b64a5cba9c6f6e6366c4613f8c244edc0ee60bfe5c674f8dfac6&",
-        "https://cdn.discordapp.com/attachments/1270267126011396152/1416064055059153116/image.png?ex=69daffab&is=69d9ae2b&hm=6c94ef00f0065aa351484877010c49ead7dbe496df7f148ab76ec89889d67fd6&",
-        "https://cdn.discordapp.com/attachments/1270267126011396152/1416064056363716769/image.png?ex=69daffac&is=69d9ae2c&hm=9592cd9e9e7ef8443764baabd6658958b1d3802abe14d3187807a00f475a2218&"
+        "assets/announcements/ann_4d7afad7.webp"
       ]
     },
     {
@@ -489,7 +475,7 @@
       "title": "社區更新",
       "content": "> 1. 將社區系統的數值做了完整修改，如圖。",
       "images": [
-        "https://cdn.discordapp.com/attachments/1270267126011396152/1405481387209003040/image.png?ex=69db640b&is=69da128b&hm=5a2bb0805cb07884ce751b358f7a6738e2ff165187eb01be9874c0ff68ffaef9&"
+        "assets/announcements/ann_14f887e1.webp"
       ]
     },
     {
@@ -554,9 +540,7 @@
       "id": "#0223",
       "title": "小更新",
       "content": "> 1. 掉落物顯示名條移除原因如圖。\n> 2. 新增自動拾取功能。\n> 3. 修復[money]功能。",
-      "images": [
-        "https://cdn.discordapp.com/attachments/1270267126011396152/1399295493288366100/image.png?ex=69db4c7b&is=69d9fafb&hm=cee965065c6f5925271090c8b3886629ce40abd8b20893ba1e95938e939b70fb&"
-      ]
+      "images": []
     },
     {
       "date": "114.07.26",
@@ -565,7 +549,7 @@
       "title": "公共傳送點分類更新",
       "content": "> 1. 遊戲內外標籤已更改。",
       "images": [
-        "https://cdn.discordapp.com/attachments/1270267126011396152/1398594353034690684/image.png?ex=69db627e&is=69da10fe&hm=b90914e8f7b7003b36de08babb6a713e4116a1af06250b779d310a373667bef1&"
+        "assets/announcements/ann_6acb77eb.webp"
       ]
     },
     {
@@ -614,9 +598,7 @@
       "id": "#0216",
       "title": "領地介面小更新",
       "content": "> 1. 領地介面更新(如下圖)，統一格式與介面風格。",
-      "images": [
-        "https://cdn.discordapp.com/attachments/1270267126011396152/1391653491742609489/image.png?ex=69db2ed0&is=69d9dd50&hm=cafc73305158fe75d7a00d51d05f9b33d344bc00fdebfe75ae8578dabf530489&"
-      ]
+      "images": []
     },
     {
       "date": "114.07.04",
@@ -689,7 +671,7 @@
       "title": "選單更新",
       "content": "> 1. 如圖，新增「資訊」\n頁面。",
       "images": [
-        "https://cdn.discordapp.com/attachments/1270267126011396152/1385637574567002263/image.png?ex=69db0ccd&is=69d9bb4d&hm=ddf116e558491a8bdecdddd24262e0792a73e47c67411363b859281162992304&"
+        "assets/announcements/ann_400f709b.webp"
       ]
     },
     {
@@ -698,9 +680,7 @@
       "id": "#0206",
       "title": "選單更新",
       "content": "> 1. 分流一選單已更新，將慢慢完善選單功能頁面以及按鈕。",
-      "images": [
-        "https://cdn.discordapp.com/attachments/1270267126011396152/1384879407994372258/image.png?ex=69db9674&is=69da44f4&hm=95034cfbbabe7bf3c4cae90ef9f95e9838952898fa0e99c253f18c3f1f34a884&"
-      ]
+      "images": []
     },
     {
       "date": "114.06.06",
@@ -717,7 +697,7 @@
       "title": "修復 Bug",
       "content": "> 1. 修復基岩版無法使用[/res from]以及[/tpgui]的問題。",
       "images": [
-        "https://cdn.discordapp.com/attachments/1270267126011396152/1380610871285383309/image.png?ex=69db3852&is=69d9e6d2&hm=90cc6a74ab03c4322e4564162509cc6c7b1f698057c3bf1c77ed0b68385809df&"
+        "assets/announcements/ann_21cb9805.webp"
       ]
     },
     {
@@ -758,9 +738,7 @@
       "id": "#0198",
       "title": "頻道與 Tab 更新",
       "content": "> 1. 分流一聊天頻道與 Tab 格式更新。\n> 2. 修復錯字問題。",
-      "images": [
-        "https://cdn.discordapp.com/attachments/1270267126011396152/1378272022320382043/1375871896155062333remix-1748103844637.png?ex=69db47d9&is=69d9f659&hm=792244e2733ae64d4d3bc1eb9518fa4a1fbe863cf8fcda0668f11a16d6c707b3&"
-      ]
+      "images": []
     },
     {
       "date": "114.05.30",
@@ -769,8 +747,7 @@
       "title": "社區系統",
       "content": "> 1. 分流一社區系統[/plg open]已更新。\n>   - 介面皆已更新。\n>   - 社區任務已更新。",
       "images": [
-        "https://cdn.discordapp.com/attachments/1270267126011396152/1378041938892161175/image.png?ex=69db1a51&is=69d9c8d1&hm=6ad957ff7457fd818b19f5aa4332d53e9c829ffac1d3072b0516ec86a2b3c300&",
-        "https://cdn.discordapp.com/attachments/1270267126011396152/1378041939378835650/image.png?ex=69db1a51&is=69d9c8d1&hm=6e9bfb8c6bbb8c9d2f050ebf5d28f082cc7a4c4e94f782316df97efd15c8c40d&"
+        "assets/announcements/ann_0f8eb5e8.webp"
       ]
     },
     {
@@ -780,8 +757,7 @@
       "title": "頻道更新",
       "content": "> 1. 於 <id:customize> 新增自訂顯示頻道選項問題。\n> 2. 設定預設頻道名單。\n> 3. 封存  、  、  、  頻道，目前已封存 15 個頻道。",
       "images": [
-        "https://cdn.discordapp.com/attachments/1270267126011396152/1378063499262955610/image.png?ex=69db2e65&is=69d9dce5&hm=467ec57a02b4db9988954bdd5c32a3155d727de5323c46992db467fd6b3b2138&",
-        "https://cdn.discordapp.com/attachments/1270267126011396152/1378063499594432542/image.png?ex=69db2e65&is=69d9dce5&hm=33b2fd8b3d78d2f90ae5af5bf481124411d7d0a907052e581d53f3338b60ba91&"
+        "assets/announcements/ann_bb5e6b27.webp"
       ]
     },
     {
@@ -815,7 +791,7 @@
       "title": "小修一下",
       "content": "> 1. 修復顯示錯誤問題，由 回報。",
       "images": [
-        "https://cdn.discordapp.com/attachments/1270267126011396152/1375119033937956864/Screenshot_20250522_084130_Discord.jpg?ex=69db0426&is=69d9b2a6&hm=ec402b4d12fc85824eeeb59967ffd423616324944ccb862ea02c7364731250b1&"
+        "assets/announcements/ann_5bbe37c1.webp"
       ]
     },
     {
@@ -824,9 +800,7 @@
       "id": "#0191",
       "title": "地圖",
       "content": "> 1. 讓玩家不用再常常換分流之後都要切地圖。",
-      "images": [
-        "https://cdn.discordapp.com/attachments/1270267126011396152/1372820371002228836/image.png?ex=69db391a&is=69d9e79a&hm=85587c40cf1e93623b43ad9e215cb4916cef2b0daa9d9ff4c6dae4288a4859a7&"
-      ]
+      "images": []
     },
     {
       "date": "114.05.15",
@@ -843,7 +817,7 @@
       "title": "分流二選單",
       "content": "> 1. 分流二新增選單，暫時只有分流傳送功能。",
       "images": [
-        "https://cdn.discordapp.com/attachments/1270267126011396152/1371776467117019146/image.png?ex=69db6164&is=69da0fe4&hm=6d3c7d5e26cf1262596be7ccec112048789546f3eb83bd55a9302eea370dee6d&"
+        "assets/announcements/ann_7bb8079e.webp"
       ]
     },
     {
@@ -948,9 +922,7 @@
       "id": "#0176",
       "title": "公開傳送點更新",
       "content": "> 1. 分流一：\n>   - 公開傳送點[/pw]介面更新了，還是覺得這樣比較好看，對吧？",
-      "images": [
-        "https://cdn.discordapp.com/attachments/1270267126011396152/1362735042882961479/image.png?ex=69db7268&is=69da20e8&hm=92584723bf2743a17df4b2dc4a043b9cc79bb591e1bc49e5af1ab904cd97b5c9&"
-      ]
+      "images": []
     },
     {
       "date": "114.04.17",
@@ -959,7 +931,7 @@
       "title": "小更",
       "content": "> 1. 在 <id:customize> 新增了一些東西。",
       "images": [
-        "https://cdn.discordapp.com/attachments/1270267126011396152/1362410331867185152/image.png?ex=69db957f&is=69da43ff&hm=16db4f33dc43e1f69654961df8ac9f8bcdb281efd449acac06f620f16265b8cb&"
+        "assets/announcements/ann_7b0945f4.webp"
       ]
     },
     {
@@ -1000,9 +972,7 @@
       "id": "#0171",
       "title": "修Bug",
       "content": "> - 於分流二修復以下功能\n>   1. 原先無此功能：[鷹架內忽略碰撞箱](https://zh.minecraft.wiki/w/脚手架?variant=zh-tw#:~:text=當生物位於鷹架下時，鷹架會忽略所有碰撞箱)。",
-      "images": [
-        "https://cdn.discordapp.com/attachments/1270267126011396152/1361016376021618861/image-57.png?ex=69db2086&is=69d9cf06&hm=fca64e811524359f118adc77bcb0af2656218a73288dcc8d840b13a34cba8eed&"
-      ]
+      "images": []
     },
     {
       "date": "114.04.11",
@@ -1051,10 +1021,8 @@
       "title": "新重生點",
       "content": "> 1. 重生點重建如附圖。",
       "images": [
-        "https://cdn.discordapp.com/attachments/1270267126011396152/1357672497209806898/image-51.png?ex=69db7c8b&is=69da2b0b&hm=4bbcb56454bb75809c9393903c66bcdd93a292866fd0102bbb800255dfa309ff&",
-        "https://cdn.discordapp.com/attachments/1270267126011396152/1357672497754931201/image-64.png?ex=69db7c8b&is=69da2b0b&hm=af298f38a43febc7e5a0f937e89bea6f65e901eff424133a8b9de19205fc093a&",
-        "https://cdn.discordapp.com/attachments/1270267126011396152/1357672498434543647/image-47.png?ex=69db7c8b&is=69da2b0b&hm=0a408876f2a8170a91b08bc679131f0488d0a1faa2eee8570a63377fe369245d&",
-        "https://cdn.discordapp.com/attachments/1270267126011396152/1357672499021877258/image-50.png?ex=69db7c8c&is=69da2b0c&hm=e653c7455f163d29339dad94c100572d38c2fe4d393fb07a1caaef5dcc86328a&"
+        "assets/announcements/ann_8f070672.webp",
+        "assets/announcements/ann_9da23211.webp"
       ]
     },
     {
@@ -1063,9 +1031,7 @@
       "id": "#0161",
       "title": "聊天顯示時間",
       "content": "> 1. 感謝 解決了技術簡題，現在聊天室的聊天記錄都會顯示發出時間了。",
-      "images": [
-        "https://cdn.discordapp.com/attachments/1270267126011396152/1356905188224405625/image-65.png?ex=69db54ee&is=69da036e&hm=34f3f19b75001e78277186c28b6ead1ba9c1107f47b211249fd260efe2248dac&"
-      ]
+      "images": []
     },
     {
       "date": "114.04.02",
@@ -1090,7 +1056,7 @@
       "title": "兌幣機準備就緒",
       "content": "> 1. 鑽石兌幣機補回來了。",
       "images": [
-        "https://cdn.discordapp.com/attachments/1270267126011396152/1357026117713662162/image.png?ex=69db1cce&is=69d9cb4e&hm=745208b4657a647c8e1c08fb8bcb49897ca8c6144a3d49a7574a23ec7264803e&"
+        "assets/announcements/ann_6790fc3e.webp"
       ]
     },
     {
@@ -1188,7 +1154,7 @@
       "title": "tab排序修復",
       "content": "> 1. 修復在 tab 上沒有排序的問題。",
       "images": [
-        "https://cdn.discordapp.com/attachments/1270267126011396152/1353020167612923996/image.png?ex=69db0a79&is=69d9b8f9&hm=104cee450f5f5ff4103d538d76a5aadce4f52c70806e1d256e2d8d9507fd5f01&"
+        "assets/announcements/ann_34efae49.webp"
       ]
     },
     {
@@ -1254,8 +1220,7 @@
       "title": "選單更新",
       "content": "> - 選單更新了。\n>   - 紅字按鈕為未更新，可能變動。\n>   - 白字按鈕為已更新，不會變動。",
       "images": [
-        "https://cdn.discordapp.com/attachments/1270267126011396152/1348274592971755621/image.png?ex=69db9310&is=69da4190&hm=6e00893c51cc0582bfbe5c67802e72264f45a6df3438b83d7a6ab512343eec66&",
-        "https://cdn.discordapp.com/attachments/1270267126011396152/1348274593453965413/image.png?ex=69db9310&is=69da4190&hm=0c992e313ad6c5aa497c1528d79abf2e3c3886feb8530b1cece4586b8df14e72&"
+        "assets/announcements/ann_20dec2b0.webp"
       ]
     },
     {
@@ -1265,8 +1230,7 @@
       "title": "換啦",
       "content": "> - 目前常駐活動兌換皆已移至`` 選單 - 兌換  ``。\n> - 成功合成出的物品會在下面。",
       "images": [
-        "https://cdn.discordapp.com/attachments/1270267126011396152/1348280557687017552/image.png?ex=69db989e&is=69da471e&hm=202e2c1dbfbd426bc592842ff5113074f1109f0f9ac453767885fcd8e2a99244&",
-        "https://cdn.discordapp.com/attachments/1270267126011396152/1348280558148522105/image.png?ex=69db989e&is=69da471e&hm=703de49e851f950b98d734857270a534a6b6cd29796cb8d47982be49957dd5c7&"
+        "assets/announcements/ann_bcbcd1fc.webp"
       ]
     },
     {
@@ -1275,9 +1239,7 @@
       "id": "#0139",
       "title": "風汐點數更新-2",
       "content": "> - 更新簽到的``  風汐點數  ``數量以及``  風汐兌換處  ``相關物品。",
-      "images": [
-        "https://cdn.discordapp.com/attachments/1270267126011396152/1347989500952842380/image.png?ex=69db324d&is=69d9e0cd&hm=a66e02dfecde881a387ed8559403acfeb79f634200da9b6d718d59954dbdec11&"
-      ]
+      "images": []
     },
     {
       "date": "114.03.05",
@@ -1294,7 +1256,7 @@
       "title": "風汐點數更新",
       "content": "> - 新增：\n>   - ``  風汐碎片  ``、``  風汐石  ``。\n> - 如何獲取：\n>     - 每日任務、簽到、參與活動等方式。\n> - 可以：\n>   - 換取某些特殊道具。",
       "images": [
-        "https://cdn.discordapp.com/attachments/1270267126011396152/1346438748304310323/image.png?ex=69db7ccd&is=69da2b4d&hm=07d960a49d5c0d4a9e7aadd2605c0fe98520354d793c9ad074d6820ae6b05d18&"
+        "assets/announcements/ann_5b15d8d9.webp"
       ]
     },
     {
@@ -1327,9 +1289,7 @@
       "id": "#0133",
       "title": "修正文本",
       "content": "> - 修正下圖連續簽到七天時顯示的錯誤文字描述。",
-      "images": [
-        "https://cdn.discordapp.com/attachments/1270267126011396152/1342427637007650866/image-31.png?ex=69db65a9&is=69da1429&hm=f2e0d1b42ea54a779410c13e651c789d5e44c51bed4b1b62df3a806d54107e3b&"
-      ]
+      "images": []
     },
     {
       "date": "114.02.17",
@@ -1338,7 +1298,7 @@
       "title": "新增",
       "content": "> - 建築小鋪新增 `` 剝皮仔 `` 。",
       "images": [
-        "https://cdn.discordapp.com/attachments/1270267126011396152/1341018904344137770/image.png?ex=69db8bad&is=69da3a2d&hm=09e5e6811669b80700fb222abbc11f6fd295ed8d9dcbcc186aef5b86a5ce058e&"
+        "assets/announcements/ann_dbeaa1cc.webp"
       ]
     },
     {
@@ -1387,9 +1347,7 @@
       "id": "#0125",
       "title": "🏠",
       "content": "> - 如圖",
-      "images": [
-        "https://cdn.discordapp.com/attachments/1270267126011396152/1334046204706684969/image.png?ex=69db3a58&is=69d9e8d8&hm=eabfafac2c4974d4fe8cc46a1afe98d1237bf2a5e56d0b3fb6e9f6734ae67bd8&"
-      ]
+      "images": []
     },
     {
       "date": "114.01.29",
@@ -1421,9 +1379,7 @@
       "id": "#0121",
       "title": "玻璃展示櫃",
       "content": "> - 更新玻璃展示櫃，舊的要打掉重用。",
-      "images": [
-        "https://cdn.discordapp.com/attachments/1270267126011396152/1332008189742546994/image.png?ex=69db108b&is=69d9bf0b&hm=19d968720f40de22eb529d210b33f07edd854ee1174d5ff3c09330788e08e234&"
-      ]
+      "images": []
     },
     {
       "date": "114.01.23",
@@ -1432,7 +1388,7 @@
       "title": "金錢排名+100",
       "content": "> - 現在``  /balancetop  ``可以顯示1~100名。",
       "images": [
-        "https://cdn.discordapp.com/attachments/1270267126011396152/1332019799387144252/image.png?ex=69db1b5b&is=69d9c9db&hm=d3705ac1daa6c0cf368bf5a88a9bb4201a0ddac90ad26e61a73b38fdd1d53ebd&"
+        "assets/announcements/ann_ffe5519e.webp"
       ]
     },
     {
@@ -1465,9 +1421,7 @@
       "id": "#0116",
       "title": "動態頻道更新",
       "content": "> - 改了N次，最終長這樣，如圖。",
-      "images": [
-        "https://cdn.discordapp.com/attachments/1270267126011396152/1328990332024651790/Screenshot_20250115_153150_Discord.png?ex=69db4ab2&is=69d9f932&hm=7f4e28c2a8764fb5fc00e03e95cd4d6893d0899890f8d74e63051f6fda1d9dc1&"
-      ]
+      "images": []
     },
     {
       "date": "114.01.15",
@@ -1476,7 +1430,7 @@
       "title": "修復問題",
       "content": "> - 修了顏色錯誤的問題。",
       "images": [
-        "https://cdn.discordapp.com/attachments/1270267126011396152/1329015941878517760/image.png?ex=69db628c&is=69da110c&hm=1c46963d005aabb3c6cac5fb7f1c3fa4dc443e52bcef83af2ea47071bc0d459b&"
+        "assets/announcements/ann_d4210c40.webp"
       ]
     },
     {
@@ -1486,8 +1440,7 @@
       "title": "地震預警系統更新",
       "content": "> - 在``  1.21.3  ``更新了``  格式、資訊與顏色  ``，如圖。\n>",
       "images": [
-        "https://cdn.discordapp.com/attachments/1270267126011396152/1328679617447591977/image.png?ex=69db7ad2&is=69da2952&hm=9511fecbca714a66399a64c81545891de43b3966fa7077b6197f16c42be19afe&",
-        "https://cdn.discordapp.com/attachments/1270267126011396152/1328679617724157964/image.png?ex=69db7ad2&is=69da2952&hm=0c45ccb98c485d4c58ee1b9232af059dbcb4ce42f636cc4e8149c185c21962eb&"
+        "assets/announcements/ann_f6ff7b28.webp"
       ]
     },
     {
@@ -1504,9 +1457,7 @@
       "id": "#0110",
       "title": "更改伺服器圖貼",
       "content": "> - 圖標：吉祥物「泡芙」\n。\n> - 文字：伺服器名稱「海風」\n。\n> - 背景：「泡芙黃」\n。\n> - 裝飾：一個奇怪的圓形線段且兩角有開口。",
-      "images": [
-        "https://cdn.discordapp.com/attachments/1270267126011396152/1327133053990211635/20250110_122103_0000.png?ex=69db2079&is=69d9cef9&hm=929d2ff258e8102c43ce0f9c58421069dc03ea3c9d5bab42fdf0ce9574c2806e&"
-      ]
+      "images": []
     },
     {
       "date": "114.01.10",
@@ -1515,7 +1466,7 @@
       "title": "機器人指令的一些調整",
       "content": "> - 預先更新一些1.21.3的內容。\n>   - 指令的內容如``  playerlist  ``、``  [item]  ``、``  [inv]  ``等的顯示內容與方式。",
       "images": [
-        "https://cdn.discordapp.com/attachments/1270267126011396152/1327304538939588743/Tablist.png?ex=69db176e&is=69d9c5ee&hm=0bbc22b4e42e57e68558bd15650121d43d09502fbf82d1607b56f865fc4cd8b0&"
+        "assets/announcements/ann_ed276429.webp"
       ]
     },
     {
@@ -1533,7 +1484,7 @@
       "title": "更改伺服器圖貼",
       "content": "> - 吉祥物「泡芙」\n。",
       "images": [
-        "https://cdn.discordapp.com/attachments/1270267126011396152/1326946216650477638/20250109_222551_0000.png?ex=69db1b37&is=69d9c9b7&hm=e27896c2ba90b13f25a417109d5ed23ed9beee222b2b08594ddf2ee025422195&"
+        "assets/announcements/ann_29acfc3d.webp"
       ]
     },
     {
@@ -1567,8 +1518,7 @@
       "title": "點擊互動更新",
       "content": "> - 穿牌開箱功能現在不只在``  箱子跟木桶  ``上有功能了，伺服器更新1.21.3後，將把此功能擴展至附圖1的所有可互動容器，若容器6面有``  告示牌或展示框  ``，如附圖2，直接點擊即可穿越``  告示牌或展示框  ``直接與容器互動。\n>   - 已知``  蜂窩和蜂箱  ``無法套用。",
       "images": [
-        "https://cdn.discordapp.com/attachments/1270267126011396152/1324340283436961902/1.png?ex=69db8380&is=69da3200&hm=6cc1eb5c48b2a8b6f0cadede5aa4e8c75e7223107ebd6084e0d0aa906008a5c0&",
-        "https://cdn.discordapp.com/attachments/1270267126011396152/1324340284108308511/2.png?ex=69db8380&is=69da3200&hm=a2e3a1ba1259bef61c63085f9055cafec620724deb44be2ad7401daa5376cfb4&"
+        "assets/announcements/ann_42eb2a5d.webp"
       ]
     },
     {
@@ -1586,10 +1536,8 @@
       "title": "小更新",
       "content": "> - 更新``  線上商城、任務系統、稱號系統  ``介面。\n> - 由[藍冰伺服器]([連結](https://discord.gg/lan-bing-minecraftsi-fu-qi-883716428480540752))新增測試分流，供測試及海風版本升級。",
       "images": [
-        "https://cdn.discordapp.com/attachments/1270267126011396152/1322820234842996801/image.png?ex=69db41d8&is=69d9f058&hm=189593219b103f4c7479965dbf63ccc69cea00448d203395d5e758f442363dc4&",
-        "https://cdn.discordapp.com/attachments/1270267126011396152/1322820235203711048/image.png?ex=69db41d8&is=69d9f058&hm=3ec08d971af0ac76902c583aca763f4a9d8f592ca432a4db7138e99856beb915&",
-        "https://cdn.discordapp.com/attachments/1270267126011396152/1322820235597713459/image.png?ex=69db41d8&is=69d9f058&hm=681e851f46dd52c679aaf74fb2e99d48178a58b651def62b37f51dd17ce968b6&",
-        "https://cdn.discordapp.com/attachments/1270267126011396152/1322820235967070269/image.png?ex=69db41d9&is=69d9f059&hm=a549f00cddf575c5c7dc169f57da229e5d7d1481ea57f77df486acdec46caecd&"
+        "assets/announcements/ann_b31b8450.webp",
+        "assets/announcements/ann_dd7dc2f3.webp"
       ]
     },
     {
@@ -1598,9 +1546,7 @@
       "id": "#0102",
       "title": "小更新",
       "content": "> - 同步任務系統的排版與文字顯示方式為線上商城的樣子。",
-      "images": [
-        "https://cdn.discordapp.com/attachments/1270267126011396152/1321838499732656128/image.png?ex=69dafb48&is=69d9a9c8&hm=3d40dec2a2001b95f476ede03ef8583cf68ad7605c1c8d8f897cd86ee17530c7&"
-      ]
+      "images": []
     },
     {
       "date": "113.12.25",
@@ -1609,7 +1555,7 @@
       "title": "格式小更新",
       "content": "> - 更新在中玩家``  加入、首次加入和離開  ``的通知訊息格式。\n> - 領地系統部分的通知訊息。",
       "images": [
-        "https://cdn.discordapp.com/attachments/1270267126011396152/1321443373353140235/image.png?ex=69db858b&is=69da340b&hm=70aa5959c47bb9d78a0c09d8b02031b3843688001d7334f94af6f5b0bd70cb02&"
+        "assets/announcements/ann_9fa2013e.webp"
       ]
     },
     {
@@ -1619,8 +1565,7 @@
       "title": "加碼加碼",
       "content": "> 感受到玩家的熱(~~賭~~)烈(~~性~~)要(~~堅~~)求(~~強~~)\n> 加開抽獎 期限至 2024-12-31 23:59\n> 💸但是這次可是要籌碼的哦💸\n> 🎄商人在大廳某七彩羊毛聖誕樹下🎄",
       "images": [
-        "https://cdn.discordapp.com/attachments/1270267126011396152/1321517066473308160/image.png?ex=69db216d&is=69d9cfed&hm=4cef2df34ae98431c40703af5420ae0868604c9bf7be613bcdd591fe591bcf42&",
-        "https://cdn.discordapp.com/attachments/1270267126011396152/1321517066959978557/image.png?ex=69db216d&is=69d9cfed&hm=f7afaa6491ca5b8895d36cc78bd761db5120cc3ac7ea0a9644ca93fbdd716777&"
+        "assets/announcements/ann_f4e97c44.webp"
       ]
     },
     {
@@ -1629,9 +1574,7 @@
       "id": "#0098",
       "title": "修復地圖顯示錯誤",
       "content": "> - 修復地圖無法顯示錯誤。",
-      "images": [
-        "https://cdn.discordapp.com/attachments/1270267126011396152/1321053720259330068/image.png?ex=69db6c26&is=69da1aa6&hm=ff2170445cbadacbb1910819367d280429eaee42de00e2edc07d7b81e31874de&"
-      ]
+      "images": []
     },
     {
       "date": "113.12.24",
@@ -1648,7 +1591,7 @@
       "title": "掉落物模式更換",
       "content": "> - 現在副本掉落物會直接進入背包並且在聊天欄提示。",
       "images": [
-        "https://cdn.discordapp.com/attachments/1270267126011396152/1320419097632178257/image.png?ex=69db175d&is=69d9c5dd&hm=c0fa3273153d06eb03b089902490beb7346eb87a1d1ac690d95824fc6c9924f1&"
+        "assets/announcements/ann_699681c1.webp"
       ]
     },
     {
@@ -1665,9 +1608,7 @@
       "id": "#0094",
       "title": "小更新",
       "content": "> - 更新頻道主題中更新時間的顯示方式。",
-      "images": [
-        "https://cdn.discordapp.com/attachments/1270267126011396152/1319659006674993153/image.png?ex=69daf679&is=69d9a4f9&hm=f876a754b191d48a660fd053ede47a7c6aa8e80546455f8155efbe432e71556c&"
-      ]
+      "images": []
     },
     {
       "date": "113.12.20",
@@ -1692,9 +1633,8 @@
       "title": "領地系統更新",
       "content": "> - 領地系統在聊天欄的``  表達格式和頻道  ``都更新完畢，不排除有遺漏的部分未更新。",
       "images": [
-        "https://cdn.discordapp.com/attachments/1270267126011396152/1317328580652564561/image.png?ex=69db0dd8&is=69d9bc58&hm=cba03c68a9efdb489099d1150fdf12ccf6c20f6c64d7d6ddd545b336eb0c9553&",
-        "https://cdn.discordapp.com/attachments/1270267126011396152/1317328581126389870/image.png?ex=69db0dd8&is=69d9bc58&hm=e9cb2aa5ae837afb8f7578f495deaa6ac9f99caca842cec8c760c02132ba39a4&",
-        "https://cdn.discordapp.com/attachments/1270267126011396152/1317328581726306377/image.png?ex=69db0dd8&is=69d9bc58&hm=4daa618c8e6076569bd5fc4c8d92db6c36f44d351a9ee6585bf4581c78854cae&"
+        "assets/announcements/ann_fdc0045d.webp",
+        "assets/announcements/ann_10accc84.webp"
       ]
     },
     {
@@ -1704,7 +1644,7 @@
       "title": "領地通用權限更新",
       "content": "> - 新增了一些選項。",
       "images": [
-        "https://cdn.discordapp.com/attachments/1270267126011396152/1316979136698388511/image.png?ex=69db19e6&is=69d9c866&hm=0321c7e611d301614c4e90f4f7ab21b36eaf9c5f4b0155a19b8607d547600e06&"
+        "assets/announcements/ann_6e306b32.webp"
       ]
     },
     {
@@ -1721,9 +1661,7 @@
       "id": "#0091",
       "title": "小更新",
       "content": "> - 修復：\n>   - 電梯上下樓距離問題。\n>   - 領地高度無法至最大。\n>   - 領地通知或訊息顯示。\n>   - 基岩版無法登入。\n> - 更新：\n>   - 領地子區域數量``  30 → 50  ``。\n>   - 頻道主題中更新時間的顯示方式。\n>   - 主世界建築高度上限``  319 → 639  ``；世界建築大小``  -64~320 → -64~640  ``。",
-      "images": [
-        "https://cdn.discordapp.com/attachments/1270267126011396152/1317098480459841618/image.png?ex=69db890c&is=69da378c&hm=a7f59bd51fe0a02cda7436957b31c68bfd896b520893ca7ef8cb3c97815fa9bb&"
-      ]
+      "images": []
     },
     {
       "date": "113.12.11",
@@ -1731,9 +1669,7 @@
       "id": "#0088",
       "title": "領地小更新",
       "content": "> - 把領地設定介面的一些圖示改了，我就問為什麼生成夜魅的圖示用棕色羊毛呢？",
-      "images": [
-        "https://cdn.discordapp.com/attachments/1270267126011396152/1316375383213473822/image.png?ex=69db8a9c&is=69da391c&hm=ea1890c2296c7c813a6eef96f0293cf7e9787bd6ede51b500840890f50561e2d&"
-      ]
+      "images": []
     },
     {
       "date": "113.12.10",
@@ -1742,7 +1678,7 @@
       "title": "地圖畫販售者的福音",
       "content": "> - 可以簽名地圖，僅簽名者可以複製地圖。\n>   - 簽名　　　　：``  /maprights sign  ``　。\n>   - 解除簽名　　：``  /maprights unsign  ``。\n>   - 查看簽名資訊：``  /maprights info  ``　。",
       "images": [
-        "https://cdn.discordapp.com/attachments/1270267126011396152/1315949326983233546/image.png?ex=69db4f50&is=69d9fdd0&hm=ef4d2601c4d3d624d8980ba62189a0bd500219ecc78770f8228eeda7830d870c&"
+        "assets/announcements/ann_c685bd20.webp"
       ]
     },
     {
@@ -1751,9 +1687,7 @@
       "id": "#0086",
       "title": "領地小更新",
       "content": "> - ``  /res info  ``顏色與格式統一。",
-      "images": [
-        "https://cdn.discordapp.com/attachments/1270267126011396152/1315577483541610567/image.png?ex=69db4682&is=69d9f502&hm=83cba968294367b8c417871e310dc1ab3b03a915bad9f253cca7be1fb9208ada&"
-      ]
+      "images": []
     },
     {
       "date": "113.12.08",
@@ -1762,7 +1696,7 @@
       "title": "格式小更新",
       "content": "> - 更新在中玩家``  加入、首次加入和離開  ``的通知訊息格式。\n> - 領地系統部分的通知訊息。",
       "images": [
-        "https://cdn.discordapp.com/attachments/1270267126011396152/1315210434743238676/image.png?ex=69db422b&is=69d9f0ab&hm=1322b5869a114392356cb79e4d900e71096354f6bef0935bbefa4de23bd3c99a&"
+        "assets/announcements/ann_52dfcf07.webp"
       ]
     },
     {
@@ -1771,9 +1705,7 @@
       "id": "#0083",
       "title": "修復錯誤",
       "content": "> - 修復基岩版無法連線問題。",
-      "images": [
-        "https://cdn.discordapp.com/attachments/1270267126011396152/1314199104120950804/IMG_9849.png?ex=69db88cb&is=69da374b&hm=be21f669f3cab18b0a937f566a2433875d69ce6503e0ccc550dd9d5090be58d1&"
-      ]
+      "images": []
     },
     {
       "date": "113.12.04",
@@ -1782,8 +1714,7 @@
       "title": "玻璃展示櫃更新",
       "content": "> - 大小縮放選項之最大值`` 10 -> 50  ``。",
       "images": [
-        "https://cdn.discordapp.com/attachments/1270267126011396152/1313861709663961108/image.png?ex=69daf751&is=69d9a5d1&hm=72c85dedf28a47ac924592084d984861ee4cda3b44eb9bc6d7de53ac033697e9&",
-        "https://cdn.discordapp.com/attachments/1270267126011396152/1313861710196506677/image.png?ex=69daf752&is=69d9a5d2&hm=3408a8f42b79810fd2f324089f2e6242c6dcf1dcc4a0259833d90df20f4391f8&"
+        "assets/announcements/ann_a56bf32f.webp"
       ]
     },
     {
@@ -1801,15 +1732,10 @@
       "title": "修復錯誤及小更新",
       "content": "> - 修復錯誤\n>   1. [圖片顯示問題](https://discord.com/channels/1266311059552342078/1270268281579634762/1312270678384312330)。\n>   2. [無法使用玩家列表``  playerlist  ``](https://discord.com/channels/1266311059552342078/1270268305285840958/1312273892009836604)。\n>   3. 伺服器中使用指令前綴為``  /discord  ``位於的頻道。\n> - 小更新\n>   1. 更新在中玩家``  加入、首次加入和離開  ``的通知訊息格式。\n>   2. DiscordSRV``  1.28.0 → 1.29.0  ``。\n>   3. 頻道同步於伺服器的``  一般訊息  ``格式：\n>     - 第一行：``  成員名稱  ``。\n>     - 第二行：``  訊息  ``。\n>   4. 頻道同步於伺服器的``  回覆訊息  ``格式：\n>     - 第一行：``  成員名稱  ``。\n>     - 第二行：回覆 ``  回覆成員名稱  ``\n>     - 第二行：``  訊息  ``。\n>   5. 更換四篇貼文為新版。\n>     - [綁定帳號](https://discord.com/channels/1266311059552342078/1311272831018860564)。\n>     - [蜂聊縣政府](https://discord.com/channels/1266311059552342078/1311272304000630834)。\n>     - [純麥伺服器](https://discord.com/channels/1266311059552342078/1311280929477759057)。\n>     - [生物限制](https://discord.com/channels/1266311059552342078/1311273201392943125)。\n>     6.  新增兩項標籤``  介紹  ``和``  指導  ``。\n> - 發現錯誤\n>   1. 使用指令後[語言或格式](https://discord.com/channels/1266311059552342078/1270268305285840958/1312295471229698129)未顯示正確。\n>     - 推測為[InteractiveChat](https://www.spigotmc.org/resources/interactivechat-show-items-inventory-in-chat-custom-chat-keywords-bungee-velocity-support.75870/)和[InteractiveChatDiscordSrvAddon](https://www.spigotmc.org/resources/interactivechat-discordsrv-addon-show-items-and-invs-on-discord-preview-discord-images-in-game.83917/)插件設定錯誤。\n>   2. 伺服器提示訊息位於的頻道錯誤。\n>   3. 伺服器中使用指令前綴為``  /discord  ``顯示的文字顏色設未定完成。\n>   4. 使用指令``  /res create  ``顯示的提示無頻道。\n>   5. 因插件更新，玩家[統計資料](https://minecraft.fandom.com/zh/wiki/统计信息?variant=zh-tw)遺失，將擇日補償。",
       "images": [
-        "https://cdn.discordapp.com/attachments/1270267126011396152/1312303111662211093/image.png?ex=69db3a83&is=69d9e903&hm=cd5adc3dcb3e4333c48672b36e4b6387afef3a2eb38435a4327e5dfe9a8cb2dd&",
-        "https://cdn.discordapp.com/attachments/1270267126011396152/1312303112018595860/image.png?ex=69db3a83&is=69d9e903&hm=49bd0ec75fe7529875f0e12d33d4fe7d177f8956563cb0d9353d6bdf9e010703&",
-        "https://cdn.discordapp.com/attachments/1270267126011396152/1312303112211529810/image.png?ex=69db3a83&is=69d9e903&hm=7d8cf3da12a10f5a62daa9c12fa8359d3c1d3d81322e952284e6eb4f4149f71f&",
-        "https://cdn.discordapp.com/attachments/1270267126011396152/1312303112392020049/image.png?ex=69db3a83&is=69d9e903&hm=4732eb94a4b7ae1bf6fc86d149678cc2d83900a156ebd26bfc76a914d9903341&",
-        "https://cdn.discordapp.com/attachments/1270267126011396152/1312303112584826982/image.png?ex=69db3a83&is=69d9e903&hm=0ff8365e67d2a7bec248d5f6704a39d2396bebbdb34a193a1fadff207bc6bd34&",
-        "https://cdn.discordapp.com/attachments/1270267126011396152/1312303112836481074/image.png?ex=69db3a83&is=69d9e903&hm=9785d846cc8206004c4889113a585029e94ccf48c525091dcb6110f0a1a9647a&",
-        "https://cdn.discordapp.com/attachments/1270267126011396152/1312303113142800384/image.png?ex=69db3a83&is=69d9e903&hm=f351b2a2b287dbb6f399a826ec4bbec335a66a0deec59e4d8a80f51586605d50&",
-        "https://cdn.discordapp.com/attachments/1270267126011396152/1312303113365094482/image.png?ex=69db3a83&is=69d9e903&hm=3b13e796029cd8d37f264d1f15e0f685977b7d00616f908d04e8f39d609e1ce1&",
-        "https://cdn.discordapp.com/attachments/1270267126011396152/1312303113612427285/2024-11-29_10.png?ex=69db3a83&is=69d9e903&hm=11403dfab5e4e372831474136ea7a55851a5f10ebfa6c1415352095d3f120c49&"
+        "assets/announcements/ann_b23513fc.webp",
+        "assets/announcements/ann_02bfba1f.webp",
+        "assets/announcements/ann_7e47a4eb.webp",
+        "assets/announcements/ann_43ac757d.webp"
       ]
     },
     {
@@ -1819,7 +1745,7 @@
       "title": "更新Discord群組橫幅背景",
       "content": "> - 本次小更新資訊如圖。",
       "images": [
-        "https://cdn.discordapp.com/attachments/1270267126011396152/1312304558046973952/SeaWind.cc_20241122_142648_0000.png?ex=69db3bdc&is=69d9ea5c&hm=67c4f91ecac94567d781d9eab3e97156ac1b7149f011e44ade90fea443b12d38&"
+        "assets/announcements/ann_f90f4df4.webp"
       ]
     },
     {
@@ -1845,7 +1771,7 @@
       "title": "領地小更新",
       "content": "> - 更進一步優化了``  /res pset  ``、``  /res pdel  ``等指令的顯示與說明。",
       "images": [
-        "https://cdn.discordapp.com/attachments/1270267126011396152/1310086220986056775/image.png?ex=69db12df&is=69d9c15f&hm=333970b16f0ebe89885cd882e2654150984f044e56822df8cdb11b268ea2746d&"
+        "assets/announcements/ann_84c3a33c.webp"
       ]
     },
     {
@@ -1870,9 +1796,7 @@
       "id": "#0073",
       "title": "更新生物重生系統",
       "content": "> - 更改了顯示方式。",
-      "images": [
-        "https://cdn.discordapp.com/attachments/1270267126011396152/1309093715167547422/image.png?ex=69db6b07&is=69da1987&hm=77ea634d10e3da02f742c4144237053b12df56611be4480fa79984f9d5e1e0fb&"
-      ]
+      "images": []
     },
     {
       "date": "113.11.20",
@@ -1881,11 +1805,9 @@
       "title": "領地小更新",
       "content": "> - 更進一步優化了``  /res help  ``的顯示與說明並和https://discord.com/channels/1266311059552342078/1308751785237938247同步。",
       "images": [
-        "https://cdn.discordapp.com/attachments/1270267126011396152/1308753851590901851/image.png?ex=69db8001&is=69da2e81&hm=65e1a2054cd95c972ef5ef7ef25380f745d3d91c271f4fa33d89cea07bcd1972&",
-        "https://cdn.discordapp.com/attachments/1270267126011396152/1308753851838631936/image.png?ex=69db8001&is=69da2e81&hm=7a13f386a565438a8d855c9d7a684519d78acc092a8d4eb717df73735353b3e5&",
-        "https://cdn.discordapp.com/attachments/1270267126011396152/1308753852064858173/image.png?ex=69db8001&is=69da2e81&hm=18a986bebb7b936d5afb5003fc552970707a542fd47f1d1a8f2d48c35746ee51&",
-        "https://cdn.discordapp.com/attachments/1270267126011396152/1308753852312326155/image.png?ex=69db8001&is=69da2e81&hm=838350d723a4fc8aab702f9bfe752f1c85e0b2e5b99907f86651f9bf4488491d&",
-        "https://cdn.discordapp.com/attachments/1270267126011396152/1308753852518105138/image.png?ex=69db8001&is=69da2e81&hm=781a94f0feff105be1878df5b6f9f277546647e37fcc642fb198b2efe577ffbe&"
+        "assets/announcements/ann_be042926.webp",
+        "assets/announcements/ann_51efc00b.webp",
+        "assets/announcements/ann_ecee4214.webp"
       ]
     },
     {
@@ -1942,9 +1864,7 @@
       "id": "#0065",
       "title": "新增資訊",
       "content": "> ``  新增BOSS刷新時間  ``。\n> ``  新增小怪刷新時間  ``。",
-      "images": [
-        "https://cdn.discordapp.com/attachments/1270267126011396152/1305121196773478442/image.png?ex=69db77d5&is=69da2655&hm=20522a783726ff23bed3b9015459a63a76f45a6fbcb5843b82231e8edd0c1c18&"
-      ]
+      "images": []
     },
     {
       "date": "113.11.09",
@@ -2009,7 +1929,7 @@
       "title": "偷窺蜜蜂的家",
       "content": "> - 點擊``  蜂窩或蜂巢  ``即可打開介面預覽內部情況。",
       "images": [
-        "https://cdn.discordapp.com/attachments/1270267126011396152/1295699732630339584/image.png?ex=69db7869&is=69da26e9&hm=be480611e05ce446a05753a4311b83c980050009158856a169bb80421f818964&"
+        "assets/announcements/ann_2217db4d.webp"
       ]
     },
     {
@@ -2034,9 +1954,7 @@
       "id": "#0054",
       "title": "光源配方",
       "content": "> - 新增光源合成配方",
-      "images": [
-        "https://cdn.discordapp.com/attachments/1270267126011396152/1294685555019223061/64a3abf93168df99.png?ex=69db13a2&is=69d9c222&hm=5ba8573712031caa5f2cc28db0411bd74b1d5caa2a4fdd964bce0968cbd25401&"
-      ]
+      "images": []
     },
     {
       "date": "113.10.10",
@@ -2069,8 +1987,7 @@
       "title": "領地介面小更新",
       "content": "> - 把原先的``  蹲下鍵+左鍵  ``改為``  Shift+左鍵  ``。",
       "images": [
-        "https://cdn.discordapp.com/attachments/1270267126011396152/1291702073758322820/image.png?ex=69db6dcd&is=69da1c4d&hm=6827d7ad84cece3fd5de85018c2371916dd3dfb35feaca9e2f42e59063c11b5a&",
-        "https://cdn.discordapp.com/attachments/1270267126011396152/1291702074320355328/image.png?ex=69db6dcd&is=69da1c4d&hm=e4233ef638324cd26cc0231a12e690e7d5eb6863cf1597e76dc3bfcf07c6a2a1&"
+        "assets/announcements/ann_d628e5e2.webp"
       ]
     },
     {
@@ -2112,9 +2029,8 @@
       "title": "領地介面更新",
       "content": "> - 盡可能讓資訊顯示得更清楚。",
       "images": [
-        "https://cdn.discordapp.com/attachments/1270267126011396152/1288850627442774037/image.png?ex=69db9a2f&is=69da48af&hm=9f582f7718e0c7df10aaae1d1994926459e6aa9424717948966875f180ece4e4&",
-        "https://cdn.discordapp.com/attachments/1270267126011396152/1288850627690102827/image.png?ex=69db9a2f&is=69da48af&hm=daed006d199cd7367bdd3b938afd79f76c0a74093dba7bcd596c7ec279f9eff9&",
-        "https://cdn.discordapp.com/attachments/1270267126011396152/1288850627945824276/image.png?ex=69db9a2f&is=69da48af&hm=85020603d3481b8cecc41b2d38fe6232a025d8d350565a2c0677883f47c294b3&"
+        "assets/announcements/ann_5a54bd27.webp",
+        "assets/announcements/ann_fbf6c8a7.webp"
       ]
     },
     {
@@ -2131,9 +2047,7 @@
       "id": "#0042",
       "title": "玩家列表更新",
       "content": "> - 將原先的``  Java版/基岩版  ``改為在名稱前方顯示顏色小圓點。\n> - 更改了一些顯示資訊及排序。",
-      "images": [
-        "https://cdn.discordapp.com/attachments/1270267126011396152/1287038467745906719/image.png?ex=69db99fa&is=69da487a&hm=f71ee1fdbac7994a4634b7b662ffa762023a9d843d2c3afa551582d6cb260c98&"
-      ]
+      "images": []
     },
     {
       "date": "113.09.18",
@@ -2142,8 +2056,7 @@
       "title": "修改表達格式",
       "content": ">  - ``  帳號綁定  ``資訊表達格式修改為更明確的樣式。",
       "images": [
-        "https://cdn.discordapp.com/attachments/1270267126011396152/1285901750720663637/image.png?ex=69db6bd4&is=69da1a54&hm=13ea3d969c43b899ca7a316090106168203c936e8fa1168abb914add35541a3c&",
-        "https://cdn.discordapp.com/attachments/1270267126011396152/1285901751148609577/image.png?ex=69db6bd4&is=69da1a54&hm=4cfdabf9e1bb0af2829356820f24388e58af7cc998505e78aa7f13e9b9011ab0&"
+        "assets/announcements/ann_45297fdf.webp"
       ]
     },
     {
@@ -2153,7 +2066,7 @@
       "title": "修改介面格式",
       "content": ">  - ``  簽到菜單  ``改為``  簽到月曆  ``且格式翻新。",
       "images": [
-        "https://cdn.discordapp.com/attachments/1270267126011396152/1285597336587862016/image.png?ex=69daf912&is=69d9a792&hm=4fb3103190c23b7f412890195649ec10967b98362d81cd4f9f223c7a349e7862&"
+        "assets/announcements/ann_16d834d9.webp"
       ]
     },
     {
@@ -2210,9 +2123,7 @@
       "id": "#0031",
       "title": "更新日誌",
       "content": "> - 修改生物的生成方式、時間......等。\n> - 新增：\n>   - 實體上限系統。\n>   - 編號資料庫線上查詢系統。",
-      "images": [
-        "https://cdn.discordapp.com/attachments/1270267126011396152/1282335741472411658/image.png?ex=69daf8f9&is=69d9a779&hm=2e7789694e34cc9100aa97f5176d8706164c0dffad9d87f7361ef11489e219ac&"
-      ]
+      "images": []
     },
     {
       "date": "113.09.06",
@@ -2221,7 +2132,7 @@
       "title": "更新日誌",
       "content": "> - 更新社群群組頻道的頻道主題。\n> - 海風服版本更新為``  0.5  ``。",
       "images": [
-        "https://cdn.discordapp.com/attachments/1270267126011396152/1281405673946615888/Screenshot_20240906_075023_Discord.jpg?ex=69db8b48&is=69da39c8&hm=0d2387ca1fe6c890926cd3238b9e0566a0a494b756279a9afd2ad067b2958c04&"
+        "assets/announcements/ann_2dcf6612.webp"
       ]
     },
     {
@@ -2303,8 +2214,7 @@
       "title": "更新日誌",
       "content": "## ﻿ 「　更新日誌　」\n> - /spawn 新增   `  點擊簽到  `  。\n> - /spawn 新增   `  簽到GUI  `  。",
       "images": [
-        "https://cdn.discordapp.com/attachments/1270267126011396152/1276128757169782836/image.png?ex=69db7685&is=69da2505&hm=96a09324a5baceb6761429c2121cb2d2c2a9270467776623ebd95ce28be0db96&",
-        "https://cdn.discordapp.com/attachments/1270267126011396152/1276128757379235924/image.png?ex=69db7685&is=69da2505&hm=784c7286ace18f1af6109642d26b2e9fc84a5cf1e4abf17b4f592efd55316f49&"
+        "assets/announcements/ann_824a0a91.webp"
       ]
     },
     {
