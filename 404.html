@@ -7,308 +7,529 @@
   <title>找不到頁面 — 海風</title>
   <meta name="robots" content="noindex">
   <link rel="icon" href="assets/img/logo.png">
-  <meta name="theme-color" content="#0d1117">
+  <meta name="theme-color" content="#0a0c1a">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;800&family=Noto+Serif+TC:wght@700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=260411d">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;600;700&family=Noto+Serif+TC:wght@700&display=swap" rel="stylesheet">
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
-    .ocean-page {
-      min-height: 100vh;
+    :root {
+      --sky: #9dafff;
+      --foam: #a8e6cf;
+      --deep: #0a0c1a;
+      --ocean-dark: #06101f;
+      --ocean-mid: #0c1e3a;
+      --ocean-light: #143052;
+    }
+
+    html, body {
+      height: 100%;
+      overflow: hidden;
+      font-family: 'Noto Sans TC', system-ui, sans-serif;
+      background: var(--deep);
+    }
+
+    .scene {
+      position: fixed;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      background: linear-gradient(
+        180deg,
+        #060816 0%,
+        #0a1028 15%,
+        #0c1833 30%,
+        #0e2040 50%,
+        #0c1e3a 65%,
+        #091a30 80%,
+        #071425 100%
+      );
+    }
+
+    /* ═══ Sky ═══ */
+    .sky {
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 60%;
+      overflow: hidden;
+    }
+
+    /* Stars */
+    .star {
+      position: absolute;
+      background: #fff;
+      border-radius: 50%;
+      animation: twinkle ease-in-out infinite alternate;
+    }
+    @keyframes twinkle {
+      0% { opacity: 0.15; transform: scale(0.8); }
+      100% { opacity: 0.9; transform: scale(1.2); }
+    }
+
+    /* Shooting star */
+    .shooting-star {
+      position: absolute;
+      width: 120px;
+      height: 1.5px;
+      background: linear-gradient(90deg, rgba(255,255,255,0.8), transparent);
+      border-radius: 1px;
+      opacity: 0;
+      animation: shoot 6s ease-in-out infinite;
+    }
+    .shooting-star:nth-child(2) { animation-delay: 4s; top: 12%; left: 55%; transform: rotate(-25deg); }
+    .shooting-star:nth-child(3) { animation-delay: 9s; top: 8%; left: 30%; transform: rotate(-35deg); width: 80px; }
+    @keyframes shoot {
+      0%, 90%, 100% { opacity: 0; transform: translateX(0) rotate(-30deg); }
+      92% { opacity: 1; }
+      96% { opacity: 0; transform: translateX(300px) rotate(-30deg); }
+    }
+
+    /* Moon */
+    .moon {
+      position: absolute;
+      top: 10%;
+      right: 15%;
+      width: 70px;
+      height: 70px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 35% 35%,
+        #fffbe6 0%,
+        #f5e6a0 30%,
+        #d4b85a 60%,
+        #b89a3a 100%
+      );
+      box-shadow:
+        0 0 40px 15px rgba(245, 230, 160, 0.12),
+        0 0 100px 40px rgba(245, 230, 160, 0.05),
+        inset -8px -4px 20px rgba(180, 140, 50, 0.3);
+    }
+    .moon::after {
+      content: '';
+      position: absolute;
+      top: 15px; left: 20px;
+      width: 12px; height: 12px;
+      border-radius: 50%;
+      background: rgba(180, 140, 50, 0.2);
+    }
+
+    /* Moon reflection on water */
+    .moon-reflection {
+      position: absolute;
+      bottom: 32%;
+      right: 15%;
+      width: 4px;
+      height: 0;
+      background: linear-gradient(180deg,
+        rgba(245, 230, 160, 0.25),
+        rgba(245, 230, 160, 0.08),
+        transparent
+      );
+      border-radius: 2px;
+      animation: reflection-shimmer 4s ease-in-out infinite alternate;
+      filter: blur(2px);
+    }
+    @keyframes reflection-shimmer {
+      0% { height: 80px; opacity: 0.6; transform: scaleX(1); }
+      50% { height: 120px; opacity: 0.3; transform: scaleX(3); }
+      100% { height: 90px; opacity: 0.5; transform: scaleX(2); }
+    }
+
+    /* ═══ Ocean ═══ */
+    .ocean {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 42%;
+      overflow: hidden;
+    }
+
+    /* Wave layers using CSS */
+    .wave-layer {
+      position: absolute;
+      left: -10%;
+      width: 120%;
+      pointer-events: none;
+    }
+
+    .wave-back {
+      bottom: 55%;
+      height: 60px;
+    }
+    .wave-back::before {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 100%;
+      background:
+        radial-gradient(ellipse 200px 40px at 10% 100%, rgba(20, 48, 82, 0.8) 0%, transparent 70%),
+        radial-gradient(ellipse 180px 35px at 40% 100%, rgba(20, 48, 82, 0.7) 0%, transparent 70%),
+        radial-gradient(ellipse 220px 45px at 75% 100%, rgba(20, 48, 82, 0.8) 0%, transparent 70%),
+        radial-gradient(ellipse 160px 30px at 95% 100%, rgba(20, 48, 82, 0.6) 0%, transparent 70%);
+      animation: wave-back-move 14s ease-in-out infinite alternate;
+    }
+    @keyframes wave-back-move {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(40px); }
+    }
+
+    .wave-mid {
+      bottom: 40%;
+      height: 80px;
+    }
+    .wave-mid::before {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 100%;
+      background:
+        radial-gradient(ellipse 250px 50px at 5% 100%, rgba(12, 30, 58, 0.9) 0%, transparent 70%),
+        radial-gradient(ellipse 200px 45px at 35% 100%, rgba(12, 30, 58, 0.85) 0%, transparent 70%),
+        radial-gradient(ellipse 280px 55px at 65% 100%, rgba(12, 30, 58, 0.9) 0%, transparent 70%),
+        radial-gradient(ellipse 180px 40px at 90% 100%, rgba(12, 30, 58, 0.8) 0%, transparent 70%);
+      animation: wave-mid-move 10s ease-in-out infinite alternate;
+    }
+    @keyframes wave-mid-move {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-30px); }
+    }
+
+    /* SVG wave - front */
+    .wave-front {
+      position: absolute;
+      bottom: 0; left: -5%;
+      width: 110%;
+      height: 45%;
+    }
+    .wave-front svg {
+      position: absolute;
+      bottom: 0;
+      width: 200%;
+      height: 100%;
+    }
+    .wave-front .wf-1 {
+      animation: drift-right 18s linear infinite;
+      fill: rgba(6, 16, 31, 0.7);
+    }
+    .wave-front .wf-2 {
+      animation: drift-left 14s linear infinite;
+      fill: rgba(9, 20, 38, 0.6);
+    }
+    .wave-front .wf-3 {
+      animation: drift-right 22s linear infinite;
+      fill: rgba(7, 20, 37, 0.95);
+    }
+    @keyframes drift-right {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+    @keyframes drift-left {
+      0% { transform: translateX(-50%); }
+      100% { transform: translateX(0); }
+    }
+
+    /* Horizon shimmer */
+    .horizon {
+      position: absolute;
+      bottom: 40%;
+      left: 0; right: 0;
+      height: 1px;
+      background: linear-gradient(90deg,
+        transparent 0%,
+        rgba(157, 175, 255, 0.06) 15%,
+        rgba(168, 230, 207, 0.1) 50%,
+        rgba(157, 175, 255, 0.06) 85%,
+        transparent 100%
+      );
+    }
+
+    /* Water sparkles */
+    .sparkle {
+      position: absolute;
+      width: 2px;
+      height: 2px;
+      background: rgba(168, 230, 207, 0.6);
+      border-radius: 50%;
+      animation: sparkle-blink 2s ease-in-out infinite;
+    }
+    @keyframes sparkle-blink {
+      0%, 100% { opacity: 0; transform: scale(0.5); }
+      50% { opacity: 1; transform: scale(1.5); }
+    }
+
+    /* Boat silhouette */
+    .boat {
+      position: absolute;
+      bottom: 42%;
+      left: 65%;
+      z-index: 5;
+      animation: boat-rock 6s ease-in-out infinite, boat-drift 30s ease-in-out infinite alternate;
+      opacity: 0.25;
+    }
+    @keyframes boat-rock {
+      0%, 100% { transform: rotate(-1.5deg) translateY(0); }
+      50% { transform: rotate(1.5deg) translateY(-3px); }
+    }
+    @keyframes boat-drift {
+      0% { left: 60%; }
+      100% { left: 68%; }
+    }
+
+    /* ═══ Content ═══ */
+    .content {
+      position: relative;
+      z-index: 10;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      position: relative;
-      overflow: hidden;
-      background: linear-gradient(180deg, #0a0e1a 0%, #0d1b2a 30%, #1b2838 60%, #0d1117 100%);
-    }
-
-    /* Stars */
-    .ocean-stars {
-      position: absolute;
-      inset: 0;
-      pointer-events: none;
-    }
-    .star {
-      position: absolute;
-      width: 2px;
-      height: 2px;
-      background: #fff;
-      border-radius: 50%;
-      animation: twinkle 3s ease-in-out infinite alternate;
-    }
-    @keyframes twinkle {
-      0% { opacity: 0.2; }
-      100% { opacity: 0.8; }
-    }
-
-    /* Moon */
-    .ocean-moon {
-      position: absolute;
-      top: 12%;
-      right: 18%;
-      width: 80px;
-      height: 80px;
-      border-radius: 50%;
-      background: radial-gradient(circle at 35% 35%, #f5f0d0, #e8d88e, #c9a84c);
-      box-shadow: 0 0 60px 20px rgba(245, 240, 200, 0.15), 0 0 120px 40px rgba(245, 240, 200, 0.06);
-      animation: moon-glow 6s ease-in-out infinite alternate;
-    }
-    @keyframes moon-glow {
-      0% { box-shadow: 0 0 60px 20px rgba(245, 240, 200, 0.15), 0 0 120px 40px rgba(245, 240, 200, 0.06); }
-      100% { box-shadow: 0 0 80px 30px rgba(245, 240, 200, 0.2), 0 0 140px 50px rgba(245, 240, 200, 0.08); }
-    }
-
-    /* Waves */
-    .ocean-waves {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      height: 35%;
-      overflow: hidden;
-    }
-    .wave {
-      position: absolute;
-      bottom: 0;
-      left: -10%;
-      width: 120%;
       height: 100%;
-    }
-    .wave svg {
-      position: absolute;
-      bottom: 0;
-      width: 200%;
-      animation: wave-drift linear infinite;
-    }
-    .wave-1 svg {
-      animation-duration: 12s;
-      fill: rgba(87, 138, 255, 0.08);
-    }
-    .wave-2 svg {
-      animation-duration: 16s;
-      animation-direction: reverse;
-      fill: rgba(168, 230, 207, 0.06);
-    }
-    .wave-3 svg {
-      animation-duration: 20s;
-      fill: rgba(157, 175, 255, 0.04);
-    }
-    @keyframes wave-drift {
-      0% { transform: translateX(0); }
-      100% { transform: translateX(-50%); }
-    }
-
-    /* Water shimmer */
-    .ocean-surface {
-      position: absolute;
-      bottom: 28%;
-      left: 0;
-      right: 0;
-      height: 2px;
-      background: linear-gradient(90deg,
-        transparent 0%,
-        rgba(157, 175, 255, 0.15) 20%,
-        rgba(168, 230, 207, 0.25) 50%,
-        rgba(157, 175, 255, 0.15) 80%,
-        transparent 100%
-      );
-      animation: shimmer-move 4s ease-in-out infinite alternate;
-    }
-    @keyframes shimmer-move {
-      0% { opacity: 0.5; transform: scaleX(0.95); }
-      100% { opacity: 1; transform: scaleX(1.05); }
-    }
-
-    /* Content */
-    .ocean-content {
-      position: relative;
-      z-index: 10;
       text-align: center;
       padding: 2rem;
-      margin-bottom: 15vh;
+      margin-top: -8vh;
     }
 
     .error-code {
-      font-size: clamp(7rem, 18vw, 12rem);
-      font-weight: 800;
       font-family: 'Noto Serif TC', serif;
-      background: linear-gradient(180deg, rgba(255,255,255,0.9) 0%, rgba(157,175,255,0.5) 100%);
+      font-size: clamp(8rem, 22vw, 14rem);
+      font-weight: 700;
+      line-height: 0.9;
+      letter-spacing: 0.08em;
+      background: linear-gradient(
+        180deg,
+        rgba(255, 255, 255, 0.95) 0%,
+        rgba(157, 175, 255, 0.6) 40%,
+        rgba(168, 230, 207, 0.3) 70%,
+        rgba(157, 175, 255, 0.15) 100%
+      );
       -webkit-background-clip: text;
       background-clip: text;
       -webkit-text-fill-color: transparent;
-      line-height: 1;
-      margin-bottom: 0.5rem;
-      letter-spacing: 0.1em;
-      text-shadow: none;
-      filter: drop-shadow(0 4px 30px rgba(157, 175, 255, 0.2));
+      filter: drop-shadow(0 0 40px rgba(157, 175, 255, 0.15));
+      margin-bottom: 1.5rem;
+      user-select: none;
     }
 
-    .ocean-title {
-      font-size: clamp(1.2rem, 3vw, 1.6rem);
-      font-weight: 700;
-      color: rgba(255, 255, 255, 0.85);
-      margin-bottom: 1rem;
-      letter-spacing: 0.15em;
+    .title {
+      font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+      font-weight: 600;
+      color: rgba(255, 255, 255, 0.8);
+      letter-spacing: 0.2em;
+      margin-bottom: 0.8rem;
     }
 
-    .ocean-desc {
-      color: rgba(255, 255, 255, 0.45);
-      font-size: clamp(0.85rem, 1.5vw, 1rem);
-      max-width: 380px;
-      margin: 0 auto 2rem;
+    .subtitle {
+      font-size: clamp(0.82rem, 1.4vw, 0.95rem);
+      color: rgba(255, 255, 255, 0.35);
       line-height: 2;
+      max-width: 340px;
+      margin-bottom: 2.5rem;
+      font-weight: 300;
     }
 
-    .ocean-actions {
+    .actions {
       display: flex;
-      gap: 1rem;
+      gap: 12px;
       flex-wrap: wrap;
       justify-content: center;
     }
 
-    .ocean-btn {
+    .btn {
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      padding: 14px 28px;
-      border-radius: 12px;
-      font-size: 0.95rem;
+      padding: 12px 26px;
+      border-radius: 10px;
+      font-size: 0.9rem;
       font-weight: 600;
       text-decoration: none;
-      font-family: 'Noto Sans TC', sans-serif;
-      transition: all 0.3s ease;
+      font-family: inherit;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
       cursor: pointer;
     }
-    .ocean-btn-primary {
-      background: linear-gradient(135deg, rgba(87, 138, 255, 0.3), rgba(168, 230, 207, 0.2));
-      border: 1px solid rgba(157, 175, 255, 0.3);
+    .btn-home {
+      background: linear-gradient(135deg, rgba(87, 138, 255, 0.25), rgba(168, 230, 207, 0.15));
+      border: 1px solid rgba(157, 175, 255, 0.25);
       color: #c8deff;
       backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
     }
-    .ocean-btn-primary:hover {
-      background: linear-gradient(135deg, rgba(87, 138, 255, 0.45), rgba(168, 230, 207, 0.3));
+    .btn-home:hover {
+      background: linear-gradient(135deg, rgba(87, 138, 255, 0.4), rgba(168, 230, 207, 0.25));
       border-color: rgba(157, 175, 255, 0.5);
       transform: translateY(-2px);
-      box-shadow: 0 8px 30px rgba(87, 138, 255, 0.2);
+      box-shadow: 0 8px 30px rgba(87, 138, 255, 0.15);
     }
-    .ocean-btn-ghost {
+    .btn-ghost {
       background: transparent;
-      border: 1px solid rgba(255, 255, 255, 0.12);
-      color: rgba(255, 255, 255, 0.5);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      color: rgba(255, 255, 255, 0.45);
     }
-    .ocean-btn-ghost:hover {
+    .btn-ghost:hover {
       border-color: rgba(255, 255, 255, 0.25);
-      color: rgba(255, 255, 255, 0.7);
+      color: rgba(255, 255, 255, 0.65);
       transform: translateY(-2px);
     }
 
-    /* Lighthouse */
-    .ocean-lighthouse {
+    /* Decorative compass */
+    .compass {
       position: absolute;
-      bottom: 30%;
-      right: 12%;
-      z-index: 5;
-      opacity: 0.15;
-    }
-    .lighthouse-beam {
-      position: absolute;
-      bottom: 30px;
+      top: 50%;
       left: 50%;
-      width: 200px;
-      height: 4px;
-      background: linear-gradient(90deg, rgba(255,255,200,0.6), transparent);
-      transform-origin: left center;
-      animation: beam-rotate 8s linear infinite;
+      transform: translate(-50%, -50%);
+      width: 300px;
+      height: 300px;
+      border: 1px solid rgba(157, 175, 255, 0.04);
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 1;
+      animation: compass-spin 60s linear infinite;
     }
-    @keyframes beam-rotate {
-      0% { transform: rotate(-30deg); }
-      50% { transform: rotate(30deg); }
-      100% { transform: rotate(-30deg); }
+    .compass::before {
+      content: '';
+      position: absolute;
+      top: 50%; left: 50%;
+      width: 4px; height: 4px;
+      background: rgba(157, 175, 255, 0.1);
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
+    }
+    .compass::after {
+      content: '';
+      position: absolute;
+      top: 0; left: 50%;
+      width: 1px; height: 150px;
+      background: linear-gradient(180deg, rgba(157, 175, 255, 0.08), transparent);
+      transform-origin: bottom center;
+    }
+    @keyframes compass-spin {
+      from { transform: translate(-50%, -50%) rotate(0deg); }
+      to { transform: translate(-50%, -50%) rotate(360deg); }
     }
 
+    /* ═══ Responsive ═══ */
     @media (max-width: 768px) {
-      .ocean-moon { width: 50px; height: 50px; top: 8%; right: 10%; }
-      .ocean-lighthouse { display: none; }
+      .moon { width: 50px; height: 50px; top: 8%; right: 10%; }
+      .compass { width: 200px; height: 200px; }
+      .compass::after { height: 100px; }
+      .boat { display: none; }
+      .content { margin-top: -5vh; }
+    }
+
+    @media (max-width: 480px) {
+      .moon { width: 40px; height: 40px; }
+      .error-code { font-size: 6rem; }
+    }
+
+    /* Reduced motion */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+      }
     }
   </style>
 </head>
 <body>
-  <div class="ocean-page">
+  <div class="scene">
 
-    <!-- Stars -->
-    <div class="ocean-stars" id="stars"></div>
-
-    <!-- Moon -->
-    <div class="ocean-moon"></div>
-
-    <!-- Lighthouse -->
-    <div class="ocean-lighthouse">
-      <svg width="30" height="60" viewBox="0 0 30 60" fill="none">
-        <rect x="11" y="20" width="8" height="40" fill="rgba(255,255,255,0.3)" rx="1"/>
-        <rect x="8" y="10" width="14" height="12" fill="rgba(255,255,255,0.25)" rx="2"/>
-        <rect x="12" y="2" width="6" height="10" fill="rgba(255,255,200,0.4)" rx="3"/>
-        <circle cx="15" cy="7" r="3" fill="rgba(255,255,200,0.6)"/>
-      </svg>
-      <div class="lighthouse-beam"></div>
+    <!-- Sky -->
+    <div class="sky" id="sky">
+      <div class="shooting-star" style="top:15%;left:20%;transform:rotate(-30deg)"></div>
+      <div class="shooting-star"></div>
+      <div class="shooting-star"></div>
+      <div class="moon"></div>
+      <div class="compass"></div>
     </div>
 
-    <!-- Ocean surface line -->
-    <div class="ocean-surface"></div>
+    <!-- Moon reflection -->
+    <div class="moon-reflection"></div>
 
-    <!-- Waves -->
-    <div class="ocean-waves">
-      <div class="wave wave-1">
-        <svg viewBox="0 0 1440 200" preserveAspectRatio="none">
-          <path d="M0,100 C240,150 480,50 720,100 C960,150 1200,50 1440,100 L1440,200 L0,200Z"/>
-          <path d="M1440,100 C1680,150 1920,50 2160,100 C2400,150 2640,50 2880,100 L2880,200 L1440,200Z"/>
+    <!-- Horizon -->
+    <div class="horizon"></div>
+
+    <!-- Ocean -->
+    <div class="ocean" id="ocean">
+      <div class="wave-layer wave-back"></div>
+      <div class="wave-layer wave-mid"></div>
+
+      <!-- Boat -->
+      <div class="boat">
+        <svg width="60" height="50" viewBox="0 0 60 50" fill="none">
+          <path d="M5,35 Q15,45 30,42 Q45,45 55,35 L50,35 Q45,40 30,38 Q15,40 10,35Z" fill="rgba(255,255,255,0.15)"/>
+          <line x1="30" y1="38" x2="30" y2="10" stroke="rgba(255,255,255,0.12)" stroke-width="1.5"/>
+          <path d="M30,10 Q42,18 30,28" fill="rgba(255,255,255,0.08)" stroke="rgba(255,255,255,0.1)" stroke-width="0.5"/>
         </svg>
       </div>
-      <div class="wave wave-2">
-        <svg viewBox="0 0 1440 200" preserveAspectRatio="none">
-          <path d="M0,120 C360,80 720,160 1080,120 C1260,100 1380,140 1440,120 L1440,200 L0,200Z"/>
-          <path d="M1440,120 C1800,80 2160,160 2520,120 C2700,100 2820,140 2880,120 L2880,200 L1440,200Z"/>
+
+      <!-- Front waves (SVG) -->
+      <div class="wave-front">
+        <svg class="wf-1" viewBox="0 0 2880 200" preserveAspectRatio="none">
+          <path d="M0,80 C180,110 360,50 540,80 C720,110 900,50 1080,80 C1260,110 1440,50 1620,80 C1800,110 1980,50 2160,80 C2340,110 2520,50 2700,80 C2790,95 2880,80 2880,80 L2880,200 L0,200Z"/>
         </svg>
-      </div>
-      <div class="wave wave-3">
-        <svg viewBox="0 0 1440 200" preserveAspectRatio="none">
-          <path d="M0,140 C180,120 360,160 540,140 C720,120 900,160 1080,140 C1260,120 1380,150 1440,140 L1440,200 L0,200Z"/>
-          <path d="M1440,140 C1620,120 1800,160 1980,140 C2160,120 2340,160 2520,140 C2700,120 2820,150 2880,140 L2880,200 L1440,200Z"/>
+        <svg class="wf-2" viewBox="0 0 2880 200" preserveAspectRatio="none">
+          <path d="M0,100 C240,130 480,70 720,100 C960,130 1200,70 1440,100 C1680,130 1920,70 2160,100 C2400,130 2640,70 2880,100 L2880,200 L0,200Z"/>
+        </svg>
+        <svg class="wf-3" viewBox="0 0 2880 200" preserveAspectRatio="none">
+          <path d="M0,130 C360,100 720,160 1080,130 C1440,100 1800,160 2160,130 C2520,100 2700,150 2880,130 L2880,200 L0,200Z"/>
         </svg>
       </div>
     </div>
+
+    <!-- Water sparkles -->
+    <div id="sparkles"></div>
 
     <!-- Content -->
-    <div class="ocean-content">
+    <div class="content">
       <div class="error-code">404</div>
-      <h1 class="ocean-title">您已航向未知的海域</h1>
-      <p class="ocean-desc">看來這片海域沒有陸地。<br>別擔心，讓風帶你回到正確的航線。</p>
-      <div class="ocean-actions">
-        <a href="首頁.html" class="ocean-btn ocean-btn-primary">返回首頁</a>
-        <a href="https://discord.gg/HdS2HrJEH7" target="_blank" class="ocean-btn ocean-btn-ghost">加入社群</a>
+      <h1 class="title">您已航向未知的海域</h1>
+      <p class="subtitle">看來這片海域沒有陸地。<br>別擔心，讓風帶你回到正確的航線。</p>
+      <div class="actions">
+        <a href="首頁.html" class="btn btn-home">🏠 返回首頁</a>
+        <a href="https://discord.gg/HdS2HrJEH7" target="_blank" class="btn btn-ghost">💬 加入社群</a>
       </div>
     </div>
 
   </div>
 
   <script>
-    // Generate stars
-    const starsEl = document.getElementById('stars');
-    if (starsEl) {
-      for (let i = 0; i < 80; i++) {
-        const s = document.createElement('div');
-        s.className = 'star';
-        s.style.left = Math.random() * 100 + '%';
-        s.style.top = Math.random() * 60 + '%';
-        s.style.width = (1 + Math.random() * 2) + 'px';
-        s.style.height = s.style.width;
-        s.style.animationDelay = (Math.random() * 3) + 's';
-        s.style.animationDuration = (2 + Math.random() * 3) + 's';
-        starsEl.appendChild(s);
+    // Stars
+    const sky = document.getElementById('sky');
+    for (let i = 0; i < 120; i++) {
+      const s = document.createElement('div');
+      s.className = 'star';
+      s.style.left = Math.random() * 100 + '%';
+      s.style.top = Math.random() * 55 + '%';
+      const size = 0.5 + Math.random() * 2;
+      s.style.width = size + 'px';
+      s.style.height = size + 'px';
+      s.style.animationDelay = (Math.random() * 5) + 's';
+      s.style.animationDuration = (2 + Math.random() * 4) + 's';
+      sky.appendChild(s);
+    }
+
+    // Water sparkles
+    const sparkles = document.getElementById('sparkles');
+    if (sparkles) {
+      sparkles.style.cssText = 'position:absolute;bottom:0;left:0;right:0;height:42%;pointer-events:none;overflow:hidden;z-index:4;';
+      for (let i = 0; i < 25; i++) {
+        const sp = document.createElement('div');
+        sp.className = 'sparkle';
+        sp.style.left = (5 + Math.random() * 90) + '%';
+        sp.style.bottom = (5 + Math.random() * 35) + '%';
+        sp.style.animationDelay = (Math.random() * 4) + 's';
+        sp.style.animationDuration = (1.5 + Math.random() * 2) + 's';
+        sparkles.appendChild(sp);
       }
+    }
+
+    // Parallax on mouse move (desktop)
+    if (window.innerWidth > 768) {
+      document.addEventListener('mousemove', (e) => {
+        const x = (e.clientX / window.innerWidth - 0.5) * 2;
+        const y = (e.clientY / window.innerHeight - 0.5) * 2;
+        const moon = document.querySelector('.moon');
+        if (moon) moon.style.transform = `translate(${x * 8}px, ${y * 5}px)`;
+      });
     }
   </script>
 </body>
