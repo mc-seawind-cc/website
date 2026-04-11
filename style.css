@@ -202,3 +202,28 @@
   .bulletin-toggle .b-tag{font-size:0.6rem;padding:1px 6px}
   .ann-list .bulletin-toggle{padding:12px 14px}
 }
+
+/* ═══ 海風逐字風吹搖曳 ═══ */
+.hero-title .char {
+  display: inline-block;
+  animation: wind-sway 4s ease-in-out infinite;
+  animation-delay: calc(var(--i) * 0.6s);
+  transform-origin: bottom center;
+}
+@keyframes wind-sway {
+  0%   { transform: rotate(0deg) translateX(0) translateY(0); }
+  15%  { transform: rotate(-2.5deg) translateX(-3px) translateY(-2px); }
+  30%  { transform: rotate(1.5deg) translateX(4px) translateY(1px); }
+  50%  { transform: rotate(-1deg) translateX(-2px) translateY(-3px); }
+  65%  { transform: rotate(2deg) translateX(3px) translateY(0); }
+  80%  { transform: rotate(-0.5deg) translateX(-1px) translateY(-1px); }
+  100% { transform: rotate(0deg) translateX(0) translateY(0); }
+}
+.hero-title .char:hover {
+  animation-play-state: paused;
+  filter: drop-shadow(0 0 12px rgba(157,175,255,0.5));
+  transition: filter 0.3s;
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero-title .char { animation: none; }
+}
