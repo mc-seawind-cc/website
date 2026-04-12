@@ -15,29 +15,62 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=260413a">
+  <link rel="stylesheet" href="style.css?v=260412g">
   <link rel="stylesheet" href="music-player.css">
   <style>
-    .pen-list { display: flex; flex-direction: column; gap: var(--space-sm); }
+    /* ═══ 違規處分頁面 ═══ */
 
-    .pen-card {
+    /* 統計列 */
+    .pen-stats {
+      display: flex;
+      gap: 10px;
+      margin-bottom: var(--space-xl);
+      flex-wrap: wrap;
+    }
+    .pen-stat {
       background: var(--ocean);
       border: 1px solid var(--mist);
       border-radius: var(--radius-md);
-      overflow: hidden;
-      transition: border-color var(--duration) var(--ease);
+      padding: 14px 20px;
+      text-align: center;
+      flex: 1;
+      min-width: 80px;
+      transition: border-color 0.2s;
     }
-    .pen-card:hover { border-color: rgba(157,175,255,0.15); }
-    .pen-card.open { border-color: rgba(255,130,130,0.3); }
+    .pen-stat:hover { border-color: rgba(157,175,255,0.15); }
+    .pen-stat .num { font-size: 1.4rem; font-weight: 800; color: var(--cloud); line-height: 1.2; }
+    .pen-stat .label { font-size: 0.68rem; color: var(--fog); margin-top: 2px; text-transform: uppercase; letter-spacing: 0.5px; }
+    .pen-stat.stat-permanent { border-left: 3px solid rgba(255,100,100,0.5); }
+    .pen-stat.stat-temp { border-left: 3px solid rgba(255,170,50,0.5); }
+    .pen-stat.stat-kick { border-left: 3px solid rgba(157,175,255,0.4); }
 
+    /* 處分列表 */
+    .pen-list { display: flex; flex-direction: column; gap: 4px; }
+
+    /* 卡片 */
+    .pen-card {
+      background: var(--ocean);
+      border: 1px solid var(--mist);
+      border-radius: 12px;
+      overflow: hidden;
+      transition: all 0.3s var(--ease);
+    }
+    .pen-card:hover { border-color: rgba(255,255,255,0.1); }
+    .pen-card.open {
+      border-color: rgba(255,130,130,0.2);
+      box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+    }
+
+    /* 卡片頭 */
     .pen-head {
       display: flex;
       align-items: center;
       gap: 10px;
-      padding: 12px 14px;
+      padding: 12px 16px;
       cursor: pointer;
       user-select: none;
-      transition: background 0.15s;
+      transition: background 0.2s;
+      min-height: 48px;
     }
     .pen-head:hover { background: rgba(255,255,255,0.02); }
     [data-theme="light"] .pen-head:hover { background: rgba(0,0,0,0.01); }
@@ -49,14 +82,25 @@
       min-width: 68px;
       font-variant-numeric: tabular-nums;
     }
-    .pen-title {
+    .pen-title-wrap {
       flex: 1;
-      font-size: 0.88rem;
+      min-width: 0;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .pen-players {
+      font-size: 0.85rem;
       font-weight: 500;
-      color: var(--cloud);
+      color: var(--white);
       overflow: hidden;
       text-overflow: ellipsis;
       white-space: nowrap;
+    }
+    .pen-type {
+      font-size: 0.78rem;
+      color: var(--fog);
+      flex-shrink: 0;
     }
     .pen-right {
       display: flex;
@@ -64,112 +108,132 @@
       gap: 6px;
       flex-shrink: 0;
     }
+    .pen-id {
+      font-size: 0.7rem;
+      color: var(--sky);
+      font-family: 'JetBrains Mono', 'Cascadia Code', monospace;
+      font-weight: 600;
+      background: rgba(157,175,255,0.06);
+      padding: 2px 8px;
+      border-radius: 4px;
+    }
     .pen-badge {
       font-size: 0.62rem;
       padding: 2px 8px;
       border-radius: 99px;
-      font-weight: 500;
+      font-weight: 600;
+      white-space: nowrap;
     }
-    .pen-badge.badge-permanent {
-      background: rgba(255,100,100,0.12);
-      color: #ff6b6b;
-    }
-    .pen-badge.badge-temp {
-      background: rgba(255,170,50,0.12);
-      color: #ffaa32;
-    }
-    .pen-badge.badge-kick {
-      background: rgba(157,175,255,0.1);
-      color: var(--sky);
-    }
-    [data-theme="light"] .pen-badge.badge-permanent { background: rgba(255,60,60,0.08); color: #dc3545; }
-    [data-theme="light"] .pen-badge.badge-temp { background: rgba(255,170,50,0.08); color: #e69500; }
-    [data-theme="light"] .pen-badge.badge-kick { background: rgba(157,175,255,0.08); color: #4a6cf7; }
+    .badge-permanent { background: rgba(255,100,100,0.12); color: #ff6b6b; }
+    .badge-temp { background: rgba(255,170,50,0.12); color: #ffaa32; }
+    .badge-kick { background: rgba(157,175,255,0.1); color: var(--sky); }
+    [data-theme="light"] .badge-permanent { background: rgba(255,60,60,0.08); color: #dc3545; }
+    [data-theme="light"] .badge-temp { background: rgba(255,170,50,0.08); color: #e69500; }
+    [data-theme="light"] .badge-kick { background: rgba(157,175,255,0.08); color: #4a6cf7; }
 
-    .pen-id {
-      font-size: 0.62rem;
-      color: var(--text-muted);
-      font-family: monospace;
-    }
     .pen-arrow {
       color: var(--fog);
-      font-size: 0.75rem;
-      transition: transform 0.25s;
+      font-size: 0.72rem;
+      transition: transform 0.25s var(--ease);
     }
     .pen-card.open .pen-arrow { transform: rotate(180deg); }
 
+    /* 卡片內容 */
     .pen-body {
       max-height: 0;
       overflow: hidden;
       transition: max-height 0.4s cubic-bezier(0.4,0,0.2,1);
     }
-    .pen-card.open .pen-body { max-height: 1000px; }
+    .pen-card.open .pen-body { max-height: 1500px; }
     .pen-body-inner {
-      padding: 0 14px 14px;
+      padding: 16px 18px 14px;
       background: rgba(255,255,255,0.01);
-      border-top: 1px solid rgba(255,130,130,0.08);
+      border-top: 1px solid rgba(255,130,130,0.06);
     }
     [data-theme="light"] .pen-body-inner {
       background: rgba(0,0,0,0.005);
       border-top-color: rgba(0,0,0,0.04);
     }
-    .pen-content {
-      color: var(--cloud);
+
+    /* 結構化詳情 */
+    .pen-detail {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 6px 16px;
       font-size: 0.88rem;
-      line-height: 1.9;
-      padding-top: 12px;
+      line-height: 1.8;
     }
-    .pen-content p { margin-bottom: 0.5em; }
-    .pen-content p:last-child { margin-bottom: 0; }
-    .pen-content ul { padding-left: 1.4em; margin: 4px 0; }
-    .pen-content li { margin-bottom: 2px; }
-    .pen-content strong { color: var(--sky); }
-    .pen-content code {
+    .pen-detail-label {
+      color: var(--fog);
+      font-size: 0.78rem;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+    .pen-detail-value {
+      color: var(--cloud);
+    }
+    .pen-detail-value code {
       background: rgba(157,175,255,0.08);
       padding: 1px 6px;
       border-radius: 4px;
       font-size: 0.85em;
-      font-family: monospace;
+      font-family: 'JetBrains Mono', monospace;
+      color: var(--sky);
     }
-
-    .pen-footer {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      margin-top: 10px;
-      padding-top: 8px;
+    .pen-detail-value a {
+      color: var(--sky);
+      text-decoration: none;
+      border-bottom: 1px solid rgba(157,175,255,0.3);
+    }
+    .pen-detail-value a:hover { border-bottom-color: var(--sky); }
+    .pen-detail-full {
+      grid-column: 1 / -1;
+      margin-top: 4px;
+      padding-top: 10px;
       border-top: 1px solid rgba(255,255,255,0.04);
-      font-size: 0.72rem;
-      color: var(--text-muted);
+      color: var(--fog);
+      font-size: 0.82rem;
+      line-height: 1.9;
     }
-    [data-theme="light"] .pen-footer { border-top-color: rgba(0,0,0,0.04); }
+    [data-theme="light"] .pen-detail-full { border-top-color: rgba(0,0,0,0.04); }
 
-    .pen-stats {
-      display: flex;
-      gap: 10px;
-      margin-bottom: var(--space-lg);
-      flex-wrap: wrap;
+    /* PDF 附件 */
+    .pen-pdf-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 14px;
+      background: rgba(255,100,100,0.06);
+      border: 1px solid rgba(255,100,100,0.12);
+      border-radius: 99px;
+      color: var(--cloud);
+      font-size: 0.8rem;
+      text-decoration: none;
+      transition: all 0.2s;
+      margin-top: 8px;
     }
-    .pen-stat {
-      background: var(--ocean);
-      border: 1px solid var(--mist);
-      border-radius: var(--radius-md);
-      padding: 10px 16px;
-      text-align: center;
-      flex: 1;
-      min-width: 80px;
+    .pen-pdf-link:hover {
+      background: rgba(255,100,100,0.12);
+      border-color: rgba(255,100,100,0.25);
     }
-    .pen-stat .num { font-size: 1.3rem; font-weight: 800; color: var(--cloud); }
-    .pen-stat .label { font-size: 0.68rem; color: var(--fog); margin-top: 2px; }
 
+    /* 淺色主題 */
+    [data-theme="light"] .pen-stat { background: #fff; border-color: rgba(0,0,0,0.06); }
+    [data-theme="light"] .pen-card { background: #fff; border-color: rgba(0,0,0,0.06); }
+    [data-theme="light"] .pen-card.open { border-color: rgba(255,130,130,0.15); box-shadow: 0 4px 16px rgba(0,0,0,0.05); }
+    [data-theme="light"] .pen-players { color: var(--cloud); }
+
+    /* RWD */
     @media (max-width: 768px) {
-      .pen-head { gap: 6px; padding: 10px; }
-      .pen-date { min-width: 52px; font-size: 0.66rem; }
-      .pen-title { font-size: 0.82rem; }
-      .pen-id { display: none; }
       .pen-stats { gap: 6px; }
-      .pen-stat { padding: 8px; }
+      .pen-stat { padding: 10px 12px; }
       .pen-stat .num { font-size: 1.1rem; }
+      .pen-head { gap: 6px; padding: 10px 12px; }
+      .pen-date { min-width: 52px; font-size: 0.66rem; }
+      .pen-players { font-size: 0.8rem; }
+      .pen-type { display: none; }
+      .pen-id { font-size: 0.62rem; padding: 1px 5px; }
+      .pen-detail { font-size: 0.84rem; }
     }
   </style>
 </head>
@@ -262,6 +326,7 @@
   <script src="main.js?v=260412b"></script>
   <script>
   (() => {
+    'use strict';
     const listEl = document.getElementById('penList');
     const statsEl = document.getElementById('penStats');
 
@@ -282,22 +347,33 @@
       const kick = items.filter(i => /踢出/.test(i.title)).length;
       statsEl.innerHTML = `
         <div class="pen-stat"><div class="num">${items.length}</div><div class="label">總計</div></div>
-        <div class="pen-stat"><div class="num" style="color:#ff6b6b">${permanent}</div><div class="label">永久停權</div></div>
-        <div class="pen-stat"><div class="num" style="color:#ffaa32">${temp}</div><div class="label">暫時處分</div></div>
-        <div class="pen-stat"><div class="num" style="color:var(--sky)">${kick}</div><div class="label">踢出</div></div>
+        <div class="pen-stat stat-permanent"><div class="num" style="color:#ff6b6b">${permanent}</div><div class="label">永久停權</div></div>
+        <div class="pen-stat stat-temp"><div class="num" style="color:#ffaa32">${temp}</div><div class="label">暫時處分</div></div>
+        <div class="pen-stat stat-kick"><div class="num" style="color:var(--sky)">${kick}</div><div class="label">踢出</div></div>
       `;
 
       // Cards
       let html = '';
       items.forEach((item, i) => {
-        const date = formatDateROC(item.date);
+        const date = item.date || '—';
         const badge = getBadge(item.title);
         const idLabel = item.id ? `<span class="pen-id">${item.id}</span>` : '';
+
+        // Player display (card header)
+        const playerDisplay = item.players.length
+          ? item.players.join('、')
+          : extractTitle(item);
+
+        // Structured detail
+        const detail = buildDetail(item);
 
         html += `<div class="pen-card" data-idx="${i}">
           <div class="pen-head" onclick="this.closest('.pen-card').classList.toggle('open')">
             <span class="pen-date">${date}</span>
-            <span class="pen-title">${item.title}</span>
+            <div class="pen-title-wrap">
+              <span class="pen-players">${esc(playerDisplay)}</span>
+              <span class="pen-type">${esc(item.title)}</span>
+            </div>
             <span class="pen-right">
               ${idLabel}
               ${badge}
@@ -306,7 +382,7 @@
           </div>
           <div class="pen-body">
             <div class="pen-body-inner">
-              <div class="pen-content">${md2html(item.content)}</div>
+              <div class="pen-detail">${detail}</div>
             </div>
           </div>
         </div>`;
@@ -314,11 +390,82 @@
       listEl.innerHTML = html;
     }
 
-    function formatDateROC(date) {
-      if (!date) return '—';
-      const parts = String(date).split('.');
-      if (parts.length === 3) return `${parts[0]}.${parts[1]}.${parts[2]}`;
-      return date;
+    function buildDetail(item) {
+      let html = '';
+      const content = item.content || '';
+
+      // Parse structured fields from Discord markdown
+      const players = item.players;
+      if (players.length) {
+        html += `<span class="pen-detail-label">違規玩家</span>`;
+        html += `<span class="pen-detail-value">${players.map(p => '<code>' + esc(p) + '</code>').join('、')}</span>`;
+      }
+
+      // Extract violation rule
+      const ruleMatch = content.match(/違反規章[：:]\s*\n?\s*[>]*\s*[-•]\s*(.+)/);
+      if (ruleMatch) {
+        html += `<span class="pen-detail-label">違反規章</span>`;
+        html += `<span class="pen-detail-value">${esc(ruleMatch[1].trim())}</span>`;
+      }
+      // Old format
+      const oldRuleMatch = content.match(/違\s*反\s*[：:]\s*\n?\s*[>]*\s*[-•]\s*(.+)/);
+      if (!ruleMatch && oldRuleMatch) {
+        html += `<span class="pen-detail-label">違反規章</span>`;
+        html += `<span class="pen-detail-value">${esc(oldRuleMatch[1].trim())}</span>`;
+      }
+
+      // Extract violation detail
+      const detailMatch = content.match(/違反規章[：:].*?\n\s*[>]*\s*[-•]\s*(.+)/s);
+      if (detailMatch && detailMatch[1].trim()) {
+        html += `<span class="pen-detail-label">違規事實</span>`;
+        html += `<span class="pen-detail-value">${esc(detailMatch[1].trim())}</span>`;
+      }
+
+      // Appeal info
+      const appealMatch = content.match(/處分上訴[：:].*?``\s*(可|不可)\s*``/s);
+      if (appealMatch) {
+        const canAppeal = appealMatch[1] === '可';
+        html += `<span class="pen-detail-label">上訴</span>`;
+        html += `<span class="pen-detail-value">${canAppeal ? '可至客服中心上訴' : '不可上訴'}</span>`;
+      }
+
+      // Special notes
+      const noteMatch = content.match(/-#\s*(.+)/g);
+      if (noteMatch) {
+        const notes = noteMatch.map(n => n.replace(/-#\s*/, '').trim()).filter(n => n);
+        if (notes.length) {
+          html += `<span class="pen-detail-label">備註</span>`;
+          html += `<span class="pen-detail-value" style="color:var(--fog);font-size:0.82rem">${notes.map(esc).join('<br>')}</span>`;
+        }
+      }
+
+      // Old format: extract penalty from title content
+      const oldPenaltyMatch = content.match(/懲\s*處\s*[：:]\s*(.+)/);
+      if (oldPenaltyMatch) {
+        html += `<span class="pen-detail-label">懲處</span>`;
+        html += `<span class="pen-detail-value">${esc(oldPenaltyMatch[1].trim())}</span>`;
+      }
+
+      // PDF link
+      if (item.pdf) {
+        html += `<span class="pen-detail-label">附件</span>`;
+        html += `<span class="pen-detail-value"><a class="pen-pdf-link" href="${esc(item.pdf)}" target="_blank" rel="noopener">📄 ${esc(item.pdf)}</a></span>`;
+      }
+
+      // Fallback: show raw content if nothing parsed
+      if (!html) {
+        html = `<div class="pen-detail-full">${md2html(content)}</div>`;
+      }
+
+      return html;
+    }
+
+    function extractTitle(item) {
+      const content = item.content || '';
+      // Try to get first player mention
+      const m = content.match(/@\S+/);
+      if (m) return m[0];
+      return item.title || '處分';
     }
 
     function getBadge(title) {
@@ -326,6 +473,13 @@
       if (/踢出/.test(title)) return '<span class="pen-badge badge-kick">踢出</span>';
       if (/停權|禁言/.test(title)) return '<span class="pen-badge badge-temp">暫時</span>';
       return '<span class="pen-badge badge-temp">處分</span>';
+    }
+
+    function esc(s) {
+      if (!s) return '';
+      const d = document.createElement('div');
+      d.textContent = s;
+      return d.innerHTML;
     }
   })();
   </script>
