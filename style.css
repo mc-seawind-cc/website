@@ -364,21 +364,22 @@
 .bulletin-toggle:hover {
   background: rgba(255,255,255,0.02);
 }
-.bulletin-toggle .b-id-wrap { flex-shrink: 0; }
-.bulletin-toggle .b-id {
-  font-size: 0.72rem;
-  color: var(--sky);
-  font-family: 'JetBrains Mono', 'Cascadia Code', monospace;
-  font-weight: 600;
-  background: rgba(157,175,255,0.08);
-  padding: 2px 8px;
-  border-radius: 4px;
-  min-width: 48px;
-  text-align: center;
-  display: inline-block;
+.bulletin-toggle .b-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
 }
-.bulletin-toggle .b-id-empty {
-  visibility: hidden;
+.tag-dot-公告 { background: rgba(87,138,255,0.7); }
+.tag-dot-更新 { background: rgba(100,220,180,0.7); }
+.tag-dot-活動 { background: rgba(255,170,50,0.7); }
+.tag-dot-維護 { background: rgba(255,130,130,0.7); }
+.bulletin-toggle .b-date {
+  font-size: 0.72rem;
+  color: var(--fog);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+  flex-shrink: 0;
 }
 .bulletin-toggle .b-title {
   flex: 1;
@@ -393,12 +394,6 @@
   align-items: center;
   gap: 8px;
   flex-shrink: 0;
-}
-.bulletin-toggle .b-date {
-  font-size: 0.72rem;
-  color: var(--fog);
-  font-variant-numeric: tabular-nums;
-  white-space: nowrap;
 }
 .bulletin-toggle .b-tag {
   font-size: 0.62rem;
@@ -433,6 +428,17 @@
   padding: 14px 18px 16px;
   background: rgba(255,255,255,0.012);
   border-top: 1px solid rgba(157,175,255,0.08);
+}
+.bulletin-body .b-content .b-id {
+  display: inline-block;
+  font-size: 0.72rem;
+  color: var(--sky);
+  font-family: 'JetBrains Mono', 'Cascadia Code', monospace;
+  font-weight: 600;
+  background: rgba(157,175,255,0.06);
+  padding: 2px 8px;
+  border-radius: 4px;
+  margin-bottom: 8px;
 }
 .bulletin-body .b-content p { margin-bottom: 0.6em; }
 .bulletin-body .b-content p:last-child { margin-bottom: 0; }

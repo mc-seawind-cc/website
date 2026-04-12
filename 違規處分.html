@@ -393,57 +393,74 @@
     function buildDetail(item) {
       let html = '';
       const content = item.content || '';
+      const players = item.players || [];
 
-      // Parse structured fields from Discord markdown
-      const players = item.players;
-      if (players.length) {
+      // Extract players from @mentions if players array is empty
+      let allPlayers = [...players];
+      if (!allPlayers.length) {
+        const mentions = content.match(/@[\w\u4e00-\u9fff.]+/g);
+        if (mentions) allPlayers.push(...mentions);
+      }
+      // Also try extracting from old format "〉玩　家　："
+      const oldPlayerMatch = content.match(/玩\s*家\s*[：:].*?@\s*([^\s｜\n]+)/s);
+      if (oldPlayerMatch && !allPlayers.some(p => p.includes(oldPlayerMatch[1]))) {
+        allPlayers.push(oldPlayerMatch[1]);
+      }
+
+      if (allPlayers.length) {
         html += `<span class="pen-detail-label">違規玩家</span>`;
-        html += `<span class="pen-detail-value">${players.map(p => '<code>' + esc(p) + '</code>').join('、')}</span>`;
+        html += `<span class="pen-detail-value">${allPlayers.map(p => '<code>' + esc(p) + '</code>').join('、')}</span>`;
       }
 
-      // Extract violation rule
+      // Violation rule — new format
+      let ruleText = '';
       const ruleMatch = content.match(/違反規章[：:]\s*\n?\s*[>]*\s*[-•]\s*(.+)/);
-      if (ruleMatch) {
-        html += `<span class="pen-detail-label">違反規章</span>`;
-        html += `<span class="pen-detail-value">${esc(ruleMatch[1].trim())}</span>`;
-      }
+      if (ruleMatch) ruleText = ruleMatch[1].trim();
       // Old format
-      const oldRuleMatch = content.match(/違\s*反\s*[：:]\s*\n?\s*[>]*\s*[-•]\s*(.+)/);
-      if (!ruleMatch && oldRuleMatch) {
+      if (!ruleText) {
+        const oldRule = content.match(/違\s*反\s*[：:]\s*\n?\s*[>]*\s*[-•]\s*(.+)/);
+        if (oldRule) ruleText = oldRule[1].trim();
+      }
+      if (ruleText) {
         html += `<span class="pen-detail-label">違反規章</span>`;
-        html += `<span class="pen-detail-value">${esc(oldRuleMatch[1].trim())}</span>`;
+        html += `<span class="pen-detail-value">${esc(ruleText)}</span>`;
       }
 
-      // Extract violation detail
+      // Violation detail (second bullet under 規章)
       const detailMatch = content.match(/違反規章[：:].*?\n\s*[>]*\s*[-•]\s*(.+)/s);
-      if (detailMatch && detailMatch[1].trim()) {
+      if (detailMatch && detailMatch[1].trim() && detailMatch[1].trim() !== ruleText) {
         html += `<span class="pen-detail-label">違規事實</span>`;
         html += `<span class="pen-detail-value">${esc(detailMatch[1].trim())}</span>`;
+      }
+
+      // Penalty — old format "懲　處　："
+      const oldPenalty = content.match(/懲\s*處\s*[：:]\s*(.+)/);
+      if (oldPenalty) {
+        html += `<span class="pen-detail-label">懲處</span>`;
+        html += `<span class="pen-detail-value">${esc(oldPenalty[1].trim())}</span>`;
       }
 
       // Appeal info
       const appealMatch = content.match(/處分上訴[：:].*?``\s*(可|不可)\s*``/s);
       if (appealMatch) {
-        const canAppeal = appealMatch[1] === '可';
         html += `<span class="pen-detail-label">上訴</span>`;
-        html += `<span class="pen-detail-value">${canAppeal ? '可至客服中心上訴' : '不可上訴'}</span>`;
+        html += `<span class="pen-detail-value">${appealMatch[1] === '可' ? '可至客服中心上訴' : '不可上訴'}</span>`;
+      }
+      // Old format appeal
+      const oldAppeal = content.match(/若需上訴請至/);
+      if (!appealMatch && oldAppeal) {
+        html += `<span class="pen-detail-label">上訴</span>`;
+        html += `<span class="pen-detail-value">可至客服中心上訴</span>`;
       }
 
-      // Special notes
-      const noteMatch = content.match(/-#\s*(.+)/g);
-      if (noteMatch) {
-        const notes = noteMatch.map(n => n.replace(/-#\s*/, '').trim()).filter(n => n);
+      // Notes (-# lines)
+      const noteLines = content.match(/-#\s*(.+)/g);
+      if (noteLines) {
+        const notes = noteLines.map(n => n.replace(/-#\s*/, '').trim()).filter(n => n && !n.startsWith('日期'));
         if (notes.length) {
           html += `<span class="pen-detail-label">備註</span>`;
           html += `<span class="pen-detail-value" style="color:var(--fog);font-size:0.82rem">${notes.map(esc).join('<br>')}</span>`;
         }
-      }
-
-      // Old format: extract penalty from title content
-      const oldPenaltyMatch = content.match(/懲\s*處\s*[：:]\s*(.+)/);
-      if (oldPenaltyMatch) {
-        html += `<span class="pen-detail-label">懲處</span>`;
-        html += `<span class="pen-detail-value">${esc(oldPenaltyMatch[1].trim())}</span>`;
       }
 
       // PDF link
@@ -452,19 +469,21 @@
         html += `<span class="pen-detail-value"><a class="pen-pdf-link" href="${esc(item.pdf)}" target="_blank" rel="noopener">📄 ${esc(item.pdf)}</a></span>`;
       }
 
-      // Fallback: show raw content if nothing parsed
-      if (!html) {
-        html = `<div class="pen-detail-full">${md2html(content)}</div>`;
-      }
-
       return html;
     }
 
     function extractTitle(item) {
       const content = item.content || '';
-      // Try to get first player mention
-      const m = content.match(/@\S+/);
-      if (m) return m[0];
+      // Try to get player names from various formats
+      // New format: code blocks
+      const codeBlocks = content.match(/``\s*([^`]+?)\s*``/g);
+      if (codeBlocks && codeBlocks.length) {
+        const names = codeBlocks.map(b => b.replace(/``/g, '').trim()).filter(n => n && n !== '可' && n !== '不可');
+        if (names.length) return names.join('、');
+      }
+      // Old format: @mentions
+      const mentions = content.match(/@[\w\u4e00-\u9fff.]+/g);
+      if (mentions && mentions.length) return mentions.join('、');
       return item.title || '處分';
     }
 

@@ -504,32 +504,25 @@ function renderBulletin(board, items, isV2) {
   const showItems = items.slice(0, MAX_SHOW);
   let html = '';
 
-  function toggleItem() {
-    const wasOpen = this.closest('.bulletin-item').classList.contains('open');
-    board.querySelectorAll('.bulletin-item.open').forEach(e => e.classList.remove('open'));
-    if (!wasOpen) {
-      this.closest('.bulletin-item').classList.add('open');
-    }
-  }
-
   showItems.forEach((item, i) => {
     const tag = item.tag || '更新';
     const date = isV2 ? formatDateV2(item.isoDate) : formatDate(item.date, item.timestamp);
     const pinnedClass = item.pinned ? ' pinned' : '';
-    const idBadge = item.id ? `<span class="b-id">${item.id}</span>` : '<span class="b-id b-id-empty"></span>';
+    const tagDot = `<span class="b-dot tag-dot-${tag}" title="${tag}"></span>`;
     const tagLabel = `<span class="b-tag tag-${tag}">${tag}</span>`;
+    const idLabel = item.id ? `<span class="b-id">${item.id}</span>` : '';
 
     html += `<div class="bulletin-item${pinnedClass}" data-tag="${tag}" data-index="${i}">
       <button class="bulletin-toggle" aria-expanded="false">
-        <span class="b-id-wrap">${idBadge}</span>
+        ${tagDot}
+        <span class="b-date">${date}</span>
         <span class="b-title">${item.title}</span>
         <span class="b-right">
-          <span class="b-date">${date}</span>
           ${tagLabel}
           <span class="b-arrow">▾</span>
         </span>
       </button>
-      <div class="bulletin-body"><div class="b-content">${md2html(item.content)}</div></div>
+      <div class="bulletin-body"><div class="b-content">${idLabel}${md2html(item.content)}</div></div>
     </div>`;
   });
 
@@ -539,7 +532,11 @@ function renderBulletin(board, items, isV2) {
   board.innerHTML = html;
 
   board.querySelectorAll('.bulletin-toggle').forEach(btn => {
-    btn.addEventListener('click', toggleItem);
+    btn.addEventListener('click', function() {
+      const wasOpen = this.closest('.bulletin-item').classList.contains('open');
+      board.querySelectorAll('.bulletin-item.open').forEach(e => e.classList.remove('open'));
+      if (!wasOpen) this.closest('.bulletin-item').classList.add('open');
+    });
   });
 }
 
