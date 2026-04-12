@@ -20,7 +20,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;800&family=Noto+Serif+TC:wght@700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=260412g">
+  <link rel="stylesheet" href="style.css?v=260412h">
   <link rel="stylesheet" href="music-player.css">
   <style>
     /* 歷史館專屬樣式 */
@@ -134,7 +134,7 @@
       transform: translateY(20px);
       transition: opacity 0.6s var(--ease), transform 0.6s var(--ease);
     }
-    .tl-item.visible {
+    .tl-item.visible, .tl-item.fade-in.visible {
       opacity: 1;
       transform: translateY(0);
     }
@@ -269,7 +269,7 @@
         <li><a href="首頁.html">首頁</a></li>
         <li><a href="公告.html">公告</a></li>
         <li class="nav-dropdown">
-          <a href="文化藝廊.html" class="nav-dropdown-toggle">關於 <span class="arrow">▾</span></a>
+          <a href="文化藝廊.html" class="nav-dropdown-toggle" aria-expanded="false" aria-haspopup="true">關於 <span class="arrow">▾</span></a>
           <ul class="dropdown-menu">
             <li><a href="文化藝廊.html">文化藝廊</a></li>
             <li><a href="風景照.html">風景照</a></li>
@@ -280,7 +280,7 @@
         </li>
         <li><a href="海風指南.html">海風指南</a></li>
         <li class="nav-dropdown">
-          <a href="玩家須知.html" class="nav-dropdown-toggle">社群須知 <span class="arrow">▾</span></a>
+          <a href="玩家須知.html" class="nav-dropdown-toggle" aria-expanded="false" aria-haspopup="true">社群須知 <span class="arrow">▾</span></a>
           <ul class="dropdown-menu">
             <li><a href="玩家須知.html">玩家須知</a></li>
             <li><a href="支持須知.html">支持須知</a></li>
@@ -294,7 +294,7 @@
         <li><a href="會員.html">會員</a></li>
         <li><a href="相關連結.html">相關連結</a></li>
         <li class="nav-dropdown">
-          <a href="合作夥伴.html" class="nav-dropdown-toggle">資料中心 <span class="arrow">▾</span></a>
+          <a href="合作夥伴.html" class="nav-dropdown-toggle" aria-expanded="false" aria-haspopup="true">資料中心 <span class="arrow">▾</span></a>
           <ul class="dropdown-menu">
             <li><a href="合作夥伴.html">合作夥伴</a></li>
             <li><a href="違規處分.html">違規處分</a></li>
@@ -341,7 +341,7 @@
         <div class="timeline-era">
           <div class="timeline-era-label"><span class="era-badge">🌾 前傳 — 純麥時期（2023~2024）</span></div>
 
-          <div class="tl-item">
+          <div class="tl-item fade-in">
             <div class="tl-dot milestone"></div>
             <div class="tl-card milestone-card">
               <span class="tl-date">2023.10.21</span>
@@ -351,7 +351,7 @@
             </div>
           </div>
 
-          <div class="tl-item">
+          <div class="tl-item fade-in">
             <div class="tl-dot"></div>
             <div class="tl-card">
               <span class="tl-date">2023.10.25</span>
@@ -361,7 +361,7 @@
             </div>
           </div>
 
-          <div class="tl-item">
+          <div class="tl-item fade-in">
             <div class="tl-dot"></div>
             <div class="tl-card">
               <span class="tl-date">2023.11.19</span>
@@ -371,7 +371,7 @@
             </div>
           </div>
 
-          <div class="tl-item">
+          <div class="tl-item fade-in">
             <div class="tl-dot"></div>
             <div class="tl-card">
               <span class="tl-date">2023.12.09</span>
@@ -381,7 +381,7 @@
             </div>
           </div>
 
-          <div class="tl-item">
+          <div class="tl-item fade-in">
             <div class="tl-dot"></div>
             <div class="tl-card">
               <span class="tl-date">2024.01.09</span>
@@ -391,7 +391,7 @@
             </div>
           </div>
 
-          <div class="tl-item">
+          <div class="tl-item fade-in">
             <div class="tl-dot"></div>
             <div class="tl-card">
               <span class="tl-date">2024.01.14</span>
@@ -401,7 +401,7 @@
             </div>
           </div>
 
-          <div class="tl-item">
+          <div class="tl-item fade-in">
             <div class="tl-dot"></div>
             <div class="tl-card">
               <span class="tl-date">2024.02.09</span>
@@ -411,7 +411,7 @@
             </div>
           </div>
 
-          <div class="tl-item">
+          <div class="tl-item fade-in">
             <div class="tl-dot"></div>
             <div class="tl-card">
               <span class="tl-date">2024.02.17</span>
@@ -421,7 +421,7 @@
             </div>
           </div>
 
-          <div class="tl-item">
+          <div class="tl-item fade-in">
             <div class="tl-dot"></div>
             <div class="tl-card">
               <span class="tl-date">2024.02.28</span>
@@ -431,7 +431,7 @@
             </div>
           </div>
 
-          <div class="tl-item">
+          <div class="tl-item fade-in">
             <div class="tl-dot"></div>
             <div class="tl-card">
               <span class="tl-date">2024.03.15</span>
@@ -441,7 +441,7 @@
             </div>
           </div>
 
-          <div class="tl-item">
+          <div class="tl-item fade-in">
             <div class="tl-dot"></div>
             <div class="tl-card">
               <span class="tl-date">2024.04.04</span>
@@ -451,7 +451,7 @@
             </div>
           </div>
 
-          <div class="tl-item">
+          <div class="tl-item fade-in">
             <div class="tl-dot"></div>
             <div class="tl-card">
               <span class="tl-date">2024.04.09</span>
@@ -461,7 +461,7 @@
             </div>
           </div>
 
-          <div class="tl-item">
+          <div class="tl-item fade-in">
             <div class="tl-dot"></div>
             <div class="tl-card">
               <span class="tl-date">2024.05.05</span>
@@ -471,7 +471,7 @@
             </div>
           </div>
 
-          <div class="tl-item">
+          <div class="tl-item fade-in">
             <div class="tl-dot"></div>
             <div class="tl-card">
               <span class="tl-date">2024.05.22</span>
@@ -481,7 +481,7 @@
             </div>
           </div>
 
-          <div class="tl-item">
+          <div class="tl-item fade-in">
             <div class="tl-dot"></div>
             <div class="tl-card">
               <span class="tl-date">2024.05.31</span>
@@ -491,7 +491,7 @@
             </div>
           </div>
 
-          <div class="tl-item">
+          <div class="tl-item fade-in">
             <div class="tl-dot"></div>
             <div class="tl-card">
               <span class="tl-date">2024.06.04</span>
@@ -501,7 +501,7 @@
             </div>
           </div>
 
-          <div class="tl-item">
+          <div class="tl-item fade-in">
             <div class="tl-dot milestone"></div>
             <div class="tl-card milestone-card">
               <span class="tl-date">2024.08.06</span>
@@ -516,7 +516,7 @@
         <div class="timeline-era">
           <div class="timeline-era-label"><span class="era-badge">🌱 創立期 — 113 年（2024）</span></div>
 
-          <div class="tl-item">
+          <div class="tl-item fade-in">
             <div class="tl-dot milestone"></div>
             <div class="tl-card milestone-card">
               <span class="tl-date">113.08.14</span>
@@ -526,7 +526,7 @@
             </div>
           </div>
 
-          <div class="tl-item">
+          <div class="tl-item fade-in">
             <div class="tl-dot"></div>
             <div class="tl-card">
               <span class="tl-date">113.08.15</span>
@@ -536,7 +536,7 @@
             </div>
           </div>
 
-          <div class="tl-item">
+          <div class="tl-item fade-in">
             <div class="tl-dot"></div>
             <div class="tl-card">
               <span class="tl-date">113.09.12</span>
@@ -546,7 +546,7 @@
             </div>
           </div>
 
-          <div class="tl-item">
+          <div class="tl-item fade-in">
             <div class="tl-dot"></div>
             <div class="tl-card">
               <span class="tl-date">113.09.16</span>
@@ -556,7 +556,7 @@
             </div>
           </div>
 
-          <div class="tl-item">
+          <div class="tl-item fade-in">
             <div class="tl-dot"></div>
             <div class="tl-card">
               <span class="tl-date">113.10.20</span>
@@ -566,7 +566,7 @@
             </div>
           </div>
 
-          <div class="tl-item">
+          <div class="tl-item fade-in">
             <div class="tl-dot"></div>
             <div class="tl-card">
               <span class="tl-date">113.11.03</span>
@@ -576,7 +576,7 @@
             </div>
           </div>
 
-          <div class="tl-item">
+          <div class="tl-item fade-in">
             <div class="tl-dot"></div>
             <div class="tl-card">
               <span class="tl-date">113.12.31</span>
@@ -588,7 +588,7 @@
         </div>
 
 
-          <div class="tl-item">
+          <div class="tl-item fade-in">
             <div class="tl-dot"></div>
             <div class="tl-card">
               <span class="tl-date">114.03.26</span>
@@ -598,7 +598,7 @@
             </div>
           </div>
 
-          <div class="tl-item">
+          <div class="tl-item fade-in">
             <div class="tl-dot"></div>
             <div class="tl-card">
               <span class="tl-date">114.04.01</span>
@@ -608,7 +608,7 @@
             </div>
           </div>
 
-          <div class="tl-item">
+          <div class="tl-item fade-in">
             <div class="tl-dot"></div>
             <div class="tl-card">
               <span class="tl-date">114.04.04</span>
@@ -618,7 +618,7 @@
             </div>
           </div>
 
-          <div class="tl-item">
+          <div class="tl-item fade-in">
             <div class="tl-dot"></div>
             <div class="tl-card">
               <span class="tl-date">114.04.06</span>
@@ -628,7 +628,7 @@
             </div>
           </div>
 
-          <div class="tl-item">
+          <div class="tl-item fade-in">
             <div class="tl-dot"></div>
             <div class="tl-card">
               <span class="tl-date">114.05.05</span>
@@ -642,7 +642,7 @@
         <div class="timeline-era">
           <div class="timeline-era-label"><span class="era-badge">🌿 成長期 — 114 年（2025）</span></div>
 
-          <div class="tl-item">
+          <div class="tl-item fade-in">
             <div class="tl-dot"></div>
             <div class="tl-card">
               <span class="tl-date">114.01.21</span>
@@ -652,7 +652,7 @@
             </div>
           </div>
 
-          <div class="tl-item">
+          <div class="tl-item fade-in">
             <div class="tl-dot"></div>
             <div class="tl-card">
               <span class="tl-date">114.02.26</span>
@@ -662,7 +662,7 @@
             </div>
           </div>
 
-          <div class="tl-item">
+          <div class="tl-item fade-in">
             <div class="tl-dot milestone"></div>
             <div class="tl-card milestone-card">
               <span class="tl-date">114.03.04</span>
@@ -672,7 +672,7 @@
             </div>
           </div>
 
-          <div class="tl-item">
+          <div class="tl-item fade-in">
             <div class="tl-dot"></div>
             <div class="tl-card">
               <span class="tl-date">114.03.29</span>
@@ -682,7 +682,7 @@
             </div>
           </div>
 
-          <div class="tl-item">
+          <div class="tl-item fade-in">
             <div class="tl-dot milestone"></div>
             <div class="tl-card milestone-card">
               <span class="tl-date">114.04.07</span>
@@ -692,7 +692,7 @@
             </div>
           </div>
 
-          <div class="tl-item">
+          <div class="tl-item fade-in">
             <div class="tl-dot"></div>
             <div class="tl-card">
               <span class="tl-date">114.05.02</span>
@@ -702,7 +702,7 @@
             </div>
           </div>
 
-          <div class="tl-item">
+          <div class="tl-item fade-in">
             <div class="tl-dot"></div>
             <div class="tl-card">
               <span class="tl-date">114.06.01</span>
@@ -712,7 +712,7 @@
             </div>
           </div>
 
-          <div class="tl-item">
+          <div class="tl-item fade-in">
             <div class="tl-dot"></div>
             <div class="tl-card">
               <span class="tl-date">114.07.02</span>
@@ -722,7 +722,7 @@
             </div>
           </div>
 
-          <div class="tl-item">
+          <div class="tl-item fade-in">
             <div class="tl-dot"></div>
             <div class="tl-card">
               <span class="tl-date">114.08.18</span>
@@ -732,7 +732,7 @@
             </div>
           </div>
 
-          <div class="tl-item">
+          <div class="tl-item fade-in">
             <div class="tl-dot"></div>
             <div class="tl-card">
               <span class="tl-date">114.08.31</span>
@@ -742,7 +742,7 @@
             </div>
           </div>
 
-          <div class="tl-item">
+          <div class="tl-item fade-in">
             <div class="tl-dot"></div>
             <div class="tl-card">
               <span class="tl-date">114.12.23</span>
@@ -757,7 +757,7 @@
         <div class="timeline-era">
           <div class="timeline-era-label"><span class="era-badge">🌊 穩定期 — 115 年（2026）</span></div>
 
-          <div class="tl-item">
+          <div class="tl-item fade-in">
             <div class="tl-dot"></div>
             <div class="tl-card">
               <span class="tl-date">115.01.01</span>
@@ -767,7 +767,7 @@
             </div>
           </div>
 
-          <div class="tl-item">
+          <div class="tl-item fade-in">
             <div class="tl-dot milestone"></div>
             <div class="tl-card milestone-card">
               <span class="tl-date">115.01.15</span>
@@ -777,7 +777,7 @@
             </div>
           </div>
 
-          <div class="tl-item">
+          <div class="tl-item fade-in">
             <div class="tl-dot"></div>
             <div class="tl-card">
               <span class="tl-date">115.02.08</span>
@@ -787,7 +787,7 @@
             </div>
           </div>
 
-          <div class="tl-item">
+          <div class="tl-item fade-in">
             <div class="tl-dot"></div>
             <div class="tl-card">
               <span class="tl-date">115.03.04</span>
@@ -797,7 +797,7 @@
             </div>
           </div>
 
-          <div class="tl-item">
+          <div class="tl-item fade-in">
             <div class="tl-dot"></div>
             <div class="tl-card">
               <span class="tl-date">115.03.12</span>
@@ -807,7 +807,7 @@
             </div>
           </div>
 
-          <div class="tl-item">
+          <div class="tl-item fade-in">
             <div class="tl-dot"></div>
             <div class="tl-card">
               <span class="tl-date">115.03.16</span>
@@ -817,7 +817,7 @@
             </div>
           </div>
 
-          <div class="tl-item">
+          <div class="tl-item fade-in">
             <div class="tl-dot milestone"></div>
             <div class="tl-card milestone-card">
               <span class="tl-date">115.04.02</span>
@@ -827,7 +827,7 @@
             </div>
           </div>
 
-          <div class="tl-item">
+          <div class="tl-item fade-in">
             <div class="tl-dot"></div>
             <div class="tl-card">
               <span class="tl-date">115.04.11</span>
@@ -837,7 +837,7 @@
             </div>
           </div>
 
-          <div class="tl-item">
+          <div class="tl-item fade-in">
             <div class="tl-dot"></div>
             <div class="tl-card">
               <span class="tl-date">115.04.12</span>
@@ -877,6 +877,6 @@
   <p class="page-revise">網站最後修改日期 2026.04.12 / 總計修改 <span id="deployCount">—</span> 次</p>
 
   <script src="utils.js"></script>
-  <script src="main.js?v=260412g"></script>
+  <script src="main.js?v=260412h"></script>
 </body>
 </html>

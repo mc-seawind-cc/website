@@ -1019,3 +1019,19 @@ html, body {
     animation: drift 30s ease-in-out infinite alternate;
   }
 }
+
+/* Postcard image fallback */
+.postcard-fallback {
+  background: rgba(157,175,255,0.06);
+  border: 1px dashed rgba(157,175,255,0.2);
+  border-radius: var(--radius-md);
+  min-height: 160px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.postcard-fallback::after {
+  content: '📷 圖片暫時無法載入';
+  color: var(--fog);
+  font-size: 0.85rem;
+}

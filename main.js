@@ -49,7 +49,9 @@ document.addEventListener('DOMContentLoaded', () => {
     btn.addEventListener('click', (e) => {
       if (window.innerWidth <= 768) {
         e.preventDefault();
-        btn.closest('.nav-dropdown').classList.toggle('open');
+        const dropdown = btn.closest('.nav-dropdown');
+        const isOpen = dropdown.classList.toggle('open');
+        btn.setAttribute('aria-expanded', isOpen);
       }
     });
   });
@@ -583,6 +585,8 @@ function initPostcardLightbox() {
 
   let idx = 0;
 
+  let lastFocusTarget = null;
+
   function show(i) {
     const imgs = getImages();
     if (!imgs.length) return;
@@ -595,15 +599,18 @@ function initPostcardLightbox() {
 
   function closeLightbox() {
     lightbox.classList.remove('open');
+    if (lastFocusTarget) lastFocusTarget.focus();
   }
 
   grid.addEventListener('click', e => {
     const img = e.target.closest('.postcard-item img');
     if (img) {
+      lastFocusTarget = img;
       const imgs = getImages();
       const vi = imgs.indexOf(img);
       show(vi >= 0 ? vi : 0);
       lightbox.classList.add('open');
+      if (lightboxClose) lightboxClose.focus();
     }
   });
 
@@ -615,9 +622,17 @@ function initPostcardLightbox() {
   // Keyboard navigation
   document.addEventListener('keydown', (e) => {
     if (!lightbox.classList.contains('open')) return;
-    if (e.key === 'Escape') closeLightbox();
-    if (e.key === 'ArrowLeft') show(idx - 1);
-    if (e.key === 'ArrowRight') show(idx + 1);
+    if (e.key === 'Escape') { closeLightbox(); return; }
+    if (e.key === 'ArrowLeft') { show(idx - 1); return; }
+    if (e.key === 'ArrowRight') { show(idx + 1); return; }
+    // Focus trap: keep Tab within lightbox controls
+    if (e.key === 'Tab') {
+      const focusable = lightbox.querySelectorAll('button');
+      if (!focusable.length) return;
+      const first = focusable[0], last = focusable[focusable.length - 1];
+      if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+      else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+    }
   });
 
   // Click backdrop to close
@@ -664,11 +679,13 @@ function initGeneralLightbox() {
 
   function closeLightbox() {
     lightbox.classList.remove('open');
+    if (lastFocusTarget) lastFocusTarget.focus();
   }
 
   // Image lightbox for lore/article pages
   let galleryImages = [];
   let gIdx = 0;
+  let lastFocusTarget = null;
 
   function collectImages() {
     galleryImages = Array.from(document.querySelectorAll('.article-cover, .lore-card-img, .guide-img-wrap img'));
@@ -687,6 +704,7 @@ function initGeneralLightbox() {
     if (lbImg) lbImg.src = img.src;
     if (lbCounter) lbCounter.textContent = `${gIdx + 1} / ${galleryImages.length}`;
     lightbox.classList.add('open');
+    if (lightboxClose) lightboxClose.focus();
   }
 
   // Attach click handlers to all clickable images
@@ -696,6 +714,7 @@ function initGeneralLightbox() {
       img.dataset.lbBound = '1';
       img.style.cursor = 'zoom-in';
       img.addEventListener('click', () => {
+        lastFocusTarget = img;
         collectImages();
         const idx = galleryImages.indexOf(img);
         showGalleryLightbox(idx >= 0 ? idx : 0);
@@ -716,9 +735,16 @@ function initGeneralLightbox() {
   });
   document.addEventListener('keydown', function(e) {
     if (!lightbox.classList.contains('open')) return;
-    if (e.key === 'Escape') closeLightbox();
-    if (e.key === 'ArrowLeft') showGalleryLightbox(gIdx - 1);
-    if (e.key === 'ArrowRight') showGalleryLightbox(gIdx + 1);
+    if (e.key === 'Escape') { closeLightbox(); return; }
+    if (e.key === 'ArrowLeft') { showGalleryLightbox(gIdx - 1); return; }
+    if (e.key === 'ArrowRight') { showGalleryLightbox(gIdx + 1); return; }
+    if (e.key === 'Tab') {
+      const focusable = lightbox.querySelectorAll('button');
+      if (!focusable.length) return;
+      const first = focusable[0], last = focusable[focusable.length - 1];
+      if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+      else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+    }
   });
 
   // Touch swipe
@@ -946,12 +972,13 @@ function initGuideSidebar() {
   groups.forEach(g => observer.observe(g.target));
 }
 
-// --- Deployment Count (使用 GitHub deployments API) ---
+// --- Deployment Count (使用 GitHub commits API，未認證時友善降級) ---
 (function() {
   const el = document.getElementById('deployCount');
   if (!el) return;
-  fetch('https://api.github.com/repos/mc-seawind-cc/website/deployments?per_page=1')
+  fetch('https://api.github.com/repos/mc-seawind-cc/website/commits?per_page=1')
     .then(r => {
+      if (!r.ok) { el.textContent = '—'; return; }
       const link = r.headers.get('Link') || '';
       const match = link.match(/page=(\d+)>; rel="last"/);
       el.textContent = match ? match[1] : '—';

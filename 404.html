@@ -13,6 +13,11 @@
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;600;700&family=Noto+Serif+TC:wght@700&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --bg: #0d1117; --ocean: #161b22; --cloud: #e6edf3; --fog: #8b949e;
+      --sky: #9dafff; --foam: #a8e6cf; --sand: #deac80; --blush: #e0b5d4;
+      --lavender: #ab72f9; --teal: #58c2b0;
+    }
 
     body {
       height: 100vh;
@@ -129,8 +134,8 @@
       border: 1px solid rgba(157,175,255,0.12); border-radius: 100px;
       font-size: 0.8rem; color: rgba(255,255,255,0.6);
     }
-    .hud-score { color: #a8e6cf; font-weight: 700; font-variant-numeric: tabular-nums; }
-    .hud-timer { color: #9dafff; font-variant-numeric: tabular-nums; }
+    .hud-score { color: var(--foam); font-weight: 700; font-variant-numeric: tabular-nums; }
+    .hud-timer { color: var(--sky); font-variant-numeric: tabular-nums; }
     .hud-close {
       background: none; border: none; color: rgba(255,255,255,0.3);
       cursor: pointer; font-size: 0.75rem; font-family: inherit; padding: 2px 8px;
@@ -226,7 +231,7 @@
     .game-result.active { display: block; animation: result-in 0.3s ease-out; }
     @keyframes result-in { from { transform: translate(-50%,-50%) scale(0.9); opacity: 0; } to { transform: translate(-50%,-50%) scale(1); opacity: 1; } }
     .result-emoji { font-size: 2rem; margin-bottom: 8px; }
-    .result-score { font-size: 1.8rem; font-weight: 800; color: #a8e6cf; margin-bottom: 4px; }
+    .result-score { font-size: 1.8rem; font-weight: 800; color: var(--foam); margin-bottom: 4px; }
     .result-text { font-size: 0.85rem; color: rgba(255,255,255,0.5); margin-bottom: 16px; }
     .result-btn {
       padding: 8px 20px; border-radius: 8px;
@@ -278,7 +283,7 @@
     }
     .click-target:active { transform: scale(0.9); }
     .click-target:hover { border-color: rgba(157,175,255,0.6); box-shadow: 0 0 20px rgba(157,175,255,0.2); }
-    .click-cps { font-size: 1.2rem; color: #a8e6cf; font-weight: 700; }
+    .click-cps { font-size: 1.2rem; color: var(--foam); font-weight: 700; }
     .click-label { font-size: 0.75rem; color: rgba(255,255,255,0.4); }
 
     /* ═══ Color Challenge ═══ */
@@ -328,7 +333,7 @@
       background: rgba(6,14,28,0.5);
     }
     .reaction-text { font-size: 1.1rem; color: rgba(255,255,255,0.7); }
-    .reaction-ms { font-size: 2.5rem; font-weight: 800; color: #a8e6cf; }
+    .reaction-ms { font-size: 2.5rem; font-weight: 800; color: var(--foam); }
 
     /* ═══ Number Guess ═══ */
     .number-zone {
@@ -337,7 +342,7 @@
       border: 1px solid rgba(157,175,255,0.08);
     }
     .number-display {
-      font-size: 2.5rem; font-weight: 800; color: #9dafff;
+      font-size: 2.5rem; font-weight: 800; color: var(--sky);
       font-variant-numeric: tabular-nums;
     }
     .number-hint {
