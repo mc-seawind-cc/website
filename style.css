@@ -301,7 +301,11 @@
 
 /* 修復：.char 繼承父層漸層文字效果 */
 .hero-title .char {
-  -webkit-text-fill-color: inherit;
+  background: linear-gradient(135deg, #fff 0%, var(--sky) 40%, var(--foam) 60%, #fff 100%);
+  background-size: 200% 200%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
   display: inline-block;
   animation: wind-sway 4s ease-in-out infinite;
   animation-delay: calc(var(--i) * 0.6s);
