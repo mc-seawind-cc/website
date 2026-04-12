@@ -1,6 +1,7 @@
 # 海風 SeaWind 網站設計指南
 
 > 建立日期：2026.04.12  
+> 最後更新：2026.04.12  
 > 網站：https://www.seawind.cc  
 > 倉儲：https://github.com/mc-seawind-cc/website  
 > 部署方式：GitHub Pages（靜態託管）
@@ -29,24 +30,28 @@
 | 公告 | `公告.html` | 公告列表，支援篩選、搜尋、月份導航 |
 | 會員 | `會員.html` | 會員方案比較表 |
 | 海風團隊 | `海風團隊.html` | 5 部門、人員介紹（Crafatar 頭像）|
-| 合作夥伴 | `合作夥伴.html` | 合作社群列表 |
+| 合作夥伴 | `合作夥伴.html` | 合作社群列表（含 Discord 伺服器頭像）|
 | 風景照 | `風景照.html` | 無限滾動照片牆 |
+| 違規處分 | `違規處分.html` | 違規紀錄與處分表 |
 | 更多… | `管理規則.html`, `玩家須知.html`, `服務條款.html`, `隱私權政策.html` 等 | 社群須知類 |
 | 指南 | `guide/*.html` | 40+ 篇遊戲指南 |
 | 文化藝廊 | `lore/*.html` | 建築故事 |
+| 合作專頁 | `partner-mcu.html` | MCU 合作夥伴專頁 |
 
 ### 共用資源
 
-| 檔案 | 說明 |
-|------|------|
-| `style.css` (~97KB) | 全站共用樣式，深色/淺色雙主題 |
-| `main.js` | 共用邏輯：主題切換、手機導航、滾動動畫、公告欄、輪播、Lightbox 等 |
-| `utils.js` | Discord Markdown → HTML 轉換器、日期格式化 |
-| `tips.js` | 首頁提示輪播文字（~100 條）|
-| `music-player.css` | 音樂播放器樣式（播放器 JS `music-player.js` 未在倉儲中找到）|
-| `announcements_v2.json` | 公告資料（501 則）|
-| `photos.json` / `photos/` | 風景照資料與本地圖片 |
-| `assets/` | 圖片、圖標、音效、Lore 圖片 |
+| 檔案 | 大小 | 說明 |
+|------|------|------|
+| `style.css` | ~124KB | 全站共用樣式，深色/淺色雙主題 |
+| `main.js` | ~36KB | 共用邏輯：主題切換、手機導航、滾動動畫、公告欄、輪播、Lightbox 等 |
+| `utils.js` | ~12KB | Discord Markdown → HTML 轉換器、日期格式化 |
+| `tips.js` | ~8KB | 首頁提示輪播文字（~100 條）|
+| `music-player.css` | ~4KB | 音樂播放器樣式 |
+| `music-player.js` | ~24KB | 音樂播放器邏輯 |
+| `announcements_v2.json` | ~330KB | 公告資料（501 則，v2 格式）|
+| `photos.json` | ~36KB | 風景照資料（URL 列表）|
+| `photos/` | — | 風景照本地圖片 |
+| `assets/` | — | 圖片、圖標、音效、Lore 圖片 |
 
 ### 技術棧
 
@@ -97,36 +102,42 @@
 
 ### 🔴 嚴重
 
-1. **`music-player.js` 缺失**
-   - `main.js` 中用 `document.createElement('script')` 動態載入 `music-player.js`
-   - 此檔案不在倉儲中，導致音樂播放器完全無法運作
-   - **影響**：Console 會出現 404 錯誤，音樂播放器功能失效
+1. **Cache Busting 版本號不一致**
+   - `首頁.html`：`main.js?v=260412b`（舊版）
+   - `公告.html`：`main.js?v=260412b`（舊版）
+   - `合作夥伴.html`：`main.js?v=260412b`、`style.css?v=260413a`
+   - `違規處分.html`：`main.js?v=260412b`
+   - `海風指南.html`：`main.js?v=260412c`、`style.css?v=260412c`
+   - 多數其他頁面：`main.js?v=260412g`、`style.css?v=260412g`
+   - **影響**：使用者從不同頁面導覽時，可能載入舊版 JS/CSS，導致功能異常或樣式不一致
+   - **修復**：統一所有頁面的版本號（建議改用 Git commit hash 自動化）
 
-2. **`會員.html` 結構問題**
-   - `<div class="member-table-wrap fade-in">` 缺少閉合 `</div>`
-   - `</div>` 數量不足，表格區域後面直接跳到 `</div></div>` 然後是 footer
-   - **影響**：可能導致 footer 樣式錯亂
+2. **`index.html` noscript 缺少 meta refresh**
+   - `<noscript>` 區塊只有純文字連結，無自動跳轉
+   - 若 JS 被禁用（爬蟲、嚴格安全環境），使用者看到一個空白頁面需要手動點擊
+   - **修復**：加入 `<meta http-equiv="refresh" content="0;url=首頁.html">`
 
 ### 🟡 中等
 
-3. **公告內容錯字**
-   - 公告 #0127：「投影倒網站上」應為「投影到網站上」
-   - 公告日期格式混用：ROC（114.04.23）與 ISO（2026-04-11）並存（此為 v1/v2 資料格式差異，非 bug）
+3. **首頁明信片依賴巴哈姆特外部圖床**
+   - `truth.bahamut.com.tw` 的圖片硬編碼在 HTML 中
+   - 巴哈若改版、限速或失效，明信片區塊會變空
+   - 目前 5 張都是固定 URL，無本地備援
+   - **建議**：定期下載備份到本地 `assets/`，或設置 fallback 佔位圖
 
-4. **首頁明信片依賴巴哈姆特外部圖床**
-   - `truth.bahamut.com.tw` 的圖片無法預載（DNS prefetch 已設，但 fetchpriority 未加）
-   - 若巴哈圖床改版或失效，明信片區塊會變空
-   - 目前 5 張都是硬編碼 URL
+4. **GitHub 部署計數 API 未認證**
+   - `api.github.com/repos/.../deployments` 未帶 token
+   - 未認證每小時 60 次限制（共用 IP 更低）
+   - 流量稍高時計數會顯示 `—`
+   - **建議**：移除此功能（非必要），或改用 commit 數計算
 
-5. **部署計數 API 無認證且可能觸發 rate limit**
-   - `main.js` 中呼叫 `api.github.com/repos/.../deployments`
-   - 未認證的 GitHub API 每小時 60 次限制
-   - 若網站流量稍高，計數會顯示 `—`
+5. **公告錯字**
+   - 公告 #0127：「投影**倒**網站上」→ 應為「投影**到**網站上」
 
-6. **Lightbox 事件監聽器累積問題**
-   - `initPhotoGallery()` 中每次開啟 lightbox 時都 cloneNode + 重新綁定事件
-   - `initGeneralLightbox()` 和 `initPostcardLightbox()` 都跑在同一頁面
-   - 雖然有判斷避免重複，但邏輯層級複雜，容易出錯
+6. **雨聲自動播放的瀏覽器相容性**
+   - 雖然有 first-interaction pattern，但 `setTimeout(startRain, 500)` 在某些瀏覽器仍可能失敗
+   - 且無音量漸入的錯誤處理
+   - **建議**：確保 try/catch 完整覆蓋
 
 ### 🟢 輕微
 
@@ -135,19 +146,21 @@
    - 同時也是下拉 toggle（手機版 preventDefault）
    - 桌面版 hover 打開，但若快速移動滑鼠可能意外點擊跳轉
 
-8. **`<html lang="zh-Hant">` 正確，但 URL 包含中文**
-   - `首頁.html`, `公告.html` 等中文檔名
-   - GitHub Pages 支援，但某些舊瀏覽器或爬蟲可能編碼出錯
-   - SEO 影響不大，但 index.html 的 JS redirect 不如 meta refresh 友善
+8. **Lightbox 事件監聽器累積**
+   - `initPhotoGallery()` 中每次開啟 lightbox 都 cloneNode + 重新綁定事件
+   - 多次開啟後會產生較多的 DOM 操作
+   - 雖然功能正常，但非最佳實踐
 
-9. **`index.html` 的 JS redirect**
-   - `<meta rel="canonical" href="...首頁.html">` 是對的
-   - 但 `<noscript>` fallback 只有文字連結，沒有 `meta http-equiv="refresh"`
-   - 若 JS 被禁用，使用者需要手動點擊
+9. **404 頁面樣式完全獨立**
+   - 不載入 `style.css`，所有樣式都是 inline
+   - 品牌色值與主站略有差異
+   - **建議**：至少引入 CSS 變數檔案保持一致性
 
-10. **404 遊戲手機版適配**
-    - 4×4 翻牌遊戲在 375px 寬的手機上，每格約 80px，偏小
-    - 打海怪 3×3 在小螢幕上 OK
+10. **各子頁面 inline CSS 眾多**
+    - `公告.html` 有 ~250 行 inline CSS
+    - `合作夥伴.html` 有 ~100 行 inline CSS
+    - 違規處分等頁面也有各自的 `<style>` block
+    - **建議**：共用樣式逐步合併到 `style.css`
 
 ---
 
@@ -155,80 +168,76 @@
 
 ### 🚀 效能
 
-1. **`style.css` 過大（~97KB）**
+1. **`style.css` 過大（~124KB）**
    - 所有頁面共用一個大 CSS 檔案
    - 建議：拆分為 base.css（共用）+ 各頁面獨立的 page-*.css
-   - 或至少用 `@media` 把 print 樣式分離
+   - 或用 build tool 做 tree-shaking / purgeCSS
 
 2. **圖片最佳化**
    - 首頁已用 `preload` + `fetchpriority="high"` 預載 hero 圖 ✅
-   - 建議：首頁公告欄中如果有圖片，應加 `loading="lazy"`
-   - 建議：feature card 圖標（PNG）可考慮改用 SVG inline（減少 HTTP 請求）
+   - 建議：明信片圖片加 `fetchpriority="low"`
+   - feature card 圖標（PNG）可改用 SVG inline（減少 HTTP 請求）
 
 3. **字體載入**
    - 已用 `preconnect` ✅
-   - 但每個 HTML 都重複載入 Google Fonts CSS，可考慮用 `<link rel="preload">` 預載字體檔
-   - `Noto Serif TC` 只用在 hero title 和 404 title，可考慮用 `font-display: swap` + `unicode-range` 縮減
+   - 建議：用 `<link rel="preload">` 預載字體檔
+   - `Noto Serif TC` 只用在 hero title 和少量標題，可考慮 `unicode-range` 縮減
 
 4. **JavaScript**
-   - `main.js` 是單一檔案，所有邏輯都在裡面
-   - 建議：把 Lightbox、公告欄、輪播等拆成獨立模組
-   - `defer` 只用在 `tips.js`，其他兩個 `<script>` 都是同步載入阻塞渲染
+   - `main.js` 是單一 36KB 檔案
+   - 建議：非首頁功能（公告篩選、指南側欄等）用 dynamic import
+   - `defer` 只用在 `tips.js`，`utils.js` 和 `main.js` 同步載入阻塞渲染
 
 ### 📱 響應式
 
-5. **Nav 捲動問題**
-   - 手機版導航展開時，如果項目多（目前約 8 個 + 下拉），螢幕小的裝置可能需要捲動
+5. **手機版導航捲動**
+   - 目前項目多（8 個 + 3 個下拉），小螢幕可能溢出
    - 建議：手機版導航加 `max-height: 100vh; overflow-y: auto`
 
-6. **表格響應式**
-   - `會員.html` 的比較表在窄螢幕用 `overflow-x: auto` 是好的
-   - 但表格內容文字在 320px 寬時可能會被截斷
+6. **404 小遊戲手機適配**
+   - 4×4 翻牌遊戲在 375px 每格約 80px，偏小但可操作
+   - 打海怪 3×3 OK
 
 ### ♿ 無障礙
 
 7. **下拉選單缺少 ARIA 屬性**
    - `.nav-dropdown-toggle` 缺少 `aria-expanded`、`aria-haspopup`
-   - 手機版下拉展開時，沒有 `aria-expanded` 狀態切換
    - 鍵盤導航（Tab）無法操作下拉選單
+   - **建議**：加入完整 ARIA 狀態管理
 
 8. **Lightbox 焦點管理**
-   - 開啟 lightbox 後，焦點沒有被 trap 在 lightbox 內
+   - 開啟後焦點沒有 trap 在 lightbox 內
    - 關閉後焦點沒有回到觸發元素
-   - 建議：加 `role="dialog"` + `aria-modal="true"` + 焦點 trap
+   - **建議**：加 `role="dialog"` + `aria-modal="true"` + 焦點 trap
 
-9. **公告欄摺疊**
+9. **公告欄摺疊的 accessibility**
    - `.bulletin-toggle` 有 `aria-expanded` ✅
-   - 但公告展開/收合的動畫（max-height: 0/3000px）對螢幕閱讀器不友善
-   - 建議：展開時把隱藏內容從 accessibility tree 移除（`hidden` 屬性）
+   - 但展開/收合用 `max-height: 0/3000px` 對螢幕閱讀器不友善
+   - **建議**：用 `hidden` 屬性控制而非純 CSS
 
 ### 🎨 設計一致性
 
-10. **404 頁面樣式獨立**
-    - `404.html` 完全不載入 `style.css`，所有樣式都是 inline
-    - 品牌色值和設計 token 與主站不同（例如 `rgba(87,138,255,0.18)` vs `--sky`）
-    - 建議：至少引入 CSS 變數，或把 404 的樣式模組化
+10. **版本號自動化**
+    - 目前用手動 `?v=260412g`，容易遺漏導致不同頁面版本不一致
+    - **建議**：用 GitHub Actions 自動在部署時替換版本號（用 commit hash）
 
-11. **各子頁面都有各自的 `<style>` block**
-    - `公告.html` 有 ~250 行 inline CSS
-    - `合作夥伴.html` 有 ~100 行 inline CSS
-    - 建議：共用樣式移到 `style.css`，頁面特定樣式可保留 inline 或分檔案
-
-### 🔒 安全性
-
-12. **GitHub Token 已暴露**
-    - 在對話中提供了 Personal Access Token
-    - **強烈建議**：立即到 GitHub Settings → Developer settings → Personal access tokens 刪除此 token
+11. **404 頁面品牌一致性**
+    - 完全獨立的 inline 樣式，與主站設計 token 不同
+    - **建議**：引入共用 CSS 變數
 
 ### 🔧 開發體驗
 
-13. **版本控制（cache busting）**
-    - 使用 `?v=260412g` 手動版本號
-    - 建議：改用 Git commit hash（GitHub Actions 可自動注入）
+12. **無自動化部署流程**
+    - 目前手動 push → GitHub Pages 自動部署
+    - **建議**：加 GitHub Actions 做：
+      - 圖片最佳化（WebP 轉換）
+      - 版本號自動注入
+      - HTML/CSS 驗證
+      - 快取清除
 
-14. **無自動化部署流程**
-    - 目前是手動 push 到 main 分支 → GitHub Pages 自動部署
-    - 建議：加 GitHub Actions 做圖片最佳化、CSS 壓縮、HTML 驗證
+13. **建議的 sync-nav.sh 自動化**
+    - `sync-nav.sh` 存在但應在 CI 中執行
+    - 確保所有頁面的 nav 結構一致
 
 ---
 
@@ -239,6 +248,9 @@
 | 2026.04.12 | 建立 DESIGN.md，完成首次網站全面健診 | AI 助手 |
 | 2026.04.12 | 首頁公告欄 redesign、打字機優化、海風社區新增、修復會員.html bug | AI 助手 |
 | 2026.04.12 | 重新設計合作夥伴頁面：分類標籤、2 欄卡片 grid、品牌色裝飾、CTA 雙按鈕 | AI 助手 |
+| 2026.04.12 | 重新設計違規處分頁面 | AI 助手 |
+| 2026.04.12 | 修復公告欄與風景照載入問題 | AI 助手 |
+| 2026.04.12 | 更新 DESIGN.md：補充完整健診報告，修正 music-player.js 狀態（實際存在），新增 cache busting 問題等 | AI 助手 (v2) |
 
 ---
 
