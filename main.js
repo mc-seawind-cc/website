@@ -145,8 +145,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const rainBtn = document.createElement('button');
     rainBtn.id = 'rainToggle';
     rainBtn.className = 'rain-toggle active';
-    rainBtn.title = '雨聲';
-    rainBtn.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/></svg>';
+    rainBtn.title = '風聲';
+    rainBtn.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9.59 4.59A2 2 0 1 1 11 8H2m10.59 11.41A2 2 0 1 0 14 16H2m15.73-8.27A2.5 2.5 0 1 1 19.5 12H2"/></svg>';
     document.body.appendChild(rainBtn);
     rainBtn.addEventListener('click', () => {
       if (!window._rainGain || !window._rainCtx) return;
@@ -290,17 +290,17 @@ function createHeroParticles() {
   const container = document.getElementById('particles');
   if (!container) return;
   const isMobile = window.innerWidth < 768;
-  const count = isMobile ? 30 : 80;
+  const count = isMobile ? 40 : 100;
   for (let i = 0; i < count; i++) {
     const p = document.createElement('div');
-    p.className = 'particle';
+    p.className = 'snowflake';
     p.style.left = Math.random() * 100 + '%';
-    p.style.animationDuration = (0.4 + Math.random() * 0.6) + 's';
-    p.style.animationDelay = (Math.random() * 3) + 's';
-    const h = 20 + Math.random() * 20;
-    p.style.height = h + 'px';
-    p.style.width = '2px';
-    p.style.opacity = 0.4 + Math.random() * 0.5;
+    const size = 2 + Math.random() * 5;
+    p.style.width = size + 'px';
+    p.style.height = size + 'px';
+    p.style.animationDuration = (3 + Math.random() * 5) + 's';
+    p.style.animationDelay = (Math.random() * 6) + 's';
+    p.style.opacity = 0.3 + Math.random() * 0.5;
     container.appendChild(p);
   }
 
