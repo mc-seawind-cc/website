@@ -52,6 +52,46 @@
       font-size: 1rem;
       font-style: italic;
       position: relative;
+      min-height: 1.6em;
+    }
+    .history-hero .history-subtitle .tw-cursor {
+      display: inline-block;
+      color: var(--sky);
+      animation: blink 0.8s step-end infinite;
+      margin-left: 2px;
+    }
+    @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
+
+    /* 時間軸照片卡 */
+    .tl-photo-card {
+      margin-top: var(--space-md);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.06);
+      cursor: zoom-in;
+      transition: transform 0.3s var(--ease), box-shadow 0.3s var(--ease);
+    }
+    .tl-photo-card:hover {
+      transform: scale(1.02);
+      box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+    }
+    .tl-photo-card img {
+      width: 100%;
+      display: block;
+      aspect-ratio: 16/9;
+      object-fit: cover;
+    }
+    .tl-photo-card .tl-photo-caption {
+      padding: 8px 12px;
+      font-size: 0.75rem;
+      color: var(--fog);
+      background: rgba(255,255,255,0.03);
+    }
+    [data-theme="light"] .tl-photo-card {
+      border-color: rgba(0,0,0,0.08);
+    }
+    [data-theme="light"] .tl-photo-card:hover {
+      box-shadow: 0 8px 32px rgba(0,0,0,0.08);
     }
 
     /* 統計列 */
@@ -311,7 +351,7 @@
   <div class="page">
     <div class="history-hero">
       <h1>海風歷史館</h1>
-      <p class="history-subtitle">別忘了海是如何被風吹過來的，記得回望來時的每一步。</p>
+      <p class="history-subtitle typewriter" data-text="別忘了海是如何被風吹過來的，記得回望來時的每一步。"></p>
     </div>
 
     <div class="content-section">
@@ -587,6 +627,10 @@
               <span class="tl-date">2024.06.04</span>
               <div class="tl-title">蔚藍伸出援手 & 人數 51 人</div>
               <div class="tl-desc">外部社群「藍冰伺服器」（後更名蔚藍幻境）主動伸出援手，將自己主機多餘的效能分給純麥使用，幫助伺服器度過託管困境。這份跨社群的善意，成為純麥歷史上溫暖的一頁。人數創新高 51 人，TPS 最低 13。月底 TPS 改善至 17。部分資料（稱號、皮膚）損毀待修。</div>
+              <div class="tl-photo-card" onclick="document.getElementById('lightbox').classList.add('open');document.getElementById('lightboxImg').src=this.querySelector('img').src;">
+                <img src="assets/img/tablist-51players.webp" alt="純麥時期 51 人在線的 Tablist 畫面" loading="lazy" onerror="this.parentElement.style.display='none'">
+                <div class="tl-photo-caption">純麥時期 51 人在線的盛況（2024.06.25 Tablist 截圖）</div>
+              </div>
               <span class="tl-tag tl-tag-update">更新</span>
             </div>
           </div>
@@ -717,6 +761,10 @@
               <span class="tl-date">2024.08.12</span>
               <div class="tl-title">「海風伺服器」正式命名</div>
               <div class="tl-desc">神焰公告：因純麥伺服器服主解雇蜂聊縣政府團隊，團隊已無任何管理、合作或商業關係。新伺服器正式定名為「海風伺服器」，傳承純麥及粉雪伺服器的傳統和理念。Discord 伺服器同步更名。</div>
+              <div class="tl-photo-card" onclick="document.getElementById('lightbox').classList.add('open');document.getElementById('lightboxImg').src=this.querySelector('img').src;">
+                <img src="assets/img/logo.png" alt="海風伺服器標誌" loading="lazy" onerror="this.parentElement.style.display='none'" style="aspect-ratio:1/1;max-width:200px;margin:0 auto;">
+                <div class="tl-photo-caption">海風伺服器 — 跟隨風抵達海的彼端</div>
+              </div>
               <span class="tl-tag tl-tag-milestone">里程碑</span>
             </div>
           </div>
@@ -1042,16 +1090,6 @@
               <span class="tl-date">115.04.11</span>
               <div class="tl-title">風汐石稿子效率調整</div>
               <div class="tl-desc">因插件計算方式差異，效率數值下調並同步更新挖掘速度。制訂特殊裝備設計規範。</div>
-              <span class="tl-tag tl-tag-update">更新</span>
-            </div>
-          </div>
-
-          <div class="tl-item fade-in">
-            <div class="tl-dot"></div>
-            <div class="tl-card">
-              <span class="tl-date">115.04.12</span>
-              <div class="tl-title">地圖系統改善</div>
-              <div class="tl-desc">新增地獄頂部圖層、玩家方向標記，擴大縮放等級，改善地圖算繪與操作體驗。</div>
               <span class="tl-tag tl-tag-update">更新</span>
             </div>
           </div>
