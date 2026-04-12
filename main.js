@@ -137,6 +137,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initPostcardLightbox();
     initGeneralLightbox();
     initGuideSidebar();
+    initPhotoPage();
   };
 
   // Standalone rain toggle button (only on 首頁, left of music player)
@@ -1015,6 +1016,153 @@ function initGuideSidebar() {
   }, { rootMargin: '-80px 0px -60% 0px', threshold: 0 });
 
   groups.forEach(g => observer.observe(g.target));
+}
+
+// --- Photo Page (風景照.html 全部照片頁面) ---
+function initPhotoPage() {
+  const container = document.getElementById('allPhotosGrid');
+  if (!container) return;
+
+  const BATCH_SIZE = 24;
+  let allPhotos = [];
+  let loaded = 0;
+
+  const floatCounter = document.createElement('div');
+  floatCounter.className = 'photo-float-counter';
+  floatCounter.innerHTML = '<span class="pfc-text">📸 載入中...</span>';
+  document.body.appendChild(floatCounter);
+
+  const lightbox = document.getElementById('lightbox');
+  const lightboxImg = document.getElementById('lightboxImg');
+  const lightboxClose = document.getElementById('lightboxClose');
+  const lightboxPrev = document.getElementById('lightboxPrev');
+  const lightboxNext = document.getElementById('lightboxNext');
+  const lightboxCounter = document.getElementById('lightboxCounter');
+  let currentIdx = 0;
+
+  function getVisible() {
+    return Array.from(container.querySelectorAll('.photo-item')).filter(
+      img => img.style.display !== 'none'
+    );
+  }
+
+  function showLightbox(i) {
+    if (!lightbox || !lightboxImg) return;
+    const visible = getVisible();
+    if (!visible.length) return;
+    if (i < 0) i = visible.length - 1;
+    if (i >= visible.length) i = 0;
+    currentIdx = i;
+    const target = visible[currentIdx];
+    if (target.loading === 'lazy' && !target.naturalWidth) target.loading = 'eager';
+    lightboxImg.src = target.src;
+    if (lightboxCounter) lightboxCounter.textContent = `${currentIdx + 1} / ${visible.length}`;
+    lightbox.classList.add('open');
+  }
+
+  container.addEventListener('click', e => {
+    const item = e.target.closest('.photo-item');
+    if (item) {
+      const visible = getVisible();
+      const vi = visible.indexOf(item);
+      showLightbox(vi >= 0 ? vi : 0);
+    }
+  });
+
+  if (lightboxClose) lightboxClose.addEventListener('click', () => lightbox.classList.remove('open'));
+  if (lightboxPrev) lightboxPrev.addEventListener('click', e => { e.stopPropagation(); showLightbox(currentIdx - 1); });
+  if (lightboxNext) lightboxNext.addEventListener('click', e => { e.stopPropagation(); showLightbox(currentIdx + 1); });
+  if (lightbox) lightbox.addEventListener('click', e => { if (e.target === lightbox) lightbox.classList.remove('open'); });
+  document.addEventListener('keydown', e => {
+    if (!lightbox || !lightbox.classList.contains('open')) return;
+    if (e.key === 'Escape') lightbox.classList.remove('open');
+    if (e.key === 'ArrowLeft') showLightbox(currentIdx - 1);
+    if (e.key === 'ArrowRight') showLightbox(currentIdx + 1);
+  });
+
+  // Touch swipe
+  if (lightbox) {
+    let tsx = 0;
+    lightbox.addEventListener('touchstart', e => { tsx = e.changedTouches[0].screenX; }, { passive: true });
+    lightbox.addEventListener('touchend', e => {
+      const diff = tsx - e.changedTouches[0].screenX;
+      if (Math.abs(diff) > 50) { diff > 0 ? showLightbox(currentIdx + 1) : showLightbox(currentIdx - 1); }
+    }, { passive: true });
+  }
+
+  fetch(SW_BASE + 'photos.json')
+    .then(r => { if (!r.ok) throw new Error('載入失敗'); return r.json(); })
+    .then(data => {
+      allPhotos = data.photos || [];
+      if (!allPhotos.length) {
+        container.innerHTML = '<div class="photo-placeholder">暫無照片</div>';
+        if (floatCounter) floatCounter.remove();
+        return;
+      }
+
+      const grid = document.createElement('div');
+      grid.className = 'photo-grid';
+      container.appendChild(grid);
+
+      const counter = document.createElement('div');
+      counter.className = 'photo-counter';
+      container.appendChild(counter);
+
+      var sentinel = null;
+
+      function loadBatch() {
+        const end = Math.min(loaded + BATCH_SIZE, allPhotos.length);
+        for (let i = loaded; i < end; i++) {
+          const isVideo = /\.(mp4|webm|mov)(\?|$)/i.test(allPhotos[i]);
+          if (isVideo) {
+            const vid = document.createElement('video');
+            vid.src = allPhotos[i];
+            vid.className = 'photo-item';
+            vid.alt = `海風風景照 ${i + 1}`;
+            vid.muted = true; vid.loop = true; vid.playsInline = true; vid.preload = 'metadata';
+            vid.onmouseenter = function() { this.play(); };
+            vid.onmouseleave = function() { this.pause(); this.currentTime = 0; };
+            vid.onerror = function() { this.style.display = 'none'; };
+            grid.appendChild(vid);
+          } else {
+            const img = document.createElement('img');
+            img.src = allPhotos[i];
+            img.className = 'photo-item';
+            img.alt = `海風風景照 ${i + 1}`;
+            img.loading = 'lazy';
+            img.onerror = function() { this.style.display = 'none'; };
+            grid.appendChild(img);
+          }
+        }
+        loaded = end;
+        counter.textContent = `${loaded} / ${allPhotos.length}`;
+        floatCounter.querySelector('.pfc-text').textContent = `📸 ${loaded} / ${allPhotos.length}`;
+
+        if (loaded < allPhotos.length) {
+          setupSentinel();
+        } else if (sentinel) {
+          sentinel.remove();
+        }
+      }
+
+      function setupSentinel() {
+        if (sentinel) sentinel.remove();
+        sentinel = document.createElement('div');
+        sentinel.className = 'photo-sentinel';
+        sentinel.innerHTML = '<div class="photo-loading">載入中⋯</div>';
+        container.appendChild(sentinel);
+        const obs = new IntersectionObserver(entries => {
+          if (entries[0].isIntersecting) { obs.disconnect(); setTimeout(loadBatch, 200); }
+        }, { rootMargin: '300px' });
+        obs.observe(sentinel);
+      }
+
+      loadBatch();
+    })
+    .catch(() => {
+      container.innerHTML = '<div class="photo-placeholder">照片載入失敗，請稍後再試</div>';
+      if (floatCounter) floatCounter.remove();
+    });
 }
 
 // --- Deployment Count (使用 GitHub commits API，未認證時友善降級) ---
