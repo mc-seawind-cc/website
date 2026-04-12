@@ -937,13 +937,8 @@
           '</div>';
       }
 
-      // Reactions
-      let reactionsHtml = '';
-      if (item.reactions && item.reactions.length) {
-        reactionsHtml = '<div class="ann-reactions">' +
-          item.reactions.map(r => `<span class="ann-reaction">${r.emoji} <span class="rcount">${r.count}</span></span>`).join('') +
-          '</div>';
-      }
+      // Reactions — 不顯示
+      const reactionsHtml = '';
 
       // Content — process internal refs then render markdown
       const processedContent = processInternalRefs(item.content);

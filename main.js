@@ -390,6 +390,8 @@ function initTypewriter() {
   const part2Span = document.createElement('span');
   part2Span.className = 'typewriter-part2';
   el.insertBefore(part2Span, cursor);
+  const part2Text = document.createTextNode('');
+  part2Span.appendChild(part2Text);
 
   const PART1 = '在風與海之間，';
   const PART2 = '有一個可以長久生存的地方';
