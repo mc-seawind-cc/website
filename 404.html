@@ -360,10 +360,32 @@
 
     @media (max-width: 768px) {
       .moon { width: 44px; height: 44px; top: 10%; right: 12%; }
-      .content { top: 32%; }
+      .content { top: 30%; }
       .memory-grid { grid-template-columns: repeat(4, 1fr); gap: 6px; padding: 8px; }
       .mem-card { font-size: 1.2rem; }
-      .game-container { bottom: 48%; }
+      .game-container { bottom: 50%; }
+      .game-menu { gap: 6px; }
+      .game-btn {
+        padding: 10px 14px;
+        font-size: 0.8rem;
+        min-height: 44px;
+      }
+      .mole-grid { gap: 6px; padding: 10px; }
+      .mole-hole { font-size: 1.4rem; }
+      .color-buttons { gap: 6px; }
+      .color-btn { padding: 14px 6px; font-size: 0.85rem; }
+      .color-word { font-size: 1.6rem; }
+      .number-btn { padding: 12px 20px; min-width: 90px; }
+      .number-display { font-size: 2rem; }
+      .reaction-zone { padding: 30px 16px; min-height: 140px; }
+      .fish-zone { height: 100px; }
+    }
+    @media (max-width: 375px) {
+      .content { top: 28%; }
+      .code { font-size: 4rem; }
+      .title { font-size: 0.9rem; }
+      .game-btn { padding: 8px 10px; font-size: 0.75rem; }
+      .mem-card { font-size: 1rem; }
     }
   </style>
 </head>

@@ -387,21 +387,44 @@
     /* 響應式 */
     @media (max-width: 768px) {
       .ann-filter-bar { flex-direction: column; align-items: stretch; }
-      .ann-search input { width: 100%; }
+      .ann-filters { gap: 6px; }
+      .ann-filter {
+        padding: 10px 14px;
+        font-size: 0.85rem;
+        min-height: 44px;
+      }
+      .ann-search input {
+        width: 100%;
+        font-size: 16px; /* 防止 iOS 自動縮放 */
+        padding: 12px 40px 12px 16px;
+      }
       .ann-search input:focus { width: 100%; }
-      .ann-stats-row { gap: 8px; }
-      .ann-stat-card { min-width: 70px; padding: 10px 12px; }
-      .ann-stat-card .stat-num { font-size: 1.2rem; }
-      .ann-card-header { padding: 10px 12px; gap: 8px; }
-      .ann-card-date { min-width: 65px; font-size: 0.68rem; }
+      .ann-stats-row {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 6px;
+      }
+      .ann-stat-card { min-width: unset; padding: 10px 8px; }
+      .ann-stat-card .stat-num { font-size: 1.1rem; }
+      .ann-stat-card .stat-label { font-size: 0.62rem; }
+      .ann-card-header {
+        padding: 12px 10px;
+        gap: 6px;
+        min-height: 50px;
+      }
+      .ann-card-date { min-width: 60px; font-size: 0.68rem; }
       .ann-card-title { font-size: 0.82rem; }
       .ann-card-id { display: none; }
-      .ann-card-images .ann-img { max-width: 140px; max-height: 100px; }
+      .ann-card-tag { font-size: 0.6rem; padding: 2px 6px; }
+      .ann-card-images .ann-img { max-width: 110px; max-height: 80px; }
+      .ann-card-body-inner { padding: 0 12px 14px; }
+      .ann-card-body .b-content { font-size: 0.88rem; }
     }
 
-    @media (max-width: 480px) {
-      .ann-stats-row { flex-wrap: wrap; }
-      .ann-stat-card { flex: 0 0 calc(50% - 6px); }
+    @media (max-width: 375px) {
+      .ann-stats-row { grid-template-columns: repeat(2, 1fr); }
+      .ann-card-date { min-width: 55px; font-size: 0.62rem; }
+      .ann-card-title { font-size: 0.78rem; }
     }
   </style>
 </head>
