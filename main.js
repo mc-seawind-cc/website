@@ -369,34 +369,39 @@ function initTypewriter() {
 
   el.textContent = '';
 
-  // Cursor
+  // Loading dots
+  const dotsSpan = document.createElement('span');
+  dotsSpan.className = 'loading-dots';
+  dotsSpan.textContent = '...';
+  el.appendChild(dotsSpan);
+
+  // Cursor (hidden during dots)
   const cursor = document.createElement('span');
   cursor.className = 'cursor';
   cursor.textContent = '_';
+  cursor.style.opacity = '0';
   el.appendChild(cursor);
 
   // Part 1 text node
   const part1Text = document.createTextNode('');
   el.insertBefore(part1Text, cursor);
 
-  // Part 2 text node (separate for potential styling)
+  // Part 2 text node
   const part2Span = document.createElement('span');
   part2Span.className = 'typewriter-part2';
   el.insertBefore(part2Span, cursor);
-  const part2Text = document.createTextNode('');
-  part2Span.appendChild(part2Text);
 
   const PART1 = '在風與海之間，';
   const PART2 = '有一個可以長久生存的地方';
   const SPEED = 80;
-  const PAUSE_MS = 1200; // 中間停頓
+  const PAUSE_MS = 1200;
+  const DOTS_MS = 2500; // 「...」顯示時間
 
   function typeChars(textNode, text, idx, cb) {
     if (idx < text.length) {
       textNode.textContent += text[idx];
       playTick();
       const delay = SPEED + Math.random() * 30;
-      // 標點後多停一下
       const extra = (text[idx] === '，' || text[idx] === '。' || text[idx] === '、') ? 120 : 0;
       setTimeout(() => typeChars(textNode, text, idx + 1, cb), delay + extra);
     } else {
@@ -404,25 +409,29 @@ function initTypewriter() {
     }
   }
 
-  // Hero entrance animation
+  // 1. 先顯示「...」
+  // 2. 淡出 dots，顯示游標
+  // 3. 開始打字
   setTimeout(() => {
-    // Type part 1
-    typeChars(part1Text, PART1, 0, () => {
-      // Pause — cursor breathing effect
-      cursor.classList.add('cursor-pause');
-      setTimeout(() => {
-        cursor.classList.remove('cursor-pause');
-        // Type part 2
-        typeChars(part2Text, PART2, 0, () => {
-          // Done — fade out cursor
-          setTimeout(() => {
-            cursor.style.opacity = '0';
-            cursor.style.transition = 'opacity 0.8s';
-          }, 2000);
-        });
-      }, PAUSE_MS);
-    });
-  }, 600);
+    dotsSpan.style.opacity = '0';
+    dotsSpan.style.transition = 'opacity 0.4s';
+    setTimeout(() => {
+      dotsSpan.remove();
+      cursor.style.opacity = '';
+      typeChars(part1Text, PART1, 0, () => {
+        cursor.classList.add('cursor-pause');
+        setTimeout(() => {
+          cursor.classList.remove('cursor-pause');
+          typeChars(part2Text, PART2, 0, () => {
+            setTimeout(() => {
+              cursor.style.opacity = '0';
+              cursor.style.transition = 'opacity 0.8s';
+            }, 2000);
+          });
+        }, PAUSE_MS);
+      });
+    }, 400);
+  }, DOTS_MS);
 }
 
 // --- Copy Server IP ---
@@ -505,19 +514,15 @@ function renderBulletin(board, items, isV2) {
     const tag = item.tag || '更新';
     const date = isV2 ? formatDateV2(item.isoDate) : formatDate(item.date, item.timestamp);
     const pinnedClass = item.pinned ? ' pinned' : '';
-    const pinLabel = item.pinned ? '<span class="b-pin">置頂</span>' : '';
-    const idLabel = item.id ? `<span class="b-id">${item.id}</span>` : '';
+    const idBadge = item.id ? `<span class="b-id">${item.id}</span>` : '<span class="b-id b-id-empty"></span>';
     const tagLabel = `<span class="b-tag tag-${tag}">${tag}</span>`;
 
     html += `<div class="bulletin-item${pinnedClass}" data-tag="${tag}" data-index="${i}">
       <button class="bulletin-toggle" aria-expanded="false">
-        <span class="b-left">
-          <span class="b-date">${date}</span>
-        </span>
+        <span class="b-id-wrap">${idBadge}</span>
         <span class="b-title">${item.title}</span>
         <span class="b-right">
-          ${pinLabel}
-          ${idLabel}
+          <span class="b-date">${date}</span>
           ${tagLabel}
           <span class="b-arrow">▾</span>
         </span>
@@ -531,7 +536,6 @@ function renderBulletin(board, items, isV2) {
   }
   board.innerHTML = html;
 
-  // Bind click handlers
   board.querySelectorAll('.bulletin-toggle').forEach(btn => {
     btn.addEventListener('click', toggleItem);
   });
