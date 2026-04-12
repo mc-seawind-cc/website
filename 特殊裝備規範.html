@@ -118,26 +118,30 @@
         <div class="rules-chapter fade-in">
           <h2>第二章 — 裝備體系總覽</h2>
           <div class="rule-item">
-            <p>海風目前的特殊裝備體系分為以下幾大類，各類有各自的定位與天花板：</p>
+            <p>海風目前的特殊裝備體系分為以下幾大類，各類有各自的定位與天花板。</p>
+            <p>特殊裝備透過 <code>ExecutableItems</code> 與 <code>MMOItems</code> 兩個插件製作，設計時需同時考慮兩者的交互影響。</p>
           </div>
 
           <div class="lore-block fade-in">
-            <h3>🛡️ 裝備套裝</h3>
+            <h3>🛡️ 那個魚系列（魚套）</h3>
+            <div class="rule-item">
+              <p>魚套是海風最核心的常駐活動裝備系列，分為<strong>舊魚套</strong>與<strong>新魚套</strong>兩代。</p>
+            </div>
             <div class="rules-table-wrap">
               <table class="rules-table">
                 <thead>
-                  <tr><th>套裝名稱</th><th>定位</th><th>備註</th></tr>
+                  <tr><th>版本</th><th>說明</th><th>狀態</th></tr>
                 </thead>
                 <tbody>
                   <tr>
-                    <td>那個魚套裝</td>
-                    <td>常駐活動裝備，分低階、中階、高階</td>
-                    <td>透過釣魚活動兌換取得，曾多次調整數值</td>
+                    <td>舊魚套</td>
+                    <td>早期版本，含壓力瑪斯內等部件。數值崩壞，已不再開放兌換</td>
+                    <td>⚠️ 停用 — 僅先前已兌換的玩家持有</td>
                   </tr>
                   <tr>
-                    <td>壓力瑪斯內</td>
-                    <td>高階魚套裝部件</td>
-                    <td>因數據問題已下架（114.08.18）</td>
+                    <td>新魚套</td>
+                    <td>重新設計的版本，數值經過調整。分低階、中階、高階</td>
+                    <td>✅ 現行版本，透過釣魚活動兌換</td>
                   </tr>
                 </tbody>
               </table>
@@ -149,23 +153,28 @@
             <div class="rules-table-wrap">
               <table class="rules-table">
                 <thead>
-                  <tr><th>武器名稱</th><th>定位</th><th>備註</th></tr>
+                  <tr><th>武器名稱</th><th>活動來源</th><th>備註</th></tr>
                 </thead>
                 <tbody>
                   <tr>
                     <td>紅蓮劍</td>
-                    <td>高階副本武器</td>
-                    <td>紅蓮煉獄常駐副本產出，曾合併數值（114.08.31）</td>
+                    <td>紅蓮煉獄（常駐副本）</td>
+                    <td>⚠️ 已不可兌換，僅存量持有。曾合併調整數值（114.08.31）</td>
                   </tr>
                   <tr>
                     <td>鋼劍</td>
-                    <td>中階武器</td>
-                    <td>冒險任務產出，後遷至雲隱匠作</td>
+                    <td>鋼鋼好活動</td>
+                    <td>可開放兌換，數值仍需調整</td>
+                  </tr>
+                  <tr>
+                    <td>鋼刃</td>
+                    <td>鋼鋼好活動</td>
+                    <td>可開放兌換，數值仍需調整</td>
                   </tr>
                   <tr>
                     <td>創物之杖</td>
-                    <td>活動武器（生存起源活動）</td>
-                    <td>目前活動中，分期開放（115.04.02 ~ 9/1）</td>
+                    <td>生存起源活動</td>
+                    <td>活動進行中，分期開放（115.04.02 ~ 9/1）</td>
                   </tr>
                 </tbody>
               </table>
@@ -183,7 +192,7 @@
                   <tr>
                     <td>風汐系列工具（稿子等）</td>
                     <td>高階生產工具</td>
-                    <td>透過風汐碎片/風汐石兌換，當前爭議物品</td>
+                    <td>透過風汐碎片/風汐石兌換</td>
                   </tr>
                 </tbody>
               </table>
@@ -191,7 +200,7 @@
           </div>
 
           <div class="lore-block fade-in">
-            <h3>💰 貨幣與材料</h3>
+            <h3>💎 風汐系列材料</h3>
             <div class="rules-table-wrap">
               <table class="rules-table">
                 <thead>
@@ -205,14 +214,6 @@
                   <tr>
                     <td>風汐石</td>
                     <td>兌換風汐系列工具的進階材料</td>
-                  </tr>
-                  <tr>
-                    <td>冷媒</td>
-                    <td>贊助回饋代幣，可兌換特殊物品</td>
-                  </tr>
-                  <tr>
-                    <td>任務幣</td>
-                    <td>任務系統貨幣，兌換商店使用</td>
                   </tr>
                 </tbody>
               </table>
@@ -298,6 +299,15 @@
             <ul>
               <li>分流二<strong>不支援 MMOitems</strong>，所有特殊裝備在分流二均不可使用。</li>
               <li>設計時需考慮：玩家在分流一取得裝備後到分流二的行為影響。</li>
+            </ul>
+          </div>
+          <div class="rule-item">
+            <p><strong>5.</strong> 兌換經濟平衡</p>
+            <ul>
+              <li>兌換材料的<strong>取得途徑</strong>與<strong>取得速率</strong>必須納入設計考量，不可只看裝備本身的數值。</li>
+              <li>若兌換材料可透過大量採集取得（如獄髓等礦物），需評估玩家大規模開採對經濟的衝擊。</li>
+              <li>建議兌換材料優先使用<strong>受控產出途徑</strong>（任務幣、活動獎勵、簽到等），減少可被大量刷取的開放材料。</li>
+              <li>設計時需問自己：如果玩家 24 小時不停挖礦，最快多久能兌換到這件裝備？這個速度是否合理？</li>
             </ul>
           </div>
         </div>
