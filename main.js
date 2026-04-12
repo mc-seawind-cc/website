@@ -447,48 +447,6 @@ function initBulletinBoard() {
     .then(r => r.json())
     .then(data => {
       const MAX_TOTAL = 10;
-
-      /* Discord Markdown → HTML */
-      function md2html(text) {
-        if (!text) return '';
-        let html = text;
-        html = html.replace(/^(>+)\s*(.*)$/gm, (m, arrows, content) => {
-          return content.trim() ? `<blockquote class="ann-quote" data-depth="${arrows.length}">${content}</blockquote>` : '';
-        });
-        html = html.replace(/!\[([^\]]*)\]\(([^)]+)\)/g, '<img src="$2" alt="$1" loading="lazy" class="ann-img">');
-        html = html.replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" target="_blank" rel="noopener">$1</a>');
-        html = html.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
-        html = html.replace(/(?<!\*)\*(?!\*)(.+?)(?<!\*)\*(?!\*)/g, '<em>$1</em>');
-        html = html.replace(/~~(.+?)~~/g, '<del>$1</del>');
-        html = html.replace(/__(.+?)__/g, '<u>$1</u>');
-        html = html.replace(/\|\|(.+?)\|\|/g, '<span class="ann-spoiler" onclick="this.classList.toggle(\'revealed\')" title="點擊顯示">$1</span>');
-        html = html.replace(/``\s*(.+?)\s*``/g, '<code>$1</code>');
-        html = html.replace(/`([^`]+)`/g, (m, code) => '<code>' + code.trim() + '</code>');
-        html = html.replace(/^###\s+(.+)$/gm, '<h4>$1</h4>');
-        html = html.replace(/^##\s+(.+)$/gm, '<h3>$1</h3>');
-        html = html.replace(/^#\s+(.+)$/gm, '<h2>$1</h2>');
-        html = html.replace(/^-#\s+(.+)$/gm, '<small class="ann-small">$1</small>');
-        const blocks = html.split(/\n\n+/);
-        let result = [];
-        blocks.forEach(block => {
-          const lines = block.split('\n');
-          let parts = [], inList = false, listType = '';
-          lines.forEach(line => {
-            const t = line.trim();
-            if (t.startsWith('<blockquote')) { if (inList) { parts.push('</' + listType + '>'); inList = false; } parts.push(t); }
-            else if (/^\s{2,}[•\-\*]\s/.test(t)) { if (!inList) { parts.push('<ul>'); inList = true; listType = 'ul'; } parts.push('<li class="ann-sub-item">' + t.replace(/^\s*[•\-\*]\s+/, '') + '</li>'); }
-            else if (/^[•\-\*]\s/.test(t)) { if (!inList || listType !== 'ul') { if (inList) parts.push('</' + listType + '>'); parts.push('<ul>'); inList = true; listType = 'ul'; } parts.push('<li>' + t.replace(/^[•\-\*]\s+/, '') + '</li>'); }
-            else if (/^\d+\.\s/.test(t)) { if (!inList || listType !== 'ol') { if (inList) parts.push('</' + listType + '>'); parts.push('<ol>'); inList = true; listType = 'ol'; } parts.push('<li>' + t.replace(/^\d+\.\s+/, '') + '</li>'); }
-            else if (t.startsWith('<h') || t.startsWith('<small')) { if (inList) { parts.push('</' + listType + '>'); inList = false; } parts.push(t); }
-            else if (t) { if (inList) { parts.push('</' + listType + '>'); inList = false; } parts.push(t); }
-          });
-          if (inList) parts.push('</' + listType + '>');
-          if (parts.length) result.push('<p>' + parts.join('<br>') + '</p>');
-        });
-        return result.join('');
-      }
-
-      const tagIcons = { '公告': '📢', '更新': '🔧', '維護': '🛠', '活動': '🎉' };
       const items = data.announcements;
       const pinned = items.filter(i => i.pinned);
       const regular = items.filter(i => !i.pinned);
@@ -496,23 +454,20 @@ function initBulletinBoard() {
       let html = '';
 
       function toggleItem() {
-        const wasOpen = this.parentElement.classList.contains('open');
-        this.closest('.bulletin-board').querySelectorAll('.bulletin-item.open').forEach(e => {
-          e.classList.remove('open');
-          e.querySelector('.bulletin-toggle').setAttribute('aria-expanded', 'false');
-        });
+        const wasOpen = this.closest('.bulletin-item').classList.contains('open');
+        board.querySelectorAll('.bulletin-item.open').forEach(e => e.classList.remove('open'));
         if (!wasOpen) {
-          this.parentElement.classList.add('open');
-          this.setAttribute('aria-expanded', 'true');
+          this.closest('.bulletin-item').classList.add('open');
         }
       }
 
       pinned.forEach((item, i) => {
-        const icon = tagIcons[item.tag] || '📌';
+        const icon = getTagIcon(item.tag);
+        const date = formatDate(item.date, item.timestamp);
         html += `<div class="bulletin-item pinned open" data-tag="${item.tag || '公告'}" data-index="${i}">
           <button class="bulletin-toggle" aria-expanded="true">
-            <span class="b-left"><span class="b-icon">${icon}</span><span class="b-date">${item.date}</span></span>
-            <span class="b-title">${item.title}</span>
+            <span class="b-left"><span class="b-icon">${icon}</span><span class="b-date">${date}</span></span>
+            <span class="b-title">📌 ${item.title}</span>
             <span class="b-right"><span class="b-id">${item.id || ''}</span><span class="b-arrow">▾</span></span>
           </button>
           <div class="bulletin-body"><div class="b-content">${md2html(item.content)}</div></div>
@@ -520,10 +475,11 @@ function initBulletinBoard() {
       });
       regular.slice(0, maxRegular).forEach((item, i) => {
         const tag = item.tag || '更新';
-        const icon = tagIcons[tag] || '📝';
+        const icon = getTagIcon(tag);
+        const date = formatDate(item.date, item.timestamp);
         html += `<div class="bulletin-item" data-tag="${tag}" data-index="${i}">
           <button class="bulletin-toggle" aria-expanded="false">
-            <span class="b-left"><span class="b-icon">${icon}</span><span class="b-date">${item.date}</span></span>
+            <span class="b-left"><span class="b-icon">${icon}</span><span class="b-date">${date}</span></span>
             <span class="b-title">${item.title}</span>
             <span class="b-right"><span class="b-id">${item.id || ''}</span><span class="b-tag tag-${tag}">${tag}</span><span class="b-arrow">▾</span></span>
           </button>

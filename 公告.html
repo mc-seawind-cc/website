@@ -16,12 +16,394 @@
   <meta name="theme-color" content="#0d1117">
   <link rel="dns-prefetch" href="//cdn.discordapp.com">
   <link rel="dns-prefetch" href="//truth.bahamut.com.tw">
-  <link rel="dns-prefetch" href="//api.mcsrvstat.us">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;800&family=Noto+Serif+TC:wght@700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=260412g">
+  <link rel="stylesheet" href="style.css?v=260412b">
   <link rel="stylesheet" href="music-player.css">
+  <style>
+    /* ═══ 公告頁面專用樣式 ═══ */
+
+    /* 頁面頭部 */
+    .ann-page-hero {
+      text-align: center;
+      padding: var(--space-xl) 0;
+      margin-bottom: var(--space-lg);
+    }
+    .ann-page-hero h1 {
+      font-size: clamp(1.8rem, 4vw, 2.4rem);
+      margin-bottom: var(--space-sm);
+    }
+    .ann-page-hero .ann-subtitle {
+      color: var(--fog);
+      font-size: 0.95rem;
+    }
+
+    /* 統計卡片列 */
+    .ann-stats-row {
+      display: flex;
+      gap: 12px;
+      margin-bottom: var(--space-lg);
+      flex-wrap: wrap;
+    }
+    .ann-stat-card {
+      flex: 1;
+      min-width: 100px;
+      background: var(--ocean);
+      border: 1px solid var(--mist);
+      border-radius: var(--radius-md);
+      padding: 14px 16px;
+      text-align: center;
+      transition: border-color var(--duration) var(--ease), transform var(--duration) var(--ease);
+    }
+    .ann-stat-card:hover {
+      border-color: var(--sky);
+      transform: translateY(-1px);
+    }
+    .ann-stat-card .stat-num {
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: var(--cloud);
+      line-height: 1.2;
+    }
+    .ann-stat-card .stat-label {
+      font-size: 0.72rem;
+      color: var(--fog);
+      margin-top: 2px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .ann-stat-card[data-tag="公告"] { border-left: 3px solid rgba(87,138,255,0.6); }
+    .ann-stat-card[data-tag="更新"] { border-left: 3px solid rgba(100,220,180,0.6); }
+    .ann-stat-card[data-tag="維護"] { border-left: 3px solid rgba(255,130,130,0.6); }
+    .ann-stat-card[data-tag="活動"] { border-left: 3px solid rgba(255,170,50,0.6); }
+
+    /* 篩選列 */
+    .ann-filter-bar {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      margin-bottom: var(--space-lg);
+      flex-wrap: wrap;
+    }
+    .ann-filters {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+      flex: 1;
+    }
+    .ann-filter {
+      background: var(--ocean);
+      border: 1px solid var(--mist);
+      color: var(--fog);
+      padding: 7px 14px;
+      border-radius: 99px;
+      font-size: 0.82rem;
+      cursor: pointer;
+      transition: all var(--duration) var(--ease);
+      font-family: var(--font-body);
+      white-space: nowrap;
+    }
+    .ann-filter:hover {
+      border-color: var(--sky);
+      color: var(--cloud);
+    }
+    .ann-filter.active {
+      background: rgba(157,175,255,0.1);
+      border-color: rgba(157,175,255,0.3);
+      color: var(--sky);
+      font-weight: 600;
+    }
+    [data-theme="light"] .ann-filter {
+      background: rgba(0,0,0,0.02);
+      border-color: rgba(0,0,0,0.06);
+    }
+    [data-theme="light"] .ann-filter.active {
+      background: rgba(74,108,247,0.08);
+      border-color: rgba(74,108,247,0.2);
+      color: #4a6cf7;
+    }
+
+    /* 搜尋框 */
+    .ann-search {
+      position: relative;
+      flex-shrink: 0;
+    }
+    .ann-search input {
+      background: var(--ocean);
+      border: 1px solid var(--mist);
+      color: var(--cloud);
+      padding: 8px 36px 8px 14px;
+      border-radius: 99px;
+      font-size: 0.85rem;
+      width: 200px;
+      outline: none;
+      transition: all var(--duration) var(--ease);
+      font-family: var(--font-body);
+    }
+    .ann-search input:focus {
+      border-color: var(--sky);
+      width: 260px;
+      box-shadow: 0 0 0 3px rgba(157,175,255,0.1);
+    }
+    .ann-search input::placeholder { color: var(--text-muted); }
+    [data-theme="light"] .ann-search input {
+      background: rgba(0,0,0,0.02);
+      border-color: rgba(0,0,0,0.06);
+    }
+    .ann-search .search-clear {
+      position: absolute;
+      right: 10px;
+      top: 50%;
+      transform: translateY(-50%);
+      background: none;
+      border: none;
+      color: var(--fog);
+      cursor: pointer;
+      font-size: 1rem;
+      padding: 2px 4px;
+      display: none;
+      line-height: 1;
+    }
+    .ann-search .search-clear.visible { display: block; }
+
+    /* 公告列表 */
+    .ann-list {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    /* 空狀態 */
+    .ann-empty {
+      text-align: center;
+      padding: var(--space-2xl) var(--space-lg);
+      color: var(--fog);
+    }
+    .ann-empty .empty-icon {
+      font-size: 3rem;
+      margin-bottom: var(--space-md);
+      opacity: 0.4;
+    }
+    .ann-empty p {
+      font-size: 0.95rem;
+    }
+
+    /* 公告卡片 */
+    .ann-card {
+      background: var(--ocean);
+      border: 1px solid var(--mist);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      transition: all var(--duration) var(--ease);
+    }
+    .ann-card:hover {
+      border-color: rgba(157,175,255,0.2);
+      box-shadow: 0 2px 12px rgba(0,0,0,0.1);
+    }
+    .ann-card.pinned {
+      border-left: 3px solid var(--sky);
+      background: linear-gradient(135deg, rgba(157,175,255,0.03), transparent);
+    }
+    .ann-card[data-tag="公告"] .ann-card-header { border-left: 3px solid rgba(87,138,255,0.4); }
+    .ann-card[data-tag="更新"] .ann-card-header { border-left: 3px solid rgba(100,220,180,0.4); }
+    .ann-card[data-tag="維護"] .ann-card-header { border-left: 3px solid rgba(255,130,130,0.4); }
+    .ann-card[data-tag="活動"] .ann-card-header { border-left: 3px solid rgba(255,170,50,0.4); }
+    .ann-card.pinned .ann-card-header { border-left: none; }
+
+    /* 卡片頭部（可點擊） */
+    .ann-card-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 12px 16px;
+      cursor: pointer;
+      user-select: none;
+      transition: background var(--duration) var(--ease);
+    }
+    .ann-card-header:hover {
+      background: rgba(157,175,255,0.03);
+    }
+    [data-theme="light"] .ann-card-header:hover {
+      background: rgba(0,0,0,0.015);
+    }
+
+    .ann-card-icon {
+      font-size: 1.1rem;
+      flex-shrink: 0;
+      width: 28px;
+      text-align: center;
+    }
+
+    .ann-card-date {
+      font-size: 0.72rem;
+      color: var(--fog);
+      flex-shrink: 0;
+      min-width: 75px;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .ann-card-title {
+      flex: 1;
+      font-size: 0.88rem;
+      font-weight: 500;
+      color: var(--cloud);
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      padding: 0 4px;
+    }
+
+    .ann-card-meta {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      flex-shrink: 0;
+    }
+
+    .ann-card-id {
+      font-size: 0.65rem;
+      color: var(--text-muted);
+      font-family: monospace;
+    }
+
+    .ann-card-tag {
+      font-size: 0.62rem;
+      padding: 2px 8px;
+      border-radius: 99px;
+      font-weight: 500;
+      letter-spacing: 0.3px;
+    }
+    .ann-card-tag.tag-公告 { background: rgba(87,138,255,0.1); color: rgba(87,138,255,0.9); }
+    .ann-card-tag.tag-更新 { background: rgba(100,220,180,0.1); color: rgba(100,220,180,0.9); }
+    .ann-card-tag.tag-維護 { background: rgba(255,130,130,0.1); color: rgba(255,130,130,0.9); }
+    .ann-card-tag.tag-活動 { background: rgba(255,170,50,0.1); color: rgba(255,170,50,0.9); }
+    [data-theme="light"] .ann-card-tag.tag-公告 { background: rgba(74,108,247,0.08); color: #4a6cf7; }
+    [data-theme="light"] .ann-card-tag.tag-更新 { background: rgba(0,150,100,0.08); color: #009664; }
+    [data-theme="light"] .ann-card-tag.tag-維護 { background: rgba(220,80,80,0.08); color: #dc5050; }
+    [data-theme="light"] .ann-card-tag.tag-活動 { background: rgba(220,140,30,0.08); color: #dc8c1e; }
+
+    .ann-card-pin {
+      font-size: 0.7rem;
+      color: var(--sky);
+    }
+
+    .ann-card-arrow {
+      color: var(--fog);
+      font-size: 0.8rem;
+      transition: transform var(--duration) var(--ease);
+      flex-shrink: 0;
+    }
+    .ann-card.open .ann-card-arrow {
+      transform: rotate(180deg);
+    }
+
+    /* 卡片身體 */
+    .ann-card-body {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .ann-card.open .ann-card-body {
+      max-height: 2000px;
+    }
+    .ann-card-body-inner {
+      padding: 0 16px 16px;
+      border-top: 1px solid var(--mist);
+    }
+
+    /* 內容樣式 */
+    .ann-card-body .b-content {
+      color: var(--cloud);
+      font-size: 0.88rem;
+      line-height: 1.8;
+      margin-top: 12px;
+    }
+    [data-theme="light"] .ann-card-body .b-content { color: #4a5260; }
+    .ann-card-body .b-content p { margin-bottom: 0.6em; }
+    .ann-card-body .b-content p:last-child { margin-bottom: 0; }
+    .ann-card-body .b-content ul,
+    .ann-card-body .b-content ol { padding-left: 1.4em; margin: 4px 0; }
+    .ann-card-body .b-content a { color: var(--sky); text-decoration: none; }
+    .ann-card-body .b-content a:hover { text-decoration: underline; }
+    .ann-card-body .b-content code {
+      background: rgba(157,175,255,0.08);
+      padding: 1px 6px;
+      border-radius: 4px;
+      font-size: 0.84em;
+      font-family: 'SF Mono', 'Cascadia Code', monospace;
+    }
+    .ann-card-body .b-content blockquote.ann-quote {
+      border-left: 3px solid rgba(157,175,255,0.2);
+      padding: 6px 14px;
+      margin: 8px 0;
+      background: rgba(157,175,255,0.03);
+      border-radius: 0 6px 6px 0;
+      color: var(--fog);
+    }
+    .ann-card-body .b-content blockquote.ann-quote[data-depth="2"] {
+      border-left-color: rgba(157,175,255,0.35);
+      background: rgba(157,175,255,0.05);
+    }
+    .ann-card-body .b-content .ann-small { color: var(--text-muted); font-size: 0.8em; }
+    .ann-card-body .b-content .ann-spoiler {
+      background: var(--mist);
+      color: transparent;
+      border-radius: 3px;
+      padding: 0 4px;
+      cursor: pointer;
+      transition: all var(--duration) var(--ease);
+    }
+    .ann-card-body .b-content .ann-spoiler.revealed {
+      background: rgba(157,175,255,0.1);
+      color: var(--cloud);
+    }
+    [data-theme="light"] .ann-card-body .b-content .ann-spoiler.revealed {
+      background: rgba(74,108,247,0.06);
+      color: #1f2328;
+    }
+    .ann-card-body .b-content .ann-sub-item { margin-left: 1em; }
+
+    /* 公告圖片 */
+    .ann-card-images {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-top: 12px;
+    }
+    .ann-card-images .ann-img {
+      max-width: 200px;
+      max-height: 150px;
+      border-radius: var(--radius-sm);
+      cursor: zoom-in;
+      transition: transform var(--duration) var(--ease), box-shadow var(--duration) var(--ease);
+      object-fit: cover;
+    }
+    .ann-card-images .ann-img:hover {
+      transform: scale(1.03);
+      box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+    }
+
+    /* 響應式 */
+    @media (max-width: 768px) {
+      .ann-filter-bar { flex-direction: column; align-items: stretch; }
+      .ann-search input { width: 100%; }
+      .ann-search input:focus { width: 100%; }
+      .ann-stats-row { gap: 8px; }
+      .ann-stat-card { min-width: 70px; padding: 10px 12px; }
+      .ann-stat-card .stat-num { font-size: 1.2rem; }
+      .ann-card-header { padding: 10px 12px; gap: 8px; }
+      .ann-card-date { min-width: 65px; font-size: 0.68rem; }
+      .ann-card-title { font-size: 0.82rem; }
+      .ann-card-id { display: none; }
+      .ann-card-images .ann-img { max-width: 140px; max-height: 100px; }
+    }
+
+    @media (max-width: 480px) {
+      .ann-stats-row { flex-wrap: wrap; }
+      .ann-stat-card { flex: 0 0 calc(50% - 6px); }
+    }
+  </style>
 </head>
 <body>
   <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
@@ -75,13 +457,17 @@
   </nav>
 
   <div class="page">
-    <div class="page-hero fade-in">      <h1>海風公告</h1>
-      <p class="section-desc">海風伺服器所有公告、更新與活動記錄。</p>
+    <div class="page-hero ann-page-hero fade-in">
+      <h1>📢 海風公告</h1>
+      <p class="ann-subtitle">伺服器所有公告、更新與活動記錄，掌握海風最新動態。</p>
     </div>
 
     <div class="content-section">
 
-      <!-- Filter Bar -->
+      <!-- 統計卡片 -->
+      <div class="ann-stats-row fade-in" id="annStats"></div>
+
+      <!-- 篩選列 -->
       <div class="ann-filter-bar fade-in">
         <div class="ann-filters">
           <button class="ann-filter active" data-tag="all">全部</button>
@@ -91,16 +477,12 @@
           <button class="ann-filter" data-tag="活動">🎉 活動</button>
         </div>
         <div class="ann-search">
-          <input type="text" id="annSearch" placeholder="搜尋公告..." autocomplete="off">
+          <input type="text" id="annSearch" placeholder="搜尋公告標題或內容..." autocomplete="off">
+          <button class="search-clear" id="searchClear" aria-label="清除搜尋">✕</button>
         </div>
       </div>
 
-      <!-- Stats -->
-      <div class="ann-stats fade-in">
-        <span id="annCount">載入中...</span>
-      </div>
-
-      <!-- Announcements List -->
+      <!-- 公告列表 -->
       <div id="annList" class="ann-list fade-in">
         <div class="skeleton skeleton-line medium"></div>
         <div class="skeleton skeleton-line short"></div>
@@ -109,8 +491,9 @@
         <div class="skeleton skeleton-line short"></div>
       </div>
 
-      <!-- Empty State -->
+      <!-- 空狀態 -->
       <div id="annEmpty" class="ann-empty" style="display:none;">
+        <div class="empty-icon">🔍</div>
         <p>找不到符合條件的公告</p>
       </div>
 
@@ -134,16 +517,18 @@
     </div>
   </footer>
 
-  <p class="page-revise">網站最後修改日期 2026.04.11 / 總計修改 <span id="deployCount">—</span> 次</p>
+  <p class="page-revise">網站最後修改日期 2026.04.12 / 總計修改 <span id="deployCount">—</span> 次</p>
 
   <script src="tips.js" defer></script>
-  <script src="main.js?v=260412g"></script>
+  <script src="utils.js"></script>
+  <script src="main.js?v=260412b"></script>
   <script>
   document.addEventListener('DOMContentLoaded', () => {
     const listEl = document.getElementById('annList');
     const emptyEl = document.getElementById('annEmpty');
-    const countEl = document.getElementById('annCount');
+    const statsEl = document.getElementById('annStats');
     const searchEl = document.getElementById('annSearch');
+    const clearBtn = document.getElementById('searchClear');
     let allItems = [];
     let activeTag = 'all';
 
@@ -151,98 +536,28 @@
       .then(r => r.json())
       .then(data => {
         allItems = data.announcements;
+        buildStats();
         render();
       })
       .catch(() => {
-        listEl.innerHTML = '<p style="text-align:center;color:var(--fog);padding:40px;">公告載入失敗</p>';
+        listEl.innerHTML = '<div class="ann-empty"><div class="empty-icon">😵</div><p>公告載入失敗，請稍後再試</p></div>';
       });
 
-    /* ═══ Discord Markdown → HTML 轉換器 ═══ */
-    function md2html(text) {
-      if (!text) return '';
-      let html = text;
-
-      // 先處理 block quote（整行 > 開頭）
-      html = html.replace(/^(>+)\s*(.*)$/gm, (match, arrows, content) => {
-        return content.trim() ? `<blockquote class="ann-quote" data-depth="${arrows.length}">${content}</blockquote>` : '';
-      });
-
-      // Images
-      html = html.replace(/!\[([^\]]*)\]\(([^)]+)\)/g, '<img src="$2" alt="$1" loading="lazy" class="ann-img">');
-      // Links
-      html = html.replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" target="_blank" rel="noopener">$1</a>');
-      // Bold
-      html = html.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
-      // Italic（避免衝突 *text* 在 ** 之後處理）
-      html = html.replace(/(?<!\*)\*(?!\*)(.+?)(?<!\*)\*(?!\*)/g, '<em>$1</em>');
-      // Strikethrough
-      html = html.replace(/~~(.+?)~~/g, '<del>$1</del>');
-      // Underline (Discord __text__)
-      html = html.replace(/__(.+?)__/g, '<u>$1</u>');
-      // Spoiler (Discord ||text||)
-      html = html.replace(/\|\|(.+?)\|\|/g, '<span class="ann-spoiler" onclick="this.classList.toggle(\'revealed\')" title="點擊顯示">$1</span>');
-      // Inline code（去除前後多餘空格）
-      html = html.replace(/``\s*(.+?)\s*``/g, '<code>$1</code>');
-      html = html.replace(/`([^`]+)`/g, (m, code) => '<code>' + code.trim() + '</code>');
-      // Headings
-      html = html.replace(/^###\s+(.+)$/gm, '<h4>$1</h4>');
-      html = html.replace(/^##\s+(.+)$/gm, '<h3>$1</h3>');
-      html = html.replace(/^#\s+(.+)$/gm, '<h2>$1</h2>');
-      // Small text (Discord -# text)
-      html = html.replace(/^-#\s+(.+)$/gm, '<small class="ann-small">$1</small>');
-
-      // 分段落處理
-      const blocks = html.split(/\n\n+/);
-      let result = [];
-      blocks.forEach(block => {
-        const lines = block.split('\n');
-        let parts = [], inList = false, listType = '';
-        lines.forEach(line => {
-          const t = line.trim();
-          // Blockquote 已經轉換過，直接帶入
-          if (t.startsWith('<blockquote')) {
-            if (inList) { parts.push('</' + listType + '>'); inList = false; }
-            parts.push(t);
-          }
-          // 嵌套列表（縮排的 - 項目）
-          else if (/^\s{2,}[•\-\*]\s/.test(t)) {
-            if (!inList) { parts.push('<ul>'); inList = true; listType = 'ul'; }
-            parts.push('<li class="ann-sub-item">' + t.replace(/^\s*[•\-\*]\s+/, '') + '</li>');
-          }
-          // 一般列表
-          else if (/^[•\-\*]\s/.test(t)) {
-            if (!inList || listType !== 'ul') {
-              if (inList) parts.push('</' + listType + '>');
-              parts.push('<ul>'); inList = true; listType = 'ul';
-            }
-            parts.push('<li>' + t.replace(/^[•\-\*]\s+/, '') + '</li>');
-          }
-          else if (/^\d+\.\s/.test(t)) {
-            if (!inList || listType !== 'ol') {
-              if (inList) parts.push('</' + listType + '>');
-              parts.push('<ol>'); inList = true; listType = 'ol';
-            }
-            parts.push('<li>' + t.replace(/^\d+\.\s+/, '') + '</li>');
-          }
-          else if (t.startsWith('<h')) {
-            if (inList) { parts.push('</' + listType + '>'); inList = false; }
-            parts.push(t);
-          }
-          else if (t.startsWith('<small')) {
-            if (inList) { parts.push('</' + listType + '>'); inList = false; }
-            parts.push(t);
-          }
-          else if (t) {
-            if (inList) { parts.push('</' + listType + '>'); inList = false; }
-            parts.push(t);
-          }
-        });
-        if (inList) parts.push('</' + listType + '>');
-        if (parts.length) result.push('<p>' + parts.join('<br>') + '</p>');
-      });
-      return result.join('');
+    // 統計卡片
+    function buildStats() {
+      const counts = { '全部': allItems.length, '公告': 0, '更新': 0, '維護': 0, '活動': 0 };
+      allItems.forEach(i => { if (counts[i.tag] !== undefined) counts[i.tag]++; });
+      statsEl.innerHTML = Object.entries(counts).map(([tag, count]) => {
+        const icon = tag === '全部' ? '📊' : getTagIcon(tag);
+        const dataAttr = tag === '全部' ? '' : `data-tag="${tag}"`;
+        return `<div class="ann-stat-card" ${dataAttr}>
+          <div class="stat-num">${count}</div>
+          <div class="stat-label">${icon} ${tag}</div>
+        </div>`;
+      }).join('');
     }
 
+    // 篩選按鈕
     document.querySelectorAll('.ann-filter').forEach(btn => {
       btn.addEventListener('click', () => {
         document.querySelectorAll('.ann-filter').forEach(b => b.classList.remove('active'));
@@ -252,7 +567,17 @@
       });
     });
 
-    searchEl.addEventListener('input', () => render());
+    // 搜尋
+    searchEl.addEventListener('input', () => {
+      clearBtn.classList.toggle('visible', searchEl.value.length > 0);
+      render();
+    });
+    clearBtn.addEventListener('click', () => {
+      searchEl.value = '';
+      clearBtn.classList.remove('visible');
+      render();
+      searchEl.focus();
+    });
 
     function render() {
       const q = searchEl.value.trim().toLowerCase();
@@ -264,40 +589,76 @@
         (i.id && i.id.toLowerCase().includes(q))
       );
 
-      countEl.textContent = `共 ${filtered.length} 則公告`;
       emptyEl.style.display = filtered.length ? 'none' : 'block';
-      listEl.style.display = filtered.length ? 'block' : 'none';
+      listEl.style.display = filtered.length ? 'flex' : 'none';
 
-      const tagIcons = { '公告': '📢', '更新': '🔧', '維護': '🛠', '活動': '🎉' };
+      if (!filtered.length) return;
 
       let html = '';
       filtered.forEach((item, i) => {
-        const pinned = item.pinned ? ' pinned open' : '';
         const tag = item.tag || '更新';
-        const icon = tagIcons[tag] || '📝';
+        const icon = getTagIcon(tag);
+        const date = formatDate(item.date, item.timestamp);
+        const pinnedClass = item.pinned ? ' pinned' : '';
+        const pinBadge = item.pinned ? '<span class="ann-card-pin">📌</span>' : '';
+        const idBadge = item.id ? `<span class="ann-card-id">${item.id}</span>` : '';
+        const tagBadge = `<span class="ann-card-tag tag-${tag}">${tag}</span>`;
+
+        // 圖片預覽（最多顯示 3 張縮圖）
+        let imagesHtml = '';
+        if (item.images && item.images.length) {
+          const preview = item.images.slice(0, 3);
+          imagesHtml = '<div class="ann-card-images">' +
+            preview.map(img => `<img src="${img}" loading="lazy" class="ann-img" alt="">`).join('') +
+            (item.images.length > 3 ? `<span style="color:var(--fog);font-size:0.8rem;align-self:center;">+${item.images.length - 3}</span>` : '') +
+            '</div>';
+        }
+
         html += `
-          <div class="bulletin-item${pinned}" data-tag="${tag}" data-index="${i}">
-            <button class="bulletin-toggle" onclick="this.parentElement.classList.toggle('open')">
-              <span class="b-left">
-                <span class="b-icon">${icon}</span>
-                <span class="b-date">${item.date}</span>
+          <div class="ann-card${pinnedClass}" data-tag="${tag}" data-index="${i}">
+            <div class="ann-card-header" onclick="toggleCard(this)">
+              <span class="ann-card-icon">${icon}</span>
+              <span class="ann-card-date">${date}</span>
+              <span class="ann-card-title">${item.title}</span>
+              <span class="ann-card-meta">
+                ${pinBadge}
+                ${idBadge}
+                ${tagBadge}
+                <span class="ann-card-arrow">▾</span>
               </span>
-              <span class="b-title">${item.title}</span>
-              <span class="b-right">
-                <span class="b-id">${item.id || ''}</span>
-                <span class="b-tag tag-${tag}">${tag}</span>
-                <span class="b-arrow">▾</span>
-              </span>
-            </button>
-            <div class="bulletin-body">
-              <div class="b-content">${md2html(item.content)}</div>
-              ${item.images && item.images.length ? '<div class="b-images">' + item.images.map(img => `<img src="${img}" loading="lazy" class="ann-img">`).join('') + '</div>' : ''}
+            </div>
+            <div class="ann-card-body">
+              <div class="ann-card-body-inner">
+                <div class="b-content">${md2html(item.content)}</div>
+                ${imagesHtml}
+              </div>
             </div>
           </div>`;
       });
       listEl.innerHTML = html;
     }
+
+    // Toggle card expand
+    window.toggleCard = function(header) {
+      const card = header.closest('.ann-card');
+      const wasOpen = card.classList.contains('open');
+      // 關閉其他已展開的卡片
+      card.closest('.ann-list').querySelectorAll('.ann-card.open').forEach(c => {
+        if (c !== card) c.classList.remove('open');
+      });
+      card.classList.toggle('open', !wasOpen);
+    };
   });
   </script>
+
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox">
+    <button class="lightbox-close" id="lightboxClose">✕</button>
+    <button class="lightbox-prev" id="lightboxPrev">‹</button>
+    <button class="lightbox-next" id="lightboxNext">›</button>
+    <img class="lightbox-img" id="lightboxImg" src="" alt="">
+    <div class="lightbox-counter" id="lightboxCounter"></div>
+  </div>
+
 </body>
 </html>
