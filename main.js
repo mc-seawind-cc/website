@@ -520,25 +520,8 @@ function renderBulletin(board, items, isV2) {
     const tagColors = { '公告': '#578aff', '更新': '#64dcb4', '維護': '#ff8282', '活動': '#ffaa32' };
     const accentColor = tagColors[tag] || '#578aff';
 
-    // 內容預覽（取第一行純文字）
-    const plainText = (item.content || '').replace(/[#*_~`>|-]/g, '').replace(/\n/g, ' ').trim();
-    const preview = plainText.length > 60 ? plainText.slice(0, 60) + '…' : plainText;
-
     // --- 展開內容 ---
     let bodyParts = [];
-
-    // 元資訊列
-    let metaParts = [];
-    if (item.id) metaParts.push(`<span class="b-meta-id">${item.id}</span>`);
-    if (item.author) metaParts.push(`<span class="b-meta-author">${item.author}</span>`);
-    if (item.timestamp) {
-      const t = new Date(item.timestamp);
-      const timeStr = `${String(t.getHours()).padStart(2,'0')}:${String(t.getMinutes()).padStart(2,'0')}`;
-      metaParts.push(`<span class="b-meta-time">${timeStr}</span>`);
-    }
-    if (metaParts.length) {
-      bodyParts.push(`<div class="b-meta">${metaParts.join('<span class="b-meta-sep">·</span>')}</div>`);
-    }
 
     // 內容
     bodyParts.push(`<div class="b-text">${md2html(item.content)}</div>`);
@@ -565,7 +548,6 @@ function renderBulletin(board, items, isV2) {
         </div>
         <div class="b-center">
           <span class="b-title">${item.title}</span>
-          <span class="b-preview">${preview}</span>
         </div>
         <div class="b-right">
           ${item.pinned ? '<span class="b-pin">📌</span>' : ''}
