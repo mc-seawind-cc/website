@@ -18,19 +18,19 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;800&family=Noto+Serif+TC:wght@700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=260413a">
+  <link rel="stylesheet" href="style.css?v=260413b">
   <link rel="stylesheet" href="music-player.css">
   <style>
   /* ═══════════════════════════════════════
-     海風歷史館 — 全新設計 v2
-     卡片式 + 標籤篩選 + 搜尋 + 時代切換
+     海風歷史館 v3 — 垂直時間線設計
+     博物館風格，左側時間軸 + 右側內容
      ═══════════════════════════════════════ */
 
   /* ── Hero ── */
   .hist-hero {
     position: relative;
     text-align: center;
-    padding: 120px 24px 60px;
+    padding: 120px 24px 48px;
     overflow: hidden;
   }
   .hist-hero::before {
@@ -93,7 +93,7 @@
     padding: 12px 0;
     background: var(--deep);
     border-bottom: 1px solid var(--mist);
-    margin-bottom: 24px;
+    margin-bottom: 32px;
     transition: background 0.4s;
   }
   .hist-toolbar::before {
@@ -137,18 +137,14 @@
     white-space: nowrap;
   }
   .tag-btn:hover { border-color: var(--sky); color: var(--cloud); }
-  .tag-btn.active {
-    font-weight: 600;
-  }
+  .tag-btn.active { font-weight: 600; }
   .tag-btn[data-tag="里程碑"].active { background: rgba(157,175,255,0.1); border-color: rgba(157,175,255,0.3); color: var(--sky); }
   .tag-btn[data-tag="更新"].active { background: rgba(100,220,180,0.1); border-color: rgba(100,220,180,0.3); color: #6dd8b4; }
   .tag-btn[data-tag="事件"].active { background: rgba(255,170,50,0.1); border-color: rgba(255,170,50,0.3); color: #ffc566; }
   .tag-btn[data-tag="活動"].active { background: rgba(255,130,130,0.1); border-color: rgba(255,130,130,0.3); color: #ff9999; }
 
   /* Search */
-  .hist-search {
-    position: relative; flex-shrink: 0;
-  }
+  .hist-search { position: relative; flex-shrink: 0; }
   .hist-search input {
     background: var(--ocean); border: 1px solid var(--mist);
     color: var(--cloud); padding: 7px 32px 7px 14px;
@@ -164,112 +160,308 @@
   }
   .hist-search .clear-btn.visible { display: block; }
 
-  /* ── Year Sections ── */
-  .year-section { margin-bottom: 32px; }
-  .year-header {
-    display: flex; align-items: center; gap: 10px;
-    margin-bottom: 16px; padding-bottom: 8px;
-    border-bottom: 1px solid var(--mist);
-  }
-  .year-label {
-    font-size: 1.1rem; font-weight: 800; color: var(--white);
-    font-variant-numeric: tabular-nums;
-  }
-  .year-count {
-    font-size: 0.7rem; color: var(--fog); background: var(--ocean);
-    padding: 2px 8px; border-radius: 100px; border: 1px solid var(--mist);
+  /* ══════════════════════════════════════════
+     時間線主體
+     ══════════════════════════════════════════ */
+
+  .timeline { position: relative; padding: 0 0 40px; }
+
+  /* 中央垂直線 */
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 140px;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: linear-gradient(to bottom, var(--sky), var(--mist) 10%, var(--mist) 90%, transparent);
+    border-radius: 2px;
   }
 
-  /* ── Event Cards ── */
-  .evt-grid { display: flex; flex-direction: column; gap: 6px; }
-
-  .evt-card {
+  /* ── 年份分隔 ── */
+  .tl-year {
+    position: relative;
+    padding: 32px 0 16px 0;
+    margin-left: 100px;
+  }
+  .tl-year-label {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 1.4rem;
+    font-weight: 800;
+    color: var(--white);
+    z-index: 2;
+  }
+  .tl-year-label::before {
+    content: '';
+    position: absolute;
+    left: -42px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 14px; height: 14px;
+    border-radius: 50%;
+    background: var(--sky);
+    border: 3px solid var(--deep);
+    box-shadow: 0 0 0 2px var(--sky), 0 0 12px rgba(157,175,255,0.3);
+    z-index: 3;
+  }
+  .tl-year-count {
+    font-size: 0.7rem;
+    color: var(--fog);
     background: var(--ocean);
+    padding: 2px 8px;
+    border-radius: 100px;
     border: 1px solid var(--mist);
-    border-radius: 10px;
-    overflow: hidden;
-    transition: all 0.25s var(--ease);
-  }
-  .evt-card:hover {
-    border-color: rgba(157,175,255,0.15);
-    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
-  }
-  .evt-card.milestone {
-    border-left: 3px solid var(--sky);
-  }
-  .evt-card[data-tag="里程碑"] { border-left-color: var(--sky); }
-  .evt-card[data-tag="更新"] { border-left-color: #64dcb4; }
-  .evt-card[data-tag="事件"] { border-left-color: #ffaa32; }
-  .evt-card[data-tag="活動"] { border-left-color: #ff8282; }
-
-  .evt-head {
-    display: flex; align-items: center; gap: 10px;
-    padding: 10px 14px; cursor: pointer; user-select: none;
-    min-height: 46px;
-  }
-  .evt-head:hover { background: rgba(255,255,255,0.015); }
-  [data-theme="light"] .evt-head:hover { background: rgba(0,0,0,0.01); }
-
-  .evt-date {
-    font-size: 0.7rem; color: var(--fog); flex-shrink: 0;
-    min-width: 68px; font-variant-numeric: tabular-nums;
     font-weight: 500;
   }
-  .evt-title {
-    flex: 1; font-size: 0.88rem; font-weight: 600; color: var(--cloud);
-    overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+  /* 年份裝飾線 */
+  .tl-year::after {
+    content: '';
+    position: absolute;
+    left: 38px;
+    top: 50%;
+    width: calc(100% - 38px);
+    height: 1px;
+    background: linear-gradient(to right, rgba(157,175,255,0.15), transparent);
+    z-index: 0;
   }
-  .evt-right { display: flex; align-items: center; gap: 6px; flex-shrink: 0; }
-  .evt-tag {
-    font-size: 0.6rem; padding: 2px 8px; border-radius: 100px; font-weight: 600;
+
+  /* ── 時代分隔 ── */
+  .tl-era-divider {
+    position: relative;
+    text-align: center;
+    padding: 24px 0;
+    margin-left: 100px;
   }
-  .evt-tag[data-tag="里程碑"] { background: rgba(157,175,255,0.1); color: var(--sky); }
-  .evt-tag[data-tag="更新"] { background: rgba(100,220,180,0.1); color: #6dd8b4; }
-  .evt-tag[data-tag="事件"] { background: rgba(255,170,50,0.1); color: #ffc566; }
-  .evt-tag[data-tag="活動"] { background: rgba(255,130,130,0.1); color: #ff9999; }
-  [data-theme="light"] .evt-tag[data-tag="里程碑"] { background: rgba(74,108,247,0.08); color: #4a6cf7; }
-  [data-theme="light"] .evt-tag[data-tag="更新"] { background: rgba(0,150,100,0.08); color: #009664; }
-  [data-theme="light"] .evt-tag[data-tag="事件"] { background: rgba(220,140,30,0.08); color: #dc8c1e; }
-  [data-theme="light"] .evt-tag[data-tag="活動"] { background: rgba(220,80,80,0.08); color: #dc5050; }
-  .evt-arrow {
-    color: var(--fog); font-size: 0.7rem;
+  .tl-era-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 24px;
+    border-radius: 100px;
+    font-size: 0.88rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    position: relative;
+    z-index: 2;
+  }
+  .tl-era-badge.purewheat {
+    background: linear-gradient(135deg, rgba(222,172,128,0.12), rgba(222,172,128,0.04));
+    border: 1px solid rgba(222,172,128,0.25);
+    color: var(--sand);
+  }
+  .tl-era-badge.seawind {
+    background: linear-gradient(135deg, rgba(168,230,207,0.12), rgba(168,230,207,0.04));
+    border: 1px solid rgba(168,230,207,0.25);
+    color: var(--foam);
+  }
+  .tl-era-icon { font-size: 1.1rem; }
+
+  /* ── 事件項目 ── */
+  .tl-item {
+    position: relative;
+    display: flex;
+    align-items: flex-start;
+    padding: 6px 0 6px 100px;
+    opacity: 0;
+    transform: translateX(20px);
+    transition: opacity 0.5s var(--ease), transform 0.5s var(--ease);
+  }
+  .tl-item.visible {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  /* 左側日期 */
+  .tl-date-col {
+    position: absolute;
+    left: 0;
+    top: 10px;
+    width: 92px;
+    text-align: right;
+    font-size: 0.75rem;
+    color: var(--fog);
+    font-weight: 500;
+    font-variant-numeric: tabular-nums;
+    padding-right: 24px;
+  }
+
+  /* 節點 */
+  .tl-node {
+    position: absolute;
+    left: 133px;
+    top: 12px;
+    width: 16px; height: 16px;
+    border-radius: 50%;
+    border: 3px solid var(--deep);
+    z-index: 2;
+    transition: transform 0.3s var(--ease), box-shadow 0.3s;
+  }
+  .tl-item:hover .tl-node {
+    transform: scale(1.3);
+  }
+  .tl-node.里程碑 { background: var(--sky); box-shadow: 0 0 0 2px var(--sky); }
+  .tl-node.更新 { background: #64dcb4; box-shadow: 0 0 0 2px #64dcb4; }
+  .tl-node.事件 { background: #ffaa32; box-shadow: 0 0 0 2px #ffaa32; }
+  .tl-node.活動 { background: #ff8282; box-shadow: 0 0 0 2px #ff8282; }
+  .tl-item:hover .tl-node.里程碑 { box-shadow: 0 0 0 2px var(--sky), 0 0 16px rgba(157,175,255,0.4); }
+  .tl-item:hover .tl-node.更新 { box-shadow: 0 0 0 2px #64dcb4, 0 0 16px rgba(100,220,180,0.4); }
+  .tl-item:hover .tl-node.事件 { box-shadow: 0 0 0 2px #ffaa32, 0 0 16px rgba(255,170,50,0.4); }
+  .tl-item:hover .tl-node.活動 { box-shadow: 0 0 0 2px #ff8282, 0 0 16px rgba(255,130,130,0.4); }
+
+  /* 里程碑節點更大 */
+  .tl-node.里程碑 { width: 20px; height: 20px; left: 131px; top: 10px; }
+
+  /* 里程碑連接線裝飾 */
+  .tl-item[data-tag="里程碑"]::after {
+    content: '';
+    position: absolute;
+    left: 151px;
+    top: 20px;
+    width: 8px;
+    height: 1px;
+    background: var(--sky);
+    opacity: 0.3;
+  }
+
+  /* 右側卡片 */
+  .tl-card {
+    flex: 1;
+    background: var(--ocean);
+    border: 1px solid var(--mist);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    transition: all 0.3s var(--ease);
+    cursor: pointer;
+    margin-left: 32px;
+  }
+  .tl-card:hover {
+    border-color: rgba(157,175,255,0.15);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    transform: translateX(2px);
+  }
+  /* 各標籤左邊框 */
+  .tl-item[data-tag="里程碑"] .tl-card { border-left: 3px solid var(--sky); }
+  .tl-item[data-tag="更新"] .tl-card { border-left: 3px solid #64dcb4; }
+  .tl-item[data-tag="事件"] .tl-card { border-left: 3px solid #ffaa32; }
+  .tl-item[data-tag="活動"] .tl-card { border-left: 3px solid #ff8282; }
+
+  /* 里程碑卡片特殊樣式 */
+  .tl-item[data-tag="里程碑"] .tl-card {
+    background: linear-gradient(135deg, var(--ocean) 60%, rgba(157,175,255,0.04));
+  }
+
+  .tl-card-head {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 16px;
+    user-select: none;
+  }
+  .tl-card-head:hover { background: rgba(255,255,255,0.01); }
+  [data-theme="light"] .tl-card-head:hover { background: rgba(0,0,0,0.005); }
+
+  .tl-card-title {
+    flex: 1;
+    font-size: 0.92rem;
+    font-weight: 600;
+    color: var(--cloud);
+  }
+  .tl-card-right {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    flex-shrink: 0;
+  }
+  .tl-tag {
+    font-size: 0.6rem;
+    padding: 2px 8px;
+    border-radius: 100px;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+  }
+  .tl-tag[data-tag="里程碑"] { background: rgba(157,175,255,0.1); color: var(--sky); }
+  .tl-tag[data-tag="更新"] { background: rgba(100,220,180,0.1); color: #6dd8b4; }
+  .tl-tag[data-tag="事件"] { background: rgba(255,170,50,0.1); color: #ffc566; }
+  .tl-tag[data-tag="活動"] { background: rgba(255,130,130,0.1); color: #ff9999; }
+  [data-theme="light"] .tl-tag[data-tag="里程碑"] { background: rgba(74,108,247,0.08); color: #4a6cf7; }
+  [data-theme="light"] .tl-tag[data-tag="更新"] { background: rgba(0,150,100,0.08); color: #009664; }
+  [data-theme="light"] .tl-tag[data-tag="事件"] { background: rgba(220,140,30,0.08); color: #dc8c1e; }
+  [data-theme="light"] .tl-tag[data-tag="活動"] { background: rgba(220,80,80,0.08); color: #dc5050; }
+
+  .tl-arrow {
+    color: var(--fog);
+    font-size: 0.7rem;
     transition: transform 0.25s;
   }
-  .evt-card.open .evt-arrow { transform: rotate(180deg); }
-  .evt-milestone-star { font-size: 0.75rem; }
+  .tl-card.open .tl-arrow { transform: rotate(180deg); }
 
-  /* Expandable body */
-  .evt-body {
-    max-height: 0; overflow: hidden;
+  /* 展開內容 */
+  .tl-body {
+    max-height: 0;
+    overflow: hidden;
     transition: max-height 0.4s cubic-bezier(0.4,0,0.2,1);
   }
-  .evt-card.open .evt-body { max-height: 600px; }
-  .evt-body-inner {
-    padding: 0 14px 14px;
+  .tl-card.open .tl-body { max-height: 600px; }
+  .tl-body-inner {
+    padding: 0 16px 16px;
     border-top: 1px solid rgba(157,175,255,0.06);
   }
-  [data-theme="light"] .evt-body-inner { border-top-color: rgba(0,0,0,0.04); }
-  .evt-desc {
-    padding-top: 12px;
-    font-size: 0.88rem; color: var(--fog); line-height: 1.85;
+  [data-theme="light"] .tl-body-inner { border-top-color: rgba(0,0,0,0.04); }
+  .tl-desc {
+    padding-top: 14px;
+    font-size: 0.9rem;
+    color: var(--fog);
+    line-height: 1.9;
   }
-  .evt-photo {
-    margin-top: 12px; border-radius: 8px; overflow: hidden;
+  .tl-photo {
+    margin-top: 14px;
+    border-radius: 8px;
+    overflow: hidden;
     border: 1px solid rgba(255,255,255,0.06);
     cursor: zoom-in;
   }
-  .evt-photo img {
+  .tl-photo img {
     width: 100%; display: block;
     aspect-ratio: 16/9; object-fit: cover;
     transition: transform 0.3s;
   }
-  .evt-photo:hover img { transform: scale(1.02); }
-  .evt-photo-caption {
+  .tl-photo:hover img { transform: scale(1.02); }
+  .tl-photo-caption {
     padding: 6px 10px; font-size: 0.7rem; color: var(--fog);
     background: rgba(255,255,255,0.02);
   }
-  [data-theme="light"] .evt-photo { border-color: rgba(0,0,0,0.06); }
-  [data-theme="light"] .evt-photo-caption { background: rgba(0,0,0,0.02); }
+  [data-theme="light"] .tl-photo { border-color: rgba(0,0,0,0.06); }
+  [data-theme="light"] .tl-photo-caption { background: rgba(0,0,0,0.02); }
+
+  /* ── 結尾裝飾 ── */
+  .tl-end {
+    position: relative;
+    text-align: center;
+    padding: 40px 0 20px;
+    margin-left: 100px;
+  }
+  .tl-end-dot {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px; height: 40px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--sky), var(--foam));
+    font-size: 1.2rem;
+    position: relative;
+    z-index: 2;
+    box-shadow: 0 0 20px rgba(157,175,255,0.2);
+  }
+  .tl-end-text {
+    display: block;
+    margin-top: 8px;
+    font-size: 0.82rem;
+    color: var(--fog);
+    font-style: italic;
+  }
 
   /* ── Empty State ── */
   .hist-empty {
@@ -303,13 +495,6 @@
   /* ── Light Theme ── */
   [data-theme="light"] .hist-toolbar { background: #f0f2f5; border-bottom-color: rgba(0,0,0,0.06); }
   [data-theme="light"] .hist-toolbar::before { background: #f0f2f5; }
-  [data-theme="light"] .year-label { color: var(--cloud); }
-  [data-theme="light"] .year-header { border-bottom-color: rgba(0,0,0,0.06); }
-  [data-theme="light"] .year-count { background: #fff; border-color: rgba(0,0,0,0.06); color: var(--fog); }
-  [data-theme="light"] .evt-card { background: #fff; border-color: rgba(0,0,0,0.06); }
-  [data-theme="light"] .evt-card:hover { border-color: rgba(157,175,255,0.2); box-shadow: 0 2px 12px rgba(0,0,0,0.04); }
-  [data-theme="light"] .evt-title { color: var(--cloud); }
-  [data-theme="light"] .evt-desc { color: #5a6270; }
   [data-theme="light"] .hist-hero h1 {
     background: linear-gradient(135deg, var(--cloud) 0%, var(--sky) 100%);
     -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
@@ -318,6 +503,18 @@
   [data-theme="light"] .era-tab.active { background: rgba(157,175,255,0.1); border-color: rgba(157,175,255,0.25); }
   [data-theme="light"] .tag-btn { background: #fff; border-color: rgba(0,0,0,0.08); color: var(--fog); }
   [data-theme="light"] .hist-search input { background: #fff; border-color: rgba(0,0,0,0.08); color: var(--cloud); }
+  [data-theme="light"] .timeline::before { background: linear-gradient(to bottom, var(--sky), rgba(0,0,0,0.06) 10%, rgba(0,0,0,0.06) 90%, transparent); }
+  [data-theme="light"] .tl-year-label { color: var(--cloud); }
+  [data-theme="light"] .tl-year-label::before { border-color: #f0f2f5; }
+  [data-theme="light"] .tl-node { border-color: #f0f2f5; }
+  [data-theme="light"] .tl-year::after { background: linear-gradient(to right, rgba(157,175,255,0.1), transparent); }
+  [data-theme="light"] .tl-card { background: #fff; border-color: rgba(0,0,0,0.06); }
+  [data-theme="light"] .tl-card:hover { border-color: rgba(157,175,255,0.2); box-shadow: 0 4px 20px rgba(0,0,0,0.05); }
+  [data-theme="light"] .tl-card-title { color: var(--cloud); }
+  [data-theme="light"] .tl-desc { color: #5a6270; }
+  [data-theme="light"] .tl-item[data-tag="里程碑"] .tl-card {
+    background: linear-gradient(135deg, #fff 60%, rgba(157,175,255,0.04));
+  }
   [data-theme="light"] .hist-empty { color: var(--fog); }
   [data-theme="light"] .lightbox { background: rgba(240,242,245,0.95); }
   [data-theme="light"] .lightbox-close { color: var(--cloud); background: rgba(0,0,0,0.06); }
@@ -334,13 +531,38 @@
     .hist-stats { gap: 8px; }
     .hist-stat { padding: 12px 8px; min-width: 70px; }
     .hist-stat-num { font-size: 1.3rem; }
-    .evt-head { padding: 10px 10px; gap: 8px; }
-    .evt-date { min-width: 55px; font-size: 0.65rem; }
-    .evt-title { font-size: 0.82rem; }
+
+    /* 時間線偏左 */
+    .timeline::before { left: 20px; }
+    .tl-year { margin-left: 36px; padding: 24px 0 12px; }
+    .tl-year-label { font-size: 1.1rem; }
+    .tl-year-label::before { left: -38px; width: 12px; height: 12px; }
+    .tl-year-count { font-size: 0.65rem; }
+    .tl-year::after { left: 16px; }
+
+    .tl-era-divider { margin-left: 36px; padding: 20px 0; }
+    .tl-era-badge { font-size: 0.8rem; padding: 8px 18px; }
+
+    .tl-item { padding-left: 36px; }
+    .tl-date-col { width: 26px; right: auto; left: 0; text-align: left; font-size: 0; padding: 0; }
+    /* 手機上日期只顯示月份 */
+    .tl-date-col .tl-date-mobile { font-size: 0.62rem; display: block; }
+    .tl-node { left: 13px; top: 14px; width: 14px; height: 14px; }
+    .tl-node.里程碑 { width: 18px; height: 18px; left: 11px; top: 12px; }
+    .tl-item[data-tag="里程碑"]::after { left: 31px; width: 6px; }
+
+    .tl-card { margin-left: 16px; }
+    .tl-card-head { padding: 10px 12px; gap: 8px; }
+    .tl-card-title { font-size: 0.84rem; }
+    .tl-tag { font-size: 0.55rem; padding: 2px 6px; }
+
+    .tl-end { margin-left: 36px; }
+    .tl-end-dot { width: 32px; height: 32px; font-size: 1rem; }
   }
   @media (max-width: 375px) {
     .hist-stats { justify-content: space-between; }
     .hist-stat { flex: 1; min-width: 0; padding: 10px 4px; }
+    .tl-card-title { font-size: 0.8rem; }
   }
   </style>
 </head>
@@ -433,7 +655,7 @@
       </div>
 
       <!-- ═══ Content ═══ -->
-      <div id="histList"></div>
+      <div id="histList" class="timeline"></div>
       <div id="histEmpty" class="hist-empty" style="display:none;">
         <div class="hist-empty-icon">🔍</div>
         <p>找不到符合條件的歷史事件</p>
@@ -468,7 +690,7 @@
   </div>
 
   <script src="utils.js"></script>
-  <script src="main.js?v=260413a"></script>
+  <script src="main.js?v=260413b"></script>
   <script>
   (() => {
     'use strict';
@@ -665,56 +887,96 @@
       }
       emptyEl.style.display = 'none';
 
-      // Group by year
-      const groups = {};
-      items.forEach(item => {
-        const year = item.isoDate.slice(0,4);
-        if (!groups[year]) groups[year] = [];
-        groups[year].push(item);
-      });
-
       let html = '';
-      // Render years in reverse chronological order
-      Object.keys(groups).sort((a,b) => b-a).forEach(year => {
-        const yearItems = groups[year];
-        html += `<div class="year-section">
-          <div class="year-header">
-            <span class="year-label">${year}</span>
-            <span class="year-count">${yearItems.length} 則</span>
-          </div>
-          <div class="evt-grid">`;
+      let lastYear = '';
+      let lastEra = '';
 
-        yearItems.forEach((item, i) => {
-          const isMilestone = item.tag === '里程碑';
-          const starIcon = isMilestone ? '<span class="evt-milestone-star">⭐</span>' : '';
+      items.forEach((item, idx) => {
+        const year = item.isoDate.slice(0,4);
+        const era = item.era;
 
-          let bodyParts = [];
-          bodyParts.push(`<div class="evt-desc">${item.desc}</div>`);
-          if (item.photo) {
-            bodyParts.push(`<div class="evt-photo" onclick="event.stopPropagation()"><img src="${item.photo}" alt="${item.title}" loading="lazy" onerror="this.parentElement.style.display='none'" style="cursor:zoom-in"></div>`);
-            if (item.photoCaption) bodyParts.push(`<div class="evt-photo-caption">${item.photoCaption}</div>`);
+        // 時代分隔線
+        if (era !== lastEra) {
+          if (era === 'seawind' && lastEra === 'purewheat') {
+            html += `<div class="tl-era-divider">
+              <span class="tl-era-badge seawind"><span class="tl-era-icon">🌊</span> 海風時期</span>
+            </div>`;
+          } else if (era === 'purewheat') {
+            html += `<div class="tl-era-divider">
+              <span class="tl-era-badge purewheat"><span class="tl-era-icon">🌾</span> 純麥時期</span>
+            </div>`;
           }
+          lastEra = era;
+          lastYear = ''; // 強制年份重新顯示
+        }
 
-          html += `<div class="evt-card${isMilestone?' milestone':''}" data-tag="${item.tag}" data-era="${item.era}" style="animation-delay:${i*0.03}s">
-            <div class="evt-head" onclick="this.closest('.evt-card').classList.toggle('open')">
-              <span class="evt-date">${item.date}</span>
-              <span class="evt-title">${starIcon} ${item.title}</span>
-              <span class="evt-right">
-                <span class="evt-tag" data-tag="${item.tag}">${item.tag}</span>
-                <span class="evt-arrow">▾</span>
+        // 年份分隔
+        if (year !== lastYear) {
+          const yearItems = items.filter(it => it.isoDate.startsWith(year) && it.era === era);
+          html += `<div class="tl-year">
+            <span class="tl-year-label">${year}<span class="tl-year-count">${yearItems.length} 則</span></span>
+          </div>`;
+          lastYear = year;
+        }
+
+        const isMilestone = item.tag === '里程碑';
+        const starIcon = isMilestone ? '⭐ ' : '';
+
+        // 展開內容
+        let bodyParts = [];
+        bodyParts.push(`<div class="tl-desc">${item.desc}</div>`);
+        if (item.photo) {
+          bodyParts.push(`<div class="tl-photo" onclick="event.stopPropagation()"><img src="${item.photo}" alt="${item.title}" loading="lazy" onerror="this.parentElement.style.display='none'" style="cursor:zoom-in"></div>`);
+          if (item.photoCaption) bodyParts.push(`<div class="tl-photo-caption">${item.photoCaption}</div>`);
+        }
+
+        // 手機用日期（只顯示月.日）
+        const dateParts = item.date.split('.');
+        const mobileDate = dateParts.length >= 3 ? dateParts.slice(1).join('.') : item.date;
+
+        html += `<div class="tl-item" data-tag="${item.tag}" data-era="${item.era}" style="animation-delay:${idx*0.03}s">
+          <span class="tl-date-col">${item.date}<span class="tl-date-mobile">${mobileDate}</span></span>
+          <span class="tl-node ${item.tag}"></span>
+          <div class="tl-card" onclick="this.classList.toggle('open')">
+            <div class="tl-card-head">
+              <span class="tl-card-title">${starIcon}${item.title}</span>
+              <span class="tl-card-right">
+                <span class="tl-tag" data-tag="${item.tag}">${item.tag}</span>
+                <span class="tl-arrow">▾</span>
               </span>
             </div>
-            <div class="evt-body"><div class="evt-body-inner">${bodyParts.join('')}</div></div>
-          </div>`;
-        });
-
-        html += '</div></div>';
+            <div class="tl-body"><div class="tl-body-inner">${bodyParts.join('')}</div></div>
+          </div>
+        </div>`;
       });
+
+      // 結尾裝飾
+      html += `<div class="tl-end">
+        <span class="tl-end-dot">🌊</span>
+        <span class="tl-end-text">歷史持續書寫中⋯⋯</span>
+      </div>`;
 
       listEl.innerHTML = html;
 
+      // 滾動動畫 — 逐漸顯示
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.1, rootMargin: '0px 0px -30px 0px' });
+
+      listEl.querySelectorAll('.tl-item').forEach(el => observer.observe(el));
+
+      // 安全機制：3 秒後全部顯示
+      setTimeout(() => {
+        listEl.querySelectorAll('.tl-item:not(.visible)').forEach(el => el.classList.add('visible'));
+      }, 3000);
+
       // Bind photo lightbox
-      listEl.querySelectorAll('.evt-photo img').forEach(img => {
+      listEl.querySelectorAll('.tl-photo img').forEach(img => {
         img.addEventListener('click', () => openLightbox(img.src));
       });
     }
