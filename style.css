@@ -1422,6 +1422,121 @@ html, body {
   font-size: 0.8rem;
 }
 
+/* ═══ 公告欄 v2 — 雜誌式卡片 ═══ */
+.bulletin-featured {
+  background: var(--ocean);
+  border: 1px solid var(--mist);
+  border-left: 3px solid var(--tag-color, var(--sky));
+  border-radius: var(--radius-lg);
+  padding: 20px 22px;
+  margin-bottom: 12px;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+.bulletin-featured:hover {
+  border-color: var(--tag-color, var(--sky));
+  box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+}
+.bf-head {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+.bf-tag {
+  font-size: 0.68rem;
+  font-weight: 700;
+  padding: 3px 10px;
+  border-radius: 100px;
+}
+.bf-date {
+  font-size: 0.72rem;
+  color: var(--fog);
+}
+.bf-pin {
+  font-size: 0.75rem;
+  margin-left: auto;
+}
+.bf-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--white);
+  margin-bottom: 10px;
+  line-height: 1.4;
+}
+.bf-body .b-content {
+  font-size: 0.88rem;
+  color: var(--fog);
+  line-height: 1.8;
+}
+
+.bulletin-list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.bulletin-compact {
+  background: var(--ocean);
+  border: 1px solid var(--mist);
+  border-left: 3px solid var(--tag-color, var(--mist));
+  border-radius: var(--radius-md);
+  padding: 12px 16px;
+  transition: border-color 0.2s, background 0.2s;
+}
+.bulletin-compact:hover {
+  border-color: var(--tag-color, var(--sky));
+  background: var(--drift);
+}
+.bc-head {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.bc-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.bc-date {
+  font-size: 0.7rem;
+  color: var(--fog);
+  flex-shrink: 0;
+  min-width: 65px;
+}
+.bc-title {
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--cloud);
+  flex: 1;
+}
+.bc-tag {
+  font-size: 0.56rem;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 100px;
+  flex-shrink: 0;
+}
+.bc-body {
+  margin-top: 6px;
+}
+.bc-body .b-content {
+  font-size: 0.82rem;
+  color: var(--fog);
+  line-height: 1.7;
+}
+.bulletin-compact .b-images {
+  margin-top: 8px;
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+.bulletin-compact .b-img {
+  max-height: 120px;
+  border-radius: 6px;
+  object-fit: cover;
+}
+
 /* 淺色模式 */
 [data-theme="light"] .bulletin-item {
   background: rgba(255,255,255,0.85);
@@ -1432,6 +1547,25 @@ html, body {
   border-color: rgba(0,0,0,0.08);
   box-shadow: 0 4px 16px rgba(0,0,0,0.05);
 }
+[data-theme="light"] .bulletin-featured {
+  background: #fff;
+  border-color: rgba(0,0,0,0.06);
+}
+[data-theme="light"] .bulletin-featured:hover {
+  box-shadow: 0 6px 24px rgba(0,0,0,0.08);
+}
+[data-theme="light"] .bf-title { color: var(--cloud); }
+[data-theme="light"] .bf-body .b-content { color: #4a5260; }
+[data-theme="light"] .bulletin-compact {
+  background: #fff;
+  border-color: rgba(0,0,0,0.06);
+}
+[data-theme="light"] .bulletin-compact:hover {
+  background: #fafbfc;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+}
+[data-theme="light"] .bc-title { color: var(--cloud); }
+[data-theme="light"] .bc-body .b-content { color: #5a6270; }
 [data-theme="light"] .bulletin-item.open {
   background: #fff;
   border-color: rgba(0,0,0,0.08);

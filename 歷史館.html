@@ -18,19 +18,20 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;800&family=Noto+Serif+TC:wght@600;700;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=260413c">
+  <link rel="stylesheet" href="style.css?v=260414a">
   <link rel="stylesheet" href="music-player.css">
   <style>
   /* ═══════════════════════════════════════
-     海風歷史館 v4 — 章回故事書
-     以時代為章節，敘事感，像在翻歷史書
+     海風歷史館 v5 — 直接展開式時間線
+     所有事件直接顯示，無需點擊展開
+     僅保留時代篩選（純麥/海風）
      ═══════════════════════════════════════ */
 
   /* ── Hero ── */
   .hist-hero {
     position: relative;
     text-align: center;
-    padding: 120px 24px 60px;
+    padding: 120px 24px 40px;
     overflow: hidden;
   }
   .hist-hero::before {
@@ -59,6 +60,39 @@
     letter-spacing: 0.04em;
   }
 
+  /* ── 工具列（僅時代篩選）── */
+  .hist-toolbar {
+    max-width: 800px;
+    margin: 0 auto;
+    position: sticky; top: 64px; z-index: 50;
+    display: flex; justify-content: center;
+    padding: 14px 20px;
+    background: var(--deep);
+    border-bottom: 1px solid var(--mist);
+    transition: background 0.4s;
+  }
+  .hist-toolbar::before {
+    content: ''; position: absolute; inset: 0 -200%;
+    background: var(--deep); z-index: -1; transition: background 0.4s;
+  }
+
+  .era-tabs { display: flex; gap: 6px; }
+  .era-tab {
+    padding: 8px 20px; border-radius: 100px;
+    font-size: 0.85rem; font-weight: 600;
+    background: var(--ocean); border: 1px solid var(--mist);
+    color: var(--fog); cursor: pointer;
+    transition: all 0.2s; font-family: var(--font-body);
+    white-space: nowrap;
+    display: flex; align-items: center; gap: 6px;
+  }
+  .era-tab:hover { border-color: var(--sky); color: var(--cloud); }
+  .era-tab.active { background: rgba(157,175,255,0.1); border-color: rgba(157,175,255,0.3); color: var(--sky); }
+  .era-tab .era-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+  .era-tab[data-era="all"] .era-dot { background: linear-gradient(135deg, var(--sand), var(--sky)); }
+  .era-tab[data-era="purewheat"] .era-dot { background: var(--sand); }
+  .era-tab[data-era="seawind"] .era-dot { background: var(--foam); }
+
   /* ── 章節 ── */
   .chapter {
     max-width: 800px;
@@ -69,7 +103,7 @@
   /* 章節大標題 */
   .ch-header {
     text-align: center;
-    padding: 48px 0 32px;
+    padding: 48px 0 24px;
     position: relative;
   }
   .ch-header::before {
@@ -84,21 +118,21 @@
   .ch-era.海風 .ch-header::before { background: linear-gradient(90deg, transparent, var(--foam), transparent); }
 
   .ch-icon {
-    font-size: 2.4rem;
+    font-size: 2.2rem;
     display: block;
-    margin-bottom: 8px;
+    margin-bottom: 6px;
     filter: drop-shadow(0 2px 8px rgba(0,0,0,0.3));
   }
   .ch-title {
     font-family: 'Noto Serif TC', serif;
-    font-size: clamp(1.6rem, 3.5vw, 2.2rem);
+    font-size: clamp(1.5rem, 3.5vw, 2rem);
     font-weight: 700;
-    margin-bottom: 4px;
+    margin-bottom: 2px;
   }
   .ch-era.純麥 .ch-title { color: var(--sand); }
   .ch-era.海風 .ch-title { color: var(--foam); }
   .ch-subtitle {
-    font-size: 0.85rem;
+    font-size: 0.82rem;
     color: var(--fog);
     font-style: italic;
   }
@@ -108,11 +142,11 @@
     display: flex;
     align-items: center;
     gap: 12px;
-    padding: 24px 0 12px;
+    padding: 20px 0 8px;
   }
   .ch-year-num {
     font-family: 'Noto Serif TC', serif;
-    font-size: 1.3rem;
+    font-size: 1.2rem;
     font-weight: 700;
     color: var(--white);
     font-variant-numeric: tabular-nums;
@@ -123,15 +157,15 @@
     background: var(--mist);
   }
 
-  /* ── 事件項目 ── */
+  /* ── 事件項目（直接顯示，無摺疊）── */
   .ch-event {
     position: relative;
-    padding: 12px 0 12px 28px;
+    padding: 10px 0 10px 28px;
     border-left: 2px solid var(--mist);
     margin-left: 4px;
     opacity: 0;
-    transform: translateY(12px);
-    transition: opacity 0.4s var(--ease), transform 0.4s var(--ease);
+    transform: translateY(10px);
+    transition: opacity 0.35s var(--ease), transform 0.35s var(--ease);
   }
   .ch-event.visible {
     opacity: 1;
@@ -145,14 +179,14 @@
   .ch-dot {
     position: absolute;
     left: -7px;
-    top: 16px;
+    top: 14px;
     width: 12px; height: 12px;
     border-radius: 50%;
     border: 2px solid var(--deep);
     z-index: 1;
     transition: transform 0.2s;
   }
-  .ch-event:hover .ch-dot { transform: scale(1.4); }
+  .ch-event:hover .ch-dot { transform: scale(1.3); }
 
   /* 顏色 */
   .ch-dot.里程碑 { background: var(--sky); box-shadow: 0 0 0 2px var(--sky); }
@@ -165,16 +199,14 @@
   .ch-event:hover .ch-dot.活動 { box-shadow: 0 0 0 2px #ff8282, 0 0 10px rgba(255,130,130,0.4); }
 
   /* 里程碑放大 */
-  .ch-dot.里程碑 { width: 16px; height: 16px; left: -9px; top: 14px; }
+  .ch-dot.里程碑 { width: 16px; height: 16px; left: -9px; top: 12px; }
 
-  /* 內容 */
+  /* 內容行 */
   .ch-ev-head {
     display: flex;
     align-items: baseline;
     gap: 10px;
     flex-wrap: wrap;
-    cursor: pointer;
-    user-select: none;
   }
   .ch-ev-date {
     font-size: 0.72rem;
@@ -185,7 +217,7 @@
     min-width: 65px;
   }
   .ch-ev-title {
-    font-size: 0.95rem;
+    font-size: 0.92rem;
     font-weight: 700;
     color: var(--cloud);
     flex: 1;
@@ -206,25 +238,15 @@
   [data-theme="light"] .ch-ev-tag[data-tag="事件"] { background: rgba(220,140,30,0.08); color: #dc8c1e; }
   [data-theme="light"] .ch-ev-tag[data-tag="活動"] { background: rgba(220,80,80,0.08); color: #dc5050; }
 
-  .ch-ev-arrow {
-    color: var(--fog); font-size: 0.65rem; transition: transform 0.25s; flex-shrink: 0;
-  }
-  .ch-event.open .ch-ev-arrow { transform: rotate(180deg); }
-
-  /* 展開描述 */
-  .ch-ev-body {
-    max-height: 0; overflow: hidden;
-    transition: max-height 0.4s cubic-bezier(0.4,0,0.2,1);
-  }
-  .ch-event.open .ch-ev-body { max-height: 500px; }
+  /* 描述（直接顯示） */
   .ch-ev-desc {
-    padding: 10px 0 4px;
-    font-size: 0.88rem;
+    padding: 6px 0 2px;
+    font-size: 0.85rem;
     color: var(--fog);
-    line-height: 1.9;
+    line-height: 1.8;
   }
   .ch-ev-photo {
-    margin: 10px 0 6px;
+    margin: 8px 0 4px;
     border-radius: 8px;
     overflow: hidden;
     border: 1px solid rgba(255,255,255,0.06);
@@ -243,108 +265,37 @@
   [data-theme="light"] .ch-ev-photo { border-color: rgba(0,0,0,0.06); }
   [data-theme="light"] .ch-ev-photo-cap { background: rgba(0,0,0,0.02); }
 
-  /* 里程碑事件 — 卡片式突出 */
+  /* 里程碑 — 卡片式突出 */
   .ch-event[data-tag="里程碑"] {
-    padding-left: 28px;
-    margin: 8px 0;
+    margin: 6px 0;
   }
   .ch-event[data-tag="里程碑"] .ch-ev-head {
-    padding: 14px 16px;
+    padding: 12px 14px;
     background: linear-gradient(135deg, rgba(157,175,255,0.04), transparent);
     border: 1px solid rgba(157,175,255,0.1);
     border-radius: var(--radius-md);
     border-left: 3px solid var(--sky);
   }
-  .ch-event[data-tag="里程碑"] .ch-ev-body {
-    padding: 0 16px;
-  }
   .ch-event[data-tag="里程碑"] .ch-ev-desc {
-    padding: 12px 0 8px;
+    padding: 8px 14px;
   }
-
-  /* 工具列 */
-  .hist-toolbar {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 0 20px;
-    position: sticky; top: 64px; z-index: 50;
-    display: flex; gap: 10px; align-items: center; flex-wrap: wrap;
-    padding: 14px 20px;
-    background: var(--deep);
-    border-bottom: 1px solid var(--mist);
-    margin-bottom: 8px;
-    transition: background 0.4s;
-  }
-  .hist-toolbar::before {
-    content: ''; position: absolute; inset: 0 -200%;
-    background: var(--deep); z-index: -1; transition: background 0.4s;
-  }
-
-  .era-tabs { display: flex; gap: 4px; }
-  .era-tab {
-    padding: 6px 16px; border-radius: 100px;
-    font-size: 0.8rem; font-weight: 600;
-    background: var(--ocean); border: 1px solid var(--mist);
-    color: var(--fog); cursor: pointer;
-    transition: all 0.2s; font-family: var(--font-body);
-    white-space: nowrap;
-    display: flex; align-items: center; gap: 6px;
-  }
-  .era-tab:hover { border-color: var(--sky); color: var(--cloud); }
-  .era-tab.active { background: rgba(157,175,255,0.1); border-color: rgba(157,175,255,0.3); color: var(--sky); }
-  .era-tab .era-dot { width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0; }
-  .era-tab[data-era="all"] .era-dot { background: linear-gradient(135deg, var(--sand), var(--sky)); }
-  .era-tab[data-era="purewheat"] .era-dot { background: var(--sand); }
-  .era-tab[data-era="seawind"] .era-dot { background: var(--foam); }
-
-  .tag-filters { display: flex; gap: 4px; flex-wrap: wrap; flex: 1; }
-  .tag-btn {
-    padding: 5px 12px; border-radius: 100px;
-    font-size: 0.75rem; font-weight: 500;
-    background: var(--ocean); border: 1px solid var(--mist);
-    color: var(--fog); cursor: pointer;
-    transition: all 0.2s; font-family: var(--font-body);
-    white-space: nowrap;
-  }
-  .tag-btn:hover { border-color: var(--sky); color: var(--cloud); }
-  .tag-btn.active { font-weight: 600; }
-  .tag-btn[data-tag="里程碑"].active { background: rgba(157,175,255,0.1); border-color: rgba(157,175,255,0.3); color: var(--sky); }
-  .tag-btn[data-tag="更新"].active { background: rgba(100,220,180,0.1); border-color: rgba(100,220,180,0.3); color: #6dd8b4; }
-  .tag-btn[data-tag="事件"].active { background: rgba(255,170,50,0.1); border-color: rgba(255,170,50,0.3); color: #ffc566; }
-  .tag-btn[data-tag="活動"].active { background: rgba(255,130,130,0.1); border-color: rgba(255,130,130,0.3); color: #ff9999; }
-
-  .hist-search { position: relative; flex-shrink: 0; }
-  .hist-search input {
-    background: var(--ocean); border: 1px solid var(--mist);
-    color: var(--cloud); padding: 7px 32px 7px 14px;
-    border-radius: 100px; font-size: 0.82rem; width: 160px;
-    outline: none; transition: all 0.25s; font-family: var(--font-body);
-  }
-  .hist-search input:focus { border-color: var(--sky); width: 220px; box-shadow: 0 0 0 3px rgba(157,175,255,0.08); }
-  .hist-search input::placeholder { color: var(--text-muted); }
-  .hist-search .clear-btn {
-    position: absolute; right: 8px; top: 50%; transform: translateY(-50%);
-    background: none; border: none; color: var(--fog); cursor: pointer;
-    font-size: 0.9rem; padding: 2px 4px; display: none; line-height: 1;
-  }
-  .hist-search .clear-btn.visible { display: block; }
 
   /* 結尾 */
   .ch-finale {
     text-align: center;
-    padding: 48px 20px;
+    padding: 40px 20px;
     max-width: 800px;
     margin: 0 auto;
   }
   .ch-finale-icon {
-    font-size: 2rem;
+    font-size: 1.8rem;
     display: block;
-    margin-bottom: 8px;
+    margin-bottom: 6px;
     opacity: 0.6;
   }
   .ch-finale-text {
     font-family: 'Noto Serif TC', serif;
-    font-size: 1.1rem;
+    font-size: 1rem;
     color: var(--fog);
     font-style: italic;
   }
@@ -356,29 +307,6 @@
   }
   .hist-empty-icon { font-size: 2.5rem; margin-bottom: 12px; opacity: 0.4; }
 
-  /* Lightbox */
-  .lightbox {
-    position: fixed; inset: 0; z-index: 9999;
-    background: rgba(0,0,0,0.92); backdrop-filter: blur(8px);
-    display: flex; align-items: center; justify-content: center;
-    opacity: 0; pointer-events: none; transition: opacity 0.3s;
-  }
-  .lightbox.open { opacity: 1; pointer-events: auto; }
-  .lightbox-img { max-width: 90vw; max-height: 85vh; object-fit: contain; border-radius: 8px; }
-  .lightbox-close {
-    position: absolute; top: 16px; right: 16px;
-    background: rgba(255,255,255,0.1); border: none; color: #fff;
-    width: 40px; height: 40px; border-radius: 50%;
-    font-size: 18px; cursor: pointer;
-    display: flex; align-items: center; justify-content: center;
-    transition: background 0.2s;
-  }
-  .lightbox-close:hover { background: rgba(255,255,255,0.2); }
-  .lightbox-counter {
-    position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%);
-    color: rgba(255,255,255,0.5); font-size: 0.82rem;
-  }
-
   /* ── Light Theme ── */
   [data-theme="light"] .hist-toolbar { background: #f0f2f5; border-bottom-color: rgba(0,0,0,0.06); }
   [data-theme="light"] .hist-toolbar::before { background: #f0f2f5; }
@@ -388,8 +316,6 @@
   }
   [data-theme="light"] .era-tab { background: #fff; border-color: rgba(0,0,0,0.08); color: var(--fog); }
   [data-theme="light"] .era-tab.active { background: rgba(157,175,255,0.1); border-color: rgba(157,175,255,0.25); }
-  [data-theme="light"] .tag-btn { background: #fff; border-color: rgba(0,0,0,0.08); color: var(--fog); }
-  [data-theme="light"] .hist-search input { background: #fff; border-color: rgba(0,0,0,0.08); color: var(--cloud); }
   [data-theme="light"] .ch-ev-title { color: var(--cloud); }
   [data-theme="light"] .ch-ev-desc { color: #5a6270; }
   [data-theme="light"] .ch-year-num { color: var(--cloud); }
@@ -400,26 +326,22 @@
     border-color: rgba(157,175,255,0.12);
   }
   [data-theme="light"] .hist-empty { color: var(--fog); }
-  [data-theme="light"] .lightbox { background: rgba(240,242,245,0.95); }
-  [data-theme="light"] .lightbox-close { color: var(--cloud); background: rgba(0,0,0,0.06); }
 
   /* ── Responsive ── */
   @media (max-width: 768px) {
-    .hist-toolbar { flex-direction: column; align-items: stretch; top: 56px; gap: 8px; }
+    .hist-toolbar { top: 56px; }
     .era-tabs { gap: 4px; }
-    .era-tab { padding: 8px 14px; font-size: 0.8rem; min-height: 40px; }
-    .tag-filters { gap: 4px; }
-    .tag-btn { padding: 6px 10px; font-size: 0.75rem; min-height: 36px; }
-    .hist-search input { width: 100%; font-size: 16px; padding: 10px 36px 10px 14px; }
-    .hist-search input:focus { width: 100%; }
+    .era-tab { padding: 10px 16px; font-size: 0.82rem; min-height: 42px; }
     .chapter { padding: 0 16px; }
     .ch-event { padding-left: 24px; }
-    .ch-ev-title { font-size: 0.88rem; }
+    .ch-ev-title { font-size: 0.85rem; }
+    .ch-ev-desc { font-size: 0.82rem; }
     .ch-event[data-tag="里程碑"] .ch-ev-head { padding: 10px 12px; }
+    .ch-event[data-tag="里程碑"] .ch-ev-desc { padding: 6px 12px; }
   }
   @media (max-width: 375px) {
     .ch-ev-date { min-width: 55px; font-size: 0.65rem; }
-    .ch-ev-title { font-size: 0.82rem; }
+    .ch-ev-title { font-size: 0.8rem; }
   }
   </style>
 </head>
@@ -482,23 +404,12 @@
       <p class="hist-sub">別忘了海是如何被風吹過來的，記得回望來時的每一步。</p>
     </div>
 
-    <!-- ═══ Toolbar ═══ -->
+    <!-- ═══ Toolbar（僅時代篩選）═══ -->
     <div class="hist-toolbar fade-in">
       <div class="era-tabs">
-        <button class="era-tab active" data-era="all"><span class="era-dot"></span>全部</button>
+        <button class="era-tab active" data-era="all"><span class="era-dot"></span>全部時期</button>
         <button class="era-tab" data-era="purewheat"><span class="era-dot"></span>純麥時期</button>
         <button class="era-tab" data-era="seawind"><span class="era-dot"></span>海風時期</button>
-      </div>
-      <div class="tag-filters">
-        <button class="tag-btn active" data-tag="all">全部</button>
-        <button class="tag-btn" data-tag="里程碑">⭐ 里程碑</button>
-        <button class="tag-btn" data-tag="更新">🔧 更新</button>
-        <button class="tag-btn" data-tag="事件">📌 事件</button>
-        <button class="tag-btn" data-tag="活動">🎉 活動</button>
-      </div>
-      <div class="hist-search">
-        <input type="text" id="histSearch" placeholder="搜尋歷史..." autocomplete="off">
-        <button class="clear-btn" id="searchClear">✕</button>
       </div>
     </div>
 
@@ -527,7 +438,7 @@
     </div>
   </footer>
 
-  <p class="page-revise">網站最後修改日期 2026.04.13 / 總計修改 <span id="deployCount">—</span> 次</p>
+  <p class="page-revise">網站最後修改日期 2026.04.14 / 總計修改 <span id="deployCount">—</span> 次</p>
 
   <!-- Lightbox -->
   <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" tabindex="-1">
@@ -537,7 +448,7 @@
   </div>
 
   <script src="utils.js"></script>
-  <script src="main.js?v=260413c"></script>
+  <script src="main.js?v=260414a"></script>
   <script>
   (() => {
     'use strict';
@@ -608,40 +519,12 @@
     ];
 
     let activeEra = 'all';
-    let activeTag = 'all';
-    let searchQuery = '';
-
     const listEl = document.getElementById('histList');
     const emptyEl = document.getElementById('histEmpty');
-    const searchEl = document.getElementById('histSearch');
-    const clearBtn = document.getElementById('searchClear');
-
-    const lb = document.getElementById('lightbox');
-    const lbImg = document.getElementById('lbImg');
-    const lbClose = document.getElementById('lbClose');
-    const lbCounter = document.getElementById('lbCounter');
-
-    function openLightbox(src) {
-      lbImg.src = src;
-      lbCounter.textContent = '';
-      lb.classList.add('open');
-    }
-    lbClose.addEventListener('click', () => lb.classList.remove('open'));
-    lb.addEventListener('click', e => { if (e.target === lb) lb.classList.remove('open'); });
-    document.addEventListener('keydown', e => {
-      if (!lb.classList.contains('open')) return;
-      if (e.key === 'Escape') lb.classList.remove('open');
-    });
 
     function getFiltered() {
-      let items = EVENTS;
-      if (activeEra !== 'all') items = items.filter(e => e.era === activeEra);
-      if (activeTag !== 'all') items = items.filter(e => e.tag === activeTag);
-      if (searchQuery) {
-        const q = searchQuery.toLowerCase();
-        items = items.filter(e => e.title.toLowerCase().includes(q) || e.desc.toLowerCase().includes(q) || e.date.includes(q));
-      }
-      return items;
+      if (activeEra === 'all') return EVENTS;
+      return EVENTS.filter(e => e.era === activeEra);
     }
 
     function render() {
@@ -653,7 +536,6 @@
       }
       emptyEl.style.display = 'none';
 
-      // Group by era, then year
       const eraGroups = {};
       items.forEach(item => {
         if (!eraGroups[item.era]) eraGroups[item.era] = [];
@@ -666,9 +548,8 @@
       };
 
       let html = '';
-
-      // Render eras in order
       const eraOrder = activeEra === 'all' ? ['purewheat', 'seawind'] : [activeEra];
+
       eraOrder.forEach(era => {
         const eraItems = eraGroups[era];
         if (!eraItems || !eraItems.length) return;
@@ -681,7 +562,6 @@
           <p class="ch-subtitle">${meta.sub}</p>
         </div>`;
 
-        // Group by year
         const yearGroups = {};
         eraItems.forEach(item => {
           const year = item.isoDate.slice(0, 4);
@@ -700,22 +580,21 @@
             const isMilestone = item.tag === '里程碑';
             const star = isMilestone ? '⭐ ' : '';
 
-            let bodyParts = [];
-            bodyParts.push(`<div class="ch-ev-desc">${item.desc}</div>`);
+            let bodyHtml = '';
+            bodyHtml += `<div class="ch-ev-desc">${item.desc}</div>`;
             if (item.photo) {
-              bodyParts.push(`<div class="ch-ev-photo"><img src="${item.photo}" alt="${item.title}" loading="lazy" onerror="this.parentElement.style.display='none'" style="cursor:zoom-in"></div>`);
-              if (item.photoCaption) bodyParts.push(`<div class="ch-ev-photo-cap">${item.photoCaption}</div>`);
+              bodyHtml += `<div class="ch-ev-photo"><img src="${item.photo}" alt="${item.title}" loading="lazy" onerror="this.parentElement.style.display='none'" style="cursor:zoom-in"></div>`;
+              if (item.photoCaption) bodyHtml += `<div class="ch-ev-photo-cap">${item.photoCaption}</div>`;
             }
 
-            html += `<div class="ch-event" data-tag="${item.tag}" style="animation-delay:${idx * 0.04}s">
+            html += `<div class="ch-event" data-tag="${item.tag}" style="animation-delay:${idx * 0.03}s">
               <span class="ch-dot ${item.tag}"></span>
-              <div class="ch-ev-head" onclick="this.closest('.ch-event').classList.toggle('open')">
+              <div class="ch-ev-head">
                 <span class="ch-ev-date">${item.date}</span>
                 <span class="ch-ev-title">${star}${item.title}</span>
                 <span class="ch-ev-tag" data-tag="${item.tag}">${item.tag}</span>
-                <span class="ch-ev-arrow">▾</span>
               </div>
-              <div class="ch-ev-body">${bodyParts.join('')}</div>
+              ${bodyHtml}
             </div>`;
           });
         });
@@ -723,7 +602,6 @@
         html += `</div></div>`;
       });
 
-      // Finale
       html += `<div class="ch-finale">
         <span class="ch-finale-icon">📖</span>
         <span class="ch-finale-text">歷史持續書寫中⋯⋯</span>
@@ -743,17 +621,13 @@
 
       listEl.querySelectorAll('.ch-event').forEach(el => observer.observe(el));
 
+      // Safety fallback
       setTimeout(() => {
         listEl.querySelectorAll('.ch-event:not(.visible)').forEach(el => el.classList.add('visible'));
-      }, 3000);
-
-      // Photo lightbox
-      listEl.querySelectorAll('.ch-ev-photo img').forEach(img => {
-        img.addEventListener('click', () => openLightbox(img.src));
-      });
+      }, 2000);
     }
 
-    // Event bindings
+    // Era tab event bindings
     document.querySelectorAll('.era-tab').forEach(tab => {
       tab.addEventListener('click', () => {
         document.querySelectorAll('.era-tab').forEach(t => t.classList.remove('active'));
@@ -761,32 +635,6 @@
         activeEra = tab.dataset.era;
         render();
       });
-    });
-
-    document.querySelectorAll('.tag-btn').forEach(btn => {
-      btn.addEventListener('click', () => {
-        document.querySelectorAll('.tag-btn').forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-        activeTag = btn.dataset.tag;
-        render();
-      });
-    });
-
-    let searchTimer;
-    searchEl.addEventListener('input', () => {
-      clearTimeout(searchTimer);
-      searchTimer = setTimeout(() => {
-        searchQuery = searchEl.value.trim().toLowerCase();
-        clearBtn.classList.toggle('visible', searchQuery.length > 0);
-        render();
-      }, 200);
-    });
-    clearBtn.addEventListener('click', () => {
-      searchEl.value = '';
-      searchQuery = '';
-      clearBtn.classList.remove('visible');
-      render();
-      searchEl.focus();
     });
 
     render();

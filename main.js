@@ -506,60 +506,61 @@ function renderBulletin(board, items, isV2) {
   const showItems = items.slice(0, MAX_SHOW);
   let html = '';
 
-  // 預先計算各類別數量
-  const tagCounts = {};
-  items.forEach(item => {
-    const t = item.tag || '更新';
-    tagCounts[t] = (tagCounts[t] || 0) + 1;
-  });
+  const tagColors = { '公告': '#578aff', '更新': '#64dcb4', '維護': '#ff8282', '活動': '#ffaa32' };
 
-  showItems.forEach((item, i) => {
-    const tag = item.tag || '更新';
-    const date = isV2 ? formatDateV2(item.isoDate) : formatDate(item.date, item.timestamp);
-    const pinnedClass = item.pinned ? ' pinned' : '';
-    const tagColors = { '公告': '#578aff', '更新': '#64dcb4', '維護': '#ff8282', '活動': '#ffaa32' };
-    const accentColor = tagColors[tag] || '#578aff';
+  // 第一則：精選卡片（大張、直接展開）
+  if (showItems.length > 0) {
+    const feat = showItems[0];
+    const featTag = feat.tag || '更新';
+    const featDate = isV2 ? formatDateV2(feat.isoDate) : formatDate(feat.date, feat.timestamp);
+    const featColor = tagColors[featTag] || '#578aff';
 
-    // --- 展開內容 ---
-    let bodyParts = [];
-
-    // 內容
-    bodyParts.push(`<div class="b-text">${md2html(item.content)}</div>`);
-
-    // 圖片
-    const images = (item.localImages && item.localImages.length) ? item.localImages : (item.images || []);
-    if (images.length) {
-      const imgHtml = images.slice(0, 4).map(src =>
-        `<img src="${src}" alt="公告圖片" class="b-img" loading="lazy" onerror="this.style.display='none'">`
-      ).join('');
-      bodyParts.push(`<div class="b-images">${imgHtml}</div>`);
+    let featBody = `<div class="b-text">${md2html(feat.content)}</div>`;
+    const featImages = (feat.localImages && feat.localImages.length) ? feat.localImages : (feat.images || []);
+    if (featImages.length) {
+      featBody += `<div class="b-images">${featImages.slice(0, 3).map(s => `<img src="${s}" alt="公告圖片" class="b-img" loading="lazy" onerror="this.style.display='none'">`).join('')}</div>`;
+    }
+    if (feat.discordId) {
+      featBody += `<a href="https://discord.com/channels/1090959090878140447/1090959091750559816/${feat.discordId}" target="_blank" rel="noopener" class="b-discord-link">在 Discord 查看 →</a>`;
     }
 
-    // Discord 連結
-    if (item.discordId) {
-      bodyParts.push(`<a href="https://discord.com/channels/1090959090878140447/1090959091750559816/${item.discordId}" target="_blank" rel="noopener" class="b-discord-link">在 Discord 查看 →</a>`);
-    }
-
-    html += `<div class="bulletin-item${pinnedClass}" data-tag="${tag}" data-index="${i}" style="--tag-color:${accentColor}">
-      <button class="bulletin-toggle" aria-expanded="false">
-        <div class="b-left">
-          <span class="b-dot" style="background:${accentColor}"></span>
-          <span class="b-date">${date}</span>
-        </div>
-        <div class="b-center">
-          <span class="b-title">${item.title}</span>
-        </div>
-        <div class="b-right">
-          ${item.pinned ? '<span class="b-pin">📌</span>' : ''}
-          <span class="b-tag" style="background:${accentColor}15;color:${accentColor}">${tag}</span>
-          <span class="b-arrow">
-            <svg width="12" height="12" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M3 4.5l3 3 3-3"/></svg>
-          </span>
-        </div>
-      </button>
-      <div class="bulletin-body"><div class="b-content">${bodyParts.join('')}</div></div>
+    html += `<div class="bulletin-featured" style="--tag-color:${featColor}">
+      <div class="bf-head">
+        <span class="bf-tag" style="background:${featColor}18;color:${featColor}">${featTag}</span>
+        <span class="bf-date">${featDate}</span>
+        ${feat.pinned ? '<span class="bf-pin">📌</span>' : ''}
+      </div>
+      <h3 class="bf-title">${feat.title}</h3>
+      <div class="bf-body"><div class="b-content">${featBody}</div></div>
     </div>`;
-  });
+  }
+
+  // 其餘：緊湊列表（全部展開、無需點擊）
+  if (showItems.length > 1) {
+    html += `<div class="bulletin-list">`;
+    showItems.slice(1).forEach((item, i) => {
+      const tag = item.tag || '更新';
+      const date = isV2 ? formatDateV2(item.isoDate) : formatDate(item.date, item.timestamp);
+      const color = tagColors[tag] || '#578aff';
+
+      let bodyHtml = `<div class="b-text">${md2html(item.content)}</div>`;
+      const imgs = (item.localImages && item.localImages.length) ? item.localImages : (item.images || []);
+      if (imgs.length) {
+        bodyHtml += `<div class="b-images">${imgs.slice(0, 2).map(s => `<img src="${s}" alt="公告圖片" class="b-img" loading="lazy" onerror="this.style.display='none'">`).join('')}</div>`;
+      }
+
+      html += `<div class="bulletin-compact" style="--tag-color:${color}">
+        <div class="bc-head">
+          <span class="bc-dot" style="background:${color}"></span>
+          <span class="bc-date">${date}</span>
+          <span class="bc-title">${item.title}</span>
+          <span class="bc-tag" style="background:${color}15;color:${color}">${tag}</span>
+        </div>
+        <div class="bc-body"><div class="b-content">${bodyHtml}</div></div>
+      </div>`;
+    });
+    html += `</div>`;
+  }
 
   // 統計列 + 查看全部
   html += `<div class="bulletin-footer">
@@ -567,14 +568,6 @@ function renderBulletin(board, items, isV2) {
     <a href="公告.html" class="btn btn-outline btn-sm">查看全部 →</a>
   </div>`;
   board.innerHTML = html;
-
-  board.querySelectorAll('.bulletin-toggle').forEach(btn => {
-    btn.addEventListener('click', function() {
-      const wasOpen = this.closest('.bulletin-item').classList.contains('open');
-      board.querySelectorAll('.bulletin-item.open').forEach(e => e.classList.remove('open'));
-      if (!wasOpen) this.closest('.bulletin-item').classList.add('open');
-    });
-  });
 }
 
 function formatDateV2(iso) {
