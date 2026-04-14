@@ -2,7 +2,7 @@
 
 > 文件建立日期：2026.04.14  
 > 最後更新：2026.04.14（海風網站助手）  
-> 修改次數：9  
+> 修改次數：12  
 
 ---
 
@@ -158,6 +158,7 @@
 | 2026.04.14 | 修復 CSS 多處缺失分號導致版面崩潰（.hero-badge/.info-card/.lightbox/.dropdown-menu 等 8 處）、清理重複 -webkit-backdrop-filter | 海風網站助手 |
 | 2026.04.14 | 修復 7 個 lore 頁面 nav logo 路徑（缺少 ../）、補齊舊維護頻道 20 筆公告（503→523 則） | 海風網站助手 |
 | 2026.04.14 | 新增「特殊道具規範」HTML 頁面並加入全站社群須知導航 | 海風網站助手 |
+| 2026.04.14 | 修復贊助.html 跳轉白屏（加入內聯樣式 + canonical + favicon）、補齊 49 個子頁 canonical（guide/42 + lore/7） | 海風網站助手 |
 
 ---
 
@@ -215,18 +216,19 @@
 - **指南頁搜尋欄**：同上
 - **圖片 Lightbox**：可以加上 `aria-label` 描述目前圖片
 
-#### 11. 贊助.html 重定向頁無共用樣式
-- **影響**：跳轉前的瞬間顯示無樣式白底頁
-- **建議**：加入與 index.html 相同的內聯樣式
+#### 11. ~~贊助.html 重定向頁無共用樣式~~ ✅ 已修復
+- **修復日期**：2026.04.14
+- **修復方式**：加入與 index.html 相同的內聯樣式（深色背景、字體、連結色），同時補上 canonical、favicon、color-scheme meta
 
 #### 12. CSS `color-mix()` 相容性
 - **影響**：8 處使用 `color-mix(in srgb, ...)`，需 Safari 16.2+ 支援
 - **位置**：合作夥伴卡片 hover 效果
 - **建議**：若需支援較舊 Safari，可提供 fallback 色值
 
-#### 13. Guide 與 Lore 子頁缺少 canonical
+#### 13. ~~Guide 與 Lore 子頁缺少 canonical~~ ✅ 已修復
+- **修復日期**：2026.04.14
 - **影響**：42 個指南頁 + 7 個文化藝廊頁缺少 `<link rel="canonical">`
-- **建議**：統一補上，格式如 `https://www.seawind.cc/guide/入門.html`
+- **修復方式**：全部補上，格式如 `https://www.seawind.cc/guide/入門.html`
 
 #### 14. 6 筆純圖片公告無文字內容
 - **影響**：公告頁面顯示「未命名公告」且無內文
