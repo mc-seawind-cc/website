@@ -17,7 +17,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;800&family=Noto+Serif+TC:wght@700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=260414c">
+  <link rel="stylesheet" href="style.css?v=260414d">
   <link rel="stylesheet" href="music-player.css">
   <style>
     /* ═══ 指南首頁專用 ═══ */
@@ -336,6 +336,8 @@
   </style>
 </head>
 <body>
+  <a href="#mainContent" class="skip-link">跳到主要內容</a>
+
   <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
   <div class="bg-atmosphere"></div>
 
@@ -394,12 +396,12 @@
       <p>所有你需要知道的都在這裡。搜尋或瀏覽分類，快速找到答案。</p>
     </div>
 
-    <div class="content-section" style="max-width: 900px;">
+    <div id="mainContent" class="content-section" style="max-width: 900px;">
 
       <!-- 搜尋欄 -->
       <div class="guide-search-wrap fade-in">
         <span class="guide-search-icon">🔍</span>
-        <input type="text" class="guide-search" id="guideSearch" placeholder="搜尋指南... 例如：領地、任務、礦物" autocomplete="off">
+        <input type="text" class="guide-search" id="guideSearch" placeholder="搜尋指南... 例如：領地、任務、礦物" autocomplete="off" aria-label="搜尋指南">
         <div class="guide-search-hint">輸入關鍵字即時搜尋</div>
       </div>
 
@@ -774,11 +776,11 @@
     </div>
   </footer>
 
-  <p class="page-revise">網站最後修改日期 2026.04.14 / 總計修改 <span id="deployCount">—</span> 次</p>
+  <p class="page-revise">網站最後修改日期 2026.04.14b / 總計修改 <span id="deployCount">—</span> 次</p>
 
   <script src="tips.js" defer></script>
   <script src="utils.js"></script>
-  <script src="main.js?v=260414c"></script>
+  <script src="main.js?v=260414d"></script>
   <script>
   document.addEventListener('DOMContentLoaded', () => {
     const searchEl = document.getElementById('guideSearch');

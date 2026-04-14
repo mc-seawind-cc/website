@@ -16,7 +16,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;800&family=Noto+Serif+TC:wght@700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=260414c">
+  <link rel="stylesheet" href="style.css?v=260414d">
   <link rel="stylesheet" href="music-player.css">
   <style>
     /* ═══════════════════════════════════════
@@ -449,6 +449,8 @@
   </style>
 </head>
 <body>
+  <a href="#mainContent" class="skip-link">跳到主要內容</a>
+
   <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
   <div class="bg-atmosphere"></div>
 
@@ -502,7 +504,7 @@
   </nav>
 
   <div class="page">
-    <div class="page-hero ann-hero fade-in">
+    <div id="mainContent" class="page-hero ann-hero fade-in">
       <h1>海風公告</h1>
       <p class="ann-subtitle">伺服器所有公告、更新與活動記錄，掌握海風最新動態</p>
     </div>
@@ -520,7 +522,7 @@
           <button class="ann-tag-btn" data-tag="活動">活動</button>
         </div>
         <div class="ann-search-wrap">
-          <input type="text" id="annSearch" placeholder="搜尋公告..." autocomplete="off">
+          <input type="text" id="annSearch" placeholder="搜尋公告..." autocomplete="off" aria-label="搜尋公告">
           <button class="clear-btn" id="searchClear">✕</button>
         </div>
       </div>
@@ -560,7 +562,7 @@
     </div>
   </footer>
 
-  <p class="page-revise">網站最後修改日期 2026.04.14 / 總計修改 <span id="deployCount">—</span> 次</p>
+  <p class="page-revise">網站最後修改日期 2026.04.14b / 總計修改 <span id="deployCount">—</span> 次</p>
 
   <!-- Lightbox -->
   <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="圖片瀏覽" tabindex="-1">
@@ -572,7 +574,7 @@
   </div>
 
   <script src="utils.js"></script>
-  <script src="main.js?v=260414c"></script>
+  <script src="main.js?v=260414d"></script>
   <script>
   (() => {
     'use strict';

@@ -2,7 +2,7 @@
 
 > 文件建立日期：2026.04.14  
 > 最後更新：2026.04.14（海風網站助手）  
-> 修改次數：12  
+> 修改次數：13  
 
 ---
 
@@ -159,6 +159,7 @@
 | 2026.04.14 | 修復 7 個 lore 頁面 nav logo 路徑（缺少 ../）、補齊舊維護頻道 20 筆公告（503→523 則） | 海風網站助手 |
 | 2026.04.14 | 新增「特殊道具規範」HTML 頁面並加入全站社群須知導航 | 海風網站助手 |
 | 2026.04.14 | 修復贊助.html 跳轉白屏（加入內聯樣式 + canonical + favicon）、補齊 49 個子頁 canonical（guide/42 + lore/7） | 海風網站助手 |
+| 2026.04.14 | 清理 CSS 重複 `-webkit-backdrop-filter`（減少 223 bytes）、修復 feature card 動畫與 hover 衝突（改用 transition 替代 animation）、補齊 67 頁 skip-link、公告/指南搜尋欄 aria-label、partner-mcu.html meta description | 海風網站助手 |
 
 ---
 
@@ -196,9 +197,30 @@
 - **影響**：42 個 guide/*.html 導覽列仍連結到已刪除的 `特殊裝備規範.html`
 - **修復方式**：從全部 42 個指南頁移除該連結
 
+### ✅ 已修復（本次）
+
+#### 15. ~~CSS `-webkit-backdrop-filter` 重複宣告~~ ✅ 已修復
+- **修復日期**：2026.04.14
+- **影響**：`.rain-toggle`（4次）、`.info-card`（3次）、`.dropdown-menu`（2次）等多處重複 `-webkit-backdrop-filter` 宣告
+- **修復方式**：正則匹配移除重複項，減少 223 bytes
+
+#### 16. ~~Feature card 動畫與 hover 衝突~~ ✅ 已修復
+- **修復日期**：2026.04.14
+- **影響**：`.feature-grid > *` 使用 `card-reveal` CSS animation（含 `forwards` fill-mode），動畫的 `transform: translateY(0)` 覆蓋了 hover 的 `transform: translateY(-8px) scale(1.02)`，導致卡片 hover 無法上浮
+- **修復方式**：改用 CSS transition + JS class toggle（`.feature-grid.revealed`），動畫只控制 opacity + transform 入場，不與 hover 競爭
+
+#### 17. ~~無障礙：67 頁缺少 skip-link~~ ✅ 已修復
+- **修復日期**：2026.04.14
+- **影響**：除首頁外，18 個主頁 + 42 個指南頁 + 7 個文化藝廊頁皆無 skip-link
+- **修復方式**：全數加入 `<a href="#mainContent" class="skip-link">跳到主要內容</a>` 並在主內容區塊加上 `id="mainContent"`
+
+#### 18. ~~公告/指南搜尋欄缺少 aria-label~~ ✅ 已修復
+- **修復日期**：2026.04.14
+- **修復方式**：`#annSearch` 加 `aria-label="搜尋公告"`、`#guideSearch` 加 `aria-label="搜尋指南"`
+
 ### 🟡 可優化（Performance & UX）
 
-#### 7. CSS 檔案過大（~143KB）
+#### 7. CSS 檔案過大（~139KB）
 - **影響**：首次載入需下載較大樣式檔
 - **建議**：考慮將各頁面的 `<style>` 區塊（如公告頁、歷史館等）分離，或使用 CSS 壓縮
 
