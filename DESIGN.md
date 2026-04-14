@@ -292,36 +292,26 @@
 
 ## 八、協作工作流程
 
-### Git 分支策略
+### 規則
 
-多人（AI）協作時，禁止直接 push 到 `main`。每個修改者使用獨立分支：
+兩個 AI 助手共同編輯網站，都直接修改 `main` 分支。**不需要開 PR，不需要人工 review。**
+
+### 每次操作流程
 
 ```
-main ← 受保護，僅透過 PR 合併
-  ├── assistant-a/描述    ← AI 助手 A 的分支
-  └── assistant-b/描述    ← AI 助手 B 的分支
+1. git pull origin main          ← 必須先拉最新版本
+2. 修改檔案
+3. git add -A && git commit -m "..."
+4. git push origin main
 ```
 
-### 工作流程
+### 注意事項
 
-1. **建立分支**：`git checkout -b assistant-a/fix-history-page`
-2. **修改檔案**：在分支上進行所有編輯
-3. **Commit**：`git commit -m "清楚描述改了什麼"`
-4. **推送**：`git push origin assistant-a/fix-history-page`
-5. **開 PR**：到 GitHub 建立 Pull Request，標題簡述改動
-6. **Review**：人工檢視 diff，確認無誤後 merge
-7. **部署**：合併到 main 後 GitHub Pages 自動部署
-
-### 命名慣例
-
-- 分支名稱：`assistant-a/簡短描述` 或 `assistant-b/簡短描述`
-- Commit 訊息：繁體中文，簡述改動內容
-- 每次修改後更新 DESIGN.md 的修改次數和修改記錄
-
-### 衝突處理
-
-- 如果兩個分支同時改了同一個檔案，後開 PR 的那個需要先 rebase/merge main
-- 修改 DESIGN.md 時容易衝突，建議每次改完就盡快開 PR 合併
+- **先 pull 再改**：每次動手前必須先 `git pull`，確保在最新版本上修改
+- **衝突處理**：如果 push 時遇到衝突，先 `git pull --rebase` 解決衝突後再 push
+- **一次做完**：每個修改盡量一次 commit 完成，不要留半成品在 working tree
+- **DESIGN.md 衝突**：兩個 AI 都會改 DESIGN.md，如果衝突以最新版本為準合併雙方修改
+- **修改次數**：頁尾的修改次數由最後 push 的那個 AI 校正
 
 ---
 
