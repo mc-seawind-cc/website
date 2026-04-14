@@ -1,0 +1,23 @@
+.community-card{display:flex;flex-direction:column;background:rgba(255,255,255,0.04);border:1px solid rgba(157,175,255,0.08);border-radius:var(--radius-md);cursor:pointer;transition:all 0.3s var(--ease);overflow:hidden;text-decoration:none;color:var(--cloud)}
+.community-card:hover{background:rgba(255,255,255,0.06);border-color:rgba(157,175,255,0.2);transform:translateY(-2px);box-shadow:0 4px 16px rgba(0,0,0,0.15)}
+.community-icon{font-size:1.3rem;flex-shrink:0}
+.community-name{font-weight:600;font-size:0.95rem}
+.community-header{display:flex;align-items:center;gap:var(--space-md);padding:var(--space-md)var(--space-lg)}
+.community-arrow{margin-left:auto;font-size:0.8rem;color:var(--fog);transition:transform 0.25s ease}
+.community-card.open .community-arrow{transform:rotate(180deg)}
+.community-body{max-height:0;overflow:hidden;transition:max-height 0.3s ease,padding 0.3s ease;padding:0 var(--space-lg)}
+.community-card.open .community-body{max-height:200px;padding:0 var(--space-lg)var(--space-md)}
+.community-body p{font-size:0.85rem;color:var(--fog);line-height:1.6;margin:0}
+.community-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:var(--space-md)}
+.community-card{background:var(--ocean);border:1px solid var(--mist);border-radius:var(--radius-lg);overflow:hidden;transition:all var(--duration)var(--ease)}
+.community-card:hover{border-color:rgba(157,175,255,0.2);transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,0,0,0.15)}
+.community-header{display:flex;align-items:center;gap:var(--space-sm);padding:var(--space-lg);cursor:pointer;background:none;border:none;width:100%;font:inherit;color:inherit;text-align:left}
+.community-header:focus-visible{outline:2px solid var(--sky);outline-offset:-2px;border-radius:var(--radius-lg)}
+.community-icon{font-size:1.4rem;flex-shrink:0;width:40px;height:40px;display:flex;align-items:center;justify-content:center;background:rgba(157,175,255,0.08);border-radius:var(--radius-md)}
+.community-name{flex:1;font-weight:700;color:var(--white);font-size:1rem}
+.community-arrow{font-size:0.9rem;color:var(--fog);transition:transform 0.3s var(--ease);flex-shrink:0}
+.community-card.open .community-arrow{transform:rotate(180deg)}
+.community-body{max-height:0;overflow:hidden;transition:max-height 0.4s cubic-bezier(0.4,0,0.2,1),padding 0.3s ease;padding:0 var(--space-lg)}
+.community-card.open .community-body{max-height:300px;padding:0 var(--space-lg)var(--space-lg)}
+.community-body p{color:var(--fog);font-size:0.9rem;line-height:1.8}
+.community-empty{color:var(--text-muted);font-size:0.85rem;font-style:italic}

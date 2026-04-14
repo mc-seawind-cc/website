@@ -2,7 +2,7 @@
 
 > 文件建立日期：2026.04.14  
 > 最後更新：2026.04.14（海風網站助手）  
-> 修改次數：17  
+> 修改次數：18  
 
 ---
 
@@ -29,7 +29,29 @@
 /
 ├── 首頁.html          # 主頁（入口）
 ├── index.html         # 重新導向首頁
-├── style.css          # 全域樣式（單一檔案，~144KB）
+├── style.css          # 全域樣式（由 css/ 合併生成，~144KB）
+├── build-css.sh       # CSS 建構腳本（合併 css/*.css → style.css）
+├── css/               # CSS 分檔（開發用，20 個模組）
+│   ├── base.css       # Reset、變數、深淺色主題、粒子動畫
+│   ├── nav.css        # 導覽列、下拉選單
+│   ├── hero.css       # Hero 區塊、打字機效果
+│   ├── buttons.css    # 所有按鈕樣式
+│   ├── cards.css      # Feature card、info card、skeleton
+│   ├── bulletin.css   # 公告欄
+│   ├── sections.css   # 通用區塊、頁首標題、文化藝廊、社群須知
+│   ├── articles.css   # 文章頁面（lore/guide 內文）
+│   ├── guide.css      # 指南頁面（sidebar、toc、rules、steps）
+│   ├── team.css       # 海風團隊
+│   ├── member.css     # 會員方案表格
+│   ├── links.css      # 相關連結頁面
+│   ├── partner.css    # 合作夥伴
+│   ├── community.css  # 海風社區
+│   ├── photos.css     # 風景照、輪播、明信片
+│   ├── lightbox.css   # 圖片燈箱
+│   ├── footer.css     # 頁尾
+│   ├── misc.css       # 雜項（風聲按鈕、回到頂部、計數器）
+│   ├── animations.css # 所有動畫與 keyframes
+│   └── responsive.css # 響應式斷點（768px/480px 等）
 ├── main.js            # 主要互動邏輯
 ├── utils.js           # 工具函式（Markdown 轉換等）
 ├── tips.js            # 首頁輪播提示文字
@@ -163,6 +185,8 @@
 | 2026.04.14 | 首頁卡片同時出現（移除 stagger delay）、提示欄加卡片樣式、深色模式提高卡片/文字/圖標可見度 | 海風網站助手 |
 | 2026.04.14 | 提示文字改白色、卡片背景改黑色、移除卡片入場動畫（即時顯示） | 海風網站助手 |
 | 2026.04.14 | 修復 Google Fonts 缺少 800 字重（標題/頁首顯示備用字重）、移除 CSS color-mix() 改用固定 fallback 色值（Safari <16.2 相容）、修復 utils.js 雙反引號正則吃掉行內 code 前後空白、index.html 跳轉頁支援淺色模式配色 | 海風網站助手 |
+| 2026.04.14 | 清理死檔（announcements_all.json、penalties_v2.json、特殊道具規範.txt、photos/ 舊目錄共 32 檔） | 海風網站助手 |
+| 2026.04.14 | CSS 拆分為 20 個模組（css/ 目錄）、新增 build-css.sh 建構腳本 | 海風網站助手 |
 
 ---
 

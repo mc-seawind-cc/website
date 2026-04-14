@@ -1,0 +1,891 @@
+.penalty-table{width:100%;border-collapse:collapse;margin-top:var(--space-lg)}
+.penalty-table th,.penalty-table td{padding:var(--space-md)var(--space-lg);text-align:left;border-bottom:1px solid rgba(255,255,255,0.05);font-size:0.9rem}
+.penalty-table th{color:var(--sky);font-weight:700;font-size:0.8rem;text-transform:uppercase;letter-spacing:0.06em}
+.penalty-table td{color:var(--cloud)}
+.penalty-table tbody tr:hover{background:rgba(255,255,255,0.02)}
+video.photo-item{cursor:pointer;height:200px;border:1px solid transparent}
+.load-more-btn{display:block;margin:var(--space-xl)auto 0}
+.pfc-text{white-space:nowrap;font-variant-numeric:tabular-nums}
+.rain-toggle{position:fixed;bottom:130px;right:24px;z-index:998;width:40px;height:40px;border-radius:50%;border:1px solid rgba(255,255,255,0.1);background:rgba(22,27,34,0.85);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);color:rgba(255,255,255,0.5);cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all 0.2s ease;box-shadow:0 4px 16px rgba(0,0,0,0.3)}
+.rain-toggle:hover{background:rgba(22,27,34,0.95);border-color:rgba(157,175,255,0.3);color:rgba(255,255,255,0.8)}
+.rain-toggle.active{color:var(--sky);border-color:rgba(157,175,255,0.4);background:rgba(157,175,255,0.12)}
+.back-to-top{position:fixed;bottom:1.5rem;right:2rem;z-index:900;width:44px;height:44px;border-radius:50%;border:1px solid rgba(157,175,255,0.2);background:rgba(13,17,23,0.85);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);color:var(--sky);font-size:1.2rem;cursor:pointer;display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity 0.3s var(--ease),transform 0.3s var(--ease),background 0.2s;will-change:opacity,transform}
+.back-to-top.visible{opacity:1;transform:translateY(0);pointer-events:auto}
+.back-to-top:hover{background:rgba(157,175,255,0.15);border-color:rgba(157,175,255,0.4)}
+.back-to-top{bottom:80px;right:20px}
+.violation-card:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,0,0,0.12)}
+/* 公告頁日期顯示在標題欄 */
+
+@media (max-width: 768px) {
+  
+}
+/* ═══════════════════════════════════════
+   公告系統 — 全新設計
+   ═══════════════════════════════════════ */
+
+/* --- 標籤顏色 --- */
+.tag-公告{background:rgba(87,138,255,0.12);color:#7aa4ff;border:1px solid rgba(87,138,255,0.2)}
+.tag-更新{background:rgba(100,220,180,0.12);color:#6dd8b4;border:1px solid rgba(100,220,180,0.2)}
+.tag-活動{background:rgba(255,170,50,0.12);color:#ffc566;border:1px solid rgba(255,170,50,0.2)}
+.tag-維護{background:rgba(255,130,130,0.12);color:#ff9a9a;border:1px solid rgba(255,130,130,0.2)}
+.tag-處分{background:rgba(200,80,80,0.12);color:#e87070;border:1px solid rgba(200,80,80,0.2)}
+/* --- 首頁公告欄 --- */
+
+
+/* 標籤顏色對應左邊框 */
+
+[data-theme="light"] .bulletin-body .b-content{color:#3a4250}
+.ann-filters{display:flex;gap:8px;flex-wrap:wrap}
+.ann-filter{
+  padding:7px 14px;
+  border:1px solid rgba(255,255,255,0.06);
+  border-radius:8px;
+  background:rgba(255,255,255,0.03);
+  color:var(--fog);font-size:0.82rem;font-weight:500;
+  cursor:pointer;transition:all 0.2s ease;font-family:inherit
+}
+.ann-filter:hover{
+  background:rgba(157,175,255,0.08);
+  border-color:rgba(157,175,255,0.15);color:var(--cloud)
+}
+.ann-filter.active{
+  background:rgba(157,175,255,0.12);
+  border-color:rgba(157,175,255,0.25);
+  color:var(--sky);font-weight:600
+}
+.ann-search input{
+  padding:7px 14px;
+  border:1px solid rgba(255,255,255,0.06);
+  border-radius:8px;
+  background:rgba(255,255,255,0.03);
+  color:var(--cloud);font-size:0.82rem;
+  width:180px;font-family:inherit;
+  transition:all 0.2s ease
+}
+.ann-search input:focus{
+  outline:none;
+  border-color:rgba(157,175,255,0.3);
+  background:rgba(157,175,255,0.05);
+  width:240px
+}
+.ann-search input::placeholder{color:var(--text-muted)}
+.ann-stats{color:var(--fog);font-size:0.82rem;margin-bottom:var(--space-md)}
+.ann-empty{text-align:center;color:var(--fog);padding:var(--space-2xl)}
+.ann-list{
+  display:flex;flex-direction:column;gap:6px
+}
+/* --- 公告頁面卡片（與首頁相同結構，但更寬鬆）--- */
+.ann-list .bulletin-item{border-radius:10px}
+.ann-list 
+
+@media(max-width:768px){
+  .ann-filter-bar{flex-direction:column;align-items:stretch}
+  .ann-search input,.ann-search input:focus{width:100%}
+  
+  
+  
+  
+  
+}
+/* ═══ 海風逐字風吹搖曳 ═══ */
+.hero-title .char {
+  display: inline-block;
+  animation: wind-sway 4s ease-in-out infinite;
+  animation-delay: calc(var(--i) * 0.6s);
+  transform-origin: bottom center;
+}
+/* ═══ 公告編號 ═══ */
+
+
+/* ═══ 公告頁面重新設計 ═══ */
+.bulletin-toggle {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  padding: 12px 14px;
+}
+/* 公告內容 Markdown 樣式 */
+.b-content blockquote.ann-quote {
+  margin: 8px 0;
+  padding: 6px 14px;
+  border-left: 3px solid rgba(157,175,255,0.3);
+  background: rgba(157,175,255,0.04);
+  border-radius: 0 6px 6px 0;
+  color: var(--cloud);
+  font-size: 0.88rem;
+}
+.ann-spoiler {
+  background: var(--cloud);
+  color: transparent;
+  border-radius: 3px;
+  padding: 0 4px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  user-select: none;
+}
+.ann-spoiler.revealed {
+  color: var(--deep);
+  background: rgba(157,175,255,0.15);
+}
+.ann-img {
+  max-width: 100%;
+  border-radius: 8px;
+  margin: 8px 0;
+  cursor: zoom-in;
+  transition: transform 0.2s ease;
+}
+.ann-img:hover { transform: scale(1.02); }
+/* Light theme */
+[data-theme="light"] .b-content blockquote.ann-quote {
+  background: rgba(74,108,247,0.05);
+  border-left-color: rgba(74,108,247,0.3);
+}
+/* 舊版響應式已整合至公告欄區塊 */
+
+/* 修復：.char 繼承父層漸層文字效果 */
+.hero-title .char {
+  background: linear-gradient(135deg, #fff 0%, var(--sky) 40%, var(--foam) 60%, #fff 100%);
+  background-size: 200% 200%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
+  animation: wind-sway 4s ease-in-out infinite;
+  animation-delay: calc(var(--i) * 0.6s);
+  transform-origin: bottom center;
+}
+/* ═══ 公告欄完整樣式（首頁 + 公告頁面共用） ═══ */
+/* ═══ 公告欄 ═══ */
+.bulletin-board {
+  max-width: 720px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+.tag-dot-公告 { background: rgba(87,138,255,0.7); }
+.tag-dot-更新 { background: rgba(100,220,180,0.7); }
+.tag-dot-活動 { background: rgba(255,170,50,0.7); }
+.tag-dot-維護 { background: rgba(255,130,130,0.7); }
+.tag-公告 { background: rgba(87,138,255,0.1); color: rgba(87,138,255,0.9); }
+.tag-更新 { background: rgba(100,220,180,0.1); color: rgba(100,220,180,0.9); }
+.tag-活動 { background: rgba(255,170,50,0.1); color: rgba(255,170,50,0.9); }
+.tag-維護 { background: rgba(255,130,130,0.1); color: rgba(255,130,130,0.9); }
+/* ═══════════════════════════════════════════
+   手機端體驗優化 v2
+   ═══════════════════════════════════════════ */
+
+/* 全域防溢出 */
+html, body {
+  overflow-x: hidden;
+  -webkit-text-size-adjust: 100%;
+  -webkit-tap-highlight-color: transparent;
+}
+/* 更大的觸控目標 */
+@media (max-width: 768px) {
+  /* 導覽漢堡按鈕 */
+  .nav-toggle {
+    width: 44px;
+    height: 44px;
+    padding: 0;
+  }
+  .nav-toggle span {
+    width: 20px;
+    height: 2px;
+  }
+  .nav-toggle span:nth-child(1) { top: 12px; }
+  .nav-toggle span:nth-child(2) { top: 19px; }
+  .nav-toggle span:nth-child(3) { top: 26px; }
+  .nav-toggle.active span:nth-child(1) { top: 19px; }
+  .nav-toggle.active span:nth-child(3) { top: 19px; }
+
+  /* 導覽連結觸控區域 */
+  .nav-links a {
+    padding: 10px 4px;
+    display: block;
+  }
+  .nav-links.open {
+    gap: 2px;
+  }
+  .dropdown-menu li a {
+    padding: 12px 14px;
+  }
+
+  /* 公告卡片觸控 */
+  .bulletin-toggle {
+    padding: 14px 12px;
+    min-height: 48px;
+  }
+  .ann-card-header {
+    padding: 14px 12px;
+    min-height: 52px;
+  }
+
+  /* 篩選按鈕 */
+  .ann-filter {
+    padding: 10px 16px;
+    font-size: 0.85rem;
+    min-height: 44px;
+  }
+  .guide-qt {
+    padding: 10px 16px;
+    min-height: 44px;
+  }
+
+  /* 按鈕全寬 */
+  .btn {
+    min-height: 48px;
+    padding: 14px 24px;
+    font-size: 1rem;
+  }
+  .btn-primary, .btn-outline {
+    width: 100%;
+    justify-content: center;
+  }
+
+  /* Hero 區域 */
+  .hero {
+    padding: 100px 16px 60px;
+    min-height: 80vh;
+  }
+  .hero h1 {
+    font-size: 2.4rem;
+  }
+  .hero-title {
+    font-size: 3.5rem;
+  }
+  .hero-subtitle {
+    font-size: 1rem;
+  }
+  .hero-info {
+    gap: 8px;
+  }
+  .info-card {
+    padding: 12px 16px;
+    min-width: unset;
+    width: 100%;
+    max-width: 280px;
+  }
+  .info-label {
+    font-size: 0.7rem;
+  }
+  .info-value {
+    font-size: 0.95rem;
+  }
+
+  /* 內容區域 */
+  .page {
+    padding-top: 64px;
+  }
+  .content-section {
+    padding: var(--space-xl) 16px;
+  }
+  .page-hero {
+    padding: var(--space-xl) 16px var(--space-lg);
+  }
+  .page-hero h1 {
+    font-size: 1.6rem;
+  }
+  .section-header h2 {
+    font-size: 1.3rem;
+  }
+
+  /* 公告頁 */
+  .ann-stats-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+  }
+  .ann-stat-card {
+    padding: 10px 8px;
+  }
+  .ann-stat-card .stat-num {
+    font-size: 1.1rem;
+  }
+  .ann-stat-card .stat-label {
+    font-size: 0.65rem;
+  }
+  .ann-search input {
+    width: 100%;
+    font-size: 16px; /* 防止 iOS 縮放 */
+    padding: 12px 40px 12px 16px;
+  }
+  .ann-search input:focus {
+    width: 100%;
+  }
+  .ann-card-images .ann-img {
+    max-width: 120px;
+    max-height: 90px;
+  }
+
+  /* 特色卡片 */
+  .feature-card {
+    padding: var(--space-lg) var(--space-md);
+  }
+  .feature-card-icon {
+    width: 48px;
+    height: 48px;
+    margin-bottom: var(--space-sm);
+  }
+  .feature-card h4 {
+    font-size: 1rem;
+  }
+  .feature-card p {
+    font-size: 0.82rem;
+  }
+
+  /* 指南頁 */
+  .guide-search {
+    font-size: 16px; /* 防止 iOS 縮放 */
+    padding: 14px 20px 14px 44px;
+  }
+  .guide-card {
+    padding: 14px 12px;
+    min-height: 48px;
+  }
+  .guide-card-arrow {
+    opacity: 0.3;
+  }
+
+  /* 公告欄 */
+  .bulletin-board {
+    max-height: 400px;
+  }
+
+  /* Footer */
+  .footer {
+    padding: var(--space-lg) 16px;
+  }
+
+  /* Back to top */
+  .back-to-top {
+    bottom: 72px;
+    right: 14px;
+    width: 44px;
+    height: 44px;
+  }
+
+  /* 風聲按鈕 */
+  .rain-toggle {
+    bottom: 124px;
+    right: 14px;
+    width: 40px;
+    height: 40px;
+  }
+
+  /* 明信片 */
+  .postcard-section {
+    margin: 0 -16px;
+    padding: 0 16px;
+  }
+
+  /* 404 遊戲 */
+  .game-menu {
+    gap: 6px;
+  }
+  .game-btn {
+    padding: 10px 14px;
+    font-size: 0.82rem;
+    min-height: 44px;
+  }
+  .mole-grid {
+    gap: 8px;
+    padding: 12px;
+  }
+  .color-buttons {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 6px;
+  }
+  .color-btn {
+    padding: 14px 8px;
+    font-size: 0.9rem;
+  }
+  .number-btn {
+    padding: 14px 20px;
+    min-width: 100px;
+  }
+
+  /* 文字可讀性 */
+  .bulletin-body .b-content {
+    font-size: 0.9rem;
+  }
+  .guide-card-text h4 {
+    font-size: 0.92rem;
+  }
+  .guide-card-text p {
+    font-size: 0.78rem;
+  }
+
+  /* 鍊結太小 */
+  .toc-links a {
+    padding: 8px 14px;
+    font-size: 0.85rem;
+    min-height: 40px;
+    display: inline-flex;
+    align-items: center;
+  }
+
+  /* 圖片燈箱 */
+  .lightbox-prev,
+  .lightbox-next {
+    width: 44px;
+    height: 44px;
+    font-size: 1.2rem;
+  }
+  .lightbox-close {
+    font-size: 1.5rem;
+    min-width: 44px;
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+/* 小螢幕 (iPhone SE 等) */
+@media (max-width: 375px) {
+  .hero h1 {
+    font-size: 2rem;
+  }
+  .hero-title {
+    font-size: 2.8rem;
+  }
+  .info-card {
+    padding: 10px 12px;
+  }
+  .ann-stats-row {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .feature-card-icon {
+    font-size: 1.8rem;
+  }
+}
+/* 觸控優化 */
+@media (hover: none) and (pointer: coarse) {
+  /* 移除 hover 效果，改用 active */
+  .feature-card:hover {
+    transform: none;
+    box-shadow: none;
+  }
+  .feature-card:active {
+    transform: scale(0.98);
+  }
+  .guide-card:hover {
+    transform: none;
+    box-shadow: none;
+  }
+  .guide-card:active {
+    background: rgba(157,175,255,0.08);
+  }
+  .btn:hover {
+    transform: none;
+  }
+  .btn:active {
+    transform: scale(0.97);
+  }
+  .ann-filter:hover {
+    border-color: var(--mist);
+  }
+  .toc-links a:hover {
+    transform: none;
+    box-shadow: none;
+  }
+
+  /* 更大的點擊區域 */
+  .nav-theme {
+    min-width: 48px;
+    min-height: 48px;
+  }
+  .bulletin-toggle {
+    min-height: 52px;
+  }
+}
+/* 橫幅手機 */
+@media (max-width: 768px) and (orientation: landscape) {
+  .hero {
+    min-height: auto;
+    padding: 80px 24px 40px;
+  }
+  .hero h1 {
+    font-size: 2rem;
+  }
+  .hero-title {
+    font-size: 3rem;
+  }
+}
+/* ═══ 打字機增強 + 首頁動畫 v2 ═══ */
+
+/* 打字機游標 — 底線閃爍 */
+.hero-subtitle .cursor {
+  animation: blink 0.8s step-end infinite;
+  transition: opacity 0.8s;
+}
+/* 打字機第二段微調 */
+.typewriter-part2 {
+  opacity: 1;
+  display: inline;
+}
+/* 打字機載入中 dots */
+.loading-dots {
+  color: var(--fog);
+  font-size: 0.9em;
+  opacity: 1;
+  transition: opacity 0.4s;
+  animation: dots-blink 1.2s ease-in-out infinite;
+}
+/* Hero 標題入場動畫 — 逐字浮現然後搖曳 */
+.hero-title .char {
+  animation: wind-sway 4s ease-in-out infinite;
+  animation-delay: calc(var(--i) * 0.6s + 0.7s), calc(var(--i) * 0.15s + 0.1s);
+  opacity: 0;
+  animation-name: wind-sway, char-rise;
+  animation-duration: 4s, 0.6s;
+  animation-timing-function: ease-in-out, cubic-bezier(0.22, 1, 0.36, 1);
+  animation-iteration-count: infinite, 1;
+  animation-fill-mode: none, forwards;
+  animation-delay: calc(var(--i) * 0.6s + 0.7s), calc(var(--i) * 0.15s + 0.1s);
+}
+/* Hero 副標題區域入場 */
+.hero-content:not(.hero-collapsed) .hero-subtitle {
+  opacity: 0;
+  animation: subtitle-fade-in 0.8s ease-out 0.5s forwards;
+}
+/* Hero 按鈕延遲入場 */
+.hero-actions {
+  opacity: 0;
+  animation: actions-rise 0.6s ease-out 1.8s forwards;
+}
+/* Hero 資訊卡片 — 錯開入場 */
+.hero-info .info-card {
+  opacity: 0;
+  transform: translateY(12px);
+  animation: info-card-in 0.5s ease-out forwards;
+}
+/* Hero 提示輪播入場 */
+.hero-tips {
+  opacity: 0;
+  animation: tips-fade-in 0.6s ease-out 2.8s forwards;
+}
+/* Hero 向下探索箭頭入場 */
+.hero-scroll {
+  opacity: 0;
+  animation: scroll-arrow-in 0.5s ease-out 3.2s forwards;
+}
+/* 背景氛圍光暈動態 */
+.bg-atmosphere::before {
+  animation: drift 30s ease-in-out infinite alternate, atmosphere-breathe 8s ease-in-out infinite;
+}
+/* Hero 背景 — 深色模式光暈 */
+.hero::before {
+  animation: hero-bg-drift 20s ease-in-out infinite alternate;
+}
+/* Hero 標題微風搖曳 */
+.hero-title {
+  animation: hero-breathe 6s ease-in-out infinite;
+  animation-delay: 1s;
+}
+/* ═══ 淺色模式動畫適配 ═══ */
+[data-theme="light"] .hero::before {
+  animation-name: hero-bg-drift-light;
+}
+/* ═══ 手機端動畫精簡 ═══ */
+@media (max-width: 768px) {
+  .hero-title .char {
+    animation-duration: 0.4s;
+  }
+  .hero-actions {
+    animation-delay: 1.5s;
+  }
+  .hero-info .info-card:nth-child(1) { animation-delay: 1.8s; }
+  .hero-info .info-card:nth-child(2) { animation-delay: 1.9s; }
+  .hero-info .info-card:nth-child(3) { animation-delay: 2.0s; }
+  .hero-tips {
+    animation-delay: 2.2s;
+  }
+  .hero-scroll {
+    animation-delay: 2.5s;
+  }
+}
+/* 減少動效偏好 */
+@media (prefers-reduced-motion: reduce) {
+  .hero-title .char {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+  .hero-actions,
+  .hero-info .info-card,
+  .hero-tips,
+  .hero-scroll {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+  .hero-title {
+    animation: none;
+  }
+  .hero::before {
+    animation: none;
+  }
+  .bg-atmosphere::before {
+    animation: drift 30s ease-in-out infinite alternate;
+  }
+}
+/* Postcard image fallback */
+.postcard-fallback {
+  background: rgba(157,175,255,0.06);
+  border: 1px dashed rgba(157,175,255,0.2);
+  border-radius: var(--radius-md);
+  min-height: 160px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+/* ═══════════════════════════════════════
+   首頁公告欄重新設計 v2 (2026.04.12)
+   ═══════════════════════════════════════ */
+
+.bulletin-board {
+  max-width: 780px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+/* Toggle 按鈕 */
+.bulletin-toggle {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  padding: 14px 16px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  font-family: inherit;
+  color: inherit;
+  min-height: 56px;
+}
+/* 左側：日期 + 圓點 */
+.b-left {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+  min-width: 90px;
+}
+/* 中間：標題 + 預覽 */
+.b-center {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+/* 右側：標籤 + 箭頭 */
+.b-right {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
+/* 展開內容 */
+.bulletin-body {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s cubic-bezier(0.4,0,0.2,1);
+}
+/* 元資訊 */
+.b-meta {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 8px;
+  font-size: 0.72rem;
+  color: var(--fog);
+}
+/* 圖片 */
+.b-images {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-top: 10px;
+}
+/* Discord 連結 */
+.b-discord-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  margin-top: 10px;
+  font-size: 0.78rem;
+  color: var(--sky);
+  text-decoration: none;
+  padding: 4px 12px;
+  background: rgba(157,175,255,0.06);
+  border-radius: 100px;
+  transition: background 0.2s;
+}
+/* 底部：統計 + 按鈕 */
+.bulletin-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-md) 0 0;
+  margin-top: 4px;
+}
+/* ═══ 公告欄 v2 — 雜誌式卡片 ═══ */
+.bulletin-featured {
+  background: var(--ocean);
+  border: 1px solid var(--mist);
+  border-left: 3px solid var(--tag-color, var(--sky));
+  border-radius: var(--radius-lg);
+  padding: 20px 22px;
+  margin-bottom: 12px;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+.bc-head {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.bc-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.bc-date {
+  font-size: 0.7rem;
+  color: var(--fog);
+  flex-shrink: 0;
+  min-width: 65px;
+}
+.bc-title {
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--cloud);
+  flex: 1;
+}
+.bc-tag {
+  font-size: 0.56rem;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 100px;
+  flex-shrink: 0;
+}
+.bc-body {
+  margin-top: 6px;
+}
+.bc-body .b-content {
+  font-size: 0.82rem;
+  color: var(--fog);
+  line-height: 1.7;
+}
+/* 淺色模式 */
+[data-theme="light"] .bulletin-item {
+  background: rgba(255,255,255,0.85);
+  border-color: rgba(0,0,0,0.06);
+}
+/* 響應式 */
+@media (max-width: 768px) {
+  .bulletin-toggle {
+    padding: 12px;
+    gap: 8px;
+    min-height: 52px;
+  }
+  .b-left {
+    min-width: 70px;
+    gap: 6px;
+  }
+  .b-date { font-size: 0.66rem; }
+  .b-title { font-size: 0.82rem; }
+  .b-preview { font-size: 0.7rem; }
+  .b-tag { font-size: 0.58rem; padding: 2px 8px; }
+  .b-content { padding: 4px 12px 12px 12px; }
+  .b-dot { display: none; }
+  .bulletin-footer { flex-direction: column; gap: 8px; align-items: stretch; }
+  .bulletin-footer .btn-sm { text-align: center; }
+}
+/* ═══ 下雪效果 (2026.04.12) ═══ */
+.snowflake {
+  position: fixed;
+  background: radial-gradient(circle, rgba(255,255,255,0.9) 0%, rgba(200,220,255,0.6) 100%);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 1;
+  animation: snowfall linear infinite;
+  box-shadow: 0 0 4px rgba(255,255,255,0.3);
+}
+/* 淺色模式雪花 */
+[data-theme="light"] .snowflake {
+  background: radial-gradient(circle, rgba(200,210,230,0.7) 0%, rgba(180,200,220,0.3) 100%);
+  box-shadow: 0 0 3px rgba(0,0,0,0.05);
+}
+/* 淺色模式 hero 裡的雨滴改為雪花 */
+[data-theme="light"] #particles .snowflake {
+  background: radial-gradient(circle, rgba(200,210,230,0.8) 0%, rgba(180,200,220,0.4) 100%);
+  border-radius: 50%;
+}
+/* 減少動效 */
+@media (prefers-reduced-motion: reduce) {
+  .snowflake {
+    animation: none !important;
+    opacity: 0.2;
+  }
+}
+/* 手機端隱藏（效能考量） */
+@media (max-width: 768px) {
+  .snowflake {
+    display: none;
+  }
+}
+/* ═══════════════════════════════════════
+   公告欄 v2 — 標題列 + 可捲動列表
+   設計理念：首頁公告欄像報紙頭版，
+   有清楚的「最新公告」標題和數量標示，
+   一則精選 + 緊湊行列表，
+   預設 7 篇，捲動可見至 12 篇。
+   ═══════════════════════════════════════ */
+
+.bulletin-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+/* 可捲動內容區 */
+.bulletin-scroll {
+  max-height: 520px;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(157,175,255,0.12) transparent;
+  padding-right: 4px;
+}
+/* 隱藏項目（捲動才顯示） */
+.bulletin-hidden {
+  display: none !important;
+}
+/* 緊湊行 */
+.bulletin-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  border-radius: 8px;
+  transition: background 0.2s;
+  cursor: default;
+}
+/* 展開提示 */
+.bulletin-expand {
+  text-align: center;
+  padding: 8px 0 0;
+}
+/* 響應式 */
+@media (max-width: 768px) {
+  .bulletin-scroll { max-height: 440px; }
+  .br-title { font-size: 0.82rem; }
+}
