@@ -441,16 +441,23 @@ function initTypewriter() {
 // --- Copy Server IP ---
 function copyServerIP() {
   const ip = 'seawind.cc';
-  navigator.clipboard.writeText(ip).then(() => {
+  const showHint = () => {
     const hint = document.getElementById('copyHint');
     if (hint) { hint.classList.add('show'); setTimeout(() => hint.classList.remove('show'), 1500); }
-  }).catch(() => {
-    const ta = document.createElement('textarea');
-    ta.value = ip; document.body.appendChild(ta); ta.select();
-    document.execCommand('copy'); document.body.removeChild(ta);
-    const hint = document.getElementById('copyHint');
-    if (hint) { hint.classList.add('show'); setTimeout(() => hint.classList.remove('show'), 1500); }
-  });
+  };
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(ip).then(showHint).catch(() => fallbackCopy(ip, showHint));
+  } else {
+    fallbackCopy(ip, showHint);
+  }
+}
+function fallbackCopy(text, cb) {
+  const ta = document.createElement('textarea');
+  ta.value = text; ta.style.position = 'fixed'; ta.style.opacity = '0';
+  document.body.appendChild(ta); ta.select();
+  try { document.execCommand('copy'); } catch(e) {}
+  document.body.removeChild(ta);
+  cb();
 }
 
 // --- Real Server Status ---
