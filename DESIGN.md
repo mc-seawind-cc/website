@@ -2,7 +2,7 @@
 
 > 最後更新：2026.04.14
 > 維護者：海風網站助手 (AI)
-> 版本：v1.0
+> 版本：v1.1
 
 ---
 
@@ -58,7 +58,7 @@
 ├── music-player.js/css# 音樂播放器
 ├── CNAME              # GitHub Pages 自訂網域
 │
-├── announcements_v2.json  # 公告資料（v2 格式，503 則）
+├── announcements_v2.json  # 公告資料（v2 格式，523 則）
 ├── announcements.json     # 舊格式公告（備用）
 ├── announcements_all.json # 全部公告備份
 ├── photos.json            # 風景照路徑（550+ 張）
@@ -104,7 +104,7 @@
 {
   "version": 2,
   "generatedAt": "ISO timestamp",
-  "count": 503,
+  "count": 523,
   "announcements": [
     {
       "tag": "公告|更新|維護|活動",
@@ -155,6 +155,9 @@
 |------|------|------|
 | 2026.04.14 | CSS 語法錯誤 | `.nav` 的 `-webkit-backdrop-filter` 後缺少分號，導致 `border-bottom` 解析失敗 |
 | 2026.04.14 | CSS 語法錯誤 | `.hero-badge` 的 `blur(4px)` 後為句點而非分號，破壞後續選擇器 |
+| 2026.04.14 | Lore 頁面圖片路徑錯誤 | 所有 7 個 lore/*.html 的 nav logo 圖片路徑 `assets/img/logo.png` 缺少 `../` 前綴，應為 `../assets/img/logo.png`，導致 logo 圖片無法顯示 |
+| 2026.04.14 | 舊維護公告未同步 | Discord 舊維護頻道 (1330216386613743730) 共 20 筆公告未匯入網站，已補齊至 announcements_v2.json（#0005 ~ #0022） |
+| 2026.04.14 | 舊維護公告格式統一 | 舊維護頻道公告使用 `>` 引用格式，已轉換為新版 `-` 列表格式以保持一致性 |
 
 ### ⚠️ 注意事項
 1. **deployCount 依賴 GitHub API**：使用未認證 API 呼叫獲取 commit 數量，每小時 60 次限制。若超過限制顯示 "—" 屬正常現象。
@@ -243,11 +246,72 @@
 
 ---
 
-## 九、待辦與建議
+## 九、已知問題與注意事項
 
-- [ ] 檢查所有 guide/ 和 lore/ 頁面的內部連結完整性
+### CSS 注意事項
+1. **重複宣告**：`style.css` 中有多處 `-webkit-backdrop-filter: blur()` 重複 2-4 次，雖不影響功能但增加檔案大小
+2. **`[data-theme="light"]` 覆寫區塊龐大**：淺色主題覆寫約佔 CSS 總量的 40%，後續若新增深色元件需同步補上淺色覆寫
+3. **`color-mix()` 瀏覽器支援**：部分動畫使用 `color-mix(in srgb, ...)`，Safari < 16.2 不支援，有 graceful degradation
+
+### 效能觀察
+1. **首頁載入**：Hero 圖片使用 `fetchpriority="high"` 正確，但 `homeHero.png` 未同時提供 webp 版本（已有 webp 但未使用）
+2. **照片無限捲動**：使用 IntersectionObserver 做 lazy loading，實作正確
+3. **公告 JSON 大小**：523 則公告的 JSON 約 200KB+，考慮是否需要分頁或增量載入
+4. **font-display**：Google Fonts 使用 `display=swap`，正確
+
+### 404 頁面
+- 目前 404.html 僅有基本結構，無導航列或返回首頁按鈕，建議補上完整 nav 和友善提示
+
+### 音樂播放器
+- `music-player.js/css` 為獨立模組，不影響主要功能
+- 需使用者互動才能啟動（瀏覽器自動播放政策限制）
+
+---
+
+## 十、待辦與建議
+
+### 優先（影響使用者體驗）
+- [x] ~~修復 lore 頁面 logo 圖片路徑~~ (2026.04.14 已修復)
+- [x] ~~補齊舊維護頻道公告~~ (2026.04.14 已完成)
+- [ ] 為 404.html 添加完整導航列和友善的錯誤提示
+- [ ] 首頁 Hero 圖片提供 webp 版本（已有 `homeHero.webp` 但 HTML 仍引用 png）
+
+### 中優先（優化與維護）
+- [ ] 清理 CSS 中重複的 `-webkit-backdrop-filter` 宣告
+- [ ] 評估公告 JSON 是否需要分頁載入（目前一次載入全部 523 則）
+- [ ] 檢查所有 guide/ 頁面的圖片 alt 文字是否完整
+- [ ] 確認所有 `og:image` meta 標籤使用完整 URL（目前部分為相對路徑）
+
+### 低優先（長期改善）
 - [ ] 評估是否需要 Service Worker 實現離線支援
-- [ ] 考慮圖片使用 WebP + lazy loading 優化載入速度
-- [ ] 檢查 404.html 是否有完整的導航連結
-- [ ] 評估 index.html 重導至首頁.html 的效能（meta refresh vs JS redirect）
+- [ ] 評估 index.html 重導至首頁.html 的效能（meta refresh vs JS redirect vs server-side redirect）
 - [ ] 確認贊助.html 頁面是否需要公開
+- [ ] 考慮 CSS 變數抽出至獨立檔案方便主題管理
+
+---
+
+## 十一、Discord 整合補充
+
+### 公告頻道格式差異
+**舊版格式**（舊維護頻道，已停用）：
+```
+> 1. 基岩版連線版本。
+> 2. 更新[礦物代換](連結)。
+> - 優化和修復錯誤。
+```
+
+**新版格式**（現行公告／維護、更新頻道）：
+```
+- 基岩版連接埠修改為`` 51496 ``。
+- 更新[海風官方網站](https://www.seawind.cc/)。
+```
+- 新版不使用引用文字 `>` 包裹
+- 注意縮排與換行格式避免輸入錯誤
+- 連結使用標準 Markdown `[文字](URL)` 格式
+
+### 同步檢查清單
+同步公告時，需確認以下頻道是否有遺漏：
+1. **公告／維護** (1270267062308175922) — 最新 #0130
+2. **活動** (1270267176812806255) — 最新 #0026
+3. **更新** (1270267126011396152) — 最新 #0289
+4. **舊維護** (1330216386613743730) — 最新 #0022（已停用，不再更新）
