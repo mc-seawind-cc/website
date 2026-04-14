@@ -44,7 +44,7 @@ function _inlineMd(text) {
   // Spoiler (Discord ||text||)
   s = s.replace(/\|\|(.+?)\|\|/g, '<span class="ann-spoiler" onclick="this.classList.toggle(\'revealed\')" title="點擊顯示">$1</span>');
   // Inline code (double backtick first, then single)
-  s = s.replace(/``\s*(.+?)\s*``/g, '<code>$1</code>');
+  s = s.replace(/``\s?((?:.|\n)+?)\s?``/g, (m, code) => '<code>' + code + '</code>');
   s = s.replace(/`([^`]+)`/g, (m, code) => '<code>' + code.trim() + '</code>');
   // Discord channel references #▏頻道名．x▕
   s = s.replace(/#([▏▎▍▌▋▊]?)([^\s#▏▎▍▌▋▊▊]+[．・.][^\s]*)(▕)?/g,

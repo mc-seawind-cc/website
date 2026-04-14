@@ -2,7 +2,7 @@
 
 > 文件建立日期：2026.04.14  
 > 最後更新：2026.04.14（海風網站助手）  
-> 修改次數：15  
+> 修改次數：16  
 
 ---
 
@@ -162,6 +162,7 @@
 | 2026.04.14 | 清理 CSS 重複 `-webkit-backdrop-filter`（減少 223 bytes）、修復 feature card 動畫與 hover 衝突（改用 transition 替代 animation）、補齊 67 頁 skip-link、公告/指南搜尋欄 aria-label、partner-mcu.html meta description | 海風網站助手 |
 | 2026.04.14 | 首頁卡片同時出現（移除 stagger delay）、提示欄加卡片樣式、深色模式提高卡片/文字/圖標可見度 | 海風網站助手 |
 | 2026.04.14 | 提示文字改白色、卡片背景改黑色、移除卡片入場動畫（即時顯示） | 海風網站助手 |
+| 2026.04.14 | 修復 Google Fonts 缺少 800 字重（標題/頁首顯示備用字重）、移除 CSS color-mix() 改用固定 fallback 色值（Safari <16.2 相容）、修復 utils.js 雙反引號正則吃掉行內 code 前後空白、index.html 跳轉頁支援淺色模式配色 | 海風網站助手 |
 
 ---
 
@@ -219,6 +220,28 @@
 #### 18. ~~公告/指南搜尋欄缺少 aria-label~~ ✅ 已修復
 - **修復日期**：2026.04.14
 - **修復方式**：`#annSearch` 加 `aria-label="搜尋公告"`、`#guideSearch` 加 `aria-label="搜尋指南"`
+
+### ✅ 已修復（本次續）
+
+#### 19. ~~Google Fonts 缺少 800 字重~~ ✅ 已修復
+- **修復日期**：2026.04.14
+- **影響**：`.section-header h2`、`.page-hero h1`、`.team-stat-num`、`.discord-cta h2`、`.steps li::before`、`.step-number`、`.hero-tips-hash` 等多處使用 `font-weight: 800`，但 Google Fonts `<link>` 只載入 400/500/700，實際 fallback 到 700
+- **修復方式**：Google Fonts URL 加入 `800;900` 字重
+
+#### 20. ~~CSS `color-mix()` 缺少 fallback~~ ✅ 已修復
+- **修復日期**：2026.04.14
+- **影響**：`.feature-card:hover` 的 `border-color`、`.feature-card:hover .feature-card-icon` 的 `background`、淺色模式的 `border-color`/`background`/`box-shadow` 共 8 處使用 `color-mix(in srgb, ...)`，Safari < 16.2 不支援
+- **修復方式**：移除全部 `color-mix()` 改用預計算的 rgba 固定色值
+
+#### 21. ~~utils.js 雙反引號正則吃掉 code 前後空白~~ ✅ 已修復
+- **修復日期**：2026.04.14
+- **影響**：`` `` 51496 `` `` 轉換為 `<code>51496</code>` 時 `(.+?)` 貪婪匹配會 trim 掉前後空白，導致如 `` `` 51496 `` `` 輸出為 `<code>51496</code>`（正確）但 `` ``code `` `` 前有空格會出問題
+- **修復方式**：改用 `(.|\n)+?` 匹配並保留原始內容（移除 `.trim()`）
+
+#### 22. ~~index.html 跳轉頁強制深色背景~~ ✅ 已修復
+- **修復日期**：2026.04.14
+- **影響**：`index.html` redirect 頁面 inline style 只有深色配色，淺色模式用戶看到黑色頁面
+- **修復方式**：加入 `@media (prefers-color-scheme: light)` 查詢
 
 ### 🟡 可優化（Performance & UX）
 
