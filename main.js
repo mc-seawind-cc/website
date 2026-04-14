@@ -493,33 +493,21 @@ function fetchServerStatus() {
 function initBulletinBoard() {
   const board = document.getElementById('bulletinBoard');
   if (!board) return;
-  // Try v2 format first, fallback to v1
-  fetch(SW_BASE + 'announcements_v2.json')
-    .then(r => {
-      if (!r.ok) throw new Error('v2 not found');
-      return r.json();
-    })
-    .then(data => {
-      renderBulletin(board, data.announcements, true);
-    })
-    .catch(() => {
-      // Fallback to old format
-      fetch(SW_BASE + 'announcements.json')
-        .then(r => r.json())
-        .then(data => { renderBulletin(board, data.announcements, false); })
-        .catch(() => { board.innerHTML = '<p style="text-align:center;color:var(--fog);padding:20px;">公告載入失敗</p>'; });
-    });
+  fetch(SW_BASE + 'announcements.json')
+    .then(r => { if (!r.ok) throw new Error('load fail'); return r.json(); })
+    .then(data => { renderBulletin(board, data.announcements); })
+    .catch(() => { board.innerHTML = '<p style="text-align:center;color:var(--fog);padding:20px;">公告載入失敗</p>'; });
 }
 
-function renderBulletin(board, items, isV2) {
-  const VISIBLE = 7;    // 預設顯示篇數
-  const MAX_SCROLL = 12; // 捲動後最多顯示篇數
-  const showItems = items.slice(0, MAX_SCROLL);
-  let html = '';
-
+function renderBulletin(board, items) {
+  const VISIBLE = 7;
+  const MAX = 12;
+  const showItems = items.slice(0, MAX);
   const tagColors = { '公告': '#578aff', '更新': '#64dcb4', '維護': '#ff8282', '活動': '#ffaa32' };
 
-  // ── 公告欄標題列 ──
+  let html = '';
+
+  // 標題列
   html += `<div class="bulletin-header">
     <div class="bh-left">
       <h3 class="bh-title">最新公告</h3>
@@ -528,74 +516,90 @@ function renderBulletin(board, items, isV2) {
     <a href="公告.html" class="bh-all">查看全部 →</a>
   </div>`;
 
-  // ── 內容區（可捲動）──
-  html += `<div class="bulletin-scroll" id="bulletinScroll">`;
+  // 下拉式公告列表
+  html += '<div class="bulletin-list">';
 
   showItems.forEach((item, idx) => {
     const tag = item.tag || '更新';
-    const date = isV2 ? formatDateV2(item.isoDate) : formatDate(item.date, item.timestamp);
+    const date = formatDateV2(item.isoDate);
     const color = tagColors[tag] || '#578aff';
-    const hidden = idx >= VISIBLE ? ' bulletin-hidden' : '';
+    const isHidden = idx >= VISIBLE;
 
-    // 第一則：精選卡片
-    if (idx === 0) {
-      let featBody = `<div class="b-text">${md2html(item.content)}</div>`;
-      const featImages = (item.localImages && item.localImages.length) ? item.localImages : (item.images || []);
-      if (featImages.length) {
-        featBody += `<div class="b-images">${featImages.slice(0, 2).map(s => `<img src="${s}" alt="公告圖片" class="b-img" loading="lazy" onerror="this.style.display='none'">`).join('')}</div>`;
-      }
-      if (item.discordId) {
-        featBody += `<a href="https://discord.com/channels/1090959090878140447/1090959091750559816/${item.discordId}" target="_blank" rel="noopener" class="b-discord-link">在 Discord 查看 →</a>`;
-      }
-      html += `<div class="bulletin-featured${hidden}" style="--tag-color:${color}">
-        <div class="bf-head">
-          <span class="bf-tag" style="background:${color}18;color:${color}">${tag}</span>
-          <span class="bf-date">${date}</span>
-          ${item.pinned ? '<span class="bf-pin">📌</span>' : ''}
-        </div>
-        <h3 class="bf-title">${item.title}</h3>
-        <div class="bf-body"><div class="b-content">${featBody}</div></div>
-      </div>`;
-    } else {
-      // 其餘：緊湊行
-      html += `<div class="bulletin-row${hidden}">
-        <span class="br-dot" style="background:${color}"></span>
-        <span class="br-date">${date}</span>
-        <span class="br-title">${item.title}</span>
-        <span class="br-tag" style="background:${color}12;color:${color}">${tag}</span>
-      </div>`;
+    // 內容（Markdown → HTML）
+    const contentHtml = md2html(item.content);
+
+    // 圖片
+    const imgs = (item.localImages && item.localImages.length) ? item.localImages : (item.images || []);
+    let imagesHtml = '';
+    if (imgs.length) {
+      imagesHtml = '<div class="b-images">' +
+        imgs.slice(0, 4).map(s => `<img src="${s}" alt="" class="b-img" loading="lazy" onerror="this.style.display='none'">`).join('') +
+        '</div>';
     }
+
+    // Discord 連結
+    let discordHtml = '';
+    if (item.discordId) {
+      discordHtml = `<a href="https://discord.com/channels/1090959090878140447/1090959091750559816/${item.discordId}" target="_blank" rel="noopener" class="b-discord-link">在 Discord 查看 →</a>`;
+    }
+
+    // 預覽文字（取第一行非空內容，截斷）
+    const previewText = item.content
+      .replace(/[#>*\-\[\]()`~_|]/g, '')
+      .split('\n').find(l => l.trim()) || '';
+    const preview = previewText.length > 40 ? previewText.slice(0, 40) + '…' : previewText;
+
+    html += `<div class="bulletin-item${isHidden ? ' bulletin-hidden' : ''}${item.pinned ? ' pinned' : ''}" style="--tag-color:${color}" data-tag="${tag}">
+      <button class="bulletin-toggle" aria-expanded="false">
+        <span class="b-dot" style="background:${color}"></span>
+        <span class="b-date">${date}</span>
+        <span class="b-title">${item.title}</span>
+        <span class="b-preview">${preview}</span>
+        <span class="b-right">
+          ${item.pinned ? '<span class="b-pin">📌</span>' : ''}
+          <span class="b-tag" style="background:${color}15;color:${color}">${tag}</span>
+          <span class="b-arrow">▾</span>
+        </span>
+      </button>
+      <div class="bulletin-body">
+        <div class="b-content">
+          ${item.id ? `<div class="b-meta"><span class="b-meta-id">${item.id}</span><span class="b-meta-time">${date}</span></div>` : ''}
+          <div class="b-text">${contentHtml}</div>
+          ${imagesHtml}
+          ${discordHtml}
+        </div>
+      </div>
+    </div>`;
   });
 
-  html += `</div>`; // end bulletin-scroll
+  html += '</div>';
 
-  // ── 展開提示 ──
+  // 展開提示
   if (showItems.length > VISIBLE) {
-    html += `<div class="bulletin-expand" id="bulletinExpand">
-      <span class="be-hint">↓ 向下捲動查看更多</span>
+    html += `<div class="bulletin-more" id="bulletinMore">
+      <button class="btn btn-outline btn-sm" id="bulletinMoreBtn">顯示更多（${showItems.length - VISIBLE} 則）</button>
     </div>`;
   }
 
   board.innerHTML = html;
 
-  // 捲動監聽：逐步顯示隱藏項目
-  const scrollEl = document.getElementById('bulletinScroll');
-  const expandEl = document.getElementById('bulletinExpand');
-  if (scrollEl) {
-    scrollEl.addEventListener('scroll', () => {
-      const hidden = scrollEl.querySelectorAll('.bulletin-hidden');
-      if (hidden.length && scrollEl.scrollTop + scrollEl.clientHeight >= scrollEl.scrollHeight - 40) {
-        hidden.forEach(el => el.classList.remove('bulletin-hidden'));
-        if (expandEl) expandEl.style.display = 'none';
-      }
-    }, { passive: true });
-    // 如果內容本身就不夠長，直接全部顯示
-    setTimeout(() => {
-      if (scrollEl.scrollHeight <= scrollEl.clientHeight + 10) {
-        scrollEl.querySelectorAll('.bulletin-hidden').forEach(el => el.classList.remove('bulletin-hidden'));
-        if (expandEl) expandEl.style.display = 'none';
-      }
-    }, 200);
+  // 點擊展開/收合
+  board.querySelectorAll('.bulletin-toggle').forEach(toggle => {
+    toggle.addEventListener('click', () => {
+      const item = toggle.closest('.bulletin-item');
+      const isOpen = item.classList.toggle('open');
+      toggle.setAttribute('aria-expanded', isOpen);
+    });
+  });
+
+  // 顯示更多按鈕
+  const moreBtn = document.getElementById('bulletinMoreBtn');
+  if (moreBtn) {
+    moreBtn.addEventListener('click', () => {
+      board.querySelectorAll('.bulletin-hidden').forEach(el => el.classList.remove('bulletin-hidden'));
+      const moreEl = document.getElementById('bulletinMore');
+      if (moreEl) moreEl.style.display = 'none';
+    });
   }
 }
 
