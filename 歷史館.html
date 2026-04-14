@@ -5,14 +5,13 @@
   <link rel="canonical" href="https://www.seawind.cc/歷史館.html">
   <meta name="color-scheme" content="dark light">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>海風 — 關於 — 歷史館</title>
-  <meta name="description" content="海風伺服器的發展歷程，從純麥到海風的每一個重要時刻。">
-  <meta property="og:title" content="歷史館 — 關於 — 海風">
-  <meta property="og:description" content="海風伺服器的發展歷程，從純麥到海風的每一個重要時刻。">
-  <meta property="og:image" content="assets/img/logo.png">
+  <title>歷史館 — 海風 SeaWind</title>
+  <meta name="description" content="從純麥到海風，每一個重要的時刻都在這裡。">
+  <meta property="og:title" content="歷史館 — 海風 SeaWind">
+  <meta property="og:description" content="從純麥到海風，每一個重要的時刻都在這裡。">
+  <meta property="og:image" content="https://www.seawind.cc/assets/img/logo.png">
   <meta property="og:type" content="website">
   <meta name="twitter:card" content="summary">
-  <meta name="twitter:image" content="assets/img/logo.png">
   <meta name="theme-color" content="#0d1117">
   <link rel="icon" href="assets/img/logo.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -22,326 +21,354 @@
   <link rel="stylesheet" href="music-player.css">
   <style>
   /* ═══════════════════════════════════════
-     海風歷史館 v5 — 直接展開式時間線
-     所有事件直接顯示，無需點擊展開
-     僅保留時代篩選（純麥/海風）
+     海風歷史館 — 博物館式交替時間線
+     設計理念：像走進一座歷史博物館，
+     中央的時間軸是骨幹，兩側是故事。
+     不需要點擊，所有內容直接展開，
+     讓人一眼就能感受到時間的流動。
      ═══════════════════════════════════════ */
 
-  /* ── Hero ── */
-  .hist-hero {
-    position: relative;
+  :root {
+    --tl-line: rgba(157,175,255,0.12);
+    --tl-dot: var(--sky);
+    --tl-card-bg: rgba(255,255,255,0.025);
+    --tl-card-border: rgba(255,255,255,0.06);
+    --tl-era-pw: var(--sand);
+    --tl-era-sw: var(--foam);
+  }
+  [data-theme="light"] {
+    --tl-line: rgba(0,0,0,0.08);
+    --tl-card-bg: #ffffff;
+    --tl-card-border: rgba(0,0,0,0.06);
+  }
+
+  /* ── 頁首 ── */
+  .tl-hero {
     text-align: center;
-    padding: 120px 24px 40px;
+    padding: 120px 24px 32px;
+    position: relative;
     overflow: hidden;
   }
-  .hist-hero::before {
+  .tl-hero::before {
     content: '';
     position: absolute; inset: 0;
     background:
-      radial-gradient(ellipse 700px 350px at 25% 30%, rgba(222,172,128,0.06) 0%, transparent 70%),
-      radial-gradient(ellipse 500px 300px at 75% 60%, rgba(157,175,255,0.05) 0%, transparent 70%);
+      radial-gradient(ellipse 600px 300px at 30% 40%, rgba(222,172,128,0.05) 0%, transparent 70%),
+      radial-gradient(ellipse 400px 300px at 70% 50%, rgba(157,175,255,0.04) 0%, transparent 70%);
     pointer-events: none;
   }
-  .hist-hero h1 {
+  .tl-hero h1 {
     font-family: 'Noto Serif TC', serif;
-    font-size: clamp(2.2rem, 5vw, 3.6rem);
+    font-size: clamp(2rem, 5vw, 3.2rem);
     font-weight: 900;
-    background: linear-gradient(135deg, #fff 0%, #c8deff 50%, var(--sky) 100%);
-    -webkit-background-clip: text; background-clip: text;
-    -webkit-text-fill-color: transparent;
-    margin-bottom: 10px;
+    color: var(--white);
+    margin-bottom: 8px;
     position: relative;
   }
-  .hist-hero .hist-sub {
+  .tl-hero-sub {
     color: var(--fog);
-    font-size: 0.95rem;
+    font-size: 0.92rem;
     font-style: italic;
+    letter-spacing: 0.06em;
     position: relative;
-    letter-spacing: 0.04em;
   }
 
-  /* ── 工具列（僅時代篩選）── */
-  .hist-toolbar {
-    max-width: 800px;
-    margin: 0 auto;
-    position: sticky; top: 64px; z-index: 50;
-    display: flex; justify-content: center;
-    padding: 14px 20px;
+  /* ── 篩選 ── */
+  .tl-filter {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    padding: 16px 20px;
+    position: sticky;
+    top: 64px;
+    z-index: 50;
     background: var(--deep);
-    border-bottom: 1px solid var(--mist);
-    transition: background 0.4s;
+    border-bottom: 1px solid var(--tl-line);
   }
-  .hist-toolbar::before {
-    content: ''; position: absolute; inset: 0 -200%;
-    background: var(--deep); z-index: -1; transition: background 0.4s;
-  }
-
-  .era-tabs { display: flex; gap: 6px; }
-  .era-tab {
-    padding: 8px 20px; border-radius: 100px;
-    font-size: 0.85rem; font-weight: 600;
-    background: var(--ocean); border: 1px solid var(--mist);
-    color: var(--fog); cursor: pointer;
-    transition: all 0.2s; font-family: var(--font-body);
+  [data-theme="light"] .tl-filter { background: #f0f2f5; border-bottom-color: rgba(0,0,0,0.06); }
+  .tl-fbtn {
+    padding: 8px 20px;
+    border-radius: 100px;
+    border: 1px solid var(--mist);
+    background: var(--ocean);
+    color: var(--fog);
+    font-size: 0.82rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-family: inherit;
+    display: flex;
+    align-items: center;
+    gap: 6px;
     white-space: nowrap;
-    display: flex; align-items: center; gap: 6px;
   }
-  .era-tab:hover { border-color: var(--sky); color: var(--cloud); }
-  .era-tab.active { background: rgba(157,175,255,0.1); border-color: rgba(157,175,255,0.3); color: var(--sky); }
-  .era-tab .era-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
-  .era-tab[data-era="all"] .era-dot { background: linear-gradient(135deg, var(--sand), var(--sky)); }
-  .era-tab[data-era="purewheat"] .era-dot { background: var(--sand); }
-  .era-tab[data-era="seawind"] .era-dot { background: var(--foam); }
+  .tl-fbtn:hover { border-color: var(--sky); color: var(--cloud); }
+  .tl-fbtn.on { background: rgba(157,175,255,0.1); border-color: rgba(157,175,255,0.3); color: var(--sky); }
+  .tl-fdot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+  .tl-fbtn[data-e="all"] .tl-fdot { background: linear-gradient(135deg, var(--sand), var(--sky)); }
+  .tl-fbtn[data-e="pw"] .tl-fdot { background: var(--sand); }
+  .tl-fbtn[data-e="sw"] .tl-fdot { background: var(--foam); }
+  [data-theme="light"] .tl-fbtn { background: #fff; border-color: rgba(0,0,0,0.08); }
+  [data-theme="light"] .tl-fbtn.on { background: rgba(157,175,255,0.1); border-color: rgba(157,175,255,0.25); }
 
-  /* ── 章節 ── */
-  .chapter {
-    max-width: 800px;
+  /* ── 時間線容器 ── */
+  .tl-wrap {
+    max-width: 900px;
     margin: 0 auto;
-    padding: 0 20px;
-  }
-
-  /* 章節大標題 */
-  .ch-header {
-    text-align: center;
-    padding: 48px 0 24px;
+    padding: 0 20px 40px;
     position: relative;
   }
-  .ch-header::before {
+
+  /* 中央軸線 */
+  .tl-wrap::before {
     content: '';
     position: absolute;
-    top: 0; left: 50%;
+    left: 50%;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: linear-gradient(180deg, transparent, var(--tl-line) 40px, var(--tl-line) calc(100% - 40px), transparent);
     transform: translateX(-50%);
-    width: 60px; height: 3px;
-    border-radius: 3px;
   }
-  .ch-era.純麥 .ch-header::before { background: linear-gradient(90deg, transparent, var(--sand), transparent); }
-  .ch-era.海風 .ch-header::before { background: linear-gradient(90deg, transparent, var(--foam), transparent); }
 
-  .ch-icon {
-    font-size: 2.2rem;
-    display: block;
-    margin-bottom: 6px;
-    filter: drop-shadow(0 2px 8px rgba(0,0,0,0.3));
+  /* ── 時代章節 ── */
+  .tl-era {
+    position: relative;
+    padding: 40px 0 0;
   }
-  .ch-title {
+
+  /* 時代標題（置中，在軸線上） */
+  .tl-era-head {
+    text-align: center;
+    position: relative;
+    z-index: 2;
+    margin-bottom: 32px;
+  }
+  .tl-era-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    font-size: 1.6rem;
+    margin-bottom: 8px;
+  }
+  .tl-era[data-era="pw"] .tl-era-icon {
+    background: rgba(222,172,128,0.12);
+    border: 2px solid rgba(222,172,128,0.3);
+  }
+  .tl-era[data-era="sw"] .tl-era-icon {
+    background: rgba(168,230,207,0.1);
+    border: 2px solid rgba(168,230,207,0.25);
+  }
+  .tl-era-name {
     font-family: 'Noto Serif TC', serif;
-    font-size: clamp(1.5rem, 3.5vw, 2rem);
+    font-size: 1.5rem;
     font-weight: 700;
-    margin-bottom: 2px;
+    display: block;
   }
-  .ch-era.純麥 .ch-title { color: var(--sand); }
-  .ch-era.海風 .ch-title { color: var(--foam); }
-  .ch-subtitle {
+  .tl-era[data-era="pw"] .tl-era-name { color: var(--tl-era-pw); }
+  .tl-era[data-era="sw"] .tl-era-name { color: var(--tl-era-sw); }
+  .tl-era-era-sub {
     font-size: 0.82rem;
     color: var(--fog);
     font-style: italic;
   }
 
-  /* 年份小標 */
-  .ch-year {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    padding: 20px 0 8px;
+  /* ── 年份標記 ── */
+  .tl-year {
+    text-align: center;
+    position: relative;
+    z-index: 2;
+    margin: 24px 0 20px;
   }
-  .ch-year-num {
+  .tl-year-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 20px;
+    background: var(--deep);
+    border: 1px solid var(--tl-line);
+    border-radius: 100px;
     font-family: 'Noto Serif TC', serif;
-    font-size: 1.2rem;
+    font-size: 1rem;
     font-weight: 700;
     color: var(--white);
-    font-variant-numeric: tabular-nums;
   }
-  .ch-year-line {
-    flex: 1;
-    height: 1px;
-    background: var(--mist);
-  }
+  [data-theme="light"] .tl-year-badge { background: #f0f2f5; border-color: rgba(0,0,0,0.08); color: var(--cloud); }
 
-  /* ── 事件項目（直接顯示，無摺疊）── */
-  .ch-event {
+  /* ── 事件項目 ── */
+  .tl-item {
     position: relative;
-    padding: 10px 0 10px 28px;
-    border-left: 2px solid var(--mist);
-    margin-left: 4px;
+    width: 50%;
+    padding: 0 32px 32px;
     opacity: 0;
-    transform: translateY(10px);
-    transition: opacity 0.35s var(--ease), transform 0.35s var(--ease);
+    transform: translateY(20px);
+    transition: opacity 0.5s var(--ease), transform 0.5s var(--ease);
   }
-  .ch-event.visible {
-    opacity: 1;
-    transform: translateY(0);
-  }
-  .ch-event:last-child {
-    border-left-color: transparent;
-  }
+  .tl-item.vis { opacity: 1; transform: translateY(0); }
+  .tl-item.left { margin-left: 0; text-align: right; }
+  .tl-item.right { margin-left: 50%; text-align: left; }
 
-  /* 左側圓點 */
-  .ch-dot {
+  /* 軸線圓點 */
+  .tl-dot {
     position: absolute;
-    left: -7px;
-    top: 14px;
-    width: 12px; height: 12px;
+    top: 8px;
+    width: 14px;
+    height: 14px;
     border-radius: 50%;
-    border: 2px solid var(--deep);
-    z-index: 1;
-    transition: transform 0.2s;
+    z-index: 3;
+    border: 3px solid var(--deep);
+    transition: transform 0.2s, box-shadow 0.3s;
   }
-  .ch-event:hover .ch-dot { transform: scale(1.3); }
+  .tl-item.left .tl-dot { right: -7px; }
+  .tl-item.right .tl-dot { left: -7px; }
+  .tl-item:hover .tl-dot { transform: scale(1.4); }
 
-  /* 顏色 */
-  .ch-dot.里程碑 { background: var(--sky); box-shadow: 0 0 0 2px var(--sky); }
-  .ch-dot.更新 { background: #64dcb4; box-shadow: 0 0 0 2px #64dcb4; }
-  .ch-dot.事件 { background: #ffaa32; box-shadow: 0 0 0 2px #ffaa32; }
-  .ch-dot.活動 { background: #ff8282; box-shadow: 0 0 0 2px #ff8282; }
-  .ch-event:hover .ch-dot.里程碑 { box-shadow: 0 0 0 2px var(--sky), 0 0 10px rgba(157,175,255,0.4); }
-  .ch-event:hover .ch-dot.更新 { box-shadow: 0 0 0 2px #64dcb4, 0 0 10px rgba(100,220,180,0.4); }
-  .ch-event:hover .ch-dot.事件 { box-shadow: 0 0 0 2px #ffaa32, 0 0 10px rgba(255,170,50,0.4); }
-  .ch-event:hover .ch-dot.活動 { box-shadow: 0 0 0 2px #ff8282, 0 0 10px rgba(255,130,130,0.4); }
+  /* 圓點顏色 */
+  .tl-dot.milestone { background: var(--sky); box-shadow: 0 0 0 2px var(--sky); }
+  .tl-dot.update { background: #64dcb4; box-shadow: 0 0 0 2px #64dcb4; }
+  .tl-dot.event { background: #ffaa32; box-shadow: 0 0 0 2px #ffaa32; }
+  .tl-dot.activity { background: #ff8282; box-shadow: 0 0 0 2px #ff8282; }
+  .tl-item:hover .tl-dot.milestone { box-shadow: 0 0 0 2px var(--sky), 0 0 12px rgba(157,175,255,0.4); }
+  .tl-item:hover .tl-dot.update { box-shadow: 0 0 0 2px #64dcb4, 0 0 12px rgba(100,220,180,0.4); }
+  .tl-item:hover .tl-dot.event { box-shadow: 0 0 0 2px #ffaa32, 0 0 12px rgba(255,170,50,0.4); }
+  .tl-item:hover .tl-dot.activity { box-shadow: 0 0 0 2px #ff8282, 0 0 12px rgba(255,130,130,0.4); }
 
-  /* 里程碑放大 */
-  .ch-dot.里程碑 { width: 16px; height: 16px; left: -9px; top: 12px; }
-
-  /* 內容行 */
-  .ch-ev-head {
-    display: flex;
-    align-items: baseline;
-    gap: 10px;
-    flex-wrap: wrap;
+  /* 卡片 */
+  .tl-card {
+    background: var(--tl-card-bg);
+    border: 1px solid var(--tl-card-border);
+    border-radius: 12px;
+    padding: 16px 18px;
+    transition: all 0.3s var(--ease);
+    position: relative;
   }
-  .ch-ev-date {
-    font-size: 0.72rem;
+  .tl-item:hover .tl-card {
+    border-color: rgba(157,175,255,0.15);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+  }
+  [data-theme="light"] .tl-item:hover .tl-card {
+    box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+  }
+
+  /* 卡片連接線（到軸線） */
+  .tl-item.left .tl-card::after {
+    content: '';
+    position: absolute;
+    top: 12px;
+    right: -18px;
+    width: 18px;
+    height: 2px;
+    background: var(--tl-line);
+  }
+  .tl-item.right .tl-card::after {
+    content: '';
+    position: absolute;
+    top: 12px;
+    left: -18px;
+    width: 18px;
+    height: 2px;
+    background: var(--tl-line);
+  }
+
+  /* 里程碑加粗邊 */
+  .tl-item.milestone-item .tl-card {
+    border-left: 3px solid var(--sky);
+    background: linear-gradient(135deg, rgba(157,175,255,0.04), var(--tl-card-bg));
+  }
+  .tl-item.left.milestone-item .tl-card {
+    border-left: none;
+    border-right: 3px solid var(--sky);
+    background: linear-gradient(225deg, rgba(157,175,255,0.04), var(--tl-card-bg));
+  }
+
+  /* 卡片內部 */
+  .tl-card-date {
+    font-size: 0.7rem;
     color: var(--fog);
     font-weight: 500;
     font-variant-numeric: tabular-nums;
-    flex-shrink: 0;
-    min-width: 65px;
+    margin-bottom: 4px;
   }
-  .ch-ev-title {
-    font-size: 0.92rem;
+  .tl-card-title {
+    font-size: 0.95rem;
     font-weight: 700;
-    color: var(--cloud);
-    flex: 1;
+    color: var(--white);
+    margin-bottom: 4px;
   }
-  .ch-ev-tag {
-    font-size: 0.58rem;
+  .tl-card-tag {
+    display: inline-block;
+    font-size: 0.6rem;
     padding: 2px 8px;
     border-radius: 100px;
     font-weight: 600;
-    flex-shrink: 0;
+    margin-bottom: 6px;
   }
-  .ch-ev-tag[data-tag="里程碑"] { background: rgba(157,175,255,0.1); color: var(--sky); }
-  .ch-ev-tag[data-tag="更新"] { background: rgba(100,220,180,0.1); color: #6dd8b4; }
-  .ch-ev-tag[data-tag="事件"] { background: rgba(255,170,50,0.1); color: #ffc566; }
-  .ch-ev-tag[data-tag="活動"] { background: rgba(255,130,130,0.1); color: #ff9999; }
-  [data-theme="light"] .ch-ev-tag[data-tag="里程碑"] { background: rgba(74,108,247,0.08); color: #4a6cf7; }
-  [data-theme="light"] .ch-ev-tag[data-tag="更新"] { background: rgba(0,150,100,0.08); color: #009664; }
-  [data-theme="light"] .ch-ev-tag[data-tag="事件"] { background: rgba(220,140,30,0.08); color: #dc8c1e; }
-  [data-theme="light"] .ch-ev-tag[data-tag="活動"] { background: rgba(220,80,80,0.08); color: #dc5050; }
-
-  /* 描述（直接顯示） */
-  .ch-ev-desc {
-    padding: 6px 0 2px;
-    font-size: 0.85rem;
+  .tl-card-tag[data-t="里程碑"] { background: rgba(157,175,255,0.1); color: var(--sky); }
+  .tl-card-tag[data-t="更新"] { background: rgba(100,220,180,0.1); color: #6dd8b4; }
+  .tl-card-tag[data-t="事件"] { background: rgba(255,170,50,0.1); color: #ffc566; }
+  .tl-card-tag[data-t="活動"] { background: rgba(255,130,130,0.1); color: #ff9999; }
+  [data-theme="light"] .tl-card-tag[data-t="里程碑"] { background: rgba(74,108,247,0.08); color: #4a6cf7; }
+  [data-theme="light"] .tl-card-tag[data-t="更新"] { background: rgba(0,150,100,0.08); color: #009664; }
+  [data-theme="light"] .tl-card-tag[data-t="事件"] { background: rgba(220,140,30,0.08); color: #dc8c1e; }
+  [data-theme="light"] .tl-card-tag[data-t="活動"] { background: rgba(220,80,80,0.08); color: #dc5050; }
+  .tl-card-desc {
+    font-size: 0.82rem;
     color: var(--fog);
-    line-height: 1.8;
+    line-height: 1.7;
   }
-  .ch-ev-photo {
-    margin: 8px 0 4px;
-    border-radius: 8px;
-    overflow: hidden;
-    border: 1px solid rgba(255,255,255,0.06);
-    cursor: zoom-in;
-  }
-  .ch-ev-photo img {
-    width: 100%; display: block;
-    aspect-ratio: 16/9; object-fit: cover;
-    transition: transform 0.3s;
-  }
-  .ch-ev-photo:hover img { transform: scale(1.02); }
-  .ch-ev-photo-cap {
-    padding: 5px 10px; font-size: 0.68rem; color: var(--fog);
-    background: rgba(255,255,255,0.02);
-  }
-  [data-theme="light"] .ch-ev-photo { border-color: rgba(0,0,0,0.06); }
-  [data-theme="light"] .ch-ev-photo-cap { background: rgba(0,0,0,0.02); }
-
-  /* 里程碑 — 卡片式突出 */
-  .ch-event[data-tag="里程碑"] {
-    margin: 6px 0;
-  }
-  .ch-event[data-tag="里程碑"] .ch-ev-head {
-    padding: 12px 14px;
-    background: linear-gradient(135deg, rgba(157,175,255,0.04), transparent);
-    border: 1px solid rgba(157,175,255,0.1);
-    border-radius: var(--radius-md);
-    border-left: 3px solid var(--sky);
-  }
-  .ch-event[data-tag="里程碑"] .ch-ev-desc {
-    padding: 8px 14px;
-  }
+  [data-theme="light"] .tl-card-title { color: var(--cloud); }
+  [data-theme="light"] .tl-card-desc { color: #5a6270; }
 
   /* 結尾 */
-  .ch-finale {
+  .tl-end {
     text-align: center;
-    padding: 40px 20px;
-    max-width: 800px;
-    margin: 0 auto;
+    padding: 48px 20px 32px;
+    position: relative;
+    z-index: 2;
   }
-  .ch-finale-icon {
-    font-size: 1.8rem;
-    display: block;
-    margin-bottom: 6px;
-    opacity: 0.6;
+  .tl-end-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: rgba(157,175,255,0.06);
+    border: 2px solid var(--tl-line);
+    font-size: 1.4rem;
+    margin-bottom: 10px;
   }
-  .ch-finale-text {
+  .tl-end-text {
     font-family: 'Noto Serif TC', serif;
-    font-size: 1rem;
+    font-size: 0.95rem;
     color: var(--fog);
     font-style: italic;
   }
 
   /* 空狀態 */
-  .hist-empty {
-    text-align: center; padding: 48px 20px; color: var(--fog);
-    max-width: 800px; margin: 0 auto;
+  .tl-empty {
+    text-align: center;
+    padding: 60px 20px;
+    color: var(--fog);
   }
-  .hist-empty-icon { font-size: 2.5rem; margin-bottom: 12px; opacity: 0.4; }
+  .tl-empty-icon { font-size: 2rem; margin-bottom: 8px; opacity: 0.4; }
 
-  /* ── Light Theme ── */
-  [data-theme="light"] .hist-toolbar { background: #f0f2f5; border-bottom-color: rgba(0,0,0,0.06); }
-  [data-theme="light"] .hist-toolbar::before { background: #f0f2f5; }
-  [data-theme="light"] .hist-hero h1 {
-    background: linear-gradient(135deg, var(--cloud) 0%, var(--sky) 100%);
-    -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
-  }
-  [data-theme="light"] .era-tab { background: #fff; border-color: rgba(0,0,0,0.08); color: var(--fog); }
-  [data-theme="light"] .era-tab.active { background: rgba(157,175,255,0.1); border-color: rgba(157,175,255,0.25); }
-  [data-theme="light"] .ch-ev-title { color: var(--cloud); }
-  [data-theme="light"] .ch-ev-desc { color: #5a6270; }
-  [data-theme="light"] .ch-year-num { color: var(--cloud); }
-  [data-theme="light"] .ch-event { border-left-color: rgba(0,0,0,0.06); }
-  [data-theme="light"] .ch-dot { border-color: #f0f2f5; }
-  [data-theme="light"] .ch-event[data-tag="里程碑"] .ch-ev-head {
-    background: linear-gradient(135deg, rgba(157,175,255,0.04), transparent);
-    border-color: rgba(157,175,255,0.12);
-  }
-  [data-theme="light"] .hist-empty { color: var(--fog); }
-
-  /* ── Responsive ── */
+  /* ── 響應式：手機改為單側時間線 ── */
   @media (max-width: 768px) {
-    .hist-toolbar { top: 56px; }
-    .era-tabs { gap: 4px; }
-    .era-tab { padding: 10px 16px; font-size: 0.82rem; min-height: 42px; }
-    .chapter { padding: 0 16px; }
-    .ch-event { padding-left: 24px; }
-    .ch-ev-title { font-size: 0.85rem; }
-    .ch-ev-desc { font-size: 0.82rem; }
-    .ch-event[data-tag="里程碑"] .ch-ev-head { padding: 10px 12px; }
-    .ch-event[data-tag="里程碑"] .ch-ev-desc { padding: 6px 12px; }
-  }
-  @media (max-width: 375px) {
-    .ch-ev-date { min-width: 55px; font-size: 0.65rem; }
-    .ch-ev-title { font-size: 0.8rem; }
+    .tl-filter { top: 56px; }
+    .tl-wrap::before { left: 20px; }
+    .tl-item { width: 100%; padding: 0 12px 24px 44px; text-align: left; }
+    .tl-item.left, .tl-item.right { margin-left: 0; text-align: left; }
+    .tl-item.left .tl-dot, .tl-item.right .tl-dot { left: 13px; right: auto; }
+    .tl-item.left .tl-card::after { display: none; }
+    .tl-item.right .tl-card::after { left: -20px; width: 20px; }
+    .tl-item.left.milestone-item .tl-card { border-right: none; border-left: 3px solid var(--sky); background: linear-gradient(135deg, rgba(157,175,255,0.04), var(--tl-card-bg)); }
+    .tl-era-head { padding-left: 0; }
+    .tl-year { padding-left: 0; }
   }
   </style>
 </head>
@@ -376,7 +403,6 @@
             <li><a href="支持須知.html">支持須知</a></li>
             <li><a href="管理規則.html">海風管理規則</a></li>
             <li><a href="公務人員須知.html">公務人員須知</a></li>
-            <li><a href="特殊道具規範.html">特殊道具設計規範</a></li>
             <li><a href="服務條款.html">服務條款</a></li>
             <li><a href="隱私權政策.html">隱私權政策</a></li>
           </ul>
@@ -397,248 +423,147 @@
   </nav>
 
   <div class="page">
-
-    <!-- ═══ Hero ═══ -->
-    <div class="hist-hero fade-in">
+    <div class="tl-hero fade-in">
       <h1>歷史館</h1>
-      <p class="hist-sub">別忘了海是如何被風吹過來的，記得回望來時的每一步。</p>
+      <p class="tl-hero-sub">每一段過去，都造就了今天的海風。</p>
     </div>
 
-    <!-- ═══ Toolbar（僅時代篩選）═══ -->
-    <div class="hist-toolbar fade-in">
-      <div class="era-tabs">
-        <button class="era-tab active" data-era="all"><span class="era-dot"></span>全部時期</button>
-        <button class="era-tab" data-era="purewheat"><span class="era-dot"></span>純麥時期</button>
-        <button class="era-tab" data-era="seawind"><span class="era-dot"></span>海風時期</button>
-      </div>
+    <div class="tl-filter fade-in">
+      <button class="tl-fbtn on" data-e="all"><span class="tl-fdot"></span>全部時期</button>
+      <button class="tl-fbtn" data-e="pw"><span class="tl-fdot"></span>純麥時期</button>
+      <button class="tl-fbtn" data-e="sw"><span class="tl-fdot"></span>海風時期</button>
     </div>
 
-    <!-- ═══ Content ═══ -->
-    <div id="histList"></div>
-    <div id="histEmpty" class="hist-empty" style="display:none;">
-      <div class="hist-empty-icon">🔍</div>
-      <p>找不到符合條件的歷史事件</p>
-    </div>
+    <div id="tlContent"></div>
+    <div id="tlEmpty" class="tl-empty" style="display:none"><div class="tl-empty-icon">📖</div><p>此時期尚無歷史事件</p></div>
   </div>
 
   <footer class="footer">
     <div class="footer-inner">
-      <div class="footer-brand">
-        <span class="footer-logo">海風伺服器 SeaWind.cc</span>
-        <p>跟隨風抵達海的彼端，有片陸地等你啟程</p>
-      </div>
-      <div class="footer-links">
-        <a href="玩家須知.html">社群須知</a>
-        <a href="服務條款.html">服務條款</a>
-        <a href="隱私權政策.html">隱私權政策</a>
-      </div>
-      <div class="footer-bottom">
-        <p>© 2026 海風伺服器 · 非 Mojang 官方營運 · service@seawind.cc</p>
-      </div>
+      <div class="footer-brand"><span class="footer-logo">海風伺服器 SeaWind.cc</span><p>跟隨風抵達海的彼端，有片陸地等你啟程</p></div>
+      <div class="footer-links"><a href="玩家須知.html">社群須知</a><a href="服務條款.html">服務條款</a><a href="隱私權政策.html">隱私權政策</a></div>
+      <div class="footer-bottom"><p>© 2026 海風伺服器 · 非 Mojang 官方營運 · service@seawind.cc</p></div>
     </div>
   </footer>
-
   <p class="page-revise">網站最後修改日期 2026.04.14 / 總計修改 <span id="deployCount">—</span> 次</p>
-
-  <!-- Lightbox -->
-  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" tabindex="-1">
-    <button class="lightbox-close" id="lbClose">✕</button>
-    <img class="lightbox-img" id="lbImg" src="" alt="">
-    <div class="lightbox-counter" id="lbCounter"></div>
-  </div>
 
   <script src="utils.js"></script>
   <script src="main.js?v=260414a"></script>
-  <script>
-  (() => {
-    'use strict';
+<script>
+(() => {
+  'use strict';
 
-    const EVENTS = [
-      { era:"purewheat", date:"2023.10.21", isoDate:"2023-10-21", tag:"里程碑", title:"純麥伺服器誕生", desc:"由 cry（路人甲）創立 Discord 群組並擔任純麥服主。一個小型 Minecraft 生存伺服器就此起步，版本 1.20.x。這是純麥與海風故事的起點。" },
-      { era:"purewheat", date:"2023.10.25", isoDate:"2023-10-25", tag:"里程碑", title:"神焰加入管理團隊", desc:"tstw5306（神焰）被 cry 招為管理員，開始了純麥伺服器的管理與技術改革。" },
-      { era:"purewheat", date:"2023.11.08", isoDate:"2023-11-08", tag:"更新", title:"防盜系統上線", desc:"導入查詢系統（/co i），玩家可以查詢誰破壞了什麼、誰拿了什麼。這是純麥第一個管理工具。" },
-      { era:"purewheat", date:"2023.12.09", isoDate:"2023-12-09", tag:"更新", title:"伺服器形象建立", desc:"新增 Discord 橫幅、Minecraft 伺服器圖標。伺服器開始有正式的品牌識別。" },
-      { era:"purewheat", date:"2023.12.22", isoDate:"2023-12-22", tag:"更新", title:"傳送系統問世", desc:"/pw 傳送點系統正式啟用，玩家終於可以自由設定與分享傳送點。12/24 /slime 史萊姆區塊查詢也同步上線。" },
-      { era:"purewheat", date:"2023.12.27", isoDate:"2023-12-27", tag:"更新", title:"線上商城系統", desc:"純麥建立線上商城，每天晚上 8 點刷新滿級附魔書和修補書。商業化嘗試正式開始。" },
-      { era:"purewheat", date:"2024.01.01", isoDate:"2024-01-01", tag:"事件", title:"2024 新年", desc:"跨年夜神焰在公告頻道留下：「雖然開服沒有很久，服務器也還沒完善，我還是會當純麥的管理員的大家放心」，並祝大家新年快樂。" },
-      { era:"purewheat", date:"2024.01.14", isoDate:"2024-01-14", tag:"里程碑", title:"規則初版與社群指南", desc:"由石頭、神焰、td 共同編列第一版伺服器規則與帳號處理格式，建立社群指南頻道。伺服器從「隨便玩」走向「有規矩」。" },
-      { era:"purewheat", date:"2024.01.24", isoDate:"2024-01-24", tag:"事件", title:"二月經費危機", desc:"cry 宣布「伺服器沒錢付託管了，2 月有可能就要死了」。管理員緊急發起贊助募款，這是純麥第一次生存危機。" },
-      { era:"purewheat", date:"2024.01.31", isoDate:"2024-01-31", tag:"活動", title:"春節活動", desc:"春節活動開始。cry 用百字春節祝福刷屏，被玩家笑稱「你他娘真是人才」。純麥的歡樂日常。" },
-      { era:"purewheat", date:"2024.02.09", isoDate:"2024-02-09", tag:"事件", title:"託管危機", desc:"資金不足更換託管商。4 天後因玩家抗議，緊急換回原託管。伺服器的穩定性一直是純麥的痛。" },
-      { era:"purewheat", date:"2024.02.17", isoDate:"2024-02-17", tag:"里程碑", title:"會員制度確立", desc:"經過公投，贊助走向確定為會員制度。基岩版同步開放連線，玩家群體進一步擴大。" },
-      { era:"purewheat", date:"2024.02.24", isoDate:"2024-02-24", tag:"更新", title:"鑽石銀行上線", desc:"神焰開發出 /d 指令，鑽石銀行介面正式啟用，玩家終於有了方便的存領錢方式。" },
-      { era:"purewheat", date:"2024.03.03", isoDate:"2024-03-03", tag:"更新", title:"白名單改為 Discord 連結", desc:"不再需要申請白名單，只要連結 Discord 帳號即可進入。大幅降低新玩家加入門檻。" },
-      { era:"purewheat", date:"2024.03.15", isoDate:"2024-03-15", tag:"里程碑", title:"社區制度開放", desc:"石頭完善管理制度，開放玩家成立社區。海風「高自由度」文化的雛形在此誕生。" },
-      { era:"purewheat", date:"2024.03.15", isoDate:"2024-03-15", tag:"活動", title:"櫻花活動 & 釣魚系列開端", desc:"櫻花活動開跑，由狐桃主辦的釣魚系列成為純麥最受歡迎的玩家活動之一。" },
-      { era:"purewheat", date:"2024.04.04", isoDate:"2024-04-04", tag:"事件", title:"人數新高 32 人 & 超加速骨頭事件", desc:"遊玩人數創新高導致多次崩潰。活動出包「超加速骨頭」，因速度加太快影響遊戲平衡，隔天全面回收。" },
-      { era:"purewheat", date:"2024.04.06", isoDate:"2024-04-06", tag:"事件", title:"託管再炸 & 重傷害物品出包", desc:"伺服器強制關閉。+8 鑽石等重傷害物品被回收引發玩家抗議。" },
-      { era:"purewheat", date:"2024.04.27", isoDate:"2024-04-27", tag:"事件", title:"純麥出售風波", desc:"cry 公開表示「有人要買嗎，3500 元就好，我要沒錢了」。服主的經濟壓力暴露在眾人面前。" },
-      { era:"purewheat", date:"2024.05.05", isoDate:"2024-05-05", tag:"更新", title:"升級極致 & 人數 44 人", desc:"先後升級至「超值」再到「極致」託管方案。人數創新高 44 人同時在線。領地飛行開放。" },
-      { era:"purewheat", date:"2024.05.22", isoDate:"2024-05-22", tag:"事件", title:"路人甲遭褫奪公權", desc:"服主路人甲因濫用職權被褫奪公權。管理重心逐漸轉移至神焰與管理團隊。" },
-      { era:"purewheat", date:"2024.05.31", isoDate:"2024-05-31", tag:"事件", title:"管理權洩漏事件", desc:"路人甲帳號遭他人盜用，導致管理權限外洩。" },
-      { era:"purewheat", date:"2024.06.01", isoDate:"2024-06-01", tag:"事件", title:"大規模漏洞利用事件", desc:"9 名玩家被查獲利用漏洞：複製物資、侵入他人帳號、使用漏洞獲取管理權限。" },
-      { era:"purewheat", date:"2024.06.04", isoDate:"2024-06-04", tag:"里程碑", title:"人數 51 人 & 藍冰援助", desc:"「藍冰伺服器」伸出援手，將主機的效能分給純麥使用。這份跨社群的善意，成為純麥歷史上溫暖的一頁。", photo:"assets/img/tablist-51players.webp", photoCaption:"純麥時期 51 人在線的盛況（2024.06.25）" },
-      { era:"purewheat", date:"2024.06.24", isoDate:"2024-06-24", tag:"里程碑", title:"公務人員職權規範條例通過", desc:"經人民大會堂投票，以 11:0 全票通過。由石頭擔任主席主導立法。純麥建立了正式的權力制衡與公務人員管理制度。" },
-      { era:"purewheat", date:"2024.07.08", isoDate:"2024-07-08", tag:"里程碑", title:"正版驗證正式啟用", desc:"移除登入插件，伺服器開啟正版驗證。領地系統經歷 UUID 轉 ID 修復。" },
-      { era:"purewheat", date:"2024.07.24", isoDate:"2024-07-24", tag:"更新", title:"身分組重整 & 玩家動態", desc:"身分組與頻道全面重整。新增玩家動態頻道。安裝資源再生插件、翻譯特殊工具系統。" },
-      { era:"purewheat", date:"2024.08.06", isoDate:"2024-08-06", tag:"里程碑", title:"政變 — 純麥時代終結", desc:"路人甲（cry）移除工作人員及管理員身分組。神焰當天下午即帶領核心團隊建立新 Discord 伺服器（初名「純麥二服」），同步轉移所有工作人員。純麥的故事在此落幕。" },
-      { era:"purewheat", date:"2024.08.07", isoDate:"2024-08-07", tag:"事件", title:"託管商硬碟損壞", desc:"路人甲公告純麥伺服器因託管商硬碟損壞而關閉。8/21 嘗試重新開放又立即關閉。純麥舊服就此走入歷史。" },
-      { era:"purewheat", date:"2024.08.08", isoDate:"2024-08-08", tag:"事件", title:"奪回純麥", desc:"神焰宣布蜂聊縣政府團隊將與藍冰伺服器繼續合作，延續並繼續使用原先純麥伺服器地圖檔。" },
-      { era:"purewheat", date:"2024.08.09", isoDate:"2024-08-09", tag:"事件", title:"架設新伺服器方案", desc:"因純麥伺服器各種複雜問題，經討論後決定採用營運新服方案。" },
-      { era:"seawind", date:"113.08.12", isoDate:"2024-08-12", tag:"里程碑", title:"「海風伺服器」正式命名", desc:"神焰公告新伺服器正式定名為「海風伺服器」，傳承純麥及粉雪伺服器的傳統和理念。帶著所有從純麥累積的經驗與教訓，海風的故事正式開始。" },
-      { era:"seawind", date:"113.08.14", isoDate:"2024-08-14", tag:"里程碑", title:"海風封測 v0.1", desc:"海風伺服器進入封測階段。安裝箱子商店，開放第一個生存世界。一切從零開始。" },
-      { era:"seawind", date:"113.08.15", isoDate:"2024-08-15", tag:"更新", title:"版本迭代 v0.2", desc:"設定世界邊界、隨機傳送、玩家統計系統。封測玩家稱號發放後又移除，早期快速迭代。" },
-      { era:"seawind", date:"113.09.12", isoDate:"2024-09-12", tag:"更新", title:"編號資料庫建立", desc:"開始系統化管理伺服器數據，為後續發展奠定基礎。" },
-      { era:"seawind", date:"113.09.16", isoDate:"2024-09-16", tag:"活動", title:"活動元年", desc:"「別踩白塊！」和「岩漿尋寶大冒險」接連登場，海風開始建立活動文化。" },
-      { era:"seawind", date:"113.10.20", isoDate:"2024-10-20", tag:"更新", title:"每日任務系統上線", desc:"引入任務幣經濟，玩家有了穩定的遊戲目標與回饋機制。" },
-      { era:"seawind", date:"113.11.03", isoDate:"2024-11-03", tag:"活動", title:"進度系統與萬聖節活動", desc:"新增進度翻譯包，遲來的萬聖節活動為海風帶來節慶氛圍。" },
-      { era:"seawind", date:"113.12.31", isoDate:"2024-12-31", tag:"活動", title:"跨年獸突襲", desc:"2024 年最後一天的限時 Boss 活動，為第一年畫下句點。" },
-      { era:"seawind", date:"114.01.21", isoDate:"2025-01-21", tag:"活動", title:"第一屆 UHC 生存大冒險", desc:"首次舉辦大型 PvP 賽事，開啟海風競技活動的先河。" },
-      { era:"seawind", date:"114.02.26", isoDate:"2025-02-26", tag:"活動", title:"獵殺時刻", desc:"創新的狩獵玩法，被狩獵者逃亡、其他玩家追殺，分數制競賽。" },
-      { era:"seawind", date:"114.03.04", isoDate:"2025-03-04", tag:"里程碑", title:"風汐經濟體系誕生", desc:"風汐碎片、風汐石上線，搭配釣魚套裝兌換。海風開始建立獨特的裝備經濟系統。" },
-      { era:"seawind", date:"114.03.26", isoDate:"2025-03-26", tag:"更新", title:"規制更新", desc:"因應分流二開放，更新伺服器規制以適應雙分流管理。" },
-      { era:"seawind", date:"114.03.29", isoDate:"2025-03-29", tag:"更新", title:"分流二開放", desc:"新增第二條遊戲分流。分流二不支援 MMOItems，特殊裝備不可使用。" },
-      { era:"seawind", date:"114.04.01", isoDate:"2025-04-01", tag:"里程碑", title:"防礦透機制 & 種子碼公布", desc:"礦物被動生成機制實裝，解決礦物經濟問題。同時公布世界種子碼，增加透明度。" },
-      { era:"seawind", date:"114.04.04", isoDate:"2025-04-04", tag:"更新", title:"重生點重建", desc:"重生點區域全面重建，為玩家提供更好的起始體驗。" },
-      { era:"seawind", date:"114.04.06", isoDate:"2025-04-06", tag:"更新", title:"新增台灣專屬 IP", desc:"新增台灣專屬連線位址，降低延遲提升遊戲體驗。" },
-      { era:"seawind", date:"114.04.07", isoDate:"2025-04-07", tag:"里程碑", title:"紅蓮煉獄常駐副本", desc:"五星難度的常駐副本，產出紅蓮劍。海風開始有高階 PvE 內容與專屬裝備。" },
-      { era:"seawind", date:"114.05.02", isoDate:"2025-05-02", tag:"活動", title:"海風誕辰系列活動", desc:"海風一周年慶，多場活動連發。" },
-      { era:"seawind", date:"114.05.05", isoDate:"2025-05-05", tag:"更新", title:"新客服服務上線", desc:"建立正式的客服體系，玩家問題處理更加系統化。" },
-      { era:"seawind", date:"114.06.01", isoDate:"2025-06-01", tag:"更新", title:"倉庫系統上線", desc:"玩家終於有了正式的物品管理方案。" },
-      { era:"seawind", date:"114.08.18", isoDate:"2025-08-18", tag:"更新", title:"壓力瑪斯內下架事件", desc:"魚套高階部件因數據問題緊急下架，已兌換玩家可 100% 退還資源。" },
-      { era:"seawind", date:"114.08.31", isoDate:"2025-08-31", tag:"更新", title:"紅蓮劍數值重組", desc:"將分散的數值合併簡化，提升裝備可讀性。" },
-      { era:"seawind", date:"114.12.23", isoDate:"2025-12-23", tag:"活動", title:"聖誕節活動", desc:"海風聖誕村登場，節慶限定內容。" },
-      { era:"seawind", date:"115.01.01", isoDate:"2026-01-01", tag:"活動", title:"2026 新年活動", desc:"跨入新一年，新年活動同步開啟。" },
-      { era:"seawind", date:"115.01.15", isoDate:"2026-01-15", tag:"里程碑", title:"伺服器升級 1.21.11", desc:"遊戲版本大幅升級，MMOItems 格式不相容，大量裝備需要重新製作。" },
-      { era:"seawind", date:"115.02.08", isoDate:"2026-02-08", tag:"更新", title:"裝備體系換新", desc:"魚套與風汐工具全面換用新格式，同步調整數值並重新開放兌換。新增任務幣兌換商店。" },
-      { era:"seawind", date:"115.03.04", isoDate:"2026-03-04", tag:"更新", title:"名條與玩家列表顯示", desc:"遊戲內顯示優化，提升社交體驗。" },
-      { era:"seawind", date:"115.03.12", isoDate:"2026-03-12", tag:"更新", title:"風語茶屋開張", desc:"重生點新增功能建築，成為玩家社交與兌換的新據點。" },
-      { era:"seawind", date:"115.03.16", isoDate:"2026-03-16", tag:"更新", title:"魚套材料調整", desc:"調整部分材料兌換數量，微調遊戲經濟平衡。" },
-      { era:"seawind", date:"115.04.02", isoDate:"2026-04-02", tag:"活動", title:"生存起源活動開跑", desc:"創物之杖活動開始，分期開放至九月。玩家推動伺服器進度，解鎖新內容。" },
-      { era:"seawind", date:"115.04.11", isoDate:"2026-04-11", tag:"更新", title:"風汐石稿子效率調整", desc:"因插件計算方式差異，效率數值下調並同步更新挖掘速度。制訂特殊道具設計規範。" },
-    ];
+  const DATA = [
+    // ════ 純麥時期 ════
+    { e:"pw", d:"2023.10.21", iso:"2023-10-21", t:"里程碑", title:"純麥伺服器誕生", desc:"由 cry（路人甲）創立 Discord 群組並擔任服主。一個小型 Minecraft 生存伺服器就此起步。" },
+    { e:"pw", d:"2023.10.25", iso:"2023-10-25", t:"里程碑", title:"神焰加入管理團隊", desc:"tstw5306（神焰）被招為管理員，開始了管理與技術改革之路。" },
+    { e:"pw", d:"2023.11.08", iso:"2023-11-08", t:"更新", title:"防盜系統上線", desc:"導入查詢系統（/co i），這是純麥第一個管理工具。" },
+    { e:"pw", d:"2023.12.22", iso:"2023-12-22", t:"更新", title:"傳送系統問世", desc:"/pw 傳送點系統正式啟用，玩家終於可以自由設定與分享傳送點。" },
+    { e:"pw", d:"2023.12.27", iso:"2023-12-27", t:"更新", title:"線上商城系統", desc:"建立線上商城，每天晚上 8 點刷新滿級附魔書和修補書。" },
+    { e:"pw", d:"2024.01.14", iso:"2024-01-14", t:"里程碑", title:"規則初版與社群指南", desc:"由石頭、神焰、td 共同編列第一版規則。伺服器從「隨便玩」走向「有規矩」。" },
+    { e:"pw", d:"2024.01.24", iso:"2024-01-24", t:"事件", title:"二月經費危機", desc:"cry 宣布「伺服器沒錢付託管了，2 月可能就要死了」。純麥第一次生存危機。" },
+    { e:"pw", d:"2024.02.17", iso:"2024-02-17", t:"里程碑", title:"會員制度確立", desc:"經公投，贊助走向確定為會員制度。基岩版同步開放，玩家群進一步擴大。" },
+    { e:"pw", d:"2024.02.24", iso:"2024-02-24", t:"更新", title:"鑽石銀行上線", desc:"神焰開發出 /d 指令，鑽石銀行介面啟用，玩家有了方便的存領錢方式。" },
+    { e:"pw", d:"2024.03.15", iso:"2024-03-15", t:"里程碑", title:"社區制度開放", desc:"開放玩家成立社區。海風「高自由度」文化的雛形在此誕生。" },
+    { e:"pw", d:"2024.04.04", iso:"2024-04-04", t:"事件", title:"人數 32 人 & 超加速骨頭事件", desc:"活動出包「超加速骨頭」影響遊戲平衡，隔天全面回收。" },
+    { e:"pw", d:"2024.04.27", iso:"2024-04-27", t:"事件", title:"純麥出售風波", desc:"cry 公開表示「有人要買嗎，3500 元就好，我要沒錢了」。" },
+    { e:"pw", d:"2024.05.22", iso:"2024-05-22", t:"事件", title:"路人甲遭褫奪公權", desc:"服主路人甲因濫用職權被褫奪公權。管理重心轉移至神焰。" },
+    { e:"pw", d:"2024.06.04", iso:"2024-06-04", t:"里程碑", title:"人數 51 人 & 藍冰援助", desc:"「藍冰伺服器」伸出援手，將主機效能分給純麥使用。跨社群的善意。" },
+    { e:"pw", d:"2024.06.24", iso:"2024-06-24", t:"里程碑", title:"公務人員職權規範條例", desc:"經人民大會堂投票以 11:0 全票通過。純麥建立正式權力制衡制度。" },
+    { e:"pw", d:"2024.08.06", iso:"2024-08-06", t:"里程碑", title:"政變 — 純麥時代終結", desc:"路人甲移除管理員身分組。神焰當天下午帶領核心團隊建立新 Discord。純麥的故事在此落幕。" },
+    { e:"pw", d:"2024.08.07", iso:"2024-08-07", t:"事件", title:"託管商硬碟損壞", desc:"舊服因託管商硬碟損壞關閉，再也沒有回來。" },
+    { e:"pw", d:"2024.08.08", iso:"2024-08-08", t:"事件", title:"奪回純麥", desc:"宣布團隊將繼續合作，延續原先地圖檔。" },
+    // ════ 海風時期 ════
+    { e:"sw", d:"113.08.12", iso:"2024-08-12", t:"里程碑", title:"「海風伺服器」正式命名", desc:"傳承純麥及粉雪伺服器的傳統和理念。帶著所有累積的經驗與教訓，海風正式開始。" },
+    { e:"sw", d:"113.08.14", iso:"2024-08-14", t:"里程碑", title:"海風封測 v0.1", desc:"進入封測階段。安裝箱子商店，開放第一個生存世界。一切從零開始。" },
+    { e:"sw", d:"113.09.16", iso:"2024-09-16", t:"活動", title:"活動元年", desc:"「別踩白塊！」和「岩漿尋寶大冒險」接連登場，海風開始建立活動文化。" },
+    { e:"sw", d:"113.10.20", iso:"2024-10-20", t:"更新", title:"每日任務系統上線", desc:"引入任務幣經濟，玩家有了穩定的遊戲目標與回饋機制。" },
+    { e:"sw", d:"113.12.31", iso:"2024-12-31", t:"活動", title:"跨年獸突襲", desc:"2024 年最後一天的限時 Boss 活動，為第一年畫下句點。" },
+    { e:"sw", d:"114.02.26", iso:"2025-02-26", t:"活動", title:"獵殺時刻", desc:"創新的狩獵玩法，被狩獵者逃亡、其他玩家追殺，分數制競賽。" },
+    { e:"sw", d:"114.03.04", iso:"2025-03-04", t:"里程碑", title:"風汐經濟體系誕生", desc:"風汐碎片、風汐石上線，搭配釣魚套裝兌換。開始建立獨特裝備經濟。" },
+    { e:"sw", d:"114.04.01", iso:"2025-04-01", t:"里程碑", title:"防礦透機制 & 種子碼公布", desc:"礦物被動生成機制實裝，同時公布世界種子碼，增加透明度。" },
+    { e:"sw", d:"114.04.07", iso:"2025-04-07", t:"里程碑", title:"紅蓮煉獄常駐副本", desc:"五星難度常駐副本，產出紅蓮劍。海風開始有高階 PvE 內容。" },
+    { e:"sw", d:"114.05.02", iso:"2025-05-02", t:"活動", title:"海風誕辰系列活動", desc:"海風一周年慶，多場活動連發。" },
+    { e:"sw", d:"115.01.15", iso:"2026-01-15", t:"里程碑", title:"伺服器升級 1.21.11", desc:"遊戲版本大幅升級，MMOItems 格式不相容，大量裝備需要重新製作。" },
+    { e:"sw", d:"115.03.12", iso:"2026-03-12", t:"更新", title:"風語茶屋開張", desc:"重生點新增功能建築，成為玩家社交與兌換的新據點。" },
+    { e:"sw", d:"115.04.02", iso:"2026-04-02", t:"活動", title:"生存起源活動開跑", desc:"創物之杖活動開始，分期開放至九月。玩家推動伺服器進度。" },
+  ];
 
-    let activeEra = 'all';
-    const listEl = document.getElementById('histList');
-    const emptyEl = document.getElementById('histEmpty');
+  let curEra = 'all';
+  const root = document.getElementById('tlContent');
+  const empty = document.getElementById('tlEmpty');
 
-    function getFiltered() {
-      if (activeEra === 'all') return EVENTS;
-      return EVENTS.filter(e => e.era === activeEra);
-    }
+  function filtered() {
+    return curEra === 'all' ? DATA : DATA.filter(x => x.e === curEra);
+  }
 
-    function render() {
-      const items = getFiltered();
-      if (!items.length) {
-        listEl.innerHTML = '';
-        emptyEl.style.display = 'block';
-        return;
-      }
-      emptyEl.style.display = 'none';
+  function render() {
+    const items = filtered();
+    if (!items.length) { root.innerHTML = ''; empty.style.display = 'block'; return; }
+    empty.style.display = 'none';
 
-      const eraGroups = {};
-      items.forEach(item => {
-        if (!eraGroups[item.era]) eraGroups[item.era] = [];
-        eraGroups[item.era].push(item);
-      });
+    const eras = {};
+    items.forEach(x => { (eras[x.e] = eras[x.e] || []).push(x); });
 
-      const eraMeta = {
-        purewheat: { icon: '🌾', title: '純麥時期', sub: '從 Discord 群組起步，在風雨中成長', cls: '純麥' },
-        seawind: { icon: '🌊', title: '海風時期', sub: '帶著教訓重生，吹向更遠的海', cls: '海風' }
-      };
+    const meta = {
+      pw: { icon: '🌾', name: '純麥時期', sub: '從一個 Discord 群組開始，在風雨中成長', color: 'var(--sand)' },
+      sw: { icon: '🌊', name: '海風時期', sub: '帶著教訓重生，吹向更遠的海', color: 'var(--foam)' }
+    };
+    const order = curEra === 'all' ? ['pw','sw'] : [curEra];
 
-      let html = '';
-      const eraOrder = activeEra === 'all' ? ['purewheat', 'seawind'] : [activeEra];
+    let h = '';
+    order.forEach(era => {
+      const list = eras[era];
+      if (!list) return;
+      const m = meta[era];
+      h += `<div class="tl-wrap"><div class="tl-era" data-era="${era}">`;
+      h += `<div class="tl-era-head"><div class="tl-era-icon">${m.icon}</div><span class="tl-era-name">${m.name}</span><span class="tl-era-era-sub">${m.sub}</span></div>`;
 
-      eraOrder.forEach(era => {
-        const eraItems = eraGroups[era];
-        if (!eraItems || !eraItems.length) return;
-        const meta = eraMeta[era];
+      // group by year
+      const yrs = {};
+      list.forEach(x => { const y = x.iso.slice(0,4); (yrs[y] = yrs[y] || []).push(x); });
 
-        html += `<div class="chapter"><div class="ch-era ${meta.cls}">`;
-        html += `<div class="ch-header">
-          <span class="ch-icon">${meta.icon}</span>
-          <h2 class="ch-title">${meta.title}</h2>
-          <p class="ch-subtitle">${meta.sub}</p>
-        </div>`;
-
-        const yearGroups = {};
-        eraItems.forEach(item => {
-          const year = item.isoDate.slice(0, 4);
-          if (!yearGroups[year]) yearGroups[year] = [];
-          yearGroups[year].push(item);
-        });
-
-        Object.keys(yearGroups).sort().forEach(year => {
-          const yearItems = yearGroups[year];
-          html += `<div class="ch-year">
-            <span class="ch-year-num">${year}</span>
-            <span class="ch-year-line"></span>
+      Object.keys(yrs).sort().forEach(year => {
+        h += `<div class="tl-year"><span class="tl-year-badge">${year}</span></div>`;
+        yrs[year].forEach((x, i) => {
+          const side = i % 2 === 0 ? 'left' : 'right';
+          const isMs = x.t === '里程碑';
+          h += `<div class="tl-item ${side}${isMs ? ' milestone-item' : ''}">
+            <span class="tl-dot ${x.t === '里程碑' ? 'milestone' : x.t === '更新' ? 'update' : x.t === '活動' ? 'activity' : 'event'}"></span>
+            <div class="tl-card">
+              <span class="tl-card-tag" data-t="${x.t}">${x.t}</span>
+              <div class="tl-card-date">${x.d}</div>
+              <div class="tl-card-title">${isMs ? '⭐ ' : ''}${x.title}</div>
+              <div class="tl-card-desc">${x.desc}</div>
+            </div>
           </div>`;
-
-          yearItems.forEach((item, idx) => {
-            const isMilestone = item.tag === '里程碑';
-            const star = isMilestone ? '⭐ ' : '';
-
-            let bodyHtml = '';
-            bodyHtml += `<div class="ch-ev-desc">${item.desc}</div>`;
-            if (item.photo) {
-              bodyHtml += `<div class="ch-ev-photo"><img src="${item.photo}" alt="${item.title}" loading="lazy" onerror="this.parentElement.style.display='none'" style="cursor:zoom-in"></div>`;
-              if (item.photoCaption) bodyHtml += `<div class="ch-ev-photo-cap">${item.photoCaption}</div>`;
-            }
-
-            html += `<div class="ch-event" data-tag="${item.tag}" style="animation-delay:${idx * 0.03}s">
-              <span class="ch-dot ${item.tag}"></span>
-              <div class="ch-ev-head">
-                <span class="ch-ev-date">${item.date}</span>
-                <span class="ch-ev-title">${star}${item.title}</span>
-                <span class="ch-ev-tag" data-tag="${item.tag}">${item.tag}</span>
-              </div>
-              ${bodyHtml}
-            </div>`;
-          });
         });
-
-        html += `</div></div>`;
       });
-
-      html += `<div class="ch-finale">
-        <span class="ch-finale-icon">📖</span>
-        <span class="ch-finale-text">歷史持續書寫中⋯⋯</span>
-      </div>`;
-
-      listEl.innerHTML = html;
-
-      // Scroll animation
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-            observer.unobserve(entry.target);
-          }
-        });
-      }, { threshold: 0.1, rootMargin: '0px 0px -20px 0px' });
-
-      listEl.querySelectorAll('.ch-event').forEach(el => observer.observe(el));
-
-      // Safety fallback
-      setTimeout(() => {
-        listEl.querySelectorAll('.ch-event:not(.visible)').forEach(el => el.classList.add('visible'));
-      }, 2000);
-    }
-
-    // Era tab event bindings
-    document.querySelectorAll('.era-tab').forEach(tab => {
-      tab.addEventListener('click', () => {
-        document.querySelectorAll('.era-tab').forEach(t => t.classList.remove('active'));
-        tab.classList.add('active');
-        activeEra = tab.dataset.era;
-        render();
-      });
+      h += `</div></div>`;
     });
 
-    render();
-  })();
-  </script>
+    h += `<div class="tl-end"><div class="tl-end-icon">📖</div><p class="tl-end-text">歷史持續書寫中⋯⋯</p></div>`;
+    root.innerHTML = h;
+
+    // reveal animation
+    const obs = new IntersectionObserver(entries => {
+      entries.forEach(en => { if (en.isIntersecting) { en.target.classList.add('vis'); obs.unobserve(en.target); } });
+    }, { threshold: 0.1, rootMargin: '0px 0px -20px 0px' });
+    root.querySelectorAll('.tl-item').forEach(el => obs.observe(el));
+    setTimeout(() => root.querySelectorAll('.tl-item:not(.vis)').forEach(el => el.classList.add('vis')), 2500);
+  }
+
+  document.querySelectorAll('.tl-fbtn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.tl-fbtn').forEach(b => b.classList.remove('on'));
+      btn.classList.add('on');
+      curEra = btn.dataset.e;
+      render();
+    });
+  });
+
+  render();
+})();
+</script>
 </body>
 </html>

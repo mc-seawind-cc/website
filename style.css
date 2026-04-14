@@ -1671,3 +1671,129 @@ html, body {
     display: none;
   }
 }
+
+/* ═══════════════════════════════════════
+   公告欄 v2 — 標題列 + 可捲動列表
+   設計理念：首頁公告欄像報紙頭版，
+   有清楚的「最新公告」標題和數量標示，
+   一則精選 + 緊湊行列表，
+   預設 7 篇，捲動可見至 12 篇。
+   ═══════════════════════════════════════ */
+
+.bulletin-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+[data-theme="light"] .bulletin-header { border-bottom-color: rgba(0,0,0,0.06); }
+.bh-left { display: flex; align-items: baseline; gap: 10px; }
+.bh-title {
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: var(--white);
+  letter-spacing: -0.01em;
+}
+[data-theme="light"] .bh-title { color: var(--cloud); }
+.bh-count {
+  font-size: 0.72rem;
+  color: var(--fog);
+  background: rgba(157,175,255,0.06);
+  padding: 2px 10px;
+  border-radius: 100px;
+  font-weight: 600;
+}
+.bh-all {
+  font-size: 0.82rem;
+  color: var(--sky);
+  text-decoration: none;
+  font-weight: 600;
+  transition: opacity 0.2s;
+}
+.bh-all:hover { opacity: 0.7; }
+
+/* 可捲動內容區 */
+.bulletin-scroll {
+  max-height: 520px;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(157,175,255,0.12) transparent;
+  padding-right: 4px;
+}
+.bulletin-scroll::-webkit-scrollbar { width: 4px; }
+.bulletin-scroll::-webkit-scrollbar-thumb {
+  background: rgba(157,175,255,0.12);
+  border-radius: 2px;
+}
+
+/* 隱藏項目（捲動才顯示） */
+.bulletin-hidden {
+  display: none !important;
+}
+
+/* 緊湊行 */
+.bulletin-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  border-radius: 8px;
+  transition: background 0.2s;
+  cursor: default;
+}
+.bulletin-row:hover {
+  background: rgba(255,255,255,0.03);
+}
+[data-theme="light"] .bulletin-row:hover { background: rgba(0,0,0,0.02); }
+.br-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.br-date {
+  font-size: 0.7rem;
+  color: var(--fog);
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+  flex-shrink: 0;
+  min-width: 62px;
+}
+.br-title {
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--cloud);
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+[data-theme="light"] .br-title { color: var(--cloud); }
+.br-tag {
+  font-size: 0.6rem;
+  padding: 2px 8px;
+  border-radius: 100px;
+  font-weight: 700;
+  flex-shrink: 0;
+  letter-spacing: 0.02em;
+}
+
+/* 展開提示 */
+.bulletin-expand {
+  text-align: center;
+  padding: 8px 0 0;
+}
+.be-hint {
+  font-size: 0.75rem;
+  color: var(--fog);
+  opacity: 0.6;
+  animation: pulse-fade 2s ease-in-out infinite;
+}
+
+/* 響應式 */
+@media (max-width: 768px) {
+  .bulletin-scroll { max-height: 440px; }
+  .br-title { font-size: 0.82rem; }
+}
