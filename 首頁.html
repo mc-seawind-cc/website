@@ -109,12 +109,16 @@
     <section class="hero">
       <div class="hero-particles" id="particles"></div>
       <div class="hero-content hero-entrance hero-collapsed" id="heroContent">
+        <!-- ══ 標題區 ══ -->
         <h1 class="hero-title"><span class="char" style="--i:0">海</span><span class="char" style="--i:1">風</span></h1>
+        <!-- ══ 副標題區 ══ -->
         <p class="hero-subtitle" id="heroSubtitle"></p>
+        <!-- ══ 互動區（開始冒險 / 加入社群）══ -->
         <div class="hero-actions">
           <a href="海風指南.html" class="btn btn-primary">開始冒險</a>
           <a href="https://discord.gg/HdS2HrJEH7" target="_blank" rel="noopener" class="btn btn-outline">加入社群</a>
         </div>
+        <!-- ══ 資訊狀態區（伺服器位址 / 版本 / 狀態）══ -->
         <div class="hero-info">
           <div class="info-card info-card-copy" onclick="copyServerIP()" title="點擊複製">
             <span class="info-label">伺服器位址</span>
@@ -130,7 +134,7 @@
             <span class="info-value" id="serverStatus" aria-live="polite" role="status">查詢中...</span>
           </div>
         </div>
-        <!-- 提示輪播 -->
+        <!-- ══ 提示區（輪播文字）══ -->
         <div class="hero-tips">
           <span class="hero-tips-hash">#</span>
           <div class="tips-text" id="tipsText"></div>

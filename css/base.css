@@ -95,7 +95,7 @@ body{font-family:var(--font-body);background:var(--deep);color:var(--cloud);line
 [data-theme="light"] .guide-sidebar-inner{background:#ffffff;border-color:rgba(0,0,0,0.06);box-shadow:0 1px 4px rgba(0,0,0,0.04)}
 [data-theme="light"] .guide-sidebar-title{color:var(--cloud);border-bottom-color:rgba(0,0,0,0.06)}
 [data-theme="light"] .guide-sb-heading{color:var(--cloud)}
-[data-theme="light"] .guide-sb-group [data-theme="light"] .guide-sb-group [data-theme="light"] .guide-sb-link:hover,[data-theme="light"] .guide-sb-link.active{background:rgba(157,175,255,0.08)}
+[data-theme="light"] .guide-sb-link:hover,[data-theme="light"] .guide-sb-link.active{background:rgba(157,175,255,0.08)}
 [data-theme="light"] .callout-tip{background:rgba(0,121,76,0.08);border-color:rgba(0,121,76,0.2)}
 [data-theme="light"] .callout-info{background:rgba(157,175,255,0.1);border-color:rgba(157,175,255,0.25)}
 [data-theme="light"] .callout-warn{background:rgba(255,226,221,0.15);border-color:rgba(255,226,221,0.35)}
