@@ -518,8 +518,9 @@
         <div class="ann-tags" id="annTags">
           <button class="ann-tag-btn active" data-tag="all">全部</button>
           <button class="ann-tag-btn" data-tag="公告">公告</button>
-          <button class="ann-tag-btn" data-tag="更新">更新</button>
+          <button class="ann-tag-btn" data-tag="維護">維護</button>
           <button class="ann-tag-btn" data-tag="活動">活動</button>
+          <button class="ann-tag-btn" data-tag="更新">更新</button>
         </div>
         <div class="ann-search-wrap">
           <input type="text" id="annSearch" placeholder="搜尋公告..." autocomplete="off" aria-label="搜尋公告">
@@ -579,13 +580,15 @@
   (() => {
     'use strict';
 
-    const PAGE_SIZE = 20;
+    const PAGE_SIZE = 50;
 
     let allData = [];
     let filtered = [];
     let displayed = 0;
     let activeTag = 'all';
+    let activeMonth = null; // null = 當月, 'all' = 全部
     let searchQuery = '';
+    const currentMonth = new Date().toISOString().slice(0, 7); // e.g. "2026-04"
 
     // DOM
     const statsEl = document.getElementById('annStats');
@@ -624,10 +627,11 @@
     function buildStats() {
       const counts = {};
       allData.forEach(a => { counts[a.tag] = (counts[a.tag] || 0) + 1; });
-      statsEl.innerHTML = `<span class="ann-pill" data-tag="公告"><span class="pill-dot"></span><span class="pill-num">${counts['公告']||0}</span> 公告</span>`
-        + `<span class="ann-pill" data-tag="更新"><span class="pill-dot"></span><span class="pill-num">${counts['更新']||0}</span> 更新</span>`
-        + `<span class="ann-pill" data-tag="活動"><span class="pill-dot"></span><span class="pill-num">${counts['活動']||0}</span> 活動</span>`
-        + `<span class="ann-pill" data-tag="維護"><span class="pill-dot"></span><span class="pill-num">${counts['維護']||0}</span> 維護</span>`;
+      const tagOrder = ['公告', '維護', '活動', '更新'];
+      const tagColors = { '公告': '#578aff', '維護': '#ff8282', '活動': '#ffaa32', '更新': '#64dcb4' };
+      statsEl.innerHTML = tagOrder.map(tag =>
+        `<span class="ann-pill" data-tag="${tag}"><span class="pill-dot"></span><span class="pill-num">${counts[tag]||0}</span> ${tag}</span>`
+      ).join('');
 
       // Update tag button badges
       tagsEl.querySelectorAll('.ann-tag-btn').forEach(btn => {
@@ -703,6 +707,12 @@
     function applyFilters() {
       filtered = allData;
       if (activeTag !== 'all') filtered = filtered.filter(a => a.tag === activeTag);
+      // 月份篩選：null 表示當月，'all' 表示不過濾
+      if (activeMonth === null) {
+        filtered = filtered.filter(a => a.isoDate && a.isoDate.slice(0, 7) === currentMonth);
+      } else if (activeMonth && activeMonth !== 'all') {
+        filtered = filtered.filter(a => a.isoDate && a.isoDate.slice(0, 7) === activeMonth);
+      }
       if (searchQuery) {
         filtered = filtered.filter(a =>
           a.title.toLowerCase().includes(searchQuery) ||
@@ -724,20 +734,32 @@
 
     function buildMonthNav() {
       const months = new Set();
-      filtered.forEach(a => {
+      allData.forEach(a => {
         if (a.isoDate) months.add(a.isoDate.slice(0, 7));
       });
       const sorted = [...months].sort().reverse();
-      monthNavEl.innerHTML = sorted.map(m => {
+      const rocMonths = sorted.map(m => {
         const [y, mo] = m.split('-');
-        return `<button class="ann-month-btn" data-month="${m}">${y}.${mo}</button>`;
-      }).join('');
+        const rocY = parseInt(y) - 1911;
+        return { iso: m, roc: `${rocY}.${mo}` };
+      });
+
+      // 「全部」按鈕 + 各月份按鈕
+      let html = `<button class="ann-month-btn${activeMonth === 'all' ? ' active' : ''}" data-month="all">全部月份</button>`;
+      rocMonths.forEach(({ iso, roc }) => {
+        const isActive = (activeMonth === null && iso === currentMonth) || activeMonth === iso;
+        html += `<button class="ann-month-btn${isActive ? ' active' : ''}" data-month="${iso}">${roc}</button>`;
+      });
+      monthNavEl.innerHTML = html;
 
       monthNavEl.querySelectorAll('.ann-month-btn').forEach(btn => {
         btn.addEventListener('click', () => {
           const month = btn.dataset.month;
-          const target = listEl.querySelector(`[data-month="${month}"]`);
-          if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          activeMonth = month;
+          // 更新按鈕 active 狀態
+          monthNavEl.querySelectorAll('.ann-month-btn').forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          applyFilters();
         });
       });
     }

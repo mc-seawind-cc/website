@@ -516,7 +516,7 @@ function renderBulletin(board, items) {
     <a href="公告.html" class="bh-all">查看全部 →</a>
   </div>`;
 
-  // 下拉式公告列表
+  // 下拉式公告列表（合併時不顯示內文預覽，只顯示日期、標題、標籤）
   html += '<div class="bulletin-list">';
 
   showItems.forEach((item, idx) => {
@@ -543,18 +543,11 @@ function renderBulletin(board, items) {
       discordHtml = `<a href="https://discord.com/channels/1090959090878140447/1090959091750559816/${item.discordId}" target="_blank" rel="noopener" class="b-discord-link">在 Discord 查看 →</a>`;
     }
 
-    // 預覽文字（取第一行非空內容，截斷）
-    const previewText = item.content
-      .replace(/[#>*\-\[\]()`~_|]/g, '')
-      .split('\n').find(l => l.trim()) || '';
-    const preview = previewText.length > 40 ? previewText.slice(0, 40) + '…' : previewText;
-
     html += `<div class="bulletin-item${isHidden ? ' bulletin-hidden' : ''}${item.pinned ? ' pinned' : ''}" style="--tag-color:${color}" data-tag="${tag}">
       <button class="bulletin-toggle" aria-expanded="false">
         <span class="b-dot" style="background:${color}"></span>
         <span class="b-date">${date}</span>
         <span class="b-title">${item.title}</span>
-        <span class="b-preview">${preview}</span>
         <span class="b-right">
           ${item.pinned ? '<span class="b-pin">📌</span>' : ''}
           <span class="b-tag" style="background:${color}15;color:${color}">${tag}</span>
