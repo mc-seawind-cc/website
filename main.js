@@ -68,21 +68,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
   document.querySelectorAll('.fade-in, .slide-up, .zoom-in, .slide-left, .slide-right, .reveal-up').forEach(el => revealObserver.observe(el));
 
-  // Feature grid reveal (for staggered entrance without animation conflict)
-  const gridObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('revealed');
-        gridObserver.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.05 });
-  document.querySelectorAll('.feature-grid').forEach(el => gridObserver.observe(el));
+
 
   // Safety: reveal all remaining hidden elements after 3s
   setTimeout(() => {
     document.querySelectorAll('.fade-in:not(.visible), .slide-up:not(.visible), .zoom-in:not(.visible), .slide-left:not(.visible), .slide-right:not(.visible), .reveal-up:not(.visible)').forEach(el => el.classList.add('visible'));
-    document.querySelectorAll('.feature-grid:not(.revealed)').forEach(el => el.classList.add('revealed'));
+
   }, 3000);
 
   // --- Critical: Nav Scroll Shadow + Scroll Progress ---

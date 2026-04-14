@@ -2,7 +2,7 @@
 
 > 文件建立日期：2026.04.14  
 > 最後更新：2026.04.14（海風網站助手）  
-> 修改次數：14  
+> 修改次數：15  
 
 ---
 
@@ -161,6 +161,7 @@
 | 2026.04.14 | 修復贊助.html 跳轉白屏（加入內聯樣式 + canonical + favicon）、補齊 49 個子頁 canonical（guide/42 + lore/7） | 海風網站助手 |
 | 2026.04.14 | 清理 CSS 重複 `-webkit-backdrop-filter`（減少 223 bytes）、修復 feature card 動畫與 hover 衝突（改用 transition 替代 animation）、補齊 67 頁 skip-link、公告/指南搜尋欄 aria-label、partner-mcu.html meta description | 海風網站助手 |
 | 2026.04.14 | 首頁卡片同時出現（移除 stagger delay）、提示欄加卡片樣式、深色模式提高卡片/文字/圖標可見度 | 海風網站助手 |
+| 2026.04.14 | 提示文字改白色、卡片背景改黑色、移除卡片入場動畫（即時顯示） | 海風網站助手 |
 
 ---
 
