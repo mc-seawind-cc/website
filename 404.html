@@ -327,6 +327,63 @@
 
     /* Mob Smasher styles in mob-smasher.css */
 
+    /* ═══ 合成謎題 ═══ */
+    .craft-target{text-align:center;margin-bottom:12px}
+    .craft-target-label{display:block;font-size:0.65rem;color:rgba(255,255,255,0.3);letter-spacing:0.1em;margin-bottom:4px}
+    .craft-target-emoji{font-size:2.5rem;display:block;margin-bottom:2px}
+    .craft-target-name{font-size:1rem;font-weight:700;color:rgba(255,255,255,0.85)}
+    .craft-target-tip{font-size:0.72rem;color:rgba(255,255,255,0.35);margin-top:2px}
+    .craft-ref-label{text-align:center;font-size:0.65rem;color:rgba(255,255,255,0.25);margin-bottom:6px}
+    .craft-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:4px;padding:8px;background:rgba(6,14,28,0.5);border-radius:10px;border:1px solid rgba(157,175,255,0.08);max-width:200px;margin:0 auto 8px}
+    .craft-ref-grid{opacity:0.6;max-width:150px}
+    .craft-cell{aspect-ratio:1;border-radius:6px;background:rgba(157,175,255,0.06);border:1px solid rgba(157,175,255,0.1);display:flex;align-items:center;justify-content:center;font-size:1.3rem;cursor:pointer;transition:all 0.15s}
+    .craft-ref-cell{cursor:default;background:rgba(157,175,255,0.04)}
+    .craft-cell:hover:not(.craft-ref-cell){background:rgba(157,175,255,0.12)}
+    .craft-filled{background:rgba(157,175,255,0.12);border-color:rgba(157,175,255,0.2)}
+    .craft-tray{display:flex;justify-content:center;gap:6px;margin:10px 0;flex-wrap:wrap}
+    .craft-item{width:40px;height:40px;border-radius:8px;background:rgba(157,175,255,0.06);border:1px solid rgba(157,175,255,0.1);font-size:1.2rem;cursor:pointer;transition:all 0.15s;display:flex;align-items:center;justify-content:center}
+    .craft-item:hover{background:rgba(157,175,255,0.15);transform:scale(1.1)}
+    .craft-item.craft-selected{background:rgba(157,175,255,0.25);border-color:var(--sky,#9dafff);box-shadow:0 0 8px rgba(157,175,255,0.3)}
+    .craft-clear{opacity:0.5}
+    .craft-hint{text-align:center;font-size:0.68rem;color:rgba(255,255,255,0.2);margin-top:6px}
+
+    /* ═══ 釣魚比賽 ═══ */
+    .fish-scene{position:relative;width:100%;height:180px;background:linear-gradient(180deg,#0c1f35 0%,#123050 40%,#1a4070 60%,#0a2a50 100%);border-radius:12px;border:1px solid rgba(157,175,255,0.1);overflow:hidden;cursor:pointer}
+    .fish-water{position:absolute;bottom:0;left:0;right:0;height:55%;background:linear-gradient(180deg,rgba(30,80,140,0.3),rgba(10,40,80,0.9));animation:fish-wave 3s ease-in-out infinite}
+    @keyframes fish-wave{0%,100%{height:55%}50%{height:53%}}
+    .fish-bobber{position:absolute;top:30%;left:50%;transform:translateX(-50%);font-size:1.8rem;transition:all 0.3s;z-index:2}
+    .fish-casting{animation:fish-cast 0.6s ease-out forwards}
+    @keyframes fish-cast{0%{top:20%}100%{top:55%}}
+    .fish-floating{top:50%;animation:fish-float 2s ease-in-out infinite}
+    @keyframes fish-float{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(-3px)}}
+    .fish-biting{top:52%;animation:fish-bite 0.15s ease-in-out infinite}
+    @keyframes fish-bite{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(8px)}}
+    .fish-reel{top:25%;font-size:2.2rem;animation:fish-reel-up 0.5s ease-out}
+    @keyframes fish-reel-up{0%{top:55%}100%{top:25%}}
+    .fish-msg{position:absolute;bottom:12px;left:50%;transform:translateX(-50%);font-size:0.85rem;font-weight:600;color:rgba(255,255,255,0.7);text-shadow:0 2px 8px rgba(0,0,0,0.5);z-index:3;white-space:nowrap}
+    .fish-history{display:flex;justify-content:center;gap:4px;flex-wrap:wrap;margin-top:8px}
+    .fish-caught{font-size:1.2rem;animation:fish-pop 0.3s ease-out}
+    @keyframes fish-pop{0%{transform:scale(0)}100%{transform:scale(1)}}
+
+    /* ═══ 礦車跑酷 ═══ */
+    .mc-wrap{position:relative;display:flex;justify-content:center}
+    #mcCanvas{display:block;border-radius:10px;border:1px solid rgba(157,175,255,0.12);cursor:pointer;max-width:100%;image-rendering:auto}
+    .mc-overlay{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(6,10,18,0.7);border-radius:10px;font-size:1rem;font-weight:700;color:rgba(255,255,255,0.7);cursor:pointer;text-shadow:0 2px 8px rgba(0,0,0,0.5)}
+    .mc-final-score{font-size:2rem;font-weight:800;color:#a8e6cf}
+    .mc-hint{text-align:center;font-size:0.65rem;color:rgba(255,255,255,0.2);margin-top:6px}
+
+    /* ═══ 附魔猜猜 ═══ */
+    .ench-table{text-align:center;padding:12px 0}
+    .ench-garble{font-size:1.6rem;letter-spacing:0.15em;color:rgba(157,175,255,0.5);margin-bottom:8px;font-family:'JetBrains Mono',monospace;text-shadow:0 0 8px rgba(157,175,255,0.2)}
+    .ench-hint{font-size:0.82rem;color:rgba(255,255,255,0.45);margin-bottom:14px;font-style:italic}
+    .ench-options{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+    .ench-opt{padding:12px;background:rgba(157,175,255,0.04);border:1px solid rgba(157,175,255,0.1);border-radius:10px;color:rgba(255,255,255,0.6);font-size:0.9rem;font-weight:600;cursor:pointer;font-family:inherit;transition:all 0.2s}
+    .ench-opt:hover{background:rgba(157,175,255,0.1);border-color:rgba(157,175,255,0.2);color:rgba(255,255,255,0.85);transform:translateY(-1px)}
+    .ench-opt:disabled{cursor:default;transform:none}
+    .ench-correct{background:rgba(168,230,207,0.15) !important;border-color:rgba(168,230,207,0.3) !important;color:#a8e6cf !important}
+    .ench-wrong{background:rgba(255,80,80,0.15) !important;border-color:rgba(255,80,80,0.3) !important;color:#ff8282 !important}
+    .ench-msg{font-size:0.85rem;font-weight:600;margin-top:12px;min-height:1.2em}
+
     /* Game HUD */
     .game-hud{display:flex;justify-content:space-between;align-items:center;padding:8px 0;margin-bottom:12px;font-size:0.78rem;color:rgba(255,255,255,0.4)}
     .game-hud-val{color:#a8e6cf;font-weight:700;font-variant-numeric:tabular-nums}
@@ -559,6 +616,10 @@
     <div class="game-bar" id="gameBar">
       <button class="game-tab" onclick="openGame('mcti')">🧪 MCTI 性格測驗</button>
       <button class="game-tab" onclick="openGame('mole')"><img src="assets/mobs/iron-sword.png" alt="" style="width:12px;height:12px;vertical-align:middle"> 打怪物</button>
+      <button class="game-tab" onclick="openGame('crafting')">🔨 合成</button>
+      <button class="game-tab" onclick="openGame('fishing')">🎣 釣魚</button>
+      <button class="game-tab" onclick="openGame('minecart')">🚃 礦車</button>
+      <button class="game-tab" onclick="openGame('enchanting')">✨ 附魔</button>
     </div>
   </div>
 
@@ -568,6 +629,7 @@
   </div>
 
   <script src="mob-smasher.js?v=260416"></script>
+  <script src="404-games.js?v=260416"></script>
   <script>
   (() => {
     'use strict';
@@ -876,10 +938,11 @@
 
     window.openGame = (type) => {
       currentGame = type;
-      const labelMap = {mcti:'MCTI',mole:'打怪物'};
+      const labelMap = {mcti:'MCTI',mole:'打怪物',crafting:'合成',fishing:'釣魚',minecart:'礦車',enchanting:'附魔'};
       document.querySelectorAll('.game-tab').forEach(t => t.classList.toggle('active', t.textContent.includes(labelMap[type]||'')));
       if (type === 'mcti') { initMCTI(); renderMCTI(); }
       else if (type === 'mole') MOB_SMASHER.open(overlayBox);
+      else if (GAMES_404[type]) GAMES_404[type](overlayBox);
       overlay.classList.add('active');
     };
 
