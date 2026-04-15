@@ -152,7 +152,7 @@ const MOB_SMASHER = (() => {
         <span class="ms-legend-item"><img src="${SPRITE_PATH}wolf.png" class="ms-legend-sprite" alt="">中立 -分</span>
         <span class="ms-legend-item"><img src="${SPRITE_PATH}end-crystal.png" class="ms-legend-sprite" alt="">爆炸!</span>
       </div>
-      <div class="ms-source">生物圖片來源：<a href="https://minecraft.wiki" target="_blank" rel="noopener">mcwiki</a>（CC BY-NC-SA 3.0）</div>
+      <div class="ms-source">圖源：<a href="https://minecraft.wiki" target="_blank" rel="noopener">mcwiki</a></div>
     `;
 
     container.innerHTML = html;
