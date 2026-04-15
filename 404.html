@@ -212,13 +212,20 @@
 
     /* ═══ MCTI Quiz ═══ */
     .mcti-badge{padding:3px 10px;background:linear-gradient(135deg,rgba(171,114,249,0.2),rgba(87,138,255,0.15));border:1px solid rgba(171,114,249,0.25);border-radius:6px;font-size:0.65rem;font-weight:800;color:#c49dff;letter-spacing:0.1em;margin-right:8px}
-    .mcti-progress{height:3px;background:rgba(171,114,249,0.08);border-radius:2px;margin-bottom:16px;overflow:hidden}
-    .mcti-bar{height:100%;width:0%;background:linear-gradient(90deg,#ab72f9,#9dafff);border-radius:2px;transition:width 0.4s ease}
-    .mcti-question{font-size:0.95rem;color:rgba(255,255,255,0.85);font-weight:500;line-height:1.7;margin-bottom:12px;min-height:2.5em}
-    .mcti-options{display:flex;flex-direction:column;gap:7px}
-    .mcti-opt{padding:11px 14px;background:rgba(157,175,255,0.04);border:1px solid rgba(157,175,255,0.1);border-radius:10px;font-size:0.85rem;color:rgba(255,255,255,0.6);cursor:pointer;font-family:inherit;text-align:left;transition:all 0.2s ease;line-height:1.6}
-    .mcti-opt:hover{background:rgba(171,114,249,0.1);border-color:rgba(171,114,249,0.25);color:rgba(255,255,255,0.85);transform:translateX(4px)}
-    .mcti-opt .opt-label{font-size:0.65rem;color:rgba(171,114,249,0.5);font-weight:600;margin-right:6px}
+    .mcti-progress{height:4px;background:rgba(171,114,249,0.08);border-radius:3px;margin-bottom:0;overflow:hidden}
+    .mcti-bar{height:100%;width:0%;background:linear-gradient(90deg,#ab72f9,#9dafff,#a8e6cf);border-radius:3px;transition:width 0.5s ease}
+    .mcti-card{background:rgba(16,12,30,0.6);border:1px solid rgba(171,114,249,0.1);border-radius:16px;padding:20px 18px;margin-bottom:14px;position:relative;overflow:hidden}
+    .mcti-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,rgba(171,114,249,0.4),rgba(157,175,255,0.4),transparent)}
+    .mcti-q-num{font-size:0.65rem;color:rgba(171,114,249,0.5);font-weight:700;letter-spacing:0.1em;margin-bottom:8px}
+    .mcti-q-text{font-size:1rem;color:rgba(255,255,255,0.9);font-weight:600;line-height:1.7}
+    .mcti-options{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+    .mcti-opt{padding:12px 12px;background:rgba(157,175,255,0.03);border:1px solid rgba(157,175,255,0.08);border-radius:12px;font-size:0.82rem;color:rgba(255,255,255,0.55);cursor:pointer;font-family:inherit;text-align:left;transition:all 0.25s ease;line-height:1.6;position:relative;overflow:hidden}
+    .mcti-opt::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(171,114,249,0.08),transparent);opacity:0;transition:opacity 0.25s}
+    .mcti-opt:hover{background:rgba(171,114,249,0.08);border-color:rgba(171,114,249,0.2);color:rgba(255,255,255,0.85);transform:translateY(-2px);box-shadow:0 4px 16px rgba(171,114,249,0.1)}
+    .mcti-opt:hover::before{opacity:1}
+    .mcti-opt:active{transform:translateY(0);transition-duration:0.08s}
+    .mcti-opt .opt-label{display:inline-flex;align-items:center;justify-content:center;width:20px;height:20px;border-radius:6px;background:rgba(171,114,249,0.1);color:rgba(171,114,249,0.7);font-size:0.6rem;font-weight:800;margin-right:8px;flex-shrink:0}
+    @media(max-width:400px){.mcti-options{grid-template-columns:1fr}}
 
     /* MCTI Result */
     .mcti-r-emoji{font-size:3rem;margin-bottom:6px}
@@ -614,22 +621,69 @@
     let gameTimer = null, gameScore = 0, gameTime = 0;
 
     // ═══ MCTI ═══
+    // 每個選項對應一個維度：B=建築 S=生存 R=紅石 D=探索 C=美感 M=效率 L=獨行 H=團隊
+    // 但最終只取 B/S, R/D, C/M, L/H 四組
     const MCTI_Q = [
-      { q:'進入新的世界，你第一件事會？', a:['開始蓋一個漂亮的家','衝出去探險，管他三七二十一'], dim:'BS' },
-      { q:'你在伺服器最常做的事是？', a:['研究紅石電路、搞自動化農場','到處挖礦、找遺跡和寶藏'], dim:'RD' },
-      { q:'你蓋東西最注重的是？', a:['配色、氛圍、讓人驚艷','功能、效率、方便使用'], dim:'CM' },
-      { q:'你覺得最好玩的時刻是？', a:['和朋友一起搞事、一起蓋','一個人安靜地享受世界'], dim:'LH' },
-      { q:'朋友蓋了一棟歪七扭八的房子，你會？', a:['忍不住幫他重新設計','誇他有創意然後默默走開'], dim:'BS' },
-      { q:'你更嚮往哪種生活？', a:['住在充滿機關的紅石堡壘','背包一背，說走就走的冒險'], dim:'RD' },
-      { q:'伺服器辦建築比賽，你會？', a:['馬上報名，終於能大展身手','先看看獎勵值不值得參加'], dim:'CM' },
-      { q:'在海風伺服器你最自在的時刻是？', a:['在群組跟大家一起聊天哈啦','在自己領地裡慢慢經營'], dim:'LH' },
-      { q:'你有三天假期，你會在遊戲裡？', dim:'BS', a0:'蓋一個夢想中的建築', a1:'探索一個從沒去過的地方' },
-      { q:'你更享受哪種成就感？', dim:'RD', a0:'做出一台超複雜的紅石裝置', a1:'找到稀有礦石或裝備' },
-      { q:'伺服器有新功能開放，你會？', dim:'CM', a0:'想辦法用它做出好看的東西', a1:'研究它的效率最大化用法' },
-      { q:'有人在伺服器遇到困難，你會？', dim:'LH', a0:'馬上過去幫忙', a1:'告訴他方法，讓他自己解決' },
-      { q:'你理想中的基地是？', dim:'BS', a0:'一座精心設計的城堡或莊園', a1:'一個功能齊全的地下避難所' },
-      { q:'你對「最強裝備」的定義是？', dim:'RD', a0:'全套附魔 IV+ 的頂級裝備', a1:'夠用就好，重點是玩得開心' },
-      { q:'你蓋了一座農場，你最開心的是？', dim:'CM', a0:'它看起來很美很療癒', a1:'它全自動、效率超高' }
+      { q:'進入新的世界，你第一件事會？', opts:[
+        {t:'開始蓋一個漂亮的家', d:'B'}, {t:'衝出去探險找寶藏', d:'D'},
+        {t:'先做一套頂級裝備', d:'S'}, {t:'找朋友一起玩', d:'H'}
+      ]},
+      { q:'你在伺服器最常做的事是？', opts:[
+        {t:'研究紅石電路搞自動化', d:'R'}, {t:'到處蓋漂亮的建築', d:'B'},
+        {t:'挖礦打怪收集資源', d:'D'}, {t:'和朋友一起合作', d:'H'}
+      ]},
+      { q:'你蓋東西最注重什麼？', opts:[
+        {t:'配色和氛圍，讓人驚艷', d:'C'}, {t:'功能和效率，方便使用', d:'M'},
+        {t:'規模和氣勢，越大越好', d:'B'}, {t:'實用就好，能住就行', d:'S'}
+      ]},
+      { q:'你理想中的遊戲體驗是？', opts:[
+        {t:'和朋友一起搞事一起蓋', d:'H'}, {t:'一個人安靜地享受世界', d:'L'},
+        {t:'挑戰極限，突破紀錄', d:'S'}, {t:'慢慢經營，不急不徐', d:'C'}
+      ]},
+      { q:'朋友蓋了一棟歪七扭八的房子，你會？', opts:[
+        {t:'忍不住幫他重新設計', d:'B'}, {t:'告訴他怎麼蓋更好', d:'H'},
+        {t:'誇他有創意默默走開', d:'L'}, {t:'幫他拆掉重建效率更高', d:'M'}
+      ]},
+      { q:'你更嚮往哪種生活？', opts:[
+        {t:'住在充滿機關的堡壘', d:'R'}, {t:'背包一背到處冒險', d:'D'},
+        {t:'在村莊裡和大家生活', d:'H'}, {t:'在深山裡隱居蓋花園', d:'C'}
+      ]},
+      { q:'伺服器辦建築比賽，你會？', opts:[
+        {t:'馬上報名大展身手', d:'C'}, {t:'先看獎勵值不值得', d:'M'},
+        {t:'幫朋友出主意當軍師', d:'H'}, {t:'算了我更想去探險', d:'D'}
+      ]},
+      { q:'在海風伺服器你最自在的時刻？', opts:[
+        {t:'在群組跟大家聊天哈啦', d:'H'}, {t:'在自己領地裡慢慢經營', d:'L'},
+        {t:'研究新的紅石裝置', d:'R'}, {t:'蓋出讓人驚艷的建築', d:'C'}
+      ]},
+      { q:'你有三天假期，你會在遊戲裡？', opts:[
+        {t:'蓋一個夢想中的建築', d:'B'}, {t:'探索一個從沒去過的地方', d:'D'},
+        {t:'優化所有農場和設施', d:'M'}, {t:'和朋友辦一場活動', d:'H'}
+      ]},
+      { q:'你更享受哪種成就感？', opts:[
+        {t:'做出超複雜的紅石裝置', d:'R'}, {t:'蓋出讓人讚嘆的作品', d:'C'},
+        {t:'找到稀有礦石和裝備', d:'D'}, {t:'帶新手變厲害', d:'H'}
+      ]},
+      { q:'伺服器有新功能開放，你會？', opts:[
+        {t:'想辦法用它做出好看的東西', d:'C'}, {t:'研究效率最大化的用法', d:'M'},
+        {t:'馬上測試並寫攻略分享', d:'H'}, {t:'自己默默研究不想被打擾', d:'L'}
+      ]},
+      { q:'有人在伺服器遇到困難，你會？', opts:[
+        {t:'馬上過去幫忙', d:'H'}, {t:'告訴他方法讓他自己解決', d:'L'},
+        {t:'看情況，太遠就算了', d:'S'}, {t:'做一個教學設施讓所有人受益', d:'R'}
+      ]},
+      { q:'你理想中的基地是？', opts:[
+        {t:'精心設計的城堡或莊園', d:'B'}, {t:'功能齊全的地下避難所', d:'M'},
+        {t:'隱密的叢林樹屋', d:'L'}, {t:'方便大家來玩的公共空間', d:'H'}
+      ]},
+      { q:'你對「最強裝備」的定義是？', opts:[
+        {t:'全套附魔 IV+ 的頂級裝備', d:'S'}, {t:'夠用就好重點是玩得開心', d:'L'},
+        {t:'最好看的那套', d:'C'}, {t:'能自動修復的那套', d:'R'}
+      ]},
+      { q:'你蓋了一座農場，你最開心的是？', opts:[
+        {t:'它看起來很美很療癒', d:'C'}, {t:'它全自動效率超高', d:'M'},
+        {t:'能養活整個伺服器的人', d:'H'}, {t:'終於不用再手動種田了', d:'S'}
+      ]}
     ];
     const MCTI_TYPES = {
       'BRCL':{emoji:'🏗️',name:'建築高手',desc:'你的作品總讓人驚嘆。別人蓋火柴盒的時候，你已經在規劃一座城市了。伺服器地標十有八九出自你手。',tags:['建築×紅石×美感×獨行']},
@@ -654,13 +708,15 @@
     function renderMCTI(result) {
       let html = '<div class="overlay-header"><span class="overlay-title"><span class="mcti-badge">MCTI</span>Minecraft 性格測驗</span><button class="overlay-close" onclick="closeOverlay()">✕</button></div>';
       if (result) {
-        const code = (mctiScores.B>=mctiScores.S?'B':'S')+(mctiScores.R>=mctiScores.D?'R':'D')+(mctiScores.C>=mctiScores.M?'C':'M')+(mctiScores.L>=mctiScores.H?'L':'H');
+        // 計算四個維度
+        const s = mctiScores;
+        const code = (s.B>=s.S?'B':'S')+(s.R>=s.D?'R':'D')+(s.C>=s.M?'C':'M')+(s.L>=s.H?'L':'H');
         const t = MCTI_TYPES[code]||MCTI_TYPES['DRMH'];
         const dims = [
-          {label:'建築 · 生存',a:'🏗️ 建築家',b:'⚔️ 生存者',va:mctiScores.B,vb:mctiScores.S},
-          {label:'紅石 · 探索',a:'⚙️ 紅石人',b:'🧭 探索者',va:mctiScores.R,vb:mctiScores.D},
-          {label:'美感 · 效率',a:'🎨 美感',b:'📈 效率',va:mctiScores.C,vb:mctiScores.M},
-          {label:'獨行 · 團隊',a:'🐺 獨行俠',b:'🤝 團隊魂',va:mctiScores.L,vb:mctiScores.H}
+          {label:'建築 · 生存',a:'🏗️ 建築家',b:'⚔️ 生存者',va:s.B,vb:s.S},
+          {label:'紅石 · 探索',a:'⚙️ 紅石人',b:'🧭 探索者',va:s.R,vb:s.D},
+          {label:'美感 · 效率',a:'🎨 美感',b:'📈 效率',va:s.C,vb:s.M},
+          {label:'獨行 · 團隊',a:'🐺 獨行俠',b:'🤝 團隊魂',va:s.L,vb:s.H}
         ];
         html += `<div class="mcti-r-emoji">${t.emoji}</div><div class="mcti-r-code">${code}</div><div class="mcti-r-name">${t.name}</div><div class="mcti-r-desc">${t.desc}</div><div class="mcti-r-bars">`;
         dims.forEach(d => {
@@ -671,31 +727,32 @@
         (t.tags||[]).forEach(tag => html += `<span class="mcti-r-tag">${tag}</span>`);
         html += '</div><div class="game-result-btns"><button class="btn btn-main" onclick="resetMCTI()">🔄 再測一次</button></div>';
       } else {
-        html += `<div class="mcti-progress"><div class="mcti-bar" id="mctiBar" style="width:${mctiStep/MCTI_Q.length*100}%"></div></div>`;
         const q = MCTI_Q[mctiStep];
-        const qText = q.q;
-        const a0 = q.a ? q.a[0] : q.a0;
-        const a1 = q.a ? q.a[1] : q.a1;
-        html += `<div class="mcti-question">Q${mctiStep+1}. ${qText}</div><div class="mcti-options">`;
-        html += `<button class="mcti-opt" onclick="answerMCTI(0)"><span class="opt-label">A</span>${a0}</button>`;
-        html += `<button class="mcti-opt" onclick="answerMCTI(1)"><span class="opt-label">B</span>${a1}</button>`;
+        html += `<div class="mcti-progress"><div class="mcti-bar" style="width:${mctiStep/MCTI_Q.length*100}%"></div></div>`;
+        html += `<div class="mcti-card"><div class="mcti-q-num">QUESTION ${mctiStep+1} / ${MCTI_Q.length}</div><div class="mcti-q-text">${q.q}</div></div>`;
+        html += '<div class="mcti-options">';
+        const labels = ['A','B','C','D'];
+        q.opts.forEach((opt,i) => {
+          html += `<button class="mcti-opt" onclick="answerMCTI(${i})"><span class="opt-label">${labels[i]}</span>${opt.t}</button>`;
+        });
         html += '</div>';
       }
       overlayBox.innerHTML = html;
     }
 
     window.answerMCTI = (choice) => {
-      const q = MCTI_Q[mctiStep], dim = q.dim;
-      if(dim==='BS')choice===0?mctiScores.B++:mctiScores.S++;
-      else if(dim==='RD')choice===0?mctiScores.R++:mctiScores.D++;
-      else if(dim==='CM')choice===0?mctiScores.C++:mctiScores.M++;
-      else if(dim==='LH')choice===0?mctiScores.H++:mctiScores.L++;
+      const q = MCTI_Q[mctiStep];
+      const d = q.opts[choice].d;
+      // 映射到四個主維度
+      if(d==='B'||d==='S') mctiScores[d]++;
+      else if(d==='R'||d==='D') mctiScores[d]++;
+      else if(d==='C'||d==='M') mctiScores[d]++;
+      else if(d==='L'||d==='H') mctiScores[d]++;
       mctiStep++;
-      if(mctiStep>=MCTI_Q.length)renderMCTI(true);
+      if(mctiStep>=MCTI_Q.length) renderMCTI(true);
       else renderMCTI(false);
     };
     window.resetMCTI = () => { mctiStep=0; mctiScores={B:0,S:0,R:0,D:0,C:0,M:0,L:0,H:0}; renderMCTI(false); };
-    // Init scores on first open
     function initMCTI(){mctiStep=0;mctiScores={B:0,S:0,R:0,D:0,C:0,M:0,L:0,H:0};}
 
     // ═══ Memory Game ═══
