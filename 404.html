@@ -12,7 +12,6 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;600;700&family=Noto+Serif+TC:wght@700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="mob-smasher.css">
-  <link rel="stylesheet" href="minigames.css">
   <style>
     *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
     html,body{height:100%;overflow:hidden}
@@ -312,57 +311,6 @@
     .mcti-r-tag{padding:3px 9px;background:rgba(171,114,249,0.08);border:1px solid rgba(171,114,249,0.12);border-radius:100px;font-size:0.68rem;color:rgba(171,114,249,0.7)}
     .mcti-r-actions{display:flex;gap:8px;justify-content:center}
 
-    /* ═══ Memory Game ═══ */
-    .mem-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:5px;padding:8px;background:rgba(6,14,28,0.5);border-radius:12px;border:1px solid rgba(157,175,255,0.08)}
-    .mem-card{aspect-ratio:1;border-radius:8px;cursor:pointer;background:rgba(157,175,255,0.08);border:1px solid rgba(157,175,255,0.12);display:flex;align-items:center;justify-content:center;font-size:1.3rem;transition:all 0.25s;position:relative;overflow:hidden}
-    .mem-card:hover{background:rgba(157,175,255,0.15)}
-    .mem-card .front,.mem-card .back{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;transition:transform 0.3s,opacity 0.3s}
-    .mem-card .front{transform:rotateY(90deg);opacity:0}
-    .mem-card .back{color:rgba(157,175,255,0.25);font-size:0.9rem}
-    .mem-card.flipped .front{transform:rotateY(0);opacity:1}
-    .mem-card.flipped .back{transform:rotateY(-90deg);opacity:0}
-    .mem-card.matched{background:rgba(168,230,207,0.12);border-color:rgba(168,230,207,0.25);pointer-events:none}
-
-    /* ═══ Click Speed ═══ */
-    .click-zone{display:flex;flex-direction:column;align-items:center;gap:10px;padding:20px;background:rgba(6,14,28,0.5);border-radius:12px;border:1px solid rgba(157,175,255,0.08)}
-    .click-target{width:80px;height:80px;border-radius:50%;background:radial-gradient(circle,rgba(168,230,207,0.2),rgba(168,230,207,0.06));border:2px solid rgba(168,230,207,0.25);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:1.8rem;transition:all 0.1s;user-select:none}
-    .click-target:active{transform:scale(0.9)}
-    .click-label{font-size:0.72rem;color:rgba(255,255,255,0.3)}
-
-    /* ═══ Reaction Time ═══ */
-    .react-zone{display:flex;flex-direction:column;align-items:center;gap:10px;padding:24px;border-radius:12px;min-height:160px;justify-content:center;cursor:pointer;transition:background 0.2s;border:1px solid rgba(157,175,255,0.08)}
-    .react-zone.wait{background:rgba(255,80,80,0.08)}
-    .react-zone.go{background:rgba(168,230,207,0.15);border-color:rgba(168,230,207,0.3)}
-    .react-zone.result{background:rgba(157,175,255,0.08)}
-    .react-text{font-size:1rem;color:rgba(255,255,255,0.7);font-weight:600}
-    .react-ms{font-size:2rem;font-weight:800;color:#a8e6cf}
-
-    /* ═══ Tic Tac Toe ═══ */
-    .gomoku-grid{display:grid;grid-template-columns:repeat(9,1fr);gap:1px;width:280px;margin:0 auto;background:rgba(157,175,255,0.08);border-radius:8px;overflow:hidden}
-    .gomoku-cell{aspect-ratio:1;background:rgba(10,15,26,0.8);display:flex;align-items:center;justify-content:center;font-size:0.9rem;cursor:pointer;transition:background 0.15s;user-select:none}
-    .gomoku-cell:hover{background:rgba(157,175,255,0.12)}
-    .gomoku-cell.x{color:#e6edf3}
-    .gomoku-cell.o{color:#ff8282}
-    .gomoku-status{text-align:center;font-size:0.82rem;color:rgba(255,255,255,0.5);margin-top:10px}
-    .gomoku-reset{display:block;margin:8px auto 0;padding:6px 16px;background:none;border:1px solid rgba(157,175,255,0.15);border-radius:6px;color:rgba(255,255,255,0.4);font-size:0.75rem;cursor:pointer;font-family:inherit;transition:all 0.2s}
-    .gomoku-reset:hover{border-color:rgba(157,175,255,0.3);color:#b3c8ff}
-
-    /* ═══ Number Memory ═══ */
-    .num-mem{text-align:center}
-    .num-display{font-size:2.5rem;font-weight:800;color:#9dafff;letter-spacing:0.15em;margin:16px 0;min-height:3rem;font-family:'JetBrains Mono',monospace}
-    .num-input{width:180px;padding:10px 14px;background:rgba(157,175,255,0.06);border:1px solid rgba(157,175,255,0.15);border-radius:10px;color:rgba(255,255,255,0.8);font-size:1.2rem;text-align:center;font-family:'JetBrains Mono',monospace;outline:none;letter-spacing:0.1em}
-    .num-input:focus{border-color:rgba(157,175,255,0.3)}
-    .num-label{font-size:0.75rem;color:rgba(255,255,255,0.35);margin-bottom:8px}
-    .num-level{font-size:0.72rem;color:rgba(157,175,255,0.5);margin-top:8px}
-
-    /* ═══ Snake ═══ */
-    .snake-wrap{text-align:center}
-    .snake-canvas{display:block;margin:0 auto;border-radius:8px;border:1px solid rgba(157,175,255,0.12);image-rendering:pixelated}
-    .snake-controls{display:flex;justify-content:center;gap:6px;margin-top:10px}
-    .snake-ctrl{width:40px;height:40px;border-radius:8px;background:rgba(157,175,255,0.06);border:1px solid rgba(157,175,255,0.12);color:rgba(255,255,255,0.5);font-size:1.1rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all 0.15s;user-select:none;-webkit-user-select:none}
-    .snake-ctrl:active{background:rgba(157,175,255,0.2);transform:scale(0.92)}
-    .snake-ctrl-row{display:flex;justify-content:center;gap:6px}
-
     /* Mob Smasher styles in mob-smasher.css */
 
     /* Game HUD */
@@ -386,11 +334,7 @@
       .moon{top:10%;right:13%}
       .content{top:12%}
       .code{font-size:3.5rem}
-      .mem-grid{gap:3px;padding:5px}
-      .mem-card{font-size:1rem}
       .game-tab{padding:6px 9px;font-size:0.68rem}
-      .gomoku-grid{width:220px}
-      .gomoku-cell{font-size:0.7rem}
       .game-bar{bottom:10px}
     }
     @media(max-width:375px){
@@ -598,21 +542,8 @@
 
     <!-- Game Bar -->
     <div class="game-bar" id="gameBar">
-      <button class="game-tab" onclick="openGame('mcti')">🧪 MCTI</button>
-      <button class="game-tab" onclick="openGame('memory')">🃏 翻牌</button>
-      <button class="game-tab" onclick="openGame('react')">⏱️ 反應</button>
-      <button class="game-tab" onclick="openGame('gomoku')">⚫ 五子棋</button>
-      <button class="game-tab" onclick="openGame('nummem')">🔢 記數</button>
-      <button class="game-tab" onclick="openGame('snake')">🐍 貪吃蛇</button>
+      <button class="game-tab" onclick="openGame('mcti')">🧪 MCTI 性格測驗</button>
       <button class="game-tab" onclick="openGame('mole')"><img src="assets/mobs/iron-sword.png" alt="" style="width:12px;height:12px;vertical-align:middle"> 打怪物</button>
-      <button class="game-tab" onclick="openGame('simon')">💎 礦石</button>
-      <button class="game-tab" onclick="openGame('shooting')">🎯 射擊</button>
-      <button class="game-tab" onclick="openGame('minesweeper')">💣 掃雷</button>
-      <button class="game-tab" onclick="openGame('merge2048')">🔢 2048</button>
-      <button class="game-tab" onclick="openGame('tictactoe')">❌ 井字棋</button>
-      <button class="game-tab" onclick="openGame('flappy')">🪶 滑翔翼</button>
-      <button class="game-tab" onclick="openGame('wordle')">🔤 猜礦</button>
-      <button class="game-tab" onclick="openGame('connect4')">🔴 四子棋</button>
     </div>
   </div>
 
@@ -622,7 +553,6 @@
   </div>
 
   <script src="mob-smasher.js"></script>
-  <script src="minigames.js"></script>
   <script>
   (() => {
     'use strict';
@@ -953,23 +883,19 @@
 
     window.openGame = (type) => {
       currentGame = type;
-      const labelMap = {mcti:'MCTI',memory:'翻牌',gomoku:'五子棋',react:'反應',nummem:'記數',snake:'貪吃蛇',mole:'打怪',simon:'礦石',shooting:'射擊',minesweeper:'掃雷',merge2048:'2048',tictactoe:'井字棋',flappy:'滑翔翼',wordle:'猜礦',connect4:'四子棋'};
+      const labelMap = {mcti:'MCTI',mole:'打怪物'};
       document.querySelectorAll('.game-tab').forEach(t => t.classList.toggle('active', t.textContent.includes(labelMap[type]||'')));
       if (type === 'mcti') { initMCTI(); renderMCTI(); }
       else if (type === 'mole') MOB_SMASHER.open(overlayBox);
-      else if (MINIGAMES[type]) MINIGAMES[type](overlayBox);
       overlay.classList.add('active');
     };
 
     window.closeOverlay = () => {
-      MINIGAMES.close();
+      MOB_SMASHER.close();
       overlay.classList.remove('active');
       document.querySelectorAll('.game-tab').forEach(t => t.classList.remove('active'));
-      clearInterval(gameTimer);
       currentGame = null;
     };
-
-    let gameTimer = null, gameScore = 0, gameTime = 0;
 
     // ═══ MCTI ═══
     // 每個選項對應一個維度：B=建築 S=生存 R=紅石 D=探索 C=美感 M=效率 L=獨行 H=團隊
