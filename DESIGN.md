@@ -62,6 +62,7 @@
 - **`utils.js`**（293 行）— Discord Markdown → HTML 轉換器
 - **`tips.js`**（131 行）— 首頁提示輪播資料
 - **`music-player.js`** — 動態載入（由 main.js 創建 `<script>` 元素）
+- **`mob-smasher.js`**（~470 行）— 404 頁打苦力怕遊戲（53 種生物 sprite）
 
 ### 資料檔案
 - `announcements.json` / `announcements_v2.json` — 公告資料
@@ -76,6 +77,7 @@
 - `assets/announcements/` — 公告圖片
 - `assets/photos_new/` — 新版風景照
 - `assets/migrated/` — 遷移資料
+- `assets/mobs/` — 53 張 Minecraft 生物 sprite（16×16px，來源: Minecraft Wiki，CC BY-NC-SA 3.0）
 
 ---
 
@@ -473,6 +475,7 @@ Discord 上的公告長這樣：
 | 2026-04-15 | 海風網站助手 | 全站 69 個頁面修改日期更新為 2026.04.15 |
 | 2026-04-15 | 海風網站助手 | deployCount 加入 localStorage 快取（1 小時 TTL） |
 | 2026-04-15 | 海風網站助手 | 404 頁面新增 MCTI Minecraft 性格測驗（8 題 / 16 種人格） |
+| 2026-04-15 | 海風網站助手 | 404 打苦力怕全面重製 — 53 種生物 sprite + 新遊戲機制 |
 
 ---
 
