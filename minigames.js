@@ -1458,91 +1458,6 @@ const MINIGAMES = (() => {
   }
 
   // ═══════════════════════════════════════════
-  // 🍄 打苦力怕 (Whack-a-Creeper)
-  // ═══════════════════════════════════════════
-  function whack(overlayBox) {
-    clearTimers();
-    const GRID = 3, TIME = 20;
-    let score = 0, timeLeft = TIME, activeHoles = [], combo = 0, misses = 0;
-    const MOBS = [
-      { emoji: '💚', pts: 10, name: '苦力怕' },
-      { emoji: '💀', pts: 15, name: '骷髏' },
-      { emoji: '🧟', pts: 10, name: '殭屍' },
-      { emoji: '🕷️', pts: 15, name: '蜘蛛' },
-      { emoji: '👻', pts: 25, name: '術士' },
-    ];
-    const FRIENDLY = { emoji: '🐱', penalty: 20, name: '貓咪' };
-
-    function render() {
-      let html = `<div class="overlay-header"><span class="overlay-title">🍄 打苦力怕</span><button class="overlay-close" onclick="MINIGAMES.close()">✕</button></div>`;
-      html += `<div class="game-hud"><span>🎯 <span class="game-hud-val" id="whackScore">${score}</span></span><span>🔥 x<span class="game-hud-val" id="whackCombo">${combo}</span></span><span>⏱ <span class="game-hud-val" id="whackTime">${timeLeft}</span>s</span></div>`;
-      html += '<div class="whack-grid" id="whackGrid">';
-      for (let i = 0; i < GRID * GRID; i++) {
-        const active = activeHoles.find(h => h.idx === i);
-        const content = active ? active.mob.emoji : '';
-        const cls = active ? (active.isFriendly ? 'whack-hole active friendly' : 'whack-hole active') : 'whack-hole';
-        html += `<div class="${cls}" onclick="MINIGAMES._whackHit(${i})">${content}</div>`;
-      }
-      html += '</div>';
-      html += `<div class="whack-hint">打怪物加分！不要打 🐱 貓咪！</div>`;
-      overlayBox.innerHTML = html;
-    }
-
-    function spawn() {
-      if (timeLeft <= 0) return;
-      // Clear old
-      activeHoles = activeHoles.filter(h => Date.now() - h.spawned < 1200);
-      if (activeHoles.length >= 3) return;
-      const available = [];
-      for (let i = 0; i < GRID * GRID; i++) {
-        if (!activeHoles.find(h => h.idx === i)) available.push(i);
-      }
-      if (available.length === 0) return;
-      const idx = available[Math.floor(Math.random() * available.length)];
-      const isFriendly = Math.random() < 0.15;
-      const mob = isFriendly ? FRIENDLY : MOBS[Math.floor(Math.random() * MOBS.length)];
-      activeHoles.push({ idx, mob, isFriendly, spawned: Date.now() });
-      render();
-      // Auto-disappear
-      setTimeout(() => {
-        activeHoles = activeHoles.filter(h => h.idx !== idx);
-        render();
-      }, 1000 + Math.random() * 500);
-    }
-
-    window._whackHit = (idx) => {
-      const hole = activeHoles.find(h => h.idx === idx);
-      if (!hole) { combo = 0; misses++; return; }
-      activeHoles = activeHoles.filter(h => h.idx !== idx);
-      if (hole.isFriendly) {
-        score = Math.max(0, score - hole.mob.penalty);
-        combo = 0;
-      } else {
-        combo++;
-        const multiplier = Math.min(combo, 5);
-        score += hole.mob.pts * multiplier;
-      }
-      render();
-    };
-
-    render();
-    const spawnIv = setInterval(spawn, 700);
-    cleanupFns.push(() => clearInterval(spawnIv));
-
-    gameTimer = setInterval(() => {
-      timeLeft--;
-      const el = document.getElementById('whackTime');
-      if (el) el.textContent = timeLeft;
-      if (timeLeft <= 0) {
-        clearInterval(gameTimer);
-        clearInterval(spawnIv);
-        MINIGAMES.showResult('🍄', score + ' 分', `最高連擊 x${combo}`, 'whack');
-      }
-    }, 1000);
-    cleanupFns.push(() => clearInterval(gameTimer));
-  }
-
-  // ═══════════════════════════════════════════
   // 🔴🟡 四子棋 (Connect Four vs AI)
   // ═══════════════════════════════════════════
   function connect4(overlayBox) {
@@ -1735,12 +1650,12 @@ const MINIGAMES = (() => {
 
   function _retry(type) {
     const box = document.getElementById('overlayBox');
-    const fn = { memory, gomoku, react, nummem, snake, simon, blockcrush, shooting, minesweeper, merge2048, tictactoe, flappy, wordle, whack, connect4 }[type];
+    const fn = { memory, gomoku, react, nummem, snake, simon, blockcrush, shooting, minesweeper, merge2048, tictactoe, flappy, wordle, connect4 }[type];
     if (fn) fn(box);
   }
 
   return {
-    memory, gomoku, react, nummem, snake, simon, blockcrush, shooting, minesweeper, merge2048, tictactoe, flappy, wordle, whack, connect4,
+    memory, gomoku, react, nummem, snake, simon, blockcrush, shooting, minesweeper, merge2048, tictactoe, flappy, wordle, connect4,
     showResult, close,
     // Aliases for internal use
     _flipCard: (c) => window._flipCard?.(c),
@@ -1755,7 +1670,6 @@ const MINIGAMES = (() => {
     _m2048: (dir) => window._m2048?.(dir),
     _tttClick: (i) => window._tttClick?.(i),
     _wdlKey: (k) => window._wdlKey?.(k),
-    _whackHit: (i) => window._whackHit?.(i),
     _c4Drop: (c) => window._c4Drop?.(c),
     _retry,
   };

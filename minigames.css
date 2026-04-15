@@ -171,8 +171,6 @@
   .game-tab { padding: 5px 7px; font-size: 0.6rem; }
   .wdl-cell { width: 36px; height: 36px; font-size: 0.95rem; }
   .wdl-key { min-width: 24px; height: 36px; font-size: 0.65rem; }
-  .whack-grid { max-width: 200px; gap: 4px; }
-  .whack-hole { font-size: 1.4rem; }
   .c4-grid { max-width: 240px; }
   .c4-col-btns { max-width: 240px; }
 }
@@ -525,56 +523,6 @@
 .wdl-key-enter, .wdl-key-back {
   min-width: 50px;
   font-size: 0.7rem;
-}
-
-/* ═══ 打苦力怕 (Whack-a-Creeper) ═══ */
-.whack-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 6px;
-  padding: 12px;
-  background: rgba(6, 14, 28, 0.5);
-  border-radius: 12px;
-  border: 1px solid rgba(157, 175, 255, 0.08);
-  max-width: 240px;
-  margin: 0 auto;
-}
-.whack-hole {
-  aspect-ratio: 1;
-  border-radius: 50%;
-  background: rgba(20, 30, 50, 0.8);
-  border: 2px solid rgba(157, 175, 255, 0.06);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.8rem;
-  cursor: pointer;
-  transition: all 0.1s;
-  user-select: none;
-  -webkit-user-select: none;
-}
-.whack-hole:hover {
-  border-color: rgba(157, 175, 255, 0.15);
-}
-.whack-hole:active { transform: scale(0.85); }
-.whack-hole.active {
-  animation: whack-pop 0.25s ease-out;
-  background: rgba(30, 40, 60, 0.9);
-  border-color: rgba(255, 80, 80, 0.2);
-}
-.whack-hole.active.friendly {
-  border-color: rgba(168, 230, 207, 0.3);
-}
-@keyframes whack-pop {
-  0% { transform: scale(0.3); opacity: 0; }
-  60% { transform: scale(1.15); }
-  100% { transform: scale(1); opacity: 1; }
-}
-.whack-hint {
-  text-align: center;
-  font-size: 0.68rem;
-  color: rgba(255, 255, 255, 0.2);
-  margin-top: 8px;
 }
 
 /* ═══ 四子棋 (Connect Four) ═══ */

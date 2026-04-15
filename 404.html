@@ -613,7 +613,6 @@
       <button class="game-tab" onclick="openGame('tictactoe')">❌ 井字棋</button>
       <button class="game-tab" onclick="openGame('flappy')">🪶 滑翔翼</button>
       <button class="game-tab" onclick="openGame('wordle')">🔤 猜礦</button>
-      <button class="game-tab" onclick="openGame('whack')">🍄 打苦力怕</button>
       <button class="game-tab" onclick="openGame('connect4')">🔴 四子棋</button>
     </div>
   </div>
@@ -955,7 +954,7 @@
 
     window.openGame = (type) => {
       currentGame = type;
-      const labelMap = {mcti:'MCTI',memory:'翻牌',gomoku:'五子棋',react:'反應',nummem:'記數',snake:'貪吃蛇',mole:'打怪',simon:'礦石',blockcrush:'消除',shooting:'射擊',minesweeper:'掃雷',merge2048:'2048',tictactoe:'井字棋',flappy:'滑翔翼',wordle:'猜礦',whack:'打苦力怕',connect4:'四子棋'};
+      const labelMap = {mcti:'MCTI',memory:'翻牌',gomoku:'五子棋',react:'反應',nummem:'記數',snake:'貪吃蛇',mole:'打怪',simon:'礦石',blockcrush:'消除',shooting:'射擊',minesweeper:'掃雷',merge2048:'2048',tictactoe:'井字棋',flappy:'滑翔翼',wordle:'猜礦',connect4:'四子棋'};
       document.querySelectorAll('.game-tab').forEach(t => t.classList.toggle('active', t.textContent.includes(labelMap[type]||'')));
       if (type === 'mcti') { initMCTI(); renderMCTI(); }
       else if (type === 'mole') MOB_SMASHER.open(overlayBox);
