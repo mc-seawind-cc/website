@@ -485,6 +485,8 @@ Discord 上的公告長這樣：
 | 2026-04-15 | 海風網站助手 | 🚀 圖片效能優化：首頁 Hero 圖改用 WebP（2MB→217KB，減少 90%）+ CSS image-set 自動降級 |
 | 2026-04-15 | 海風網站助手 | 照片背景圖（photo-sub-bg）同步改用 WebP（1.7MB→101KB） |
 | 2026-04-15 | 海風網站助手 | 清理 CSS 重複規則：移除 .feature-grid 和 .feature-card 的重複宣告 |
+| 2026-04-15 | 海風網站助手 | 🔴 修復 404 頁面 showGameResult 重複定義（語法錯誤，所有按鈕失效） |
+| 2026-04-15 | 海風網站助手 | 修復 404 .trash 無效 CSS（pointer-events:cursor → auto） |
 
 ---
 
