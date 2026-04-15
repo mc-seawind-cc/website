@@ -18,7 +18,7 @@ const MINIGAMES = (() => {
   // ═══════════════════════════════════════════
   function memory(overlayBox) {
     clearTimers();
-    const EMOJIS = ['🐙','🦑','🦐','🐡','🐠','🐟','🐬','🦀','🐚','🐢','🦞','🐳','🦈','🪸','🐋','🦭'];
+    const EMOJIS = ['🐟','🐠','🐡','🦈','🐙','🦑','🦐','🐬','🐳','🐋','🦭','🐚','🐢','🦀','🦞','🪸'];
     // 隨機選 8 種（修復: 不再固定取前 8 個）
     const shuffled = [...EMOJIS].sort(() => Math.random() - 0.5);
     const pairs = shuffled.slice(0, 8);
@@ -87,73 +87,6 @@ const MINIGAMES = (() => {
   }
 
   // ═══════════════════════════════════════════
-  // ⚡ 點擊測速 (CPS Test) — 修復 + 重設計
-  // ═══════════════════════════════════════════
-  function click(overlayBox) {
-    clearTimers();
-    let clicks = 0, timeLeft = 5, started = false;
-    const ICONS = ['🌊', '💨', '⚡', '🔥', '💫', '🌟', '💥', '✨'];
-
-    let html = `<div class="overlay-header"><span class="overlay-title">⚡ 點擊測速</span><button class="overlay-close" onclick="MINIGAMES.close()">✕</button></div>`;
-    html += `<div class="click-zone">
-      <div class="click-label">倒數結束後盡量點！</div>
-      <div class="timer" id="clickTimer" style="font-size:3rem">3</div>
-      <div class="click-target" id="clickTarget" onclick="MINIGAMES._clickHit()">
-        <span id="clickIcon">⏳</span>
-      </div>
-      <div class="click-label" id="clickHint">等待倒數...</div>
-    </div>`;
-    overlayBox.innerHTML = html;
-
-    // 倒數 3-2-1-GO
-    let countdown = 3;
-    const cdTimer = setInterval(() => {
-      countdown--;
-      const timerEl = document.getElementById('clickTimer');
-      if (countdown > 0) {
-        timerEl.textContent = countdown;
-      } else if (countdown === 0) {
-        timerEl.textContent = 'GO!';
-        timerEl.style.color = '#a8e6cf';
-        started = true;
-        const hintEl = document.getElementById('clickHint');
-        if (hintEl) hintEl.textContent = '盡量點！';
-        const iconEl = document.getElementById('clickIcon');
-        if (iconEl) iconEl.textContent = '🌊';
-        clearInterval(cdTimer);
-        startGameTimer();
-      }
-    }, 800);
-
-    function startGameTimer() {
-      gameTimer = setInterval(() => {
-        timeLeft--;
-        const el = document.getElementById('clickTimer');
-        if (el) el.textContent = timeLeft;
-        if (timeLeft <= 0) {
-          clearInterval(gameTimer);
-          const cps = (clicks / 5).toFixed(1);
-          const label = clicks >= 80 ? '⚡ 閃電快手！' : clicks >= 50 ? '🔥 手速驚人！' : clicks >= 25 ? '👍 還不錯' : '💪 再快一點！';
-          MINIGAMES.showResult('⚡', cps + ' CPS', `${clicks} 次點擊 · ${label}`, 'click');
-        }
-      }, 1000);
-      cleanupFns.push(() => clearInterval(gameTimer));
-    }
-
-    window._clickHit = () => {
-      if (!started) return;
-      clicks++;
-      const icon = document.getElementById('clickIcon');
-      if (icon) icon.textContent = ICONS[clicks % ICONS.length];
-      const target = document.getElementById('clickTarget');
-      if (target) {
-        target.style.transform = 'scale(0.85)';
-        setTimeout(() => target.style.transform = '', 80);
-      }
-    };
-  }
-
-  // ═══════════════════════════════════════════
   // ⏱️ 反應測試 (Reaction Time) — 修復
   // ═══════════════════════════════════════════
   function react(overlayBox) {
@@ -205,73 +138,146 @@ const MINIGAMES = (() => {
   }
 
   // ═══════════════════════════════════════════
-  // ⭕ 井字棋 (Tic Tac Toe) — 修復 AI
+  // ⚫⚪ 五子棋 (Gomoku) — 替代井字棋
   // ═══════════════════════════════════════════
-  function ttt(overlayBox) {
+  function gomoku(overlayBox) {
     clearTimers();
-    let board = Array(9).fill(null), over = false;
-    const wins = [[0,1,2],[3,4,5],[6,7,8],[0,3,6],[1,4,7],[2,5,8],[0,4,8],[2,4,6]];
+    const SIZE = 9;
+    let board = Array.from({ length: SIZE }, () => Array(SIZE).fill(null));
+    let over = false, playerTurn = true;
 
-    let html = `<div class="overlay-header"><span class="overlay-title">⭕ 井字棋</span><button class="overlay-close" onclick="MINIGAMES.close()">✕</button></div>`;
-    html += '<div class="ttt-grid" id="tttGrid">';
-    for (let i = 0; i < 9; i++) html += `<div class="ttt-cell" data-i="${i}" onclick="MINIGAMES._tttClick(this)"></div>`;
-    html += '</div><div class="ttt-status" id="tttStatus">你的回合（✕）</div><button class="ttt-reset" onclick="MINIGAMES.ttt(document.getElementById(\'overlayBox\'))">🔄 重新開始</button>';
+    let html = `<div class="overlay-header"><span class="overlay-title">⚫ 五子棋</span><button class="overlay-close" onclick="MINIGAMES.close()">✕</button></div>`;
+    html += `<div class="gomoku-grid" id="gomokuGrid">`;
+    for (let r = 0; r < SIZE; r++) {
+      for (let c = 0; c < SIZE; c++) {
+        html += `<div class="gomoku-cell" data-r="${r}" data-c="${c}" onclick="MINIGAMES._gomokuClick(${r},${c})"></div>`;
+      }
+    }
+    html += `</div><div class="gomoku-status" id="gomokuStatus">你的回合（⚫ 黑子）</div><button class="gomoku-reset" onclick="MINIGAMES.gomoku(document.getElementById('overlayBox'))">🔄 重新開始</button>`;
     overlayBox.innerHTML = html;
 
-    window._tttClick = (cell) => {
-      const i = +cell.dataset.i;
-      if (board[i] || over) return;
-      board[i] = 'x';
-      cell.textContent = '✕';
-      cell.classList.add('x');
-      if (checkWin('x')) { over = true; document.getElementById('tttStatus').textContent = '🎉 你贏了！'; return; }
-      if (board.every(c => c)) { over = true; document.getElementById('tttStatus').textContent = '🤝 平手！'; return; }
-      document.getElementById('tttStatus').textContent = '電腦思考中...';
-      setTimeout(aiMove, 300 + Math.random() * 300);
-    };
+    const DIRS = [[0,1],[1,0],[1,1],[1,-1]];
+
+    function checkWin(r, c, p) {
+      for (const [dr, dc] of DIRS) {
+        let count = 1;
+        for (let d = -1; d <= 1; d += 2) {
+          let nr = r + dr * d, nc = c + dc * d;
+          while (nr >= 0 && nr < SIZE && nc >= 0 && nc < SIZE && board[nr][nc] === p) {
+            count++;
+            nr += dr * d;
+            nc += dc * d;
+          }
+        }
+        if (count >= 5) return true;
+      }
+      return false;
+    }
+
+    function boardFull() {
+      return board.every(row => row.every(cell => cell !== null));
+    }
 
     function aiMove() {
       if (over) return;
-      // Smart AI: win > block > fork > block fork > center > corner > side
-      let move = -1;
-      // 1. Win
-      move = findBest('o');
-      // 2. Block
-      if (move < 0) move = findBest('x');
-      // 3. Center
-      if (move < 0 && !board[4]) move = 4;
-      // 4. Corner
-      if (move < 0) {
-        const corners = [0, 2, 6, 8].filter(i => !board[i]);
-        if (corners.length) move = corners[Math.floor(Math.random() * corners.length)];
-      }
-      // 5. Side
-      if (move < 0) {
-        const sides = [1, 3, 5, 7].filter(i => !board[i]);
-        if (sides.length) move = sides[Math.floor(Math.random() * sides.length)];
-      }
-      if (move < 0) return;
+      // Simple AI: find best scoring position
+      let bestScore = -1, bestMoves = [];
 
-      board[move] = 'o';
-      const cells = document.querySelectorAll('.ttt-cell');
-      cells[move].textContent = 'O';
-      cells[move].classList.add('o');
-      if (checkWin('o')) { over = true; document.getElementById('tttStatus').textContent = '電腦贏了！🤖'; return; }
-      if (board.every(c => c)) { over = true; document.getElementById('tttStatus').textContent = '🤝 平手！'; return; }
-      document.getElementById('tttStatus').textContent = '你的回合（✕）';
-    }
-
-    function findBest(player) {
-      for (const w of wins) {
-        const vals = w.map(i => board[i]);
-        if (vals.filter(v => v === player).length === 2 && vals.includes(null)) {
-          return w[vals.indexOf(null)];
+      for (let r = 0; r < SIZE; r++) {
+        for (let c = 0; c < SIZE; c++) {
+          if (board[r][c] !== null) continue;
+          let score = scorePosition(r, c);
+          if (score > bestScore) {
+            bestScore = score;
+            bestMoves = [{ r, c }];
+          } else if (score === bestScore) {
+            bestMoves.push({ r, c });
+          }
         }
       }
-      return -1;
+
+      if (bestMoves.length === 0) return;
+      const move = bestMoves[Math.floor(Math.random() * bestMoves.length)];
+      board[move.r][move.c] = 'o';
+
+      const cells = document.querySelectorAll('.gomoku-cell');
+      const idx = move.r * SIZE + move.c;
+      cells[idx].textContent = '○';
+      cells[idx].classList.add('o');
+
+      if (checkWin(move.r, move.c, 'o')) {
+        over = true;
+        document.getElementById('gomokuStatus').textContent = '電腦贏了！🤖';
+        return;
+      }
+      if (boardFull()) {
+        over = true;
+        document.getElementById('gomokuStatus').textContent = '🤝 平手！';
+        return;
+      }
+      playerTurn = true;
+      document.getElementById('gomokuStatus').textContent = '你的回合（⚫ 黑子）';
     }
 
-    function checkWin(p) { return wins.some(w => w.every(i => board[i] === p)); }
+    function scorePosition(r, c) {
+      let score = 0;
+      // Check what placing 'o' or 'x' here would yield
+      for (const [dr, dc] of DIRS) {
+        // Offensive: count o's in line
+        let oCount = 1, oOpen = 0;
+        for (let d = -1; d <= 1; d += 2) {
+          let nr = r + dr * d, nc = c + dc * d;
+          while (nr >= 0 && nr < SIZE && nc >= 0 && nc < SIZE && board[nr][nc] === 'o') {
+            oCount++;
+            nr += dr * d;
+            nc += dc * d;
+          }
+          if (nr >= 0 && nr < SIZE && nc >= 0 && nc < SIZE && board[nr][nc] === null) oOpen++;
+        }
+        // Defensive: count x's in line
+        let xCount = 1, xOpen = 0;
+        for (let d = -1; d <= 1; d += 2) {
+          let nr = r + dr * d, nc = c + dc * d;
+          while (nr >= 0 && nr < SIZE && nc >= 0 && nc < SIZE && board[nr][nc] === 'x') {
+            xCount++;
+            nr += dr * d;
+            nc += dc * d;
+          }
+          if (nr >= 0 && nr < SIZE && nc >= 0 && nc < SIZE && board[nr][nc] === null) xOpen++;
+        }
+
+        // Scoring
+        const oScore = oOpen > 0 ? Math.pow(10, oCount) : 0;
+        const xScore = xOpen > 0 ? Math.pow(10, xCount) * 0.9 : 0;
+        score += oScore + xScore;
+      }
+      // Prefer center
+      score += (SIZE - Math.abs(r - 4) - Math.abs(c - 4)) * 0.5;
+      return score;
+    }
+
+    window._gomokuClick = (r, c) => {
+      if (board[r][c] || over || !playerTurn) return;
+      board[r][c] = 'x';
+      const cells = document.querySelectorAll('.gomoku-cell');
+      const idx = r * SIZE + c;
+      cells[idx].textContent = '●';
+      cells[idx].classList.add('x');
+
+      if (checkWin(r, c, 'x')) {
+        over = true;
+        document.getElementById('gomokuStatus').textContent = '🎉 你贏了！';
+        return;
+      }
+      if (boardFull()) {
+        over = true;
+        document.getElementById('gomokuStatus').textContent = '🤝 平手！';
+        return;
+      }
+      playerTurn = false;
+      document.getElementById('gomokuStatus').textContent = '電腦思考中...';
+      setTimeout(aiMove, 300 + Math.random() * 300);
+    };
   }
 
   // ═══════════════════════════════════════════
@@ -804,18 +810,17 @@ const MINIGAMES = (() => {
 
   function _retry(type) {
     const box = document.getElementById('overlayBox');
-    const fn = { memory, click, react, ttt, nummem, snake, simon, blockcrush, shooting }[type];
+    const fn = { memory, gomoku, react, nummem, snake, simon, blockcrush, shooting }[type];
     if (fn) fn(box);
   }
 
   return {
-    memory, click, react, ttt, nummem, snake, simon, blockcrush, shooting,
+    memory, gomoku, react, nummem, snake, simon, blockcrush, shooting,
     showResult, close,
     // Aliases for internal use
     _flipCard: (c) => window._flipCard?.(c),
-    _clickHit: () => window._clickHit?.(),
     _reactClick: () => window._reactClick?.(),
-    _tttClick: (c) => window._tttClick?.(c),
+    _gomokuClick: (r, c) => window._gomokuClick?.(r, c),
     _numStart: () => window._numStart?.(),
     _snakeDir: (dx, dy) => window._snakeDir?.(dx, dy),
     _simonHit: (id) => window._simonHit?.(id),

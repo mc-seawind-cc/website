@@ -338,14 +338,14 @@
     .react-ms{font-size:2rem;font-weight:800;color:#a8e6cf}
 
     /* ═══ Tic Tac Toe ═══ */
-    .ttt-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:4px;width:200px;margin:0 auto}
-    .ttt-cell{aspect-ratio:1;border-radius:8px;background:rgba(157,175,255,0.06);border:1px solid rgba(157,175,255,0.1);display:flex;align-items:center;justify-content:center;font-size:1.8rem;cursor:pointer;transition:all 0.2s;font-weight:700}
-    .ttt-cell:hover{background:rgba(157,175,255,0.12)}
-    .ttt-cell.x{color:#9dafff}
-    .ttt-cell.o{color:#ff8282}
-    .ttt-status{text-align:center;font-size:0.82rem;color:rgba(255,255,255,0.5);margin-top:10px}
-    .ttt-reset{display:block;margin:8px auto 0;padding:6px 16px;background:none;border:1px solid rgba(157,175,255,0.15);border-radius:6px;color:rgba(255,255,255,0.4);font-size:0.75rem;cursor:pointer;font-family:inherit;transition:all 0.2s}
-    .ttt-reset:hover{border-color:rgba(157,175,255,0.3);color:#b3c8ff}
+    .gomoku-grid{display:grid;grid-template-columns:repeat(9,1fr);gap:1px;width:280px;margin:0 auto;background:rgba(157,175,255,0.08);border-radius:8px;overflow:hidden}
+    .gomoku-cell{aspect-ratio:1;background:rgba(10,15,26,0.8);display:flex;align-items:center;justify-content:center;font-size:0.9rem;cursor:pointer;transition:background 0.15s;user-select:none}
+    .gomoku-cell:hover{background:rgba(157,175,255,0.12)}
+    .gomoku-cell.x{color:#e6edf3}
+    .gomoku-cell.o{color:#ff8282}
+    .gomoku-status{text-align:center;font-size:0.82rem;color:rgba(255,255,255,0.5);margin-top:10px}
+    .gomoku-reset{display:block;margin:8px auto 0;padding:6px 16px;background:none;border:1px solid rgba(157,175,255,0.15);border-radius:6px;color:rgba(255,255,255,0.4);font-size:0.75rem;cursor:pointer;font-family:inherit;transition:all 0.2s}
+    .gomoku-reset:hover{border-color:rgba(157,175,255,0.3);color:#b3c8ff}
 
     /* ═══ Number Memory ═══ */
     .num-mem{text-align:center}
@@ -389,8 +389,8 @@
       .mem-grid{gap:3px;padding:5px}
       .mem-card{font-size:1rem}
       .game-tab{padding:6px 9px;font-size:0.68rem}
-      .ttt-grid{width:160px}
-      .ttt-cell{font-size:1.4rem}
+      .gomoku-grid{width:220px}
+      .gomoku-cell{font-size:0.7rem}
       .game-bar{bottom:10px}
     }
     @media(max-width:375px){
@@ -600,9 +600,8 @@
     <div class="game-bar" id="gameBar">
       <button class="game-tab" onclick="openGame('mcti')">🧪 MCTI</button>
       <button class="game-tab" onclick="openGame('memory')">🃏 翻牌</button>
-      <button class="game-tab" onclick="openGame('click')">⚡ 點速</button>
       <button class="game-tab" onclick="openGame('react')">⏱️ 反應</button>
-      <button class="game-tab" onclick="openGame('ttt')">⭕ 井字</button>
+      <button class="game-tab" onclick="openGame('gomoku')">⚫ 五子棋</button>
       <button class="game-tab" onclick="openGame('nummem')">🔢 記數</button>
       <button class="game-tab" onclick="openGame('snake')">🐍 貪吃蛇</button>
       <button class="game-tab" onclick="openGame('mole')">⚔️ 打怪物</button>
@@ -949,7 +948,7 @@
 
     window.openGame = (type) => {
       currentGame = type;
-      const labelMap = {mcti:'MCTI',memory:'翻牌',click:'點速',react:'反應',ttt:'井字',nummem:'記數',snake:'貪吃蛇',mole:'打怪',simon:'礦石',blockcrush:'消除',shooting:'射擊'};
+      const labelMap = {mcti:'MCTI',memory:'翻牌',gomoku:'五子棋',react:'反應',nummem:'記數',snake:'貪吃蛇',mole:'打怪',simon:'礦石',blockcrush:'消除',shooting:'射擊'};
       document.querySelectorAll('.game-tab').forEach(t => t.classList.toggle('active', t.textContent.includes(labelMap[type]||'')));
       if (type === 'mcti') { initMCTI(); renderMCTI(); }
       else if (type === 'mole') MOB_SMASHER.open(overlayBox);

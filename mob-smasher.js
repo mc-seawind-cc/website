@@ -14,11 +14,21 @@ const MOB_SMASHER = (() => {
     { id: 'slime',        name: '史萊姆',     pts: 1, timeBonus: 1, weight: 8 },
     { id: 'witch',        name: '女巫',       pts: 2, timeBonus: 1, weight: 6 },
     { id: 'spider',       name: '蜘蛛',       pts: 1, timeBonus: 1, weight: 10 },
+    { id: 'cave-spider',  name: '洞穴蜘蛛',   pts: 1, timeBonus: 1, weight: 7 },
     { id: 'blaze',        name: '烈焰使者',   pts: 2, timeBonus: 1, weight: 5 },
     { id: 'breeze',       name: '旋風使者',   pts: 2, timeBonus: 1, weight: 5 },
     { id: 'ghast',        name: '地獄幽靈',   pts: 2, timeBonus: 2, weight: 4 },
     { id: 'phantom',      name: '夜魅',       pts: 2, timeBonus: 1, weight: 6 },
     { id: 'evoker',       name: '喚魔者',     pts: 3, timeBonus: 2, weight: 3, special: 'totem' },
+    { id: 'enderman',     name: '終界使者',   pts: 2, timeBonus: 1, weight: 5 },
+    { id: 'shulker',      name: '界伏蚌',     pts: 2, timeBonus: 1, weight: 4 },
+    { id: 'silverfish',   name: '蠹魚',       pts: 1, timeBonus: 1, weight: 7 },
+    { id: 'endermite',    name: '終界蟎',     pts: 1, timeBonus: 1, weight: 6 },
+    { id: 'magma-cube',   name: '岩漿立方怪', pts: 1, timeBonus: 1, weight: 7 },
+    { id: 'husk',         name: '屍殼',       pts: 1, timeBonus: 1, weight: 8 },
+    { id: 'parched',      name: '枯骸',       pts: 2, timeBonus: 1, weight: 4 },
+    { id: 'warden',       name: '伏守者',     pts: 5, timeBonus: 3, weight: 2, hp: 2, stayMs: 2500 },
+    { id: 'piglin-brute', name: '豬布林蠻兵', pts: 5, timeBonus: 3, weight: 2, hp: 2, stayMs: 2500 },
     { id: 'ravager',      name: '劫毀獸',     pts: 5, timeBonus: 3, weight: 2, hp: 2, stayMs: 2500 },
     { id: 'wither',       name: '凋零怪',     pts: 5, timeBonus: 3, weight: 2, hp: 2, stayMs: 2500 },
     { id: 'elder-guardian', name: '遠古深海守衛', pts: 5, timeBonus: 3, weight: 1, hp: 2, stayMs: 3000, special: 'elder' },
@@ -53,6 +63,8 @@ const MOB_SMASHER = (() => {
     { id: 'frog',          name: '青蛙' },
     { id: 'dolphin',       name: '海豚' },
     { id: 'fox',           name: '狐狸' },
+    { id: 'goat',          name: '山羊' },
+    { id: 'wandering-trader', name: '流浪商人' },
   ];
 
   const NEUTRAL = [
@@ -114,7 +126,7 @@ const MOB_SMASHER = (() => {
       </div>
       <div class="ms-hud">
         <div class="ms-hud-left">
-          <span class="ms-score"><img src="https://zh.minecraft.wiki/images/Wooden_Sword_JE2_BE2.png?b526d" class="ms-weapon-icon" alt="木劍"> <span id="msScore">0</span></span>
+          <span class="ms-score"><img src="https://zh.minecraft.wiki/images/Mace_JE1_BE1.png?3a7ae" class="ms-weapon-icon" alt="鎚子"> <span id="msScore">0</span></span>
           ${state.bestScore > 0 ? `<span class="ms-best">最高 ${state.bestScore}</span>` : ''}
         </div>
         <div class="ms-hud-center">
@@ -437,7 +449,7 @@ const MOB_SMASHER = (() => {
     if (grid) {
       grid.innerHTML = `
         <div class="ms-result">
-          <div class="ms-result-icon"><img src="https://zh.minecraft.wiki/images/Wooden_Sword_JE2_BE2.png?b526d" class="ms-result-sword" alt="木劍"></div>
+          <div class="ms-result-icon"><img src="https://zh.minecraft.wiki/images/Mace_JE1_BE1.png?3a7ae" class="ms-result-sword" alt="鎚子"></div>
           <div class="ms-result-score">${state.score} 分</div>
           <div class="ms-result-detail">
             消滅 ${state.mobsSmashed} 隻怪物 · 誤傷 ${state.friendliesHit} 隻動物
