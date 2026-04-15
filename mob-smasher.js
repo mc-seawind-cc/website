@@ -1,6 +1,6 @@
 // ═══ 打怪物 Mob Smasher — 重製版 ═══
 // sprites: assets/mobs/*.png (16×16 pixel art, scaled via CSS)
-// 來源: Minecraft Wiki (CC BY-NC-SA 3.0) — https://minecraft.wiki
+// 來源: mcwiki（CC BY-NC-SA 3.0）
 
 const MOB_SMASHER = (() => {
   'use strict';
@@ -141,7 +141,7 @@ const MOB_SMASHER = (() => {
         <span class="ms-legend-item"><span class="ms-dot neutral"></span>中立 -分</span>
         <span class="ms-legend-item"><span class="ms-dot special"></span>💀 爆炸!</span>
       </div>
-      <div class="ms-source">生物圖片來源：<a href="https://minecraft.wiki" target="_blank" rel="noopener">Minecraft Wiki</a>（CC BY-NC-SA 3.0）</div>
+      <div class="ms-source">生物圖片來源：<a href="https://minecraft.wiki" target="_blank" rel="noopener">mcwiki</a>（CC BY-NC-SA 3.0）</div>
     `;
 
     container.innerHTML = html;
