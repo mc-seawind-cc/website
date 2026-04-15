@@ -103,6 +103,7 @@ const MOB_SMASHER = (() => {
       score: 0,
       timeLeft: 30,
       hasTotem: false,
+      totemCount: 0,
       bestScore: parseInt(localStorage.getItem('sw-mobsmasher-best') || '0'),
       holes: Array(9).fill(null), // { mob, hp, maxHp, timeoutId, el }
       alive: true,
@@ -130,10 +131,10 @@ const MOB_SMASHER = (() => {
           ${state.bestScore > 0 ? `<span class="ms-best">最高 ${state.bestScore}</span>` : ''}
         </div>
         <div class="ms-hud-center">
-          <div class="ms-totem" id="msTotem" style="display:none" title="不死圖騰（抵擋一次致命傷害）"><img src="${SPRITE_PATH}totem.png" class="ms-item-sprite" alt="不死圖騰"></div>
+          <div class="ms-totem" id="msTotem" style="display:none" title="不死圖騰（抵擋致命傷害）"><img src="${SPRITE_PATH}totem.png" class="ms-item-sprite" alt="不死圖騰"><span class="ms-totem-count" id="msTotemCount"></span></div>
         </div>
         <div class="ms-hud-right">
-          <span class="ms-timer" id="msTimer">30</span>s
+          <span class="ms-timer" id="msTimer">30</span>秒
         </div>
       </div>
       <div class="ms-grid" id="msGrid">`;
@@ -292,9 +293,12 @@ const MOB_SMASHER = (() => {
 
       // Special abilities
       if (mob.special === 'totem') {
-        state.hasTotem = true;
-        showInfo('獲得不死圖騰！', '#a8e6cf');
-        updateTotem();
+        if (state.totemCount < 2) {
+          state.totemCount++;
+          state.hasTotem = true;
+          showInfo(`獲得不死圖騰！（${state.totemCount}/2）`, '#a8e6cf');
+          updateTotem();
+        }
       }
       if (mob.special === 'elder') {
         // Spawn guardians in adjacent holes
@@ -386,13 +390,19 @@ const MOB_SMASHER = (() => {
   }
 
   function useTotem() {
-    state.hasTotem = false;
+    state.totemCount--;
+    if (state.totemCount <= 0) {
+      state.totemCount = 0;
+      state.hasTotem = false;
+    }
     updateTotem();
   }
 
   function updateTotem() {
     const el = document.getElementById('msTotem');
-    if (el) el.style.display = state.hasTotem ? '' : 'none';
+    const countEl = document.getElementById('msTotemCount');
+    if (el) el.style.display = state.totemCount > 0 ? '' : 'none';
+    if (countEl) countEl.textContent = state.totemCount > 1 ? `×${state.totemCount}` : '';
   }
 
   function updateHUD() {
