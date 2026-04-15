@@ -24,12 +24,14 @@
     .sky{position:absolute;inset:0;background:linear-gradient(180deg,#071018 0%,#0c1f35 25%,#123050 50%,#1a4070 75%,#2a6090 100%);transition:background 8s}
     .sky.sunset{background:linear-gradient(180deg,#1a0a20 0%,#4a1535 15%,#b84030 30%,#e88040 45%,#f0b060 55%,#f0d080 65%,#80b0d0 80%,#3070a0 100%)}
     .sky.night{background:linear-gradient(180deg,#050810 0%,#0a1225 30%,#0e1c38 60%,#0c1a30 100%)}
+    .sky.daytime{background:linear-gradient(180deg,#4a90d9 0%,#6bb3f0 25%,#87ceeb 50%,#a8d8ea 75%,#c8e6f5 100%)}
     .sky.rainy{background:linear-gradient(180deg,#0a0e14 0%,#141c28 30%,#1a2636 60%,#1e2e42 100%)}
     .sky.snowy{background:linear-gradient(180deg,#1a1e28 0%,#2a3040 30%,#3a4256 60%,#4a5468 100%)}
 
     /* Stars */
     .star{position:absolute;background:#fff;border-radius:50%;opacity:0;transition:opacity 4s}
     .sky.night .star,.sky.snowy .star{opacity:0.6}
+    .sky.daytime .star{opacity:0}
 
     /* Sun / Moon */
     .celestial{position:absolute;width:60px;height:60px;border-radius:50%;transition:all 8s ease-in-out}
@@ -37,6 +39,8 @@
     .moon{background:radial-gradient(circle at 35% 35%,#fffce8,#e8e0c8,#c0b890);box-shadow:0 0 30px 10px rgba(220,210,180,0.12);top:12%;right:20%;opacity:0}
     .sky.night .sun,.sky.rainy .sun,.sky.snowy .sun{opacity:0;transform:translateY(40px)}
     .sky.night .moon{opacity:1}
+    .sky.daytime .sun{opacity:1;top:10%;right:15%}
+    .sky.daytime .moon{opacity:0}
 
     /* Clouds */
     .cloud{position:absolute;background:rgba(255,255,255,0.06);border-radius:100px;filter:blur(2px);transition:background 4s,filter 4s}
@@ -44,6 +48,7 @@
     .cloud.c2{width:140px;height:22px;top:25%;left:60%;animation:drift-cloud 55s linear infinite reverse}
     .cloud.c3{width:180px;height:26px;top:12%;left:35%;animation:drift-cloud 48s linear infinite 10s}
     .sky.rainy .cloud,.sky.snowy .cloud{background:rgba(200,210,220,0.15);filter:blur(1px)}
+    .sky.daytime .cloud{background:rgba(255,255,255,0.5);filter:blur(3px)}
     @keyframes drift-cloud{from{transform:translateX(-300px)}to{transform:translateX(calc(100vw + 300px))}}
 
     /* Horizon */
@@ -53,7 +58,9 @@
     .ocean{position:absolute;bottom:0;left:0;right:0;height:45%}
     .ocean-body{position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,26,46,0)0%,rgba(8,20,38,0.85)15%,rgba(6,16,32,0.95)40%,#060e1c 100%);transition:background 4s}
     .sky.snowy .ocean-body{background:linear-gradient(180deg,rgba(20,30,50,0)0%,rgba(30,42,60,0.85)15%,rgba(40,52,72,0.95)40%,#2a3648 100%)}
+    .sky.daytime .ocean-body{background:linear-gradient(180deg,rgba(30,80,140,0)0%,rgba(20,60,120,0.7)15%,rgba(15,45,90,0.9)40%,#0a2a50 100%)}
     .ocean-surface{position:absolute;top:0;left:0;right:0;height:40px;background:linear-gradient(180deg,rgba(100,160,220,0.08),transparent);pointer-events:none}
+    .sky.daytime .ocean-surface{background:linear-gradient(180deg,rgba(120,180,240,0.15),transparent)}
 
     /* Waves */
     .wave{position:absolute;left:0;width:200%;pointer-events:none;transition:opacity 3s}
@@ -101,6 +108,7 @@
     .sky.snowy .ship.boat{opacity:0}
     .sky.snowy .ship.icebreaker{opacity:1}
     .sky.night .ship,.sky.sunset .ship{opacity:0.7}
+    .sky.daytime .ship{opacity:0.9}
     @keyframes sail-boat{
       0%{left:-8%;transform:scaleX(1) translateY(0)}
       15%{transform:scaleX(1) translateY(-4px)}
@@ -559,68 +567,26 @@
 
     const SEA = ['🐙','🦑','🦐','🐡','🐠','🐟','🐬','🦀','🐚'];
 
-    // ═══ Weather System ═══
-    // States: sunset → night → rainy → snowy → sunset → ...
+    // ═══ Theme-based Sky ═══
     const sky = document.getElementById('sky');
     const weatherMsg = document.getElementById('weatherMsg');
-    const weatherLayer = document.getElementById('weatherLayer');
-    const weathers = ['sunset','night','rainy','snowy'];
-    const weatherLabels = {
-      sunset: '☀️ 晴空萬里，適合出海',
-      night: '🌙 月色如水，海面寧靜',
-      rainy: '🌧️ 狂風暴雨，注意航線',
-      snowy: '❄️ 瑞雪紛飛，破冰前行'
-    };
-    let weatherIdx = 0;
 
-    function setWeather(w) {
-      sky.className = 'sky ' + w;
-      weatherMsg.textContent = weatherLabels[w] || '';
-      spawnWeatherParticles(w);
-    }
-
-    function cycleWeather() {
-      weatherIdx = (weatherIdx + 1) % weathers.length;
-      setWeather(weathers[weatherIdx]);
-    }
-
-    // Init
-    setTimeout(() => {
-      sky.style.transition = 'background 6s';
-      setWeather('night');
-      setInterval(cycleWeather, 18000);
-    }, 3000);
-
-    // ═══ Weather Particles ═══
-    function spawnWeatherParticles(type) {
-      weatherLayer.innerHTML = '';
-      const isMobile = window.innerWidth < 768;
-      if (type === 'rainy') {
-        const count = isMobile ? 40 : 80;
-        for (let i = 0; i < count; i++) {
-          const d = document.createElement('div');
-          d.className = 'raindrop';
-          d.style.left = Math.random() * 100 + '%';
-          d.style.height = (12 + Math.random() * 16) + 'px';
-          d.style.animationDuration = (0.4 + Math.random() * 0.4) + 's';
-          d.style.animationDelay = (Math.random() * 2) + 's';
-          weatherLayer.appendChild(d);
-        }
-      } else if (type === 'snowy') {
-        const count = isMobile ? 25 : 50;
-        for (let i = 0; i < count; i++) {
-          const f = document.createElement('div');
-          f.className = 'snowflake';
-          const size = 2 + Math.random() * 4;
-          f.style.width = size + 'px';
-          f.style.height = size + 'px';
-          f.style.left = Math.random() * 100 + '%';
-          f.style.animationDuration = (4 + Math.random() * 6) + 's';
-          f.style.animationDelay = (Math.random() * 5) + 's';
-          weatherLayer.appendChild(f);
-        }
+    function setSkyForTheme() {
+      const theme = document.documentElement.getAttribute('data-theme') || 'dark';
+      if (theme === 'light') {
+        sky.style.transition = 'background 3s';
+        sky.className = 'sky daytime';
+        weatherMsg.textContent = '☀️ 晴空萬里，適合出海';
+      } else {
+        sky.style.transition = 'background 3s';
+        sky.className = 'sky night';
+        weatherMsg.textContent = '🌙 月色如水，海面寧靜';
       }
     }
+
+    // Init + listen for theme changes
+    setSkyForTheme();
+    new MutationObserver(setSkyForTheme).observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
 
     // ═══ Stars ═══
     const skyEl = document.getElementById('sky');
