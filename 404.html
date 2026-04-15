@@ -377,6 +377,36 @@
     .ench-wrong{background:rgba(255,80,80,0.15) !important;border-color:rgba(255,80,80,0.3) !important;color:#ff8282 !important}
     .ench-msg{font-size:0.85rem;font-weight:600;margin-top:12px;min-height:1.2em}
 
+    /* ═══ 村民交易 ═══ */
+    .trade-scene{text-align:center;padding:10px 0}
+    .trade-villager{margin-bottom:10px}
+    .trade-villager-emoji{font-size:3rem;display:block;margin-bottom:4px}
+    .trade-villager-name{font-size:0.9rem;font-weight:700;color:rgba(255,255,255,0.85)}
+    .trade-villager-mood{font-size:0.75rem;color:rgba(255,255,255,0.4);display:block;margin-top:2px}
+    .trade-item{margin-bottom:10px}
+    .trade-item-emoji{font-size:2rem;display:block;margin-bottom:2px}
+    .trade-item-name{font-size:0.95rem;font-weight:600;color:rgba(255,255,255,0.8)}
+    .trade-ask{font-size:0.85rem;color:rgba(255,255,255,0.5);margin-bottom:14px}
+    .trade-ask-price{font-weight:800;color:#ffaa32;font-size:1.1rem}
+    .trade-actions{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+    .trade-btn{padding:10px;border-radius:10px;background:rgba(157,175,255,0.06);border:1px solid rgba(157,175,255,0.1);color:rgba(255,255,255,0.55);font-size:0.8rem;cursor:pointer;font-family:inherit;transition:all 0.2s}
+    .trade-btn:hover:not(:disabled){background:rgba(157,175,255,0.12);color:rgba(255,255,255,0.8);transform:translateY(-1px)}
+    .trade-btn:disabled{opacity:0.3;cursor:default}
+    .trade-accept{border-color:rgba(168,230,207,0.2);color:rgba(168,230,207,0.7)}
+    .trade-accept:hover:not(:disabled){background:rgba(168,230,207,0.1)}
+    .trade-steal{border-color:rgba(171,114,249,0.2);color:rgba(171,114,249,0.7)}
+    .trade-steal:hover:not(:disabled){background:rgba(171,114,249,0.1)}
+    .trade-msg{font-size:0.85rem;font-weight:600;margin-top:12px;min-height:1.2em}
+
+    /* ═══ 唱片收集 ═══ */
+    .rec-wrap{display:flex;justify-content:center}
+    #recCanvas{display:block;border-radius:10px;border:1px solid rgba(157,175,255,0.12);max-width:100%}
+    .rec-keys{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;max-width:240px;margin:8px auto 0}
+    .rec-key{padding:12px 0;border-radius:10px;background:rgba(157,175,255,0.06);border:1px solid rgba(157,175,255,0.1);color:rgba(255,255,255,0.4);font-size:1.2rem;cursor:pointer;font-family:inherit;transition:all 0.1s;user-select:none;-webkit-user-select:none}
+    .rec-key:hover{background:rgba(157,175,255,0.12)}
+    .rec-key:active,.rec-key-hit{background:rgba(168,230,207,0.2);border-color:rgba(168,230,207,0.4);color:#a8e6cf;transform:scale(0.95)}
+    .rec-hint{text-align:center;font-size:0.62rem;color:rgba(255,255,255,0.18);margin-top:6px}
+
     /* Game HUD */
     .game-hud{display:flex;justify-content:space-between;align-items:center;padding:8px 0;margin-bottom:12px;font-size:0.78rem;color:rgba(255,255,255,0.4)}
     .game-hud-val{color:#a8e6cf;font-weight:700;font-variant-numeric:tabular-nums}
@@ -612,6 +642,8 @@
       <button class="game-tab" onclick="openGame('crafting')">🔨 合成</button>
       <button class="game-tab" onclick="openGame('fishing')">🎣 釣魚</button>
       <button class="game-tab" onclick="openGame('enchanting')">✨ 附魔</button>
+      <button class="game-tab" onclick="openGame('trading')">🤝 交易</button>
+      <button class="game-tab" onclick="openGame('records')">💿 唱片</button>
     </div>
   </div>
 
@@ -930,7 +962,7 @@
 
     window.openGame = (type) => {
       currentGame = type;
-      const labelMap = {mcti:'MCTI',mole:'打怪物',crafting:'合成',fishing:'釣魚',enchanting:'附魔'};
+      const labelMap = {mcti:'MCTI',mole:'打怪物',crafting:'合成',fishing:'釣魚',enchanting:'附魔',trading:'交易',records:'唱片'};
       document.querySelectorAll('.game-tab').forEach(t => t.classList.toggle('active', t.textContent.includes(labelMap[type]||'')));
       if (type === 'mcti') { initMCTI(); renderMCTI(); }
       else if (type === 'mole') MOB_SMASHER.open(overlayBox);

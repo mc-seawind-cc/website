@@ -421,5 +421,415 @@ const GAMES_404 = (() => {
     render();
   }
 
-  return { crafting, fishing, enchanting };
+  // ═══════════════════════════════════════
+  //  4. 村民交易 (Villager Trading)
+  // ═══════════════════════════════════════
+  function trading(overlayBox) {
+    const ITEMS = [
+      { name: '鑽石劍', emoji: '💎', rarity: 5, value: 24 },
+      { name: '附魔金蘋果', emoji: '🍎', rarity: 5, value: 20 },
+      { name: '終界珍珠', emoji: '🔮', rarity: 4, value: 16 },
+      { name: '地圖', emoji: '🗺️', rarity: 3, value: 12 },
+      { name: '鞍', emoji: '🐴', rarity: 4, value: 14 },
+      { name: '不死圖騰', emoji: '🏆', rarity: 5, value: 22 },
+      { name: '三叉戟', emoji: '🔱', rarity: 4, value: 18 },
+      { name: '鞘翅', emoji: '🪶', rarity: 5, value: 26 },
+      { name: '唱片 13', emoji: '💿', rarity: 3, value: 10 },
+      { name: '望遠鏡', emoji: '🔭', rarity: 2, value: 8 },
+      { name: '指南針', emoji: '🧭', rarity: 2, value: 6 },
+      { name: '鐵錠×4', emoji: '🪨', rarity: 1, value: 4 },
+      { name: '麵包×3', emoji: '🍞', rarity: 1, value: 2 },
+      { name: '皮革', emoji: '🟫', rarity: 1, value: 3 },
+      { name: '書', emoji: '📖', rarity: 2, value: 5 },
+    ];
+
+    const VILLAGERS = [
+      { name: '老村民', emoji: '👴', mood: '脾氣不好，不太想賣', markup: 1.6 },
+      { name: '胖村民', emoji: '🧑‍🍳', mood: '今天心情不錯！', markup: 1.1 },
+      { name: '精明商人', emoji: '🤑', mood: '嘿嘿，你撿不到便宜', markup: 1.8 },
+      { name: '懶散村民', emoji: '😴', mood: '隨便啦，差不多就好', markup: 1.0 },
+      { name: '小氣村民', emoji: '😤', mood: '這可是好東西！', markup: 1.5 },
+      { name: '友善村民', emoji: '😊', mood: '來看看有沒有喜歡的', markup: 1.2 },
+    ];
+
+    let budget = 32, score = 0, round = 0, maxRounds = 5;
+    let bought = [];
+
+    function pickDeal() {
+      const item = ITEMS[Math.floor(Math.random() * ITEMS.length)];
+      const villager = VILLAGERS[Math.floor(Math.random() * VILLAGERS.length)];
+      const askPrice = Math.ceil(item.value * villager.markup);
+      const fairPrice = item.value;
+      const stealPrice = Math.max(1, Math.ceil(item.value * 0.6));
+      return { item, villager, askPrice, fairPrice, stealPrice };
+    }
+
+    function render() {
+      if (budget <= 0 || round >= maxRounds) { endGame(); return; }
+      const deal = pickDeal();
+      round++;
+
+      let html = `<div class="overlay-header"><span class="overlay-title">🤝 村民交易</span><button class="overlay-close" onclick="closeOverlay()">✕</button></div>`;
+      html += `<div class="game-hud"><span>🤝 第 ${round}/${maxRounds} 輪</span><span>💰 翡翠 <span class="game-hud-val" id="tradeBudget">${budget}</span></span><span>💎 <span class="game-hud-val" id="tradeScore">${score}</span></span></div>`;
+      html += `<div class="trade-scene">`;
+      html += `<div class="trade-villager"><span class="trade-villager-emoji">${deal.villager.emoji}</span><span class="trade-villager-name">${deal.villager.name}</span><span class="trade-villager-mood">${deal.villager.mood}</span></div>`;
+      html += `<div class="trade-item"><span class="trade-item-emoji">${deal.item.emoji}</span><span class="trade-item-name">${deal.item.name}</span></div>`;
+      html += `<div class="trade-ask">喊價：<span class="trade-ask-price">${deal.askPrice} 💎</span></div>`;
+      html += `<div class="trade-actions">`;
+
+      // Player can offer different prices
+      const options = [
+        { label: `出 ${deal.askPrice} 💎（接受）`, val: deal.askPrice, type: 'accept' },
+        { label: `殺價 ${deal.fairPrice} 💎`, val: deal.fairPrice, type: 'haggle' },
+        { label: `硬拗 ${deal.stealPrice} 💎`, val: deal.stealPrice, type: 'steal' },
+        { label: '跳過', val: 0, type: 'skip' },
+      ];
+
+      options.forEach(opt => {
+        const disabled = opt.val > budget ? ' disabled' : '';
+        html += `<button class="trade-btn${opt.type === 'accept' ? ' trade-accept' : opt.type === 'steal' ? ' trade-steal' : ''}" data-val="${opt.val}" data-type="${opt.type}"${disabled}>${opt.label}</button>`;
+      });
+
+      html += `</div>`;
+      html += `<div class="trade-msg" id="tradeMsg"></div>`;
+      html += `</div>`;
+
+      if (bought.length) {
+        html += `<div class="fish-history">`;
+        bought.forEach(b => { html += `<span class="fish-caught" title="${b.name}">${b.emoji}</span>`; });
+        html += `</div>`;
+      }
+
+      overlayBox.innerHTML = html;
+
+      overlayBox.querySelectorAll('.trade-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const val = parseInt(btn.dataset.val);
+          const type = btn.dataset.type;
+          overlayBox.querySelectorAll('.trade-btn').forEach(b => b.disabled = true);
+
+          if (type === 'skip') {
+            showMsg('跳過了...', '#8b949e');
+          } else if (type === 'accept') {
+            budget -= val;
+            score += deal.item.value;
+            bought.push(deal.item);
+            showMsg(`成交！花 ${val} 💎 買到 ${deal.item.emoji} ${deal.item.name}`, '#a8e6cf');
+          } else if (type === 'haggle') {
+            // 60% chance to accept haggle
+            if (Math.random() < 0.6) {
+              budget -= val;
+              score += deal.item.value;
+              bought.push(deal.item);
+              showMsg(`村民接受了！${val} 💎 成交！`, '#a8e6cf');
+            } else {
+              showMsg('村民搖頭拒絕了你的殺價...', '#ffaa32');
+            }
+          } else if (type === 'steal') {
+            // 25% chance to accept steal
+            if (Math.random() < 0.25) {
+              budget -= val;
+              score += deal.item.value;
+              bought.push(deal.item);
+              showMsg(`居然答應了？！${val} 💎 就買到！`, '#ab72f9');
+            } else {
+              showMsg('村民生氣地轉身走了！😤', '#ff8282');
+            }
+          }
+
+          updateBudget();
+          setTimeout(render, 1300);
+        });
+      });
+    }
+
+    function updateBudget() {
+      const el = document.getElementById('tradeBudget');
+      if (el) el.textContent = budget;
+      const scoreEl = document.getElementById('tradeScore');
+      if (scoreEl) scoreEl.textContent = score;
+    }
+
+    function showMsg(text, color) {
+      const el = document.getElementById('tradeMsg');
+      if (el) { el.textContent = text; el.style.color = color; }
+    }
+
+    function endGame() {
+      const label = score >= 60 ? '商業大亨！💰' : score >= 35 ? '精明買家' : score >= 15 ? '普通交易' : '被坑了不少...';
+      overlayBox.innerHTML = `
+        <div class="overlay-header"><span class="overlay-title">🤝 村民交易</span><button class="overlay-close" onclick="closeOverlay()">✕</button></div>
+        <div class="game-result">
+          <div class="game-result-emoji">🤝</div>
+          <div class="game-result-val">${score} 分</div>
+          <div class="game-result-text">買了 ${bought.length} 件 · 剩餘 ${budget} 💎</div>
+          <div class="game-result-label">${label}</div>
+          <div class="game-result-btns"><button class="btn btn-main" onclick="GAMES_404.trading(document.getElementById('overlayBox'))">🔄 再來</button><button class="btn btn-sub" onclick="closeOverlay()">關閉</button></div>
+        </div>`;
+    }
+
+    budget = 32; score = 0; round = 0; bought = [];
+    render();
+  }
+
+
+  // ═══════════════════════════════════════
+  //  5. 唱片收集 (Record Collector — Rhythm)
+  // ═══════════════════════════════════════
+  function records(overlayBox) {
+    const LANES = 4;
+    const LANE_LABELS = ['💎', '🎵', '🎶', '📀'];
+    const GAME_SEC = 30;
+    const BPM = 120;
+    const BEAT_MS = 60000 / BPM;
+    const NOTE_SPEED = 3; // px per frame
+
+    let canvas, ctx, score = 0, combo = 0, maxCombo = 0, misses = 0;
+    let notes = [], particles = [];
+    let gameOver = false, startTime = 0, animId = null;
+    let hitLineY, canvasH = 320, canvasW = 240;
+    let spawnTimer = null;
+
+    function init() {
+      let html = `<div class="overlay-header"><span class="overlay-title">💿 唱片收集</span><button class="overlay-close" onclick="closeOverlay()">✕</button></div>`;
+      html += `<div class="game-hud"><span>⏱ <span class="game-hud-val" id="recTime">${GAME_SEC}</span>秒</span><span>🔥 <span class="game-hud-val" id="recCombo">0</span></span><span>💎 <span class="game-hud-val" id="recScore">0</span></span></div>`;
+      html += `<div class="rec-wrap"><canvas id="recCanvas" width="${canvasW}" height="${canvasH}"></canvas></div>`;
+      html += `<div class="rec-keys">`;
+      for (let i = 0; i < LANES; i++) {
+        html += `<button class="rec-key" data-lane="${i}" id="recKey${i}">${LANE_LABELS[i]}</button>`;
+      }
+      html += `</div>`;
+      html += `<div class="rec-hint">在音符到達底線時按下對應按鈕！D F J K 也可</div>`;
+      overlayBox.innerHTML = html;
+
+      canvas = document.getElementById('recCanvas');
+      ctx = canvas.getContext('2d');
+      hitLineY = canvasH - 50;
+
+      // Bind key buttons
+      overlayBox.querySelectorAll('.rec-key').forEach(btn => {
+        btn.addEventListener('click', () => hitLane(parseInt(btn.dataset.lane)));
+      });
+
+      // Keyboard controls
+      const keyMap = { 'KeyD': 0, 'KeyF': 1, 'KeyJ': 2, 'KeyK': 3 };
+      const keyHandler = (e) => {
+        if (gameOver) { document.removeEventListener('keydown', keyHandler); return; }
+        if (keyMap[e.code] !== undefined) { e.preventDefault(); hitLane(keyMap[e.code]); }
+      };
+      document.addEventListener('keydown', keyHandler);
+
+      startTime = Date.now();
+      gameOver = false;
+
+      // Spawn notes rhythmically
+      function scheduleNote() {
+        if (gameOver) return;
+        const elapsed = (Date.now() - startTime) / 1000;
+        if (elapsed >= GAME_SEC) { endGame(); return; }
+
+        const lane = Math.floor(Math.random() * LANES);
+        notes.push({ lane, y: -20, hit: false, missed: false });
+
+        // Sometimes spawn double
+        if (Math.random() < 0.2 && elapsed > 5) {
+          let lane2 = (lane + 1 + Math.floor(Math.random() * (LANES - 1))) % LANES;
+          notes.push({ lane: lane2, y: -20, hit: false, missed: false });
+        }
+
+        // Speed up over time
+        const speed = Math.max(0.4, BEAT_MS - elapsed * 8);
+        spawnTimer = setTimeout(scheduleNote, speed);
+      }
+
+      scheduleNote();
+      loop();
+    }
+
+    function loop() {
+      if (gameOver) { cancelAnimationFrame(animId); return; }
+      update();
+      draw();
+      animId = requestAnimationFrame(loop);
+    }
+
+    function update() {
+      const elapsed = (Date.now() - startTime) / 1000;
+      const timeLeft = Math.max(0, GAME_SEC - elapsed);
+      const timeEl = document.getElementById('recTime');
+      if (timeEl) timeEl.textContent = Math.ceil(timeLeft);
+      if (timeLeft <= 0) { endGame(); return; }
+
+      // Move notes
+      const speed = NOTE_SPEED + elapsed * 0.03;
+      notes.forEach(n => {
+        if (!n.hit) n.y += speed;
+        // Missed
+        if (!n.hit && !n.missed && n.y > hitLineY + 30) {
+          n.missed = true;
+          misses++;
+          combo = 0;
+          updateHUD();
+        }
+      });
+
+      // Cleanup
+      notes = notes.filter(n => n.y < canvasH + 20 && (!n.hit || n.hitAnim > 0));
+      notes.forEach(n => { if (n.hit) n.hitAnim--; });
+
+      // Particles
+      particles.forEach(p => { p.x += p.vx; p.y += p.vy; p.life--; p.vy += 0.1; });
+      particles = particles.filter(p => p.life > 0);
+    }
+
+    function hitLane(lane) {
+      // Flash the key
+      const keyEl = document.getElementById(`recKey${lane}`);
+      if (keyEl) { keyEl.classList.add('rec-key-hit'); setTimeout(() => keyEl.classList.remove('rec-key-hit'), 150); }
+
+      // Find closest unhit note in this lane near hit line
+      let closest = null, closestDist = Infinity;
+      notes.forEach(n => {
+        if (n.lane === lane && !n.hit && !n.missed) {
+          const dist = Math.abs(n.y - hitLineY);
+          if (dist < closestDist) { closestDist = dist; closest = n; }
+        }
+      });
+
+      if (closest && closestDist < 40) {
+        closest.hit = true;
+        closest.hitAnim = 10;
+        combo++;
+        maxCombo = Math.max(maxCombo, combo);
+
+        let pts = 1;
+        if (closestDist < 10) pts = 3; // Perfect
+        else if (closestDist < 20) pts = 2; // Great
+        score += pts + Math.floor(combo / 5);
+
+        // Particles
+        const laneX = getLaneX(lane);
+        for (let i = 0; i < 6; i++) {
+          particles.push({
+            x: laneX, y: hitLineY,
+            vx: (Math.random() - 0.5) * 5, vy: -Math.random() * 4 - 1,
+            life: 15, color: pts === 3 ? '#a8e6cf' : pts === 2 ? '#9dafff' : '#deac80'
+          });
+        }
+        updateHUD();
+      }
+    }
+
+    function getLaneX(lane) {
+      const laneW = canvasW / LANES;
+      return lane * laneW + laneW / 2;
+    }
+
+    function updateHUD() {
+      const scoreEl = document.getElementById('recScore');
+      const comboEl = document.getElementById('recCombo');
+      if (scoreEl) scoreEl.textContent = score;
+      if (comboEl) {
+        comboEl.textContent = combo;
+        comboEl.style.color = combo >= 10 ? '#ab72f9' : combo >= 5 ? '#a8e6cf' : '';
+      }
+    }
+
+    function draw() {
+      ctx.clearRect(0, 0, canvasW, canvasH);
+
+      // Background
+      ctx.fillStyle = '#0a0e1c';
+      ctx.fillRect(0, 0, canvasW, canvasH);
+
+      // Lane dividers
+      const laneW = canvasW / LANES;
+      ctx.strokeStyle = 'rgba(157,175,255,0.06)';
+      ctx.lineWidth = 1;
+      for (let i = 1; i < LANES; i++) {
+        ctx.beginPath();
+        ctx.moveTo(i * laneW, 0);
+        ctx.lineTo(i * laneW, canvasH);
+        ctx.stroke();
+      }
+
+      // Hit line
+      ctx.strokeStyle = 'rgba(157,175,255,0.3)';
+      ctx.lineWidth = 2;
+      ctx.beginPath();
+      ctx.moveTo(0, hitLineY);
+      ctx.lineTo(canvasW, hitLineY);
+      ctx.stroke();
+
+      // Hit zone glow
+      ctx.fillStyle = 'rgba(157,175,255,0.03)';
+      ctx.fillRect(0, hitLineY - 20, canvasW, 40);
+
+      // Lane labels at bottom
+      ctx.font = '16px serif';
+      ctx.textAlign = 'center';
+      for (let i = 0; i < LANES; i++) {
+        ctx.fillStyle = 'rgba(255,255,255,0.15)';
+        ctx.fillText(LANE_LABELS[i], getLaneX(i), canvasH - 12);
+      }
+
+      // Notes
+      notes.forEach(n => {
+        const x = getLaneX(n.lane);
+        if (n.hit) {
+          ctx.globalAlpha = n.hitAnim / 10;
+          ctx.font = '20px serif';
+          ctx.fillText('✨', x, n.y);
+          ctx.globalAlpha = 1;
+        } else if (n.missed) {
+          ctx.globalAlpha = 0.3;
+          ctx.font = '18px serif';
+          ctx.fillText('💿', x, n.y);
+          ctx.globalAlpha = 1;
+        } else {
+          // Note glow
+          const dist = Math.abs(n.y - hitLineY);
+          if (dist < 30) {
+            ctx.fillStyle = 'rgba(168,230,207,0.1)';
+            ctx.beginPath();
+            ctx.arc(x, n.y, 16, 0, Math.PI * 2);
+            ctx.fill();
+          }
+          ctx.font = '20px serif';
+          ctx.fillText('💿', x, n.y);
+        }
+      });
+
+      // Particles
+      particles.forEach(p => {
+        ctx.globalAlpha = p.life / 15;
+        ctx.fillStyle = p.color;
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, 2, 0, Math.PI * 2);
+        ctx.fill();
+      });
+      ctx.globalAlpha = 1;
+    }
+
+    function endGame() {
+      gameOver = true;
+      clearTimeout(spawnTimer);
+      cancelAnimationFrame(animId);
+      const label = score >= 80 ? '音樂大師！🎵' : score >= 50 ? '節奏高手' : score >= 25 ? '普通玩家' : '再多練練！';
+      overlayBox.innerHTML = `
+        <div class="overlay-header"><span class="overlay-title">💿 唱片收集</span><button class="overlay-close" onclick="closeOverlay()">✕</button></div>
+        <div class="game-result">
+          <div class="game-result-emoji">💿</div>
+          <div class="game-result-val">${score} 分</div>
+          <div class="game-result-text">最高連續 ${maxCombo} · 失誤 ${misses} 次</div>
+          <div class="game-result-label">${label}</div>
+          <div class="game-result-btns"><button class="btn btn-main" onclick="GAMES_404.records(document.getElementById('overlayBox'))">🔄 再來</button><button class="btn btn-sub" onclick="closeOverlay()">關閉</button></div>
+        </div>`;
+    }
+
+    score = 0; combo = 0; maxCombo = 0; misses = 0; notes = []; particles = [];
+    init();
+  }
+
+  return { crafting, fishing, enchanting, trading, records };
 })();
