@@ -23,41 +23,109 @@
     .sky{position:absolute;inset:0;background:linear-gradient(180deg,#071018 0%,#0c1f35 25%,#123050 50%,#1a4070 75%,#2a6090 100%);transition:background 8s}
     .sky.sunset{background:linear-gradient(180deg,#1a0a20 0%,#4a1535 15%,#b84030 30%,#e88040 45%,#f0b060 55%,#f0d080 65%,#80b0d0 80%,#3070a0 100%)}
     .sky.night{background:linear-gradient(180deg,#050810 0%,#0a1225 30%,#0e1c38 60%,#0c1a30 100%)}
+    .sky.rainy{background:linear-gradient(180deg,#0a0e14 0%,#141c28 30%,#1a2636 60%,#1e2e42 100%)}
+    .sky.snowy{background:linear-gradient(180deg,#1a1e28 0%,#2a3040 30%,#3a4256 60%,#4a5468 100%)}
 
-    /* Stars (only visible at night) */
+    /* Stars */
     .star{position:absolute;background:#fff;border-radius:50%;opacity:0;transition:opacity 4s}
-    .sky.night .star{opacity:1}
+    .sky.night .star,.sky.snowy .star{opacity:0.6}
 
     /* Sun / Moon */
     .celestial{position:absolute;width:60px;height:60px;border-radius:50%;transition:all 8s ease-in-out}
     .sun{background:radial-gradient(circle at 35% 35%,#fff8e0,#f0c848,#e09020);box-shadow:0 0 40px 12px rgba(240,180,60,0.2),0 0 100px 40px rgba(240,180,60,0.06);top:15%;right:22%}
     .moon{background:radial-gradient(circle at 35% 35%,#fffce8,#e8e0c8,#c0b890);box-shadow:0 0 30px 10px rgba(220,210,180,0.12);top:12%;right:20%;opacity:0}
-    .sky.night .sun{opacity:0;transform:translateY(40px)}
+    .sky.night .sun,.sky.rainy .sun,.sky.snowy .sun{opacity:0;transform:translateY(40px)}
     .sky.night .moon{opacity:1}
 
     /* Clouds */
-    .cloud{position:absolute;background:rgba(255,255,255,0.06);border-radius:100px;filter:blur(2px)}
+    .cloud{position:absolute;background:rgba(255,255,255,0.06);border-radius:100px;filter:blur(2px);transition:background 4s,filter 4s}
     .cloud.c1{width:200px;height:30px;top:18%;left:10%;animation:drift-cloud 40s linear infinite}
     .cloud.c2{width:140px;height:22px;top:25%;left:60%;animation:drift-cloud 55s linear infinite reverse}
     .cloud.c3{width:180px;height:26px;top:12%;left:35%;animation:drift-cloud 48s linear infinite 10s}
+    .sky.rainy .cloud,.sky.snowy .cloud{background:rgba(200,210,220,0.15);filter:blur(1px)}
     @keyframes drift-cloud{from{transform:translateX(-300px)}to{transform:translateX(calc(100vw + 300px))}}
 
-    /* Horizon glow */
+    /* Horizon */
     .horizon{position:absolute;bottom:42%;left:0;right:0;height:60px;background:linear-gradient(180deg,transparent,rgba(100,160,220,0.06),transparent);pointer-events:none}
 
     /* ═══ Ocean ═══ */
     .ocean{position:absolute;bottom:0;left:0;right:0;height:45%}
-    .ocean-body{position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,26,46,0)0%,rgba(8,20,38,0.85)15%,rgba(6,16,32,0.95)40%,#060e1c 100%)}
+    .ocean-body{position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,26,46,0)0%,rgba(8,20,38,0.85)15%,rgba(6,16,32,0.95)40%,#060e1c 100%);transition:background 4s}
+    .sky.snowy .ocean-body{background:linear-gradient(180deg,rgba(20,30,50,0)0%,rgba(30,42,60,0.85)15%,rgba(40,52,72,0.95)40%,#2a3648 100%)}
     .ocean-surface{position:absolute;top:0;left:0;right:0;height:40px;background:linear-gradient(180deg,rgba(100,160,220,0.08),transparent);pointer-events:none}
 
     /* Waves */
-    .wave{position:absolute;left:0;width:200%;pointer-events:none}
+    .wave{position:absolute;left:0;width:200%;pointer-events:none;transition:opacity 3s}
     .wave svg{width:100%;height:100%;display:block}
     .w1{top:0;height:50px;animation:wave-move 8s linear infinite}
     .w2{top:6px;height:60px;animation:wave-move 11s linear infinite reverse;opacity:0.7}
     .w3{top:14px;height:70px;animation:wave-move 6s linear infinite;opacity:0.5}
     .w4{top:24px;height:80px;animation:wave-move 14s linear infinite reverse;opacity:0.3}
+    .sky.rainy .w1{animation-duration:5s}
+    .sky.rainy .w2{animation-duration:7s}
+    .sky.snowy .wave{opacity:0.4}
     @keyframes wave-move{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+    /* Ice overlay for snowy */
+    .ice-overlay{position:absolute;bottom:43%;left:0;right:0;height:6px;background:linear-gradient(180deg,rgba(180,210,240,0.3),rgba(200,225,245,0.15),transparent);opacity:0;transition:opacity 4s;pointer-events:none;z-index:6}
+    .sky.snowy .ice-overlay{opacity:1}
+
+    /* ═══ Weather Particles ═══ */
+    .weather-layer{position:absolute;inset:0;pointer-events:none;z-index:8;overflow:hidden}
+    .raindrop{position:absolute;width:1.5px;background:linear-gradient(to bottom,transparent,rgba(174,194,224,0.5));border-radius:0 0 1px 1px;animation:rain-fall linear infinite;opacity:0}
+    .sky.rainy .raindrop{opacity:1}
+    @keyframes rain-fall{
+      0%{transform:translateY(-20px) rotate(15deg);opacity:0}
+      10%{opacity:0.7}
+      90%{opacity:0.5}
+      100%{transform:translateY(100vh) rotate(15deg);opacity:0}
+    }
+    .snowflake{position:absolute;background:radial-gradient(circle,rgba(255,255,255,0.9),rgba(220,230,245,0.5));border-radius:50%;animation:snow-fall linear infinite;opacity:0}
+    .sky.snowy .snowflake{opacity:1}
+    @keyframes snow-fall{
+      0%{transform:translateY(-10px) translateX(0);opacity:0}
+      10%{opacity:0.8}
+      50%{transform:translateY(50vh) translateX(20px)}
+      90%{opacity:0.6}
+      100%{transform:translateY(100vh) translateX(-10px);opacity:0}
+    }
+
+    /* ═══ Ships ═══ */
+    .ship{position:absolute;z-index:7;transition:all 2s ease;filter:drop-shadow(0 4px 12px rgba(0,0,0,0.4))}
+    .ship.boat{font-size:2.8rem;animation:sail-boat 20s ease-in-out infinite;bottom:40%}
+    .ship.icebreaker{font-size:3rem;animation:sail-ice 25s ease-in-out infinite;bottom:41%;opacity:0}
+    .sky.rainy .ship.boat{opacity:1}
+    .sky.rainy .ship.icebreaker{opacity:0}
+    .sky.snowy .ship.boat{opacity:0}
+    .sky.snowy .ship.icebreaker{opacity:1}
+    .sky.night .ship,.sky.sunset .ship{opacity:0.7}
+    @keyframes sail-boat{
+      0%{left:-8%;transform:scaleX(1) translateY(0)}
+      15%{transform:scaleX(1) translateY(-4px)}
+      30%{transform:scaleX(1) translateY(2px)}
+      50%{left:50%;transform:scaleX(1) translateY(-3px)}
+      65%{transform:scaleX(1) translateY(1px)}
+      80%{transform:scaleX(1) translateY(-5px)}
+      100%{left:108%;transform:scaleX(1) translateY(0)}
+    }
+    @keyframes sail-ice{
+      0%{left:-10%;transform:scaleX(1) translateY(0)}
+      20%{transform:scaleX(1) translateY(-3px)}
+      40%{transform:scaleX(1) translateY(1px)}
+      60%{left:55%;transform:scaleX(1) translateY(-2px)}
+      80%{transform:scaleX(1) translateY(2px)}
+      100%{left:110%;transform:scaleX(1) translateY(0)}
+    }
+
+    /* Ship wake */
+    .ship-wake{position:absolute;bottom:0;left:0;right:0;height:45%;pointer-events:none;z-index:6;overflow:hidden}
+    .wake-line{position:absolute;height:1px;background:rgba(255,255,255,0.04);animation:wake-spread 3s ease-out infinite;opacity:0}
+    .sky.rainy .wake-line,.sky.snowy .wake-line{opacity:1}
+    @keyframes wake-spread{
+      0%{width:0;opacity:0.15}
+      50%{opacity:0.08}
+      100%{width:200px;opacity:0}
+    }
 
     /* ═══ Floating Trash ═══ */
     .trash{position:absolute;font-size:1.4rem;pointer-events:cursor;z-index:5;filter:drop-shadow(0 2px 6px rgba(0,0,0,0.3));user-select:none;transition:transform 0.3s,opacity 0.5s}
@@ -80,7 +148,6 @@
     .creature{position:absolute;z-index:4;filter:drop-shadow(0 2px 8px rgba(0,0,0,0.3))}
     .creature.turtle{font-size:2rem;animation:swim-turtle 18s ease-in-out infinite}
     .creature.fish{font-size:1.2rem;animation:swim-fish 12s linear infinite}
-    .creature.whale{font-size:3rem;bottom:15%;left:-10%;animation:swim-whale 30s linear infinite}
     @keyframes swim-turtle{
       0%{bottom:28%;left:10%;transform:scaleX(1)}
       40%{bottom:32%;left:70%;transform:scaleX(1)}
@@ -94,30 +161,15 @@
       50.1%{bottom:22%;left:105%;transform:scaleX(-1)}
       100%{bottom:18%;left:-5%;transform:scaleX(-1)}
     }
-    @keyframes swim-whale{
-      0%{left:-15%;transform:scaleX(1)}
-      100%{left:110%;transform:scaleX(1)}
-    }
 
-    /* ═══ Cat on waves ═══ */
-    .cat-float{
-      position:absolute;
-      z-index:5;
-      bottom:38%;
-      left:50%;
-      transform:translateX(-50%);
-      animation:cat-bob 3s ease-in-out infinite;
-      pointer-events:none;
-      filter:drop-shadow(0 4px 12px rgba(0,0,0,0.4));
-    }
+    /* Cat on waves */
+    .cat-float{position:absolute;z-index:5;bottom:38%;left:50%;transform:translateX(-50%);animation:cat-bob 3s ease-in-out infinite;pointer-events:none;filter:drop-shadow(0 4px 12px rgba(0,0,0,0.4))}
     @keyframes cat-bob{
       0%,100%{transform:translateX(-50%) translateY(0) rotate(0deg)}
       25%{transform:translateX(-50%) translateY(-6px) rotate(1.5deg)}
       50%{transform:translateX(-50%) translateY(2px) rotate(-0.5deg)}
       75%{transform:translateX(-50%) translateY(-3px) rotate(1deg)}
     }
-    .cat-float svg{display:block}
-    /* Cat eyes subtle glow */
     .cat-glow{filter:drop-shadow(0 0 3px rgba(94,234,212,0.5))}
 
     /* Bubbles */
@@ -129,117 +181,139 @@
     }
 
     /* ═══ Content ═══ */
-    .content{position:absolute;top:22%;left:50%;transform:translateX(-50%);z-index:10;text-align:center;width:90%;max-width:520px}
-    .code{font-family:'Noto Serif TC',serif;font-size:clamp(5rem,16vw,10rem);font-weight:700;line-height:1;letter-spacing:0.06em;background:linear-gradient(180deg,rgba(255,255,255,0.85)0%,rgba(100,180,240,0.4)100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:0.5rem}
-    .title{font-size:clamp(1rem,2.2vw,1.4rem);font-weight:600;color:rgba(255,255,255,0.8);letter-spacing:0.15em;margin-bottom:0.4rem}
-    .desc{font-size:clamp(0.8rem,1.2vw,0.9rem);color:rgba(255,255,255,0.35);line-height:2;max-width:340px;margin:0 auto 1.2rem;font-weight:300}
-    .eco-msg{font-size:0.82rem;color:rgba(168,230,207,0.6);margin-bottom:1.5rem;line-height:1.8}
-    .eco-msg strong{color:rgba(168,230,207,0.85)}
+    .content{position:absolute;top:16%;left:50%;transform:translateX(-50%);z-index:10;text-align:center;width:90%;max-width:520px}
+    .code{font-family:'Noto Serif TC',serif;font-size:clamp(4rem,14vw,8rem);font-weight:700;line-height:1;letter-spacing:0.06em;background:linear-gradient(180deg,rgba(255,255,255,0.85)0%,rgba(100,180,240,0.4)100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:0.3rem}
+    .title{font-size:clamp(0.9rem,2vw,1.2rem);font-weight:600;color:rgba(255,255,255,0.8);letter-spacing:0.15em;margin-bottom:0.3rem}
+    .desc{font-size:clamp(0.75rem,1.1vw,0.85rem);color:rgba(255,255,255,0.35);line-height:2;max-width:320px;margin:0 auto 0.8rem;font-weight:300}
+    .weather-msg{font-size:0.78rem;color:rgba(255,255,255,0.3);margin-bottom:0.6rem;transition:all 0.5s;min-height:1.2em}
 
-    .btns{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-bottom:1.2rem}
-    .btn{display:inline-flex;align-items:center;gap:6px;padding:10px 22px;border-radius:8px;font-size:0.85rem;font-weight:600;text-decoration:none;font-family:inherit;transition:all 0.25s ease;cursor:pointer;border:none}
+    .btns{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-bottom:0.8rem}
+    .btn{display:inline-flex;align-items:center;gap:6px;padding:9px 18px;border-radius:8px;font-size:0.8rem;font-weight:600;text-decoration:none;font-family:inherit;transition:all 0.25s ease;cursor:pointer;border:none}
     .btn-main{background:rgba(87,138,255,0.18);border:1px solid rgba(87,138,255,0.25);color:#b3c8ff}
     .btn-main:hover{background:rgba(87,138,255,0.3);border-color:rgba(87,138,255,0.45);transform:translateY(-1px)}
-    .btn-eco{background:rgba(168,230,207,0.12);border:1px solid rgba(168,230,207,0.2);color:rgba(168,230,207,0.9)}
-    .btn-eco:hover{background:rgba(168,230,207,0.2);border-color:rgba(168,230,207,0.35);transform:translateY(-1px)}
     .btn-sub{background:transparent;border:1px solid rgba(255,255,255,0.08);color:rgba(255,255,255,0.4)}
     .btn-sub:hover{border-color:rgba(255,255,255,0.2);color:rgba(255,255,255,0.6);transform:translateY(-1px)}
 
-    /* Score HUD */
-    .hud{display:inline-flex;align-items:center;gap:12px;padding:8px 20px;background:rgba(13,17,23,0.7);backdrop-filter:blur(10px);border:1px solid rgba(168,230,207,0.15);border-radius:100px;font-size:0.82rem;color:rgba(255,255,255,0.6);margin-bottom:0.8rem;opacity:0;transition:opacity 0.5s}
-    .hud.visible{opacity:1}
-    .hud-score{color:var(--foam,#a8e6cf);font-weight:700;font-variant-numeric:tabular-nums}
-    .hud-msg{color:rgba(255,255,255,0.4);font-size:0.75rem}
+    /* ═══ Game Bar (bottom) ═══ */
+    .game-bar{position:absolute;bottom:16px;left:50%;transform:translateX(-50%);z-index:20;display:flex;gap:6px;flex-wrap:wrap;justify-content:center;max-width:90vw}
+    .game-tab{padding:7px 13px;border-radius:20px;background:rgba(157,175,255,0.06);border:1px solid rgba(157,175,255,0.1);color:rgba(255,255,255,0.4);font-size:0.72rem;cursor:pointer;font-family:inherit;transition:all 0.2s ease;white-space:nowrap}
+    .game-tab:hover,.game-tab.active{background:rgba(157,175,255,0.15);border-color:rgba(157,175,255,0.25);color:#b3c8ff}
 
-    /* Game toggle */
-    .game-menu{display:flex;gap:6px;justify-content:center;flex-wrap:wrap;opacity:0.7;transition:opacity 0.3s}
-    .game-menu:hover{opacity:1}
-    .game-btn{padding:7px 14px;border-radius:20px;background:rgba(157,175,255,0.06);border:1px solid rgba(157,175,255,0.1);color:rgba(255,255,255,0.45);font-size:0.75rem;cursor:pointer;font-family:inherit;transition:all 0.2s ease}
-    .game-btn:hover,.game-btn.active{background:rgba(157,175,255,0.15);border-color:rgba(157,175,255,0.25);color:#b3c8ff}
-
-    /* Mini game containers */
-    .game-area{display:none;max-width:420px;margin:0 auto}
-    .game-area.active{display:block;animation:game-in 0.3s ease-out}
-    @keyframes game-in{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+    /* ═══ Overlay (all games/quizzes use this) ═══ */
+    .overlay{position:fixed;inset:0;z-index:50;display:none;align-items:center;justify-content:center;background:rgba(6,10,18,0.85);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
+    .overlay.active{display:flex;animation:overlay-in 0.25s ease-out}
+    @keyframes overlay-in{from{opacity:0}to{opacity:1}}
+    .overlay-box{background:rgba(12,18,30,0.95);border:1px solid rgba(157,175,255,0.1);border-radius:16px;padding:24px;max-width:440px;width:90%;max-height:85vh;overflow-y:auto;animation:box-in 0.3s ease-out}
+    @keyframes box-in{from{transform:translateY(16px);opacity:0}to{transform:translateY(0);opacity:1}}
+    .overlay-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px}
+    .overlay-title{font-size:1rem;font-weight:700;color:rgba(255,255,255,0.85)}
+    .overlay-close{background:none;border:1px solid rgba(255,255,255,0.08);border-radius:8px;color:rgba(255,255,255,0.35);font-size:1rem;cursor:pointer;padding:4px 10px;transition:all 0.2s;font-family:inherit}
+    .overlay-close:hover{border-color:rgba(255,255,255,0.2);color:rgba(255,255,255,0.6)}
 
     /* ═══ MCTI Quiz ═══ */
-    .mcti-btn{border-color:rgba(171,114,249,0.2) !important;color:rgba(171,114,249,0.8) !important;background:rgba(171,114,249,0.06) !important}
-    .mcti-btn:hover,.mcti-btn.active{background:rgba(171,114,249,0.15) !important;border-color:rgba(171,114,249,0.35) !important;color:#c49dff !important}
-    .mcti-quiz{display:none;max-width:440px;margin:0 auto;padding:20px;background:rgba(6,14,28,0.92);backdrop-filter:blur(16px);border:1px solid rgba(171,114,249,0.15);border-radius:16px;animation:game-in 0.35s ease-out}
-    .mcti-quiz.active{display:block}
-    .mcti-header{display:flex;align-items:center;gap:10px;margin-bottom:14px}
-    .mcti-badge{padding:3px 10px;background:linear-gradient(135deg,rgba(171,114,249,0.2),rgba(87,138,255,0.15));border:1px solid rgba(171,114,249,0.25);border-radius:6px;font-size:0.7rem;font-weight:800;color:#c49dff;letter-spacing:0.1em}
-    .mcti-title{font-size:0.9rem;color:rgba(255,255,255,0.7);font-weight:600}
-    .mcti-progress{height:3px;background:rgba(171,114,249,0.08);border-radius:2px;margin-bottom:18px;overflow:hidden}
-    .mcti-bar{height:100%;width:0%;background:linear-gradient(90deg,var(--lavender,#ab72f9),var(--sky,#9dafff));border-radius:2px;transition:width 0.4s ease}
-    .mcti-question{font-size:1rem;color:rgba(255,255,255,0.85);font-weight:500;line-height:1.7;margin-bottom:14px;min-height:3em}
-    .mcti-options{display:flex;flex-direction:column;gap:8px}
-    .mcti-opt{padding:12px 16px;background:rgba(157,175,255,0.04);border:1px solid rgba(157,175,255,0.1);border-radius:10px;font-size:0.88rem;color:rgba(255,255,255,0.65);cursor:pointer;font-family:inherit;text-align:left;transition:all 0.2s ease;line-height:1.6}
+    .mcti-badge{padding:3px 10px;background:linear-gradient(135deg,rgba(171,114,249,0.2),rgba(87,138,255,0.15));border:1px solid rgba(171,114,249,0.25);border-radius:6px;font-size:0.65rem;font-weight:800;color:#c49dff;letter-spacing:0.1em;margin-right:8px}
+    .mcti-progress{height:3px;background:rgba(171,114,249,0.08);border-radius:2px;margin-bottom:16px;overflow:hidden}
+    .mcti-bar{height:100%;width:0%;background:linear-gradient(90deg,#ab72f9,#9dafff);border-radius:2px;transition:width 0.4s ease}
+    .mcti-question{font-size:0.95rem;color:rgba(255,255,255,0.85);font-weight:500;line-height:1.7;margin-bottom:12px;min-height:2.5em}
+    .mcti-options{display:flex;flex-direction:column;gap:7px}
+    .mcti-opt{padding:11px 14px;background:rgba(157,175,255,0.04);border:1px solid rgba(157,175,255,0.1);border-radius:10px;font-size:0.85rem;color:rgba(255,255,255,0.6);cursor:pointer;font-family:inherit;text-align:left;transition:all 0.2s ease;line-height:1.6}
     .mcti-opt:hover{background:rgba(171,114,249,0.1);border-color:rgba(171,114,249,0.25);color:rgba(255,255,255,0.85);transform:translateX(4px)}
-    .mcti-opt .opt-label{font-size:0.7rem;color:rgba(171,114,249,0.5);font-weight:600;margin-right:6px}
-    .mcti-back{display:block;margin:14px auto 0;padding:6px 16px;background:none;border:1px solid rgba(255,255,255,0.06);border-radius:6px;color:rgba(255,255,255,0.3);font-size:0.75rem;cursor:pointer;font-family:inherit;transition:all 0.2s}
-    .mcti-back:hover{border-color:rgba(255,255,255,0.15);color:rgba(255,255,255,0.5)}
+    .mcti-opt .opt-label{font-size:0.65rem;color:rgba(171,114,249,0.5);font-weight:600;margin-right:6px}
 
     /* MCTI Result */
-    .mcti-result{display:none;max-width:420px;margin:0 auto;padding:24px 20px;background:rgba(6,14,28,0.95);backdrop-filter:blur(20px);border:1px solid rgba(171,114,249,0.2);border-radius:16px;text-align:center;animation:game-in 0.4s ease-out}
-    .mcti-result.active{display:block}
-    .mcti-r-emoji{font-size:3rem;margin-bottom:8px}
-    .mcti-r-code{font-size:1.8rem;font-weight:800;background:linear-gradient(135deg,#c49dff,#9dafff,#a8e6cf);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;letter-spacing:0.08em;margin-bottom:4px}
-    .mcti-r-name{font-size:1.1rem;color:rgba(255,255,255,0.85);font-weight:700;margin-bottom:10px}
-    .mcti-r-desc{font-size:0.85rem;color:rgba(255,255,255,0.5);line-height:1.8;margin-bottom:14px;max-width:340px;margin-left:auto;margin-right:auto}
-    .mcti-r-bars{margin:0 auto 14px;max-width:320px}
-    .mcti-bar-row{margin-bottom:10px}
-    .mcti-bar-label{font-size:0.7rem;color:rgba(255,255,255,0.35);margin-bottom:4px;text-align:center;letter-spacing:0.04em}
-    .mcti-bar-track{height:6px;background:rgba(255,255,255,0.06);border-radius:3px;overflow:hidden;position:relative}
+    .mcti-r-emoji{font-size:3rem;margin-bottom:6px}
+    .mcti-r-code{font-size:1.6rem;font-weight:800;background:linear-gradient(135deg,#c49dff,#9dafff,#a8e6cf);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;letter-spacing:0.08em;margin-bottom:4px}
+    .mcti-r-name{font-size:1.05rem;color:rgba(255,255,255,0.85);font-weight:700;margin-bottom:8px}
+    .mcti-r-desc{font-size:0.82rem;color:rgba(255,255,255,0.45);line-height:1.8;margin-bottom:12px}
+    .mcti-r-bars{margin-bottom:12px}
+    .mcti-bar-row{margin-bottom:8px}
+    .mcti-bar-label{font-size:0.68rem;color:rgba(255,255,255,0.3);margin-bottom:3px;text-align:center}
+    .mcti-bar-track{height:5px;background:rgba(255,255,255,0.06);border-radius:3px;overflow:hidden}
     .mcti-bar-fill-a{height:100%;background:linear-gradient(90deg,rgba(171,114,249,0.6),rgba(157,175,255,0.6));border-radius:3px;transition:width 0.6s ease}
-    .mcti-bar-pcts{display:flex;justify-content:space-between;font-size:0.68rem;color:rgba(255,255,255,0.4);margin-top:3px}
-    .mcti-bar-pcts span{white-space:nowrap}
-    .mcti-r-tags{display:flex;justify-content:center;gap:6px;flex-wrap:wrap;margin-bottom:18px}
-    .mcti-r-tag{padding:4px 10px;background:rgba(171,114,249,0.08);border:1px solid rgba(171,114,249,0.12);border-radius:100px;font-size:0.72rem;color:rgba(171,114,249,0.8)}
+    .mcti-bar-pcts{display:flex;justify-content:space-between;font-size:0.65rem;color:rgba(255,255,255,0.35);margin-top:2px}
+    .mcti-r-tags{display:flex;justify-content:center;gap:5px;flex-wrap:wrap;margin-bottom:14px}
+    .mcti-r-tag{padding:3px 9px;background:rgba(171,114,249,0.08);border:1px solid rgba(171,114,249,0.12);border-radius:100px;font-size:0.68rem;color:rgba(171,114,249,0.7)}
     .mcti-r-actions{display:flex;gap:8px;justify-content:center}
 
-    /* Memory game */
-    .mem-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;padding:10px;background:rgba(6,14,28,0.5);border-radius:12px;border:1px solid rgba(157,175,255,0.08)}
-    .mem-card{aspect-ratio:1;border-radius:8px;cursor:pointer;background:rgba(157,175,255,0.08);border:1px solid rgba(157,175,255,0.12);display:flex;align-items:center;justify-content:center;font-size:1.4rem;transition:all 0.25s;position:relative;overflow:hidden}
+    /* ═══ Memory Game ═══ */
+    .mem-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:5px;padding:8px;background:rgba(6,14,28,0.5);border-radius:12px;border:1px solid rgba(157,175,255,0.08)}
+    .mem-card{aspect-ratio:1;border-radius:8px;cursor:pointer;background:rgba(157,175,255,0.08);border:1px solid rgba(157,175,255,0.12);display:flex;align-items:center;justify-content:center;font-size:1.3rem;transition:all 0.25s;position:relative;overflow:hidden}
     .mem-card:hover{background:rgba(157,175,255,0.15)}
     .mem-card .front,.mem-card .back{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;transition:transform 0.3s,opacity 0.3s}
     .mem-card .front{transform:rotateY(90deg);opacity:0}
-    .mem-card .back{color:rgba(157,175,255,0.25);font-size:1rem}
+    .mem-card .back{color:rgba(157,175,255,0.25);font-size:0.9rem}
     .mem-card.flipped .front{transform:rotateY(0);opacity:1}
     .mem-card.flipped .back{transform:rotateY(-90deg);opacity:0}
     .mem-card.matched{background:rgba(168,230,207,0.12);border-color:rgba(168,230,207,0.25);pointer-events:none}
 
-    /* Click speed */
+    /* ═══ Click Speed ═══ */
     .click-zone{display:flex;flex-direction:column;align-items:center;gap:10px;padding:20px;background:rgba(6,14,28,0.5);border-radius:12px;border:1px solid rgba(157,175,255,0.08)}
-    .click-target{width:90px;height:90px;border-radius:50%;background:radial-gradient(circle,rgba(168,230,207,0.2),rgba(168,230,207,0.06));border:2px solid rgba(168,230,207,0.25);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:2rem;transition:all 0.1s;user-select:none}
+    .click-target{width:80px;height:80px;border-radius:50%;background:radial-gradient(circle,rgba(168,230,207,0.2),rgba(168,230,207,0.06));border:2px solid rgba(168,230,207,0.25);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:1.8rem;transition:all 0.1s;user-select:none}
     .click-target:active{transform:scale(0.9)}
-    .click-label{font-size:0.75rem;color:rgba(255,255,255,0.35)}
+    .click-label{font-size:0.72rem;color:rgba(255,255,255,0.3)}
 
-    /* Result overlay */
-    .result{position:fixed;top:50%;left:50%;transform:translate(-50%,-50%)scale(0.9);z-index:25;text-align:center;padding:28px 40px;background:rgba(6,14,28,0.92);backdrop-filter:blur(16px);border:1px solid rgba(168,230,207,0.2);border-radius:16px;display:none;min-width:220px}
-    .result.active{display:block;animation:result-in 0.3s ease-out}
-    @keyframes result-in{from{transform:translate(-50%,-50%)scale(0.9);opacity:0}to{transform:translate(-50%,-50%)scale(1);opacity:1}}
-    .result-emoji{font-size:2rem;margin-bottom:8px}
-    .result-score{font-size:2rem;font-weight:800;color:#a8e6cf;margin-bottom:4px}
-    .result-text{font-size:0.85rem;color:rgba(255,255,255,0.5);margin-bottom:16px}
-    .result-btn{padding:8px 20px;border-radius:8px;background:rgba(168,230,207,0.12);border:1px solid rgba(168,230,207,0.25);color:rgba(168,230,207,0.9);font-size:0.82rem;font-weight:600;cursor:pointer;font-family:inherit;transition:all 0.2s}
-    .result-btn:hover{background:rgba(168,230,207,0.22)}
+    /* ═══ Reaction Time ═══ */
+    .react-zone{display:flex;flex-direction:column;align-items:center;gap:10px;padding:24px;border-radius:12px;min-height:160px;justify-content:center;cursor:pointer;transition:background 0.2s;border:1px solid rgba(157,175,255,0.08)}
+    .react-zone.wait{background:rgba(255,80,80,0.08)}
+    .react-zone.go{background:rgba(168,230,207,0.15);border-color:rgba(168,230,207,0.3)}
+    .react-zone.result{background:rgba(157,175,255,0.08)}
+    .react-text{font-size:1rem;color:rgba(255,255,255,0.7);font-weight:600}
+    .react-ms{font-size:2rem;font-weight:800;color:#a8e6cf}
+
+    /* ═══ Tic Tac Toe ═══ */
+    .ttt-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:4px;width:200px;margin:0 auto}
+    .ttt-cell{aspect-ratio:1;border-radius:8px;background:rgba(157,175,255,0.06);border:1px solid rgba(157,175,255,0.1);display:flex;align-items:center;justify-content:center;font-size:1.8rem;cursor:pointer;transition:all 0.2s;font-weight:700}
+    .ttt-cell:hover{background:rgba(157,175,255,0.12)}
+    .ttt-cell.x{color:#9dafff}
+    .ttt-cell.o{color:#ff8282}
+    .ttt-status{text-align:center;font-size:0.82rem;color:rgba(255,255,255,0.5);margin-top:10px}
+    .ttt-reset{display:block;margin:8px auto 0;padding:6px 16px;background:none;border:1px solid rgba(157,175,255,0.15);border-radius:6px;color:rgba(255,255,255,0.4);font-size:0.75rem;cursor:pointer;font-family:inherit;transition:all 0.2s}
+    .ttt-reset:hover{border-color:rgba(157,175,255,0.3);color:#b3c8ff}
+
+    /* ═══ Number Memory ═══ */
+    .num-mem{text-align:center}
+    .num-display{font-size:2.5rem;font-weight:800;color:#9dafff;letter-spacing:0.15em;margin:16px 0;min-height:3rem;font-family:'JetBrains Mono',monospace}
+    .num-input{width:180px;padding:10px 14px;background:rgba(157,175,255,0.06);border:1px solid rgba(157,175,255,0.15);border-radius:10px;color:rgba(255,255,255,0.8);font-size:1.2rem;text-align:center;font-family:'JetBrains Mono',monospace;outline:none;letter-spacing:0.1em}
+    .num-input:focus{border-color:rgba(157,175,255,0.3)}
+    .num-label{font-size:0.75rem;color:rgba(255,255,255,0.35);margin-bottom:8px}
+    .num-level{font-size:0.72rem;color:rgba(157,175,255,0.5);margin-top:8px}
+
+    /* Game HUD */
+    .game-hud{display:flex;justify-content:space-between;align-items:center;padding:8px 0;margin-bottom:12px;font-size:0.78rem;color:rgba(255,255,255,0.4)}
+    .game-hud-val{color:#a8e6cf;font-weight:700;font-variant-numeric:tabular-nums}
+
+    /* Result */
+    .game-result{text-align:center;padding:16px 0}
+    .game-result-emoji{font-size:2rem;margin-bottom:6px}
+    .game-result-val{font-size:1.6rem;font-weight:800;color:#a8e6cf;margin-bottom:4px}
+    .game-result-text{font-size:0.82rem;color:rgba(255,255,255,0.4);margin-bottom:12px}
+    .game-result-btns{display:flex;gap:8px;justify-content:center}
+
+    /* Eco HUD */
+    .eco-hud{display:inline-flex;align-items:center;gap:10px;padding:6px 16px;background:rgba(13,17,23,0.7);backdrop-filter:blur(10px);border:1px solid rgba(168,230,207,0.15);border-radius:100px;font-size:0.78rem;color:rgba(255,255,255,0.5);margin-bottom:0.6rem;opacity:0;transition:opacity 0.5s}
+    .eco-hud.visible{opacity:1}
+    .eco-score{color:#a8e6cf;font-weight:700}
+
+    /* Timer */
+    .timer{font-size:1.5rem;font-weight:800;color:rgba(255,255,255,0.7);font-variant-numeric:tabular-nums;text-align:center;margin:8px 0}
 
     @media(max-width:768px){
       .celestial{width:40px;height:40px}
       .sun{top:12%;right:15%}
       .moon{top:10%;right:13%}
-      .content{top:18%}
-      .code{font-size:4rem}
-      .mem-grid{gap:4px;padding:6px}
-      .mem-card{font-size:1.1rem}
-      .game-btn{padding:8px 10px;font-size:0.72rem}
-      .trash{font-size:1.1rem}
+      .content{top:12%}
+      .code{font-size:3.5rem}
+      .mem-grid{gap:3px;padding:5px}
+      .mem-card{font-size:1rem}
+      .game-tab{padding:6px 9px;font-size:0.68rem}
+      .ttt-grid{width:160px}
+      .ttt-cell{font-size:1.4rem}
+      .game-bar{bottom:10px}
     }
     @media(max-width:375px){
-      .content{top:14%}
-      .code{font-size:3.5rem}
-      .title{font-size:0.9rem}
+      .content{top:8%}
+      .code{font-size:3rem}
+      .title{font-size:0.85rem}
     }
   </style>
 </head>
@@ -253,8 +327,6 @@
       <div class="cloud c2"></div>
       <div class="cloud c3"></div>
     </div>
-
-    <!-- Horizon -->
     <div class="horizon"></div>
 
     <!-- Ocean -->
@@ -266,65 +338,60 @@
       <div class="wave w3"><svg viewBox="0 0 2880 60" preserveAspectRatio="none"><path d="M0,25 Q360,45 720,25 Q1080,5 1440,25 Q1800,45 2160,25 Q2520,5 2880,25 L2880,60 L0,60Z" fill="rgba(6,16,32,0.7)"/></svg></div>
       <div class="wave w4"><svg viewBox="0 0 2880 60" preserveAspectRatio="none"><path d="M0,35 Q480,15 960,35 Q1440,55 1920,35 Q2400,15 2880,35 L2880,60 L0,60Z" fill="#060e1c"/></svg></div>
 
+      <!-- Ice overlay -->
+      <div class="ice-overlay"></div>
+
       <!-- Sea creatures -->
       <div class="creature turtle" id="turtle">🐢</div>
       <div class="creature fish" style="animation-delay:-3s">🐠</div>
       <div class="creature fish" style="animation-delay:-8s;bottom:16%;font-size:0.9rem;animation-duration:15s">🐟</div>
 
-      <!-- Little cat floating on waves -->
+      <!-- Cat -->
       <div class="cat-float" aria-hidden="true">
         <svg width="64" height="56" viewBox="0 0 64 56" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <!-- 奶牛貓 Cow Cat — 黑白花色 -->
-          <!-- Body (white base) -->
           <ellipse cx="32" cy="38" rx="18" ry="12" fill="#f0ece4" stroke="#e0dcd4" stroke-width="1"/>
-          <!-- Body black patches -->
           <ellipse cx="24" cy="34" rx="8" ry="7" fill="#1a1a1a"/>
           <ellipse cx="44" cy="40" rx="6" ry="5" fill="#1a1a1a"/>
           <ellipse cx="30" cy="44" rx="5" ry="3" fill="#2a2a2a"/>
-          <!-- Head (white base) -->
           <circle cx="32" cy="22" r="12" fill="#f0ece4" stroke="#e0dcd4" stroke-width="1"/>
-          <!-- Head split-face black patch (right side) -->
           <path d="M32 10 Q44 12 44 22 Q44 32 32 34Z" fill="#1a1a1a"/>
-          <!-- Black patch on top of head -->
           <ellipse cx="28" cy="13" rx="6" ry="5" fill="#2a2a2a"/>
-          <!-- Left ear (white with black tip) -->
           <path d="M22 14 L19 3 L28 11Z" fill="#f0ece4" stroke="#d0ccc4" stroke-width="1"/>
           <path d="M20 6 L22 12 L25 10Z" fill="#1a1a1a"/>
-          <!-- Right ear (black) -->
           <path d="M42 14 L45 3 L36 11Z" fill="#1a1a1a" stroke="#333" stroke-width="0.8"/>
           <path d="M41 12 L43 5 L37 11Z" fill="#2a2a2a"/>
-          <!-- Eyes -->
           <ellipse cx="27" cy="21" rx="2.8" ry="3.2" fill="#5eead4" class="cat-glow"/>
           <ellipse cx="38" cy="21" rx="2.8" ry="3.2" fill="#5eead4" class="cat-glow"/>
           <ellipse cx="27" cy="21" rx="1.3" ry="2.8" fill="#111"/>
           <ellipse cx="38" cy="21" rx="1.3" ry="2.8" fill="#111"/>
-          <!-- Eye shine -->
           <circle cx="28.2" cy="19.5" r="0.9" fill="#fff" opacity="0.95"/>
           <circle cx="39.2" cy="19.5" r="0.9" fill="#fff" opacity="0.95"/>
-          <!-- Nose -->
           <path d="M31 25.5 L32 27.5 L33 25.5Z" fill="#f5a0b0"/>
-          <!-- Mouth -->
           <path d="M32 27.5 Q29 30.5 27 28.5" stroke="#aa9988" stroke-width="0.8" fill="none"/>
           <path d="M32 27.5 Q35 30.5 37 28.5" stroke="#aa9988" stroke-width="0.8" fill="none"/>
-          <!-- Whiskers -->
           <line x1="17" y1="23" x2="24" y2="24" stroke="#ccbb99" stroke-width="0.5"/>
           <line x1="16" y1="26" x2="23" y2="26.5" stroke="#ccbb99" stroke-width="0.5"/>
           <line x1="17" y1="29" x2="23" y2="28" stroke="#ccbb99" stroke-width="0.5"/>
           <line x1="40" y1="24" x2="47" y2="23" stroke="#ccbb99" stroke-width="0.5"/>
           <line x1="41" y1="26.5" x2="48" y2="26" stroke="#ccbb99" stroke-width="0.5"/>
           <line x1="41" y1="28" x2="47" y2="29" stroke="#ccbb99" stroke-width="0.5"/>
-          <!-- Front paws (white with black spots) -->
           <ellipse cx="22" cy="46" rx="5" ry="3.5" fill="#f0ece4" stroke="#d0ccc4" stroke-width="0.8"/>
           <ellipse cx="20" cy="45.5" rx="2" ry="1.5" fill="#2a2a2a"/>
           <ellipse cx="42" cy="46" rx="5" ry="3.5" fill="#1a1a1a" stroke="#333" stroke-width="0.8"/>
-          <!-- Tail (black with white tip) -->
           <path d="M50 36 Q57 27 55 18 Q54 14 56 12" stroke="#1a1a1a" stroke-width="3" fill="none" stroke-linecap="round"/>
           <path d="M55 14 Q55 11 56 9" stroke="#f0ece4" stroke-width="2.5" fill="none" stroke-linecap="round"/>
         </svg>
       </div>
     </div>
 
-    <!-- Trash items (will be populated by JS) -->
+    <!-- Ships -->
+    <div class="ship boat" id="boat">⛵</div>
+    <div class="ship icebreaker" id="icebreaker">🚢</div>
+
+    <!-- Weather particles -->
+    <div class="weather-layer" id="weatherLayer"></div>
+
+    <!-- Trash -->
     <div id="trashField"></div>
 
     <!-- Bubbles -->
@@ -335,74 +402,29 @@
       <div class="code">404</div>
       <h1 class="title">航向了未知的海域</h1>
       <p class="desc">看來這片海域沒有你要找的陸地。<br>別擔心，讓風帶你回到正確的航線。</p>
-
-      <div class="eco-msg">
-        🌊 這片海域漂浮著一些垃圾…<br>
-        <strong>點擊垃圾幫忙清理，守護海洋！</strong>
-      </div>
-
-      <div class="hud" id="hud">
-        🌿 已清理 <span class="hud-score" id="score">0</span> 件垃圾
-        <span class="hud-msg" id="hudMsg"></span>
-      </div>
-
+      <div class="weather-msg" id="weatherMsg">☀️ 晴空萬里，適合出海</div>
+      <div class="eco-hud" id="ecoHud">🌿 已清理 <span class="eco-score" id="ecoScore">0</span> 件垃圾</div>
       <div class="btns">
         <a href="首頁.html" class="btn btn-main">🏠 返回首頁</a>
-        <button class="btn btn-eco" onclick="startCleanup()" id="cleanBtn">🧹 開始淨灘</button>
-        <a href="https://discord.gg/HdS2HrJEH7" target="_blank" rel="noopener" class="btn btn-sub">💬 加入社群</a>
-      </div>
-
-      <div class="game-menu" id="gameMenu">
-        <button class="game-btn" onclick="startGame('memory')">🃏 翻牌</button>
-        <button class="game-btn" onclick="startGame('click')">⚡ 點擊測速</button>
-        <button class="game-btn mcti-btn" onclick="startMCTI()">🧪 MCTI</button>
-      </div>
-
-      <!-- MCTI Quiz -->
-      <div class="mcti-quiz" id="mctiQuiz">
-        <div class="mcti-header">
-          <span class="mcti-badge">MCTI</span>
-          <span class="mcti-title">Minecraft 性格測驗</span>
-        </div>
-        <div class="mcti-progress"><div class="mcti-bar" id="mctiBar"></div></div>
-        <div class="mcti-question" id="mctiQ"></div>
-        <div class="mcti-options" id="mctiOpts"></div>
-        <button class="mcti-back" onclick="closeMCTI()">✕ 關閉</button>
-      </div>
-
-      <!-- MCTI Result -->
-      <div class="mcti-result" id="mctiResult">
-        <div class="mcti-r-emoji" id="mctiREmoji"></div>
-        <div class="mcti-r-code" id="mctiRCode"></div>
-        <div class="mcti-r-name" id="mctiRName"></div>
-        <div class="mcti-r-desc" id="mctiRDesc"></div>
-        <div class="mcti-r-bars" id="mctiRBars"></div>
-        <div class="mcti-r-tags" id="mctiRTags"></div>
-        <div class="mcti-r-actions">
-          <button class="btn btn-main" onclick="startMCTI()">🔄 再測一次</button>
-          <button class="btn btn-sub" onclick="closeMCTIResult()">返回</button>
-        </div>
+        <button class="btn btn-main" onclick="startCleanup()" id="cleanBtn">🧹 淨灘</button>
+        <a href="https://discord.gg/HdS2HrJEH7" target="_blank" rel="noopener" class="btn btn-sub">💬 社群</a>
       </div>
     </div>
 
-    <!-- Game areas -->
-    <div class="game-area" id="memoryArea">
-      <div class="mem-grid" id="memGrid"></div>
-    </div>
-    <div class="game-area" id="clickArea">
-      <div class="click-zone">
-        <div class="click-label">盡可能快速點擊！</div>
-        <div class="click-target" id="clickTarget">🌊</div>
-      </div>
+    <!-- Game Bar -->
+    <div class="game-bar" id="gameBar">
+      <button class="game-tab" onclick="openGame('mcti')">🧪 MCTI</button>
+      <button class="game-tab" onclick="openGame('memory')">🃏 翻牌</button>
+      <button class="game-tab" onclick="openGame('click')">⚡ 點速</button>
+      <button class="game-tab" onclick="openGame('react')">⏱️ 反應</button>
+      <button class="game-tab" onclick="openGame('ttt')">⭕ 井字</button>
+      <button class="game-tab" onclick="openGame('nummem')">🔢 記數</button>
     </div>
   </div>
 
-  <!-- Result -->
-  <div class="result" id="result">
-    <div class="result-emoji" id="resultEmoji"></div>
-    <div class="result-score" id="resultScore"></div>
-    <div class="result-text" id="resultText"></div>
-    <button class="result-btn" id="resultBtn">再玩一次</button>
+  <!-- ═══ Unified Overlay ═══ -->
+  <div class="overlay" id="overlay" onclick="if(event.target===this)closeOverlay()">
+    <div class="overlay-box" id="overlayBox"></div>
   </div>
 
   <script>
@@ -412,21 +434,71 @@
     const TRASH = ['🧴','🥤','🛍️','📦','🥫','🪣','🧃','🫙','🧋','🍶','🥡','🛒','🎈','🪥'];
     const SEA = ['🐙','🦑','🦐','🐡','🐠','🐟','🐬','🦀','🐚'];
 
-    // ═══ Day/Night Cycle ═══
+    // ═══ Weather System ═══
+    // States: sunset → night → rainy → snowy → sunset → ...
     const sky = document.getElementById('sky');
-    let isNight = false;
-    function cycleSky() {
-      isNight = !isNight;
-      sky.className = 'sky ' + (isNight ? 'night' : 'sunset');
+    const weatherMsg = document.getElementById('weatherMsg');
+    const weatherLayer = document.getElementById('weatherLayer');
+    const weathers = ['sunset','night','rainy','snowy'];
+    const weatherLabels = {
+      sunset: '☀️ 晴空萬里，適合出海',
+      night: '🌙 月色如水，海面寧靜',
+      rainy: '🌧️ 狂風暴雨，注意航線',
+      snowy: '❄️ 瑞雪紛飛，破冰前行'
+    };
+    let weatherIdx = 0;
+
+    function setWeather(w) {
+      sky.className = 'sky ' + w;
+      weatherMsg.textContent = weatherLabels[w] || '';
+      spawnWeatherParticles(w);
     }
-    // Initial transition after 2s
+
+    function cycleWeather() {
+      weatherIdx = (weatherIdx + 1) % weathers.length;
+      setWeather(weathers[weatherIdx]);
+    }
+
+    // Init
     setTimeout(() => {
-      sky.style.transition = 'background 4s';
-      cycleSky();
-      setInterval(cycleSky, 20000);
-    }, 2000);
+      sky.style.transition = 'background 6s';
+      setWeather('night');
+      setInterval(cycleWeather, 18000);
+    }, 3000);
+
+    // ═══ Weather Particles ═══
+    function spawnWeatherParticles(type) {
+      weatherLayer.innerHTML = '';
+      const isMobile = window.innerWidth < 768;
+      if (type === 'rainy') {
+        const count = isMobile ? 40 : 80;
+        for (let i = 0; i < count; i++) {
+          const d = document.createElement('div');
+          d.className = 'raindrop';
+          d.style.left = Math.random() * 100 + '%';
+          d.style.height = (12 + Math.random() * 16) + 'px';
+          d.style.animationDuration = (0.4 + Math.random() * 0.4) + 's';
+          d.style.animationDelay = (Math.random() * 2) + 's';
+          weatherLayer.appendChild(d);
+        }
+      } else if (type === 'snowy') {
+        const count = isMobile ? 25 : 50;
+        for (let i = 0; i < count; i++) {
+          const f = document.createElement('div');
+          f.className = 'snowflake';
+          const size = 2 + Math.random() * 4;
+          f.style.width = size + 'px';
+          f.style.height = size + 'px';
+          f.style.left = Math.random() * 100 + '%';
+          f.style.animationDuration = (4 + Math.random() * 6) + 's';
+          f.style.animationDelay = (Math.random() * 5) + 's';
+          weatherLayer.appendChild(f);
+        }
+      }
+    }
 
     // ═══ Stars ═══
+    const skyEl = document.getElementById('sky');
     for (let i = 0; i < 60; i++) {
       const s = document.createElement('div');
       s.className = 'star';
@@ -434,8 +506,7 @@
       s.style.top = Math.random()*50+'%';
       const sz = 0.5+Math.random()*1.5;
       s.style.width = sz+'px'; s.style.height = sz+'px';
-      s.style.animationDelay = Math.random()*3+'s';
-      sky.appendChild(s);
+      skyEl.appendChild(s);
     }
 
     // ═══ Bubbles ═══
@@ -451,316 +522,338 @@
       bubbleContainer.appendChild(b);
       setTimeout(() => b.remove(), 10000);
     }
-    setInterval(spawnBubble, 800);
+    setInterval(spawnBubble, 1000);
 
     // ═══ Trash System ═══
     const trashField = document.getElementById('trashField');
-    let trashCount = 0;
-    let cleanupActive = false;
+    let trashCount = 0, cleanupActive = false;
 
     function spawnTrash() {
       if (!cleanupActive) return;
       const t = document.createElement('div');
       t.className = 'trash floating';
       t.textContent = TRASH[Math.floor(Math.random()*TRASH.length)];
-      // Place on ocean surface
-      const oceanTop = 55; // ~55% from top
-      t.style.top = (oceanTop + Math.random()*15) + '%';
+      t.style.top = (55 + Math.random()*15) + '%';
       t.style.left = (5+Math.random()*90) + '%';
-      const dur = 3+Math.random()*4;
-      t.style.animationDuration = dur+'s';
+      t.style.animationDuration = (3+Math.random()*4)+'s';
       t.style.fontSize = (1+Math.random()*0.8)+'rem';
-
       t.addEventListener('click', () => {
         if (t.classList.contains('collected')) return;
         t.classList.add('collected');
         trashCount++;
-        document.getElementById('score').textContent = trashCount;
-        // Show message at milestones
-        const msg = document.getElementById('hudMsg');
-        if (trashCount === 3) msg.textContent = '— 繼續加油！';
-        else if (trashCount === 7) msg.textContent = '— 海洋變乾淨了！';
-        else if (trashCount === 12) msg.textContent = '— 你是淨灘英雄！🏆';
-        else if (trashCount === 20) msg.textContent = '— 海洋守護者！🌊';
+        document.getElementById('ecoScore').textContent = trashCount;
         setTimeout(() => t.remove(), 500);
       });
-
       trashField.appendChild(t);
-      // Remove after floating too long
       setTimeout(() => { if (!t.classList.contains('collected')) t.remove(); }, 15000+Math.random()*10000);
     }
 
-    function startCleanup() {
-      cleanupActive = true;
-      trashCount = 0;
-      document.getElementById('score').textContent = '0';
-      document.getElementById('hud').classList.add('visible');
-      document.getElementById('hudMsg').textContent = '';
+    window.startCleanup = () => {
+      cleanupActive = true; trashCount = 0;
+      document.getElementById('ecoScore').textContent = '0';
+      document.getElementById('ecoHud').classList.add('visible');
       document.getElementById('cleanBtn').textContent = '🧹 淨灘中...';
-      // Clear existing trash
       trashField.innerHTML = '';
-      // Spawn initial batch
       for (let i = 0; i < 6; i++) setTimeout(spawnTrash, i*300);
-      // Keep spawning
-      const interval = setInterval(() => {
-        if (!cleanupActive) { clearInterval(interval); return; }
+      const iv = setInterval(() => {
+        if (!cleanupActive) { clearInterval(iv); return; }
         if (trashField.querySelectorAll('.trash:not(.collected)').length < 8) spawnTrash();
       }, 2000);
-    }
+    };
 
-    // ═══ Mini Games ═══
-    let currentGame = null, score = 0, timeLeft = 0, timerHandle = null;
+    // ═══ Unified Overlay ═══
+    const overlay = document.getElementById('overlay');
+    const overlayBox = document.getElementById('overlayBox');
+    let currentGame = null;
 
-    function startGame(type) {
-      clearInterval(timerHandle);
-      document.querySelectorAll('.game-area').forEach(a => a.classList.remove('active'));
-      document.getElementById('result').classList.remove('active');
+    window.openGame = (type) => {
       currentGame = type;
-      score = 0; timeLeft = type === 'memory' ? 60 : 5;
+      document.querySelectorAll('.game-tab').forEach(t => t.classList.toggle('active', t.textContent.includes(getTabLabel(type))));
+      if (type === 'mcti') renderMCTI();
+      else if (type === 'memory') renderMemory();
+      else if (type === 'click') renderClick();
+      else if (type === 'react') renderReact();
+      else if (type === 'ttt') renderTTT();
+      else if (type === 'nummem') renderNumMem();
+      overlay.classList.add('active');
+    };
 
-      if (type === 'memory') initMemory();
-      else if (type === 'click') initClick();
+    window.closeOverlay = () => {
+      overlay.classList.remove('active');
+      document.querySelectorAll('.game-tab').forEach(t => t.classList.remove('active'));
+      clearInterval(gameTimer);
+      currentGame = null;
+    };
+
+    function getTabLabel(t) {
+      return {mcti:'MCTI',memory:'翻牌',click:'點速',react:'反應',ttt:'井字',nummem:'記數'}[t]||'';
     }
 
-    function endGame() {
-      clearInterval(timerHandle);
-      document.querySelectorAll('.game-area').forEach(a => a.classList.remove('active'));
+    let gameTimer = null, gameScore = 0, gameTime = 0;
 
-      const emoji = currentGame === 'memory'
-        ? (score >= 8 ? '🧠' : score >= 4 ? '🃏' : '💪')
-        : (score >= 80 ? '⚡' : score >= 40 ? '💨' : '🖱️');
-      const text = currentGame === 'memory'
-        ? (score >= 8 ? '記憶天才！' : score >= 4 ? '記憶力不錯' : '再試試看')
-        : (score >= 80 ? '閃電快手！' : score >= 40 ? '手速不錯' : '再快一點！');
-      const display = currentGame === 'click' ? (score/5).toFixed(1)+' CPS' : score;
-
-      document.getElementById('resultEmoji').textContent = emoji;
-      document.getElementById('resultScore').textContent = display;
-      document.getElementById('resultText').textContent = text;
-      document.getElementById('resultBtn').onclick = () => startGame(currentGame);
-      document.getElementById('result').classList.add('active');
-    }
-
-    function initMemory() {
-      const area = document.getElementById('memoryArea');
-      area.classList.add('active');
-      const pairs = SEA.slice(0,8);
-      const cards = [...pairs,...pairs].sort(() => Math.random()-0.5);
-      const grid = document.getElementById('memGrid');
-      grid.innerHTML = '';
-      let flipped=[], matched=0, locked=false;
-
-      cards.forEach(emoji => {
-        const card = document.createElement('div');
-        card.className = 'mem-card';
-        card.innerHTML = `<div class="back">?</div><div class="front">${emoji}</div>`;
-        card.onclick = () => {
-          if(locked||card.classList.contains('flipped')||card.classList.contains('matched'))return;
-          card.classList.add('flipped');
-          flipped.push(card);
-          if(flipped.length===2){
-            locked=true;
-            const[a,b]=flipped;
-            if(a.querySelector('.front').textContent===b.querySelector('.front').textContent){
-              a.classList.add('matched');b.classList.add('matched');
-              matched+=2;score=matched;flipped=[];locked=false;
-              if(matched===cards.length)endGame();
-            }else{
-              setTimeout(()=>{a.classList.remove('flipped');b.classList.remove('flipped');flipped=[];locked=false},800);
-            }
-          }
-        };
-        grid.appendChild(card);
-      });
-
-      clearInterval(timerHandle);
-      timerHandle = setInterval(()=>{timeLeft--;if(timeLeft<=0)endGame()},1000);
-    }
-
-    function initClick() {
-      const area = document.getElementById('clickArea');
-      area.classList.add('active');
-      const target = document.getElementById('clickTarget');
-      let clicks=0;
-      target.onclick = ()=>{clicks++;score=clicks;target.textContent=['🌊','💨','⚡','🔥','💫'][clicks%5]};
-      clearInterval(timerHandle);
-      timerHandle = setInterval(()=>{timeLeft--;if(timeLeft<=0)endGame()},1000);
-    }
-
-    // Expose globally
-    window.startCleanup = startCleanup;
-    window.startGame = startGame;
-
-    // ═══ MCTI — Minecraft Character Type Indicator ═══
-    const MCTI_QUESTIONS = [
-      {
-        q: '進入新的世界，你第一件事會？',
-        a: ['開始蓋一個漂亮的家', '衝出去探險，管他三七二十一'],
-        dim: 'BS'
-      },
-      {
-        q: '你在伺服器最常做的事是？',
-        a: ['研究紅石電路、搞自動化', '挖礦、探索遺跡、找寶藏'],
-        dim: 'RD'
-      },
-      {
-        q: '你蓋東西的時候注重的是？',
-        a: ['配色、氛圍、讓人驚艷', '功能、效率、方便使用'],
-        dim: 'CM'
-      },
-      {
-        q: '你覺得最好玩的時刻是？',
-        a: ['和朋友一起搞事、一起蓋', '一個人安靜地享受世界'],
-        dim: 'LH'
-      },
-      {
-        q: '朋友蓋了一棟歪七扭八的房子，你會？',
-        a: ['忍不住幫他重新設計', '誇他有創意然後默默走開'],
-        dim: 'BS'
-      },
-      {
-        q: '你更嚮往哪種生活？',
-        a: ['住在充滿機關的紅石堡壘', '背包一背，說走就走的冒險'],
-        dim: 'RD'
-      },
-      {
-        q: '伺服器辦建築比賽，你會？',
-        a: ['馬上報名，終於能大展身手', '先看看獎勵值不值得參加'],
-        dim: 'CM'
-      },
-      {
-        q: '在海風伺服器你最自在的時刻是？',
-        a: ['在群組跟大家一起聊天哈啦', '在自己領地裡慢慢經營'],
-        dim: 'LH'
-      }
+    // ═══ MCTI ═══
+    const MCTI_Q = [
+      { q:'進入新的世界，你第一件事會？', a:['開始蓋一個漂亮的家','衝出去探險，管他三七二十一'], dim:'BS' },
+      { q:'你在伺服器最常做的事是？', a:['研究紅石電路、搞自動化','挖礦、探索遺跡、找寶藏'], dim:'RD' },
+      { q:'你蓋東西的時候注重的是？', a:['配色、氛圍、讓人驚艷','功能、效率、方便使用'], dim:'CM' },
+      { q:'你覺得最好玩的時刻是？', a:['和朋友一起搞事、一起蓋','一個人安靜地享受世界'], dim:'LH' },
+      { q:'朋友蓋了一棟歪七扭八的房子，你會？', a:['忍不住幫他重新設計','誇他有創意然後默默走開'], dim:'BS' },
+      { q:'你更嚮往哪種生活？', a:['住在充滿機關的紅石堡壘','背包一背，說走就走的冒險'], dim:'RD' },
+      { q:'伺服器辦建築比賽，你會？', a:['馬上報名，終於能大展身手','先看看獎勵值不值得參加'], dim:'CM' },
+      { q:'在海風伺服器你最自在的時刻是？', a:['在群組跟大家一起聊天哈啦','在自己領地裡慢慢經營'], dim:'LH' }
     ];
-
-    // 16 種人格 — 全部用 Minecraft 梗
     const MCTI_TYPES = {
-      'BRCL': { emoji:'🏛️', name:'遠古建造者', desc:'你的靈感來自每個探索過的遺跡。蓋出來的東西不只有故事，還有靈魂。伺服器地標級建築十有八九出自你手。', tags:['建築 × 紅石 × 美感 × 獨行'] },
-      'BRCH': { emoji:'🏘️', name:'村莊長老', desc:'你不只蓋自己的家，更樂於為整個社群規劃公共設施。圖書館、市場、廣場——你蓋的東西讓所有人都有歸屬感。', tags:['建築 × 紅石 × 美感 × 團隊'] },
-      'BRML': { emoji:'🔌', name:'紅石祭司', desc:'你的建築不只好看，還會動。電梯、活塞門、自動農場、音樂盒——每棟建築都是一部精密機器，凡人只能讚嘆。', tags:['建築 × 紅石 × 效率 × 獨行'] },
-      'BRMH': { emoji:'🔧', name:'鸚鵡飼養員', desc:'你是伺服器的幕後英雄，默默維護著各種設施。別人只看到成果，只有你知道背後下了多少功夫。低調，但不可或缺。', tags:['建築 × 紅石 × 效率 × 團隊'] },
-      'BDCL': { emoji:'📜', name:'圖書管理員', desc:'你走遍世界收集靈感，把每個地點的故事融入建築。你的房子總有說不完的故事，每一面牆都是一段旅程。', tags:['建築 × 探索 × 美感 × 獨行'] },
-      'BDCH': { emoji:'🧭', name:'製圖師', desc:'地圖上每個問號都是你的任務標記。你帶隊探險、標記資源點、記錄路線——有你在，沒有人會迷路。', tags:['建築 × 探索 × 美感 × 團隊'] },
-      'BDML': { emoji:'⚒️', name:'鑽石礦工', desc:'你追求效率與美感的完美平衡。裝備永遠附魔到頂、建築永遠恰到好處。不多不少，剛剛好就是你的哲學。', tags:['建築 × 探索 × 效率 × 獨行'] },
-      'BDMH': { emoji:'🛒', name:'流浪商人', desc:'你什麼都帶一點、什麼都做一點。背包裡永遠有驚喜，你就是行走的百寶箱。跟著你走永遠不會無聊。', tags:['建築 × 探索 × 效率 × 團隊'] },
-      'SRCL': { emoji:'⚔️', name:'掠奪者', desc:'凋零、遠古守衛者、刦毀獸——沒有你打不贏的 Boss。你享受戰鬥的快感，每次勝利都是你的勳章。', tags:['生存 × 紅石 × 美感 × 獨行'] },
-      'SRCH': { emoji:'🏰', name:'衛道士剋星', desc:'你是伺服器的守護者，自願巡邏領地、保護新手。村莊觸發襲擊？你第一個衝上去。正義是你的信仰。', tags:['生存 × 紅石 × 美感 × 團隊'] },
-      'SRML': { emoji:'🐉', name:'終界行者', desc:'末地、地獄、深暗之域——哪裏危險你往哪裏去。每次死亡都是下一場冒險的起點。你不知道什麼叫害怕。', tags:['生存 × 紅石 × 效率 × 獨行'] },
-      'SRMH': { emoji:'🍄', name:'蘑菇島之王', desc:'你不需要豪華裝備也能活得自在。四塊木板做成工作台、營火烤熟第一條魚——最純粹的生存就是你的浪漫。', tags:['生存 × 紅石 × 效率 × 團隊'] },
-      'DRCL': { emoji:'🎯', name:'刦毀獸', desc:'你是伺服器的派對動物，最擅長辦活動帶氣氛。跑酷大賽、建築比賽、密室逃脫——有你在，伺服器永遠不無聊。', tags:['生存 × 探索 × 美感 × 獨行'] },
-      'DRCH': { emoji:'🐝', name:'蜂巢守護者', desc:'你是伺服器的和平使者，總能在爭吵中找到平衡。你經營商店、組織活動，讓每個人的資源都流動起來。', tags:['生存 × 探索 × 美感 × 團隊'] },
-      'DRML': { emoji:'💎', name:'深淵礦工', desc:'你永遠在更深的地方。別人在 Y=11 挖礦，你已經在 Y=-59 尋找遠古城市。深不見底就是你的風格。', tags:['生存 × 探索 × 效率 × 獨行'] },
-      'DRMH': { emoji:'🌊', name:'中立旅人', desc:'你是伺服器的中立勢力，不隸屬任何陣營。今天蓋城堡、明天挖礦洞、後天馴馬旅行。自由就是你的最高原則。', tags:['生存 × 探索 × 效率 × 團隊'] }
+      'BRCL':{emoji:'🏛️',name:'遠古建造者',desc:'你的靈感來自每個探索過的遺跡。蓋出來的東西不只有故事，還有靈魂。伺服器地標級建築十有八九出自你手。',tags:['建築×紅石×美感×獨行']},
+      'BRCH':{emoji:'🏘️',name:'村莊長老',desc:'你不只蓋自己的家，更樂於為整個社群規劃公共設施。你蓋的東西讓所有人都有歸屬感。',tags:['建築×紅石×美感×團隊']},
+      'BRML':{emoji:'🔌',name:'紅石祭司',desc:'你的建築不只好看，還會動。電梯、活塞門、自動農場——每棟建築都是精密機器，凡人只能讚嘆。',tags:['建築×紅石×效率×獨行']},
+      'BRMH':{emoji:'🔧',name:'鸚鵡飼養員',desc:'你是伺服器的幕後英雄，默默維護著各種設施。低調，但不可或缺。',tags:['建築×紅石×效率×團隊']},
+      'BDCL':{emoji:'📜',name:'圖書管理員',desc:'你走遍世界收集靈感，把故事融入建築。你的房子每一面牆都是一段旅程。',tags:['建築×探索×美感×獨行']},
+      'BDCH':{emoji:'🧭',name:'製圖師',desc:'你帶隊探險、標記資源點、記錄路線。有你在，沒有人會迷路。',tags:['建築×探索×美感×團隊']},
+      'BDML':{emoji:'⚒️',name:'鑽石礦工',desc:'裝備永遠附魔到頂、建築永遠恰到好處。不多不少，剛剛好就是你的哲學。',tags:['建築×探索×效率×獨行']},
+      'BDMH':{emoji:'🛒',name:'流浪商人',desc:'背包裡永遠有驚喜，你就是行走的百寶箱。跟著你走永遠不會無聊。',tags:['建築×探索×效率×團隊']},
+      'SRCL':{emoji:'⚔️',name:'掠奪者',desc:'凋零、遠古守衛者、刦毀獸——沒有你打不贏的 Boss。你享受戰鬥的快感。',tags:['生存×紅石×美感×獨行']},
+      'SRCH':{emoji:'🏰',name:'衛道士剋星',desc:'村莊觸發襲擊？你第一個衝上去。正義是你的信仰。',tags:['生存×紅石×美感×團隊']},
+      'SRML':{emoji:'🐉',name:'終界行者',desc:'哪裏危險你往哪裏去。每次死亡都是下一場冒險的起點。',tags:['生存×紅石×效率×獨行']},
+      'SRMH':{emoji:'🍄',name:'蘑菇島之王',desc:'四塊木板做成工作台、營火烤熟第一條魚——最純粹的生存就是你的浪漫。',tags:['生存×紅石×效率×團隊']},
+      'DRCL':{emoji:'🎯',name:'刦毀獸',desc:'你是伺服器的派對動物，跑酷大賽、建築比賽、密室逃脫——有你在就不無聊。',tags:['生存×探索×美感×獨行']},
+      'DRCH':{emoji:'🐝',name:'蜂巢守護者',desc:'你是和平使者，經營商店、組織活動，讓每個人的資源都流動起來。',tags:['生存×探索×美感×團隊']},
+      'DRML':{emoji:'💎',name:'深淵礦工',desc:'別人在 Y=11 挖礦，你已經在 Y=-59 尋找遠古城市。深不見底就是你的風格。',tags:['生存×探索×效率×獨行']},
+      'DRMH':{emoji:'🌊',name:'中立旅人',desc:'今天蓋城堡、明天挖礦洞、後天馴馬旅行。自由就是你的最高原則。',tags:['生存×探索×效率×團隊']}
     };
+    let mctiStep = 0, mctiScores = {};
 
-    let mctiScores = {};
-    let mctiStep = 0;
-
-    function startMCTI() {
-      mctiScores = { B:0, S:0, R:0, D:0, C:0, M:0, L:0, H:0 };
-      mctiStep = 0;
-      document.getElementById('mctiResult').classList.remove('active');
-      document.querySelectorAll('.game-area').forEach(a => a.classList.remove('active'));
-      document.getElementById('gameMenu').style.display = 'none';
-      document.getElementById('mctiQuiz').classList.add('active');
-      renderMCTIQuestion();
-    }
-
-    function renderMCTIQuestion() {
-      const q = MCTI_QUESTIONS[mctiStep];
-      document.getElementById('mctiBar').style.width = ((mctiStep) / MCTI_QUESTIONS.length * 100) + '%';
-      document.getElementById('mctiQ').textContent = 'Q' + (mctiStep+1) + '. ' + q.q;
-      const opts = document.getElementById('mctiOpts');
-      opts.innerHTML = '';
-      q.a.forEach((text, i) => {
-        const btn = document.createElement('button');
-        btn.className = 'mcti-opt';
-        btn.innerHTML = `<span class="opt-label">${i === 0 ? 'A' : 'B'}</span>${text}`;
-        btn.onclick = () => answerMCTI(i);
-        opts.appendChild(btn);
-      });
-    }
-
-    function answerMCTI(choice) {
-      const q = MCTI_QUESTIONS[mctiStep];
-      const dim = q.dim;
-      if (dim === 'BS') { choice === 0 ? mctiScores.B++ : mctiScores.S++; }
-      else if (dim === 'RD') { choice === 0 ? mctiScores.R++ : mctiScores.D++; }
-      else if (dim === 'CM') { choice === 0 ? mctiScores.C++ : mctiScores.M++; }
-      else if (dim === 'LH') { choice === 0 ? mctiScores.H++ : mctiScores.L++; }
-
-      mctiStep++;
-      if (mctiStep >= MCTI_QUESTIONS.length) {
-        showMCTIResult();
+    function renderMCTI(result) {
+      let html = '<div class="overlay-header"><span class="overlay-title"><span class="mcti-badge">MCTI</span>Minecraft 性格測驗</span><button class="overlay-close" onclick="closeOverlay()">✕</button></div>';
+      if (result) {
+        const code = (mctiScores.B>=mctiScores.S?'B':'S')+(mctiScores.R>=mctiScores.D?'R':'D')+(mctiScores.C>=mctiScores.M?'C':'M')+(mctiScores.L>=mctiScores.H?'L':'H');
+        const t = MCTI_TYPES[code]||MCTI_TYPES['DRMH'];
+        const dims = [
+          {label:'建築 · 生存',a:'🏗️ 建築家',b:'⚔️ 生存者',va:mctiScores.B,vb:mctiScores.S},
+          {label:'紅石 · 探索',a:'⚙️ 紅石人',b:'🧭 探索者',va:mctiScores.R,vb:mctiScores.D},
+          {label:'美感 · 效率',a:'🎨 美感',b:'📈 效率',va:mctiScores.C,vb:mctiScores.M},
+          {label:'獨行 · 團隊',a:'🐺 獨行俠',b:'🤝 團隊魂',va:mctiScores.L,vb:mctiScores.H}
+        ];
+        html += `<div class="mcti-r-emoji">${t.emoji}</div><div class="mcti-r-code">${code}</div><div class="mcti-r-name">${t.name}</div><div class="mcti-r-desc">${t.desc}</div><div class="mcti-r-bars">`;
+        dims.forEach(d => {
+          const total = d.va+d.vb||1, pA = Math.round(d.va/total*100), pB = 100-pA;
+          html += `<div class="mcti-bar-row"><div class="mcti-bar-label">${d.label}</div><div class="mcti-bar-track"><div class="mcti-bar-fill-a" style="width:${pA}%"></div></div><div class="mcti-bar-pcts"><span>${d.a} ${pA}%</span><span>${pB}% ${d.b}</span></div></div>`;
+        });
+        html += '</div><div class="mcti-r-tags">';
+        (t.tags||[]).forEach(tag => html += `<span class="mcti-r-tag">${tag}</span>`);
+        html += '</div><div class="game-result-btns"><button class="btn btn-main" onclick="resetMCTI()">🔄 再測一次</button></div>';
       } else {
-        renderMCTIQuestion();
+        html += `<div class="mcti-progress"><div class="mcti-bar" id="mctiBar" style="width:${mctiStep/MCTI_Q.length*100}%"></div></div>`;
+        const q = MCTI_Q[mctiStep];
+        html += `<div class="mcti-question">Q${mctiStep+1}. ${q.q}</div><div class="mcti-options">`;
+        q.a.forEach((text,i) => html += `<button class="mcti-opt" onclick="answerMCTI(${i})"><span class="opt-label">${i?'B':'A'}</span>${text}</button>`);
+        html += '</div>';
       }
+      overlayBox.innerHTML = html;
     }
 
-    function showMCTIResult() {
-      document.getElementById('mctiQuiz').classList.remove('active');
-      const code = (mctiScores.B >= mctiScores.S ? 'B' : 'S')
-        + (mctiScores.R >= mctiScores.D ? 'R' : 'D')
-        + (mctiScores.C >= mctiScores.M ? 'C' : 'M')
-        + (mctiScores.L >= mctiScores.H ? 'L' : 'H');
-      const type = MCTI_TYPES[code] || MCTI_TYPES['DRMH'];
-      document.getElementById('mctiREmoji').textContent = type.emoji;
-      document.getElementById('mctiRCode').textContent = code;
-      document.getElementById('mctiRName').textContent = type.name;
-      document.getElementById('mctiRDesc').textContent = type.desc;
+    window.answerMCTI = (choice) => {
+      const q = MCTI_Q[mctiStep], dim = q.dim;
+      if(dim==='BS')choice===0?mctiScores.B++:mctiScores.S++;
+      else if(dim==='RD')choice===0?mctiScores.R++:mctiScores.D++;
+      else if(dim==='CM')choice===0?mctiScores.C++:mctiScores.M++;
+      else if(dim==='LH')choice===0?mctiScores.H++:mctiScores.L++;
+      mctiStep++;
+      if(mctiStep>=MCTI_Q.length)renderMCTI(true);
+      else renderMCTI(false);
+    };
+    window.resetMCTI = () => { mctiStep=0; mctiScores={B:0,S:0,R:0,D:0,C:0,M:0,L:0,H:0}; renderMCTI(false); };
+    // Init scores on first open
+    function initMCTI(){mctiStep=0;mctiScores={B:0,S:0,R:0,D:0,C:0,M:0,L:0,H:0};}
 
-      // Dimension bars
-      const bars = document.getElementById('mctiRBars');
-      bars.innerHTML = '';
-      const dims = [
-        { label: '建築 · 生存', a: '🏗️ 建築家', b: '⚔️ 生存者', va: mctiScores.B, vb: mctiScores.S },
-        { label: '紅石 · 探索', a: '⚙️ 紅石人', b: '🧭 探索者', va: mctiScores.R, vb: mctiScores.D },
-        { label: '美感 · 效率', a: '🎨 美感', b: '📈 效率', va: mctiScores.C, vb: mctiScores.M },
-        { label: '獨行 · 團隊', a: '🐺 獨行俠', b: '🤝 團隊魂', va: mctiScores.L, vb: mctiScores.H },
-      ];
-      dims.forEach(d => {
-        const total = d.va + d.vb || 1;
-        const pctA = Math.round(d.va / total * 100);
-        const pctB = 100 - pctA;
-        const el = document.createElement('div');
-        el.className = 'mcti-bar-row';
-        el.innerHTML = `
-          <div class="mcti-bar-label">${d.label}</div>
-          <div class="mcti-bar-track">
-            <div class="mcti-bar-fill-a" style="width:${pctA}%"></div>
-          </div>
-          <div class="mcti-bar-pcts">
-            <span>${d.a} ${pctA}%</span>
-            <span>${pctB}% ${d.b}</span>
-          </div>`;
-        bars.appendChild(el);
-      });
-
-      // Tags
-      const tags = document.getElementById('mctiRTags');
-      tags.innerHTML = '';
-      (type.tags || []).forEach(t => {
-        const tag = document.createElement('span');
-        tag.className = 'mcti-r-tag';
-        tag.textContent = t;
-        tags.appendChild(tag);
-      });
-
-      document.getElementById('mctiBar').style.width = '100%';
-      document.getElementById('mctiResult').classList.add('active');
+    // ═══ Memory Game ═══
+    function renderMemory() {
+      clearInterval(gameTimer);
+      const pairs = SEA.slice(0,8);
+      const cards = [...pairs,...pairs].sort(()=>Math.random()-0.5);
+      let html = '<div class="overlay-header"><span class="overlay-title">🃏 翻牌配對</span><button class="overlay-close" onclick="closeOverlay()">✕</button></div>';
+      html += '<div class="game-hud"><span>配對: <span class="game-hud-val" id="memPairs">0</span>/8</span><span>⏱ <span class="game-hud-val" id="memTime">60</span>s</span></div>';
+      html += '<div class="mem-grid" id="memGrid">';
+      cards.forEach(emoji => html += `<div class="mem-card" data-emoji="${emoji}" onclick="flipCard(this)"><div class="back">?</div><div class="front">${emoji}</div></div>`);
+      html += '</div>';
+      overlayBox.innerHTML = html;
+      let flipped=[], matched=0, locked=false, timeLeft=60;
+      window.flipCard = (card) => {
+        if(locked||card.classList.contains('flipped')||card.classList.contains('matched'))return;
+        card.classList.add('flipped'); flipped.push(card);
+        if(flipped.length===2){
+          locked=true;
+          const[a,b]=flipped;
+          if(a.dataset.emoji===b.dataset.emoji){
+            a.classList.add('matched');b.classList.add('matched');matched++;
+            document.getElementById('memPairs').textContent=matched;
+            flipped=[];locked=false;
+            if(matched===8){clearInterval(gameTimer);showGameResult('🧠','完成！',timeLeft+'s剩餘');}
+          } else {
+            setTimeout(()=>{a.classList.remove('flipped');b.classList.remove('flipped');flipped=[];locked=false;},600);
+          }
+        }
+      };
+      gameTimer = setInterval(()=>{
+        timeLeft--;
+        const el=document.getElementById('memTime');if(el)el.textContent=timeLeft;
+        if(timeLeft<=0){clearInterval(gameTimer);showGameResult('🃏','時間到！',matched+'/8 配對');}
+      },1000);
     }
 
-    window.startMCTI = startMCTI;
-    window.closeMCTI = () => {
-      document.getElementById('mctiQuiz').classList.remove('active');
-      document.getElementById('gameMenu').style.display = '';
-    };
-    window.closeMCTIResult = () => {
-      document.getElementById('mctiResult').classList.remove('active');
-      document.getElementById('gameMenu').style.display = '';
-    };
+    // ═══ Click Speed ═══
+    function renderClick() {
+      clearInterval(gameTimer);
+      let clicks=0, timeLeft=5;
+      let html = '<div class="overlay-header"><span class="overlay-title">⚡ 點擊測速</span><button class="overlay-close" onclick="closeOverlay()">✕</button></div>';
+      html += '<div class="click-zone"><div class="click-label">5 秒內盡量點！</div><div class="timer" id="clickTimer">5</div><div class="click-target" id="clickTarget" onclick="clickHit()">🌊</div></div>';
+      overlayBox.innerHTML = html;
+      window.clickHit = () => {
+        clicks++;
+        const t=document.getElementById('clickTarget');
+        if(t)t.textContent=['🌊','💨','⚡','🔥','💫'][clicks%5];
+      };
+      gameTimer = setInterval(()=>{
+        timeLeft--;
+        const el=document.getElementById('clickTimer');if(el)el.textContent=timeLeft;
+        if(timeLeft<=0){
+          clearInterval(gameTimer);
+          const cps=(clicks/5).toFixed(1);
+          const label=clicks>=80?'閃電快手！':clicks>=40?'手速不錯':'再快一點！';
+          showGameResult('⚡',cps+' CPS',label);
+        }
+      },1000);
+    }
+
+    // ═══ Reaction Time ═══
+    function renderReact() {
+      clearInterval(gameTimer);
+      let html = '<div class="overlay-header"><span class="overlay-title">⏱️ 反應測試</span><button class="overlay-close" onclick="closeOverlay()">✕</button></div>';
+      html += '<div class="react-zone wait" id="reactZone" onclick="reactClick()"><div class="react-text" id="reactText">點擊開始</div></div>';
+      overlayBox.innerHTML = html;
+      let phase='idle', startTime=0, results=[];
+      window.reactClick = () => {
+        const zone=document.getElementById('reactZone');
+        const text=document.getElementById('reactText');
+        if(phase==='idle'){
+          phase='waiting';zone.className='react-zone wait';text.textContent='等待綠色...';
+          const delay=1500+Math.random()*3000;
+          setTimeout(()=>{
+            if(phase!=='waiting')return;
+            phase='go';zone.className='react-zone go';text.textContent='點！';
+            startTime=Date.now();
+          },delay);
+        } else if(phase==='waiting'){
+          phase='idle';zone.className='react-zone result';text.innerHTML='<span style="color:#ff8282">太早了！</span><br><small style="color:rgba(255,255,255,0.3)">點擊重試</small>';
+        } else if(phase==='go'){
+          const ms=Date.now()-startTime;results.push(ms);
+          const avg=Math.round(results.reduce((a,b)=>a+b,0)/results.length);
+          const best=Math.min(...results);
+          let emoji=ms<200?'⚡':ms<300?'💨':'🖱️';
+          phase='result';zone.className='react-zone result';
+          text.innerHTML=`<div class="react-ms">${ms}ms</div><div style="font-size:0.72rem;color:rgba(255,255,255,0.3);margin-top:6px">平均 ${avg}ms · 最快 ${best}ms · 第${results.length}次</div><div style="font-size:0.7rem;color:rgba(255,255,255,0.2);margin-top:8px">點擊繼續</div>`;
+          setTimeout(()=>{phase='idle';},300);
+        } else if(phase==='result'){
+          phase='idle';renderReact();
+        }
+      };
+    }
+
+    // ═══ Tic Tac Toe ═══
+    function renderTTT() {
+      let board=Array(9).fill(null), turn='x', over=false;
+      const wins=[[0,1,2],[3,4,5],[6,7,8],[0,3,6],[1,4,7],[2,5,8],[0,4,8],[2,4,6]];
+      let html = '<div class="overlay-header"><span class="overlay-title">⭕ 井字棋</span><button class="overlay-close" onclick="closeOverlay()">✕</button></div>';
+      html += '<div class="ttt-grid" id="tttGrid">';
+      for(let i=0;i<9;i++) html+=`<div class="ttt-cell" data-i="${i}" onclick="tttClick(this)"></div>`;
+      html += '</div><div class="ttt-status" id="tttStatus">你的回合（X）</div><button class="ttt-reset" onclick="renderTTT()">重新開始</button>';
+      overlayBox.innerHTML = html;
+
+      window.tttClick = (cell) => {
+        const i=+cell.dataset.i;
+        if(board[i]||over)return;
+        board[i]='x';cell.textContent='✕';cell.classList.add('x');
+        if(checkWin('x')){over=true;document.getElementById('tttStatus').textContent='🎉 你贏了！';return;}
+        if(board.every(c=>c)){over=true;document.getElementById('tttStatus').textContent='平手！';return;}
+        document.getElementById('tttStatus').textContent='電腦思考中...';
+        setTimeout(()=>{
+          const empty=board.map((v,i)=>v?null:i).filter(v=>v!==null);
+          if(!empty.length)return;
+          // Simple AI: win > block > center > random
+          let move=-1;
+          for(const w of wins){const vals=w.map(i=>board[i]);if(vals.filter(v=>v==='o').length===2&&vals.includes(null)){move=w[vals.indexOf(null)];break;}}
+          if(move<0)for(const w of wins){const vals=w.map(i=>board[i]);if(vals.filter(v=>v==='x').length===2&&vals.includes(null)){move=w[vals.indexOf(null)];break;}}
+          if(move<0&&!board[4])move=4;
+          if(move<0)move=empty[Math.floor(Math.random()*empty.length)];
+          board[move]='o';
+          const cells=document.querySelectorAll('.ttt-cell');
+          cells[move].textContent='O';cells[move].classList.add('o');
+          if(checkWin('o')){over=true;document.getElementById('tttStatus').textContent='電腦贏了！';return;}
+          if(board.every(c=>c)){over=true;document.getElementById('tttStatus').textContent='平手！';return;}
+          document.getElementById('tttStatus').textContent='你的回合（X）';
+        },400);
+      };
+
+      function checkWin(p){return wins.some(w=>w.every(i=>board[i]===p));}
+    }
+
+    // ═══ Number Memory ═══
+    function renderNumMem() {
+      let level=1, sequence='', showing=false;
+      let html = '<div class="overlay-header"><span class="overlay-title">🔢 數字記憶</span><button class="overlay-close" onclick="closeOverlay()">✕</button></div>';
+      html += '<div class="num-mem"><div class="num-label">記住這串數字</div><div class="num-display" id="numDisp"></div><input class="num-input" id="numInput" style="display:none" placeholder="輸入數字..." maxlength="20" autocomplete="off"><button class="btn btn-main" id="numBtn" onclick="numStart()">開始</button><div class="num-level" id="numLevel">關卡 1</div></div>';
+      overlayBox.innerHTML = html;
+
+      window.numStart = () => {
+        sequence = '';
+        for(let i=0;i<level+1;i++) sequence += Math.floor(Math.random()*10);
+        const disp=document.getElementById('numDisp');
+        const input=document.getElementById('numInput');
+        const btn=document.getElementById('numBtn');
+        disp.textContent=sequence;disp.style.color='#9dafff';
+        input.style.display='none';btn.style.display='none';
+        showing=true;
+        setTimeout(()=>{
+          disp.textContent='? '.repeat(sequence.length).trim();
+          disp.style.color='rgba(157,175,255,0.2)';
+          input.style.display='';input.value='';input.focus();
+          btn.textContent='確認';btn.style.display='';
+          btn.onclick=()=>{numCheck();};
+          showing=false;
+        },1500+level*500);
+      };
+
+      window.numCheck = () => {
+        const input=document.getElementById('numInput');
+        const disp=document.getElementById('numDisp');
+        const btn=document.getElementById('numBtn');
+        if(input.value===sequence){
+          level++;
+          document.getElementById('numLevel').textContent='關卡 '+level;
+          disp.textContent='✅';disp.style.color='#a8e6cf';
+          input.style.display='none';
+          btn.textContent='下一關';btn.onclick=()=>{numStart();};
+        } else {
+          disp.textContent=`❌ 答案是 ${sequence}`;disp.style.color='#ff8282';
+          input.style.display='none';
+          btn.textContent='重新開始';btn.onclick=()=>{level=1;document.getElementById('numLevel').textContent='關卡 1';numStart();};
+        }
+      };
+    }
+
+    // ═══ Game Result Helper ═══
+    function showGameResult(emoji, val, text) {
+      let html = '<div class="overlay-header"><span class="overlay-title" id="resultTitle"></span><button class="overlay-close" onclick="closeOverlay()">✕</button></div>';
+      html += `<div class="game-result"><div class="game-result-emoji">${emoji}</div><div class="game-result-val">${val}</div><div class="game-result-text">${text}</div><div class="game-result-btns"><button class="btn btn-main" onclick="openGame('${currentGame}')">🔄 再玩一次</button><button class="btn btn-sub" onclick="closeOverlay()">關閉</button></div></div>`;
+      overlayBox.innerHTML = html;
+    }
+
+    // ═══ Keyboard ═══
+    document.addEventListener('keydown',(e)=>{
+      if(e.key==='Escape'&&overlay.classList.contains('active'))closeOverlay();
+    });
+
+    // Init MCTI
+    initMCTI();
   })();
   </script>
 </body>
