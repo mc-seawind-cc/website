@@ -151,8 +151,9 @@
 ## ⚡ 效能優化建議
 
 ### 圖片優化
-- [ ] 首頁 Hero 圖片（`homeHero.png`）已有 `.webp` 版本，但 HTML 只 preload PNG
-  - 建議：使用 `<picture>` 元素做格式降級
+- [x] 首頁 Hero 圖片改用 WebP（`image-set()` 自動降級 PNG），載入減少 ~90%（2MB → 217KB）
+- [x] 照片頁背景圖改用 WebP（1.7MB → 101KB）
+- [x] Guide 頁面已使用 `<picture>` 元素做 WebP 降級 ✅
 - [ ] 風景照 carousel 一次載入所有照片 URL，但實際圖片 lazy loading
 - [ ] icons 目錄中部分為 PNG，考慮轉為 WebP 或 SVG（更小、可縮放）
 
@@ -164,7 +165,9 @@
 - [ ] 建議：使用 `content-visibility: auto` 對長頁面做渲染優化
 
 ### CSS 優化
-- [ ] `style.css`（2611 行）中有大量 `[data-theme="light"]` 選擇器重複
+- [x] 清理 `.feature-grid` 重複宣告（4 個 → 1 個 + 2 個 modifier）
+- [x] 清理 `.feature-card` 重複 `contain` 和 `::before` 宣告
+- [ ] `style.css`（~2600 行）中有大量 `[data-theme="light"]` 選擇器重複
 - [ ] 考慮將深色/淺色主題分為兩個檔案，根據主題動態載入
 - [ ] CSS 動畫使用 `will-change` 和 `transform`（已有部分），但 `contain: strict` 可能過度限制
 
@@ -479,6 +482,9 @@ Discord 上的公告長這樣：
 | 2026-04-15 | 海風網站助手 | 404 頁面新增 MCTI Minecraft 性格測驗（8 題 / 16 種人格） |
 | 2026-04-15 | 海風網站助手 | 404 打怪物全面重製 — 53 種生物 sprite + 新遊戲機制 |
 | 2026-04-15 | 海風網站助手 | 404 小遊戲全面重設計：修復 9 個 bug + 新增 3 款遊戲（礦石記憶/方塊消除/射擊場） |
+| 2026-04-15 | 海風網站助手 | 🚀 圖片效能優化：首頁 Hero 圖改用 WebP（2MB→217KB，減少 90%）+ CSS image-set 自動降級 |
+| 2026-04-15 | 海風網站助手 | 照片背景圖（photo-sub-bg）同步改用 WebP（1.7MB→101KB） |
+| 2026-04-15 | 海風網站助手 | 清理 CSS 重複規則：移除 .feature-grid 和 .feature-card 的重複宣告 |
 
 ---
 
