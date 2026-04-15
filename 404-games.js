@@ -831,5 +831,301 @@ const GAMES_404 = (() => {
     init();
   }
 
-  return { crafting, fishing, enchanting, trading, records };
+  // ═══════════════════════════════════════
+  //  6. 方塊堆疊 (Block Stacking)
+  // ═══════════════════════════════════════
+  function stacking(overlayBox) {
+    const CW = 260, CH = 400, BLOCK_H = 22;
+    const COLORS = [
+      { bg: '#5a8a3a', border: '#4a7a2a', name: '草方塊' },
+      { bg: '#8a7a5a', border: '#7a6a4a', name: '泥土' },
+      { bg: '#7a7a7a', border: '#6a6a6a', name: '圓石' },
+      { bg: '#6a5a4a', border: '#5a4a3a', name: '橡木' },
+      { bg: '#578aff', border: '#4770cc', name: '青金石' },
+      { bg: '#deac80', border: '#c89a6a', name: '沙岩' },
+      { bg: '#ab72f9', border: '#8a5acc', name: '紫珀塊' },
+      { bg: '#ff8282', border: '#cc5a5a', name: '紅石塊' },
+      { bg: '#a8e6cf', border: '#7accaa', name: '海磷石' },
+      { bg: '#ffd700', border: '#ccaa00', name: '金塊' },
+    ];
+
+    let canvas, ctx;
+    let stack = [], currentBlock = null, fallenPieces = [];
+    let score = 0, highScore = parseInt(localStorage.getItem('sw-stack-best') || '0');
+    let gameOver = false, animId = null;
+    let speed = 2.5, dir = 1;
+    let cameraY = 0;
+    let combo = 0;
+    let shakeX = 0, shakeDecay = 0;
+
+    function init() {
+      let html = `<div class="overlay-header"><span class="overlay-title">🧱 方塊堆疊</span><button class="overlay-close" onclick="closeOverlay()">✕</button></div>`;
+      html += `<div class="game-hud"><span>🧱 <span class="game-hud-val" id="stkScore">0</span></span>${highScore > 0 ? `<span class="ms-best">最高 ${highScore}</span>` : ''}</div>`;
+      html += `<div class="stk-wrap"><canvas id="stkCanvas" width="${CW}" height="${CH}"></canvas><div class="stk-overlay" id="stkOverlay">點擊開始！</div></div>`;
+      html += `<div class="stk-hint">點擊 / 空白鍵 放置方塊</div>`;
+      overlayBox.innerHTML = html;
+
+      canvas = document.getElementById('stkCanvas');
+      ctx = canvas.getContext('2d');
+
+      resetGame();
+      draw();
+
+      canvas.addEventListener('click', handleDrop);
+      document.addEventListener('keydown', handleKey);
+    }
+
+    function resetGame() {
+      stack = [];
+      fallenPieces = [];
+      score = 0;
+      speed = 2.5;
+      dir = 1;
+      gameOver = false;
+      combo = 0;
+      cameraY = 0;
+      shakeX = 0;
+
+      // Base block
+      const baseW = CW * 0.6;
+      stack.push({
+        x: (CW - baseW) / 2, y: CH - BLOCK_H - 10,
+        w: baseW, h: BLOCK_H,
+        color: COLORS[0]
+      });
+
+      spawnBlock();
+    }
+
+    function spawnBlock() {
+      const top = stack[stack.length - 1];
+      dir = Math.random() < 0.5 ? 1 : -1;
+      currentBlock = {
+        x: dir === 1 ? -top.w : CW,
+        y: top.y - BLOCK_H,
+        w: top.w,
+        h: BLOCK_H,
+        color: COLORS[Math.floor(Math.random() * COLORS.length)]
+      };
+    }
+
+    function handleKey(e) {
+      if (e.code === 'Space') { e.preventDefault(); handleDrop(); }
+    }
+
+    function handleDrop() {
+      const overlay = document.getElementById('stkOverlay');
+      if (gameOver) {
+        resetGame();
+        if (overlay) overlay.style.display = 'none';
+        if (!animId) loop();
+        return;
+      }
+      if (!currentBlock) return;
+      if (overlay && overlay.style.display !== 'none') {
+        overlay.style.display = 'none';
+        if (!animId) loop();
+        return;
+      }
+
+      const top = stack[stack.length - 1];
+      const cb = currentBlock;
+
+      // Calculate overlap
+      const overlapLeft = Math.max(cb.x, top.x);
+      const overlapRight = Math.min(cb.x + cb.w, top.x + top.w);
+      const overlapW = overlapRight - overlapLeft;
+
+      if (overlapW <= 0) {
+        // Missed entirely
+        gameOver = true;
+        saveScore();
+        showResult();
+        return;
+      }
+
+      if (Math.abs(overlapLeft - top.x) < 4 && Math.abs(overlapW - top.w) < 4) {
+        // Perfect! Grow the block slightly
+        combo++;
+        if (combo >= 3) {
+          cb.w = Math.min(CW * 0.85, cb.w + 2);
+        }
+      } else {
+        combo = 0;
+      }
+
+      // Cut the block to overlap
+      const cutPiece = null;
+      if (overlapW < cb.w) {
+        // Create fallen piece for the part that's cut off
+        if (cb.x < top.x) {
+          fallenPieces.push({
+            x: cb.x, y: cb.y, w: top.x - cb.x, h: BLOCK_H,
+            color: cb.color, vy: 0, vx: -1, life: 40
+          });
+        }
+        if (cb.x + cb.w > top.x + top.w) {
+          fallenPieces.push({
+            x: top.x + top.w, y: cb.y, w: (cb.x + cb.w) - (top.x + top.w), h: BLOCK_H,
+            color: cb.color, vy: 0, vx: 1, life: 40
+          });
+        }
+      }
+
+      // Shrink block proportionally to misalignment
+      const newW = Math.max(6, overlapW);
+
+      stack.push({
+        x: overlapLeft, y: cb.y,
+        w: newW, h: BLOCK_H,
+        color: cb.color
+      });
+
+      score++;
+
+      // Shake on imperfect drops
+      if (overlapW < cb.w * 0.9) {
+        shakeX = (Math.random() - 0.5) * 4;
+        shakeDecay = 0.8;
+      }
+
+      // Speed up
+      speed = Math.min(5, 2.5 + score * 0.05);
+
+      // Shift camera up
+      if (stack.length > 10) {
+        cameraY = (stack.length - 10) * BLOCK_H;
+      }
+
+      currentBlock = null;
+      spawnBlock();
+      updateHUD();
+    }
+
+    function loop() {
+      if (gameOver) { cancelAnimationFrame(animId); animId = null; draw(); return; }
+      update();
+      draw();
+      animId = requestAnimationFrame(loop);
+    }
+
+    function update() {
+      if (!currentBlock) return;
+      currentBlock.x += speed * dir;
+
+      // Bounce off walls
+      if (currentBlock.x + currentBlock.w > CW) { dir = -1; currentBlock.x = CW - currentBlock.w; }
+      if (currentBlock.x < 0) { dir = 1; currentBlock.x = 0; }
+
+      // Fallen pieces physics
+      fallenPieces.forEach(p => { p.vy += 0.5; p.y += p.vy; p.x += p.vx; p.life--; });
+      fallenPieces = fallenPieces.filter(p => p.life > 0);
+
+      // Shake decay
+      if (shakeDecay > 0) { shakeX *= shakeDecay; if (Math.abs(shakeX) < 0.1) { shakeX = 0; shakeDecay = 0; } }
+    }
+
+    function draw() {
+      ctx.save();
+      ctx.clearRect(0, 0, CW, CH);
+
+      // Background
+      ctx.fillStyle = '#0a1220';
+      ctx.fillRect(0, 0, CW, CH);
+
+      // Grid lines (subtle)
+      ctx.strokeStyle = 'rgba(157,175,255,0.03)';
+      for (let gy = 0; gy < CH; gy += BLOCK_H) {
+        ctx.beginPath();
+        ctx.moveTo(0, gy);
+        ctx.lineTo(CW, gy);
+        ctx.stroke();
+      }
+
+      ctx.translate(shakeX, cameraY);
+
+      // Stack blocks
+      stack.forEach((b, i) => {
+        const y = b.y;
+        if (y + cameraY < -BLOCK_H || y + cameraY > CH + BLOCK_H) return;
+        drawBlock(b.x, y, b.w, b.h, b.color, i === stack.length - 1 ? 1 : 0.85);
+      });
+
+      // Fallen pieces
+      fallenPieces.forEach(p => {
+        ctx.globalAlpha = p.life / 40;
+        drawBlock(p.x, p.y, p.w, p.h, p.color, 0.5);
+        ctx.globalAlpha = 1;
+      });
+
+      // Current block
+      if (currentBlock && !gameOver) {
+        drawBlock(currentBlock.x, currentBlock.y, currentBlock.w, currentBlock.h, currentBlock.color, 1);
+      }
+
+      // Score indicator
+      if (combo >= 3 && !gameOver) {
+        ctx.fillStyle = '#a8e6cf';
+        ctx.font = 'bold 11px "Noto Sans TC", sans-serif';
+        ctx.textAlign = 'center';
+        ctx.fillText(`🔥 ×${combo}`, CW / 2, (currentBlock?.y || 0) - 8 + cameraY);
+      }
+
+      ctx.restore();
+    }
+
+    function drawBlock(x, y, w, h, color, alpha) {
+      ctx.globalAlpha = alpha || 1;
+
+      // Main block
+      ctx.fillStyle = color.bg;
+      ctx.fillRect(x, y, w, h);
+
+      // Top highlight
+      ctx.fillStyle = 'rgba(255,255,255,0.12)';
+      ctx.fillRect(x, y, w, 3);
+
+      // Bottom shadow
+      ctx.fillStyle = 'rgba(0,0,0,0.2)';
+      ctx.fillRect(x, y + h - 3, w, 3);
+
+      // Border
+      ctx.strokeStyle = color.border;
+      ctx.lineWidth = 1;
+      ctx.strokeRect(x + 0.5, y + 0.5, w - 1, h - 1);
+
+      ctx.globalAlpha = 1;
+    }
+
+    function updateHUD() {
+      const el = document.getElementById('stkScore');
+      if (el) el.textContent = score;
+    }
+
+    function saveScore() {
+      if (score > highScore) {
+        highScore = score;
+        localStorage.setItem('sw-stack-best', score.toString());
+      }
+    }
+
+    function showResult() {
+      const overlay = document.getElementById('stkOverlay');
+      if (overlay) {
+        overlay.style.display = 'flex';
+        const label = score >= 50 ? '建築大師！🏗️' : score >= 30 ? '熟練工匠' : score >= 15 ? '學徒建築師' : '多多練習！';
+        overlay.innerHTML = `<div>
+          <div class="stk-final-score">${score} 層</div>
+          ${score >= highScore && score > 0 ? '<div style="color:#a8e6cf;font-size:0.8rem;margin:4px 0">🎉 新紀錄！</div>' : ''}
+          <div style="font-size:0.85rem;font-weight:600;color:rgba(255,255,255,0.6);margin:4px 0">${label}</div>
+          <div style="font-size:0.7rem;color:rgba(255,255,255,0.3);margin-top:6px">點擊再來一局</div>
+        </div>`;
+      }
+    }
+
+    cancelAnimationFrame(animId);
+    init();
+  }
+
+  return { crafting, fishing, enchanting, trading, records, stacking };
 })();

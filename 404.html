@@ -407,6 +407,13 @@
     .rec-key:active,.rec-key-hit{background:rgba(168,230,207,0.2);border-color:rgba(168,230,207,0.4);color:#a8e6cf;transform:scale(0.95)}
     .rec-hint{text-align:center;font-size:0.62rem;color:rgba(255,255,255,0.18);margin-top:6px}
 
+    /* ═══ 方塊堆疊 ═══ */
+    .stk-wrap{position:relative;display:flex;justify-content:center}
+    #stkCanvas{display:block;border-radius:10px;border:1px solid rgba(157,175,255,0.12);cursor:pointer;max-width:100%}
+    .stk-overlay{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(6,10,18,0.7);border-radius:10px;font-size:1rem;font-weight:700;color:rgba(255,255,255,0.7);cursor:pointer;text-shadow:0 2px 8px rgba(0,0,0,0.5)}
+    .stk-final-score{font-size:2.5rem;font-weight:800;color:#a8e6cf}
+    .stk-hint{text-align:center;font-size:0.62rem;color:rgba(255,255,255,0.18);margin-top:6px}
+
     /* Game HUD */
     .game-hud{display:flex;justify-content:space-between;align-items:center;padding:8px 0;margin-bottom:12px;font-size:0.78rem;color:rgba(255,255,255,0.4)}
     .game-hud-val{color:#a8e6cf;font-weight:700;font-variant-numeric:tabular-nums}
@@ -644,6 +651,7 @@
       <button class="game-tab" onclick="openGame('enchanting')">✨ 附魔</button>
       <button class="game-tab" onclick="openGame('trading')">🤝 交易</button>
       <button class="game-tab" onclick="openGame('records')">💿 唱片</button>
+      <button class="game-tab" onclick="openGame('stacking')">🧱 堆疊</button>
     </div>
   </div>
 
@@ -962,7 +970,7 @@
 
     window.openGame = (type) => {
       currentGame = type;
-      const labelMap = {mcti:'MCTI',mole:'打怪物',crafting:'合成',fishing:'釣魚',enchanting:'附魔',trading:'交易',records:'唱片'};
+      const labelMap = {mcti:'MCTI',mole:'打怪物',crafting:'合成',fishing:'釣魚',enchanting:'附魔',trading:'交易',records:'唱片',stacking:'堆疊'};
       document.querySelectorAll('.game-tab').forEach(t => t.classList.toggle('active', t.textContent.includes(labelMap[type]||'')));
       if (type === 'mcti') { initMCTI(); renderMCTI(); }
       else if (type === 'mole') MOB_SMASHER.open(overlayBox);
