@@ -131,7 +131,7 @@ const MOB_SMASHER = (() => {
           ${state.bestScore > 0 ? `<span class="ms-best">最高 ${state.bestScore}</span>` : ''}
         </div>
         <div class="ms-hud-center">
-          <div class="ms-totem" id="msTotem" style="display:none" title="不死圖騰（抵擋致命傷害）"><img src="${SPRITE_PATH}totem.png" class="ms-item-sprite" alt="不死圖騰"><span class="ms-totem-count" id="msTotemCount"></span></div>
+          <div class="ms-totem" id="msTotem" style="display:none" title="不死圖騰（抵擋致命傷害）"><img src="${SPRITE_PATH}totem.png" class="ms-item-sprite" alt="不死圖騰" id="msTotemIcon1"><img src="${SPRITE_PATH}totem.png" class="ms-item-sprite ms-totem-2" alt="不死圖騰" id="msTotemIcon2" style="display:none"></div>
         </div>
         <div class="ms-hud-right">
           <span class="ms-timer" id="msTimer">30</span>秒
@@ -400,9 +400,9 @@ const MOB_SMASHER = (() => {
 
   function updateTotem() {
     const el = document.getElementById('msTotem');
-    const countEl = document.getElementById('msTotemCount');
+    const icon2 = document.getElementById('msTotemIcon2');
     if (el) el.style.display = state.totemCount > 0 ? '' : 'none';
-    if (countEl) countEl.textContent = state.totemCount > 1 ? `×${state.totemCount}` : '';
+    if (icon2) icon2.style.display = state.totemCount >= 2 ? '' : 'none';
   }
 
   function updateHUD() {

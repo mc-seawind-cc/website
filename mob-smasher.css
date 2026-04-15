@@ -132,17 +132,8 @@
 .ms-totem .ms-item-sprite {
   width: 28px; height: 28px;
 }
-.ms-totem-count {
-  font-size: 0.6rem;
-  font-weight: 800;
-  color: var(--foam, #a8e6cf);
-  position: absolute;
-  top: -4px;
-  right: -6px;
-  background: rgba(6,14,28,0.8);
-  border-radius: 4px;
-  padding: 0 3px;
-  line-height: 1.4;
+.ms-totem-2 {
+  margin-left: 2px;
 }
 
 .ms-weapon-icon {
