@@ -131,9 +131,22 @@
   width: 28px; height: 28px;
 }
 
-.ms-emoji-fallback {
-  font-size: 2rem;
-  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.4));
+.ms-weapon-icon {
+  width: 20px;
+  height: 20px;
+  image-rendering: pixelated;
+  image-rendering: -moz-crisp-edges;
+  vertical-align: middle;
+  filter: drop-shadow(0 1px 2px rgba(0,0,0,0.4));
+}
+
+.ms-name-fallback {
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: rgba(255,255,255,0.6);
+  background: rgba(157,175,255,0.1);
+  padding: 2px 6px;
+  border-radius: 4px;
 }
 
 .ms-mob-name {
@@ -208,16 +221,13 @@
   font-size: 0.65rem;
   color: rgba(255,255,255,0.3);
 }
-.ms-dot {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  display: inline-block;
+.ms-legend-sprite {
+  width: 16px;
+  height: 16px;
+  image-rendering: pixelated;
+  image-rendering: -moz-crisp-edges;
+  filter: drop-shadow(0 1px 2px rgba(0,0,0,0.5));
 }
-.ms-dot.hostile { background: rgba(255,80,80,0.7); }
-.ms-dot.passive { background: rgba(168,230,207,0.7); }
-.ms-dot.neutral { background: rgba(255,170,50,0.7); }
-.ms-dot.special { background: rgba(255,50,50,0.9); }
 
 .ms-source {
   text-align: center;
@@ -238,7 +248,19 @@
   gap: 6px;
   grid-column: 1 / -1;
 }
-.ms-result-emoji { font-size: 3rem; margin-bottom: 4px; }
+.ms-result-icon { margin-bottom: 8px; }
+.ms-result-sword {
+  width: 48px;
+  height: 48px;
+  image-rendering: pixelated;
+  image-rendering: -moz-crisp-edges;
+  filter: drop-shadow(0 2px 8px rgba(0,0,0,0.5));
+  animation: sword-swing 2s ease-in-out infinite;
+}
+@keyframes sword-swing {
+  0%, 100% { transform: rotate(-10deg); }
+  50% { transform: rotate(10deg); }
+}
 .ms-result-score { font-size: 2rem; font-weight: 800; color: #a8e6cf; }
 .ms-result-detail { font-size: 0.78rem; color: rgba(255,255,255,0.4); text-align: center; line-height: 1.8; }
 .ms-result-label { font-size: 0.9rem; font-weight: 700; color: rgba(255,255,255,0.7); margin-top: 4px; }

@@ -1,6 +1,5 @@
-// ═══ 打怪物 Mob Smasher — 重製版 ═══
-// sprites: assets/mobs/*.png (16×16 pixel art, scaled via CSS)
-// 來源: mcwiki（CC BY-NC-SA 3.0）
+// ═══ 打怪物 ═══
+// sprites: assets/mobs/*.png（16×16 像素圖，來源: mcwiki CC BY-NC-SA 3.0）
 
 const MOB_SMASHER = (() => {
   'use strict';
@@ -110,12 +109,12 @@ const MOB_SMASHER = (() => {
 
     let html = `
       <div class="overlay-header">
-        <span class="overlay-title">⚔️ 打怪物 Mob Smasher</span>
+        <span class="overlay-title">⚔️ 打怪物</span>
         <button class="overlay-close" onclick="MOB_SMASHER.close()">✕</button>
       </div>
       <div class="ms-hud">
         <div class="ms-hud-left">
-          <span class="ms-score">🔨 <span id="msScore">0</span></span>
+          <span class="ms-score"><img src="https://zh.minecraft.wiki/images/Wooden_Sword_JE2_BE2.png?b526d" class="ms-weapon-icon" alt="木劍"> <span id="msScore">0</span></span>
           ${state.bestScore > 0 ? `<span class="ms-best">最高 ${state.bestScore}</span>` : ''}
         </div>
         <div class="ms-hud-center">
@@ -136,10 +135,10 @@ const MOB_SMASHER = (() => {
     html += `</div>
       <div class="ms-info" id="msInfo">準備好了嗎？點擊開始！</div>
       <div class="ms-legend">
-        <span class="ms-legend-item"><span class="ms-dot hostile"></span>敵對 +分+秒</span>
-        <span class="ms-legend-item"><span class="ms-dot passive"></span>友好 -分-秒</span>
-        <span class="ms-legend-item"><span class="ms-dot neutral"></span>中立 -分</span>
-        <span class="ms-legend-item"><span class="ms-dot special"></span>💀 爆炸!</span>
+        <span class="ms-legend-item"><img src="${SPRITE_PATH}zombie.png" class="ms-legend-sprite" alt="">敵對 +分+秒</span>
+        <span class="ms-legend-item"><img src="${SPRITE_PATH}pig.png" class="ms-legend-sprite" alt="">友好 -分-秒</span>
+        <span class="ms-legend-item"><img src="${SPRITE_PATH}wolf.png" class="ms-legend-sprite" alt="">中立 -分</span>
+        <span class="ms-legend-item"><img src="${SPRITE_PATH}end-crystal.png" class="ms-legend-sprite" alt="">爆炸!</span>
       </div>
       <div class="ms-source">生物圖片來源：<a href="https://minecraft.wiki" target="_blank" rel="noopener">mcwiki</a>（CC BY-NC-SA 3.0）</div>
     `;
@@ -234,11 +233,11 @@ const MOB_SMASHER = (() => {
       <span class="ms-mob-name">${mob.name}</span>
     `;
 
-    // Preload image
+    // Fallback if sprite fails to load
     const img = el.querySelector('img');
     img.onerror = () => {
       el.querySelector('.ms-sprite').style.display = 'none';
-      el.insertAdjacentHTML('afterbegin', `<span class="ms-emoji-fallback">${getEmoji(mob.id)}</span>`);
+      el.insertAdjacentHTML('afterbegin', `<span class="ms-name-fallback">${mob.name}</span>`);
     };
 
     hole.querySelector('.ms-hole-inner').appendChild(el);
@@ -282,7 +281,7 @@ const MOB_SMASHER = (() => {
       // Special abilities
       if (mob.special === 'totem') {
         state.hasTotem = true;
-        showInfo('🪄 獲得不死圖騰！', '#a8e6cf');
+        showInfo('獲得不死圖騰！', '#a8e6cf');
         updateTotem();
       }
       if (mob.special === 'elder') {
@@ -312,12 +311,12 @@ const MOB_SMASHER = (() => {
     } else if (category === 'special') {
       if (state.hasTotem) {
         useTotem();
-        showInfo('💥 不死圖騰救了你一命！', '#ffaa32');
-        showFloatingText(el, '🪄', '#a8e6cf');
+        showInfo('不死圖騰救了你一命！', '#ffaa32');
+        showFloatingText(el, '🛡️', '#a8e6cf');
       } else {
         state.timeLeft = 0;
-        showInfo(`💥 ${mob.name}爆炸了！`, '#ff8282');
-        showFloatingText(el, '💀', '#ff8282');
+        showInfo(`${mob.name}爆炸了！`, '#ff8282');
+        showFloatingText(el, '💥', '#ff8282');
         endGame();
       }
       removeMob(idx);
@@ -429,16 +428,16 @@ const MOB_SMASHER = (() => {
     }
 
     // Show result
-    const label = state.score >= 50 ? '🏆 苦力怕剋星！'
-                : state.score >= 30 ? '⚔️ 出色的獵人！'
-                : state.score >= 15 ? '👍 還不錯！'
-                : '💪 再試一次！';
+    const label = state.score >= 50 ? '苦力怕剋星！'
+                : state.score >= 30 ? '出色的獵人！'
+                : state.score >= 15 ? '還不錯！'
+                : '再試一次！';
 
     const grid = document.getElementById('msGrid');
     if (grid) {
       grid.innerHTML = `
         <div class="ms-result">
-          <div class="ms-result-emoji">${state.score >= 30 ? '🏆' : state.score >= 15 ? '⚔️' : '💀'}</div>
+          <div class="ms-result-icon"><img src="https://zh.minecraft.wiki/images/Wooden_Sword_JE2_BE2.png?b526d" class="ms-result-sword" alt="木劍"></div>
           <div class="ms-result-score">${state.score} 分</div>
           <div class="ms-result-detail">
             消滅 ${state.mobsSmashed} 隻怪物 · 誤傷 ${state.friendliesHit} 隻動物
@@ -451,20 +450,6 @@ const MOB_SMASHER = (() => {
           </div>
         </div>`;
     }
-  }
-
-  function getEmoji(id) {
-    const emojis = {
-      zombie: '🧟', creeper: '💥', skeleton: '💀', slime: '🟢', witch: '🧙',
-      spider: '🕷️', blaze: '🔥', breeze: '💨', ghast: '👻', phantom: '🦇',
-      evoker: '🧙‍♂️', ravager: '🐂', wither: '💀', 'elder-guardian': '👁️', guardian: '🐡',
-      allay: '🧚', bat: '🦇', chicken: '🐔', horse: '🐴', parrot: '🦜',
-      pig: '🐷', cat: '🐱', rabbit: '🐰', sheep: '🐑', fox: '🦊',
-      dolphin: '🐬', frog: '🐸', turtle: '🐢', cod: '🐟', salmon: '🐟',
-      squid: '🦑', villager: '🧑‍🌾', bee: '🐝', 'iron-golem': '🤖',
-      panda: '🐼', 'polar-bear': '🐻‍❄️', wolf: '🐺', tnt: '🧨', 'end-crystal': '💎',
-    };
-    return emojis[id] || '🐾';
   }
 
   // ═══ Public API ═══
