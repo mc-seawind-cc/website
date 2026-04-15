@@ -704,27 +704,27 @@ const MINIGAMES = (() => {
       const flagsLeft = MINE_COUNT - flagsUsed;
       let html = `<div class="overlay-header"><span class="overlay-title">💣 礦洞掃雷</span><button class="overlay-close" onclick="MINIGAMES.close()">✕</button></div>`;
       html += `<div class="game-hud"><span>💣 <span class="game-hud-val" id="msFlags">${flagsLeft}</span></span><span>⏱ <span class="game-hud-val" id="msTime">${timeLeft}</span>s</span></div>`;
-      html += '<div class="ms-grid" id="msGrid" oncontextmenu="event.preventDefault()">';
+      html += '<div class="mw-grid" id="mwGrid" oncontextmenu="event.preventDefault()">';
       for (let r = 0; r < ROWS; r++) for (let c = 0; c < COLS; c++) {
         const isRevealed = revealed[r][c];
         const isFlagged = flagged[r][c];
-        let content = '', cls = 'ms-cell';
+        let content = '', cls = 'mw-cell';
         if (gameOver && grid[r][c] === -1 && !isFlagged) {
           content = MINE_EMOJI;
-          cls += ' ms-revealed ms-mine';
+          cls += ' mw-revealed mw-mine';
         } else if (isRevealed) {
-          cls += ' ms-revealed';
+          cls += ' mw-revealed';
           const val = grid[r][c];
-          if (val === -1) { content = MINE_EMOJI; cls += ' ms-mine'; }
-          else if (val > 0) { content = ORE_ICONS[val] || val; cls += ` ms-num ms-num-${val}`; }
+          if (val === -1) { content = MINE_EMOJI; cls += ' mw-mine'; }
+          else if (val > 0) { content = ORE_ICONS[val] || val; cls += ` mw-num mw-num-${val}`; }
         } else if (isFlagged) {
           content = '🚩';
-          cls += ' ms-flagged';
+          cls += ' mw-flagged';
         }
         html += `<div class="${cls}" data-r="${r}" data-c="${c}" onclick="MINIGAMES._msClick(${r},${c})" oncontextmenu="event.preventDefault();MINIGAMES._msRight(${r},${c})">${content}</div>`;
       }
       html += '</div>';
-      html += `<div class="ms-hint">${gameOver ? (won ? '🎉 掃雷成功！安全通關！' : '💥 踩到礦了！') : '左鍵翻開 · 右鍵插旗 · 小心地雷'}</div>`;
+      html += `<div class="mw-hint">${gameOver ? (won ? '🎉 掃雷成功！安全通關！' : '💥 踩到礦了！') : '左鍵翻開 · 右鍵插旗 · 小心地雷'}</div>`;
       if (gameOver) html += `<div class="game-result-btns" style="margin-top:10px"><button class="btn btn-main" onclick="MINIGAMES.minesweeper(document.getElementById('overlayBox'))">🔄 再來一局</button></div>`;
       overlayBox.innerHTML = html;
     }
