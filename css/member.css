@@ -1,9 +1,0 @@
-.member-table-wrap{overflow-x:auto;border-radius:var(--radius-lg);border:1px solid rgba(255,255,255,0.06)}
-.member-table{width:100%;border-collapse:collapse;font-size:0.9rem}
-.member-table thead{background:rgba(157,175,255,0.08)}
-.member-table th{padding:var(--space-md)var(--space-lg);text-align:center;font-weight:700;color:var(--sky);font-size:0.85rem;text-transform:uppercase;letter-spacing:0.05em;border-bottom:2px solid rgba(157,175,255,0.15)}
-.member-table th:first-child{text-align:left}
-.member-table td{padding:var(--space-sm)var(--space-lg);border-bottom:1px solid rgba(255,255,255,0.04);color:var(--cloud);text-align:center}
-.member-table td:first-child{text-align:left;font-weight:500}
-.member-table tbody tr:hover{background:rgba(255,255,255,0.02)}
-.member-cat td{background:rgba(157,175,255,0.05);font-weight:700;color:var(--white);font-size:0.85rem;padding:var(--space-sm)var(--space-lg);border-bottom:1px solid rgba(157,175,255,0.1)}
