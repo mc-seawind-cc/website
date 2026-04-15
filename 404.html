@@ -187,8 +187,15 @@
     .mcti-r-code{font-size:1.8rem;font-weight:800;background:linear-gradient(135deg,#c49dff,#9dafff,#a8e6cf);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;letter-spacing:0.08em;margin-bottom:4px}
     .mcti-r-name{font-size:1.1rem;color:rgba(255,255,255,0.85);font-weight:700;margin-bottom:10px}
     .mcti-r-desc{font-size:0.85rem;color:rgba(255,255,255,0.5);line-height:1.8;margin-bottom:14px;max-width:340px;margin-left:auto;margin-right:auto}
-    .mcti-r-traits{display:flex;justify-content:center;gap:6px;flex-wrap:wrap;margin-bottom:18px}
-    .mcti-r-trait{padding:4px 10px;background:rgba(171,114,249,0.08);border:1px solid rgba(171,114,249,0.12);border-radius:100px;font-size:0.72rem;color:rgba(171,114,249,0.8)}
+    .mcti-r-bars{margin:0 auto 14px;max-width:320px}
+    .mcti-bar-row{margin-bottom:10px}
+    .mcti-bar-label{font-size:0.7rem;color:rgba(255,255,255,0.35);margin-bottom:4px;text-align:center;letter-spacing:0.04em}
+    .mcti-bar-track{height:6px;background:rgba(255,255,255,0.06);border-radius:3px;overflow:hidden;position:relative}
+    .mcti-bar-fill-a{height:100%;background:linear-gradient(90deg,rgba(171,114,249,0.6),rgba(157,175,255,0.6));border-radius:3px;transition:width 0.6s ease}
+    .mcti-bar-pcts{display:flex;justify-content:space-between;font-size:0.68rem;color:rgba(255,255,255,0.4);margin-top:3px}
+    .mcti-bar-pcts span{white-space:nowrap}
+    .mcti-r-tags{display:flex;justify-content:center;gap:6px;flex-wrap:wrap;margin-bottom:18px}
+    .mcti-r-tag{padding:4px 10px;background:rgba(171,114,249,0.08);border:1px solid rgba(171,114,249,0.12);border-radius:100px;font-size:0.72rem;color:rgba(171,114,249,0.8)}
     .mcti-r-actions{display:flex;gap:8px;justify-content:center}
 
     /* Memory game */
@@ -369,7 +376,8 @@
         <div class="mcti-r-code" id="mctiRCode"></div>
         <div class="mcti-r-name" id="mctiRName"></div>
         <div class="mcti-r-desc" id="mctiRDesc"></div>
-        <div class="mcti-r-traits" id="mctiRTraits"></div>
+        <div class="mcti-r-bars" id="mctiRBars"></div>
+        <div class="mcti-r-tags" id="mctiRTags"></div>
         <div class="mcti-r-actions">
           <button class="btn btn-main" onclick="startMCTI()">🔄 再測一次</button>
           <button class="btn btn-sub" onclick="closeMCTIResult()">返回</button>
@@ -586,65 +594,65 @@
     // ═══ MCTI — Minecraft Character Type Indicator ═══
     const MCTI_QUESTIONS = [
       {
-        q: '進入新的 Minecraft 世界，你第一件事會？',
-        a: ['馬上開始蓋房子', '先砍樹做工具然後到處探險'],
-        dim: 'BS' // 0=Builder, 1=Survivor
+        q: '進入新的世界，你第一件事會？',
+        a: ['開始蓋一個漂亮的家', '衝出去探險，管他三七二十一'],
+        dim: 'BS'
       },
       {
         q: '你在伺服器最常做的事是？',
-        a: ['研究紅石電路和自動化農場', '挖礦、探索遺跡和地牢'],
-        dim: 'RD' // 0=Redstone, 1=Diamond
+        a: ['研究紅石電路、搞自動化', '挖礦、探索遺跡、找寶藏'],
+        dim: 'RD'
       },
       {
-        q: '你蓋建築時的風格是？',
-        a: ['注重美感、配色和氛圍', '注重效率、功能和實用性'],
-        dim: 'CM' // 0=Creative, 1=Mechanical
+        q: '你蓋東西的時候注重的是？',
+        a: ['配色、氛圍、讓人驚艷', '功能、效率、方便使用'],
+        dim: 'CM'
       },
       {
-        q: '你覺得 Minecraft 最好玩的部分是？',
-        a: ['和朋友一起蓋東西、合作冒險', '一個人安靜地建造自己的世界'],
-        dim: 'LH' // 0=Helper, 1=Loner (reversed for scoring)
+        q: '你覺得最好玩的時刻是？',
+        a: ['和朋友一起搞事、一起蓋', '一個人安靜地享受世界'],
+        dim: 'LH'
       },
       {
-        q: '朋友蓋了一棟很醜的房子，你會？',
-        a: ['偷偷幫他重新設計', '告訴他礦洞裡有鑽石，把他騙走'],
-        dim: 'BS' // 0=Builder, 1=Survivor
+        q: '朋友蓋了一棟歪七扭八的房子，你會？',
+        a: ['忍不住幫他重新設計', '誇他有創意然後默默走開'],
+        dim: 'BS'
       },
       {
-        q: '你在地獄最想做的事是？',
-        a: ['蓋一座地獄城堡當基地', '速通拿成就和遠古殘骸'],
-        dim: 'RD' // 0=Redstone, 1=Diamond
+        q: '你更嚮往哪種生活？',
+        a: ['住在充滿機關的紅石堡壘', '背包一背，說走就走的冒險'],
+        dim: 'RD'
       },
       {
-        q: '伺服器有新的建設活動，你會？',
-        a: ['馬上報名，這是展示創意的好機會', '先看看獎勵值不值得參加'],
-        dim: 'CM' // 0=Creative, 1=Mechanical
+        q: '伺服器辦建築比賽，你會？',
+        a: ['馬上報名，終於能大展身手', '先看看獎勵值不值得參加'],
+        dim: 'CM'
       },
       {
-        q: '在生存伺服器你最自在的時刻是？',
-        a: ['和大家一起開玩笑、分享資源', '在自己領地裡慢慢經營'],
-        dim: 'LH' // 0=Helper, 1=Loner (reversed)
+        q: '在海風伺服器你最自在的時刻是？',
+        a: ['在群組跟大家一起聊天哈啦', '在自己領地裡慢慢經營'],
+        dim: 'LH'
       }
     ];
 
-    // 16 種人格
+    // 16 種人格 — 全部用 Minecraft 梗
     const MCTI_TYPES = {
-      'BRCL': { emoji:'🏰', name:'建築大師', desc:'你是天生的建築師，能將任何想像化為方塊現實。你的作品總讓人驚嘆，伺服器的地標往往出自你手。' },
-      'BRCH': { emoji:'🏗️', name:'公共建築師', desc:'你不只蓋自己的房子，更樂於為整個社區規劃公共設施。你的建設讓所有人受益。' },
-      'BRML': { emoji:'⚙️', name:'工程總監', desc:'你的建築不只好看，還會動。電梯、活塞門、自動農場——你的每棟建築都是一部精密機器。' },
-      'BRMH': { emoji:'🔧', name:'伺服器工程師', desc:'你是伺服器的幕後英雄，默默維護著各種紅石設施和自動化系統。' },
-      'BDCL': { emoji:'⛏️', name:'探險建築家', desc:'你走遍世界收集靈感，把每個地點的故事融入建築。你的房子總有說不完的故事。' },
-      'BDCH': { emoji:'🗺️', name:'探勘者', desc:'地圖上每一個問號都是你的目標。你的足跡遍布主世界和地獄，是伺服器的活地圖。' },
-      'BDML': { emoji:'💎', name:'裝備大師', desc:'你追求最頂級的裝備和附魔，永遠穿著全套鑽石或下界合金。效率和戰力是你的信仰。' },
-      'BDMH': { emoji:'🎒', name:'囤積者', desc:'你的箱子永遠不夠用。每一種方塊、每一件物品，都是你冒險的證明。' },
-      'SRCL': { emoji:'🐉', name:'Boss 獵人', desc:'凋零、終界龍、遠古守衛者——沒有你打不贏的 Boss。你享受戰鬥的快感。' },
-      'SRCH': { emoji:'🛡️', name:'村莊守護者', desc:'你自願擔任伺服器的守護者，保護新手、巡邏領地、抵禦怪物。正義是你的座右銘。' },
-      'SRML': { emoji:'🏃', name:'速通跑者', desc:'你追求極限效率，用最短時間完成目標。你的遊戲紀錄令人望塵莫及。' },
-      'SRMH': { emoji:'🏕️', name:'荒野求生者', desc:'你享受最純粹的生存體驗，不需要豪華裝備也能活得很好。簡約就是你的風格。' },
-      'DRCL': { emoji:'🎪', name:'活動策劃師', desc:'你最擅長辦活動——跑酷比賽、建築大賽、密室逃脫。有你在的伺服器永遠不無聊。' },
-      'DRCH': { emoji:'🤝', name:'外交官', desc:'你是社群的潤滑劑，總是能在爭端中找到平衡。你的存在讓伺服器更和諧。' },
-      'DRML': { emoji:'💡', name:'創意工坊', desc:'你的腦袋裡有無數點子，每個都讓人眼睛一亮。你總能想到別人想不到的玩法。' },
-      'DRMH': { emoji:'🌊', name:'中立旅人', desc:'你隨遇而安，不被任何框架束縛。今天蓋房子、明天挖礦、後天探險——你享受 Minecraft 的每一面。' }
+      'BRCL': { emoji:'🏛️', name:'遠古建造者', desc:'你的靈感來自每個探索過的遺跡。蓋出來的東西不只有故事，還有靈魂。伺服器地標級建築十有八九出自你手。', tags:['建築 × 紅石 × 美感 × 獨行'] },
+      'BRCH': { emoji:'🏘️', name:'村莊長老', desc:'你不只蓋自己的家，更樂於為整個社群規劃公共設施。圖書館、市場、廣場——你蓋的東西讓所有人都有歸屬感。', tags:['建築 × 紅石 × 美感 × 團隊'] },
+      'BRML': { emoji:'🔌', name:'紅石祭司', desc:'你的建築不只好看，還會動。電梯、活塞門、自動農場、音樂盒——每棟建築都是一部精密機器，凡人只能讚嘆。', tags:['建築 × 紅石 × 效率 × 獨行'] },
+      'BRMH': { emoji:'🔧', name:'鸚鵡飼養員', desc:'你是伺服器的幕後英雄，默默維護著各種設施。別人只看到成果，只有你知道背後下了多少功夫。低調，但不可或缺。', tags:['建築 × 紅石 × 效率 × 團隊'] },
+      'BDCL': { emoji:'📜', name:'圖書管理員', desc:'你走遍世界收集靈感，把每個地點的故事融入建築。你的房子總有說不完的故事，每一面牆都是一段旅程。', tags:['建築 × 探索 × 美感 × 獨行'] },
+      'BDCH': { emoji:'🧭', name:'製圖師', desc:'地圖上每個問號都是你的任務標記。你帶隊探險、標記資源點、記錄路線——有你在，沒有人會迷路。', tags:['建築 × 探索 × 美感 × 團隊'] },
+      'BDML': { emoji:'⚒️', name:'鑽石礦工', desc:'你追求效率與美感的完美平衡。裝備永遠附魔到頂、建築永遠恰到好處。不多不少，剛剛好就是你的哲學。', tags:['建築 × 探索 × 效率 × 獨行'] },
+      'BDMH': { emoji:'🛒', name:'流浪商人', desc:'你什麼都帶一點、什麼都做一點。背包裡永遠有驚喜，你就是行走的百寶箱。跟著你走永遠不會無聊。', tags:['建築 × 探索 × 效率 × 團隊'] },
+      'SRCL': { emoji:'⚔️', name:'掠奪者', desc:'凋零、遠古守衛者、刦毀獸——沒有你打不贏的 Boss。你享受戰鬥的快感，每次勝利都是你的勳章。', tags:['生存 × 紅石 × 美感 × 獨行'] },
+      'SRCH': { emoji:'🏰', name:'衛道士剋星', desc:'你是伺服器的守護者，自願巡邏領地、保護新手。村莊觸發襲擊？你第一個衝上去。正義是你的信仰。', tags:['生存 × 紅石 × 美感 × 團隊'] },
+      'SRML': { emoji:'🐉', name:'終界行者', desc:'末地、地獄、深暗之域——哪裏危險你往哪裏去。每次死亡都是下一場冒險的起點。你不知道什麼叫害怕。', tags:['生存 × 紅石 × 效率 × 獨行'] },
+      'SRMH': { emoji:'🍄', name:'蘑菇島之王', desc:'你不需要豪華裝備也能活得自在。四塊木板做成工作台、營火烤熟第一條魚——最純粹的生存就是你的浪漫。', tags:['生存 × 紅石 × 效率 × 團隊'] },
+      'DRCL': { emoji:'🎯', name:'刦毀獸', desc:'你是伺服器的派對動物，最擅長辦活動帶氣氛。跑酷大賽、建築比賽、密室逃脫——有你在，伺服器永遠不無聊。', tags:['生存 × 探索 × 美感 × 獨行'] },
+      'DRCH': { emoji:'🐝', name:'蜂巢守護者', desc:'你是伺服器的和平使者，總能在爭吵中找到平衡。你經營商店、組織活動，讓每個人的資源都流動起來。', tags:['生存 × 探索 × 美感 × 團隊'] },
+      'DRML': { emoji:'💎', name:'深淵礦工', desc:'你永遠在更深的地方。別人在 Y=11 挖礦，你已經在 Y=-59 尋找遠古城市。深不見底就是你的風格。', tags:['生存 × 探索 × 效率 × 獨行'] },
+      'DRMH': { emoji:'🌊', name:'中立旅人', desc:'你是伺服器的中立勢力，不隸屬任何陣營。今天蓋城堡、明天挖礦洞、後天馴馬旅行。自由就是你的最高原則。', tags:['生存 × 探索 × 效率 × 團隊'] }
     };
 
     let mctiScores = {};
@@ -663,7 +671,7 @@
     function renderMCTIQuestion() {
       const q = MCTI_QUESTIONS[mctiStep];
       document.getElementById('mctiBar').style.width = ((mctiStep) / MCTI_QUESTIONS.length * 100) + '%';
-      document.getElementById('mctiQ').textContent = q.q;
+      document.getElementById('mctiQ').textContent = 'Q' + (mctiStep+1) + '. ' + q.q;
       const opts = document.getElementById('mctiOpts');
       opts.innerHTML = '';
       q.a.forEach((text, i) => {
@@ -678,7 +686,6 @@
     function answerMCTI(choice) {
       const q = MCTI_QUESTIONS[mctiStep];
       const dim = q.dim;
-      // Each dimension gets +1 for the chosen side
       if (dim === 'BS') { choice === 0 ? mctiScores.B++ : mctiScores.S++; }
       else if (dim === 'RD') { choice === 0 ? mctiScores.R++ : mctiScores.D++; }
       else if (dim === 'CM') { choice === 0 ? mctiScores.C++ : mctiScores.M++; }
@@ -704,18 +711,41 @@
       document.getElementById('mctiRName').textContent = type.name;
       document.getElementById('mctiRDesc').textContent = type.desc;
 
-      // Trait labels
-      const traits = document.getElementById('mctiRTraits');
-      traits.innerHTML = '';
-      const labels = {
-        B:'建築家', S:'生存者', R:'紅石人', D:'鑽石人',
-        C:'創意派', M:'機械派', L:'獨行俠', H:'團隊魂'
-      };
-      code.split('').forEach(c => {
+      // Dimension bars
+      const bars = document.getElementById('mctiRBars');
+      bars.innerHTML = '';
+      const dims = [
+        { label: '建築 · 生存', a: '🏗️ 建築家', b: '⚔️ 生存者', va: mctiScores.B, vb: mctiScores.S },
+        { label: '紅石 · 探索', a: '⚙️ 紅石人', b: '🧭 探索者', va: mctiScores.R, vb: mctiScores.D },
+        { label: '美感 · 效率', a: '🎨 美感', b: '📈 效率', va: mctiScores.C, vb: mctiScores.M },
+        { label: '獨行 · 團隊', a: '🐺 獨行俠', b: '🤝 團隊魂', va: mctiScores.L, vb: mctiScores.H },
+      ];
+      dims.forEach(d => {
+        const total = d.va + d.vb || 1;
+        const pctA = Math.round(d.va / total * 100);
+        const pctB = 100 - pctA;
+        const el = document.createElement('div');
+        el.className = 'mcti-bar-row';
+        el.innerHTML = `
+          <div class="mcti-bar-label">${d.label}</div>
+          <div class="mcti-bar-track">
+            <div class="mcti-bar-fill-a" style="width:${pctA}%"></div>
+          </div>
+          <div class="mcti-bar-pcts">
+            <span>${d.a} ${pctA}%</span>
+            <span>${pctB}% ${d.b}</span>
+          </div>`;
+        bars.appendChild(el);
+      });
+
+      // Tags
+      const tags = document.getElementById('mctiRTags');
+      tags.innerHTML = '';
+      (type.tags || []).forEach(t => {
         const tag = document.createElement('span');
-        tag.className = 'mcti-r-trait';
-        tag.textContent = labels[c];
-        traits.appendChild(tag);
+        tag.className = 'mcti-r-tag';
+        tag.textContent = t;
+        tags.appendChild(tag);
       });
 
       document.getElementById('mctiBar').style.width = '100%';
