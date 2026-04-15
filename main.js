@@ -1176,16 +1176,32 @@ function initPhotoPage() {
 // --- Photo Page: 獨立初始化，不依賴 deferredInit ---
 document.addEventListener('DOMContentLoaded', () => { initPhotoPage(); });
 
-// --- Deployment Count (使用 GitHub commits API，未認證時友善降級) ---
+// --- Deployment Count (使用 GitHub commits API，未認證時友善降級 + localStorage 快取) ---
 (function() {
   const el = document.getElementById('deployCount');
   if (!el) return;
+
+  const CACHE_KEY = 'sw-deploy-count';
+  const CACHE_TTL = 60 * 60 * 1000; // 1 小時
+
+  // 先從快取讀取
+  try {
+    const cached = JSON.parse(localStorage.getItem(CACHE_KEY) || 'null');
+    if (cached && (Date.now() - cached.t < CACHE_TTL)) {
+      el.textContent = cached.v;
+      return;
+    }
+  } catch(e) {}
+
+  // 快取過期或不存在，打 API
   fetch('https://api.github.com/repos/mc-seawind-cc/website/commits?per_page=1')
     .then(r => {
       if (!r.ok) { el.textContent = '—'; return; }
       const link = r.headers.get('Link') || '';
       const match = link.match(/page=(\d+)>; rel="last"/);
-      el.textContent = match ? match[1] : '—';
+      const val = match ? match[1] : '—';
+      el.textContent = val;
+      try { localStorage.setItem(CACHE_KEY, JSON.stringify({ v: val, t: Date.now() })); } catch(e) {}
     })
     .catch(() => { el.textContent = '—'; });
 })();
