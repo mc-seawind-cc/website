@@ -1,0 +1,226 @@
+/* ═══ Mob Smasher (打苦力怕) — 重製版 ═══ */
+
+.ms-hud {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 0;
+  margin-bottom: 12px;
+  font-size: 0.82rem;
+  color: rgba(255,255,255,0.4);
+}
+.ms-hud-left, .ms-hud-right, .ms-hud-center { display: flex; align-items: center; gap: 8px; }
+.ms-score { color: #a8e6cf; font-weight: 700; font-size: 1rem; }
+.ms-best { font-size: 0.7rem; color: rgba(255,255,255,0.25); }
+.ms-timer {
+  font-size: 1.2rem;
+  font-weight: 800;
+  color: rgba(255,255,255,0.7);
+  font-variant-numeric: tabular-nums;
+  transition: color 0.3s;
+}
+.ms-totem { font-size: 1.4rem; animation: totem-pulse 1.5s ease-in-out infinite; }
+@keyframes totem-pulse {
+  0%, 100% { transform: scale(1); filter: drop-shadow(0 0 4px rgba(168,230,207,0.3)); }
+  50% { transform: scale(1.1); filter: drop-shadow(0 0 8px rgba(168,230,207,0.6)); }
+}
+
+/* ═══ Grid ═══ */
+.ms-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  padding: 16px;
+  background: rgba(6,14,28,0.5);
+  border-radius: 16px;
+  border: 1px solid rgba(157,175,255,0.08);
+  min-height: 200px;
+  position: relative;
+}
+
+.ms-hole {
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: radial-gradient(circle at 50% 60%, rgba(30,25,15,0.9), rgba(15,12,8,0.95));
+  border: 2px solid rgba(100,70,30,0.2);
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.15s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.ms-hole:hover {
+  border-color: rgba(157,175,255,0.15);
+  background: radial-gradient(circle at 50% 60%, rgba(35,30,20,0.9), rgba(20,16,10,0.95));
+}
+.ms-hole:active { transform: scale(0.95); }
+
+.ms-hole-inner {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+/* Category glow */
+.ms-hole-hostile { border-color: rgba(255,80,80,0.3); box-shadow: inset 0 0 20px rgba(255,80,80,0.05); }
+.ms-hole-passive { border-color: rgba(168,230,207,0.3); box-shadow: inset 0 0 20px rgba(168,230,207,0.05); }
+.ms-hole-neutral { border-color: rgba(255,170,50,0.3); box-shadow: inset 0 0 20px rgba(255,170,50,0.05); }
+.ms-hole-special { border-color: rgba(255,50,50,0.5); box-shadow: inset 0 0 20px rgba(255,50,50,0.1); animation: special-pulse 0.5s ease-in-out infinite; }
+@keyframes special-pulse {
+  0%, 100% { box-shadow: inset 0 0 20px rgba(255,50,50,0.1); }
+  50% { box-shadow: inset 0 0 30px rgba(255,50,50,0.2); }
+}
+
+/* ═══ Mob ═══ */
+.ms-mob {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  animation: mob-pop 0.2s ease-out;
+  position: relative;
+}
+@keyframes mob-pop {
+  from { transform: scale(0) translateY(10px); opacity: 0; }
+  to { transform: scale(1) translateY(0); opacity: 1; }
+}
+
+.ms-sprite {
+  width: 48px;
+  height: 48px;
+  image-rendering: pixelated;
+  image-rendering: -moz-crisp-edges;
+  image-rendering: crisp-edges;
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.4));
+  transition: transform 0.15s;
+}
+
+.ms-hit .ms-sprite { transform: scale(0.8); }
+.ms-damage .ms-sprite { filter: brightness(2) drop-shadow(0 0 8px rgba(255,80,80,0.8)); }
+
+.ms-emoji-fallback {
+  font-size: 2rem;
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.4));
+}
+
+.ms-mob-name {
+  font-size: 0.55rem;
+  color: rgba(255,255,255,0.5);
+  font-weight: 600;
+  text-shadow: 0 1px 3px rgba(0,0,0,0.8);
+  white-space: nowrap;
+}
+
+/* HP bar for bosses */
+.ms-hp-bar {
+  width: 36px;
+  height: 3px;
+  background: rgba(255,255,255,0.1);
+  border-radius: 2px;
+  overflow: hidden;
+}
+.ms-hp-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #ff8282, #ffaa32);
+  border-radius: 2px;
+  transition: width 0.2s;
+}
+
+/* Category border colors */
+.ms-hostile .ms-mob-name { color: rgba(255,130,130,0.8); }
+.ms-passive .ms-mob-name { color: rgba(168,230,207,0.8); }
+.ms-neutral .ms-mob-name { color: rgba(255,170,50,0.8); }
+.ms-special .ms-mob-name { color: rgba(255,80,80,0.9); font-weight: 700; }
+
+/* ═══ Floating Text ═══ */
+.ms-float-text {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 0.85rem;
+  font-weight: 800;
+  pointer-events: none;
+  animation: float-up 0.8s ease-out forwards;
+  text-shadow: 0 1px 4px rgba(0,0,0,0.6);
+  z-index: 10;
+}
+@keyframes float-up {
+  0% { opacity: 1; transform: translateX(-50%) translateY(0); }
+  100% { opacity: 0; transform: translateX(-50%) translateY(-30px); }
+}
+
+/* ═══ Info ═══ */
+.ms-info {
+  text-align: center;
+  font-size: 0.78rem;
+  color: rgba(255,255,255,0.4);
+  margin-top: 10px;
+  min-height: 1.2em;
+  transition: color 0.3s;
+}
+
+/* ═══ Legend ═══ */
+.ms-legend {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 8px;
+  flex-wrap: wrap;
+}
+.ms-legend-item {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 0.65rem;
+  color: rgba(255,255,255,0.3);
+}
+.ms-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  display: inline-block;
+}
+.ms-dot.hostile { background: rgba(255,80,80,0.7); }
+.ms-dot.passive { background: rgba(168,230,207,0.7); }
+.ms-dot.neutral { background: rgba(255,170,50,0.7); }
+.ms-dot.special { background: rgba(255,50,50,0.9); }
+
+.ms-source {
+  text-align: center;
+  font-size: 0.55rem;
+  color: rgba(255,255,255,0.15);
+  margin-top: 8px;
+}
+.ms-source a { color: rgba(157,175,255,0.4); text-decoration: none; }
+.ms-source a:hover { color: rgba(157,175,255,0.7); }
+
+/* ═══ Result ═══ */
+.ms-result {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 24px 16px;
+  gap: 6px;
+  grid-column: 1 / -1;
+}
+.ms-result-emoji { font-size: 3rem; margin-bottom: 4px; }
+.ms-result-score { font-size: 2rem; font-weight: 800; color: #a8e6cf; }
+.ms-result-detail { font-size: 0.78rem; color: rgba(255,255,255,0.4); text-align: center; line-height: 1.8; }
+.ms-result-label { font-size: 0.9rem; font-weight: 700; color: rgba(255,255,255,0.7); margin-top: 4px; }
+.ms-result-btns { display: flex; gap: 8px; margin-top: 10px; }
+
+/* ═══ Responsive ═══ */
+@media (max-width: 400px) {
+  .ms-grid { padding: 10px; gap: 5px; }
+  .ms-sprite { width: 36px; height: 36px; }
+  .ms-mob-name { font-size: 0.5rem; }
+  .ms-legend { gap: 6px; }
+  .ms-legend-item { font-size: 0.58rem; }
+}

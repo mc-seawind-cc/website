@@ -11,6 +11,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;600;700&family=Noto+Serif+TC:wght@700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="mob-smasher.css">
   <style>
     *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
     html,body{height:100%;overflow:hidden}
@@ -293,15 +294,7 @@
     .snake-ctrl:active{background:rgba(157,175,255,0.2);transform:scale(0.92)}
     .snake-ctrl-row{display:flex;justify-content:center;gap:6px}
 
-    /* ═══ Whack-a-Mole ═══ */
-    .mole-wrap{text-align:center}
-    .mole-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;max-width:260px;margin:0 auto}
-    .mole-hole{aspect-ratio:1;border-radius:50%;background:rgba(30,20,10,0.6);border:2px solid rgba(100,70,30,0.3);display:flex;align-items:center;justify-content:center;font-size:1.8rem;cursor:pointer;transition:all 0.1s;position:relative;overflow:hidden}
-    .mole-hole:active{transform:scale(0.9)}
-    .mole-hole .mob{animation:mole-pop 0.15s ease-out}
-    @keyframes mole-pop{from{transform:scale(0) translateY(20px)}to{transform:scale(1) translateY(0)}}
-    .mole-hole .bonked{animation:bonk 0.3s ease-out forwards}
-    @keyframes bonk{0%{transform:scale(1)}30%{transform:scale(1.3) rotate(-15deg)}100%{transform:scale(0) translateY(10px);opacity:0}}
+    /* Mob Smasher styles in mob-smasher.css */
 
     /* Game HUD */
     .game-hud{display:flex;justify-content:space-between;align-items:center;padding:8px 0;margin-bottom:12px;font-size:0.78rem;color:rgba(255,255,255,0.4)}
@@ -445,7 +438,7 @@
       <button class="game-tab" onclick="openGame('ttt')">⭕ 井字</button>
       <button class="game-tab" onclick="openGame('nummem')">🔢 記數</button>
       <button class="game-tab" onclick="openGame('snake')">🐍 貪吃蛇</button>
-      <button class="game-tab" onclick="openGame('mole')">🔨 打苦力怕</button>
+      <button class="game-tab" onclick="openGame('mole')">⚔️ 打苦力怕</button>
     </div>
   </div>
 
@@ -454,6 +447,7 @@
     <div class="overlay-box" id="overlayBox"></div>
   </div>
 
+  <script src="mob-smasher.js"></script>
   <script>
   (() => {
     'use strict';
@@ -1032,93 +1026,10 @@
       gameTimer = setInterval(tick, 120);
     }
 
-    // ═══ Whack-a-Mole (MC Theme) ═══
+    // ═══ Mob Smasher (打苦力怕) — 重製版 ═══
     function renderMole() {
       clearInterval(gameTimer);
-      const MOBS = ['💀','🧟','🕷️','👾','😈'];
-      const BONUS = ['💎','✨'];
-      let html = '<div class="overlay-header"><span class="overlay-title">🔨 打苦力怕</span><button class="overlay-close" onclick="closeOverlay()">✕</button></div>';
-      html += '<div class="game-hud"><span>🔨 <span class="game-hud-val" id="moleScore">0</span></span><span>⏱ <span class="game-hud-val" id="moleTime">30</span>s</span></div>';
-      html += '<div class="mole-wrap"><div class="mole-grid" id="moleGrid">';
-      for(let i=0;i<9;i++) html += `<div class="mole-hole" data-i="${i}" onclick="bonkMole(this)"></div>`;
-      html += '</div></div>';
-      overlayBox.innerHTML = html;
-
-      let score = 0, timeLeft = 30, activeMoles = [];
-      let speed = 1200; // ms between spawns, gets faster
-
-      function spawnMole() {
-        if (timeLeft <= 0) return;
-        const holes = document.querySelectorAll('.mole-hole');
-        const empty = Array.from(holes).filter(h => !h.querySelector('.mob'));
-        if (!empty.length) return;
-        const hole = empty[Math.floor(Math.random()*empty.length)];
-        const isBonus = Math.random() < 0.1;
-        const mob = document.createElement('span');
-        mob.className = 'mob';
-        mob.textContent = isBonus ? BONUS[Math.floor(Math.random()*BONUS.length)] : MOBS[Math.floor(Math.random()*MOBS.length)];
-        mob.dataset.points = isBonus ? '3' : '1';
-        hole.appendChild(mob);
-        activeMoles.push(mob);
-        // Auto disappear
-        setTimeout(() => {
-          if (mob.parentNode) {
-            mob.style.transition = 'opacity 0.2s, transform 0.2s';
-            mob.style.opacity = '0';
-            mob.style.transform = 'scale(0.5) translateY(10px)';
-            setTimeout(() => mob.remove(), 200);
-          }
-        }, 800 + Math.random()*400);
-      }
-
-      window.bonkMole = (hole) => {
-        const mob = hole.querySelector('.mob');
-        if (!mob || mob.classList.contains('bonked')) return;
-        const pts = parseInt(mob.dataset.points||'1');
-        score += pts;
-        document.getElementById('moleScore').textContent = score;
-        mob.classList.add('bonked');
-        // Hit flash
-        hole.style.background = 'rgba(168,230,207,0.15)';
-        setTimeout(() => { hole.style.background = ''; }, 150);
-        setTimeout(() => mob.remove(), 300);
-      };
-
-      // Spawn loop
-      let spawnInterval = setInterval(() => {
-        if (timeLeft <= 0) { clearInterval(spawnInterval); return; }
-        spawnMole();
-        // Occasionally spawn 2 at once
-        if (Math.random() < 0.3) setTimeout(spawnMole, 200);
-      }, speed);
-
-      // Speed up over time
-      let speedInterval = setInterval(() => {
-        if (timeLeft <= 0) { clearInterval(speedInterval); return; }
-        if (speed > 600) {
-          speed -= 50;
-          clearInterval(spawnInterval);
-          spawnInterval = setInterval(() => {
-            if (timeLeft <= 0) { clearInterval(spawnInterval); return; }
-            spawnMole();
-            if (Math.random() < 0.3) setTimeout(spawnMole, 200);
-          }, speed);
-        }
-      }, 3000);
-
-      // Timer
-      gameTimer = setInterval(() => {
-        timeLeft--;
-        const el = document.getElementById('moleTime');
-        if (el) el.textContent = timeLeft;
-        if (timeLeft <= 0) {
-          clearInterval(gameTimer);
-          clearInterval(spawnInterval);
-          clearInterval(speedInterval);
-          const label = score >= 30 ? '苦力怕剋星！' : score >= 15 ? '打得好！' : '再快一點！';
-          showGameResult('🔨', score+' 分', label);
-        }
-      }, 1000);
+      MOB_SMASHER.open(overlayBox);
     }
 
     // ═══ Game Result Helper ═══
