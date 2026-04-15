@@ -79,7 +79,7 @@
 - `assets/announcements/` — 公告圖片
 - `assets/photos_new/` — 新版風景照
 - `assets/migrated/` — 遷移資料
-- `assets/mobs/` — 53 張 Minecraft 生物 sprite（16×16px，來源: Minecraft Wiki，CC BY-NC-SA 3.0）
+- `assets/mobs/` — 53 張 Minecraft 生物 sprite（16×16px，圖源: mcwiki，CC BY-NC-SA 3.0）
 
 ---
 
