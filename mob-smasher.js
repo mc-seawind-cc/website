@@ -126,7 +126,7 @@ const MOB_SMASHER = (() => {
       </div>
       <div class="ms-hud">
         <div class="ms-hud-left">
-          <span class="ms-score">💎 <span id="msScore">0</span></span>
+          <span class="ms-score"><img src="assets/mobs/mace.png" class="ms-weapon-icon" alt="鎚"> <span id="msScore">0</span></span>
           ${state.bestScore > 0 ? `<span class="ms-best">最高 ${state.bestScore}</span>` : ''}
         </div>
         <div class="ms-hud-center">
