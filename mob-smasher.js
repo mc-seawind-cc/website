@@ -121,7 +121,7 @@ const MOB_SMASHER = (() => {
 
     let html = `
       <div class="overlay-header">
-        <span class="overlay-title">⚔️ 打怪物</span>
+        <span class="overlay-title"><img src="assets/mobs/iron-sword.png" alt="" style="width:16px;height:16px;vertical-align:middle;margin-right:4px"> 打怪物</span>
         <button class="overlay-close" onclick="MOB_SMASHER.close()">✕</button>
       </div>
       <div class="ms-hud">
