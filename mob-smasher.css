@@ -1,4 +1,4 @@
-/* ═══ Mob Smasher (打苦力怕) — 重製版 ═══ */
+/* ═══ Mob Smasher (打怪物) — 重製版 ═══ */
 
 .ms-hud {
   display: flex;
@@ -102,6 +102,34 @@
 
 .ms-hit .ms-sprite { transform: scale(0.8); }
 .ms-damage .ms-sprite { filter: brightness(2) drop-shadow(0 0 8px rgba(255,80,80,0.8)); }
+
+/* 武器打擊動畫 */
+.ms-hit::after {
+  content: '';
+  position: absolute;
+  top: 0; right: -4px;
+  width: 24px; height: 24px;
+  background: url('assets/mobs/iron-sword.png') center/contain no-repeat;
+  image-rendering: pixelated;
+  animation: weapon-slash 0.3s ease-out forwards;
+  pointer-events: none;
+  z-index: 5;
+}
+@keyframes weapon-slash {
+  0% { opacity: 1; transform: rotate(-30deg) scale(1.2); }
+  100% { opacity: 0; transform: rotate(10deg) scale(0.6) translateY(-10px); }
+}
+
+/* 物品 sprite 通用 */
+.ms-item-sprite {
+  width: 32px; height: 32px;
+  image-rendering: pixelated;
+  image-rendering: -moz-crisp-edges;
+  image-rendering: crisp-edges;
+}
+.ms-totem .ms-item-sprite {
+  width: 28px; height: 28px;
+}
 
 .ms-emoji-fallback {
   font-size: 2rem;

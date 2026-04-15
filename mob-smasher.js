@@ -1,4 +1,4 @@
-// ═══ Mob Smasher (打苦力怕) — 重製版 ═══
+// ═══ 打怪物 Mob Smasher — 重製版 ═══
 // sprites: assets/mobs/*.png (16×16 pixel art, scaled via CSS)
 // 來源: Minecraft Wiki (CC BY-NC-SA 3.0) — https://minecraft.wiki
 
@@ -110,7 +110,7 @@ const MOB_SMASHER = (() => {
 
     let html = `
       <div class="overlay-header">
-        <span class="overlay-title">⚔️ 打苦力怕 Mob Smasher</span>
+        <span class="overlay-title">⚔️ 打怪物 Mob Smasher</span>
         <button class="overlay-close" onclick="MOB_SMASHER.close()">✕</button>
       </div>
       <div class="ms-hud">
@@ -119,7 +119,7 @@ const MOB_SMASHER = (() => {
           ${state.bestScore > 0 ? `<span class="ms-best">最高 ${state.bestScore}</span>` : ''}
         </div>
         <div class="ms-hud-center">
-          <div class="ms-totem" id="msTotem" style="display:none" title="不死圖騰（抵擋一次致命傷害）">🪄</div>
+          <div class="ms-totem" id="msTotem" style="display:none" title="不死圖騰（抵擋一次致命傷害）"><img src="${SPRITE_PATH}totem.png" class="ms-item-sprite" alt="不死圖騰"></div>
         </div>
         <div class="ms-hud-right">
           <span class="ms-timer" id="msTimer">30</span>s
@@ -282,7 +282,7 @@ const MOB_SMASHER = (() => {
       // Special abilities
       if (mob.special === 'totem') {
         state.hasTotem = true;
-        showInfo('🪄 获得不死圖騰！', '#a8e6cf');
+        showInfo('🪄 獲得不死圖騰！', '#a8e6cf');
         updateTotem();
       }
       if (mob.special === 'elder') {
