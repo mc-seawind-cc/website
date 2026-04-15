@@ -51,14 +51,11 @@
 | 404 | `404.html` | 27KB | 錯誤頁面（含精美海洋動畫場景） |
 | 其餘 20 頁 | 各 `.html` | 7~20KB | 規則/團隊/會員/連結/合作夥伴等 |
 
-### CSS 檔案（兩套系統並存 ⚠️）
-- **`style.css`**（2611 行）— 所有頁面引用的主樣式表，**包含了所有模組化 CSS 的內容**
-- **`css/` 目錄**（18 個模組檔案）— 好像是拆分出來的，但**目前沒有頁面引用這些檔案**
-  - `base.css`（314 行）— 基礎樣式，實際上是 style.css 的開頭部分
-  - `misc.css`（891 行）— 最大的模組
-  - `bulletin.css`（661 行）— 公告欄樣式
-  - `animations.css`（120 行）— 動畫定義
-  - 其餘：nav, hero, footer, cards, lightbox, responsive 等
+### CSS 檔案
+- **`style.css`**（~2760 行）— 唯一樣式表，已整理為 23 個區段，每區段 dark → light 順序排列
+  - 區段：Reset/Variables → Global UI → Nav → Hero → Sections → Buttons → Cards → Bulletin → Lore → Photos → Partner → Member → Guide → Rules → Articles → Community → Team → Links → Footer → Lightbox → Misc → Animations → Responsive
+  - 每個區段末尾集中該組件的 `[data-theme="light"]` 覆蓋
+- ~~`css/` 目錄~~ — 已刪除（原本是未使用的重複副本）
 
 ### JavaScript 檔案
 - **`main.js`**（1194 行）— 主腳本，包含所有互動邏輯
@@ -84,17 +81,16 @@
 
 ## 🐛 已發現的問題與 Bug
 
-### 🔴 嚴重
+### ~~🔴 嚴重~~（已修復）
 
-1. **CSS 系統混亂：兩套檔案重複**
-   - `style.css` 包含了 `css/` 目錄下所有模組的內容
-   - 所有頁面只引用 `style.css`，`css/` 目錄完全沒用到
-   - 需要決定：保持 style.css 單一檔案，或拆分為模組化引用
-   - **建議**：目前單一 style.css 對 GitHub Pages 是合理的（減少 HTTP 請求），但需要清理 `css/` 目錄或將其轉為 source of truth
+1. ~~**CSS 系統混亂：兩套檔案重複**~~ ✅ 2026-04-15 已修復
+   - `css/` 目錄已刪除（20 個未使用檔案）
+   - `style.css` 重新整理為 23 個區段，每區段末尾集中 light 主題覆蓋
+   - 移除重複規則（如 html{scroll-behavior:smooth}）
 
-2. **sitemap.xml 錯誤連結**
-   - 存在 `特殊裝備規範.html`，但實際檔案為 `特殊道具規範.html`
-   - 會導致爬蟲抓取 404 頁面
+2. ~~**sitemap.xml 錯誤連結**~~ ✅ 2026-04-15 已修復
+   - 已無指向不存在檔案的連結
+   - 新增遺漏的 partner-mcu.html
 
 ### 🟡 中度
 
@@ -455,6 +451,9 @@ Discord 上的公告長這樣：
 | 2026-04-14 | 海風網站助手 | 公告頁面加入民國年月份導航，預設顯示當月公告 |
 | 2026-04-14 | 海風網站助手 | 公告類型排序改為：公告、維護、活動、更新，新增維護篩選 |
 | 2026-04-14 | 海風網站助手 | DESIGN.md 新增公告格式轉換與撰寫指南 |
+| 2026-04-15 | 海風網站助手 | 移除未使用的 css/ 目錄（20 個檔案），統一使用 style.css |
+| 2026-04-15 | 海風網站助手 | 重新組織 style.css（23 區段 + light 主題覆蓋集中化） |
+| 2026-04-15 | 海風網站助手 | 修復 sitemap.xml，新增遺漏的 partner-mcu.html |
 
 ---
 
