@@ -548,143 +548,6 @@ const MINIGAMES = (() => {
   }
 
   // ═══════════════════════════════════════════
-  // 🧱 方塊消除 (Block Crush — Match 4×4)
-  // ═══════════════════════════════════════════
-  function blockcrush(overlayBox) {
-    clearTimers();
-    const BLOCKS = ['🟥', '🟦', '🟩', '🟨', '🟪', '🟧'];
-    const SIZE = 4;
-    let grid = [], score = 0, timeLeft = 60, selected = null, moves = 0;
-
-    function initGrid() {
-      grid = [];
-      for (let r = 0; r < SIZE; r++) {
-        grid[r] = [];
-        for (let c = 0; c < SIZE; c++) {
-          grid[r][c] = BLOCKS[Math.floor(Math.random() * BLOCKS.length)];
-        }
-      }
-      // Ensure no initial matches
-      while (findMatches().length > 0) {
-        for (let r = 0; r < SIZE; r++) for (let c = 0; c < SIZE; c++) {
-          if (findMatches().some(m => m.r === r && m.c === c)) {
-            grid[r][c] = BLOCKS[Math.floor(Math.random() * BLOCKS.length)];
-          }
-        }
-      }
-    }
-
-    function findMatches() {
-      const matches = [];
-      for (let r = 0; r < SIZE; r++) for (let c = 0; c < SIZE; c++) {
-        // Horizontal
-        if (c <= SIZE - 3 && grid[r][c] && grid[r][c] === grid[r][c + 1] && grid[r][c] === grid[r][c + 2]) {
-          matches.push({ r, c }, { r, c: c + 1 }, { r, c: c + 2 });
-        }
-        // Vertical
-        if (r <= SIZE - 3 && grid[r][c] && grid[r][c] === grid[r + 1][c] && grid[r][c] === grid[r + 2][c]) {
-          matches.push({ r, c }, { r: r + 1, c }, { r: r + 2, c });
-        }
-      }
-      // Deduplicate
-      return matches.filter((m, i, arr) => arr.findIndex(x => x.r === m.r && x.c === m.c) === i);
-    }
-
-    function render() {
-      let html = `<div class="overlay-header"><span class="overlay-title">🧱 方塊消除</span><button class="overlay-close" onclick="MINIGAMES.close()">✕</button></div>`;
-      html += `<div class="game-hud"><span>⭐ <span class="game-hud-val" id="bcScore">${score}</span></span><span>⏱ <span class="game-hud-val" id="bcTime">${timeLeft}</span>s</span><span>🔄 <span class="game-hud-val">${moves}</span></span></div>`;
-      html += '<div class="bc-grid" id="bcGrid">';
-      for (let r = 0; r < SIZE; r++) {
-        for (let c = 0; c < SIZE; c++) {
-          const b = grid[r][c] || '';
-          const sel = selected && selected.r === r && selected.c === c ? ' selected' : '';
-          html += `<div class="bc-cell${sel}" data-r="${r}" data-c="${c}" onclick="MINIGAMES._bcClick(${r},${c})">${b}</div>`;
-        }
-      }
-      html += '</div>';
-      html += '<div class="bc-hint" id="bcHint">交換相鄰方塊，連成 3 個相同消除</div>';
-      overlayBox.innerHTML = html;
-    }
-
-    window._bcClick = (r, c) => {
-      if (!grid[r][c]) return;
-      if (!selected) {
-        selected = { r, c };
-        render();
-      } else {
-        const dr = Math.abs(selected.r - r), dc = Math.abs(selected.c - c);
-        if ((dr === 1 && dc === 0) || (dr === 0 && dc === 1)) {
-          // Swap
-          [grid[selected.r][selected.c], grid[r][c]] = [grid[r][c], grid[selected.r][selected.c]];
-          moves++;
-          const matches = findMatches();
-          if (matches.length > 0) {
-            score += matches.length * 10;
-            matches.forEach(m => grid[m.r][m.c] = null);
-            // Gravity
-            for (let c2 = 0; c2 < SIZE; c2++) {
-              let write = SIZE - 1;
-              for (let r2 = SIZE - 1; r2 >= 0; r2--) {
-                if (grid[r2][c2]) {
-                  grid[write][c2] = grid[r2][c2];
-                  if (write !== r2) grid[r2][c2] = null;
-                  write--;
-                }
-              }
-              for (let r2 = write; r2 >= 0; r2--) grid[r2][c2] = BLOCKS[Math.floor(Math.random() * BLOCKS.length)];
-            }
-            // Chain check
-            while (findMatches().length > 0) {
-              const chain = findMatches();
-              score += chain.length * 15;
-              chain.forEach(m => grid[m.r][m.c] = null);
-              for (let c2 = 0; c2 < SIZE; c2++) {
-                let write = SIZE - 1;
-                for (let r2 = SIZE - 1; r2 >= 0; r2--) {
-                  if (grid[r2][c2]) {
-                    grid[write][c2] = grid[r2][c2];
-                    if (write !== r2) grid[r2][c2] = null;
-                    write--;
-                  }
-                }
-                for (let r2 = write; r2 >= 0; r2--) grid[r2][c2] = BLOCKS[Math.floor(Math.random() * BLOCKS.length)];
-              }
-            }
-          } else {
-            // Swap back
-            [grid[selected.r][selected.c], grid[r][c]] = [grid[r][c], grid[selected.r][selected.c]];
-            moves--;
-          }
-          selected = null;
-          render();
-          const scoreEl = document.getElementById('bcScore');
-          if (scoreEl) scoreEl.textContent = score;
-        } else {
-          selected = { r, c };
-          render();
-        }
-      }
-    };
-
-    initGrid();
-    render();
-
-    gameTimer = setInterval(() => {
-      timeLeft--;
-      const el = document.getElementById('bcTime');
-      if (el) {
-        el.textContent = timeLeft;
-        if (timeLeft <= 10) el.style.color = '#ff8282';
-      }
-      if (timeLeft <= 0) {
-        clearInterval(gameTimer);
-        MINIGAMES.showResult('🧱', score + ' 分', `${moves} 次交換`, 'blockcrush');
-      }
-    }, 1000);
-    cleanupFns.push(() => clearInterval(gameTimer));
-  }
-
-  // ═══════════════════════════════════════════
   // 🎯 射擊場 (Shooting Gallery)
   // ═══════════════════════════════════════════
   function shooting(overlayBox) {
@@ -1650,12 +1513,12 @@ const MINIGAMES = (() => {
 
   function _retry(type) {
     const box = document.getElementById('overlayBox');
-    const fn = { memory, gomoku, react, nummem, snake, simon, blockcrush, shooting, minesweeper, merge2048, tictactoe, flappy, wordle, connect4 }[type];
+    const fn = { memory, gomoku, react, nummem, snake, simon, shooting, minesweeper, merge2048, tictactoe, flappy, wordle, connect4 }[type];
     if (fn) fn(box);
   }
 
   return {
-    memory, gomoku, react, nummem, snake, simon, blockcrush, shooting, minesweeper, merge2048, tictactoe, flappy, wordle, connect4,
+    memory, gomoku, react, nummem, snake, simon, shooting, minesweeper, merge2048, tictactoe, flappy, wordle, connect4,
     showResult, close,
     // Aliases for internal use
     _flipCard: (c) => window._flipCard?.(c),
@@ -1664,7 +1527,6 @@ const MINIGAMES = (() => {
     _numStart: () => window._numStart?.(),
     _snakeDir: (dx, dy) => window._snakeDir?.(dx, dy),
     _simonHit: (id) => window._simonHit?.(id),
-    _bcClick: (r, c) => window._bcClick?.(r, c),
     _msClick: (r, c) => window._msClick?.(r, c),
     _msRight: (r, c) => window._msRight?.(r, c),
     _m2048: (dir) => window._m2048?.(dir),
