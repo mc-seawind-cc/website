@@ -36,6 +36,8 @@
   border: 1px solid rgba(157,175,255,0.08);
   min-height: 200px;
   position: relative;
+  max-width: 300px;
+  margin: 0 auto;
 }
 
 .ms-hole {
