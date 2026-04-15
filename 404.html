@@ -129,24 +129,91 @@
       100%{width:200px;opacity:0}
     }
 
-    /* ═══ Floating Trash ═══ */
-    .trash{position:absolute;font-size:1.4rem;pointer-events:auto;z-index:5;filter:drop-shadow(0 2px 6px rgba(0,0,0,0.3));user-select:none;transition:transform 0.3s,opacity 0.5s;cursor:pointer}
-    .trash.floating{animation:float-trash linear infinite}
-    .trash.collected{animation:collect-pop 0.5s ease-out forwards !important;pointer-events:none}
-    @keyframes float-trash{
-      0%{transform:translateY(0)rotate(0deg)}
-      25%{transform:translateY(-4px)rotate(2deg)}
-      50%{transform:translateY(0)rotate(0deg)}
-      75%{transform:translateY(4px)rotate(-2deg)}
-      100%{transform:translateY(0)rotate(0deg)}
+    /* ═══ Cleanup Challenge ═══ */
+    .cleanup-bar{position:absolute;top:0;left:0;right:0;z-index:15;display:flex;align-items:center;justify-content:space-between;padding:8px 16px;opacity:0;pointer-events:none;transition:opacity 0.4s}
+    .cleanup-bar.active{opacity:1;pointer-events:auto}
+    .cb-stats{display:flex;align-items:center;gap:16px}
+    .cb-stat{display:flex;align-items:center;gap:6px;font-size:0.82rem;color:rgba(255,255,255,0.6)}
+    .cb-stat-val{font-weight:800;font-variant-numeric:tabular-nums;font-size:1rem}
+    .cb-score{color:#a8e6cf}
+    .cb-combo{color:#ffaa32;opacity:0;transform:scale(0.8);transition:all 0.2s}
+    .cb-combo.active{opacity:1;transform:scale(1)}
+    .cb-timer-wrap{display:flex;align-items:center;gap:8px}
+    .cb-timer-bar{width:120px;height:6px;background:rgba(255,255,255,0.08);border-radius:3px;overflow:hidden}
+    .cb-timer-fill{height:100%;width:100%;background:linear-gradient(90deg,#a8e6cf,#9dafff);border-radius:3px;transition:width 0.3s linear}
+    .cb-timer-fill.urgent{background:linear-gradient(90deg,#ff8282,#ffaa32)}
+    .cb-timer-text{font-size:0.9rem;font-weight:700;color:rgba(255,255,255,0.7);font-variant-numeric:tabular-nums;min-width:28px;text-align:right}
+    .cb-close{background:none;border:1px solid rgba(255,255,255,0.1);border-radius:8px;color:rgba(255,255,255,0.4);font-size:0.9rem;cursor:pointer;padding:4px 10px;font-family:inherit;transition:all 0.2s}
+    .cb-close:hover{border-color:rgba(255,255,255,0.3);color:rgba(255,255,255,0.7)}
+
+    /* Floating items */
+    .c-item{position:absolute;z-index:5;cursor:pointer;user-select:none;-webkit-user-select:none;transition:transform 0.15s;filter:drop-shadow(0 3px 8px rgba(0,0,0,0.4))}
+    .c-item:hover{transform:scale(1.2)}
+    .c-item:active{transform:scale(0.9)}
+    .c-item.trash-item{animation:item-float 3s ease-in-out infinite}
+    .c-item.creature-item{animation:item-swim 4s ease-in-out infinite}
+    .c-item.bonus-item{animation:item-float 2s ease-in-out infinite;filter:drop-shadow(0 0 12px rgba(255,170,50,0.5)) drop-shadow(0 3px 8px rgba(0,0,0,0.4))}
+    .c-item.collected{animation:item-collect 0.4s ease-out forwards !important;pointer-events:none}
+    .c-item.penalty{animation:item-penalty 0.6s ease-out forwards !important;pointer-events:none}
+    @keyframes item-float{
+      0%,100%{transform:translateY(0) rotate(0deg)}
+      33%{transform:translateY(-6px) rotate(3deg)}
+      66%{transform:translateY(3px) rotate(-2deg)}
     }
-    @keyframes collect-pop{
+    @keyframes item-swim{
+      0%,100%{transform:translateX(0) translateY(0)}
+      25%{transform:translateX(10px) translateY(-5px)}
+      50%{transform:translateX(0) translateY(3px)}
+      75%{transform:translateX(-10px) translateY(-3px)}
+    }
+    @keyframes item-collect{
       0%{transform:scale(1);opacity:1}
-      40%{transform:scale(1.6)translateY(-20px);opacity:0.9}
-      100%{transform:scale(0)translateY(-40px);opacity:0}
+      30%{transform:scale(1.5) translateY(-15px);opacity:0.8}
+      100%{transform:scale(0) translateY(-40px);opacity:0}
+    }
+    @keyframes item-penalty{
+      0%{transform:scale(1);opacity:1;filter:brightness(1)}
+      30%{transform:scale(1.3);filter:brightness(2) hue-rotate(330deg)}
+      100%{transform:scale(0.5);opacity:0}
     }
 
-    /* Sea creature */
+    /* Float score popup */
+    .float-score{position:absolute;z-index:20;font-weight:800;font-size:0.9rem;pointer-events:none;animation:float-score-up 0.8s ease-out forwards;text-shadow:0 2px 8px rgba(0,0,0,0.5)}
+    .float-score.positive{color:#a8e6cf}
+    .float-score.bonus{color:#ffaa32;font-size:1.1rem}
+    .float-score.negative{color:#ff8282}
+    @keyframes float-score-up{
+      0%{opacity:1;transform:translateY(0) scale(1)}
+      60%{opacity:0.8;transform:translateY(-30px) scale(1.1)}
+      100%{opacity:0;transform:translateY(-60px) scale(0.8)}
+    }
+
+    /* Cleanup result overlay (inline in scene) */
+    .cleanup-result{position:absolute;inset:0;z-index:30;display:flex;align-items:center;justify-content:center;background:rgba(6,10,18,0.8);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);opacity:0;pointer-events:none;transition:opacity 0.4s}
+    .cleanup-result.active{opacity:1;pointer-events:auto}
+    .cr-box{text-align:center;animation:cr-enter 0.5s ease-out}
+    @keyframes cr-enter{from{opacity:0;transform:translateY(20px) scale(0.95)}to{opacity:1;transform:translateY(0) scale(1)}}
+    .cr-title{font-size:1.3rem;font-weight:700;color:rgba(255,255,255,0.85);margin-bottom:4px}
+    .cr-subtitle{font-size:0.78rem;color:rgba(255,255,255,0.35);margin-bottom:16px}
+    .cr-score{font-size:3.5rem;font-weight:900;background:linear-gradient(135deg,#a8e6cf,#9dafff);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;line-height:1;margin-bottom:4px}
+    .cr-label{font-size:0.72rem;color:rgba(255,255,255,0.35);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:16px}
+    .cr-stats{display:flex;gap:20px;justify-content:center;margin-bottom:16px}
+    .cr-stat{text-align:center}
+    .cr-stat-val{display:block;font-size:1.2rem;font-weight:800;color:rgba(255,255,255,0.8);font-variant-numeric:tabular-nums}
+    .cr-stat-label{font-size:0.68rem;color:rgba(255,255,255,0.3)}
+    .cr-stars{font-size:1.8rem;margin-bottom:4px;letter-spacing:4px}
+    .cr-rank{font-size:0.82rem;color:rgba(168,230,207,0.7);font-weight:600;margin-bottom:16px}
+    .cr-best{font-size:0.72rem;color:rgba(255,170,50,0.6);margin-bottom:14px;min-height:1.2em}
+    .cr-btns{display:flex;gap:8px;justify-content:center}
+
+    /* Sea creature hit flash */
+    .scene-flash{position:absolute;inset:0;z-index:12;background:rgba(255,80,80,0.15);pointer-events:none;opacity:0;animation:flash-fade 0.4s ease-out}
+    @keyframes flash-fade{0%{opacity:1}100%{opacity:0}}
+
+    /* Floating items */
+    .trash{position:absolute;font-size:1.4rem;pointer-events:auto;z-index:5;filter:drop-shadow(0 2px 6px rgba(0,0,0,0.3));user-select:none;transition:transform 0.3s,opacity 0.5s;cursor:pointer}
+
+    /* Sea creature (ambient) */
     .creature{position:absolute;z-index:4;filter:drop-shadow(0 2px 8px rgba(0,0,0,0.3))}
     .creature.turtle{font-size:2rem;animation:swim-turtle 18s ease-in-out infinite}
     .creature.fish{font-size:1.2rem;animation:swim-fish 12s linear infinite}
@@ -308,10 +375,6 @@
     .game-result-text{font-size:0.82rem;color:rgba(255,255,255,0.4);margin-bottom:12px}
     .game-result-btns{display:flex;gap:8px;justify-content:center}
 
-    /* Eco HUD */
-    .eco-hud{display:inline-flex;align-items:center;gap:10px;padding:6px 16px;background:rgba(13,17,23,0.7);backdrop-filter:blur(10px);border:1px solid rgba(168,230,207,0.15);border-radius:100px;font-size:0.78rem;color:rgba(255,255,255,0.5);margin-bottom:0.6rem;opacity:0;transition:opacity 0.5s}
-    .eco-hud.visible{opacity:1}
-    .eco-score{color:#a8e6cf;font-weight:700}
 
     /* Timer */
     .timer{font-size:1.5rem;font-weight:800;color:rgba(255,255,255,0.7);font-variant-numeric:tabular-nums;text-align:center;margin:8px 0}
@@ -410,8 +473,24 @@
     <!-- Weather particles -->
     <div class="weather-layer" id="weatherLayer"></div>
 
-    <!-- Trash -->
-    <div id="trashField"></div>
+    <!-- Cleanup Challenge HUD -->
+    <div class="cleanup-bar" id="cleanupBar">
+      <div class="cb-stats">
+        <div class="cb-stat">🌿 <span class="cb-stat-val cb-score" id="cbScore">0</span></div>
+        <div class="cb-stat">🔥 <span class="cb-stat-val cb-combo" id="cbCombo">x1</span></div>
+      </div>
+      <div class="cb-timer-wrap">
+        <div class="cb-timer-bar"><div class="cb-timer-fill" id="cbTimerFill"></div></div>
+        <span class="cb-timer-text" id="cbTimerText">30</span>
+        <button class="cb-close" onclick="endCleanup()">✕</button>
+      </div>
+    </div>
+
+    <!-- Cleanup Items -->
+    <div id="cleanupField"></div>
+
+    <!-- Cleanup Result -->
+    <div class="cleanup-result" id="cleanupResult"></div>
 
     <!-- Bubbles -->
     <div id="bubbles"></div>
@@ -422,10 +501,9 @@
       <h1 class="title">航向了未知的海域</h1>
       <p class="desc">看來這片海域沒有你要找的陸地。<br>別擔心，讓風帶你回到正確的航線。</p>
       <div class="weather-msg" id="weatherMsg">☀️ 晴空萬里，適合出海</div>
-      <div class="eco-hud" id="ecoHud">🌿 已清理 <span class="eco-score" id="ecoScore">0</span> 件垃圾</div>
       <div class="btns">
         <a href="首頁.html" class="btn btn-main">🏠 返回首頁</a>
-        <button class="btn btn-main" onclick="startCleanup()" id="cleanBtn">🧹 淨灘</button>
+        <button class="btn btn-main" onclick="startCleanup()" id="cleanBtn">🧹 淨灘挑戰</button>
         <a href="https://discord.gg/HdS2HrJEH7" target="_blank" rel="noopener" class="btn btn-sub">💬 社群</a>
       </div>
     </div>
@@ -457,7 +535,6 @@
   (() => {
     'use strict';
 
-    const TRASH = ['🧴','🥤','🛍️','📦','🥫','🪣','🧃','🫙','🧋','🍶','🥡','🛒','🎈','🪥'];
     const SEA = ['🐙','🦑','🦐','🐡','🐠','🐟','🐬','🦀','🐚'];
 
     // ═══ Weather System ═══
@@ -550,41 +627,231 @@
     }
     setInterval(spawnBubble, 1000);
 
-    // ═══ Trash System ═══
-    const trashField = document.getElementById('trashField');
-    let trashCount = 0, cleanupActive = false;
+    // ═══ Cleanup Challenge ═══
+    const CLEANUP_DURATION = 30; // seconds
+    const cleanupField = document.getElementById('cleanupField');
+    const cleanupBar = document.getElementById('cleanupBar');
+    const cleanupResult = document.getElementById('cleanupResult');
+    const TRASH_POOL = [
+      { emoji:'🧴', pts:10 }, { emoji:'🥤', pts:10 }, { emoji:'🛍️', pts:10 },
+      { emoji:'📦', pts:10 }, { emoji:'🥫', pts:10 }, { emoji:'🧃', pts:10 },
+      { emoji:'🫙', pts:10 }, { emoji:'🍶', pts:10 }, { emoji:'🥡', pts:10 },
+      { emoji:'🎈', pts:10 }, { emoji:'🪥', pts:10 }, { emoji:'🛒', pts:10 },
+      { emoji:'🪣', pts:15 }, { emoji:'🔋', pts:25 }, { emoji:'💊', pts:25 },
+      { emoji:'🛢️', pts:25 }, { emoji:'☣️', pts:25 },
+    ];
+    const CREATURE_POOL = [
+      { emoji:'🐢', penalty:15 }, { emoji:'🐠', penalty:15 }, { emoji:'🐟', penalty:15 },
+      { emoji:'🐬', penalty:20 }, { emoji:'🐙', penalty:15 }, { emoji:'🦀', penalty:15 },
+      { emoji:'🦐', penalty:15 }, { emoji:'🐡', penalty:15 }, { emoji:'🐚', penalty:10 },
+    ];
+    const BONUS_POOL = [
+      { emoji:'💎', pts:50 }, { emoji:'🏆', pts:50 }, { emoji:'⭐', pts:40 },
+      { emoji:'🌊', pts:35 }, { emoji:'🧜‍♀️', pts:60 },
+    ];
+    let cleanupState = null; // { score, combo, maxCombo, collected, missed, penalties, timer, interval, spawnInterval }
 
-    function spawnTrash() {
-      if (!cleanupActive) return;
-      const t = document.createElement('div');
-      t.className = 'trash floating';
-      t.textContent = TRASH[Math.floor(Math.random()*TRASH.length)];
-      t.style.top = (55 + Math.random()*15) + '%';
-      t.style.left = (5+Math.random()*90) + '%';
-      t.style.animationDuration = (3+Math.random()*4)+'s';
-      t.style.fontSize = (1+Math.random()*0.8)+'rem';
-      t.addEventListener('click', () => {
-        if (t.classList.contains('collected')) return;
-        t.classList.add('collected');
-        trashCount++;
-        document.getElementById('ecoScore').textContent = trashCount;
-        setTimeout(() => t.remove(), 500);
+    function spawnCleanupItem() {
+      if (!cleanupState) return;
+      const isMobile = window.innerWidth < 768;
+      const maxItems = isMobile ? 6 : 10;
+      const live = cleanupField.querySelectorAll('.c-item').length;
+      if (live >= maxItems) return;
+
+      const roll = Math.random();
+      let pool, isCreature = false, isBonus = false;
+      if (roll < 0.10) { pool = BONUS_POOL; isBonus = true; }
+      else { pool = TRASH_POOL; }
+
+      // Occasionally spawn creatures (20% chance per call)
+      if (Math.random() < 0.20 && !isBonus) {
+        pool = CREATURE_POOL;
+        isCreature = true;
+      }
+
+      const item = pool[Math.floor(Math.random() * pool.length)];
+      const el = document.createElement('div');
+      el.className = 'c-item ' + (isCreature ? 'creature-item' : isBonus ? 'bonus-item' : 'trash-item');
+      el.textContent = item.emoji;
+      el.style.fontSize = isBonus ? '1.8rem' : (1.2 + Math.random() * 0.6) + 'rem';
+
+      // Spawn position — in the ocean area (bottom 45% of screen)
+      el.style.top = (50 + Math.random() * 25) + '%';
+      el.style.left = (3 + Math.random() * 94) + '%';
+
+      el.addEventListener('click', (e) => {
+        e.stopPropagation();
+        if (!cleanupState || el.classList.contains('collected') || el.classList.contains('penalty')) return;
+
+        if (isCreature) {
+          // Hit a creature — penalty!
+          cleanupState.combo = 0;
+          cleanupState.penalties++;
+          const pen = item.penalty;
+          cleanupState.score = Math.max(0, cleanupState.score - pen);
+          el.classList.add('penalty');
+          showFloatScore(el, `-${pen}`, 'negative');
+          flashScreen();
+          updateCleanupHUD();
+          setTimeout(() => el.remove(), 600);
+        } else {
+          // Collected trash or bonus!
+          cleanupState.combo++;
+          if (cleanupState.combo > cleanupState.maxCombo) cleanupState.maxCombo = cleanupState.combo;
+          const multiplier = Math.min(cleanupState.combo, 5);
+          const earned = item.pts * multiplier;
+          cleanupState.score += earned;
+          cleanupState.collected++;
+          el.classList.add('collected');
+          if (isBonus) {
+            showFloatScore(el, `+${earned}`, 'bonus');
+          } else {
+            showFloatScore(el, multiplier > 1 ? `+${earned} x${multiplier}` : `+${earned}`, 'positive');
+          }
+          updateCleanupHUD();
+          setTimeout(() => el.remove(), 400);
+        }
       });
-      trashField.appendChild(t);
-      setTimeout(() => { if (!t.classList.contains('collected')) t.remove(); }, 15000+Math.random()*10000);
+
+      cleanupField.appendChild(el);
+      // Auto-remove after some time if not clicked
+      const lifetime = (4 + Math.random() * 4) * 1000;
+      setTimeout(() => {
+        if (el.parentNode && !el.classList.contains('collected') && !el.classList.contains('penalty')) {
+          if (!isCreature) cleanupState.missed++;
+          el.style.opacity = '0';
+          el.style.transform = 'translateY(20px)';
+          setTimeout(() => el.remove(), 300);
+        }
+      }, lifetime);
+    }
+
+    function showFloatScore(el, text, type) {
+      const rect = el.getBoundingClientRect();
+      const popup = document.createElement('div');
+      popup.className = 'float-score ' + type;
+      popup.textContent = text;
+      popup.style.left = rect.left + rect.width / 2 + 'px';
+      popup.style.top = rect.top + 'px';
+      popup.style.transform = 'translateX(-50%)';
+      document.body.appendChild(popup);
+      setTimeout(() => popup.remove(), 800);
+    }
+
+    function flashScreen() {
+      const flash = document.createElement('div');
+      flash.className = 'scene-flash';
+      document.getElementById('scene').appendChild(flash);
+      setTimeout(() => flash.remove(), 400);
+    }
+
+    function updateCleanupHUD() {
+      if (!cleanupState) return;
+      document.getElementById('cbScore').textContent = cleanupState.score;
+      const comboEl = document.getElementById('cbCombo');
+      if (cleanupState.combo > 1) {
+        comboEl.textContent = `x${Math.min(cleanupState.combo, 5)}`;
+        comboEl.classList.add('active');
+      } else {
+        comboEl.classList.remove('active');
+      }
+    }
+
+    function updateCleanupTimer() {
+      if (!cleanupState) return;
+      cleanupState.timer--;
+      const pct = (cleanupState.timer / CLEANUP_DURATION) * 100;
+      const fill = document.getElementById('cbTimerFill');
+      fill.style.width = pct + '%';
+      fill.classList.toggle('urgent', cleanupState.timer <= 10);
+      document.getElementById('cbTimerText').textContent = cleanupState.timer;
+      if (cleanupState.timer <= 0) endCleanup();
     }
 
     window.startCleanup = () => {
-      cleanupActive = true; trashCount = 0;
-      document.getElementById('ecoScore').textContent = '0';
-      document.getElementById('ecoHud').classList.add('visible');
-      document.getElementById('cleanBtn').textContent = '🧹 淨灘中...';
-      trashField.innerHTML = '';
-      for (let i = 0; i < 6; i++) setTimeout(spawnTrash, i*300);
-      const iv = setInterval(() => {
-        if (!cleanupActive) { clearInterval(iv); return; }
-        if (trashField.querySelectorAll('.trash:not(.collected)').length < 8) spawnTrash();
-      }, 2000);
+      // Prevent starting if already active
+      if (cleanupState) return;
+
+      cleanupState = {
+        score: 0, combo: 0, maxCombo: 0, collected: 0, missed: 0, penalties: 0,
+        timer: CLEANUP_DURATION, interval: null, spawnInterval: null
+      };
+
+      // Reset HUD
+      document.getElementById('cbScore').textContent = '0';
+      document.getElementById('cbCombo').classList.remove('active');
+      document.getElementById('cbTimerFill').style.width = '100%';
+      document.getElementById('cbTimerFill').classList.remove('urgent');
+      document.getElementById('cbTimerText').textContent = CLEANUP_DURATION;
+
+      // Show bar, hide result
+      cleanupBar.classList.add('active');
+      cleanupResult.classList.remove('active');
+      cleanupResult.innerHTML = '';
+      cleanupField.innerHTML = '';
+
+      // Hide content buttons
+      document.getElementById('cleanBtn').style.display = 'none';
+
+      // Start spawning
+      for (let i = 0; i < 4; i++) setTimeout(spawnCleanupItem, i * 250);
+      cleanupState.spawnInterval = setInterval(spawnCleanupItem, 800);
+      cleanupState.interval = setInterval(updateCleanupTimer, 1000);
+    };
+
+    window.endCleanup = () => {
+      if (!cleanupState) return;
+      clearInterval(cleanupState.interval);
+      clearInterval(cleanupState.spawnInterval);
+
+      const s = cleanupState;
+      cleanupField.innerHTML = '';
+
+      // Calculate rating
+      let stars = 1, rank = '淨灘新手';
+      if (s.score >= 800) { stars = 5; rank = '海洋守護神 🌊'; }
+      else if (s.score >= 500) { stars = 4; rank = '沙灘勇士'; }
+      else if (s.score >= 300) { stars = 3; rank = '環保達人'; }
+      else if (s.score >= 150) { stars = 2; rank = '淨灘實習生'; }
+
+      // Best score
+      const bestKey = 'sw-cleanup-best';
+      let best = parseInt(localStorage.getItem(bestKey) || '0');
+      const isNewBest = s.score > best;
+      if (isNewBest) localStorage.setItem(bestKey, s.score);
+
+      // Show result
+      const starStr = '⭐'.repeat(stars) + '☆'.repeat(5 - stars);
+      cleanupResult.innerHTML = `
+        <div class="cr-box">
+          <div class="cr-title">🧹 淨灘結束！</div>
+          <div class="cr-subtitle">30 秒挑戰</div>
+          <div class="cr-score">${s.score}</div>
+          <div class="cr-label">總得分</div>
+          <div class="cr-stats">
+            <div class="cr-stat"><span class="cr-stat-val">${s.collected}</span><span class="cr-stat-label">撿起</span></div>
+            <div class="cr-stat"><span class="cr-stat-val">${s.missed}</span><span class="cr-stat-label">錯過</span></div>
+            <div class="cr-stat"><span class="cr-stat-val">${s.penalties}</span><span class="cr-stat-label">誤觸</span></div>
+            <div class="cr-stat"><span class="cr-stat-val">x${s.maxCombo}</span><span class="cr-stat-label">最高連擊</span></div>
+          </div>
+          <div class="cr-stars">${starStr}</div>
+          <div class="cr-rank">${rank}</div>
+          <div class="cr-best">${isNewBest ? '🎉 新紀錄！' : (best > 0 ? `最高紀錄 ${best} 分` : '')}</div>
+          <div class="cr-btns">
+            <button class="btn btn-main" onclick="startCleanup()">🧹 再來一次</button>
+            <button class="btn btn-sub" onclick="endCleanupFinal()">關閉</button>
+          </div>
+        </div>
+      `;
+      cleanupResult.classList.add('active');
+      cleanupBar.classList.remove('active');
+      cleanupState = null;
+    };
+
+    window.endCleanupFinal = () => {
+      cleanupResult.classList.remove('active');
+      cleanupResult.innerHTML = '';
+      document.getElementById('cleanBtn').style.display = '';
     };
 
     // ═══ Unified Overlay ═══
