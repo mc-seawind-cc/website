@@ -126,7 +126,7 @@ const MOB_SMASHER = (() => {
       </div>
       <div class="ms-hud">
         <div class="ms-hud-left">
-          <span class="ms-score"><img src="https://zh.minecraft.wiki/images/Mace_JE1_BE1.png?3a7ae" class="ms-weapon-icon" alt="鎚子"> <span id="msScore">0</span></span>
+          <span class="ms-score"><img src="assets/mobs/iron-sword.png" class="ms-weapon-icon" alt="劍"> <span id="msScore">0</span></span>
           ${state.bestScore > 0 ? `<span class="ms-best">最高 ${state.bestScore}</span>` : ''}
         </div>
         <div class="ms-hud-center">
@@ -449,7 +449,7 @@ const MOB_SMASHER = (() => {
     if (grid) {
       grid.innerHTML = `
         <div class="ms-result">
-          <div class="ms-result-icon"><img src="https://zh.minecraft.wiki/images/Mace_JE1_BE1.png?3a7ae" class="ms-result-sword" alt="鎚子"></div>
+          <div class="ms-result-icon"><img src="assets/mobs/iron-sword.png" class="ms-result-sword" alt="劍"></div>
           <div class="ms-result-score">${state.score} 分</div>
           <div class="ms-result-detail">
             消滅 ${state.mobsSmashed} 隻怪物 · 誤傷 ${state.friendliesHit} 隻動物
