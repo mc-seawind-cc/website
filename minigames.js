@@ -785,6 +785,351 @@ const MINIGAMES = (() => {
   }
 
   // ═══════════════════════════════════════════
+  // 💣 礦洞掃雷 (Minesweeper) — Minecraft 風格
+  // ═══════════════════════════════════════════
+  function minesweeper(overlayBox) {
+    clearTimers();
+    const ROWS = 9, COLS = 9, MINE_COUNT = 10;
+    const ORE_ICONS = ['','🪨','💎','🔴','🟢','🔵','🟡','🟣','🟤'];
+    const MINE_EMOJI = '💣';
+    let grid = [], revealed = [], flagged = [], gameOver = false, won = false, firstClick = true, timeLeft = 0, flagsUsed = 0;
+
+    function init() {
+      grid = Array.from({ length: ROWS }, () => Array(COLS).fill(0));
+      revealed = Array.from({ length: ROWS }, () => Array(COLS).fill(false));
+      flagged = Array.from({ length: ROWS }, () => Array(COLS).fill(false));
+      gameOver = false; won = false; firstClick = true; flagsUsed = 0; timeLeft = 0;
+    }
+
+    function placeMines(safeR, safeC) {
+      let placed = 0;
+      while (placed < MINE_COUNT) {
+        const r = Math.floor(Math.random() * ROWS), c = Math.floor(Math.random() * COLS);
+        if (grid[r][c] !== -1 && !(Math.abs(r - safeR) <= 1 && Math.abs(c - safeC) <= 1)) {
+          grid[r][c] = -1;
+          placed++;
+        }
+      }
+      // Calculate numbers
+      for (let r = 0; r < ROWS; r++) for (let c = 0; c < COLS; c++) {
+        if (grid[r][c] === -1) continue;
+        let count = 0;
+        for (let dr = -1; dr <= 1; dr++) for (let dc = -1; dc <= 1; dc++) {
+          const nr = r + dr, nc = c + dc;
+          if (nr >= 0 && nr < ROWS && nc >= 0 && nc < COLS && grid[nr][nc] === -1) count++;
+        }
+        grid[r][c] = count;
+      }
+    }
+
+    function floodReveal(r, c) {
+      if (r < 0 || r >= ROWS || c < 0 || c >= COLS || revealed[r][c] || flagged[r][c]) return;
+      revealed[r][c] = true;
+      if (grid[r][c] === 0) {
+        for (let dr = -1; dr <= 1; dr++) for (let dc = -1; dc <= 1; dc++) floodReveal(r + dr, c + dc);
+      }
+    }
+
+    function checkWin() {
+      for (let r = 0; r < ROWS; r++) for (let c = 0; c < COLS; c++) {
+        if (grid[r][c] !== -1 && !revealed[r][c]) return false;
+      }
+      return true;
+    }
+
+    function render() {
+      const flagsLeft = MINE_COUNT - flagsUsed;
+      let html = `<div class="overlay-header"><span class="overlay-title">💣 礦洞掃雷</span><button class="overlay-close" onclick="MINIGAMES.close()">✕</button></div>`;
+      html += `<div class="game-hud"><span>💣 <span class="game-hud-val" id="msFlags">${flagsLeft}</span></span><span>⏱ <span class="game-hud-val" id="msTime">${timeLeft}</span>s</span></div>`;
+      html += '<div class="ms-grid" id="msGrid" oncontextmenu="event.preventDefault()">';
+      for (let r = 0; r < ROWS; r++) for (let c = 0; c < COLS; c++) {
+        const isRevealed = revealed[r][c];
+        const isFlagged = flagged[r][c];
+        let content = '', cls = 'ms-cell';
+        if (gameOver && grid[r][c] === -1 && !isFlagged) {
+          content = MINE_EMOJI;
+          cls += ' ms-revealed ms-mine';
+        } else if (isRevealed) {
+          cls += ' ms-revealed';
+          const val = grid[r][c];
+          if (val === -1) { content = MINE_EMOJI; cls += ' ms-mine'; }
+          else if (val > 0) { content = ORE_ICONS[val] || val; cls += ` ms-num ms-num-${val}`; }
+        } else if (isFlagged) {
+          content = '🚩';
+          cls += ' ms-flagged';
+        }
+        html += `<div class="${cls}" data-r="${r}" data-c="${c}" onclick="MINIGAMES._msClick(${r},${c})" oncontextmenu="event.preventDefault();MINIGAMES._msRight(${r},${c})">${content}</div>`;
+      }
+      html += '</div>';
+      html += `<div class="ms-hint">${gameOver ? (won ? '🎉 掃雷成功！安全通關！' : '💥 踩到礦了！') : '左鍵翻開 · 右鍵插旗 · 小心地雷'}</div>`;
+      if (gameOver) html += `<div class="game-result-btns" style="margin-top:10px"><button class="btn btn-main" onclick="MINIGAMES.minesweeper(document.getElementById('overlayBox'))">🔄 再來一局</button></div>`;
+      overlayBox.innerHTML = html;
+    }
+
+    window._msClick = (r, c) => {
+      if (gameOver || flagged[r][c]) return;
+      if (firstClick) {
+        firstClick = false;
+        placeMines(r, c);
+        gameTimer = setInterval(() => { timeLeft++; const el = document.getElementById('msTime'); if (el) el.textContent = timeLeft; }, 1000);
+        cleanupFns.push(() => clearInterval(gameTimer));
+      }
+      if (revealed[r][c]) return;
+      if (grid[r][c] === -1) {
+        // Hit mine
+        gameOver = true;
+        clearInterval(gameTimer);
+        revealed[r][c] = true;
+        render();
+        return;
+      }
+      floodReveal(r, c);
+      if (checkWin()) {
+        gameOver = true; won = true;
+        clearInterval(gameTimer);
+      }
+      render();
+    };
+
+    window._msRight = (r, c) => {
+      if (gameOver || revealed[r][c]) return;
+      if (flagged[r][c]) { flagged[r][c] = false; flagsUsed--; }
+      else if (flagsUsed < MINE_COUNT) { flagged[r][c] = true; flagsUsed++; }
+      render();
+    };
+
+    init();
+    render();
+  }
+
+  // ═══════════════════════════════════════════
+  // 🔢 2048 礦石版 (2048 Ore Merge)
+  // ═══════════════════════════════════════════
+  function merge2048(overlayBox) {
+    clearTimers();
+    const SIZE = 4;
+    const TILES = {
+      2: { emoji: '🪨', label: '石頭', color: 'rgba(140,130,120,0.3)' },
+      4: { emoji: '🪨', label: '礫石', color: 'rgba(160,150,140,0.35)' },
+      8: { emoji: '🟫', label: '煤炭', color: 'rgba(100,90,80,0.4)' },
+      16: { emoji: '🟤', label: '鐵礦', color: 'rgba(180,160,140,0.4)' },
+      32: { emoji: '🟡', label: '金礦', color: 'rgba(220,180,50,0.35)' },
+      64: { emoji: '🔴', label: '紅石', color: 'rgba(220,60,60,0.35)' },
+      128: { emoji: '💎', label: '鑽石', color: 'rgba(100,200,240,0.35)' },
+      256: { emoji: '🟢', label: '綠寶石', color: 'rgba(80,220,130,0.35)' },
+      512: { emoji: '🟣', label: '紫水晶', color: 'rgba(160,100,220,0.35)' },
+      1024: { emoji: '🔷', label: '下界合金', color: 'rgba(200,140,80,0.4)' },
+      2048: { emoji: '👑', label: '終界之星', color: 'rgba(220,200,80,0.4)' },
+      4096: { emoji: '🌟', label: '超新星', color: 'rgba(255,220,100,0.45)' },
+    };
+
+    let grid, score, best;
+
+    function init() {
+      grid = Array.from({ length: SIZE }, () => Array(SIZE).fill(0));
+      score = 0;
+      best = parseInt(localStorage.getItem('sw-2048-best') || '0');
+      addRandom();
+      addRandom();
+    }
+
+    function addRandom() {
+      const empty = [];
+      for (let r = 0; r < SIZE; r++) for (let c = 0; c < SIZE; c++) if (grid[r][c] === 0) empty.push({ r, c });
+      if (empty.length === 0) return;
+      const { r, c } = empty[Math.floor(Math.random() * empty.length)];
+      grid[r][c] = Math.random() < 0.9 ? 2 : 4;
+    }
+
+    function slide(row) {
+      let arr = row.filter(v => v);
+      const merged = [];
+      for (let i = 0; i < arr.length - 1; i++) {
+        if (arr[i] === arr[i + 1]) {
+          arr[i] *= 2;
+          score += arr[i];
+          merged.push(i);
+          arr.splice(i + 1, 1);
+        }
+      }
+      while (arr.length < SIZE) arr.push(0);
+      return arr;
+    }
+
+    function rotateCW(g) {
+      const n = Array.from({ length: SIZE }, () => Array(SIZE).fill(0));
+      for (let r = 0; r < SIZE; r++) for (let c = 0; c < SIZE; c++) n[c][SIZE - 1 - r] = g[r][c];
+      return n;
+    }
+
+    function moveLeft() {
+      let moved = false;
+      for (let r = 0; r < SIZE; r++) {
+        const old = [...grid[r]];
+        grid[r] = slide(grid[r]);
+        if (grid[r].some((v, i) => v !== old[i])) moved = true;
+      }
+      return moved;
+    }
+
+    function move(dir) {
+      // dir: 0=up, 1=right, 2=down, 3=left
+      const rotations = [1, 2, 3, 0]; // rotate CW to bring dir to left
+      for (let i = 0; i < rotations[dir]; i++) grid = rotateCW(grid);
+      const moved = moveLeft();
+      for (let i = 0; i < (4 - rotations[dir]) % 4; i++) grid = rotateCW(grid);
+      if (moved) {
+        addRandom();
+        if (score > best) { best = score; localStorage.setItem('sw-2048-best', best.toString()); }
+        render();
+        if (isGameOver()) {
+          MINIGAMES.showResult('🔢', score + ' 分', `最高 ${best} 分`, 'merge2048');
+        }
+      }
+    }
+
+    function isGameOver() {
+      for (let r = 0; r < SIZE; r++) for (let c = 0; c < SIZE; c++) {
+        if (grid[r][c] === 0) return false;
+        if (c < SIZE - 1 && grid[r][c] === grid[r][c + 1]) return false;
+        if (r < SIZE - 1 && grid[r][c] === grid[r + 1][c]) return false;
+      }
+      return true;
+    }
+
+    function getTile(val) {
+      if (TILES[val]) return TILES[val];
+      return { emoji: '⭐', label: val, color: 'rgba(255,220,100,0.5)' };
+    }
+
+    function render() {
+      let html = `<div class="overlay-header"><span class="overlay-title">🔢 2048 礦石</span><button class="overlay-close" onclick="MINIGAMES.close()">✕</button></div>`;
+      html += `<div class="game-hud"><span>⭐ <span class="game-hud-val" id="m2048Score">${score}</span></span><span>最高: <span class="game-hud-val">${best}</span></span></div>`;
+      html += '<div class="m2048-grid" id="m2048Grid">';
+      for (let r = 0; r < SIZE; r++) for (let c = 0; c < SIZE; c++) {
+        const val = grid[r][c];
+        const tile = val > 0 ? getTile(val) : null;
+        const cls = val > 0 ? `m2048-cell m2048-val-${Math.min(val, 2048)}` : 'm2048-cell';
+        const style = tile ? `background:${tile.color}` : '';
+        html += `<div class="${cls}" style="${style}">${tile ? `<span class="m2048-emoji">${tile.emoji}</span><span class="m2048-num">${val >= 1000 ? (val/1000).toFixed(1)+'k' : val}</span>` : ''}</div>`;
+      }
+      html += '</div>';
+      html += '<div class="m2048-controls">';
+      html += '<div class="m2048-ctrl-row"><button class="m2048-ctrl" onclick="MINIGAMES._m2048(0)">▲</button></div>';
+      html += '<div class="m2048-ctrl-row"><button class="m2048-ctrl" onclick="MINIGAMES._m2048(3)">◀</button><button class="m2048-ctrl" onclick="MINIGAMES._m2048(2)">▼</button><button class="m2048-ctrl" onclick="MINIGAMES._m2048(1)">▶</button></div>';
+      html += '</div>';
+      html += '<div class="m2048-hint">合併相同礦石，目標：終界之星 👑</div>';
+      overlayBox.innerHTML = html;
+    }
+
+    window._m2048 = (dir) => move(dir);
+
+    function keyHandler(e) {
+      if (!document.getElementById('overlay')?.classList.contains('active')) {
+        document.removeEventListener('keydown', keyHandler);
+        return;
+      }
+      const map = { ArrowUp: 0, ArrowDown: 2, ArrowLeft: 3, ArrowRight: 1, w: 0, s: 2, a: 3, d: 1 };
+      if (map[e.key] !== undefined) { e.preventDefault(); move(map[e.key]); }
+    }
+    document.addEventListener('keydown', keyHandler);
+    cleanupFns.push(() => document.removeEventListener('keydown', keyHandler));
+
+    init();
+    render();
+  }
+
+  // ═══════════════════════════════════════════
+  // ❌⭕ 井字棋 (Tic-Tac-Toe) — 快速對決
+  // ═══════════════════════════════════════════
+  function tictactoe(overlayBox) {
+    clearTimers();
+    let board = Array(9).fill(null);
+    let over = false, wins = 0, losses = 0, draws = 0;
+    const stored = JSON.parse(localStorage.getItem('sw-ttt-record') || '{}');
+    wins = stored.w || 0; losses = stored.l || 0; draws = stored.d || 0;
+
+    const LINES = [[0,1,2],[3,4,5],[6,7,8],[0,3,6],[1,4,7],[2,5,8],[0,4,8],[2,4,6]];
+
+    function render(status) {
+      let html = `<div class="overlay-header"><span class="overlay-title">❌ 井字棋</span><button class="overlay-close" onclick="MINIGAMES.close()">✕</button></div>`;
+      html += `<div class="game-hud"><span>你 <span class="game-hud-val">${wins}</span></span><span>平 <span class="game-hud-val">${draws}</span></span><span>AI <span class="game-hud-val">${losses}</span></span></div>`;
+      html += '<div class="ttt-grid" id="tttGrid">';
+      for (let i = 0; i < 9; i++) {
+        const val = board[i] || '';
+        const cls = val === 'X' ? 'ttt-cell ttt-x' : val === 'O' ? 'ttt-cell ttt-o' : 'ttt-cell';
+        html += `<div class="${cls}" onclick="MINIGAMES._tttClick(${i})">${val === 'X' ? '❌' : val === 'O' ? '⭕' : ''}</div>`;
+      }
+      html += '</div>';
+      html += `<div class="ttt-status" id="tttStatus">${status}</div>`;
+      html += `<div class="game-result-btns" style="margin-top:10px"><button class="btn btn-main" onclick="MINIGAMES.tictactoe(document.getElementById('overlayBox'))">🔄 新局</button></div>`;
+      overlayBox.innerHTML = html;
+    }
+
+    function checkWin(b, p) { return LINES.some(line => line.every(i => b[i] === p)); }
+    function boardFull(b) { return b.every(c => c !== null); }
+
+    function aiMove() {
+      // Minimax-lite: win > block > center > corner > edge
+      // 1. Can AI win?
+      for (let i = 0; i < 9; i++) {
+        if (board[i] !== null) continue;
+        board[i] = 'O';
+        if (checkWin(board, 'O')) { board[i] = 'O'; return; }
+        board[i] = null;
+      }
+      // 2. Block player
+      for (let i = 0; i < 9; i++) {
+        if (board[i] !== null) continue;
+        board[i] = 'X';
+        if (checkWin(board, 'X')) { board[i] = 'O'; return; }
+        board[i] = null;
+      }
+      // 3. Center
+      if (board[4] === null) { board[4] = 'O'; return; }
+      // 4. Corners
+      const corners = [0, 2, 6, 8].filter(i => board[i] === null);
+      if (corners.length > 0) { board[corners[Math.floor(Math.random() * corners.length)]] = 'O'; return; }
+      // 5. Edges
+      const edges = [1, 3, 5, 7].filter(i => board[i] === null);
+      if (edges.length > 0) { board[edges[Math.floor(Math.random() * edges.length)]] = 'O'; return; }
+    }
+
+    window._tttClick = (i) => {
+      if (board[i] || over) return;
+      board[i] = 'X';
+      if (checkWin(board, 'X')) {
+        over = true; wins++;
+        localStorage.setItem('sw-ttt-record', JSON.stringify({ w: wins, l: losses, d: draws }));
+        render('🎉 你贏了！');
+        return;
+      }
+      if (boardFull(board)) {
+        over = true; draws++;
+        localStorage.setItem('sw-ttt-record', JSON.stringify({ w: wins, l: losses, d: draws }));
+        render('🤝 平手！');
+        return;
+      }
+      aiMove();
+      if (checkWin(board, 'O')) {
+        over = true; losses++;
+        localStorage.setItem('sw-ttt-record', JSON.stringify({ w: wins, l: losses, d: draws }));
+        render('🤖 電腦贏了！');
+        return;
+      }
+      if (boardFull(board)) {
+        over = true; draws++;
+        localStorage.setItem('sw-ttt-record', JSON.stringify({ w: wins, l: losses, d: draws }));
+        render('🤝 平手！');
+        return;
+      }
+      render('你的回合（❌）');
+    };
+
+    render('你的回合（❌）');
+  }
+
+  // ═══════════════════════════════════════════
   // 通用：顯示結果
   // ═══════════════════════════════════════════
   function showResult(emoji, val, text, gameType) {
@@ -810,12 +1155,12 @@ const MINIGAMES = (() => {
 
   function _retry(type) {
     const box = document.getElementById('overlayBox');
-    const fn = { memory, gomoku, react, nummem, snake, simon, blockcrush, shooting }[type];
+    const fn = { memory, gomoku, react, nummem, snake, simon, blockcrush, shooting, minesweeper, merge2048, tictactoe }[type];
     if (fn) fn(box);
   }
 
   return {
-    memory, gomoku, react, nummem, snake, simon, blockcrush, shooting,
+    memory, gomoku, react, nummem, snake, simon, blockcrush, shooting, minesweeper, merge2048, tictactoe,
     showResult, close,
     // Aliases for internal use
     _flipCard: (c) => window._flipCard?.(c),
@@ -825,6 +1170,10 @@ const MINIGAMES = (() => {
     _snakeDir: (dx, dy) => window._snakeDir?.(dx, dy),
     _simonHit: (id) => window._simonHit?.(id),
     _bcClick: (r, c) => window._bcClick?.(r, c),
+    _msClick: (r, c) => window._msClick?.(r, c),
+    _msRight: (r, c) => window._msRight?.(r, c),
+    _m2048: (dir) => window._m2048?.(dir),
+    _tttClick: (i) => window._tttClick?.(i),
     _retry,
   };
 })();
