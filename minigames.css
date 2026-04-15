@@ -168,7 +168,13 @@
   .bc-grid { max-width: 220px; gap: 3px; padding: 8px; }
   .bc-cell { font-size: 1.2rem; }
   .shoot-range { height: 160px; }
-  .game-tab { padding: 5px 8px; font-size: 0.62rem; }
+  .game-tab { padding: 5px 7px; font-size: 0.6rem; }
+  .wdl-cell { width: 36px; height: 36px; font-size: 0.95rem; }
+  .wdl-key { min-width: 24px; height: 36px; font-size: 0.65rem; }
+  .whack-grid { max-width: 200px; gap: 4px; }
+  .whack-hole { font-size: 1.4rem; }
+  .c4-grid { max-width: 240px; }
+  .c4-col-btns { max-width: 240px; }
 }
 
 /* ═══ 礦洞掃雷 (Minesweeper) ═══ */
@@ -363,6 +369,286 @@
 .ttt-status {
   text-align: center;
   font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.5);
+  margin-top: 10px;
+  font-weight: 600;
+}
+
+/* ═══ 滑翔翼 (Flappy Elytra) ═══ */
+.flappy-wrap {
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+.flappy-canvas {
+  display: block;
+  border-radius: 10px;
+  border: 1px solid rgba(157, 175, 255, 0.12);
+  cursor: pointer;
+  image-rendering: auto;
+  max-width: 100%;
+}
+.flappy-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.7);
+  pointer-events: none;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+}
+.flappy-hint {
+  text-align: center;
+  font-size: 0.68rem;
+  color: rgba(255, 255, 255, 0.2);
+  margin-top: 6px;
+}
+
+/* ═══ 猜礦 (Wordle) ═══ */
+.wdl-board {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 10px;
+  align-items: center;
+}
+.wdl-row {
+  display: flex;
+  gap: 4px;
+}
+.wdl-cell {
+  width: 42px;
+  height: 42px;
+  border-radius: 8px;
+  background: rgba(157, 175, 255, 0.06);
+  border: 1px solid rgba(157, 175, 255, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.85);
+  text-transform: uppercase;
+  transition: all 0.2s;
+}
+.wdl-filled {
+  border-color: rgba(157, 175, 255, 0.3);
+  background: rgba(157, 175, 255, 0.1);
+  animation: wdl-pop 0.15s ease-out;
+}
+@keyframes wdl-pop {
+  0% { transform: scale(0.85); }
+  50% { transform: scale(1.08); }
+  100% { transform: scale(1); }
+}
+.wdl-correct {
+  background: rgba(168, 230, 207, 0.3) !important;
+  border-color: rgba(168, 230, 207, 0.5) !important;
+  color: #a8e6cf;
+  animation: wdl-flip 0.4s ease-out;
+}
+.wdl-present {
+  background: rgba(255, 204, 0, 0.25) !important;
+  border-color: rgba(255, 204, 0, 0.4) !important;
+  color: #ffcc00;
+  animation: wdl-flip 0.4s ease-out;
+}
+.wdl-absent {
+  background: rgba(100, 100, 120, 0.2) !important;
+  border-color: rgba(100, 100, 120, 0.15) !important;
+  color: rgba(255, 255, 255, 0.25);
+  animation: wdl-flip 0.4s ease-out;
+}
+@keyframes wdl-flip {
+  0% { transform: rotateX(90deg); }
+  100% { transform: rotateX(0); }
+}
+.wdl-msg {
+  text-align: center;
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.5);
+  margin: 8px 0;
+  font-weight: 600;
+}
+.wdl-kb {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  align-items: center;
+  margin-top: 6px;
+}
+.wdl-kb-row {
+  display: flex;
+  gap: 3px;
+}
+.wdl-key {
+  min-width: 28px;
+  height: 40px;
+  border-radius: 6px;
+  background: rgba(157, 175, 255, 0.08);
+  border: 1px solid rgba(157, 175, 255, 0.1);
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 0.75rem;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: inherit;
+  transition: all 0.15s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  user-select: none;
+  -webkit-user-select: none;
+}
+.wdl-key:hover {
+  background: rgba(157, 175, 255, 0.15);
+  color: rgba(255, 255, 255, 0.8);
+}
+.wdl-key:active { transform: scale(0.92); }
+.wdl-key-correct {
+  background: rgba(168, 230, 207, 0.25) !important;
+  border-color: rgba(168, 230, 207, 0.4) !important;
+  color: #a8e6cf !important;
+}
+.wdl-key-present {
+  background: rgba(255, 204, 0, 0.2) !important;
+  border-color: rgba(255, 204, 0, 0.3) !important;
+  color: #ffcc00 !important;
+}
+.wdl-key-absent {
+  background: rgba(80, 80, 100, 0.15) !important;
+  border-color: rgba(80, 80, 100, 0.1) !important;
+  color: rgba(255, 255, 255, 0.2) !important;
+}
+.wdl-key-enter, .wdl-key-back {
+  min-width: 50px;
+  font-size: 0.7rem;
+}
+
+/* ═══ 打苦力怕 (Whack-a-Creeper) ═══ */
+.whack-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 6px;
+  padding: 12px;
+  background: rgba(6, 14, 28, 0.5);
+  border-radius: 12px;
+  border: 1px solid rgba(157, 175, 255, 0.08);
+  max-width: 240px;
+  margin: 0 auto;
+}
+.whack-hole {
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: rgba(20, 30, 50, 0.8);
+  border: 2px solid rgba(157, 175, 255, 0.06);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.8rem;
+  cursor: pointer;
+  transition: all 0.1s;
+  user-select: none;
+  -webkit-user-select: none;
+}
+.whack-hole:hover {
+  border-color: rgba(157, 175, 255, 0.15);
+}
+.whack-hole:active { transform: scale(0.85); }
+.whack-hole.active {
+  animation: whack-pop 0.25s ease-out;
+  background: rgba(30, 40, 60, 0.9);
+  border-color: rgba(255, 80, 80, 0.2);
+}
+.whack-hole.active.friendly {
+  border-color: rgba(168, 230, 207, 0.3);
+}
+@keyframes whack-pop {
+  0% { transform: scale(0.3); opacity: 0; }
+  60% { transform: scale(1.15); }
+  100% { transform: scale(1); opacity: 1; }
+}
+.whack-hint {
+  text-align: center;
+  font-size: 0.68rem;
+  color: rgba(255, 255, 255, 0.2);
+  margin-top: 8px;
+}
+
+/* ═══ 四子棋 (Connect Four) ═══ */
+.c4-col-btns {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 3px;
+  max-width: 280px;
+  margin: 0 auto 4px;
+  padding: 0 8px;
+}
+.c4-col-btn {
+  height: 26px;
+  border-radius: 6px 6px 0 0;
+  background: rgba(157, 175, 255, 0.04);
+  border: 1px solid rgba(157, 175, 255, 0.08);
+  border-bottom: none;
+  color: rgba(255, 255, 255, 0.25);
+  font-size: 0.7rem;
+  cursor: pointer;
+  font-family: inherit;
+  transition: all 0.15s;
+}
+.c4-col-btn:hover:not(:disabled) {
+  background: rgba(157, 175, 255, 0.1);
+  color: rgba(255, 255, 255, 0.5);
+}
+.c4-col-btn:disabled { opacity: 0.3; cursor: default; }
+.c4-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  grid-template-rows: repeat(6, 1fr);
+  gap: 3px;
+  padding: 8px;
+  background: rgba(10, 20, 40, 0.7);
+  border-radius: 10px;
+  border: 1px solid rgba(157, 175, 255, 0.1);
+  max-width: 280px;
+  margin: 0 auto;
+}
+.c4-cell {
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: rgba(8, 14, 28, 0.8);
+  border: 1px solid rgba(157, 175, 255, 0.04);
+  cursor: pointer;
+  transition: all 0.15s;
+  user-select: none;
+}
+.c4-cell:hover {
+  background: rgba(157, 175, 255, 0.06);
+}
+.c4-red {
+  background: radial-gradient(circle at 35% 35%, #ff6b6b, #cc3333) !important;
+  border-color: rgba(255, 80, 80, 0.3) !important;
+  box-shadow: inset 0 -2px 4px rgba(0, 0, 0, 0.3), 0 0 6px rgba(255, 80, 80, 0.15);
+  cursor: default;
+  animation: c4-drop 0.3s ease-out;
+}
+.c4-yellow {
+  background: radial-gradient(circle at 35% 35%, #ffd700, #cc9900) !important;
+  border-color: rgba(255, 204, 0, 0.3) !important;
+  box-shadow: inset 0 -2px 4px rgba(0, 0, 0, 0.3), 0 0 6px rgba(255, 204, 0, 0.15);
+  cursor: default;
+  animation: c4-drop 0.3s ease-out;
+}
+@keyframes c4-drop {
+  0% { transform: translateY(-80px); opacity: 0; }
+  60% { transform: translateY(4px); }
+  100% { transform: translateY(0); opacity: 1; }
+}
+.c4-status {
+  text-align: center;
+  font-size: 0.82rem;
   color: rgba(255, 255, 255, 0.5);
   margin-top: 10px;
   font-weight: 600;

@@ -1130,6 +1130,586 @@ const MINIGAMES = (() => {
   }
 
   // ═══════════════════════════════════════════
+  // 🪶 滑翔翼 (Flappy Elytra) — Minecraft 風格
+  // ═══════════════════════════════════════════
+  function flappy(overlayBox) {
+    clearTimers();
+    const W = 320, H = 420;
+    const GRAVITY = 0.35, JUMP = -6, PIPE_W = 48, GAP = 130, PIPE_SPEED = 2.2, PIPE_INTERVAL = 1600;
+    let birdY, birdVY, pipes, score, best, alive, started, lastPipe, animFrame;
+    best = parseInt(localStorage.getItem('sw-flappy-best') || '0');
+
+    let html = `<div class="overlay-header"><span class="overlay-title">🪶 滑翔翼</span><button class="overlay-close" onclick="MINIGAMES.close()">✕</button></div>`;
+    html += `<div class="game-hud"><span>⭐ <span class="game-hud-val" id="flappyScore">0</span></span><span>最高: <span class="game-hud-val">${best}</span></span></div>`;
+    html += `<div class="flappy-wrap"><canvas class="flappy-canvas" id="flappyCanvas" width="${W}" height="${H}"></canvas>`;
+    html += `<div class="flappy-overlay" id="flappyOverlay">🪶 點擊開始</div></div>`;
+    html += `<div class="flappy-hint">點擊 / 空白鍵拍翅，穿過縫隙</div>`;
+    overlayBox.innerHTML = html;
+
+    const canvas = document.getElementById('flappyCanvas');
+    const ctx = canvas.getContext('2d');
+    const overlayEl = document.getElementById('flappyOverlay');
+
+    function init() {
+      birdY = H * 0.4; birdVY = 0; pipes = []; score = 0; alive = true; started = false; lastPipe = 0;
+      if (overlayEl) { overlayEl.style.display = 'flex'; overlayEl.textContent = '🪶 點擊開始'; }
+    }
+
+    function jump() {
+      if (!alive) return;
+      if (!started) {
+        started = true;
+        if (overlayEl) overlayEl.style.display = 'none';
+        lastPipe = Date.now();
+      }
+      birdVY = JUMP;
+    }
+
+    function spawnPipe() {
+      const minTop = 60, maxTop = H - GAP - 60;
+      const topH = minTop + Math.random() * (maxTop - minTop);
+      pipes.push({ x: W, topH, bottomY: topH + GAP, scored: false });
+    }
+
+    function draw() {
+      // Sky gradient
+      const grad = ctx.createLinearGradient(0, 0, 0, H);
+      grad.addColorStop(0, '#0c1f35');
+      grad.addColorStop(0.6, '#1a4070');
+      grad.addColorStop(1, '#0d2040');
+      ctx.fillStyle = grad;
+      ctx.fillRect(0, 0, W, H);
+
+      // Background clouds
+      ctx.fillStyle = 'rgba(255,255,255,0.03)';
+      for (let i = 0; i < 4; i++) {
+        const cx = ((Date.now() / (8000 + i * 2000)) * 40 + i * 90) % (W + 80) - 40;
+        ctx.beginPath();
+        ctx.ellipse(cx, 60 + i * 50, 40, 10, 0, 0, Math.PI * 2);
+        ctx.fill();
+      }
+
+      // Pipes (stone/ore style)
+      pipes.forEach(p => {
+        // Top pipe
+        ctx.fillStyle = '#2a3040';
+        ctx.fillRect(p.x, 0, PIPE_W, p.topH);
+        ctx.fillStyle = '#3a4256';
+        ctx.fillRect(p.x + 2, 0, PIPE_W - 4, p.topH - 8);
+        // Top lip
+        ctx.fillStyle = '#4a5468';
+        ctx.fillRect(p.x - 4, p.topH - 12, PIPE_W + 8, 12);
+        // Ore accent on top pipe
+        ctx.fillStyle = 'rgba(94,234,212,0.15)';
+        ctx.fillRect(p.x + 8, p.topH - 40, PIPE_W - 16, 6);
+
+        // Bottom pipe
+        ctx.fillStyle = '#2a3040';
+        ctx.fillRect(p.x, p.bottomY, PIPE_W, H - p.bottomY);
+        ctx.fillStyle = '#3a4256';
+        ctx.fillRect(p.x + 2, p.bottomY + 8, PIPE_W - 4, H - p.bottomY - 8);
+        // Bottom lip
+        ctx.fillStyle = '#4a5468';
+        ctx.fillRect(p.x - 4, p.bottomY, PIPE_W + 8, 12);
+        // Ore accent on bottom pipe
+        ctx.fillStyle = 'rgba(157,175,255,0.15)';
+        ctx.fillRect(p.x + 8, p.bottomY + 16, PIPE_W - 16, 6);
+      });
+
+      // Ground
+      ctx.fillStyle = '#1a2535';
+      ctx.fillRect(0, H - 20, W, 20);
+      ctx.fillStyle = '#243040';
+      ctx.fillRect(0, H - 20, W, 4);
+
+      // Bird (Elytra + player)
+      ctx.save();
+      ctx.translate(60, birdY);
+      const angle = Math.min(Math.max(birdVY * 4, -30), 60);
+      ctx.rotate(angle * Math.PI / 180);
+
+      // Elytra wings
+      ctx.fillStyle = '#ab72f9';
+      ctx.beginPath();
+      ctx.moveTo(-6, 0);
+      ctx.lineTo(-20, -10);
+      ctx.lineTo(-18, 4);
+      ctx.closePath();
+      ctx.fill();
+      ctx.beginPath();
+      ctx.moveTo(-6, 0);
+      ctx.lineTo(-20, 10);
+      ctx.lineTo(-18, -4);
+      ctx.closePath();
+      ctx.fill();
+
+      // Player body
+      ctx.fillStyle = '#85b1e0';
+      ctx.fillRect(-8, -7, 16, 14);
+      // Head
+      ctx.fillStyle = '#f0ece4';
+      ctx.fillRect(-5, -12, 10, 8);
+      // Eyes
+      ctx.fillStyle = '#1a1a1a';
+      ctx.fillRect(-2, -10, 2, 3);
+      ctx.fillRect(2, -10, 2, 3);
+
+      ctx.restore();
+
+      // Score display on canvas
+      ctx.font = '700 36px "Noto Sans TC", sans-serif';
+      ctx.textAlign = 'center';
+      ctx.fillStyle = 'rgba(255,255,255,0.8)';
+      ctx.fillText(score, W / 2, 50);
+    }
+
+    function tick() {
+      if (!alive) return;
+      if (!started) { draw(); animFrame = requestAnimationFrame(tick); return; }
+
+      birdVY += GRAVITY;
+      birdY += birdVY;
+
+      // Spawn pipes
+      if (Date.now() - lastPipe > PIPE_INTERVAL) {
+        spawnPipe();
+        lastPipe = Date.now();
+      }
+
+      // Move pipes
+      pipes.forEach(p => p.x -= PIPE_SPEED);
+      pipes = pipes.filter(p => p.x > -PIPE_W - 10);
+
+      // Collision
+      if (birdY < 0 || birdY > H - 20) { die(); return; }
+      const bx = 60, br = 10;
+      pipes.forEach(p => {
+        if (bx + br > p.x && bx - br < p.x + PIPE_W) {
+          if (birdY - br < p.topH || birdY + br > p.bottomY) { die(); return; }
+        }
+        if (!p.scored && p.x + PIPE_W < bx) {
+          p.scored = true;
+          score++;
+          const el = document.getElementById('flappyScore');
+          if (el) el.textContent = score;
+        }
+      });
+
+      draw();
+      animFrame = requestAnimationFrame(tick);
+    }
+
+    function die() {
+      alive = false;
+      cancelAnimationFrame(animFrame);
+      if (score > best) { best = score; localStorage.setItem('sw-flappy-best', best.toString()); }
+      // Flash
+      ctx.fillStyle = 'rgba(255,80,80,0.2)';
+      ctx.fillRect(0, 0, W, H);
+      if (overlayEl) {
+        overlayEl.style.display = 'flex';
+        overlayEl.innerHTML = `💀 得分 ${score}<br><small style="font-size:0.7em;opacity:0.5">點擊重試</small>`;
+      }
+      // Allow restart on click
+      canvas.onclick = () => { init(); canvas.onclick = handleInput; animFrame = requestAnimationFrame(tick); };
+    }
+
+    function handleInput(e) { e.preventDefault(); jump(); }
+
+    canvas.addEventListener('click', handleInput);
+    canvas.addEventListener('touchstart', (e) => { e.preventDefault(); jump(); }, { passive: false });
+    cleanupFns.push(() => { cancelAnimationFrame(animFrame); canvas.removeEventListener('click', handleInput); });
+
+    function keyHandler(e) {
+      if (e.key === ' ' || e.key === 'ArrowUp') { e.preventDefault(); jump(); }
+    }
+    document.addEventListener('keydown', keyHandler);
+    cleanupFns.push(() => document.removeEventListener('keydown', keyHandler));
+
+    init();
+    animFrame = requestAnimationFrame(tick);
+  }
+
+  // ═══════════════════════════════════════════
+  // 🔤 猜礦 (Word Guessing — 5-letter word)
+  // ═══════════════════════════════════════════
+  function wordle(overlayBox) {
+    clearTimers();
+    const WORDS = [
+      'CRAFT','BUILD','STONE','BLOCK','CREEP','ENDER','DIAMO','NETHR','OCEAN','MINES',
+      'SPAWN','CLOUD','TREES','RIVER','HORSE','SHEEP','PIGEL','BLAZE','GHAST','WITCH',
+      'DROWN','VILGE','RAIDS','SMITH','FISHG','BREED','EXPLR','CAVES','LAVAF','SNOWL',
+      'BAMBO','CACTU','CORAL','SPORE','AMETH','COPPE','DEEPS','LUSHL','AZRAL','WARPD',
+    ];
+    // Normalize to 5 letters
+    const VALID = WORDS.map(w => w.substring(0, 5).toUpperCase()).filter(w => w.length === 5);
+    const ANSWER = VALID[Math.floor(Math.random() * VALID.length)];
+    const MAX_TRIES = 6;
+    let guesses = [], current = '', gameOver = false, won = false;
+    // Keyboard state
+    let keyState = {}; // letter -> 'correct' | 'present' | 'absent'
+
+    function render() {
+      let html = `<div class="overlay-header"><span class="overlay-title">🔤 猜礦</span><button class="overlay-close" onclick="MINIGAMES.close()">✕</button></div>`;
+      html += `<div class="wdl-board" id="wdlBoard">`;
+      for (let r = 0; r < MAX_TRIES; r++) {
+        html += '<div class="wdl-row">';
+        const guess = guesses[r] || (r === guesses.length ? current : '');
+        for (let c = 0; c < 5; c++) {
+          const ch = guess[c] || '';
+          let cls = 'wdl-cell';
+          if (r < guesses.length) {
+            // Evaluated row
+            if (guesses[r][c] === ANSWER[c]) cls += ' wdl-correct';
+            else if (ANSWER.includes(guesses[r][c])) cls += ' wdl-present';
+            else cls += ' wdl-absent';
+          } else if (ch) {
+            cls += ' wdl-filled';
+          }
+          html += `<div class="${cls}">${ch}</div>`;
+        }
+        html += '</div>';
+      }
+      html += '</div>';
+
+      // Status message
+      if (gameOver) {
+        html += `<div class="wdl-msg">${won ? `🎉 答對了！${guesses.length}/${MAX_TRIES}` : `❌ 答案是 ${ANSWER}`}</div>`;
+        html += `<div class="game-result-btns" style="margin-top:10px"><button class="btn btn-main" onclick="MINIGAMES.wordle(document.getElementById('overlayBox'))">🔄 再來一局</button></div>`;
+      } else {
+        html += `<div class="wdl-msg">${guesses.length}/${MAX_TRIES} 次機會</div>`;
+      }
+
+      // Virtual keyboard
+      const rows = ['QWERTYUIOP','ASDFGHJKL','ZXCVBNM'];
+      html += '<div class="wdl-kb">';
+      rows.forEach(row => {
+        html += '<div class="wdl-kb-row">';
+        for (const ch of row) {
+          const st = keyState[ch] || '';
+          html += `<button class="wdl-key ${st ? 'wdl-key-' + st : ''}" onclick="MINIGAMES._wdlKey('${ch}')">${ch}</button>`;
+        }
+        html += '</div>';
+      });
+      html += '<div class="wdl-kb-row">';
+      html += `<button class="wdl-key wdl-key-enter" onclick="MINIGAMES._wdlKey('ENTER')">送出</button>`;
+      html += `<button class="wdl-key wdl-key-back" onclick="MINIGAMES._wdlKey('BACK')">⌫</button>`;
+      html += '</div></div>';
+
+      overlayBox.innerHTML = html;
+    }
+
+    function evaluate(guess) {
+      const result = [];
+      const ansArr = ANSWER.split('');
+      const guessArr = guess.split('');
+      // First pass: correct
+      for (let i = 0; i < 5; i++) {
+        if (guessArr[i] === ansArr[i]) { result[i] = 'correct'; ansArr[i] = null; guessArr[i] = null; }
+      }
+      // Second pass: present
+      for (let i = 0; i < 5; i++) {
+        if (guessArr[i] === null) continue;
+        const idx = ansArr.indexOf(guessArr[i]);
+        if (idx !== -1) { result[i] = 'present'; ansArr[idx] = null; }
+        else { result[i] = 'absent'; }
+      }
+      return result;
+    }
+
+    function submitGuess() {
+      if (current.length !== 5 || gameOver) return;
+      const evalResult = evaluate(current);
+      guesses.push(current);
+      // Update keyboard state
+      for (let i = 0; i < 5; i++) {
+        const ch = current[i];
+        const prev = keyState[ch];
+        if (evalResult[i] === 'correct') keyState[ch] = 'correct';
+        else if (evalResult[i] === 'present' && prev !== 'correct') keyState[ch] = 'present';
+        else if (!prev) keyState[ch] = 'absent';
+      }
+      if (current === ANSWER) { won = true; gameOver = true; }
+      else if (guesses.length >= MAX_TRIES) { gameOver = true; }
+      current = '';
+      render();
+    }
+
+    window._wdlKey = (key) => {
+      if (gameOver) return;
+      if (key === 'ENTER') { submitGuess(); return; }
+      if (key === 'BACK') { current = current.slice(0, -1); render(); return; }
+      if (current.length < 5 && /^[A-Z]$/.test(key)) { current += key; render(); }
+    };
+
+    function keyHandler(e) {
+      if (!document.getElementById('overlay')?.classList.contains('active')) {
+        document.removeEventListener('keydown', keyHandler);
+        return;
+      }
+      if (e.key === 'Enter') { e.preventDefault(); submitGuess(); }
+      else if (e.key === 'Backspace') { e.preventDefault(); current = current.slice(0, -1); render(); }
+      else if (/^[a-zA-Z]$/.test(e.key) && current.length < 5) { current += e.key.toUpperCase(); render(); }
+    }
+    document.addEventListener('keydown', keyHandler);
+    cleanupFns.push(() => document.removeEventListener('keydown', keyHandler));
+
+    render();
+  }
+
+  // ═══════════════════════════════════════════
+  // 🍄 打苦力怕 (Whack-a-Creeper)
+  // ═══════════════════════════════════════════
+  function whack(overlayBox) {
+    clearTimers();
+    const GRID = 3, TIME = 20;
+    let score = 0, timeLeft = TIME, activeHoles = [], combo = 0, misses = 0;
+    const MOBS = [
+      { emoji: '💚', pts: 10, name: '苦力怕' },
+      { emoji: '💀', pts: 15, name: '骷髏' },
+      { emoji: '🧟', pts: 10, name: '殭屍' },
+      { emoji: '🕷️', pts: 15, name: '蜘蛛' },
+      { emoji: '👻', pts: 25, name: '術士' },
+    ];
+    const FRIENDLY = { emoji: '🐱', penalty: 20, name: '貓咪' };
+
+    function render() {
+      let html = `<div class="overlay-header"><span class="overlay-title">🍄 打苦力怕</span><button class="overlay-close" onclick="MINIGAMES.close()">✕</button></div>`;
+      html += `<div class="game-hud"><span>🎯 <span class="game-hud-val" id="whackScore">${score}</span></span><span>🔥 x<span class="game-hud-val" id="whackCombo">${combo}</span></span><span>⏱ <span class="game-hud-val" id="whackTime">${timeLeft}</span>s</span></div>`;
+      html += '<div class="whack-grid" id="whackGrid">';
+      for (let i = 0; i < GRID * GRID; i++) {
+        const active = activeHoles.find(h => h.idx === i);
+        const content = active ? active.mob.emoji : '';
+        const cls = active ? (active.isFriendly ? 'whack-hole active friendly' : 'whack-hole active') : 'whack-hole';
+        html += `<div class="${cls}" onclick="MINIGAMES._whackHit(${i})">${content}</div>`;
+      }
+      html += '</div>';
+      html += `<div class="whack-hint">打怪物加分！不要打 🐱 貓咪！</div>`;
+      overlayBox.innerHTML = html;
+    }
+
+    function spawn() {
+      if (timeLeft <= 0) return;
+      // Clear old
+      activeHoles = activeHoles.filter(h => Date.now() - h.spawned < 1200);
+      if (activeHoles.length >= 3) return;
+      const available = [];
+      for (let i = 0; i < GRID * GRID; i++) {
+        if (!activeHoles.find(h => h.idx === i)) available.push(i);
+      }
+      if (available.length === 0) return;
+      const idx = available[Math.floor(Math.random() * available.length)];
+      const isFriendly = Math.random() < 0.15;
+      const mob = isFriendly ? FRIENDLY : MOBS[Math.floor(Math.random() * MOBS.length)];
+      activeHoles.push({ idx, mob, isFriendly, spawned: Date.now() });
+      render();
+      // Auto-disappear
+      setTimeout(() => {
+        activeHoles = activeHoles.filter(h => h.idx !== idx);
+        render();
+      }, 1000 + Math.random() * 500);
+    }
+
+    window._whackHit = (idx) => {
+      const hole = activeHoles.find(h => h.idx === idx);
+      if (!hole) { combo = 0; misses++; return; }
+      activeHoles = activeHoles.filter(h => h.idx !== idx);
+      if (hole.isFriendly) {
+        score = Math.max(0, score - hole.mob.penalty);
+        combo = 0;
+      } else {
+        combo++;
+        const multiplier = Math.min(combo, 5);
+        score += hole.mob.pts * multiplier;
+      }
+      render();
+    };
+
+    render();
+    const spawnIv = setInterval(spawn, 700);
+    cleanupFns.push(() => clearInterval(spawnIv));
+
+    gameTimer = setInterval(() => {
+      timeLeft--;
+      const el = document.getElementById('whackTime');
+      if (el) el.textContent = timeLeft;
+      if (timeLeft <= 0) {
+        clearInterval(gameTimer);
+        clearInterval(spawnIv);
+        MINIGAMES.showResult('🍄', score + ' 分', `最高連擊 x${combo}`, 'whack');
+      }
+    }, 1000);
+    cleanupFns.push(() => clearInterval(gameTimer));
+  }
+
+  // ═══════════════════════════════════════════
+  // 🔴🟡 四子棋 (Connect Four vs AI)
+  // ═══════════════════════════════════════════
+  function connect4(overlayBox) {
+    clearTimers();
+    const ROWS = 6, COLS = 7;
+    let board, over, playerTurn, wins, losses, draws;
+    const stored = JSON.parse(localStorage.getItem('sw-c4-record') || '{}');
+    wins = stored.w || 0; losses = stored.l || 0; draws = stored.d || 0;
+
+    function init() {
+      board = Array.from({ length: ROWS }, () => Array(COLS).fill(0));
+      over = false; playerTurn = true;
+    }
+
+    function render(status) {
+      let html = `<div class="overlay-header"><span class="overlay-title">🔴 四子棋</span><button class="overlay-close" onclick="MINIGAMES.close()">✕</button></div>`;
+      html += `<div class="game-hud"><span>你 <span class="game-hud-val">${wins}</span></span><span>平 <span class="game-hud-val">${draws}</span></span><span>AI <span class="game-hud-val">${losses}</span></span></div>`;
+      // Column buttons
+      html += '<div class="c4-col-btns">';
+      for (let c = 0; c < COLS; c++) html += `<button class="c4-col-btn" onclick="MINIGAMES._c4Drop(${c})" ${over || !playerTurn ? 'disabled' : ''}>▼</button>`;
+      html += '</div>';
+      html += '<div class="c4-grid">';
+      for (let r = 0; r < ROWS; r++) for (let c = 0; c < COLS; c++) {
+        const val = board[r][c];
+        const cls = val === 1 ? 'c4-cell c4-red' : val === 2 ? 'c4-cell c4-yellow' : 'c4-cell';
+        html += `<div class="${cls}" data-r="${r}" data-c="${c}" onclick="MINIGAMES._c4Drop(${c})"></div>`;
+      }
+      html += '</div>';
+      html += `<div class="c4-status" id="c4Status">${status}</div>`;
+      html += `<div class="game-result-btns" style="margin-top:10px"><button class="btn btn-main" onclick="MINIGAMES.connect4(document.getElementById('overlayBox'))">🔄 新局</button></div>`;
+      overlayBox.innerHTML = html;
+    }
+
+    function dropPiece(col, player) {
+      for (let r = ROWS - 1; r >= 0; r--) {
+        if (board[r][col] === 0) { board[r][col] = player; return r; }
+      }
+      return -1;
+    }
+
+    function checkWin(player) {
+      // Horizontal
+      for (let r = 0; r < ROWS; r++) for (let c = 0; c <= COLS - 4; c++) {
+        if (board[r][c] === player && board[r][c+1] === player && board[r][c+2] === player && board[r][c+3] === player) return true;
+      }
+      // Vertical
+      for (let r = 0; r <= ROWS - 4; r++) for (let c = 0; c < COLS; c++) {
+        if (board[r][c] === player && board[r+1][c] === player && board[r+2][c] === player && board[r+3][c] === player) return true;
+      }
+      // Diagonal
+      for (let r = 0; r <= ROWS - 4; r++) for (let c = 0; c <= COLS - 4; c++) {
+        if (board[r][c] === player && board[r+1][c+1] === player && board[r+2][c+2] === player && board[r+3][c+3] === player) return true;
+      }
+      for (let r = 3; r < ROWS; r++) for (let c = 0; c <= COLS - 4; c++) {
+        if (board[r][c] === player && board[r-1][c+1] === player && board[r-2][c+2] === player && board[r-3][c+3] === player) return true;
+      }
+      return false;
+    }
+
+    function boardFull() { return board[0].every(c => c !== 0); }
+
+    function scoreLine(cells, player) {
+      let count = 0, empty = 0;
+      for (const c of cells) {
+        if (c === player) count++;
+        else if (c === 0) empty++;
+        else return 0; // blocked by opponent
+      }
+      if (count === 4) return 100000;
+      if (count === 3 && empty === 1) return 100;
+      if (count === 2 && empty === 2) return 10;
+      return count;
+    }
+
+    function evalBoard(player) {
+      let score = 0;
+      const opp = player === 1 ? 2 : 1;
+      // Center column preference
+      for (let r = 0; r < ROWS; r++) if (board[r][3] === player) score += 3;
+      // All lines
+      for (let r = 0; r < ROWS; r++) for (let c = 0; c <= COLS - 4; c++) {
+        score += scoreLine([board[r][c], board[r][c+1], board[r][c+2], board[r][c+3]], player);
+        score -= scoreLine([board[r][c], board[r][c+1], board[r][c+2], board[r][c+3]], opp) * 1.1;
+      }
+      for (let r = 0; r <= ROWS - 4; r++) for (let c = 0; c < COLS; c++) {
+        score += scoreLine([board[r][c], board[r+1][c], board[r+2][c], board[r+3][c]], player);
+        score -= scoreLine([board[r][c], board[r+1][c], board[r+2][c], board[r+3][c]], opp) * 1.1;
+      }
+      for (let r = 0; r <= ROWS - 4; r++) for (let c = 0; c <= COLS - 4; c++) {
+        score += scoreLine([board[r][c], board[r+1][c+1], board[r+2][c+2], board[r+3][c+3]], player);
+        score -= scoreLine([board[r][c], board[r+1][c+1], board[r+2][c+2], board[r+3][c+3]], opp) * 1.1;
+      }
+      for (let r = 3; r < ROWS; r++) for (let c = 0; c <= COLS - 4; c++) {
+        score += scoreLine([board[r][c], board[r-1][c+1], board[r-2][c+2], board[r-3][c+3]], player);
+        score -= scoreLine([board[r][c], board[r-1][c+1], board[r-2][c+2], board[r-3][c+3]], opp) * 1.1;
+      }
+      return score;
+    }
+
+    function aiMove() {
+      if (over) return;
+      let bestScore = -Infinity, bestCol = 3;
+      // Try each column
+      for (let c = 0; c < COLS; c++) {
+        const r = dropPiece(c, 2);
+        if (r === -1) { board[r]?.[c] && (board[r][c] = 0); continue; }
+        if (checkWin(2)) { board[r][c] = 0; bestCol = c; break; }
+        const s = evalBoard(2);
+        board[r][c] = 0;
+        if (s > bestScore) { bestScore = s; bestCol = c; }
+      }
+      // Try winning move first
+      for (let c = 0; c < COLS; c++) {
+        const r = dropPiece(c, 2);
+        if (r === -1) continue;
+        if (checkWin(2)) { board[r][c] = 0; bestCol = c; break; }
+        board[r][c] = 0;
+      }
+      // Block player win
+      for (let c = 0; c < COLS; c++) {
+        const r = dropPiece(c, 1);
+        if (r === -1) continue;
+        if (checkWin(1)) { board[r][c] = 0; bestCol = c; break; }
+        board[r][c] = 0;
+      }
+      dropPiece(bestCol, 2);
+      if (checkWin(2)) {
+        over = true; losses++;
+        localStorage.setItem('sw-c4-record', JSON.stringify({ w: wins, l: losses, d: draws }));
+        render('🤖 AI 贏了！');
+        return;
+      }
+      if (boardFull()) {
+        over = true; draws++;
+        localStorage.setItem('sw-c4-record', JSON.stringify({ w: wins, l: losses, d: draws }));
+        render('🤝 平手！');
+        return;
+      }
+      playerTurn = true;
+      render('你的回合（🔴）');
+    }
+
+    window._c4Drop = (col) => {
+      if (over || !playerTurn || board[0][col] !== 0) return;
+      dropPiece(col, 1);
+      if (checkWin(1)) {
+        over = true; wins++;
+        localStorage.setItem('sw-c4-record', JSON.stringify({ w: wins, l: losses, d: draws }));
+        render('🎉 你贏了！');
+        return;
+      }
+      if (boardFull()) {
+        over = true; draws++;
+        localStorage.setItem('sw-c4-record', JSON.stringify({ w: wins, l: losses, d: draws }));
+        render('🤝 平手！');
+        return;
+      }
+      playerTurn = false;
+      render('AI 思考中...');
+      setTimeout(aiMove, 300);
+    };
+
+    init();
+    render('你的回合（🔴）· 點擊欄位落子');
+  }
+
+  // ═══════════════════════════════════════════
   // 通用：顯示結果
   // ═══════════════════════════════════════════
   function showResult(emoji, val, text, gameType) {
@@ -1155,12 +1735,12 @@ const MINIGAMES = (() => {
 
   function _retry(type) {
     const box = document.getElementById('overlayBox');
-    const fn = { memory, gomoku, react, nummem, snake, simon, blockcrush, shooting, minesweeper, merge2048, tictactoe }[type];
+    const fn = { memory, gomoku, react, nummem, snake, simon, blockcrush, shooting, minesweeper, merge2048, tictactoe, flappy, wordle, whack, connect4 }[type];
     if (fn) fn(box);
   }
 
   return {
-    memory, gomoku, react, nummem, snake, simon, blockcrush, shooting, minesweeper, merge2048, tictactoe,
+    memory, gomoku, react, nummem, snake, simon, blockcrush, shooting, minesweeper, merge2048, tictactoe, flappy, wordle, whack, connect4,
     showResult, close,
     // Aliases for internal use
     _flipCard: (c) => window._flipCard?.(c),
@@ -1174,6 +1754,9 @@ const MINIGAMES = (() => {
     _msRight: (r, c) => window._msRight?.(r, c),
     _m2048: (dir) => window._m2048?.(dir),
     _tttClick: (i) => window._tttClick?.(i),
+    _wdlKey: (k) => window._wdlKey?.(k),
+    _whackHit: (i) => window._whackHit?.(i),
+    _c4Drop: (c) => window._c4Drop?.(c),
     _retry,
   };
 })();
