@@ -92,42 +92,53 @@
    - 已無指向不存在檔案的連結
    - 新增遺漏的 partner-mcu.html
 
+3. ~~**`特殊裝備規範.html` 死連結**~~ ✅ 2026-04-15 已修復
+   - 7 個 lore 頁面 + template/nav.html 引用了不存在的 `特殊裝備規範.html`
+   - 已從所有導航中移除此死連結
+   - template/nav.html 已同步更新
+
+### ~~🟡 中度~~（已修復）
+
+4. ~~**index.html 雙重跳轉**~~ ✅ 2026-04-15 已修復
+   - 移除多餘的 inline `<style>` 區塊
+   - 保留 `meta refresh` + JS `location.replace()` 雙保險跳轉（GitHub Pages 無伺服器端 301）
+   - 已有 `noindex` meta 避免搜尋引擎索引跳轉頁
+
+5. ~~**CSS light 模式重複規則**~~ ✅ 2026-04-15 已修復
+   - `.hero`、`.info-card`、`.info-label`、`.info-value` 在 light 模式各有 2-3 條衝突規則
+   - 已移除被覆蓋的舊規則，保留最終生效版本
+
 ### 🟡 中度
 
-3. **index.html 使用 `<meta http-equiv="refresh">` 做跳轉**
-   - 同時使用了 `meta refresh` + `location.replace()` JavaScript 跳轉
-   - `meta refresh` 對 SEO 不友善（搜尋引擎可能索引跳轉頁而非目標頁）
-   - **建議**：改為直接將 `首頁.html` 的內容放到 `index.html`，或確保 GitHub Pages 設定正確的預設頁面
-
-4. **外網圖片依賴**
+6. **外網圖片依賴**
    - 明信片區域使用 `truth.bahamut.com.tw` 外部圖片
    - 如果巴哈姆特圖床失效或被限速，會影響載入
    - 已有 `onerror` fallback 處理，但應考慮本地備份
 
-5. **音樂播放器缺少預載**
+7. **音樂播放器缺少預載**
    - `music-player.css` 在 head 中載入，但 `music-player.js` 透過動態 `<script>` 建立
    - 可能導致 FOUC（Flash of Unstyled Content）
 
-6. **Lightbox 事件監聽器重複綁定**
+8. **Lightbox 事件監聽器重複綁定**
    - `initPhotoGallery` 中每次開啟 lightbox 都 cloneNode 來避免重複
    - 這是可行的 workaround，但較不優雅；考慮用事件委派模式
 
 ### 🟢 輕微
 
 7. **CSS 選擇器錯誤**
-   - `css/base.css` 中有一行：`.guide-sb-group [data-theme="light"] .guide-sb-group [data-theme="light"] ...` — 嵌套選擇器明顯有誤
-   - 在 `style.css` 中也有相同問題
+   - ~~`css/base.css` 中有一行：`.guide-sb-group [data-theme="light"] .guide-sb-group [data-theme="light"] ...`~~ — 已不存在（`css/` 目錄已刪除）
+   - `style.css` 中的相同問題也已不存在
 
 8. **頁尾版本資訊硬編碼**
-   - `網站最後修改日期 2026.04.14d` 是硬編碼在 HTML 中
-   - deployCount 透過 GitHub API 取得 commit 數量（未認證時可能受限）
+   - `網站最後修改日期` 是硬編碼在 HTML 中（全站 69 個頁面）
+   - deployCount 透過 GitHub API 取得 commit 數量（未認證時可能受限，60 req/hour）
 
 9. **404.html 體積過大**（27KB）
    - 含完整的海洋場景動畫（日出日落/夜晚/暴風雨 cycle）
    - 雖然精美，但作為錯誤頁面載入時間偏長
    - 建議將動畫 CSS/JS 外部化，利用快取
 
-10. **`music-player.js` 不存在於倉庫根目錄**
+11. **`music-player.js` 不存在於倉庫根目錄**
     - main.js 動態載入 `SW_BASE + 'music-player.js'`
     - 該檔案可能在部署後才存在，或路徑問題
 
@@ -454,6 +465,12 @@ Discord 上的公告長這樣：
 | 2026-04-15 | 海風網站助手 | 移除未使用的 css/ 目錄（20 個檔案），統一使用 style.css |
 | 2026-04-15 | 海風網站助手 | 重新組織 style.css（23 區段 + light 主題覆蓋集中化） |
 | 2026-04-15 | 海風網站助手 | 修復 sitemap.xml，新增遺漏的 partner-mcu.html |
+| 2026-04-15 | 海風網站助手 | 🔴 修復 `特殊裝備規範.html` 死連結（7 個 lore 頁 + template/nav.html） |
+| 2026-04-15 | 海風網站助手 | 清理 index.html，移除多餘 inline style |
+| 2026-04-15 | 海風網站助手 | 修復 CSS light 模式重複/衝突規則（.hero, .info-card 等） |
+| 2026-04-15 | 海風網站助手 | 同步 template/nav.html（加入 aria-expanded/aria-haspopup，修正順序） |
+| 2026-04-15 | 海風網站助手 | Lightbox 加入 aria-live="polite" 改善無障礙 |
+| 2026-04-15 | 海風網站助手 | 全站 69 個頁面修改日期更新為 2026.04.15 |
 
 ---
 

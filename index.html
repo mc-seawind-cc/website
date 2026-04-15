@@ -7,17 +7,12 @@
   <meta name="robots" content="noindex">
   <link rel="icon" href="assets/img/logo.png">
   <meta http-equiv="refresh" content="0; url=首頁.html">
-  <script>
-    // 使用 JavaScript 做 301 等效跳轉（GitHub Pages 無法設定伺服器端 301）
-    location.replace('首頁.html');
-  </script>
-  <style>
-    body { background: #0d1117; display: flex; align-items: center; justify-content: center; min-height: 100vh; margin: 0; font-family: 'Noto Sans TC', sans-serif; color: #8b949e; }
-    a { color: #9dafff; }
-    @media (prefers-color-scheme: light) { body { background: #f0f2f5; color: #4a5260; } a { color: #578aff; } }
-  </style>
 </head>
 <body>
+  <script>
+    // JavaScript fallback for browsers that don't support meta refresh
+    location.replace('首頁.html');
+  </script>
   <noscript>
     <p>正在跳轉到 <a href="首頁.html">海風首頁</a>...</p>
   </noscript>

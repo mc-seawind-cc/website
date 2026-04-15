@@ -256,14 +256,10 @@ body{font-family:var(--font-body);background:var(--deep);color:var(--cloud);line
 [data-theme="light"] .btn-hero{background:rgba(0,0,0,0.03);border-color:rgba(0,0,0,0.06)}
 [data-theme="light"] .btn-hero:hover{background:rgba(0,0,0,0.06);border-color:rgba(0,0,0,0.1);box-shadow:0 12px 40px rgba(0,0,0,0.06)}
 [data-theme="light"] .skeleton{background:linear-gradient(90deg,rgba(0,0,0,0.04)25%,rgba(0,0,0,0.08)50%,rgba(0,0,0,0.04)75%);background-size:200% 100%}
-[data-theme="light"] .info-card{background:rgba(255,255,255,0.35);border-color:rgba(0,0,0,0.06);box-shadow:0 2px 12px rgba(0,0,0,0.06),0 0 0 1px rgba(255,255,255,0.4)}
-[data-theme="light"] .info-card:hover{background:rgba(255,255,255,0.5);border-color:rgba(0,0,0,0.1)}
-[data-theme="light"] .info-label{color:rgba(0,0,0,0.45)}
-[data-theme="light"] .info-value{color:rgba(0,0,0,0.8)}
 [data-theme="light"] .hero-content::before{background:radial-gradient(ellipse,rgba(0,0,0,0.08)0%,transparent 70%)}
 [data-theme="light"] .hero-subtitle{text-shadow:0 1px 6px rgba(255,255,255,0.8)}
 [data-theme="light"] #particles .particle{position:absolute;width:2px;height:28px;background:linear-gradient(to bottom,transparent,rgba(174,194,224,0.7));border-radius:0 0 1px 1px;animation:snowfall linear infinite;pointer-events:none;transform:rotate(15deg)}
-[data-theme="light"] .hero{background:linear-gradient(135deg,#f0f2f5 0%,#e8ecf8 50%,#f0f2f5 100%)}
+[data-theme="light"] .hero{background:linear-gradient(180deg,var(--deep)0%,var(--ocean)100%)}
 [data-theme="light"] .hero::before{background:url('assets/img/homeHero.png')center/cover no-repeat,radial-gradient(ellipse 600px 400px at 30% 20%,rgba(157,175,255,.08)0%,transparent 70%),radial-gradient(ellipse 500px 300px at 70% 60%,rgba(168,230,207,.06)0%,transparent 70%);opacity:0.85;filter:brightness(1.05)contrast(1.05)saturate(1.1)}
 [data-theme="light"] .hero::after{background:rgba(240,242,245,0.1),linear-gradient(to bottom,transparent 65%,var(--deep)100%)}
 [data-theme="light"] .hero-tips .tips-text{color:#1a1e24}
