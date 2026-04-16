@@ -32,7 +32,7 @@ const MOB_SMASHER = (() => {
     { id: 'ravager',             name: '劫毀獸',         pts: 5, timeBonus: 3, weight: 2, hp: 2, stayMs: 2500 },
     { id: 'wither',              name: '凋零怪',         pts: 5, timeBonus: 3, weight: 2, hp: 2, stayMs: 2500 },
     { id: 'elder-guardian',      name: '遠古深海守衛',   pts: 5, timeBonus: 3, weight: 1, hp: 2, stayMs: 3000, special: 'elder' },
-    { id: 'guardian',            name: '深海守衛',       pts: 2, timeBonus: 1, weight: 0 }, // only spawns with elder
+    { id: 'guardian',            name: '深海守衛',       pts: 2, timeBonus: 1, weight: 0 },
     // === 新增怪物 ===
     { id: 'zombified-piglin',    name: '殭屍化豬布林',   pts: 1, timeBonus: 1, weight: 7 },
     { id: 'zombie-villager',     name: '殭屍村民',       pts: 1, timeBonus: 1, weight: 6 },
@@ -42,7 +42,6 @@ const MOB_SMASHER = (() => {
     { id: 'johnny',              name: '衛道士',         pts: 3, timeBonus: 2, weight: 3, special: 'ominous' },
     { id: 'vex',                 name: '惱鬼',           pts: 2, timeBonus: 1, weight: 5 },
     { id: 'stray',               name: '流髑',           pts: 1, timeBonus: 1, weight: 6 },
-    { id: 'pumpkin-snow-golem',  name: '雪人',           pts: 1, timeBonus: 1, weight: 5 },
     { id: 'creaking',            name: '嘎枝',           pts: 4, timeBonus: 2, weight: 3, hp: 2, stayMs: 2200 },
     { id: 'ender-dragon',        name: '終界龍',         pts: 10, timeBonus: 5, weight: 1, hp: 5, stayMs: 4000 },
     { id: 'evoker-copy',         name: '掠奪者',         pts: 3, timeBonus: 2, weight: 3, sprite: 'evoker', special: 'ominous' },
@@ -86,6 +85,7 @@ const MOB_SMASHER = (() => {
     { id: 'camel-husk',       name: '駱駝屍殼' },
     { id: 'ghastling',        name: '小幽靈' },
     { id: 'zombie-horse',     name: '殭屍馬' },
+    { id: 'pumpkin-snow-golem', name: '雪人' },  // 友好
   ];
 
   const NEUTRAL = [
@@ -108,6 +108,82 @@ const MOB_SMASHER = (() => {
     { id: 'end-crystal',  name: '終界水晶',    lethal: true },
   ];
 
+  // ═══ Raid Wave Definitions ═══
+  const RAID_WAVES = [
+    // wave 1: 4 掠奪者
+    [
+      { id: 'evoker-copy', name: '掠奪者', pts: 3, timeBonus: 2, sprite: 'evoker' },
+      { id: 'evoker-copy', name: '掠奪者', pts: 3, timeBonus: 2, sprite: 'evoker' },
+      { id: 'evoker-copy', name: '掠奪者', pts: 3, timeBonus: 2, sprite: 'evoker' },
+      { id: 'evoker-copy', name: '掠奪者', pts: 3, timeBonus: 2, sprite: 'evoker' },
+    ],
+    // wave 2: 3 掠奪者 + 1 劫毀獸
+    [
+      { id: 'evoker-copy', name: '掠奪者', pts: 3, timeBonus: 2, sprite: 'evoker' },
+      { id: 'evoker-copy', name: '掠奪者', pts: 3, timeBonus: 2, sprite: 'evoker' },
+      { id: 'evoker-copy', name: '掠奪者', pts: 3, timeBonus: 2, sprite: 'evoker' },
+      { id: 'ravager', name: '劫毀獸', pts: 5, timeBonus: 3, hp: 2, stayMs: 2500 },
+    ],
+    // wave 3: 3 掠奪者 + 1 衛道士 + 3 女巫
+    [
+      { id: 'evoker-copy', name: '掠奪者', pts: 3, timeBonus: 2, sprite: 'evoker' },
+      { id: 'evoker-copy', name: '掠奪者', pts: 3, timeBonus: 2, sprite: 'evoker' },
+      { id: 'evoker-copy', name: '掠奪者', pts: 3, timeBonus: 2, sprite: 'evoker' },
+      { id: 'johnny', name: '衛道士', pts: 3, timeBonus: 2 },
+      { id: 'witch', name: '女巫', pts: 2, timeBonus: 1 },
+      { id: 'witch', name: '女巫', pts: 2, timeBonus: 1 },
+      { id: 'witch', name: '女巫', pts: 2, timeBonus: 1 },
+    ],
+    // wave 4: 4 掠奪者 + 1 劫毀獸 + 1 喚魔者
+    [
+      { id: 'evoker-copy', name: '掠奪者', pts: 3, timeBonus: 2, sprite: 'evoker' },
+      { id: 'evoker-copy', name: '掠奪者', pts: 3, timeBonus: 2, sprite: 'evoker' },
+      { id: 'evoker-copy', name: '掠奪者', pts: 3, timeBonus: 2, sprite: 'evoker' },
+      { id: 'evoker-copy', name: '掠奪者', pts: 3, timeBonus: 2, sprite: 'evoker' },
+      { id: 'ravager', name: '劫毀獸', pts: 5, timeBonus: 3, hp: 2, stayMs: 2500 },
+      { id: 'evoker', name: '喚魔者', pts: 3, timeBonus: 2, special: 'totem' },
+    ],
+    // wave 5: 4 掠奪者 + 4 衛道士 + 1 喚魔者
+    [
+      { id: 'evoker-copy', name: '掠奪者', pts: 3, timeBonus: 2, sprite: 'evoker' },
+      { id: 'evoker-copy', name: '掠奪者', pts: 3, timeBonus: 2, sprite: 'evoker' },
+      { id: 'evoker-copy', name: '掠奪者', pts: 3, timeBonus: 2, sprite: 'evoker' },
+      { id: 'evoker-copy', name: '掠奪者', pts: 3, timeBonus: 2, sprite: 'evoker' },
+      { id: 'johnny', name: '衛道士', pts: 3, timeBonus: 2 },
+      { id: 'johnny', name: '衛道士', pts: 3, timeBonus: 2 },
+      { id: 'johnny', name: '衛道士', pts: 3, timeBonus: 2 },
+      { id: 'johnny', name: '衛道士', pts: 3, timeBonus: 2 },
+      { id: 'evoker', name: '喚魔者', pts: 3, timeBonus: 2, special: 'totem' },
+    ],
+    // wave 6: 4 掠奪者 + 2 衛道士 + 2 劫毀獸 + 1 女巫 + 2 喚魔者
+    [
+      { id: 'evoker-copy', name: '掠奪者', pts: 3, timeBonus: 2, sprite: 'evoker' },
+      { id: 'evoker-copy', name: '掠奪者', pts: 3, timeBonus: 2, sprite: 'evoker' },
+      { id: 'evoker-copy', name: '掠奪者', pts: 3, timeBonus: 2, sprite: 'evoker' },
+      { id: 'evoker-copy', name: '掠奪者', pts: 3, timeBonus: 2, sprite: 'evoker' },
+      { id: 'johnny', name: '衛道士', pts: 3, timeBonus: 2 },
+      { id: 'johnny', name: '衛道士', pts: 3, timeBonus: 2 },
+      { id: 'ravager', name: '劫毀獸', pts: 5, timeBonus: 3, hp: 2, stayMs: 2500 },
+      { id: 'ravager', name: '劫毀獸', pts: 5, timeBonus: 3, hp: 2, stayMs: 2500 },
+      { id: 'witch', name: '女巫', pts: 2, timeBonus: 1 },
+      { id: 'evoker', name: '喚魔者', pts: 3, timeBonus: 2, special: 'totem' },
+      { id: 'evoker', name: '喚魔者', pts: 3, timeBonus: 2, special: 'totem' },
+    ],
+    // wave 7: 2 掠奪者 + 5 衛道士 + 2 劫毀獸 + 1 女巫
+    [
+      { id: 'evoker-copy', name: '掠奪者', pts: 3, timeBonus: 2, sprite: 'evoker' },
+      { id: 'evoker-copy', name: '掠奪者', pts: 3, timeBonus: 2, sprite: 'evoker' },
+      { id: 'johnny', name: '衛道士', pts: 3, timeBonus: 2 },
+      { id: 'johnny', name: '衛道士', pts: 3, timeBonus: 2 },
+      { id: 'johnny', name: '衛道士', pts: 3, timeBonus: 2 },
+      { id: 'johnny', name: '衛道士', pts: 3, timeBonus: 2 },
+      { id: 'johnny', name: '衛道士', pts: 3, timeBonus: 2 },
+      { id: 'ravager', name: '劫毀獸', pts: 5, timeBonus: 3, hp: 2, stayMs: 2500 },
+      { id: 'ravager', name: '劫毀獸', pts: 5, timeBonus: 3, hp: 2, stayMs: 2500 },
+      { id: 'witch', name: '女巫', pts: 2, timeBonus: 1 },
+    ],
+  ];
+
   // ═══ Weighted Random ═══
   function weightedPick(arr) {
     const total = arr.reduce((s, m) => s + (m.weight || 1), 0);
@@ -121,6 +197,7 @@ const MOB_SMASHER = (() => {
 
   // ═══ Game State ═══
   let state = null;
+  let raidAudio = null;
 
   function initState() {
     return {
@@ -128,8 +205,12 @@ const MOB_SMASHER = (() => {
       timeLeft: 30,
       hasTotem: false,
       totemCount: 0,
+      hasOminousBottle: false,
+      ominousBottleCount: 0,
+      hasBadOmen: false,
       bestScore: parseInt(localStorage.getItem('sw-mobsmasher-best') || '0'),
-      holes: Array(9).fill(null), // { mob, hp, maxHp, timeoutId, el }
+      holes: null, // initialized after grid size
+      gridSize: 9, // 9 or 25
       alive: true,
       spawnInterval: null,
       timerInterval: null,
@@ -137,12 +218,19 @@ const MOB_SMASHER = (() => {
       spawnSpeed: 1200,
       mobsSmashed: 0,
       friendliesHit: 0,
+      // Raid state
+      raidActive: false,
+      raidWave: 0,
+      raidTotalWaves: 0,
+      raidQueue: [],
+      raidSpawnTimer: null,
     };
   }
 
   // ═══ Render ═══
   function render(container) {
     state = initState();
+    state.holes = Array(state.gridSize).fill(null);
 
     let html = `
       <div class="overlay-header">
@@ -156,12 +244,19 @@ const MOB_SMASHER = (() => {
         </div>
         <div class="ms-hud-center">
           <div class="ms-totem" id="msTotem" style="display:none" title="不死圖騰（抵擋致命傷害）"><img src="${SPRITE_PATH}totem.png" class="ms-item-sprite" alt="不死圖騰" id="msTotemIcon1"><img src="${SPRITE_PATH}totem.png" class="ms-item-sprite ms-totem-2" alt="不死圖騰" id="msTotemIcon2" style="display:none"></div>
+          <div class="ms-ominous" id="msOminous" style="display:none" title="點擊使用不詳之瓶（獲得不祥之兆）"><img src="${SPRITE_PATH}ominous-bottle.png" class="ms-item-sprite" alt="不詳之瓶" id="msOminousIcon1"><img src="${SPRITE_PATH}ominous-bottle.png" class="ms-item-sprite ms-ominous-2" alt="不詳之瓶" id="msOminousIcon2" style="display:none"></div>
+          <div class="ms-bad-omen" id="msBadOmen" style="display:none" title="不祥之兆（突襲準備中）"><img src="${SPRITE_PATH}bad-omen.png" class="ms-item-sprite" alt="不祥之兆"></div>
         </div>
         <div class="ms-hud-right">
           <span class="ms-timer" id="msTimer">30</span>秒
         </div>
       </div>
-      <div class="ms-grid" id="msGrid">`;
+      <!-- Raid Bar -->
+      <div class="ms-raid-bar" id="msRaidBar" style="display:none">
+        <div class="ms-raid-bar-text" id="msRaidBarText">突襲</div>
+        <div class="ms-raid-bar-progress" id="msRaidBarProgress"><div class="ms-raid-bar-fill" id="msRaidBarFill"></div></div>
+      </div>
+      <div class="ms-grid ms-grid-3" id="msGrid">`;
 
     for (let i = 0; i < 9; i++) {
       html += `<div class="ms-hole" data-hole="${i}" id="msHole${i}" onclick="MOB_SMASHER.hit(${i})">
@@ -181,11 +276,21 @@ const MOB_SMASHER = (() => {
     `;
 
     container.innerHTML = html;
+
+    // Bind ominous bottle click
+    const ominousEl = document.getElementById('msOminous');
+    if (ominousEl) {
+      ominousEl.addEventListener('click', (e) => {
+        e.stopPropagation();
+        useOminousBottle();
+      });
+    }
+
     container.querySelector('.ms-grid').addEventListener('click', startGame, { once: true });
   }
 
   function startGame() {
-    if (state.timerInterval) return; // already started
+    if (state.timerInterval) return;
     const info = document.getElementById('msInfo');
     if (info) info.textContent = '打敵對生物加分！不要打友好動物！';
 
@@ -205,7 +310,6 @@ const MOB_SMASHER = (() => {
 
     state.spawnInterval = setInterval(spawnMob, state.spawnSpeed);
 
-    // Speed up difficulty
     state.difficultyInterval = setInterval(() => {
       if (state.spawnSpeed > 500) {
         state.spawnSpeed -= 50;
@@ -215,29 +319,76 @@ const MOB_SMASHER = (() => {
     }, 5000);
   }
 
-  function spawnMob() {
-    if (!state.alive) return;
-
-    // Find empty holes
-    const empty = [];
+  // ═══ Grid Management ═══
+  function expandGrid() {
+    if (state.gridSize === 25) return;
+    state.gridSize = 25;
+    // Clear old holes
     for (let i = 0; i < 9; i++) {
+      if (state.holes[i]) {
+        clearTimeout(state.holes[i].timeoutId);
+        state.holes[i] = null;
+      }
+    }
+    state.holes = Array(25).fill(null);
+
+    const grid = document.getElementById('msGrid');
+    if (!grid) return;
+    grid.classList.remove('ms-grid-3');
+    grid.classList.add('ms-grid-5');
+    let html = '';
+    for (let i = 0; i < 25; i++) {
+      html += `<div class="ms-hole" data-hole="${i}" id="msHole${i}" onclick="MOB_SMASHER.hit(${i})">
+        <div class="ms-hole-inner"></div>
+      </div>`;
+    }
+    grid.innerHTML = html;
+  }
+
+  function shrinkGrid() {
+    if (state.gridSize === 9) return;
+    // Clear raid holes
+    for (let i = 0; i < 25; i++) {
+      if (state.holes[i]) {
+        clearTimeout(state.holes[i].timeoutId);
+        state.holes[i] = null;
+      }
+    }
+    state.gridSize = 9;
+    state.holes = Array(9).fill(null);
+
+    const grid = document.getElementById('msGrid');
+    if (!grid) return;
+    grid.classList.remove('ms-grid-5');
+    grid.classList.add('ms-grid-3');
+    let html = '';
+    for (let i = 0; i < 9; i++) {
+      html += `<div class="ms-hole" data-hole="${i}" id="msHole${i}" onclick="MOB_SMASHER.hit(${i})">
+        <div class="ms-hole-inner"></div>
+      </div>`;
+    }
+    grid.innerHTML = html;
+  }
+
+  // ═══ Spawn ═══
+  function spawnMob() {
+    if (!state.alive || state.raidActive) return;
+
+    const empty = [];
+    for (let i = 0; i < state.gridSize; i++) {
       if (!state.holes[i]) empty.push(i);
     }
     if (empty.length === 0) return;
 
-    // Pick random empty hole
     const idx = empty[Math.floor(Math.random() * empty.length)];
 
-    // Decide what to spawn
     let mob, category;
 
-    // TNT/Crystal chance increases with score
     const specialChance = Math.min(0.05 + state.score * 0.002, 0.15);
     if (Math.random() < specialChance) {
       mob = SPECIAL[Math.floor(Math.random() * SPECIAL.length)];
       category = 'special';
     } else {
-      // 65% hostile, 25% passive, 10% neutral
       const roll = Math.random();
       if (roll < 0.65) {
         mob = weightedPick(HOSTILE.filter(m => m.weight > 0));
@@ -245,6 +396,11 @@ const MOB_SMASHER = (() => {
       } else if (roll < 0.90) {
         mob = PASSIVE[Math.floor(Math.random() * PASSIVE.length)];
         category = 'passive';
+        // Check: villager + bad omen = RAID!
+        if (mob.id === 'villager' && state.hasBadOmen) {
+          startRaid();
+          return;
+        }
       } else {
         mob = NEUTRAL[Math.floor(Math.random() * NEUTRAL.length)];
         category = 'neutral';
@@ -261,7 +417,6 @@ const MOB_SMASHER = (() => {
     const stayDuration = mob.stayMs || (800 + Math.random() * 600);
     const maxHp = mob.hp || 1;
 
-    // Build mob element
     const spriteFile = mob.sprite || mob.id;
     const el = document.createElement('div');
     el.className = `ms-mob ms-${category}`;
@@ -271,7 +426,6 @@ const MOB_SMASHER = (() => {
       <span class="ms-mob-name">${mob.name}</span>
     `;
 
-    // Fallback if sprite fails to load
     const img = el.querySelector('img');
     img.onerror = () => {
       el.querySelector('.ms-sprite').style.display = 'none';
@@ -281,29 +435,34 @@ const MOB_SMASHER = (() => {
     hole.querySelector('.ms-hole-inner').appendChild(el);
     hole.classList.add('active', `ms-hole-${category}`);
 
-    // Store state
     state.holes[idx] = { mob, category, hp: maxHp, maxHp, el, timeoutId: null };
 
-    // Auto-disappear
     state.holes[idx].timeoutId = setTimeout(() => {
+      // In raid: missing a mob = penalty
+      if (state.raidActive) {
+        state.score = Math.max(0, state.score - 1);
+        state.timeLeft = Math.max(0, state.timeLeft - 1);
+        showFloatingText(el, '-1', '#ff8282');
+        updateHUD();
+        checkRaidWaveComplete();
+      }
       removeMob(idx);
     }, stayDuration);
   }
 
+  // ═══ Hit ═══
   function hit(idx) {
     const holeData = state.holes[idx];
     if (!holeData || !state.alive) return;
 
     const { mob, category, el } = holeData;
 
-    // Hit animation
     el.classList.add('ms-hit');
     setTimeout(() => el.classList.remove('ms-hit'), 200);
 
     if (category === 'hostile') {
       holeData.hp--;
       if (holeData.hp > 0) {
-        // Boss: update HP bar
         const fill = el.querySelector('.ms-hp-fill');
         if (fill) fill.style.width = (holeData.hp / holeData.maxHp * 100) + '%';
         el.classList.add('ms-damage');
@@ -311,12 +470,10 @@ const MOB_SMASHER = (() => {
         return;
       }
 
-      // Killed!
       state.score += mob.pts;
       state.timeLeft += mob.timeBonus;
       state.mobsSmashed++;
 
-      // Special abilities
       if (mob.special === 'totem') {
         if (state.totemCount < 2) {
           state.totemCount++;
@@ -326,17 +483,24 @@ const MOB_SMASHER = (() => {
         }
       }
       if (mob.special === 'ominous') {
-        showInfo(`${mob.name}掉落了不詳之瓶！`, '#ab72f9');
-        showFloatingText(el, '🧪', '#ab72f9');
+        if (state.ominousBottleCount < 2) {
+          state.ominousBottleCount++;
+          state.hasOminousBottle = true;
+          showInfo(`獲得不詳之瓶！點擊使用 🧪`, '#ab72f9');
+          updateOminous();
+        }
       }
       if (mob.special === 'elder') {
-        // Spawn guardians in adjacent holes
         spawnGuardians(idx);
       }
 
       showFloatingText(el, `+${mob.pts}`, '#a8e6cf');
       showFloatingText(el, `+${mob.timeBonus}s`, '#58c2b0', 20);
       removeMob(idx);
+
+      if (state.raidActive) {
+        checkRaidWaveComplete();
+      }
 
     } else if (category === 'passive') {
       state.score = Math.max(0, state.score - 2);
@@ -369,7 +533,6 @@ const MOB_SMASHER = (() => {
 
     updateHUD();
 
-    // Check time
     if (state.timeLeft <= 0 && state.alive) {
       if (state.hasTotem) {
         useTotem();
@@ -380,6 +543,165 @@ const MOB_SMASHER = (() => {
     }
   }
 
+  // ═══ Ominous Bottle ═══
+  function useOminousBottle() {
+    if (!state.hasOminousBottle || state.hasBadOmen) return;
+    state.ominousBottleCount--;
+    if (state.ominousBottleCount <= 0) {
+      state.ominousBottleCount = 0;
+      state.hasOminousBottle = false;
+    }
+    state.hasBadOmen = true;
+    updateOminous();
+    updateBadOmen();
+    showInfo('獲得不祥之兆！下一個村民將觸發突襲 ⚔️', '#ab72f9');
+  }
+
+  function updateOminous() {
+    const el = document.getElementById('msOminous');
+    const icon2 = document.getElementById('msOminousIcon2');
+    if (el) el.style.display = state.ominousBottleCount > 0 && !state.hasBadOmen ? '' : 'none';
+    if (icon2) icon2.style.display = state.ominousBottleCount >= 2 ? '' : 'none';
+  }
+
+  function updateBadOmen() {
+    const el = document.getElementById('msBadOmen');
+    if (el) el.style.display = state.hasBadOmen ? '' : 'none';
+    // Hide bottle when bad omen is active
+    updateOminous();
+  }
+
+  // ═══ Raid System ═══
+  function startRaid() {
+    state.hasBadOmen = false;
+    state.raidActive = true;
+    updateBadOmen();
+
+    // Random 3-7 waves
+    state.raidTotalWaves = 3 + Math.floor(Math.random() * 5);
+    state.raidWave = 0;
+
+    // Expand grid to 5x5
+    expandGrid();
+
+    // Show raid bar
+    const raidBar = document.getElementById('msRaidBar');
+    if (raidBar) raidBar.style.display = '';
+
+    showInfo('⚔️ 突襲開始！', '#ff8282');
+
+    // Start first wave after horn
+    playRaidHorn(() => nextRaidWave());
+  }
+
+  function playRaidHorn(callback) {
+    try {
+      if (!raidAudio) {
+        raidAudio = new Audio(SPRITE_PATH + 'raid-horn.ogg');
+        raidAudio.volume = 0.6;
+      }
+      raidAudio.currentTime = 0;
+      raidAudio.play().catch(() => {});
+      raidAudio.onended = () => { if (callback) callback(); };
+      // Fallback if audio fails
+      setTimeout(() => { if (callback) callback(); }, 1500);
+    } catch(e) {
+      if (callback) callback();
+    }
+  }
+
+  function nextRaidWave() {
+    if (!state.raidActive || !state.alive) return;
+
+    state.raidWave++;
+    if (state.raidWave > state.raidTotalWaves) {
+      endRaid(true);
+      return;
+    }
+
+    // Update raid bar
+    const barText = document.getElementById('msRaidBarText');
+    const barFill = document.getElementById('msRaidBarFill');
+    if (barText) barText.textContent = `突襲 — 第 ${state.raidWave}/${state.raidTotalWaves} 波`;
+    if (barFill) barFill.style.width = ((state.raidWave - 1) / state.raidTotalWaves * 100) + '%';
+
+    showInfo(`⚔️ 第 ${state.raidWave} 波突襲！`, '#ff8282');
+
+    // Pick wave definition (cycle through 1-7)
+    const waveIdx = (state.raidWave - 1) % RAID_WAVES.length;
+    const waveMobs = [...RAID_WAVES[waveIdx]]; // copy
+
+    // Shuffle into empty holes
+    state.raidQueue = [];
+    const empty = [];
+    for (let i = 0; i < 25; i++) {
+      if (!state.holes[i]) empty.push(i);
+    }
+
+    // Spawn mobs staggered
+    waveMobs.forEach((mob, i) => {
+      if (empty.length === 0) return;
+      const randIdx = Math.floor(Math.random() * empty.length);
+      const holeIdx = empty.splice(randIdx, 1)[0];
+      state.raidQueue.push({ holeIdx, mob, spawned: false });
+
+      setTimeout(() => {
+        if (!state.raidActive || !state.alive) return;
+        showMob(holeIdx, mob, 'hostile');
+        const q = state.raidQueue.find(q => q.holeIdx === holeIdx);
+        if (q) q.spawned = true;
+      }, i * 200 + Math.random() * 300);
+    });
+  }
+
+  function checkRaidWaveComplete() {
+    if (!state.raidActive) return;
+
+    // Check if all mobs in current wave are gone
+    const allGone = state.raidQueue.every(q => !state.holes[q.holeIdx]);
+    if (allGone && state.raidQueue.length > 0) {
+      state.raidQueue = [];
+
+      if (state.raidWave >= state.raidTotalWaves) {
+        endRaid(true);
+      } else {
+        // Next wave after horn
+        playRaidHorn(() => nextRaidWave());
+      }
+    }
+  }
+
+  function endRaid(success) {
+    state.raidActive = false;
+
+    // Clear remaining raid mobs
+    for (let i = 0; i < 25; i++) {
+      if (state.holes[i]) removeMob(i);
+    }
+
+    // Update raid bar
+    const raidBar = document.getElementById('msRaidBar');
+    const barFill = document.getElementById('msRaidBarFill');
+    const barText = document.getElementById('msRaidBarText');
+    if (barFill) barFill.style.width = '100%';
+    if (barText) barText.textContent = success ? '突襲勝利！🎉' : '突襲結束';
+
+    if (success) {
+      state.score += 10;
+      state.timeLeft += 10;
+      showInfo('🎉 突襲勝利！+10分 +10秒', '#a8e6cf');
+      showFloatingText(document.getElementById('msGrid'), '+10 🎉', '#a8e6cf');
+      updateHUD();
+    }
+
+    // Shrink grid back after delay
+    setTimeout(() => {
+      if (raidBar) raidBar.style.display = 'none';
+      shrinkGrid();
+    }, 2000);
+  }
+
+  // ═══ Helpers ═══
   function spawnGuardians(elderIdx) {
     const GUARDIAN = { id: 'guardian', name: '深海守衛', pts: 2, timeBonus: 1 };
     const adjacent = getAdjacent(elderIdx);
@@ -393,14 +715,15 @@ const MOB_SMASHER = (() => {
   }
 
   function getAdjacent(idx) {
-    const row = Math.floor(idx / 3);
-    const col = idx % 3;
+    const cols = state.gridSize === 25 ? 5 : 3;
+    const row = Math.floor(idx / cols);
+    const col = idx % cols;
     const adj = [];
     for (let dr = -1; dr <= 1; dr++) {
       for (let dc = -1; dc <= 1; dc++) {
         if (dr === 0 && dc === 0) continue;
         const r = row + dr, c = col + dc;
-        if (r >= 0 && r < 3 && c >= 0 && c < 3) adj.push(r * 3 + c);
+        if (r >= 0 && r < cols && c >= 0 && c < cols) adj.push(r * cols + c);
       }
     }
     return adj;
@@ -468,17 +791,15 @@ const MOB_SMASHER = (() => {
     clearInterval(state.spawnInterval);
     clearInterval(state.timerInterval);
     clearInterval(state.difficultyInterval);
+    if (state.raidSpawnTimer) clearTimeout(state.raidSpawnTimer);
 
-    // Clear all mobs
-    for (let i = 0; i < 9; i++) removeMob(i);
+    for (let i = 0; i < state.gridSize; i++) removeMob(i);
 
-    // Save best
     if (state.score > state.bestScore) {
       state.bestScore = state.score;
       localStorage.setItem('sw-mobsmasher-best', state.score.toString());
     }
 
-    // Show result
     const label = state.score >= 50 ? '苦力怕剋星！'
                 : state.score >= 30 ? '出色的獵人！'
                 : state.score >= 15 ? '還不錯！'
@@ -519,7 +840,6 @@ const MOB_SMASHER = (() => {
     cleanup();
     const grid = document.getElementById('msGrid');
     if (grid) {
-      // Re-render inside existing overlay
       render(document.getElementById('overlayBox'));
     }
   }
@@ -529,11 +849,13 @@ const MOB_SMASHER = (() => {
       clearInterval(state.spawnInterval);
       clearInterval(state.timerInterval);
       clearInterval(state.difficultyInterval);
-      for (let i = 0; i < 9; i++) {
+      if (state.raidSpawnTimer) clearTimeout(state.raidSpawnTimer);
+      for (let i = 0; i < state.gridSize; i++) {
         if (state.holes[i]) clearTimeout(state.holes[i].timeoutId);
       }
     }
     state = null;
+    if (raidAudio) { raidAudio.pause(); raidAudio = null; }
   }
 
   return { open, close, restart, hit };

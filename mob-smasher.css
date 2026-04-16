@@ -271,6 +271,107 @@
 .ms-result-label { font-size: 0.9rem; font-weight: 700; color: rgba(255,255,255,0.7); margin-top: 4px; }
 .ms-result-btns { display: flex; gap: 8px; margin-top: 10px; }
 
+/* ═══ Ominous Bottle ═══ */
+.ms-ominous {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  cursor: pointer;
+  animation: ominous-pulse 1.5s ease-in-out infinite;
+  position: relative;
+}
+.ms-ominous::after {
+  content: '點擊使用';
+  position: absolute;
+  bottom: -14px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 0.5rem;
+  color: rgba(171,114,249,0.6);
+  white-space: nowrap;
+  pointer-events: none;
+}
+@keyframes ominous-pulse {
+  0%, 100% { transform: scale(1); filter: drop-shadow(0 0 4px rgba(171,114,249,0.3)); }
+  50% { transform: scale(1.1); filter: drop-shadow(0 0 8px rgba(171,114,249,0.6)); }
+}
+.ms-ominous-2 { margin-left: 2px; }
+
+/* ═══ Bad Omen ═══ */
+.ms-bad-omen {
+  display: flex;
+  align-items: center;
+  animation: bad-omen-glow 1s ease-in-out infinite;
+}
+@keyframes bad-omen-glow {
+  0%, 100% { filter: drop-shadow(0 0 4px rgba(255,80,80,0.3)); }
+  50% { filter: drop-shadow(0 0 10px rgba(255,80,80,0.7)); }
+}
+.ms-bad-omen .ms-item-sprite {
+  width: 28px; height: 28px;
+}
+
+/* ═══ Raid Bar ═══ */
+.ms-raid-bar {
+  background: linear-gradient(90deg, rgba(180,40,40,0.15), rgba(180,40,40,0.05), rgba(180,40,40,0.15));
+  border: 1px solid rgba(255,80,80,0.2);
+  border-radius: 8px;
+  padding: 8px 14px;
+  margin-bottom: 10px;
+  animation: raid-bar-enter 0.4s ease-out;
+  max-width: 340px;
+  margin-left: auto;
+  margin-right: auto;
+}
+@keyframes raid-bar-enter {
+  from { opacity: 0; transform: scaleX(0.5); }
+  to { opacity: 1; transform: scaleX(1); }
+}
+.ms-raid-bar-text {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #ff8282;
+  text-align: center;
+  margin-bottom: 4px;
+  letter-spacing: 0.05em;
+}
+.ms-raid-bar-progress {
+  width: 100%;
+  height: 4px;
+  background: rgba(255,255,255,0.08);
+  border-radius: 2px;
+  overflow: hidden;
+}
+.ms-raid-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #ff8282, #ffaa32);
+  border-radius: 2px;
+  transition: width 0.5s ease;
+  width: 0%;
+}
+
+/* ═══ 5x5 Grid (Raid) ═══ */
+.ms-grid-5 {
+  grid-template-columns: repeat(5, 1fr);
+  gap: 5px;
+  padding: 12px;
+  max-width: 380px;
+}
+.ms-grid-5 .ms-hole {
+  border-width: 1.5px;
+}
+.ms-grid-5 .ms-sprite {
+  width: 36px;
+  height: 36px;
+}
+.ms-grid-5 .ms-mob-name {
+  font-size: 0.48rem;
+}
+.ms-grid-5 .ms-hp-bar {
+  width: 28px;
+  height: 2px;
+}
+
 /* ═══ Responsive ═══ */
 @media (max-width: 400px) {
   .ms-grid { padding: 10px; gap: 5px; }
@@ -278,4 +379,6 @@
   .ms-mob-name { font-size: 0.5rem; }
   .ms-legend { gap: 6px; }
   .ms-legend-item { font-size: 0.58rem; }
+  .ms-grid-5 { gap: 3px; padding: 8px; }
+  .ms-grid-5 .ms-sprite { width: 28px; height: 28px; }
 }
