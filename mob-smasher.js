@@ -92,7 +92,7 @@ const MOB_SMASHER = (() => {
     { id: 'nautilus',          name: '鸚鵡螺' },
     { id: 'zombie-nautilus',   name: '殭屍鸚鵡螺' },
     { id: 'bee',               name: '蜜蜂' },
-    { id: 'iron-golem',        name: '鐵魔像' },
+    { id: 'iron-golem',        name: '鐵魔像', hp: 2, stayMs: 2200 },
     { id: 'panda',             name: '貓熊' },
     { id: 'polar-bear',        name: '北極熊' },
     { id: 'trader-llama',      name: '商駝' },
@@ -513,6 +513,14 @@ const MOB_SMASHER = (() => {
       removeMob(idx);
 
     } else if (category === 'neutral') {
+      holeData.hp--;
+      if (holeData.hp > 0) {
+        const fill = el.querySelector('.ms-hp-fill');
+        if (fill) fill.style.width = (holeData.hp / holeData.maxHp * 100) + '%';
+        el.classList.add('ms-damage');
+        setTimeout(() => el.classList.remove('ms-damage'), 300);
+        return;
+      }
       state.score = Math.max(0, state.score - 1);
       showFloatingText(el, '-1', '#ffaa32');
       showInfo(`${mob.name}是中立的！`, '#ffaa32');
