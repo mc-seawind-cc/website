@@ -63,7 +63,6 @@ body{font-family:var(--font-body);background:var(--deep);color:var(--cloud);line
 }
 
 [data-theme="light"] .bg-atmosphere::before{background:radial-gradient(ellipse 600px 400px at 20% 30%,rgba(157,175,255,0.08)0%,transparent 70%),radial-gradient(ellipse 500px 500px at 80% 60%,rgba(168,230,207,0.06)0%,transparent 70%),radial-gradient(ellipse 400px 300px at 60% 20%,rgba(222,172,128,0.04)0%,transparent 70%)}
-[data-theme="light"] .particle{opacity:0.2}
 [data-theme="light"] .text-highlight{color:#b8860b}
 [data-theme="light"] .particle{background:rgba(157,175,255,0.4)}
 [data-theme="light"] .rain-toggle{background:rgba(255,255,255,0.9);border-color:rgba(0,0,0,0.08);color:rgba(0,0,0,0.4);box-shadow:0 4px 16px rgba(0,0,0,0.08)}
@@ -111,8 +110,6 @@ body{font-family:var(--font-body);background:var(--deep);color:var(--cloud);line
 
 [data-theme="light"] .nav.scrolled{background:rgba(240,242,245,0.6);box-shadow:0 4px 24px rgba(0,0,0,0.08)}
 [data-theme="light"] .nav-theme{color:var(--cloud)}
-[data-theme="light"] .nav-links a{color:var(--fog)}
-[data-theme="light"] .nav-links a:hover,[data-theme="light"] .nav-links a.active{color:var(--white)}
 [data-theme="light"] .nav-discord{background:rgba(157,175,255,0.08);border-color:rgba(157,175,255,0.15)}
 [data-theme="light"] .nav-discord:hover{background:rgba(157,175,255,0.15)}
 [data-theme="light"] .dropdown-menu{background:rgba(255,255,255,0.96);border-color:rgba(0,0,0,0.06);box-shadow:0 12px 40px rgba(0,0,0,0.08)}
@@ -286,10 +283,8 @@ body{font-family:var(--font-body);background:var(--deep);color:var(--cloud);line
 [data-theme="light"] .btn-hero:hover{background:rgba(0,0,0,0.06);border-color:rgba(0,0,0,0.1);box-shadow:0 12px 40px rgba(0,0,0,0.06)}
 [data-theme="light"] .skeleton{background:linear-gradient(90deg,rgba(0,0,0,0.04)25%,rgba(0,0,0,0.08)50%,rgba(0,0,0,0.04)75%);background-size:200% 100%}
 [data-theme="light"] .hero-content::before{background:radial-gradient(ellipse,rgba(0,0,0,0.08)0%,transparent 70%)}
-[data-theme="light"] .hero-subtitle{text-shadow:0 1px 6px rgba(255,255,255,0.8)}
 [data-theme="light"] #particles .particle{position:absolute;width:2px;height:28px;background:linear-gradient(to bottom,transparent,rgba(174,194,224,0.7));border-radius:0 0 1px 1px;animation:snowfall linear infinite;pointer-events:none;transform:rotate(15deg)}
 [data-theme="light"] .hero{background:linear-gradient(180deg,var(--deep)0%,var(--ocean)100%)}
-[data-theme="light"] .hero::before{background:image-set(url('assets/img/homeHero.webp')type('image/webp'),url('assets/img/homeHero.png')type('image/png'))center/cover no-repeat,radial-gradient(ellipse 600px 400px at 30% 20%,rgba(157,175,255,.08)0%,transparent 70%),radial-gradient(ellipse 500px 300px at 70% 60%,rgba(168,230,207,.06)0%,transparent 70%);opacity:0.85;filter:brightness(1.05)contrast(1.05)saturate(1.1)}
 [data-theme="light"] .hero::after{background:rgba(240,242,245,0.1),linear-gradient(to bottom,transparent 65%,var(--deep)100%)}
 [data-theme="light"] .hero-tips .tips-text{color:#1a1e24}
 [data-theme="light"] .hero-tips{background:rgba(255,255,255,0.85);border:1px solid rgba(0,0,0,0.08);border-radius:var(--radius-lg);padding:10px 18px;box-shadow:0 2px 8px rgba(0,0,0,0.05);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
@@ -405,10 +400,6 @@ body{font-family:var(--font-body);background:var(--deep);color:var(--cloud);line
 }
 .guide-nav .btn{flex:0 1 auto;font-size:0.85rem;padding:var(--space-sm)var(--space-lg)}
 
-[data-theme="light"] .btn-outline{color:var(--white);border-color:rgba(0,0,0,0.15)}
-[data-theme="light"] .btn-outline:hover{background:rgba(0,0,0,0.04);border-color:rgba(0,0,0,0.25)}
-[data-theme="light"] .btn-primary{background:linear-gradient(135deg,#6b8aff,#5cc9a0);color:#fff}
-[data-theme="light"] .btn-primary:hover{background:linear-gradient(135deg,#8aa4ff,#7dd8b5)}
 [data-theme="light"] .btn-primary{background:linear-gradient(135deg,#4a6cf7,#6366f1);color:#fff;box-shadow:0 2px 8px rgba(74,108,247,0.25)}
 [data-theme="light"] .btn-primary:hover{background:linear-gradient(135deg,#5b7bf8,#7476f2);box-shadow:0 4px 16px rgba(74,108,247,0.35)}
 [data-theme="light"] .btn-outline{border-color:rgba(74,108,247,0.35);color:#4a6cf7}
@@ -1387,10 +1378,6 @@ body{font-family:var(--font-body);background:var(--deep);color:var(--cloud);line
   padding: 8px 0 0;
 }
 
-[data-theme="light"] .tag-公告{background:rgba(74,108,247,0.1);color:#4a6cf7;border-color:rgba(74,108,247,0.2)}
-[data-theme="light"] .tag-更新{background:rgba(0,180,120,0.1);color:#00b478;border-color:rgba(0,180,120,0.2)}
-[data-theme="light"] .tag-活動{background:rgba(230,140,30,0.1);color:#e68c1e;border-color:rgba(230,140,30,0.2)}
-[data-theme="light"] .tag-維護{background:rgba(220,60,60,0.1);color:#dc3c3c;border-color:rgba(220,60,60,0.2)}
 [data-theme="light"] 
 
 /* --- 公告頁面篩選列 --- */
@@ -1409,7 +1396,6 @@ body{font-family:var(--font-body);background:var(--deep);color:var(--cloud);line
 [data-theme="light"] .ann-spoiler.revealed {
   background: rgba(74,108,247,0.1);
 }
-[data-theme="light"] .bulletin-item { background: #ffffff; border-color: rgba(0,0,0,0.06); }
 [data-theme="light"] .b-meta { border-bottom-color: rgba(0,0,0,0.06); }
 [data-theme="light"] .b-meta-id { background: rgba(74,108,247,0.08); color: var(--sky); }
 [data-theme="light"] .b-meta-author { color: var(--cloud); }
@@ -1418,11 +1404,7 @@ body{font-family:var(--font-body);background:var(--deep);color:var(--cloud);line
 [data-theme="light"] .b-text code { background: rgba(74,108,247,0.08); }
 [data-theme="light"] .b-discord-link { background: rgba(74,108,247,0.06); border-color: rgba(74,108,247,0.15); }
 [data-theme="light"] .b-discord-link:hover { background: rgba(74,108,247,0.1); }
-[data-theme="light"] .bulletin-item:hover { background: #f8f9fb; border-color: rgba(0,0,0,0.1); }
-[data-theme="light"] .bulletin-item.pinned { background: rgba(222,172,128,0.06); }
-[data-theme="light"] .bulletin-item.open { background: #ffffff; box-shadow: 0 4px 16px rgba(0,0,0,0.06); }
 [data-theme="light"] .bulletin-toggle .b-title { color: var(--cloud); }
-[data-theme="light"] .bulletin-body .b-content { background: rgba(0,0,0,0.01); border-top-color: rgba(0,0,0,0.06); }
 [data-theme="light"] .tag-公告 { background: rgba(74,108,247,0.08); color: #4a6cf7; }
 [data-theme="light"] .tag-更新 { background: rgba(0,150,100,0.08); color: #009664; }
 [data-theme="light"] .tag-活動 { background: rgba(220,140,30,0.08); color: #dc8c1e; }
@@ -1524,8 +1506,6 @@ body{font-family:var(--font-body);background:var(--deep);color:var(--cloud);line
 .lore-card-img{transition:transform 0.4s var(--ease)}
 
 [data-theme="light"] .lore-block{border-left-color:rgba(157,175,255,0.15)}
-[data-theme="light"] .lore-preview-card{background:rgba(0,0,0,0.02);border-color:rgba(0,0,0,0.06)}
-[data-theme="light"] .lore-preview-card:hover{background:rgba(0,0,0,0.04);border-color:rgba(157,175,255,0.2);box-shadow:0 12px 40px rgba(0,0,0,0.06)}
 [data-theme="light"] .lore-card{background:rgba(0,0,0,0.02);border-color:rgba(0,0,0,0.06)}
 [data-theme="light"] .lore-card-num{background:rgba(255,255,255,0.8);color:var(--sky)}
 [data-theme="light"] .lore-card:hover{background:rgba(0,0,0,0.04);border-color:rgba(157,175,255,0.2);box-shadow:0 12px 40px rgba(0,0,0,0.06)}
@@ -1603,7 +1583,6 @@ video.photo-item{cursor:pointer;height:200px;border:1px solid transparent}
 
 [data-theme="light"] .photo-item{border-color:rgba(0,0,0,0.06)}
 [data-theme="light"] .photo-item:hover{border-color:rgba(157,175,255,0.25);box-shadow:0 8px 24px rgba(0,0,0,0.06)}
-[data-theme="light"] .photo-placeholder{background:rgba(0,0,0,0.02);border-color:rgba(0,0,0,0.1)}
 [data-theme="light"] .photo-placeholder{background:#f5f7fa;border-color:rgba(0,0,0,0.08);color:#8a94a6}
 [data-theme="light"] .photo-counter{color:var(--fog)}
 [data-theme="light"] .photo-loading{color:var(--fog)}
@@ -1851,11 +1830,8 @@ video.photo-item{cursor:pointer;height:200px;border:1px solid transparent}
 .toc-card:hover::after{opacity:1}
 
 [data-theme="light"] .article-cover-placeholder{background:rgba(0,0,0,0.02);border-color:rgba(0,0,0,0.06)}
-[data-theme="light"] .article-footer{border-top-color:rgba(0,0,0,0.06)}
 [data-theme="light"] .toc-links a{background:rgba(0,0,0,0.03);border-color:rgba(0,0,0,0.06);color:var(--cloud)}
 [data-theme="light"] .toc-links a:hover{background:rgba(157,175,255,0.08);border-color:rgba(157,175,255,0.2);color:var(--white)}
-[data-theme="light"] .toc-card{background:rgba(0,0,0,0.015);border-color:rgba(0,0,0,0.06)}
-[data-theme="light"] .toc-card:hover{background:rgba(0,0,0,0.03);border-color:rgba(0,0,0,0.1)}
 [data-theme="light"] .toc-card h3{color:var(--white)}
 [data-theme="light"] .toc-card-desc{color:#6b7280}
 [data-theme="light"] .article-cover{border-color:rgba(0,0,0,0.06)}
@@ -1906,8 +1882,6 @@ video.photo-item{cursor:pointer;height:200px;border:1px solid transparent}
 
 [data-theme="light"] .discord-cta-inner{background:rgba(157,175,255,0.05);border-color:rgba(157,175,255,0.15)}
 [data-theme="light"] .discord-cta-inner:hover{background:rgba(157,175,255,0.08);border-color:rgba(157,175,255,0.25);box-shadow:0 8px 32px rgba(157,175,255,0.08)}
-[data-theme="light"] .community-card{background:#ffffff;border-color:rgba(0,0,0,0.08);box-shadow:0 1px 3px rgba(0,0,0,0.04)}
-[data-theme="light"] .community-card:hover{background:#ffffff;border-color:rgba(74,108,247,0.2);box-shadow:0 4px 12px rgba(0,0,0,0.06)}
 [data-theme="light"] .community-body p{color:#4a5260}
 [data-theme="light"] .community-card{background:#fff;border-color:rgba(0,0,0,0.06)}
 [data-theme="light"] .community-card:hover{border-color:rgba(157,175,255,0.25);box-shadow:0 8px 24px rgba(0,0,0,0.06)}
@@ -2036,6 +2010,14 @@ video.photo-item{cursor:pointer;height:200px;border:1px solid transparent}
   .article-hero img{max-width:100% !important;height:auto !important}
   .page-content{max-width:100% !important;padding:0 !important}
 }
+
+/* ═══════════════════════════════════════
+   Comment Section (Cactus Comments)
+   ═══════════════════════════════════════ */
+
+.comment-section{max-width:700px;margin:0 auto var(--space-xl);padding:0 var(--space-md);content-visibility:auto;contain-intrinsic-size:auto 300px}
+.comment-section #comment-section{background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.06);border-radius:var(--radius-lg);padding:var(--space-lg)}
+[data-theme="light"] .comment-section #comment-section{background:#fff;border-color:rgba(0,0,0,0.06);box-shadow:0 1px 4px rgba(0,0,0,0.03)}
 
 /* ═══════════════════════════════════════
    Footer

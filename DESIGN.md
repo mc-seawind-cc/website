@@ -554,6 +554,13 @@ Discord 上的公告長這樣：
 | 2026-04-16 | 海風網站助手 | 🖨️ 新增 @media print 樣式：規則/條款頁面友善列印，隱藏導航/動畫/按鈕，黑白輸出 |
 | 2026-04-16 | 海風網站助手 | 📱 響應式：新增 join-steps 垂直排列 + stats-bar 堆疊 + footer-grid 單欄 |
 | 2026-04-16 | 海風網站助手 | 首頁 CSS/JS 快取更新為 v=260416g |
+| 2026-04-16 | 海風網站助手 | 🎨 首頁「如何加入海風」icon 改用 MC Wiki 原始 block sprite（grass-block / crafter / iron-door / brick-block） |
+| 2026-04-16 | 海風網站助手 | 💬 首頁「海風社群」下方新增 Cactus Comments 留言板（Matrix 協議、匿名留言、無需 GitHub 帳號），siteName: seawind-cc |
+| 2026-04-16 | 海風網站助手 | 🎨 頁尾導覽全面升級：3 欄分類（關於海風 / 遊戲指南 / 連結），全站 68 頁同步更新（首頁 + 19 主頁 + 49 guide/lore） |
+| 2026-04-16 | 海風網站助手 | 🎨 海風指南頁面新增 Wiki 風格側邊欄目錄（sticky TOC，含分類連結 + 文章總數，響應式折疊為標籤列） |
+| 2026-04-16 | 海風網站助手 | ⚡ CSS 清理：移除 26 個重複的 [data-theme="light"] 規則（.particle/.nav-links/.hero-subtitle/.btn-* 等） |
+| 2026-04-16 | 海風網站助手 | ⚡ 效能優化：comment-section / bulletin-board 加 content-visibility:auto |
+| 2026-04-16 | 海風網站助手 | 全站 69 頁 CSS/JS 快取更新為 v=260416h、頁尾日期同步 |
 
 ---
 
