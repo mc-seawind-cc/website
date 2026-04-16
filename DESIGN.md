@@ -525,6 +525,14 @@ Discord 上的公告長這樣：
 | 2026-04-16 | 海風網站助手 | 🔍 SEO 強化：首頁 OG 改用 Hero 大圖(1920×1080)、twitter:card→summary_large_image、新增 og:locale/site_name |
 | 2026-04-16 | 海風網站助手 | 📱 theme-color meta 隨深色/淺色模式動態切換（dark:#0d1117 / light:#f6f8fa） |
 | 2026-04-16 | 海風網站助手 | ⚡ 效能：feature-grid 加 content-visibility:auto |
+| 2026-04-16 | 海風網站助手 | 🎨 區塊標題漸變底線加入 shimmer 動畫（4s 無限循環流動效果） |
+| 2026-04-16 | 海風網站助手 | 🎨 特色卡片 hover 光暈強化：加入 card-accent 色彩混合發光（color-mix），light 模式同步優化 |
+| 2026-04-16 | 海風網站助手 | 🎨 頁尾設計升級：品牌名漸變底線加 shimmer 動畫、連結 hover 增加下劃線動畫、間距加大、背景加入微妙漸變 |
+| 2026-04-16 | 海風網站助手 | 🎨 文化藝廊精選卡片 hover 效果強化：overflow:hidden 防溢出、圖片縮放從 1.05→1.08、增加 contrast 濾鏡 |
+| 2026-04-16 | 海風網站助手 | 🎨 Hero 與內容區之間新增裝飾性漸變分隔線（60% 寬度，sky→foam 漸變），替代原本 display:none 的 ::before |
+| 2026-04-16 | 海風網站助手 | 🎨 全站自訂捲軸樣式：dark 模式 sky 色調（8px 寬、border-radius、hover 加深）、light 模式同步藍紫色調 |
+| 2026-04-16 | 海風網站助手 | 🎨 全站文字選取顏色自訂：dark 模式 sky 半透明背景、light 模式藍紫色調 |
+| 2026-04-16 | 海風網站助手 | 全站 20 頁 CSS/JS 快取更新為 v=260416b |
 
 ---
 
