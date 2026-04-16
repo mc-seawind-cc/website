@@ -575,6 +575,7 @@ Discord 上的公告長這樣：
 | 2026-04-16 | 海風網站助手 | ⚡ CSS 效能優化：bulletin-board / photo-carousel / join-steps 加 content-visibility:auto（減少首屏渲染開銷） |
 | 2026-04-16 | 海風網站助手 | 🎨 區塊標題 shimmer 動畫恢復：section-line-shimmer keyframe 已存在但未掛載，現加回 .section-header h2::after（4s 無限循環） |
 | 2026-04-16 | 海風網站助手 | 🖨️ 列印樣式大幅增強：公告內容展開、標籤黑白化、側邊欄隱藏、孤行/孤行控制、圖片縮放、更多隱藏元素 |
+| 2026-04-16 | 海風網站助手 | 🎨 海風指南頁面重新設計：content-section 擴寬至 1300px（原 960px）、移除 guide-layout-wiki max-width 限制、卡片 minmax 200→240px、圖標 36→40px、搜尋欄加寬至 600px、新增 guide-index-page body class 做頁面級 CSS 覆蓋 |
 
 ---
 
