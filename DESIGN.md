@@ -540,6 +540,8 @@ Discord 上的公告長這樣：
 | 2026-04-16 | 海風網站助手（新） | 🐛 首頁 main.js 修復：伺服器狀態同步更新頁尾 footerStatus 元素 |
 | 2026-04-16 | 海風網站助手（新） | 🎨 CSS 新增 .footer-meta 元件樣式 + .hero-aurora 動畫（aurora-spin / aurora-pulse）+ 特色卡片 border-color hover 過渡 |
 | 2026-04-16 | 海風網站助手（新） | 全站 21 頁 CSS/JS 快取更新為 v=260416d、頁尾日期同步 |
+| 2026-04-16 | 海風網站助手（新） | 🐛 修復特色卡片 hover 四大問題：移除 scale(1.015) 改純 translateY(-6px) 防溢出裁切、加入 box-shadow 暈影（參考 lore-preview-card）、::after 光暈改 inset 不溢出、圖標 hover 加 rotate(8deg) 旋轉 |
+| 2026-04-16 | 海風網站助手（新） | 全站 21 頁 CSS/JS 快取更新為 v=260416e |
 
 ---
 

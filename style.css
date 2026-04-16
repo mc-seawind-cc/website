@@ -183,8 +183,7 @@ body{font-family:var(--font-body);background:var(--deep);color:var(--cloud);line
 [data-theme="light"] .hero-aurora::after{background:radial-gradient(ellipse at center,rgba(87,138,255,0.04)0%,transparent 70%)}
 
 /* 特色卡片進階 hover */
-.feature-card{transition:transform var(--duration)var(--ease),box-shadow var(--duration)var(--ease),border-color var(--duration)var(--ease)}
-.feature-card:hover{border-color:color-mix(in srgb,var(--card-accent,var(--sky))30%,transparent)}
+
 
 /* 頁尾社群區域 */
 .footer-social-link svg{width:18px;height:18px;flex-shrink:0}
@@ -426,15 +425,15 @@ body{font-family:var(--font-body);background:var(--deep);color:var(--cloud);line
 .card-grid .card{display:flex;flex-direction:column}
 .card-grid .card p{flex:1}
 .feature-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:var(--space-lg);content-visibility:auto;contain-intrinsic-size:auto 400px;padding:var(--space-xs) 0}
-.feature-card{position:relative;background:rgba(0,0,0,0.4);border:1px solid rgba(255,255,255,0.12);border-radius:var(--radius-lg);padding:var(--space-xl)var(--space-lg);text-align:center;will-change:transform;transition:transform 0.4s var(--ease),box-shadow 0.4s var(--ease),border-color 0.4s var(--ease),background 0.4s var(--ease)}
+.feature-card{position:relative;background:rgba(0,0,0,0.4);border:1px solid rgba(255,255,255,0.12);border-radius:var(--radius-lg);padding:var(--space-xl)var(--space-lg);text-align:center;overflow:hidden;transition:transform 0.4s var(--ease),box-shadow 0.4s var(--ease),border-color 0.4s var(--ease),background 0.4s var(--ease)}
 .feature-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--card-accent,var(--sky));opacity:0;transition:opacity 0.35s var(--ease)}
-.feature-card::after{content:'';position:absolute;top:-50%;left:-50%;width:200%;height:200%;background:radial-gradient(ellipse at 30% 20%,rgba(255,255,255,0.04)0%,transparent 60%);pointer-events:none;opacity:0;transition:opacity 0.5s}
-.feature-card:hover{background:linear-gradient(135deg,rgba(157,175,255,0.08),rgba(168,230,207,0.04));border-color:rgba(157,175,255,0.25);transform:translateY(-4px)scale(1.015)}
+.feature-card::after{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 30% 20%,rgba(255,255,255,0.04)0%,transparent 60%);pointer-events:none;opacity:0;transition:opacity 0.5s}
+.feature-card:hover{background:linear-gradient(135deg,rgba(157,175,255,0.08),rgba(168,230,207,0.04));border-color:rgba(157,175,255,0.25);transform:translateY(-6px);box-shadow:0 16px 48px rgba(0,0,0,0.3),0 0 0 1px rgba(157,175,255,0.1)}
 .feature-card:hover::before{opacity:1;height:3px}
 .feature-card:hover::after{opacity:1}
 .feature-card-icon{font-size:2.4rem;margin-bottom:var(--space-md);display:inline-flex;align-items:center;justify-content:center;width:56px;height:56px;border-radius:14px;background:rgba(157,175,255,0.12);transition:transform 0.4s var(--ease),filter 0.4s var(--ease)}
 .feature-card-icon img{width:32px;height:32px;image-rendering:pixelated;image-rendering:-moz-crisp-edges;image-rendering:crisp-edges;filter:drop-shadow(0 1px 2px rgba(0,0,0,0.3))}
-.feature-card:hover .feature-card-icon{transform:scale(1.08)}
+.feature-card:hover .feature-card-icon{transform:scale(1.1)rotate(8deg)}
 .feature-card h4{font-size:1.1rem;font-weight:700;color:var(--white);margin-bottom:var(--space-sm);letter-spacing:0.02em}
 .feature-card p{color:var(--cloud);font-size:0.9rem;line-height:1.7}
 .feature-grid-3{grid-template-columns:repeat(3,1fr)}
@@ -448,7 +447,7 @@ body{font-family:var(--font-body);background:var(--deep);color:var(--cloud);line
 [data-theme="light"] .card,[data-theme="light"] .partner-card{background:rgba(0,0,0,0.02);border-color:rgba(0,0,0,0.06)}
 [data-theme="light"] .card:hover,[data-theme="light"] .partner-card:hover{background:rgba(0,0,0,0.04);border-color:rgba(224,181,212,0.3);box-shadow:0 12px 40px rgba(0,0,0,0.06)}
 [data-theme="light"] .feature-card{background:#ffffff;border-color:rgba(0,0,0,0.08);box-shadow:0 1px 3px rgba(0,0,0,0.04)}
-[data-theme="light"] .feature-card:hover{background:#f8f9ff;border-color:rgba(100,130,220,0.2)}
+[data-theme="light"] .feature-card:hover{background:#f8f9ff;border-color:rgba(100,130,220,0.2);box-shadow:0 12px 40px rgba(0,0,0,0.08),0 0 0 1px rgba(74,108,247,0.08)}
 [data-theme="light"] .feature-card::before{opacity:0.6}
 [data-theme="light"] .feature-card:hover::before{opacity:1}
 [data-theme="light"] .feature-card h4{color:var(--cloud)}
@@ -2619,7 +2618,10 @@ html, body {
   /* 移除 hover 效果，改用 active */
   .feature-card:hover {
     transform: none;
-    box-shadow: none;
+  }
+  .feature-card:active {
+    transform: translateY(-2px);
+    box-shadow:0 8px 24px rgba(0,0,0,0.2);
   }
   .feature-card:active {
     transform: scale(0.98);
