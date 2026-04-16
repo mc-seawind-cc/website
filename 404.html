@@ -472,8 +472,8 @@
 
       <!-- Sea creatures -->
       <div class="creature turtle" id="turtle">🐢</div>
-      <div class="creature fish" style="animation-delay:-3s">🐠</div>
-      <div class="creature fish" style="animation-delay:-8s;bottom:16%;font-size:0.9rem;animation-duration:15s">🐟</div>
+      <div class="creature fish" style="animation-delay:-3s"><img src="assets/mobs/tropical-fish.png" alt="" class="mc-sprite" width="24" height="24"></div>
+      <div class="creature fish" style="animation-delay:-8s;bottom:16%;animation-duration:15s"><img src="assets/mobs/cod.png" alt="" class="mc-sprite" width="20" height="20"></div>
 
       <!-- Cat -->
       <div class="cat-float" aria-hidden="true">
@@ -645,13 +645,13 @@
     <!-- Game Bar -->
     <div class="game-bar" id="gameBar">
       <button class="game-tab" onclick="openGame('mcti')">🧪 MCTI 性格測驗</button>
-      <button class="game-tab" onclick="openGame('mole')"><img src="assets/mobs/iron-sword.png" alt="" style="width:12px;height:12px;vertical-align:middle"> 打怪物</button>
-      <button class="game-tab" onclick="openGame('crafting')">🔨 合成</button>
-      <button class="game-tab" onclick="openGame('fishing')">🎣 釣魚</button>
-      <button class="game-tab" onclick="openGame('enchanting')">✨ 附魔</button>
-      <button class="game-tab" onclick="openGame('trading')">🤝 交易</button>
-      <button class="game-tab" onclick="openGame('records')">💿 唱片</button>
-      <button class="game-tab" onclick="openGame('stacking')">🧱 堆疊</button>
+      <button class="game-tab" onclick="openGame('mole')"><img src="assets/mobs/iron-sword.png" alt="" style="width:14px;height:14px;vertical-align:middle;image-rendering:pixelated"> 打怪物</button>
+      <button class="game-tab" onclick="openGame('crafting')"><img src="assets/mobs/mace.png" alt="" style="width:14px;height:14px;vertical-align:middle;image-rendering:pixelated"> 合成</button>
+      <button class="game-tab" onclick="openGame('fishing')"><img src="assets/mobs/cod.png" alt="" style="width:14px;height:14px;vertical-align:middle;image-rendering:pixelated"> 釣魚</button>
+      <button class="game-tab" onclick="openGame('enchanting')"><img src="assets/mobs/breeze.png" alt="" style="width:14px;height:14px;vertical-align:middle;image-rendering:pixelated"> 附魔</button>
+      <button class="game-tab" onclick="openGame('trading')"><img src="assets/mobs/villager.png" alt="" style="width:14px;height:14px;vertical-align:middle;image-rendering:pixelated"> 交易</button>
+      <button class="game-tab" onclick="openGame('records')"><img src="assets/mobs/allay.png" alt="" style="width:14px;height:14px;vertical-align:middle;image-rendering:pixelated"> 唱片</button>
+      <button class="game-tab" onclick="openGame('stacking')"><img src="assets/mobs/turtle.png" alt="" style="width:14px;height:14px;vertical-align:middle;image-rendering:pixelated"> 堆疊</button>
     </div>
   </div>
 
@@ -666,8 +666,6 @@
   <script>
   (() => {
     'use strict';
-
-    const SEA = ['🐙','🦑','🦐','🐡','🐠','🐟','🐬','🦀','🐚'];
 
     // ═══ Theme Toggle ═══
     const themeBtn404 = document.getElementById('themeToggle404');
@@ -751,9 +749,9 @@
       { emoji:'🛢️', pts:25 }, { emoji:'☣️', pts:25 },
     ];
     const CREATURE_POOL = [
-      { emoji:'🐢', penalty:15 }, { emoji:'🐠', penalty:15 }, { emoji:'🐟', penalty:15 },
-      { emoji:'🐬', penalty:20 }, { emoji:'🐙', penalty:15 }, { emoji:'🦀', penalty:15 },
-      { emoji:'🦐', penalty:15 }, { emoji:'🐡', penalty:15 }, { emoji:'🐚', penalty:10 },
+      { emoji:'🐢', penalty:15, sprite:'assets/mobs/turtle.png' }, { emoji:'🐠', penalty:15, sprite:'assets/mobs/tropical-fish.png' }, { emoji:'🐟', penalty:15, sprite:'assets/mobs/cod.png' },
+      { emoji:'🐬', penalty:20, sprite:'assets/mobs/dolphin.png' }, { emoji:'🐙', penalty:15, sprite:'assets/mobs/squid.png' }, { emoji:'🦀', penalty:15, sprite:'assets/mobs/armadillo.png' },
+      { emoji:'🦐', penalty:15, sprite:'assets/mobs/tadpole.png' }, { emoji:'🐡', penalty:15, sprite:'assets/mobs/pufferfish.png' }, { emoji:'🐚', penalty:10, sprite:'assets/mobs/nautilus.png' },
     ];
     const BONUS_POOL = [
       { emoji:'💎', pts:50 }, { emoji:'🏆', pts:50 }, { emoji:'⭐', pts:40 },
@@ -782,7 +780,11 @@
       const item = pool[Math.floor(Math.random() * pool.length)];
       const el = document.createElement('div');
       el.className = 'c-item ' + (isCreature ? 'creature-item' : isBonus ? 'bonus-item' : 'trash-item');
-      el.textContent = item.emoji;
+      if (isCreature && item.sprite) {
+        el.innerHTML = '<img src="' + item.sprite + '" alt="" class="mc-sprite" width="32" height="32">';
+      } else {
+        el.textContent = item.emoji;
+      }
       el.style.fontSize = isBonus ? '1.8rem' : (1.2 + Math.random() * 0.6) + 'rem';
 
       // Spawn position — in the ocean area (bottom 45% of screen)

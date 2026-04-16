@@ -505,6 +505,11 @@ Discord 上的公告長這樣：
 | 2026-04-16 | 海風網站助手 | 404 再新增 4 款小遊戲：滑翔翼(Flappy Elytra)、猜礦(Wordle)、打苦力怕(Whack-a-Creeper)、四子棋(Connect Four)，總計 18 項互動 |
 | 2026-04-16 | 海風網站助手 | 🔴 修復打怪物 grid 顯示為一行 9 個的 bug（minigames.css 掃雷 .ms-grid 覆蓋 mob-smasher.css 打怪物 .ms-grid，改名為 .mw-*） |
 | 2026-04-16 | 海風網站助手 | 修復首頁多餘 </p> 閉合標籤（第 315 行） |
+| 2026-04-16 | 海風網站助手 | 🎮 404 小遊戲 emoji → MC sprite 圖片替換：新增 mc-sprites.js 共用 sprite 對照表（70+ 對應） |
+| 2026-04-16 | 海風網站助手 | 記憶翻牌：16 個海洋生物 emoji → cod/salmon/tropical-fish/pufferfish/squid/dolphin/turtle/nautilus sprite |
+| 2026-04-16 | 海風網站助手 | 射擊場：怪物 emoji → skeleton/zombie/spider/phantom/enderman sprite；動物 → chicken/pig/cow/cat/sheep |
+| 2026-04-16 | 海風網站助手 | 釣魚比賽 / 合成謎題 / 交易：對應 emoji 全數改為 sprite 圖片顯示 |
+| 2026-04-16 | 海風網站助手 | 404 海洋動畫魚群 + 淨灘遊戲海生物 + 遊戲欄 tab 圖示全部改用 MC sprite |
 
 ---
 
