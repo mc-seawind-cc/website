@@ -561,6 +561,7 @@ Discord 上的公告長這樣：
 | 2026-04-16 | 海風網站助手 | ⚡ CSS 清理：移除 26 個重複的 [data-theme="light"] 規則（.particle/.nav-links/.hero-subtitle/.btn-* 等） |
 | 2026-04-16 | 海風網站助手 | ⚡ 效能優化：comment-section / bulletin-board 加 content-visibility:auto |
 | 2026-04-16 | 海風網站助手 | 全站 69 頁 CSS/JS 快取更新為 v=260416h、頁尾日期同步 |
+| 2026-04-16 | 海風網站助手 | 🗑️ 移除 Cactus Comments 留言板（Cactus Bot 無回應，改用其他方案）：移除 CSS/JS CDN 引用、HTML 區塊、初始化腳本、.comment-section 樣式 |
 
 ---
 
