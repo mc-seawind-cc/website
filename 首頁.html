@@ -33,9 +33,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;800;900&family=Noto+Serif+TC:wght@700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=260416h">
+  <link rel="stylesheet" href="style.css?v=260416i">
   <link rel="stylesheet" href="music-player.css">
-  <link rel="stylesheet" href="https://latest.cactus.chat/style.css" type="text/css">
   <!-- JSON-LD 結構化資料 -->
   <script type="application/ld+json">
   {
@@ -367,16 +366,6 @@
         </div>
       </div>
 
-      <!-- ═══ 社群留言板 ═══ -->
-      <div class="section-header reveal-up" style="margin-top: var(--space-2xl);">
-        <h2>留言板</h2>
-        <p class="section-desc">留下你的想法，匿名也可</p>
-      </div>
-      <div class="comment-section reveal-up">
-        <div id="comment-section"></div>
-      </div>
-
-
       <!-- ═══ 風景照 ═══ -->
       <div class="section-header reveal-up" style="margin-top: var(--space-xl);">
         <h2>風景照投稿</h2>      </div>
@@ -448,22 +437,7 @@
 
   <script src="tips.js" defer></script>
   <script src="utils.js"></script>
-  <script src="main.js?v=260416h"></script>
-  <script type="text/javascript" src="https://latest.cactus.chat/cactus.js"></script>
-  <script>
-  document.addEventListener('DOMContentLoaded', function() {
-    if (document.getElementById('comment-section') && typeof initComments === 'function') {
-      initComments({
-        node: document.getElementById('comment-section'),
-        defaultHomeserverUrl: "https://matrix.cactus.chat:8448",
-        serverName: "cactus.chat",
-        siteName: "seawind-cc",
-        commentSectionId: "homepage"
-      });
-    }
-  });
-  </script>
-
+  <script src="main.js?v=260416i"></script>
   <!-- Lightbox -->
   <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="圖片瀏覽" tabindex="-1">
     <button class="lightbox-close" id="lightboxClose">✕</button>
