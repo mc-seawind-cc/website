@@ -473,6 +473,7 @@ function fallbackCopy(text, cb) {
 // --- Real Server Status ---
 function fetchServerStatus() {
   const statusEl = document.getElementById('serverStatus');
+  const footerStatusEl = document.getElementById('footerStatus');
   if (!statusEl) return;
   statusEl.classList.add('status-loading');
   fetch('https://api.mcsrvstat.us/3/seawind.cc')
@@ -484,9 +485,11 @@ function fetchServerStatus() {
         const max = data.players ? data.players.max : 0;
         statusEl.textContent = `${players} / ${max} 在線`;
         statusEl.className = 'info-value status-online';
+        if (footerStatusEl) footerStatusEl.textContent = `● ${players} 人在線`;
       } else {
         statusEl.textContent = '維護中';
         statusEl.className = 'info-value status-offline';
+        if (footerStatusEl) footerStatusEl.textContent = '● 維護中';
       }
     })
     .catch(() => {

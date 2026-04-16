@@ -535,6 +535,11 @@ Discord 上的公告長這樣：
 | 2026-04-16 | 海風網站助手 | 🐛 修復卡片 hover 溢出裁切：移除 scale(1.02) 改純 translateY(-6px)、移除 contain:layout、overflow:visible |
 | 2026-04-16 | 海風網站助手 | 🐛 減弱卡片 hover 暈影：三層 box-shadow 降為兩層、light 模式同步、圖標 hover scale 1.15→1.1 |
 | 2026-04-16 | 海風網站助手 | 全站 70 頁 CSS/JS 快取更新為 v=260416c |
+| 2026-04-16 | 海風網站助手（新） | 🎨 首頁 Hero 新增動態光暈效果（hero-aurora）：conic-gradient 緩慢旋轉 + 底部 radial 漸變脈動，營造大氣氛圍 |
+| 2026-04-16 | 海風網站助手（新） | 🎨 全站 20 頁頁尾升級：新增 Discord 社群連結（SVG 圖標）+ 伺服器元數據（地區/版本/狀態）+ 相關連結 |
+| 2026-04-16 | 海風網站助手（新） | 🐛 首頁 main.js 修復：伺服器狀態同步更新頁尾 footerStatus 元素 |
+| 2026-04-16 | 海風網站助手（新） | 🎨 CSS 新增 .footer-meta 元件樣式 + .hero-aurora 動畫（aurora-spin / aurora-pulse）+ 特色卡片 border-color hover 過渡 |
+| 2026-04-16 | 海風網站助手（新） | 全站 21 頁 CSS/JS 快取更新為 v=260416d、頁尾日期同步 |
 
 ---
 
