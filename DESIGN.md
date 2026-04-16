@@ -152,6 +152,13 @@
 - ~~**首頁多餘 `</p>` 閉合標籤**~~ ✅ 2026-04-16 已修復
   - 第 315 行 `</p></p>` 修正為 `</p>`
 
+### ✅ 新增功能（2026-04-16）
+
+- **PWA 支援** — 新增 `manifest.json`，全站 22 個頁面加入 manifest + apple-touch-icon，網站可安裝為手機/桌面 App
+- **動態 theme-color** — `meta[name="theme-color"]` 隨深色/淺色模式自動切換（dark: `#0d1117` / light: `#f6f8fa`），手機瀏覽器狀態列跟隨主題色
+- **頁尾社群連結** — 首頁頁尾新增 Discord 社群按鈕 + 合作夥伴連結
+- **SEO 強化** — 首頁 Open Graph 改用 Hero 大圖（1920×1080）、twitter:card 改為 summary_large_image、新增 og:locale / og:site_name / og:image:alt
+
 ---
 
 ## ⚡ 效能優化建議
@@ -513,6 +520,11 @@ Discord 上的公告長這樣：
 | 2026-04-16 | 海風網站助手 | 🎨 CSS 視覺優化：區塊標題加漸變底線動畫、卡片 hover 光暈效果、頁尾波浪分隔線 + 品牌漸變裝飾 |
 | 2026-04-16 | 海風網站助手 | 效能：guide-layout 加 content-visibility:auto、移除 CSS 重複 .hero light 規則 |
 | 2026-04-16 | 海風網站助手 | 全站 20 頁頁尾日期 → 2026.04.16、CSS/JS 快取統一 v=260416 |
+| 2026-04-16 | 海風網站助手 | 📱 新增 PWA manifest.json，全站 22 頁加入 manifest + apple-touch-icon，可安裝為 App |
+| 2026-04-16 | 海風網站助手 | 🎨 首頁頁尾新增 Discord 社群按鈕 + 合作夥伴連結 |
+| 2026-04-16 | 海風網站助手 | 🔍 SEO 強化：首頁 OG 改用 Hero 大圖(1920×1080)、twitter:card→summary_large_image、新增 og:locale/site_name |
+| 2026-04-16 | 海風網站助手 | 📱 theme-color meta 隨深色/淺色模式動態切換（dark:#0d1117 / light:#f6f8fa） |
+| 2026-04-16 | 海風網站助手 | ⚡ 效能：feature-grid 加 content-visibility:auto |
 
 ---
 
