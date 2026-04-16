@@ -44,7 +44,7 @@ const MOB_SMASHER = (() => {
     { id: 'stray',               name: '流髑',           pts: 1, timeBonus: 1, weight: 6 },
     { id: 'creaking',            name: '嘎枝',           pts: 4, timeBonus: 2, weight: 3, hp: 2, stayMs: 2200 },
     { id: 'ender-dragon',        name: '終界龍',         pts: 10, timeBonus: 5, weight: 1, hp: 5, stayMs: 4000 },
-    { id: 'evoker-copy',         name: '掠奪者',         pts: 3, timeBonus: 2, weight: 3, sprite: 'evoker', special: 'ominous', dropChance: 0.3 },
+    { id: 'evoker-copy',         name: '掠奪者',         pts: 3, timeBonus: 2, weight: 3, sprite: 'evoker', special: 'ominous', dropChance: 1 },
   ];
 
   const PASSIVE = [
