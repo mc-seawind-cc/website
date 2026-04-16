@@ -510,6 +510,9 @@ Discord 上的公告長這樣：
 | 2026-04-16 | 海風網站助手 | 射擊場：怪物 emoji → skeleton/zombie/spider/phantom/enderman sprite；動物 → chicken/pig/cow/cat/sheep |
 | 2026-04-16 | 海風網站助手 | 釣魚比賽 / 合成謎題 / 交易：對應 emoji 全數改為 sprite 圖片顯示 |
 | 2026-04-16 | 海風網站助手 | 404 海洋動畫魚群 + 淨灘遊戲海生物 + 遊戲欄 tab 圖示全部改用 MC sprite |
+| 2026-04-16 | 海風網站助手 | 🎨 CSS 視覺優化：區塊標題加漸變底線動畫、卡片 hover 光暈效果、頁尾波浪分隔線 + 品牌漸變裝飾 |
+| 2026-04-16 | 海風網站助手 | 效能：guide-layout 加 content-visibility:auto、移除 CSS 重複 .hero light 規則 |
+| 2026-04-16 | 海風網站助手 | 全站 20 頁頁尾日期 → 2026.04.16、CSS/JS 快取統一 v=260416 |
 
 ---
 
