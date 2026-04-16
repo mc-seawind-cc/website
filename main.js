@@ -83,34 +83,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
   }, 3000);
 
-  // --- Stats Counter Animation ---
-  const statsBar = document.getElementById('statsBar');
-  if (statsBar) {
-    const counterObserver = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          counterObserver.unobserve(entry.target);
-          entry.target.querySelectorAll('.stat-number').forEach(el => {
-            const target = parseInt(el.dataset.target, 10);
-            const suffix = el.dataset.suffix || '';
-            const duration = 1800;
-            const start = performance.now();
-            const easeOut = t => 1 - Math.pow(1 - t, 3);
-            const tick = now => {
-              const elapsed = now - start;
-              const progress = Math.min(elapsed / duration, 1);
-              const current = Math.round(easeOut(progress) * target);
-              el.textContent = current.toLocaleString() + suffix;
-              if (progress < 1) requestAnimationFrame(tick);
-            };
-            requestAnimationFrame(tick);
-          });
-        }
-      });
-    }, { threshold: 0.3 });
-    counterObserver.observe(statsBar);
-  }
-
   // --- Critical: Nav Scroll Shadow + Scroll Progress ---
   const nav = document.querySelector('.nav');
   const scrollProgress = document.getElementById('scrollProgress');
