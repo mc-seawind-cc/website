@@ -8,31 +8,44 @@ const MOB_SMASHER = (() => {
 
   // ═══ Mob Definitions ═══
   const HOSTILE = [
-    { id: 'zombie',       name: '殭屍',       pts: 1, timeBonus: 1, weight: 12 },
-    { id: 'creeper',      name: '苦力怕',     pts: 1, timeBonus: 1, weight: 12 },
-    { id: 'skeleton',     name: '骷髏',       pts: 1, timeBonus: 1, weight: 10 },
-    { id: 'slime',        name: '史萊姆',     pts: 1, timeBonus: 1, weight: 8 },
-    { id: 'witch',        name: '女巫',       pts: 2, timeBonus: 1, weight: 6 },
-    { id: 'spider',       name: '蜘蛛',       pts: 1, timeBonus: 1, weight: 10 },
-    { id: 'cave-spider',  name: '洞穴蜘蛛',   pts: 1, timeBonus: 1, weight: 7 },
-    { id: 'blaze',        name: '烈焰使者',   pts: 2, timeBonus: 1, weight: 5 },
-    { id: 'breeze',       name: '旋風使者',   pts: 2, timeBonus: 1, weight: 5 },
-    { id: 'ghast',        name: '地獄幽靈',   pts: 2, timeBonus: 2, weight: 4 },
-    { id: 'phantom',      name: '夜魅',       pts: 2, timeBonus: 1, weight: 6 },
-    { id: 'evoker',       name: '喚魔者',     pts: 3, timeBonus: 2, weight: 3, special: 'totem' },
-    { id: 'enderman',     name: '終界使者',   pts: 2, timeBonus: 1, weight: 5 },
-    { id: 'shulker',      name: '界伏蚌',     pts: 2, timeBonus: 1, weight: 4 },
-    { id: 'silverfish',   name: '蠹魚',       pts: 1, timeBonus: 1, weight: 7 },
-    { id: 'endermite',    name: '終界蟎',     pts: 1, timeBonus: 1, weight: 6 },
-    { id: 'magma-cube',   name: '岩漿立方怪', pts: 1, timeBonus: 1, weight: 7 },
-    { id: 'husk',         name: '屍殼',       pts: 1, timeBonus: 1, weight: 8 },
-    { id: 'parched',      name: '枯骸',       pts: 2, timeBonus: 1, weight: 4 },
-    { id: 'warden',       name: '伏守者',     pts: 5, timeBonus: 3, weight: 2, hp: 2, stayMs: 2500 },
-    { id: 'piglin-brute', name: '豬布林蠻兵', pts: 5, timeBonus: 3, weight: 2, hp: 2, stayMs: 2500 },
-    { id: 'ravager',      name: '劫毀獸',     pts: 5, timeBonus: 3, weight: 2, hp: 2, stayMs: 2500 },
-    { id: 'wither',       name: '凋零怪',     pts: 5, timeBonus: 3, weight: 2, hp: 2, stayMs: 2500 },
-    { id: 'elder-guardian', name: '遠古深海守衛', pts: 5, timeBonus: 3, weight: 1, hp: 2, stayMs: 3000, special: 'elder' },
-    { id: 'guardian',     name: '深海守衛',   pts: 2, timeBonus: 1, weight: 0 }, // only spawns with elder
+    { id: 'zombie',              name: '殭屍',           pts: 1, timeBonus: 1, weight: 12 },
+    { id: 'creeper',             name: '苦力怕',         pts: 1, timeBonus: 1, weight: 12 },
+    { id: 'skeleton',            name: '骷髏',           pts: 1, timeBonus: 1, weight: 10 },
+    { id: 'slime',               name: '史萊姆',         pts: 1, timeBonus: 1, weight: 8 },
+    { id: 'witch',               name: '女巫',           pts: 2, timeBonus: 1, weight: 6 },
+    { id: 'spider',              name: '蜘蛛',           pts: 1, timeBonus: 1, weight: 10 },
+    { id: 'cave-spider',         name: '洞穴蜘蛛',       pts: 1, timeBonus: 1, weight: 7 },
+    { id: 'blaze',               name: '烈焰使者',       pts: 2, timeBonus: 1, weight: 5 },
+    { id: 'breeze',              name: '旋風使者',       pts: 2, timeBonus: 1, weight: 5 },
+    { id: 'ghast',               name: '地獄幽靈',       pts: 2, timeBonus: 2, weight: 4 },
+    { id: 'phantom',             name: '夜魅',           pts: 2, timeBonus: 1, weight: 6 },
+    { id: 'evoker',              name: '喚魔者',         pts: 3, timeBonus: 2, weight: 3, special: 'totem' },
+    { id: 'enderman',            name: '終界使者',       pts: 2, timeBonus: 1, weight: 5 },
+    { id: 'shulker',             name: '界伏蚌',         pts: 2, timeBonus: 1, weight: 4 },
+    { id: 'silverfish',          name: '蠹魚',           pts: 1, timeBonus: 1, weight: 7 },
+    { id: 'endermite',           name: '終界蟎',         pts: 1, timeBonus: 1, weight: 6 },
+    { id: 'magma-cube',          name: '岩漿立方怪',     pts: 1, timeBonus: 1, weight: 7 },
+    { id: 'husk',                name: '屍殼',           pts: 1, timeBonus: 1, weight: 8 },
+    { id: 'parched',             name: '枯骸',           pts: 2, timeBonus: 1, weight: 4 },
+    { id: 'warden',              name: '伏守者',         pts: 5, timeBonus: 3, weight: 2, hp: 2, stayMs: 2500 },
+    { id: 'piglin-brute',        name: '豬布林蠻兵',     pts: 5, timeBonus: 3, weight: 2, hp: 2, stayMs: 2500 },
+    { id: 'ravager',             name: '劫毀獸',         pts: 5, timeBonus: 3, weight: 2, hp: 2, stayMs: 2500 },
+    { id: 'wither',              name: '凋零怪',         pts: 5, timeBonus: 3, weight: 2, hp: 2, stayMs: 2500 },
+    { id: 'elder-guardian',      name: '遠古深海守衛',   pts: 5, timeBonus: 3, weight: 1, hp: 2, stayMs: 3000, special: 'elder' },
+    { id: 'guardian',            name: '深海守衛',       pts: 2, timeBonus: 1, weight: 0 }, // only spawns with elder
+    // === 新增怪物 ===
+    { id: 'zombified-piglin',    name: '殭屍化豬布林',   pts: 1, timeBonus: 1, weight: 7 },
+    { id: 'zombie-villager',     name: '殭屍村民',       pts: 1, timeBonus: 1, weight: 6 },
+    { id: 'hoglin',              name: '豬布獸',         pts: 2, timeBonus: 1, weight: 5 },
+    { id: 'zoglin',              name: '豬屍獸',         pts: 2, timeBonus: 1, weight: 4 },
+    { id: 'wither-skeleton',     name: '凋零骷髏',       pts: 2, timeBonus: 1, weight: 5 },
+    { id: 'johnny',              name: '衛道士',         pts: 3, timeBonus: 2, weight: 3 },
+    { id: 'vex',                 name: '惱鬼',           pts: 2, timeBonus: 1, weight: 5 },
+    { id: 'stray',               name: '流髑',           pts: 1, timeBonus: 1, weight: 6 },
+    { id: 'pumpkin-snow-golem',  name: '雪人',           pts: 1, timeBonus: 1, weight: 5 },
+    { id: 'creaking',            name: '嘎枝',           pts: 4, timeBonus: 2, weight: 3, hp: 2, stayMs: 2200 },
+    { id: 'ender-dragon',        name: '終界龍',         pts: 10, timeBonus: 5, weight: 1, hp: 5, stayMs: 4000 },
+    { id: 'evoker-copy',         name: '掠奪者',         pts: 3, timeBonus: 2, weight: 3 },
   ];
 
   const PASSIVE = [
@@ -65,6 +78,14 @@ const MOB_SMASHER = (() => {
     { id: 'fox',           name: '狐狸' },
     { id: 'goat',          name: '山羊' },
     { id: 'wandering-trader', name: '流浪商人' },
+    // === 新增友善 ===
+    { id: 'donkey',           name: '驢子' },
+    { id: 'cow',              name: '牛' },
+    { id: 'white-sheep',      name: '綿羊(白)' },
+    { id: 'skeleton-horse',   name: '骷髏馬' },
+    { id: 'camel-husk',       name: '駱駝屍殼' },
+    { id: 'ghastling',        name: '小幽靈' },
+    { id: 'zombie-horse',     name: '殭屍馬' },
   ];
 
   const NEUTRAL = [
@@ -77,6 +98,9 @@ const MOB_SMASHER = (() => {
     { id: 'trader-llama',      name: '商駝' },
     { id: 'wolf',              name: '狼' },
     { id: 'pufferfish',        name: '河豚' },
+    // === 新增中立 ===
+    { id: 'zombified-piglin-n', name: '殭屍化豬布林(中立)', sprite: 'zombified-piglin' },
+    { id: 'ocelot',            name: '山貓' },
   ];
 
   const SPECIAL = [
@@ -238,10 +262,11 @@ const MOB_SMASHER = (() => {
     const maxHp = mob.hp || 1;
 
     // Build mob element
+    const spriteFile = mob.sprite || mob.id;
     const el = document.createElement('div');
     el.className = `ms-mob ms-${category}`;
     el.innerHTML = `
-      <img src="${SPRITE_PATH}${mob.id}.png" alt="${mob.name}" class="ms-sprite" loading="lazy">
+      <img src="${SPRITE_PATH}${spriteFile}.png" alt="${mob.name}" class="ms-sprite" loading="lazy">
       ${maxHp > 1 ? `<div class="ms-hp-bar"><div class="ms-hp-fill" style="width:100%"></div></div>` : ''}
       <span class="ms-mob-name">${mob.name}</span>
     `;
