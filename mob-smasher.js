@@ -39,12 +39,12 @@ const MOB_SMASHER = (() => {
     { id: 'hoglin',              name: '豬布獸',         pts: 2, timeBonus: 1, weight: 5 },
     { id: 'zoglin',              name: '豬屍獸',         pts: 2, timeBonus: 1, weight: 4 },
     { id: 'wither-skeleton',     name: '凋零骷髏',       pts: 2, timeBonus: 1, weight: 5 },
-    { id: 'johnny',              name: '衛道士',         pts: 3, timeBonus: 2, weight: 3, special: 'ominous' },
+    { id: 'johnny',              name: '衛道士',         pts: 3, timeBonus: 2, weight: 3 },
     { id: 'vex',                 name: '惱鬼',           pts: 2, timeBonus: 1, weight: 5 },
     { id: 'stray',               name: '流髑',           pts: 1, timeBonus: 1, weight: 6 },
     { id: 'creaking',            name: '嘎枝',           pts: 4, timeBonus: 2, weight: 3, hp: 2, stayMs: 2200 },
     { id: 'ender-dragon',        name: '終界龍',         pts: 10, timeBonus: 5, weight: 1, hp: 5, stayMs: 4000 },
-    { id: 'evoker-copy',         name: '掠奪者',         pts: 3, timeBonus: 2, weight: 3, sprite: 'evoker', special: 'ominous' },
+    { id: 'evoker-copy',         name: '掠奪者',         pts: 3, timeBonus: 2, weight: 3, sprite: 'evoker', special: 'ominous', dropChance: 0.3 },
   ];
 
   const PASSIVE = [
@@ -244,7 +244,7 @@ const MOB_SMASHER = (() => {
         </div>
         <div class="ms-hud-center">
           <div class="ms-totem" id="msTotem" style="display:none" title="不死圖騰（抵擋致命傷害）"><img src="${SPRITE_PATH}totem.png" class="ms-item-sprite" alt="不死圖騰" id="msTotemIcon1"><img src="${SPRITE_PATH}totem.png" class="ms-item-sprite ms-totem-2" alt="不死圖騰" id="msTotemIcon2" style="display:none"></div>
-          <div class="ms-ominous" id="msOminous" style="display:none" title="點擊使用不詳之瓶（獲得不祥之兆）"><img src="${SPRITE_PATH}ominous-bottle.png" class="ms-item-sprite" alt="不詳之瓶" id="msOminousIcon1"><img src="${SPRITE_PATH}ominous-bottle.png" class="ms-item-sprite ms-ominous-2" alt="不詳之瓶" id="msOminousIcon2" style="display:none"></div>
+          <div class="ms-ominous" id="msOminous" style="display:none" title="點擊使用不祥之瓶（獲得不祥之兆）"><img src="${SPRITE_PATH}ominous-bottle.png" class="ms-item-sprite" alt="不祥之瓶" id="msOminousIcon1"><img src="${SPRITE_PATH}ominous-bottle.png" class="ms-item-sprite ms-ominous-2" alt="不祥之瓶" id="msOminousIcon2" style="display:none"></div>
           <div class="ms-bad-omen" id="msBadOmen" style="display:none" title="不祥之兆（突襲準備中）"><img src="${SPRITE_PATH}bad-omen.png" class="ms-item-sprite" alt="不祥之兆"></div>
         </div>
         <div class="ms-hud-right">
@@ -483,10 +483,11 @@ const MOB_SMASHER = (() => {
         }
       }
       if (mob.special === 'ominous') {
-        if (state.ominousBottleCount < 2) {
+        const dropChance = mob.dropChance || 1;
+        if (Math.random() < dropChance && state.ominousBottleCount < 2) {
           state.ominousBottleCount++;
           state.hasOminousBottle = true;
-          showInfo(`獲得不詳之瓶！點擊使用 🧪`, '#ab72f9');
+          showInfo(`掠奪者掉落了不祥之瓶！點擊使用 🧪`, '#ab72f9');
           updateOminous();
         }
       }
