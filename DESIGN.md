@@ -532,7 +532,9 @@ Discord 上的公告長這樣：
 | 2026-04-16 | 海風網站助手 | 🎨 Hero 與內容區之間新增裝飾性漸變分隔線（60% 寬度，sky→foam 漸變），替代原本 display:none 的 ::before |
 | 2026-04-16 | 海風網站助手 | 🎨 全站自訂捲軸樣式：dark 模式 sky 色調（8px 寬、border-radius、hover 加深）、light 模式同步藍紫色調 |
 | 2026-04-16 | 海風網站助手 | 🎨 全站文字選取顏色自訂：dark 模式 sky 半透明背景、light 模式藍紫色調 |
-| 2026-04-16 | 海風網站助手 | 全站 20 頁 CSS/JS 快取更新為 v=260416b |
+| 2026-04-16 | 海風網站助手 | 🐛 修復卡片 hover 溢出裁切：移除 scale(1.02) 改純 translateY(-6px)、移除 contain:layout、overflow:visible |
+| 2026-04-16 | 海風網站助手 | 🐛 減弱卡片 hover 暈影：三層 box-shadow 降為兩層、light 模式同步、圖標 hover scale 1.15→1.1 |
+| 2026-04-16 | 海風網站助手 | 全站 70 頁 CSS/JS 快取更新為 v=260416c |
 
 ---
 
