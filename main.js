@@ -83,6 +83,34 @@ document.addEventListener('DOMContentLoaded', () => {
 
   }, 3000);
 
+  // --- Stats Counter Animation ---
+  const statsBar = document.getElementById('statsBar');
+  if (statsBar) {
+    const counterObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          counterObserver.unobserve(entry.target);
+          entry.target.querySelectorAll('.stat-number').forEach(el => {
+            const target = parseInt(el.dataset.target, 10);
+            const suffix = el.dataset.suffix || '';
+            const duration = 1800;
+            const start = performance.now();
+            const easeOut = t => 1 - Math.pow(1 - t, 3);
+            const tick = now => {
+              const elapsed = now - start;
+              const progress = Math.min(elapsed / duration, 1);
+              const current = Math.round(easeOut(progress) * target);
+              el.textContent = current.toLocaleString() + suffix;
+              if (progress < 1) requestAnimationFrame(tick);
+            };
+            requestAnimationFrame(tick);
+          });
+        }
+      });
+    }, { threshold: 0.3 });
+    counterObserver.observe(statsBar);
+  }
+
   // --- Critical: Nav Scroll Shadow + Scroll Progress ---
   const nav = document.querySelector('.nav');
   const scrollProgress = document.getElementById('scrollProgress');
@@ -479,6 +507,7 @@ function fetchServerStatus() {
     .then(res => res.json())
     .then(data => {
       statusEl.classList.remove('status-loading');
+      // Update hero status
       if (data.online) {
         const players = data.players ? data.players.online : 0;
         const max = data.players ? data.players.max : 0;
@@ -488,11 +517,25 @@ function fetchServerStatus() {
         statusEl.textContent = '維護中';
         statusEl.className = 'info-value status-offline';
       }
+      // Update footer status
+      const footerStatus = document.getElementById('footerStatus');
+      if (footerStatus) {
+        const dot = footerStatus.querySelector('.status-dot');
+        if (data.online) {
+          const players = data.players ? data.players.online : 0;
+          const max = data.players ? data.players.max : 0;
+          footerStatus.innerHTML = `<span class="status-dot online"></span>${players}/${max} 在線`;
+        } else {
+          footerStatus.innerHTML = '<span class="status-dot offline"></span>維護中';
+        }
+      }
     })
     .catch(() => {
       statusEl.classList.remove('status-loading');
       statusEl.textContent = '查詢失敗';
       statusEl.className = 'info-value';
+      const footerStatus = document.getElementById('footerStatus');
+      if (footerStatus) footerStatus.innerHTML = '<span class="status-dot"></span>查詢失敗';
     });
 }
 

@@ -33,7 +33,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;800;900&family=Noto+Serif+TC:wght@700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=260416f">
+  <link rel="stylesheet" href="style.css?v=260416g">
   <link rel="stylesheet" href="music-player.css">
   <!-- JSON-LD 結構化資料 -->
   <script type="application/ld+json">
@@ -154,6 +154,13 @@
         <div class="scroll-arrow">↓</div>
       </div>
     </section>
+
+    <div class="hero-wave-separator" aria-hidden="true">
+      <svg viewBox="0 0 1440 60" preserveAspectRatio="none">
+        <path d="M0,30 C240,50 480,10 720,30 C960,50 1200,10 1440,30 L1440,60 L0,60 Z" fill="var(--deep)" opacity="0.8"/>
+        <path d="M0,40 C360,55 720,25 1080,40 C1260,48 1380,38 1440,40 L1440,60 L0,60 Z" fill="var(--deep)"/>
+      </svg>
+    </div>
 
     <div class="content-section" id="about">
 
@@ -287,6 +294,79 @@
         </div>
       </div>
 
+      <!-- ═══ 如何加入海風 ═══ -->
+      <div class="section-header reveal-up" style="margin-top: var(--space-2xl);">
+        <h2>如何加入海風</h2>
+        <p class="section-desc">四個步驟，開始你的冒險</p>
+      </div>
+      <div class="join-steps reveal-up">
+        <div class="join-step">
+          <div class="join-step-num">1</div>
+          <div class="join-step-icon"><img src="assets/img/icons/bed.png" alt="Minecraft" width="28" height="28"></div>
+          <h4>開啟 Minecraft</h4>
+          <p>Java 版 1.21.6 以上，或基岩版最新版。手機、電腦都能玩。</p>
+        </div>
+        <div class="join-connector" aria-hidden="true">
+          <svg width="40" height="20" viewBox="0 0 40 20"><path d="M0 10 L40 10" stroke="var(--sky)" stroke-width="1.5" stroke-dasharray="4 3" fill="none" opacity="0.3"/></svg>
+        </div>
+        <div class="join-step">
+          <div class="join-step-num">2</div>
+          <div class="join-step-icon"><img src="assets/img/icons/compass.gif" alt="伺服器" width="28" height="28"></div>
+          <h4>新增伺服器</h4>
+          <p>在多人遊戲中新增伺服器位址 <code>seawind.cc</code>，基岩版請用 <code>51496</code> 埠號。</p>
+        </div>
+        <div class="join-connector" aria-hidden="true">
+          <svg width="40" height="20" viewBox="0 0 40 20"><path d="M0 10 L40 10" stroke="var(--sky)" stroke-width="1.5" stroke-dasharray="4 3" fill="none" opacity="0.3"/></svg>
+        </div>
+        <div class="join-step">
+          <div class="join-step-num">3</div>
+          <div class="join-step-icon"><img src="assets/img/icons/book.png" alt="規則" width="28" height="28"></div>
+          <h4>閱讀玩家須知</h4>
+          <p>花一分鐘了解基本規則，避免踩雷。我們很友善，但也有底線。</p>
+        </div>
+        <div class="join-connector" aria-hidden="true">
+          <svg width="40" height="20" viewBox="0 0 40 20"><path d="M0 10 L40 10" stroke="var(--sky)" stroke-width="1.5" stroke-dasharray="4 3" fill="none" opacity="0.3"/></svg>
+        </div>
+        <div class="join-step">
+          <div class="join-step-num">4</div>
+          <div class="join-step-icon"><img src="assets/img/icons/diamond_axe.png" alt="建築" width="28" height="28"></div>
+          <h4>開始建造！</h4>
+          <p>找個喜歡的地方，蓋你的第一間房子。歡迎到 Discord 打招呼 🌊</p>
+        </div>
+      </div>
+      <div class="section-actions slide-left" style="justify-content: center;">
+        <a href="玩家須知.html" class="btn btn-outline">閱讀玩家須知 →</a>
+        <a href="https://discord.gg/HdS2HrJEH7" target="_blank" rel="noopener" class="btn btn-primary">加入 Discord 社群</a>
+      </div>
+
+      <!-- ═══ 社群數據 ═══ -->
+      <div class="section-header reveal-up" style="margin-top: var(--space-2xl);">
+        <h2>海風社群</h2>
+        <p class="section-desc">用數據說話</p>
+      </div>
+      <div class="stats-bar reveal-up" id="statsBar">
+        <div class="stat-item">
+          <span class="stat-number" data-target="1200" data-suffix="+">0</span>
+          <span class="stat-label">累積玩家</span>
+        </div>
+        <div class="stat-divider" aria-hidden="true"></div>
+        <div class="stat-item">
+          <span class="stat-number" data-target="500" data-suffix="">0</span>
+          <span class="stat-label">公告數量</span>
+        </div>
+        <div class="stat-divider" aria-hidden="true"></div>
+        <div class="stat-item">
+          <span class="stat-number" data-target="365" data-suffix="+">0</span>
+          <span class="stat-label">營運天數</span>
+        </div>
+        <div class="stat-divider" aria-hidden="true"></div>
+        <div class="stat-item">
+          <span class="stat-number" data-target="7" data-suffix=" 種">0</span>
+          <span class="stat-label">遊戲模式</span>
+        </div>
+      </div>
+
+
       <!-- ═══ 風景照 ═══ -->
       <div class="section-header reveal-up" style="margin-top: var(--space-xl);">
         <h2>風景照投稿</h2>      </div>
@@ -308,14 +388,44 @@
     <div class="footer-inner">
       <div class="footer-brand">
         <span class="footer-logo">海風伺服器 SeaWind.cc</span>
+        <p class="footer-tagline">跟隨風抵達海的彼端，有片陸地等你啟程</p>
       </div>
-      <nav class="footer-links" aria-label="頁尾導航">
-        <a href="玩家須知.html">社群須知</a>
-        <a href="服務條款.html">服務條款</a>
-        <a href="隱私權政策.html">隱私權政策</a>
-        <a href="合作夥伴.html">合作夥伴</a>
-        <a href="相關連結.html">相關連結</a>
-      </nav>
+      <div class="footer-grid">
+        <div class="footer-col">
+          <h4 class="footer-heading">導覽</h4>
+          <nav class="footer-links" aria-label="頁尾導航">
+            <a href="首頁.html">首頁</a>
+            <a href="公告.html">公告</a>
+            <a href="海風指南.html">海風指南</a>
+            <a href="文化藝廊.html">文化藝廊</a>
+          </nav>
+        </div>
+        <div class="footer-col">
+          <h4 class="footer-heading">社群</h4>
+          <nav class="footer-links">
+            <a href="玩家須知.html">玩家須知</a>
+            <a href="服務條款.html">服務條款</a>
+            <a href="隱私權政策.html">隱私權政策</a>
+            <a href="相關連結.html">相關連結</a>
+          </nav>
+        </div>
+        <div class="footer-col">
+          <h4 class="footer-heading">連結</h4>
+          <nav class="footer-links">
+            <a href="https://discord.gg/HdS2HrJEH7" target="_blank" rel="noopener">Discord 社群</a>
+            <a href="合作夥伴.html">合作夥伴</a>
+            <a href="違規處分.html">違規處分</a>
+            <a href="贊助.html">贊助支持</a>
+          </nav>
+        </div>
+      </div>
+      <div class="footer-meta">
+        <span class="footer-status" id="footerStatus"><span class="status-dot"></span>查詢中</span>
+        <span class="footer-sep">·</span>
+        <span>seawind.cc</span>
+        <span class="footer-sep">·</span>
+        <span>🇹🇼 台灣</span>
+      </div>
       <div class="footer-bottom">
         <p>© 2026 海風伺服器 · 非 Mojang 官方營運 · service@seawind.cc</p>
       </div>
@@ -326,7 +436,7 @@
 
   <script src="tips.js" defer></script>
   <script src="utils.js"></script>
-  <script src="main.js?v=260416f"></script>
+  <script src="main.js?v=260416g"></script>
 
   <!-- Lightbox -->
   <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="圖片瀏覽" tabindex="-1">
