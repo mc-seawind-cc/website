@@ -43,13 +43,13 @@ const GAMES_404 = (() => {
 
       let html = `<div class="overlay-header"><span class="overlay-title">🔨 合成謎題</span><button class="overlay-close" onclick="closeOverlay()">✕</button></div>`;
       html += `<div class="game-hud"><span>🔨 第 ${round}/${maxRounds} 題</span><span>⏱ <span class="game-hud-val" id="craftTimer">${timer}</span>秒</span><span>💎 <span class="game-hud-val" id="craftScore">${score}</span></span></div>`;
-      html += `<div class="craft-target"><span class="craft-target-label">合成目標</span><span class="craft-target-emoji">${currentRecipe.emoji}</span><span class="craft-target-name">${currentRecipe.name}</span><span class="craft-target-tip">${currentRecipe.tip}</span></div>`;
+      html += `<div class="craft-target"><span class="craft-target-label">合成目標</span><span class="craft-target-emoji">${MC_SPRITES.img(currentRecipe.emoji, currentRecipe.name, 36)}</span><span class="craft-target-name">${currentRecipe.name}</span><span class="craft-target-tip">${currentRecipe.tip}</span></div>`;
 
       // Reference grid (empty 3x3)
       html += `<div class="craft-ref-label">配方參考</div>`;
       html += `<div class="craft-grid craft-ref-grid">`;
       for (let i = 0; i < 9; i++) {
-        html += `<div class="craft-cell craft-ref-cell">${currentRecipe.grid[i] || ''}</div>`;
+        html += `<div class="craft-cell craft-ref-cell">${currentRecipe.grid[i] ? MC_SPRITES.img(currentRecipe.grid[i], '', 32) : ''}</div>`;
       }
       html += `</div>`;
 
@@ -63,7 +63,7 @@ const GAMES_404 = (() => {
       // Item tray
       html += `<div class="craft-tray">`;
       ITEMS.forEach((item, idx) => {
-        html += `<button class="craft-item" data-item="${item}" id="craftItem${idx}">${item}</button>`;
+        html += `<button class="craft-item" data-item="${item}" id="craftItem${idx}">${MC_SPRITES.img(item, '', 28)}</button>`;
       });
       html += `<button class="craft-item craft-clear" id="craftClear" title="清空">🗑️</button>`;
       html += `</div>`;
@@ -77,7 +77,7 @@ const GAMES_404 = (() => {
         if (btn.id === 'craftClear') {
           btn.addEventListener('click', () => {
             playerGrid = Array(9).fill(null);
-            overlayBox.querySelectorAll('[data-slot]').forEach(s => { s.textContent = ''; s.classList.remove('craft-filled'); });
+            overlayBox.querySelectorAll('[data-slot]').forEach(s => { s.innerHTML = ''; s.classList.remove('craft-filled'); });
             selectedItem = null;
             overlayBox.querySelectorAll('.craft-item').forEach(b => b.classList.remove('craft-selected'));
           });
@@ -95,7 +95,7 @@ const GAMES_404 = (() => {
           const idx = parseInt(slot.dataset.slot);
           if (selectedItem) {
             playerGrid[idx] = selectedItem;
-            slot.textContent = selectedItem;
+            slot.innerHTML = MC_SPRITES.img(selectedItem, '', 32);
             slot.classList.add('craft-filled');
             checkAnswer();
           }
@@ -191,7 +191,7 @@ const GAMES_404 = (() => {
       if (catchHistory.length) {
         html += `<div class="fish-history">`;
         catchHistory.forEach(c => {
-          html += `<span class="fish-caught" title="${c.name} (${c.rarity})">${c.emoji}</span>`;
+          html += `<span class="fish-caught" title="${c.name} (${c.rarity})">${MC_SPRITES.img(c.emoji, c.name, 24)}</span>`;
         });
         html += `</div>`;
       }
@@ -258,7 +258,7 @@ const GAMES_404 = (() => {
 
       const bobber = document.getElementById('fishBobber');
       const msg = document.getElementById('fishMsg');
-      if (bobber) { bobber.className = 'fish-bobber fish-reel'; bobber.textContent = fish.emoji; }
+      if (bobber) { bobber.className = 'fish-bobber fish-reel'; bobber.innerHTML = MC_SPRITES.img(fish.emoji, fish.name, 28); }
       if (msg) {
         const color = fish.pts >= 5 ? '#ab72f9' : fish.pts >= 2 ? '#a8e6cf' : fish.pts === 0 ? '#ff8282' : '#9dafff';
         msg.textContent = `${fish.emoji} ${fish.name}！${fish.pts > 0 ? '+' + fish.pts + '分' : '垃圾...'}`;
@@ -290,7 +290,7 @@ const GAMES_404 = (() => {
         <div class="game-result">
           <div class="game-result-emoji">🎣</div>
           <div class="game-result-val">${score} 分</div>
-          <div class="game-result-text">釣了 ${catches} 竿 · 最佳：${bestCatch.emoji} ${bestCatch.name}（+${bestCatch.pts}）</div>
+          <div class="game-result-text">釣了 ${catches} 竿 · 最佳：${MC_SPRITES.img(bestCatch.emoji, bestCatch.name, 24)} ${bestCatch.name}（+${bestCatch.pts}）</div>
           <div class="game-result-label">${label}</div>
           <div class="game-result-btns"><button class="btn btn-main" onclick="GAMES_404.fishing(document.getElementById('overlayBox'))">🔄 再來</button><button class="btn btn-sub" onclick="closeOverlay()">關閉</button></div>
         </div>`;
@@ -472,8 +472,8 @@ const GAMES_404 = (() => {
       let html = `<div class="overlay-header"><span class="overlay-title">🤝 村民交易</span><button class="overlay-close" onclick="closeOverlay()">✕</button></div>`;
       html += `<div class="game-hud"><span>🤝 第 ${round}/${maxRounds} 輪</span><span>💰 翡翠 <span class="game-hud-val" id="tradeBudget">${budget}</span></span><span>💎 <span class="game-hud-val" id="tradeScore">${score}</span></span></div>`;
       html += `<div class="trade-scene">`;
-      html += `<div class="trade-villager"><span class="trade-villager-emoji">${deal.villager.emoji}</span><span class="trade-villager-name">${deal.villager.name}</span><span class="trade-villager-mood">${deal.villager.mood}</span></div>`;
-      html += `<div class="trade-item"><span class="trade-item-emoji">${deal.item.emoji}</span><span class="trade-item-name">${deal.item.name}</span></div>`;
+      html += `<div class="trade-villager"><span class="trade-villager-emoji"><img src="assets/mobs/villager.png" alt="${deal.villager.name}" class="mc-sprite" width="40" height="40"></span><span class="trade-villager-name">${deal.villager.name}</span><span class="trade-villager-mood">${deal.villager.mood}</span></div>`;
+      html += `<div class="trade-item"><span class="trade-item-emoji">${MC_SPRITES.img(deal.item.emoji, deal.item.name, 36)}</span><span class="trade-item-name">${deal.item.name}</span></div>`;
       html += `<div class="trade-ask">喊價：<span class="trade-ask-price">${deal.askPrice} 💎</span></div>`;
       html += `<div class="trade-actions">`;
 
@@ -496,7 +496,7 @@ const GAMES_404 = (() => {
 
       if (bought.length) {
         html += `<div class="fish-history">`;
-        bought.forEach(b => { html += `<span class="fish-caught" title="${b.name}">${b.emoji}</span>`; });
+        bought.forEach(b => { html += `<span class="fish-caught" title="${b.name}">${MC_SPRITES.img(b.emoji, b.name, 24)}</span>`; });
         html += `</div>`;
       }
 

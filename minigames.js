@@ -27,7 +27,7 @@ const MINIGAMES = (() => {
     let html = `<div class="overlay-header"><span class="overlay-title">🃏 記憶翻牌</span><button class="overlay-close" onclick="MINIGAMES.close()">✕</button></div>`;
     html += `<div class="game-hud"><span>🎯 配對: <span class="game-hud-val" id="memPairs">0</span>/8</span><span>⏱ <span class="game-hud-val" id="memTime">60</span>s</span><span>🔄 翻牌: <span class="game-hud-val" id="memFlips">0</span></span></div>`;
     html += '<div class="mem-grid" id="memGrid">';
-    cards.forEach((emoji, i) => html += `<div class="mem-card" data-emoji="${emoji}" data-idx="${i}" onclick="MINIGAMES._flipCard(this)"><div class="back">?</div><div class="front">${emoji}</div></div>`);
+    cards.forEach((emoji, i) => html += `<div class="mem-card" data-emoji="${emoji}" data-idx="${i}" onclick="MINIGAMES._flipCard(this)"><div class="back">?</div><div class="front">${MC_SPRITES.img(emoji, emoji, 40)}</div></div>`);
     html += '</div>';
     overlayBox.innerHTML = html;
 
@@ -552,21 +552,21 @@ const MINIGAMES = (() => {
   // ═══════════════════════════════════════════
   function shooting(overlayBox) {
     clearTimers();
-    const MOBS = [
-      { emoji: '💀', pts: 10, speed: 3 },
-      { emoji: '🧟', pts: 10, speed: 2.5 },
-      { emoji: '🕷️', pts: 15, speed: 2 },
-      { emoji: '👻', pts: 20, speed: 1.5 },
-      { emoji: '🐉', pts: 30, speed: 1 },
-      { emoji: '💎', pts: 50, speed: 0.8 },
-    ];
-    const FRIENDLY = [
-      { emoji: '🐔', penalty: -20 },
-      { emoji: '🐷', penalty: -15 },
-      { emoji: '🐄', penalty: -15 },
-      { emoji: '🐱', penalty: -25 },
-      { emoji: '🐑', penalty: -15 },
-    ];
+      const MOBS = [
+        { emoji: '💀', pts: 10, speed: 3 },
+        { emoji: '🧟', pts: 10, speed: 2.5 },
+        { emoji: '🕷️', pts: 15, speed: 2 },
+        { emoji: '👻', pts: 20, speed: 1.5 },
+        { emoji: '🐉', pts: 30, speed: 1 },
+        { emoji: '💎', pts: 50, speed: 0.8 },
+      ];
+      const FRIENDLY = [
+        { emoji: '🐔', penalty: -20 },
+        { emoji: '🐷', penalty: -15 },
+        { emoji: '🐄', penalty: -15 },
+        { emoji: '🐱', penalty: -25 },
+        { emoji: '🐑', penalty: -15 },
+      ];
 
     let score = 0, timeLeft = 20, shots = 0, hits = 0;
 
@@ -586,7 +586,7 @@ const MINIGAMES = (() => {
 
       const el = document.createElement('div');
       el.className = `shoot-target ${isFriendly ? 'friendly' : 'hostile'}`;
-      el.textContent = target.emoji;
+      el.innerHTML = MC_SPRITES.img(target.emoji, '', 36);
 
       // Random position
       const top = 10 + Math.random() * 70;
