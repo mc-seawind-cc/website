@@ -1939,7 +1939,7 @@ video.photo-item{cursor:pointer;height:200px;border:1px solid transparent}
    How to Join Steps
    ═══════════════════════════════════════ */
 
-.join-steps{display:flex;align-items:flex-start;justify-content:center;gap:0;margin-bottom:var(--space-xl);flex-wrap:wrap}
+.join-steps{display:flex;align-items:stretch;justify-content:center;gap:0;margin-bottom:var(--space-xl);flex-wrap:wrap}
 .join-step{flex:1 1 180px;max-width:220px;text-align:center;padding:var(--space-lg)var(--space-md);background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.06);border-radius:var(--radius-lg);transition:all var(--duration)var(--ease);position:relative}
 .join-step:hover{background:rgba(157,175,255,0.06);border-color:rgba(157,175,255,0.15);transform:translateY(-4px);box-shadow:0 12px 32px rgba(0,0,0,0.15)}
 .join-step-num{position:absolute;top:-12px;left:50%;transform:translateX(-50%);width:28px;height:28px;background:linear-gradient(135deg,var(--sky),var(--foam));border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:0.85rem;font-weight:800;color:var(--deep);box-shadow:0 2px 12px rgba(157,175,255,0.3)}
