@@ -24,6 +24,14 @@
   <style>
     /* ═══ 指南首頁專用 ═══ */
 
+    /* 寬版佈局覆蓋 */
+    .guide-index-page .content-section {
+      max-width: 1300px;
+    }
+    .guide-index-page .content-section::before {
+      display: none;
+    }
+
     .guide-hero {
       text-align: center;
       padding: var(--space-xl) var(--space-lg) var(--space-lg);
@@ -41,7 +49,7 @@
 
     /* 搜尋欄 */
     .guide-search-wrap {
-      max-width: 500px;
+      max-width: 600px;
       margin: var(--space-lg) auto var(--space-2xl);
       position: relative;
     }
@@ -161,7 +169,7 @@
     /* 指南卡片網格 */
     .guide-cards {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
       gap: 12px;
     }
     .guide-card {
@@ -185,26 +193,26 @@
     .guide-card-emoji {
       font-size: 1.3rem;
       flex-shrink: 0;
-      width: 36px;
-      height: 36px;
+      width: 40px;
+      height: 40px;
       display: flex;
       align-items: center;
       justify-content: center;
       background: rgba(157,175,255,0.06);
-      border-radius: 8px;
+      border-radius: 10px;
     }
     .guide-card-text {
       flex: 1;
       min-width: 0;
     }
     .guide-card-text h4 {
-      font-size: 0.9rem;
+      font-size: 0.92rem;
       font-weight: 600;
       color: var(--white);
-      margin-bottom: 1px;
+      margin-bottom: 2px;
     }
     .guide-card-text p {
-      font-size: 0.75rem;
+      font-size: 0.78rem;
       color: var(--fog);
       white-space: nowrap;
       overflow: hidden;
@@ -302,7 +310,6 @@
     .guide-layout-wiki {
       display: flex;
       gap: var(--space-xl);
-      max-width: 1100px;
       position: relative;
     }
     .guide-toc {
@@ -384,6 +391,9 @@
 
     /* 響應式 */
     @media (max-width: 768px) {
+      .guide-index-page .content-section {
+        max-width: 100%;
+      }
       .guide-layout-wiki {
         flex-direction: column;
       }
@@ -415,7 +425,7 @@
         min-height: 44px;
       }
       .guide-search {
-        font-size: 16px; /* 防止 iOS 縮放 */
+        font-size: 16px;
         padding: 14px 18px 14px 44px;
       }
       .guide-card {
@@ -437,9 +447,15 @@
         min-height: 48px;
       }
     }
+
+    @media (max-width: 480px) {
+      .guide-cards {
+        grid-template-columns: 1fr;
+      }
+    }
   </style>
 </head>
-<body>
+<body class="guide-index-page">
   <a href="#mainContent" class="skip-link">跳到主要內容</a>
 
   <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
