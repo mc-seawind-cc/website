@@ -175,7 +175,7 @@
 - [x] 已做好：`IntersectionObserver` 做滾動觸發動畫
 - [x] 已做好：照片頁無限捲動分批載入
 - [ ] 建議：首頁公告欄資料可考慮 inline 到 HTML 中（減少一次 API 請求）
-- [ ] 建議：使用 `content-visibility: auto` 對長頁面做渲染優化
+- [ ] 建議：使用 `content-visibility: auto` 對長頁面做渲染優化（已對 bulletin-board / photo-carousel / join-steps / feature-grid / guide-layout / footer 實作）
 
 ### CSS 優化
 - [x] 清理 `.feature-grid` 重複宣告（4 個 → 1 個 + 2 個 modifier）
@@ -572,6 +572,9 @@ Discord 上的公告長這樣：
 | 2026-04-16 | 海風網站助手 | 🎨 如何加入海風第 4 步文案修改 + 卡片高度統一（align-items: stretch） |
 | 2026-04-16 | 海風網站助手 | 🗑️ 移除 Cactus Comments 留言板功能（CSS/JS/HTML 全部清除） |
 | 2026-04-16 | 海風網站助手 | 🗑️ 刪除風景照 1323629150736486430.webp（photos.json + 檔案） |
+| 2026-04-16 | 海風網站助手 | ⚡ CSS 效能優化：bulletin-board / photo-carousel / join-steps 加 content-visibility:auto（減少首屏渲染開銷） |
+| 2026-04-16 | 海風網站助手 | 🎨 區塊標題 shimmer 動畫恢復：section-line-shimmer keyframe 已存在但未掛載，現加回 .section-header h2::after（4s 無限循環） |
+| 2026-04-16 | 海風網站助手 | 🖨️ 列印樣式大幅增強：公告內容展開、標籤黑白化、側邊欄隱藏、孤行/孤行控制、圖片縮放、更多隱藏元素 |
 
 ---
 
