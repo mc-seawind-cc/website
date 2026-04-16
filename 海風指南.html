@@ -19,22 +19,23 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;800&family=Noto+Serif+TC:wght@700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=260416h">
+  <link rel="stylesheet" href="style.css?v=260416n">
   <link rel="stylesheet" href="music-player.css">
   <style>
-    /* ═══ 指南首頁專用 ═══ */
+    /* ═══ 指南頁面 v2 ═══ */
 
-    /* 寬版佈局覆蓋 */
     .guide-index-page .content-section {
-      max-width: 1300px;
+      max-width: 1200px;
     }
     .guide-index-page .content-section::before {
       display: none;
     }
 
+    /* Hero */
     .guide-hero {
       text-align: center;
-      padding: var(--space-xl) var(--space-lg) var(--space-lg);
+      padding: var(--space-2xl) var(--space-lg) var(--space-xl);
+      position: relative;
     }
     .guide-hero h1 {
       font-size: clamp(2rem, 5vw, 2.8rem);
@@ -49,8 +50,8 @@
 
     /* 搜尋欄 */
     .guide-search-wrap {
-      max-width: 600px;
-      margin: var(--space-lg) auto var(--space-2xl);
+      max-width: 560px;
+      margin: var(--space-lg) auto var(--space-xl);
       position: relative;
     }
     .guide-search {
@@ -83,204 +84,193 @@
       font-size: 1.1rem;
       pointer-events: none;
     }
-    .guide-search-hint {
-      text-align: center;
-      font-size: 0.78rem;
-      color: var(--text-muted);
-      margin-top: var(--space-sm);
+
+    /* ═══ 佈局：左側欄 + 右主區 ═══ */
+    .guide-layout-v2 {
+      display: grid;
+      grid-template-columns: 220px 1fr;
+      gap: var(--space-xl);
     }
 
-    /* 快捷分類標籤 */
-    .guide-quick-tags {
-      display: flex;
-      gap: 8px;
-      flex-wrap: wrap;
-      justify-content: center;
-      margin-bottom: var(--space-2xl);
+    /* 側邊欄 */
+    .guide-sidebar-v2 {
+      position: sticky;
+      top: 80px;
+      align-self: start;
+      max-height: calc(100vh - 100px);
+      overflow-y: auto;
+      scrollbar-width: thin;
+      scrollbar-color: rgba(157,175,255,0.15) transparent;
     }
-    .guide-qt {
-      padding: 8px 16px;
-      border-radius: 99px;
-      background: var(--ocean);
-      border: 1px solid var(--mist);
-      color: var(--fog);
-      font-size: 0.85rem;
-      cursor: pointer;
-      transition: all var(--duration) var(--ease);
-      font-family: var(--font-body);
-      white-space: nowrap;
-    }
-    .guide-qt:hover, .guide-qt.active {
-      background: rgba(157,175,255,0.1);
-      border-color: rgba(157,175,255,0.3);
-      color: var(--sky);
-    }
-    [data-theme="light"] .guide-qt {
-      background: rgba(0,0,0,0.03);
-      border-color: rgba(0,0,0,0.06);
-    }
-    [data-theme="light"] .guide-qt:hover,
-    [data-theme="light"] .guide-qt.active {
-      background: rgba(74,108,247,0.08);
-      border-color: rgba(74,108,247,0.2);
-      color: #4a6cf7;
-    }
+    .guide-sidebar-v2::-webkit-scrollbar { width: 4px; }
+    .guide-sidebar-v2::-webkit-scrollbar-thumb { background: rgba(157,175,255,0.15); border-radius: 2px; }
 
-    /* 指南分類區塊 */
-    .guide-section {
-      margin-bottom: var(--space-2xl);
-    }
-    .guide-section-header {
-      display: flex;
-      align-items: center;
-      gap: 12px;
+    .guide-sb-group {
       margin-bottom: var(--space-lg);
-      padding-bottom: var(--space-sm);
-      border-bottom: 1px solid var(--mist);
     }
-    .guide-section-icon {
-      font-size: 1.4rem;
-      width: 40px;
-      height: 40px;
+    .guide-sb-title {
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--text-muted);
+      padding-bottom: var(--space-xs);
+      margin-bottom: 6px;
+    }
+    .guide-sb-link {
       display: flex;
       align-items: center;
-      justify-content: center;
-      background: rgba(157,175,255,0.08);
-      border-radius: 10px;
+      gap: 8px;
+      padding: 7px 10px;
+      font-size: 0.82rem;
+      color: var(--fog);
+      text-decoration: none;
+      border-radius: 8px;
+      transition: all var(--duration) var(--ease);
+    }
+    .guide-sb-link:hover {
+      color: var(--sky);
+      background: rgba(157,175,255,0.06);
+    }
+    .guide-sb-link.active {
+      color: var(--sky);
+      background: rgba(157,175,255,0.1);
+      font-weight: 600;
+    }
+    .guide-sb-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
       flex-shrink: 0;
     }
-    .guide-section-header h2 {
-      font-size: 1.2rem;
+
+    [data-theme="light"] .guide-sb-link:hover { background: rgba(74,108,247,0.06); }
+    [data-theme="light"] .guide-sb-link.active { background: rgba(74,108,247,0.1); }
+
+    /* 主內容 */
+    .guide-main-v2 {
+      min-width: 0;
+    }
+
+    /* ═══ 分類區塊 ═══ */
+    .guide-cat {
+      margin-bottom: var(--space-2xl);
+    }
+    .guide-cat-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: var(--space-lg);
+      padding-bottom: var(--space-sm);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .guide-cat-bar {
+      width: 4px;
+      height: 24px;
+      border-radius: 2px;
+      flex-shrink: 0;
+    }
+    .guide-cat-header h2 {
+      font-size: 1.15rem;
       font-weight: 700;
       color: var(--white);
     }
-    .guide-section-header .section-count {
+    .guide-cat-count {
       margin-left: auto;
-      font-size: 0.75rem;
+      font-size: 0.72rem;
       color: var(--text-muted);
-      background: rgba(157,175,255,0.06);
-      padding: 2px 10px;
-      border-radius: 99px;
     }
-    [data-theme="light"] .guide-section-header {
-      border-bottom-color: rgba(0,0,0,0.06);
-    }
+    [data-theme="light"] .guide-cat-header { border-bottom-color: rgba(0,0,0,0.06); }
 
-    /* 指南卡片網格 */
-    .guide-cards {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-      gap: 12px;
-    }
-    .guide-card {
+    /* 條目列表 */
+    .guide-entries {
       display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .guide-entry {
+      display: grid;
+      grid-template-columns: 44px 1fr auto;
       align-items: center;
       gap: 12px;
-      padding: 14px 16px;
-      background: var(--ocean);
-      border: 1px solid var(--mist);
+      padding: 12px 14px;
+      background: rgba(255,255,255,0.02);
+      border: 1px solid rgba(255,255,255,0.05);
       border-radius: var(--radius-md);
       text-decoration: none;
       color: var(--cloud);
       transition: all var(--duration) var(--ease);
+      border-left: 3px solid transparent;
     }
-    .guide-card:hover {
-      border-color: rgba(157,175,255,0.25);
-      background: rgba(157,175,255,0.04);
-      transform: translateY(-2px);
-      box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+    .guide-entry:hover {
+      background: rgba(255,255,255,0.04);
+      border-color: rgba(157,175,255,0.15);
+      border-left-color: var(--entry-accent, var(--sky));
+      transform: translateX(4px);
     }
-    .guide-card-emoji {
-      font-size: 1.3rem;
-      flex-shrink: 0;
-      width: 40px;
-      height: 40px;
+    .guide-entry-icon {
+      width: 44px;
+      height: 44px;
       display: flex;
       align-items: center;
       justify-content: center;
       background: rgba(157,175,255,0.06);
       border-radius: 10px;
+      font-size: 1.3rem;
+      flex-shrink: 0;
     }
-    .guide-card-text {
-      flex: 1;
+    .guide-entry-body {
       min-width: 0;
     }
-    .guide-card-text h4 {
+    .guide-entry-title {
       font-size: 0.92rem;
       font-weight: 600;
       color: var(--white);
-      margin-bottom: 2px;
+      margin-bottom: 1px;
     }
-    .guide-card-text p {
+    .guide-entry-desc {
       font-size: 0.78rem;
       color: var(--fog);
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
     }
-    .guide-card-arrow {
+    .guide-entry-arrow {
       color: var(--fog);
-      font-size: 0.8rem;
-      flex-shrink: 0;
+      font-size: 0.85rem;
       opacity: 0;
-      transition: opacity var(--duration) var(--ease), transform var(--duration) var(--ease);
+      transform: translateX(-4px);
+      transition: all var(--duration) var(--ease);
     }
-    .guide-card:hover .guide-card-arrow {
+    .guide-entry:hover .guide-entry-arrow {
       opacity: 1;
-      transform: translateX(2px);
+      transform: translateX(0);
     }
 
-    .guide-card.featured {
-      grid-column: span 1;
-      background: linear-gradient(135deg, rgba(157,175,255,0.06), rgba(168,230,207,0.03));
-      border-color: rgba(157,175,255,0.15);
+    .guide-entry.featured {
+      background: linear-gradient(135deg, rgba(157,175,255,0.05), rgba(168,230,207,0.02));
+      border-color: rgba(157,175,255,0.1);
     }
-    .guide-card.featured .guide-card-text h4 {
+    .guide-entry.featured .guide-entry-title {
       color: var(--sky);
     }
 
-    [data-theme="light"] .guide-card {
+    [data-theme="light"] .guide-entry {
       background: #fff;
-      border-color: rgba(0,0,0,0.06);
+      border-color: rgba(0,0,0,0.05);
     }
-    [data-theme="light"] .guide-card:hover {
-      border-color: rgba(157,175,255,0.3);
-      background: rgba(157,175,255,0.04);
-      box-shadow: 0 4px 16px rgba(0,0,0,0.04);
+    [data-theme="light"] .guide-entry:hover {
+      background: rgba(157,175,255,0.03);
+      border-color: rgba(157,175,255,0.2);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
     }
-    [data-theme="light"] .guide-card.featured {
-      background: linear-gradient(135deg, rgba(157,175,255,0.06), rgba(168,230,207,0.04));
-    }
-
-    /* 搜尋結果 */
-    .guide-search-results {
-      display: none;
-      margin-bottom: var(--space-2xl);
-    }
-    .guide-search-results.active {
-      display: block;
-    }
-    .guide-search-results h3 {
-      font-size: 0.9rem;
-      color: var(--fog);
-      margin-bottom: var(--space-md);
-    }
-    .guide-search-results h3 span {
-      color: var(--sky);
-      font-weight: 700;
-    }
-    .guide-no-result {
-      text-align: center;
-      padding: var(--space-2xl);
-      color: var(--fog);
-    }
-    .guide-no-result .empty-icon {
-      font-size: 2.5rem;
-      margin-bottom: var(--space-sm);
-      opacity: 0.4;
+    [data-theme="light"] .guide-entry-title { color: var(--cloud); }
+    [data-theme="light"] .guide-entry-desc { color: var(--fog); }
+    [data-theme="light"] .guide-entry.featured {
+      background: linear-gradient(135deg, rgba(157,175,255,0.05), rgba(168,230,207,0.03));
     }
 
-    /* 入門卡片（醒目） */
+    /* CTA */
     .guide-cta {
       text-align: center;
       padding: var(--space-2xl) var(--space-lg);
@@ -306,152 +296,92 @@
       flex-wrap: wrap;
     }
 
-    /* ═══ Wiki 側邊欄目錄 ═══ */
-    .guide-layout-wiki {
-      display: flex;
-      gap: var(--space-xl);
-      position: relative;
+    /* 搜尋結果 */
+    .guide-search-results {
+      display: none;
+      margin-bottom: var(--space-2xl);
     }
-    .guide-toc {
-      width: 220px;
-      flex-shrink: 0;
-      position: sticky;
-      top: 80px;
-      max-height: calc(100vh - 100px);
-      overflow-y: auto;
-      padding: var(--space-md);
-      background: rgba(255,255,255,0.02);
-      border: 1px solid rgba(255,255,255,0.06);
-      border-radius: var(--radius-md);
-    }
-    .guide-toc-header {
-      font-size: 0.75rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
+    .guide-search-results.active { display: block; }
+    .guide-search-results h3 {
+      font-size: 0.9rem;
       color: var(--fog);
-      margin-bottom: var(--space-sm);
-      padding-bottom: var(--space-xs);
-      border-bottom: 1px solid rgba(255,255,255,0.06);
+      margin-bottom: var(--space-md);
     }
-    .guide-toc-nav {
+    .guide-search-results h3 span { color: var(--sky); font-weight: 700; }
+    .guide-no-result {
+      text-align: center;
+      padding: var(--space-2xl);
+      color: var(--fog);
+    }
+
+    /* 快捷標籤 */
+    .guide-quick-tags {
       display: flex;
-      flex-direction: column;
-      gap: 2px;
+      gap: 8px;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-bottom: var(--space-xl);
     }
-    .guide-toc-link {
-      display: block;
-      padding: 6px 10px;
+    .guide-qt {
+      padding: 7px 14px;
+      border-radius: 99px;
+      background: var(--ocean);
+      border: 1px solid var(--mist);
+      color: var(--fog);
       font-size: 0.82rem;
-      color: var(--fog);
-      text-decoration: none;
-      border-radius: 6px;
+      cursor: pointer;
       transition: all var(--duration) var(--ease);
+      font-family: var(--font-body);
       white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
     }
-    .guide-toc-link:hover {
-      color: var(--sky);
-      background: rgba(157,175,255,0.06);
-    }
-    .guide-toc-link.active {
-      color: var(--sky);
+    .guide-qt:hover, .guide-qt.active {
       background: rgba(157,175,255,0.1);
-      font-weight: 600;
+      border-color: rgba(157,175,255,0.3);
+      color: var(--sky);
     }
-    .guide-toc-footer {
-      margin-top: var(--space-sm);
-      padding-top: var(--space-xs);
-      border-top: 1px solid rgba(255,255,255,0.06);
-      font-size: 0.72rem;
-      color: var(--text-muted);
-    }
-    .guide-main-content {
-      flex: 1;
-      min-width: 0;
-    }
-    [data-theme="light"] .guide-toc {
-      background: rgba(255,255,255,0.6);
+    [data-theme="light"] .guide-qt {
+      background: rgba(0,0,0,0.03);
       border-color: rgba(0,0,0,0.06);
-      box-shadow: 0 1px 3px rgba(0,0,0,0.04);
     }
-    [data-theme="light"] .guide-toc-header {
-      border-bottom-color: rgba(0,0,0,0.06);
-    }
-    [data-theme="light"] .guide-toc-link:hover {
-      background: rgba(74,108,247,0.06);
-    }
-    [data-theme="light"] .guide-toc-link.active {
-      background: rgba(74,108,247,0.1);
-    }
-    [data-theme="light"] .guide-toc-footer {
-      border-top-color: rgba(0,0,0,0.06);
+    [data-theme="light"] .guide-qt:hover, [data-theme="light"] .guide-qt.active {
+      background: rgba(74,108,247,0.08);
+      border-color: rgba(74,108,247,0.2);
+      color: #4a6cf7;
     }
 
     /* 響應式 */
-    @media (max-width: 768px) {
-      .guide-index-page .content-section {
-        max-width: 100%;
+    @media (max-width: 900px) {
+      .guide-index-page .content-section { max-width: 100%; }
+      .guide-layout-v2 {
+        grid-template-columns: 1fr;
       }
-      .guide-layout-wiki {
-        flex-direction: column;
-      }
-      .guide-toc {
+      .guide-sidebar-v2 {
         position: static;
-        width: 100%;
         max-height: none;
-      }
-      .guide-toc-nav {
-        flex-direction: row;
+        display: flex;
         flex-wrap: wrap;
-        gap: 4px;
+        gap: 6px;
+        margin-bottom: var(--space-lg);
       }
-      .guide-toc-link {
-        padding: 6px 12px;
+      .guide-sb-group { margin-bottom: 0; }
+      .guide-sb-title { display: none; }
+      .guide-sb-link {
+        padding: 8px 14px;
         font-size: 0.78rem;
         border: 1px solid rgba(255,255,255,0.06);
+        border-radius: 99px;
       }
-      .guide-cards {
-        grid-template-columns: 1fr;
-      }
-      .guide-quick-tags {
-        padding: 0 var(--space-md);
-        gap: 6px;
-      }
-      .guide-qt {
-        padding: 10px 14px;
-        font-size: 0.82rem;
-        min-height: 44px;
-      }
-      .guide-search {
-        font-size: 16px;
-        padding: 14px 18px 14px 44px;
-      }
-      .guide-card {
-        padding: 14px 12px;
-        min-height: 52px;
-      }
-      .guide-card-arrow {
-        opacity: 0.3;
-      }
-      .guide-cta {
-        padding: var(--space-xl) var(--space-md);
-      }
-      .guide-cta-btns {
-        flex-direction: column;
-      }
-      .guide-cta-btns .btn {
-        width: 100%;
-        justify-content: center;
-        min-height: 48px;
-      }
+      [data-theme="light"] .guide-sb-link { border-color: rgba(0,0,0,0.06); }
     }
-
     @media (max-width: 480px) {
-      .guide-cards {
-        grid-template-columns: 1fr;
-      }
+      .guide-entry { grid-template-columns: 36px 1fr auto; padding: 10px 12px; }
+      .guide-entry-icon { width: 36px; height: 36px; font-size: 1.1rem; }
+      .guide-entry-title { font-size: 0.85rem; }
+      .guide-entry-desc { font-size: 0.72rem; }
+      .guide-quick-tags { padding: 0 var(--space-md); }
+      .guide-cta { padding: var(--space-xl) var(--space-md); }
+      .guide-cta-btns { flex-direction: column; }
+      .guide-cta-btns .btn { width: 100%; justify-content: center; min-height: 48px; }
     }
   </style>
 </head>
@@ -516,381 +446,533 @@
       <p>所有你需要知道的都在這裡。搜尋或瀏覽分類，快速找到答案。</p>
     </div>
 
-    <div id="mainContent" class="content-section guide-layout-wiki">
+    <div id="mainContent" class="content-section guide-layout-v2">
 
-      <!-- 側邊欄目錄 -->
-      <aside class="guide-toc" id="guideToc" aria-label="指南目錄">
-        <div class="guide-toc-header">目錄</div>
-        <nav class="guide-toc-nav" id="guideTocNav"></nav>
-        <div class="guide-toc-footer" id="guideTocFooter"></div>
+      <!-- 側邊欄 -->
+      <aside class="guide-sidebar-v2" id="guideSidebar" aria-label="指南目錄">
+        <div class="guide-sb-group">
+          <div class="guide-sb-title">快速開始</div>
+          <a href="#sec-start" class="guide-sb-link" data-section="start">
+            <span class="guide-sb-dot" style="background:#9dafff"></span>伺服器設定
+          </a>
+          <a href="#sec-protect" class="guide-sb-link" data-section="protect">
+            <span class="guide-sb-dot" style="background:#a8e6cf"></span>領地與保護
+          </a>
+          <a href="#sec-move" class="guide-sb-link" data-section="move">
+            <span class="guide-sb-dot" style="background:#deac80"></span>傳送系統
+          </a>
+        </div>
+        <div class="guide-sb-group">
+          <div class="guide-sb-title">遊戲玩法</div>
+          <a href="#sec-bag" class="guide-sb-link" data-section="bag">
+            <span class="guide-sb-dot" style="background:#ab72f9"></span>背包與倉庫
+          </a>
+          <a href="#sec-quest" class="guide-sb-link" data-section="quest">
+            <span class="guide-sb-dot" style="background:#58c2b0"></span>任務與簽到
+          </a>
+          <a href="#sec-mech" class="guide-sb-link" data-section="mech">
+            <span class="guide-sb-dot" style="background:#578aff"></span>遊戲機制
+          </a>
+          <a href="#sec-money" class="guide-sb-link" data-section="money">
+            <span class="guide-sb-dot" style="background:#ffaa32"></span>賺錢與交易
+          </a>
+        </div>
+        <div class="guide-sb-group">
+          <div class="guide-sb-title">社群</div>
+          <a href="#sec-social" class="guide-sb-link" data-section="social">
+            <span class="guide-sb-dot" style="background:#85b1e0"></span>社群互動
+          </a>
+          <a href="#sec-lobby" class="guide-sb-link" data-section="lobby">
+            <span class="guide-sb-dot" style="background:#e0b5d4"></span>大廳區域
+          </a>
+          <a href="#sec-vip" class="guide-sb-link" data-section="vip">
+            <span class="guide-sb-dot" style="background:#ffb6c1"></span>會員專屬
+          </a>
+        </div>
       </aside>
 
-      <!-- 主要內容 -->
-      <div class="guide-main-content">
+      <!-- 主內容 -->
+      <div class="guide-main-v2">
 
-      <!-- 搜尋欄 -->
-      <div class="guide-search-wrap fade-in">
-        <span class="guide-search-icon">🔍</span>
-        <input type="text" class="guide-search" id="guideSearch" placeholder="搜尋指南... 例如：領地、任務、礦物" autocomplete="off" aria-label="搜尋指南">
-        <div class="guide-search-hint">輸入關鍵字即時搜尋</div>
-      </div>
-
-      <!-- 快捷分類 -->
-      <div class="guide-quick-tags fade-in" id="quickTags">
-        <button class="guide-qt active" data-cat="all">全部</button>
-        <button class="guide-qt" data-cat="start">🚀 新手</button>
-        <button class="guide-qt" data-cat="protect">🛡️ 領地</button>
-        <button class="guide-qt" data-cat="move">🚀 傳送</button>
-        <button class="guide-qt" data-cat="bag">🎒 背包</button>
-        <button class="guide-qt" data-cat="quest">📋 任務</button>
-        <button class="guide-qt" data-cat="mech">🎮 機制</button>
-        <button class="guide-qt" data-cat="money">💰 賺錢</button>
-        <button class="guide-qt" data-cat="social">💬 社群</button>
-        <button class="guide-qt" data-cat="vip">⭐ 會員</button>
-      </div>
-
-      <!-- 搜尋結果 -->
-      <div class="guide-search-results" id="searchResults">
-        <h3>搜尋結果：<span id="searchCount">0</span> 筆</h3>
-        <div class="guide-cards" id="searchCards"></div>
-        <div class="guide-no-result" id="noResult" style="display:none;">
-          <div class="empty-icon">🔍</div>
-          <p>找不到相關指南，換個關鍵字試試？</p>
+        <!-- 搜尋 -->
+        <div class="guide-search-wrap fade-in">
+          <span class="guide-search-icon">🔍</span>
+          <input type="text" class="guide-search" id="guideSearch" placeholder="搜尋指南... 例如：領地、任務、礦物" autocomplete="off" aria-label="搜尋指南">
         </div>
-      </div>
 
-      <!-- 常規分類瀏覽 -->
-      <div id="guideBrowse">
+        <!-- 快捷標籤 -->
+        <div class="guide-quick-tags fade-in" id="quickTags">
+          <button class="guide-qt active" data-cat="all">全部</button>
+          <button class="guide-qt" data-cat="start">🚀 新手</button>
+          <button class="guide-qt" data-cat="protect">🛡️ 領地</button>
+          <button class="guide-qt" data-cat="move">🚀 傳送</button>
+          <button class="guide-qt" data-cat="bag">🎒 背包</button>
+          <button class="guide-qt" data-cat="quest">📋 任務</button>
+          <button class="guide-qt" data-cat="mech">🎮 機制</button>
+          <button class="guide-qt" data-cat="money">💰 賺錢</button>
+          <button class="guide-qt" data-cat="social">💬 社群</button>
+          <button class="guide-qt" data-cat="vip">⭐ 會員</button>
+        </div>
 
-        <!-- 入門 CTA -->
-        <div class="guide-cta reveal-up">
-          <h2>🌊 第一次來海風？</h2>
-          <p>新手必讀，3 分鐘搞懂怎麼玩。</p>
-          <div class="guide-cta-btns">
-            <a href="guide/入門.html" class="btn btn-primary">🚀 開始新手指引</a>
-            <a href="guide/綁定.html" class="btn btn-outline">綁定帳號教學</a>
+        <!-- 搜尋結果 -->
+        <div class="guide-search-results" id="searchResults">
+          <h3>搜尋結果：<span id="searchCount">0</span> 筆</h3>
+          <div class="guide-entries" id="searchEntries"></div>
+          <div class="guide-no-result" id="noResult" style="display:none;">
+            <p>找不到相關指南，換個關鍵字試試？</p>
           </div>
         </div>
 
-        <!-- 分類區塊 -->
-        <div class="guide-section reveal-up" data-section="start">
-          <div class="guide-section-header">
-            <div class="guide-section-icon">⚙️</div>
-            <h2>伺服器設定</h2>
-            <span class="section-count">3 篇</span>
+        <!-- 常規瀏覽 -->
+        <div id="guideBrowse">
+
+          <!-- 入門 CTA -->
+          <div class="guide-cta reveal-up">
+            <h2>🌊 第一次來海風？</h2>
+            <p>新手必讀，3 分鐘搞懂怎麼玩。</p>
+            <div class="guide-cta-btns">
+              <a href="guide/入門.html" class="btn btn-primary">🚀 開始新手指引</a>
+              <a href="guide/綁定.html" class="btn btn-outline">綁定帳號教學</a>
+            </div>
           </div>
-          <div class="guide-cards">
-            <a href="guide/選單.html" class="guide-card featured">
-              <div class="guide-card-emoji">📱</div>
-              <div class="guide-card-text"><h4>伺服器選單</h4><p>所有功能的入口</p></div>
-              <span class="guide-card-arrow">→</span>
-            </a>
-            <a href="guide/綁定.html" class="guide-card">
-              <div class="guide-card-emoji">🔗</div>
-              <div class="guide-card-text"><h4>綁定帳號</h4><p>Discord 與遊戲綁定</p></div>
-              <span class="guide-card-arrow">→</span>
-            </a>
-            <a href="guide/地圖.html" class="guide-card">
-              <div class="guide-card-emoji">🗺️</div>
-              <div class="guide-card-text"><h4>地圖</h4><p>線上即時地圖系統</p></div>
-              <span class="guide-card-arrow">→</span>
-            </a>
+
+          <!-- ═══ 伺服器設定 ═══ -->
+          <div class="guide-cat reveal-up" data-section="start" id="sec-start">
+            <div class="guide-cat-header">
+              <div class="guide-cat-bar" style="background:linear-gradient(180deg,#9dafff,#6b8aff)"></div>
+              <h2>伺服器設定</h2>
+              <span class="guide-cat-count">3 篇</span>
+            </div>
+            <div class="guide-entries">
+              <a href="guide/選單.html" class="guide-entry featured" style="--entry-accent:#9dafff">
+                <div class="guide-entry-icon">📱</div>
+                <div class="guide-entry-body">
+                  <div class="guide-entry-title">伺服器選單</div>
+                  <div class="guide-entry-desc">所有功能的入口</div>
+                </div>
+                <span class="guide-entry-arrow">→</span>
+              </a>
+              <a href="guide/綁定.html" class="guide-entry" style="--entry-accent:#9dafff">
+                <div class="guide-entry-icon">🔗</div>
+                <div class="guide-entry-body">
+                  <div class="guide-entry-title">綁定帳號</div>
+                  <div class="guide-entry-desc">Discord 與遊戲綁定</div>
+                </div>
+                <span class="guide-entry-arrow">→</span>
+              </a>
+              <a href="guide/地圖.html" class="guide-entry" style="--entry-accent:#9dafff">
+                <div class="guide-entry-icon">🗺️</div>
+                <div class="guide-entry-body">
+                  <div class="guide-entry-title">地圖</div>
+                  <div class="guide-entry-desc">線上即時地圖系統</div>
+                </div>
+                <span class="guide-entry-arrow">→</span>
+              </a>
+            </div>
           </div>
-        </div>
 
-
-        <div class="guide-section reveal-up" data-section="protect">
-          <div class="guide-section-header">
-            <div class="guide-section-icon">🛡️</div>
-            <h2>領地與保護</h2>
-            <span class="section-count">3 篇</span>
+          <!-- ═══ 領地與保護 ═══ -->
+          <div class="guide-cat reveal-up" data-section="protect" id="sec-protect">
+            <div class="guide-cat-header">
+              <div class="guide-cat-bar" style="background:linear-gradient(180deg,#a8e6cf,#58c2b0)"></div>
+              <h2>領地與保護</h2>
+              <span class="guide-cat-count">3 篇</span>
+            </div>
+            <div class="guide-entries">
+              <a href="guide/領地.html" class="guide-entry featured" style="--entry-accent:#a8e6cf">
+                <div class="guide-entry-icon">🏠</div>
+                <div class="guide-entry-body">
+                  <div class="guide-entry-title">領地系統</div>
+                  <div class="guide-entry-desc">建立、設定與權限管理</div>
+                </div>
+                <span class="guide-entry-arrow">→</span>
+              </a>
+              <a href="guide/日誌.html" class="guide-entry" style="--entry-accent:#a8e6cf">
+                <div class="guide-entry-icon">📋</div>
+                <div class="guide-entry-body">
+                  <div class="guide-entry-title">互動記錄</div>
+                  <div class="guide-entry-desc">查誰動了你的東西</div>
+                </div>
+                <span class="guide-entry-arrow">→</span>
+              </a>
+              <a href="guide/地圖標記.html" class="guide-entry" style="--entry-accent:#a8e6cf">
+                <div class="guide-entry-icon">🗺️</div>
+                <div class="guide-entry-body">
+                  <div class="guide-entry-title">地圖署名</div>
+                  <div class="guide-entry-desc">保護你的地圖畫</div>
+                </div>
+                <span class="guide-entry-arrow">→</span>
+              </a>
+            </div>
           </div>
-          <div class="guide-cards">
-            <a href="guide/領地.html" class="guide-card featured">
-              <div class="guide-card-emoji">🏠</div>
-              <div class="guide-card-text"><h4>領地系統</h4><p>建立、設定與權限管理</p></div>
-              <span class="guide-card-arrow">→</span>
-            </a>
-            <a href="guide/日誌.html" class="guide-card">
-              <div class="guide-card-emoji">📋</div>
-              <div class="guide-card-text"><h4>互動記錄</h4><p>查誰動了你的東西</p></div>
-              <span class="guide-card-arrow">→</span>
-            </a>
-            <a href="guide/地圖標記.html" class="guide-card">
-              <div class="guide-card-emoji">🗺️</div>
-              <div class="guide-card-text"><h4>地圖署名</h4><p>保護你的地圖畫</p></div>
-              <span class="guide-card-arrow">→</span>
-            </a>
+
+          <!-- ═══ 傳送系統 ═══ -->
+          <div class="guide-cat reveal-up" data-section="move" id="sec-move">
+            <div class="guide-cat-header">
+              <div class="guide-cat-bar" style="background:linear-gradient(180deg,#deac80,#c49460)"></div>
+              <h2>傳送系統</h2>
+              <span class="guide-cat-count">3 篇</span>
+            </div>
+            <div class="guide-entries">
+              <a href="guide/公共傳送.html" class="guide-entry" style="--entry-accent:#deac80">
+                <div class="guide-entry-icon">🌐</div>
+                <div class="guide-entry-body">
+                  <div class="guide-entry-title">公開傳送點</div>
+                  <div class="guide-entry-desc">分享你的建築給大家</div>
+                </div>
+                <span class="guide-entry-arrow">→</span>
+              </a>
+              <a href="guide/私人傳送.html" class="guide-entry" style="--entry-accent:#deac80">
+                <div class="guide-entry-icon">📍</div>
+                <div class="guide-entry-body">
+                  <div class="guide-entry-title">個人傳送點</div>
+                  <div class="guide-entry-desc">設定 home 點快速回家</div>
+                </div>
+                <span class="guide-entry-arrow">→</span>
+              </a>
+              <a href="guide/電梯.html" class="guide-entry" style="--entry-accent:#deac80">
+                <div class="guide-entry-icon">🛗</div>
+                <div class="guide-entry-body">
+                  <div class="guide-entry-title">電梯</div>
+                  <div class="guide-entry-desc">垂直快速移動</div>
+                </div>
+                <span class="guide-entry-arrow">→</span>
+              </a>
+            </div>
           </div>
-        </div>
 
-
-        <div class="guide-section reveal-up" data-section="move">
-          <div class="guide-section-header">
-            <div class="guide-section-icon">🚀</div>
-            <h2>傳送系統</h2>
-            <span class="section-count">3 篇</span>
+          <!-- ═══ 背包與倉庫 ═══ -->
+          <div class="guide-cat reveal-up" data-section="bag" id="sec-bag">
+            <div class="guide-cat-header">
+              <div class="guide-cat-bar" style="background:linear-gradient(180deg,#ab72f9,#8844dd)"></div>
+              <h2>背包與倉庫</h2>
+              <span class="guide-cat-count">3 篇</span>
+            </div>
+            <div class="guide-entries">
+              <a href="guide/倉庫.html" class="guide-entry" style="--entry-accent:#ab72f9">
+                <div class="guide-entry-icon">🗄️</div>
+                <div class="guide-entry-body">
+                  <div class="guide-entry-title">倉庫系統</div>
+                  <div class="guide-entry-desc">大容量雲端儲存</div>
+                </div>
+                <span class="guide-entry-arrow">→</span>
+              </a>
+              <a href="guide/展示櫃.html" class="guide-entry" style="--entry-accent:#ab72f9">
+                <div class="guide-entry-icon">🪟</div>
+                <div class="guide-entry-body">
+                  <div class="guide-entry-title">玻璃展示櫃</div>
+                  <div class="guide-entry-desc">展示你的寶物</div>
+                </div>
+                <span class="guide-entry-arrow">→</span>
+              </a>
+              <a href="guide/盔甲架.html" class="guide-entry" style="--entry-accent:#ab72f9">
+                <div class="guide-entry-icon">🧍</div>
+                <div class="guide-entry-body">
+                  <div class="guide-entry-title">盔甲座編輯器</div>
+                  <div class="guide-entry-desc">自訂盔甲座姿勢</div>
+                </div>
+                <span class="guide-entry-arrow">→</span>
+              </a>
+            </div>
           </div>
-          <div class="guide-cards">
-            <a href="guide/公共傳送.html" class="guide-card">
-              <div class="guide-card-emoji">🌐</div>
-              <div class="guide-card-text"><h4>公開傳送點</h4><p>分享你的建築給大家</p></div>
-              <span class="guide-card-arrow">→</span>
-            </a>
-            <a href="guide/私人傳送.html" class="guide-card">
-              <div class="guide-card-emoji">📍</div>
-              <div class="guide-card-text"><h4>個人傳送點</h4><p>設定 home 點快速回家</p></div>
-              <span class="guide-card-arrow">→</span>
-            </a>
-            <a href="guide/電梯.html" class="guide-card">
-              <div class="guide-card-emoji">🛗</div>
-              <div class="guide-card-text"><h4>電梯</h4><p>垂直快速移動</p></div>
-              <span class="guide-card-arrow">→</span>
-            </a>
+
+          <!-- ═══ 任務與簽到 ═══ -->
+          <div class="guide-cat reveal-up" data-section="quest" id="sec-quest">
+            <div class="guide-cat-header">
+              <div class="guide-cat-bar" style="background:linear-gradient(180deg,#58c2b0,#3ea895)"></div>
+              <h2>任務與簽到</h2>
+              <span class="guide-cat-count">3 篇</span>
+            </div>
+            <div class="guide-entries">
+              <a href="guide/任務.html" class="guide-entry featured" style="--entry-accent:#58c2b0">
+                <div class="guide-entry-icon">📜</div>
+                <div class="guide-entry-body">
+                  <div class="guide-entry-title">任務系統</div>
+                  <div class="guide-entry-desc">每日任務與冒險任務</div>
+                </div>
+                <span class="guide-entry-arrow">→</span>
+              </a>
+              <a href="guide/簽到.html" class="guide-entry" style="--entry-accent:#58c2b0">
+                <div class="guide-entry-icon">📅</div>
+                <div class="guide-entry-body">
+                  <div class="guide-entry-title">簽到系統</div>
+                  <div class="guide-entry-desc">每日簽到領獎勵</div>
+                </div>
+                <span class="guide-entry-arrow">→</span>
+              </a>
+              <a href="guide/稱號.html" class="guide-entry" style="--entry-accent:#58c2b0">
+                <div class="guide-entry-icon">🏅</div>
+                <div class="guide-entry-body">
+                  <div class="guide-entry-title">稱號系統</div>
+                  <div class="guide-entry-desc">收集特殊稱號</div>
+                </div>
+                <span class="guide-entry-arrow">→</span>
+              </a>
+            </div>
           </div>
-        </div>
 
-
-        <div class="guide-section reveal-up" data-section="bag">
-          <div class="guide-section-header">
-            <div class="guide-section-icon">🎒</div>
-            <h2>背包與倉庫</h2>
-            <span class="section-count">3 篇</span>
+          <!-- ═══ 遊戲機制 ═══ -->
+          <div class="guide-cat reveal-up" data-section="mech" id="sec-mech">
+            <div class="guide-cat-header">
+              <div class="guide-cat-bar" style="background:linear-gradient(180deg,#578aff,#3a6ae0)"></div>
+              <h2>遊戲機制</h2>
+              <span class="guide-cat-count">11 篇</span>
+            </div>
+            <div class="guide-entries">
+              <a href="guide/遊戲機制.html" class="guide-entry featured" style="--entry-accent:#578aff">
+                <div class="guide-entry-icon">📖</div>
+                <div class="guide-entry-body">
+                  <div class="guide-entry-title">機制總覽</div>
+                  <div class="guide-entry-desc">海風獨有玩法一覽</div>
+                </div>
+                <span class="guide-entry-arrow">→</span>
+              </a>
+              <a href="guide/機制礦物.html" class="guide-entry" style="--entry-accent:#578aff">
+                <div class="guide-entry-icon">💎</div>
+                <div class="guide-entry-body">
+                  <div class="guide-entry-title">礦物代換</div>
+                  <div class="guide-entry-desc">礦石隨機生成機制</div>
+                </div>
+                <span class="guide-entry-arrow">→</span>
+              </a>
+              <a href="guide/機制再生.html" class="guide-entry" style="--entry-accent:#578aff">
+                <div class="guide-entry-icon">🔄</div>
+                <div class="guide-entry-body">
+                  <div class="guide-entry-title">資源再生</div>
+                  <div class="guide-entry-desc">無領地區域定期重置</div>
+                </div>
+                <span class="guide-entry-arrow">→</span>
+              </a>
+              <a href="guide/機制混凝土.html" class="guide-entry" style="--entry-accent:#578aff">
+                <div class="guide-entry-icon">🪣</div>
+                <div class="guide-entry-body">
+                  <div class="guide-entry-title">混凝土固化鍋</div>
+                  <div class="guide-entry-desc">在鍋中快速固化</div>
+                </div>
+                <span class="guide-entry-arrow">→</span>
+              </a>
+              <a href="guide/機制書架.html" class="guide-entry" style="--entry-accent:#578aff">
+                <div class="guide-entry-icon">📚</div>
+                <div class="guide-entry-body">
+                  <div class="guide-entry-title">真實書櫃</div>
+                  <div class="guide-entry-desc">書架互動功能</div>
+                </div>
+                <span class="guide-entry-arrow">→</span>
+              </a>
+              <a href="guide/機制蜂巢.html" class="guide-entry" style="--entry-accent:#578aff">
+                <div class="guide-entry-icon">🐝</div>
+                <div class="guide-entry-body">
+                  <div class="guide-entry-title">蜂窩檢視</div>
+                  <div class="guide-entry-desc">點蜂巢看內部</div>
+                </div>
+                <span class="guide-entry-arrow">→</span>
+              </a>
+              <a href="guide/機制門.html" class="guide-entry" style="--entry-accent:#578aff">
+                <div class="guide-entry-icon">🚪</div>
+                <div class="guide-entry-body">
+                  <div class="guide-entry-title">敲門與雙開</div>
+                  <div class="guide-entry-desc">門的互動機制</div>
+                </div>
+                <span class="guide-entry-arrow">→</span>
+              </a>
+              <a href="guide/機制地震.html" class="guide-entry" style="--entry-accent:#578aff">
+                <div class="guide-entry-icon">🌍</div>
+                <div class="guide-entry-body">
+                  <div class="guide-entry-title">地震預警</div>
+                  <div class="guide-entry-desc">天災預警系統</div>
+                </div>
+                <span class="guide-entry-arrow">→</span>
+              </a>
+              <a href="guide/機制開箱.html" class="guide-entry" style="--entry-accent:#578aff">
+                <div class="guide-entry-icon">📦</div>
+                <div class="guide-entry-body">
+                  <div class="guide-entry-title">穿牌開箱</div>
+                  <div class="guide-entry-desc">穿過告示牌開箱子</div>
+                </div>
+                <span class="guide-entry-arrow">→</span>
+              </a>
+              <a href="guide/合成.html" class="guide-entry" style="--entry-accent:#578aff">
+                <div class="guide-entry-icon">⚒️</div>
+                <div class="guide-entry-body">
+                  <div class="guide-entry-title">特殊合成</div>
+                  <div class="guide-entry-desc">自訂合成配方</div>
+                </div>
+                <span class="guide-entry-arrow">→</span>
+              </a>
+              <a href="guide/連鎖挖礦.html" class="guide-entry" style="--entry-accent:#578aff">
+                <div class="guide-entry-icon">⛏️</div>
+                <div class="guide-entry-body">
+                  <div class="guide-entry-title">連鎖挖掘</div>
+                  <div class="guide-entry-desc">一次挖整棵礦脈</div>
+                </div>
+                <span class="guide-entry-arrow">→</span>
+              </a>
+            </div>
           </div>
-          <div class="guide-cards">
-            <a href="guide/倉庫.html" class="guide-card">
-              <div class="guide-card-emoji">🗄️</div>
-              <div class="guide-card-text"><h4>倉庫系統</h4><p>大容量雲端儲存</p></div>
-              <span class="guide-card-arrow">→</span>
-            </a>
-            <a href="guide/展示櫃.html" class="guide-card">
-              <div class="guide-card-emoji">🪟</div>
-              <div class="guide-card-text"><h4>玻璃展示櫃</h4><p>展示你的寶物</p></div>
-              <span class="guide-card-arrow">→</span>
-            </a>
-            <a href="guide/盔甲架.html" class="guide-card">
-              <div class="guide-card-emoji">🧍</div>
-              <div class="guide-card-text"><h4>盔甲座編輯器</h4><p>自訂盔甲座姿勢</p></div>
-              <span class="guide-card-arrow">→</span>
-            </a>
+
+          <!-- ═══ 賺錢與交易 ═══ -->
+          <div class="guide-cat reveal-up" data-section="money" id="sec-money">
+            <div class="guide-cat-header">
+              <div class="guide-cat-bar" style="background:linear-gradient(180deg,#ffaa32,#e09020)"></div>
+              <h2>賺錢與交易</h2>
+              <span class="guide-cat-count">4 篇</span>
+            </div>
+            <div class="guide-entries">
+              <a href="guide/經濟.html" class="guide-entry" style="--entry-accent:#ffaa32">
+                <div class="guide-entry-icon">💎</div>
+                <div class="guide-entry-body">
+                  <div class="guide-entry-title">經濟系統</div>
+                  <div class="guide-entry-desc">風幣、鑽石兌換與貨幣機制</div>
+                </div>
+                <span class="guide-entry-arrow">→</span>
+              </a>
+              <a href="guide/線上商店.html" class="guide-entry" style="--entry-accent:#ffaa32">
+                <div class="guide-entry-icon">🛒</div>
+                <div class="guide-entry-body">
+                  <div class="guide-entry-title">線上商城</div>
+                  <div class="guide-entry-desc">玩家之間的交易平台</div>
+                </div>
+                <span class="guide-entry-arrow">→</span>
+              </a>
+              <a href="guide/雜貨商店.html" class="guide-entry" style="--entry-accent:#ffaa32">
+                <div class="guide-entry-icon">🏪</div>
+                <div class="guide-entry-body">
+                  <div class="guide-entry-title">雜貨店</div>
+                  <div class="guide-entry-desc">重生點 NPC 商店</div>
+                </div>
+                <span class="guide-entry-arrow">→</span>
+              </a>
+              <a href="guide/箱子商店.html" class="guide-entry" style="--entry-accent:#ffaa32">
+                <div class="guide-entry-icon">📦</div>
+                <div class="guide-entry-body">
+                  <div class="guide-entry-title">箱子商店</div>
+                  <div class="guide-entry-desc">用箱子開自己的店</div>
+                </div>
+                <span class="guide-entry-arrow">→</span>
+              </a>
+            </div>
           </div>
-        </div>
 
-
-        <div class="guide-section reveal-up" data-section="quest">
-          <div class="guide-section-header">
-            <div class="guide-section-icon">📋</div>
-            <h2>任務與簽到</h2>
-            <span class="section-count">3 篇</span>
+          <!-- ═══ 社群互動 ═══ -->
+          <div class="guide-cat reveal-up" data-section="social" id="sec-social">
+            <div class="guide-cat-header">
+              <div class="guide-cat-bar" style="background:linear-gradient(180deg,#85b1e0,#6090c0)"></div>
+              <h2>社群互動</h2>
+              <span class="guide-cat-count">3 篇</span>
+            </div>
+            <div class="guide-entries">
+              <a href="guide/信箱.html" class="guide-entry" style="--entry-accent:#85b1e0">
+                <div class="guide-entry-icon">📬</div>
+                <div class="guide-entry-body">
+                  <div class="guide-entry-title">蜂聊郵政</div>
+                  <div class="guide-entry-desc">遊戲內寄信系統</div>
+                </div>
+                <span class="guide-entry-arrow">→</span>
+              </a>
+              <a href="guide/快速動作.html" class="guide-entry" style="--entry-accent:#85b1e0">
+                <div class="guide-entry-icon">⚡</div>
+                <div class="guide-entry-body">
+                  <div class="guide-entry-title">更多動作</div>
+                  <div class="guide-entry-desc">快捷指令與表情</div>
+                </div>
+                <span class="guide-entry-arrow">→</span>
+              </a>
+              <a href="guide/旁觀.html" class="guide-entry" style="--entry-accent:#85b1e0">
+                <div class="guide-entry-icon">👻</div>
+                <div class="guide-entry-body">
+                  <div class="guide-entry-title">靈魂出竅</div>
+                  <div class="guide-entry-desc">自由觀察模式</div>
+                </div>
+                <span class="guide-entry-arrow">→</span>
+              </a>
+            </div>
           </div>
-          <div class="guide-cards">
-            <a href="guide/任務.html" class="guide-card featured">
-              <div class="guide-card-emoji">📜</div>
-              <div class="guide-card-text"><h4>任務系統</h4><p>每日任務與冒險任務</p></div>
-              <span class="guide-card-arrow">→</span>
-            </a>
-            <a href="guide/簽到.html" class="guide-card">
-              <div class="guide-card-emoji">📅</div>
-              <div class="guide-card-text"><h4>簽到系統</h4><p>每日簽到領獎勵</p></div>
-              <span class="guide-card-arrow">→</span>
-            </a>
-            <a href="guide/稱號.html" class="guide-card">
-              <div class="guide-card-emoji">🏅</div>
-              <div class="guide-card-text"><h4>稱號系統</h4><p>收集特殊稱號</p></div>
-              <span class="guide-card-arrow">→</span>
-            </a>
+
+          <!-- ═══ 大廳區域 ═══ -->
+          <div class="guide-cat reveal-up" data-section="lobby" id="sec-lobby">
+            <div class="guide-cat-header">
+              <div class="guide-cat-bar" style="background:linear-gradient(180deg,#e0b5d4,#c090b5)"></div>
+              <h2>大廳區域</h2>
+              <span class="guide-cat-count">5 篇</span>
+            </div>
+            <div class="guide-entries">
+              <a href="guide/大廳區域.html" class="guide-entry featured" style="--entry-accent:#e0b5d4">
+                <div class="guide-entry-icon">🗺️</div>
+                <div class="guide-entry-body">
+                  <div class="guide-entry-title">大廳簡介</div>
+                  <div class="guide-entry-desc">重生點區域地圖</div>
+                </div>
+                <span class="guide-entry-arrow">→</span>
+              </a>
+              <a href="guide/大廳建築工坊.html" class="guide-entry" style="--entry-accent:#e0b5d4">
+                <div class="guide-entry-icon">🧱</div>
+                <div class="guide-entry-body">
+                  <div class="guide-entry-title">建材小舖</div>
+                  <div class="guide-entry-desc">購買建築材料</div>
+                </div>
+                <span class="guide-entry-arrow">→</span>
+              </a>
+              <a href="guide/大廳雪球場.html" class="guide-entry" style="--entry-accent:#e0b5d4">
+                <div class="guide-entry-icon">❄️</div>
+                <div class="guide-entry-body">
+                  <div class="guide-entry-title">雪隱匠作</div>
+                  <div class="guide-entry-desc">特殊裝備兌換</div>
+                </div>
+                <span class="guide-entry-arrow">→</span>
+              </a>
+              <a href="guide/大廳茶館.html" class="guide-entry" style="--entry-accent:#e0b5d4">
+                <div class="guide-entry-icon">🍵</div>
+                <div class="guide-entry-body">
+                  <div class="guide-entry-title">風語茶屋</div>
+                  <div class="guide-entry-desc">增益飲品與點心</div>
+                </div>
+                <span class="guide-entry-arrow">→</span>
+              </a>
+              <a href="guide/大廳銀行.html" class="guide-entry" style="--entry-accent:#e0b5d4">
+                <div class="guide-entry-icon">🏦</div>
+                <div class="guide-entry-body">
+                  <div class="guide-entry-title">銀行</div>
+                  <div class="guide-entry-desc">存錢與兌換</div>
+                </div>
+                <span class="guide-entry-arrow">→</span>
+              </a>
+            </div>
           </div>
-        </div>
 
-
-        <div class="guide-section reveal-up" data-section="mech">
-          <div class="guide-section-header">
-            <div class="guide-section-icon">🎮</div>
-            <h2>遊戲機制</h2>
-            <span class="section-count">11 篇</span>
+          <!-- ═══ 會員專屬 ═══ -->
+          <div class="guide-cat reveal-up" data-section="vip" id="sec-vip">
+            <div class="guide-cat-header">
+              <div class="guide-cat-bar" style="background:linear-gradient(180deg,#ffb6c1,#e0889a)"></div>
+              <h2>會員專屬</h2>
+              <span class="guide-cat-count">2 篇</span>
+            </div>
+            <div class="guide-entries">
+              <a href="guide/會員界伏盒.html" class="guide-entry" style="--entry-accent:#ffb6c1">
+                <div class="guide-entry-icon">🎒</div>
+                <div class="guide-entry-body">
+                  <div class="guide-entry-title">快捷界伏盒</div>
+                  <div class="guide-entry-desc">隨身額外背包</div>
+                </div>
+                <span class="guide-entry-arrow">→</span>
+              </a>
+              <a href="guide/會員隱藏裝備.html" class="guide-entry" style="--entry-accent:#ffb6c1">
+                <div class="guide-entry-icon">🫥</div>
+                <div class="guide-entry-body">
+                  <div class="guide-entry-title">隱藏裝備</div>
+                  <div class="guide-entry-desc">隱藏身上裝備顯示</div>
+                </div>
+                <span class="guide-entry-arrow">→</span>
+              </a>
+            </div>
           </div>
-          <div class="guide-cards">
-            <a href="guide/遊戲機制.html" class="guide-card featured">
-              <div class="guide-card-emoji">📖</div>
-              <div class="guide-card-text"><h4>機制總覽</h4><p>海風獨有玩法一覽</p></div>
-              <span class="guide-card-arrow">→</span>
-            </a>
-            <a href="guide/機制礦物.html" class="guide-card">
-              <div class="guide-card-emoji">💎</div>
-              <div class="guide-card-text"><h4>礦物代換</h4><p>礦石隨機生成機制</p></div>
-              <span class="guide-card-arrow">→</span>
-            </a>
-            <a href="guide/機制再生.html" class="guide-card">
-              <div class="guide-card-emoji">🔄</div>
-              <div class="guide-card-text"><h4>資源再生</h4><p>無領地區域定期重置</p></div>
-              <span class="guide-card-arrow">→</span>
-            </a>
-            <a href="guide/機制混凝土.html" class="guide-card">
-              <div class="guide-card-emoji">🪣</div>
-              <div class="guide-card-text"><h4>混凝土固化鍋</h4><p>在鍋中快速固化</p></div>
-              <span class="guide-card-arrow">→</span>
-            </a>
-            <a href="guide/機制書架.html" class="guide-card">
-              <div class="guide-card-emoji">📚</div>
-              <div class="guide-card-text"><h4>真實書櫃</h4><p>書架互動功能</p></div>
-              <span class="guide-card-arrow">→</span>
-            </a>
-            <a href="guide/機制蜂巢.html" class="guide-card">
-              <div class="guide-card-emoji">🐝</div>
-              <div class="guide-card-text"><h4>蜂窩檢視</h4><p>點蜂巢看內部</p></div>
-              <span class="guide-card-arrow">→</span>
-            </a>
-            <a href="guide/機制門.html" class="guide-card">
-              <div class="guide-card-emoji">🚪</div>
-              <div class="guide-card-text"><h4>敲門與雙開</h4><p>門的互動機制</p></div>
-              <span class="guide-card-arrow">→</span>
-            </a>
-            <a href="guide/機制地震.html" class="guide-card">
-              <div class="guide-card-emoji">🌍</div>
-              <div class="guide-card-text"><h4>地震預警</h4><p>天災預警系統</p></div>
-              <span class="guide-card-arrow">→</span>
-            </a>
-            <a href="guide/機制開箱.html" class="guide-card">
-              <div class="guide-card-emoji">📦</div>
-              <div class="guide-card-text"><h4>穿牌開箱</h4><p>穿過告示牌開箱子</p></div>
-              <span class="guide-card-arrow">→</span>
-            </a>
-            <a href="guide/合成.html" class="guide-card">
-              <div class="guide-card-emoji">⚒️</div>
-              <div class="guide-card-text"><h4>特殊合成</h4><p>自訂合成配方</p></div>
-              <span class="guide-card-arrow">→</span>
-            </a>
-            <a href="guide/連鎖挖礦.html" class="guide-card">
-              <div class="guide-card-emoji">⛏️</div>
-              <div class="guide-card-text"><h4>連鎖挖掘</h4><p>一次挖整棵礦脈</p></div>
-              <span class="guide-card-arrow">→</span>
-            </a>
-          </div>
-        </div>
 
+        </div><!-- /guideBrowse -->
 
-        <div class="guide-section reveal-up" data-section="money">
-          <div class="guide-section-header">
-            <div class="guide-section-icon">💰</div>
-            <h2>賺錢與交易</h2>
-            <span class="section-count">4 篇</span>
-          </div>
-          <div class="guide-cards">
-            <a href="guide/經濟.html" class="guide-card">
-              <div class="guide-card-emoji">💎</div>
-              <div class="guide-card-text"><h4>經濟系統</h4><p>風幣、鑽石兌換與貨幣機制</p></div>
-              <span class="guide-card-arrow">→</span>
-            </a>
-            <a href="guide/線上商店.html" class="guide-card">
-              <div class="guide-card-emoji">🛒</div>
-              <div class="guide-card-text"><h4>線上商城</h4><p>玩家之間的交易平台</p></div>
-              <span class="guide-card-arrow">→</span>
-            </a>
-            <a href="guide/雜貨商店.html" class="guide-card">
-              <div class="guide-card-emoji">🏪</div>
-              <div class="guide-card-text"><h4>雜貨店</h4><p>重生點 NPC 商店</p></div>
-              <span class="guide-card-arrow">→</span>
-            </a>
-            <a href="guide/箱子商店.html" class="guide-card">
-              <div class="guide-card-emoji">📦</div>
-              <div class="guide-card-text"><h4>箱子商店</h4><p>用箱子開自己的店</p></div>
-              <span class="guide-card-arrow">→</span>
-            </a>
-          </div>
-        </div>
-
-
-        <div class="guide-section reveal-up" data-section="social">
-          <div class="guide-section-header">
-            <div class="guide-section-icon">💬</div>
-            <h2>社群互動</h2>
-            <span class="section-count">3 篇</span>
-          </div>
-          <div class="guide-cards">
-            <a href="guide/信箱.html" class="guide-card">
-              <div class="guide-card-emoji">📬</div>
-              <div class="guide-card-text"><h4>蜂聊郵政</h4><p>遊戲內寄信系統</p></div>
-              <span class="guide-card-arrow">→</span>
-            </a>
-            <a href="guide/快速動作.html" class="guide-card">
-              <div class="guide-card-emoji">⚡</div>
-              <div class="guide-card-text"><h4>更多動作</h4><p>快捷指令與表情</p></div>
-              <span class="guide-card-arrow">→</span>
-            </a>
-            <a href="guide/旁觀.html" class="guide-card">
-              <div class="guide-card-emoji">👻</div>
-              <div class="guide-card-text"><h4>靈魂出竅</h4><p>自由觀察模式</p></div>
-              <span class="guide-card-arrow">→</span>
-            </a>
-          </div>
-        </div>
-
-
-        <div class="guide-section reveal-up" data-section="lobby">
-          <div class="guide-section-header">
-            <div class="guide-section-icon">🏛️</div>
-            <h2>大廳區域</h2>
-            <span class="section-count">5 篇</span>
-          </div>
-          <div class="guide-cards">
-            <a href="guide/大廳區域.html" class="guide-card featured">
-              <div class="guide-card-emoji">🗺️</div>
-              <div class="guide-card-text"><h4>大廳簡介</h4><p>重生點區域地圖</p></div>
-              <span class="guide-card-arrow">→</span>
-            </a>
-            <a href="guide/大廳建築工坊.html" class="guide-card">
-              <div class="guide-card-emoji">🧱</div>
-              <div class="guide-card-text"><h4>建材小舖</h4><p>購買建築材料</p></div>
-              <span class="guide-card-arrow">→</span>
-            </a>
-            <a href="guide/大廳雪球場.html" class="guide-card">
-              <div class="guide-card-emoji">❄️</div>
-              <div class="guide-card-text"><h4>雪隱匠作</h4><p>特殊裝備兌換</p></div>
-              <span class="guide-card-arrow">→</span>
-            </a>
-            <a href="guide/大廳茶館.html" class="guide-card">
-              <div class="guide-card-emoji">🍵</div>
-              <div class="guide-card-text"><h4>風語茶屋</h4><p>增益飲品與點心</p></div>
-              <span class="guide-card-arrow">→</span>
-            </a>
-            <a href="guide/大廳銀行.html" class="guide-card">
-              <div class="guide-card-emoji">🏦</div>
-              <div class="guide-card-text"><h4>銀行</h4><p>存錢與兌換</p></div>
-              <span class="guide-card-arrow">→</span>
-            </a>
-          </div>
-        </div>
-
-
-        <div class="guide-section reveal-up" data-section="vip">
-          <div class="guide-section-header">
-            <div class="guide-section-icon">⭐</div>
-            <h2>會員專屬</h2>
-            <span class="section-count">2 篇</span>
-          </div>
-          <div class="guide-cards">
-            <a href="guide/會員界伏盒.html" class="guide-card">
-              <div class="guide-card-emoji">🎒</div>
-              <div class="guide-card-text"><h4>快捷界伏盒</h4><p>隨身額外背包</p></div>
-              <span class="guide-card-arrow">→</span>
-            </a>
-            <a href="guide/會員隱藏裝備.html" class="guide-card">
-              <div class="guide-card-emoji">🫥</div>
-              <div class="guide-card-text"><h4>隱藏裝備</h4><p>隱藏身上裝備顯示</p></div>
-              <span class="guide-card-arrow">→</span>
-            </a>
-          </div>
-        </div>
-
-
-
-      </div><!-- /guideBrowse -->
-
-      </div><!-- /guide-main-content -->
+      </div><!-- /guide-main-v2 -->
     </div>
   </div>
 
-            <footer class="footer">
+  <footer class="footer">
     <div class="footer-inner">
       <div class="footer-brand">
         <span class="footer-logo">海風伺服器 SeaWind.cc</span>
@@ -910,28 +992,28 @@
 
   <script src="tips.js" defer></script>
   <script src="utils.js"></script>
-  <script src="main.js?v=260416h"></script>
+  <script src="main.js?v=260416n"></script>
   <script>
   document.addEventListener('DOMContentLoaded', () => {
     const searchEl = document.getElementById('guideSearch');
     const resultsEl = document.getElementById('searchResults');
     const browseEl = document.getElementById('guideBrowse');
-    const searchCardsEl = document.getElementById('searchCards');
+    const searchEntriesEl = document.getElementById('searchEntries');
     const searchCountEl = document.getElementById('searchCount');
     const noResultEl = document.getElementById('noResult');
 
     // 蒐集所有指南項目
     const allGuides = [];
-    document.querySelectorAll('.guide-card').forEach(card => {
-      const title = card.querySelector('h4')?.textContent || '';
-      const desc = card.querySelector('p')?.textContent || '';
-      const href = card.getAttribute('href') || '';
-      const emoji = card.querySelector('.guide-card-emoji')?.textContent || '';
-      const section = card.closest('.guide-section')?.dataset.section || '';
+    document.querySelectorAll('.guide-entry').forEach(entry => {
+      const title = entry.querySelector('.guide-entry-title')?.textContent || '';
+      const desc = entry.querySelector('.guide-entry-desc')?.textContent || '';
+      const href = entry.getAttribute('href') || '';
+      const emoji = entry.querySelector('.guide-entry-icon')?.textContent || '';
+      const section = entry.closest('.guide-cat')?.dataset.section || '';
       allGuides.push({ title, desc, href, emoji, section });
     });
 
-    // 搜尋功能
+    // 搜尋
     searchEl.addEventListener('input', () => {
       const q = searchEl.value.trim().toLowerCase();
       if (!q) {
@@ -941,8 +1023,7 @@
       }
 
       const matches = allGuides.filter(g =>
-        g.title.toLowerCase().includes(q) ||
-        g.desc.toLowerCase().includes(q)
+        g.title.toLowerCase().includes(q) || g.desc.toLowerCase().includes(q)
       );
 
       resultsEl.classList.add('active');
@@ -950,17 +1031,20 @@
       searchCountEl.textContent = matches.length;
 
       if (matches.length === 0) {
-        searchCardsEl.innerHTML = '';
+        searchEntriesEl.innerHTML = '';
         noResultEl.style.display = '';
         return;
       }
 
       noResultEl.style.display = 'none';
-      searchCardsEl.innerHTML = matches.map(g => `
-        <a href="${g.href}" class="guide-card">
-          <div class="guide-card-emoji">${g.emoji}</div>
-          <div class="guide-card-text"><h4>${g.title}</h4><p>${g.desc}</p></div>
-          <span class="guide-card-arrow">→</span>
+      searchEntriesEl.innerHTML = matches.map(g => `
+        <a href="${g.href}" class="guide-entry">
+          <div class="guide-entry-icon">${g.emoji}</div>
+          <div class="guide-entry-body">
+            <div class="guide-entry-title">${g.title}</div>
+            <div class="guide-entry-desc">${g.desc}</div>
+          </div>
+          <span class="guide-entry-arrow">→</span>
         </a>
       `).join('');
     });
@@ -976,7 +1060,7 @@
         resultsEl.classList.remove('active');
         browseEl.style.display = '';
 
-        document.querySelectorAll('.guide-section').forEach(sec => {
+        document.querySelectorAll('.guide-cat').forEach(sec => {
           if (cat === 'all') {
             sec.style.display = '';
           } else {
@@ -984,39 +1068,25 @@
           }
         });
 
-        // CTA 也跟著隱藏
         const cta = document.querySelector('.guide-cta');
         if (cta) cta.style.display = cat === 'all' ? '' : 'none';
       });
     });
 
-    // ═══ 側邊欄目錄 ═══
-    const tocNav = document.getElementById('guideTocNav');
-    const tocFooter = document.getElementById('guideTocFooter');
-    if (tocNav) {
-      const sections = document.querySelectorAll('.guide-section');
-      let totalArticles = 0;
-      sections.forEach(sec => {
-        const h2 = sec.querySelector('h2');
-        const icon = sec.querySelector('.guide-section-icon');
-        const cards = sec.querySelectorAll('.guide-card');
-        totalArticles += cards.length;
-        if (h2) {
-          const link = document.createElement('a');
-          link.href = '#' + sec.dataset.section;
-          link.className = 'guide-toc-link';
-          link.textContent = (icon ? icon.textContent + ' ' : '') + h2.textContent;
-          link.addEventListener('click', (e) => {
-            e.preventDefault();
-            sec.scrollIntoView({ behavior: 'smooth', block: 'start' });
-          });
-          tocNav.appendChild(link);
+    // 側邊欄高亮
+    const sidebarLinks = document.querySelectorAll('.guide-sb-link');
+    sidebarLinks.forEach(link => {
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        const section = link.dataset.section;
+        const target = document.getElementById('sec-' + section);
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
         }
+        sidebarLinks.forEach(l => l.classList.remove('active'));
+        link.classList.add('active');
       });
-      if (tocFooter) {
-        tocFooter.textContent = `共 ${totalArticles} 篇指南`;
-      }
-    }
+    });
   });
   </script>
 </body>
