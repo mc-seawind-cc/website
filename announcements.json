@@ -9858,6 +9858,57 @@
       "pinned": false,
       "author": "神焰.cc",
       "index": 466
+    },
+    {
+      "tag": "維護",
+      "id": "#0131",
+      "date": "115.04.14",
+      "isoDate": "2026-04-14",
+      "timestamp": "2026-04-14T22:40:00.000+08:00",
+      "title": "斷線重啟",
+      "content": "- 將於晚上10:40-10:50分重啟伺服器。\n  - 資源包調整。\n  - 進一步優化地圖系統。",
+      "images": [],
+      "localImages": [],
+      "reactions": [],
+      "reactionCount": 0,
+      "discordId": "",
+      "pinned": false,
+      "author": "",
+      "index": 467
+    },
+    {
+      "tag": "維護",
+      "id": "#0130",
+      "date": "115.04.13",
+      "isoDate": "2026-04-13",
+      "timestamp": "2026-04-13T19:00:00.000+08:00",
+      "title": "斷線重啟",
+      "content": "- 將於晚上7:00分重啟伺服器。\n  - 進一步優化地圖系統。",
+      "images": [],
+      "localImages": [],
+      "reactions": [],
+      "reactionCount": 0,
+      "discordId": "",
+      "pinned": false,
+      "author": "",
+      "index": 468
+    },
+    {
+      "tag": "更新",
+      "id": "#0289",
+      "date": "115.04.12",
+      "isoDate": "2026-04-12",
+      "timestamp": "2026-04-12T15:18:00.000+08:00",
+      "title": "地圖系統改善",
+      "content": "- 新增地獄頂部圖層。\n- 新增玩家方向標記。\n- 進一步擴大了縮放等級。\n- 改善地圖算繪。\n- 改善縮放及移動操作。",
+      "images": [],
+      "localImages": [],
+      "reactions": [],
+      "reactionCount": 0,
+      "discordId": "",
+      "pinned": false,
+      "author": "",
+      "index": 469
     }
   ]
 }
