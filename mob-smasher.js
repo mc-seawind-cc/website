@@ -39,13 +39,13 @@ const MOB_SMASHER = (() => {
     { id: 'hoglin',              name: '豬布獸',         pts: 2, timeBonus: 1, weight: 5 },
     { id: 'zoglin',              name: '豬屍獸',         pts: 2, timeBonus: 1, weight: 4 },
     { id: 'wither-skeleton',     name: '凋零骷髏',       pts: 2, timeBonus: 1, weight: 5 },
-    { id: 'johnny',              name: '衛道士',         pts: 3, timeBonus: 2, weight: 3 },
+    { id: 'johnny',              name: '衛道士',         pts: 3, timeBonus: 2, weight: 3, special: 'ominous' },
     { id: 'vex',                 name: '惱鬼',           pts: 2, timeBonus: 1, weight: 5 },
     { id: 'stray',               name: '流髑',           pts: 1, timeBonus: 1, weight: 6 },
     { id: 'pumpkin-snow-golem',  name: '雪人',           pts: 1, timeBonus: 1, weight: 5 },
     { id: 'creaking',            name: '嘎枝',           pts: 4, timeBonus: 2, weight: 3, hp: 2, stayMs: 2200 },
     { id: 'ender-dragon',        name: '終界龍',         pts: 10, timeBonus: 5, weight: 1, hp: 5, stayMs: 4000 },
-    { id: 'evoker-copy',         name: '掠奪者',         pts: 3, timeBonus: 2, weight: 3 },
+    { id: 'evoker-copy',         name: '掠奪者',         pts: 3, timeBonus: 2, weight: 3, sprite: 'evoker', special: 'ominous' },
   ];
 
   const PASSIVE = [
@@ -99,7 +99,7 @@ const MOB_SMASHER = (() => {
     { id: 'wolf',              name: '狼' },
     { id: 'pufferfish',        name: '河豚' },
     // === 新增中立 ===
-    { id: 'zombified-piglin-n', name: '殭屍化豬布林(中立)', sprite: 'zombified-piglin' },
+    { id: 'zombified-piglin-n', name: '殭屍化豬布林', sprite: 'zombified-piglin' },
     { id: 'ocelot',            name: '山貓' },
   ];
 
@@ -324,6 +324,10 @@ const MOB_SMASHER = (() => {
           showInfo(`獲得不死圖騰！（${state.totemCount}/2）`, '#a8e6cf');
           updateTotem();
         }
+      }
+      if (mob.special === 'ominous') {
+        showInfo(`${mob.name}掉落了不詳之瓶！`, '#ab72f9');
+        showFloatingText(el, '🧪', '#ab72f9');
       }
       if (mob.special === 'elder') {
         // Spawn guardians in adjacent holes
