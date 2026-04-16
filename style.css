@@ -335,7 +335,7 @@ body{font-family:var(--font-body);background:var(--deep);color:var(--cloud);line
 .content-section::before{content:'';display:block;width:60%;max-width:400px;height:1px;background:linear-gradient(90deg,transparent,rgba(157,175,255,0.2),rgba(168,230,207,0.15),rgba(157,175,255,0.2),transparent);margin:0 auto var(--space-2xl);border-radius:1px}
 .section-header{margin-bottom:var(--space-xl);text-align:center;position:relative}
 .section-header h2{font-size:clamp(1.5rem,3.5vw,2rem);font-weight:800;color:var(--white);letter-spacing:-0.02em;margin-bottom:var(--space-sm);position:relative;display:inline-block}
-.section-header h2::after{content:'';display:block;width:40px;height:3px;background:linear-gradient(90deg,var(--sky),var(--foam));border-radius:2px;margin:10px auto 0;transition:width 0.6s cubic-bezier(0.22,1,0.36,1);box-shadow:0 0 8px rgba(157,175,255,0.2)}
+.section-header h2::after{content:'';display:block;width:40px;height:3px;background:linear-gradient(90deg,var(--sky),var(--foam),var(--sky));background-size:200% 100%;border-radius:2px;margin:10px auto 0;transition:width 0.6s cubic-bezier(0.22,1,0.36,1);box-shadow:0 0 8px rgba(157,175,255,0.2);animation:section-line-shimmer 4s linear infinite}
 .section-header h2:hover::after{width:80px;box-shadow:0 0 16px rgba(157,175,255,0.3)}
 .section-header p{color:var(--fog);font-size:1rem}
 .section-divider{width:48px;height:3px;background:linear-gradient(90deg,var(--sky),var(--foam));border-radius:2px;margin-top:var(--space-sm)}
@@ -1209,6 +1209,8 @@ body{font-family:var(--font-body);background:var(--deep);color:var(--cloud);line
   display: flex;
   flex-direction: column;
   gap: 3px;
+  content-visibility: auto;
+  contain-intrinsic-size: auto 600px;
 }
 .tag-dot-公告 { background: rgba(87,138,255,0.7); }
 .tag-dot-更新 { background: rgba(100,220,180,0.7); }
@@ -1546,7 +1548,7 @@ body{font-family:var(--font-body);background:var(--deep);color:var(--cloud);line
 .photo-sub-bg:hover{transform:scale(1.01)}
 .photo-sub-download{position:absolute;bottom:12px;right:12px;background:rgba(22,27,34,0.85);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,0.15);color:#c9d1d9;padding:6px 14px;border-radius:8px;font-size:0.8rem;text-decoration:none;transition:all 0.2s}
 .photo-sub-download:hover{background:rgba(22,27,34,0.95);color:#fff;border-color:rgba(157,175,255,0.4);transform:translateY(-1px)}
-.photo-carousel{overflow:hidden;border-radius:var(--radius-lg);position:relative}
+.photo-carousel{overflow:hidden;border-radius:var(--radius-lg);position:relative;content-visibility:auto;contain-intrinsic-size:auto 350px}
 .photo-carousel-track{display:flex;transition:transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94)}
 .carousel-slide{flex:0 0 20%;padding:0 4px;box-sizing:border-box;min-width:0}
 .carousel-slide img{display:block;width:100%;aspect-ratio:16 / 10;object-fit:cover;border-radius:var(--radius-md);transition:transform 0.4s var(--ease),box-shadow 0.4s var(--ease)}
@@ -1939,7 +1941,7 @@ video.photo-item{cursor:pointer;height:200px;border:1px solid transparent}
    How to Join Steps
    ═══════════════════════════════════════ */
 
-.join-steps{display:flex;align-items:stretch;justify-content:center;gap:0;margin-bottom:var(--space-xl);flex-wrap:wrap}
+.join-steps{display:flex;align-items:stretch;justify-content:center;gap:0;margin-bottom:var(--space-xl);flex-wrap:wrap;content-visibility:auto;contain-intrinsic-size:auto 300px}
 .join-step{flex:1 1 180px;max-width:220px;text-align:center;padding:var(--space-lg)var(--space-md);background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.06);border-radius:var(--radius-lg);transition:all var(--duration)var(--ease);position:relative}
 .join-step:hover{background:rgba(157,175,255,0.06);border-color:rgba(157,175,255,0.15);transform:translateY(-4px);box-shadow:0 12px 32px rgba(0,0,0,0.15)}
 .join-step-num{position:absolute;top:-12px;left:50%;transform:translateX(-50%);width:28px;height:28px;background:linear-gradient(135deg,var(--sky),var(--foam));border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:0.85rem;font-weight:800;color:var(--deep);box-shadow:0 2px 12px rgba(157,175,255,0.3)}
@@ -1983,8 +1985,8 @@ video.photo-item{cursor:pointer;height:200px;border:1px solid transparent}
    ═══════════════════════════════════════ */
 
 @media print{
-  .nav,.scroll-progress,.bg-atmosphere,.hero,.hero-scroll,.page-revise,.back-link,.section-actions,.lightbox,.nav-theme,.nav-toggle,.photo-carousel,.postcard-section,.bulletin-wave,.btn,.hero-particles,.hero-aurora{display:none !important}
-  body{background:#fff !important;color:#000 !important;font-size:12pt}
+  .nav,.scroll-progress,.bg-atmosphere,.hero,.hero-scroll,.page-revise,.back-link,.section-actions,.lightbox,.nav-theme,.nav-toggle,.photo-carousel,.postcard-section,.bulletin-wave,.btn,.hero-particles,.hero-aurora,.join-connector,.hero-wave-separator,.scroll-arrow{display:none !important}
+  body{background:#fff !important;color:#000 !important;font-size:12pt;line-height:1.6}
   .page{padding-top:0 !important}
   .content-section{max-width:100% !important;padding:0 !important;background:#fff !important}
   .content-section::before{display:none}
@@ -1998,6 +2000,20 @@ video.photo-item{cursor:pointer;height:200px;border:1px solid transparent}
   a{color:#000 !important;text-decoration:underline}
   .article-hero img{max-width:100% !important;height:auto !important}
   .page-content{max-width:100% !important;padding:0 !important}
+  /* 公告列印 */
+  .bulletin-board{display:block !important}
+  .bulletin-compact .bulletin-body,.bulletin-compact .bulletin-content{display:block !important;max-height:none !important;overflow:visible !important}
+  .bulletin-toggle .arrow{display:none !important}
+  /* 側邊欄列印 */
+  .guide-sidebar{display:none !important}
+  .guide-main{max-width:100% !important}
+  /* 深色主題元素覆蓋 */
+  .tag-公告,.tag-更新,.tag-活動,.tag-維護{background:#f0f0f0 !important;color:#333 !important;border:1px solid #ccc !important}
+  .join-step-num{background:#333 !important;color:#fff !important;box-shadow:none !important}
+  .join-step-icon{background:#f0f0f0 !important;border:1px solid #ccc !important}
+  /* 避免孤行 */
+  h2,h3,h4{page-break-after:avoid}
+  p{orphans:2;widows:2}
 }
 
 /* ═══════════════════════════════════════
