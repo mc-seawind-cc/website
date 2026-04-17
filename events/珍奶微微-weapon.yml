@@ -3,7 +3,7 @@
 # 檔案位置：plugins/MMOItems/item/SWORD.yml
 # ═══════════════════════════════════════
 
-2026Bubble_tea-01:
+2026Bubble_tea_01:
   base:
     material: DIAMOND_SWORD
     name: '&b&l珍奶微微 &7┃ &e海風國際珍奶日限定'
