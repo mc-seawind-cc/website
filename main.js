@@ -147,6 +147,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initPostcardLightbox();
     initGeneralLightbox();
     initGuideSidebar();
+    initScrollRestore();
   };
 
   // Standalone rain toggle button (only on 首頁, left of music player)
@@ -275,6 +276,39 @@ function initBackToTop() {
   btn.addEventListener('click', () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   });
+}
+
+// --- Scroll Position Restore (sessionStorage) ---
+function initScrollRestore() {
+  const pageKey = 'sw-scroll-' + location.pathname.split('/').pop();
+  // Restore scroll position on load
+  try {
+    const saved = sessionStorage.getItem(pageKey);
+    if (saved) {
+      const y = parseInt(saved, 10);
+      if (y > 100) { // Only restore if scrolled down meaningfully
+        requestAnimationFrame(() => {
+          window.scrollTo(0, y);
+        });
+      }
+    }
+  } catch(e) {}
+
+  // Save scroll position on scroll (debounced)
+  let saveTimer = null;
+  window.addEventListener('scroll', () => {
+    if (saveTimer) return;
+    saveTimer = setTimeout(() => {
+      saveTimer = null;
+      try {
+        if (window.scrollY > 100) {
+          sessionStorage.setItem(pageKey, window.scrollY);
+        } else {
+          sessionStorage.removeItem(pageKey);
+        }
+      } catch(e) {}
+    }, 300);
+  }, { passive: true });
 }
 
 function createParticles() {
@@ -504,11 +538,19 @@ function fetchServerStatus() {
     })
     .catch(() => {
       statusEl.classList.remove('status-loading');
-      statusEl.textContent = '查詢失敗';
+      statusEl.textContent = '暫時無法查詢';
       statusEl.className = 'info-value';
+      statusEl.style.cursor = 'pointer';
+      statusEl.title = '點擊重新查詢';
+      statusEl.addEventListener('click', () => {
+        statusEl.textContent = '查詢中...';
+        statusEl.className = 'info-value status-loading';
+        statusEl.style.cursor = '';
+        fetchServerStatus();
+      }, { once: true });
       const footerStatusDot = document.getElementById('footerStatusDot');
       const footerStatus = document.getElementById('footerStatus');
-      if (footerStatus) footerStatus.textContent = '查詢失敗';
+      if (footerStatus) footerStatus.textContent = '暫時無法查詢';
       if (footerStatusDot) { footerStatusDot.className = 'status-dot'; }
     });
 }
@@ -520,7 +562,9 @@ function initBulletinBoard() {
   fetch(SW_BASE + 'announcements.json')
     .then(r => { if (!r.ok) throw new Error('load fail'); return r.json(); })
     .then(data => { renderBulletin(board, data.announcements); })
-    .catch(() => { board.innerHTML = '<p style="text-align:center;color:var(--fog);padding:20px;">公告載入失敗</p>'; });
+    .catch(() => {
+      board.innerHTML = `<p style="text-align:center;color:var(--fog);padding:20px;">公告載入失敗<button onclick="initBulletinBoard()" style="display:block;margin:12px auto 0;padding:6px 16px;background:rgba(157,175,255,0.15);border:1px solid rgba(157,175,255,0.3);border-radius:100px;color:var(--sky);font-family:inherit;font-size:0.82rem;cursor:pointer;">重新載入</button></p>`;
+    });
 }
 
 function renderBulletin(board, items) {
@@ -567,12 +611,16 @@ function renderBulletin(board, items) {
       discordHtml = `<a href="https://discord.com/channels/1090959090878140447/1090959091750559816/${item.discordId}" target="_blank" rel="noopener" class="b-discord-link">在 Discord 查看 →</a>`;
     }
 
+    // NEW 徽章：最近 3 則公告（且非置頂）
+    const isNew = idx < 3 && !item.pinned;
+
     html += `<div class="bulletin-item${isHidden ? ' bulletin-hidden' : ''}${item.pinned ? ' pinned' : ''}" style="--tag-color:${color}" data-tag="${tag}">
       <button class="bulletin-toggle" aria-expanded="false">
         <span class="b-dot" style="background:${color}"></span>
         <span class="b-date">${date}</span>
         <span class="b-title">${item.title}</span>
         <span class="b-right">
+          ${isNew ? '<span class="b-new">NEW</span>' : ''}
           ${item.pinned ? '<span class="b-pin">📌</span>' : ''}
           <span class="b-tag" style="background:${color}15;color:${color}">${tag}</span>
           <span class="b-arrow">▾</span>
