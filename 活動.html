@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <link rel="canonical" href="https://www.seawind.cc/活動.html">
+  <meta name="color-scheme" content="dark light">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>海風活動 — 海風伺服器</title>
+  <meta name="description" content="海風伺服器舉辦的各類精彩活動——常駐玩法、限時挑戰、攝影大賽，一起參與吧！">
+  <link rel="icon" href="assets/img/logo.png">
+  <link rel="apple-touch-icon" href="assets/img/logo.png">
+  <link rel="manifest" href="manifest.json">
+  <meta property="og:title" content="海風活動 — 海風伺服器">
+  <meta property="og:description" content="海風伺服器舉辦的各類精彩活動——常駐玩法、限時挑戰、攝影大賽，一起參與吧！">
+  <meta property="og:image" content="assets/img/logo.png">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:image" content="assets/img/logo.png">
+  <meta name="theme-color" content="#0d1117">
+  <link rel="dns-prefetch" href="//cdn.discordapp.com">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;800&family=Noto+Serif+TC:wght@700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css?v=260417c">
+  <link rel="stylesheet" href="music-player.css">
+  <style>
+    /* ═══ Events Page ═══ */
+
+    .events-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: var(--space-lg);
+      margin-bottom: var(--space-2xl);
+    }
+
+    .event-card {
+      position: relative;
+      background: rgba(0, 0, 0, 0.3);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: var(--radius-lg);
+      padding: var(--space-xl);
+      overflow: hidden;
+      transition: transform 0.4s var(--ease), box-shadow 0.4s var(--ease), border-color 0.4s var(--ease);
+    }
+    .event-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 36px rgba(0, 0, 0, 0.25);
+      border-color: rgba(157, 175, 255, 0.2);
+    }
+    .event-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: var(--event-accent, var(--sky));
+      opacity: 0.6;
+      transition: opacity 0.3s var(--ease);
+    }
+    .event-card:hover::before { opacity: 1; }
+
+    .event-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: var(--space-md);
+      flex-wrap: wrap;
+      gap: var(--space-sm);
+    }
+
+    .event-title {
+      font-size: 1.3rem;
+      font-weight: 800;
+      color: var(--white);
+      letter-spacing: -0.01em;
+    }
+
+    .event-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 0.7rem;
+      font-weight: 700;
+      padding: 3px 10px;
+      border-radius: 100px;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+    .event-badge.permanent {
+      background: rgba(168, 230, 207, 0.12);
+      color: var(--foam);
+      border: 1px solid rgba(168, 230, 207, 0.2);
+    }
+    .event-badge.limited {
+      background: rgba(255, 170, 50, 0.12);
+      color: #ffaa32;
+      border: 1px solid rgba(255, 170, 50, 0.2);
+    }
+    .event-badge.recurring {
+      background: rgba(157, 175, 255, 0.12);
+      color: var(--sky);
+      border: 1px solid rgba(157, 175, 255, 0.2);
+    }
+
+    .event-desc {
+      color: var(--cloud);
+      font-size: 0.95rem;
+      line-height: 1.7;
+      margin-bottom: var(--space-lg);
+    }
+
+    .event-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-md);
+      font-size: 0.8rem;
+      color: var(--fog);
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+      padding-top: var(--space-md);
+    }
+
+    .event-meta-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+    }
+    .event-meta-icon {
+      font-size: 0.9rem;
+      opacity: 0.6;
+    }
+
+    .event-stages {
+      margin-top: var(--space-md);
+      display: flex;
+      gap: 6px;
+      align-items: center;
+    }
+    .event-stage {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      font-size: 0.7rem;
+      font-weight: 700;
+      border: 1.5px solid rgba(255, 255, 255, 0.12);
+      color: var(--fog);
+      transition: all 0.3s var(--ease);
+    }
+    .event-stage.active {
+      border-color: var(--sky);
+      background: rgba(157, 175, 255, 0.15);
+      color: var(--sky);
+    }
+    .event-stage.done {
+      border-color: var(--foam);
+      background: rgba(168, 230, 207, 0.12);
+      color: var(--foam);
+    }
+    .event-stage-arrow {
+      color: var(--fog);
+      opacity: 0.3;
+      font-size: 0.7rem;
+    }
+
+    .event-edition {
+      margin-top: var(--space-md);
+      display: flex;
+      gap: 4px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .event-ed {
+      font-size: 0.72rem;
+      font-weight: 600;
+      padding: 2px 8px;
+      border-radius: 4px;
+      background: rgba(255, 255, 255, 0.04);
+      color: var(--fog);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      transition: all 0.3s var(--ease);
+    }
+    .event-ed.current {
+      background: rgba(157, 175, 255, 0.12);
+      color: var(--sky);
+      border-color: rgba(157, 175, 255, 0.25);
+    }
+    .event-ed.next {
+      background: rgba(168, 230, 207, 0.08);
+      color: var(--foam);
+      border-color: rgba(168, 230, 207, 0.15);
+      border-style: dashed;
+    }
+
+    /* Section label */
+    .events-section-label {
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--fog);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: var(--space-md);
+      padding-left: var(--space-xs);
+      display: flex;
+      align-items: center;
+      gap: var(--space-sm);
+    }
+    .events-section-label::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(90deg, rgba(255,255,255,0.08), transparent);
+    }
+
+    /* Light mode */
+    [data-theme="light"] .event-card {
+      background: #ffffff;
+      border-color: rgba(0, 0, 0, 0.06);
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+    }
+    [data-theme="light"] .event-card:hover {
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+      border-color: rgba(100, 130, 220, 0.15);
+    }
+    [data-theme="light"] .event-title { color: var(--cloud); }
+    [data-theme="light"] .event-desc { color: #5a6270; }
+    [data-theme="light"] .event-meta { border-top-color: rgba(0, 0, 0, 0.06); }
+    [data-theme="light"] .event-stage { border-color: rgba(0, 0, 0, 0.1); }
+    [data-theme="light"] .event-stage.active { border-color: var(--sky); background: rgba(157, 175, 255, 0.08); }
+    [data-theme="light"] .event-stage.done { border-color: var(--foam); background: rgba(168, 230, 207, 0.06); }
+    [data-theme="light"] .event-section-label::after { background: linear-gradient(90deg, rgba(0,0,0,0.06), transparent); }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .events-grid { grid-template-columns: 1fr; }
+    }
+
+    /* Print */
+    @media print {
+      .events-grid { display: block; }
+      .event-card { break-inside: avoid; border: 1px solid #ccc; margin-bottom: 16px; box-shadow: none; }
+      .event-card:hover { transform: none; }
+    }
+  </style>
+</head>
+<body>
+  <a href="#mainContent" class="skip-link">跳到主要內容</a>
+  <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
+  <div class="bg-atmosphere"></div>
+
+  <nav class="nav">
+    <a href="首頁.html" class="nav-logo">
+      <img src="assets/img/logo.png" alt="海風" class="nav-logo-img" width="48" height="48" fetchpriority="high">
+      <span>海風伺服器</span>
+    </a>
+    <div class="nav-right">
+      <ul class="nav-links">
+        <li><a href="首頁.html">首頁</a></li>
+        <li><a href="公告.html">公告</a></li>
+        <li class="nav-dropdown">
+          <a href="文化藝廊.html" class="nav-dropdown-toggle" aria-expanded="false" aria-haspopup="true">關於 <span class="arrow">▾</span></a>
+          <ul class="dropdown-menu">
+            <li><a href="文化藝廊.html">文化藝廊</a></li>
+            <li><a href="活動.html" class="active">活動</a></li>
+            <li><a href="風景照.html">風景照</a></li>
+            <li><a href="歷史館.html">歷史館</a></li>
+            <li><a href="海風社區.html">海風社區</a></li>
+            <li><a href="海風團隊.html">海風團隊</a></li>
+          </ul>
+        </li>
+        <li><a href="海風指南.html">海風指南</a></li>
+        <li class="nav-dropdown">
+          <a href="玩家須知.html" class="nav-dropdown-toggle" aria-expanded="false" aria-haspopup="true">社群須知 <span class="arrow">▾</span></a>
+          <ul class="dropdown-menu">
+            <li><a href="玩家須知.html">玩家須知</a></li>
+            <li><a href="支持須知.html">支持須知</a></li>
+            <li><a href="管理規則.html">海風管理規則</a></li>
+            <li><a href="公務人員須知.html">公務人員須知</a></li>
+            <li><a href="設計規範.html">設計規範</a></li>
+            <li><a href="服務條款.html">服務條款</a></li>
+            <li><a href="隱私權政策.html">隱私權政策</a></li>
+          </ul>
+        </li>
+        <li><a href="會員.html">會員</a></li>
+        <li><a href="相關連結.html">相關連結</a></li>
+        <li class="nav-dropdown">
+          <a href="合作夥伴.html" class="nav-dropdown-toggle" aria-expanded="false" aria-haspopup="true">資料中心 <span class="arrow">▾</span></a>
+          <ul class="dropdown-menu">
+            <li><a href="合作夥伴.html">合作夥伴</a></li>
+            <li><a href="違規處分.html">違規處分</a></li>
+          </ul>
+        </li>
+      </ul>
+      <button class="nav-theme" id="themeToggle" aria-label="切換主題"></button>
+      <button class="nav-toggle" aria-label="選單">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <div class="page">
+    <div id="mainContent" class="page-hero fade-in">
+      <h1>海風活動</h1>
+      <p class="section-desc">在海風，除了日常生存建造，還有各種精彩活動等你參與。</p>
+    </div>
+
+    <div class="content-section">
+
+      <!-- 常駐活動 -->
+      <div class="events-section-label">常駐活動</div>
+      <div class="events-grid">
+
+        <!-- 風汐系列 -->
+        <div class="event-card fade-in" style="--event-accent: var(--lavender);">
+          <div class="event-header">
+            <span class="event-title">風汐系列</span>
+            <span class="event-badge permanent">常駐</span>
+          </div>
+          <p class="event-desc">
+            以「風」與「潮汐」為主題的系列活動，融合探索、解謎與建築元素。<br>
+            <em style="color:var(--fog);font-size:0.85rem;">詳細活動內容將陸續公告，敬請期待。</em>
+          </p>
+          <div class="event-meta">
+            <span class="event-meta-item"><span class="event-meta-icon">📅</span> 常態開放</span>
+            <span class="event-meta-item"><span class="event-meta-icon">🏷️</span> 系列活動</span>
+          </div>
+        </div>
+
+        <!-- 那個魚 -->
+        <div class="event-card fade-in" style="--event-accent: var(--foam);">
+          <div class="event-header">
+            <span class="event-title">那個魚</span>
+            <span class="event-badge permanent">常駐</span>
+          </div>
+          <p class="event-desc">
+            海風經典釣魚活動，拿起你的釣竿，在海風的水域中尋找各種魚類。<br>
+            <em style="color:var(--fog);font-size:0.85rem;">詳細活動內容將陸續公告，敬請期待。</em>
+          </p>
+          <div class="event-meta">
+            <span class="event-meta-item"><span class="event-meta-icon">📅</span> 常態開放</span>
+            <span class="event-meta-item"><span class="event-meta-icon">🎣</span> 釣魚</span>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- 限時活動 -->
+      <div class="events-section-label" style="margin-top: var(--space-xl);">限時活動</div>
+      <div class="events-grid">
+
+        <!-- 生存起源 -->
+        <div class="event-card fade-in" style="--event-accent: var(--sand);">
+          <div class="event-header">
+            <span class="event-title">生存起源</span>
+            <span class="event-badge limited">限時 · 至 2026 年 7 月</span>
+          </div>
+          <p class="event-desc">
+            回歸最純粹的生存挑戰。三個階段逐步開放，體驗從零開始的原初冒險。<br>
+            <em style="color:var(--fog);font-size:0.85rem;">更多活動細節將陸續公告，敬請期待。</em>
+          </p>
+
+          <!-- 階段進度 -->
+          <div class="event-stages">
+            <span class="event-stage active" title="第一階段 · 進行中">1</span>
+            <span class="event-stage-arrow">→</span>
+            <span class="event-stage" title="第二階段 · 即將開放">2</span>
+            <span class="event-stage-arrow">→</span>
+            <span class="event-stage" title="第三階段 · 即將開放">3</span>
+          </div>
+
+          <div class="event-meta">
+            <span class="event-meta-item"><span class="event-meta-icon">⏳</span> 進行中：第一階段</span>
+            <span class="event-meta-item"><span class="event-meta-icon">📅</span> 截止：2026 年 7 月</span>
+          </div>
+        </div>
+
+        <!-- 攝影大賽 -->
+        <div class="event-card fade-in" style="--event-accent: var(--rose);">
+          <div class="event-header">
+            <span class="event-title">攝影大賽</span>
+            <span class="event-badge recurring">週期性</span>
+          </div>
+          <p class="event-desc">
+            用鏡頭捕捉海風的美。每屆設定不同主題，選出最動人的 Minecraft 風景瞬間。<br>
+            <em style="color:var(--fog);font-size:0.85rem;">第五屆即將開始報名，敬請關注公告。</em>
+          </p>
+
+          <!-- 歷屆記錄 -->
+          <div class="event-edition">
+            <span class="event-ed">第 1 屆</span>
+            <span class="event-ed">第 2 屆</span>
+            <span class="event-ed">第 3 屆</span>
+            <span class="event-ed current">第 4 屆</span>
+            <span class="event-ed next">第 5 屆 →</span>
+          </div>
+
+          <div class="event-meta">
+            <span class="event-meta-item"><span class="event-meta-icon">📸</span> 已舉辦 4 屆</span>
+            <span class="event-meta-item"><span class="event-meta-icon">🔜</span> 第 5 屆準備中</span>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- 參與提示 -->
+      <div class="section-header fade-in" style="margin-top: var(--space-2xl);">
+        <h2>如何參與</h2>
+      </div>
+      <p class="event-desc fade-in" style="text-align:center; max-width:600px; margin:0 auto var(--space-xl);">
+        活動公告會發布在 Discord 社群與網站公告欄。加入 Discord 可以第一時間收到通知，不錯過任何精彩活動！
+      </p>
+      <div class="section-actions slide-left" style="justify-content: center;">
+        <a href="公告.html" class="btn btn-outline">查看公告 →</a>
+        <a href="https://discord.gg/HdS2HrJEH7" target="_blank" rel="noopener" class="btn btn-primary">加入 Discord</a>
+      </div>
+
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <span class="footer-logo">海風伺服器 SeaWind.cc</span>
+        <p class="footer-tagline">在風與海之間，有一個可以長久生存的地方</p>
+      </div>
+      <div class="footer-meta">
+        <span class="footer-status"><span class="status-dot" id="footerStatusDot"></span><span id="footerStatus">查詢中</span></span>
+        <span class="footer-sep">·</span>
+        <span>台灣</span>
+        <span class="footer-sep">·</span>
+        <span>1.21.6 ~ 26.x</span>
+      </div>
+      <div class="footer-links-row">
+        <a href="服務條款.html">服務條款</a>
+        <span class="footer-dot">·</span>
+        <a href="隱私權政策.html">隱私權政策</a>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2026 海風伺服器 · 非 Mojang 官方營運 · service@seawind.cc</p>
+      </div>
+      <p class="page-revise">網站最後修改日期 2026.04.17 / 總計修改 <span id="deployCount">—</span> 次</p>
+    </div>
+  </footer>
+
+  <script src="tips.js" defer></script>
+  <script src="utils.js"></script>
+  <script src="main.js?v=260417c"></script>
+</body>
+</html>

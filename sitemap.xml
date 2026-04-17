@@ -362,8 +362,11 @@
   </url>
   <url>
     <loc>https://www.seawind.cc/海風社區.html</loc>
-    <lastmod>2026-04-12</lastmod>
-    <changefreq>monthly</changefreq>
+  </url>
+  <url>
+    <loc>https://www.seawind.cc/活動.html</loc>
+    <lastmod>2026-04-17</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
