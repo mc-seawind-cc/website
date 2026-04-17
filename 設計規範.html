@@ -88,8 +88,8 @@
     <div class="content-section">
 
       <div class="rules-intro fade-in">
-        <p>本規範適用於海風伺服器內所有特殊道具設計與活動設計。目的是建立統一的設計與審核標準，避免數值失衡反覆調整、造成玩家體驗受損及管理團隊溝通成本。</p>
-        <p style="font-size:0.85rem;color:var(--fog);margin-bottom:0;">初版制定於 115.04.11 ｜ 活動設計章節新增於 115.04.17</p>
+        <p>本規範適用於海風伺服器內所有特殊道具設計、活動設計與材質製作。目的是建立統一的設計與審核標準，避免數值失衡反覆調整、材質風格混亂，造成玩家體驗受損及管理團隊溝通成本。</p>
+        <p style="font-size:0.85rem;color:var(--fog);margin-bottom:0;">初版制定於 115.04.11 ｜ 活動設計章節新增於 115.04.17 ｜ 材質規範章節新增於 115.04.17</p>
       </div>
 
       <!-- 第一章 -->
@@ -483,6 +483,187 @@
               <li style="padding:4px 0;">如果活動期間伺服器出問題，有備案嗎？</li>
               <li style="padding:4px 0;">活動規則夠清楚嗎？玩家會不會有歧義？</li>
               <li style="padding:4px 0;">管理團隊有足夠人力執行和監督嗎？</li>
+            </ol>
+          </div>
+        </div>
+      </div>
+
+      <!-- 第十二章 ── 材質與資源包 -->
+      <div class="rules-chapter fade-in">
+        <h2>第十二章 — 材質與資源包</h2>
+
+        <div class="rule-item">
+          <p><strong>§24</strong> 適用範圍 — 以下材質須遵守本章規範：</p>
+          <ul>
+            <li>自訂物品材質：MMOitems、ExecutableItems 等插件所使用的自訂模型（Custom Model Data）與對應貼圖</li>
+            <li>伺服器材質包：整體 resource pack，涵蓋 UI 介面、環境方塊、音效替換、語言檔案等</li>
+            <li>活動或副本限定的特殊材質（如 Boss 專用模型、限時節慶替換）</li>
+          </ul>
+        </div>
+        <div class="rule-item">
+          <p><strong>§25</strong> 以下不適用本規範：</p>
+          <ul>
+            <li>玩家個人使用的客戶端材質包（OptiFine CIT 等本地替換）</li>
+            <li>原版 Minecraft 內建的材質變種（如方塊隨機模型）</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- 第十三章 ── 材質技術標準 -->
+      <div class="rules-chapter fade-in">
+        <h2>第十三章 — 材質技術標準</h2>
+
+        <div class="rule-item">
+          <p><strong>§26</strong> 解析度限制</p>
+          <ul>
+            <li>標準解析度為 <strong>16×16</strong> 像素，與 Minecraft 原版風格一致</li>
+            <li>特殊 UI 元素（如自訂選單背景、活動封面）最高可使用 <strong>32×32</strong>，但須確保在預設 GUI 縮放下清晰可辨</li>
+            <li>嚴禁使用非正方形像素比例（如 16×32 的拉伸貼圖）</li>
+            <li>所有像素必須為整數對齊，不得出現子像素偏移或抗鋸齒模糊</li>
+          </ul>
+        </div>
+
+        <div class="rule-item">
+          <p><strong>§27</strong> 檔案格式與大小</p>
+          <div class="rules-table-wrap">
+            <table class="rules-table">
+              <thead><tr><th>用途</th><th>格式</th><th>備註</th></tr></thead>
+              <tbody>
+                <tr><td>貼圖檔案</td><td>PNG（32-bit RGBA）</td><td>需要透明度時使用 RGBA，不需要時可用 RGB 減小體積</td></tr>
+                <tr><td>3D 模型</td><td>JSON（Minecraft model format）</td><td>須通過 Blockbench 或等效工具匯出驗證</td></tr>
+                <tr><td>音效替換</td><td>OGG（Vorbis）</td><td>單檔不超過 500KB，避免載入延遲</td></tr>
+                <tr><td>字型檔案</td><td>PNG + JSON（Minecraft font provider）</td><td>須與語言檔案對應</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p style="font-size:0.85rem;color:var(--fog);margin-top:var(--space-sm);">整體材質包壓縮後大小建議控制在 <strong>10MB 以內</strong>。過大的材質包會導致玩家首次載入延遲，影響加入體驗。每次更新應記錄壓縮後體積變化。</p>
+        </div>
+
+        <div class="rule-item">
+          <p><strong>§28</strong> 命名規範與目錄結構</p>
+          <ul>
+            <li>所有自訂材質使用統一前綴 <code>sw_</code>（seawind 縮寫），避免與原版或其他材質包衝突</li>
+            <li>目錄結構遵循 Minecraft resource pack 標準：<code>assets/minecraft/textures/...</code> 或 <code>assets/seawind/textures/...</code></li>
+            <li>Custom Model Data 使用有組織的編號區段，避免隨意指定造成衝突：
+              <div class="rules-table-wrap">
+                <table class="rules-table">
+                  <thead><tr><th>編號區段</th><th>用途</th></tr></thead>
+                  <tbody>
+                    <tr><td>1000–1999</td><td>魚套系列裝備</td></tr>
+                    <tr><td>2000–2999</td><td>風汐系列工具</td></tr>
+                    <tr><td>3000–3999</td><td>活動限定物品</td></tr>
+                    <tr><td>4000–4999</td><td>副本 Boss 專用</td></tr>
+                    <tr><td>5000–5999</td><td>會員專屬外觀</td></tr>
+                    <tr><td>9000–9999</td><td>UI 介面與系統用</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </li>
+            <li>新增編號區段時須先在本規範中登記，避免多人同時設計時撞號</li>
+          </ul>
+        </div>
+
+        <div class="rule-item">
+          <p><strong>§29</strong> 透明度與圖層規範</p>
+          <ul>
+            <li>物品貼圖背景必須完全透明（alpha = 0），不得殘留白邊或半透明雜訊</li>
+            <li>半透明效果（如發光、粒子拖尾）應使用獨立圖層，alpha 值建議在 64–192 之間</li>
+            <li>物品在物品欄中的可讀性優先：即使有花俏的裝飾，物品輪廓必須在 16×16 縮放下辨識得出</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- 第十四章 ── 美術風格指南 -->
+      <div class="rules-chapter fade-in">
+        <h2>第十四章 — 美術風格指南</h2>
+
+        <div class="rule-item">
+          <p><strong>§30</strong> 風格定位</p>
+          <ul>
+            <li>海風材質包以 <strong>Minecraft 原版像素風格</strong>為基底，不偏離原版的色彩飽和度與光影邏輯</li>
+            <li>允許在原版基礎上添加伺服器專屬特色（如海風主題色調、專屬標誌），但不應過度突兀</li>
+            <li>嚴禁使用真實照片、AI 生成圖片、或非像素藝術風格的素材直接貼入</li>
+          </ul>
+        </div>
+
+        <div class="rule-item">
+          <p><strong>§31</strong> 色彩原則</p>
+          <ul>
+            <li>主色調參考 Minecraft 原版 palette，保持與遊戲環境的自然融合</li>
+            <li>伺服器主題色可適度融入（如海風的品牌藍 #9dafff、薄荷綠 #a8e6cf），但僅作為點綴，不應覆蓋整體色調</li>
+            <li>同一系列的裝備材質應有統一的色彩語言（如魚套以水藍/青綠為主、風汐系列以灰白/淡紫為主）</li>
+            <li>避免使用純黑（#000000）或純白（#FFFFFF），改用帶有色調的深色/淺色，更自然</li>
+          </ul>
+        </div>
+
+        <div class="rule-item">
+          <p><strong>§32</strong> 像素藝術規範</p>
+          <ul>
+            <li>線條：使用明確的輪廓色（outline），輪廓色應比填充色深 2–3 個色階</li>
+            <li>光影：光源方向統一為左上方，與 Minecraft 原版一致</li>
+            <li>陰影：使用至少 2 層陰影（主陰影 + 深陰影），避免平面感</li>
+            <li>高光：在受光面加小範圍高光點（1–2 像素），提升立體感</li>
+            <li>動畫材質：幀數不超過 24 幀，每幀間隔不小於 2 tick（100ms），檔案命名為 <code>檔名.png.mcmeta</code></li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- 第十五章 ── 材質包管理與更新 -->
+      <div class="rules-chapter fade-in">
+        <h2>第十五章 — 材質包管理與更新</h2>
+
+        <div class="rule-item">
+          <p><strong>§33</strong> 版本管理</p>
+          <ul>
+            <li>材質包須在 <code>pack.mcmeta</code> 中標註版本號，格式為 <code>Major.Minor.Patch</code></li>
+            <li>每次伺服器大版本更新（如 1.21 → 1.22）時，Major 版本 +1</li>
+            <li>新增或修改材質時，Minor 版本 +1；修正錯誤時 Patch 版本 +1</li>
+            <li>pack_format 須與 Minecraft 版本對應（如 1.21.x → pack_format 46）</li>
+          </ul>
+        </div>
+
+        <div class="rule-item">
+          <p><strong>§34</strong> 更新流程</p>
+          <ul>
+            <li>新增材質：設計師提交 PNG/JSON 檔案 + 說明用途，管理人員確認無衝突後合入材質包</li>
+            <li>修改材質：須說明修改原因（修正錯誤 / 風格調整 / 數值對應更新），舊版材質備份保留</li>
+            <li>移除材質：僅在對應插件物品已被刪除時才能移除，避免遊戲中出現紫黑棋盤格錯誤貼圖</li>
+            <li>每次更新後須在客戶端完整測試，確認無紫黑格、模型偏移、透明度異常等問題</li>
+          </ul>
+        </div>
+
+        <div class="rule-item">
+          <p><strong>§35</strong> 強制載入與相容性</p>
+          <ul>
+            <li>伺服器材質包透過 server.properties 設定為強制載入（resource-pack + resource-pack-sha1）</li>
+            <li>強制載入的材質包不得覆蓋玩家日常會看到的原版材質（如泥土、石頭），除非是活動期間的限時替換</li>
+            <li>自訂物品材質僅在持有對應 Custom Model Data 的物品時才會載入，不影響一般遊戲體驗</li>
+            <li>每次更新 SHA1 雜湊值須同步更新，否則玩家端不會觸發重新下載</li>
+          </ul>
+        </div>
+
+        <div class="rule-item">
+          <p><strong>§36</strong> 品質檢核</p>
+          <ul>
+            <li>所有新材質上線前須經過至少一人非設計者的 review，確認辨識度與風格一致性</li>
+            <li>在不同 GUI 縮放倍率（自動 / 小 / 大）下測試，確保可讀性</li>
+            <li>深色與淺色環境下各看一次（部分材質在暗處會糊掉）</li>
+            <li>多人同時在物品欄瀏覽時，不同物品的材質應有明確區別，不可太相似導致混淆</li>
+          </ul>
+        </div>
+
+        <div class="callout callout-tip">
+          <span class="callout-icon">💡</span>
+          <div>材質設計自查清單：
+            <ol style="margin-top:var(--space-sm);padding-left:20px;color:var(--cloud);">
+              <li style="padding:4px 0;">這張貼圖在 16×16 縮放下看得出是什麼嗎？</li>
+              <li style="padding:4px 0;">背景有沒有殘留白邊或半透明雜訊？</li>
+              <li style="padding:4px 0;">光影方向是不是跟原版一致（左上光源）？</li>
+              <li style="padding:4px 0;">跟同系列的其他材質放在一起，風格統一嗎？</li>
+              <li style="padding:4px 0;">Custom Model Data 編號有沒有跟別人撞？</li>
+              <li style="padding:4px 0;">檔案命名有沒有加 sw_ 前綴？</li>
+              <li style="padding:4px 0;">整體材質包更新後大小有沒有超過 10MB？</li>
+              <li style="padding:4px 0;">玩家在物品欄一眼能分得出這是哪件裝備嗎？</li>
             </ol>
           </div>
         </div>
