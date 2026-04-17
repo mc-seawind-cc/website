@@ -33,8 +33,9 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;800;900&family=Noto+Serif+TC:wght@700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=260417a">
+  <link rel="stylesheet" href="style.css?v=260417b">
   <link rel="stylesheet" href="music-player.css">
+  <link rel="preload" href="music-player.js" as="script">
   <!-- JSON-LD 結構化資料 -->
   <script type="application/ld+json">
   {
@@ -231,7 +232,7 @@
         <div class="feature-card" style="--card-accent: var(--lavender);">
           <div class="feature-card-icon"><img src="assets/img/icons/campfire.png" alt="社區" width="32" height="32"></div>
           <h4>海風社區</h4>
-          <p>高自由度玩法，經營自己的社區，透明公正的管理制度，玩家意見即時回饋，共建海風文化。</p>
+          <p>高自由度玩法，經營自己的社區。透明公正的管理，玩家意見即時回饋，共建海風文化。</p>
         </div>
         <div class="feature-card" style="--card-accent: var(--teal);">
           <div class="feature-card-icon"><img src="assets/img/icons/shield.png" alt="穩定" width="32" height="32"></div>
@@ -241,7 +242,7 @@
         <div class="feature-card" style="--card-accent: var(--ice);">
           <div class="feature-card-icon"><img src="assets/img/icons/book.png" alt="介面" width="32" height="32"></div>
           <h4>中文化介面</h4>
-          <p>介面選單都有設計過，大部分是中文而且不會太難看，新手也能輕鬆上手。</p>
+          <p>精心設計的中文選單與介面，新手也能輕鬆上手，無需額外安裝模組。</p>
         </div>
       </div>
 
@@ -362,34 +363,6 @@
         <span class="footer-logo">海風伺服器 SeaWind.cc</span>
         <p class="footer-tagline">在風與海之間，有一個可以長久生存的地方</p>
       </div>
-      <div class="footer-grid">
-        <div class="footer-col">
-          <span class="footer-heading">導覽</span>
-          <div class="footer-links">
-            <a href="首頁.html">首頁</a>
-            <a href="公告.html">公告</a>
-            <a href="海風指南.html">海風指南</a>
-            <a href="文化藝廊.html">文化藝廊</a>
-            <a href="海風團隊.html">海風團隊</a>
-          </div>
-        </div>
-        <div class="footer-col">
-          <span class="footer-heading">社群</span>
-          <div class="footer-links">
-            <a href="https://discord.gg/HdS2HrJEH7" target="_blank" rel="noopener">Discord 社群</a>
-            <a href="相關連結.html">相關連結</a>
-            <a href="合作夥伴.html">合作夥伴</a>
-          </div>
-        </div>
-        <div class="footer-col">
-          <span class="footer-heading">伺服器</span>
-          <div class="footer-links">
-            <a href="javascript:void(0)" onclick="copyServerIP()" title="點擊複製">seawind.cc</a>
-            <a href="玩家須知.html">玩家須知</a>
-            <a href="會員.html">會員方案</a>
-          </div>
-        </div>
-      </div>
       <div class="footer-meta">
         <span class="footer-status"><span class="status-dot" id="footerStatusDot"></span><span id="footerStatus">查詢中</span></span>
         <span class="footer-sep">·</span>
@@ -412,7 +385,7 @@
 
   <script src="tips.js" defer></script>
   <script src="utils.js"></script>
-  <script src="main.js?v=260417a"></script>
+  <script src="main.js?v=260417b"></script>
   <!-- Lightbox -->
   <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="圖片瀏覽" tabindex="-1">
     <button class="lightbox-close" id="lightboxClose">✕</button>

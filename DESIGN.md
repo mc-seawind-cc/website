@@ -119,9 +119,8 @@
    - 如果巴哈姆特圖床失效或被限速，會影響載入
    - 已有 `onerror` fallback 處理，但應考慮本地備份
 
-7. **音樂播放器缺少預載**
-   - `music-player.css` 在 head 中載入，但 `music-player.js` 透過動態 `<script>` 建立
-   - 可能導致 FOUC（Flash of Unstyled Content）
+7. **~~音樂播放器缺少預載~~** ✅ 2026-04-17 已修復
+   - 已新增 `&lt;link rel="preload" href="music-player.js" as="script"&gt;` 到首頁 head
 
 8. **Lightbox 事件監聽器重複綁定**
    - `initPhotoGallery` 中每次開啟 lightbox 都 cloneNode 來避免重複
@@ -594,6 +593,14 @@ Discord 上的公告長這樣：
 | 2026-04-17 | 海風網站助手 | 🗑️ 首頁移除「準備好加入了嗎？」結尾 CTA 區塊（HTML 清除） |
 | 2026-04-17 | 海風網站助手 | 🐛 修復全站 42 個指南子頁面 nav logo 圖片不顯示（路徑 assets/img/logo.png → ../assets/img/logo.png） |
 | 2026-04-17 | 海風網站助手 | 全站 70 個頁面移除 🇹🇼 國旗 emoji，台灣改為純文字顯示 |
+
+---
+
+| 2026-04-17 | 海風網站助手 | 🎨 全站 70 頁頁尾簡化：移除 3 欄導覽網格（導覽/社群/伺服器），改為精簡版（品牌標語 + 伺服器狀態 + 隱私權/服務條款），CSS 清理 .footer-grid/.footer-col/.footer-heading/.footer-links 已刪除 |
+| 2026-04-17 | 海風網站助手 | ✏️ 首頁特色卡片文案優化：「中文化介面」從「大部分是中文而且不會太難看」改為「精心設計的中文選單與介面，無需額外安裝模組」；「海風社區」微調標點 |
+| 2026-04-17 | 海風網站助手 | ⚡ 首頁新增 music-player.js preload（&lt;link rel="preload"&gt;），減少 FOUC 問題 |
+| 2026-04-17 | 海風網站助手 | 🧹 CSS 瘦身：移除已刪除 footer 元件的 print 樣式殘餘（.footer-links a → .footer-links-row a） |
+| 2026-04-17 | 海風網站助手 | 全站 70 頁 CSS/JS 快取更新為 v=260417b |
 
 ---
 
