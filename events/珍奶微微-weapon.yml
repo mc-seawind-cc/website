@@ -4,47 +4,48 @@
 # ═══════════════════════════════════════
 
 2026Bubble_tea-01:
-  item_type: SWORD
-  material: DIAMOND_SWORD
-  name: '&b&l珍奶微微 &7&o┃ &e海風國際珍奶日限定'
-  lore:
-    - ''
-    - '&8「在風與海之間，一杯珍珠奶茶的溫柔。」'
-    - ''
-    - '&7🗡 基礎傷害：&f+7'
-    - '&7附魔：鋒利 III / 擊退 I / 耐久 III'
-    - ''
-    - '&d✦ 珍珠飄浮 &8— &7手持時珍珠泡泡環繞劍身'
-    - '&d✦ 奶茶飛濵 &8— &7攻擊時迸出珍珠與奶茶'
-    - '&d✦ 擊殺閃光 &8— &7擊殺時閃爍金色光芒'
-    - ''
-    - '&8&m                          '
-    - '&e&l活動限定 &7┃ &f2026 海風國際珍奶日'
-    - '&7珍奶大師的證明'
-    - '&8&m                          '
-
-  # 基礎數值（參照設計規範第二章中階標準）
-  stats:
-    PHYSICAL_DAMAGE:
-      base: 7.0
-    ATTACK_SPEED:
-      base: 1.6
-
-  # 附魔
-  enchantments:
-    sharpness: 3
-    knockback: 1
-    unbreaking: 3
-
-  # 不可交易、不可丟棄（活動限定）
-  vanilla:
+  base:
+    material: DIAMOND_SWORD
+    name: '&b&l珍奶微微 &7┃ &e海風國際珍奶日限定'
+    lore:
+      - '&8「在風與海之間，一杯珍珠奶茶的溫柔。」'
+      - '&d珍珠飄浮 &8— &7手持時珍珠泡泡環繞劍身'
+      - '&d奶茶飛濺 &8— &7攻擊時迸出珍珠與奶茶'
+      - '&d擊殺閃光 &8— &7擊殺時閃爍金色光芒'
+      - '&8&m                          '
+      - '&e&l活動限定 &7┃ &f2026 海風國際珍奶日'
+      - '&7珍奶大師的證明'
+    disable-repairing: true
+    attack-damage: 7.0
+    enchants:
+      sharpness: 3.0
+      knockback: 1.0
+      unbreaking: 3.0
     unbreakable: true
-
-  # 自訂模型資料（如使用資源包，否則留 0 使用原版）
-  custom-model-data: 0
-
-  # 綁定 MythicMobs 技能
-  abilities:
-    - 珍珠飄浮
-    - 奶茶飛濺
-    - 擊殺閃光
+    revision-id: 2026
+  ability:
+    珍珠飄浮:
+      type: PARTICLE
+      mode: PASSIVE
+      particle: BUBBLE_POP
+      amount: 3
+      hspread: 0.3
+      vspread: 0.3
+      speed: 0.02
+      timer: 0.4
+    奶茶飛濺:
+      type: PARTICLE
+      mode: ON_HIT
+      particle: BUBBLE_POP
+      amount: 10
+      hspread: 0.5
+      vspread: 0.5
+      speed: 0.3
+    擊殺閃光:
+      type: PARTICLE
+      mode: ON_KILL
+      particle: GLOW
+      amount: 12
+      hspread: 1.0
+      vspread: 0.5
+      speed: 0.1
