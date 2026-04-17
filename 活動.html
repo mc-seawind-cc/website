@@ -193,6 +193,21 @@
       border-style: dashed;
     }
 
+    /* Drink table */
+    .drink-table tbody tr {
+      transition: background 0.2s var(--ease);
+    }
+    .drink-table tbody tr:hover {
+      background: rgba(196,155,108,0.06);
+    }
+    .drink-row-rare {
+      background: rgba(196,155,108,0.08) !important;
+      border-top: 1px dashed rgba(196,155,108,0.25) !important;
+    }
+    .drink-row-rare:hover {
+      background: rgba(196,155,108,0.14) !important;
+    }
+
     /* Section label */
     .events-section-label {
       font-size: 0.8rem;
@@ -230,6 +245,9 @@
     [data-theme="light"] .event-stage.active { border-color: var(--sky); background: rgba(157, 175, 255, 0.08); }
     [data-theme="light"] .event-stage.done { border-color: var(--foam); background: rgba(168, 230, 207, 0.06); }
     [data-theme="light"] .event-section-label::after { background: linear-gradient(90deg, rgba(0,0,0,0.06), transparent); }
+    [data-theme="light"] .drink-table tbody tr:hover { background: rgba(196,155,108,0.06); }
+    [data-theme="light"] .drink-row-rare { background: rgba(196,155,108,0.08) !important; }
+    [data-theme="light"] .drink-row-rare:hover { background: rgba(196,155,108,0.14) !important; }
 
     /* Responsive */
     @media (max-width: 768px) {
@@ -381,25 +399,133 @@
 
           <!-- 珍奶飲用效果 -->
           <div style="margin: var(--space-md) 0; padding: 14px 18px; background: rgba(196,155,108,0.06); border: 1px solid rgba(196,155,108,0.12); border-radius: var(--radius-md);">
-            <div style="font-size:0.78rem;font-weight:700;color:#c49b6c;margin-bottom:10px;letter-spacing:0.04em;">🧋 飲用效果</div>
-            <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:8px;font-size:0.82rem;">
-              <div style="display:flex;align-items:center;gap:6px;color:var(--cloud);">
-                <span style="opacity:0.6;">❤️</span> 回復生命值
-              </div>
-              <div style="display:flex;align-items:center;gap:6px;color:var(--cloud);">
-                <span style="opacity:0.6;">🍖</span> 回復飽食度
-              </div>
-              <div style="display:flex;align-items:center;gap:6px;color:var(--cloud);">
-                <span style="opacity:0.6;">💧</span> 回復飽和度
-              </div>
-              <div style="display:flex;align-items:center;gap:6px;color:var(--cloud);">
-                <span style="opacity:0.6;">✨</span> 特殊效果
-              </div>
-              <div style="display:flex;align-items:center;gap:6px;color:var(--cloud);">
-                <span style="opacity:0.6;">⏳</span> 食用冷卻
-              </div>
+            <div style="font-size:0.78rem;font-weight:700;color:#c49b6c;margin-bottom:12px;letter-spacing:0.04em;">🧋 飲用效果一覽</div>
+            <div style="overflow-x:auto;">
+              <table class="drink-table" style="width:100%;border-collapse:separate;border-spacing:0;font-size:0.8rem;">
+                <thead>
+                  <tr style="border-bottom:1px solid rgba(196,155,108,0.15);">
+                    <th style="text-align:left;padding:6px 8px;color:#c49b6c;font-weight:700;font-size:0.72rem;letter-spacing:0.04em;white-space:nowrap;">口味</th>
+                    <th style="text-align:center;padding:6px 6px;color:var(--fog);font-weight:600;font-size:0.72rem;">❤️ 生命</th>
+                    <th style="text-align:center;padding:6px 6px;color:var(--fog);font-weight:600;font-size:0.72rem;">🍖 飽食</th>
+                    <th style="text-align:center;padding:6px 6px;color:var(--fog);font-weight:600;font-size:0.72rem;">💧 飽和</th>
+                    <th style="text-align:left;padding:6px 8px;color:var(--fog);font-weight:600;font-size:0.72rem;">✨ 特殊效果</th>
+                    <th style="text-align:center;padding:6px 6px;color:var(--fog);font-weight:600;font-size:0.72rem;">⏳ 冷卻</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <!-- 基本款 -->
+                  <tr class="drink-row" style="border-bottom:1px solid rgba(255,255,255,0.04);">
+                    <td style="padding:7px 8px;color:var(--cloud);white-space:nowrap;">🥛 原味奶茶</td>
+                    <td style="text-align:center;padding:7px 6px;color:var(--foam);">4</td>
+                    <td style="text-align:center;padding:7px 6px;color:var(--foam);">6</td>
+                    <td style="text-align:center;padding:7px 6px;color:var(--foam);">4.8</td>
+                    <td style="padding:7px 8px;color:var(--cloud);font-size:0.78rem;">速度 I（3:00）</td>
+                    <td style="text-align:center;padding:7px 6px;color:var(--fog);">15s</td>
+                  </tr>
+                  <tr class="drink-row" style="border-bottom:1px solid rgba(255,255,255,0.04);">
+                    <td style="padding:7px 8px;color:var(--cloud);white-space:nowrap;">🍵 紅茶拿鐵</td>
+                    <td style="text-align:center;padding:7px 6px;color:var(--foam);">4</td>
+                    <td style="text-align:center;padding:7px 6px;color:var(--foam);">6</td>
+                    <td style="text-align:center;padding:7px 6px;color:var(--foam);">4.8</td>
+                    <td style="padding:7px 8px;color:var(--cloud);font-size:0.78rem;">夜視 I（3:00）</td>
+                    <td style="text-align:center;padding:7px 6px;color:var(--fog);">15s</td>
+                  </tr>
+                  <tr class="drink-row" style="border-bottom:1px solid rgba(255,255,255,0.04);">
+                    <td style="padding:7px 8px;color:var(--cloud);white-space:nowrap;">🍯 蜂蜜檸檬</td>
+                    <td style="text-align:center;padding:7px 6px;color:var(--foam);">3</td>
+                    <td style="text-align:center;padding:7px 6px;color:var(--foam);">4</td>
+                    <td style="text-align:center;padding:7px 6px;color:var(--foam);">2.4</td>
+                    <td style="padding:7px 8px;color:var(--cloud);font-size:0.78rem;">回復 I（0:30）</td>
+                    <td style="text-align:center;padding:7px 6px;color:var(--fog);">20s</td>
+                  </tr>
+                  <tr class="drink-row" style="border-bottom:1px solid rgba(255,255,255,0.04);">
+                    <td style="padding:7px 8px;color:var(--cloud);white-space:nowrap;">🐝 蜂巢奶茶</td>
+                    <td style="text-align:center;padding:7px 6px;color:var(--foam);">2</td>
+                    <td style="text-align:center;padding:7px 6px;color:var(--foam);">6</td>
+                    <td style="text-align:center;padding:7px 6px;color:var(--foam);">6.0</td>
+                    <td style="padding:7px 8px;color:var(--cloud);font-size:0.78rem;">生命回復 I（0:15）</td>
+                    <td style="text-align:center;padding:7px 6px;color:var(--fog);">20s</td>
+                  </tr>
+                  <!-- 進階款 -->
+                  <tr class="drink-row" style="border-bottom:1px solid rgba(255,255,255,0.04);">
+                    <td style="padding:7px 8px;color:var(--cloud);white-space:nowrap;">🍫 可可歐蕾</td>
+                    <td style="text-align:center;padding:7px 6px;color:var(--foam);">4</td>
+                    <td style="text-align:center;padding:7px 6px;color:var(--foam);">8</td>
+                    <td style="text-align:center;padding:7px 6px;color:var(--foam);">6.4</td>
+                    <td style="padding:7px 8px;color:var(--cloud);font-size:0.78rem;">幸運 I（3:00）</td>
+                    <td style="text-align:center;padding:7px 6px;color:var(--fog);">20s</td>
+                  </tr>
+                  <tr class="drink-row" style="border-bottom:1px solid rgba(255,255,255,0.04);">
+                    <td style="padding:7px 8px;color:var(--cloud);white-space:nowrap;">🌵 抹茶拿鐵</td>
+                    <td style="text-align:center;padding:7px 6px;color:var(--foam);">4</td>
+                    <td style="text-align:center;padding:7px 6px;color:var(--foam);">6</td>
+                    <td style="text-align:center;padding:7px 6px;color:var(--foam);">4.8</td>
+                    <td style="padding:7px 8px;color:var(--cloud);font-size:0.78rem;">急迫 I（3:00）</td>
+                    <td style="text-align:center;padding:7px 6px;color:var(--fog);">20s</td>
+                  </tr>
+                  <tr class="drink-row" style="border-bottom:1px solid rgba(255,255,255,0.04);">
+                    <td style="padding:7px 8px;color:var(--cloud);white-space:nowrap;">💜 芋頭牛奶</td>
+                    <td style="text-align:center;padding:7px 6px;color:var(--foam);">5</td>
+                    <td style="text-align:center;padding:7px 6px;color:var(--foam);">6</td>
+                    <td style="text-align:center;padding:7px 6px;color:var(--foam);">3.6</td>
+                    <td style="padding:7px 8px;color:var(--cloud);font-size:0.78rem;">跳躍提升 I（3:00）</td>
+                    <td style="text-align:center;padding:7px 6px;color:var(--fog);">20s</td>
+                  </tr>
+                  <tr class="drink-row" style="border-bottom:1px solid rgba(255,255,255,0.04);">
+                    <td style="padding:7px 8px;color:var(--cloud);white-space:nowrap;">🍎 蘋果綠茶</td>
+                    <td style="text-align:center;padding:7px 6px;color:var(--foam);">3</td>
+                    <td style="text-align:center;padding:7px 6px;color:var(--foam);">10</td>
+                    <td style="text-align:center;padding:7px 6px;color:var(--foam);">12.0</td>
+                    <td style="padding:7px 8px;color:var(--cloud);font-size:0.78rem;">—</td>
+                    <td style="text-align:center;padding:7px 6px;color:var(--fog);">15s</td>
+                  </tr>
+                  <tr class="drink-row" style="border-bottom:1px solid rgba(255,255,255,0.04);">
+                    <td style="padding:7px 8px;color:var(--cloud);white-space:nowrap;">🍈 西瓜冰沙</td>
+                    <td style="text-align:center;padding:7px 6px;color:var(--foam);">6</td>
+                    <td style="text-align:center;padding:7px 6px;color:var(--foam);">4</td>
+                    <td style="text-align:center;padding:7px 6px;color:var(--foam);">2.4</td>
+                    <td style="padding:7px 8px;color:var(--cloud);font-size:0.78rem;">速度 I（1:30）</td>
+                    <td style="text-align:center;padding:7px 6px;color:var(--fog);">20s</td>
+                  </tr>
+                  <tr class="drink-row" style="border-bottom:1px solid rgba(255,255,255,0.04);">
+                    <td style="padding:7px 8px;color:var(--cloud);white-space:nowrap;">🫐 甜苺昔</td>
+                    <td style="text-align:center;padding:7px 6px;color:var(--foam);">6</td>
+                    <td style="text-align:center;padding:7px 6px;color:var(--foam);">6</td>
+                    <td style="text-align:center;padding:7px 6px;color:var(--foam);">4.8</td>
+                    <td style="padding:7px 8px;color:var(--cloud);font-size:0.78rem;">回復 II（0:10）</td>
+                    <td style="text-align:center;padding:7px 6px;color:var(--fog);">25s</td>
+                  </tr>
+                  <tr class="drink-row" style="border-bottom:1px solid rgba(255,255,255,0.04);">
+                    <td style="padding:7px 8px;color:var(--cloud);white-space:nowrap;">🍄 仙草奶茶</td>
+                    <td style="text-align:center;padding:7px 6px;color:var(--foam);">4</td>
+                    <td style="text-align:center;padding:7px 6px;color:var(--foam);">8</td>
+                    <td style="text-align:center;padding:7px 6px;color:var(--foam);">6.4</td>
+                    <td style="padding:7px 8px;color:var(--cloud);font-size:0.78rem;">抗性提升 I（2:00）</td>
+                    <td style="text-align:center;padding:7px 6px;color:var(--fog);">20s</td>
+                  </tr>
+                  <tr class="drink-row" style="border-bottom:1px solid rgba(255,255,255,0.04);">
+                    <td style="padding:7px 8px;color:var(--cloud);white-space:nowrap;">🥕 胡蘿蔔汁</td>
+                    <td style="text-align:center;padding:7px 6px;color:var(--foam);">2</td>
+                    <td style="text-align:center;padding:7px 6px;color:var(--foam);">8</td>
+                    <td style="text-align:center;padding:7px 6px;color:var(--foam);">9.6</td>
+                    <td style="padding:7px 8px;color:var(--cloud);font-size:0.78rem;">夜視 I（3:00）</td>
+                    <td style="text-align:center;padding:7px 6px;color:var(--fog);">15s</td>
+                  </tr>
+                  <!-- 稀有款 -->
+                  <tr class="drink-row drink-row-rare">
+                    <td style="padding:7px 8px;color:#c49b6c;font-weight:700;white-space:nowrap;">💛 金色特調</td>
+                    <td style="text-align:center;padding:7px 6px;color:#c49b6c;font-weight:700;">6</td>
+                    <td style="text-align:center;padding:7px 6px;color:#c49b6c;font-weight:700;">10</td>
+                    <td style="text-align:center;padding:7px 6px;color:#c49b6c;font-weight:700;">12.0</td>
+                    <td style="padding:7px 8px;color:#c49b6c;font-size:0.78rem;font-weight:600;">速度 I + 抗性 I + 幸運 I（各 3:00）</td>
+                    <td style="text-align:center;padding:7px 6px;color:#c49b6c;font-weight:700;">45s</td>
+                  </tr>
+                </tbody>
+              </table>
             </div>
-            <div style="margin-top:8px;font-size:0.75rem;color:var(--fog);font-style:italic;">各口味數值不同，詳細數值請見遊戲內說明。</div>
+            <div style="margin-top:10px;font-size:0.72rem;color:var(--fog);display:flex;flex-wrap:wrap;gap:12px;">
+              <span>📊 對比：牛排 = 8🍖 + 12.8💧 | 金蘋果 = 4❤️ + Absorption + 生命回復 II 5:00</span>
+            </div>
           </div>
 
           <!-- 每日任務預覽 -->
