@@ -1,0 +1,23 @@
+name: Weaken
+modifier:
+  duration:
+    name: 持續時間
+    default-value: 0
+  timer:
+    name: 計時器
+    default-value: 0
+  delay:
+    name: 延遲
+    default-value: 0
+  mana:
+    name: 魔力
+    default-value: 0
+  stamina:
+    name: 耐力
+    default-value: 0
+  cooldown:
+    name: 冷卻
+    default-value: 0
+  ratio:
+    name: 比值
+    default-value: 0
