@@ -1,0 +1,49 @@
+# ═══════════════════════════════════════
+# 珍奶微微 — MMOItems 武器設定
+# 檔案位置：plugins/MMOItems/item/SWORD.yml
+# ═══════════════════════════════════════
+
+珍奶微微:
+  item_type: SWORD
+  material: DIAMOND_SWORD
+  name: '&b&l珍奶微微 &7&o┃ &e海風國際珍奶日限定'
+  lore:
+    - ''
+    - '&8「在風與海之間，一杯珍珠奶茶的溫柔。」'
+    - ''
+    - '&7🗡 基礎傷害：&f+7'
+    - '&7⚡ 附魔：&f鋒利 III &8/ &f擊退 I'
+    - ''
+    - '&d✦ 珍珠飄浮 &8— &7手持時珍珠泡泡環繞劍身'
+    - '&d✦ 奶茶飛濵 &8— &7攻擊時迸出珍珠與奶茶'
+    - '&d✦ 擊殺閃光 &8— &7擊殺時閃爍金色光芒'
+    - ''
+    - '&8&m                          '
+    - '&e&l活動限定 &7┃ &f2026 海風國際珍奶日'
+    - '&7珍奶大師的證明'
+    - '&8&m                          '
+
+  # 基礎數值（參照設計規範第二章中階標準）
+  stats:
+    PHYSICAL_DAMAGE:
+      base: 7.0
+    ATTACK_SPEED:
+      base: 1.6
+
+  # 附魔
+  enchantments:
+    sharpness: 3
+    knockback: 1
+
+  # 不可交易、不可丟棄（活動限定）
+  vanilla:
+    unbreakable: true
+
+  # 自訂模型資料（如使用資源包，否則留 0 使用原版）
+  custom-model-data: 0
+
+  # 綁定 MythicMobs 技能
+  abilities:
+    - 珍珠飄浮
+    - 奶茶飛濺
+    - 擊殺閃光
