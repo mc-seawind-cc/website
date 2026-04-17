@@ -9,7 +9,7 @@
 珍珠飄浮:
   Cooldown: 0
   Conditions:
-    - holdingitem{item=珍奶微微} true
+    - holdingitem{item=2026Bubble_tea-01} true
   Skills:
     - effect:particleset{
         particle=bubble_pop;
@@ -29,7 +29,7 @@
 奶茶飛濺:
   Cooldown: 0
   Conditions:
-    - holdingitem{item=珍奶微微} true
+    - holdingitem{item=2026Bubble_tea-01} true
   Skills:
     # 珍珠爆發
     - effect:particleset{
@@ -59,7 +59,7 @@
 擊殺閃光:
   Cooldown: 0
   Conditions:
-    - holdingitem{item=珍奶微微} true
+    - holdingitem{item=2026Bubble_tea-01} true
   Skills:
     # 金色光環
     - effect:particleset{
@@ -89,7 +89,7 @@
 暴擊強化:
   Cooldown: 0
   Conditions:
-    - holdingitem{item=珍奶微微} true
+    - holdingitem{item=2026Bubble_tea-01} true
     - iscritical true
   Skills:
     - effect:particleset{
