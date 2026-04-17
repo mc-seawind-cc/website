@@ -18,9 +18,9 @@
     disable-repairing: true
     attack-damage: 7.0
     enchants:
-      sharpness: 3.0
-      knockback: 1.0
+      knockback: 5.0
       unbreaking: 3.0
+      mending: 1.0
     unbreakable: true
     revision-id: 2026
   ability:
