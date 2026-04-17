@@ -187,15 +187,44 @@
       </div>
 
       <div class="rules-intro fade-in">
-        <p>線上商城讓你可以在遊戲介面裡直接買賣商品，不用跟其他玩家面對面交易。上架你的商品，標個好價錢，等著生意上門吧！</p>
-        <p>線上商城讓你可以在遊戲介面裡直接買賣商品，不用跟其他玩家面對面交易。上架你的商品，標個好價錢，等著生意上門吧！</p>
+        <p>線上商城是海風內建的拍賣平台，讓你可以在遊戲介面裡直接買賣商品，不用跟其他玩家面對面交易。上架你的商品、標個好價錢，等著生意上門吧！</p>
+        <div class="guide-img-wrap fade-in">
+          <picture><source srcset="../assets/img/guide-ah.webp" type="image/webp"><img src="../assets/img/guide-ah.png" alt="線上商城介面" loading="lazy"></picture>
+          <span class="guide-img-caption">線上商城：瀏覽、搜尋、購買一應俱全</span>
+        </div>
       </div>
 
       <div class="lore-block fade-in">
         <h3>📋 基本資訊</h3>
         <ul class="rules-list">
-          <li>全分流共 <strong>10</strong> 件商品上架額度。</li>
+          <li>每個玩家最多可同時上架 <strong>10</strong> 件商品（全分流共用額度）。</li>
+          <li>上架後商品會從你的背包扣除，存放在系統中。</li>
+          <li>商品售出後，價格會自動存入你的帳戶（風幣）。</li>
+          <li>下架未售出的商品會回到你的背包。</li>
         </ul>
+      </div>
+
+      <div class="lore-block fade-in">
+        <h3>📤 如何上架商品</h3>
+        <p>上架商品非常簡單，只需要幾個步驟：</p>
+        <ol class="rules-list">
+          <li>在背包中<strong>手持</strong>你要上架的物品。</li>
+          <li>輸入指令 <code>/ah sell &lt;價格&gt;</code>，例如 <code>/ah sell 500</code> 表示以 500 風幣上架。</li>
+          <li>商品會自動從背包扣除並出現在商城中。</li>
+        </ol>
+        <div class="callout callout-tip"><span class="callout-icon">💡</span><span>定價前建議先逛逛商城，看看同類商品的行情，避免標太高賣不掉或標太低虧本。</span></div>
+      </div>
+
+      <div class="lore-block fade-in">
+        <h3>🛒 如何購買商品</h3>
+        <p>買東西更簡單：</p>
+        <ol class="rules-list">
+          <li>輸入 <code>/ah</code> 開啟線上商城主頁。</li>
+          <li>瀏覽或搜尋你想要的商品類別。</li>
+          <li>點擊商品即可用風幣購買，價格會自動從你的帳戶扣除。</li>
+          <li>購買成功後，商品會自動放入你的背包。</li>
+        </ol>
+        <div class="callout callout-tip"><span class="callout-icon">💡</span><span>如果背包已滿，購買的商品會怎麼處理？請確保背包有足夠空間再進行購買。</span></div>
       </div>
 
       <div class="lore-block fade-in">
@@ -205,8 +234,10 @@
           <table class="rules-table">
             <thead><tr><th>指令</th><th>說明</th></tr></thead>
             <tbody>
-              <tr><td><code>/ah</code></td><td>開啟線上商城主頁</td></tr>
-              <tr><td><code>/ah sell &lt;價格&gt;</code></td><td>商品上架</td></tr>
+              <tr><td><code>/ah</code></td><td>開啟線上商城主頁，瀏覽所有上架商品</td></tr>
+              <tr><td><code>/ah sell &lt;價格&gt;</code></td><td>手持物品後使用，以指定價格上架商品</td></tr>
+              <tr><td><code>/ah selling</code></td><td>查看自己目前上架中的所有商品</td></tr>
+              <tr><td><code>/ah expired</code></td><td>查看已過期的商品，領取回來</td></tr>
             </tbody>
           </table>
         </div>

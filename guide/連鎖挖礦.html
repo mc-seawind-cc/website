@@ -176,7 +176,85 @@
 <div class="content-section">
       <div class="breadcrumb fade-in"><a href="../海風指南.html">海風指南</a><span class="sep">›</span><span class="current">連鎖挖掘</span></div>
       <div class="rules-intro fade-in">
-        <p>蹲下挖掘時可以連鎖破壞同類型方塊，省時又方便。</p>
+        <p>SuperHarvest 連鎖採集插件，讓你一次挖整棵樹、整片礦、整塊田。蹲下輕輕一敲，全部搞定！</p>
+      </div>
+      <div class="lore-block fade-in">
+        <h3>📋 什麼是連鎖挖掘？</h3>
+        <p>在原版 Minecraft 裡，砍一棵樹要一個一個方塊慢慢挖。有了 SuperHarvest 插件，你只要蹲下對樹木、礦石或農作物點一下，它就會自動把相連的同類方塊全部挖掉，省下大量時間。</p>
+        <p>插件支援三種功能：<strong>連鎖伐木</strong>、<strong>連鎖挖礦</strong>和<strong>連鎖收割</strong>，可以分別開關，依照你的需求調整。</p>
+      </div>
+      <div class="lore-block fade-in">
+        <h3>🪓 連鎖伐木</h3>
+        <p><strong>用途：</strong>一次砍倒整棵樹，不用爬上去一個一個挖木頭。</p>
+        <p><strong>使用方式：</strong></p>
+        <ol class="steps">
+          <li>手上拿著 <strong>斧頭</strong>（任何材質都可以）。</li>
+          <li>對著樹木的任意樹幹 <strong>蹲下 + 左鍵</strong>（蹲下按 Shift，然後點擊樹幹）。</li>
+          <li>整棵樹的所有樹幹和樹葉都會自動掉落！</li>
+        </ol>
+        <div class="callout callout-tip"><span class="callout-icon">💡</span><span>伐木時記得在樹下撿掉落物，不然木頭會 despair 掉。背包空間也要夠大！</span></div>
+      </div>
+      <div class="lore-block fade-in">
+        <h3>⛏️ 連鎖挖礦</h3>
+        <p><strong>用途：</strong>一次挖光相連的同種礦石，快速收集資源。</p>
+        <p><strong>使用方式：</strong></p>
+        <ol class="steps">
+          <li>手上拿著 <strong>鎬子</strong>（建議用高階鎬子，效率更快）。</li>
+          <li>對著礦石 <strong>蹲下 + 左鍵</strong>。</li>
+          <li>所有相連的同種礦石會自動被挖掉，掉落物直接進背包。</li>
+        </ol>
+        <div class="callout callout-info"><span class="callout-icon">ℹ️</span><span>連鎖挖礦只會挖「相連」的同種礦石。如果礦脈中有不同種類的礦石（例如鐵礦和煤礦混在一起），它只會挖你點的那種。</span></div>
+      </div>
+      <div class="lore-block fade-in">
+        <h3>🌾 連鎖收割</h3>
+        <p><strong>用途：</strong>一次收完整片成熟農作物，不用一個一個右鍵。</p>
+        <p><strong>使用方式：</strong></p>
+        <ol class="steps">
+          <li>手上拿著 <strong>鋤頭</strong>。</li>
+          <li>對著成熟的農作物 <strong>蹲下 + 左鍵</strong>。</li>
+          <li>範圍內所有成熟的同種作物會自動收割。</li>
+        </ol>
+        <div class="callout callout-tip"><span class="callout-icon">💡</span><span>收割只會收「成熟」的作物，還沒長大的不會動，所以不用擔心誤收。</span></div>
+      </div>
+      <div class="lore-block fade-in">
+        <h3>🔄 使用模式</h3>
+        <p>SuperHarvest 有兩種觸發模式，你可以依照自己的喜好切換：</p>
+        <div class="rules-table-wrap">
+          <table class="rules-table">
+            <thead><tr><th>模式</th><th>操作方式</th><th>說明</th></tr></thead>
+            <tbody>
+              <tr><td><strong>經典模式</strong></td><td>直接左鍵</td><td>不需要蹲下，直接左鍵就會觸發連鎖。速度快但容易誤觸。</td></tr>
+              <tr><td><strong>蹲下模式</strong></td><td>蹲下 + 左鍵</td><td>必須按住蹲下（Shift）再左鍵才會觸發。更安全，推薦使用。</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p>切換模式：<code>/sh mode</code></p>
+      </div>
+      <div class="lore-block fade-in">
+        <h3>🎛️ 開關功能</h3>
+        <p>你可以分別控制三種功能的開關，不需要全部一起開：</p>
+        <div class="rules-table-wrap">
+          <table class="rules-table">
+            <thead><tr><th>指令</th><th>說明</th></tr></thead>
+            <tbody>
+              <tr><td><code>/sh</code></td><td>開關所有連鎖功能（總開關）</td></tr>
+              <tr><td><code>/sh logging</code></td><td>開關連鎖伐木功能</td></tr>
+              <tr><td><code>/sh mining</code></td><td>開關連鎖挖礦功能</td></tr>
+              <tr><td><code>/sh farming</code></td><td>開關連鎖收割功能</td></tr>
+              <tr><td><code>/sh mode</code></td><td>切換經典/蹲下模式</td></tr>
+              <tr><td><code>/sh notify</code></td><td>開關連鎖採集的通知訊息</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="lore-block fade-in">
+        <h3>💡 範例情境</h3>
+        <p><strong>情境一：蓋建築需要大量木頭</strong></p>
+        <p>拿著斧頭跑到樹林裡，蹲下對樹幹左鍵，一棵大樹瞬間變成背包裡的木頭。再跑到下一棵，很快就收集了一大堆材料。</p>
+        <p><strong>情境二：下礦挖鑽石</strong></p>
+        <p>在洞穴裡看到一片礦石，拿著附有效率的鎬子蹲下點一下，整片礦脈瞬間挖光，掉落物直接進背包，省去一個一個挖的麻煩。</p>
+        <p><strong>情境三：收割農場</strong></p>
+        <p>家裡種了一大片小麥，成熟了卻要一個一個右鍵收？拿著鋤頭蹲下點一下，整片田瞬間收割完畢，掉落物自動收集。</p>
       </div>
       <div class="guide-nav fade-in"><a href="旁觀.html" class="btn btn-outline">← 靈魂出竅</a><a href="../海風指南.html" class="btn btn-outline">返回目錄</a></div>
     </div>

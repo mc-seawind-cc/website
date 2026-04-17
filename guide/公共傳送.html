@@ -187,15 +187,36 @@
       </div>
 
       <div class="rules-intro fade-in">
-        <p>有些地點值得跟大家分享——像是礦場、刷怪塔、漂亮景點。公共傳送點讓你設好座標，其他玩家一鍵就能到。</p>
-        <p>請注意<a href="領地.html">領地</a>權限問題，以免發生意外。</p>
-        <div class="callout callout-tip"><span class="callout-icon">💡</span><span>此頁面不是<a href="私人傳送.html">個人傳送點</a>。</span></div>
+        <p>有些地點值得跟大家分享——像是礦場、刷怪塔、漂亮景點。公共傳送點讓你設好座標，全服玩家一鍵就能到。</p>
+        <p>請注意<a href="領地.html">領地</a>權限問題，避免在別人的領地上設傳送點造成糾紛。</p>
+        <div class="callout callout-tip"><span class="callout-icon">💡</span><span>此頁面不是<a href="私人傳送.html">個人傳送點</a>。公共傳送點全服玩家都能使用。</span></div>
       </div>
 
       <div class="lore-block fade-in">
         <h3>📋 基本資訊</h3>
         <ul class="rules-list">
-          <li>每分流各 <strong>4</strong> 個。</li>
+          <li>每分流各 <strong>4</strong> 個額度，不跨分流共享。</li>
+          <li>所有玩家都能看見和使用公共傳送點。</li>
+          <li>設定者可以編輯和刪除自己建立的傳送點。</li>
+        </ul>
+      </div>
+
+      <div class="lore-block fade-in">
+        <h3>📖 使用教學</h3>
+        <ul class="rules-list">
+          <li><strong>設定公開傳送點</strong> — 站在你想分享的位置，輸入 <code>/warp set &lt;名稱&gt;</code>。例如在漂亮景點輸入 <code>/warp set 日落崖</code>。</li>
+          <li><strong>傳送到公開點</strong> — 輸入 <code>/warp &lt;名稱&gt;</code> 即可傳送。例如 <code>/warp 日落崖</code>。</li>
+          <li><strong>查看列表</strong> — 輸入 <code>/warp list</code> 查看目前所有公共傳送點。</li>
+          <li><strong>刪除</strong> — 自己設的傳送點可以用 <code>/warp del &lt;名稱&gt;</code> 移除。例如 <code>/warp del 日落崖</code>。</li>
+        </ul>
+      </div>
+
+      <div class="lore-block fade-in">
+        <h3>⚠️ 注意事項</h3>
+        <ul class="rules-list">
+          <li><strong>領地權限</strong> — 請勿在他人<a href="領地.html">領地</a>內設定公共傳送點。如果傳送點設在沒有權限的地方，其他玩家可能無法正常使用。</li>
+          <li><strong>命名禮儀</strong> — 名稱請取清楚好辨識的，不要用亂碼或容易混淆的名稱。</li>
+          <li><strong>分流限制</strong> — 每個分流只有 4 個名額，用完就需要刪除舊的才能新增。</li>
         </ul>
       </div>
 
@@ -206,10 +227,10 @@
           <table class="rules-table">
             <thead><tr><th>指令</th><th>說明</th></tr></thead>
             <tbody>
-              <tr><td><code>/pw</code></td><td>開啟公共傳送點介面</td></tr>
-              <tr><td><code>/pw create &lt;名稱&gt;</code></td><td>建立公共傳送點</td></tr>
-              <tr><td><code>/pw delete &lt;名稱&gt;</code></td><td>刪除公共傳送點</td></tr>
-              <tr><td><code>/pw edit &lt;名稱&gt;</code></td><td>編輯公共傳送點</td></tr>
+              <tr><td><code>/warp set &lt;名稱&gt;</code></td><td>在當前位置新增公共傳送點</td></tr>
+              <tr><td><code>/warp &lt;名稱&gt;</code></td><td>傳送至指定的公共傳送點</td></tr>
+              <tr><td><code>/warp list</code></td><td>列出所有公共傳送點</td></tr>
+              <tr><td><code>/warp del &lt;名稱&gt;</code></td><td>刪除指定的公共傳送點</td></tr>
             </tbody>
           </table>
         </div>

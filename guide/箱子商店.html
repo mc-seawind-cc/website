@@ -187,34 +187,64 @@
       </div>
 
       <div class="rules-intro fade-in">
-        <p>箱子商店是最直覺的交易方式——放個箱子、丟進商品、設好價格，其他玩家就能直接用箱子買東西。擺攤就靠它了！</p>
-        <p>使用箱子或木桶作為交易介質的商店系統，可以設定為販賣與收購。使用箱子商店建造商店街可能是不錯的選擇。</p>
+        <p>箱子商店是最直覺的交易方式——放個箱子、丟進商品、設好價格，其他玩家就能直接用箱子買東西。在海風開店做生意、建造商店街，箱子商店是最主流的選擇。</p>
+        <p>箱子商店支援「販賣」和「收購」兩種模式，你可以賣東西給別人，也可以設定價格向別人收購特定物品。</p>
       </div>
 
       <div class="lore-block fade-in">
         <h3>📋 基本資訊</h3>
         <ul class="rules-list">
-          <li>每分流各 <strong>120</strong> 個。</li>
+          <li>每個玩家在同一分流最多可建立 <strong>120</strong> 個箱子商店（每分流獨立計算）。</li>
+          <li>建立箱子商店需要消耗 <strong>25 風幣</strong>。</li>
+          <li>修改價格每次需要 <strong>20 風幣</strong>。</li>
+          <li>箱子商店必須建立在你擁有權限的<a href="領地.html">領地</a>內，或在公共區域。</li>
         </ul>
       </div>
 
       <div class="lore-block fade-in">
-        <h3>📦 可用容器</h3>
-        <ol class="rules-list">
-          <li>儲物箱</li>
-          <li>陷阱儲物箱</li>
-          <li>木桶</li>
-        </ol>
+        <h3>📦 支援容器</h3>
+        <p>以下容器都可以拿來建立箱子商店：</p>
+        <ul class="rules-list">
+          <li><strong>儲物箱</strong> — 最常見的選擇，容量大，適合大量販售。</li>
+          <li><strong>陷阱儲物箱</strong> — 外觀跟儲物箱一樣，但功能相同，也可以開店。</li>
+          <li><strong>木桶</strong> — 佔空間小，外觀有特色，適合用在商店街的攤位設計。</li>
+        </ul>
       </div>
 
       <div class="lore-block fade-in">
-        <h3>💰 價格</h3>
+        <h3>🔨 建立教學</h3>
+        <p>建立販賣商店（賣東西給別人）：</p>
+        <ol class="rules-list">
+          <li>在你想要的位置放置一個<strong>儲物箱</strong>（或木桶）。</li>
+          <li>在箱子裡放入你要販售的<strong>商品樣本</strong>（例如放 1 個鑽石作為樣本）。</li>
+          <li><strong>手持</strong>你要收的貨幣（例如風幣），對著箱子<strong>左鍵點擊</strong>。</li>
+          <li>在跳出的介面中輸入<strong>單價</strong>（每組商品的價格）和<strong>數量</strong>（每次交易的數量）。</li>
+          <li>確認後，箱子商店就建立完成了！其他玩家對著箱子右鍵就能購買。</li>
+        </ol>
+        <div class="callout callout-tip"><span class="callout-icon">💡</span><span>箱子裡的商品會隨著賣出而減少，記得定期補貨。如果賣光了，商店會顯示「庫存不足」。</span></div>
+      </div>
+
+      <div class="lore-block fade-in">
+        <h3>🔄 建立收購商店</h3>
+        <p>收購商店（向別人買東西）的建立方式類似：</p>
+        <ol class="rules-list">
+          <li>放置一個空的箱子。</li>
+          <li><strong>手持</strong>你要<strong>收購的物品</strong>（例如手持煤炭），對著箱子<strong>左鍵點擊</strong>。</li>
+          <li>在跳出的介面中設定你要付的<strong>單價</strong>和每次收購的<strong>數量</strong>。</li>
+          <li>箱子裡要預先放入足夠的<strong>風幣</strong>作為付款資金。</li>
+          <li>其他玩家手持你要收購的物品，對著箱子右鍵就能賣給你。</li>
+        </ol>
+        <div class="callout callout-tip"><span class="callout-icon">💡</span><span>收購商店需要預先放錢在箱子裡，錢用完了就會停止收購。</span></div>
+      </div>
+
+      <div class="lore-block fade-in">
+        <h3>💰 價格一覽</h3>
         <div class="rules-table-wrap">
           <table class="rules-table">
-            <thead><tr><th>項目</th><th>費用</th></tr></thead>
+            <thead><tr><th>項目</th><th>費用</th><th>說明</th></tr></thead>
             <tbody>
-              <tr><td>建立</td><td>每個 25 元</td></tr>
-              <tr><td>改價</td><td>每次 20 元</td></tr>
+              <tr><td>建立商店</td><td><strong>25 風幣</strong></td><td>每個新箱子商店的建立費用</td></tr>
+              <tr><td>修改價格</td><td><strong>20 風幣</strong></td><td>每次更改販售/收購價格的費用</td></tr>
             </tbody>
           </table>
         </div>
@@ -227,7 +257,12 @@
           <table class="rules-table">
             <thead><tr><th>指令</th><th>說明</th></tr></thead>
             <tbody>
-              <tr><td><code>/qs</code></td><td>開啟箱子商店介面</td></tr>
+              <tr><td><code>/qs</code></td><td>查看面前箱子商店的資訊（價格、庫存、擁有者）</td></tr>
+              <tr><td><code>/qs owner</code></td><td>查看箱子商店的擁有者</td></tr>
+              <tr><td><code>/qs buy</code></td><td>透過指令購買箱子商店的商品</td></tr>
+              <tr><td><code>/qs sell</code></td><td>透過指令賣東西給收購商店</td></tr>
+              <tr><td><code>/qs remove</code></td><td>移除你面前的箱子商店（需為擁有者）</td></tr>
+              <tr><td><code>/qs find &lt;物品名&gt;</code></td><td>搜尋全服販售指定物品的箱子商店</td></tr>
             </tbody>
           </table>
         </div>
