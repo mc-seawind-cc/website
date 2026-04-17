@@ -5,6 +5,18 @@ const MOB_SMASHER = (() => {
   'use strict';
 
   const SPRITE_PATH = 'assets/mobs/';
+  const SPRITE_SHEET = 'assets/mob-spritesheet.png';
+  const SPRITES = {"allay":[0,0],"armadillo":[16,0],"axolotl":[32,0],"bad-omen":[48,0],"bat":[64,0],"bee":[80,0],"blaze":[96,0],"breeze":[112,0],"camel-husk":[128,0],"camel":[144,0],"cat":[160,0],"cave-spider":[176,0],"chicken":[192,0],"cod":[0,16],"copper-golem":[16,16],"cow":[32,16],"creaking":[48,16],"creeper":[64,16],"diamond-spear":[80,16],"dolphin":[96,16],"donkey":[112,16],"elder-guardian":[128,16],"end-crystal":[144,16],"ender-dragon":[160,16],"enderman":[176,16],"endermite":[192,16],"evoker":[0,32],"fox":[16,32],"frog":[32,32],"ghast":[48,32],"ghastling":[64,32],"goat":[80,32],"golden-axe":[96,32],"guardian":[112,32],"happy-ghast":[128,32],"hoglin":[144,32],"horse":[160,32],"husk":[176,32],"iron-golem":[192,32],"iron-sword":[0,48],"johnny":[16,48],"mace":[32,48],"magma-cube":[48,48],"mooshroom":[64,48],"nautilus":[80,48],"ocelot":[96,48],"ominous-bottle":[112,48],"panda":[128,48],"parched":[144,48],"parrot":[160,48],"phantom":[176,48],"pig":[192,48],"piglin-brute":[0,64],"polar-bear":[16,64],"pufferfish":[32,64],"pumpkin-snow-golem":[48,64],"rabbit":[64,64],"ravager":[80,64],"salmon":[96,64],"sheep":[112,64],"shulker":[128,64],"silverfish":[144,64],"skeleton-horse":[160,64],"skeleton":[176,64],"slime":[192,64],"sniffer":[0,80],"spider":[16,80],"squid":[32,80],"stray":[48,80],"strider":[64,80],"tadpole":[80,80],"tnt":[96,80],"totem":[112,80],"trader-llama":[128,80],"tropical-fish":[144,80],"turtle":[160,80],"vex":[176,80],"villager":[192,80],"wandering-trader":[0,96],"warden":[16,96],"white-sheep":[32,96],"witch":[48,96],"wither-skeleton":[64,96],"wither":[80,96],"wolf":[96,96],"zoglin":[112,96],"zombie-horse":[128,96],"zombie-nautilus":[144,96],"zombie-villager":[160,96],"zombie":[176,96],"zombified-piglin":[192,96]};
+
+  // Sprite element helper — uses sprite sheet for fast loading
+  function spr(name, cls, alt) {
+    const pos = SPRITES[name];
+    if (pos) {
+      return `<div class="ms-ss ${cls||''}" style="background-position:-${pos[0]}px -${pos[1]}px" role="img" aria-label="${alt||name}"></div>`;
+    }
+    // Fallback to individual file
+    return `<img src="${SPRITE_PATH}${name}.png" alt="${alt||name}" class="${cls||''}" loading="lazy">`;
+  }
 
   // ═══ Mob Definitions ═══
   const HOSTILE = [
@@ -98,8 +110,6 @@ const MOB_SMASHER = (() => {
     { id: 'trader-llama',      name: '商駝' },
     { id: 'wolf',              name: '狼' },
     { id: 'pufferfish',        name: '河豚' },
-    // === 新增中立 ===
-    { id: 'zombified-piglin-n', name: '殭屍化豬布林', sprite: 'zombified-piglin' },
     { id: 'ocelot',            name: '山貓' },
   ];
 
@@ -240,18 +250,18 @@ const MOB_SMASHER = (() => {
 
     let html = `
       <div class="overlay-header">
-        <span class="overlay-title"><img src="assets/mobs/iron-sword.png" alt="" style="width:16px;height:16px;vertical-align:middle;margin-right:4px"> 打怪物</span>
+        <span class="overlay-title">${spr('iron-sword','ms-weapon-icon','劍')} 打怪物</span>
         <button class="overlay-close" onclick="MOB_SMASHER.close()">✕</button>
       </div>
       <div class="ms-hud">
         <div class="ms-hud-left">
-          <span class="ms-score"><img src="assets/mobs/mace.png" class="ms-weapon-icon" alt="鎚"> <span id="msScore">0</span></span>
+          <span class="ms-score">${spr('mace','ms-weapon-icon','鎚')} <span id="msScore">0</span></span>
           ${state.bestScore > 0 ? `<span class="ms-best">最高 ${state.bestScore}</span>` : ''}
         </div>
         <div class="ms-hud-center">
-          <div class="ms-totem" id="msTotem" style="display:none" title="不死圖騰（抵擋致命傷害）"><img src="${SPRITE_PATH}totem.png" class="ms-item-sprite" alt="不死圖騰" id="msTotemIcon1"><img src="${SPRITE_PATH}totem.png" class="ms-item-sprite ms-totem-2" alt="不死圖騰" id="msTotemIcon2" style="display:none"></div>
-          <div class="ms-ominous" id="msOminous" style="display:none" title="點擊使用不祥之瓶（獲得不祥之兆）"><img src="${SPRITE_PATH}ominous-bottle.png" class="ms-item-sprite" alt="不祥之瓶" id="msOminousIcon1"><img src="${SPRITE_PATH}ominous-bottle.png" class="ms-item-sprite ms-ominous-2" alt="不祥之瓶" id="msOminousIcon2" style="display:none"></div>
-          <div class="ms-bad-omen" id="msBadOmen" style="display:none" title="不祥之兆（突襲準備中）"><img src="${SPRITE_PATH}bad-omen.png" class="ms-item-sprite" alt="不祥之兆"></div>
+          <div class="ms-totem" id="msTotem" style="display:none" title="不死圖騰（抵擋致命傷害）">${spr('totem','ms-item-sprite','不死圖騰')}${spr('totem','ms-item-sprite ms-totem-2','不死圖騰')}</div>
+          <div class="ms-ominous" id="msOminous" style="display:none" title="點擊使用不祥之瓶（獲得不祥之兆）">${spr('ominous-bottle','ms-item-sprite','不祥之瓶')}${spr('ominous-bottle','ms-item-sprite ms-ominous-2','不祥之瓶')}</div>
+          <div class="ms-bad-omen" id="msBadOmen" style="display:none" title="不祥之兆（突襲準備中）">${spr('bad-omen','ms-item-sprite','不祥之兆')}</div>
         </div>
         <div class="ms-hud-right">
           <span class="ms-timer" id="msTimer">30</span>秒
@@ -273,10 +283,10 @@ const MOB_SMASHER = (() => {
     html += `</div>
       <div class="ms-info" id="msInfo">準備好了嗎？點擊開始！</div>
       <div class="ms-legend">
-        <span class="ms-legend-item"><img src="${SPRITE_PATH}zombie.png" class="ms-legend-sprite" alt="">敵對 +分+秒</span>
-        <span class="ms-legend-item"><img src="${SPRITE_PATH}pig.png" class="ms-legend-sprite" alt="">友好 -分-秒</span>
-        <span class="ms-legend-item"><img src="${SPRITE_PATH}wolf.png" class="ms-legend-sprite" alt="">中立 -分</span>
-        <span class="ms-legend-item"><img src="${SPRITE_PATH}end-crystal.png" class="ms-legend-sprite" alt="">爆炸!</span>
+        <span class="ms-legend-item">${spr('zombie','ms-legend-sprite','敵對')}敵對 +分+秒</span>
+        <span class="ms-legend-item">${spr('pig','ms-legend-sprite','友好')}友好 -分-秒</span>
+        <span class="ms-legend-item">${spr('wolf','ms-legend-sprite','中立')}中立 -分</span>
+        <span class="ms-legend-item">${spr('end-crystal','ms-legend-sprite','爆炸')}爆炸!</span>
       </div>
       <div class="ms-source">圖源：<a href="https://minecraft.wiki" target="_blank" rel="noopener">mcwiki</a></div>
     `;
@@ -427,16 +437,10 @@ const MOB_SMASHER = (() => {
     const el = document.createElement('div');
     el.className = `ms-mob ms-${category}`;
     el.innerHTML = `
-      <img src="${SPRITE_PATH}${spriteFile}.png" alt="${mob.name}" class="ms-sprite" loading="lazy">
+      ${spr(spriteFile, 'ms-sprite', mob.name)}
       ${maxHp > 1 ? `<div class="ms-hp-bar"><div class="ms-hp-fill" style="width:100%"></div></div>` : ''}
       <span class="ms-mob-name">${mob.name}</span>
     `;
-
-    const img = el.querySelector('img');
-    img.onerror = () => {
-      el.querySelector('.ms-sprite').style.display = 'none';
-      el.insertAdjacentHTML('afterbegin', `<span class="ms-name-fallback">${mob.name}</span>`);
-    };
 
     hole.querySelector('.ms-hole-inner').appendChild(el);
     hole.classList.add('active', `ms-hole-${category}`);
@@ -598,9 +602,11 @@ const MOB_SMASHER = (() => {
 
   function updateOminous() {
     const el = document.getElementById('msOminous');
-    const icon2 = document.getElementById('msOminousIcon2');
-    if (el) el.style.display = state.ominousBottleCount > 0 && !state.hasBadOmen ? '' : 'none';
-    if (icon2) icon2.style.display = state.ominousBottleCount >= 2 ? '' : 'none';
+    if (el) {
+      el.style.display = state.ominousBottleCount > 0 && !state.hasBadOmen ? '' : 'none';
+      const children = el.querySelectorAll('.ms-item-sprite');
+      if (children[1]) children[1].style.display = state.ominousBottleCount >= 2 ? '' : 'none';
+    }
   }
 
   function updateBadOmen() {
@@ -872,9 +878,12 @@ const MOB_SMASHER = (() => {
 
   function updateTotem() {
     const el = document.getElementById('msTotem');
-    const icon2 = document.getElementById('msTotemIcon2');
-    if (el) el.style.display = state.totemCount > 0 ? '' : 'none';
-    if (icon2) icon2.style.display = state.totemCount >= 2 ? '' : 'none';
+    if (el) {
+      el.style.display = state.totemCount > 0 ? '' : 'none';
+      // Update second icon visibility
+      const children = el.querySelectorAll('.ms-item-sprite');
+      if (children[1]) children[1].style.display = state.totemCount >= 2 ? '' : 'none';
+    }
   }
 
   function updateHUD() {
@@ -929,7 +938,7 @@ const MOB_SMASHER = (() => {
     if (grid) {
       grid.innerHTML = `
         <div class="ms-result">
-          <div class="ms-result-icon"><img src="assets/mobs/iron-sword.png" class="ms-result-sword" alt="劍"></div>
+          <div class="ms-result-icon">${spr('iron-sword','ms-result-sword','劍')}</div>
           <div class="ms-result-score">${state.score} 分</div>
           <div class="ms-result-detail">
             消滅 ${state.mobsSmashed} 隻怪物 · 誤傷 ${state.friendliesHit} 隻動物
