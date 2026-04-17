@@ -44,7 +44,8 @@ conversions:
 task_rewards:
   # ── 基礎原料（代幣低，因為後續還要加工或需求量大）──
   - task: "糖的製備"
-    description: "種植並收穫甘蔗，合成糖"
+    description: "收穫 10 根甘蔗並合成糖"
+    require: "甘蔗 ×10"
     reward:
       ingredient: "2026BUBBLE_TEA_03"    # 本土甘蔗糖
       amount: 4
@@ -52,6 +53,7 @@ task_rewards:
 
   - task: "擠奶工"
     description: "擠 5 頭不同的牛"
+    require: "擠奶 ×5（不同牛）"
     reward:
       ingredient: "2026BUBBLE_TEA_02"    # 超高溫殺菌的鮮乳
       amount: 4
@@ -59,70 +61,80 @@ task_rewards:
 
   # ── 一般原料（標準獎勵）──
   - task: "海底採茶"
-    description: "海底採集海帶"
+    description: "海底採集 15 個海帶"
+    require: "海帶 ×15"
     reward:
       ingredient: "2026BUBBLE_TEA_04"    # 金門海帶
       amount: 4
       tokens: 5
 
   - task: "採蜜人"
-    description: "從蜂巢收集蜂蜜瓶"
+    description: "從 3 個蜂巢收集蜂蜜瓶"
+    require: "蜂蜜瓶 ×3（使用玻璃瓶）"
     reward:
       ingredient: "2026BUBBLE_TEA_05"    # CNS1305認證純蜂蜜
       amount: 4
       tokens: 5
 
   - task: "可可農夫"
-    description: "收穫可可豆"
+    description: "收穫 12 個可可豆"
+    require: "可可豆 ×12"
     reward:
       ingredient: "2026BUBBLE_TEA_06"    # 鹼化可可粉
       amount: 4
       tokens: 5
 
   - task: "仙人掌收割"
-    description: "挖掘仙人掌"
+    description: "挖掘 8 個仙人掌"
+    require: "仙人掌 ×8"
     reward:
       ingredient: "2026BUBBLE_TEA_07"    # 有機仙人掌粉
       amount: 4
       tokens: 5
 
   - task: "歌萊果燒製"
-    description: "採集歌萊果並燒製"
+    description: "採集 10 個歌萊果並燒製成爆開的歌萊果"
+    require: "歌萊果 ×10 → 燒製"
     reward:
       ingredient: "2026BUBBLE_TEA_08"    # 黑糖珍珠粉圓
       amount: 4
       tokens: 5
 
   - task: "胡蘿蔔農夫"
-    description: "挖掘胡蘿蔔"
+    description: "挖掘 12 根胡蘿蔔"
+    require: "胡蘿蔔 ×12"
     reward:
       ingredient: "2026BUBBLE_TEA_09"    # 現採紅蘿蔔
       amount: 4
       tokens: 5
 
   - task: "蘑菇採集"
-    description: "採集紅色蘑菇"
+    description: "採集 8 個紅色蘑菇"
+    require: "紅色蘑菇 ×8"
     reward:
       ingredient: "2026BUBBLE_TEA_10"    # 野採紅菇
       amount: 4
       tokens: 5
 
   - task: "甜苺獵人"
-    description: "採集甜苺灌木"
+    description: "從甜苺灌木採集 15 個甜苺"
+    require: "甜苺 ×15"
     reward:
       ingredient: "2026BUBBLE_TEA_11"    # 高山甜莓
       amount: 4
       tokens: 5
 
   - task: "蜂巢刮取"
-    description: "從蜂巢刮取蜂巢"
+    description: "從 3 個蜂巢刮取蜂巢（需剪刀）"
+    require: "蜂巢 ×3（使用剪刀）"
     reward:
       ingredient: "2026BUBBLE_TEA_12"    # 蜂農自產蜂巢
       amount: 4
       tokens: 5
 
   - task: "西瓜切割"
-    description: "切割西瓜"
+    description: "切割 2 個西瓜（獲得 18 片）"
+    require: "西瓜 ×2 → 切割"
     reward:
       ingredient: "2026BUBBLE_TEA_13"    # 現切西瓜片
       amount: 4
@@ -130,14 +142,16 @@ task_rewards:
 
   # ── 高級原料（代幣高，取得成本高）──
   - task: "蘋果採集"
-    description: "從樹葉獲得蘋果"
+    description: "破壞樹葉獲得 6 個蘋果"
+    require: "蘋果 ×6（破壞橡木/樺木樹葉掉落）"
     reward:
       ingredient: "2026BUBBLE_TEA_14"    # 富士蘋果
       amount: 2
       tokens: 8
 
   - task: "金蘋果合成"
-    description: "合成金蘋果（需金錠 ×8）"
+    description: "用 8 個金錠合成 1 個金蘋果"
+    require: "金錠 ×8 + 蘋果 ×1"
     reward:
       ingredient: "2026BUBBLE_TEA_15"    # 鍍金蘋果
       amount: 1
