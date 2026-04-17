@@ -1,0 +1,23 @@
+name: Frozen Aura
+modifier:
+  duration:
+    name: 持續時間
+    default-value: 6.0
+  mana:
+    name: 魔力
+    default-value: 0.0
+  stamina:
+    name: 耐力
+    default-value: 0.0
+  cooldown:
+    name: 冷卻
+    default-value: 10.0
+  timer:
+    name: 計時器
+    default-value: 0.0
+  amplifier:
+    name: 放大
+    default-value: 1.0
+  radius:
+    name: 範圍
+    default-value: 10.0
