@@ -1,0 +1,20 @@
+name: Shockwave
+modifier:
+  mana:
+    name: 魔力
+    default-value: 0.0
+  stamina:
+    name: 耐力
+    default-value: 0.0
+  cooldown:
+    name: 冷卻
+    default-value: 7.5
+  length:
+    name: 距離
+    default-value: 5.0
+  knock-up:
+    name: Knock Up
+    default-value: 1.0
+  timer:
+    name: 計時器
+    default-value: 0.0
