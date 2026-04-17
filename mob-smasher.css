@@ -382,3 +382,36 @@
   .ms-grid-5 { gap: 3px; padding: 8px; }
   .ms-grid-5 .ms-sprite { width: 28px; height: 28px; }
 }
+
+/* ═══ Raid Settlement ═══ */
+.ms-raid-result {
+  padding: 20px 12px;
+}
+.ms-raid-stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+  margin: 12px 0;
+  width: 100%;
+  max-width: 300px;
+}
+.ms-raid-stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  padding: 8px 4px;
+  background: rgba(255,255,255,0.03);
+  border-radius: 8px;
+  border: 1px solid rgba(255,255,255,0.06);
+}
+.ms-raid-stat-num {
+  font-size: 1.3rem;
+  font-weight: 800;
+  color: rgba(255,255,255,0.8);
+}
+.ms-raid-stat-label {
+  font-size: 0.6rem;
+  color: rgba(255,255,255,0.35);
+  white-space: nowrap;
+}

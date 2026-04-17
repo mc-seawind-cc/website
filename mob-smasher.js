@@ -109,7 +109,8 @@ const MOB_SMASHER = (() => {
   ];
 
   // ═══ Raid Wave Definitions ═══
-  const RAID_STAY = 2500; // 突襲生物停留時間（5×5 格子大，需要更長時間）
+  const RAID_STAY = 3200; // 突襲生物停留時間（5×5 格子大，需要更長時間）
+  const RAID_VILLAGER = { id: 'villager', name: '村民', pts: 0, timeBonus: 0, sprite: 'villager', stayMs: 2800, isVillager: true };
   const RAID_WAVES = [
     // wave 1: 4 掠奪者
     [
@@ -225,6 +226,10 @@ const MOB_SMASHER = (() => {
       raidTotalWaves: 0,
       raidQueue: [],
       raidSpawnTimer: null,
+      raidMobsKilled: 0,
+      raidVillagersHit: 0,
+      raidMobsMissed: 0,
+      timerWasPaused: false,
     };
   }
 
@@ -441,10 +446,15 @@ const MOB_SMASHER = (() => {
     state.holes[idx].timeoutId = setTimeout(() => {
       // In raid: missing a mob = penalty
       if (state.raidActive) {
-        state.score = Math.max(0, state.score - 1);
-        state.timeLeft = Math.max(0, state.timeLeft - 1);
-        showFloatingText(el, '-1', '#ff8282');
-        updateHUD();
+        if (mob.isVillager) {
+          // Villager escaping = no penalty, villager survived
+        } else {
+          state.score = Math.max(0, state.score - 1);
+          state.timeLeft = Math.max(0, state.timeLeft - 1);
+          state.raidMobsMissed++;
+          showFloatingText(el, '-1', '#ff8282');
+          updateHUD();
+        }
         checkRaidWaveComplete();
       }
       removeMob(idx);
@@ -462,6 +472,24 @@ const MOB_SMASHER = (() => {
     setTimeout(() => el.classList.remove('ms-hit'), 200);
 
     if (category === 'hostile') {
+      // Villager in raid: hitting = penalty!
+      if (mob.isVillager) {
+        state.score = Math.max(0, state.score - 2);
+        state.timeLeft = Math.max(0, state.timeLeft - 3);
+        state.raidVillagersHit++;
+        showFloatingText(el, '-2', '#ff8282');
+        showFloatingText(el, '-3s', '#ff8282', 20);
+        showInfo('不要打村民！', '#ff8282');
+        removeMob(idx);
+        updateHUD();
+        if (state.raidActive) checkRaidWaveComplete();
+        if (state.timeLeft <= 0 && state.alive) {
+          if (state.hasTotem) { useTotem(); state.timeLeft = 5; }
+          else endGame();
+        }
+        return;
+      }
+
       holeData.hp--;
       if (holeData.hp > 0) {
         const fill = el.querySelector('.ms-hp-fill');
@@ -474,6 +502,7 @@ const MOB_SMASHER = (() => {
       state.score += mob.pts;
       state.timeLeft += mob.timeBonus;
       state.mobsSmashed++;
+      if (state.raidActive) state.raidMobsKilled++;
 
       if (mob.special === 'totem') {
         if (state.totemCount < 2) {
@@ -585,7 +614,14 @@ const MOB_SMASHER = (() => {
   function startRaid() {
     state.hasBadOmen = false;
     state.raidActive = true;
+    state.raidMobsKilled = 0;
+    state.raidVillagersHit = 0;
+    state.raidMobsMissed = 0;
     updateBadOmen();
+
+    // Pause the countdown timer during raid
+    clearInterval(state.timerInterval);
+    state.timerInterval = null;
 
     // Random 3-7 waves
     state.raidTotalWaves = 3 + Math.floor(Math.random() * 5);
@@ -598,7 +634,7 @@ const MOB_SMASHER = (() => {
     const raidBar = document.getElementById('msRaidBar');
     if (raidBar) raidBar.style.display = '';
 
-    showInfo('⚔️ 突襲開始！', '#ff8282');
+    showInfo('⚔️ 突襲開始！計時器暫停', '#ff8282');
 
     // Start first wave after horn
     playRaidHorn(() => nextRaidWave());
@@ -642,6 +678,12 @@ const MOB_SMASHER = (() => {
     // Pick wave definition (cycle through 1-7)
     const waveIdx = (state.raidWave - 1) % RAID_WAVES.length;
     const waveMobs = [...RAID_WAVES[waveIdx]]; // copy
+
+    // Add villagers to the wave (2-4 per wave, increases with wave number)
+    const villagerCount = 2 + Math.floor(Math.random() * 3);
+    for (let v = 0; v < villagerCount; v++) {
+      waveMobs.push({ ...RAID_VILLAGER });
+    }
 
     // Shuffle into empty holes
     state.raidQueue = [];
@@ -696,21 +738,87 @@ const MOB_SMASHER = (() => {
     const barFill = document.getElementById('msRaidBarFill');
     const barText = document.getElementById('msRaidBarText');
     if (barFill) barFill.style.width = '100%';
-    if (barText) barText.textContent = success ? '突襲勝利！🎉' : '突襲結束';
 
+    const bonus = success ? 10 : 0;
     if (success) {
-      state.score += 10;
-      state.timeLeft += 10;
-      showInfo('🎉 突襲勝利！+10分 +10秒', '#a8e6cf');
-      showFloatingText(document.getElementById('msGrid'), '+10 🎉', '#a8e6cf');
-      updateHUD();
+      state.score += bonus;
+      state.timeLeft += bonus;
     }
 
-    // Shrink grid back after delay
-    setTimeout(() => {
-      if (raidBar) raidBar.style.display = 'none';
-      shrinkGrid();
-    }, 2000);
+    // Show settlement screen
+    const grid = document.getElementById('msGrid');
+    if (grid) {
+      const totalWaves = state.raidWave;
+      grid.innerHTML = `
+        <div class="ms-result ms-raid-result">
+          <div class="ms-result-icon" style="font-size:2rem">${success ? '🎉' : '💀'}</div>
+          <div class="ms-result-score" style="color:${success ? '#a8e6cf' : '#ff8282'}">${success ? '突襲勝利！' : '突襲結束'}</div>
+          <div class="ms-raid-stats">
+            <div class="ms-raid-stat">
+              <span class="ms-raid-stat-num">${totalWaves}</span>
+              <span class="ms-raid-stat-label">波數</span>
+            </div>
+            <div class="ms-raid-stat">
+              <span class="ms-raid-stat-num" style="color:#a8e6cf">${state.raidMobsKilled}</span>
+              <span class="ms-raid-stat-label">擊殺</span>
+            </div>
+            <div class="ms-raid-stat">
+              <span class="ms-raid-stat-num" style="color:#ff8282">${state.raidVillagersHit}</span>
+              <span class="ms-raid-stat-label">誤傷村民</span>
+            </div>
+            <div class="ms-raid-stat">
+              <span class="ms-raid-stat-num" style="color:#ffaa32">${state.raidMobsMissed}</span>
+              <span class="ms-raid-stat-label">漏網之魚</span>
+            </div>
+          </div>
+          ${success ? `<div class="ms-result-detail" style="color:#a8e6cf">+${bonus}分 +${bonus}秒 獎勵</div>` : ''}
+          <div class="ms-result-detail">目前分數：${state.score}　剩餘時間：${state.timeLeft}秒</div>
+          <button class="btn btn-main" onclick="MOB_SMASHER.resumeAfterRaid()">▶ 繼續遊戲</button>
+        </div>`;
+    }
+
+    updateHUD();
+  }
+
+  function resumeAfterRaid() {
+    // Shrink grid back
+    shrinkGrid();
+
+    // Hide raid bar
+    const raidBar = document.getElementById('msRaidBar');
+    if (raidBar) raidBar.style.display = 'none';
+
+    // Resume countdown timer
+    if (!state.timerInterval && state.alive && state.timeLeft > 0) {
+      state.timerInterval = setInterval(() => {
+        if (!state.alive) return;
+        state.timeLeft--;
+        updateHUD();
+        if (state.timeLeft <= 0) {
+          if (state.hasTotem) {
+            useTotem();
+            state.timeLeft = 5;
+          } else {
+            endGame();
+          }
+        }
+      }, 1000);
+    }
+
+    // Show info and respawn normal mobs
+    showInfo('回到一般模式，繼續打怪！', '#a8e6cf');
+
+    // Clear grid and let spawnMob handle it
+    const grid = document.getElementById('msGrid');
+    if (grid) {
+      let html = '';
+      for (let i = 0; i < 9; i++) {
+        html += `<div class="ms-hole" data-hole="${i}" id="msHole${i}" onclick="MOB_SMASHER.hit(${i})">
+          <div class="ms-hole-inner"></div>
+        </div>`;
+      }
+      grid.innerHTML = html;
+    }
   }
 
   // ═══ Helpers ═══
@@ -870,5 +978,5 @@ const MOB_SMASHER = (() => {
     if (raidAudio) { raidAudio.pause(); raidAudio = null; }
   }
 
-  return { open, close, restart, hit };
+  return { open, close, restart, hit, resumeAfterRaid };
 })();
