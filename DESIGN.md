@@ -174,7 +174,7 @@
 - [x] 已做好：`preload` hero 圖片、`dns-prefetch` 外部域名、`defer` 腳本
 - [x] 已做好：`IntersectionObserver` 做滾動觸發動畫
 - [x] 已做好：照片頁無限捲動分批載入
-- [ ] 建議：首頁公告欄資料可考慮 inline 到 HTML 中（減少一次 API 請求）
+- [x] 建議：首頁公告欄資料可考慮 inline 到 HTML 中（減少一次 API 請求）✅ 2026-04-17 前 12 則公告已 inline，main.js 優先讀取
 - [ ] 建議：使用 `content-visibility: auto` 對長頁面做渲染優化（已對 bulletin-board / photo-carousel / join-steps / feature-grid / guide-layout / footer 實作）
 
 ### CSS 優化
@@ -624,6 +624,9 @@ Discord 上的公告長這樣：
 | 2026-04-17 | 海風網站助手 | 🔄 公告欄載入失敗加重新載入按鈕（取代純文字提示） |
 | 2026-04-17 | 海風網站助手 | 📱 新增捲動位置記憶（sessionStorage）：長頁面自動恢復上次閱讀位置 |
 | 2026-04-17 | 海風網站助手 | 全站 70 頁 CSS/JS 快取更新為 v=260417d |
+| 2026-04-17 | 海風網站助手 | ⚡ 首頁公告欄優化：前 12 則公告 inline 到 HTML（`<script type="application/json">`），main.js 優先讀取 inline 資料再 fallback fetch，減少首次載入延遲（省一次 349KB JSON 請求）|
+| 2026-04-17 | 海風網站助手 | 🎨 CSS 微調：首頁 Hero 標題加入 shimmer 動畫（`hero-title-shimmer`，6s 緩動漸變背景位置移動），使標題文字光澤更生動 |
+| 2026-04-17 | 海風網站助手 | 首頁 CSS/JS 快取更新為 v=260417e |
 
 ---
 

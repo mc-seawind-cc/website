@@ -559,6 +559,17 @@ function fetchServerStatus() {
 function initBulletinBoard() {
   const board = document.getElementById('bulletinBoard');
   if (!board) return;
+
+  // 優先使用 inline 資料（首頁預載前 12 則，減少首次載入延遲）
+  const inlineEl = document.getElementById('inlineAnnouncements');
+  if (inlineEl) {
+    try {
+      const data = JSON.parse(inlineEl.textContent);
+      renderBulletin(board, data.announcements);
+      return;
+    } catch(e) { /* fallback to fetch */ }
+  }
+
   fetch(SW_BASE + 'announcements.json')
     .then(r => { if (!r.ok) throw new Error('load fail'); return r.json(); })
     .then(data => { renderBulletin(board, data.announcements); })
