@@ -382,6 +382,24 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://www.seawind.cc/活動-生存起源.html</loc>
+    <lastmod>2026-04-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.seawind.cc/活動-風汐系列.html</loc>
+    <lastmod>2026-04-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.seawind.cc/活動-那個魚.html</loc>
+    <lastmod>2026-04-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://www.seawind.cc/設計規範.html</loc>
     <lastmod>2026-04-12</lastmod>
     <changefreq>monthly</changefreq>

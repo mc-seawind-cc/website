@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <link rel="canonical" href="https://www.seawind.cc/活動-風汐系列.html">
+  <meta name="color-scheme" content="dark light">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>🌀 風汐系列 — 海風活動</title>
+  <meta name="description" content="海風風汐系列活動：以「風」與「潮汐」為主題的常駐系列活動，融合探索、解謎與建築元素。">
+  <link rel="icon" href="assets/img/logo.png">
+  <link rel="apple-touch-icon" href="assets/img/logo.png">
+  <link rel="manifest" href="manifest.json">
+  <meta property="og:title" content="🌀 風汐系列 — 海風活動">
+  <meta property="og:description" content="以「風」與「潮汐」為主題的常駐系列活動，融合探索、解謎與建築元素。">
+  <meta property="og:image" content="assets/img/logo.png">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:image" content="assets/img/logo.png">
+  <meta name="theme-color" content="#0d1117">
+  <link rel="dns-prefetch" href="//cdn.discordapp.com">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;800&family=Noto+Serif+TC:wght@700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css?v=260418d">
+  <link rel="stylesheet" href="music-player.css">
+  <style>
+    .event-detail-header { text-align:center; padding:var(--space-2xl) var(--space-xl) var(--space-xl); position:relative; }
+    .event-detail-header::before { content:''; position:absolute; top:-40%; left:-10%; width:120%; height:180%; background:radial-gradient(ellipse at 50% 30%, rgba(171,114,249,0.05) 0%, transparent 60%); pointer-events:none; }
+    .event-detail-header > * { position:relative; z-index:1; }
+    .event-detail-header h1 { font-size:clamp(1.8rem,4vw,2.6rem); font-weight:800; color:var(--white); letter-spacing:-0.02em; margin-bottom:var(--space-sm); }
+    .event-detail-badge { display:inline-flex; align-items:center; gap:6px; font-size:0.8rem; font-weight:700; padding:5px 14px; border-radius:100px; background:rgba(171,114,249,0.12); color:var(--lavender); border:1px solid rgba(171,114,249,0.2); margin-bottom:var(--space-md); }
+    .event-detail-desc { color:var(--fog); font-size:1rem; max-width:600px; margin:0 auto; line-height:1.7; }
+
+    .event-block { margin-bottom:var(--space-2xl); }
+    .event-block-title { font-size:1.1rem; font-weight:800; color:var(--white); margin-bottom:var(--space-md); padding-bottom:8px; border-bottom:2px solid rgba(171,114,249,0.12); display:flex; align-items:center; gap:8px; }
+
+    .currency-card { display:flex; align-items:center; gap:var(--space-lg); padding:20px 24px; background:rgba(0,0,0,0.12); border:1px solid rgba(255,255,255,0.05); border-radius:var(--radius-md); margin-bottom:var(--space-md); }
+    .currency-icon { font-size:2.5rem; flex-shrink:0; }
+    .currency-info h3 { font-size:1rem; font-weight:700; color:var(--white); margin-bottom:4px; }
+    .currency-info p { font-size:0.85rem; color:var(--fog); line-height:1.6; }
+
+    .method-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(200px,1fr)); gap:10px; }
+    .method-item { padding:14px 16px; background:rgba(0,0,0,0.1); border:1px solid rgba(255,255,255,0.04); border-radius:8px; }
+    .method-item .mi-icon { font-size:1.2rem; margin-bottom:6px; }
+    .method-item h4 { font-size:0.85rem; font-weight:700; color:var(--white); margin-bottom:2px; }
+    .method-item p { font-size:0.75rem; color:var(--fog); }
+
+    .back-link { display:inline-flex; align-items:center; gap:6px; color:var(--fog); font-size:0.85rem; text-decoration:none; padding:6px 0; transition:color 0.2s; margin-bottom:var(--space-md); }
+    .back-link:hover { color:var(--sky); }
+    .event-section-divider { width:60px; height:2px; background:linear-gradient(90deg,transparent,rgba(171,114,249,0.25),transparent); margin:var(--space-2xl) auto; border-radius:1px; }
+
+    [data-theme="light"] .event-detail-header h1 { color:var(--cloud); }
+    [data-theme="light"] .event-block-title { color:var(--cloud); }
+    [data-theme="light"] .currency-info h3 { color:var(--cloud); }
+    [data-theme="light"] .currency-card { background:rgba(0,0,0,0.02); border-color:rgba(0,0,0,0.05); }
+    [data-theme="light"] .method-item { background:rgba(0,0,0,0.02); border-color:rgba(0,0,0,0.05); }
+    [data-theme="light"] .method-item h4 { color:var(--cloud); }
+
+    @media print { .back-link,.nav,.footer,.scroll-progress,.bg-atmosphere,.event-section-divider { display:none!important; } }
+  </style>
+</head>
+<body>
+  <a href="#mainContent" class="skip-link">跳到主要內容</a>
+  <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
+  <div class="bg-atmosphere"></div>
+
+  <nav class="nav">
+    <a href="首頁.html" class="nav-logo">
+      <img src="assets/img/logo.png" alt="海風" class="nav-logo-img" width="48" height="48" fetchpriority="high">
+      <span>海風伺服器</span>
+    </a>
+    <div class="nav-right">
+      <ul class="nav-links">
+        <li><a href="首頁.html">首頁</a></li>
+        <li><a href="公告.html">公告</a></li>
+        <li class="nav-dropdown">
+          <a href="文化藝廊.html" class="nav-dropdown-toggle" aria-expanded="false" aria-haspopup="true">關於 <span class="arrow">▾</span></a>
+          <ul class="dropdown-menu">
+            <li><a href="文化藝廊.html">文化藝廊</a></li>
+            <li><a href="活動.html" class="active">活動</a></li>
+            <li><a href="風景照.html">風景照</a></li>
+            <li><a href="歷史館.html">歷史館</a></li>
+            <li><a href="海風社區.html">海風社區</a></li>
+            <li><a href="海風團隊.html">海風團隊</a></li>
+          </ul>
+        </li>
+        <li><a href="海風指南.html">海風指南</a></li>
+        <li class="nav-dropdown">
+          <a href="玩家須知.html" class="nav-dropdown-toggle" aria-expanded="false" aria-haspopup="true">社群須知 <span class="arrow">▾</span></a>
+          <ul class="dropdown-menu">
+            <li><a href="玩家須知.html">玩家須知</a></li>
+            <li><a href="支持須知.html">支持須知</a></li>
+            <li><a href="管理規則.html">海風管理規則</a></li>
+            <li><a href="公務人員須知.html">公務人員須知</a></li>
+            <li><a href="設計規範.html">設計規範</a></li>
+            <li><a href="服務條款.html">服務條款</a></li>
+            <li><a href="隱私權政策.html">隱私權政策</a></li>
+          </ul>
+        </li>
+        <li><a href="會員.html">會員</a></li>
+        <li><a href="相關連結.html">相關連結</a></li>
+        <li class="nav-dropdown">
+          <a href="合作夥伴.html" class="nav-dropdown-toggle" aria-expanded="false" aria-haspopup="true">資料中心 <span class="arrow">▾</span></a>
+          <ul class="dropdown-menu">
+            <li><a href="合作夥伴.html">合作夥伴</a></li>
+            <li><a href="違規處分.html">違規處分</a></li>
+          </ul>
+        </li>
+      </ul>
+      <button class="nav-theme" id="themeToggle" aria-label="切換主題"></button>
+      <button class="nav-toggle" aria-label="選單"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+
+  <div class="page">
+    <div class="content-section" id="mainContent">
+
+      <a href="活動.html" class="back-link">← 返回活動列表</a>
+
+      <div class="event-detail-header fade-in">
+        <div class="event-detail-badge">常駐活動</div>
+        <h1>🌀 風汐系列</h1>
+        <p class="event-detail-desc">
+          以「風」與「潮汐」為主題的系列活動，融合探索、解謎與建築元素。風汐碎片與風汐石是海風的核心進階貨幣系統。
+        </p>
+      </div>
+
+      <!-- 貨幣介紹 -->
+      <div class="event-block fade-in">
+        <div class="event-block-title">💎 風汐貨幣系統</div>
+        <div class="currency-card">
+          <span class="currency-icon">💎</span>
+          <div class="currency-info">
+            <h3>風汐碎片</h3>
+            <p>最基礎的風汐貨幣。可以透過每日任務、簽到、參與活動等方式獲得。是兌換特殊道具的主要通貨。</p>
+          </div>
+        </div>
+        <div class="currency-card">
+          <span class="currency-icon">💠</span>
+          <div class="currency-info">
+            <h3>風汐石</h3>
+            <p>由風汐碎片合成或兌換而來的高階風汐貨幣。用於兌換更珍稀的特殊工具與道具。</p>
+          </div>
+        </div>
+        <p style="color:var(--fog);font-size:0.82rem;margin-top:var(--space-md);line-height:1.7;background:rgba(171,114,249,0.05);padding:12px 16px;border-radius:8px;border:1px solid rgba(171,114,249,0.1);">
+          💡 <strong style="color:var(--cloud);">注意：</strong>風汐物品是實體物品，死亡掉落時可能會遺失，建議存放在安全的地方。
+        </p>
+      </div>
+
+      <div class="event-section-divider"></div>
+
+      <!-- 取得方式 -->
+      <div class="event-block fade-in">
+        <div class="event-block-title">📍 取得方式</div>
+        <div class="method-grid">
+          <div class="method-item">
+            <div class="mi-icon">📋</div>
+            <h4>每日任務</h4>
+            <p>完成每日任務可獲得風汐碎片</p>
+          </div>
+          <div class="method-item">
+            <div class="mi-icon">✅</div>
+            <h4>每日簽到</h4>
+            <p>每天簽到可領取風汐碎片</p>
+          </div>
+          <div class="method-item">
+            <div class="mi-icon">🎉</div>
+            <h4>參與活動</h4>
+            <p>參加伺服器舉辦的各類活動</p>
+          </div>
+          <div class="method-item">
+            <div class="mi-icon">🔨</div>
+            <h4>碎片合成</h4>
+            <p>風汐碎片可合成風汐石</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="event-section-divider"></div>
+
+      <!-- 用途 -->
+      <div class="event-block fade-in">
+        <div class="event-block-title">🛠️ 用途</div>
+        <p style="color:var(--fog);font-size:0.88rem;line-height:1.8;">
+          風汐系列物品的主要用途是<strong style="color:var(--cloud);">兌換特殊工具</strong>，這些工具擁有超越一般合成的能力。<br><br>
+          風汐系列活動內容持續擴充中，未來將陸續開放更多探索、解謎與建築相關的玩法，敬請期待！
+        </p>
+      </div>
+
+      <div style="text-align:center;margin-top:var(--space-2xl);">
+        <a href="活動.html" class="btn btn-outline">← 返回活動列表</a>
+      </div>
+
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <span class="footer-logo">海風伺服器 SeaWind.cc</span>
+        <p class="footer-tagline">在風與海之間，有一個可以長久生存的地方</p>
+      </div>
+      <div class="footer-meta">
+        <span class="footer-status"><span class="status-dot" id="footerStatusDot"></span><span id="footerStatus">查詢中</span></span>
+        <span class="footer-sep">·</span><span>台灣</span><span class="footer-sep">·</span><span>1.21.6 ~ 26.x</span>
+      </div>
+      <div class="footer-links-row">
+        <a href="服務條款.html">服務條款</a><span class="footer-dot">·</span><a href="隱私權政策.html">隱私權政策</a>
+      </div>
+      <div class="footer-bottom"><p>© 2026 海風伺服器 · 非 Mojang 官方營運 · service@seawind.cc</p></div>
+      <p class="page-revise">網站最後修改日期 2026.04.18 / 總計修改 <span id="deployCount">—</span> 次</p>
+    </div>
+  </footer>
+
+  <script src="tips.js" defer></script>
+  <script src="utils.js"></script>
+  <script src="main.js?v=260418d"></script>
+</body>
+</html>
