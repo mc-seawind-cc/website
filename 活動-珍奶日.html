@@ -21,131 +21,362 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;800&family=Noto+Serif+TC:wght@700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=260418b">
+  <link rel="stylesheet" href="style.css?v=260418d">
   <link rel="stylesheet" href="music-player.css">
   <style>
-    /* ═══ Event Detail Page ═══ */
+    /* ═══ Event Detail Page — Bubble Tea Edition ═══ */
 
-    .event-detail-header {
+    /* ── Hero ── */
+    .event-hero {
       text-align: center;
       padding: var(--space-2xl) var(--space-xl) var(--space-xl);
       position: relative;
+      overflow: hidden;
     }
-    .event-detail-header h1 {
-      font-size: clamp(1.8rem, 4vw, 2.6rem);
-      font-weight: 800;
-      color: var(--white);
-      letter-spacing: -0.02em;
-      margin-bottom: var(--space-sm);
+    .event-hero::before {
+      content: '';
+      position: absolute;
+      top: -60%; left: -20%; width: 140%; height: 200%;
+      background: radial-gradient(ellipse at 30% 20%, rgba(196,155,108,0.06) 0%, transparent 60%),
+                  radial-gradient(ellipse at 70% 80%, rgba(168,230,207,0.04) 0%, transparent 50%);
+      pointer-events: none;
+      z-index: 0;
     }
-    .event-detail-header .event-detail-badge {
+    .event-hero > * { position: relative; z-index: 1; }
+
+    .event-hero-badge {
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      font-size: 0.8rem;
+      font-size: 0.78rem;
       font-weight: 700;
-      padding: 5px 14px;
+      padding: 6px 16px;
       border-radius: 100px;
-      background: rgba(255, 170, 50, 0.12);
+      background: rgba(255, 170, 50, 0.1);
       color: #ffaa32;
-      border: 1px solid rgba(255, 170, 50, 0.2);
+      border: 1px solid rgba(255, 170, 50, 0.18);
       margin-bottom: var(--space-md);
+      letter-spacing: 0.02em;
     }
-    .event-detail-header .event-detail-desc {
+    .event-hero h1 {
+      font-size: clamp(2rem, 5vw, 3rem);
+      font-weight: 900;
+      color: var(--white);
+      letter-spacing: -0.03em;
+      margin-bottom: var(--space-sm);
+      line-height: 1.2;
+    }
+    .event-hero-desc {
       color: var(--fog);
-      font-size: 1rem;
-      max-width: 600px;
+      font-size: 0.95rem;
+      max-width: 620px;
       margin: 0 auto;
-      line-height: 1.7;
+      line-height: 1.8;
     }
 
-    /* Stages timeline */
-    .event-timeline {
+    /* ── Bubble Tea CSS Art ── */
+    .btea-art {
       display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
       justify-content: center;
-      margin: var(--space-lg) auto;
-      max-width: 800px;
+      margin: var(--space-xl) 0 var(--space-md);
     }
-    .event-timeline-stage {
-      padding: 10px 14px;
-      background: rgba(196,155,108,0.06);
-      border: 1px solid rgba(196,155,108,0.1);
-      border-radius: var(--radius-sm);
-      font-size: 0.8rem;
-      flex: 1 1 140px;
-      min-width: 140px;
+    .btea-cup {
+      width: 90px;
+      height: 120px;
+      position: relative;
     }
-    .event-timeline-stage .stage-name {
+    .btea-cup-body {
+      width: 80px;
+      height: 100px;
+      background: linear-gradient(180deg, rgba(210,180,140,0.9) 0%, rgba(180,140,100,0.95) 60%, rgba(100,60,30,0.9) 100%);
+      border-radius: 6px 6px 14px 14px;
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      overflow: hidden;
+      border: 2px solid rgba(255,255,255,0.15);
+      box-shadow: 0 4px 20px rgba(180,140,100,0.3), inset 0 -10px 20px rgba(0,0,0,0.15);
+    }
+    .btea-cup-lid {
+      width: 90px;
+      height: 10px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.25), rgba(255,255,255,0.1));
+      border-radius: 6px;
+      position: absolute;
+      top: 12px;
+      left: 50%;
+      transform: translateX(-50%);
+      border: 1px solid rgba(255,255,255,0.2);
+    }
+    .btea-straw {
+      width: 6px;
+      height: 50px;
+      background: linear-gradient(180deg, #ff8282, #e06060);
+      position: absolute;
+      top: -32px;
+      left: 56px;
+      border-radius: 3px 3px 0 0;
+      transform: rotate(8deg);
+      box-shadow: 1px 0 4px rgba(0,0,0,0.15);
+    }
+    .btea-pearl {
+      position: absolute;
+      border-radius: 50%;
+      background: radial-gradient(circle at 35% 35%, #6b4226, #3a2010);
+      box-shadow: inset -1px -1px 2px rgba(0,0,0,0.3), 0 1px 2px rgba(0,0,0,0.2);
+    }
+    .btea-bubble1 { width: 10px; height: 10px; bottom: 8px; left: 14px; }
+    .btea-bubble2 { width: 9px; height: 9px; bottom: 12px; left: 30px; }
+    .btea-bubble3 { width: 11px; height: 11px; bottom: 6px; left: 48px; }
+    .btea-bubble4 { width: 8px; height: 8px; bottom: 18px; left: 22px; }
+    .btea-bubble5 { width: 10px; height: 10px; bottom: 14px; left: 40px; }
+    .btea-bubble6 { width: 9px; height: 9px; bottom: 4px; left: 36px; }
+    .btea-shine {
+      position: absolute;
+      top: 10px; left: 8px;
+      width: 12px; height: 25px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.25), transparent);
+      border-radius: 50%;
+      transform: rotate(-10deg);
+    }
+
+    /* ── Quick Stats ── */
+    .event-quick-stats {
+      display: flex;
+      justify-content: center;
+      gap: var(--space-xl);
+      margin: var(--space-lg) auto var(--space-xl);
+      flex-wrap: wrap;
+    }
+    .eqs-item {
+      text-align: center;
+    }
+    .eqs-num {
+      font-size: 1.8rem;
+      font-weight: 900;
+      background: linear-gradient(135deg, #c49b6c, #e0c9a8);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      line-height: 1.2;
+    }
+    .eqs-label {
+      font-size: 0.72rem;
+      color: var(--fog);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-top: 2px;
+    }
+
+    /* ── Visual Timeline ── */
+    .event-timeline-v {
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      gap: 0;
+      margin: var(--space-lg) auto var(--space-xl);
+      max-width: 900px;
+      position: relative;
+    }
+    .etv-stage {
+      flex: 1;
+      text-align: center;
+      position: relative;
+      padding: 0 8px;
+    }
+    .etv-dot {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      margin: 0 auto var(--space-sm);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.85rem;
       font-weight: 700;
-      color: #c49b6c;
-      margin-bottom: 3px;
+      position: relative;
+      z-index: 2;
+      transition: all 0.3s;
     }
-    .event-timeline-stage .stage-desc {
+    .etv-dot.active {
+      background: linear-gradient(135deg, var(--sky), var(--foam));
+      color: var(--deep);
+      box-shadow: 0 0 16px rgba(157,175,255,0.35);
+    }
+    .etv-dot.upcoming {
+      background: rgba(255,255,255,0.06);
+      border: 2px solid rgba(255,255,255,0.12);
+      color: var(--fog);
+    }
+    .etv-connector {
+      position: absolute;
+      top: 16px;
+      left: 50%;
+      right: -50%;
+      height: 2px;
+      z-index: 1;
+    }
+    .etv-connector.done {
+      background: linear-gradient(90deg, var(--foam), var(--sky));
+    }
+    .etv-connector.pending {
+      background: rgba(255,255,255,0.06);
+      background-image: repeating-linear-gradient(90deg, rgba(255,255,255,0.08) 0, rgba(255,255,255,0.08) 6px, transparent 6px, transparent 12px);
+    }
+    .etv-name {
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 2px;
+    }
+    .etv-date {
+      font-size: 0.7rem;
+      color: #c49b6c;
+      margin-bottom: 4px;
+    }
+    .etv-desc {
+      font-size: 0.72rem;
       color: var(--fog);
       line-height: 1.5;
     }
 
-    /* Content blocks */
+    /* ── Section blocks ── */
     .event-block {
-      margin-bottom: var(--space-xl);
+      margin-bottom: var(--space-2xl);
     }
     .event-block-title {
-      font-size: 1.1rem;
+      font-size: 1.15rem;
       font-weight: 800;
       color: var(--white);
+      margin-bottom: var(--space-lg);
+      padding-bottom: 10px;
+      border-bottom: 2px solid rgba(196,155,108,0.12);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .event-block-title .ebt-icon {
+      font-size: 1.3rem;
+    }
+
+    /* ── Drink Cards ── */
+    .drink-group-label {
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
       margin-bottom: var(--space-md);
-      padding-bottom: 8px;
-      border-bottom: 2px solid rgba(196,155,108,0.15);
       display: flex;
       align-items: center;
       gap: 8px;
     }
-
-    /* Drink recipe table */
-    .recipe-table {
-      width: 100%;
-      border-collapse: separate;
-      border-spacing: 0;
-      font-size: 0.82rem;
+    .drink-group-label::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(90deg, rgba(255,255,255,0.08), transparent);
     }
-    .recipe-table thead th {
-      text-align: left;
-      padding: 8px 10px;
-      color: var(--fog);
-      font-weight: 600;
-      font-size: 0.72rem;
-      letter-spacing: 0.04em;
-      border-bottom: 1px solid rgba(196,155,108,0.15);
+    .drink-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 10px;
+      margin-bottom: var(--space-xl);
+    }
+    .drink-card {
+      padding: 14px 16px;
+      background: rgba(0,0,0,0.15);
+      border: 1px solid rgba(255,255,255,0.05);
+      border-radius: var(--radius-md);
+      transition: all 0.3s var(--ease);
+      position: relative;
+      overflow: hidden;
+    }
+    .drink-card:hover {
+      border-color: rgba(196,155,108,0.2);
+      background: rgba(196,155,108,0.04);
+      transform: translateY(-2px);
+    }
+    .drink-card-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 8px;
+    }
+    .drink-card-name {
+      font-size: 0.92rem;
+      font-weight: 700;
+      color: var(--white);
+    }
+    .drink-card-cost {
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: #c49b6c;
+      background: rgba(196,155,108,0.1);
+      padding: 2px 8px;
+      border-radius: 100px;
       white-space: nowrap;
     }
-    .recipe-table tbody td {
-      padding: 8px 10px;
-      border-bottom: 1px solid rgba(255,255,255,0.03);
-      color: var(--cloud);
+    .drink-card-recipe {
+      font-size: 0.75rem;
+      color: var(--fog);
+      margin-bottom: 6px;
+      line-height: 1.5;
     }
-    .recipe-table tbody tr:hover {
-      background: rgba(196,155,108,0.04);
+    .drink-card-effect {
+      font-size: 0.78rem;
+      color: var(--foam);
+      font-weight: 500;
     }
-    .recipe-table .col-name { white-space: nowrap; }
-    .recipe-table .col-cost { color: #c49b6c; font-weight: 600; text-align: center; }
-    .recipe-table .col-ingredients { color: var(--fog); font-size: 0.78rem; }
-    .recipe-table .col-effect { font-size: 0.8rem; }
-    .recipe-table .col-cd { text-align: center; color: var(--fog); }
-    .recipe-table .rare-row td {
-      background: rgba(196,155,108,0.08);
-      border-top: 1px dashed rgba(196,155,108,0.25);
+    .drink-card-cd {
+      font-size: 0.68rem;
+      color: var(--fog);
+      opacity: 0.7;
     }
-    .recipe-group-label {
-      font-size: 0.72rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
-      margin: var(--space-md) 0 6px;
+    .drink-card.rare {
+      background: linear-gradient(135deg, rgba(196,155,108,0.08), rgba(196,155,108,0.03));
+      border-color: rgba(196,155,108,0.2);
+    }
+    .drink-card.rare .drink-card-name { color: #c49b6c; }
+    .drink-card.rare::before {
+      content: '💛';
+      position: absolute;
+      top: 8px; right: 12px;
+      font-size: 1.4rem;
+      opacity: 0.15;
     }
 
-    /* Task grid */
+    /* ── Ingredient Grid ── */
+    .ingredient-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+      gap: 8px;
+    }
+    .ingredient-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 12px;
+      background: rgba(0,0,0,0.12);
+      border: 1px solid rgba(255,255,255,0.04);
+      border-radius: 8px;
+      font-size: 0.78rem;
+      color: var(--cloud);
+      transition: all 0.2s;
+    }
+    .ingredient-item:hover {
+      border-color: rgba(196,155,108,0.15);
+      background: rgba(196,155,108,0.04);
+    }
+    .ingredient-item .ii-emoji {
+      font-size: 1rem;
+      flex-shrink: 0;
+    }
+    .ingredient-item .ii-name {
+      line-height: 1.3;
+    }
+
+    /* ── Task grid ── */
     .task-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
@@ -155,7 +386,7 @@
       display: flex;
       align-items: center;
       gap: 8px;
-      padding: 7px 12px;
+      padding: 8px 14px;
       background: rgba(0,0,0,0.15);
       border: 1px solid rgba(255,255,255,0.05);
       border-radius: 8px;
@@ -163,8 +394,9 @@
       color: var(--cloud);
     }
     .task-item .task-id {
-      opacity: 0.5;
-      font-size: 0.7rem;
+      opacity: 0.45;
+      font-size: 0.68rem;
+      font-family: 'JetBrains Mono', 'Fira Code', monospace;
     }
     .task-item .task-req {
       margin-left: auto;
@@ -172,65 +404,79 @@
       color: var(--fog);
     }
 
-    /* Token shop */
-    .shop-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    /* ── Shop ladder ── */
+    .shop-ladder {
+      display: flex;
+      flex-direction: column;
       gap: 8px;
     }
-    .shop-item {
+    .shop-rung {
       display: flex;
       align-items: center;
-      gap: 10px;
-      padding: 10px 14px;
+      gap: var(--space-md);
+      padding: 14px 18px;
       background: rgba(0,0,0,0.12);
       border: 1px solid rgba(255,255,255,0.05);
       border-radius: var(--radius-sm);
-      font-size: 0.82rem;
+      font-size: 0.88rem;
       color: var(--cloud);
+      transition: all 0.2s;
     }
-    .shop-item .shop-cost {
-      font-weight: 700;
+    .shop-rung:hover {
+      border-color: rgba(196,155,108,0.15);
+      background: rgba(196,155,108,0.03);
+    }
+    .shop-rung .sr-cost {
+      font-weight: 800;
       color: #c49b6c;
-      min-width: 40px;
+      min-width: 50px;
+      font-size: 1rem;
     }
-    .shop-item.premium {
-      background: rgba(196,155,108,0.08);
-      border-color: rgba(196,155,108,0.2);
+    .shop-rung .sr-icon {
+      font-size: 1.1rem;
+      opacity: 0.7;
     }
-    .shop-item.premium span:last-child {
+    .shop-rung.premium {
+      background: rgba(196,155,108,0.06);
+      border-color: rgba(196,155,108,0.15);
+    }
+    .shop-rung.premium .sr-name {
       color: #c49b6c;
       font-weight: 600;
     }
 
-    /* Challenge lines */
+    /* ── Challenge cards ── */
     .challenge-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
       gap: 10px;
     }
-    .challenge-line {
-      padding: 14px 16px;
+    .challenge-card {
+      padding: 16px 18px;
       border-radius: var(--radius-sm);
     }
-    .challenge-line .cl-title {
-      font-size: 0.75rem;
-      font-weight: 700;
+    .challenge-card .cc-icon {
+      font-size: 1.4rem;
       margin-bottom: 8px;
     }
-    .challenge-line .cl-tasks {
+    .challenge-card .cc-title {
+      font-size: 0.88rem;
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+    .challenge-card .cc-desc {
       font-size: 0.78rem;
       color: var(--cloud);
-      line-height: 1.7;
+      line-height: 1.6;
     }
-    .cl-build { background: rgba(168,230,207,0.06); border: 1px solid rgba(168,230,207,0.12); }
-    .cl-build .cl-title { color: var(--foam); }
-    .cl-explore { background: rgba(157,175,255,0.06); border: 1px solid rgba(157,175,255,0.12); }
-    .cl-explore .cl-title { color: var(--sky); }
-    .cl-fight { background: rgba(255,130,130,0.06); border: 1px solid rgba(255,130,130,0.12); }
-    .cl-fight .cl-title { color: #ff8282; }
+    .cc-explore { background: rgba(157,175,255,0.06); border: 1px solid rgba(157,175,255,0.1); }
+    .cc-explore .cc-title { color: var(--sky); }
+    .cc-social { background: rgba(168,230,207,0.06); border: 1px solid rgba(168,230,207,0.1); }
+    .cc-social .cc-title { color: var(--foam); }
+    .cc-build { background: rgba(196,155,108,0.06); border: 1px solid rgba(196,155,108,0.1); }
+    .cc-build .cc-title { color: #c49b6c; }
 
-    /* Titles */
+    /* ── Titles ── */
     .title-list {
       display: flex;
       flex-wrap: wrap;
@@ -240,43 +486,19 @@
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      padding: 5px 12px;
-      background: rgba(196,155,108,0.08);
-      border: 1px solid rgba(196,155,108,0.15);
-      border-radius: 6px;
-      font-size: 0.8rem;
+      padding: 8px 14px;
+      background: rgba(196,155,108,0.06);
+      border: 1px solid rgba(196,155,108,0.12);
+      border-radius: 8px;
+      font-size: 0.82rem;
       color: var(--cloud);
     }
     .title-tag .tt-cond {
       font-size: 0.68rem;
       color: var(--fog);
     }
-    .title-tag.sponsor {
-      background: rgba(100,200,255,0.08);
-      border-color: rgba(100,200,255,0.2);
-    }
 
-    /* Sponsor block */
-    .sponsor-block {
-      padding: 16px 20px;
-      background: rgba(100,200,255,0.04);
-      border: 1px solid rgba(100,200,255,0.1);
-      border-radius: var(--radius-md);
-    }
-    .sponsor-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-      gap: 10px;
-    }
-    .sponsor-item {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      font-size: 0.82rem;
-      color: var(--cloud);
-    }
-
-    /* Back link */
+    /* ── Back link ── */
     .back-link {
       display: inline-flex;
       align-items: center;
@@ -290,41 +512,96 @@
     }
     .back-link:hover { color: var(--sky); }
 
-    /* Section divider */
+    /* ── Section divider ── */
     .event-section-divider {
       width: 60px;
       height: 2px;
-      background: linear-gradient(90deg, transparent, rgba(196,155,108,0.3), transparent);
+      background: linear-gradient(90deg, transparent, rgba(196,155,108,0.25), transparent);
       margin: var(--space-2xl) auto;
       border-radius: 1px;
     }
 
-    /* Light mode overrides */
-    [data-theme="light"] .event-detail-header h1 { color: var(--cloud); }
-    [data-theme="light"] .event-block-title { color: var(--cloud); }
-    [data-theme="light"] .recipe-table tbody td { color: #3a3f4b; }
-    [data-theme="light"] .recipe-table thead th { color: #6b7280; }
-    [data-theme="light"] .recipe-table tbody tr:hover { background: rgba(196,155,108,0.04); }
-    [data-theme="light"] .task-item { color: #3a3f4b; background: rgba(0,0,0,0.03); border-color: rgba(0,0,0,0.06); }
-    [data-theme="light"] .shop-item { color: #3a3f4b; background: rgba(0,0,0,0.03); border-color: rgba(0,0,0,0.06); }
-    [data-theme="light"] .shop-item.premium { background: rgba(196,155,108,0.06); }
-    [data-theme="light"] .challenge-line .cl-tasks { color: #3a3f4b; }
-    [data-theme="light"] .title-tag { color: #3a3f4b; }
-    [data-theme="light"] .sponsor-item { color: #3a3f4b; }
-    [data-theme="light"] .event-timeline-stage { background: rgba(196,155,108,0.04); }
-    [data-theme="light"] .event-timeline-stage .stage-desc { color: #6b7280; }
-
-    /* Responsive */
-    @media (max-width: 768px) {
-      .event-timeline { flex-direction: column; }
-      .recipe-table { font-size: 0.78rem; }
-      .recipe-table .col-ingredients { display: none; }
+    /* ── How it works ── */
+    .how-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 12px;
+    }
+    .how-step {
+      text-align: center;
+      padding: 20px 16px;
+      background: rgba(0,0,0,0.12);
+      border: 1px solid rgba(255,255,255,0.04);
+      border-radius: var(--radius-md);
+    }
+    .how-step .hs-icon {
+      font-size: 2rem;
+      margin-bottom: 8px;
+      display: block;
+    }
+    .how-step .hs-num {
+      font-size: 0.65rem;
+      font-weight: 700;
+      color: var(--sky);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 4px;
+    }
+    .how-step h4 {
+      font-size: 0.88rem;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 4px;
+    }
+    .how-step p {
+      font-size: 0.75rem;
+      color: var(--fog);
+      line-height: 1.5;
     }
 
-    /* Print */
+    /* ── Light mode ── */
+    [data-theme="light"] .event-hero h1 { color: var(--cloud); }
+    [data-theme="light"] .event-block-title { color: var(--cloud); border-bottom-color: rgba(196,155,108,0.1); }
+    [data-theme="light"] .drink-card { background: rgba(0,0,0,0.03); border-color: rgba(0,0,0,0.06); }
+    [data-theme="light"] .drink-card:hover { background: rgba(196,155,108,0.04); border-color: rgba(196,155,108,0.15); }
+    [data-theme="light"] .drink-card-name { color: var(--cloud); }
+    [data-theme="light"] .drink-card-recipe { color: #6b7280; }
+    [data-theme="light"] .drink-card.rare { background: rgba(196,155,108,0.04); }
+    [data-theme="light"] .drink-card.rare .drink-card-name { color: #a07850; }
+    [data-theme="light"] .etv-name { color: var(--cloud); }
+    [data-theme="light"] .etv-desc { color: #6b7280; }
+    [data-theme="light"] .etv-dot.upcoming { background: rgba(0,0,0,0.04); border-color: rgba(0,0,0,0.1); }
+    [data-theme="light"] .ingredient-item { color: #3a3f4b; background: rgba(0,0,0,0.02); border-color: rgba(0,0,0,0.05); }
+    [data-theme="light"] .task-item { color: #3a3f4b; background: rgba(0,0,0,0.03); border-color: rgba(0,0,0,0.05); }
+    [data-theme="light"] .shop-rung { color: #3a3f4b; background: rgba(0,0,0,0.02); border-color: rgba(0,0,0,0.05); }
+    [data-theme="light"] .shop-rung.premium { background: rgba(196,155,108,0.04); }
+    [data-theme="light"] .challenge-card .cc-desc { color: #5a6270; }
+    [data-theme="light"] .title-tag { color: #3a3f4b; }
+    [data-theme="light"] .how-step { background: rgba(0,0,0,0.02); border-color: rgba(0,0,0,0.05); }
+    [data-theme="light"] .how-step h4 { color: var(--cloud); }
+
+    /* ── Responsive ── */
+    @media (max-width: 768px) {
+      .event-quick-stats { gap: var(--space-lg); }
+      .eqs-num { font-size: 1.4rem; }
+      .event-timeline-v { flex-direction: column; align-items: center; gap: 0; }
+      .etv-stage { padding: 12px 0; }
+      .etv-connector { display: none; }
+      .drink-cards { grid-template-columns: 1fr; }
+      .recipe-table .col-ingredients { display: none; }
+      .how-grid { grid-template-columns: repeat(2, 1fr); }
+      .ingredient-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 480px) {
+      .how-grid { grid-template-columns: 1fr; }
+      .ingredient-grid { grid-template-columns: 1fr; }
+    }
+
+    /* ── Print ── */
     @media print {
-      .back-link, .nav, .footer, .scroll-progress, .bg-atmosphere { display: none !important; }
-      .event-section-divider { display: none; }
+      .back-link, .nav, .footer, .scroll-progress, .bg-atmosphere, .event-section-divider, .btea-art { display: none !important; }
+      .event-hero { padding: 16px 0; }
+      .drink-card, .task-item, .shop-rung { break-inside: avoid; }
     }
   </style>
 </head>
@@ -389,112 +666,273 @@
       <!-- Breadcrumb -->
       <a href="活動.html" class="back-link">← 返回活動列表</a>
 
-      <!-- Header -->
-      <div class="event-detail-header fade-in">
-        <div class="event-detail-badge">限時活動 · 4/27 – 5/31</div>
+      <!-- ═══ Hero ═══ -->
+      <div class="event-hero fade-in">
+        <div class="event-hero-badge">限時活動 · 4/27 – 5/31</div>
         <h1>🧋 2026 海風國際珍奶日</h1>
-        <p class="event-detail-desc">
-          在風與海之間，泡一杯屬於你的珍奶。收集 14 種原料、每日簽到領取代幣、完成任務賺取更多🪙，用代幣兌換 13 種限定口味飲品。漏天也不怕——代幣可直接購買原料！挑戰任務、代幣商店、限定武器「珍奶微微」與限定稱號等你來拿！
+
+        <!-- CSS Bubble Tea Cup -->
+        <div class="btea-art">
+          <div class="btea-cup">
+            <div class="btea-straw"></div>
+            <div class="btea-cup-lid"></div>
+            <div class="btea-cup-body">
+              <div class="btea-shine"></div>
+              <div class="btea-pearl btea-bubble1"></div>
+              <div class="btea-pearl btea-bubble2"></div>
+              <div class="btea-pearl btea-bubble3"></div>
+              <div class="btea-pearl btea-bubble4"></div>
+              <div class="btea-pearl btea-bubble5"></div>
+              <div class="btea-pearl btea-bubble6"></div>
+            </div>
+          </div>
+        </div>
+
+        <p class="event-hero-desc">
+          在風與海之間，泡一杯屬於你的珍奶。收集 14 種原料、每日簽到領取代幣、完成任務賺取更多🪙，用代幣兌換 13 種限定口味飲品。挑戰任務、代幣商店、限定武器「珍奶微微」與限定稱號等你來拿！
         </p>
+
+        <!-- Quick Stats -->
+        <div class="event-quick-stats">
+          <div class="eqs-item"><div class="eqs-num">13</div><div class="eqs-label">限定飲品</div></div>
+          <div class="eqs-item"><div class="eqs-num">14</div><div class="eqs-label">活動原料</div></div>
+          <div class="eqs-item"><div class="eqs-num">35</div><div class="eqs-label">活動天數</div></div>
+          <div class="eqs-item"><div class="eqs-num">4</div><div class="eqs-label">活動階段</div></div>
+        </div>
       </div>
 
-      <!-- 時程規劃 -->
+      <!-- ═══ How it works ═══ -->
       <div class="event-block fade-in">
-        <div class="event-block-title">📅 時程規劃</div>
-        <div class="event-timeline">
-          <div class="event-timeline-stage">
-            <div class="stage-name">🌱 暖身期 4/27–5/3</div>
-            <div class="stage-desc">任務開跑，囤積原料與代幣。認識 NPC 位置，尚未開放兌換</div>
+        <div class="event-block-title"><span class="ebt-icon">🎮</span> 玩法總覽</div>
+        <div class="how-grid">
+          <div class="how-step">
+            <span class="hs-icon">📬</span>
+            <div class="hs-num">步驟一</div>
+            <h4>領取每日任務</h4>
+            <p>每天 10:00 郵件發送 3 個任務卷軸，完成獲取原料＋代幣</p>
           </div>
-          <div class="event-timeline-stage">
-            <div class="stage-name">🎉 正式期 5/4–5/27</div>
-            <div class="stage-desc">全部 13 種口味＋挑戰任務＋代幣商店全面開放</div>
+          <div class="how-step">
+            <span class="hs-icon">🌿</span>
+            <div class="hs-num">步驟二</div>
+            <h4>收集原料</h4>
+            <p>任務獎勵 ＋ 自行採集雙管道，14 種原料等你收集</p>
           </div>
-          <div class="event-timeline-stage">
-            <div class="stage-name">🏁 收尾期 5/28–5/31</div>
-            <div class="stage-desc">兌換保留，任務停止。稱號結算＋DC 回顧投票</div>
+          <div class="how-step">
+            <span class="hs-icon">🧋</span>
+            <div class="hs-num">步驟三</div>
+            <h4>兌換限定珍奶</h4>
+            <p>找 NPC 海風茶師，用原料＋代幣兌換 13 種口味</p>
+          </div>
+          <div class="how-step">
+            <span class="hs-icon">🏆</span>
+            <div class="hs-num">步驟四</div>
+            <h4>解鎖獎勵</h4>
+            <p>收集限定稱號、挑戰代幣商店、拿限定武器「珍奶微微」</p>
           </div>
         </div>
       </div>
 
       <div class="event-section-divider"></div>
 
-      <!-- 飲品配方 -->
+      <!-- ═══ 時程規劃 ═══ -->
       <div class="event-block fade-in">
-        <div class="event-block-title">🧋 飲品配方 &amp; 飲用效果</div>
+        <div class="event-block-title"><span class="ebt-icon">📅</span> 時程規劃</div>
+        <div class="event-timeline-v">
+          <div class="etv-stage">
+            <div class="etv-dot active">🌱</div>
+            <div class="etv-connector pending"></div>
+            <div class="etv-name">暖身期</div>
+            <div class="etv-date">4/27 – 5/3</div>
+            <div class="etv-desc">任務開跑，囤積原料與代幣。認識 NPC 位置，尚未開放兌換</div>
+          </div>
+          <div class="etv-stage">
+            <div class="etv-dot upcoming">🎉</div>
+            <div class="etv-connector pending"></div>
+            <div class="etv-name">正式期</div>
+            <div class="etv-date">5/4 – 5/27</div>
+            <div class="etv-desc">全部 13 種口味＋挑戰任務＋代幣商店全面開放</div>
+          </div>
+          <div class="etv-stage">
+            <div class="etv-dot upcoming">🏁</div>
+            <div class="etv-name">收尾期</div>
+            <div class="etv-date">5/28 – 5/31</div>
+            <div class="etv-desc">兌換保留，任務停止。稱號結算＋DC 回顧投票</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="event-section-divider"></div>
+
+      <!-- ═══ 原料總覽 ═══ -->
+      <div class="event-block fade-in">
+        <div class="event-block-title"><span class="ebt-icon">📦</span> 原料總覽（14 種）</div>
         <p style="color:var(--fog);font-size:0.85rem;margin-bottom:var(--space-md);line-height:1.7;">
-          原料有兩種取得方式：<strong style="color:var(--cloud);">每日郵件領取 3 個任務卷軸</strong> ＋ <strong style="color:var(--cloud);">自行採集（兩種基本原料）</strong>，代幣只有任務會給。<br>
+          原料有兩種取得方式：<strong style="color:var(--cloud);">每日任務獎勵</strong> ＋ <strong style="color:var(--cloud);">自行採集</strong>（兩種基本原料可大量轉換）。<br>
           部分原料需轉換：甘蔗 → 本土甘蔗糖、牛奶 → 超高溫殺菌的鮮乳。
         </p>
-
-        <div class="recipe-group-label" style="color:var(--foam);">基本款（正式期開放 · 2🪙）</div>
-        <div style="overflow-x:auto;">
-          <table class="recipe-table">
-            <thead>
-              <tr>
-                <th>口味</th>
-                <th>所需原料</th>
-                <th>效果</th>
-                <th>冷卻</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr><td class="col-name">🥛 原味奶茶</td><td class="col-ingredients">糖×4 + 鮮乳×4</td><td class="col-effect">速度 I（3:00）</td><td class="col-cd">15s</td></tr>
-              <tr><td class="col-name">🍵 紅茶拿鐵</td><td class="col-ingredients">糖×4 + 鮮乳×4</td><td class="col-effect">夜視 I（3:00）</td><td class="col-cd">15s</td></tr>
-              <tr><td class="col-name">🍯 蜂蜜檸檬</td><td class="col-ingredients">糖×4 + 蜂蜜×4</td><td class="col-effect">回復 I（0:30）</td><td class="col-cd">20s</td></tr>
-              <tr><td class="col-name">🐝 蜂巢奶茶</td><td class="col-ingredients">糖×4 + 鮮乳×4 + 蜂巢×2</td><td class="col-effect">生命回復 I（0:15）</td><td class="col-cd">20s</td></tr>
-            </tbody>
-          </table>
-        </div>
-
-        <div class="recipe-group-label" style="color:#c49b6c;">進階款（正式期開放 · 3🪙）</div>
-        <div style="overflow-x:auto;">
-          <table class="recipe-table">
-            <thead>
-              <tr>
-                <th>口味</th>
-                <th>所需原料</th>
-                <th>效果</th>
-                <th>冷卻</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr><td class="col-name">🍫 可可歐蕾</td><td class="col-ingredients">糖×4 + 鮮乳×4 + 可可×4</td><td class="col-effect">幸運 I（3:00）</td><td class="col-cd">20s</td></tr>
-              <tr><td class="col-name">🌵 抹茶拿鐵</td><td class="col-ingredients">糖×4 + 鮮乳×4 + 仙人掌×4</td><td class="col-effect">急迫 I（3:00）</td><td class="col-cd">20s</td></tr>
-              <tr><td class="col-name">💜 芋頭牛奶</td><td class="col-ingredients">糖×4 + 鮮乳×4 + 珍珠×4</td><td class="col-effect">跳躍提升 I（3:00）</td><td class="col-cd">20s</td></tr>
-              <tr><td class="col-name">🍎 蘋果綠茶</td><td class="col-ingredients">糖×4 + 蘋果×2</td><td class="col-effect">高飽食恢復</td><td class="col-cd">15s</td></tr>
-              <tr><td class="col-name">🍈 西瓜冰沙</td><td class="col-ingredients">糖×4 + 西瓜×4</td><td class="col-effect">速度 I（1:30）</td><td class="col-cd">20s</td></tr>
-              <tr><td class="col-name">🫐 甜苺昔</td><td class="col-ingredients">糖×4 + 甜苺×4</td><td class="col-effect">回復 II（0:10）</td><td class="col-cd">25s</td></tr>
-              <tr><td class="col-name">🍄 仙草奶茶</td><td class="col-ingredients">糖×4 + 鮮乳×4 + 紅菇×4</td><td class="col-effect">抗性提升 I（2:00）</td><td class="col-cd">20s</td></tr>
-              <tr><td class="col-name">🥕 胡蘿蔔汁</td><td class="col-ingredients">糖×4 + 胡蘿蔔×4</td><td class="col-effect">夜視 I（3:00）</td><td class="col-cd">15s</td></tr>
-            </tbody>
-          </table>
-        </div>
-
-        <div class="recipe-group-label" style="color:#c49b6c;">💛 限定款（正式期後期 · 5🪙）</div>
-        <div style="overflow-x:auto;">
-          <table class="recipe-table">
-            <thead>
-              <tr>
-                <th>口味</th>
-                <th>所需原料</th>
-                <th>效果</th>
-                <th>冷卻</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr class="rare-row"><td class="col-name" style="color:#c49b6c;font-weight:700;">💛 金色特調</td><td class="col-ingredients" style="color:#c49b6c;">糖×8 + 鮮乳×8 + 鍍金蘋果×1 + 蜂蜜×4</td><td class="col-effect" style="color:#c49b6c;font-weight:600;">速度 I + 抗性 I + 幸運 I（各 3:00）</td><td class="col-cd" style="color:#c49b6c;font-weight:700;">45s</td></tr>
-            </tbody>
-          </table>
+        <div class="ingredient-grid">
+          <div class="ingredient-item"><span class="ii-emoji">🫚</span><span class="ii-name">本土甘蔗糖</span></div>
+          <div class="ingredient-item"><span class="ii-emoji">🥛</span><span class="ii-name">超高溫殺菌鮮乳</span></div>
+          <div class="ingredient-item"><span class="ii-emoji">🍵</span><span class="ii-name">金門海帶</span></div>
+          <div class="ingredient-item"><span class="ii-emoji">🍯</span><span class="ii-name">CNS1305 純蜂蜜</span></div>
+          <div class="ingredient-item"><span class="ii-emoji">🍫</span><span class="ii-name">鹼化可可粉</span></div>
+          <div class="ingredient-item"><span class="ii-emoji">🌵</span><span class="ii-name">有機仙人掌粉</span></div>
+          <div class="ingredient-item"><span class="ii-emoji">🖤</span><span class="ii-name">黑糖珍珠粉圓</span></div>
+          <div class="ingredient-item"><span class="ii-emoji">🥕</span><span class="ii-name">現採紅蘿蔔</span></div>
+          <div class="ingredient-item"><span class="ii-emoji">🍄</span><span class="ii-name">野採紅菇</span></div>
+          <div class="ingredient-item"><span class="ii-emoji">🫐</span><span class="ii-name">高山甜莓</span></div>
+          <div class="ingredient-item"><span class="ii-emoji">🐝</span><span class="ii-name">蜂農自產蜂巢</span></div>
+          <div class="ingredient-item"><span class="ii-emoji">🍈</span><span class="ii-name">現切西瓜片</span></div>
+          <div class="ingredient-item"><span class="ii-emoji">🍎</span><span class="ii-name">富士蘋果</span></div>
+          <div class="ingredient-item"><span class="ii-emoji">💛</span><span class="ii-name">鍍金蘋果</span></div>
         </div>
       </div>
 
       <div class="event-section-divider"></div>
 
-      <!-- 每日簽到（會員限定） -->
+      <!-- ═══ 飲品配方 ═══ -->
       <div class="event-block fade-in">
-        <div class="event-block-title">🗓️ 每日簽到 <span style="font-size:0.7rem;color:#64b5f6;font-weight:600;background:rgba(100,181,246,0.12);padding:2px 8px;border-radius:100px;border:1px solid rgba(100,181,246,0.2);">會員限定</span></div>
-        <p style="color:var(--fog);font-size:0.85rem;margin-bottom:var(--space-md);line-height:1.7;">
+        <div class="event-block-title"><span class="ebt-icon">🧋</span> 飲品配方 &amp; 飲用效果</div>
+
+        <div class="drink-group-label" style="color:var(--foam);">基本款 · 正式期開放 · 2🪙</div>
+        <div class="drink-cards">
+          <div class="drink-card">
+            <div class="drink-card-header">
+              <span class="drink-card-name">🥛 原味奶茶</span>
+              <span class="drink-card-cost">2🪙</span>
+            </div>
+            <div class="drink-card-recipe">糖×4 + 鮮乳×4</div>
+            <div class="drink-card-effect">速度 I（3:00）</div>
+            <div class="drink-card-cd">冷卻 15s</div>
+          </div>
+          <div class="drink-card">
+            <div class="drink-card-header">
+              <span class="drink-card-name">🍵 紅茶拿鐵</span>
+              <span class="drink-card-cost">2🪙</span>
+            </div>
+            <div class="drink-card-recipe">糖×4 + 鮮乳×4</div>
+            <div class="drink-card-effect">夜視 I（3:00）</div>
+            <div class="drink-card-cd">冷卻 15s</div>
+          </div>
+          <div class="drink-card">
+            <div class="drink-card-header">
+              <span class="drink-card-name">🍯 蜂蜜檸檬</span>
+              <span class="drink-card-cost">2🪙</span>
+            </div>
+            <div class="drink-card-recipe">糖×4 + 蜂蜜×4</div>
+            <div class="drink-card-effect">回復 I（0:30）</div>
+            <div class="drink-card-cd">冷卻 20s</div>
+          </div>
+          <div class="drink-card">
+            <div class="drink-card-header">
+              <span class="drink-card-name">🐝 蜂巢奶茶</span>
+              <span class="drink-card-cost">2🪙</span>
+            </div>
+            <div class="drink-card-recipe">糖×4 + 鮮乳×4 + 蜂巢×2</div>
+            <div class="drink-card-effect">生命回復 I（0:15）</div>
+            <div class="drink-card-cd">冷卻 20s</div>
+          </div>
+        </div>
+
+        <div class="drink-group-label" style="color:#c49b6c;">進階款 · 正式期開放 · 3🪙</div>
+        <div class="drink-cards">
+          <div class="drink-card">
+            <div class="drink-card-header">
+              <span class="drink-card-name">🍫 可可歐蕾</span>
+              <span class="drink-card-cost">3🪙</span>
+            </div>
+            <div class="drink-card-recipe">糖×4 + 鮮乳×4 + 可可×4</div>
+            <div class="drink-card-effect">幸運 I（3:00）</div>
+            <div class="drink-card-cd">冷卻 20s</div>
+          </div>
+          <div class="drink-card">
+            <div class="drink-card-header">
+              <span class="drink-card-name">🌵 抹茶拿鐵</span>
+              <span class="drink-card-cost">3🪙</span>
+            </div>
+            <div class="drink-card-recipe">糖×4 + 鮮乳×4 + 仙人掌×4</div>
+            <div class="drink-card-effect">急迫 I（3:00）</div>
+            <div class="drink-card-cd">冷卻 20s</div>
+          </div>
+          <div class="drink-card">
+            <div class="drink-card-header">
+              <span class="drink-card-name">💜 芋頭牛奶</span>
+              <span class="drink-card-cost">3🪙</span>
+            </div>
+            <div class="drink-card-recipe">糖×4 + 鮮乳×4 + 珍珠×4</div>
+            <div class="drink-card-effect">跳躍提升 I（3:00）</div>
+            <div class="drink-card-cd">冷卻 20s</div>
+          </div>
+          <div class="drink-card">
+            <div class="drink-card-header">
+              <span class="drink-card-name">🍎 蘋果綠茶</span>
+              <span class="drink-card-cost">3🪙</span>
+            </div>
+            <div class="drink-card-recipe">糖×4 + 蘋果×2</div>
+            <div class="drink-card-effect">高飽食恢復</div>
+            <div class="drink-card-cd">冷卻 15s</div>
+          </div>
+          <div class="drink-card">
+            <div class="drink-card-header">
+              <span class="drink-card-name">🍈 西瓜冰沙</span>
+              <span class="drink-card-cost">3🪙</span>
+            </div>
+            <div class="drink-card-recipe">糖×4 + 西瓜×4</div>
+            <div class="drink-card-effect">速度 I（1:30）</div>
+            <div class="drink-card-cd">冷卻 20s</div>
+          </div>
+          <div class="drink-card">
+            <div class="drink-card-header">
+              <span class="drink-card-name">🫐 甜苺昔</span>
+              <span class="drink-card-cost">3🪙</span>
+            </div>
+            <div class="drink-card-recipe">糖×4 + 甜苺×4</div>
+            <div class="drink-card-effect">回復 II（0:10）</div>
+            <div class="drink-card-cd">冷卻 25s</div>
+          </div>
+          <div class="drink-card">
+            <div class="drink-card-header">
+              <span class="drink-card-name">🍄 仙草奶茶</span>
+              <span class="drink-card-cost">3🪙</span>
+            </div>
+            <div class="drink-card-recipe">糖×4 + 鮮乳×4 + 紅菇×4</div>
+            <div class="drink-card-effect">抗性提升 I（2:00）</div>
+            <div class="drink-card-cd">冷卻 20s</div>
+          </div>
+          <div class="drink-card">
+            <div class="drink-card-header">
+              <span class="drink-card-name">🥕 胡蘿蔔汁</span>
+              <span class="drink-card-cost">3🪙</span>
+            </div>
+            <div class="drink-card-recipe">糖×4 + 胡蘿蔔×4</div>
+            <div class="drink-card-effect">夜視 I（3:00）</div>
+            <div class="drink-card-cd">冷卻 15s</div>
+          </div>
+        </div>
+
+        <div class="drink-group-label" style="color:#c49b6c;">💛 限定款 · 正式期後期 · 5🪙</div>
+        <div class="drink-cards">
+          <div class="drink-card rare">
+            <div class="drink-card-header">
+              <span class="drink-card-name">💛 金色特調</span>
+              <span class="drink-card-cost">5🪙</span>
+            </div>
+            <div class="drink-card-recipe">糖×8 + 鮮乳×8 + 鍍金蘋果×1 + 蜂蜜×4</div>
+            <div class="drink-card-effect">速度 I + 抗性 I + 幸運 I（各 3:00）</div>
+            <div class="drink-card-cd">冷卻 45s</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="event-section-divider"></div>
+
+      <!-- ═══ 每日簽到 ═══ -->
+      <div class="event-block fade-in">
+        <div class="event-block-title">
+          <span class="ebt-icon">🗓️</span> 每日簽到
+          <span style="font-size:0.68rem;color:#64b5f6;font-weight:600;background:rgba(100,181,246,0.1);padding:3px 10px;border-radius:100px;border:1px solid rgba(100,181,246,0.18);">會員限定</span>
+        </div>
+        <p style="color:var(--fog);font-size:0.88rem;line-height:1.8;">
           會員每天與 NPC「海風茶師」對話，點擊「每日簽到」即可領取 <strong style="color:#c49b6c;">3 🪙</strong>。<br>
           35 天全勤 = 105🪙。
         </p>
@@ -502,9 +940,9 @@
 
       <div class="event-section-divider"></div>
 
-      <!-- 任務 -->
+      <!-- ═══ 每日任務 ═══ -->
       <div class="event-block fade-in">
-        <div class="event-block-title">📋 任務</div>
+        <div class="event-block-title"><span class="ebt-icon">📋</span> 每日任務</div>
         <p style="color:var(--fog);font-size:0.85rem;margin-bottom:var(--space-md);line-height:1.7;">
           每天上午 10:00 透過郵件發送 3 個任務卷軸（附件），完成可獲得原料＋代幣。<br>
           <strong style="color:var(--cloud);">💰 獎勵：</strong>基礎 3🪙 · 一般 5🪙 · 高級 8🪙 ＋對應原料 2–4 份
@@ -529,44 +967,67 @@
 
       <div class="event-section-divider"></div>
 
-      <!-- 挑戰任務 -->
+      <!-- ═══ 社群挑戰 ═══ -->
       <div class="event-block fade-in">
-        <div class="event-block-title">📸 社群挑戰（正式期開放 · 開單獲取代幣）</div>
-        <div class="task-grid" style="grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));">
-          <div class="task-item" style="flex-direction:column;align-items:flex-start;gap:4px;padding:12px 16px;">
-            <span style="font-weight:600;">🔍 尋找隱藏珍奶杯 ×5</span>
-            <span style="font-size:0.75rem;color:var(--fog);">在重生點找商人購買環保杯，總計可獲得 10🪙</span>
+        <div class="event-block-title"><span class="ebt-icon">📸</span> 社群挑戰（正式期開放）</div>
+        <div class="challenge-grid">
+          <div class="challenge-card cc-explore">
+            <div class="cc-icon">🔍</div>
+            <div class="cc-title">尋找隱藏珍奶杯 ×5</div>
+            <div class="cc-desc">在重生點找商人購買環保杯，總計可獲得 10🪙</div>
           </div>
-          <div class="task-item" style="flex-direction:column;align-items:flex-start;gap:4px;padding:12px 16px;">
-            <span style="font-weight:600;">📸 大廳珍奶店打卡</span>
-            <span style="font-size:0.75rem;color:var(--fog);">在大廳珍奶店附近打卡並上傳至社交媒體，開單獲取代幣</span>
+          <div class="challenge-card cc-social">
+            <div class="cc-icon">📸</div>
+            <div class="cc-title">大廳珍奶店打卡</div>
+            <div class="cc-desc">在大廳珍奶店附近打卡並上傳至社交媒體，開單獲取代幣</div>
           </div>
-          <div class="task-item" style="flex-direction:column;align-items:flex-start;gap:4px;padding:12px 16px;">
-            <span style="font-weight:600;">🏗️ 基地飲料攤</span>
-            <span style="font-size:0.75rem;color:var(--fog);">在自己的基地蓋一間飲料攤，開單獲取代幣</span>
+          <div class="challenge-card cc-build">
+            <div class="cc-icon">🏗️</div>
+            <div class="cc-title">基地飲料攤</div>
+            <div class="cc-desc">在自己的基地蓋一間飲料攤，開單獲取代幣</div>
           </div>
         </div>
       </div>
 
       <div class="event-section-divider"></div>
 
-      <!-- 代幣商店 -->
+      <!-- ═══ 代幣商店 ═══ -->
       <div class="event-block fade-in">
-        <div class="event-block-title">⭐ 代幣商店</div>
-        <div class="shop-grid">
-          <div class="shop-item"><span class="shop-cost">3🪙</span><span>任意原料 ×1</span></div>
-          <div class="shop-item"><span class="shop-cost">20🪙</span><span>石材 ×1（換建材小舖兌換券）</span></div>
-          <div class="shop-item"><span class="shop-cost">50🪙</span><span>風汐碎片 ×1</span></div>
-          <div class="shop-item premium"><span class="shop-cost">100🪙</span><span>🏅 稱號「⭐ 珍奶大師」</span></div>
-          <div class="shop-item premium"><span class="shop-cost">130🪙</span><span>🗡️ 限定武器「珍奶微微」</span></div>
+        <div class="event-block-title"><span class="ebt-icon">⭐</span> 代幣商店</div>
+        <div class="shop-ladder">
+          <div class="shop-rung">
+            <span class="sr-cost">3🪙</span>
+            <span class="sr-icon">📦</span>
+            <span class="sr-name">任意原料 ×1</span>
+          </div>
+          <div class="shop-rung">
+            <span class="sr-cost">20🪙</span>
+            <span class="sr-icon">🪨</span>
+            <span class="sr-name">石材 ×1（換建材小舖兌換券）</span>
+          </div>
+          <div class="shop-rung">
+            <span class="sr-cost">50🪙</span>
+            <span class="sr-icon">💎</span>
+            <span class="sr-name">風汐碎片 ×1</span>
+          </div>
+          <div class="shop-rung premium">
+            <span class="sr-cost">100🪙</span>
+            <span class="sr-icon">🏅</span>
+            <span class="sr-name">稱號「⭐ 珍奶大師」</span>
+          </div>
+          <div class="shop-rung premium">
+            <span class="sr-cost">130🪙</span>
+            <span class="sr-icon">🗡️</span>
+            <span class="sr-name">限定武器「珍奶微微」</span>
+          </div>
         </div>
       </div>
 
       <div class="event-section-divider"></div>
 
-      <!-- 稱號 -->
+      <!-- ═══ 限定稱號 ═══ -->
       <div class="event-block fade-in">
-        <div class="event-block-title">🏅 限定稱號</div>
+        <div class="event-block-title"><span class="ebt-icon">🏅</span> 限定稱號</div>
         <div class="title-list">
           <span class="title-tag">🍵 手搖達人 <span class="tt-cond">品嚐過所有限定飲品的資深茶客</span></span>
           <span class="title-tag">🏆 海風茶王 <span class="tt-cond">收集全套限定收藏杯的傳說級茶迷</span></span>
@@ -610,6 +1071,6 @@
 
   <script src="tips.js" defer></script>
   <script src="utils.js"></script>
-  <script src="main.js?v=260418b"></script>
+  <script src="main.js?v=260418d"></script>
 </body>
 </html>
