@@ -108,6 +108,7 @@ website/
 3. Navigation
 4. Hero Section
 5. Page Layout / Sections
+5b. Featured Event Banner ← 新增 04.18
 6. Buttons
 7. Cards / Features
 8. Bulletin / Announcements
@@ -121,11 +122,11 @@ website/
 16. Community
 17. Team
 18. Links
-19. Footer
+19. Footer (含 footer-links-grid) ← 升級 04.18
 20. Lightbox
 21. Miscellaneous
-22. Keyframe Animations
-23. Responsive / Media Queries
+22. Keyframe Animations (含 badge-pulse, featured-glow-pulse) ← 新增 04.18
+23. Responsive / Media Queries (含 footer-links-grid 響應式) ← 新增 04.18
 ```
 
 ### 4.2 關鍵規則
@@ -184,7 +185,15 @@ website/
 
 ---
 
-## 7. 頁尾修改次數
+## 7. 頁尾結構與修改次數
+
+頁尾（`.footer`）結構：
+- **品牌區**：伺服器名稱 + 標語
+- **三欄連結網格**（`.footer-links-grid`）：探索 / 社群 / 資訊（首頁已升級，其他頁面待同步）
+- **狀態列**：伺服器狀態 + 地區 + 版本
+- **法律連結**：服務條款 · 隱私權政策
+- **版權聲明**
+- **修改次數**
 
 頁尾的 `deployCount` 透過 GitHub API 自動取得 commit 數量，由 `main.js` 中的函式處理。**不需要手動修改。**
 
@@ -200,6 +209,9 @@ website/
 ## 8. 已知問題與待辦
 
 ### 已修復 ✅
+- [x] 首頁新增精選活動橫幅（珍奶日預告）— 2026.04.18
+- [x] 活動頁卡片 stagger 淡入動畫 — 2026.04.18
+- [x] 首頁頁尾升級為三欄連結網格 — 2026.04.18
 - [x] `music-player.css` 建立完整樣式（深色/淺色模式 + 響應式）— 2026.04.18
 - [x] 全站頁尾日期統一更新至 2026.04.18 — 2026.04.18
 
@@ -208,6 +220,7 @@ website/
 - [ ] 伺服器資訊區塊遊戲版本 `1.21.11(群騎紛爭)` 需確認是否最新
 
 ### 中優先
+- [ ] 其他頁面同步新增頁尾三欄連結網格（目前僅首頁已升級）
 - [ ] CSS 有大量 `[data-theme="light"]` 重複選擇器可清理優化
 - [ ] 公告資料可考慮 inline 到 HTML（減少 API 請求）
 - [ ] 無障礙：Lightbox 缺少 `aria-live`、圖片 `alt` 可更描述性
@@ -225,6 +238,10 @@ website/
 
 | 日期 | 修改者 | 修改內容 |
 |---|---|---|
+| 2026.04.18 | 海風網站助手 | 首頁新增「精選活動」橫幅（珍奶日 4/20 預告），含 featured-event CSS 動畫 + 淺色模式 |
+| 2026.04.18 | 海風網站助手 | 活動頁卡片新增 stagger 淡入動畫（逐張延遲 120ms） |
+| 2026.04.18 | 海風網站助手 | 首頁頁尾升級：新增三欄連結網格（探索 / 社群 / 資訊），含響應式適配 |
+| 2026.04.18 | 海風網站助手 | CSS 新增 featured-event / footer-links-grid 樣式 + @keyframes badge-pulse / featured-glow-pulse |
 | 2026.04.18 | 海風網站助手 | 建立 DESIGN.md，整理網站架構與設計規範 |
 | 2026.04.18 | 海風網站助手 | 建立 `music-player.css` 完整樣式（深色/淺色/響應式），修復空樣式表問題 |
 | 2026.04.18 | 海風網站助手 | 全站 20 個頁面頁尾日期統一更新至 2026.04.18 |
