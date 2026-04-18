@@ -32,7 +32,6 @@ document.addEventListener('DOMContentLoaded', () => {
       localStorage.setItem('seabreeze-theme', next);
       themeBtn.innerHTML = next === 'dark' ? moonSVG : sunSVG;
       updateThemeColor(next);
-      drawPlayerSparkline();
     });
   }
 
@@ -520,9 +519,6 @@ function fetchServerStatus() {
         const max = data.players ? data.players.max : 0;
         statusEl.textContent = `${players} / ${max} 在線`;
         statusEl.className = 'info-value status-online';
-        // Save snapshot & draw trend
-        savePlayerSnapshot(players, max);
-        drawPlayerSparkline();
       } else {
         statusEl.textContent = '維護中';
         statusEl.className = 'info-value status-offline';
@@ -557,115 +553,6 @@ function fetchServerStatus() {
       if (footerStatus) footerStatus.textContent = '暫時無法查詢';
       if (footerStatusDot) { footerStatusDot.className = 'status-dot'; }
     });
-}
-
-// --- Player Trend Sparkline ---
-function savePlayerSnapshot(online, max) {
-  try {
-    const key = 'sw_player_history';
-    let history = JSON.parse(localStorage.getItem(key) || '[]');
-    const now = Date.now();
-    // Only save if >10 min since last snapshot to avoid flooding
-    if (history.length > 0 && now - history[history.length - 1].t < 10 * 60 * 1000) return;
-    history.push({ t: now, o: online, m: max });
-    // Keep last 48 snapshots (~8 hours if every 10 min, or ~2 days if hourly visits)
-    if (history.length > 48) history = history.slice(-48);
-    localStorage.setItem(key, JSON.stringify(history));
-  } catch (e) { /* quota exceeded, ignore */ }
-}
-
-function drawPlayerSparkline() {
-  const canvas = document.getElementById('playerTrend');
-  if (!canvas) return;
-  let history;
-  try { history = JSON.parse(localStorage.getItem('sw_player_history') || '[]'); } catch { return; }
-  if (history.length < 2) return; // Need at least 2 points
-
-  const ctx = canvas.getContext('2d');
-  const dpr = window.devicePixelRatio || 1;
-  const w = 200, h = 48;
-  canvas.width = w * dpr;
-  canvas.height = h * dpr;
-  canvas.style.width = w + 'px';
-  canvas.style.height = h + 'px';
-  ctx.scale(dpr, dpr);
-
-  const data = history.map(d => d.o);
-  const maxVal = Math.max(...data, 1);
-  const minVal = Math.min(...data, 0);
-  const range = maxVal - minVal || 1;
-  const padding = { top: 4, bottom: 14, left: 2, right: 2 };
-  const chartW = w - padding.left - padding.right;
-  const chartH = h - padding.top - padding.bottom;
-
-  // Detect theme
-  const isDark = !document.documentElement.getAttribute('data-theme') ||
-                 document.documentElement.getAttribute('data-theme') === 'dark';
-
-  // Background
-  ctx.fillStyle = isDark ? 'rgba(0,0,0,0.15)' : 'rgba(0,0,0,0.03)';
-  ctx.beginPath();
-  ctx.roundRect(0, 0, w, h, 4);
-  ctx.fill();
-
-  // Grid lines (2 horizontal)
-  ctx.strokeStyle = isDark ? 'rgba(255,255,255,0.04)' : 'rgba(0,0,0,0.05)';
-  ctx.lineWidth = 0.5;
-  for (let i = 0; i < 2; i++) {
-    const y = padding.top + (chartH / 3) * (i + 1);
-    ctx.beginPath();
-    ctx.moveTo(padding.left, y);
-    ctx.lineTo(w - padding.right, y);
-    ctx.stroke();
-  }
-
-  // Area fill
-  const gradient = ctx.createLinearGradient(0, padding.top, 0, h - padding.bottom);
-  gradient.addColorStop(0, isDark ? 'rgba(157,175,255,0.15)' : 'rgba(74,108,247,0.1)');
-  gradient.addColorStop(1, 'transparent');
-  ctx.beginPath();
-  ctx.moveTo(padding.left, h - padding.bottom);
-  for (let i = 0; i < data.length; i++) {
-    const x = padding.left + (i / (data.length - 1)) * chartW;
-    const y = padding.top + chartH - ((data[i] - minVal) / range) * chartH;
-    if (i === 0) ctx.lineTo(x, y);
-    else ctx.lineTo(x, y);
-  }
-  ctx.lineTo(padding.left + chartW, h - padding.bottom);
-  ctx.closePath();
-  ctx.fillStyle = gradient;
-  ctx.fill();
-
-  // Line
-  ctx.beginPath();
-  ctx.strokeStyle = isDark ? '#9dafff' : '#4a6cf7';
-  ctx.lineWidth = 1.5;
-  ctx.lineJoin = 'round';
-  for (let i = 0; i < data.length; i++) {
-    const x = padding.left + (i / (data.length - 1)) * chartW;
-    const y = padding.top + chartH - ((data[i] - minVal) / range) * chartH;
-    if (i === 0) ctx.moveTo(x, y);
-    else ctx.lineTo(x, y);
-  }
-  ctx.stroke();
-
-  // Last point dot
-  const lastX = padding.left + chartW;
-  const lastY = padding.top + chartH - ((data[data.length - 1] - minVal) / range) * chartH;
-  ctx.beginPath();
-  ctx.arc(lastX, lastY, 2.5, 0, Math.PI * 2);
-  ctx.fillStyle = isDark ? '#9dafff' : '#4a6cf7';
-  ctx.fill();
-
-  // Labels
-  ctx.fillStyle = isDark ? 'rgba(139,148,158,0.7)' : 'rgba(100,110,130,0.6)';
-  ctx.font = '9px sans-serif';
-  ctx.textAlign = 'left';
-  ctx.fillText(`${minVal}`, padding.left + 1, h - 2);
-  ctx.textAlign = 'right';
-  ctx.fillText(`${maxVal}`, w - padding.right - 1, padding.top + 9);
-
-  canvas.style.display = 'block';
 }
 
 // --- Bulletin Board (首頁公告欄) ---
