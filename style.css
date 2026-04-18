@@ -2118,15 +2118,6 @@ video.photo-item{cursor:pointer;height:200px;border:1px solid transparent}
 
 [data-theme="light"] .footer-bottom p{color:var(--fog)}
 
-/* Footer Links Grid */
-.footer-links-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--space-lg);max-width:480px;margin:0 auto var(--space-lg);text-align:left}
-.footer-col h4{font-size:0.72rem;font-weight:700;color:var(--fog);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:var(--space-sm)}
-.footer-col a{display:block;color:var(--fog);font-size:0.8rem;text-decoration:none;padding:3px 0;transition:color var(--duration)var(--ease),padding-left var(--duration)var(--ease)}
-.footer-col a:hover{color:var(--sky);padding-left:4px}
-[data-theme="light"] .footer-col h4{color:#7a8394}
-[data-theme="light"] .footer-col a{color:var(--fog)}
-[data-theme="light"] .footer-col a:hover{color:var(--sky)}
-
 /* ═══════════════════════════════════════
    Lightbox
    ═══════════════════════════════════════ */
@@ -2945,10 +2936,4 @@ html, body {
 
   .cta-section{padding:var(--space-xl)var(--space-md);margin-top:var(--space-xl)}
   .cta-actions{flex-direction:column;align-items:stretch}
-}
-
-@media(max-width:480px){
-  .footer-links-grid{grid-template-columns:1fr;gap:var(--space-md);text-align:center}
-  .footer-col{padding:var(--space-sm) 0;border-bottom:1px solid rgba(255,255,255,0.04)}
-  .footer-col:last-child{border-bottom:none}
 }
