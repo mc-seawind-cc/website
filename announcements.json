@@ -1,8 +1,25 @@
 {
   "version": 2,
-  "generatedAt": "2026-04-14T21:31:15.885314+08:00",
-  "count": 470,
+  "generatedAt": "2026-04-18T16:20:00.000000+08:00",
+  "count": 471,
   "announcements": [
+    {
+      "tag": "更新",
+      "id": "#0290",
+      "date": "115.04.18",
+      "isoDate": "2026-04-18",
+      "timestamp": "2026-04-18T16:20:00.000+08:00",
+      "title": "更新郵政系統",
+      "content": "- 預計於下次重啟時更新郵政，於本次測試官方郵件狀態。",
+      "images": [],
+      "localImages": [],
+      "reactions": [],
+      "reactionCount": 0,
+      "discordId": "",
+      "pinned": false,
+      "author": "",
+      "index": 0
+    },
     {
       "tag": "維護",
       "id": "#0131",
