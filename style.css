@@ -602,7 +602,7 @@ body{font-family:var(--font-body);background:var(--deep);color:var(--cloud);line
   margin: 4px 0;
 }
 .b-content .ann-sub-item {
-  padding-left: 0;
+  padding-left: 1.2em;
   list-style-type: circle;
   color: var(--fog);
   font-size: 0.9em;
