@@ -145,7 +145,7 @@ const MUSIC_PLAYER = (() => {
         time: time,
         playing: isPlaying,
         muted: muted,
-        volume: player.getVolume ? player.getVolume() : 30,
+        volume: player.getVolume ? player.getVolume() : 15,
         ts: Date.now()
       }));
     } catch (e) { /* ignore */ }
@@ -225,7 +225,7 @@ const MUSIC_PLAYER = (() => {
             </button>
           </div>
           <div class="mp-volume">
-            <input type="range" id="mpVol" min="0" max="100" value="30" class="mp-vol-slider">
+            <input type="range" id="mpVol" min="0" max="100" value="15" class="mp-vol-slider">
           </div>
           <div class="mp-yt-badge">
             <a href="https://www.youtube.com/playlist?list=${PLAYLIST_ID}" target="_blank" rel="noopener">
@@ -291,8 +291,8 @@ const MUSIC_PLAYER = (() => {
       muted = false;
       try {
         player.unMute();
-        player.setVolume(30);
-        document.getElementById('mpVol').value = 30;
+        player.setVolume(15);
+        document.getElementById('mpVol').value = 15;
       } catch(e) {}
       localStorage.setItem('sw-music-unmuted', '1');
       document.removeEventListener('click', unmuteOnInteract);
@@ -345,8 +345,8 @@ const MUSIC_PLAYER = (() => {
     }
 
     if (saved && saved.videoId) {
-      player.setVolume(saved.volume || 30);
-      document.getElementById('mpVol').value = saved.volume || 30;
+      player.setVolume(saved.volume || 15);
+      document.getElementById('mpVol').value = saved.volume || 15;
 
       // 恢復時先顯示儲存的標題
       if (saved.displayTitle) {
@@ -381,8 +381,8 @@ const MUSIC_PLAYER = (() => {
     }
 
     // 無儲存狀態 → 隨機從曲庫選一首開始播放
-    player.setVolume(30);
-    document.getElementById('mpVol').value = 30;
+    player.setVolume(15);
+    document.getElementById('mpVol').value = 15;
     const randomTrack = FALLBACK[Math.floor(Math.random() * FALLBACK.length)];
     document.getElementById('mpTitle').textContent = formatTitle(randomTrack);
     try {
