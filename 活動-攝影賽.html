@@ -24,8 +24,6 @@
   <link rel="stylesheet" href="style.css?v=260418d">
   <link rel="stylesheet" href="music-player.css">
   <style>
-    /* ═══ Photo Contest Page ═══ */
-
     .photo-hero {
       text-align: center;
       padding: var(--space-2xl) var(--space-xl) var(--space-xl);
@@ -54,12 +52,12 @@
       line-height: 1.8;
     }
 
-    /* ── Current Edition Banner ── */
+    /* Current Edition */
     .current-edition {
       background: linear-gradient(135deg, rgba(255,182,193,0.08), rgba(157,175,255,0.06));
       border: 1px solid rgba(255,182,193,0.12);
       border-radius: var(--radius-lg);
-      padding: var(--space-xl) var(--space-xl);
+      padding: var(--space-xl);
       margin-bottom: var(--space-2xl);
       position: relative;
       overflow: hidden;
@@ -77,6 +75,7 @@
       align-items: center;
       gap: var(--space-md);
       margin-bottom: var(--space-lg);
+      flex-wrap: wrap;
     }
     .ce-badge {
       display: inline-flex;
@@ -103,11 +102,7 @@
       color: var(--fog);
       margin-bottom: var(--space-lg);
     }
-    .ce-meta-item {
-      display: inline-flex;
-      align-items: center;
-      gap: 5px;
-    }
+    .ce-meta-item { display: inline-flex; align-items: center; gap: 5px; }
     .ce-theme-box {
       padding: 16px 20px;
       background: rgba(0,0,0,0.15);
@@ -124,13 +119,20 @@
       margin-bottom: 6px;
     }
     .ce-theme-text {
-      font-size: 1rem;
+      font-size: 1.05rem;
+      font-weight: 700;
       color: var(--cloud);
+      line-height: 1.6;
+    }
+    .ce-theme-desc {
+      font-size: 0.85rem;
+      color: var(--fog);
+      margin-top: 8px;
       line-height: 1.7;
     }
     .ce-rules {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
       gap: 10px;
       margin-bottom: var(--space-lg);
     }
@@ -140,17 +142,8 @@
       border: 1px solid rgba(255,255,255,0.04);
       border-radius: 8px;
     }
-    .ce-rule-title {
-      font-size: 0.78rem;
-      font-weight: 700;
-      color: var(--white);
-      margin-bottom: 4px;
-    }
-    .ce-rule-text {
-      font-size: 0.75rem;
-      color: var(--fog);
-      line-height: 1.5;
-    }
+    .ce-rule-title { font-size: 0.78rem; font-weight: 700; color: var(--white); margin-bottom: 4px; }
+    .ce-rule-text { font-size: 0.75rem; color: var(--fog); line-height: 1.5; }
     .ce-score-bar {
       display: flex;
       gap: 2px;
@@ -165,17 +158,10 @@
       font-size: 0.72rem;
       color: var(--fog);
     }
-    .ce-score-item strong {
-      display: block;
-      font-size: 1rem;
-      color: var(--rose);
-      margin-bottom: 2px;
-    }
+    .ce-score-item strong { display: block; font-size: 1rem; color: var(--rose); margin-bottom: 2px; }
 
-    /* ── Section blocks ── */
-    .photo-block {
-      margin-bottom: var(--space-2xl);
-    }
+    /* Section blocks */
+    .photo-block { margin-bottom: var(--space-2xl); }
     .photo-block-title {
       font-size: 1.15rem;
       font-weight: 800;
@@ -189,7 +175,7 @@
     }
     .photo-block-title .pbt-icon { font-size: 1.3rem; }
 
-    /* ── Edition Timeline ── */
+    /* Edition Cards */
     .edition-list {
       display: flex;
       flex-direction: column;
@@ -203,9 +189,7 @@
       position: relative;
       transition: border-color 0.3s;
     }
-    .edition-card:hover {
-      border-color: rgba(255,182,193,0.15);
-    }
+    .edition-card:hover { border-color: rgba(255,182,193,0.15); }
     .edition-card::before {
       content: '';
       position: absolute;
@@ -230,10 +214,7 @@
       text-transform: uppercase;
       letter-spacing: 0.06em;
     }
-    .ec-date {
-      font-size: 0.75rem;
-      color: var(--fog);
-    }
+    .ec-date { font-size: 0.75rem; color: var(--fog); }
     .ec-theme {
       font-size: 1.05rem;
       font-weight: 700;
@@ -244,47 +225,32 @@
       display: flex;
       align-items: flex-start;
       gap: var(--space-md);
-      padding: 12px 16px;
+      padding: 14px 16px;
       background: rgba(255,182,193,0.05);
       border: 1px solid rgba(255,182,193,0.08);
       border-radius: 8px;
       margin-bottom: var(--space-md);
     }
-    .ec-winner-badge {
-      flex-shrink: 0;
-      font-size: 1.3rem;
-    }
-    .ec-winner-info {
-      flex: 1;
-    }
-    .ec-winner-title {
-      font-size: 0.88rem;
-      font-weight: 700;
-      color: var(--cloud);
-    }
-    .ec-winner-author {
-      font-size: 0.78rem;
-      color: var(--fog);
-      margin-top: 2px;
-    }
-    .ec-winner-review {
-      font-size: 0.78rem;
-      color: var(--fog);
-      line-height: 1.6;
-      margin-top: 8px;
-      padding-top: 8px;
-      border-top: 1px solid rgba(255,255,255,0.04);
-    }
-    .ec-honors {
+    .ec-winner-badge { flex-shrink: 0; font-size: 1.3rem; }
+    .ec-winner-info { flex: 1; }
+    .ec-winner-title { font-size: 0.92rem; font-weight: 700; color: var(--cloud); }
+    .ec-winner-author { font-size: 0.78rem; color: var(--fog); margin-top: 2px; }
+    .ec-review {
       font-size: 0.78rem;
       color: var(--fog);
       line-height: 1.7;
+      margin-top: 10px;
+      padding-top: 10px;
+      border-top: 1px solid rgba(255,255,255,0.04);
     }
-    .ec-honors strong {
-      color: var(--cloud);
+    .ec-review strong { color: var(--cloud); font-size: 0.75rem; }
+    .ec-honors {
+      font-size: 0.78rem;
+      color: var(--fog);
+      line-height: 1.8;
     }
+    .ec-honors strong { color: var(--cloud); }
 
-    /* ── Back link ── */
     .back-link {
       display: inline-flex;
       align-items: center;
@@ -297,7 +263,6 @@
       margin-bottom: var(--space-md);
     }
     .back-link:hover { color: var(--sky); }
-
     .photo-section-divider {
       width: 60px;
       height: 2px;
@@ -305,10 +270,11 @@
       margin: var(--space-2xl) auto;
     }
 
-    /* ── Light mode ── */
+    /* Light mode */
     [data-theme="light"] .photo-hero h1 { color: var(--cloud); }
     [data-theme="light"] .ce-title { color: var(--cloud); }
     [data-theme="light"] .ce-theme-text { color: #3a3f4b; }
+    [data-theme="light"] .ce-theme-desc { color: #6b7280; }
     [data-theme="light"] .ce-rule { background: rgba(0,0,0,0.02); border-color: rgba(0,0,0,0.05); }
     [data-theme="light"] .ce-rule-title { color: var(--cloud); }
     [data-theme="light"] .current-edition { background: linear-gradient(135deg, rgba(255,182,193,0.04), rgba(157,175,255,0.03)); }
@@ -319,16 +285,15 @@
     [data-theme="light"] .ec-winner { background: rgba(255,182,193,0.03); }
     [data-theme="light"] .ec-honors { color: #6b7280; }
     [data-theme="light"] .ec-honors strong { color: #3a3f4b; }
+    [data-theme="light"] .ec-review { color: #6b7280; }
+    [data-theme="light"] .ec-review strong { color: #3a3f4b; }
 
-    /* ── Responsive ── */
     @media (max-width: 768px) {
       .ce-rules { grid-template-columns: 1fr; }
       .ce-score-bar { flex-wrap: wrap; }
       .ce-score-item { flex: 1 1 calc(50% - 4px); }
       .edition-card { padding: var(--space-lg); }
     }
-
-    /* ── Print ── */
     @media print {
       .back-link, .nav, .footer, .scroll-progress, .bg-atmosphere, .photo-section-divider { display: none !important; }
     }
@@ -402,24 +367,9 @@
         </p>
       </div>
 
-      <!-- ═══ 第五屆（進行中） ═══ -->
-      <div class="current-edition fade-in">
-        <div class="ce-header">
-          <span class="ce-badge">🔴 進行中</span>
-          <span class="ce-title">第五屆攝影大賽</span>
-        </div>
-        <div class="ce-meta">
-          <span class="ce-meta-item">📅 賽期：兩個月</span>
-          <span class="ce-meta-item">👤 評審：石頭</span>
-          <span class="ce-meta-item">🏆 冠軍 3000 風幣＋獎牌</span>
-          <span class="ce-meta-item">📌 佳作刊登 Pinterest＋1500 風幣</span>
-        </div>
-
-        <div class="ce-theme-box">
-          <div class="ce-theme-label">本屆主題</div>
-          <div class="ce-theme-text">敬請關注 Discord 公告，主題即將公布！</div>
-        </div>
-
+      <!-- ═══ 賽制 ═══ -->
+      <div class="photo-block fade-in">
+        <div class="photo-block-title"><span class="pbt-icon">📐</span> 賽制說明</div>
         <div class="ce-rules">
           <div class="ce-rule">
             <div class="ce-rule-title">📍 拍攝地點</div>
@@ -438,13 +388,38 @@
             <div class="ce-rule-text">根據本屆主題發揮，過於離題者不予評分</div>
           </div>
         </div>
-
         <div class="ce-score-bar">
           <div class="ce-score-item"><strong>20%</strong>光影</div>
           <div class="ce-score-item"><strong>20%</strong>色彩</div>
           <div class="ce-score-item"><strong>20%</strong>構圖</div>
           <div class="ce-score-item"><strong>40%</strong>故事</div>
           <div class="ce-score-item"><strong>+10%</strong>文案</div>
+        </div>
+        <p style="color:var(--fog);font-size:0.8rem;margin-top:var(--space-md);line-height:1.7;">
+          評審：石頭（@lapis.regnate）｜冠軍 3000 風幣＋特製獎牌＋出生點展示＋Pinterest 刊登｜佳作 1500 風幣＋Pinterest 刊登<br>
+          自第四屆起，賽期延長為兩個月，獎勵加倍。
+        </p>
+      </div>
+
+      <div class="photo-section-divider"></div>
+
+      <!-- ═══ 第五屆（進行中） ═══ -->
+      <div class="current-edition fade-in">
+        <div class="ce-header">
+          <span class="ce-badge">🔴 進行中</span>
+          <span class="ce-title">第五屆攝影大賽</span>
+        </div>
+        <div class="ce-meta">
+          <span class="ce-meta-item">📅 賽期：兩個月</span>
+          <span class="ce-meta-item">👤 評審：石頭</span>
+          <span class="ce-meta-item">🏆 冠軍 3000 風幣＋獎牌</span>
+        </div>
+        <div class="ce-theme-box">
+          <div class="ce-theme-label">本屆主題</div>
+          <div class="ce-theme-text">「尾聲，新生」</div>
+          <div class="ce-theme-desc">
+            時間悄悄來到了 2025 年末，2025 年發生了哪些有趣刺激又令你印象深刻的事呢？抑或是對於一個年頭的結束感到哀傷呢？一個故事的結束代表的是另一個新故事的開始，請以「尾聲，新生」為題，盡情發揮！
+          </div>
         </div>
       </div>
 
@@ -459,20 +434,23 @@
           <!-- 第四屆 -->
           <div class="edition-card">
             <div class="ec-top">
-              <span class="ec-num">第四屆</span>
-              <span class="ec-date">114.08 – 114.09 · 獎勵加倍</span>
+              <span class="ec-num">第四屆 · 獎勵加倍</span>
+              <span class="ec-date">114.08 – 114.09</span>
             </div>
-            <div class="ec-theme">主題：「尾聲，新生」</div>
+            <div class="ec-theme">主題：「新篇章」</div>
             <div class="ec-winner">
               <span class="ec-winner-badge">🥇</span>
               <div class="ec-winner-info">
                 <div class="ec-winner-title">〈陰間〉</div>
-                <div class="ec-winner-author">@Yabi</div>
-                <div class="ec-winner-review">看似敘述生命的終點，時則闡述了輪迴的概念。死亡的寂靜之後，是新旅途新生命這全新篇章悄然揭幕之時，陰森的綠色光線以及奈何橋的文化意義，簡潔俐落的表達了其構思。</div>
+                <div class="ec-winner-author">@tang_1018</div>
               </div>
             </div>
+            <div class="ec-review">
+              <strong>石頭：</strong>暑假已結束，提交的作品明顯減少，因此賽期延長了一個月，往後每屆賽期都延至兩個月且獎勵加倍。冠軍作品〈陰間〉看似敘述生命的終點，時則闡述了輪迴的概念，死亡的寂靜之後，是新旅途新生命這全新篇章悄然揭幕之時，陰森的綠色光線以及奈何橋的文化意義，簡潔俐落的表達了其構思。
+              <br><br><strong>主教：</strong>每個作品的意象都有很好的呈現出來。冠軍作品非常有水準，在色彩與構圖掌控最為適當，唯一美中不足的是作品名稱與內容較無法完美呈現「新篇章」主題。
+            </div>
             <div class="ec-honors">
-              <strong>佳作：</strong>@teckyun〈「一切歸零，但希望從未離開」〉、@teckyun〈火光之後〉、@Yabi〈奈何橋〉、@Zhong🍁〈黎明的啟程〉
+              <strong>佳作：</strong>@junyi_610〈「一切歸零，但希望從未離開」〉、@junyi_610〈火光之後〉、@tang_1018〈奈何橋〉、@zhong._〈黎明的啟程〉（各獲 3000 風幣＋Pinterest 刊登）
             </div>
           </div>
 
@@ -487,12 +465,15 @@
               <span class="ec-winner-badge">🥇</span>
               <div class="ec-winner-info">
                 <div class="ec-winner-title">〈「新手」與「老手」〉</div>
-                <div class="ec-winner-author">@Yabi</div>
-                <div class="ec-winner-review">乾淨純粹的將畫面一分為二，左右兩邊新手與老手的對視是構圖的一大巧思，老手遍體鱗傷與新手完好無損的模樣強化了意境的表現，色調對比恰到好處。</div>
+                <div class="ec-winner-author">@tang_1018</div>
               </div>
             </div>
+            <div class="ec-review">
+              <strong>石頭：</strong>乾淨純粹的將畫面一分為二，左右兩邊新手與老手的對視是構圖的一大巧思，老手遍體鱗傷與新手完好無損的模樣強化了意境的表現，色調對比恰到好處。
+              <br><br><strong>主教：</strong>大家的想像力非常豐富，不僅運用到拼接以及其他形式的表達。自比賽開始後也見到了大家對於攝影有了更多的技巧與知識。
+            </div>
             <div class="ec-honors">
-              <strong>佳作：</strong>@Zhong🍁〈一步之遙〉、@歡魚開發小組-狐桃〈跑馬燈〉、@Ahpiao阿飄👻〈一界陽生，一界陰亡〉、@chotata〈{有開光影}跟(沒開光影)〉
+              <strong>佳作：</strong>@zhong._〈一步之遙〉、@.bubukinott〈跑馬燈〉、@ah_piao16〈一界陽生，一界陰亡〉、@lucaspapa5154〈{有開光影}跟(沒開光影)〉
             </div>
           </div>
 
@@ -507,12 +488,15 @@
               <span class="ec-winner-badge">🥇</span>
               <div class="ec-winner-info">
                 <div class="ec-winner-title">〈人群之外，浪潮與我為伴〉</div>
-                <div class="ec-winner-author">@Zhong🍁</div>
-                <div class="ec-winner-review">運用了孤身背影觀賞落日沉海的構圖技巧，呈現了孤獨的淒美，色調層面將憂鬱的氣氛詮釋到了極致。</div>
+                <div class="ec-winner-author">@zhong._</div>
               </div>
             </div>
+            <div class="ec-review">
+              <strong>石頭：</strong>運用了孤身背影觀賞落日沉海的構圖技巧，呈現了孤獨的淒美，色調層面更是將憂鬱的氣氛詮釋到了極致，本屆冠軍實至名歸。參賽者在故事感的著筆有了重大進步。
+              <br><br><strong>主教：</strong>比起設想故事後進行取景，更希望各位從遊戲中以發現取代思考，發現了意境與故事再將它刻畫成自己想表達的模樣。構圖是突顯主題表達目的的方式，而不是純粹的炫技。
+            </div>
             <div class="ec-honors">
-              <strong>佳作：</strong>@chotata〈孤獨〉、@Zhong🍁〈燈火通明〉、@Yabi〈孤獨的影子〉、@nomoneycat〈晚安，夜空〉
+              <strong>佳作：</strong>@lucaspapa5154〈孤獨〉、@zhong._〈燈火通明〉、@tang_1018〈孤獨的影子〉、@nomoneycat〈晚安，夜空〉
             </div>
           </div>
 
@@ -527,12 +511,15 @@
               <span class="ec-winner-badge">🥇</span>
               <div class="ec-winner-info">
                 <div class="ec-winner-title">〈死對頭…〉</div>
-                <div class="ec-winner-author">@chotata</div>
-                <div class="ec-winner-review">運用了高低二人劍拔弩張、冷眼對視的構圖技巧襯托出肅殺氣氛。利用現場光線的藍冷色調凸顯凝重，標題「死對頭」更是一筆畫龍點睛。</div>
+                <div class="ec-winner-author">@lucaspapa5154</div>
               </div>
             </div>
+            <div class="ec-review">
+              <strong>石頭：</strong>運用了高低二人劍拔弩張、冷眼對視的構圖技巧襯托出了現場的肅殺氣氛。利用現場光線的藍冷色調凸顯了氣氛的凝重，而標題「死對頭」更是一筆畫龍點睛，為本作品的故事性錦上添花。
+              <br><br><strong>主教：</strong>攝影是紀錄每一個有意義的瞬間，並賦予其生命，想到就拍的那叫拍照，能和讀者搭起橋樑的那叫攝影。一張好的攝影作品故事絕對是主體，光影構圖是襯托故事的道具。
+            </div>
             <div class="ec-honors">
-              海風攝影大賽首屆，奠定了評分標準與賽制基礎。
+              海風攝影大賽首屆，奠定了評分標準與賽制基礎。每人限投 5 張＋必備文案＋依主題拍攝等規則自此確立。
             </div>
           </div>
 
