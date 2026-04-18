@@ -1288,3 +1288,46 @@ document.addEventListener('DOMContentLoaded', () => { initPhotoPage(); });
     })
     .catch(() => { el.textContent = '—'; });
 })();
+
+// --- Featured Event Countdown Timer ---
+(function() {
+  const container = document.getElementById('pearlCountdown');
+  if (!container) return;
+  const target = new Date(container.dataset.target).getTime();
+  const dEl = document.getElementById('countdownDays');
+  const hEl = document.getElementById('countdownHours');
+  const mEl = document.getElementById('countdownMins');
+  const sEl = document.getElementById('countdownSecs');
+  if (!dEl || !hEl || !mEl || !sEl) return;
+
+  function pad(n) { return String(n).padStart(2, '0'); }
+
+  function tick() {
+    const diff = target - Date.now();
+    if (diff <= 0) {
+      dEl.textContent = '00';
+      hEl.textContent = '00';
+      mEl.textContent = '00';
+      sEl.textContent = '00';
+      container.classList.add('expired');
+      // Replace label with "已開跑！"
+      container.querySelectorAll('.countdown-label').forEach((l, i) => {
+        if (i === 0) l.textContent = '已開跑！';
+        else l.textContent = '';
+      });
+      clearInterval(timer);
+      return;
+    }
+    const days = Math.floor(diff / 86400000);
+    const hours = Math.floor((diff % 86400000) / 3600000);
+    const mins = Math.floor((diff % 3600000) / 60000);
+    const secs = Math.floor((diff % 60000) / 1000);
+    dEl.textContent = days > 0 ? pad(days) : '00';
+    hEl.textContent = pad(hours);
+    mEl.textContent = pad(mins);
+    sEl.textContent = pad(secs);
+  }
+
+  tick();
+  const timer = setInterval(tick, 1000);
+})();

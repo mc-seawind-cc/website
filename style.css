@@ -398,11 +398,25 @@ body{font-family:var(--font-body);background:var(--deep);color:var(--cloud);line
 .featured-event-meta{display:flex;align-items:center;justify-content:center;gap:8px;font-size:0.8rem;color:var(--fog);flex-wrap:wrap}
 .featured-event-sep{opacity:0.3}
 
+/* ═══ Countdown Timer ═══ */
+.featured-event-countdown{display:flex;align-items:center;justify-content:center;gap:6px;margin:var(--space-md) auto var(--space-lg);max-width:320px}
+.countdown-block{display:flex;flex-direction:column;align-items:center;min-width:56px;padding:8px 6px;background:rgba(196,155,108,0.1);border:1px solid rgba(196,155,108,0.18);border-radius:var(--radius-md)}
+.countdown-num{font-family:'Noto Sans TC',monospace;font-size:1.5rem;font-weight:800;color:var(--white);line-height:1.1;font-variant-numeric:tabular-nums}
+.countdown-label{font-size:0.65rem;color:var(--fog);letter-spacing:0.06em;margin-top:2px}
+.countdown-sep{font-size:1.2rem;font-weight:700;color:var(--fog);opacity:0.4;align-self:flex-start;margin-top:8px}
+/* Countdown expired state */
+.featured-event-countdown.expired .countdown-num{color:var(--foam)}
+.featured-event-countdown.expired .countdown-block{border-color:rgba(168,230,207,0.2);background:rgba(168,230,207,0.08)}
+
 [data-theme="light"] .featured-event{background:linear-gradient(135deg,rgba(196,155,108,0.08) 0%,rgba(157,175,255,0.06) 50%,rgba(168,230,207,0.04) 100%);border-color:rgba(196,155,108,0.2);box-shadow:0 2px 12px rgba(0,0,0,0.04)}
 [data-theme="light"] .featured-event:hover{box-shadow:0 12px 40px rgba(0,0,0,0.08),0 0 30px -6px rgba(196,155,108,0.1)}
 [data-theme="light"] .featured-event-title{color:var(--cloud)}
 [data-theme="light"] .featured-event-desc{color:#5a6270}
 [data-theme="light"] .featured-event-badge{background:rgba(255,170,50,0.1)}
+[data-theme="light"] .countdown-block{background:rgba(196,155,108,0.06);border-color:rgba(196,155,108,0.15)}
+[data-theme="light"] .countdown-num{color:var(--cloud)}
+[data-theme="light"] .featured-event-countdown.expired .countdown-block{border-color:rgba(168,230,207,0.15);background:rgba(168,230,207,0.06)}
+[data-theme="light"] .featured-event-countdown.expired .countdown-num{color:#2d8a5e}
 
 /* ═══════════════════════════════════════
    Buttons
