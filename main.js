@@ -334,7 +334,7 @@ function createHeroParticles() {
   const container = document.getElementById('particles');
   if (!container) return;
   const isMobile = window.innerWidth < 768;
-  const count = isMobile ? 40 : 100;
+  const count = isMobile ? 15 : Math.min(40, Math.floor(window.innerWidth / 80));
   for (let i = 0; i < count; i++) {
     const p = document.createElement('div');
     p.className = 'snowflake';
