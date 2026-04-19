@@ -211,7 +211,8 @@ website/
 - [ ] 伺服器資訊區塊遊戲版本 `1.21.11(群騎紛爭)` 需確認是否最新
 
 ### 中優先
-- [ ] CSS 有大量 `[data-theme="light"]` 重複選擇器可清理優化
+- [x] 首頁增強版 Footer（含 Discord CTA + 伺服器 IP 快速複製）已推廣到全站 27 個頁面 — 2026.04.19
+- [ ] CSS 有大量 `[data-theme="light"]` 重複選擇器可清理優化（目前 264 處，dark-first 架構有意為之，重構風險大，暫不動）
 - [ ] 公告資料可考慮 inline 到 HTML（減少 API 請求）
 - [ ] 首頁增強版 Footer（含 Discord CTA + 伺服器 IP 快速複製）需推廣到其他頁面
 - [ ] 無障礙：Lightbox 已有 `aria-live`（counter），圖片 `alt` 可更描述性
@@ -250,6 +251,7 @@ website/
 | 2026.04.19 | 海風網站助手 | CSS 新增 footer-cta 樣式（深色/淺色模式）+ footer-wave-separator |
 | 2026.04.19 | 海風網站助手 | DESIGN.md 待辦事項更新：修正無障礙項目（Lightbox aria-live 已存在）、移除已不適用的項目 |
 | 2026.04.19 | 海風網站助手 | 海風團隊頁：成員名稱從 Discord ID 更新為 MC ID（Taiwan_shihyuan / BubukiNott / YuXi_0720 / AlexanderiaLapis / tdse9 / WhiteMeowGX / Blue_5125 / StrawCoding），移除「合作夥伴」統計項目，tesd9 改為 tdse9 |
+| 2026.04.19 | 海風網站助手 | 全站增強版 Footer 推廣：25 個子頁面從基本版 Footer 升級為含 Discord CTA 卡片（伺服器 IP 快速複製 + Discord 加入按鈕）、擴展導航連結（公告/活動/海風指南/服務條款/隱私權政策）、頁尾 wave separator 的增強版 Footer（跳轉頁面 404/index/特殊道具規範/贊助 不需更新）|
 
 ---
 
