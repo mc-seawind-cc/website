@@ -261,6 +261,12 @@
       font-size: 1.3rem;
     }
 
+    /* ── Info Grid ── */
+    .info-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 10px; }
+    .info-item { padding: 14px 16px; background: rgba(0,0,0,0.12); border: 1px solid rgba(255,255,255,0.04); border-radius: 8px; }
+    .info-item .ii-label { font-size: 0.72rem; color: var(--fog); margin-bottom: 4px; }
+    .info-item .ii-value { font-size: 0.92rem; font-weight: 700; color: var(--cloud); }
+
     /* ── MC Head Icons ── */
     .mc-head {
       display: inline-block;
@@ -574,6 +580,7 @@
 
     /* ── Light mode ── */
     [data-theme="light"] .event-hero h1 { color: var(--cloud); }
+    [data-theme="light"] .info-item { background: rgba(0,0,0,0.02); border-color: rgba(0,0,0,0.05); }
     [data-theme="light"] .event-block-title { color: var(--cloud); border-bottom-color: rgba(196,155,108,0.1); }
     [data-theme="light"] .drink-card { background: rgba(0,0,0,0.03); border-color: rgba(0,0,0,0.06); }
     [data-theme="light"] .drink-card:hover { background: rgba(196,155,108,0.04); border-color: rgba(196,155,108,0.15); }
@@ -712,6 +719,31 @@
           <div class="eqs-item"><div class="eqs-num">35</div><div class="eqs-label">活動天數</div></div>
         </div>
       </div>
+
+      <!-- ═══ 基本資訊 ═══ -->
+      <div class="event-block fade-in">
+        <div class="event-block-title"><span class="ebt-icon">📋</span> 基本資訊</div>
+        <div class="info-grid">
+          <div class="info-item">
+            <div class="ii-label">活動時間</div>
+            <div class="ii-value">4/27 – 5/31</div>
+          </div>
+          <div class="info-item">
+            <div class="ii-label">活動類型</div>
+            <div class="ii-value">收集 × 代幣兌換 × 挑戰</div>
+          </div>
+          <div class="info-item">
+            <div class="ii-label">活動策畫</div>
+            <div class="ii-value">—</div>
+          </div>
+          <div class="info-item">
+            <div class="ii-label">限定飲品</div>
+            <div class="ii-value">13 種口味</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="event-section-divider"></div>
 
       <!-- ═══ How it works ═══ -->
       <div class="event-block fade-in">
