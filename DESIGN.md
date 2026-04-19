@@ -249,6 +249,7 @@ website/
 | 2026.04.19 | 海風網站助手 | 首頁 Hero 標題字元 hover 效果增強：放大+上浮+陰影動畫 |
 | 2026.04.19 | 海風網站助手 | CSS 新增 footer-cta 樣式（深色/淺色模式）+ footer-wave-separator |
 | 2026.04.19 | 海風網站助手 | DESIGN.md 待辦事項更新：修正無障礙項目（Lightbox aria-live 已存在）、移除已不適用的項目 |
+| 2026.04.19 | 海風網站助手 | 海風團隊頁：成員名稱從 Discord ID 更新為 MC ID（Taiwan_shihyuan / BubukiNott / YuXi_0720 / AlexanderiaLapis / tdse9 / WhiteMeowGX / Blue_5125 / StrawCoding），移除「合作夥伴」統計項目，tesd9 改為 tdse9 |
 
 ---
 
