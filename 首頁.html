@@ -158,9 +158,15 @@
     </section>
 
     <div class="hero-wave-separator" aria-hidden="true">
-      <svg viewBox="0 0 1440 60" preserveAspectRatio="none">
-        <path d="M0,30 C240,50 480,10 720,30 C960,50 1200,10 1440,30 L1440,60 L0,60 Z" fill="var(--deep)" opacity="0.8"/>
-        <path d="M0,40 C360,55 720,25 1080,40 C1260,48 1380,38 1440,40 L1440,60 L0,60 Z" fill="var(--deep)"/>
+      <svg viewBox="0 0 1440 80" preserveAspectRatio="none">
+        <defs>
+          <linearGradient id="heroWaveGrad" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#0d1117"/>
+            <stop offset="100%" stop-color="#090e16"/>
+          </linearGradient>
+        </defs>
+        <path d="M0,30 C240,50 480,10 720,30 C960,50 1200,10 1440,30 L1440,80 L0,80 Z" fill="url(#heroWaveGrad)" opacity="0.85"/>
+        <path d="M0,45 C360,60 720,30 1080,45 C1260,52 1380,42 1440,45 L1440,80 L0,80 Z" fill="#090e16"/>
       </svg>
     </div>
 
