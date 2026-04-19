@@ -666,7 +666,7 @@ body{font-family:var(--font-body);background:var(--deep);color:var(--cloud);line
   display: flex;
   align-items: center;
   gap: 10px;
-  padding: 12px 16px 12px 24px;
+  padding: 12px 16px;
   width: 100%;
   background: none;
   border: none;
@@ -734,7 +734,7 @@ body{font-family:var(--font-body);background:var(--deep);color:var(--cloud);line
   font-size: 0.9rem;
   color: var(--cloud);
   line-height: 1.9;
-  padding: 14px 16px 16px;
+  padding: 14px 16px 16px 32px;
   background: rgba(255,255,255,0.012);
   border-top: 1px solid rgba(157,175,255,0.08);
 }
