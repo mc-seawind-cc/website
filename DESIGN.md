@@ -244,8 +244,10 @@ website/
 - [ ] SEO：各子頁面 meta description 檢查
 
 ### 低優先
-- [ ] 首頁 Hero 標題可考慮加入微互動（如字元 hover 粒子效果）
-- [ ] 首頁「如何加入海風」區塊可加入連接線動畫
+- [x] ~~首頁 Hero 標題可考慮加入微互動（如字元 hover 粒子效果）~~ → 已有 wind-sway + hover scale/shadow 動畫 — 2026.04.19
+- [x] ~~首頁「如何加入海風」區塊可加入連接線動畫~~ → 新增 connector-pulse 節點脈衝 + dash-flow 虛線流動動畫 — 2026.04.19
+- [ ] 首頁 Hero 標題 hover 可進一步加入色彩粒子特效（目前已有放大+上浮+陰影）
+- [ ] 特色卡片可加入漸進式編號指示器（如 1→2→3 連線動畫）
 
 ---
 
@@ -287,6 +289,10 @@ website/
 | 2026.04.19 | 海風網站助手 | 珍奶日詳情頁：移除 quick stats 中的「活動階段」數量、時間軸補上測試期階段（4 個階段：測試→暖身→正式→收尾） |
 | 2026.04.19 | 海風網站助手 | 珍奶日詳情頁：13 種飲品名稱 emoji 全部換成 MC 頭顱圖片（mc-heads.net API，使用遊戲內 PLAYER_HEAD skull-texture hash），新增 `.mc-head` CSS（20px、image-rendering: pixelated）、dns-prefetch mc-heads.net |
 | 2026.04.19 | 海風網站助手 | 珍奶日詳情頁：「海風茶王」稱號獲取方式更新——需集齊全部 13 種飲品合成「海風茶王代換券」，於收尾期（5/28–5/31）兌換。新增代換券說明區塊（含完整 13 種飲品清單），時間軸收尾期描述同步更新 |
+| 2026.04.19 | 海風網站助手 | **首頁「如何加入海風」視覺增強**：join-connector 新增節點脈衝動畫（`connector-pulse`）+ 虛線流動動畫（`dash-flow`），步驟卡片 hover 增加光暈 + 編號放大 + 圖示旋轉效果 |
+| 2026.04.19 | 海風網站助手 | **Section Header 動畫增強**：標題底線改為從 0 寬度展開（scroll reveal 時觸發），hover 時延展至 80px，transition 改為 0.8s 更優雅的 easing |
+| 2026.04.19 | 海風網站助手 | **Feature Card Hover 增強**：新增 `inset 0 1px 0` 頂部內發光反射效果（深色/淺色模式），提升卡片立體感與層次 |
+| 2026.04.19 | 海風網站助手 | CSS 新增 `@keyframes connector-pulse`（節點脈衝）+ `@keyframes dash-flow`（虛線流動），全站 cache busting → 190419e |
 
 ---
 
