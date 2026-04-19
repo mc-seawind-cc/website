@@ -207,13 +207,15 @@ website/
     <div class="footer-bottom">
       <p>© 2026 海風伺服器 · 非 Mojang 官方營運 · service@seawind.cc</p>
     </div>
+    <p class="page-revise">網站最後修改日期 YYYY.MM.DD / 總計修改 <span id="deployCount">—</span> 次</p>
   </div>
 </footer>
 ```
 
 ### 規則
+- **修改次數**：`deployCount` 透過 GitHub API 自動取得，**不需手動修改**；日期需手動更新
 - **只有三個連結**：合作夥伴、服務條款、隱私權政策
-- **不要加入**：Discord CTA、伺服器 IP、伺服器狀態、修改次數（deployCount）、wave separator
+- **不要加入**：Discord CTA、伺服器 IP、伺服器狀態、wave separator
 - **不要加入**：公告、活動、海風指南等額外導航連結
 - 跳轉頁面（404、index、特殊道具規範、贊助）不需此 Footer
 - 樣式由 `style.css` 中的 `.footer*` 系列 class 控制
@@ -275,7 +277,7 @@ website/
 | 2026.04.19 | 海風網站助手 | 全站增強版 Footer 推廣：25 個子頁面從基本版 Footer 升級為含 Discord CTA 卡片（伺服器 IP 快速複製 + Discord 加入按鈕）、擴展導航連結（公告/活動/海風指南/服務條款/隱私權政策）、頁尾 wave separator 的增強版 Footer（跳轉頁面 404/index/特殊道具規範/贊助 不需更新）|
 | 2026.04.19 | 海風網站助手 | 首頁移除 Hero 區塊與內容區之間的 wave separator，使 Hero 直接銜接公告欄 |
 | 2026.04.19 | 海風網站助手 | 海風團隊頁：全部 15 個成員頭像從 mc-heads.net 改為 skinmc.net API（`skinmc.net/api/v1/avatars/skin/玩家名`），圖片品質提升（Blue_5125 從 549b→2722b），新增 skinmc.net dns-prefetch |
-| 2026.04.19 | 海風網站助手 | 全站 26 個頁面 Footer 統一改為固定簡潔版：僅保留品牌名稱、標語、三個連結（合作夥伴/服務條款/隱私權政策）、版權聲明。移除 Discord CTA、伺服器狀態、修改次數、wave separator、額外導航連結。DESIGN.md 新增第 7 節 Footer 規範，明確禁止增減元素 |
+| 2026.04.19 | 海風網站助手 | 全站 26 個頁面 Footer 統一改為固定簡潔版：品牌名稱、標語、三個連結（合作夥伴/服務條款/隱私權政策）、版權聲明、修改次數。移除 Discord CTA、伺服器狀態、wave separator、額外導航連結。DESIGN.md 第 7 節新增 Footer 規範 |
 
 ---
 
