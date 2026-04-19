@@ -825,7 +825,7 @@ function initGeneralLightbox() {
   let lastFocusTarget = null;
 
   function collectImages() {
-    galleryImages = Array.from(document.querySelectorAll('.article-cover, .lore-card-img, .guide-img-wrap img'));
+    galleryImages = Array.from(document.querySelectorAll('.article-cover, .lore-card-img, .guide-img-wrap img, .b-img'));
   }
 
   function showGalleryLightbox(i) {
@@ -846,7 +846,7 @@ function initGeneralLightbox() {
 
   // Attach click handlers to all clickable images
   function bindImageClicks() {
-    document.querySelectorAll('.article-cover[style*="cursor"], .lore-card-img').forEach((img, i) => {
+    document.querySelectorAll('.article-cover[style*="cursor"], .lore-card-img, .b-img').forEach((img, i) => {
       if (img.dataset.lbBound) return;
       img.dataset.lbBound = '1';
       img.style.cursor = 'zoom-in';
