@@ -281,6 +281,7 @@ website/
 | 2026.04.19 | 海風網站助手 | 首頁 Hero 區塊 FPS 優化：移除 `hero-bg-drift` 濾鏡動畫（hue-rotate/brightness/contrast 改為靜態）、移除極光旋轉動畫 `aurora-spin` + 脈衝動畫 `aurora-pulse`（blur 40px→60px 但不再動畫）、Hero 粒子數量 40→20、降低粒子 opacity |
 | 2026.04.19 | 海風網站助手 | 海風團隊頁：全站 15 個成員頭像統一為 skinmc.net/api/v1/face/username/遊戲名稱/600，其中 StrawCoding 特殊使用 UUID（bb5ce2af...）代替遊戲名稱 |
 | 2026.04.19 | 海風網站助手 | 海風團隊頁：Blue_5125 職責從「插件」更新為「插件＋主機」 |
+| 2026.04.19 | 海風網站助手 | 活動頁＋珍奶日詳情頁：活動日期改為 4/27 起（移除測試期 4/20–4/26 階段），暖身期改為第一階段 |
 | 2026.04.19 | 海風網站助手 | **公告欄 CSS 重大清理**：移除 3 套重複 bulletin 樣式塊（~350 行），修復 CSS 花括號不匹配、孤立屬性塊。恢復被誤刪的 `.bulletin-item` 基礎定義。新增 `.bulletin-board`/`.bulletin-hidden`/`.bulletin-header` 乾淨定義。移除已無引用的 `.ann-filter`/`.ann-search`/`.tag-*` 樣式。CSS 從 2982 行精簡至 ~2412 行。保留 `.b-dot` hover scale 微動效。全站 cache busting → 190419c |
 
 ---
