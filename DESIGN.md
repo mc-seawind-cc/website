@@ -279,6 +279,7 @@ website/
 | 2026.04.19 | 海風網站助手 | 海風團隊頁：全部 15 個成員頭像從 mc-heads.net 改為 skinmc.net API（`skinmc.net/api/v1/avatars/skin/玩家名`），圖片品質提升（Blue_5125 從 549b→2722b），新增 skinmc.net dns-prefetch |
 | 2026.04.19 | 海風網站助手 | 全站 26 個頁面 Footer 統一改為固定簡潔版：品牌名稱、標語、三個連結（合作夥伴/服務條款/隱私權政策）、版權聲明、修改次數。移除 Discord CTA、伺服器狀態、wave separator、額外導航連結。DESIGN.md 第 7 節新增 Footer 規範 |
 | 2026.04.19 | 海風網站助手 | 首頁 Hero 區塊 FPS 優化：移除 `hero-bg-drift` 濾鏡動畫（hue-rotate/brightness/contrast 改為靜態）、移除極光旋轉動畫 `aurora-spin` + 脈衝動畫 `aurora-pulse`（blur 40px→60px 但不再動畫）、Hero 粒子數量 40→20、降低粒子 opacity |
+| 2026.04.19 | 海風網站助手 | **公告欄 CSS 重大清理**：移除 3 套重複 bulletin 樣式塊（~350 行），修復 CSS 花括號不匹配、孤立屬性塊。恢復被誤刪的 `.bulletin-item` 基礎定義。新增 `.bulletin-board`/`.bulletin-hidden`/`.bulletin-header` 乾淨定義。移除已無引用的 `.ann-filter`/`.ann-search`/`.tag-*` 樣式。CSS 從 2982 行精簡至 ~2412 行。保留 `.b-dot` hover scale 微動效。全站 cache busting → 190419c |
 
 ---
 
