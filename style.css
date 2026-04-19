@@ -734,9 +734,19 @@ body{font-family:var(--font-body);background:var(--deep);color:var(--cloud);line
   font-size: 0.9rem;
   color: var(--cloud);
   line-height: 1.9;
-  padding: 14px 16px 16px 32px;
+  padding: 14px 16px 16px 28px;
   background: rgba(255,255,255,0.012);
   border-top: 1px solid rgba(157,175,255,0.08);
+  position: relative;
+}
+.bulletin-body .b-content::before {
+  content: '•';
+  position: absolute;
+  left: 16px;
+  top: 14px;
+  color: var(--fog);
+  font-size: 0.9rem;
+}
 }
 .bulletin-body .b-content .b-id {
   display: inline-block;
