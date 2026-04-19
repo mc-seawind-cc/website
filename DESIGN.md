@@ -213,14 +213,15 @@ website/
 ### 中優先
 - [ ] CSS 有大量 `[data-theme="light"]` 重複選擇器可清理優化
 - [ ] 公告資料可考慮 inline 到 HTML（減少 API 請求）
-- [ ] 無障礙：Lightbox 缺少 `aria-live`、圖片 `alt` 可更描述性
-- [ ] 多個頁面導航欄不一致（部分頁面缺少新連結）
-- [ ] `贊助.html` 導航欄 HTML 結構錯誤（多餘 `</a>` + 缺少結尾 `</li>`）
-
-### 低優先
+- [ ] 首頁增強版 Footer（含 Discord CTA + 伺服器 IP 快速複製）需推廣到其他頁面
+- [ ] 無障礙：Lightbox 已有 `aria-live`（counter），圖片 `alt` 可更描述性
 - [ ] 404.html 體積偏大（可將動畫 CSS/JS 外部化）
 - [ ] 圖片全面檢查 WebP fallback
 - [ ] SEO：各子頁面 meta description 檢查
+
+### 低優先
+- [ ] 首頁 Hero 標題可考慮加入微互動（如字元 hover 粒子效果）
+- [ ] 首頁「如何加入海風」區塊可加入連接線動畫
 
 ---
 
@@ -244,6 +245,10 @@ website/
 | 2026.04.19 | 海風網站助手 | 首頁移除珍奶日倒數計時器（保留精選活動橫幅）；區塊間距改為僅桌面版（≥769px）顯示，手機版緊密排列 |
 | 2026.04.19 | 海風網站助手 | 修復 Hero 區域 5 處 CSS 選擇器錯誤（缺少空格的 descendant selector），恢復提示欄輪播、副標題/按鈕/資訊卡的展開動畫與 transition |
 | 2026.04.19 | 海風網站助手 | 首頁移除精選活動橫幅（珍奶日），活動內容仍保留在活動頁面 |
+| 2026.04.19 | 海風網站助手 | 首頁 Footer 增強：新增 Discord CTA 卡片（含伺服器 IP 快速複製 + Discord 加入按鈕）、導航連結擴展（公告/活動/海風指南）、頁尾 wave separator |
+| 2026.04.19 | 海風網站助手 | 首頁 Hero 標題字元 hover 效果增強：放大+上浮+陰影動畫 |
+| 2026.04.19 | 海風網站助手 | CSS 新增 footer-cta 樣式（深色/淺色模式）+ footer-wave-separator |
+| 2026.04.19 | 海風網站助手 | DESIGN.md 待辦事項更新：修正無障礙項目（Lightbox aria-live 已存在）、移除已不適用的項目 |
 
 ---
 

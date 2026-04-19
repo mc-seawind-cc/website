@@ -166,10 +166,16 @@ body{font-family:var(--font-body);background:var(--deep);color:var(--cloud);line
 .scroll-arrow{animation:bounce-down 2s ease-in-out infinite}
 .hero-particles{contain:strict;pointer-events:none}
 .hero-content{opacity:1;animation:hero-fade-in 0.8s ease-out forwards}
+.hero-title .char {
+  display: inline-block;
+  cursor: default;
+  transition: transform 0.3s var(--ease), filter 0.3s var(--ease);
+}
 .hero-title .char:hover {
   animation-play-state: paused;
-  filter: drop-shadow(0 0 12px rgba(157,175,255,0.5));
-  transition: filter 0.3s;
+  transform: scale(1.12) translateY(-4px);
+  filter: drop-shadow(0 0 16px rgba(157,175,255,0.6)) drop-shadow(0 4px 12px rgba(0,0,0,0.4));
+  transition: filter 0.3s, transform 0.3s var(--ease);
 }
 
 /* Hero 動態光暈 */
@@ -2099,7 +2105,13 @@ video.photo-item{cursor:pointer;height:200px;border:1px solid transparent}
    Footer
    ═══════════════════════════════════════ */
 
-.footer{border-top:1px solid rgba(255,255,255,0.05);padding:var(--space-xl)var(--space-xl)var(--space-lg);text-align:center;margin-top:var(--space-2xl);position:relative;background:linear-gradient(180deg,transparent 0%,rgba(87,138,255,0.02) 100%);content-visibility:auto;contain-intrinsic-size:auto 300px}
+/* Footer wave separator */
+.footer-wave-separator{position:relative;z-index:3;margin-top:-1px;line-height:0}
+.footer-wave-separator svg{width:100%;height:50px;display:block}
+[data-theme="light"] .footer-wave-separator svg path:first-child{fill:#f0f2f5;opacity:0.6}
+[data-theme="light"] .footer-wave-separator svg path:last-child{fill:#f0f2f5}
+
+.footer{border-top:1px solid rgba(255,255,255,0.05);padding:var(--space-xl)var(--space-xl)var(--space-lg);text-align:center;margin-top:0;position:relative;background:linear-gradient(180deg,transparent 0%,rgba(87,138,255,0.02) 100%);content-visibility:auto;contain-intrinsic-size:auto 300px}
 .footer::before{content:'';position:absolute;top:-40px;left:0;right:0;height:40px;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 40'%3E%3Cpath fill='%230d1117' d='M0,20 C360,40 720,0 1080,20 C1260,30 1380,25 1440,20 L1440,40 L0,40 Z'/%3E%3C/svg%3E") no-repeat center/cover;pointer-events:none;z-index:1}
 .footer-inner{max-width:800px;margin:0 auto}
 .footer-brand{margin-bottom:var(--space-lg)}
@@ -2113,6 +2125,21 @@ video.photo-item{cursor:pointer;height:200px;border:1px solid transparent}
 .status-dot{width:6px;height:6px;border-radius:50%;background:var(--fog);display:inline-block}
 .status-dot.online{background:var(--foam);box-shadow:0 0 6px rgba(168,230,207,0.5)}
 .status-dot.offline{background:#ff6b6b;box-shadow:0 0 6px rgba(255,107,107,0.5)}
+
+/* Footer CTA */
+.footer-cta{margin-bottom:var(--space-lg)}
+.footer-cta-card{display:inline-flex;align-items:center;gap:var(--space-md);background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:var(--radius-lg);padding:10px 20px;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
+.footer-cta-info{display:flex;align-items:center;gap:var(--space-sm)}
+.footer-cta-label{font-size:0.78rem;color:var(--fog);font-weight:500}
+.footer-cta-ip{font-size:0.82rem;color:var(--sky);font-weight:700;background:rgba(157,175,255,0.08);padding:4px 10px;border-radius:var(--radius-sm);cursor:pointer;transition:background 0.2s var(--ease)}
+.footer-cta-ip:hover{background:rgba(157,175,255,0.16)}
+.footer-cta-btn{display:inline-flex;align-items:center;gap:6px;padding:8px 16px;background:rgba(88,101,242,0.15);border:1px solid rgba(88,101,242,0.25);border-radius:var(--radius-md);color:#b9bbbe;text-decoration:none;font-size:0.8rem;font-weight:600;transition:all var(--duration) var(--ease)}
+.footer-cta-btn:hover{background:rgba(88,101,242,0.25);border-color:rgba(88,101,242,0.4);color:#dcdee2;transform:translateY(-1px)}
+[data-theme="light"] .footer-cta-card{background:rgba(0,0,0,0.03);border-color:rgba(0,0,0,0.06)}
+[data-theme="light"] .footer-cta-ip{background:rgba(74,108,247,0.08);color:var(--sky)}
+[data-theme="light"] .footer-cta-ip:hover{background:rgba(74,108,247,0.14)}
+[data-theme="light"] .footer-cta-btn{background:rgba(88,101,242,0.08);border-color:rgba(88,101,242,0.12);color:#5865f2}
+[data-theme="light"] .footer-cta-btn:hover{background:rgba(88,101,242,0.14)}
 
 .footer-links-row{display:flex;align-items:center;justify-content:center;gap:8px;margin-bottom:var(--space-md)}
 .footer-links-row a{color:var(--fog);font-size:0.8rem;text-decoration:none;transition:color var(--duration)var(--ease)}
