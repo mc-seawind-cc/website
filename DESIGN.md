@@ -186,16 +186,37 @@ website/
 
 ---
 
-## 7. 頁尾修改次數
+## 7. 頁尾規範（全站固定樣式 ⚠️ 不可修改）
 
-頁尾的 `deployCount` 透過 GitHub API 自動取得 commit 數量，由 `main.js` 中的函式處理。**不需要手動修改。**
+所有頁面的 Footer 必須使用以下固定結構，**嚴禁增減任何元素**：
 
-頁尾格式：
 ```html
-<p class="page-revise">網站最後修改日期 YYYY.MM.DD / 總計修改 <span id="deployCount">—</span> 次</p>
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <span class="footer-logo">海風伺服器 SeaWind.cc</span>
+      <p class="footer-tagline">在風與海之間，有一個可以長久生存的地方</p>
+    </div>
+    <div class="footer-links-row">
+      <a href="合作夥伴.html">合作夥伴</a>
+      <span class="footer-dot">·</span>
+      <a href="服務條款.html">服務條款</a>
+      <span class="footer-dot">·</span>
+      <a href="隱私權政策.html">隱私權政策</a>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 海風伺服器 · 非 Mojang 官方營運 · service@seawind.cc</p>
+    </div>
+  </div>
+</footer>
 ```
 
-`網站最後修改日期` 需要手動更新為當次修改日期。
+### 規則
+- **只有三個連結**：合作夥伴、服務條款、隱私權政策
+- **不要加入**：Discord CTA、伺服器 IP、伺服器狀態、修改次數（deployCount）、wave separator
+- **不要加入**：公告、活動、海風指南等額外導航連結
+- 跳轉頁面（404、index、特殊道具規範、贊助）不需此 Footer
+- 樣式由 `style.css` 中的 `.footer*` 系列 class 控制
 
 ---
 
@@ -211,7 +232,7 @@ website/
 - [ ] 伺服器資訊區塊遊戲版本 `1.21.11(群騎紛爭)` 需確認是否最新
 
 ### 中優先
-- [x] 首頁增強版 Footer（含 Discord CTA + 伺服器 IP 快速複製）已推廣到全站 27 個頁面 — 2026.04.19
+- [x] ~~首頁增強版 Footer（含 Discord CTA + 伺服器 IP 快速複製）~~ → 已改為全站固定簡潔版 Footer — 2026.04.19
 - [ ] CSS 有大量 `[data-theme="light"]` 重複選擇器可清理優化（目前 264 處，dark-first 架構有意為之，重構風險大，暫不動）
 - [ ] 公告資料可考慮 inline 到 HTML（減少 API 請求）
 - [ ] 首頁增強版 Footer（含 Discord CTA + 伺服器 IP 快速複製）需推廣到其他頁面
@@ -252,6 +273,9 @@ website/
 | 2026.04.19 | 海風網站助手 | DESIGN.md 待辦事項更新：修正無障礙項目（Lightbox aria-live 已存在）、移除已不適用的項目 |
 | 2026.04.19 | 海風網站助手 | 海風團隊頁：成員名稱從 Discord ID 更新為 MC ID（Taiwan_shihyuan / BubukiNott / YuXi_0720 / AlexanderiaLapis / tdse9 / WhiteMeowGX / Blue_5125 / StrawCoding），移除「合作夥伴」統計項目，tesd9 改為 tdse9 |
 | 2026.04.19 | 海風網站助手 | 全站增強版 Footer 推廣：25 個子頁面從基本版 Footer 升級為含 Discord CTA 卡片（伺服器 IP 快速複製 + Discord 加入按鈕）、擴展導航連結（公告/活動/海風指南/服務條款/隱私權政策）、頁尾 wave separator 的增強版 Footer（跳轉頁面 404/index/特殊道具規範/贊助 不需更新）|
+| 2026.04.19 | 海風網站助手 | 首頁移除 Hero 區塊與內容區之間的 wave separator，使 Hero 直接銜接公告欄 |
+| 2026.04.19 | 海風網站助手 | 海風團隊頁：全部 15 個成員頭像從 mc-heads.net 改為 skinmc.net API（`skinmc.net/api/v1/avatars/skin/玩家名`），圖片品質提升（Blue_5125 從 549b→2722b），新增 skinmc.net dns-prefetch |
+| 2026.04.19 | 海風網站助手 | 全站 26 個頁面 Footer 統一改為固定簡潔版：僅保留品牌名稱、標語、三個連結（合作夥伴/服務條款/隱私權政策）、版權聲明。移除 Discord CTA、伺服器狀態、修改次數、wave separator、額外導航連結。DESIGN.md 新增第 7 節 Footer 規範，明確禁止增減元素 |
 
 ---
 
