@@ -334,17 +334,17 @@ function createHeroParticles() {
   const container = document.getElementById('particles');
   if (!container) return;
   const isMobile = window.innerWidth < 768;
-  const count = isMobile ? 15 : Math.min(40, Math.floor(window.innerWidth / 80));
+  const count = isMobile ? 10 : Math.min(20, Math.floor(window.innerWidth / 100));
   for (let i = 0; i < count; i++) {
     const p = document.createElement('div');
     p.className = 'snowflake';
     p.style.left = Math.random() * 100 + '%';
-    const size = 2 + Math.random() * 5;
+    const size = 2 + Math.random() * 4;
     p.style.width = size + 'px';
     p.style.height = size + 'px';
-    p.style.animationDuration = (3 + Math.random() * 5) + 's';
+    p.style.animationDuration = (4 + Math.random() * 6) + 's';
     p.style.animationDelay = (Math.random() * 6) + 's';
-    p.style.opacity = 0.3 + Math.random() * 0.5;
+    p.style.opacity = 0.2 + Math.random() * 0.3;
     container.appendChild(p);
   }
 
