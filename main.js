@@ -612,7 +612,7 @@ function renderBulletin(board, items) {
     let imagesHtml = '';
     if (imgs.length) {
       imagesHtml = '<div class="b-images">' +
-        imgs.slice(0, 4).map(s => `<img src="${s}" alt="" class="b-img" loading="lazy" onerror="this.style.display='none'">`).join('') +
+        imgs.slice(0, 4).map(s => `<img src="${s}" alt="" class="b-img" loading="lazy" onerror="this.style.display='none';const p=this.parentElement;if(p&&!p.querySelector('img:not([style*=\"display: none\"])'))p.style.display='none'">`).join('') +
         '</div>';
     }
 
