@@ -297,6 +297,7 @@ website/
 | 2026.04.20 | 海風網站助手 | 活動頁珍奶日卡片：測試期階段指示器從「done」修正為「active」（4/20 為測試期第一天） |
 | 2026.04.20 | 海風網站助手 | 全站 75 個頁面頁尾日期統一更新至 2026.04.20，CSS/JS cache busting 統一為 200420a |
 | 2026.04.20 | 海風網站助手 | 404 頁面修復：載入 minigames.js + minigames.css（之前完全未引用，MINIGAMES 為 undefined），新增 13 款遊戲按鈕（翻牌/貪吃蛇/掃雷/2048/滑翔翼/猜礦/四子棋/五子棋/井字棋/礦石記憶/射擊場/反應/數字記憶），openGame() 新增 MINIGAMES 路由，closeOverlay() 新增 MINIGAMES.close()，修復 game-result-label / close-overlay CSS 缺失 |
+| 2026.04.20 | 海風網站助手 | **公告資料全面格式清理**（announcements.json 473 則）：移除 435 則 blockquote `>` 前綴、128 則雙反引號 `` `` `` → ` `、22 則裸 URL 轉為 Markdown 連結、21 則尾隨空白、3 則 4-space 縮排統一為 2-space。同步更新首頁 inline 公告 JSON。 |
 
 ---
 
