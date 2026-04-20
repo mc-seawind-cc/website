@@ -104,8 +104,9 @@
   padding: 6px 11px;
   border-radius: 16px;
   background: rgba(157,175,255,0.06);
-  border: 1px solid rgba(157,175,255,0.1);
-  color: rgba(255,255,255,0.4);
+  border: 1px solid rgba(157,175,255,0.18);
+  border-bottom: 2px solid rgba(157,175,255,0.25);
+  color: rgba(255,255,255,0.45);
   font-size: 0.68rem;
   cursor: pointer;
   font-family: inherit;
@@ -114,7 +115,8 @@
 }
 .game-tab:hover, .game-tab.active {
   background: rgba(157,175,255,0.15);
-  border-color: rgba(157,175,255,0.25);
+  border-color: rgba(157,175,255,0.3);
+  border-bottom-color: rgba(157,175,255,0.5);
   color: #b3c8ff;
 }
 
