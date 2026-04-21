@@ -33,7 +33,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;800;900&family=Noto+Serif+TC:wght@700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=200420a">
+  <link rel="stylesheet" href="style.css?v=210421a">
   <link rel="stylesheet" href="music-player.css">
   <link rel="preload" href="music-player.js" as="script">
   <!-- JSON-LD 結構化資料 -->
@@ -157,6 +157,31 @@
     </section>
 
     <div class="content-section" id="about">
+
+      <!-- ═══ 精選活動 ═══ -->
+      <a href="活動/國際珍奶日/" class="featured-event reveal-up" style="text-decoration:none;color:inherit;display:block;">
+        <div class="featured-event-glow" aria-hidden="true"></div>
+        <div class="featured-event-inner">
+          <span class="featured-event-badge">🧋 限時活動</span>
+          <h3 class="featured-event-title">2026 海風國際珍奶日</h3>
+          <p class="featured-event-desc">收集 14 種原料、兌換 13 種限定飲品，挑戰「海風茶王」稱號！4/27 調整期開跑。</p>
+          <div class="featured-event-meta">
+            <span>📅 04.27 – 05.31</span>
+            <span class="featured-event-sep">·</span>
+            <span>收集 × 代幣兌換 × 挑戰</span>
+          </div>
+          <div class="featured-event-countdown" id="featuredCountdown">
+            <div class="countdown-block"><span class="countdown-num" id="cd-d">--</span><span class="countdown-label">天</span></div>
+            <span class="countdown-sep">:</span>
+            <div class="countdown-block"><span class="countdown-num" id="cd-h">--</span><span class="countdown-label">時</span></div>
+            <span class="countdown-sep">:</span>
+            <div class="countdown-block"><span class="countdown-num" id="cd-m">--</span><span class="countdown-label">分</span></div>
+            <span class="countdown-sep">:</span>
+            <div class="countdown-block"><span class="countdown-num" id="cd-s">--</span><span class="countdown-label">秒</span></div>
+          </div>
+          <span class="btn btn-primary" style="display:inline-block;margin-top:0;">查看活動詳情 →</span>
+        </div>
+      </a>
 
       <!-- ═══ 公告欄 ═══ -->
       <div class="section-header reveal-up">
@@ -315,6 +340,33 @@
       </div>
 
 
+      <!-- ═══ 社群數據 ═══ -->
+      <div class="section-header reveal-up">
+        <h2>海風社群數據</h2>
+        <p class="section-desc">持續成長中的 Minecraft 社群</p>
+      </div>
+      <div class="stats-bar reveal-up">
+        <div class="stat-item">
+          <span class="stat-num" data-target="400" data-suffix="+">0</span>
+          <span class="stat-label">註冊會員</span>
+        </div>
+        <div class="stat-divider" aria-hidden="true"></div>
+        <div class="stat-item">
+          <span class="stat-num" data-target="1200" data-suffix="+">0</span>
+          <span class="stat-label">Discord 成員</span>
+        </div>
+        <div class="stat-divider" aria-hidden="true"></div>
+        <div class="stat-item">
+          <span class="stat-num" data-target="500" data-suffix="+">0</span>
+          <span class="stat-label">公告發布</span>
+        </div>
+        <div class="stat-divider" aria-hidden="true"></div>
+        <div class="stat-item">
+          <span class="stat-num" data-target="365" data-suffix="+">0</span>
+          <span class="stat-label">營運天數</span>
+        </div>
+      </div>
+
       <!-- ═══ 海風景觀明信片 ═══ -->
       <div class="section-header reveal-up">
         <h2>海風景觀明信片</h2>      </div>
@@ -372,7 +424,7 @@
       <div class="footer-bottom">
         <p>© 2026 海風伺服器 · 非 Mojang 官方營運 · service@seawind.cc</p>
       </div>
-      <p class="page-revise">網站最後修改日期 2026.04.20 / 總計修改 <span id="deployCount">—</span> 次</p>
+      <p class="page-revise">網站最後修改日期 2026.04.21 / 總計修改 <span id="deployCount">—</span> 次</p>
     </div>
   </footer>
 
@@ -417,7 +469,63 @@
   - 置板凳蹲結果。", "images": [], "localImages": [], "reactions": [{"emoji": "emoji_119", "count": 1}], "reactionCount": 1, "discordId": "1491021983293636720", "pinned": false, "author": "神焰.cc", "index": 11}]}</script>
   <script src="tips.js" defer></script>
   <script src="utils.js"></script>
-  <script src="main.js?v=200420a"></script>
+  <script src="main.js?v=210421a"></script>
+  <!-- 精選活動倒數計時 -->
+  <script>
+  (function(){
+    const target = new Date('2026-04-27T00:00:00+08:00').getTime();
+    const el = document.getElementById('featuredCountdown');
+    if(!el) return;
+    function tick(){
+      const now = Date.now();
+      const diff = target - now;
+      if(diff <= 0){
+        el.classList.add('expired');
+        el.querySelectorAll('.countdown-label').forEach(l=>l.textContent==='天'&&(l.textContent='已開跑'));
+        document.getElementById('cd-d').textContent='🎉';
+        document.getElementById('cd-h').textContent='00';
+        document.getElementById('cd-m').textContent='00';
+        document.getElementById('cd-s').textContent='00';
+        clearInterval(timer);
+        return;
+      }
+      const d=Math.floor(diff/864e5), h=Math.floor((diff%864e5)/36e5), m=Math.floor((diff%36e5)/6e4), s=Math.floor((diff%6e4)/1e3);
+      document.getElementById('cd-d').textContent=String(d).padStart(2,'0');
+      document.getElementById('cd-h').textContent=String(h).padStart(2,'0');
+      document.getElementById('cd-m').textContent=String(m).padStart(2,'0');
+      document.getElementById('cd-s').textContent=String(s).padStart(2,'0');
+    }
+    tick();
+    const timer = setInterval(tick,1000);
+  })();
+  </script>
+  <!-- 社群數據計數動畫 -->
+  <script>
+  (function(){
+    const observer = new IntersectionObserver((entries)=>{
+      entries.forEach(entry=>{
+        if(!entry.isIntersecting) return;
+        entry.target.querySelectorAll('.stat-num').forEach(el=>{
+          const target = parseInt(el.dataset.target,10);
+          const suffix = el.dataset.suffix||'';
+          const duration = 1800;
+          const start = performance.now();
+          function ease(t){ return 1-Math.pow(1-t,3); }
+          function animate(now){
+            const elapsed = now-start;
+            const progress = Math.min(elapsed/duration,1);
+            el.textContent = Math.floor(ease(progress)*target).toLocaleString() + suffix;
+            if(progress<1) requestAnimationFrame(animate);
+          }
+          requestAnimationFrame(animate);
+        });
+        observer.unobserve(entry.target);
+      });
+    },{threshold:0.3});
+    const bar = document.querySelector('.stats-bar');
+    if(bar) observer.observe(bar);
+  })();
+  </script>
   <!-- Lightbox -->
   <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="圖片瀏覽" tabindex="-1">
     <button class="lightbox-close" id="lightboxClose">✕</button>

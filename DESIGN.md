@@ -1,6 +1,6 @@
 # 海風 SeaWind 網站設計文件
 
-> 最後更新：2026.04.20
+> 最後更新：2026.04.21
 > 維護者：海風網站助手
 
 ---
@@ -110,6 +110,7 @@ website/
 5. Page Layout / Sections
 5b. Featured Event Banner ← 新增 04.18
 5c. Countdown Timer ← 新增 04.19
+5d. Community Stats Bar ← 新增 04.21
 6. Buttons
 7. Cards / Features
 8. Bulletin / Announcements
@@ -228,6 +229,8 @@ website/
 - [x] 首頁新增精選活動橫幅（珍奶日預告）— 2026.04.18
 - [x] 首頁精選活動新增倒數計時器 — 2026.04.19
 - [x] 全站頁尾日期統一更新至 2026.04.19 — 2026.04.19
+- [x] 首頁重新加入精選活動橫幅（珍奶日 4/27 預告，含倒數計時）— 2026.04.21
+- [x] 首頁新增「社群數據」區塊（動態計數器：會員/Discord/公告/營運天數）— 2026.04.21
 
 ### 高優先
 - [x] 首頁 Hero 連線版本文字 `1.21.6 ~ 26.x` — 已確認正確（2026.04.19）
@@ -298,6 +301,9 @@ website/
 | 2026.04.20 | 海風網站助手 | 全站 75 個頁面頁尾日期統一更新至 2026.04.20，CSS/JS cache busting 統一為 200420a |
 | 2026.04.20 | 海風網站助手 | 404 頁面修復：載入 minigames.js + minigames.css（之前完全未引用，MINIGAMES 為 undefined），新增 13 款遊戲按鈕（翻牌/貪吃蛇/掃雷/2048/滑翔翼/猜礦/四子棋/五子棋/井字棋/礦石記憶/射擊場/反應/數字記憶），openGame() 新增 MINIGAMES 路由，closeOverlay() 新增 MINIGAMES.close()，修復 game-result-label / close-overlay CSS 缺失 |
 | 2026.04.20 | 海風網站助手 | **公告資料全面格式清理**（announcements.json 473 則）：移除 435 則 blockquote `>` 前綴、128 則雙反引號 `` `` `` → ` `、22 則裸 URL 轉為 Markdown 連結、21 則尾隨空白、3 則 4-space 縮排統一為 2-space。同步更新首頁 inline 公告 JSON。 |
+| 2026.04.21 | 海風網站助手 | **首頁重新加入精選活動橫幅**（🧋 2026 海風國際珍奶日），含倒數計時器（4/27 調整期開跑）、活動標籤/日期/描述、查看詳情按鈕。CSS/JS 均沿用既有 featured-event / countdown 樣式 |
+| 2026.04.21 | 海風網站助手 | **首頁新增「社群數據」區塊**：4 項動態計數器（400+ 註冊會員、1200+ Discord 成員、500+ 公告發布、365+ 營運天數），含 IntersectionObserver 觸發的 easeOut 動畫、漸層背景卡片、響應式分隔線隱藏。CSS 新增 `.stats-bar` / `.stat-item` / `.stat-num` / `.stat-label` / `.stat-divider` + 淺色模式 + 手機版適配 |
+| 2026.04.21 | 海風網站助手 | 全站頁尾日期統一更新至 2026.04.21，CSS/JS cache busting 統一為 210421a |
 
 ---
 

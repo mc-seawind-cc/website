@@ -394,6 +394,19 @@ body{font-family:var(--font-body);background:var(--deep);color:var(--cloud);line
 [data-theme="light"] .section-actions{border-top-color:rgba(0,0,0,0.06)}
 
 /* ═══════════════════════════════════════
+   Community Stats Bar ← 新增 04.21
+   ═══════════════════════════════════════ */
+.stats-bar{display:flex;align-items:center;justify-content:center;gap:var(--space-lg);flex-wrap:wrap;padding:var(--space-xl) var(--space-lg);margin-bottom:var(--space-xl);background:linear-gradient(135deg,rgba(157,175,255,0.06)0%,rgba(168,230,207,0.04)100%);border:1px solid rgba(157,175,255,0.1);border-radius:var(--radius-xl)}
+.stat-item{display:flex;flex-direction:column;align-items:center;gap:4px;min-width:100px}
+.stat-num{font-family:'Noto Sans TC',monospace;font-size:clamp(1.6rem,4vw,2.2rem);font-weight:900;color:var(--sky);letter-spacing:-0.02em;font-variant-numeric:tabular-nums;line-height:1.1}
+.stat-label{font-size:0.8rem;color:var(--fog);letter-spacing:0.04em;font-weight:500}
+.stat-divider{width:1px;height:40px;background:linear-gradient(180deg,transparent,rgba(157,175,255,0.2),transparent)}
+[data-theme="light"] .stats-bar{background:linear-gradient(135deg,rgba(157,175,255,0.04)0%,rgba(168,230,207,0.03)100%);border-color:rgba(100,130,220,0.1);box-shadow:0 1px 4px rgba(0,0,0,0.03)}
+[data-theme="light"] .stat-num{color:var(--ocean-blue)}
+[data-theme="light"] .stat-divider{background:linear-gradient(180deg,transparent,rgba(100,130,220,0.15),transparent)}
+@media(max-width:600px){.stats-bar{gap:var(--space-md);padding:var(--space-lg) var(--space-sm)}.stat-divider{display:none}.stat-item{min-width:70px}}
+
+/* ═══════════════════════════════════════
    Featured Event Banner
    ═══════════════════════════════════════ */
 
