@@ -332,33 +332,6 @@
       </div>
 
 
-      <!-- ═══ 社群數據 ═══ -->
-      <div class="section-header reveal-up">
-        <h2>海風社群數據</h2>
-        <p class="section-desc">持續成長中的 Minecraft 社群</p>
-      </div>
-      <div class="stats-bar reveal-up">
-        <div class="stat-item">
-          <span class="stat-num" data-target="400" data-suffix="+">0</span>
-          <span class="stat-label">註冊會員</span>
-        </div>
-        <div class="stat-divider" aria-hidden="true"></div>
-        <div class="stat-item">
-          <span class="stat-num" data-target="1200" data-suffix="+">0</span>
-          <span class="stat-label">Discord 成員</span>
-        </div>
-        <div class="stat-divider" aria-hidden="true"></div>
-        <div class="stat-item">
-          <span class="stat-num" data-target="500" data-suffix="+">0</span>
-          <span class="stat-label">公告發布</span>
-        </div>
-        <div class="stat-divider" aria-hidden="true"></div>
-        <div class="stat-item">
-          <span class="stat-num" data-target="365" data-suffix="+">0</span>
-          <span class="stat-label">營運天數</span>
-        </div>
-      </div>
-
       <!-- ═══ 海風景觀明信片 ═══ -->
       <div class="section-header reveal-up">
         <h2>海風景觀明信片</h2>      </div>
@@ -489,33 +462,6 @@
     }
     tick();
     const timer = setInterval(tick,1000);
-  })();
-  </script>
-  <!-- 社群數據計數動畫 -->
-  <script>
-  (function(){
-    const observer = new IntersectionObserver((entries)=>{
-      entries.forEach(entry=>{
-        if(!entry.isIntersecting) return;
-        entry.target.querySelectorAll('.stat-num').forEach(el=>{
-          const target = parseInt(el.dataset.target,10);
-          const suffix = el.dataset.suffix||'';
-          const duration = 1800;
-          const start = performance.now();
-          function ease(t){ return 1-Math.pow(1-t,3); }
-          function animate(now){
-            const elapsed = now-start;
-            const progress = Math.min(elapsed/duration,1);
-            el.textContent = Math.floor(ease(progress)*target).toLocaleString() + suffix;
-            if(progress<1) requestAnimationFrame(animate);
-          }
-          requestAnimationFrame(animate);
-        });
-        observer.unobserve(entry.target);
-      });
-    },{threshold:0.3});
-    const bar = document.querySelector('.stats-bar');
-    if(bar) observer.observe(bar);
   })();
   </script>
   <!-- Lightbox -->
