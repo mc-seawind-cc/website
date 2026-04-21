@@ -312,6 +312,8 @@ website/
 | 2026.04.21 | 海風網站助手 | **全站 WebP `<picture>` fallback**：logo.png 全部 73 個 HTML 頁面（含 guide/42 + lore/7 + root/24）加 `<picture><source srcset="logo.webp">` 包裹；guide-menu.png、mcu.png 同步處理 |
 | 2026.04.21 | 海風網站助手 | **CSS light mode 清理**：合併 3 個重複 `[data-theme="light"]` 選擇器（`.page-revise` / `.bulletin-body .b-content` / `.join-step:hover`），CSS 從 3043 行精簡 |
 | 2026.04.21 | 海風網站助手 | 全站 CSS/JS cache busting 統一更新為 210421b |
+| 2026.04.21 | 海風網站助手 | **新增「創意室內設計競賽」活動頁**（活動-室內設計.html）：含活動概念、框架規格圖解（ASCII art）、評分標準視覺化（score-bar）、月循環時程（timeline）、主題輪替卡片（6 屆）、獎勵展示（冠/亞/季）、累計成就稱號（6 種）、參加方式。深色/淺色模式 + 手機響應式 |
+| 2026.04.21 | 海風網站助手 | 活動列表頁新增室內設計競賽卡片（週期性分類，sand 色調，stagger 動畫第 5 張） |
 
 ---
 
