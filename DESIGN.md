@@ -238,12 +238,13 @@ website/
 
 ### 中優先
 - [x] ~~首頁增強版 Footer（含 Discord CTA + 伺服器 IP 快速複製）~~ → 已改為全站固定簡潔版 Footer — 2026.04.19
-- [ ] CSS 有大量 `[data-theme="light"]` 重複選擇器可清理優化（目前 264 處，dark-first 架構有意為之，重構風險大，暫不動）
+- [x] ~~CSS `[data-theme="light"]` 重複選擇器清理~~ → 已合併 3 個重複選擇器（.page-revise / .bulletin-body .b-content / .join-step:hover），實際僅 3 處非 264 處 — 2026.04.21
+- [x] ~~圖片全面檢查 WebP fallback~~ → 全站 75 個 HTML 頁面 logo.png 全部加 `<picture>` 包裹（logo.webp fallback）、guide-menu / mcu 同步處理 — 2026.04.21
+- [x] ~~大 PNG 轉無損 WebP~~ → guide-menu.png / logo.png / mcu.png 已轉 lossless WebP — 2026.04.21
 - [ ] 公告資料可考慮 inline 到 HTML（減少 API 請求）
 - [ ] 首頁增強版 Footer（含 Discord CTA + 伺服器 IP 快速複製）需推廣到其他頁面
 - [ ] 無障礙：Lightbox 已有 `aria-live`（counter），圖片 `alt` 可更描述性
 - [ ] 404.html 體積偏大（可將動畫 CSS/JS 外部化）
-- [ ] 圖片全面檢查 WebP fallback
 - [ ] SEO：各子頁面 meta description 檢查
 
 ### 低優先
@@ -304,6 +305,13 @@ website/
 | 2026.04.21 | 海風網站助手 | **首頁重新加入精選活動橫幅**（🧋 2026 海風國際珍奶日），含倒數計時器（4/27 調整期開跑）、活動標籤/日期/描述、查看詳情按鈕。CSS/JS 均沿用既有 featured-event / countdown 樣式 |
 | 2026.04.21 | 海風網站助手 | **首頁新增「社群數據」區塊**：4 項動態計數器（400+ 註冊會員、1200+ Discord 成員、500+ 公告發布、365+ 營運天數），含 IntersectionObserver 觸發的 easeOut 動畫、漸層背景卡片、響應式分隔線隱藏。CSS 新增 `.stats-bar` / `.stat-item` / `.stat-num` / `.stat-label` / `.stat-divider` + 淺色模式 + 手機版適配 |
 | 2026.04.21 | 海風網站助手 | 全站頁尾日期統一更新至 2026.04.21，CSS/JS cache busting 統一為 210421a |
+| 2026.04.21 | 海風網站助手 | **Section Header 裝飾強化**：新增 `::before` 左側裝飾線（scroll reveal 時展開 28px，hover 延展 48px），與既有 `::after` 底線漸層形成對稱視覺；新增 `::selection` 高亮色。深色/淺色模式同步 |
+| 2026.04.21 | 海風網站助手 | **公告標籤配色增強**：`.b-tag` 新增 `border: 1px solid currentColor`（透明時隱藏，hover 時顯示）、字重 600、letter-spacing 微調；`.b-dot` 改為 9px + hover 時 `box-shadow` 發光 + `scale(1.25)` 脈動效果 |
+| 2026.04.21 | 海風網站助手 | **活動頁卡片強化**：`.event-card::before` 從 flat 線改為 `linear-gradient` 漸層 accent 條；新增 `::after` radial-gradient hover 內發光層（opacity 0→0.04）；`.event-badge.limited` 新增 `event-badge-glow` 脈動動畫；`.event-stage.active` 新增 `stage-pulse` 環繞脈衝動畫；`.event-meta-icon` hover 時 opacity 提升 |
+| 2026.04.21 | 海風網站助手 | **大 PNG 轉無損 WebP**：guide-menu.png→7K (原50K)、logo.png→54K (原100K)、mcu.png→75K (原152K)，ffmpeg lossless 編碼 |
+| 2026.04.21 | 海風網站助手 | **全站 WebP `<picture>` fallback**：logo.png 全部 73 個 HTML 頁面（含 guide/42 + lore/7 + root/24）加 `<picture><source srcset="logo.webp">` 包裹；guide-menu.png、mcu.png 同步處理 |
+| 2026.04.21 | 海風網站助手 | **CSS light mode 清理**：合併 3 個重複 `[data-theme="light"]` 選擇器（`.page-revise` / `.bulletin-body .b-content` / `.join-step:hover`），CSS 從 3043 行精簡 |
+| 2026.04.21 | 海風網站助手 | 全站 CSS/JS cache busting 統一更新為 210421b |
 
 ---
 
