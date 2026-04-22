@@ -33,7 +33,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;800;900&family=Noto+Serif+TC:wght@700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=210421c">
+  <link rel="stylesheet" href="style.css?v=220422a">
   <link rel="stylesheet" href="music-player.css">
   <link rel="preload" href="music-player.js" as="script">
   <!-- JSON-LD 結構化資料 -->
@@ -222,6 +222,7 @@
       </div>
 
       <!-- ═══ 海風特色 ═══ -->
+      <div class="section-tint section-tint-cool">
       <div class="section-header reveal-up">
         <h2>海風特色</h2>      </div>
       <div class="feature-grid feature-grid-3 slide-up stagger">
@@ -256,8 +257,10 @@
           <p>精心設計的中文選單與介面，新手也能輕鬆上手，無需額外安裝模組。</p>
         </div>
       </div>
+      </div><!-- /.section-tint-cool -->
 
       <!-- ═══ 伺服器資訊 ═══ -->
+      <div class="section-tint section-tint-warm">
       <div class="section-header reveal-up">
         <h2>伺服器資訊</h2>      </div>
       <div class="feature-grid feature-grid-4 zoom-in stagger">
@@ -282,8 +285,10 @@
           <p>養老 × 生電</p>
         </div>
       </div>
+      </div><!-- /.section-tint-warm -->
 
       <!-- ═══ 如何加入海風 ═══ -->
+      <div class="section-tint section-tint-cool">
       <div class="section-header reveal-up">
         <h2>如何加入海風</h2>
         <p class="section-desc">四個步驟，開始你的冒險</p>
@@ -327,29 +332,37 @@
         <a href="玩家須知.html" class="btn btn-outline">閱讀玩家須知 →</a>
         <a href="https://discord.gg/HdS2HrJEH7" target="_blank" rel="noopener" class="btn btn-primary">加入 Discord 社群</a>
       </div>
+      </div><!-- /.section-tint-cool -->
 
       <!-- ═══ 海風景觀明信片 ═══ -->
+      <div class="section-tint section-tint-deep">
       <div class="section-header reveal-up">
         <h2>海風景觀明信片</h2>      </div>
       <div class="postcard-section reveal-up">
         <div class="postcard-grid" id="postcardGrid">
           <div class="postcard-item">
             <img src="https://truth.bahamut.com.tw/s01/202506/forum/18673/1d210be83f8c3ee04acc643fb749295d.JPG" alt="海風伺服器 Minecraft 景觀明信片 — 海岸日落" loading="lazy" onerror="this.parentElement.classList.add('postcard-fallback');this.style.display='none'">
+            <span class="postcard-label">🌅 海岸日落</span>
           </div>
           <div class="postcard-item">
             <img src="https://truth.bahamut.com.tw/s01/202506/forum/18673/f69b93378fb5c63a7096114f8487a3e0.JPG" alt="海風伺服器 Minecraft 景觀明信片 — 山谷晨曦" loading="lazy" onerror="this.parentElement.classList.add('postcard-fallback');this.style.display='none'">
+            <span class="postcard-label">🌄 山谷晨曦</span>
           </div>
           <div class="postcard-item">
             <img src="https://truth.bahamut.com.tw/s01/202506/forum/18673/2315f22005d81ceb0729879da90fc159.JPG" alt="海風伺服器 Minecraft 景觀明信片 — 燈塔夜景" loading="lazy" onerror="this.parentElement.classList.add('postcard-fallback');this.style.display='none'">
+            <span class="postcard-label">🏮 燈塔夜景</span>
           </div>
           <div class="postcard-item">
             <img src="https://truth.bahamut.com.tw/s01/202506/forum/18673/c6324111585f3a8840ee47e6fd13a989.JPG" alt="海風伺服器 Minecraft 景觀明信片 — 城鎮全景" loading="lazy" onerror="this.parentElement.classList.add('postcard-fallback');this.style.display='none'">
+            <span class="postcard-label">🏘️ 城鎮全景</span>
           </div>
           <div class="postcard-item">
             <img src="https://truth.bahamut.com.tw/s01/202506/forum/18673/9f7780af55bcaf0af27b8546f450ee33.JPG" alt="海風伺服器 Minecraft 景觀明信片 — 建築特寫" loading="lazy" onerror="this.parentElement.classList.add('postcard-fallback');this.style.display='none'">
+            <span class="postcard-label">🏗️ 建築特寫</span>
           </div>
         </div>
       </div>
+      </div><!-- /.section-tint-deep -->
 
 
       <!-- ═══ 風景照 ═══ -->
@@ -385,7 +398,7 @@
       <div class="footer-bottom">
         <p>© 2026 海風伺服器 · 非 Mojang 官方營運 · service@seawind.cc</p>
       </div>
-      <p class="page-revise">網站最後修改日期 2026.04.21 / 總計修改 <span id="deployCount">—</span> 次</p>
+      <p class="page-revise">網站最後修改日期 2026.04.22 / 總計修改 <span id="deployCount">—</span> 次</p>
     </div>
   </footer>
 
@@ -430,7 +443,7 @@
   - 置板凳蹲結果。", "images": [], "localImages": [], "reactions": [{"emoji": "emoji_119", "count": 1}], "reactionCount": 1, "discordId": "1491021983293636720", "pinned": false, "author": "神焰.cc", "index": 11}]}</script>
   <script src="tips.js" defer></script>
   <script src="utils.js"></script>
-  <script src="main.js?v=210421c"></script>
+  <script src="main.js?v=220422a"></script>
   <!-- 精選活動倒數計時 -->
   <script>
   (function(){

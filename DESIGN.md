@@ -1,6 +1,6 @@
 # 海風 SeaWind 網站設計文件
 
-> 最後更新：2026.04.21
+> 最後更新：2026.04.22
 > 維護者：海風網站助手
 
 ---
@@ -111,6 +111,7 @@ website/
 5b. Featured Event Banner ← 新增 04.18
 5c. Countdown Timer ← 新增 04.19
 5d. Community Stats Bar ← 新增 04.21
+5e. Section Tinted Backgrounds ← 新增 04.22
 6. Buttons
 7. Cards / Features
 8. Bulletin / Announcements
@@ -318,6 +319,11 @@ website/
 | 2026.04.21 | 海風網站助手 | **Hero 滾動指示器增強**：`.scroll-arrow` 新增柔光脈衝背景（`scroll-glow` keyframes），讓「向下探索」提示更醒目且富有動感 |
 | 2026.04.21 | 海風網站助手 | **特色卡片互動增強**：新增 `.feature-card:active` 按下回饋（縮小至 translateY(-3px)，transition 0.1s），提升觸控/點擊體驗 |
 | 2026.04.21 | 海風網站助手 | 全站 CSS/JS cache busting 統一更新為 210421c |
+| 2026.04.22 | 海風網站助手 | **景觀明信片 hover 沉浸感強化**：新增圖片陰影（box-shadow）、hover 時上浮+放大+加深陰影、底部漸層遮罩加深+過渡動效、新增浮現式圖片標籤（`.postcard-label`，含 emoji + 文字，hover 時從下方淡入）。深色/淺色模式同步 |
+| 2026.04.22 | 海風網站助手 | **Section 視覺節奏增強**：新增 `.section-tint` 系列微背景（warm/cool/deep），在海風特色（cool）、伺服器資訊（warm）、如何加入海風（cool）、景觀明信片（deep）之間建立交替色調，提升閱讀節奏感與區塊辨識度。深色/淺色模式同步 |
+| 2026.04.22 | 海風網站助手 | **頁尾波浪分隔線動效**：`.footer::before` 波浪 SVG 更新為更柔和弧線 + 新增 `footer-wave-drift` 緩慢漂移動畫；`.footer::after` 新增漸層發光線（top glow line）；`.footer-logo` 字號微增 + text-shadow 微發光 + 底線改為 shimmer 動畫（`footer-line-shimmer`）；頁尾 padding 增大（space-xl → space-2xl）；背景漸層增強（加入 lavender 微色調） |
+| 2026.04.22 | 海風網站助手 | **頁尾連結列強化**：間距微增、hover 時上浮 + 底線展開動效（`::after` width transition）；分隔點改小更精緻 |
+| 2026.04.22 | 海風網站助手 | 全站 CSS/JS cache busting 統一更新為 220422a，全站頁尾日期統一更新至 2026.04.22 |
 | 2026.04.21 | 海風網站助手 | **創意室內設計競賽改為一次性活動**：移除「週期性/每月一屆」標記，活動列表 badge 改為「限時活動」；詳情頁移除月循環時程、主題輪替（僅保留單一主題「溫暖小窩」）、累計成就稱號精簡為 3 個（冠/亞/季各 1） |
 
 ---
