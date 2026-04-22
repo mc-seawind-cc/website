@@ -469,23 +469,6 @@ const MOB_SMASHER = (() => {
     setTimeout(() => el.classList.remove('ms-hit'), 200);
 
     if (category === 'hostile') {
-      // Villager in raid: hitting = penalty!
-      if (mob.isVillager) {
-        state.score = Math.max(0, state.score - 2);
-        state.timeLeft = Math.max(0, state.timeLeft - 3);
-        state.raidVillagersHit++;
-        showFloatingText(el, '-2', '#ff8282');
-        showFloatingText(el, '-3s', '#ff8282', 20);
-        showInfo('不要打村民！', '#ff8282');
-        removeMob(idx);
-        updateHUD();
-        if (state.raidActive) checkRaidWaveComplete();
-        if (state.timeLeft <= 0 && state.alive) {
-          if (state.hasTotem) { useTotem(); state.timeLeft = 5; }
-          else endGame();
-        }
-        return;
-      }
 
       holeData.hp--;
       if (holeData.hp > 0) {
@@ -534,10 +517,12 @@ const MOB_SMASHER = (() => {
       state.score = Math.max(0, state.score - 2);
       state.timeLeft = Math.max(0, state.timeLeft - 3);
       state.friendliesHit++;
+      if (mob.isVillager) state.raidVillagersHit++;
       showFloatingText(el, '-2', '#ff8282');
       showFloatingText(el, '-3s', '#ff8282', 20);
-      showInfo(`不要打${mob.name}！`, '#ff8282');
+      showInfo(mob.isVillager ? '不要打村民！' : `不要打${mob.name}！`, '#ff8282');
       removeMob(idx);
+      if (state.raidActive) checkRaidWaveComplete();
 
     } else if (category === 'neutral') {
       holeData.hp--;
@@ -700,7 +685,7 @@ const MOB_SMASHER = (() => {
 
       setTimeout(() => {
         if (!state.raidActive || !state.alive) return;
-        showMob(holeIdx, mob, 'hostile');
+        showMob(holeIdx, mob, mob.isVillager ? 'passive' : 'hostile');
         const q = state.raidQueue.find(q => q.holeIdx === holeIdx);
         if (q) q.spawned = true;
       }, i * 200 + Math.random() * 300);
