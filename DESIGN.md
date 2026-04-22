@@ -325,6 +325,11 @@ website/
 | 2026.04.22 | 海風網站助手 | **頁尾連結列強化**：間距微增、hover 時上浮 + 底線展開動效（`::after` width transition）；分隔點改小更精緻 |
 | 2026.04.22 | 海風網站助手 | 全站 CSS/JS cache busting 統一更新為 220422a，全站頁尾日期統一更新至 2026.04.22 |
 | 2026.04.21 | 海風網站助手 | **創意室內設計競賽改為一次性活動**：移除「週期性/每月一屆」標記，活動列表 badge 改為「限時活動」；詳情頁移除月循環時程、主題輪替（僅保留單一主題「溫暖小窩」）、累計成就稱號精簡為 3 個（冠/亞/季各 1） |
+| 2026.04.22 | 海風網站助手 | **導航下拉選單動畫**：從 `display:none/block` 改為 `opacity + visibility + transform` 過渡動畫（0.25s ease），下拉選單有淡入+下滑效果；hover 時連結加 `padding-left` 微縮排 + 藍色高亮背景；min-width 微增至 200px；淺色模式改為藍色調 hover 背景 |
+| 2026.04.22 | 海風網站助手 | **公告欄標籤配色系統**：per-tag 精確配色 — 公告=#8ab4ff 藍底、更新=#85e0bf 綠底、活動=#ffbb55 橙底、維護=#ff9e9e 紅底；`.b-tag` 字重 500→600、新增 letter-spacing + hover 時顯示 `border:1px solid currentColor`；`.bulletin-item:hover` 新增 `box-shadow` 微陰影 |
+| 2026.04.22 | 海風網站助手 | **文化藝廊精選卡片深度**：新增 `::after` 底部漸層覆蓋層（漸入動效），hover 時標題變 `--sky` 藍色 + tag 發光效果；圖片高度 160→180px、`.lore-preview-info` 加 `z-index:2` 確保內容在覆蓋層上方 |
+| 2026.04.22 | 海風網站助手 | **社群數據條互動強化**：`.stats-bar` 新增 hover 微上浮（-2px）+ 陰影加深 + 邊框亮化；`.stat-item` 各自可獨立 hover 微上浮 |
+| 2026.04.22 | 海風網站助手 | 全站 CSS/JS cache busting 統一更新為 220422b |
 
 ---
 
