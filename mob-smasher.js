@@ -603,9 +603,13 @@ const MOB_SMASHER = (() => {
     state.raidMobsMissed = 0;
     updateBadOmen();
 
-    // Pause the countdown timer during raid
+    // Pause the countdown timer and normal spawns during raid
     clearInterval(state.timerInterval);
     state.timerInterval = null;
+    clearInterval(state.spawnInterval);
+    state.spawnInterval = null;
+    clearInterval(state.difficultyInterval);
+    state.difficultyInterval = null;
 
     // Random 3-7 waves
     state.raidTotalWaves = 3 + Math.floor(Math.random() * 5);
@@ -792,6 +796,16 @@ const MOB_SMASHER = (() => {
 
     // Show info and respawn normal mobs
     showInfo('回到一般模式，繼續打怪！', '#a8e6cf');
+
+    // Restart normal spawn interval
+    state.spawnInterval = setInterval(spawnMob, state.spawnSpeed);
+    state.difficultyInterval = setInterval(() => {
+      if (state.spawnSpeed > 700) {
+        state.spawnSpeed -= 50;
+        clearInterval(state.spawnInterval);
+        state.spawnInterval = setInterval(spawnMob, state.spawnSpeed);
+      }
+    }, 5000);
 
     // Clear grid and let spawnMob handle it
     const grid = document.getElementById('msGrid');
