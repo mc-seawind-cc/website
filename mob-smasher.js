@@ -275,7 +275,6 @@ const MOB_SMASHER = (() => {
 
     html += `</div>
       <div class="ms-info" id="msInfo">準備好了嗎？點擊開始！</div>
-      <div style="text-align:center;margin:8px 0"><button onclick="MOB_SMASHER.startRaid()" style="background:rgba(255,80,80,0.15);border:1px solid rgba(255,80,80,0.3);color:#ff8282;padding:6px 16px;border-radius:8px;font-size:0.75rem;cursor:pointer;font-family:inherit;transition:all 0.2s" onmouseover="this.style.background='rgba(255,80,80,0.25)'" onmouseout="this.style.background='rgba(255,80,80,0.15)'">⚔️ 測試突襲</button></div>
       <div class="ms-legend">
         <span class="ms-legend-item">${spr('zombie','ms-legend-sprite','敵對')}敵對 +分+秒</span>
         <span class="ms-legend-item">${spr('pig','ms-legend-sprite','友好')}友好 -分-秒</span>
