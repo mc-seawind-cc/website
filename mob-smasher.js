@@ -13,43 +13,43 @@ const MOB_SMASHER = (() => {
 
   // ═══ Mob Definitions ═══
   const HOSTILE = [
-    { id: 'zombie',              name: '殭屍',           pts: 1, timeBonus: 1, weight: 12 },
-    { id: 'creeper',             name: '苦力怕',         pts: 1, timeBonus: 1, weight: 12 },
-    { id: 'skeleton',            name: '骷髏',           pts: 1, timeBonus: 1, weight: 10 },
-    { id: 'slime',               name: '史萊姆',         pts: 1, timeBonus: 1, weight: 8 },
-    { id: 'witch',               name: '女巫',           pts: 2, timeBonus: 1, weight: 6 },
-    { id: 'spider',              name: '蜘蛛',           pts: 1, timeBonus: 1, weight: 10 },
-    { id: 'cave-spider',         name: '洞穴蜘蛛',       pts: 1, timeBonus: 1, weight: 7 },
-    { id: 'blaze',               name: '烈焰使者',       pts: 2, timeBonus: 1, weight: 5 },
-    { id: 'breeze',              name: '旋風使者',       pts: 2, timeBonus: 1, weight: 5 },
-    { id: 'ghast',               name: '地獄幽靈',       pts: 2, timeBonus: 2, weight: 4 },
-    { id: 'phantom',             name: '夜魅',           pts: 2, timeBonus: 1, weight: 6 },
-    { id: 'evoker',              name: '喚魔者',         pts: 3, timeBonus: 2, weight: 3, special: 'totem' },
-    { id: 'enderman',            name: '終界使者',       pts: 2, timeBonus: 1, weight: 5 },
-    { id: 'shulker',             name: '界伏蚌',         pts: 2, timeBonus: 1, weight: 4 },
-    { id: 'silverfish',          name: '蠹魚',           pts: 1, timeBonus: 1, weight: 7 },
-    { id: 'endermite',           name: '終界蟎',         pts: 1, timeBonus: 1, weight: 6 },
-    { id: 'magma-cube',          name: '岩漿立方怪',     pts: 1, timeBonus: 1, weight: 7 },
-    { id: 'husk',                name: '屍殼',           pts: 1, timeBonus: 1, weight: 8 },
-    { id: 'parched',             name: '枯骸',           pts: 2, timeBonus: 1, weight: 4 },
-    { id: 'warden',              name: '伏守者',         pts: 5, timeBonus: 3, weight: 2, hp: 2, stayMs: 2500 },
-    { id: 'piglin-brute',        name: '豬布林蠻兵',     pts: 5, timeBonus: 3, weight: 2, hp: 2, stayMs: 2500 },
-    { id: 'ravager',             name: '劫毀獸',         pts: 5, timeBonus: 3, weight: 2, hp: 2, stayMs: 2500 },
-    { id: 'wither',              name: '凋零怪',         pts: 5, timeBonus: 3, weight: 2, hp: 2, stayMs: 2500 },
-    { id: 'elder-guardian',      name: '遠古深海守衛',   pts: 5, timeBonus: 3, weight: 1, hp: 2, stayMs: 3000, special: 'elder' },
-    { id: 'guardian',            name: '深海守衛',       pts: 2, timeBonus: 1, weight: 0 },
+    { id: 'zombie',              name: '殭屍',           pts: 1, timeBonus: 2, weight: 12 },
+    { id: 'creeper',             name: '苦力怕',         pts: 1, timeBonus: 2, weight: 12 },
+    { id: 'skeleton',            name: '骷髏',           pts: 1, timeBonus: 2, weight: 10 },
+    { id: 'slime',               name: '史萊姆',         pts: 1, timeBonus: 2, weight: 8 },
+    { id: 'witch',               name: '女巫',           pts: 2, timeBonus: 2, weight: 6 },
+    { id: 'spider',              name: '蜘蛛',           pts: 1, timeBonus: 2, weight: 10 },
+    { id: 'cave-spider',         name: '洞穴蜘蛛',       pts: 1, timeBonus: 2, weight: 7 },
+    { id: 'blaze',               name: '烈焰使者',       pts: 2, timeBonus: 2, weight: 5 },
+    { id: 'breeze',              name: '旋風使者',       pts: 2, timeBonus: 2, weight: 5 },
+    { id: 'ghast',               name: '地獄幽靈',       pts: 2, timeBonus: 3, weight: 4 },
+    { id: 'phantom',             name: '夜魅',           pts: 2, timeBonus: 2, weight: 6 },
+    { id: 'evoker',              name: '喚魔者',         pts: 3, timeBonus: 3, weight: 3, special: 'totem' },
+    { id: 'enderman',            name: '終界使者',       pts: 2, timeBonus: 2, weight: 5 },
+    { id: 'shulker',             name: '界伏蚌',         pts: 2, timeBonus: 2, weight: 4 },
+    { id: 'silverfish',          name: '蠹魚',           pts: 1, timeBonus: 2, weight: 7 },
+    { id: 'endermite',           name: '終界蟎',         pts: 1, timeBonus: 2, weight: 6 },
+    { id: 'magma-cube',          name: '岩漿立方怪',     pts: 1, timeBonus: 2, weight: 7 },
+    { id: 'husk',                name: '屍殼',           pts: 1, timeBonus: 2, weight: 8 },
+    { id: 'parched',             name: '枯骸',           pts: 2, timeBonus: 2, weight: 4 },
+    { id: 'warden',              name: '伏守者',         pts: 5, timeBonus: 5, weight: 2, hp: 2, stayMs: 2500 },
+    { id: 'piglin-brute',        name: '豬布林蠻兵',     pts: 5, timeBonus: 5, weight: 2, hp: 2, stayMs: 2500 },
+    { id: 'ravager',             name: '劫毀獸',         pts: 5, timeBonus: 5, weight: 2, hp: 2, stayMs: 2500 },
+    { id: 'wither',              name: '凋零怪',         pts: 5, timeBonus: 5, weight: 2, hp: 2, stayMs: 2500 },
+    { id: 'elder-guardian',      name: '遠古深海守衛',   pts: 5, timeBonus: 5, weight: 1, hp: 2, stayMs: 3000, special: 'elder' },
+    { id: 'guardian',            name: '深海守衛',       pts: 2, timeBonus: 2, weight: 0 },
     // === 新增怪物 ===
-    { id: 'zombified-piglin',    name: '殭屍化豬布林',   pts: 1, timeBonus: 1, weight: 7 },
-    { id: 'zombie-villager',     name: '殭屍村民',       pts: 1, timeBonus: 1, weight: 6 },
-    { id: 'hoglin',              name: '豬布獸',         pts: 2, timeBonus: 1, weight: 5 },
-    { id: 'zoglin',              name: '豬屍獸',         pts: 2, timeBonus: 1, weight: 4 },
-    { id: 'wither-skeleton',     name: '凋零骷髏',       pts: 2, timeBonus: 1, weight: 5 },
-    { id: 'johnny',              name: '衛道士',         pts: 3, timeBonus: 2, weight: 3, special: 'ominous', dropChance: 0.4 },
-    { id: 'vex',                 name: '惱鬼',           pts: 2, timeBonus: 1, weight: 5 },
-    { id: 'stray',               name: '流髑',           pts: 1, timeBonus: 1, weight: 6 },
-    { id: 'creaking',            name: '嘎枝',           pts: 4, timeBonus: 2, weight: 3, hp: 2, stayMs: 2200 },
-    { id: 'ender-dragon',        name: '終界龍',         pts: 10, timeBonus: 5, weight: 1, hp: 5, stayMs: 4000 },
-    { id: 'evoker-copy',         name: '掠奪者',         pts: 3, timeBonus: 2, weight: 3, sprite: 'evoker' },
+    { id: 'zombified-piglin',    name: '殭屍化豬布林',   pts: 1, timeBonus: 2, weight: 7 },
+    { id: 'zombie-villager',     name: '殭屍村民',       pts: 1, timeBonus: 2, weight: 6 },
+    { id: 'hoglin',              name: '豬布獸',         pts: 2, timeBonus: 2, weight: 5 },
+    { id: 'zoglin',              name: '豬屍獸',         pts: 2, timeBonus: 2, weight: 4 },
+    { id: 'wither-skeleton',     name: '凋零骷髏',       pts: 2, timeBonus: 2, weight: 5 },
+    { id: 'johnny',              name: '衛道士',         pts: 3, timeBonus: 3, weight: 3, special: 'ominous', dropChance: 0.4 },
+    { id: 'vex',                 name: '惱鬼',           pts: 2, timeBonus: 2, weight: 5 },
+    { id: 'stray',               name: '流髑',           pts: 1, timeBonus: 2, weight: 6 },
+    { id: 'creaking',            name: '嘎枝',           pts: 4, timeBonus: 5, weight: 3, hp: 2, stayMs: 2200 },
+    { id: 'ender-dragon',        name: '終界龍',         pts: 10, timeBonus: 8, weight: 1, hp: 5, stayMs: 4000 },
+    { id: 'evoker-copy',         name: '掠奪者',         pts: 3, timeBonus: 3, weight: 3, sprite: 'evoker' },
   ];
 
   const PASSIVE = [
@@ -117,75 +117,75 @@ const MOB_SMASHER = (() => {
   const RAID_WAVES = [
     // wave 1: 4 掠奪者
     [
-      { id: 'evoker-copy', name: '掠奪者', pts: 3, timeBonus: 2, sprite: 'evoker', stayMs: RAID_STAY },
-      { id: 'evoker-copy', name: '掠奪者', pts: 3, timeBonus: 2, sprite: 'evoker', stayMs: RAID_STAY },
-      { id: 'evoker-copy', name: '掠奪者', pts: 3, timeBonus: 2, sprite: 'evoker', stayMs: RAID_STAY },
-      { id: 'evoker-copy', name: '掠奪者', pts: 3, timeBonus: 2, sprite: 'evoker', stayMs: RAID_STAY },
+      { id: 'evoker-copy', name: '掠奪者', pts: 3, timeBonus: 3, sprite: 'evoker', stayMs: RAID_STAY },
+      { id: 'evoker-copy', name: '掠奪者', pts: 3, timeBonus: 3, sprite: 'evoker', stayMs: RAID_STAY },
+      { id: 'evoker-copy', name: '掠奪者', pts: 3, timeBonus: 3, sprite: 'evoker', stayMs: RAID_STAY },
+      { id: 'evoker-copy', name: '掠奪者', pts: 3, timeBonus: 3, sprite: 'evoker', stayMs: RAID_STAY },
     ],
     // wave 2: 3 掠奪者 + 1 劫毀獸
     [
-      { id: 'evoker-copy', name: '掠奪者', pts: 3, timeBonus: 2, sprite: 'evoker', stayMs: RAID_STAY },
-      { id: 'evoker-copy', name: '掠奪者', pts: 3, timeBonus: 2, sprite: 'evoker', stayMs: RAID_STAY },
-      { id: 'evoker-copy', name: '掠奪者', pts: 3, timeBonus: 2, sprite: 'evoker', stayMs: RAID_STAY },
-      { id: 'ravager', name: '劫毀獸', pts: 5, timeBonus: 3, hp: 2, stayMs: 3000 },
+      { id: 'evoker-copy', name: '掠奪者', pts: 3, timeBonus: 3, sprite: 'evoker', stayMs: RAID_STAY },
+      { id: 'evoker-copy', name: '掠奪者', pts: 3, timeBonus: 3, sprite: 'evoker', stayMs: RAID_STAY },
+      { id: 'evoker-copy', name: '掠奪者', pts: 3, timeBonus: 3, sprite: 'evoker', stayMs: RAID_STAY },
+      { id: 'ravager', name: '劫毀獸', pts: 5, timeBonus: 5, hp: 2, stayMs: 3000 },
     ],
     // wave 3: 3 掠奪者 + 1 衛道士 + 3 女巫
     [
-      { id: 'evoker-copy', name: '掠奪者', pts: 3, timeBonus: 2, sprite: 'evoker', stayMs: RAID_STAY },
-      { id: 'evoker-copy', name: '掠奪者', pts: 3, timeBonus: 2, sprite: 'evoker', stayMs: RAID_STAY },
-      { id: 'evoker-copy', name: '掠奪者', pts: 3, timeBonus: 2, sprite: 'evoker', stayMs: RAID_STAY },
-      { id: 'johnny', name: '衛道士', pts: 3, timeBonus: 2, stayMs: RAID_STAY },
-      { id: 'witch', name: '女巫', pts: 2, timeBonus: 1, stayMs: RAID_STAY },
-      { id: 'witch', name: '女巫', pts: 2, timeBonus: 1, stayMs: RAID_STAY },
-      { id: 'witch', name: '女巫', pts: 2, timeBonus: 1, stayMs: RAID_STAY },
+      { id: 'evoker-copy', name: '掠奪者', pts: 3, timeBonus: 3, sprite: 'evoker', stayMs: RAID_STAY },
+      { id: 'evoker-copy', name: '掠奪者', pts: 3, timeBonus: 3, sprite: 'evoker', stayMs: RAID_STAY },
+      { id: 'evoker-copy', name: '掠奪者', pts: 3, timeBonus: 3, sprite: 'evoker', stayMs: RAID_STAY },
+      { id: 'johnny', name: '衛道士', pts: 3, timeBonus: 3, stayMs: RAID_STAY },
+      { id: 'witch', name: '女巫', pts: 2, timeBonus: 2, stayMs: RAID_STAY },
+      { id: 'witch', name: '女巫', pts: 2, timeBonus: 2, stayMs: RAID_STAY },
+      { id: 'witch', name: '女巫', pts: 2, timeBonus: 2, stayMs: RAID_STAY },
     ],
     // wave 4: 4 掠奪者 + 1 劫毀獸 + 1 喚魔者
     [
-      { id: 'evoker-copy', name: '掠奪者', pts: 3, timeBonus: 2, sprite: 'evoker', stayMs: RAID_STAY },
-      { id: 'evoker-copy', name: '掠奪者', pts: 3, timeBonus: 2, sprite: 'evoker', stayMs: RAID_STAY },
-      { id: 'evoker-copy', name: '掠奪者', pts: 3, timeBonus: 2, sprite: 'evoker', stayMs: RAID_STAY },
-      { id: 'evoker-copy', name: '掠奪者', pts: 3, timeBonus: 2, sprite: 'evoker', stayMs: RAID_STAY },
-      { id: 'ravager', name: '劫毀獸', pts: 5, timeBonus: 3, hp: 2, stayMs: 3000 },
-      { id: 'evoker', name: '喚魔者', pts: 3, timeBonus: 2, special: 'totem', stayMs: RAID_STAY },
+      { id: 'evoker-copy', name: '掠奪者', pts: 3, timeBonus: 3, sprite: 'evoker', stayMs: RAID_STAY },
+      { id: 'evoker-copy', name: '掠奪者', pts: 3, timeBonus: 3, sprite: 'evoker', stayMs: RAID_STAY },
+      { id: 'evoker-copy', name: '掠奪者', pts: 3, timeBonus: 3, sprite: 'evoker', stayMs: RAID_STAY },
+      { id: 'evoker-copy', name: '掠奪者', pts: 3, timeBonus: 3, sprite: 'evoker', stayMs: RAID_STAY },
+      { id: 'ravager', name: '劫毀獸', pts: 5, timeBonus: 5, hp: 2, stayMs: 3000 },
+      { id: 'evoker', name: '喚魔者', pts: 3, timeBonus: 3, special: 'totem', stayMs: RAID_STAY },
     ],
     // wave 5: 4 掠奪者 + 4 衛道士 + 1 喚魔者
     [
-      { id: 'evoker-copy', name: '掠奪者', pts: 3, timeBonus: 2, sprite: 'evoker', stayMs: RAID_STAY },
-      { id: 'evoker-copy', name: '掠奪者', pts: 3, timeBonus: 2, sprite: 'evoker', stayMs: RAID_STAY },
-      { id: 'evoker-copy', name: '掠奪者', pts: 3, timeBonus: 2, sprite: 'evoker', stayMs: RAID_STAY },
-      { id: 'evoker-copy', name: '掠奪者', pts: 3, timeBonus: 2, sprite: 'evoker', stayMs: RAID_STAY },
-      { id: 'johnny', name: '衛道士', pts: 3, timeBonus: 2, stayMs: RAID_STAY },
-      { id: 'johnny', name: '衛道士', pts: 3, timeBonus: 2, stayMs: RAID_STAY },
-      { id: 'johnny', name: '衛道士', pts: 3, timeBonus: 2, stayMs: RAID_STAY },
-      { id: 'johnny', name: '衛道士', pts: 3, timeBonus: 2, stayMs: RAID_STAY },
-      { id: 'evoker', name: '喚魔者', pts: 3, timeBonus: 2, special: 'totem', stayMs: RAID_STAY },
+      { id: 'evoker-copy', name: '掠奪者', pts: 3, timeBonus: 3, sprite: 'evoker', stayMs: RAID_STAY },
+      { id: 'evoker-copy', name: '掠奪者', pts: 3, timeBonus: 3, sprite: 'evoker', stayMs: RAID_STAY },
+      { id: 'evoker-copy', name: '掠奪者', pts: 3, timeBonus: 3, sprite: 'evoker', stayMs: RAID_STAY },
+      { id: 'evoker-copy', name: '掠奪者', pts: 3, timeBonus: 3, sprite: 'evoker', stayMs: RAID_STAY },
+      { id: 'johnny', name: '衛道士', pts: 3, timeBonus: 3, stayMs: RAID_STAY },
+      { id: 'johnny', name: '衛道士', pts: 3, timeBonus: 3, stayMs: RAID_STAY },
+      { id: 'johnny', name: '衛道士', pts: 3, timeBonus: 3, stayMs: RAID_STAY },
+      { id: 'johnny', name: '衛道士', pts: 3, timeBonus: 3, stayMs: RAID_STAY },
+      { id: 'evoker', name: '喚魔者', pts: 3, timeBonus: 3, special: 'totem', stayMs: RAID_STAY },
     ],
     // wave 6: 4 掠奪者 + 2 衛道士 + 2 劫毀獸 + 1 女巫 + 2 喚魔者
     [
-      { id: 'evoker-copy', name: '掠奪者', pts: 3, timeBonus: 2, sprite: 'evoker', stayMs: RAID_STAY },
-      { id: 'evoker-copy', name: '掠奪者', pts: 3, timeBonus: 2, sprite: 'evoker', stayMs: RAID_STAY },
-      { id: 'evoker-copy', name: '掠奪者', pts: 3, timeBonus: 2, sprite: 'evoker', stayMs: RAID_STAY },
-      { id: 'evoker-copy', name: '掠奪者', pts: 3, timeBonus: 2, sprite: 'evoker', stayMs: RAID_STAY },
-      { id: 'johnny', name: '衛道士', pts: 3, timeBonus: 2, stayMs: RAID_STAY },
-      { id: 'johnny', name: '衛道士', pts: 3, timeBonus: 2, stayMs: RAID_STAY },
-      { id: 'ravager', name: '劫毀獸', pts: 5, timeBonus: 3, hp: 2, stayMs: 3000 },
-      { id: 'ravager', name: '劫毀獸', pts: 5, timeBonus: 3, hp: 2, stayMs: 3000 },
-      { id: 'witch', name: '女巫', pts: 2, timeBonus: 1, stayMs: RAID_STAY },
-      { id: 'evoker', name: '喚魔者', pts: 3, timeBonus: 2, special: 'totem', stayMs: RAID_STAY },
-      { id: 'evoker', name: '喚魔者', pts: 3, timeBonus: 2, special: 'totem', stayMs: RAID_STAY },
+      { id: 'evoker-copy', name: '掠奪者', pts: 3, timeBonus: 3, sprite: 'evoker', stayMs: RAID_STAY },
+      { id: 'evoker-copy', name: '掠奪者', pts: 3, timeBonus: 3, sprite: 'evoker', stayMs: RAID_STAY },
+      { id: 'evoker-copy', name: '掠奪者', pts: 3, timeBonus: 3, sprite: 'evoker', stayMs: RAID_STAY },
+      { id: 'evoker-copy', name: '掠奪者', pts: 3, timeBonus: 3, sprite: 'evoker', stayMs: RAID_STAY },
+      { id: 'johnny', name: '衛道士', pts: 3, timeBonus: 3, stayMs: RAID_STAY },
+      { id: 'johnny', name: '衛道士', pts: 3, timeBonus: 3, stayMs: RAID_STAY },
+      { id: 'ravager', name: '劫毀獸', pts: 5, timeBonus: 5, hp: 2, stayMs: 3000 },
+      { id: 'ravager', name: '劫毀獸', pts: 5, timeBonus: 5, hp: 2, stayMs: 3000 },
+      { id: 'witch', name: '女巫', pts: 2, timeBonus: 2, stayMs: RAID_STAY },
+      { id: 'evoker', name: '喚魔者', pts: 3, timeBonus: 3, special: 'totem', stayMs: RAID_STAY },
+      { id: 'evoker', name: '喚魔者', pts: 3, timeBonus: 3, special: 'totem', stayMs: RAID_STAY },
     ],
     // wave 7: 2 掠奪者 + 5 衛道士 + 2 劫毀獸 + 1 女巫
     [
-      { id: 'evoker-copy', name: '掠奪者', pts: 3, timeBonus: 2, sprite: 'evoker', stayMs: RAID_STAY },
-      { id: 'evoker-copy', name: '掠奪者', pts: 3, timeBonus: 2, sprite: 'evoker', stayMs: RAID_STAY },
-      { id: 'johnny', name: '衛道士', pts: 3, timeBonus: 2, stayMs: RAID_STAY },
-      { id: 'johnny', name: '衛道士', pts: 3, timeBonus: 2, stayMs: RAID_STAY },
-      { id: 'johnny', name: '衛道士', pts: 3, timeBonus: 2, stayMs: RAID_STAY },
-      { id: 'johnny', name: '衛道士', pts: 3, timeBonus: 2, stayMs: RAID_STAY },
-      { id: 'johnny', name: '衛道士', pts: 3, timeBonus: 2, stayMs: RAID_STAY },
-      { id: 'ravager', name: '劫毀獸', pts: 5, timeBonus: 3, hp: 2, stayMs: 3000 },
-      { id: 'ravager', name: '劫毀獸', pts: 5, timeBonus: 3, hp: 2, stayMs: 3000 },
-      { id: 'witch', name: '女巫', pts: 2, timeBonus: 1, stayMs: RAID_STAY },
+      { id: 'evoker-copy', name: '掠奪者', pts: 3, timeBonus: 3, sprite: 'evoker', stayMs: RAID_STAY },
+      { id: 'evoker-copy', name: '掠奪者', pts: 3, timeBonus: 3, sprite: 'evoker', stayMs: RAID_STAY },
+      { id: 'johnny', name: '衛道士', pts: 3, timeBonus: 3, stayMs: RAID_STAY },
+      { id: 'johnny', name: '衛道士', pts: 3, timeBonus: 3, stayMs: RAID_STAY },
+      { id: 'johnny', name: '衛道士', pts: 3, timeBonus: 3, stayMs: RAID_STAY },
+      { id: 'johnny', name: '衛道士', pts: 3, timeBonus: 3, stayMs: RAID_STAY },
+      { id: 'johnny', name: '衛道士', pts: 3, timeBonus: 3, stayMs: RAID_STAY },
+      { id: 'ravager', name: '劫毀獸', pts: 5, timeBonus: 5, hp: 2, stayMs: 3000 },
+      { id: 'ravager', name: '劫毀獸', pts: 5, timeBonus: 5, hp: 2, stayMs: 3000 },
+      { id: 'witch', name: '女巫', pts: 2, timeBonus: 2, stayMs: RAID_STAY },
     ],
   ];
 
@@ -220,7 +220,7 @@ const MOB_SMASHER = (() => {
       spawnInterval: null,
       timerInterval: null,
       difficultyInterval: null,
-      spawnSpeed: 1600,
+      spawnSpeed: 1200,
       mobsSmashed: 0,
       friendliesHit: 0,
       // Raid state
@@ -423,7 +423,7 @@ const MOB_SMASHER = (() => {
     const hole = document.getElementById(`msHole${idx}`);
     if (!hole) return;
 
-    const stayDuration = mob.stayMs || (800 + Math.random() * 600);
+    const stayDuration = mob.stayMs || (1200 + Math.random() * 800);
     const maxHp = mob.hp || 1;
 
     const spriteFile = mob.sprite || mob.id;
@@ -822,7 +822,7 @@ const MOB_SMASHER = (() => {
 
   // ═══ Helpers ═══
   function spawnGuardians(elderIdx) {
-    const GUARDIAN = { id: 'guardian', name: '深海守衛', pts: 2, timeBonus: 1 };
+    const GUARDIAN = { id: 'guardian', name: '深海守衛', pts: 2, timeBonus: 2 };
     const adjacent = getAdjacent(elderIdx);
     let spawned = 0;
     for (const adj of adjacent) {
