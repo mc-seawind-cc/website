@@ -453,9 +453,9 @@ const MOB_SMASHER = (() => {
           showFloatingText(el, '-1', '#ff8282');
           updateHUD();
         }
-        checkRaidWaveComplete();
       }
       removeMob(idx);
+      if (state.raidActive) checkRaidWaveComplete();
     }, stayDuration);
   }
 
