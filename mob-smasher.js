@@ -254,7 +254,7 @@ const MOB_SMASHER = (() => {
         <div class="ms-hud-center">
           <div class="ms-totem" id="msTotem" style="display:none" title="不死圖騰（抵擋致命傷害）">${spr('totem','ms-item-sprite','不死圖騰')}${spr('totem','ms-item-sprite ms-totem-2','不死圖騰')}</div>
           <div class="ms-ominous" id="msOminous" style="display:none" title="點擊使用不祥之瓶（獲得不祥之兆）">${spr('ominous-bottle','ms-item-sprite','不祥之瓶')}${spr('ominous-bottle','ms-item-sprite ms-ominous-2','不祥之瓶')}</div>
-          <div class="ms-bad-omen" id="msBadOmen" style="display:none" title="不祥之兆（突襲準備中）">${spr('bad-omen','ms-item-sprite','不祥之兆')}</div>
+          <div class="ms-bad-omen" id="msBadOmen" style="display:none" title="不祥之兆（突襲準備中）"><img src='https://zh.minecraft.wiki/images/thumb/Bad_Omen_JE3_BE3.png/150px-Bad_Omen_JE3_BE3.png?a0cb0' alt='不祥之兆' class='ms-item-sprite'></div>
         </div>
         <div class="ms-hud-right">
           <span class="ms-timer" id="msTimer">30</span>秒
@@ -695,9 +695,10 @@ const MOB_SMASHER = (() => {
   function checkRaidWaveComplete() {
     if (!state.raidActive) return;
 
-    // Check if all mobs in current wave are gone
-    const allGone = state.raidQueue.every(q => !state.holes[q.holeIdx]);
-    if (allGone && state.raidQueue.length > 0) {
+    // Check if all spawned mobs in current wave are gone
+    const spawned = state.raidQueue.filter(q => q.spawned);
+    const allGone = spawned.length > 0 && spawned.every(q => !state.holes[q.holeIdx]);
+    if (allGone) {
       state.raidQueue = [];
 
       if (state.raidWave >= state.raidTotalWaves) {
