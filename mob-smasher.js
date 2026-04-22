@@ -220,7 +220,7 @@ const MOB_SMASHER = (() => {
       spawnInterval: null,
       timerInterval: null,
       difficultyInterval: null,
-      spawnSpeed: 1200,
+      spawnSpeed: 1600,
       mobsSmashed: 0,
       friendliesHit: 0,
       // Raid state
@@ -320,7 +320,7 @@ const MOB_SMASHER = (() => {
     state.spawnInterval = setInterval(spawnMob, state.spawnSpeed);
 
     state.difficultyInterval = setInterval(() => {
-      if (state.spawnSpeed > 500) {
+      if (state.spawnSpeed > 700) {
         state.spawnSpeed -= 50;
         clearInterval(state.spawnInterval);
         state.spawnInterval = setInterval(spawnMob, state.spawnSpeed);
