@@ -99,31 +99,89 @@
       <div class="rules-chapter fade-in">
         <h2>第一章 — 總則</h2>
 
+        <h3 class="chapter-sub">▪ 第一節 適用範圍</h3>
+
         <div class="rule-item">
-          <p><strong>1.</strong> 以下項目須遵守本規範：</p>
+          <p><strong>1.</strong> 本規範適用對象</p>
           <ul>
             <li>任何透過 MMOitems 製作的裝備（盔甲套裝、飾品）</li>
             <li>任何特殊武器（劍、斧、弓、弩、三叉戟等非原版附魔武器）</li>
             <li>任何特殊工具（稿子、鏟子、鋤頭等非原版附魔工具）</li>
             <li>任何帶有自訂數值的消耗品、捲軸、材料</li>
             <li>活動獎勵、兌換物品中涉及上述類別者</li>
+          </ul>
+        </div>
+
+        <div class="rule-item">
+          <p><strong>2.</strong> 本規範適用活動與資源包</p>
+          <ul>
             <li>伺服器官方舉辦的各類活動（常駐、限時、比賽、社群）</li>
             <li>自訂物品紋理（MMOitems、ExecutableItems 等插件使用的自訂模型與貼圖）</li>
             <li>伺服器資源包（整體 resource pack，含 UI 介面、環境方塊、音效替換、語言檔案等）</li>
           </ul>
         </div>
 
+        <h3 class="chapter-sub">▪ 第二節 名詞定義</h3>
+
         <div class="rule-item">
-          <p><strong>2.</strong> 名詞定義</p>
+          <p><strong>3.</strong> 特殊道具</p>
           <ul>
-            <li><strong>特殊道具</strong> — 透過插件（MMOitems / ExecutableItems）製作、帶有自訂數值的非原版物品，包含武器、工具、盔甲、飾品</li>
-            <li><strong>原版滿附魔</strong> — Minecraft 原版中同類物品在附魔台或鐵砧所能達到的最高數值，作為設計基準線的參考</li>
-            <li><strong>Custom Model Data</strong> — Minecraft 的物品模型標記機制，透過 JSON 指定特定物品套用自訂 3D 模型與貼圖（簡稱 CMD）</li>
-            <li><strong>資源包</strong> — Resource Pack，包含貼圖、模型、音效、語言檔案等，安裝後改變遊戲視覺呈現。伺服器端可設定為強制載入</li>
-            <li><strong>紋理</strong> — Texture，指 PNG 格式的像素貼圖，為資源包中最基本的視覺元件</li>
-            <li><strong>分流</strong> — 伺服器的不同實例。分流一（養老）支援插件與自訂裝備；分流二（紅石）僅支援原版機制；分流三（活動分流）用於活動場景；測試分流供內部測試使用</li>
-            <li><strong>兌換材料</strong> — 用於兌換特殊裝備的遊戲內資源，包含任務幣、活動獎勵、礦物等</li>
-            <li><strong>階梯</strong> — 特殊裝備的強度分級，分為低階、中階、高階，各有不同的數值天花板</li>
+            <li>透過插件（MMOitems / ExecutableItems）製作、帶有自訂數值的非原版物品</li>
+            <li>包含武器、工具、盔甲、飾品</li>
+          </ul>
+        </div>
+
+        <div class="rule-item">
+          <p><strong>4.</strong> 原版滿附魔</p>
+          <ul>
+            <li>Minecraft 原版中同類物品在附魔台或鐵砧所能達到的最高數值</li>
+            <li>作為設計基準線的參考標準</li>
+          </ul>
+        </div>
+
+        <div class="rule-item">
+          <p><strong>5.</strong> Custom Model Data（CMD）</p>
+          <ul>
+            <li>Minecraft 的物品模型標記機制，透過 JSON 指定特定物品套用自訂 3D 模型與貼圖</li>
+          </ul>
+        </div>
+
+        <div class="rule-item">
+          <p><strong>6.</strong> 資源包</p>
+          <ul>
+            <li>Resource Pack，包含貼圖、模型、音效、語言檔案等，安裝後改變遊戲視覺呈現</li>
+            <li>伺服器端可設定為強制載入</li>
+          </ul>
+        </div>
+
+        <div class="rule-item">
+          <p><strong>7.</strong> 紋理</p>
+          <ul>
+            <li>Texture，指 PNG 格式的像素貼圖，為資源包中最基本的視覺元件</li>
+          </ul>
+        </div>
+
+        <div class="rule-item">
+          <p><strong>8.</strong> 分流</p>
+          <ul>
+            <li>分流一（養老）— 支援插件與自訂裝備</li>
+            <li>分流二（紅石）— 僅支援原版機制</li>
+            <li>分流三（活動分流）— 用於活動場景</li>
+            <li>測試分流 — 供內部測試使用</li>
+          </ul>
+        </div>
+
+        <div class="rule-item">
+          <p><strong>9.</strong> 兌換材料</p>
+          <ul>
+            <li>用於兌換特殊裝備的遊戲內資源，包含任務幣、活動獎勵、礦物等</li>
+          </ul>
+        </div>
+
+        <div class="rule-item">
+          <p><strong>10.</strong> 階梯</p>
+          <ul>
+            <li>特殊裝備的強度分級，分為低階、中階、高階，各有不同的數值天花板</li>
           </ul>
         </div>
       </div>
@@ -136,39 +194,61 @@
 
         <h3 class="chapter-sub">▪ 第一節 裝備體系</h3>
 
-        <div class="lore-block">
-          <h3>🐟 裝備套裝 — 那個魚系列（魚套）</h3>
-          <p>魚套是海風最核心的常駐活動裝備系列，分為舊魚套與新魚套兩代。</p>
+        <div class="rule-item">
+          <p><strong>11.</strong> 魚套系列（那個魚系列）</p>
           <ul>
+            <li>海風最核心的常駐活動裝備系列，分為舊魚套與新魚套兩代</li>
             <li><strong>舊魚套</strong> — 早期版本，含壓力瑪斯內等部件。數值崩壞，已不再開放兌換 ⚠️ 停用</li>
             <li><strong>新魚套</strong> — 重新設計的版本，數值經過調整。分低/中/高階 ✅ 現行版本</li>
           </ul>
         </div>
 
-        <div class="lore-block">
-          <h3>⚔️ 武器</h3>
+        <div class="rule-item">
+          <p><strong>12.</strong> 紅蓮劍</p>
           <ul>
-            <li><strong>紅蓮劍</strong> — 紅蓮煉獄（常駐副本）｜⚠️ 已不可兌換，僅存量持有</li>
-            <li><strong>鋼劍</strong> — 鋼鋼好活動｜可開放兌換，數值仍需調整</li>
-            <li><strong>鋼刃</strong> — 鋼鋼好活動｜可開放兌換，數值仍需調整</li>
-            <li><strong>創物之杖</strong> — 生存起源活動｜活動進行中，分期開放（115.04.02 ~ 7/30）</li>
+            <li>來源：紅蓮煉獄（常駐副本）</li>
+            <li>狀態：⚠️ 已不可兌換，僅存量持有</li>
           </ul>
         </div>
 
-        <div class="lore-block">
-          <h3>🔧 工具與材料</h3>
+        <div class="rule-item">
+          <p><strong>13.</strong> 鋼劍／鋼刃</p>
           <ul>
-            <li><strong>風汐系列工具（稿子等）</strong> — 高階生產工具，透過風汐碎片/風汐石兌換</li>
+            <li>來源：鋼鋼好活動</li>
+            <li>狀態：可開放兌換，數值仍需調整</li>
+          </ul>
+        </div>
+
+        <div class="rule-item">
+          <p><strong>14.</strong> 創物之杖</p>
+          <ul>
+            <li>來源：生存起源活動</li>
+            <li>狀態：活動進行中，分期開放（115.04.02 ~ 7/30）</li>
+          </ul>
+        </div>
+
+        <div class="rule-item">
+          <p><strong>15.</strong> 風汐系列工具</p>
+          <ul>
+            <li>高階生產工具（稿子、鋤斧鎬鏟等），透過風汐碎片/風汐石兌換</li>
             <li><strong>風汐碎片</strong> — 兌換風汐系列工具的基礎材料</li>
             <li><strong>風汐石</strong> — 兌換風汐系列工具的進階材料</li>
           </ul>
-          <p style="font-size:0.85rem;color:var(--fog);margin-top:var(--space-sm);">特殊裝備透過 ExecutableItems 與 MMOItems 兩個插件製作，設計時需同時考慮兩者的交互影響。冷媒為會員贊助代幣，不歸屬本規範管理。</p>
+        </div>
+
+        <div class="rule-item">
+          <p><strong>16.</strong> 製作插件說明</p>
+          <ul>
+            <li>特殊裝備透過 ExecutableItems 與 MMOItems 兩個插件製作</li>
+            <li>設計時需同時考慮兩者的交互影響</li>
+            <li>冷媒為會員贊助代幣，不歸屬本規範管理</li>
+          </ul>
         </div>
 
         <h3 class="chapter-sub">▪ 第二節 數值設計</h3>
 
         <div class="rule-item">
-          <p><strong>3.</strong> 數值基準線</p>
+          <p><strong>17.</strong> 數值基準線</p>
           <ul>
             <li>所有特殊裝備的數值必須基於原版同類物品做為起點</li>
             <li>標示的附魔等級（如效率、保護）必須與實際效果一致，不得標示高於實際數值</li>
@@ -177,19 +257,58 @@
         </div>
 
         <div class="rule-item">
-          <p><strong>4.</strong> 階梯限制 — 特殊裝備的數值不得超過以下天花板（相對原版滿附魔）：</p>
+          <p><strong>18.</strong> 攻擊傷害限制（相對原版滿附魔）</p>
           <ul>
-            <li><strong>攻擊傷害</strong> — 低階：原版 80%、中階：原版 100%、高階：原版 115%、天花板：不得超過 130%</li>
-            <li><strong>挖掘速度</strong> — 低階：原版 80%、中階：原版 100%、高階：原版 110%、天花板：不得超過 120%</li>
-            <li><strong>防禦值</strong> — 低階：原版 80%、中階：原版 100%、高階：原版 110%、天花板：不得超過 120%</li>
-            <li><strong>附魔等級</strong> — 低階：≤ 原版上限、中階：≤ 原版上限、高階：≤ 原版+1、天花板：絕對不超過 原版+2</li>
-            <li><strong>特殊效果</strong> — 低階：無、中階：+50% 以內、高階：+100% 以內、天花板：不超過 +150%</li>
+            <li><strong>低階</strong> — 原版 80%</li>
+            <li><strong>中階</strong> — 原版 100%</li>
+            <li><strong>高階</strong> — 原版 115%</li>
+            <li><strong>天花板</strong> — 不得超過 130%</li>
           </ul>
-          <p style="font-size:0.85rem;color:var(--fog);">以上數值為建議基準，實際數值應視取得難度與經濟狀況調整。任何超過天花板上限的設計，需經伺服主親自批准。</p>
         </div>
 
         <div class="rule-item">
-          <p><strong>5.</strong> 連動效應檢查</p>
+          <p><strong>19.</strong> 挖掘速度限制（相對原版滿附魔）</p>
+          <ul>
+            <li><strong>低階</strong> — 原版 80%</li>
+            <li><strong>中階</strong> — 原版 100%</li>
+            <li><strong>高階</strong> — 原版 110%</li>
+            <li><strong>天花板</strong> — 不得超過 120%</li>
+          </ul>
+        </div>
+
+        <div class="rule-item">
+          <p><strong>20.</strong> 防禦值限制（相對原版滿附魔）</p>
+          <ul>
+            <li><strong>低階</strong> — 原版 80%</li>
+            <li><strong>中階</strong> — 原版 100%</li>
+            <li><strong>高階</strong> — 原版 110%</li>
+            <li><strong>天花板</strong> — 不得超過 120%</li>
+          </ul>
+        </div>
+
+        <div class="rule-item">
+          <p><strong>21.</strong> 附魔等級限制</p>
+          <ul>
+            <li><strong>低階</strong> — ≤ 原版上限</li>
+            <li><strong>中階</strong> — ≤ 原版上限</li>
+            <li><strong>高階</strong> — ≤ 原版+1</li>
+            <li><strong>天花板</strong> — 絕對不超過 原版+2</li>
+          </ul>
+        </div>
+
+        <div class="rule-item">
+          <p><strong>22.</strong> 特殊效果限制</p>
+          <ul>
+            <li><strong>低階</strong> — 無</li>
+            <li><strong>中階</strong> — +50% 以內</li>
+            <li><strong>高階</strong> — +100% 以內</li>
+            <li><strong>天花板</strong> — 不超過 +150%</li>
+          </ul>
+          <p style="font-size:0.85rem;color:var(--fog);margin-top:var(--space-sm);">以上數值為建議基準，實際數值應視取得難度與經濟狀況調整。任何超過天花板上限的設計，需經伺服主親自批准。</p>
+        </div>
+
+        <div class="rule-item">
+          <p><strong>23.</strong> 連動效應檢查</p>
           <ul>
             <li>設計前必須考慮：搭配捲軸、烽火台效果、套裝組合後數值是否超標</li>
             <li>與防礦透、反作弊等插件的交互影響需一併確認</li>
@@ -198,7 +317,7 @@
         </div>
 
         <div class="rule-item">
-          <p><strong>6.</strong> 分流限制</p>
+          <p><strong>24.</strong> 分流限制</p>
           <ul>
             <li>分流二不支援 MMOitems，所有特殊裝備在分流二均不可使用</li>
             <li>設計時需考慮：玩家在分流一取得裝備後到分流二的行為影響</li>
@@ -206,7 +325,7 @@
         </div>
 
         <div class="rule-item">
-          <p><strong>7.</strong> 兌換經濟平衡</p>
+          <p><strong>25.</strong> 兌換經濟平衡</p>
           <ul>
             <li>兌換材料的取得途徑與取得速率必須納入設計考量，不可只看裝備本身的數值</li>
             <li>若兌換材料可透過大量採集取得（如獄髓等礦物），需評估玩家大規模開採對經濟的衝擊</li>
@@ -217,7 +336,7 @@
         <h3 class="chapter-sub">▪ 第三節 審核流程</h3>
 
         <div class="rule-item">
-          <p><strong>8.</strong> 提案階段 — 設計師提出物品方案，須包含以下內容：</p>
+          <p><strong>26.</strong> 提案階段 — 設計師提出物品方案，須包含以下內容：</p>
           <ul>
             <li><strong>物品名稱與定位</strong> — 這件裝備在體系中的角色是什麼</li>
             <li><strong>完整數值表</strong> — 攻擊、防禦、附魔、特殊效果，需附實測數據</li>
@@ -229,7 +348,7 @@
         </div>
 
         <div class="rule-item">
-          <p><strong>9.</strong> 審核與測試</p>
+          <p><strong>27.</strong> 審核與測試</p>
           <ul>
             <li>方案提交後，至少須有一位非設計者的管理人員 review</li>
             <li>審核重點：數值是否在規範範圍內、取得難度是否匹配、連動風險是否可控</li>
@@ -241,7 +360,7 @@
         <h3 class="chapter-sub">▪ 第四節 上線後調整</h3>
 
         <div class="rule-item">
-          <p><strong>10.</strong> 調整原則</p>
+          <p><strong>28.</strong> 調整原則</p>
           <ul>
             <li>先觀察，再動刀 —— 上線後至少觀察 1 週再評估是否需要調整</li>
             <li>小幅度優先 —— 每次調整幅度不超過 20%</li>
@@ -250,7 +369,7 @@
         </div>
 
         <div class="rule-item">
-          <p><strong>11.</strong> 補償與退回機制</p>
+          <p><strong>29.</strong> 補償與退回機制</p>
           <ul>
             <li>因數據問題導致物品下架的，玩家可申請 100% 退回兌換資源</li>
             <li>因平衡調整而下調的，應視影響程度提供部分補償</li>
@@ -259,7 +378,7 @@
         </div>
 
         <div class="rule-item">
-          <p><strong>12.</strong> 緊急處理</p>
+          <p><strong>30.</strong> 緊急處理</p>
           <ul>
             <li>發現嚴重數據問題（如數值溢出、功能異常）時，可先緊急下架並公告說明</li>
             <li>緊急下架後 48 小時內須發佈正式說明與後續處理方案</li>
@@ -268,16 +387,69 @@
         </div>
 
         <h3 class="chapter-sub">▪ 第五節 歷史紀錄</h3>
+
         <div class="rule-item">
+          <p><strong>31.</strong> 前服時期</p>
           <ul>
-            <li><strong>前服時期</strong> — 純麥時期裝備多次調整（約 3~5 次）｜原因：早期裝備數值設計經驗不足｜逐步調整，具體紀錄已佚失</li>
-            <li><strong>113.11.30</strong> — 工具/裝備附魔錯誤｜原因：部分玩家附魔後效果異常｜開單回報處理</li>
-            <li><strong>114.03.08</strong> — 高階魚套缺少附魔/技能｜原因：製作遺漏｜補發新品給已兌換玩家</li>
-            <li><strong>114.08.18</strong> — 壓力瑪斯內（魚套）下架｜原因：數據問題 + 玩家回饋｜下架停用、100%退還資源</li>
-            <li><strong>114.08.31</strong> — 紅蓮劍數值合併調整｜原因：數值分散過於複雜｜合併簡化、提供兌換補償</li>
-            <li><strong>115.02.08</strong> — 魚套/風汐工具格式換新｜原因：伺服器更新至 1.21.11，MMOitem 格式不相容｜統一換新格式、調整數值</li>
-            <li><strong>115.03.16</strong> — 魚套材料兌換調整｜原因：平衡微調｜調整兌換數量</li>
-            <li><strong>115.04.11</strong> — 風汐石稿子效率爭議｜原因：效率 10 數值過高、與插件計算方式不匹配｜降至效率 7、挖掘速度額外扣除</li>
+            <li>純麥時期裝備多次調整（約 3~5 次）</li>
+            <li>原因：早期裝備數值設計經驗不足</li>
+            <li>逐步調整，具體紀錄已佚失</li>
+          </ul>
+        </div>
+
+        <div class="rule-item">
+          <p><strong>32.</strong> 113.11.30 — 工具/裝備附魔錯誤</p>
+          <ul>
+            <li>原因：部分玩家附魔後效果異常</li>
+            <li>處理：開單回報處理</li>
+          </ul>
+        </div>
+
+        <div class="rule-item">
+          <p><strong>33.</strong> 114.03.08 — 高階魚套缺少附魔/技能</p>
+          <ul>
+            <li>原因：製作遺漏</li>
+            <li>處理：補發新品給已兌換玩家</li>
+          </ul>
+        </div>
+
+        <div class="rule-item">
+          <p><strong>34.</strong> 114.08.18 — 壓力瑪斯內（魚套）下架</p>
+          <ul>
+            <li>原因：數據問題 + 玩家回饋</li>
+            <li>處理：下架停用、100%退還資源</li>
+          </ul>
+        </div>
+
+        <div class="rule-item">
+          <p><strong>35.</strong> 114.08.31 — 紅蓮劍數值合併調整</p>
+          <ul>
+            <li>原因：數值分散過於複雜</li>
+            <li>處理：合併簡化、提供兌換補償</li>
+          </ul>
+        </div>
+
+        <div class="rule-item">
+          <p><strong>36.</strong> 115.02.08 — 魚套/風汐工具格式換新</p>
+          <ul>
+            <li>原因：伺服器更新至 1.21.11，MMOitem 格式不相容</li>
+            <li>處理：統一換新格式、調整數值</li>
+          </ul>
+        </div>
+
+        <div class="rule-item">
+          <p><strong>37.</strong> 115.03.16 — 魚套材料兌換調整</p>
+          <ul>
+            <li>原因：平衡微調</li>
+            <li>處理：調整兌換數量</li>
+          </ul>
+        </div>
+
+        <div class="rule-item">
+          <p><strong>38.</strong> 115.04.11 — 風汐石稿子效率爭議</p>
+          <ul>
+            <li>原因：效率 10 數值過高、與插件計算方式不匹配</li>
+            <li>處理：降至效率 7、挖掘速度額外扣除</li>
           </ul>
         </div>
 
@@ -292,7 +464,7 @@
         <h3 class="chapter-sub">▪ 第一節 活動設計總則</h3>
 
         <div class="rule-item">
-          <p><strong>13.</strong> 適用範圍 — 以下類型的活動須遵守本章規範：</p>
+          <p><strong>39.</strong> 適用範圍 — 以下類型的活動須遵守本章規範：</p>
           <ul>
             <li>伺服器官方舉辦的限時活動（節慶、比賽、挑戰等）</li>
             <li>常駐活動的新增、改版或獎勵調整</li>
@@ -302,50 +474,119 @@
         </div>
 
         <div class="rule-item">
-          <p><strong>14.</strong> 設計原則</p>
+          <p><strong>40.</strong> 公平性原則</p>
           <ul>
-            <li><strong>公平性</strong> — 活動門檻不應造成新舊玩家的過大差距，獎勵不應只對特定玩家群體有利</li>
-            <li><strong>可參與性</strong> — 活動時間應考量不同時區玩家，至少提供 3 天以上的參與窗口</li>
-            <li><strong>趣味優先</strong> — 活動的核心應是好玩，而非單純刷材料或重複勞動</li>
-            <li><strong>資源可控</strong> — 活動產出的資源量必須經過經濟影響評估，避免通膨</li>
-            <li><strong>透明公開</strong> — 活動規則、獎勵機率（如有隨機性）、參與條件須在公告中完整說明</li>
+            <li>活動門檻不應造成新舊玩家的過大差距</li>
+            <li>獎勵不應只對特定玩家群體有利</li>
           </ul>
         </div>
 
         <div class="rule-item">
-          <p><strong>15.</strong> 活動分類</p>
+          <p><strong>41.</strong> 可參與性原則</p>
           <ul>
-            <li><strong>常駐活動</strong> — 長期開放的遊戲內容，玩家可隨時參與。例：紅蓮煉獄副本、釣魚大賽</li>
-            <li><strong>限時活動</strong> — 有明確起迄時間的活動，通常配合節慶或版本更新。例：萬聖節活動、週年慶</li>
-            <li><strong>比賽型活動</strong> — 有競賽性質，可能涉及排名或對抗。例：建築比賽、PvP 錦標賽</li>
-            <li><strong>社群活動</strong> — 由玩家發起、管理團隊協助執行的活動。例：玩家市集、社區祭典</li>
+            <li>活動時間應考量不同時區玩家</li>
+            <li>至少提供 3 天以上的參與窗口</li>
+          </ul>
+        </div>
+
+        <div class="rule-item">
+          <p><strong>42.</strong> 趣味優先原則</p>
+          <ul>
+            <li>活動的核心應是好玩，而非單純刷材料或重複勞動</li>
+          </ul>
+        </div>
+
+        <div class="rule-item">
+          <p><strong>43.</strong> 資源可控原則</p>
+          <ul>
+            <li>活動產出的資源量必須經過經濟影響評估，避免通膨</li>
+          </ul>
+        </div>
+
+        <div class="rule-item">
+          <p><strong>44.</strong> 透明公開原則</p>
+          <ul>
+            <li>活動規則、獎勵機率（如有隨機性）、參與條件須在公告中完整說明</li>
+          </ul>
+        </div>
+
+        <div class="rule-item">
+          <p><strong>45.</strong> 常駐活動</p>
+          <ul>
+            <li>長期開放的遊戲內容，玩家可隨時參與</li>
+            <li>例：紅蓮煉獄副本、釣魚大賽</li>
+          </ul>
+        </div>
+
+        <div class="rule-item">
+          <p><strong>46.</strong> 限時活動</p>
+          <ul>
+            <li>有明確起迄時間的活動，通常配合節慶或版本更新</li>
+            <li>例：萬聖節活動、週年慶</li>
+          </ul>
+        </div>
+
+        <div class="rule-item">
+          <p><strong>47.</strong> 比賽型活動</p>
+          <ul>
+            <li>有競賽性質，可能涉及排名或對抗</li>
+            <li>例：建築比賽、PvP 錦標賽</li>
+          </ul>
+        </div>
+
+        <div class="rule-item">
+          <p><strong>48.</strong> 社群活動</p>
+          <ul>
+            <li>由玩家發起、管理團隊協助執行的活動</li>
+            <li>例：玩家市集、社區祭典</li>
           </ul>
         </div>
 
         <h3 class="chapter-sub">▪ 第二節 活動獎勵設計</h3>
 
         <div class="rule-item">
-          <p><strong>16.</strong> 獎勵階梯 — 活動獎勵應分層設計，避免單一大獎造成過度競爭：</p>
+          <p><strong>49.</strong> 基礎參與獎勵</p>
           <ul>
-            <li><strong>基礎參與獎勵</strong> — 所有完成基本條件的玩家均可獲得。鼓勵參與，價值適中，通常是材料或貨幣</li>
-            <li><strong>進階達成獎勵</strong> — 完成額外挑戰或達到一定門檻。中等價值，可包含特殊裝備或限定稱號</li>
-            <li><strong>頂尖排名獎勵</strong> — 排名前列的玩家獲得。高價值但非破壞性，優先考慮外觀/稱號而非戰鬥數值</li>
+            <li>所有完成基本條件的玩家均可獲得</li>
+            <li>鼓勵參與，價值適中，通常是材料或貨幣</li>
           </ul>
         </div>
 
         <div class="rule-item">
-          <p><strong>17.</strong> 獎勵平衡限制</p>
+          <p><strong>50.</strong> 進階達成獎勵</p>
+          <ul>
+            <li>完成額外挑戰或達到一定門檻</li>
+            <li>中等價值，可包含特殊裝備或限定稱號</li>
+          </ul>
+        </div>
+
+        <div class="rule-item">
+          <p><strong>51.</strong> 頂尖排名獎勵</p>
+          <ul>
+            <li>排名前列的玩家獲得</li>
+            <li>高價值但非破壞性，優先考慮外觀/稱號而非戰鬥數值</li>
+          </ul>
+        </div>
+
+        <div class="rule-item">
+          <p><strong>52.</strong> 獎勵數值限制</p>
           <ul>
             <li>活動獎勵中的裝備、武器、工具，數值必須符合第二章的道具設計規範</li>
-            <li>限時活動的獎勵不應永久性地改變伺服器經濟結構</li>
             <li>排名獎勵的戰鬥數值增幅不得超過同期常駐活動裝備的 120%</li>
             <li>消耗性獎勵（經驗、貨幣、材料）的單次活動總產出需經經濟影響評估</li>
-            <li>純外觀獎勵（特殊粒子效果、限定皮膚、獨特稱號）不受數值限制，可作為高排名獎勵</li>
           </ul>
         </div>
 
         <div class="rule-item">
-          <p><strong>18.</strong> 限定與回歸機制</p>
+          <p><strong>53.</strong> 純外觀獎勵</p>
+          <ul>
+            <li>特殊粒子效果、限定皮膚、獨特稱號等不受數值限制</li>
+            <li>可作為高排名獎勵，鼓勵競技但不破壞平衡</li>
+          </ul>
+        </div>
+
+        <div class="rule-item">
+          <p><strong>54.</strong> 限定與回歸機制</p>
           <ul>
             <li>限時活動的獎勵可以標註「限定」，但應規劃未來可能的回歸管道</li>
             <li>完全絕版的獎勵會造成 FOMO 焦慮與新玩家劣勢，不建議常態化</li>
@@ -356,57 +597,130 @@
         <h3 class="chapter-sub">▪ 第三節 活動執行與防弊</h3>
 
         <div class="rule-item">
-          <p><strong>19.</strong> 前置準備</p>
+          <p><strong>55.</strong> 前置準備 — 測試</p>
           <ul>
             <li>活動上線前須在測試環境完整跑過一遍流程，確認無重大 bug</li>
-            <li>預先準備異常處理方案：伺服器崩潰、玩家異常取得獎勵、活動進度遺失等情況</li>
-            <li>活動公告須包含：時間、規則、獎勵、參與方式、注意事項，至少提前 24 小時發佈</li>
           </ul>
         </div>
 
         <div class="rule-item">
-          <p><strong>20.</strong> 防刷與反作弊</p>
+          <p><strong>56.</strong> 前置準備 — 異常應變</p>
           <ul>
-            <li>設計時需考慮小號刷活動的可能性，必要時設置帳號等級或遊玩時數門檻</li>
-            <li>重複性活動任務應設置每日/每帳號上限，避免 24 小時掛機刷取</li>
+            <li>預先準備異常處理方案：伺服器崩潰、玩家異常取得獎勵、活動進度遺失等情況</li>
+          </ul>
+        </div>
+
+        <div class="rule-item">
+          <p><strong>57.</strong> 前置準備 — 公告要求</p>
+          <ul>
+            <li>活動公告須包含：時間、規則、獎勵、參與方式、注意事項</li>
+            <li>至少提前 24 小時發佈</li>
+          </ul>
+        </div>
+
+        <div class="rule-item">
+          <p><strong>58.</strong> 防小號刷活動</p>
+          <ul>
+            <li>設計時需考慮小號刷活動的可能性</li>
+            <li>必要時設置帳號等級或遊玩時數門檻</li>
+          </ul>
+        </div>
+
+        <div class="rule-item">
+          <p><strong>59.</strong> 重複任務上限</p>
+          <ul>
+            <li>重複性活動任務應設置每日/每帳號上限</li>
+            <li>避免 24 小時掛機刷取</li>
+          </ul>
+        </div>
+
+        <div class="rule-item">
+          <p><strong>60.</strong> 排行榜監控</p>
+          <ul>
             <li>排行榜類活動應有異常數據監控（如短時間內不合理的完成速度）</li>
             <li>發現作弊行為時，參照管理規則處理，活動獎勵可追溯取消</li>
           </ul>
         </div>
 
         <div class="rule-item">
-          <p><strong>21.</strong> 活動結束與善後</p>
+          <p><strong>61.</strong> 獎勵發放時限</p>
           <ul>
             <li>活動結束後須在 48 小時內發放完畢所有獎勵</li>
+          </ul>
+        </div>
+
+        <div class="rule-item">
+          <p><strong>62.</strong> 申訴窗口</p>
+          <ul>
             <li>活動結束後保留至少 7 天的申訴窗口，處理遺漏或異常情況</li>
+          </ul>
+        </div>
+
+        <div class="rule-item">
+          <p><strong>63.</strong> 活動區域處理</p>
+          <ul>
             <li>限時活動結束後，活動區域（如有特殊建築）應妥善處理：保留觀賞、移除或轉為常態</li>
-            <li>活動結束後進行復盤：參與人數、玩家回饋、經濟影響，記錄供下次參考</li>
+          </ul>
+        </div>
+
+        <div class="rule-item">
+          <p><strong>64.</strong> 活動復盤</p>
+          <ul>
+            <li>活動結束後進行復盤：參與人數、玩家回饋、經濟影響</li>
+            <li>記錄供下次參考</li>
           </ul>
         </div>
 
         <h3 class="chapter-sub">▪ 第四節 活動審核流程</h3>
 
         <div class="rule-item">
-          <p><strong>22.</strong> 活動提案須包含以下內容：</p>
+          <p><strong>65.</strong> 活動提案內容 — 基本資訊</p>
           <ul>
             <li><strong>活動名稱與類型</strong> — 限時？常駐？比賽？社群？</li>
             <li><strong>活動時間</strong> — 起迄日期、每日開放時段</li>
             <li><strong>參與條件</strong> — 誰能參加？需要什麼門檻？</li>
+          </ul>
+        </div>
+
+        <div class="rule-item">
+          <p><strong>66.</strong> 活動提案內容 — 規則與獎勵</p>
+          <ul>
             <li><strong>規則與流程</strong> — 完整玩法說明，包含異常情況處理</li>
             <li><strong>獎勵表</strong> — 各層級獎勵內容、數量、機率（如有隨機性）</li>
             <li><strong>經濟影響評估</strong> — 預估產出量、對市場的可能影響</li>
+          </ul>
+        </div>
+
+        <div class="rule-item">
+          <p><strong>67.</strong> 活動提案內容 — 資源與風險</p>
+          <ul>
             <li><strong>所需資源</strong> — 需要管理團隊投入多少人力、時間、伺服器資源</li>
             <li><strong>風險與應變</strong> — 最壞情況是什麼？備案是什麼？</li>
           </ul>
         </div>
 
         <div class="rule-item">
-          <p><strong>23.</strong> 審核標準</p>
+          <p><strong>68.</strong> 審核標準 — 小型活動</p>
           <ul>
-            <li>小型活動（影響範圍有限、獎勵價值較低）：至少一位管理人員核准即可</li>
-            <li>中型活動（涉及特殊裝備獎勵或大量經濟資源）：需兩位以上管理人員 review</li>
-            <li>大型活動（全服參與、含稀有獎勵或排名機制）：需經伺服主批准</li>
-            <li>所有活動審核時，應同時確認獎勵物品是否符合道具設計規範（第二章）</li>
+            <li>影響範圍有限、獎勵價值較低</li>
+            <li>至少一位管理人員核准即可</li>
+          </ul>
+        </div>
+
+        <div class="rule-item">
+          <p><strong>69.</strong> 審核標準 — 中型活動</p>
+          <ul>
+            <li>涉及特殊裝備獎勵或大量經濟資源</li>
+            <li>需兩位以上管理人員 review</li>
+          </ul>
+        </div>
+
+        <div class="rule-item">
+          <p><strong>70.</strong> 審核標準 — 大型活動</p>
+          <ul>
+            <li>全服參與、含稀有獎勵或排名機制</li>
+            <li>需經伺服主批准</li>
+            <li>應同時確認獎勵物品是否符合道具設計規範（第二章）</li>
           </ul>
         </div>
 
@@ -421,7 +735,7 @@
         <h3 class="chapter-sub">▪ 第一節 技術標準</h3>
 
         <div class="rule-item">
-          <p><strong>24.</strong> 解析度限制</p>
+          <p><strong>71.</strong> 解析度限制</p>
           <ul>
             <li>標準解析度為 <strong>16×16</strong> 像素，與 Minecraft 原版風格一致</li>
             <li>特殊 UI 元素（如自訂選單背景、活動封面）最高可使用 <strong>32×32</strong>，但須確保在預設 GUI 縮放下清晰可辨</li>
@@ -431,37 +745,76 @@
         </div>
 
         <div class="rule-item">
-          <p><strong>25.</strong> 檔案格式與大小</p>
+          <p><strong>72.</strong> 貼圖檔案格式</p>
           <ul>
-            <li><strong>貼圖檔案</strong> — PNG（32-bit RGBA）。需要透明度時使用 RGBA，不需要時可用 RGB 減小體積</li>
-            <li><strong>3D 模型</strong> — JSON（Minecraft model format）。須通過 Blockbench 或等效工具匯出驗證</li>
-            <li><strong>音效替換</strong> — OGG（Vorbis）。單檔不超過 500KB，避免載入延遲</li>
-            <li><strong>字型檔案</strong> — PNG + JSON（Minecraft font provider）。須與語言檔案對應</li>
-          </ul>
-          <p style="font-size:0.85rem;color:var(--fog);margin-top:var(--space-sm);">整體資源包壓縮後大小建議控制在 <strong>10MB 以內</strong>。過大的資源包會導致玩家首次載入延遲，影響加入體驗。每次更新應記錄壓縮後體積變化。</p>
-        </div>
-
-        <div class="rule-item">
-          <p><strong>26.</strong> 命名規範與目錄結構</p>
-          <ul>
-            <li>所有自訂紋理使用統一前綴 <code>sw_</code>（seawind 縮寫），避免與原版或其他資源包衝突</li>
-            <li>目錄結構遵循 Minecraft resource pack 標準：<code>assets/minecraft/textures/...</code> 或 <code>assets/seawind/textures/...</code></li>
-            <li>Custom Model Data 使用有組織的編號區段，避免隨意指定造成衝突：
-              <ul>
-                <li><strong>1000–1999</strong> — 魚套系列裝備</li>
-                <li><strong>2000–2999</strong> — 風汐系列工具</li>
-                <li><strong>3000–3999</strong> — 活動限定物品</li>
-                <li><strong>4000–4999</strong> — 副本 Boss 專用</li>
-                <li><strong>5000–5999</strong> — 會員專屬外觀</li>
-                <li><strong>9000–9999</strong> — UI 介面與系統用</li>
-              </ul>
-            </li>
-            <li>新增編號區段時須先在本規範中登記，避免多人同時設計時撞號</li>
+            <li>PNG（32-bit RGBA）</li>
+            <li>需要透明度時使用 RGBA，不需要時可用 RGB 減小體積</li>
           </ul>
         </div>
 
         <div class="rule-item">
-          <p><strong>27.</strong> 透明度與圖層規範</p>
+          <p><strong>73.</strong> 3D 模型檔案格式</p>
+          <ul>
+            <li>JSON（Minecraft model format）</li>
+            <li>須通過 Blockbench 或等效工具匯出驗證</li>
+          </ul>
+        </div>
+
+        <div class="rule-item">
+          <p><strong>74.</strong> 音效替換檔案格式</p>
+          <ul>
+            <li>OGG（Vorbis）</li>
+            <li>單檔不超過 500KB，避免載入延遲</li>
+          </ul>
+        </div>
+
+        <div class="rule-item">
+          <p><strong>75.</strong> 字型檔案格式</p>
+          <ul>
+            <li>PNG + JSON（Minecraft font provider）</li>
+            <li>須與語言檔案對應</li>
+          </ul>
+        </div>
+
+        <div class="rule-item">
+          <p><strong>76.</strong> 整體資源包大小</p>
+          <ul>
+            <li>壓縮後大小建議控制在 <strong>10MB 以內</strong></li>
+            <li>過大的資源包會導致玩家首次載入延遲，影響加入體驗</li>
+            <li>每次更新應記錄壓縮後體積變化</li>
+          </ul>
+        </div>
+
+        <div class="rule-item">
+          <p><strong>77.</strong> 命名規範</p>
+          <ul>
+            <li>所有自訂紋理使用統一前綴 <code>sw_</code>（seawind 縮寫）</li>
+            <li>避免與原版或其他資源包衝突</li>
+          </ul>
+        </div>
+
+        <div class="rule-item">
+          <p><strong>78.</strong> 目錄結構</p>
+          <ul>
+            <li>遵循 Minecraft resource pack 標準：<code>assets/minecraft/textures/...</code> 或 <code>assets/seawind/textures/...</code></li>
+          </ul>
+        </div>
+
+        <div class="rule-item">
+          <p><strong>79.</strong> Custom Model Data 編號區段</p>
+          <ul>
+            <li><strong>1000–1999</strong> — 魚套系列裝備</li>
+            <li><strong>2000–2999</strong> — 風汐系列工具</li>
+            <li><strong>3000–3999</strong> — 活動限定物品</li>
+            <li><strong>4000–4999</strong> — 副本 Boss 專用</li>
+            <li><strong>5000–5999</strong> — 會員專屬外觀</li>
+            <li><strong>9000–9999</strong> — UI 介面與系統用</li>
+          </ul>
+          <p style="font-size:0.85rem;color:var(--fog);margin-top:var(--space-sm);">新增編號區段時須先在本規範中登記，避免多人同時設計時撞號。</p>
+        </div>
+
+        <div class="rule-item">
+          <p><strong>80.</strong> 透明度規範</p>
           <ul>
             <li>物品貼圖背景必須完全透明（alpha = 0），不得殘留白邊或半透明雜訊</li>
             <li>半透明效果（如發光、粒子拖尾）應使用獨立圖層，alpha 值建議在 64–192 之間</li>
@@ -472,7 +825,7 @@
         <h3 class="chapter-sub">▪ 第二節 美術風格</h3>
 
         <div class="rule-item">
-          <p><strong>28.</strong> 風格定位</p>
+          <p><strong>81.</strong> 風格定位</p>
           <ul>
             <li>海風資源包以 <strong>Minecraft 原版像素風格</strong>為基底，不偏離原版的色彩飽和度與光影邏輯</li>
             <li>允許在原版基礎上添加伺服器專屬特色（如海風主題色調、專屬標誌），但不應過度突兀</li>
@@ -481,62 +834,133 @@
         </div>
 
         <div class="rule-item">
-          <p><strong>29.</strong> 色彩原則</p>
+          <p><strong>82.</strong> 色彩原則 — 主色調</p>
           <ul>
-            <li>主色調參考 Minecraft 原版 palette，保持與遊戲環境的自然融合</li>
-            <li>伺服器主題色可適度融入（如海風的品牌藍 #9dafff、薄荷綠 #a8e6cf），但僅作為點綴，不應覆蓋整體色調</li>
-            <li>同一系列的裝備紋理應有統一的色彩語言（如魚套以水藍/青綠為主、風汐系列以灰白/淡紫為主）</li>
+            <li>參考 Minecraft 原版 palette，保持與遊戲環境的自然融合</li>
             <li>避免使用純黑（#000000）或純白（#FFFFFF），改用帶有色調的深色/淺色，更自然</li>
           </ul>
         </div>
 
         <div class="rule-item">
-          <p><strong>30.</strong> 像素藝術規範</p>
+          <p><strong>83.</strong> 色彩原則 — 伺服器主題色</p>
           <ul>
-            <li>線條：使用明確的輪廓色（outline），輪廓色應比填充色深 2–3 個色階</li>
-            <li>光影：光源方向統一為左上方，與 Minecraft 原版一致</li>
+            <li>海風的品牌藍 <code>#9dafff</code>、薄荷綠 <code>#a8e6cf</code> 可適度融入</li>
+            <li>僅作為點綴，不應覆蓋整體色調</li>
+            <li>同一系列的裝備紋理應有統一的色彩語言（如魚套以水藍/青綠為主、風汐系列以灰白/淡紫為主）</li>
+          </ul>
+        </div>
+
+        <div class="rule-item">
+          <p><strong>84.</strong> 線條規範</p>
+          <ul>
+            <li>使用明確的輪廓色（outline）</li>
+            <li>輪廓色應比填充色深 2–3 個色階</li>
+          </ul>
+        </div>
+
+        <div class="rule-item">
+          <p><strong>85.</strong> 光影規範</p>
+          <ul>
+            <li>光源方向統一為左上方，與 Minecraft 原版一致</li>
             <li>陰影：使用至少 2 層陰影（主陰影 + 深陰影），避免平面感</li>
             <li>高光：在受光面加小範圍高光點（1–2 像素），提升立體感</li>
-            <li>動畫材質：幀數不超過 24 幀，每幀間隔不小於 2 tick（100ms），檔案命名為 <code>檔名.png.mcmeta</code></li>
+          </ul>
+        </div>
+
+        <div class="rule-item">
+          <p><strong>86.</strong> 動畫材質規範</p>
+          <ul>
+            <li>幀數不超過 24 幀</li>
+            <li>每幀間隔不小於 2 tick（100ms）</li>
+            <li>檔案命名為 <code>檔名.png.mcmeta</code></li>
           </ul>
         </div>
 
         <h3 class="chapter-sub">▪ 第三節 資源包管理與更新</h3>
 
         <div class="rule-item">
-          <p><strong>31.</strong> 版本管理</p>
+          <p><strong>87.</strong> 版本號格式</p>
           <ul>
             <li>資源包須在 <code>pack.mcmeta</code> 中標註版本號，格式為 <code>Major.Minor.Patch</code></li>
             <li>每次伺服器大版本更新（如 1.21 → 1.22）時，Major 版本 +1</li>
             <li>新增或修改紋理時，Minor 版本 +1；修正錯誤時 Patch 版本 +1</li>
+          </ul>
+        </div>
+
+        <div class="rule-item">
+          <p><strong>88.</strong> pack_format 對應</p>
+          <ul>
             <li>pack_format 須與 Minecraft 版本對應（如 1.21.x → pack_format 46）</li>
           </ul>
         </div>
 
         <div class="rule-item">
-          <p><strong>32.</strong> 更新流程</p>
+          <p><strong>89.</strong> 新增紋理流程</p>
           <ul>
-            <li>新增紋理：設計師提交 PNG/JSON 檔案 + 說明用途，管理人員確認無衝突後合入資源包</li>
-            <li>修改紋理：須說明修改原因（修正錯誤 / 風格調整 / 數值對應更新），舊版紋理備份保留</li>
-            <li>移除紋理：僅在對應插件物品已被刪除時才能移除，避免遊戲中出現紫黑棋盤格錯誤貼圖</li>
-            <li>每次更新後須在客戶端完整測試，確認無紫黑格、模型偏移、透明度異常等問題</li>
+            <li>設計師提交 PNG/JSON 檔案 + 說明用途</li>
+            <li>管理人員確認無衝突後合入資源包</li>
           </ul>
         </div>
 
         <div class="rule-item">
-          <p><strong>33.</strong> 強制載入與相容性</p>
+          <p><strong>90.</strong> 修改紋理流程</p>
+          <ul>
+            <li>須說明修改原因（修正錯誤 / 風格調整 / 數值對應更新）</li>
+            <li>舊版紋理備份保留</li>
+          </ul>
+        </div>
+
+        <div class="rule-item">
+          <p><strong>91.</strong> 移除紋理流程</p>
+          <ul>
+            <li>僅在對應插件物品已被刪除時才能移除</li>
+            <li>避免遊戲中出現紫黑棋盤格錯誤貼圖</li>
+          </ul>
+        </div>
+
+        <div class="rule-item">
+          <p><strong>92.</strong> 更新後測試</p>
+          <ul>
+            <li>每次更新後須在客戶端完整測試</li>
+            <li>確認無紫黑格、模型偏移、透明度異常等問題</li>
+          </ul>
+        </div>
+
+        <div class="rule-item">
+          <p><strong>93.</strong> 強制載入規則</p>
           <ul>
             <li>伺服器資源包透過 server.properties 設定為強制載入（resource-pack + resource-pack-sha1）</li>
             <li>強制載入的資源包不得覆蓋玩家日常會看到的原版紋理（如泥土、石頭），除非是活動期間的限時替換</li>
-            <li>自訂物品紋理僅在持有對應 Custom Model Data 的物品時才會載入，不影響一般遊戲體驗</li>
-            <li>每次更新 SHA1 雜湊值須同步更新，否則玩家端不會觸發重新下載</li>
           </ul>
         </div>
 
         <div class="rule-item">
-          <p><strong>34.</strong> 品質檢核</p>
+          <p><strong>94.</strong> 載入範圍限制</p>
           <ul>
-            <li>所有新紋理上線前須經過至少一人非設計者的 review，確認辨識度與風格一致性</li>
+            <li>自訂物品紋理僅在持有對應 Custom Model Data 的物品時才會載入</li>
+            <li>不影響一般遊戲體驗</li>
+          </ul>
+        </div>
+
+        <div class="rule-item">
+          <p><strong>95.</strong> SHA1 更新</p>
+          <ul>
+            <li>每次更新 SHA1 雜湊值須同步更新</li>
+            <li>否則玩家端不會觸發重新下載</li>
+          </ul>
+        </div>
+
+        <div class="rule-item">
+          <p><strong>96.</strong> 品質檢核 — Review</p>
+          <ul>
+            <li>所有新紋理上線前須經過至少一人非設計者的 review</li>
+            <li>確認辨識度與風格一致性</li>
+          </ul>
+        </div>
+
+        <div class="rule-item">
+          <p><strong>97.</strong> 品質檢核 — 多環境測試</p>
+          <ul>
             <li>在不同 GUI 縮放倍率（自動 / 小 / 大）下測試，確保可讀性</li>
             <li>深色與淺色環境下各看一次（部分紋理在暗處會糊掉）</li>
             <li>多人同時在物品欄瀏覽時，不同物品的紋理應有明確區別，不可太相似導致混淆</li>
@@ -548,8 +972,8 @@
       </div>
 
       <div class="rules-meta fade-in">
-        <p>初版制定於 115.04.11 ｜ 活動設計章節新增於 115.04.17 ｜ 資源包規範章節新增於 115.04.17</p>
-        <p>本規範將視伺服器發展與實際執行狀況不定期修訂</p>
+        <p>初版制定於 115.04.11 ｜ 活動設計章節新增於 115.04.17 ｜ 資源包規範章節新增於 115.04.17 ｜ 條目結構重整於 115.04.22</p>
+        <p>全規範共 97 條 ｜ 四章十一節 ｜ 本規範將視伺服器發展與實際執行狀況不定期修訂</p>
       </div>
 
     </div>
