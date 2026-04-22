@@ -5,16 +5,9 @@ const MOB_SMASHER = (() => {
   'use strict';
 
   const SPRITE_PATH = 'assets/mobs/';
-  const SPRITE_SHEET = 'assets/mob-spritesheet.png';
-  const SPRITES = {"allay":[0,0],"armadillo":[16,0],"axolotl":[32,0],"bad-omen":[48,0],"bat":[64,0],"bee":[80,0],"blaze":[96,0],"breeze":[112,0],"camel-husk":[128,0],"camel":[144,0],"cat":[160,0],"cave-spider":[176,0],"chicken":[192,0],"cod":[0,16],"copper-golem":[16,16],"cow":[32,16],"creaking":[48,16],"creeper":[64,16],"diamond-spear":[80,16],"dolphin":[96,16],"donkey":[112,16],"elder-guardian":[128,16],"end-crystal":[144,16],"ender-dragon":[160,16],"enderman":[176,16],"endermite":[192,16],"evoker":[0,32],"fox":[16,32],"frog":[32,32],"ghast":[48,32],"ghastling":[64,32],"goat":[80,32],"golden-axe":[96,32],"guardian":[112,32],"happy-ghast":[128,32],"hoglin":[144,32],"horse":[160,32],"husk":[176,32],"iron-golem":[192,32],"iron-sword":[0,48],"johnny":[16,48],"mace":[32,48],"magma-cube":[48,48],"mooshroom":[64,48],"nautilus":[80,48],"ocelot":[96,48],"ominous-bottle":[112,48],"panda":[128,48],"parched":[144,48],"parrot":[160,48],"phantom":[176,48],"pig":[192,48],"piglin-brute":[0,64],"polar-bear":[16,64],"pufferfish":[32,64],"pumpkin-snow-golem":[48,64],"rabbit":[64,64],"ravager":[80,64],"salmon":[96,64],"sheep":[112,64],"shulker":[128,64],"silverfish":[144,64],"skeleton-horse":[160,64],"skeleton":[176,64],"slime":[192,64],"sniffer":[0,80],"spider":[16,80],"squid":[32,80],"stray":[48,80],"strider":[64,80],"tadpole":[80,80],"tnt":[96,80],"totem":[112,80],"trader-llama":[128,80],"tropical-fish":[144,80],"turtle":[160,80],"vex":[176,80],"villager":[192,80],"wandering-trader":[0,96],"warden":[16,96],"white-sheep":[32,96],"witch":[48,96],"wither-skeleton":[64,96],"wither":[80,96],"wolf":[96,96],"zoglin":[112,96],"zombie-horse":[128,96],"zombie-nautilus":[144,96],"zombie-villager":[160,96],"zombie":[176,96],"zombified-piglin":[192,96]};
 
-  // Sprite element helper — uses sprite sheet for fast loading
+  // Sprite element helper — uses individual PNG files
   function spr(name, cls, alt) {
-    const pos = SPRITES[name];
-    if (pos) {
-      return `<div class="ms-ss ${cls||''}" style="background-position:-${pos[0]}px -${pos[1]}px" role="img" aria-label="${alt||name}"></div>`;
-    }
-    // Fallback to individual file
     return `<img src="${SPRITE_PATH}${name}.png" alt="${alt||name}" class="${cls||''}" loading="lazy">`;
   }
 

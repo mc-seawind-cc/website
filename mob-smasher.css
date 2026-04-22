@@ -1,14 +1,6 @@
 /* ═══ Mob Smasher (打怪物) — 重製版 ═══ */
 
-/* Sprite Sheet — 一張圖取代 91 個 HTTP 請求 */
-.ms-ss {
-  background-image: url('assets/mob-spritesheet.png');
-  background-repeat: no-repeat;
-  image-rendering: pixelated;
-  image-rendering: -moz-crisp-edges;
-  image-rendering: crisp-edges;
-  flex-shrink: 0;
-}
+/* Sprites — 獨立 PNG 檔案 */
 
 .ms-hud {
   display: flex;
@@ -111,9 +103,7 @@
   filter: drop-shadow(0 2px 4px rgba(0,0,0,0.4));
   transition: transform 0.15s;
 }
-div.ms-sprite {
-  background-image: url('assets/mob-spritesheet.png');
-  background-repeat: no-repeat;
+.ms-sprite {
   image-rendering: pixelated;
 }
 
@@ -144,9 +134,7 @@ div.ms-sprite {
   image-rendering: -moz-crisp-edges;
   image-rendering: crisp-edges;
 }
-div.ms-item-sprite {
-  background-image: url('assets/mob-spritesheet.png');
-  background-repeat: no-repeat;
+.ms-item-sprite {
   display: inline-block;
 }
 .ms-totem .ms-item-sprite {
@@ -164,9 +152,7 @@ div.ms-item-sprite {
   vertical-align: middle;
   filter: drop-shadow(0 1px 2px rgba(0,0,0,0.4));
 }
-div.ms-weapon-icon {
-  background-image: url('assets/mob-spritesheet.png');
-  background-repeat: no-repeat;
+.ms-weapon-icon {
   display: inline-block;
 }
 
@@ -258,9 +244,7 @@ div.ms-weapon-icon {
   image-rendering: -moz-crisp-edges;
   filter: drop-shadow(0 1px 2px rgba(0,0,0,0.5));
 }
-div.ms-legend-sprite {
-  background-image: url('assets/mob-spritesheet.png');
-  background-repeat: no-repeat;
+.ms-legend-sprite {
   display: inline-block;
 }
 
@@ -292,9 +276,7 @@ div.ms-legend-sprite {
   filter: drop-shadow(0 2px 8px rgba(0,0,0,0.5));
   animation: sword-swing 2s ease-in-out infinite;
 }
-div.ms-result-sword {
-  background-image: url('assets/mob-spritesheet.png');
-  background-repeat: no-repeat;
+.ms-result-sword {
 }
 @keyframes sword-swing {
   0%, 100% { transform: rotate(-10deg); }
