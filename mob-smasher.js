@@ -700,11 +700,11 @@ const MOB_SMASHER = (() => {
 
   function checkRaidWaveComplete() {
     if (!state.raidActive) return;
+    if (state.raidQueue.length === 0) return;
 
-    // Check if all spawned mobs in current wave are gone
-    const spawned = state.raidQueue.filter(q => q.spawned);
-    const allGone = spawned.length > 0 && spawned.every(q => !state.holes[q.holeIdx]);
-    if (allGone) {
+    // All mobs in queue must be spawned AND gone from holes
+    const allDone = state.raidQueue.every(q => q.spawned && !state.holes[q.holeIdx]);
+    if (allDone) {
       state.raidQueue = [];
 
       if (state.raidWave >= state.raidTotalWaves) {
