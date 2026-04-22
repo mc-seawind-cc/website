@@ -439,7 +439,13 @@ const MOB_SMASHER = (() => {
     hole.querySelector('.ms-hole-inner').appendChild(el);
     hole.classList.add('active', `ms-hole-${category}`);
 
-    state.holes[idx] = { mob, category, hp: maxHp, maxHp, el, timeoutId: null };
+    state.holes[idx] = { mob, category, hp: maxHp, maxHp, el, timeoutId: null, moveTimerId: null };
+
+    // Raid mobs jump to random holes periodically
+    if (state.raidActive && !mob.isVillager) {
+      const moveDelay = 1200 + Math.random() * 800;
+      state.holes[idx].moveTimerId = setTimeout(() => moveRaidMob(idx), moveDelay);
+    }
 
     state.holes[idx].timeoutId = setTimeout(() => {
       // In raid: missing a mob = penalty
@@ -698,6 +704,73 @@ const MOB_SMASHER = (() => {
     });
   }
 
+  function moveRaidMob(fromIdx) {
+    const holeData = state.holes[fromIdx];
+    if (!holeData || !state.raidActive) return;
+
+    const { mob, category, hp, maxHp } = holeData;
+
+    // Find empty holes (not the current one)
+    const empty = [];
+    for (let i = 0; i < 25; i++) {
+      if (i !== fromIdx && !state.holes[i]) empty.push(i);
+    }
+    if (empty.length === 0) return; // nowhere to go
+
+    const toIdx = empty[Math.floor(Math.random() * empty.length)];
+
+    // Remove from old hole (keep the stay timer running)
+    clearTimeout(holeData.moveTimerId);
+    clearTimeout(holeData.timeoutId);
+    const oldHole = document.getElementById(`msHole${fromIdx}`);
+    if (oldHole) {
+      oldHole.classList.remove('active', `ms-hole-${category}`);
+      oldHole.querySelector('.ms-hole-inner').innerHTML = '';
+    }
+    state.holes[fromIdx] = null;
+
+    // Show in new hole with same HP
+    const newHole = document.getElementById(`msHole${toIdx}`);
+    if (!newHole) return;
+
+    const spriteFile = mob.sprite || mob.id;
+    const el = document.createElement('div');
+    el.className = `ms-mob ms-${category}`;
+    el.innerHTML = `
+      ${spr(spriteFile, 'ms-sprite', mob.name)}
+      ${maxHp > 1 ? `<div class="ms-hp-bar"><div class="ms-hp-fill" style="width:${hp/maxHp*100}%"></div></div>` : ''}
+      <span class="ms-mob-name">${mob.name}</span>
+    `;
+    newHole.querySelector('.ms-hole-inner').appendChild(el);
+    newHole.classList.add('active', `ms-hole-${category}`);
+
+    // Recalculate remaining stay time proportionally
+    const holeEntry = { mob, category, hp, maxHp, el, timeoutId: null, moveTimerId: null };
+    state.holes[toIdx] = holeEntry;
+
+    // New stay timeout (shorter since it already lived for a while)
+    const newStay = 1500 + Math.random() * 1000;
+    holeEntry.timeoutId = setTimeout(() => {
+      if (state.raidActive) {
+        if (mob.isVillager) {
+          // villager survived
+        } else {
+          state.score = Math.max(0, state.score - 1);
+          state.timeLeft = Math.max(0, state.timeLeft - 1);
+          state.raidMobsMissed++;
+          showFloatingText(el, '-1', '#ff8282');
+          updateHUD();
+        }
+      }
+      removeMob(toIdx);
+      if (state.raidActive) checkRaidWaveComplete();
+    }, newStay);
+
+    // Schedule next move
+    const moveDelay = 1200 + Math.random() * 800;
+    holeEntry.moveTimerId = setTimeout(() => moveRaidMob(toIdx), moveDelay);
+  }
+
   function checkRaidWaveComplete() {
     if (!state.raidActive) return;
     if (state.raidQueue.length === 0) return;
@@ -854,6 +927,7 @@ const MOB_SMASHER = (() => {
     const holeData = state.holes[idx];
     if (!holeData) return;
     clearTimeout(holeData.timeoutId);
+    clearTimeout(holeData.moveTimerId);
     const hole = document.getElementById(`msHole${idx}`);
     if (hole) {
       hole.classList.remove('active', 'ms-hole-hostile', 'ms-hole-passive', 'ms-hole-neutral', 'ms-hole-special');
