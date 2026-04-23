@@ -2,6 +2,7 @@
 
 > 最後更新：2026.04.23
 > 維護者：海風網站助手
+> Instagram：[@mc.seawind.cc](https://www.instagram.com/mc.seawind.cc/)
 
 ---
 
@@ -81,6 +82,7 @@ website/
 ├── CNAME                  # GitHub Pages 自訂域名
 ├── DESIGN.md              # 本文件
 ├── HANDOFF.md             # 交接指南
+├── INSTAGRAM.md           # Instagram 經營指南與貼文素材
 ├── README.md              # 專案說明
 ├── assets/
 │   ├── img/               # 圖片資源
@@ -337,6 +339,7 @@ website/
 | 2026.04.23 | 海風網站助手 | **Section Header 裝飾線簡化**：移除 `h2::before` 左側裝飾線（含 light mode 覆蓋），底線 `::after` 改為常駐顯示（`width:40px`，不再依賴 scroll reveal），hover 仍展開至 80px。全站 CSS/JS cache busting → 230423a，全站頁尾日期統一更新至 2026.04.23 |
 | 2026.04.23 | 海風網站助手 | **打怪物精靈圖改回獨立 PNG**：移除 `SPRITES` 坐標地圖（91 組座標）及 `SPRITE_SHEET` 常數，`spr()` 改為直接用 `<img>` 標籤載入 `assets/mobs/*.png`。CSS 移除 `.ms-ss` sprite sheet 樣式 + 5 處 `div.ms-*` background-image 規則。404.html 移除 `mob-spritesheet.png` preload |
 | 2026.04.23 | 海風網站助手 | **公告頁 inline 公告資料**：將最新 50 則公告（~23KB）inline 進 `公告.html`，首屏即時渲染不再依賴 349KB 的 `announcements.json` fetch。JS 改為 inline data first → 背景靜默載入完整 JSON（473 則）→ 自動更新 allData 供搜尋/篩選/分頁使用。首頁已有 12 則 inline，此次將 `公告.html` 同步處理 |
+| 2026.04.23 | 海風網站助手 | **新增 Instagram 經營指南**（INSTAGRAM.md）：帳號基本設定（Bio/顯示名稱/連結）、精選限時動態封面規劃（活動/建築/風景/公告/加入）、貼文風格指南（色調/標籤策略/語氣）、珍奶日貼文完整文案（含圖片設計建議、配色參考、輪播結構、發佈時間建議）、未來 9 週內容規劃 + 限時動態建議 |
 
 ---
 
