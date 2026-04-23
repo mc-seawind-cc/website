@@ -14,10 +14,6 @@
       <stop offset="0%" stop-color="#c49b6c"/>
       <stop offset="100%" stop-color="#e8c9a0"/>
     </linearGradient>
-    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0%" stop-color="#c49b6c"/>
-      <stop offset="100%" stop-color="#a8e6cf"/>
-    </linearGradient>
     <radialGradient id="glow1" cx="0.5" cy="0.35" r="0.4">
       <stop offset="0%" stop-color="#c49b6c" stop-opacity="0.12"/>
       <stop offset="100%" stop-color="#c49b6c" stop-opacity="0"/>
@@ -26,9 +22,6 @@
       <stop offset="0%" stop-color="#a8e6cf" stop-opacity="0.06"/>
       <stop offset="100%" stop-color="#a8e6cf" stop-opacity="0"/>
     </radialGradient>
-    <filter id="blur1">
-      <feGaussianBlur stdDeviation="40"/>
-    </filter>
     <linearGradient id="cupGrad" x1="0" y1="0" x2="0" y2="1">
       <stop offset="0%" stop-color="#e8c9a0" stop-opacity="0.2"/>
       <stop offset="100%" stop-color="#c49b6c" stop-opacity="0.1"/>
@@ -55,7 +48,8 @@
 
   <!-- Top badge -->
   <rect x="400" y="55" width="280" height="36" rx="18" fill="#c49b6c" fill-opacity="0.12" stroke="#c49b6c" stroke-opacity="0.25" stroke-width="1"/>
-  <text x="540" y="79" font-family="'Noto Sans TC', 'Microsoft JhengHei', sans-serif" font-size="15" font-weight="700" fill="#e8c9a0" text-anchor="middle" letter-spacing="2">🧋 2026 限定活動</text>
+  <circle cx="430" cy="73" r="6" fill="#c49b6c" opacity="0.4"/>
+  <text x="550" y="79" font-family="'Noto Sans TC', 'Microsoft JhengHei', sans-serif" font-size="15" font-weight="700" fill="#e8c9a0" text-anchor="middle" letter-spacing="2">2026 限定活動</text>
 
   <!-- Bubble tea cup illustration -->
   <!-- Cup body -->
@@ -97,13 +91,19 @@
   <rect x="420" y="660" width="240" height="1.5" rx="1" fill="url(#gold)" opacity="0.25"/>
 
   <!-- Info items -->
-  <text x="270" y="710" font-family="'Noto Sans TC', 'Microsoft JhengHei', sans-serif" font-size="18" font-weight="500" fill="#c9d1d9" text-anchor="middle">🍵 13 種限定口味</text>
-  <text x="540" y="710" font-family="'Noto Sans TC', 'Microsoft JhengHei', sans-serif" font-size="18" font-weight="500" fill="#c9d1d9" text-anchor="middle">📦 14 種活動原料</text>
-  <text x="810" y="710" font-family="'Noto Sans TC', 'Microsoft JhengHei', sans-serif" font-size="18" font-weight="500" fill="#c9d1d9" text-anchor="middle">🪙 代幣獎勵系統</text>
+  <circle cx="218" cy="705" r="4" fill="#c49b6c" opacity="0.5"/>
+  <text x="230" y="710" font-family="'Noto Sans TC', 'Microsoft JhengHei', sans-serif" font-size="18" font-weight="500" fill="#c9d1d9">13 種限定口味</text>
+  <circle cx="488" cy="705" r="4" fill="#a8e6cf" opacity="0.5"/>
+  <text x="500" y="710" font-family="'Noto Sans TC', 'Microsoft JhengHei', sans-serif" font-size="18" font-weight="500" fill="#c9d1d9">14 種活動原料</text>
+  <circle cx="758" cy="705" r="4" fill="#ab72f9" opacity="0.5"/>
+  <text x="770" y="710" font-family="'Noto Sans TC', 'Microsoft JhengHei', sans-serif" font-size="18" font-weight="500" fill="#c9d1d9">代幣獎勵系統</text>
 
-  <text x="270" y="750" font-family="'Noto Sans TC', 'Microsoft JhengHei', sans-serif" font-size="18" font-weight="500" fill="#c9d1d9" text-anchor="middle">🗡️ 限定武器「珍奶微微」</text>
-  <text x="540" y="750" font-family="'Noto Sans TC', 'Microsoft JhengHei', sans-serif" font-size="18" font-weight="500" fill="#c9d1d9" text-anchor="middle">🏆 4 個限定稱號</text>
-  <text x="810" y="750" font-family="'Noto Sans TC', 'Microsoft JhengHei', sans-serif" font-size="18" font-weight="500" fill="#c9d1d9" text-anchor="middle">👑 集齊解鎖「海風茶王」</text>
+  <circle cx="218" cy="745" r="4" fill="#578aff" opacity="0.5"/>
+  <text x="230" y="750" font-family="'Noto Sans TC', 'Microsoft JhengHei', sans-serif" font-size="18" font-weight="500" fill="#c9d1d9">限定武器「珍奶微微」</text>
+  <circle cx="488" cy="745" r="4" fill="#e8c9a0" opacity="0.5"/>
+  <text x="500" y="750" font-family="'Noto Sans TC', 'Microsoft JhengHei', sans-serif" font-size="18" font-weight="500" fill="#c9d1d9">4 個限定稱號</text>
+  <circle cx="758" cy="745" r="4" fill="#c49b6c" opacity="0.5"/>
+  <text x="770" y="750" font-family="'Noto Sans TC', 'Microsoft JhengHei', sans-serif" font-size="18" font-weight="500" fill="#c9d1d9">集齊解鎖「海風茶王」</text>
 
   <!-- Timeline -->
   <rect x="180" y="800" width="720" height="70" rx="14" fill="#161b22" stroke="#c49b6c" stroke-opacity="0.1" stroke-width="1"/>
@@ -120,10 +120,10 @@
 
   <!-- CTA -->
   <rect x="340" y="910" width="400" height="50" rx="25" fill="#c49b6c" fill-opacity="0.12" stroke="#c49b6c" stroke-opacity="0.3" stroke-width="1"/>
-  <text x="540" y="941" font-family="'Noto Sans TC', 'Microsoft JhengHei', sans-serif" font-size="17" font-weight="700" fill="#e8c9a0" text-anchor="middle">🌐 www.seawind.cc</text>
+  <text x="540" y="941" font-family="'Noto Sans TC', 'Microsoft JhengHei', sans-serif" font-size="17" font-weight="700" fill="#e8c9a0" text-anchor="middle">www.seawind.cc</text>
 
   <!-- Bottom -->
-  <text x="540" y="1000" font-family="'Noto Sans TC', 'Microsoft JhengHei', sans-serif" font-size="13" font-weight="400" fill="#8b949e" text-anchor="middle">快來海風，一起乾杯吧 🥂</text>
+  <text x="540" y="1000" font-family="'Noto Sans TC', 'Microsoft JhengHei', sans-serif" font-size="13" font-weight="400" fill="#8b949e" text-anchor="middle">快來海風，一起乾杯吧</text>
 
   <!-- Bottom wave -->
   <path d="M0 1030 Q270 1010 540 1030 Q810 1050 1080 1030 L1080 1080 L0 1080Z" fill="#c49b6c" fill-opacity="0.06"/>

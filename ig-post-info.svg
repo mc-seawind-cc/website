@@ -21,9 +21,6 @@
       <stop offset="0%" stop-color="#ab72f9" stop-opacity="0.1"/>
       <stop offset="100%" stop-color="#ab72f9" stop-opacity="0"/>
     </radialGradient>
-    <filter id="blur1">
-      <feGaussianBlur stdDeviation="3"/>
-    </filter>
     <filter id="blur2">
       <feGaussianBlur stdDeviation="60"/>
     </filter>
@@ -53,10 +50,11 @@
   <!-- Top decorative line -->
   <rect x="440" y="80" width="200" height="2" rx="1" fill="url(#accent)" opacity="0.4"/>
 
-  <!-- Logo area -->
+  <!-- Logo area - wave icon -->
   <circle cx="540" cy="220" r="70" fill="none" stroke="url(#accent)" stroke-width="2" opacity="0.3"/>
-  <text x="540" y="210" font-family="Arial, sans-serif" font-size="48" font-weight="900" fill="#9dafff" text-anchor="middle" opacity="0.9">🌊</text>
-  <text x="540" y="260" font-family="'Noto Sans TC', 'Microsoft JhengHei', sans-serif" font-size="18" font-weight="700" fill="#8b949e" text-anchor="middle" letter-spacing="4">SEAWIND.CC</text>
+  <path d="M500 215 Q520 200 540 215 Q560 230 580 215" fill="none" stroke="#9dafff" stroke-width="3" stroke-linecap="round" opacity="0.8"/>
+  <path d="M490 230 Q515 215 540 230 Q565 245 590 230" fill="none" stroke="#9dafff" stroke-width="2.5" stroke-linecap="round" opacity="0.5"/>
+  <text x="540" y="270" font-family="'Noto Sans TC', 'Microsoft JhengHei', sans-serif" font-size="18" font-weight="700" fill="#8b949e" text-anchor="middle" letter-spacing="4">SEAWIND.CC</text>
 
   <!-- Main title -->
   <text x="540" y="370" font-family="'Noto Sans TC', 'Microsoft JhengHei', sans-serif" font-size="52" font-weight="900" fill="#e6edf3" text-anchor="middle">海風伺服器</text>
@@ -68,38 +66,49 @@
   <!-- Info cards -->
   <!-- Card 1: Server type -->
   <rect x="120" y="510" width="250" height="80" rx="12" fill="#161b22" stroke="#578aff" stroke-opacity="0.15" stroke-width="1"/>
-  <text x="145" y="545" font-family="'Noto Sans TC', 'Microsoft JhengHei', sans-serif" font-size="15" font-weight="700" fill="#578aff">🎮 伺服器類型</text>
+  <circle cx="145" cy="540" r="5" fill="#578aff" opacity="0.6"/>
+  <text x="158" y="545" font-family="'Noto Sans TC', 'Microsoft JhengHei', sans-serif" font-size="15" font-weight="700" fill="#578aff">伺服器類型</text>
   <text x="145" y="572" font-family="'Noto Sans TC', 'Microsoft JhengHei', sans-serif" font-size="14" font-weight="400" fill="#c9d1d9">養老建築生存</text>
 
   <!-- Card 2: Version -->
   <rect x="415" y="510" width="250" height="80" rx="12" fill="#161b22" stroke="#a8e6cf" stroke-opacity="0.15" stroke-width="1"/>
-  <text x="440" y="545" font-family="'Noto Sans TC', 'Microsoft JhengHei', sans-serif" font-size="15" font-weight="700" fill="#a8e6cf">📌 遊戲版本</text>
+  <circle cx="440" cy="540" r="5" fill="#a8e6cf" opacity="0.6"/>
+  <text x="453" y="545" font-family="'Noto Sans TC', 'Microsoft JhengHei', sans-serif" font-size="15" font-weight="700" fill="#a8e6cf">遊戲版本</text>
   <text x="440" y="572" font-family="'Noto Sans TC', 'Microsoft JhengHei', sans-serif" font-size="14" font-weight="400" fill="#c9d1d9">Java Edition 1.21+</text>
 
   <!-- Card 3: Community -->
   <rect x="710" y="510" width="250" height="80" rx="12" fill="#161b22" stroke="#ab72f9" stroke-opacity="0.15" stroke-width="1"/>
-  <text x="735" y="545" font-family="'Noto Sans TC', 'Microsoft JhengHei', sans-serif" font-size="15" font-weight="700" fill="#ab72f9">👥 社群規模</text>
+  <circle cx="735" cy="540" r="5" fill="#ab72f9" opacity="0.6"/>
+  <text x="748" y="545" font-family="'Noto Sans TC', 'Microsoft JhengHei', sans-serif" font-size="15" font-weight="700" fill="#ab72f9">社群規模</text>
   <text x="735" y="572" font-family="'Noto Sans TC', 'Microsoft JhengHei', sans-serif" font-size="14" font-weight="400" fill="#c9d1d9">400+ 註冊會員</text>
 
   <!-- Features section -->
   <text x="540" y="650" font-family="'Noto Sans TC', 'Microsoft JhengHei', sans-serif" font-size="18" font-weight="700" fill="#8b949e" text-anchor="middle" letter-spacing="3">— 海風特色 —</text>
 
-  <!-- Feature items -->
-  <text x="200" y="700" font-family="'Noto Sans TC', 'Microsoft JhengHei', sans-serif" font-size="16" font-weight="500" fill="#c9d1d9" text-anchor="middle">🏗️ 精緻建築</text>
-  <text x="420" y="700" font-family="'Noto Sans TC', 'Microsoft JhengHei', sans-serif" font-size="16" font-weight="500" fill="#c9d1d9" text-anchor="middle">📖 獨特世界觀</text>
-  <text x="640" y="700" font-family="'Noto Sans TC', 'Microsoft JhengHei', sans-serif" font-size="16" font-weight="500" fill="#c9d1d9" text-anchor="middle">🎉 豐富活動</text>
-  <text x="860" y="700" font-family="'Noto Sans TC', 'Microsoft JhengHei', sans-serif" font-size="16" font-weight="500" fill="#c9d1d9" text-anchor="middle">🤝 友善社群</text>
+  <!-- Feature items row 1 -->
+  <circle cx="160" cy="695" r="3" fill="#578aff" opacity="0.5"/>
+  <text x="170" y="700" font-family="'Noto Sans TC', 'Microsoft JhengHei', sans-serif" font-size="16" font-weight="500" fill="#c9d1d9">精緻建築</text>
+  <circle cx="380" cy="695" r="3" fill="#a8e6cf" opacity="0.5"/>
+  <text x="390" y="700" font-family="'Noto Sans TC', 'Microsoft JhengHei', sans-serif" font-size="16" font-weight="500" fill="#c9d1d9">獨特世界觀</text>
+  <circle cx="600" cy="695" r="3" fill="#ab72f9" opacity="0.5"/>
+  <text x="610" y="700" font-family="'Noto Sans TC', 'Microsoft JhengHei', sans-serif" font-size="16" font-weight="500" fill="#c9d1d9">豐富活動</text>
+  <circle cx="820" cy="695" r="3" fill="#9dafff" opacity="0.5"/>
+  <text x="830" y="700" font-family="'Noto Sans TC', 'Microsoft JhengHei', sans-serif" font-size="16" font-weight="500" fill="#c9d1d9">友善社群</text>
 
-  <!-- Second row -->
-  <text x="200" y="740" font-family="'Noto Sans TC', 'Microsoft JhengHei', sans-serif" font-size="16" font-weight="500" fill="#c9d1d9" text-anchor="middle">🌅 美麗風景</text>
-  <text x="420" y="740" font-family="'Noto Sans TC', 'Microsoft JhengHei', sans-serif" font-size="16" font-weight="500" fill="#c9d1d9" text-anchor="middle">🎵 背景音樂</text>
-  <text x="640" y="740" font-family="'Noto Sans TC', 'Microsoft JhengHei', sans-serif" font-size="16" font-weight="500" fill="#c9d1d9" text-anchor="middle">🛡️ 穩定營運</text>
-  <text x="860" y="740" font-family="'Noto Sans TC', 'Microsoft JhengHei', sans-serif" font-size="16" font-weight="500" fill="#c9d1d9" text-anchor="middle">🏆 定期活動</text>
+  <!-- Feature items row 2 -->
+  <circle cx="160" cy="735" r="3" fill="#deac80" opacity="0.5"/>
+  <text x="170" y="740" font-family="'Noto Sans TC', 'Microsoft JhengHei', sans-serif" font-size="16" font-weight="500" fill="#c9d1d9">美麗風景</text>
+  <circle cx="380" cy="735" r="3" fill="#578aff" opacity="0.5"/>
+  <text x="390" y="740" font-family="'Noto Sans TC', 'Microsoft JhengHei', sans-serif" font-size="16" font-weight="500" fill="#c9d1d9">背景音樂</text>
+  <circle cx="600" cy="735" r="3" fill="#a8e6cf" opacity="0.5"/>
+  <text x="610" y="740" font-family="'Noto Sans TC', 'Microsoft JhengHei', sans-serif" font-size="16" font-weight="500" fill="#c9d1d9">穩定營運</text>
+  <circle cx="820" cy="735" r="3" fill="#ab72f9" opacity="0.5"/>
+  <text x="830" y="740" font-family="'Noto Sans TC', 'Microsoft JhengHei', sans-serif" font-size="16" font-weight="500" fill="#c9d1d9">定期活動</text>
 
   <!-- CTA area -->
   <rect x="340" y="800" width="400" height="56" rx="28" fill="url(#accent)" opacity="0.15"/>
   <rect x="340" y="800" width="400" height="56" rx="28" fill="none" stroke="url(#accent)" stroke-width="1.5" opacity="0.5"/>
-  <text x="540" y="834" font-family="'Noto Sans TC', 'Microsoft JhengHei', sans-serif" font-size="18" font-weight="700" fill="#e6edf3" text-anchor="middle">🌐 www.seawind.cc</text>
+  <text x="540" y="834" font-family="'Noto Sans TC', 'Microsoft JhengHei', sans-serif" font-size="18" font-weight="700" fill="#e6edf3" text-anchor="middle">www.seawind.cc</text>
 
   <!-- Bottom info -->
   <text x="540" y="910" font-family="'Noto Sans TC', 'Microsoft JhengHei', sans-serif" font-size="13" font-weight="400" fill="#8b949e" text-anchor="middle">Discord 連結在個人主頁 · 歡迎加入我們</text>
