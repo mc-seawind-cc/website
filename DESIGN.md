@@ -350,6 +350,7 @@ website/
 | 2026.04.23 | 海風網站助手 | **頁面載入動畫**：body 新增 `page-fade-in` 動畫（0.6s ease-out，opacity 0→1 + translateY 8px→0），提升頁面切換體驗 |
 | 2026.04.23 | 海風網站助手 | 全站 CSS/JS cache busting 統一更新為 230423c |
 | 2026.04.23 | 海風網站助手 | **導航命名調整**：下拉選單標題「社群須知」→「須知」；項目「玩家須知」→「社群須知」、「海風管理規則」→「管理通則」。加入步驟「閱讀玩家須知」→「閱讀社群須知」。玩家須知.html title/og:title 更新、管理規則.html title/og:title/h1 更新。全站 75 個 HTML 頁面同步，cache busting → 230423d |
+| 2026.04.23 | 海風網站助手 | **檔案重新命名**：`玩家須知.html` → `社群須知.html`、`管理規則.html` → `管理通則.html`。全站 HTML href/canonical 更新（含子目錄相對路徑）、sitemap.xml 更新。公務人員須知.html 中 Google Doc 外部連結保留原名（文件實際標題） |
 
 ---
 
