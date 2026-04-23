@@ -242,7 +242,7 @@ website/
 - [x] ~~CSS `[data-theme="light"]` 重複選擇器清理~~ → 已合併 3 個重複選擇器（.page-revise / .bulletin-body .b-content / .join-step:hover），實際僅 3 處非 264 處 — 2026.04.21
 - [x] ~~圖片全面檢查 WebP fallback~~ → 全站 75 個 HTML 頁面 logo.png 全部加 `<picture>` 包裹（logo.webp fallback）、guide-menu / mcu 同步處理 — 2026.04.21
 - [x] ~~大 PNG 轉無損 WebP~~ → guide-menu.png / logo.png / mcu.png 已轉 lossless WebP — 2026.04.21
-- [ ] 公告資料可考慮 inline 到 HTML（減少 API 請求）
+- [x] ~~公告資料可考慮 inline 到 HTML（減少 API 請求）~~ → 首頁已有 12 則 inline，`公告.html` 新增 50 則 inline + 背景載入完整 JSON — 2026.04.23
 - [ ] 首頁增強版 Footer（含 Discord CTA + 伺服器 IP 快速複製）需推廣到其他頁面
 - [ ] 無障礙：Lightbox 已有 `aria-live`（counter），圖片 `alt` 可更描述性
 - [ ] 404.html 體積偏大（可將動畫 CSS/JS 外部化）
@@ -336,6 +336,7 @@ website/
 | 2026.04.23 | 海風網站助手 | **設計規範頁條文重新寫入**：依最新版文字稿重建全部條文（第一章總則 2 條、第二章七節 30 條 rule-item + 8 條歷史紀錄）。規範介紹改為雙項目列表、復刻名詞移除多餘說明文字 |
 | 2026.04.23 | 海風網站助手 | **Section Header 裝飾線簡化**：移除 `h2::before` 左側裝飾線（含 light mode 覆蓋），底線 `::after` 改為常駐顯示（`width:40px`，不再依賴 scroll reveal），hover 仍展開至 80px。全站 CSS/JS cache busting → 230423a，全站頁尾日期統一更新至 2026.04.23 |
 | 2026.04.23 | 海風網站助手 | **打怪物精靈圖改回獨立 PNG**：移除 `SPRITES` 坐標地圖（91 組座標）及 `SPRITE_SHEET` 常數，`spr()` 改為直接用 `<img>` 標籤載入 `assets/mobs/*.png`。CSS 移除 `.ms-ss` sprite sheet 樣式 + 5 處 `div.ms-*` background-image 規則。404.html 移除 `mob-spritesheet.png` preload |
+| 2026.04.23 | 海風網站助手 | **公告頁 inline 公告資料**：將最新 50 則公告（~23KB）inline 進 `公告.html`，首屏即時渲染不再依賴 349KB 的 `announcements.json` fetch。JS 改為 inline data first → 背景靜默載入完整 JSON（473 則）→ 自動更新 allData 供搜尋/篩選/分頁使用。首頁已有 12 則 inline，此次將 `公告.html` 同步處理 |
 
 ---
 
