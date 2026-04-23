@@ -1,0 +1,130 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 1080" width="1080" height="1080">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#0d1117"/>
+      <stop offset="40%" stop-color="#1a1410"/>
+      <stop offset="100%" stop-color="#0d1117"/>
+    </linearGradient>
+    <linearGradient id="tea" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#c49b6c"/>
+      <stop offset="60%" stop-color="#a67c52"/>
+      <stop offset="100%" stop-color="#8b6340"/>
+    </linearGradient>
+    <linearGradient id="gold" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#c49b6c"/>
+      <stop offset="100%" stop-color="#e8c9a0"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#c49b6c"/>
+      <stop offset="100%" stop-color="#a8e6cf"/>
+    </linearGradient>
+    <radialGradient id="glow1" cx="0.5" cy="0.35" r="0.4">
+      <stop offset="0%" stop-color="#c49b6c" stop-opacity="0.12"/>
+      <stop offset="100%" stop-color="#c49b6c" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="glow2" cx="0.3" cy="0.7" r="0.3">
+      <stop offset="0%" stop-color="#a8e6cf" stop-opacity="0.06"/>
+      <stop offset="100%" stop-color="#a8e6cf" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="blur1">
+      <feGaussianBlur stdDeviation="40"/>
+    </filter>
+    <linearGradient id="cupGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#e8c9a0" stop-opacity="0.2"/>
+      <stop offset="100%" stop-color="#c49b6c" stop-opacity="0.1"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1080" height="1080" fill="url(#bg)"/>
+  <rect width="1080" height="1080" fill="url(#glow1)"/>
+  <rect width="1080" height="1080" fill="url(#glow2)"/>
+
+  <!-- Floating bubbles -->
+  <circle cx="120" cy="180" r="8" fill="#c49b6c" opacity="0.15"/>
+  <circle cx="160" cy="220" r="5" fill="#c49b6c" opacity="0.1"/>
+  <circle cx="900" cy="160" r="10" fill="#a8e6cf" opacity="0.1"/>
+  <circle cx="950" cy="250" r="6" fill="#c49b6c" opacity="0.12"/>
+  <circle cx="80" cy="600" r="7" fill="#a8e6cf" opacity="0.08"/>
+  <circle cx="1000" cy="500" r="9" fill="#c49b6c" opacity="0.1"/>
+  <circle cx="200" cy="850" r="5" fill="#a8e6cf" opacity="0.1"/>
+  <circle cx="880" cy="800" r="8" fill="#c49b6c" opacity="0.08"/>
+
+  <!-- Decorative wave top -->
+  <path d="M0 60 Q270 30 540 60 Q810 90 1080 60 L1080 0 L0 0Z" fill="#c49b6c" fill-opacity="0.03"/>
+
+  <!-- Top badge -->
+  <rect x="400" y="55" width="280" height="36" rx="18" fill="#c49b6c" fill-opacity="0.12" stroke="#c49b6c" stroke-opacity="0.25" stroke-width="1"/>
+  <text x="540" y="79" font-family="'Noto Sans TC', 'Microsoft JhengHei', sans-serif" font-size="15" font-weight="700" fill="#e8c9a0" text-anchor="middle" letter-spacing="2">🧋 2026 限定活動</text>
+
+  <!-- Bubble tea cup illustration -->
+  <!-- Cup body -->
+  <path d="M430 280 L450 500 Q540 530 630 500 L650 280Z" fill="url(#cupGrad)" stroke="#c49b6c" stroke-opacity="0.3" stroke-width="1.5"/>
+  <!-- Cup lid -->
+  <ellipse cx="540" cy="280" rx="115" ry="18" fill="#1a1410" stroke="#c49b6c" stroke-opacity="0.4" stroke-width="1.5"/>
+  <!-- Dome lid -->
+  <path d="M435 280 Q540 240 645 280" fill="none" stroke="#c49b6c" stroke-opacity="0.3" stroke-width="1.5"/>
+  <!-- Straw -->
+  <rect x="530" y="180" width="20" height="110" rx="2" fill="#c49b6c" opacity="0.5"/>
+  <rect x="530" y="180" width="20" height="110" rx="2" fill="none" stroke="#e8c9a0" stroke-opacity="0.3" stroke-width="1"/>
+
+  <!-- Tapioca pearls in cup -->
+  <circle cx="480" cy="460" r="8" fill="#3d2b1a" opacity="0.8"/>
+  <circle cx="500" cy="475" r="7" fill="#3d2b1a" opacity="0.7"/>
+  <circle cx="520" cy="455" r="9" fill="#3d2b1a" opacity="0.8"/>
+  <circle cx="545" cy="470" r="7" fill="#3d2b1a" opacity="0.75"/>
+  <circle cx="565" cy="455" r="8" fill="#3d2b1a" opacity="0.8"/>
+  <circle cx="585" cy="468" r="7" fill="#3d2b1a" opacity="0.7"/>
+  <circle cx="510" cy="440" r="6" fill="#3d2b1a" opacity="0.6"/>
+  <circle cx="555" cy="440" r="6" fill="#3d2b1a" opacity="0.65"/>
+  <circle cx="590" cy="445" r="5" fill="#3d2b1a" opacity="0.5"/>
+
+  <!-- Highlight on cup -->
+  <path d="M455 300 L460 460" stroke="white" stroke-opacity="0.06" stroke-width="20" stroke-linecap="round"/>
+
+  <!-- Steam/smoke -->
+  <path d="M510 175 Q505 155 515 140" fill="none" stroke="#c49b6c" stroke-opacity="0.2" stroke-width="2" stroke-linecap="round"/>
+  <path d="M540 170 Q545 145 535 125" fill="none" stroke="#c49b6c" stroke-opacity="0.15" stroke-width="2" stroke-linecap="round"/>
+  <path d="M565 175 Q570 150 560 135" fill="none" stroke="#c49b6c" stroke-opacity="0.2" stroke-width="2" stroke-linecap="round"/>
+
+  <!-- Title -->
+  <text x="540" y="590" font-family="'Noto Sans TC', 'Microsoft JhengHei', sans-serif" font-size="48" font-weight="900" fill="#e8c9a0" text-anchor="middle">海風國際珍奶日</text>
+
+  <!-- Date -->
+  <text x="540" y="635" font-family="'Noto Sans TC', 'Microsoft JhengHei', sans-serif" font-size="22" font-weight="500" fill="#9dafff" text-anchor="middle" letter-spacing="3">4 / 27 — 5 / 31</text>
+
+  <!-- Divider -->
+  <rect x="420" y="660" width="240" height="1.5" rx="1" fill="url(#gold)" opacity="0.25"/>
+
+  <!-- Info items -->
+  <text x="270" y="710" font-family="'Noto Sans TC', 'Microsoft JhengHei', sans-serif" font-size="18" font-weight="500" fill="#c9d1d9" text-anchor="middle">🍵 13 種限定口味</text>
+  <text x="540" y="710" font-family="'Noto Sans TC', 'Microsoft JhengHei', sans-serif" font-size="18" font-weight="500" fill="#c9d1d9" text-anchor="middle">📦 14 種活動原料</text>
+  <text x="810" y="710" font-family="'Noto Sans TC', 'Microsoft JhengHei', sans-serif" font-size="18" font-weight="500" fill="#c9d1d9" text-anchor="middle">🪙 代幣獎勵系統</text>
+
+  <text x="270" y="750" font-family="'Noto Sans TC', 'Microsoft JhengHei', sans-serif" font-size="18" font-weight="500" fill="#c9d1d9" text-anchor="middle">🗡️ 限定武器「珍奶微微」</text>
+  <text x="540" y="750" font-family="'Noto Sans TC', 'Microsoft JhengHei', sans-serif" font-size="18" font-weight="500" fill="#c9d1d9" text-anchor="middle">🏆 4 個限定稱號</text>
+  <text x="810" y="750" font-family="'Noto Sans TC', 'Microsoft JhengHei', sans-serif" font-size="18" font-weight="500" fill="#c9d1d9" text-anchor="middle">👑 集齊解鎖「海風茶王」</text>
+
+  <!-- Timeline -->
+  <rect x="180" y="800" width="720" height="70" rx="14" fill="#161b22" stroke="#c49b6c" stroke-opacity="0.1" stroke-width="1"/>
+  <text x="310" y="828" font-family="'Noto Sans TC', 'Microsoft JhengHei', sans-serif" font-size="13" font-weight="700" fill="#c49b6c" text-anchor="middle">調整期</text>
+  <text x="310" y="850" font-family="'Noto Sans TC', 'Microsoft JhengHei', sans-serif" font-size="12" font-weight="400" fill="#8b949e" text-anchor="middle">4/27–5/3</text>
+  <text x="540" y="828" font-family="'Noto Sans TC', 'Microsoft JhengHei', sans-serif" font-size="13" font-weight="700" fill="#a8e6cf" text-anchor="middle">正式期</text>
+  <text x="540" y="850" font-family="'Noto Sans TC', 'Microsoft JhengHei', sans-serif" font-size="12" font-weight="400" fill="#8b949e" text-anchor="middle">5/4–5/27</text>
+  <text x="760" y="828" font-family="'Noto Sans TC', 'Microsoft JhengHei', sans-serif" font-size="13" font-weight="700" fill="#ab72f9" text-anchor="middle">兌換期</text>
+  <text x="760" y="850" font-family="'Noto Sans TC', 'Microsoft JhengHei', sans-serif" font-size="12" font-weight="400" fill="#8b949e" text-anchor="middle">5/28–5/31</text>
+
+  <!-- Arrow connectors -->
+  <line x1="385" y1="835" x2="455" y2="835" stroke="#8b949e" stroke-opacity="0.3" stroke-width="1" stroke-dasharray="4,3"/>
+  <line x1="625" y1="835" x2="695" y2="835" stroke="#8b949e" stroke-opacity="0.3" stroke-width="1" stroke-dasharray="4,3"/>
+
+  <!-- CTA -->
+  <rect x="340" y="910" width="400" height="50" rx="25" fill="#c49b6c" fill-opacity="0.12" stroke="#c49b6c" stroke-opacity="0.3" stroke-width="1"/>
+  <text x="540" y="941" font-family="'Noto Sans TC', 'Microsoft JhengHei', sans-serif" font-size="17" font-weight="700" fill="#e8c9a0" text-anchor="middle">🌐 www.seawind.cc</text>
+
+  <!-- Bottom -->
+  <text x="540" y="1000" font-family="'Noto Sans TC', 'Microsoft JhengHei', sans-serif" font-size="13" font-weight="400" fill="#8b949e" text-anchor="middle">快來海風，一起乾杯吧 🥂</text>
+
+  <!-- Bottom wave -->
+  <path d="M0 1030 Q270 1010 540 1030 Q810 1050 1080 1030 L1080 1080 L0 1080Z" fill="#c49b6c" fill-opacity="0.06"/>
+</svg>

@@ -6,8 +6,8 @@
 
 ## 🖼️ 貼文圖片
 
-檔案：`ig-bubbletea-post.png`（1080×1080）
-路徑：`website/ig-bubbletea-post.png`
+檔案：`ig-post-bubbletea.png`（1080×1080）
+路徑：`website/ig-post-bubbletea.png`
 
 ---
 
