@@ -541,6 +541,18 @@ body{font-family:var(--font-body);background:var(--deep);color:var(--cloud);line
 [data-theme="light"] .feature-card p{color:#5a6270}
 [data-theme="light"] .feature-card-icon{background:rgba(240,242,255,0.9);border:1px solid rgba(100,130,220,0.12)}
 
+/* ── Feature card progressive numbering indicator ── */
+.feature-card-num{position:absolute;top:var(--space-md);right:var(--space-md);font-size:0.72rem;font-weight:800;color:color-mix(in srgb,var(--card-accent,var(--sky)) 45%,transparent);letter-spacing:0.06em;font-family:'Noto Sans TC',sans-serif;opacity:0.6;transition:opacity 0.4s var(--ease),transform 0.4s var(--ease),color 0.4s var(--ease);z-index:1;line-height:1}
+.feature-card:hover .feature-card-num{opacity:1;transform:translateY(-2px);color:var(--card-accent,var(--sky))}
+.feature-card-num::before{content:'';position:absolute;top:50%;right:calc(100% + 6px);width:0;height:1px;background:var(--card-accent,var(--sky));opacity:0.3;transition:width 0.5s var(--ease)}
+.feature-card:hover .feature-card-num::before{width:16px;opacity:0.6}
+/* Connecting line between cards (desktop only, 3-col grid) */
+.feature-grid-3 .feature-card:not(:last-child)::after{content:'';position:absolute;top:50%;right:-1px;width:2px;height:0;background:linear-gradient(180deg,transparent,color-mix(in srgb,var(--card-accent,var(--sky)) 15%,transparent),transparent);transform:translateY(-50%);transition:height 0.6s var(--ease);z-index:0}
+.feature-grid-3 .feature-card:not(:last-child):hover::after{height:40px}
+@media(max-width:768px){.feature-card-num{top:var(--space-sm);right:var(--space-sm);font-size:0.65rem}.feature-grid-3 .feature-card:not(:last-child)::after{display:none}}
+[data-theme="light"] .feature-card-num{color:color-mix(in srgb,var(--card-accent,var(--sky)) 35%,rgba(0,0,0,0.15))}
+[data-theme="light"] .feature-card:hover .feature-card-num{color:var(--card-accent,var(--sky))}
+
 /* ═══════════════════════════════════════
    Bulletin / Announcements
    ═══════════════════════════════════════ */

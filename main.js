@@ -388,6 +388,57 @@ function createHeroParticles() {
   } catch(e) {}
 }
 
+// --- Hero Title Color Particles (on hover) ---
+function initHeroTitleParticles() {
+  const title = document.querySelector('.hero-title');
+  if (!title || window.innerWidth < 768) return;
+  const canvas = document.createElement('canvas');
+  canvas.style.cssText = 'position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:2';
+  title.style.position = 'relative';
+  title.appendChild(canvas);
+  const ctx = canvas.getContext('2d');
+  let particles = [];
+  let animId = null;
+  const colors = ['#9dafff','#a8e6cf','#ab72f9','#578aff','#deac80','#7dd3fc'];
+  function resize(){canvas.width=title.offsetWidth;canvas.height=title.offsetHeight}
+  resize();
+  window.addEventListener('resize',resize);
+  function spawn(e){
+    const r=title.getBoundingClientRect();
+    for(let i=0;i<3;i++){
+      particles.push({
+        x:(e||{}).clientX?e.clientX-r.left:title.offsetWidth/2+Math.random()*40-20,
+        y:(e||{}).clientY?e.clientY-r.top:title.offsetHeight/2,
+        vx:(Math.random()-0.5)*3,
+        vy:-Math.random()*3-1,
+        size:2+Math.random()*4,
+        color:colors[Math.floor(Math.random()*colors.length)],
+        life:1,
+        decay:0.015+Math.random()*0.02
+      });
+    }
+    if(!animId) loop();
+  }
+  function loop(){
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+    particles=particles.filter(p=>{
+      p.x+=p.vx; p.y+=p.vy; p.vy+=0.04; p.life-=p.decay;
+      if(p.life<=0) return false;
+      ctx.globalAlpha=p.life;
+      ctx.fillStyle=p.color;
+      ctx.beginPath();
+      ctx.arc(p.x,p.y,p.size,0,Math.PI*2);
+      ctx.fill();
+      return true;
+    });
+    if(particles.length>0) animId=requestAnimationFrame(loop);
+    else{animId=null;ctx.clearRect(0,0,canvas.width,canvas.height)}
+  }
+  title.addEventListener('mousemove',spawn);
+  title.addEventListener('mouseenter',()=>{particles=[]});
+}
+document.addEventListener('DOMContentLoaded',initHeroTitleParticles);
+
 // --- Hero Typewriter (staged with thinking dots) ---
 function initTypewriter() {
   const el = document.getElementById('heroSubtitle');
@@ -731,6 +782,7 @@ function initPostcardLightbox() {
     if (i >= imgs.length) i = 0;
     idx = i;
     lightboxImg.src = imgs[idx].src;
+    lightboxImg.alt = imgs[idx].alt || '海風伺服器景觀明信片';
     if (lightboxCounter) lightboxCounter.textContent = `${idx + 1} / ${imgs.length}`;
   }
 
