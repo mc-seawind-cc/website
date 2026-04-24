@@ -1,6 +1,6 @@
 # 海風 SeaWind 網站設計文件
 
-> 最後更新：2026.04.23
+> 最後更新：2026.04.24
 > 維護者：海風網站助手
 > Instagram：[@mc.seawind.cc](https://www.instagram.com/mc.seawind.cc/)
 
@@ -233,6 +233,7 @@ website/
 - [x] 全站頁尾日期統一更新至 2026.04.19 — 2026.04.19
 - [x] 首頁重新加入精選活動橫幅（珍奶日 4/27 預告，含倒數計時）— 2026.04.21
 - [x] 首頁新增「社群數據」區塊（動態計數器：會員/Discord/公告/營運天數）— 2026.04.21
+- [x] 首頁「社群數據」區塊重新加入（代碼遺失，含 IntersectionObserver easeOut 動畫 + 逐項延遲）— 2026.04.24
 
 ### 高優先
 - [x] 首頁 Hero 連線版本文字 `1.21.6 ~ 26.x` — 已確認正確（2026.04.19）
@@ -244,10 +245,10 @@ website/
 - [x] ~~圖片全面檢查 WebP fallback~~ → 全站 75 個 HTML 頁面 logo.png 全部加 `<picture>` 包裹（logo.webp fallback）、guide-menu / mcu 同步處理 — 2026.04.21
 - [x] ~~大 PNG 轉無損 WebP~~ → guide-menu.png / logo.png / mcu.png 已轉 lossless WebP — 2026.04.21
 - [x] ~~公告資料可考慮 inline 到 HTML（減少 API 請求）~~ → 首頁已有 12 則 inline，`公告.html` 新增 50 則 inline + 背景載入完整 JSON — 2026.04.23
-- [ ] 首頁增強版 Footer（含 Discord CTA + 伺服器 IP 快速複製）需推廣到其他頁面
+- [x] ~~首頁增強版 Footer（含 Discord CTA + 伺服器 IP 快速複製）需推廣到其他頁面~~ → 全站已統一為簡潔版 Footer — 2026.04.19
 - [ ] 無障礙：Lightbox 已有 `aria-live`（counter），圖片 `alt` 可更描述性
 - [ ] 404.html 體積偏大（可將動畫 CSS/JS 外部化）
-- [ ] SEO：各子頁面 meta description 檢查
+- [x] ~~SEO：各子頁面 meta description 檢查~~ → 全站所有內容頁（含 6 個 lore 子頁面）均已補齊 meta description，僅 redirect/noindex 頁面不需 — 2026.04.24
 
 ### 低優先
 - [x] ~~首頁 Hero 標題可考慮加入微互動（如字元 hover 粒子效果）~~ → 已有 wind-sway + hover scale/shadow 動畫 — 2026.04.19
@@ -351,6 +352,9 @@ website/
 | 2026.04.23 | 海風網站助手 | 全站 CSS/JS cache busting 統一更新為 230423c |
 | 2026.04.23 | 海風網站助手 | **導航命名調整**：下拉選單標題「社群須知」→「須知」；項目「玩家須知」→「社群須知」、「海風管理規則」→「管理通則」。加入步驟「閱讀玩家須知」→「閱讀社群須知」。玩家須知.html title/og:title 更新、管理規則.html title/og:title/h1 更新。全站 75 個 HTML 頁面同步，cache busting → 230423d |
 | 2026.04.23 | 海風網站助手 | **檔案重新命名**：`玩家須知.html` → `社群須知.html`、`管理規則.html` → `管理通則.html`。全站 HTML href/canonical 更新（含子目錄相對路徑）、sitemap.xml 更新。公務人員須知.html 中 Google Doc 外部連結保留原名（文件實際標題） |
+| 2026.04.24 | 海風網站助手 | **首頁「社群數據」區塊重新加入**：HTML 結構（4 項動態計數器：400+ 註冊會員、1200+ Discord 成員、500+ 公告發布、365+ 營運天數）+ JS IntersectionObserver easeOut 動畫（1.8s，逐項延遲 150ms）。CSS 樣式已有，僅補 HTML + JS |
+| 2026.04.24 | 海風網站助手 | **SEO meta description 補齊**：6 個文化藝廊子頁面（索西斯墓/邊境之村/瑟爾納大橋/禁忌天使/格拉文特/翠籙幽光書庭）新增 `<meta name="description">` + og:description 同步更新。全站所有內容頁均已覆蓋 |
+| 2026.04.24 | 海風網站助手 | **DESIGN.md 待辦清理**：標記 SEO 檢查、社群數據區塊為已完成；修正增強版 Footer 項目（全站已統一為簡潔版）。cache busting → 240424a，首頁頁尾日期更新至 2026.04.24 |
 
 ---
 
