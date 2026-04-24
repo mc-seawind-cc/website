@@ -460,6 +460,26 @@ body{font-family:var(--font-body);background:var(--deep);color:var(--cloud);line
 [data-theme="light"] .featured-event-countdown.expired .countdown-block{border-color:rgba(168,230,207,0.15);background:rgba(168,230,207,0.06)}
 [data-theme="light"] .featured-event-countdown.expired .countdown-num{color:#2d8a5e}
 
+/* Featured Event — Progress Bar */
+.featured-event-progress{max-width:280px;margin:0 auto var(--space-md)}
+.featured-event-progress-bar{height:4px;background:rgba(196,155,108,0.12);border-radius:4px;overflow:hidden;position:relative}
+.featured-event-progress-fill{height:100%;border-radius:4px;background:linear-gradient(90deg,var(--sand),var(--sky));transition:width 1.5s cubic-bezier(0.4,0,0.2,1);position:relative;overflow:hidden}
+.featured-event-progress-fill::after{content:'';position:absolute;inset:0;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.35),transparent);animation:progress-shimmer-bar 2s ease-in-out infinite}
+@keyframes progress-shimmer-bar{0%{transform:translateX(-100%)}100%{transform:translateX(100%)}}
+.featured-event-progress-text{display:flex;justify-content:space-between;margin-top:6px;font-size:0.68rem;color:var(--fog);opacity:0.7}
+[data-theme="light"] .featured-event-progress-bar{background:rgba(196,155,108,0.1)}
+[data-theme="light"] .featured-event-progress-fill{background:linear-gradient(90deg,#c49b6c,var(--sky))}
+
+/* Featured Event — Countdown Glow */
+.countdown-num.glow{text-shadow:0 0 12px rgba(196,155,108,0.3),0 0 24px rgba(196,155,108,0.15);animation:countdown-glow-pulse 2s ease-in-out infinite alternate}
+@keyframes countdown-glow-pulse{0%{text-shadow:0 0 12px rgba(196,155,108,0.3),0 0 24px rgba(196,155,108,0.15)}100%{text-shadow:0 0 16px rgba(196,155,108,0.45),0 0 32px rgba(196,155,108,0.25)}}
+[data-theme="light"] .countdown-num.glow{text-shadow:0 0 8px rgba(196,155,108,0.2),0 0 16px rgba(196,155,108,0.1);animation:countdown-glow-pulse-light 2s ease-in-out infinite alternate}
+@keyframes countdown-glow-pulse-light{0%{text-shadow:0 0 8px rgba(196,155,108,0.2),0 0 16px rgba(196,155,108,0.1)}100%{text-shadow:0 0 12px rgba(196,155,108,0.3),0 0 24px rgba(196,155,108,0.15)}}
+
+/* Featured Event — Urgency Text */
+.countdown-urgency{font-size:0.78rem;color:var(--sand);font-weight:500;letter-spacing:0.04em;margin-bottom:var(--space-sm);opacity:0.85;min-height:1.2em}
+[data-theme="light"] .countdown-urgency{color:#b8860b}
+
 /* ═══════════════════════════════════════
    Buttons
    ═══════════════════════════════════════ */
