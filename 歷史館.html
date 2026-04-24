@@ -325,6 +325,15 @@
   [data-theme="light"] .tl-card-title { color: var(--cloud); }
   [data-theme="light"] .tl-card-desc { color: #5a6270; }
 
+  /* Timeline card images */
+  .tl-card-imgs { display:flex; gap:6px; margin-top:10px; flex-wrap:wrap; }
+  .tl-card-img { width:80px; height:110px; object-fit:cover; border-radius:6px; border:1px solid rgba(255,255,255,0.08); cursor:pointer; transition:transform 0.3s var(--ease), box-shadow 0.3s var(--ease); }
+  .tl-card-img:hover { transform:scale(1.05); box-shadow:0 4px 16px rgba(0,0,0,0.3); border-color:rgba(157,175,255,0.25); }
+  [data-theme="light"] .tl-card-img { border-color:rgba(0,0,0,0.08); }
+  [data-theme="light"] .tl-card-img:hover { box-shadow:0 4px 16px rgba(0,0,0,0.1); }
+  /* Left-aligned cards need right-aligned images */
+  .tl-item.left .tl-card-imgs { justify-content:flex-end; }
+
   /* 結尾 */
   .tl-end {
     text-align: center;
@@ -486,6 +495,12 @@
     { e:"pw", d:"2024.05.22", iso:"2024-05-22", t:"事件", title:"路人甲遭褫奪公權", desc:"服主路人甲因濫用職權被褫奪公權。管理重心轉移至神焰。" },
     { e:"pw", d:"2024.06.04", iso:"2024-06-04", t:"里程碑", title:"人數 51 人 & 藍冰援助", desc:"「藍冰伺服器」伸出援手，將主機效能分給純麥使用。跨社群的善意。" },
     { e:"pw", d:"2024.06.24", iso:"2024-06-24", t:"里程碑", title:"公務人員職權規範條例", desc:"經人民大會堂投票以 11:0 全票通過。純麥建立正式權力制衡制度。" },
+    { e:"pw", d:"2024.07.05", iso:"2024-07-05", t:"事件", title:"新和社人民日報 · 電子報創刊", desc:"純麥首份電子報「新和社人民日報」正式發行。總計 4 頁，共一期。這是純麥社群文化的一次有趣嘗試。", imgs:[
+      "https://media.discordapp.net/attachments/1258703952816640090/1258704032093048863/1.png?ex=69ec7dfa&is=69eb2c7a&hm=420fcbf1f89ea4bafe44bbf3d52bf8c2cd58a67569f80012f1b6f24e513cf069&=&format=webp&quality=lossless&width=519&height=735",
+      "https://media.discordapp.net/attachments/1258703952816640090/1258704032638439484/2.png?ex=69ec7dfa&is=69eb2c7a&hm=23cda0bf9e3fcfbed5d7917f7c808d6718ca88791064a38de1657a147b4beb89&=&format=webp&quality=lossless&width=519&height=735",
+      "https://media.discordapp.net/attachments/1258703952816640090/1258704033128906802/3.png?ex=69ec7dfb&is=69eb2c7b&hm=6b823714ce4c316bf9df951600326e8a92376b7a1014ec483b4bf40dcafb9cb9&=&format=webp&quality=lossless&width=519&height=735",
+      "https://media.discordapp.net/attachments/1258703952816640090/1258704033674428446/4.png?ex=69ec7dfb&is=69eb2c7b&hm=79a739fb45e5382be67cb20d2f839eb36481d707cd15c0a0703bf9b6a5c1630c&=&format=webp&quality=lossless&width=519&height=735"
+    ] },
     { e:"pw", d:"2024.08.06", iso:"2024-08-06", t:"里程碑", title:"政變 — 純麥時代終結", desc:"路人甲移除管理員身分組。神焰當天下午帶領核心團隊建立新 Discord。純麥的故事在此落幕。" },
     { e:"pw", d:"2024.08.07", iso:"2024-08-07", t:"事件", title:"託管商硬碟損壞", desc:"舊服因託管商硬碟損壞關閉，再也沒有回來。" },
     { e:"pw", d:"2024.08.08", iso:"2024-08-08", t:"事件", title:"奪回純麥", desc:"宣布團隊將繼續合作，延續原先地圖檔。" },
@@ -551,6 +566,7 @@
               <div class="tl-card-date">${x.d}</div>
               <div class="tl-card-title">${isMs ? '⭐ ' : ''}${x.title}</div>
               <div class="tl-card-desc">${x.desc}</div>
+              ${x.imgs ? '<div class="tl-card-imgs">' + x.imgs.map((src, i) => `<img src="${src}" alt="第 ${i+1} 頁" class="tl-card-img" loading="lazy" onclick="window.open('${src}','_blank')">`).join('') + '</div>' : ''}
             </div>
           </div>`;
         });
