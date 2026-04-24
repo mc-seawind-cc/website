@@ -361,6 +361,11 @@ website/
 | 2026.04.24 | 海風網站助手 | **Lightbox alt 描述強化**：lightbox 開啟時同步複製原圖 alt 文字（`lightboxImg.alt = imgs[idx].alt`）。5 張明信片 alt 從泛用描述改為具體建築名稱+風格描述（嵐陽城/海風大社/羅馬尼亞號/布雷特蘭/格拉文特）。cache busting → 240424b |
 | 2026.04.24 | 海風網站助手 | **移除 Hero 標題 hover 色彩粒子**：刪除 `initHeroTitleParticles()` 函式（canvas 粒子系統），不再於滑鼠移動時生成藍紫色粒子 |
 | 2026.04.24 | 海風網站助手 | **消除區塊背景分界**：`.content-section` 背景從深色漸層改為 transparent、移除 `::before` 裝飾線；`.section-tint` 移除 `::before` 頂部線條。使首頁從 Hero 到 Footer 背景一體流暢，無明顯邊界。全站 cache busting → 240424d |
+| 2026.04.24 | 海風網站助手 | **精選活動橫幅 shimmer 邊框**：`box-shadow` 多色漸層脈衝動畫（sand→sky→foam 三色循環 4s），hover 時加強亮度。倒數計時區塊數字加大（1.5→1.7rem）、字重 900、text-shadow 微發光、hover 時上浮+陰影。深色/淺色模式同步 |
+| 2026.04.24 | 海風網站助手 | **公告欄 stagger 淡入動畫**：`.bulletin-board .bulletin-item` 新增 `bulletin-stagger-in` 動畫（opacity 0→1 + translateY 12px→0），12 個項目各延遲 50ms（0.05s→0.6s），進入視口時依序浮現 |
+| 2026.04.24 | 海風網站助手 | **伺服器資訊卡片數值強化**：`.section-tint-warm .feature-card` 標題改為小字灰階（0.85rem、uppercase），數值加大加深（1.2rem、800 weight）+ accent 色 text-shadow 發光。深色/淺色模式同步 |
+| 2026.04.24 | 海風網站助手 | **活動頁 Hero 漸層裝飾**：`.page-hero-events` 新增雙側 radial-gradient 光暈（左藍右綠），8s/10s 交替漂移動畫。深色/淺色模式同步 |
+| 2026.04.24 | 海風網站助手 | 全站 CSS/JS cache busting 統一更新為 240424e，全站頁尾日期統一更新至 2026.04.24 |
 
 ---
 
