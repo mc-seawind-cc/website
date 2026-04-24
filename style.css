@@ -1655,7 +1655,7 @@ body{font-family:var(--font-body);background:var(--deep);color:var(--cloud);line
 .lore-block .lore-note{color:var(--fog);font-size:0.85rem;font-style:italic}
 .lore-block a{color:var(--sky);text-decoration:none;border-bottom:1px solid rgba(157,175,255,0.3);padding:0;display:inline;background:none;border-radius:0}
 .lore-block a:hover{text-decoration:none;border-bottom-color:var(--sky)}
-.lore-preview-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--space-lg);padding:var(--space-sm) 0}
+.lore-preview-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--space-lg);padding:var(--space-md) 0}
 .lore-preview-card{display:flex;flex-direction:column;background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.06);border-radius:var(--radius-lg);text-decoration:none;transition:all var(--duration)var(--ease);overflow:hidden;position:relative}
 .lore-preview-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--sky),var(--foam));opacity:0;transition:opacity 0.4s var(--ease);z-index:3}
 .lore-preview-card::after{content:'';position:absolute;inset:0;border-radius:var(--radius-lg);background:linear-gradient(180deg,transparent 50%,rgba(157,175,255,0.06) 100%);opacity:0;transition:opacity 0.4s var(--ease);pointer-events:none;z-index:1}
@@ -1733,7 +1733,7 @@ body{font-family:var(--font-body);background:var(--deep);color:var(--cloud);line
 .photo-sub-bg:hover{transform:scale(1.01)}
 .photo-sub-download{position:absolute;bottom:12px;right:12px;background:rgba(22,27,34,0.85);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,0.15);color:#c9d1d9;padding:6px 14px;border-radius:8px;font-size:0.8rem;text-decoration:none;transition:all 0.2s}
 .photo-sub-download:hover{background:rgba(22,27,34,0.95);color:#fff;border-color:rgba(157,175,255,0.4);transform:translateY(-1px)}
-.photo-carousel{overflow:hidden;border-radius:var(--radius-lg);position:relative;content-visibility:auto;contain-intrinsic-size:auto 350px}
+.photo-carousel{overflow:hidden;border-radius:var(--radius-lg);position:relative;content-visibility:auto;contain-intrinsic-size:auto 350px;padding:4px 0}
 .photo-carousel-track{display:flex;transition:transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94)}
 .carousel-slide{flex:0 0 20%;padding:0 4px;box-sizing:border-box;min-width:0}
 .carousel-slide img{display:block;width:100%;aspect-ratio:16 / 10;object-fit:cover;border-radius:var(--radius-md);transition:transform 0.4s var(--ease),box-shadow 0.4s var(--ease)}
@@ -1742,7 +1742,7 @@ body{font-family:var(--font-body);background:var(--deep);color:var(--cloud);line
 .carousel-dot{width:8px;height:8px;border-radius:50%;border:none;background:var(--mist);cursor:pointer;transition:all 0.3s var(--ease);padding:0}
 .carousel-dot.active{background:var(--sky);width:24px;border-radius:4px}
 .carousel-dot:hover{background:var(--fog)}
-.postcard-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:var(--space-md)}
+.postcard-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:var(--space-md);padding:var(--space-sm) 0}
 .postcard-item{border-radius:var(--radius-lg);overflow:hidden;position:relative;aspect-ratio:3 / 4;cursor:pointer;box-shadow:0 4px 20px rgba(0,0,0,0.2);transition:transform 0.5s var(--ease),box-shadow 0.5s var(--ease)}
 .postcard-item:hover{transform:translateY(-6px) scale(1.02);box-shadow:0 16px 48px rgba(0,0,0,0.35),0 0 0 1px rgba(157,175,255,0.15)}
 .postcard-item img{width:100%;height:100%;object-fit:cover;transition:transform 0.8s var(--ease),filter 0.5s var(--ease)}
@@ -1755,7 +1755,6 @@ body{font-family:var(--font-body);background:var(--deep);color:var(--cloud);line
 .photo-float-counter{position:fixed;bottom:140px;right:20px;z-index:900;padding:8px 14px;background:rgba(13,17,23,0.85);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border:1px solid rgba(157,175,255,0.15);border-radius:10px;font-size:0.8rem;color:var(--cloud);pointer-events:none;display:flex;align-items:center;gap:6px;box-shadow:0 4px 12px rgba(0,0,0,0.3)}
 .carousel-slide img{cursor:zoom-in;transition:transform 0.3s var(--ease),box-shadow 0.3s var(--ease)}
 .carousel-slide img:hover{transform:scale(1.03);box-shadow:0 8px 24px rgba(0,0,0,0.3)}
-.photo-carousel{overflow:hidden;border-radius:var(--radius-lg)}
 [data-theme="light"] .postcard-item{box-shadow:0 4px 16px rgba(0,0,0,0.08)}
 [data-theme="light"] .postcard-item:hover{box-shadow:0 12px 36px rgba(0,0,0,0.12),0 0 0 1px rgba(74,108,247,0.12)}
 .postcard-fallback::after {
