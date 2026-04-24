@@ -357,6 +357,7 @@ website/
 | 2026.04.24 | 海風網站助手 | **DESIGN.md 待辦清理**：標記 SEO 檢查、社群數據區塊為已完成；修正增強版 Footer 項目（全站已統一為簡潔版）。cache busting → 240424a，首頁頁尾日期更新至 2026.04.24 |
 | 2026.04.24 | 海風網站助手 | **特色卡片漸進式編號指示器**：6 張卡片右上角新增 01–06 編號（`.feature-card-num`），hover 時 opacity/color 變化 + 左側連線展開；桌面版卡片間新增垂直漸層連接線（hover 時高度 0→40px）。手機版隱藏連接線。深色/淺色模式同步 |
 | 2026.04.24 | 海風網站助手 | **首頁 Hero 標題色彩粒子特效**：`initHeroTitleParticles()` — canvas 粒子系統，mousemove 時在滑鼠位置生成 3 顆藍紫色調粒子（6 色隨機），含重力、衰減、生命週期。僅桌面版（≥768px）啟用 |
+| 2026.04.24 | 海風網站助手 | **移除首頁「社群數據」區塊**：刪除 stats-bar HTML/CSS/JS（400+ 註冊會員、1200+ Discord 成員、500+ 公告發布、365+ 營運天數）。CSS 移除 .stats-bar/.stat-item/.stat-num/.stat-label/.stat-divider 含淺色模式+響應式。JS 移除 IntersectionObserver easeOut 計數動畫。cache busting → 240424c |
 | 2026.04.24 | 海風網站助手 | **Lightbox alt 描述強化**：lightbox 開啟時同步複製原圖 alt 文字（`lightboxImg.alt = imgs[idx].alt`）。5 張明信片 alt 從泛用描述改為具體建築名稱+風格描述（嵐陽城/海風大社/羅馬尼亞號/布雷特蘭/格拉文特）。cache busting → 240424b |
 
 ---
