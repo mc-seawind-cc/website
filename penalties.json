@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "count": 11,
+  "count": 12,
   "penalties": [
     {
       "date": "113.08.25",
@@ -137,6 +137,38 @@
       ],
       "pdf": null,
       "author": "tdse9"
+    },
+    {
+      "date": "115.04.23",
+      "id": "#0012",
+      "title": "褫奪公權6月＋永久停權",
+      "tag": "處分",
+      "content": "## :wither_rose:　「　褫奪公權6月＋永久停權　」\n-# 日期：115.04.23　｜　編號：#0012　｜　案號：115年度訴字第0001號\n\n### 被告：\n> 1.  ``  Nakk_tiktok  ``（杜芬企業氣氛組）\n\n### 違反規章：\n> - 管理通則第二章第一節第4條（濫用權限圖利玩家）\n> - 社群須知第一章第2條、第3條（發言規範）\n> - 社群須知第二章第2條（蓄意製造對立）\n\n### 處分：\n> - 依管理通則第二章第一節第14條：褫奪公權6月\n> - 依社群須知第三章第2條：永久停權\n\n### 事實摘要：\n> 1. 4/2–4/21 期間，利用管理權限建造機器、建築予玩家、以指令協助特定玩家大量整地\n> 2. 4/19 放置紫水晶芽床生產紫水晶晶簇\n> 3. 4/21 給予玩家銅護腿、獄髓頭盔、胸甲、劍、黃金靴、鑽石矛等物品\n> 4. 4/22 於聊天室發表「卸任，不幹了」等不當言論，蓄意製造伺服器間對立\n\n### 審判：\n> - 審判長：tstw5306\n> - 法官：lapis.regnate、tdse9\n\n-# 本案詳細內容請參閱附件PDF及證據截圖",
+      "players": [
+        "Nakk_tiktok"
+      ],
+      "pdf": "assets/penalties/0012/115年度訴字第0001號.pdf",
+      "images": [
+        "assets/penalties/0012/01.png",
+        "assets/penalties/0012/02.png",
+        "assets/penalties/0012/03.png",
+        "assets/penalties/0012/04.png",
+        "assets/penalties/0012/05.png",
+        "assets/penalties/0012/06.png",
+        "assets/penalties/0012/07.png",
+        "assets/penalties/0012/08.png",
+        "assets/penalties/0012/09.png",
+        "assets/penalties/0012/10.png",
+        "assets/penalties/0012/11.png",
+        "assets/penalties/0012/12.png",
+        "assets/penalties/0012/13.png",
+        "assets/penalties/0012/14.png",
+        "assets/penalties/0012/15.png",
+        "assets/penalties/0012/16.png",
+        "assets/penalties/0012/17.png",
+        "assets/penalties/0012/18.png"
+      ],
+      "author": "tstw5306"
     }
   ]
 }

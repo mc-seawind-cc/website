@@ -220,6 +220,32 @@
       border-color: rgba(255,100,100,0.25);
     }
 
+    /* Evidence images */
+    .pen-evidence-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+      gap: 8px;
+      margin-top: 6px;
+    }
+    .pen-evidence-img {
+      width: 100%;
+      border-radius: 8px;
+      border: 1px solid rgba(255,255,255,0.08);
+      cursor: pointer;
+      transition: transform 0.3s var(--ease), box-shadow 0.3s var(--ease);
+    }
+    .pen-evidence-img:hover {
+      transform: scale(1.03);
+      box-shadow: 0 4px 16px rgba(0,0,0,0.3);
+      border-color: rgba(157,175,255,0.25);
+    }
+    [data-theme="light"] .pen-evidence-img {
+      border-color: rgba(0,0,0,0.08);
+    }
+    [data-theme="light"] .pen-evidence-img:hover {
+      box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+    }
+
     /* 淺色主題 */
     [data-theme="light"] .pen-stat { background: #fff; border-color: rgba(0,0,0,0.06); }
     [data-theme="light"] .pen-card { background: #fff; border-color: rgba(0,0,0,0.06); }
@@ -420,16 +446,21 @@
         html += `<span class="pen-detail-value">${allPlayers.map(p => '<code>' + esc(p) + '</code>').join('、')}</span>`;
       }
 
-      // Violation rule — new format
+      // Violation rule — new format (collect all bullets)
       let ruleText = '';
       const ruleMatch = content.match(/違反規章[：:]\s*\n?\s*[>]*\s*[-•]\s*(.+)/);
       if (ruleMatch) ruleText = ruleMatch[1].trim();
-      // Old format
-      if (!ruleText) {
-        const oldRule = content.match(/違\s*反\s*[：:]\s*\n?\s*[>]*\s*[-•]\s*(.+)/);
-        if (oldRule) ruleText = oldRule[1].trim();
+      // Collect all rules if multiple
+      const ruleBlock = content.match(/違反規章[：:]\s*\n([\s\S]*?)(?=\n###|\n-#|$)/);
+      const allRules = [];
+      if (ruleBlock) {
+        const ruleBullets = ruleBlock[1].match(/[>]*\s*[-•]\s*(.+)/g);
+        if (ruleBullets) ruleBullets.forEach(r => allRules.push(r.replace(/[>]*\s*[-•]\s*/, '').trim()));
       }
-      if (ruleText) {
+      if (allRules.length > 1) {
+        html += `<span class="pen-detail-label">違反規章</span>`;
+        html += `<span class="pen-detail-value">${allRules.map(r => '• ' + esc(r)).join('<br>')}</span>`;
+      } else if (ruleText) {
         html += `<span class="pen-detail-label">違反規章</span>`;
         html += `<span class="pen-detail-value">${esc(ruleText)}</span>`;
       }
@@ -441,11 +472,24 @@
         html += `<span class="pen-detail-value">${esc(detailMatch[1].trim())}</span>`;
       }
 
-      // Penalty — old format "懲　處　："
+      // Penalty — old format "懲　處　：" or new format "處分："
       const oldPenalty = content.match(/懲\s*處\s*[：:]\s*(.+)/);
+      const newPenalty = content.match(/處\s*分\s*[：:]\s*\n?\s*[>]*\s*[-•]\s*(.+)/);
       if (oldPenalty) {
         html += `<span class="pen-detail-label">懲處</span>`;
         html += `<span class="pen-detail-value">${esc(oldPenalty[1].trim())}</span>`;
+      } else if (newPenalty) {
+        // Collect all penalty bullets
+        const penaltyLines = [];
+        const penaltyBlock = content.match(/處\s*分\s*[：:]\s*\n([\s\S]*?)(?=\n###|\n-#|$)/);
+        if (penaltyBlock) {
+          const bullets = penaltyBlock[1].match(/[>]*\s*[-•]\s*(.+)/g);
+          if (bullets) bullets.forEach(b => penaltyLines.push(b.replace(/[>]*\s*[-•]\s*/, '').trim()));
+        }
+        if (penaltyLines.length) {
+          html += `<span class="pen-detail-label">處分</span>`;
+          html += `<span class="pen-detail-value">${penaltyLines.map(esc).join('<br>')}</span>`;
+        }
       }
 
       // Appeal info
@@ -473,8 +517,19 @@
 
       // PDF link
       if (item.pdf) {
+        const pdfName = item.pdf.split('/').pop().replace('.pdf', '');
         html += `<span class="pen-detail-label">附件</span>`;
-        html += `<span class="pen-detail-value"><a class="pen-pdf-link" href="${esc(item.pdf)}" target="_blank" rel="noopener">📄 ${esc(item.pdf)}</a></span>`;
+        html += `<span class="pen-detail-value"><a class="pen-pdf-link" href="${esc(item.pdf)}" target="_blank" rel="noopener">📄 查看判決書 PDF</a></span>`;
+      }
+
+      // Evidence images
+      if (item.images && item.images.length) {
+        html += `<span class="pen-detail-label">證據截圖（${item.images.length} 張）</span>`;
+        html += `<div class="pen-evidence-grid">`;
+        item.images.forEach((img, idx) => {
+          html += `<img src="${esc(img)}" alt="證據截圖 ${idx+1}" class="pen-evidence-img" loading="lazy" onclick="window.open('${esc(img)}','_blank')">`;
+        });
+        html += `</div>`;
       }
 
       return html;
