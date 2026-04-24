@@ -359,6 +359,8 @@ website/
 | 2026.04.24 | 海風網站助手 | **首頁 Hero 標題色彩粒子特效**：`initHeroTitleParticles()` — canvas 粒子系統，mousemove 時在滑鼠位置生成 3 顆藍紫色調粒子（6 色隨機），含重力、衰減、生命週期。僅桌面版（≥768px）啟用 |
 | 2026.04.24 | 海風網站助手 | **移除首頁「社群數據」區塊**：刪除 stats-bar HTML/CSS/JS（400+ 註冊會員、1200+ Discord 成員、500+ 公告發布、365+ 營運天數）。CSS 移除 .stats-bar/.stat-item/.stat-num/.stat-label/.stat-divider 含淺色模式+響應式。JS 移除 IntersectionObserver easeOut 計數動畫。cache busting → 240424c |
 | 2026.04.24 | 海風網站助手 | **Lightbox alt 描述強化**：lightbox 開啟時同步複製原圖 alt 文字（`lightboxImg.alt = imgs[idx].alt`）。5 張明信片 alt 從泛用描述改為具體建築名稱+風格描述（嵐陽城/海風大社/羅馬尼亞號/布雷特蘭/格拉文特）。cache busting → 240424b |
+| 2026.04.24 | 海風網站助手 | **移除 Hero 標題 hover 色彩粒子**：刪除 `initHeroTitleParticles()` 函式（canvas 粒子系統），不再於滑鼠移動時生成藍紫色粒子 |
+| 2026.04.24 | 海風網站助手 | **消除區塊背景分界**：`.content-section` 背景從深色漸層改為 transparent、移除 `::before` 裝飾線；`.section-tint` 移除 `::before` 頂部線條。使首頁從 Hero 到 Footer 背景一體流暢，無明顯邊界。全站 cache busting → 240424d |
 
 ---
 
