@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "count": 12,
+  "count": 13,
   "penalties": [
     {
       "date": "113.08.25",
@@ -135,8 +135,18 @@
       "players": [
         "GoldenLao"
       ],
-      "pdf": null,
-      "author": "tdse9"
+      "pdf": "assets/penalties/0011/114年度0011號.pdf",
+      "author": "tdse9",
+      "images": [
+        "assets/penalties/0011/01.png",
+        "assets/penalties/0011/02.png",
+        "assets/penalties/0011/03.png",
+        "assets/penalties/0011/04.png",
+        "assets/penalties/0011/05.png",
+        "assets/penalties/0011/06.png",
+        "assets/penalties/0011/07.png",
+        "assets/penalties/0011/08.png"
+      ]
     },
     {
       "date": "115.04.23",
@@ -167,6 +177,21 @@
         "assets/penalties/0012/16.png",
         "assets/penalties/0012/17.png",
         "assets/penalties/0012/18.png"
+      ],
+      "author": "tstw5306"
+    },
+    {
+      "date": "115.04.03",
+      "id": "#0013",
+      "title": "禁言7日",
+      "tag": "處分",
+      "content": "## :wither_rose:　「　禁言7日　」\n-# 日期：115.04.03　｜　編號：#0013　｜　案號：115年度簡字第0001號\n\n### 被告：\n> 1.    史莱姆 Slime Ch.  \n\n### 原告：\n> 1.    MrPotato  （馬鈴薯）\n\n### 違反規章：\n> - 社群須知第一章第2條（發言規範）\n\n### 處分：\n> - 禁言7日\n\n### 事實摘要：\n> 於伺服器公開聊天室以「腦殘」等文字貶損原告之情感名譽\n\n### 審判：\n> - 審判長：tstw5306\n> - 法官：tdse9\n\n-# 本案詳細內容請參閱附件PDF及證據截圖",
+      "players": [
+        "史莱姆 Slime Ch."
+      ],
+      "pdf": "assets/penalties/0013/115年度簡字第0001號.pdf",
+      "images": [
+        "assets/penalties/0013/01.png"
       ],
       "author": "tstw5306"
     }
