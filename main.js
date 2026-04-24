@@ -1384,32 +1384,4 @@ document.addEventListener('DOMContentLoaded', () => { initPhotoPage(); });
   const timer = setInterval(tick, 1000);
 })();
 
-/* ═══ 社群數據計數動畫 ═══ */
-(function() {
-  const statsBar = document.querySelector('.stats-bar');
-  if (!statsBar) return;
-  const nums = statsBar.querySelectorAll('.stat-num[data-target]');
-  let animated = false;
-  function easeOut(t) { return 1 - Math.pow(1 - t, 3); }
-  function animateCount(el) {
-    const target = parseInt(el.dataset.target, 10);
-    const duration = 1800;
-    const start = performance.now();
-    function step(now) {
-      const progress = Math.min((now - start) / duration, 1);
-      el.textContent = Math.floor(easeOut(progress) * target).toLocaleString() + '+';
-      if (progress < 1) requestAnimationFrame(step);
-    }
-    requestAnimationFrame(step);
-  }
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting && !animated) {
-        animated = true;
-        nums.forEach((el, i) => setTimeout(() => animateCount(el), i * 150));
-        observer.disconnect();
-      }
-    });
-  }, { threshold: 0.3 });
-  observer.observe(statsBar);
-})();
+
