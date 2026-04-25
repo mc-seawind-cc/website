@@ -247,16 +247,7 @@
     }
     [data-theme="light"] .pen-judge-presiding { background: rgba(139,92,246,0.06); color: #8b5cf6; }
     [data-theme="light"] .pen-judge { background: rgba(0,0,0,0.04); color: var(--fog); }
-    .pen-judges-line {
-      display: block;
-      font-size: 0.72rem;
-      color: var(--fog);
-      margin-top: 1px;
-      line-height: 1.6;
-    }
-    .pen-judge-name { font-size: 0.72rem; }
-    .pen-judge-sep { color: rgba(255,255,255,0.15); margin: 0 2px; }
-    [data-theme="light"] .pen-judge-sep { color: rgba(0,0,0,0.12); }
+
     .pen-detail .judgment-main {
       grid-column: 1 / -1;
       background: rgba(255,100,100,0.03);
@@ -465,10 +456,6 @@
         // Player display = defendant name
         const playerDisplay = item.defendant || (item.players.length ? item.players.join('、') : extractTitle(item));
 
-        // Judges for header (judgment format only)
-        const isJudgment = (item.content || '').startsWith('海風法院');
-        const judgesHtml = isJudgment ? getJudges(item.content) : '';
-
         const detail = buildDetail(item);
 
         html += `<div class="pen-card" data-idx="${i}">
@@ -476,7 +463,6 @@
             <span class="pen-date">${date}</span>
             <div class="pen-title-wrap">
               <span class="pen-players">${esc(playerDisplay)}</span>
-              ${judgesHtml ? '<span class="pen-judges-line">' + judgesHtml + '</span>' : ''}
             </div>
             <span class="pen-right">
               ${idLabel}
