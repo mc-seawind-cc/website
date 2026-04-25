@@ -384,6 +384,7 @@ website/
 | 2026.04.25 | 海風網站助手 | **活動列表頁移除舉辦人、detail 頁加基本資訊**：活動列表頁所有卡片移除 👤 行；風汐系列/那個魚/攝影大賽 detail 頁新增基本資訊區塊（含舉辦者：神焰 / 狐桃+神焰 / 石頭） |
 | 2026.04.25 | 海風網站助手 | **首頁淺色模式大幅修正**：hero 背景改回深色（與深色模式相同），避免灰濛濛；hero 文字/按鈕/提示改為白色系玻璃風格；hero 圖片 filter 對齊深色模式；精選活動背景加強對比；section-tint 色調加深；feature-card 邊框/shadow 加強；倒數區塊加深 |
 | 2026.04.25 | 海風網站助手 | **文化藝廊路徑重構**：`lore/` 資料夾改名為 `文化藝廊/`；`禁忌天使.html` 改名為 `雅.html`；全站 href/canonical/sitemap 更新；邊境之村標題加英文副標；翠籙幽光書庭標題加英文副標；雅頁面標題/描述/h1/alt 全面更新 |
+| 2026.04.25 | 海風網站助手 | **文化藝廊子頁面重新命名**：`library.html` → `翠籙幽光書庭.html`、`glavent.html` → `格拉文特.html`、`brettland.html` → `布雷特蘭.html`；全站 href/canonical/sitemap 更新；格拉文特標題「風與雪之城 \| Glavent - Town of Wind and Snow」；布雷特蘭標題「永恆的羅馬 \| Brettland - Eternal Rome, Eternal Glory」；文化部長加註（石頭） |
 
 ---
 
