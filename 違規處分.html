@@ -221,6 +221,26 @@
     [data-theme="light"] .role-plaintiff { background: rgba(74,108,247,0.06); color: #4a6cf7; }
     [data-theme="light"] .role-prosecutor { background: rgba(139,92,246,0.06); color: #8b5cf6; }
     [data-theme="light"] .role-reported { background: rgba(230,150,0,0.06); color: #e69500; }
+    .pen-judge-presiding {
+      display: inline-block;
+      font-size: 0.68rem;
+      font-weight: 700;
+      padding: 1px 7px;
+      border-radius: 4px;
+      background: rgba(171,114,249,0.1);
+      color: var(--lavender);
+    }
+    .pen-judge {
+      display: inline-block;
+      font-size: 0.68rem;
+      font-weight: 600;
+      padding: 1px 7px;
+      border-radius: 4px;
+      background: rgba(157,175,255,0.06);
+      color: var(--fog);
+    }
+    [data-theme="light"] .pen-judge-presiding { background: rgba(139,92,246,0.06); color: #8b5cf6; }
+    [data-theme="light"] .pen-judge { background: rgba(0,0,0,0.04); color: var(--fog); }
     .pen-detail .judgment-main {
       grid-column: 1 / -1;
       background: rgba(255,100,100,0.03);
@@ -479,57 +499,62 @@
     /* ── New: render full judgment document ── */
     function buildJudgment(item, content) {
       let html = '';
-      const players = item.players || [];
 
-      // Parties: defendant / plaintiff / prosecutor / reportedBy
+      // Parties
       const parties = [];
-      if (item.defendant)   parties.push({ role: '被告', name: item.defendant });
-      if (item.plaintiff)   parties.push({ role: '原告', name: item.plaintiff });
-      if (item.prosecutor)  parties.push({ role: '公訴人', name: item.prosecutor });
-      if (item.reportedBy)  parties.push({ role: '經舉發', name: item.reportedBy });
+      if (item.defendant)   parties.push({ role: '被告', name: item.defendant, cls: 'role-defendant' });
+      if (item.plaintiff)   parties.push({ role: '原告', name: item.plaintiff, cls: 'role-plaintiff' });
+      if (item.prosecutor)  parties.push({ role: '公訴人', name: item.prosecutor, cls: 'role-prosecutor' });
+      if (item.reportedBy)  parties.push({ role: '經舉發', name: item.reportedBy, cls: 'role-reported' });
 
       if (parties.length) {
         html += `<span class="pen-detail-label">當事人</span>`;
-        html += `<span class="pen-detail-value">${parties.map(p => {
-          const cls = p.role === '被告' ? 'role-defendant'
-                    : p.role === '原告' ? 'role-plaintiff'
-                    : p.role === '公訴人' ? 'role-prosecutor'
-                    : 'role-reported';
-          return '<span class="pen-party"><span class="pen-party-role ' + cls + '">' + esc(p.role) + '</span> <code>' + esc(p.name) + '</code></span>';
-        }).join('<br>')}</span>`;
+        html += `<span class="pen-detail-value">${parties.map(p =>
+          '<span class="pen-party"><span class="pen-party-role ' + p.cls + '">' + esc(p.role) + '</span> <code>' + esc(p.name) + '</code></span>'
+        ).join('<br>')}</span>`;
       }
 
-      // Parse sections: 主文 / 事實及理由 / date & judges
-      const mainMatch = content.match(/主文[：:]\s*\n([\s\S]*?)(?=\n事實及理由|\n事實|\n中\s*華|$)/);
-      const factsMatch = content.match(/事實及理由[：:]\s*\n([\s\S]*?)(?=\n中\s*華|$)/);
-      const dateMatch = content.match(/中\s*華\s*民\s*國\s*([\d\s]+年\s*[\d\s]+月\s*[\d\s]+日)/);
-      const judges = content.match(/(?:審判長|法官)\s*法官?\s*([\w_.]+)/g);
-
-      // Main verdict
+      // 主文
+      const mainMatch = content.match(/主文[：:]\s*\n([\s\S]*?)(?=\n事實及理由|\n事實)/);
       if (mainMatch) {
-        const text = mainMatch[1].trim().replace(/\n{3,}/g, '\n\n');
-        html += `<div class="judgment-main">${esc(text)}</div>`;
+        html += `<span class="pen-detail-label">主文</span>`;
+        html += `<div class="judgment-main">${esc(mainMatch[1].trim())}</div>`;
       }
 
-      // Facts & reasoning
+      // 事實及理由
+      const factsMatch = content.match(/事實及理由[：:]\s*\n([\s\S]*?)(?=\n中\s*華|\n附件)/);
       if (factsMatch) {
-        const text = factsMatch[1].trim().replace(/\n{3,}/g, '\n\n');
         html += `<span class="pen-detail-label">事實及理由</span>`;
-        html += `<span class="pen-detail-value" style="line-height:2;white-space:pre-line">${esc(text)}</span>`;
+        html += `<span class="pen-detail-value" style="line-height:2;white-space:pre-line">${esc(factsMatch[1].trim())}</span>`;
       }
 
-      // Date
+      // 附件
+      const attachMatch = content.match(/附件[：:]\s*\n?([\s\S]*?)(?=\n中\s*華|$)/);
+      if (attachMatch) {
+        const text = attachMatch[1].trim();
+        html += `<span class="pen-detail-label">附件</span>`;
+        html += `<span class="pen-detail-value" style="color:var(--fog)">${esc(text)}</span>`;
+      }
+
+      // 判決日期
+      const dateMatch = content.match(/中\s*華\s*民\s*國\s*([\d\s]+年\s*[\d\s]+月\s*[\d\s]+日)/);
       if (dateMatch) {
-        const d = dateMatch[1].replace(/\s+/g, '');
-        html += `<span class="pen-detail-label">判決日期</span>`;
-        html += `<span class="pen-detail-value">${esc(d)}</span>`;
+        html += `<span class="pen-detail-label">中華民國</span>`;
+        html += `<span class="pen-detail-value">${esc(dateMatch[1].replace(/\s+/g, ''))}</span>`;
       }
 
-      // Judges
+      // 審判人員
+      const judges = content.match(/(?:審判長|法官)\s*法官?\s*([\w_.]+)/g);
       if (judges) {
-        const names = judges.map(j => j.replace(/(?:審判長|法官)\s*法官?\s*/, '').trim());
+        const names = judges.map(j => {
+          const isPresiding = /審判長/.test(j);
+          const name = j.replace(/(?:審判長|法官)\s*法官?\s*/, '').trim();
+          return { name, isPresiding };
+        });
         html += `<span class="pen-detail-label">審判人員</span>`;
-        html += `<span class="pen-detail-value">${names.map(n => '<code>' + esc(n) + '</code>').join('、')}</span>`;
+        html += `<span class="pen-detail-value">${names.map(n =>
+          (n.isPresiding ? '<span class="pen-judge-presiding">審判長</span> ' : '<span class="pen-judge">法官</span> ') + '<code>' + esc(n.name) + '</code>'
+        ).join('<br>')}</span>`;
       }
 
       // Evidence images
