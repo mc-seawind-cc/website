@@ -378,6 +378,7 @@ website/
 | 2026.04.25 | 海風網站助手 | 全站 CSS/JS cache busting 統一更新為 250425b |
 | 2026.04.25 | 海風網站助手 | **違規處分頁精簡**：penalties.json 從 13 筆縮減至 3 筆，僅保留 GoldenLao (#0011)、Nakk_tiktok (#0012)、史莱姆 Slime Ch. (#0013) |
 | 2026.04.25 | 海風網站助手 | #0012/#0013 判決書內容從 Google Docs 提取後直接寫入 penalties.json（取代外部連結）；JS 渲染拆分為 `buildJudgment`（新判決書格式）+ `buildLegacy`（舊 Discord 格式）；主文區塊新增 `.judgment-main` 左邊框樣式 |
+| 2026.04.25 | 海風網站助手 | **處分頁案號系統重構**：JSON 新增 caseYear/caseType/caseNum 結構化欄位；案號以年度＋訴字/簡字＋四位編號顯示（訴字=紫/簡字=藍）；當事人角色區分被告（紅）、原告（藍）、公訴人（紫）、經舉發（橙）四色標籤；卡片標題顯示被告名稱 |
 
 ---
 

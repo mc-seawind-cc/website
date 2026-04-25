@@ -204,6 +204,23 @@
     .pen-detail-value code {
       font-size: 0.82em;
     }
+    .pen-party { display: inline-flex; align-items: center; gap: 6px; }
+    .pen-party-role {
+      display: inline-block;
+      font-size: 0.68rem;
+      font-weight: 700;
+      padding: 1px 7px;
+      border-radius: 4px;
+      letter-spacing: 0.5px;
+    }
+    .role-defendant { background: rgba(255,100,100,0.1); color: #ff6b6b; }
+    .role-plaintiff { background: rgba(157,175,255,0.1); color: var(--sky); }
+    .role-prosecutor { background: rgba(171,114,249,0.1); color: var(--lavender); }
+    .role-reported { background: rgba(255,170,50,0.1); color: #ffaa32; }
+    [data-theme="light"] .role-defendant { background: rgba(255,60,60,0.06); color: #dc3545; }
+    [data-theme="light"] .role-plaintiff { background: rgba(74,108,247,0.06); color: #4a6cf7; }
+    [data-theme="light"] .role-prosecutor { background: rgba(139,92,246,0.06); color: #8b5cf6; }
+    [data-theme="light"] .role-reported { background: rgba(230,150,0,0.06); color: #e69500; }
     .pen-detail .judgment-main {
       grid-column: 1 / -1;
       background: rgba(255,100,100,0.03);
@@ -409,14 +426,11 @@
       items.forEach((item, i) => {
         const date = item.date || '—';
         const badge = getBadge(item.title);
-        const idLabel = item.id ? `<span class="pen-id">${item.id}</span>` : '';
+        const idLabel = buildCaseId(item);
 
-        // Player display (card header)
-        const playerDisplay = item.players.length
-          ? item.players.join('、')
-          : extractTitle(item);
+        // Player display = defendant name
+        const playerDisplay = item.defendant || (item.players.length ? item.players.join('、') : extractTitle(item));
 
-        // Structured detail
         const detail = buildDetail(item);
 
         html += `<div class="pen-card" data-idx="${i}">
@@ -442,6 +456,16 @@
       listEl.innerHTML = html;
     }
 
+    /* Build case ID label: 115年度訴字第0001號 or legacy #0011 */
+    function buildCaseId(item) {
+      if (item.caseYear && item.caseType && item.caseNum) {
+        const label = `${item.caseYear}年度${item.caseType}字第${item.caseNum}號`;
+        const color = item.caseType === '訴' ? 'var(--lavender)' : 'var(--sky)';
+        return `<span class="pen-id" style="color:${color};background:rgba(${item.caseType==='訴'?'171,114,249':'157,175,255'},0.08)">${label}</span>`;
+      }
+      return item.id ? `<span class="pen-id">${item.id}</span>` : '';
+    }
+
     function buildDetail(item) {
       const content = item.content || '';
 
@@ -457,10 +481,22 @@
       let html = '';
       const players = item.players || [];
 
-      // Players
-      if (players.length) {
+      // Parties: defendant / plaintiff / prosecutor / reportedBy
+      const parties = [];
+      if (item.defendant)   parties.push({ role: '被告', name: item.defendant });
+      if (item.plaintiff)   parties.push({ role: '原告', name: item.plaintiff });
+      if (item.prosecutor)  parties.push({ role: '公訴人', name: item.prosecutor });
+      if (item.reportedBy)  parties.push({ role: '經舉發', name: item.reportedBy });
+
+      if (parties.length) {
         html += `<span class="pen-detail-label">當事人</span>`;
-        html += `<span class="pen-detail-value">${players.map(p => '<code>' + esc(p) + '</code>').join('、')}</span>`;
+        html += `<span class="pen-detail-value">${parties.map(p => {
+          const cls = p.role === '被告' ? 'role-defendant'
+                    : p.role === '原告' ? 'role-plaintiff'
+                    : p.role === '公訴人' ? 'role-prosecutor'
+                    : 'role-reported';
+          return '<span class="pen-party"><span class="pen-party-role ' + cls + '">' + esc(p.role) + '</span> <code>' + esc(p.name) + '</code></span>';
+        }).join('<br>')}</span>`;
       }
 
       // Parse sections: 主文 / 事實及理由 / date & judges
@@ -512,16 +548,31 @@
     /* ── Legacy: render old Discord-format penalties ── */
     function buildLegacy(item, content) {
       let html = '';
-      const players = item.players || [];
 
-      let allPlayers = [...players];
-      if (!allPlayers.length) {
-        const mentions = content.match(/@[\w\u4e00-\u9fff.]+/g);
-        if (mentions) allPlayers.push(...mentions);
-      }
-      if (allPlayers.length) {
-        html += `<span class="pen-detail-label">違規玩家</span>`;
-        html += `<span class="pen-detail-value">${allPlayers.map(p => '<code>' + esc(p) + '</code>').join('、')}</span>`;
+      // Parties from structured fields
+      const parties = [];
+      if (item.defendant)   parties.push({ role: '被告', name: item.defendant, cls: 'role-defendant' });
+      if (item.plaintiff)   parties.push({ role: '原告', name: item.plaintiff, cls: 'role-plaintiff' });
+      if (item.prosecutor)  parties.push({ role: '公訴人', name: item.prosecutor, cls: 'role-prosecutor' });
+      if (item.reportedBy)  parties.push({ role: '經舉發', name: item.reportedBy, cls: 'role-reported' });
+
+      if (parties.length) {
+        html += `<span class="pen-detail-label">當事人</span>`;
+        html += `<span class="pen-detail-value">${parties.map(p =>
+          '<span class="pen-party"><span class="pen-party-role ' + p.cls + '">' + esc(p.role) + '</span> <code>' + esc(p.name) + '</code></span>'
+        ).join('<br>')}</span>`;
+      } else {
+        // Fallback: extract from content
+        const players = item.players || [];
+        let allPlayers = [...players];
+        if (!allPlayers.length) {
+          const mentions = content.match(/@[\w\u4e00-\u9fff.]+/g);
+          if (mentions) allPlayers.push(...mentions);
+        }
+        if (allPlayers.length) {
+          html += `<span class="pen-detail-label">違規玩家</span>`;
+          html += `<span class="pen-detail-value">${allPlayers.map(p => '<code>' + esc(p) + '</code>').join('、')}</span>`;
+        }
       }
 
       // Rule
