@@ -284,21 +284,9 @@
     .pen-evidence-img {
       width: 100%;
       border-radius: 8px;
-      border: 1px solid rgba(255,255,255,0.08);
       cursor: pointer;
-      transition: transform 0.3s var(--ease), box-shadow 0.3s var(--ease);
     }
-    .pen-evidence-img:hover {
-      transform: scale(1.03);
-      box-shadow: 0 4px 16px rgba(0,0,0,0.3);
-      border-color: rgba(157,175,255,0.25);
-    }
-    [data-theme="light"] .pen-evidence-img {
-      border-color: rgba(0,0,0,0.08);
-    }
-    [data-theme="light"] .pen-evidence-img:hover {
-      box-shadow: 0 4px 16px rgba(0,0,0,0.1);
-    }
+    .pen-evidence-img:hover { opacity: 0.85; }
 
     /* 淺色主題 */
     [data-theme="light"] .pen-stat { background: #fff; border-color: rgba(0,0,0,0.06); }
