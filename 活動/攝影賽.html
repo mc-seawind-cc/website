@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <link rel="canonical" href="https://www.seawind.cc/活動/攝影賽">
+  <meta name="color-scheme" content="dark light">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>📸 海風攝影大賽 — 海風活動</title>
+  <meta name="description" content="海風攝影大賽：用鏡頭捕捉海風的美，每屆設定不同主題，選出最動人的 Minecraft 風景瞬間。目前已舉辦 5 屆。">
+  <link rel="icon" href="../../assets/img/logo.png">
+  <link rel="apple-touch-icon" href="../../assets/img/logo.png">
+  <link rel="manifest" href="../../manifest.json">
+  <meta property="og:title" content="📸 海風攝影大賽 — 海風活動">
+  <meta property="og:description" content="用鏡頭捕捉海風的美，每屆設定不同主題，選出最動人的 Minecraft 風景瞬間。">
+  <meta property="og:image" content="assets/img/logo.png">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:image" content="assets/img/logo.png">
+  <meta name="theme-color" content="#0d1117">
+  <link rel="dns-prefetch" href="//cdn.discordapp.com">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;800&family=Noto+Serif+TC:wght@700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../style.css?v=250425b">
+  <link rel="stylesheet" href="../../music-player.css">
+  <style>
+    .photo-hero {
+      text-align: center;
+      padding: var(--space-2xl) var(--space-xl) var(--space-xl);
+      position: relative;
+    }
+    .photo-hero::before {
+      content: '';
+      position: absolute;
+      top: -40%; left: -10%; width: 120%; height: 180%;
+      background: radial-gradient(ellipse at 50% 30%, rgba(255,182,193,0.05) 0%, transparent 60%);
+      pointer-events: none;
+    }
+    .photo-hero > * { position: relative; z-index: 1; }
+    .photo-hero h1 {
+      font-size: clamp(2rem, 5vw, 2.8rem);
+      font-weight: 900;
+      color: var(--white);
+      letter-spacing: -0.02em;
+      margin-bottom: var(--space-sm);
+    }
+    .photo-hero-desc {
+      color: var(--fog);
+      font-size: 0.95rem;
+      max-width: 560px;
+      margin: 0 auto;
+      line-height: 1.8;
+    }
+
+    /* Current Edition */
+    .current-edition {
+      background: linear-gradient(135deg, rgba(255,182,193,0.08), rgba(157,175,255,0.06));
+      border: 1px solid rgba(255,182,193,0.12);
+      border-radius: var(--radius-lg);
+      padding: var(--space-xl);
+      margin-bottom: var(--space-2xl);
+      position: relative;
+      overflow: hidden;
+    }
+    .current-edition::before {
+      content: '';
+      position: absolute;
+      top: -50%; right: -20%;
+      width: 300px; height: 300px;
+      background: radial-gradient(circle, rgba(255,182,193,0.06) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .ce-header {
+      display: flex;
+      align-items: center;
+      gap: var(--space-md);
+      margin-bottom: var(--space-lg);
+      flex-wrap: wrap;
+    }
+    .ce-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 0.72rem;
+      font-weight: 700;
+      padding: 4px 12px;
+      border-radius: 100px;
+      background: rgba(255,182,193,0.12);
+      color: var(--rose);
+      border: 1px solid rgba(255,182,193,0.2);
+    }
+    .ce-title {
+      font-size: 1.4rem;
+      font-weight: 800;
+      color: var(--white);
+    }
+    .ce-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-md);
+      font-size: 0.82rem;
+      color: var(--fog);
+      margin-bottom: var(--space-lg);
+    }
+    .ce-meta-item { display: inline-flex; align-items: center; gap: 5px; }
+    .ce-theme-box {
+      padding: 16px 20px;
+      background: rgba(0,0,0,0.15);
+      border: 1px solid rgba(255,255,255,0.05);
+      border-radius: var(--radius-md);
+      margin-bottom: var(--space-lg);
+    }
+    .ce-theme-label {
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: var(--rose);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-bottom: 6px;
+    }
+    .ce-theme-text {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--cloud);
+      line-height: 1.6;
+    }
+    .ce-theme-desc {
+      font-size: 0.85rem;
+      color: var(--fog);
+      margin-top: 8px;
+      line-height: 1.7;
+    }
+    .ce-rules {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 10px;
+      margin-bottom: var(--space-lg);
+    }
+    .ce-rule {
+      padding: 12px 14px;
+      background: rgba(0,0,0,0.1);
+      border: 1px solid rgba(255,255,255,0.04);
+      border-radius: 8px;
+    }
+    .ce-rule-title { font-size: 0.78rem; font-weight: 700; color: var(--white); margin-bottom: 4px; }
+    .ce-rule-text { font-size: 0.75rem; color: var(--fog); line-height: 1.5; }
+    .ce-score-bar {
+      display: flex;
+      gap: 2px;
+      margin-top: var(--space-md);
+    }
+    .ce-score-item {
+      flex: 1;
+      text-align: center;
+      padding: 8px 4px;
+      background: rgba(255,182,193,0.06);
+      border-radius: 6px;
+      font-size: 0.72rem;
+      color: var(--fog);
+    }
+    .ce-score-item strong { display: block; font-size: 1rem; color: var(--rose); margin-bottom: 2px; }
+
+    /* Section blocks */
+    .photo-block { margin-bottom: var(--space-2xl); }
+    .photo-block-title {
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: var(--white);
+      margin-bottom: var(--space-lg);
+      padding-bottom: 10px;
+      border-bottom: 2px solid rgba(255,182,193,0.1);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .photo-block-title .pbt-icon { font-size: 1.3rem; }
+
+    /* Edition Cards */
+    .edition-list {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-lg);
+    }
+    .edition-card {
+      padding: var(--space-lg) var(--space-xl);
+      background: rgba(0,0,0,0.15);
+      border: 1px solid rgba(255,255,255,0.05);
+      border-radius: var(--radius-md);
+      position: relative;
+      transition: border-color 0.3s;
+    }
+    .edition-card:hover { border-color: rgba(255,182,193,0.15); }
+    .edition-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--rose), var(--lavender));
+      border-radius: var(--radius-md) var(--radius-md) 0 0;
+      opacity: 0.4;
+    }
+    .ec-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: var(--space-md);
+      flex-wrap: wrap;
+      gap: var(--space-sm);
+    }
+    .ec-num {
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: var(--rose);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+    .ec-date { font-size: 0.75rem; color: var(--fog); }
+    .ec-theme {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: var(--space-sm);
+    }
+    .ec-winner {
+      display: flex;
+      align-items: flex-start;
+      gap: var(--space-md);
+      padding: 14px 16px;
+      background: rgba(255,182,193,0.05);
+      border: 1px solid rgba(255,182,193,0.08);
+      border-radius: 8px;
+      margin-bottom: var(--space-md);
+    }
+    .ec-winner-badge { flex-shrink: 0; font-size: 1.3rem; }
+    .ec-winner-info { flex: 1; }
+    .ec-winner-title { font-size: 0.92rem; font-weight: 700; color: var(--cloud); }
+    .ec-winner-author { font-size: 0.78rem; color: var(--fog); margin-top: 2px; }
+    .ec-review {
+      font-size: 0.78rem;
+      color: var(--fog);
+      line-height: 1.7;
+      margin-top: 10px;
+      padding-top: 10px;
+      border-top: 1px solid rgba(255,255,255,0.04);
+    }
+    .ec-review strong { color: var(--cloud); font-size: 0.75rem; }
+    .ec-honors {
+      font-size: 0.78rem;
+      color: var(--fog);
+      line-height: 1.8;
+    }
+    .ec-honors strong { color: var(--cloud); }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      color: var(--fog);
+      font-size: 0.85rem;
+      text-decoration: none;
+      padding: 6px 0;
+      transition: color 0.2s;
+      margin-bottom: var(--space-md);
+    }
+    .back-link:hover { color: var(--sky); }
+    .photo-section-divider {
+      width: 60px;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, rgba(255,182,193,0.25), transparent);
+      margin: var(--space-2xl) auto;
+    }
+
+    /* Light mode */
+    [data-theme="light"] .photo-hero h1 { color: var(--cloud); }
+    [data-theme="light"] .ce-title { color: var(--cloud); }
+    [data-theme="light"] .ce-theme-text { color: #3a3f4b; }
+    [data-theme="light"] .ce-theme-desc { color: #6b7280; }
+    [data-theme="light"] .ce-rule { background: rgba(0,0,0,0.02); border-color: rgba(0,0,0,0.05); }
+    [data-theme="light"] .ce-rule-title { color: var(--cloud); }
+    [data-theme="light"] .current-edition { background: linear-gradient(135deg, rgba(255,182,193,0.04), rgba(157,175,255,0.03)); }
+    [data-theme="light"] .photo-block-title { color: var(--cloud); }
+    [data-theme="light"] .edition-card { background: rgba(0,0,0,0.03); border-color: rgba(0,0,0,0.06); }
+    [data-theme="light"] .ec-theme { color: var(--cloud); }
+    [data-theme="light"] .ec-winner-title { color: #3a3f4b; }
+    [data-theme="light"] .ec-winner { background: rgba(255,182,193,0.03); }
+    [data-theme="light"] .ec-honors { color: #6b7280; }
+    [data-theme="light"] .ec-honors strong { color: #3a3f4b; }
+    [data-theme="light"] .ec-review { color: #6b7280; }
+    [data-theme="light"] .ec-review strong { color: #3a3f4b; }
+
+    @media (max-width: 768px) {
+      .ce-rules { grid-template-columns: 1fr; }
+      .ce-score-bar { flex-wrap: wrap; }
+      .ce-score-item { flex: 1 1 calc(50% - 4px); }
+      .edition-card { padding: var(--space-lg); }
+    }
+    @media print {
+      .back-link, .nav, .footer, .scroll-progress, .bg-atmosphere, .photo-section-divider { display: none !important; }
+    }
+    .info-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(200px,1fr)); gap:10px; }
+    .info-item { padding:14px 16px; background:rgba(0,0,0,0.12); border:1px solid rgba(255,255,255,0.04); border-radius:8px; }
+    .info-item .ii-label { font-size:0.72rem; color:var(--fog); margin-bottom:4px; }
+    .info-item .ii-value { font-size:0.92rem; font-weight:700; color:var(--cloud); }
+    [data-theme="light"] .info-item { background:rgba(0,0,0,0.02); border-color:rgba(0,0,0,0.05); }
+  </style>
+</head>
+<body>
+  <a href="#mainContent" class="skip-link">跳到主要內容</a>
+  <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
+  <div class="bg-atmosphere"></div>
+
+  <nav class="nav">
+    <a href="../../首頁" class="nav-logo">
+      <picture><source srcset="assets/img/logo.webp" type="image/webp"><img src="../../assets/img/logo.png" alt="海風" class="nav-logo-img" width="48" height="48" fetchpriority="high"></picture>
+      <span>海風伺服器</span>
+    </a>
+    <div class="nav-right">
+      <ul class="nav-links">
+        <li><a href="../../首頁">首頁</a></li>
+        <li><a href="../../公告">公告</a></li>
+        <li class="nav-dropdown">
+          <a href="../../文化藝廊" class="nav-dropdown-toggle" aria-expanded="false" aria-haspopup="true">關於 <span class="arrow">▾</span></a>
+          <ul class="dropdown-menu">
+            <li><a href="../../文化藝廊">文化藝廊</a></li>
+            <li><a href="../../活動" class="active">活動</a></li>
+            <li><a href="../../風景照">風景照</a></li>
+            <li><a href="../../歷史館">歷史館</a></li>
+            <li><a href="../../海風團隊">海風團隊</a></li>
+          </ul>
+        </li>
+        <li><a href="../../海風指南">海風指南</a></li>
+        <li class="nav-dropdown">
+          <a href="../../社群須知" class="nav-dropdown-toggle" aria-expanded="false" aria-haspopup="true">須知 <span class="arrow">▾</span></a>
+          <ul class="dropdown-menu">
+            <li><a href="../../社群須知">社群須知</a></li>
+            <li><a href="../../支持須知">支持須知</a></li>
+            <li><a href="../../管理通則">管理通則</a></li>
+            <li><a href="../../公務人員須知">公務人員須知</a></li>
+            <li><a href="../../設計規範">設計規範</a></li>
+            <li><a href="../../服務條款">服務條款</a></li>
+            <li><a href="../../隱私權政策">隱私權政策</a></li>
+          </ul>
+        </li>
+        <li><a href="../../會員">會員</a></li>
+        <li><a href="../../相關連結">相關連結</a></li>
+        <li class="nav-dropdown">
+          <a href="../../合作夥伴" class="nav-dropdown-toggle" aria-expanded="false" aria-haspopup="true">資料中心 <span class="arrow">▾</span></a>
+          <ul class="dropdown-menu">
+            <li><a href="../../合作夥伴">合作夥伴</a></li>
+            <li><a href="../../違規處分">違規處分</a></li>
+          </ul>
+        </li>
+      </ul>
+      <button class="nav-theme" id="themeToggle" aria-label="切換主題"></button>
+      <button class="nav-toggle" aria-label="選單">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <div class="page">
+    <div class="content-section" id="mainContent">
+
+      <a href="../../活動" class="back-link">← 返回活動列表</a>
+
+      <!-- ═══ Hero ═══ -->
+      <div class="photo-hero fade-in">
+        <h1>📸 海風攝影大賽</h1>
+        <p class="photo-hero-desc">
+          用鏡頭捕捉海風的美。每屆設定不同主題，選出最動人的 Minecraft 風景瞬間。冠軍作品將刊登至海風官方 Pinterest 並獲得豐富獎勵！
+        </p>
+      </div>
+
+      <!-- ═══ 基本資訊 ═══ -->
+      <div class="photo-block fade-in">
+        <div class="photo-block-title"><span class="pbt-icon">📋</span> 基本資訊</div>
+        <div class="info-grid">
+          <div class="info-item">
+            <div class="ii-label">活動類型</div>
+            <div class="ii-value">常駐活動</div>
+          </div>
+          <div class="info-item">
+            <div class="ii-label">舉辦者</div>
+            <div class="ii-value">石頭</div>
+          </div>
+          <div class="info-item">
+            <div class="ii-label">賽期</div>
+            <div class="ii-value">兩個月一屆</div>
+          </div>
+          <div class="info-item">
+            <div class="ii-label">冠軍獎勵</div>
+            <div class="ii-value">3000 風幣＋獎牌</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="photo-section-divider"></div>
+
+      <!-- ═══ 賽制 ═══ -->
+      <div class="photo-block fade-in">
+        <div class="photo-block-title"><span class="pbt-icon">📐</span> 賽制說明</div>
+        <div class="ce-rules">
+          <div class="ce-rule">
+            <div class="ce-rule-title">📍 拍攝地點</div>
+            <div class="ce-rule-text">必須位於海風伺服器內</div>
+          </div>
+          <div class="ce-rule">
+            <div class="ce-rule-title">📝 文案必備</div>
+            <div class="ce-rule-text">每張作品須搭配文案（短句、文章或標題皆可）</div>
+          </div>
+          <div class="ce-rule">
+            <div class="ce-rule-title">🎯 投稿限制</div>
+            <div class="ce-rule-text">每人最多 5 張，建議精選而非大量投稿</div>
+          </div>
+          <div class="ce-rule">
+            <div class="ce-rule-title">📐 依主題拍攝</div>
+            <div class="ce-rule-text">根據本屆主題發揮，過於離題者不予評分</div>
+          </div>
+        </div>
+        <div class="ce-score-bar">
+          <div class="ce-score-item"><strong>20%</strong>光影</div>
+          <div class="ce-score-item"><strong>20%</strong>色彩</div>
+          <div class="ce-score-item"><strong>20%</strong>構圖</div>
+          <div class="ce-score-item"><strong>40%</strong>故事</div>
+          <div class="ce-score-item"><strong>+10%</strong>文案</div>
+        </div>
+        <p style="color:var(--fog);font-size:0.8rem;margin-top:var(--space-md);line-height:1.7;">
+          評審：石頭（@lapis.regnate）｜冠軍 3000 風幣＋特製獎牌＋出生點展示＋Pinterest 刊登｜佳作 1500 風幣＋Pinterest 刊登<br>
+          自第四屆起，賽期延長為兩個月，獎勵加倍。
+        </p>
+      </div>
+
+      <div class="photo-section-divider"></div>
+
+      <!-- ═══ 第五屆（進行中） ═══ -->
+      <div class="current-edition fade-in">
+        <div class="ce-header">
+          <span class="ce-badge">🔴 進行中</span>
+          <span class="ce-title">第五屆攝影大賽</span>
+        </div>
+        <div class="ce-meta">
+          <span class="ce-meta-item">📅 賽期：兩個月</span>
+          <span class="ce-meta-item">🏆 冠軍 3000 風幣＋獎牌</span>
+        </div>
+        <div class="ce-theme-box">
+          <div class="ce-theme-label">本屆主題</div>
+          <div class="ce-theme-text">「尾聲，新生」</div>
+          <div class="ce-theme-desc">
+            時間悄悄來到了 2025 年末，2025 年發生了哪些有趣刺激又令你印象深刻的事呢？抑或是對於一個年頭的結束感到哀傷呢？一個故事的結束代表的是另一個新故事的開始，請以「尾聲，新生」為題，盡情發揮！
+          </div>
+        </div>
+      </div>
+
+      <div class="photo-section-divider"></div>
+
+      <!-- ═══ 歷屆回顧 ═══ -->
+      <div class="photo-block fade-in">
+        <div class="photo-block-title"><span class="pbt-icon">🏆</span> 歷屆回顧</div>
+
+        <div class="edition-list">
+
+          <!-- 第四屆 -->
+          <div class="edition-card">
+            <div class="ec-top">
+              <span class="ec-num">第四屆 · 獎勵加倍</span>
+              <span class="ec-date">114.08 – 114.09</span>
+            </div>
+            <div class="ec-theme">主題：「新篇章」</div>
+            <div class="ec-winner">
+              <span class="ec-winner-badge">🥇</span>
+              <div class="ec-winner-info">
+                <div class="ec-winner-title">〈陰間〉</div>
+                <div class="ec-winner-author">@tang_1018</div>
+              </div>
+            </div>
+            <div class="ec-review">
+              <strong>石頭：</strong>暑假已結束，提交的作品明顯減少，因此賽期延長了一個月，往後每屆賽期都延至兩個月且獎勵加倍。冠軍作品〈陰間〉看似敘述生命的終點，時則闡述了輪迴的概念，死亡的寂靜之後，是新旅途新生命這全新篇章悄然揭幕之時，陰森的綠色光線以及奈何橋的文化意義，簡潔俐落的表達了其構思。
+              <br><br><strong>主教：</strong>每個作品的意象都有很好的呈現出來。冠軍作品非常有水準，在色彩與構圖掌控最為適當，唯一美中不足的是作品名稱與內容較無法完美呈現「新篇章」主題。
+            </div>
+            <div class="ec-honors">
+              <strong>佳作：</strong>@junyi_610〈「一切歸零，但希望從未離開」〉、@junyi_610〈火光之後〉、@tang_1018〈奈何橋〉、@zhong._〈黎明的啟程〉（各獲 3000 風幣＋Pinterest 刊登）
+            </div>
+          </div>
+
+          <!-- 第三屆 -->
+          <div class="edition-card">
+            <div class="ec-top">
+              <span class="ec-num">第三屆</span>
+              <span class="ec-date">114.08</span>
+            </div>
+            <div class="ec-theme">主題：「新篇章」</div>
+            <div class="ec-winner">
+              <span class="ec-winner-badge">🥇</span>
+              <div class="ec-winner-info">
+                <div class="ec-winner-title">〈「新手」與「老手」〉</div>
+                <div class="ec-winner-author">@tang_1018</div>
+              </div>
+            </div>
+            <div class="ec-review">
+              <strong>石頭：</strong>乾淨純粹的將畫面一分為二，左右兩邊新手與老手的對視是構圖的一大巧思，老手遍體鱗傷與新手完好無損的模樣強化了意境的表現，色調對比恰到好處。
+              <br><br><strong>主教：</strong>大家的想像力非常豐富，不僅運用到拼接以及其他形式的表達。自比賽開始後也見到了大家對於攝影有了更多的技巧與知識。
+            </div>
+            <div class="ec-honors">
+              <strong>佳作：</strong>@zhong._〈一步之遙〉、@.bubukinott〈跑馬燈〉、@ah_piao16〈一界陽生，一界陰亡〉、@lucaspapa5154〈{有開光影}跟(沒開光影)〉
+            </div>
+          </div>
+
+          <!-- 第二屆 -->
+          <div class="edition-card">
+            <div class="ec-top">
+              <span class="ec-num">第二屆</span>
+              <span class="ec-date">114.07</span>
+            </div>
+            <div class="ec-theme">主題：「兩個世界」</div>
+            <div class="ec-winner">
+              <span class="ec-winner-badge">🥇</span>
+              <div class="ec-winner-info">
+                <div class="ec-winner-title">〈人群之外，浪潮與我為伴〉</div>
+                <div class="ec-winner-author">@zhong._</div>
+              </div>
+            </div>
+            <div class="ec-review">
+              <strong>石頭：</strong>運用了孤身背影觀賞落日沉海的構圖技巧，呈現了孤獨的淒美，色調層面更是將憂鬱的氣氛詮釋到了極致，本屆冠軍實至名歸。參賽者在故事感的著筆有了重大進步。
+              <br><br><strong>主教：</strong>比起設想故事後進行取景，更希望各位從遊戲中以發現取代思考，發現了意境與故事再將它刻畫成自己想表達的模樣。構圖是突顯主題表達目的的方式，而不是純粹的炫技。
+            </div>
+            <div class="ec-honors">
+              <strong>佳作：</strong>@lucaspapa5154〈孤獨〉、@zhong._〈燈火通明〉、@tang_1018〈孤獨的影子〉、@nomoneycat〈晚安，夜空〉
+            </div>
+          </div>
+
+          <!-- 第一屆 -->
+          <div class="edition-card">
+            <div class="ec-top">
+              <span class="ec-num">第一屆</span>
+              <span class="ec-date">114.06</span>
+            </div>
+            <div class="ec-theme">主題：「憂鬱」</div>
+            <div class="ec-winner">
+              <span class="ec-winner-badge">🥇</span>
+              <div class="ec-winner-info">
+                <div class="ec-winner-title">〈死對頭…〉</div>
+                <div class="ec-winner-author">@lucaspapa5154</div>
+              </div>
+            </div>
+            <div class="ec-review">
+              <strong>石頭：</strong>運用了高低二人劍拔弩張、冷眼對視的構圖技巧襯托出了現場的肅殺氣氛。利用現場光線的藍冷色調凸顯了氣氛的凝重，而標題「死對頭」更是一筆畫龍點睛，為本作品的故事性錦上添花。
+              <br><br><strong>主教：</strong>攝影是紀錄每一個有意義的瞬間，並賦予其生命，想到就拍的那叫拍照，能和讀者搭起橋樑的那叫攝影。一張好的攝影作品故事絕對是主體，光影構圖是襯托故事的道具。
+            </div>
+            <div class="ec-honors">
+              海風攝影大賽首屆，奠定了評分標準與賽制基礎。每人限投 5 張＋必備文案＋依主題拍攝等規則自此確立。
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- 返回 -->
+      <div style="text-align:center;margin-top:var(--space-2xl);">
+        <a href="../../活動" class="btn btn-outline">← 返回活動列表</a>
+      </div>
+
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <span class="footer-logo">海風伺服器 SeaWind.cc</span>
+        <p class="footer-tagline">在風與海之間，有一個可以長久生存的地方</p>
+      </div>
+      <div class="footer-links-row">
+        <a href="../../合作夥伴">合作夥伴</a>
+        <span class="footer-dot">·</span>
+        <a href="../../服務條款">服務條款</a>
+        <span class="footer-dot">·</span>
+        <a href="../../隱私權政策">隱私權政策</a>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2026 海風伺服器 · 非 Mojang 官方營運 · service@seawind.cc</p>
+      </div>
+      <p class="page-revise">網站最後修改日期 2026.04.25 / 總計修改 <span id="deployCount">—</span> 次</p>
+    </div>
+  </footer>
+
+  <script src="../../tips.js" defer></script>
+  <script src="../../utils.js"></script>
+  <script src="../../main.js?v=250425b"></script>
+</body>
+</html>
