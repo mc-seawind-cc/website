@@ -513,7 +513,7 @@
       const mainMatch = content.match(/主文[：:]\s*\n([\s\S]*?)(?=\n事實及理由|\n事實)/);
       if (mainMatch) {
         html += `<span class="pen-detail-label">主文</span>`;
-        html += `<span class="pen-detail-value judgment-main">${esc(mainMatch[1].trim())}</span>`;
+        html += `<span class="pen-detail-value"><span class="judgment-main">${esc(mainMatch[1].trim())}</span></span>`;
       }
 
       // 事實及理由
