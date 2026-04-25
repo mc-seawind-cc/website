@@ -519,7 +519,7 @@
 
       // 附件 + 證據截圖合併
       if (item.images && item.images.length) {
-        html += `<span class="pen-detail-label">附件（${item.images.length} 張截圖）</span>`;
+        html += `<span class="pen-detail-label">附件（檢附證據）</span>`;
         html += `<div class="pen-evidence-grid">`;
         item.images.forEach((img, idx) => {
           html += `<img src="${esc(img)}" alt="證據截圖 ${idx+1}" class="pen-evidence-img" loading="lazy" onclick="window.open('${esc(img)}','_blank')">`;
@@ -586,7 +586,7 @@
 
       // 附件 + 證據截圖合併
       if (item.images && item.images.length) {
-        html += `<span class="pen-detail-label">附件（${item.images.length} 張截圖）</span>`;
+        html += `<span class="pen-detail-label">附件（檢附證據）</span>`;
         html += `<div class="pen-evidence-grid">`;
         item.images.forEach((img, idx) => {
           html += `<img src="${esc(img)}" alt="證據截圖 ${idx+1}" class="pen-evidence-img" loading="lazy" onclick="window.open('${esc(img)}','_blank')">`;
