@@ -515,10 +515,10 @@
       if (item.reportedBy)  parties.push({ role: '經舉發', name: item.reportedBy, cls: 'role-reported' });
 
       if (parties.length) {
-        html += `<span class="pen-detail-label">當事人</span>`;
-        html += `<span class="pen-detail-value">${parties.map(p =>
-          '<span class="pen-party"><span class="pen-party-role ' + p.cls + '">' + esc(p.role) + '</span> <code>' + esc(p.name) + '</code></span>'
-        ).join('<br>')}</span>`;
+        parties.forEach(p => {
+          html += `<span class="pen-detail-label">${esc(p.role)}</span>`;
+          html += `<span class="pen-detail-value"><code>${esc(p.name)}</code></span>`;
+        });
       }
 
       // 主文
@@ -580,10 +580,10 @@
       if (item.reportedBy)  parties.push({ role: '經舉發', name: item.reportedBy, cls: 'role-reported' });
 
       if (parties.length) {
-        html += `<span class="pen-detail-label">當事人</span>`;
-        html += `<span class="pen-detail-value">${parties.map(p =>
-          '<span class="pen-party"><span class="pen-party-role ' + p.cls + '">' + esc(p.role) + '</span> <code>' + esc(p.name) + '</code></span>'
-        ).join('<br>')}</span>`;
+        parties.forEach(p => {
+          html += `<span class="pen-detail-label">${esc(p.role)}</span>`;
+          html += `<span class="pen-detail-value"><code>${esc(p.name)}</code></span>`;
+        });
       }
 
       // Rule
