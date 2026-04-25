@@ -507,6 +507,20 @@
     function buildJudgment(item, content) {
       let html = '';
 
+      // 當事人
+      const parties = [];
+      if (item.defendant)   parties.push({ role: '被告', name: item.defendant, cls: 'role-defendant' });
+      if (item.plaintiff)   parties.push({ role: '原告', name: item.plaintiff, cls: 'role-plaintiff' });
+      if (item.prosecutor)  parties.push({ role: '公訴人', name: item.prosecutor, cls: 'role-prosecutor' });
+      if (item.reportedBy)  parties.push({ role: '經舉發', name: item.reportedBy, cls: 'role-reported' });
+
+      if (parties.length) {
+        html += `<span class="pen-detail-label">當事人</span>`;
+        html += `<span class="pen-detail-value">${parties.map(p =>
+          '<span class="pen-party"><span class="pen-party-role ' + p.cls + '">' + esc(p.role) + '</span> <code>' + esc(p.name) + '</code></span>'
+        ).join('<br>')}</span>`;
+      }
+
       // 主文
       const mainMatch = content.match(/主文[：:]\s*\n([\s\S]*?)(?=\n事實及理由|\n事實)/);
       if (mainMatch) {
@@ -557,6 +571,20 @@
     /* ── Legacy: render old Discord-format penalties ── */
     function buildLegacy(item, content) {
       let html = '';
+
+      // 當事人
+      const parties = [];
+      if (item.defendant)   parties.push({ role: '被告', name: item.defendant, cls: 'role-defendant' });
+      if (item.plaintiff)   parties.push({ role: '原告', name: item.plaintiff, cls: 'role-plaintiff' });
+      if (item.prosecutor)  parties.push({ role: '公訴人', name: item.prosecutor, cls: 'role-prosecutor' });
+      if (item.reportedBy)  parties.push({ role: '經舉發', name: item.reportedBy, cls: 'role-reported' });
+
+      if (parties.length) {
+        html += `<span class="pen-detail-label">當事人</span>`;
+        html += `<span class="pen-detail-value">${parties.map(p =>
+          '<span class="pen-party"><span class="pen-party-role ' + p.cls + '">' + esc(p.role) + '</span> <code>' + esc(p.name) + '</code></span>'
+        ).join('<br>')}</span>`;
+      }
 
       // Rule
       const ruleMatch = content.match(/違反規章[：:]\s*\n?\s*[>]*\s*[-•]\s*(.+)/);
