@@ -466,8 +466,6 @@
             <em style="color:var(--fog);font-size:0.85rem;">風汐碎片與風汐石貨幣系統，兌換特殊工具。</em>
           </p>
           <div class="event-meta">
-            <span class="event-meta-item"><span class="event-meta-icon">📅</span> 常態開放</span>
-            <span class="event-meta-item"><span class="event-meta-icon">👤</span> 神焰</span>
             <span class="event-meta-item" style="margin-left:auto;color:var(--sky);font-weight:600;">查看詳情 →</span>
           </div>
         </a>
@@ -483,8 +481,6 @@
             <em style="color:var(--fog);font-size:0.85rem;">釣魚不只是休閒，更是收集與挑戰的旅程。</em>
           </p>
           <div class="event-meta">
-            <span class="event-meta-item"><span class="event-meta-icon">📅</span> 常態開放</span>
-            <span class="event-meta-item"><span class="event-meta-icon">👤</span> 狐桃、神焰</span>
             <span class="event-meta-item" style="margin-left:auto;color:var(--sky);font-weight:600;">查看詳情 →</span>
           </div>
         </a>
@@ -511,7 +507,6 @@
 
           <div class="event-meta">
             <span class="event-meta-item"><span class="event-meta-icon">📸</span> 正在進行：第 5 屆</span>
-            <span class="event-meta-item"><span class="event-meta-icon">👤</span> 石頭</span>
             <span class="event-meta-item" style="margin-left:auto;color:var(--sky);font-weight:600;">查看詳情 →</span>
           </div>
         </a>
@@ -530,7 +525,7 @@
           </div>
           <!-- 即時倒數計時徽章 -->
           <div class="event-countdown-badge" id="eventCountdownBadge">
-            <span class="event-countdown-label">距離暖身期開始</span>
+            <span class="event-countdown-label">距離調整期開始</span>
             <span class="event-countdown-nums"><span id="evCdD">--</span>天 <span id="evCdH">--</span>:<span id="evCdM">--</span>:<span id="evCdS">--</span></span>
           </div>
           <p class="event-desc">
@@ -552,7 +547,6 @@
             <span class="event-stage" title="兌換期 · 5/28–5/31">尾</span>
           </div>
           <div class="event-meta">
-            <span class="event-meta-item"><span class="event-meta-icon">📅</span> 2026.04.27 – 05.31</span>
             <span class="event-meta-item"><span class="event-meta-icon">🏷️</span> 收集 × 代幣兌換 × 挑戰</span>
             <span class="event-meta-item" style="margin-left:auto;color:var(--sky);font-weight:600;">查看詳情 →</span>
           </div>
@@ -624,7 +618,7 @@
       const diff = target - Date.now();
       if(diff <= 0){
         badge.classList.add('expired');
-        badge.querySelector('.event-countdown-label').textContent = '🧋 暖身期已開始！';
+        badge.querySelector('.event-countdown-label').textContent = '🧋 調整期已開始！';
         badge.querySelector('.event-countdown-nums').textContent = '快來參加吧';
         return;
       }

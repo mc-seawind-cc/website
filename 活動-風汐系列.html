@@ -38,6 +38,10 @@
     .currency-icon { font-size:2.5rem; flex-shrink:0; }
     .currency-info h3 { font-size:1rem; font-weight:700; color:var(--white); margin-bottom:4px; }
     .currency-info p { font-size:0.85rem; color:var(--fog); line-height:1.6; }
+    .info-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(200px,1fr)); gap:10px; }
+    .info-item { padding:14px 16px; background:rgba(0,0,0,0.12); border:1px solid rgba(255,255,255,0.04); border-radius:8px; }
+    .info-item .ii-label { font-size:0.72rem; color:var(--fog); margin-bottom:4px; }
+    .info-item .ii-value { font-size:0.92rem; font-weight:700; color:var(--cloud); }
 
     .method-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(200px,1fr)); gap:10px; }
     .method-item { padding:14px 16px; background:rgba(0,0,0,0.1); border:1px solid rgba(255,255,255,0.04); border-radius:8px; }
@@ -55,6 +59,7 @@
     [data-theme="light"] .currency-card { background:rgba(0,0,0,0.02); border-color:rgba(0,0,0,0.05); }
     [data-theme="light"] .method-item { background:rgba(0,0,0,0.02); border-color:rgba(0,0,0,0.05); }
     [data-theme="light"] .method-item h4 { color:var(--cloud); }
+    [data-theme="light"] .info-item { background:rgba(0,0,0,0.02); border-color:rgba(0,0,0,0.05); }
     [data-theme="light"] .event-block div[style*="rgba(171,114,249"] { background:rgba(171,114,249,0.04); }
     [data-theme="light"] .event-block div[style*="rgba(157,175,255"] { background:rgba(157,175,255,0.04); }
 
@@ -125,6 +130,23 @@
           以「風」與「潮汐」為主題的系列活動，融合探索、解謎與建築元素。風汐碎片與風汐石是海風的核心進階貨幣系統。
         </p>
       </div>
+
+      <!-- 基本資訊 -->
+      <div class="event-block fade-in">
+        <div class="event-block-title">📋 基本資訊</div>
+        <div class="info-grid">
+          <div class="info-item">
+            <div class="ii-label">活動類型</div>
+            <div class="ii-value">常駐活動</div>
+          </div>
+          <div class="info-item">
+            <div class="ii-label">核心貨幣</div>
+            <div class="ii-value">風汐碎片 / 風汐石</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="event-section-divider"></div>
 
       <!-- 貨幣介紹 -->
       <div class="event-block fade-in">

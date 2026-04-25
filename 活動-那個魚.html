@@ -39,6 +39,10 @@
 
     .coming-soon { text-align:center; padding:var(--space-2xl); color:var(--fog); font-size:0.95rem; }
     .coming-soon .cs-icon { font-size:3rem; margin-bottom:var(--space-md); display:block; opacity:0.3; }
+    .info-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(200px,1fr)); gap:10px; }
+    .info-item { padding:14px 16px; background:rgba(0,0,0,0.12); border:1px solid rgba(255,255,255,0.04); border-radius:8px; }
+    .info-item .ii-label { font-size:0.72rem; color:var(--fog); margin-bottom:4px; }
+    .info-item .ii-value { font-size:0.92rem; font-weight:700; color:var(--cloud); }
 
     .back-link { display:inline-flex; align-items:center; gap:6px; color:var(--fog); font-size:0.85rem; text-decoration:none; padding:6px 0; transition:color 0.2s; margin-bottom:var(--space-md); }
     .back-link:hover { color:var(--sky); }
@@ -47,6 +51,7 @@
     [data-theme="light"] .event-detail-header h1 { color:var(--cloud); }
     [data-theme="light"] .event-block-title { color:var(--cloud); }
     [data-theme="light"] .fish-item { color:#3a3f4b; background:rgba(0,0,0,0.02); border-color:rgba(0,0,0,0.05); }
+    [data-theme="light"] .info-item { background:rgba(0,0,0,0.02); border-color:rgba(0,0,0,0.05); }
     @media print { .back-link,.nav,.footer,.scroll-progress,.bg-atmosphere,.event-section-divider { display:none!important; } }
   </style>
 </head>
@@ -114,6 +119,23 @@
           海風經典釣魚活動，拿起你的釣竿，在海風的水域中尋找各種魚類。釣魚不只是休閒，更是收集與挑戰的旅程。
         </p>
       </div>
+
+      <!-- 基本資訊 -->
+      <div class="event-block fade-in">
+        <div class="event-block-title">📋 基本資訊</div>
+        <div class="info-grid">
+          <div class="info-item">
+            <div class="ii-label">活動類型</div>
+            <div class="ii-value">常駐活動</div>
+          </div>
+          <div class="info-item">
+            <div class="ii-label">玩法</div>
+            <div class="ii-value">釣魚收集</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="event-section-divider"></div>
 
       <!-- 魚種 -->
       <div class="event-block fade-in">
