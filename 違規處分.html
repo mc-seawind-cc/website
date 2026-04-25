@@ -249,7 +249,6 @@
     [data-theme="light"] .pen-judge { background: rgba(0,0,0,0.04); color: var(--fog); }
 
     .pen-detail .judgment-main {
-      grid-column: 1 / -1;
       background: rgba(255,100,100,0.03);
       border-left: 3px solid rgba(255,100,100,0.2);
       padding: 12px 16px;
@@ -514,7 +513,7 @@
       const mainMatch = content.match(/主文[：:]\s*\n([\s\S]*?)(?=\n事實及理由|\n事實)/);
       if (mainMatch) {
         html += `<span class="pen-detail-label">主文</span>`;
-        html += `<div class="judgment-main">${esc(mainMatch[1].trim())}</div>`;
+        html += `<span class="pen-detail-value judgment-main">${esc(mainMatch[1].trim())}</span>`;
       }
 
       // 事實及理由
