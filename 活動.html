@@ -123,6 +123,11 @@
       color: var(--sky);
       border: 1px solid rgba(157, 175, 255, 0.2);
     }
+    .event-badge.ended {
+      background: rgba(255, 255, 255, 0.06);
+      color: var(--fog);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
 
     .event-desc {
       color: var(--cloud);
@@ -454,7 +459,7 @@
         <a href="活動-風汐系列" class="event-card fade-in" style="--event-accent: var(--lavender); text-decoration:none; color:inherit; cursor:pointer;">
           <div class="event-header">
             <span class="event-title">風汐系列</span>
-            <span class="event-badge permanent">常駐</span>
+            <span class="event-badge permanent">常駐活動</span>
           </div>
           <p class="event-desc">
             以「風」與「潮汐」為主題的系列活動，融合探索、解謎與建築元素。<br>
@@ -471,7 +476,7 @@
         <a href="活動-那個魚" class="event-card fade-in" style="--event-accent: var(--foam); text-decoration:none; color:inherit; cursor:pointer;">
           <div class="event-header">
             <span class="event-title">那個魚</span>
-            <span class="event-badge permanent">常駐</span>
+            <span class="event-badge permanent">常駐活動</span>
           </div>
           <p class="event-desc">
             海風經典釣魚活動，拿起你的釣竿，在海風的水域中尋找各種魚類。<br>
@@ -480,6 +485,33 @@
           <div class="event-meta">
             <span class="event-meta-item"><span class="event-meta-icon">📅</span> 常態開放</span>
             <span class="event-meta-item"><span class="event-meta-icon">🎣</span> 釣魚</span>
+            <span class="event-meta-item" style="margin-left:auto;color:var(--sky);font-weight:600;">查看詳情 →</span>
+          </div>
+        </a>
+
+        <!-- 攝影大賽 -->
+        <a href="活動-攝影賽" class="event-card fade-in" style="--event-accent: var(--foam); text-decoration:none; color:inherit; cursor:pointer;">
+          <div class="event-header">
+            <span class="event-title">攝影大賽</span>
+            <span class="event-badge permanent">常駐活動</span>
+          </div>
+          <p class="event-desc">
+            用鏡頭捕捉海風的美。每屆設定不同主題，選出最動人的 Minecraft 風景瞬間。<br>
+            <em style="color:var(--fog);font-size:0.85rem;">第五屆攝影大賽進行中，敬請踴躍投稿！</em>
+          </p>
+
+          <!-- 歷屆記錄 -->
+          <div class="event-edition">
+            <span class="event-ed">第 1 屆</span>
+            <span class="event-ed">第 2 屆</span>
+            <span class="event-ed">第 3 屆</span>
+            <span class="event-ed">第 4 屆</span>
+            <span class="event-ed current">第 5 屆 進行中</span>
+          </div>
+
+          <div class="event-meta">
+            <span class="event-meta-item"><span class="event-meta-icon">📸</span> 正在進行：第 5 屆</span>
+            <span class="event-meta-item"><span class="event-meta-icon">🏆</span> 已舉辦 5 屆</span>
             <span class="event-meta-item" style="margin-left:auto;color:var(--sky);font-weight:600;">查看詳情 →</span>
           </div>
         </a>
@@ -494,7 +526,7 @@
         <a href="活動/國際珍奶日/" class="event-card event-card-featured fade-in" style="--event-accent: #c49b6c; text-decoration:none; color:inherit; cursor:pointer;">
           <div class="event-header">
             <span class="event-title">🧋 2026 海風國際珍奶日</span>
-            <span class="event-badge limited">限時 · 4/27 – 5/31</span>
+            <span class="event-badge limited">限時活動</span>
           </div>
           <!-- 即時倒數計時徽章 -->
           <div class="event-countdown-badge" id="eventCountdownBadge">
@@ -554,44 +586,17 @@
         </a>
 
 
-        <!-- 攝影大賽 -->
-        <a href="活動-攝影賽" class="event-card fade-in" style="--event-accent: var(--foam); text-decoration:none; color:inherit; cursor:pointer;">
-          <div class="event-header">
-            <span class="event-title">攝影大賽</span>
-            <span class="event-badge recurring">週期性</span>
-          </div>
-          <p class="event-desc">
-            用鏡頭捕捉海風的美。每屆設定不同主題，選出最動人的 Minecraft 風景瞬間。<br>
-            <em style="color:var(--fog);font-size:0.85rem;">第五屆攝影大賽進行中，敬請踴躍投稿！</em>
-          </p>
-
-          <!-- 歷屆記錄 -->
-          <div class="event-edition">
-            <span class="event-ed">第 1 屆</span>
-            <span class="event-ed">第 2 屆</span>
-            <span class="event-ed">第 3 屆</span>
-            <span class="event-ed">第 4 屆</span>
-            <span class="event-ed current">第 5 屆 進行中</span>
-          </div>
-
-          <div class="event-meta">
-            <span class="event-meta-item"><span class="event-meta-icon">📸</span> 正在進行：第 5 屆</span>
-            <span class="event-meta-item"><span class="event-meta-icon">🏆</span> 已舉辦 5 屆</span>
-            <span class="event-meta-item" style="margin-left:auto;color:var(--sky);font-weight:600;">查看詳情 →</span>
-          </div>
-        </a>
-
       </div>
 
-      <!-- 過去的活動 -->
-      <div class="events-section-label" style="margin-top: var(--space-xl);">過去的活動</div>
+      <!-- 結束活動 -->
+      <div class="events-section-label" style="margin-top: var(--space-xl);">結束活動</div>
       <div class="events-grid">
 
         <!-- 生存起源 -->
         <a href="活動-生存起源" class="event-card fade-in" style="--event-accent: var(--sand); text-decoration:none; color:inherit; cursor:pointer;">
           <div class="event-header">
             <span class="event-title">生存起源</span>
-            <span class="event-badge limited">限時 · 4/2 – 7/30</span>
+            <span class="event-badge ended">結束活動</span>
           </div>
           <p class="event-desc">
             回歸最純粹的生存挑戰。三個階段已全部開放，每階段新增兌換物品。<br>
