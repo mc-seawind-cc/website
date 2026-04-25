@@ -21,7 +21,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;800&family=Noto+Serif+TC:wght@700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=250425b">
+  <link rel="stylesheet" href="style.css?v=260426a">
   <link rel="stylesheet" href="music-player.css">
   <style>
     /* ═══ Events Page ═══ */
@@ -375,6 +375,40 @@
     .events-grid .event-card:nth-child(3) { transition-delay: 0.24s; }
     .events-grid .event-card:nth-child(4) { transition-delay: 0.36s; }
     .events-grid .event-card:nth-child(5) { transition-delay: 0.48s; }
+    .events-grid .event-card:nth-child(6) { transition-delay: 0.6s; }
+
+    /* ── 活動狀態指示燈 ── */
+    .event-status-dot {
+      display: inline-block;
+      width: 7px; height: 7px;
+      border-radius: 50%;
+      margin-right: 6px;
+      vertical-align: middle;
+      flex-shrink: 0;
+    }
+    .event-status-dot.live {
+      background: var(--foam);
+      box-shadow: 0 0 6px 1px rgba(168,230,207,0.5);
+      animation: status-dot-pulse 2s ease-in-out infinite;
+    }
+    .event-status-dot.upcoming {
+      background: #ffaa32;
+      box-shadow: 0 0 6px 1px rgba(255,170,50,0.4);
+      animation: status-dot-pulse 2.5s ease-in-out infinite;
+    }
+    @keyframes status-dot-pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.4; }
+    }
+
+    /* ── Hero 底部漸層裝飾線 ── */
+    .page-hero-events {
+      border-bottom: 1px solid transparent;
+      border-image: linear-gradient(90deg, transparent, rgba(157,175,255,0.15), rgba(168,230,207,0.1), transparent) 1;
+    }
+    [data-theme="light"] .page-hero-events {
+      border-image: linear-gradient(90deg, transparent, rgba(74,108,247,0.12), rgba(100,180,160,0.08), transparent) 1;
+    }
 
     /* Responsive */
     @media (max-width: 768px) {
@@ -458,7 +492,7 @@
         <!-- 風汐系列 -->
         <a href="活動/風汐系列" class="event-card fade-in" style="--event-accent: var(--lavender); text-decoration:none; color:inherit; cursor:pointer;">
           <div class="event-header">
-            <span class="event-title">風汐系列</span>
+            <span class="event-title"><span class="event-status-dot live"></span>風汐系列</span>
             <span class="event-badge permanent">常駐活動</span>
           </div>
           <p class="event-desc">
@@ -473,7 +507,7 @@
         <!-- 那個魚 -->
         <a href="活動/那個魚" class="event-card fade-in" style="--event-accent: var(--foam); text-decoration:none; color:inherit; cursor:pointer;">
           <div class="event-header">
-            <span class="event-title">那個魚</span>
+            <span class="event-title"><span class="event-status-dot live"></span>那個魚</span>
             <span class="event-badge permanent">常駐活動</span>
           </div>
           <p class="event-desc">
@@ -488,7 +522,7 @@
         <!-- 攝影大賽 -->
         <a href="活動/攝影賽" class="event-card fade-in" style="--event-accent: var(--foam); text-decoration:none; color:inherit; cursor:pointer;">
           <div class="event-header">
-            <span class="event-title">攝影大賽</span>
+            <span class="event-title"><span class="event-status-dot live"></span>攝影大賽</span>
             <span class="event-badge permanent">常駐活動</span>
           </div>
           <p class="event-desc">
@@ -520,7 +554,7 @@
         <!-- 🧋 2026 海風國際珍奶日 -->
         <a href="活動/珍奶日" class="event-card event-card-featured fade-in" style="--event-accent: #c49b6c; text-decoration:none; color:inherit; cursor:pointer;">
           <div class="event-header">
-            <span class="event-title">🧋 2026 海風國際珍奶日</span>
+            <span class="event-title"><span class="event-status-dot upcoming"></span>🧋 2026 海風國際珍奶日</span>
             <span class="event-badge limited">4/27 ~ 5/31</span>
           </div>
           <!-- 即時倒數計時徽章 -->
@@ -555,7 +589,7 @@
         <!-- 生存起源 -->
         <a href="活動/生存起源" class="event-card fade-in" style="--event-accent: var(--sand); text-decoration:none; color:inherit; cursor:pointer;">
           <div class="event-header">
-            <span class="event-title">生存起源</span>
+            <span class="event-title"><span class="event-status-dot live"></span>生存起源</span>
             <span class="event-badge limited">4/2 ~ 7/30</span>
           </div>
           <p class="event-desc">
@@ -600,13 +634,13 @@
       <div class="footer-bottom">
         <p>© 2026 海風伺服器 · 非 Mojang 官方營運 · service@seawind.cc</p>
       </div>
-      <p class="page-revise">網站最後修改日期 2026.04.25 / 總計修改 <span id="deployCount">—</span> 次</p>
+      <p class="page-revise">網站最後修改日期 2026.04.26 / 總計修改 <span id="deployCount">—</span> 次</p>
     </div>
   </footer>
 
   <script src="tips.js" defer></script>
   <script src="utils.js"></script>
-  <script src="main.js?v=250425b"></script>
+  <script src="main.js?v=260426a"></script>
   <!-- 活動頁珍奶日倒數計時 -->
   <script>
   (function(){

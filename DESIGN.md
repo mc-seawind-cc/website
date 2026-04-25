@@ -386,6 +386,9 @@ website/
 | 2026.04.25 | 海風網站助手 | **文化藝廊路徑重構**：`lore/` 資料夾改名為 `文化藝廊/`；`禁忌天使.html` 改名為 `雅.html`；全站 href/canonical/sitemap 更新；邊境之村標題加英文副標；翠籙幽光書庭標題加英文副標；雅頁面標題/描述/h1/alt 全面更新 |
 | 2026.04.25 | 海風網站助手 | **文化藝廊子頁面重新命名**：`library.html` → `翠籙幽光書庭.html`、`glavent.html` → `格拉文特.html`、`brettland.html` → `布雷特蘭.html`；全站 href/canonical/sitemap 更新；格拉文特標題「風與雪之城 \| Glavent - Town of Wind and Snow」；布雷特蘭標題「永恆的羅馬 \| Brettland - Eternal Rome, Eternal Glory」；文化部長加註（石頭） |
 | 2026.04.25 | 海風網站助手 | **端午節 detail 頁配方同步**：南部粽改為 NPC 兌換面板（10 格材料）、北部粽改為工作台 3×3（9 格材料），與設計文件對齊。頁面已存在但尚未加入活動列表頁連結（待活動正式公告後再上線） |
+| 2026.04.26 | 海風網站助手 | 全站 21 個頁面頁尾日期統一更新至 2026.04.26，CSS/JS cache busting 統一為 260426a |
+| 2026.04.26 | 海風網站助手 | **活動頁卡片強化**：新增 `.event-status-dot` 狀態指示燈（live=綠色脈衝/upcoming=橙色脈衝），風汐系列/那個魚/攝影大賽/生存起源標記為 live，珍奶日標記為 upcoming；stagger 動畫補齊第 6 張卡片延遲（0.6s）；Hero 底部新增漸層裝飾線（border-image） |
+| 2026.04.26 | 海風網站助手 | **首頁＋公告頁珍奶日公告置頂**：inline JSON 中 #0027「2026 海風國際珍奶日」pinned 改為 true，公告欄顯示 📌 置頂標記 + sand 色左邊框（CSS 已有 `.bulletin-item.pinned` 樣式） |
 
 ---
 
