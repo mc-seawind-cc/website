@@ -570,11 +570,8 @@
       const judges = content.match(/(?:審判長|法官)\s*法官?\s*([\w_.]+)/g);
       if (!judges) return '';
       return judges.map(j => {
-        const isPresiding = /審判長/.test(j);
         const name = j.replace(/(?:審判長|法官)\s*法官?\s*/, '').trim();
-        const cls = isPresiding ? 'pen-judge-presiding' : 'pen-judge';
-        const label = isPresiding ? '審判長' : '法官';
-        return `<span class="${cls}">${label}</span> <span class="pen-judge-name">${esc(name)}</span>`;
+        return '<span class="pen-judge-name">' + esc(name) + '</span>';
       }).join('<span class="pen-judge-sep"> · </span>');
     }
 
