@@ -45,7 +45,6 @@
     .pen-stat .label { font-size: 0.68rem; color: var(--fog); margin-top: 2px; text-transform: uppercase; letter-spacing: 0.5px; }
     .pen-stat.stat-permanent { border-left: 3px solid rgba(255,100,100,0.5); }
     .pen-stat.stat-temp { border-left: 3px solid rgba(255,170,50,0.5); }
-    .pen-stat.stat-kick { border-left: 3px solid rgba(157,175,255,0.4); }
 
     /* 處分列表 */
     .pen-list { display: flex; flex-direction: column; gap: 4px; }
@@ -129,7 +128,6 @@
     }
     .badge-permanent { background: rgba(255,100,100,0.12); color: #ff6b6b; }
     .badge-temp { background: rgba(255,170,50,0.12); color: #ffaa32; }
-    .badge-kick { background: rgba(157,175,255,0.1); color: var(--sky); }
     .pen-case-tag {
       font-size: 0.62rem;
       padding: 2px 8px;
@@ -140,7 +138,6 @@
     }
     [data-theme="light"] .badge-permanent { background: rgba(255,60,60,0.08); color: #dc3545; }
     [data-theme="light"] .badge-temp { background: rgba(255,170,50,0.08); color: #e69500; }
-    [data-theme="light"] .badge-kick { background: rgba(157,175,255,0.08); color: #4a6cf7; }
     [data-theme="light"] .pen-case-tag { background: rgba(0,0,0,0.04) !important; }
 
     .pen-arrow {
@@ -452,12 +449,10 @@
       // Stats
       const permanent = items.filter(i => /永久/.test(i.title)).length;
       const temp = items.filter(i => /停權|禁言/.test(i.title) && !/永久/.test(i.title)).length;
-      const kick = items.filter(i => /踢出/.test(i.title)).length;
       statsEl.innerHTML = `
         <div class="pen-stat"><div class="num">${items.length}</div><div class="label">總計</div></div>
         <div class="pen-stat stat-permanent"><div class="num" style="color:#ff6b6b">${permanent}</div><div class="label">永久停權</div></div>
         <div class="pen-stat stat-temp"><div class="num" style="color:#ffaa32">${temp}</div><div class="label">暫時處分</div></div>
-        <div class="pen-stat stat-kick"><div class="num" style="color:var(--sky)">${kick}</div><div class="label">踢出</div></div>
       `;
 
       // Cards
@@ -661,7 +656,6 @@
 
     function getBadge(title) {
       if (/永久/.test(title)) return '<span class="pen-badge badge-permanent">永久</span>';
-      if (/踢出/.test(title)) return '<span class="pen-badge badge-kick">踢出</span>';
       if (/停權|禁言/.test(title)) return '<span class="pen-badge badge-temp">暫時</span>';
       return '<span class="pen-badge badge-temp">處分</span>';
     }
