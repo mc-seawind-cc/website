@@ -377,6 +377,7 @@ website/
 | 2026.04.25 | 海風網站助手 | **首頁精選活動橫幅階段時間軸**：新增 `.featured-event-timeline` 四階段指示器（測試→暖身→正式→兌換），JS 動態更新當前階段（done/active），含 `timeline-active-pulse` 脈衝動畫。深色/淺色模式同步 |
 | 2026.04.25 | 海風網站助手 | 全站 CSS/JS cache busting 統一更新為 250425b |
 | 2026.04.25 | 海風網站助手 | **違規處分頁精簡**：penalties.json 從 13 筆縮減至 3 筆，僅保留 GoldenLao (#0011)、Nakk_tiktok (#0012)、史莱姆 Slime Ch. (#0013) |
+| 2026.04.25 | 海風網站助手 | #0012 Nakk_tiktok / #0013 史莱姆 Slime Ch. 判決書連結改為 Google Docs；連結文字從「查看判決書 PDF」改為「查看判決書」 |
 
 ---
 
