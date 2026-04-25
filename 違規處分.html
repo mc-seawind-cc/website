@@ -200,6 +200,24 @@
     }
     [data-theme="light"] .pen-detail-full { border-top-color: rgba(0,0,0,0.04); }
 
+    /* Judgment document styling */
+    .pen-detail-value code {
+      font-size: 0.82em;
+    }
+    .pen-detail .judgment-main {
+      grid-column: 1 / -1;
+      background: rgba(255,100,100,0.03);
+      border-left: 3px solid rgba(255,100,100,0.2);
+      padding: 12px 16px;
+      border-radius: 0 8px 8px 0;
+      margin: 4px 0;
+      line-height: 2;
+    }
+    [data-theme="light"] .pen-detail .judgment-main {
+      background: rgba(255,60,60,0.02);
+      border-left-color: rgba(255,60,60,0.15);
+    }
+
     /* PDF 附件 */
     .pen-pdf-link {
       display: inline-flex;
@@ -425,104 +443,102 @@
     }
 
     function buildDetail(item) {
-      let html = '';
       const content = item.content || '';
+
+      // Detect format: new judgment document vs old Discord format
+      if (content.startsWith('海風法院')) {
+        return buildJudgment(item, content);
+      }
+      return buildLegacy(item, content);
+    }
+
+    /* ── New: render full judgment document ── */
+    function buildJudgment(item, content) {
+      let html = '';
       const players = item.players || [];
 
-      // Extract players from @mentions if players array is empty
+      // Players
+      if (players.length) {
+        html += `<span class="pen-detail-label">當事人</span>`;
+        html += `<span class="pen-detail-value">${players.map(p => '<code>' + esc(p) + '</code>').join('、')}</span>`;
+      }
+
+      // Parse sections: 主文 / 事實及理由 / date & judges
+      const mainMatch = content.match(/主文[：:]\s*\n([\s\S]*?)(?=\n事實及理由|\n事實|\n中\s*華|$)/);
+      const factsMatch = content.match(/事實及理由[：:]\s*\n([\s\S]*?)(?=\n中\s*華|$)/);
+      const dateMatch = content.match(/中\s*華\s*民\s*國\s*([\d\s]+年\s*[\d\s]+月\s*[\d\s]+日)/);
+      const judges = content.match(/(?:審判長|法官)\s*法官?\s*([\w_.]+)/g);
+
+      // Main verdict
+      if (mainMatch) {
+        const text = mainMatch[1].trim().replace(/\n{3,}/g, '\n\n');
+        html += `<div class="judgment-main">${esc(text)}</div>`;
+      }
+
+      // Facts & reasoning
+      if (factsMatch) {
+        const text = factsMatch[1].trim().replace(/\n{3,}/g, '\n\n');
+        html += `<span class="pen-detail-label">事實及理由</span>`;
+        html += `<span class="pen-detail-value" style="line-height:2;white-space:pre-line">${esc(text)}</span>`;
+      }
+
+      // Date
+      if (dateMatch) {
+        const d = dateMatch[1].replace(/\s+/g, '');
+        html += `<span class="pen-detail-label">判決日期</span>`;
+        html += `<span class="pen-detail-value">${esc(d)}</span>`;
+      }
+
+      // Judges
+      if (judges) {
+        const names = judges.map(j => j.replace(/(?:審判長|法官)\s*法官?\s*/, '').trim());
+        html += `<span class="pen-detail-label">審判人員</span>`;
+        html += `<span class="pen-detail-value">${names.map(n => '<code>' + esc(n) + '</code>').join('、')}</span>`;
+      }
+
+      // Evidence images
+      if (item.images && item.images.length) {
+        html += `<span class="pen-detail-label">證據截圖（${item.images.length} 張）</span>`;
+        html += `<div class="pen-evidence-grid">`;
+        item.images.forEach((img, idx) => {
+          html += `<img src="${esc(img)}" alt="證據截圖 ${idx+1}" class="pen-evidence-img" loading="lazy" onclick="window.open('${esc(img)}','_blank')">`;
+        });
+        html += `</div>`;
+      }
+
+      return html;
+    }
+
+    /* ── Legacy: render old Discord-format penalties ── */
+    function buildLegacy(item, content) {
+      let html = '';
+      const players = item.players || [];
+
       let allPlayers = [...players];
       if (!allPlayers.length) {
         const mentions = content.match(/@[\w\u4e00-\u9fff.]+/g);
         if (mentions) allPlayers.push(...mentions);
       }
-      // Also try extracting from old format "〉玩　家　："
-      const oldPlayerMatch = content.match(/玩\s*家\s*[：:].*?@\s*([^\s｜\n]+)/s);
-      if (oldPlayerMatch && !allPlayers.some(p => p.includes(oldPlayerMatch[1]))) {
-        allPlayers.push(oldPlayerMatch[1]);
-      }
-
       if (allPlayers.length) {
         html += `<span class="pen-detail-label">違規玩家</span>`;
         html += `<span class="pen-detail-value">${allPlayers.map(p => '<code>' + esc(p) + '</code>').join('、')}</span>`;
       }
 
-      // Violation rule — new format (collect all bullets)
-      let ruleText = '';
+      // Rule
       const ruleMatch = content.match(/違反規章[：:]\s*\n?\s*[>]*\s*[-•]\s*(.+)/);
-      if (ruleMatch) ruleText = ruleMatch[1].trim();
-      // Collect all rules if multiple
-      const ruleBlock = content.match(/違反規章[：:]\s*\n([\s\S]*?)(?=\n###|\n-#|$)/);
-      const allRules = [];
-      if (ruleBlock) {
-        const ruleBullets = ruleBlock[1].match(/[>]*\s*[-•]\s*(.+)/g);
-        if (ruleBullets) ruleBullets.forEach(r => allRules.push(r.replace(/[>]*\s*[-•]\s*/, '').trim()));
-      }
-      if (allRules.length > 1) {
+      if (ruleMatch) {
         html += `<span class="pen-detail-label">違反規章</span>`;
-        html += `<span class="pen-detail-value">${allRules.map(r => '• ' + esc(r)).join('<br>')}</span>`;
-      } else if (ruleText) {
-        html += `<span class="pen-detail-label">違反規章</span>`;
-        html += `<span class="pen-detail-value">${esc(ruleText)}</span>`;
+        html += `<span class="pen-detail-value">${esc(ruleMatch[1].trim())}</span>`;
       }
 
-      // Violation detail (second bullet under 規章)
-      const detailMatch = content.match(/違反規章[：:].*?\n\s*[>]*\s*[-•]\s*(.+)/s);
-      if (detailMatch && detailMatch[1].trim() && detailMatch[1].trim() !== ruleText) {
-        html += `<span class="pen-detail-label">違規事實</span>`;
-        html += `<span class="pen-detail-value">${esc(detailMatch[1].trim())}</span>`;
-      }
-
-      // Penalty — old format "懲　處　：" or new format "處分："
+      // Penalty
       const oldPenalty = content.match(/懲\s*處\s*[：:]\s*(.+)/);
-      const newPenalty = content.match(/處\s*分\s*[：:]\s*\n?\s*[>]*\s*[-•]\s*(.+)/);
       if (oldPenalty) {
         html += `<span class="pen-detail-label">懲處</span>`;
         html += `<span class="pen-detail-value">${esc(oldPenalty[1].trim())}</span>`;
-      } else if (newPenalty) {
-        // Collect all penalty bullets
-        const penaltyLines = [];
-        const penaltyBlock = content.match(/處\s*分\s*[：:]\s*\n([\s\S]*?)(?=\n###|\n-#|$)/);
-        if (penaltyBlock) {
-          const bullets = penaltyBlock[1].match(/[>]*\s*[-•]\s*(.+)/g);
-          if (bullets) bullets.forEach(b => penaltyLines.push(b.replace(/[>]*\s*[-•]\s*/, '').trim()));
-        }
-        if (penaltyLines.length) {
-          html += `<span class="pen-detail-label">處分</span>`;
-          html += `<span class="pen-detail-value">${penaltyLines.map(esc).join('<br>')}</span>`;
-        }
       }
 
-      // Appeal info
-      const appealMatch = content.match(/處分上訴[：:].*?``\s*(可|不可)\s*``/s);
-      if (appealMatch) {
-        html += `<span class="pen-detail-label">上訴</span>`;
-        html += `<span class="pen-detail-value">${appealMatch[1] === '可' ? '可至客服中心上訴' : '不可上訴'}</span>`;
-      }
-      // Old format appeal
-      const oldAppeal = content.match(/若需上訴請至/);
-      if (!appealMatch && oldAppeal) {
-        html += `<span class="pen-detail-label">上訴</span>`;
-        html += `<span class="pen-detail-value">可至客服中心上訴</span>`;
-      }
-
-      // Notes (-# lines)
-      const noteLines = content.match(/-#\s*(.+)/g);
-      if (noteLines) {
-        const notes = noteLines.map(n => n.replace(/-#\s*/, '').trim()).filter(n => n && !n.startsWith('日期'));
-        if (notes.length) {
-          html += `<span class="pen-detail-label">備註</span>`;
-          html += `<span class="pen-detail-value" style="color:var(--fog);font-size:0.82rem">${notes.map(esc).join('<br>')}</span>`;
-        }
-      }
-
-      // PDF link
-      if (item.pdf) {
-        const pdfName = item.pdf.split('/').pop().replace('.pdf', '');
-        html += `<span class="pen-detail-label">附件</span>`;
-        html += `<span class="pen-detail-value"><a class="pen-pdf-link" href="${esc(item.pdf)}" target="_blank" rel="noopener">📄 查看判決書</a></span>`;
-      }
-
-      // Evidence images
+      // Images
       if (item.images && item.images.length) {
         html += `<span class="pen-detail-label">證據截圖（${item.images.length} 張）</span>`;
         html += `<div class="pen-evidence-grid">`;
