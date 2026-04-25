@@ -21,7 +21,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;800&family=Noto+Serif+TC:wght@700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=250425a">
+  <link rel="stylesheet" href="style.css?v=250425b">
   <link rel="stylesheet" href="music-player.css">
   <style>
     /* ═══ Events Page ═══ */
@@ -192,6 +192,70 @@
       color: var(--fog);
       opacity: 0.3;
       font-size: 0.7rem;
+    }
+
+    /* ── Featured Event Card (即將開始的活動強調) ── */
+    .event-card-featured {
+      border-color: rgba(196, 155, 108, 0.25) !important;
+      box-shadow: 0 0 0 1px rgba(196, 155, 108, 0.1), 0 8px 32px rgba(196, 155, 108, 0.08);
+    }
+    .event-card-featured:hover {
+      border-color: rgba(196, 155, 108, 0.4) !important;
+      box-shadow: 0 0 0 1px rgba(196, 155, 108, 0.2), 0 12px 40px rgba(196, 155, 108, 0.15);
+    }
+    .event-card-featured::before {
+      background: linear-gradient(90deg, #c49b6c, #ffaa32, #c49b6c) !important;
+      opacity: 0.8 !important;
+    }
+
+    /* ── 倒數計時徽章 ── */
+    .event-countdown-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 14px;
+      background: rgba(196, 155, 108, 0.1);
+      border: 1px solid rgba(196, 155, 108, 0.2);
+      border-radius: 100px;
+      margin-bottom: var(--space-md);
+      animation: countdown-badge-pulse 3s ease-in-out infinite;
+    }
+    @keyframes countdown-badge-pulse {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(196, 155, 108, 0); }
+      50% { box-shadow: 0 0 12px 2px rgba(196, 155, 108, 0.15); }
+    }
+    .event-countdown-label {
+      font-size: 0.78rem;
+      color: var(--fog);
+      font-weight: 500;
+    }
+    .event-countdown-nums {
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: #c49b6c;
+      font-variant-numeric: tabular-nums;
+      letter-spacing: 0.02em;
+    }
+    .event-countdown-nums span {
+      display: inline-block;
+      min-width: 1.4em;
+      text-align: center;
+    }
+    .event-countdown-badge.expired {
+      animation: none;
+      background: rgba(168, 230, 207, 0.1);
+      border-color: rgba(168, 230, 207, 0.2);
+    }
+    .event-countdown-badge.expired .event-countdown-label { color: var(--foam); }
+    .event-countdown-badge.expired .event-countdown-nums { color: var(--foam); }
+
+    [data-theme="light"] .event-card-featured {
+      border-color: rgba(196, 155, 108, 0.3) !important;
+      box-shadow: 0 0 0 1px rgba(196, 155, 108, 0.12), 0 8px 32px rgba(196, 155, 108, 0.1);
+    }
+    [data-theme="light"] .event-countdown-badge {
+      background: rgba(196, 155, 108, 0.08);
+      border-color: rgba(196, 155, 108, 0.2);
     }
 
     .event-edition {
@@ -427,10 +491,15 @@
       <div class="events-grid">
 
         <!-- 🧋 2026 海風國際珍奶日 -->
-        <a href="活動/國際珍奶日/" class="event-card fade-in" style="--event-accent: #c49b6c; text-decoration:none; color:inherit; cursor:pointer;">
+        <a href="活動/國際珍奶日/" class="event-card event-card-featured fade-in" style="--event-accent: #c49b6c; text-decoration:none; color:inherit; cursor:pointer;">
           <div class="event-header">
             <span class="event-title">🧋 2026 海風國際珍奶日</span>
             <span class="event-badge limited">限時 · 4/27 – 5/31</span>
+          </div>
+          <!-- 即時倒數計時徽章 -->
+          <div class="event-countdown-badge" id="eventCountdownBadge">
+            <span class="event-countdown-label">距離暖身期開始</span>
+            <span class="event-countdown-nums"><span id="evCdD">--</span>天 <span id="evCdH">--</span>:<span id="evCdM">--</span>:<span id="evCdS">--</span></span>
           </div>
           <p class="event-desc">
             收集 14 種原料、完成任務賺取代幣，兌換 13 種限定口味飲品。社群打卡挑戰、代幣商店、珍奶微微（武器）與限定稱號等你來拿！
@@ -539,6 +608,30 @@
 
   <script src="tips.js" defer></script>
   <script src="utils.js"></script>
-  <script src="main.js?v=250425a"></script>
+  <script src="main.js?v=250425b"></script>
+  <!-- 活動頁珍奶日倒數計時 -->
+  <script>
+  (function(){
+    const badge = document.getElementById('eventCountdownBadge');
+    if(!badge) return;
+    const target = new Date('2026-04-27T10:00:00+08:00').getTime();
+    function tick(){
+      const diff = target - Date.now();
+      if(diff <= 0){
+        badge.classList.add('expired');
+        badge.querySelector('.event-countdown-label').textContent = '🧋 暖身期已開始！';
+        badge.querySelector('.event-countdown-nums').textContent = '快來參加吧';
+        return;
+      }
+      const d=Math.floor(diff/864e5), h=Math.floor((diff%864e5)/36e5), m=Math.floor((diff%36e5)/6e4), s=Math.floor((diff%6e4)/1e3);
+      document.getElementById('evCdD').textContent=String(d).padStart(2,'0');
+      document.getElementById('evCdH').textContent=String(h).padStart(2,'0');
+      document.getElementById('evCdM').textContent=String(m).padStart(2,'0');
+      document.getElementById('evCdS').textContent=String(s).padStart(2,'0');
+    }
+    tick();
+    setInterval(tick,1000);
+  })();
+  </script>
 </body>
 </html>
