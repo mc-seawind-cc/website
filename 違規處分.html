@@ -130,9 +130,18 @@
     .badge-permanent { background: rgba(255,100,100,0.12); color: #ff6b6b; }
     .badge-temp { background: rgba(255,170,50,0.12); color: #ffaa32; }
     .badge-kick { background: rgba(157,175,255,0.1); color: var(--sky); }
+    .pen-case-tag {
+      font-size: 0.62rem;
+      padding: 2px 8px;
+      border-radius: 99px;
+      font-weight: 700;
+      white-space: nowrap;
+      letter-spacing: 0.5px;
+    }
     [data-theme="light"] .badge-permanent { background: rgba(255,60,60,0.08); color: #dc3545; }
     [data-theme="light"] .badge-temp { background: rgba(255,170,50,0.08); color: #e69500; }
     [data-theme="light"] .badge-kick { background: rgba(157,175,255,0.08); color: #4a6cf7; }
+    [data-theme="light"] .pen-case-tag { background: rgba(0,0,0,0.04) !important; }
 
     .pen-arrow {
       color: var(--fog);
@@ -490,12 +499,15 @@
       listEl.innerHTML = html;
     }
 
-    /* Build case ID label: 115年度訴字第0001號 or legacy #0011 */
+    /* Build case ID label: 訴字/簡字 tag + 115年度訴字第0001號 or legacy #0011 */
     function buildCaseId(item) {
       if (item.caseYear && item.caseType && item.caseNum) {
         const label = `${item.caseYear}年度${item.caseType}字第${item.caseNum}號`;
-        const color = item.caseType === '訴' ? 'var(--lavender)' : 'var(--sky)';
-        return `<span class="pen-id" style="color:${color};background:rgba(${item.caseType==='訴'?'171,114,249':'157,175,255'},0.08)">${label}</span>`;
+        const isLawsuit = item.caseType === '訴';
+        const tagColor = isLawsuit ? 'var(--lavender)' : 'var(--sky)';
+        const tagBg = isLawsuit ? 'rgba(171,114,249,0.12)' : 'rgba(157,175,255,0.1)';
+        const tagLabel = isLawsuit ? '訴字' : '簡字';
+        return `<span class="pen-case-tag" style="color:${tagColor};background:${tagBg}">${tagLabel}</span><span class="pen-id">${label}</span>`;
       }
       return item.id ? `<span class="pen-id">${item.id}</span>` : '';
     }
