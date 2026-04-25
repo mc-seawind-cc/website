@@ -297,6 +297,11 @@
     @media print {
       .back-link, .nav, .footer, .scroll-progress, .bg-atmosphere, .photo-section-divider { display: none !important; }
     }
+    .info-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(200px,1fr)); gap:10px; }
+    .info-item { padding:14px 16px; background:rgba(0,0,0,0.12); border:1px solid rgba(255,255,255,0.04); border-radius:8px; }
+    .info-item .ii-label { font-size:0.72rem; color:var(--fog); margin-bottom:4px; }
+    .info-item .ii-value { font-size:0.92rem; font-weight:700; color:var(--cloud); }
+    [data-theme="light"] .info-item { background:rgba(0,0,0,0.02); border-color:rgba(0,0,0,0.05); }
   </style>
 </head>
 <body>
@@ -365,6 +370,31 @@
           用鏡頭捕捉海風的美。每屆設定不同主題，選出最動人的 Minecraft 風景瞬間。冠軍作品將刊登至海風官方 Pinterest 並獲得豐富獎勵！
         </p>
       </div>
+
+      <!-- ═══ 基本資訊 ═══ -->
+      <div class="photo-block fade-in">
+        <div class="photo-block-title"><span class="pbt-icon">📋</span> 基本資訊</div>
+        <div class="info-grid">
+          <div class="info-item">
+            <div class="ii-label">活動類型</div>
+            <div class="ii-value">常駐活動</div>
+          </div>
+          <div class="info-item">
+            <div class="ii-label">舉辦者</div>
+            <div class="ii-value">石頭</div>
+          </div>
+          <div class="info-item">
+            <div class="ii-label">賽期</div>
+            <div class="ii-value">兩個月一屆</div>
+          </div>
+          <div class="info-item">
+            <div class="ii-label">冠軍獎勵</div>
+            <div class="ii-value">3000 風幣＋獎牌</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="photo-section-divider"></div>
 
       <!-- ═══ 賽制 ═══ -->
       <div class="photo-block fade-in">
