@@ -21,14 +21,14 @@
       "pdf": "assets/penalties/0011/114年度0011號.pdf",
       "author": "tdse9",
       "images": [
-        "assets/penalties/0011/01.png",
-        "assets/penalties/0011/02.png",
-        "assets/penalties/0011/03.png",
-        "assets/penalties/0011/04.png",
-        "assets/penalties/0011/05.png",
-        "assets/penalties/0011/06.png",
-        "assets/penalties/0011/07.png",
-        "assets/penalties/0011/08.png"
+        "assets/penalties/0011/01.webp",
+        "assets/penalties/0011/02.webp",
+        "assets/penalties/0011/03.webp",
+        "assets/penalties/0011/04.webp",
+        "assets/penalties/0011/05.webp",
+        "assets/penalties/0011/06.webp",
+        "assets/penalties/0011/07.webp",
+        "assets/penalties/0011/08.webp"
       ]
     },
     {
@@ -49,24 +49,24 @@
       ],
       "pdf": null,
       "images": [
-        "assets/penalties/0012/01.png",
-        "assets/penalties/0012/02.png",
-        "assets/penalties/0012/03.png",
-        "assets/penalties/0012/04.png",
-        "assets/penalties/0012/05.png",
-        "assets/penalties/0012/06.png",
-        "assets/penalties/0012/07.png",
-        "assets/penalties/0012/08.png",
-        "assets/penalties/0012/09.png",
-        "assets/penalties/0012/10.png",
-        "assets/penalties/0012/11.png",
-        "assets/penalties/0012/12.png",
-        "assets/penalties/0012/13.png",
-        "assets/penalties/0012/14.png",
-        "assets/penalties/0012/15.png",
-        "assets/penalties/0012/16.png",
-        "assets/penalties/0012/17.png",
-        "assets/penalties/0012/18.png"
+        "assets/penalties/0012/01.webp",
+        "assets/penalties/0012/02.webp",
+        "assets/penalties/0012/03.webp",
+        "assets/penalties/0012/04.webp",
+        "assets/penalties/0012/05.webp",
+        "assets/penalties/0012/06.webp",
+        "assets/penalties/0012/07.webp",
+        "assets/penalties/0012/08.webp",
+        "assets/penalties/0012/09.webp",
+        "assets/penalties/0012/10.webp",
+        "assets/penalties/0012/11.webp",
+        "assets/penalties/0012/12.webp",
+        "assets/penalties/0012/13.webp",
+        "assets/penalties/0012/14.webp",
+        "assets/penalties/0012/15.webp",
+        "assets/penalties/0012/16.webp",
+        "assets/penalties/0012/17.webp",
+        "assets/penalties/0012/18.webp"
       ],
       "author": "tstw5306"
     },
@@ -88,7 +88,7 @@
       ],
       "pdf": null,
       "images": [
-        "assets/penalties/0013/01.png"
+        "assets/penalties/0013/01.webp"
       ],
       "author": "tstw5306"
     }
