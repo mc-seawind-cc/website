@@ -300,16 +300,27 @@
 
     /* Evidence images */
     .pen-evidence-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+      display: flex;
       gap: 8px;
       margin-top: 6px;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+      padding-bottom: 6px;
     }
+    .pen-evidence-grid::-webkit-scrollbar { height: 4px; }
+    .pen-evidence-grid::-webkit-scrollbar-track { background: rgba(255,255,255,0.03); border-radius: 2px; }
+    .pen-evidence-grid::-webkit-scrollbar-thumb { background: rgba(157,175,255,0.2); border-radius: 2px; }
+    [data-theme="light"] .pen-evidence-grid::-webkit-scrollbar-track { background: rgba(0,0,0,0.03); }
+    [data-theme="light"] .pen-evidence-grid::-webkit-scrollbar-thumb { background: rgba(0,0,0,0.15); }
     .pen-evidence-img {
-      width: 100%;
+      flex-shrink: 0;
+      width: 200px;
+      height: auto;
       border-radius: 8px;
       border: 1px solid rgba(255,255,255,0.08);
       cursor: pointer;
+      scroll-snap-align: start;
       transition: transform 0.3s var(--ease), box-shadow 0.3s var(--ease);
     }
     .pen-evidence-img:hover {
@@ -561,6 +572,12 @@
         }
       }
 
+      // PDF
+      if (item.pdf) {
+        html += `<span class="pen-detail-label">判決書</span>`;
+        html += `<span class="pen-detail-value"><a class="pen-pdf-link" href="${esc(item.pdf)}" target="_blank" rel="noopener">📄 查看判決書 PDF</a></span>`;
+      }
+
       // Evidence images
       if (item.images && item.images.length) {
         html += `<span class="pen-detail-label">證據截圖（${item.images.length} 張）</span>`;
@@ -614,6 +631,12 @@
       if (oldPenalty) {
         html += `<span class="pen-detail-label">懲處</span>`;
         html += `<span class="pen-detail-value">${esc(oldPenalty[1].trim())}</span>`;
+      }
+
+      // PDF
+      if (item.pdf) {
+        html += `<span class="pen-detail-label">判決書</span>`;
+        html += `<span class="pen-detail-value"><a class="pen-pdf-link" href="${esc(item.pdf)}" target="_blank" rel="noopener">📄 查看判決書 PDF</a></span>`;
       }
 
       // Images
