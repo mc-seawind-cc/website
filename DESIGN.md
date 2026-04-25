@@ -1,6 +1,6 @@
 # 海風 SeaWind 網站設計文件
 
-> 最後更新：2026.04.25（第三次更新）
+> 最後更新：2026.04.26
 > 維護者：海風網站助手
 > Instagram：[@mc.seawind.cc](https://www.instagram.com/mc.seawind.cc/)
 
@@ -389,6 +389,7 @@ website/
 | 2026.04.26 | 海風網站助手 | 全站 21 個頁面頁尾日期統一更新至 2026.04.26，CSS/JS cache busting 統一為 260426a |
 | 2026.04.26 | 海風網站助手 | **活動頁卡片強化**：新增 `.event-status-dot` 狀態指示燈（live=綠色脈衝/upcoming=橙色脈衝），風汐系列/那個魚/攝影大賽/生存起源標記為 live，珍奶日標記為 upcoming；stagger 動畫補齊第 6 張卡片延遲（0.6s）；Hero 底部新增漸層裝飾線（border-image） |
 | 2026.04.26 | 海風網站助手 | **首頁＋公告頁珍奶日公告置頂**：inline JSON 中 #0027「2026 海風國際珍奶日」pinned 改為 true，公告欄顯示 📌 置頂標記 + sand 色左邊框（CSS 已有 `.bulletin-item.pinned` 樣式） |
+| 2026.04.26 | 海風網站助手 | **團隊頁頭像修復**：skinmc.net API 被 Cloudflare 擋住（403），全部 12 個成員頭像改用 mc-heads.net（`mc-heads.net/head/玩家名/100`），dns-prefetch 同步更新 |
 
 ---
 
