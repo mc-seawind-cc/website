@@ -241,6 +241,16 @@
     }
     [data-theme="light"] .pen-judge-presiding { background: rgba(139,92,246,0.06); color: #8b5cf6; }
     [data-theme="light"] .pen-judge { background: rgba(0,0,0,0.04); color: var(--fog); }
+    .pen-judges-line {
+      display: block;
+      font-size: 0.72rem;
+      color: var(--fog);
+      margin-top: 1px;
+      line-height: 1.6;
+    }
+    .pen-judge-name { font-size: 0.72rem; }
+    .pen-judge-sep { color: rgba(255,255,255,0.15); margin: 0 2px; }
+    [data-theme="light"] .pen-judge-sep { color: rgba(0,0,0,0.12); }
     .pen-detail .judgment-main {
       grid-column: 1 / -1;
       background: rgba(255,100,100,0.03);
@@ -451,6 +461,10 @@
         // Player display = defendant name
         const playerDisplay = item.defendant || (item.players.length ? item.players.join('、') : extractTitle(item));
 
+        // Judges for header (judgment format only)
+        const isJudgment = (item.content || '').startsWith('海風法院');
+        const judgesHtml = isJudgment ? getJudges(item.content) : '';
+
         const detail = buildDetail(item);
 
         html += `<div class="pen-card" data-idx="${i}">
@@ -458,7 +472,7 @@
             <span class="pen-date">${date}</span>
             <div class="pen-title-wrap">
               <span class="pen-players">${esc(playerDisplay)}</span>
-              <span class="pen-type">${esc(item.title)}</span>
+              ${judgesHtml ? '<span class="pen-judges-line">' + judgesHtml + '</span>' : ''}
             </div>
             <span class="pen-right">
               ${idLabel}
@@ -500,7 +514,7 @@
     function buildJudgment(item, content) {
       let html = '';
 
-      // Parties
+      // 當事人
       const parties = [];
       if (item.defendant)   parties.push({ role: '被告', name: item.defendant, cls: 'role-defendant' });
       if (item.plaintiff)   parties.push({ role: '原告', name: item.plaintiff, cls: 'role-plaintiff' });
@@ -532,29 +546,10 @@
       const attachMatch = content.match(/附件[：:]\s*\n?([\s\S]*?)(?=\n中\s*華|$)/);
       if (attachMatch) {
         const text = attachMatch[1].trim();
-        html += `<span class="pen-detail-label">附件</span>`;
-        html += `<span class="pen-detail-value" style="color:var(--fog)">${esc(text)}</span>`;
-      }
-
-      // 判決日期
-      const dateMatch = content.match(/中\s*華\s*民\s*國\s*([\d\s]+年\s*[\d\s]+月\s*[\d\s]+日)/);
-      if (dateMatch) {
-        html += `<span class="pen-detail-label">中華民國</span>`;
-        html += `<span class="pen-detail-value">${esc(dateMatch[1].replace(/\s+/g, ''))}</span>`;
-      }
-
-      // 審判人員
-      const judges = content.match(/(?:審判長|法官)\s*法官?\s*([\w_.]+)/g);
-      if (judges) {
-        const names = judges.map(j => {
-          const isPresiding = /審判長/.test(j);
-          const name = j.replace(/(?:審判長|法官)\s*法官?\s*/, '').trim();
-          return { name, isPresiding };
-        });
-        html += `<span class="pen-detail-label">審判人員</span>`;
-        html += `<span class="pen-detail-value">${names.map(n =>
-          (n.isPresiding ? '<span class="pen-judge-presiding">審判長</span> ' : '<span class="pen-judge">法官</span> ') + '<code>' + esc(n.name) + '</code>'
-        ).join('<br>')}</span>`;
+        if (text) {
+          html += `<span class="pen-detail-label">附件</span>`;
+          html += `<span class="pen-detail-value" style="color:var(--fog)">${esc(text)}</span>`;
+        }
       }
 
       // Evidence images
@@ -568,6 +563,19 @@
       }
 
       return html;
+    }
+
+    /* Extract judges from content for header display */
+    function getJudges(content) {
+      const judges = content.match(/(?:審判長|法官)\s*法官?\s*([\w_.]+)/g);
+      if (!judges) return '';
+      return judges.map(j => {
+        const isPresiding = /審判長/.test(j);
+        const name = j.replace(/(?:審判長|法官)\s*法官?\s*/, '').trim();
+        const cls = isPresiding ? 'pen-judge-presiding' : 'pen-judge';
+        const label = isPresiding ? '審判長' : '法官';
+        return `<span class="${cls}">${label}</span> <span class="pen-judge-name">${esc(name)}</span>`;
+      }).join('<span class="pen-judge-sep"> · </span>');
     }
 
     /* ── Legacy: render old Discord-format penalties ── */
