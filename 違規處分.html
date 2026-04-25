@@ -513,12 +513,6 @@
         html += `<span class="pen-detail-value" style="line-height:2;white-space:pre-line">${esc(factsMatch[1].trim())}</span>`;
       }
 
-      // PDF
-      if (item.pdf) {
-        html += `<span class="pen-detail-label">判決書</span>`;
-        html += `<span class="pen-detail-value"><a class="pen-pdf-link" href="${esc(item.pdf)}" target="_blank" rel="noopener">📄 查看判決書 PDF</a></span>`;
-      }
-
       // 附件 + 證據截圖合併
       if (item.images && item.images.length) {
         html += `<span class="pen-detail-label">附件（檢附證據）</span>`;
@@ -532,15 +526,7 @@
       return html;
     }
 
-    /* Extract judges from content for header display */
-    function getJudges(content) {
-      const judges = content.match(/(?:審判長|法官)\s*法官?\s*([\w_.]+)/g);
-      if (!judges) return '';
-      return judges.map(j => {
-        const name = j.replace(/(?:審判長|法官)\s*法官?\s*/, '').trim();
-        return '<span class="pen-judge-name">' + esc(name) + '</span>';
-      }).join('<span class="pen-judge-sep"> · </span>');
-    }
+    /* ── Legacy: render old Discord-format penalties ── */
 
     /* ── Legacy: render old Discord-format penalties ── */
     function buildLegacy(item, content) {
@@ -572,18 +558,6 @@
       if (oldPenalty) {
         html += `<span class="pen-detail-label">懲處</span>`;
         html += `<span class="pen-detail-value">${esc(oldPenalty[1].trim())}</span>`;
-      }
-
-      // PDF
-      if (item.pdf) {
-        html += `<span class="pen-detail-label">判決書</span>`;
-        html += `<span class="pen-detail-value"><a class="pen-pdf-link" href="${esc(item.pdf)}" target="_blank" rel="noopener">📄 查看判決書 PDF</a></span>`;
-      }
-
-      // PDF
-      if (item.pdf) {
-        html += `<span class="pen-detail-label">判決書</span>`;
-        html += `<span class="pen-detail-value"><a class="pen-pdf-link" href="${esc(item.pdf)}" target="_blank" rel="noopener">📄 查看判決書 PDF</a></span>`;
       }
 
       // 附件 + 證據截圖合併
