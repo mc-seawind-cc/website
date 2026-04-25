@@ -376,6 +376,7 @@ website/
 | 2026.04.25 | 海風網站助手 | **活動頁珍奶日卡片視覺強化**：新增 `.event-card-featured` 樣式（sand 色調邊框 + 光暈 + 漸層 accent 條），讓即將開始的活動更醒目 |
 | 2026.04.25 | 海風網站助手 | **首頁精選活動橫幅階段時間軸**：新增 `.featured-event-timeline` 四階段指示器（測試→暖身→正式→兌換），JS 動態更新當前階段（done/active），含 `timeline-active-pulse` 脈衝動畫。深色/淺色模式同步 |
 | 2026.04.25 | 海風網站助手 | 全站 CSS/JS cache busting 統一更新為 250425b |
+| 2026.04.25 | 海風網站助手 | **違規處分頁精簡**：penalties.json 從 13 筆縮減至 3 筆，僅保留 GoldenLao (#0011)、Nakk_tiktok (#0012)、史莱姆 Slime Ch. (#0013) |
 
 ---
 
