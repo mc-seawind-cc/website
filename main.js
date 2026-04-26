@@ -630,6 +630,7 @@ function renderBulletin(board, items) {
     html += `<div class="bulletin-item${isHidden ? ' bulletin-hidden' : ''}${item.pinned ? ' pinned' : ''}" style="--tag-color:${color}" data-tag="${tag}">
       <button class="bulletin-toggle" aria-expanded="false">
         <span class="b-dot" style="background:${color}"></span>
+        <span class="b-ago">${timeAgo(item.isoDate)}</span>
         <span class="b-date">${date}</span>
         <span class="b-title">${item.title}</span>
         <span class="b-right">
@@ -641,7 +642,7 @@ function renderBulletin(board, items) {
       </button>
       <div class="bulletin-body">
         <div class="b-content">
-          ${item.id ? `<div class="b-meta"><span class="b-meta-id">${item.id}</span><span class="b-meta-time">${date}</span></div>` : ''}
+          ${item.id ? `<div class="b-meta"><span class="b-meta-id">${item.id}</span><span class="b-meta-time">${date}</span>${timeAgo(item.isoDate) ? `<span class="b-meta-ago">${timeAgo(item.isoDate)}</span>` : ''}</div>` : ''}
           <div class="b-text">${contentHtml}</div>
           ${imagesHtml}
           ${discordHtml}
@@ -685,6 +686,23 @@ function formatDateV2(iso) {
   if (!iso) return '—';
   const [y, m, d] = iso.split('-');
   return `${y}.${m}.${d}`;
+}
+
+function timeAgo(iso) {
+  if (!iso) return '';
+  const now = new Date();
+  const then = new Date(iso + 'T00:00:00+08:00');
+  const diffMs = now - then;
+  const diffDays = Math.floor(diffMs / 86400000);
+  if (diffDays < 0) return '';
+  if (diffDays === 0) return '今天';
+  if (diffDays === 1) return '昨天';
+  if (diffDays < 7) return diffDays + ' 天前';
+  if (diffDays < 14) return '1 週前';
+  if (diffDays < 30) return Math.floor(diffDays / 7) + ' 週前';
+  if (diffDays < 60) return '1 個月前';
+  if (diffDays < 365) return Math.floor(diffDays / 30) + ' 個月前';
+  return Math.floor(diffDays / 365) + ' 年前';
 }
 
 // --- Rotating Tips ---

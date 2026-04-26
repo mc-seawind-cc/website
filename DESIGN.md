@@ -391,6 +391,9 @@ website/
 | 2026.04.26 | 海風網站助手 | **首頁＋公告頁珍奶日公告置頂**：inline JSON 中 #0027「2026 海風國際珍奶日」pinned 改為 true，公告欄顯示 📌 置頂標記 + sand 色左邊框（CSS 已有 `.bulletin-item.pinned` 樣式） |
 | 2026.04.26 | 海風網站助手 | **團隊頁頭像修復**：skinmc.net API 被 Cloudflare 擋住（403），全部 12 個成員頭像改用 mc-heads.net（`mc-heads.net/head/玩家名/100`），dns-prefetch 同步更新 |
 | 2026.04.26 | 海風網站助手 | **首頁細節層次提升**：①伺服器資訊數值改為漸層文字（`background-clip:text`），從純白改為 accent 色調漸層，hover 時發光增強；②Hero 資訊卡新增頂部 accent 漸層裝飾線（`::before`），hover 時從兩側展開；③特色卡片圖示新增閒置微浮動呼吸動畫（`icon-idle-float` 4s cycle），hover 時動畫暫停進入互動態；④加入步驟編號加大（28→34px）+ 外圈光暈 + 脈衝呼吸動畫（`join-num-breathe`）；⑤Footer Logo 新增發光呼吸動畫（`footer-logo-glow` 4s cycle）。全站 CSS/JS cache busting → 260426b |
+| 2026.04.26 | 海風網站助手 | **公告欄相對時間顯示**：新增 `timeAgo()` 函式，公告列表每則項目新增相對時間標籤（今天/昨天/N 天前/N 週前），顯示在日期左方；展開後的 meta 區同步顯示。CSS 新增 `.b-ago` / `.b-meta-ago` 樣式（深色/淺色模式） |
+| 2026.04.26 | 海風網站助手 | **公告欄置頂項目視覺強化**：`.bulletin-item.pinned` 新增 `::after` 脈衝光點指示器（6px sand 色圓點 + `pin-pulse` 呼吸動畫），讓置頂公告更醒目。淺色模式改為 sky 色。公告欄 hover 左側發光條改用 `var(--tag-color)` 配合各標籤配色 |
+| 2026.04.26 | 海風網站助手 | 全站 76 個頁面頁尾日期統一更新至 2026.04.26，CSS/JS cache busting 統一為 260426c |
 
 ---
 
