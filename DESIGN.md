@@ -1,6 +1,6 @@
 # 海風 SeaWind 網站設計文件
 
-> 最後更新：2026.04.26
+> 最後更新：2026.04.27
 > 維護者：海風網站助手
 > Instagram：[@mc.seawind.cc](https://www.instagram.com/mc.seawind.cc/)
 
@@ -392,6 +392,8 @@ website/
 | 2026.04.26 | 海風網站助手 | **團隊頁頭像修復**：skinmc.net API 被 Cloudflare 擋住（403），全部 12 個成員頭像改用 mc-heads.net（`mc-heads.net/head/玩家名/100`），dns-prefetch 同步更新 |
 | 2026.04.26 | 海風網站助手 | **首頁細節層次提升**：①伺服器資訊數值改為漸層文字（`background-clip:text`），從純白改為 accent 色調漸層，hover 時發光增強；②Hero 資訊卡新增頂部 accent 漸層裝飾線（`::before`），hover 時從兩側展開；③特色卡片圖示新增閒置微浮動呼吸動畫（`icon-idle-float` 4s cycle），hover 時動畫暫停進入互動態；④加入步驟編號加大（28→34px）+ 外圈光暈 + 脈衝呼吸動畫（`join-num-breathe`）；⑤Footer Logo 新增發光呼吸動畫（`footer-logo-glow` 4s cycle）。全站 CSS/JS cache busting → 260426b |
 | 2026.04.26 | 海風網站助手 | 全站 76 個頁面頁尾日期統一更新至 2026.04.26，CSS/JS cache busting 統一為 260426c |
+| 2026.04.27 | 海風網站助手 | **活動頁珍奶日階段同步**：「測」從 active 改為 done，「調整期」改為 active（4/27 調整期正式開始）。新增 JS 動態更新邏輯（`#bubbleTeaStages`），與首頁時間軸同步——根據當前日期自動切換四階段狀態（測試→調整→正式→兌換） |
+| 2026.04.27 | 海風網站助手 | 全站 76 個頁面頁尾日期統一更新至 2026.04.27，CSS/JS cache busting 統一為 270427a |
 
 ---
 
