@@ -742,6 +742,7 @@ body{font-family:var(--font-body);background:var(--deep);color:var(--cloud);line
 .bulletin-item.pinned {
   border-left-color: var(--sand) !important;
   background: rgba(222,172,128,0.04);
+}
 .bulletin-item.pinned:hover {
   background: rgba(222,172,128,0.07);
 }
