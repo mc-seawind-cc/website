@@ -340,7 +340,6 @@ website/
 | 2026.04.23 | 海風網站助手 | **打怪物精靈圖改回獨立 PNG**：移除 `SPRITES` 坐標地圖（91 組座標）及 `SPRITE_SHEET` 常數，`spr()` 改為直接用 `<img>` 標籤載入 `assets/mobs/*.png`。CSS 移除 `.ms-ss` sprite sheet 樣式 + 5 處 `div.ms-*` background-image 規則。404.html 移除 `mob-spritesheet.png` preload |
 | 2026.04.23 | 海風網站助手 | **公告頁 inline 公告資料**：將最新 50 則公告（~23KB）inline 進 `公告.html`，首屏即時渲染不再依賴 349KB 的 `announcements.json` fetch。JS 改為 inline data first → 背景靜默載入完整 JSON（473 則）→ 自動更新 allData 供搜尋/篩選/分頁使用。首頁已有 12 則 inline，此次將 `公告.html` 同步處理 |
 | 2026.04.23 | 海風網站助手 | **團隊成員異動**：鴨鴨（Nakk_tiktok）辭職，從海風團隊頁移除（行政部門·策劃＋平衡），公務人員統計 12→11。生存起源活動頁舉辦者改為「海風團隊」、聯繫窗口同步更新 |
-| 2026.04.23 | 海風網站助手 | **首頁頁尾新增可愛小夥伴插圖**：在 `.footer-brand` 上方新增 `.footer-mascot` 圖片區塊（140×36px），使用 `<picture>` WebP fallback（9KB vs 60KB PNG）。hover 時微放大+上浮+opacity 提升。圖片置於 `assets/img/footer-mascot.{png,webp}` |
 | 2026.04.23 | 海風網站助手 | **團隊頁調整**：江砚→江硯（正字）；行政部門精簡為僅江硯（移除石頭、狐桃，其已在他部門）；神焰服主標籤改用 role-lead（綠色）；噗嚕標籤拆分為「插件」「主機」兩個獨立標籤 |
 | 2026.04.23 | 海風網站助手 | **生存起源活動善後**：原策畫鴨鴨辭職，活動頁舉辦者/聯繫窗口原已為「海風團隊」無需修改。公告原始內容保留不動（歷史紀錄）。第二、三階段待設計 |
 | 2026.04.23 | 海風網站助手 | **特色卡片視覺強化**：背景改為 `linear-gradient(165deg)` 漸層、頂部 accent 條改為雙向漸層透明、新增底部 radial-gradient 微光暈（hover 時浮現）；icon 區塊加大（56→60px）改為 accent 色漸層背景 + 邊框 + hover 時發光陰影；標題新增 `::after` 底線動畫（hover 時從 0 展開至 100%）。深色/淺色模式同步 |
