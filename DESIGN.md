@@ -129,7 +129,7 @@ website/
 19. Footer
 20. Lightbox
 21. Miscellaneous
-22. Keyframe Animations (含 badge-pulse, featured-glow-pulse) ← 新增 04.18
+22. Keyframe Animations (含 badge-pulse, featured-glow-pulse, icon-idle-float, join-num-breathe, footer-logo-glow) ← 新增 04.18/04.26
 23. Responsive / Media Queries
 ```
 
@@ -390,6 +390,7 @@ website/
 | 2026.04.26 | 海風網站助手 | **活動頁卡片強化**：新增 `.event-status-dot` 狀態指示燈（live=綠色脈衝/upcoming=橙色脈衝），風汐系列/那個魚/攝影大賽/生存起源標記為 live，珍奶日標記為 upcoming；stagger 動畫補齊第 6 張卡片延遲（0.6s）；Hero 底部新增漸層裝飾線（border-image） |
 | 2026.04.26 | 海風網站助手 | **首頁＋公告頁珍奶日公告置頂**：inline JSON 中 #0027「2026 海風國際珍奶日」pinned 改為 true，公告欄顯示 📌 置頂標記 + sand 色左邊框（CSS 已有 `.bulletin-item.pinned` 樣式） |
 | 2026.04.26 | 海風網站助手 | **團隊頁頭像修復**：skinmc.net API 被 Cloudflare 擋住（403），全部 12 個成員頭像改用 mc-heads.net（`mc-heads.net/head/玩家名/100`），dns-prefetch 同步更新 |
+| 2026.04.26 | 海風網站助手 | **首頁細節層次提升**：①伺服器資訊數值改為漸層文字（`background-clip:text`），從純白改為 accent 色調漸層，hover 時發光增強；②Hero 資訊卡新增頂部 accent 漸層裝飾線（`::before`），hover 時從兩側展開；③特色卡片圖示新增閒置微浮動呼吸動畫（`icon-idle-float` 4s cycle），hover 時動畫暫停進入互動態；④加入步驟編號加大（28→34px）+ 外圈光暈 + 脈衝呼吸動畫（`join-num-breathe`）；⑤Footer Logo 新增發光呼吸動畫（`footer-logo-glow` 4s cycle）。全站 CSS/JS cache busting → 260426b |
 
 ---
 
