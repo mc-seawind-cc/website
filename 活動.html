@@ -21,7 +21,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;800&family=Noto+Serif+TC:wght@700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=270427b">
+  <link rel="stylesheet" href="style.css?v=270427c">
   <link rel="stylesheet" href="music-player.css">
   <style>
     /* ═══ Events Page ═══ */
@@ -537,7 +537,7 @@
           </div>
           <!-- 即時倒數計時徽章 -->
           <div class="event-countdown-badge" id="eventCountdownBadge">
-            <span class="event-countdown-label">距離調整期開始</span>
+            <span class="event-countdown-label">距離正式期開始</span>
             <span class="event-countdown-nums"><span id="evCdD">--</span>天 <span id="evCdH">--</span>:<span id="evCdM">--</span>:<span id="evCdS">--</span></span>
           </div>
           <p class="event-desc">
@@ -618,18 +618,18 @@
 
   <script src="tips.js" defer></script>
   <script src="utils.js"></script>
-  <script src="main.js?v=270427b"></script>
+  <script src="main.js?v=270427c"></script>
   <!-- 活動頁珍奶日倒數計時 + 階段動態更新 -->
   <script>
   (function(){
     const badge = document.getElementById('eventCountdownBadge');
     if(!badge) return;
-    const target = new Date('2026-04-27T10:00:00+08:00').getTime();
+    const target = new Date('2026-05-04T00:00:00+08:00').getTime();
     function tick(){
       const diff = target - Date.now();
       if(diff <= 0){
         badge.classList.add('expired');
-        badge.querySelector('.event-countdown-label').textContent = '🧋 調整期已開始！';
+        badge.querySelector('.event-countdown-label').textContent = '🧋 正式期已開始！';
         badge.querySelector('.event-countdown-nums').textContent = '快來參加吧';
         clearInterval(evTimer);
         return;
