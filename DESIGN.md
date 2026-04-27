@@ -1,6 +1,6 @@
 # 海風 SeaWind 網站設計文件
 
-> 最後更新：2026.04.27
+> 最後更新：2026.04.28
 > 維護者：海風網站助手
 > Instagram：[@mc.seawind.cc](https://www.instagram.com/mc.seawind.cc/)
 
@@ -408,6 +408,7 @@ website/
 | 2026.04.27 | 海風網站助手 | **手機版導航背景遮罩**：JS 動態建立 `.nav-backdrop` 元素，手機版導航展開時顯示半透明黑色遮罩（opacity 0→1 transition），點擊遮罩可關閉導航。CSS 新增 `.nav-backdrop` / `.nav-backdrop.visible` 樣式。`closeMobileNav()` 統一函式管理 toggle/backdrop/links 狀態 |
 | 2026.04.27 | 海風網站助手 | **珍奶日詳情頁視覺強化**：①Hero 區新增浮動珍珠粒子動畫（12 顆隨機大小/位置/延遲的 `btea-float` 粒子，從底部飄浮消散）；②新增當前階段指示器（`current-stage-banner`，JS 根據日期動態顯示「調整期進行中」/「正式期」/「兌換期」/「活動已結束」）；③修正調整期描述（暖身期尚未開放兌換飲品）；④飲品卡片 hover 增強（左側 accent 條 + 名稱變色 + 效果發光）；⑤代幣商店 hover 左側漸層 accent 條；⑥原料項目 hover 微光暈；⑦任務項目 hover 滑動+高亮；⑧玩法步驟 hover 上浮+圖示彈跳；⑨挑戰卡片 hover 上浮+陰影。cache busting → 270427e |
 | 2026.04.27 | 海風網站助手 | **珍奶日貨幣+商店+NPC 全面更新**：代幣→環保杯（custom eco-cup icon）；環保杯商店→小賣部；原料 emoji→MC 遊戲物品圖（14 張 16×16 材質）；步驟四改為「兌換限定稱號」；NPC 三角色：茶茶（小賣部）、小珍（飲品）、杉杉來持（5/28 贊助商稱號兌換）；稱號區塊更新 5/28 兌換期 + 贊助商資訊 |
+| 2026.04.28 | 海風網站助手 | **CSS 清理 + 圖片載入優化**：①移除空的 `@media (max-width: 768px){}` 死代碼（line 2740）；②新增 `img[loading="lazy"]` 淡入動畫（CSS opacity transition + JS `.loaded` class 監聽），讓 lazy-load 圖片不再突然出現；③全站 76 頁頁尾日期統一更新至 2026.04.28；CSS/JS cache busting → 280428a |
 
 ---
 
