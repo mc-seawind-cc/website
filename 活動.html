@@ -474,9 +474,109 @@
       border-image: linear-gradient(90deg, transparent, rgba(74,108,247,0.12), rgba(100,180,160,0.08), transparent) 1;
     }
 
+    /* ═══ 活動年曆 ═══ */
+    .events-calendar { margin-top: var(--space-xl); }
+    .events-calendar .events-section-label { margin-bottom: var(--space-lg); }
+    .cal-timeline {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: var(--space-md);
+    }
+    .cal-season {
+      background: rgba(0,0,0,0.2);
+      border: 1px solid rgba(255,255,255,0.05);
+      border-radius: var(--radius-lg);
+      padding: var(--space-lg);
+      transition: border-color 0.3s var(--ease), box-shadow 0.3s var(--ease);
+    }
+    .cal-season:hover {
+      border-color: rgba(157,175,255,0.15);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+    }
+    .cal-season-header {
+      display: flex;
+      align-items: center;
+      gap: var(--space-sm);
+      margin-bottom: var(--space-md);
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: var(--white);
+    }
+    .cal-season-icon { font-size: 1.1rem; }
+    .cal-season-label {
+      font-size: 0.7rem;
+      font-weight: 600;
+      padding: 2px 8px;
+      border-radius: 100px;
+      margin-left: auto;
+    }
+    .cal-season-label.spring { background: rgba(168,230,207,0.1); color: var(--foam); }
+    .cal-season-label.summer { background: rgba(255,170,50,0.1); color: #ffaa32; }
+    .cal-season-label.autumn { background: rgba(196,155,108,0.1); color: var(--sand); }
+    .cal-season-label.winter { background: rgba(157,175,255,0.1); color: var(--sky); }
+    .cal-items { display: flex; flex-direction: column; gap: 8px; }
+    .cal-item {
+      display: flex;
+      align-items: center;
+      gap: var(--space-sm);
+      padding: 8px 12px;
+      border-radius: var(--radius-md);
+      background: rgba(255,255,255,0.02);
+      transition: background 0.2s var(--ease);
+    }
+    .cal-item:hover { background: rgba(157,175,255,0.05); }
+    .cal-dot {
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+    .cal-dot.live { background: var(--foam); box-shadow: 0 0 6px rgba(168,230,207,0.4); }
+    .cal-dot.upcoming { background: #ffaa32; box-shadow: 0 0 6px rgba(255,170,50,0.3); }
+    .cal-dot.designing { background: var(--fog); opacity: 0.5; }
+    .cal-dot.completed { background: var(--sky); opacity: 0.6; }
+    .cal-name {
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--cloud);
+      flex: 1;
+    }
+    .cal-date {
+      font-size: 0.72rem;
+      color: var(--fog);
+      font-variant-numeric: tabular-nums;
+      white-space: nowrap;
+    }
+    .cal-legend {
+      display: flex;
+      gap: var(--space-md);
+      margin-top: var(--space-lg);
+      justify-content: center;
+      flex-wrap: wrap;
+      font-size: 0.75rem;
+      color: var(--fog);
+    }
+    .cal-legend-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .cal-legend-dot {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      display: inline-block;
+    }
+    [data-theme="light"] .cal-season { background: #ffffff; border-color: rgba(0,0,0,0.06); }
+    [data-theme="light"] .cal-season:hover { border-color: rgba(100,130,220,0.15); box-shadow: 0 4px 20px rgba(0,0,0,0.06); }
+    [data-theme="light"] .cal-season-header { color: var(--cloud); }
+    [data-theme="light"] .cal-item { background: rgba(0,0,0,0.02); }
+    [data-theme="light"] .cal-item:hover { background: rgba(74,108,247,0.04); }
+    [data-theme="light"] .cal-name { color: var(--cloud); }
+    [data-theme="light"] .cal-dot.live { background: var(--emerald); }
+
     /* Responsive */
     @media (max-width: 768px) {
       .events-grid { grid-template-columns: 1fr; }
+      .cal-timeline { grid-template-columns: 1fr; }
     }
 
     /* Print */
@@ -686,6 +786,148 @@
         </a>
 
 
+      </div>
+
+      <!-- ═══ 活動年曆 ═══ -->
+      <div class="events-calendar">
+        <div class="events-section-divider"><span class="divider-dot"></span></div>
+        <div class="events-section-label"><span class="label-icon">📅</span> 活動年曆 <span class="label-count">2026</span></div>
+        <div class="cal-timeline">
+
+          <!-- 春季 -->
+          <div class="cal-season">
+            <div class="cal-season-header">
+              <span class="cal-season-icon">🌸</span> 春季
+              <span class="cal-season-label spring">2–4 月</span>
+            </div>
+            <div class="cal-items">
+              <div class="cal-item">
+                <span class="cal-dot completed"></span>
+                <span class="cal-name">🧧 農曆新年</span>
+                <span class="cal-date">寒假期間</span>
+              </div>
+              <div class="cal-item">
+                <span class="cal-dot live"></span>
+                <span class="cal-name">🧋 國際珍奶日</span>
+                <span class="cal-date">4/27–5/31</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- 夏季 -->
+          <div class="cal-season">
+            <div class="cal-season-header">
+              <span class="cal-season-icon">☀️</span> 夏季
+              <span class="cal-season-label summer">5–8 月</span>
+            </div>
+            <div class="cal-items">
+              <div class="cal-item">
+                <span class="cal-dot upcoming"></span>
+                <span class="cal-name">🐉 端午節</span>
+                <span class="cal-date">5/29–6/30</span>
+              </div>
+              <div class="cal-item">
+                <span class="cal-dot designing"></span>
+                <span class="cal-name">💕 七夕情人節</span>
+                <span class="cal-date">8/15–8/23</span>
+              </div>
+              <div class="cal-item">
+                <span class="cal-dot designing"></span>
+                <span class="cal-name">🎂 周年慶</span>
+                <span class="cal-date">8/6 前後</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- 秋季 -->
+          <div class="cal-season">
+            <div class="cal-season-header">
+              <span class="cal-season-icon">🍂</span> 秋季
+              <span class="cal-season-label autumn">9–11 月</span>
+            </div>
+            <div class="cal-items">
+              <div class="cal-item">
+                <span class="cal-dot designing"></span>
+                <span class="cal-name">🎃 萬聖節</span>
+                <span class="cal-date">10/20–11/2</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- 冬季 -->
+          <div class="cal-season">
+            <div class="cal-season-header">
+              <span class="cal-season-icon">❄️</span> 冬季
+              <span class="cal-season-label winter">12–1 月</span>
+            </div>
+            <div class="cal-items">
+              <div class="cal-item">
+                <span class="cal-dot designing"></span>
+                <span class="cal-name">🎄 聖誕節</span>
+                <span class="cal-date">12/1–1/2</span>
+              </div>
+              <div class="cal-item">
+                <span class="cal-dot designing"></span>
+                <span class="cal-name">🎆 跨年</span>
+                <span class="cal-date">12/30–1/2</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- 常駐 -->
+          <div class="cal-season">
+            <div class="cal-season-header">
+              <span class="cal-season-icon">🔄</span> 常駐
+              <span class="cal-season-label spring">全年</span>
+            </div>
+            <div class="cal-items">
+              <div class="cal-item">
+                <span class="cal-dot live"></span>
+                <span class="cal-name">🌀 風汐系列</span>
+                <span class="cal-date">持續開放</span>
+              </div>
+              <div class="cal-item">
+                <span class="cal-dot live"></span>
+                <span class="cal-name">🐟 那個魚</span>
+                <span class="cal-date">持續開放</span>
+              </div>
+              <div class="cal-item">
+                <span class="cal-dot live"></span>
+                <span class="cal-name">📸 攝影大賽</span>
+                <span class="cal-date">第 5 屆</span>
+              </div>
+              <div class="cal-item">
+                <span class="cal-dot live"></span>
+                <span class="cal-name">🏠 生存起源</span>
+                <span class="cal-date">至 2026.07</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- 每週 -->
+          <div class="cal-season">
+            <div class="cal-season-header">
+              <span class="cal-season-icon">📅</span> 每週
+              <span class="cal-season-label summer">週末</span>
+            </div>
+            <div class="cal-items">
+              <div class="cal-item">
+                <span class="cal-dot designing"></span>
+                <span class="cal-name">🏯 海風大相撲</span>
+                <span class="cal-date">每週六日</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- 圖例 -->
+        <div class="cal-legend">
+          <span class="cal-legend-item"><span class="cal-legend-dot" style="background:var(--foam);"></span> 進行中</span>
+          <span class="cal-legend-item"><span class="cal-legend-dot" style="background:#ffaa32;"></span> 即將開始</span>
+          <span class="cal-legend-item"><span class="cal-legend-dot" style="background:var(--fog);opacity:0.5;"></span> 設計中</span>
+          <span class="cal-legend-item"><span class="cal-legend-dot" style="background:var(--sky);opacity:0.6;"></span> 已完成</span>
+        </div>
       </div>
 
     </div>
