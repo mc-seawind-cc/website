@@ -153,6 +153,12 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
 
+    // Image lazy-load fade-in observer
+    document.querySelectorAll('img[loading="lazy"]').forEach(img => {
+      if (img.complete) { img.classList.add('loaded'); }
+      else { img.addEventListener('load', () => img.classList.add('loaded'), { once: true }); }
+    });
+
     initPhotoGallery();
     initPostcardLightbox();
     initGeneralLightbox();

@@ -2418,6 +2418,13 @@ video.photo-item{cursor:pointer;height:200px;border:1px solid transparent}
 :focus-visible{outline:2px solid var(--sky);outline-offset:2px;border-radius:4px}
 a:focus-visible,button:focus-visible{outline:2px solid var(--sky);outline-offset:2px}
 :focus:not(:focus-visible){outline:none}
+
+/* ═══ Image Lazy-Load Fade-In ═══ */
+img[loading="lazy"]{opacity:0;transition:opacity 0.5s var(--ease)}
+img[loading="lazy"].loaded{opacity:1}
+/* Already-cached images skip animation */
+img[loading="lazy"][complete].loaded{opacity:1;transition:none}
+
 .feature-showcase{display:grid;grid-template-columns:1fr 1fr;gap:var(--space-xl)}
 .feature-main{background:linear-gradient(135deg,rgba(157,175,255,0.08),rgba(168,230,207,0.05));border:1px solid rgba(157,175,255,0.12);border-radius:var(--radius-lg);padding:var(--space-2xl);display:flex;flex-direction:column;justify-content:center;text-align:center;transition:all var(--duration)var(--ease)}
 .feature-main:hover{border-color:rgba(157,175,255,0.25);transform:translateY(-4px);box-shadow:0 12px 40px rgba(0,0,0,0.15)}
@@ -2737,9 +2744,6 @@ html, body {
    Responsive / Media Queries
    ═══════════════════════════════════════ */
 
-@media (max-width: 768px) {
-  
-}
 @media (max-width: 768px) {
   /* 導覽漢堡按鈕 */
   .nav-toggle {
