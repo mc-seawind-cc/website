@@ -307,28 +307,75 @@
       background: rgba(196,155,108,0.14) !important;
     }
 
-    /* Section label */
+    /* Section label — enhanced */
     .events-section-label {
-      font-size: 0.8rem;
+      font-size: 0.82rem;
       font-weight: 700;
       color: var(--fog);
       text-transform: uppercase;
-      letter-spacing: 0.1em;
-      margin-bottom: var(--space-md);
+      letter-spacing: 0.12em;
+      margin-bottom: var(--space-lg);
       padding-left: var(--space-xs);
       display: flex;
       align-items: center;
       gap: var(--space-sm);
+      position: relative;
     }
     .events-section-label::before {
-      content: none !important;
-      display: none !important;
+      content: '';
+      display: block !important;
+      width: 4px;
+      height: 18px;
+      border-radius: 2px;
+      background: linear-gradient(180deg, var(--sky), var(--foam));
+      flex-shrink: 0;
     }
     .events-section-label::after {
       content: '';
       flex: 1;
       height: 1px;
-      background: linear-gradient(90deg, rgba(255,255,255,0.08), transparent);
+      background: linear-gradient(90deg, rgba(157,175,255,0.2), rgba(168,230,207,0.08), transparent);
+    }
+    .events-section-label .label-icon {
+      font-size: 1rem;
+      margin-right: 2px;
+    }
+    .events-section-label .label-count {
+      font-size: 0.7rem;
+      font-weight: 600;
+      padding: 2px 8px;
+      border-radius: 100px;
+      background: rgba(157,175,255,0.08);
+      color: var(--sky);
+      border: 1px solid rgba(157,175,255,0.12);
+    }
+
+    /* Section divider between 常駐 and 限時 */
+    .events-section-divider {
+      position: relative;
+      height: 48px;
+      margin: var(--space-sm) 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    .events-section-divider::before {
+      content: '';
+      position: absolute;
+      left: 0; right: 0;
+      top: 50%;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(157,175,255,0.12), rgba(196,155,108,0.1), transparent);
+    }
+    .events-section-divider .divider-dot {
+      position: relative;
+      z-index: 1;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--sky);
+      opacity: 0.4;
     }
 
     /* Light mode */
@@ -353,7 +400,11 @@
     [data-theme="light"] .event-stage { border-color: rgba(0, 0, 0, 0.1); }
     [data-theme="light"] .event-stage.active { border-color: var(--sky); background: rgba(157, 175, 255, 0.08); }
     [data-theme="light"] .event-stage.done { border-color: var(--foam); background: rgba(168, 230, 207, 0.06); }
-    [data-theme="light"] .event-section-label::after { background: linear-gradient(90deg, rgba(0,0,0,0.06), transparent); }
+    [data-theme="light"] .events-section-label::before { background: linear-gradient(180deg, var(--ocean-blue), var(--teal)); }
+    [data-theme="light"] .events-section-label::after { background: linear-gradient(90deg, rgba(74,108,247,0.12), rgba(88,194,176,0.06), transparent); }
+    [data-theme="light"] .events-section-label .label-count { background: rgba(74,108,247,0.06); color: var(--ocean-blue); border-color: rgba(74,108,247,0.1); }
+    [data-theme="light"] .events-section-divider::before { background: linear-gradient(90deg, transparent, rgba(74,108,247,0.1), rgba(196,155,108,0.08), transparent); }
+    [data-theme="light"] .events-section-divider .divider-dot { background: var(--ocean-blue); }
     [data-theme="light"] .drink-table tbody tr:hover { background: rgba(196,155,108,0.06); }
     [data-theme="light"] .drink-row-rare { background: rgba(196,155,108,0.08) !important; }
     [data-theme="light"] .drink-row-rare:hover { background: rgba(196,155,108,0.14) !important; }
@@ -384,6 +435,41 @@
       border-bottom: 1px solid transparent;
       border-image: linear-gradient(90deg, transparent, rgba(157,175,255,0.15), rgba(168,230,207,0.1), transparent) 1;
     }
+
+    /* ── Hero 活動狀態摘要 ── */
+    .events-hero-stats {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-sm);
+      margin-top: var(--space-md);
+      font-size: 0.82rem;
+      color: var(--fog);
+      flex-wrap: wrap;
+    }
+    .ehs-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .ehs-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      display: inline-block;
+    }
+    .ehs-dot-live {
+      background: var(--foam);
+      box-shadow: 0 0 6px rgba(168,230,207,0.5);
+      animation: ehs-pulse 2s ease-in-out infinite;
+    }
+    @keyframes ehs-pulse {
+      0%, 100% { box-shadow: 0 0 4px rgba(168,230,207,0.3); }
+      50% { box-shadow: 0 0 10px rgba(168,230,207,0.6); }
+    }
+    .ehs-sep { opacity: 0.3; }
+    [data-theme="light"] .events-hero-stats { color: #6a737d; }
+    [data-theme="light"] .ehs-dot-live { background: var(--emerald); box-shadow: 0 0 6px rgba(0,121,76,0.3); }
     [data-theme="light"] .page-hero-events {
       border-image: linear-gradient(90deg, transparent, rgba(74,108,247,0.12), rgba(100,180,160,0.08), transparent) 1;
     }
@@ -459,12 +545,18 @@
     <div id="mainContent" class="page-hero page-hero-events fade-in">
       <h1>海風活動</h1>
       <p class="section-desc">在海風，除了日常生存建造，還有各種精彩活動等你參與。</p>
+      <!-- 活動狀態摘要 -->
+      <div class="events-hero-stats">
+        <span class="ehs-item"><span class="ehs-dot ehs-dot-live"></span> 3 個活動進行中</span>
+        <span class="ehs-sep">·</span>
+        <span class="ehs-item">🧋 珍奶日調整期中</span>
+      </div>
     </div>
 
     <div class="content-section">
 
       <!-- 常駐活動 -->
-      <div class="events-section-label">常駐活動</div>
+      <div class="events-section-label"><span class="label-icon">🧭</span> 常駐活動 <span class="label-count">3 個活動</span></div>
       <div class="events-grid">
 
         <!-- 風汐系列 -->
@@ -525,8 +617,11 @@
 
       </div>
 
+      <!-- 分隔線 -->
+      <div class="events-section-divider"><span class="divider-dot"></span></div>
+
       <!-- 限時活動 -->
-      <div class="events-section-label" style="margin-top: var(--space-xl);">限時活動</div>
+      <div class="events-section-label"><span class="label-icon">⏳</span> 限時活動 <span class="label-count">進行中</span></div>
       <div class="events-grid">
 
         <!-- 🧋 2026 海風國際珍奶日 -->
