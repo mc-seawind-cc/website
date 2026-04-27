@@ -38,16 +38,24 @@ document.addEventListener('DOMContentLoaded', () => {
   // --- Critical: Mobile Nav Toggle ---
   const toggle = document.querySelector('.nav-toggle');
   const links = document.querySelector('.nav-links');
+  // Create backdrop overlay for mobile nav
+  const navBackdrop = document.createElement('div');
+  navBackdrop.className = 'nav-backdrop';
+  document.body.appendChild(navBackdrop);
+  function closeMobileNav() {
+    links.classList.remove('open');
+    toggle.classList.remove('active');
+    navBackdrop.classList.remove('visible');
+  }
   if (toggle && links) {
     toggle.addEventListener('click', () => {
-      links.classList.toggle('open');
+      const isOpen = links.classList.toggle('open');
       toggle.classList.toggle('active');
+      navBackdrop.classList.toggle('visible', isOpen);
     });
+    navBackdrop.addEventListener('click', closeMobileNav);
     links.querySelectorAll('a:not(.nav-dropdown-toggle)').forEach(a => {
-      a.addEventListener('click', () => {
-        links.classList.remove('open');
-        toggle.classList.remove('active');
-      });
+      a.addEventListener('click', closeMobileNav);
     });
   }
 
@@ -109,10 +117,13 @@ document.addEventListener('DOMContentLoaded', () => {
     createHeroParticles();
 
     // Active Nav Link
-    const currentPage = location.pathname.split('/').pop() || 'index.html';
+    const rawPage = location.pathname.split('/').pop() || '';
+    const currentPageClean = rawPage.replace(/\.(html?|php|asp)$/i, '') || 'index';
     document.querySelectorAll('.nav-links a').forEach(a => {
-      const href = a.getAttribute('href');
-      if (href === currentPage || (currentPage === '' && href === 'index.html')) {
+      const href = (a.getAttribute('href') || '').replace(/\.(html?|php|asp)$/i, '');
+      if (!href) return;
+      const hrefClean = href.replace(/^\//, '');
+      if (hrefClean === currentPageClean || (currentPageClean === 'index' && hrefClean === '首頁')) {
         a.classList.add('active');
       }
     });
@@ -134,12 +145,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     initBackToTop();
 
-    // Mobile Nav: close on outside click
+    // Mobile Nav: close on outside click (backdrop handles this, but keep as fallback)
     document.addEventListener('click', (e) => {
       const navEl = document.querySelector('.nav');
-      if (links && links.classList.contains('open') && !navEl.contains(e.target)) {
-        links.classList.remove('open');
-        toggle.classList.remove('active');
+      if (links && links.classList.contains('open') && !navEl.contains(e.target) && !e.target.closest('.nav-backdrop')) {
+        closeMobileNav();
       }
     });
 

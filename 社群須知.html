@@ -27,6 +27,11 @@
   <link rel="stylesheet" href="music-player.css">
 </head>
 <body>
+  <!-- Page Loading Screen -->
+  <div class="page-loader" id="pageLoader">
+    <span class="loader-logo">海風</span>
+    <div class="loader-wave"></div>
+  </div>
   <a href="#mainContent" class="skip-link">跳到主要內容</a>
 
   <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
@@ -219,5 +224,18 @@
 
   <script src="utils.js"></script>
   <script src="main.js?v=270427d"></script>
+  <script>
+  (function(){
+    const loader = document.getElementById("pageLoader");
+    if (!loader) return;
+    function hideLoader() {
+      loader.classList.add("fade-out");
+      setTimeout(() => loader.remove(), 600);
+    }
+    if (document.readyState === "complete") { hideLoader(); }
+    else { window.addEventListener("load", hideLoader); }
+    setTimeout(hideLoader, 3000);
+  })();
+  </script>
 </body>
 </html>
