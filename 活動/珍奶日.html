@@ -22,7 +22,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;800&family=Noto+Serif+TC:wght@700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../style.css?v=270427d">
+  <link rel="stylesheet" href="../style.css?v=270427e">
   <link rel="stylesheet" href="../music-player.css">
   <style>
     /* ═══ Event Detail Page — Bubble Tea Edition ═══ */
@@ -646,9 +646,151 @@
       .ingredient-grid { grid-template-columns: 1fr; }
     }
 
+    /* ── Floating Bubbles (hero atmosphere) ── */
+    .btea-bubbles {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+      pointer-events: none;
+      z-index: 0;
+    }
+    .btea-float {
+      position: absolute;
+      border-radius: 50%;
+      background: radial-gradient(circle at 35% 35%, rgba(196,155,108,0.25), rgba(196,155,108,0.08));
+      animation: btea-float-up linear infinite;
+      opacity: 0;
+    }
+    @keyframes btea-float-up {
+      0%   { transform: translateY(0) scale(1); opacity: 0; }
+      10%  { opacity: 0.6; }
+      90%  { opacity: 0.3; }
+      100% { transform: translateY(-200px) scale(0.6); opacity: 0; }
+    }
+
+    /* ── Current Stage Banner ── */
+    .current-stage-banner {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 18px;
+      border-radius: 100px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      margin-bottom: var(--space-md);
+      animation: stage-glow 2s ease-in-out infinite;
+    }
+    .current-stage-banner.active {
+      background: rgba(157,175,255,0.1);
+      color: var(--sky);
+      border: 1px solid rgba(157,175,255,0.2);
+    }
+    .current-stage-banner .csb-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--foam);
+      animation: csb-pulse 1.5s ease-in-out infinite;
+    }
+    @keyframes csb-pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.5; transform: scale(1.3); }
+    }
+    @keyframes stage-glow {
+      0%, 100% { box-shadow: 0 0 0 rgba(157,175,255,0); }
+      50% { box-shadow: 0 0 12px rgba(157,175,255,0.15); }
+    }
+
+    /* ── Drink Card Enhancements ── */
+    .drink-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 3px;
+      height: 100%;
+      background: linear-gradient(180deg, rgba(196,155,108,0.3), transparent);
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+    .drink-card:hover::before { opacity: 1; }
+    .drink-card .drink-card-name {
+      transition: color 0.2s;
+    }
+    .drink-card:hover .drink-card-name {
+      color: #c49b6c;
+    }
+    .drink-card .drink-card-effect {
+      transition: text-shadow 0.3s;
+    }
+    .drink-card:hover .drink-card-effect {
+      text-shadow: 0 0 8px rgba(168,230,207,0.3);
+    }
+
+    /* ── Shop rung hover accent ── */
+    .shop-rung::before {
+      content: '';
+      position: absolute;
+      left: 0; top: 0;
+      width: 3px; height: 100%;
+      background: linear-gradient(180deg, #c49b6c, transparent);
+      opacity: 0;
+      transition: opacity 0.3s;
+      border-radius: var(--radius-sm) 0 0 var(--radius-sm);
+    }
+    .shop-rung { position: relative; overflow: hidden; }
+    .shop-rung:hover::before { opacity: 1; }
+
+    /* ── Ingredient item hover glow ── */
+    .ingredient-item::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: 8px;
+      background: radial-gradient(circle at 50% 50%, rgba(196,155,108,0.06), transparent);
+      opacity: 0;
+      transition: opacity 0.3s;
+      pointer-events: none;
+    }
+    .ingredient-item { position: relative; overflow: hidden; }
+    .ingredient-item:hover::after { opacity: 1; }
+
+    /* ── Task item hover ── */
+    .task-item { transition: all 0.2s; position: relative; overflow: hidden; }
+    .task-item:hover {
+      border-color: rgba(157,175,255,0.15);
+      background: rgba(157,175,255,0.03);
+      transform: translateX(3px);
+    }
+
+    /* ── How-step hover ── */
+    .how-step {
+      transition: all 0.3s var(--ease);
+    }
+    .how-step:hover {
+      transform: translateY(-4px);
+      border-color: rgba(157,175,255,0.15);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+    }
+    .how-step:hover .hs-icon {
+      animation: how-bounce 0.4s ease;
+    }
+    @keyframes how-bounce {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.15); }
+    }
+
+    /* ── Challenge card hover ── */
+    .challenge-card {
+      transition: all 0.3s var(--ease);
+    }
+    .challenge-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.12);
+    }
+
     /* ── Print ── */
     @media print {
-      .back-link, .nav, .footer, .scroll-progress, .bg-atmosphere, .event-section-divider, .btea-art { display: none !important; }
+      .back-link, .nav, .footer, .scroll-progress, .bg-atmosphere, .event-section-divider, .btea-art, .btea-bubbles, .current-stage-banner { display: none !important; }
       .event-hero { padding: 16px 0; }
       .drink-card, .task-item, .shop-rung { break-inside: avoid; }
     }
@@ -716,7 +858,17 @@
 
       <!-- ═══ Hero ═══ -->
       <div class="event-hero fade-in">
+        <!-- Floating Bubble Particles -->
+        <div class="btea-bubbles" id="bteaBubbles" aria-hidden="true"></div>
+
         <div class="event-hero-badge">限時活動 · 4/27 – 5/31</div>
+
+        <!-- Current Stage Banner (JS 動態更新) -->
+        <div class="current-stage-banner active" id="currentStageBanner">
+          <span class="csb-dot"></span>
+          <span id="currentStageText">調整期進行中</span>
+        </div>
+
         <h1>🧋 2026 海風國際珍奶日</h1>
 
         <!-- CSS Bubble Tea Cup -->
@@ -804,7 +956,7 @@
             <div class="etv-connector pending"></div>
             <div class="etv-name">調整期</div>
             <div class="etv-date">4/27 – 5/3</div>
-            <div class="etv-desc">4/27 調整期開始，4/29 任務開跑。可兌換飲品與原料，熟悉活動流程</div>
+            <div class="etv-desc">4/27 調整期開始，4/29 任務開跑。先囤積原料，熟悉活動流程</div>
           </div>
           <div class="etv-stage">
             <div class="etv-dot upcoming" style="width:auto;padding:0 8px;border-radius:100px;font-size:0.75rem;">開始</div>
@@ -1213,18 +1365,22 @@
     for(var i=0;i<dots.length;i++) setDot(dots[i],'upcoming');
     for(var i=0;i<connectors.length;i++) if(connectors[i]) setConnector(connectors[i],'pending');
 
+    var stageText = '';
     if(now < testEnd){
       setDot(dots[0],'active');
+      stageText = '測試期進行中';
     } else if(now < warmEnd){
       setDot(dots[0],'done');
       setDot(dots[1],'active');
       if(connectors[0]) setConnector(connectors[0],'done');
+      stageText = '調整期進行中 · 4/29 任務開跑';
     } else if(now < mainEnd){
       setDot(dots[0],'done');
       setDot(dots[1],'done');
       setDot(dots[2],'active');
       if(connectors[0]) setConnector(connectors[0],'done');
       if(connectors[1]) setConnector(connectors[1],'done');
+      stageText = '正式期 · 全部 13 種口味開放中';
     } else if(now < redeemEnd){
       setDot(dots[0],'done');
       setDot(dots[1],'done');
@@ -1233,9 +1389,44 @@
       if(connectors[0]) setConnector(connectors[0],'done');
       if(connectors[1]) setConnector(connectors[1],'done');
       if(connectors[2]) setConnector(connectors[2],'done');
+      stageText = '兌換期 · 趕快把代幣花掉吧！';
     } else {
       for(var i=0;i<dots.length;i++) setDot(dots[i],'done');
       for(var i=0;i<connectors.length;i++) if(connectors[i]) setConnector(connectors[i],'done');
+      stageText = '活動已結束';
+    }
+
+    // Update current stage banner
+    var banner = document.getElementById('currentStageBanner');
+    var bannerText = document.getElementById('currentStageText');
+    if(banner && bannerText) {
+      bannerText.textContent = stageText;
+      if(now >= redeemEnd) {
+        banner.style.opacity = '0.5';
+        banner.querySelector('.csb-dot').style.animation = 'none';
+        banner.querySelector('.csb-dot').style.background = 'var(--fog)';
+      }
+    }
+  })();
+  </script>
+
+  <!-- 浮動珍珠粒子 -->
+  <script>
+  (function(){
+    var container = document.getElementById('bteaBubbles');
+    if(!container) return;
+    var count = 12;
+    for(var i = 0; i < count; i++) {
+      var b = document.createElement('div');
+      b.className = 'btea-float';
+      var size = 4 + Math.random() * 8;
+      b.style.width = size + 'px';
+      b.style.height = size + 'px';
+      b.style.left = (5 + Math.random() * 90) + '%';
+      b.style.bottom = (Math.random() * 30) + '%';
+      b.style.animationDuration = (4 + Math.random() * 6) + 's';
+      b.style.animationDelay = (Math.random() * 8) + 's';
+      container.appendChild(b);
     }
   })();
   </script>
