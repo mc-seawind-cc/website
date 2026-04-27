@@ -744,7 +744,28 @@ body{font-family:var(--font-body);background:var(--deep);color:var(--cloud);line
 .bulletin-item.pinned {
   border-left-color: var(--sand) !important;
   background: rgba(222,172,128,0.04);
+  position: relative;
 }
+.bulletin-item.pinned::before {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(135deg, var(--sand), var(--sky), var(--foam), var(--sand));
+  background-size: 300% 300%;
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  animation: pinned-shimmer 4s ease-in-out infinite;
+  pointer-events: none;
+  opacity: 0.5;
+  z-index: 0;
+}
+.bulletin-item.pinned:hover::before {
+  opacity: 0.8;
+}
+.bulletin-item.pinned > * { position: relative; z-index: 1; }
 .bulletin-item.pinned:hover {
   background: rgba(222,172,128,0.07);
 }
@@ -774,18 +795,23 @@ body{font-family:var(--font-body);background:var(--deep);color:var(--cloud);line
 @keyframes bulletin-stagger-in {
   to { opacity: 1; transform: translateY(0); }
 }
+@keyframes pinned-shimmer {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
 .bulletin-item[data-tag="公告"] { border-left-color: rgba(87,138,255,0.45); }
 .bulletin-item[data-tag="公告"] .b-tag { background: rgba(87,138,255,0.14); color: #8ab4ff; }
-.bulletin-item[data-tag="公告"]:hover { box-shadow: 0 2px 16px rgba(0,0,0,0.15), -4px 0 0 #8ab4ff; }
+.bulletin-item[data-tag="公告"]:hover { box-shadow: 0 2px 16px rgba(0,0,0,0.15), -4px 0 0 #8ab4ff, 0 4px 12px rgba(87,138,255,0.08); }
 .bulletin-item[data-tag="更新"] { border-left-color: rgba(100,220,180,0.45); }
 .bulletin-item[data-tag="更新"] .b-tag { background: rgba(100,220,180,0.14); color: #85e0bf; }
-.bulletin-item[data-tag="更新"]:hover { box-shadow: 0 2px 16px rgba(0,0,0,0.15), -4px 0 0 #85e0bf; }
+.bulletin-item[data-tag="更新"]:hover { box-shadow: 0 2px 16px rgba(0,0,0,0.15), -4px 0 0 #85e0bf, 0 4px 12px rgba(100,220,180,0.08); }
 .bulletin-item[data-tag="活動"] { border-left-color: rgba(255,170,50,0.45); }
 .bulletin-item[data-tag="活動"] .b-tag { background: rgba(255,170,50,0.14); color: #ffbb55; }
-.bulletin-item[data-tag="活動"]:hover { box-shadow: 0 2px 16px rgba(0,0,0,0.15), -4px 0 0 #ffbb55; }
+.bulletin-item[data-tag="活動"]:hover { box-shadow: 0 2px 16px rgba(0,0,0,0.15), -4px 0 0 #ffbb55, 0 4px 12px rgba(255,170,50,0.08); }
 .bulletin-item[data-tag="維護"] { border-left-color: rgba(255,130,130,0.45); }
 .bulletin-item[data-tag="維護"] .b-tag { background: rgba(255,130,130,0.14); color: #ff9e9e; }
-.bulletin-item[data-tag="維護"]:hover { box-shadow: 0 2px 16px rgba(0,0,0,0.15), -4px 0 0 #ff9e9e; }
+.bulletin-item[data-tag="維護"]:hover { box-shadow: 0 2px 16px rgba(0,0,0,0.15), -4px 0 0 #ff9e9e, 0 4px 12px rgba(255,130,130,0.08); }
 .bulletin-toggle {
   display: flex;
   align-items: center;
@@ -1657,6 +1683,12 @@ body{font-family:var(--font-body);background:var(--deep);color:var(--cloud);line
 [data-theme="light"] .bulletin-item.pinned {
   background: rgba(157,175,255,0.06);
   border-color: rgba(157,175,255,0.12);
+}
+[data-theme="light"] .bulletin-item.pinned::before {
+  background: linear-gradient(135deg, var(--ocean-blue), var(--sky), var(--foam), var(--ocean-blue));
+  background-size: 300% 300%;
+  animation: pinned-shimmer 4s ease-in-out infinite;
+  opacity: 0.4;
 }
 [data-theme="light"] .bulletin-toggle:hover {
   background: rgba(0,0,0,0.01);
