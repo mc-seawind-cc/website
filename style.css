@@ -452,6 +452,8 @@ body{font-family:var(--font-body);background:var(--deep);color:var(--cloud);line
 /* Countdown expired state */
 .featured-event-countdown.expired .countdown-num{color:var(--foam)}
 .featured-event-countdown.expired .countdown-block{border-color:rgba(168,230,207,0.2);background:rgba(168,230,207,0.08)}
+.featured-event-countdown.expired .countdown-sep{display:none}
+.featured-event-countdown.expired .countdown-label{width:100%;text-align:center}
 
 [data-theme="light"] .featured-event{background:linear-gradient(135deg,rgba(196,155,108,0.14) 0%,rgba(157,175,255,0.1) 50%,rgba(168,230,207,0.08) 100%);box-shadow:0 0 0 1px rgba(196,155,108,0.2),0 4px 20px rgba(0,0,0,0.06);animation:featured-border-glow-light 4s ease-in-out infinite alternate}
 @keyframes featured-border-glow-light{0%{box-shadow:0 0 0 1px rgba(196,155,108,0.15),0 2px 12px rgba(0,0,0,0.04)}50%{box-shadow:0 0 0 1px rgba(157,175,255,0.2),0 2px 16px rgba(0,0,0,0.06)}100%{box-shadow:0 0 0 1px rgba(168,230,207,0.15),0 2px 12px rgba(0,0,0,0.04)}}

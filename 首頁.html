@@ -33,7 +33,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;800;900&family=Noto+Serif+TC:wght@700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=270427a">
+  <link rel="stylesheet" href="style.css?v=270427b">
   <link rel="stylesheet" href="music-player.css">
   <link rel="preload" href="music-player.js" as="script">
   <!-- JSON-LD 結構化資料 -->
@@ -464,7 +464,7 @@
   - 置板凳蹲結果。", "images": [], "localImages": [], "reactions": [{"emoji": "emoji_119", "count": 1}], "reactionCount": 1, "discordId": "1491021983293636720", "pinned": false, "author": "神焰.cc", "index": 11}]}</script>
   <script src="tips.js" defer></script>
   <script src="utils.js"></script>
-  <script src="main.js?v=270427a"></script>
+  <script src="main.js?v=270427b"></script>
   <!-- 精選活動倒數計時 -->
   <script>
   (function(){
@@ -486,12 +486,15 @@
       if(pct) pct.textContent = progress.toFixed(0)+'%';
       if(diff <= 0){
         el.classList.add('expired');
-        el.querySelectorAll('.countdown-label').forEach(l=>l.textContent==='天'&&(l.textContent='已開跑'));
         document.getElementById('cd-d').textContent='🎉';
         document.getElementById('cd-h').textContent='00';
         document.getElementById('cd-m').textContent='00';
         document.getElementById('cd-s').textContent='00';
-        if(urgency) urgency.textContent='🧋 活動已開始！快來參加吧';
+        // Replace all labels with single "已開跑" text
+        const labels = el.querySelectorAll('.countdown-label');
+        if(labels.length >= 1) labels[0].textContent='已開跑';
+        for(let i=1;i<labels.length;i++) labels[i].style.display='none';
+        if(urgency) urgency.textContent='🧋 調整期已開始！快來參加吧';
         if(fill) fill.style.width='100%';
         if(pct) pct.textContent='進行中';
         clearInterval(timer);

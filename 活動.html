@@ -21,7 +21,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;800&family=Noto+Serif+TC:wght@700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=270427a">
+  <link rel="stylesheet" href="style.css?v=270427b">
   <link rel="stylesheet" href="music-player.css">
   <style>
     /* ═══ Events Page ═══ */
@@ -618,7 +618,7 @@
 
   <script src="tips.js" defer></script>
   <script src="utils.js"></script>
-  <script src="main.js?v=270427a"></script>
+  <script src="main.js?v=270427b"></script>
   <!-- 活動頁珍奶日倒數計時 + 階段動態更新 -->
   <script>
   (function(){
@@ -631,6 +631,7 @@
         badge.classList.add('expired');
         badge.querySelector('.event-countdown-label').textContent = '🧋 調整期已開始！';
         badge.querySelector('.event-countdown-nums').textContent = '快來參加吧';
+        clearInterval(evTimer);
         return;
       }
       const d=Math.floor(diff/864e5), h=Math.floor((diff%864e5)/36e5), m=Math.floor((diff%36e5)/6e4), s=Math.floor((diff%6e4)/1e3);
@@ -640,7 +641,7 @@
       document.getElementById('evCdS').textContent=String(s).padStart(2,'0');
     }
     tick();
-    setInterval(tick,1000);
+    const evTimer = setInterval(tick,1000);
 
     // 動態更新珍奶日階段指示器（與首頁時間軸同步）
     var stages = document.querySelectorAll('#bubbleTeaStages .event-stage');
