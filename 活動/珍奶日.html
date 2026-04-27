@@ -210,6 +210,12 @@
       border: 2px solid rgba(255,255,255,0.12);
       color: var(--fog);
     }
+    .etv-dot.done {
+      background: rgba(168,230,207,0.15);
+      color: var(--foam);
+      border: 2px solid rgba(168,230,207,0.3);
+      box-shadow: none;
+    }
     .etv-connector {
       position: absolute;
       top: 16px;
@@ -355,6 +361,7 @@
     .drink-card.rare {
       background: linear-gradient(135deg, rgba(196,155,108,0.08), rgba(196,155,108,0.03));
       border-color: rgba(196,155,108,0.2);
+      position: relative;
     }
     .drink-card.rare .drink-card-name { color: #c49b6c; }
     .drink-card.rare::before {
@@ -364,6 +371,26 @@
       font-size: 1.4rem;
       opacity: 0.15;
     }
+    .drink-card.rare::after {
+      content: '';
+      position: absolute;
+      inset: -1px;
+      border-radius: inherit;
+      padding: 1px;
+      background: linear-gradient(135deg, #c49b6c, #e0c9a8, #c49b6c);
+      background-size: 200% 200%;
+      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+      animation: drink-shimmer 3s ease-in-out infinite;
+      pointer-events: none;
+      opacity: 0.4;
+    }
+
+    /* Drink card stagger animation */
+    .drink-cards { opacity: 0; animation: drink-grid-in 0.5s var(--ease) forwards; }
+    @keyframes drink-grid-in { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
+    @keyframes drink-shimmer { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
 
     /* ── Ingredient Grid ── */
     .ingredient-grid {
@@ -588,6 +615,8 @@
     [data-theme="light"] .drink-card-recipe { color: #6b7280; }
     [data-theme="light"] .drink-card.rare { background: rgba(196,155,108,0.04); }
     [data-theme="light"] .drink-card.rare .drink-card-name { color: #a07850; }
+    [data-theme="light"] .drink-card.rare::after { background: linear-gradient(135deg, #a07850, #c49b6c, #a07850); background-size: 200% 200%; }
+    [data-theme="light"] .etv-dot.done { background: rgba(168,230,207,0.2); border-color: rgba(168,230,207,0.4); }
     [data-theme="light"] .etv-name { color: var(--cloud); }
     [data-theme="light"] .etv-desc { color: #6b7280; }
     [data-theme="light"] .etv-dot.upcoming { background: rgba(0,0,0,0.04); border-color: rgba(0,0,0,0.1); }
@@ -745,17 +774,17 @@
         <div class="event-block-title"><span class="ebt-icon">📅</span> 時程規劃</div>
         <div class="event-timeline-v">
           <div class="etv-stage">
-            <div class="etv-dot active" style="width:auto;padding:0 8px;border-radius:100px;font-size:0.75rem;">測</div>
+            <div class="etv-dot done" style="width:auto;padding:0 8px;border-radius:100px;font-size:0.75rem;background:rgba(168,230,207,0.15);color:var(--foam);border:2px solid rgba(168,230,207,0.3);">測✓</div>
             <div class="etv-connector done"></div>
             <div class="etv-name">測試期</div>
             <div class="etv-date">4/20 – 4/26</div>
             <div class="etv-desc">內部測試，確認系統穩定。任務＆兌換尚未開放</div>
           </div>
           <div class="etv-stage">
-            <div class="etv-dot upcoming" style="width:auto;padding:0 12px;border-radius:100px;font-size:0.72rem;">調整期</div>
+            <div class="etv-dot active" style="width:auto;padding:0 12px;border-radius:100px;font-size:0.72rem;">調整期</div>
             <div class="etv-connector pending"></div>
             <div class="etv-name">調整期</div>
-            <div class="etv-date">4/27 –../div>
+            <div class="etv-date">4/27 – 5/3</div>
             <div class="etv-desc">4/27 調整期開始，4/29 任務開跑。囤積原料與代幣，認識 NPC 位置，尚未開放兌換</div>
           </div>
           <div class="etv-stage">
@@ -1118,5 +1147,78 @@
   <script src="../tips.js" defer></script>
   <script src="../utils.js"></script>
   <script src="../main.js?v=270427d"></script>
+  <!-- 動態更新活動階段時間軸 -->
+  <script>
+  (function(){
+    var stages = document.querySelectorAll('.event-timeline-v .etv-stage');
+    if(stages.length < 4) return;
+    var now = Date.now();
+    var testEnd = new Date('2026-04-27T00:00:00+08:00').getTime();
+    var warmEnd = new Date('2026-05-04T00:00:00+08:00').getTime();
+    var mainEnd  = new Date('2026-05-28T00:00:00+08:00').getTime();
+    var redeemEnd = new Date('2026-06-01T00:00:00+08:00').getTime();
+
+    function setDot(el, state) {
+      el.classList.remove('active','upcoming','done');
+      el.classList.add(state);
+      if(state === 'done') {
+        el.style.background = 'rgba(168,230,207,0.15)';
+        el.style.color = 'var(--foam)';
+        el.style.border = '2px solid rgba(168,230,207,0.3)';
+        el.style.boxShadow = 'none';
+      } else if(state === 'active') {
+        el.style.background = '';
+        el.style.color = '';
+        el.style.border = '';
+        el.style.boxShadow = '';
+      } else {
+        el.style.background = '';
+        el.style.color = '';
+        el.style.border = '';
+        el.style.boxShadow = '';
+      }
+    }
+    function setConnector(el, state) {
+      el.classList.remove('done','pending');
+      el.classList.add(state);
+    }
+
+    var dots = [], connectors = [];
+    for(var i=0;i<stages.length;i++){
+      dots.push(stages[i].querySelector('.etv-dot'));
+      var conn = stages[i].querySelector('.etv-connector');
+      connectors.push(conn);
+    }
+
+    // Reset all
+    for(var i=0;i<dots.length;i++) setDot(dots[i],'upcoming');
+    for(var i=0;i<connectors.length;i++) if(connectors[i]) setConnector(connectors[i],'pending');
+
+    if(now < testEnd){
+      setDot(dots[0],'active');
+    } else if(now < warmEnd){
+      setDot(dots[0],'done');
+      setDot(dots[1],'active');
+      if(connectors[0]) setConnector(connectors[0],'done');
+    } else if(now < mainEnd){
+      setDot(dots[0],'done');
+      setDot(dots[1],'done');
+      setDot(dots[2],'active');
+      if(connectors[0]) setConnector(connectors[0],'done');
+      if(connectors[1]) setConnector(connectors[1],'done');
+    } else if(now < redeemEnd){
+      setDot(dots[0],'done');
+      setDot(dots[1],'done');
+      setDot(dots[2],'done');
+      setDot(dots[3],'active');
+      if(connectors[0]) setConnector(connectors[0],'done');
+      if(connectors[1]) setConnector(connectors[1],'done');
+      if(connectors[2]) setConnector(connectors[2],'done');
+    } else {
+      for(var i=0;i<dots.length;i++) setDot(dots[i],'done');
+      for(var i=0;i<connectors.length;i++) if(connectors[i]) setConnector(connectors[i],'done');
+    }
+  })();
+  </script>
 </body>
 </html>
