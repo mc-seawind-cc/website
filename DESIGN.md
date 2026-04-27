@@ -397,6 +397,7 @@ website/
 | 2026.04.27 | 海風網站助手 | **珍奶日倒數計時過期狀態修正**：首頁倒數計時過期後隱藏分隔符（`:`）和時/分/秒標籤，統一顯示「已開跑」；urgency 文字改為「調整期已開始」更精確；活動頁倒數徽章過期後 `clearInterval` 停止 timer（之前持續執行）；CSS 新增 `.featured-event-countdown.expired .countdown-sep{display:none}` + `.countdown-label{width:100%;text-align:center}`。全站 76 頁 cache busting → 270427b |
 | 2026.04.27 | 海風網站助手 | **珍奶日倒數目標改為正式期 5/4**：首頁 target 從 `2026-04-27T10:00` 改為 `2026-05-04T00:00`；進度條文字「調整期 4/27」→「正式期 5/4」；urgency 文字全面更新（到期：「正式期已開始」/ 未到期：「5/4 正式期開跑 → 5/31 結束」）。活動頁 target 同步更新、倒數標籤「距離正式期開始」、到期文字「正式期已開始」。全站 76 頁 cache busting → 270427c |
 | 2026.04.27 | 海風網站助手 + 用戶 | **嵐峰鎮文化藝廊文章重寫**：地理加入「海拔高於格拉文特」；建築工藝從「石骨木皮＋雲杉暖木＋深板岩冠」改為「石基木身＋板岩屋頂（含避雷針）＋居住之地」；建築介紹從獨立 h3 段落改為列表格式；段落標題「烟火與日常」改為「鎮上建築」；meta description 同步更新。文化藝廊列表頁卡片描述同步更新 |
+| 2026.04.27 | 海風網站助手 | **活動頁視覺強化**：①Section label 升級——新增左側彩色 accent bar（`::before` 漸層 sky→foam）、emoji 圖標（🧭 常駐 / ⏳ 限時）、活動計數徽章（`.label-count`）；②常駐與限時活動之間新增漸層分隔線（`.events-section-divider`，含中心點綴 dot）；③Hero 區新增活動狀態摘要條（`.events-hero-stats`：進行中數量 + 珍奶日狀態 + 綠色脈衝指示燈）；④修復 light mode CSS 選擇器名稱錯誤（`.event-section-label` → `.events-section-label`，原選擇器永遠無法匹配）；⑤Light mode section label / divider 樣式同步（ocean-blue + teal 色調） |
 
 ---
 
