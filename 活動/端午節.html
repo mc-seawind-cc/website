@@ -201,17 +201,17 @@
           <div style="padding:12px;background:rgba(0,0,0,0.1);border:1px solid rgba(255,255,255,0.05);border-radius:var(--radius-sm);text-align:center;">
             <div style="font-size:1.5rem;margin-bottom:4px;">🐾</div>
             <div style="font-size:0.82rem;color:var(--white);">打 MythicMobs</div>
-            <div style="font-size:0.75rem;color:var(--fog);">端午豬/端午雞</div>
+            <div style="font-size:0.75rem;color:var(--fog);">端午豬→五花肉、端午雞→特殊蛋</div>
           </div>
           <div style="padding:12px;background:rgba(0,0,0,0.1);border:1px solid rgba(255,255,255,0.05);border-radius:var(--radius-sm);text-align:center;">
             <div style="font-size:1.5rem;margin-bottom:4px;">🐛</div>
             <div style="font-size:0.82rem;color:var(--white);">打蠹魚</div>
-            <div style="font-size:0.75rem;color:var(--fog);">小麥→糯米 / 特殊魷魚 / 鸚鵡螺</div>
+            <div style="font-size:0.75rem;color:var(--fog);">蠹魚掉米蟲 → NPC 換糯米</div>
           </div>
           <div style="padding:12px;background:rgba(0,0,0,0.1);border:1px solid rgba(255,255,255,0.05);border-radius:var(--radius-sm);text-align:center;">
             <div style="font-size:1.5rem;margin-bottom:4px;">🌿</div>
             <div style="font-size:0.82rem;color:var(--white);">種植兌換</div>
-            <div style="font-size:0.75rem;color:var(--fog);">竹子/可可豆/棕色蘑菇/緋紅蕈柄 → NPC</div>
+            <div style="font-size:0.75rem;color:var(--fog);">竹子→粽葉、可可豆→花生</div>
           </div>
         </div>
 
@@ -221,20 +221,16 @@
             <tr><th></th><th>原料</th><th>取得方式</th><th>生吃效果</th></tr>
           </thead>
           <tbody>
-            <tr><td class="emoji-cell">🍚</td><td>糯米</td><td>小麥 → NPC 兌換（圓糯米/長糯米）</td><td class="effect-bad">飽食 2 + 緩慢 I（0:05）</td></tr>
-            <tr><td class="emoji-cell">🦑</td><td>魷魚</td><td>打特殊魷魚掉落</td><td class="effect-bad">飽食 1 + 噁心 I（0:05）</td></tr>
-            <tr><td class="emoji-cell">🥜</td><td>滷花生</td><td>種可可豆 → NPC 兌換</td><td class="effect-ok">飽食 2（安全！）</td></tr>
-            <tr><td class="emoji-cell">🥩</td><td>滷肉</td><td>殺端午豬掉落</td><td class="effect-bad">飽食 3 + 飢餓 I + 噁心 I</td></tr>
-            <tr><td class="emoji-cell">🥚</td><td>鹹蛋黃</td><td>殺端午雞掉特殊蛋 → 合成</td><td class="effect-bad">飽食 1 + 噁心 I（0:05）</td></tr>
-            <tr><td class="emoji-cell">🍄</td><td>台灣香菇</td><td>棕色蘑菇 → NPC 兌換</td><td class="effect-ok">飽食 1（安全）</td></tr>
-            <tr><td class="emoji-cell">🦐</td><td>金鉤蝦</td><td>打鸚鵡螺掉落</td><td class="effect-ok">飽食 1（安全）</td></tr>
-            <tr><td class="emoji-cell">🌿</td><td>粽葉</td><td>種竹子 → NPC 兌換</td><td class="effect-bad">飽食 0 + 中毒 I（0:03）</td></tr>
-            <tr><td class="emoji-cell">🌰</td><td>栗子</td><td>緋紅蕈柄 → NPC 兌換</td><td class="effect-ok">飽食 2（安全）</td></tr>
-            <tr><td class="emoji-cell">🐛</td><td>米蟲</td><td>蠹魚掉落</td><td class="effect-bad">飽食 1 + 飢餓 II + 噁心 II ⚠️</td></tr>
+            <tr><td class="emoji-cell">🌾</td><td>糯米</td><td>蠹魚掉米蟲 → NPC 兌換</td><td class="effect-bad">飽食 2 + 緩慢 I（0:05）</td></tr>
+            <tr><td class="emoji-cell">🥩</td><td>五花肉</td><td>殺 MythicMobs「端午豬」掉落</td><td class="effect-bad">飽食 3 + 飢餓 I（0:08）+ 噁心 I（0:03）</td></tr>
+            <tr><td class="emoji-cell">🥚</td><td>特殊蛋</td><td>殺 MythicMobs「端午雞」掉落</td><td class="effect-bad">飽食 1 + 噁心 I（0:05）</td></tr>
+            <tr><td class="emoji-cell">🌿</td><td>粽葉</td><td>種竹子 ×16 → NPC 兌換 ×2</td><td class="effect-bad">飽食 0 + 中毒 I（0:03）</td></tr>
+            <tr><td class="emoji-cell">🥜</td><td>花生</td><td>種可可豆 ×16 → NPC 兌換 ×2</td><td class="effect-ok">飽食 2（安全！唯一無負面效果）</td></tr>
+            <tr><td class="emoji-cell">🐛</td><td>米蟲</td><td>蠹魚掉落</td><td class="effect-bad">飽食 1 + 飢餓 II（0:10）+ 噁心 II（0:08）⚠️</td></tr>
           </tbody>
         </table>
         <p style="color:var(--fog);font-size:0.8rem;margin-top:var(--space-sm);font-style:italic;">
-          💡 花生、台灣香菇、金鉤蝦、栗子是安全的生吃原料。米蟲是隱藏彩蛋——你確定要吃嗎？
+          💡 花生是唯一安全的生吃原料。米蟲是隱藏彩蛋——你確定要吃嗎？特殊蛋需先在工作台 1:1 合成鹹蛋黃，再用於包粽子。
         </p>
 
         <h4 style="color:var(--white);font-size:0.95rem;margin:var(--space-xl) 0 var(--space-sm);">合成配方</h4>
@@ -243,17 +239,17 @@
             <div class="zongzi-emoji">🫔</div>
             <h4>南部粽</h4>
             <p style="font-size:0.78rem;color:var(--fog);margin-bottom:4px;">水煮｜NPC 兌換面板（10 格材料）</p>
-            <p>糯米×4 + 魷魚×2 + 滷花生×2 + 滷肉×2 + 鹹蛋黃×1 + 台灣香菇×1 + 金鉤蝦×1 + 粽葉×2</p>
+            <p>糯米×4 + 五花肉×2 + 鹹蛋黃×1 + 粽葉×2 + 花生×2</p>
             <div class="zongzi-effect">🍖 飽食 4 + 飽和 7</div>
-            <p style="margin-top:8px;font-size:0.78rem;">水煮派，配料豐富的傳統口味</p>
+            <p style="margin-top:8px;font-size:0.78rem;">水煮派，多一味花生，效果偏向回復</p>
           </div>
           <div class="zongzi-card">
             <div class="zongzi-emoji">🫔</div>
             <h4>北部粽</h4>
             <p style="font-size:0.78rem;color:var(--fog);margin-bottom:4px;">蒸煮｜工作台 3×3（9 格材料）</p>
-            <p>糯米×4 + 金鉤蝦×2 + 栗子×2 + 滷肉×1 + 鹹蛋黃×1 + 台灣香菇×1 + 粽葉×2</p>
-            <div class="zongzi-effect">🍖 飽食 4 + 飽和 7</div>
-            <p style="margin-top:8px;font-size:0.78rem;">蒸煮派，粒粒分明的經典口味</p>
+            <p>糯米×4 + 五花肉×2 + 鹹蛋黃×1 + 粽葉×2</p>
+            <div class="zongzi-effect">🍖 飽食 4 + 飽和 7 + 速度 I（1:00）</div>
+            <p style="margin-top:8px;font-size:0.78rem;">蒸煮派，粒粒分明，效果偏向機動性</p>
           </div>
         </div>
       </div>
@@ -332,18 +328,18 @@
 
       <!-- 稱號 -->
       <div class="event-block">
-        <div class="event-block-title">🏷️ 稱號系統</div>
+        <div class="event-block-title">🏷️ 稱號與獎勵</div>
         <table class="ingredient-table">
-          <thead><tr><th></th><th>稱號</th><th>取得條件</th></tr></thead>
+          <thead><tr><th></th><th>稱號 / 物品</th><th>取得條件</th></tr></thead>
           <tbody>
-            <tr><td class="emoji-cell">🛶</td><td>划船冠軍</td><td>龍舟賽冠軍</td></tr>
-            <tr><td class="emoji-cell">🥚</td><td>立蛋冠軍</td><td>立蛋挑戰冠軍</td></tr>
-            <tr><td class="emoji-cell">🫔</td><td>吃南部粽</td><td>合成南部粽 → NPC 兌換</td></tr>
-            <tr><td class="emoji-cell">🫔</td><td>吃北部粽</td><td>合成北部粽 → NPC 兌換</td></tr>
+            <tr><td class="emoji-cell">🛶</td><td>「划船冠軍」＋ 🏆 划龍舟獎盃</td><td>龍舟賽冠軍</td></tr>
+            <tr><td class="emoji-cell">🥚</td><td>「立蛋冠軍」＋ 🥚 立蛋獎</td><td>立蛋挑戰冠軍（當天成功次數最多者）</td></tr>
+            <tr><td class="emoji-cell">🫔</td><td>「吃南部粽」</td><td>合成南部粽 → NPC 兌換（每人限 1 個）</td></tr>
+            <tr><td class="emoji-cell">🫔</td><td>「吃北部粽」</td><td>合成北部粽 → NPC 兌換（每人限 1 個）</td></tr>
           </tbody>
         </table>
         <p style="color:var(--fog);font-size:0.82rem;margin-top:var(--space-sm);">
-          稱號永久保留。划船冠軍/立蛋冠軍為競賽獲勝者限定，南北粽稱號可自由選擇。立蛋成功可獲得「🥚 立蛋獎」紀念道具（龍蛋造型）。
+          稱號永久保留。南北粽稱號可自由選擇（兩邊都可換）。立蛋成功可獲得「🥚 立蛋獎」紀念道具（龍蛋造型），每人最多 3 次機會。
         </p>
       </div>
 
