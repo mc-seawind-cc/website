@@ -406,6 +406,7 @@ website/
 | 2026.04.27 | 海風網站助手 | **導航 active 狀態修復**：JS `currentPage` 匹配邏輯從 `pathname.split('/').pop()` 改為去除副檔名後比對（`replace(/\.(html?|php|asp)$/i, '')`），修復因 `.html` 副檔名導致所有頁面導航高亮永遠不匹配的 bug。首頁特殊處理 `index ↔ 首頁` 映射 |
 | 2026.04.27 | 海風網站助手 | **頁面載入動畫**：首頁 + 6 個主要頁面（活動/公告/文化藝廊/海風指南/海風團隊/社群須知）新增海洋主題載入畫面——`page-loader` 全屏覆蓋（`z-index:99999`），含 `loader-logo`（海風文字 shimmer 漸層動畫）+ `loader-wave`（波浪動畫）。頁面 load 完成後 0.6s fade-out + 移除 DOM。3s safety timeout。CSS 新增 `.page-loader` / `.loader-logo` / `.loader-wave` / `loader-shimmer` / `loader-wave-move` |
 | 2026.04.27 | 海風網站助手 | **手機版導航背景遮罩**：JS 動態建立 `.nav-backdrop` 元素，手機版導航展開時顯示半透明黑色遮罩（opacity 0→1 transition），點擊遮罩可關閉導航。CSS 新增 `.nav-backdrop` / `.nav-backdrop.visible` 樣式。`closeMobileNav()` 統一函式管理 toggle/backdrop/links 狀態 |
+| 2026.04.27 | 海風網站助手 | **珍奶日詳情頁視覺強化**：①Hero 區新增浮動珍珠粒子動畫（12 顆隨機大小/位置/延遲的 `btea-float` 粒子，從底部飄浮消散）；②新增當前階段指示器（`current-stage-banner`，JS 根據日期動態顯示「調整期進行中」/「正式期」/「兌換期」/「活動已結束」）；③修正調整期描述（暖身期尚未開放兌換飲品）；④飲品卡片 hover 增強（左側 accent 條 + 名稱變色 + 效果發光）；⑤代幣商店 hover 左側漸層 accent 條；⑥原料項目 hover 微光暈；⑦任務項目 hover 滑動+高亮；⑧玩法步驟 hover 上浮+圖示彈跳；⑨挑戰卡片 hover 上浮+陰影。cache busting → 270427e |
 
 ---
 
