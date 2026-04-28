@@ -485,6 +485,7 @@ body{font-family:var(--font-body);background:var(--deep);color:var(--cloud);line
 [data-theme="light"] .featured-event-badge{background:rgba(255,170,50,0.1)}
 [data-theme="light"] .countdown-block{background:rgba(196,155,108,0.1);border-color:rgba(196,155,108,0.2)}
 [data-theme="light"] .countdown-num{color:var(--cloud)}
+[data-theme="light"] .countdown-block:hover{transform:translateY(-2px);box-shadow:0 4px 16px rgba(196,155,108,0.12)}
 [data-theme="light"] .featured-event-countdown.expired .countdown-block{border-color:rgba(168,230,207,0.15);background:rgba(168,230,207,0.06)}
 [data-theme="light"] .featured-event-countdown.expired .countdown-num{color:#2d8a5e}
 
@@ -1864,6 +1865,7 @@ body{font-family:var(--font-body);background:var(--deep);color:var(--cloud);line
 [data-theme="light"] .photo-hint:hover{background:rgba(74,108,247,0.1);border-color:rgba(74,108,247,0.2)}
 [data-theme="light"] .photo-hint-text code{background:rgba(74,108,247,0.1);color:var(--ocean-blue)}
 [data-theme="light"] .carousel-dot.active{background:var(--ocean-blue);box-shadow:0 0 8px rgba(87,138,255,0.25)}
+[data-theme="light"] .carousel-dot:hover{background:var(--sky);transform:scale(1.2)}
 [data-theme="light"] .carousel-slide img:hover{box-shadow:0 8px 30px rgba(0,0,0,0.12),0 0 0 2px rgba(87,138,255,0.15);transform:scale(1.03)}
 
 .photo-carousel{overflow:hidden;border-radius:var(--radius-lg);position:relative;content-visibility:auto;contain-intrinsic-size:auto 350px;padding:4px 0}
