@@ -1,6 +1,6 @@
 # 海風 SeaWind 網站設計文件
 
-> 最後更新：2026.04.28
+> 最後更新：2026.04.28（海風網站助手）
 > 維護者：海風網站助手
 > Instagram：[@mc.seawind.cc](https://www.instagram.com/mc.seawind.cc/)
 
@@ -409,6 +409,11 @@ website/
 | 2026.04.27 | 海風網站助手 | **珍奶日詳情頁視覺強化**：①Hero 區新增浮動珍珠粒子動畫（12 顆隨機大小/位置/延遲的 `btea-float` 粒子，從底部飄浮消散）；②新增當前階段指示器（`current-stage-banner`，JS 根據日期動態顯示「調整期進行中」/「正式期」/「兌換期」/「活動已結束」）；③修正調整期描述（暖身期尚未開放兌換飲品）；④飲品卡片 hover 增強（左側 accent 條 + 名稱變色 + 效果發光）；⑤代幣商店 hover 左側漸層 accent 條；⑥原料項目 hover 微光暈；⑦任務項目 hover 滑動+高亮；⑧玩法步驟 hover 上浮+圖示彈跳；⑨挑戰卡片 hover 上浮+陰影。cache busting → 270427e |
 | 2026.04.27 | 海風網站助手 | **珍奶日貨幣+商店+NPC 全面更新**：代幣→環保杯（custom eco-cup icon）；環保杯商店→小賣部；原料 emoji→MC 遊戲物品圖（14 張 16×16 材質）；步驟四改為「兌換限定稱號」；NPC 三角色：茶茶（小賣部）、小珍（飲品）、杉杉來持（5/28 贊助商稱號兌換）；稱號區塊更新 5/28 兌換期 + 贊助商資訊 |
 | 2026.04.28 | 海風網站助手 | **CSS 清理 + 圖片載入優化**：①移除空的 `@media (max-width: 768px){}` 死代碼（line 2740）；②新增 `img[loading="lazy"]` 淡入動畫（CSS opacity transition + JS `.loaded` class 監聽），讓 lazy-load 圖片不再突然出現；③全站 76 頁頁尾日期統一更新至 2026.04.28；CSS/JS cache busting → 280428a |
+| 2026.04.28 | 海風網站助手 | **精選活動橫幅階段指示器**：新增 `.featured-event-phase` 動態階段標籤（調整期進行中 / 正式期進行中 / 兌換期進行中 / 活動已結束），JS 根據當前日期自動切換。進度條追蹤範圍從「調整期起點→活動終點」，讓調整期階段也有進度回饋。CSS 含四色階段樣式（foam/sky/lavender/fog）+ 脈衝指示燈動畫，深色/淺色模式同步 |
+| 2026.04.28 | 海風網站助手 | **Hero 資訊卡 stagger 入場動畫**：三張資訊卡（伺服器位址/版本/狀態）從瞬間出現改為 stagger 淡入（opacity 0→1 + translateY 16px→0），延遲 0.4s/0.52s/0.64s，與 Hero 展開動畫銜接 |
+| 2026.04.28 | 海風網站助手 | **公告欄「查看全部公告」連結**：展開 12 則 inline 公告後，底部出現「查看全部公告 →」按鈕連結至公告頁。JS 新增 `bulletinViewAll` 元素控制顯示，CSS 新增 `.bulletin-view-all` 樣式 |
+| 2026.04.28 | 海風網站助手 | **加入步驟連接線動態動畫**：`.join-connector::after` 節點改為旅行動畫（`connector-dot-travel`，從左至右 2.5s 循環）；SVG 路徑新增 `stroke-dasharray: 6 4` + 流動動畫（`connector-dash-flow`，1.5s 循環） |
+| 2026.04.28 | 海風網站助手 | 全站 76 頁 CSS/JS cache busting 統一更新至 280428c |
 
 ---
 
