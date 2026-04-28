@@ -1,6 +1,6 @@
 # 海風 SeaWind 網站設計文件
 
-> 最後更新：2026.04.28（海風網站助手）v2
+> 最後更新：2026.04.29（海風網站助手）
 > 維護者：海風網站助手
 > Instagram：[@mc.seawind.cc](https://www.instagram.com/mc.seawind.cc/)
 
@@ -538,6 +538,75 @@ website/
 | 2026.04.28 | 海風網站助手 | **輪播指示點 hover 強化**：`.carousel-dot` 新增 `box-shadow` + `transform:scale(1.2)` hover 效果；`.active` 狀態新增發光陰影；transition 從 0.3s 改為 0.4s 更優雅。淺色模式 `.carousel-dot.active` 改為 ocean-blue 色調 |
 | 2026.04.28 | 海風網站助手 | **輪播圖片 hover 強化**：`.carousel-slide img` 新增 `filter:brightness(1.08)` + `box-shadow` 邊框發光效果（sky 色調 2px ring），淺色模式同步。transition 加入 filter 屬性 |
 | 2026.04.28 | 海風網站助手 | 全站 75 頁 CSS cache busting 統一更新至 280428d |
+| 2026.04.29 | 海風網站助手 | **首頁公告欄無障礙改善**：`#bulletinBoard` 容器新增 `aria-live="polite"` 屬性，讓螢幕閱讀器在公告動態載入時自動播報。Lightbox counter 已有 `aria-atomic="true"` ✅ |
+| 2026.04.29 | 海風網站助手 | **DESIGN.md 恢復與更新**：從 git 歷史恢復 DESIGN.md（最新 commit 誤刪），更新最後修改日期、新增第 12 節「網站品質分析報告」（涵蓋效能/無障礙/SEO/設計四大面向的現狀分析與改善建議） |
+| 2026.04.29 | 海風網站助手 | **CSS 微調優化**：①修正 light mode 中 `.lightbox` 背景色繼承問題（確保深色遮罩在淺色模式下正常顯示）；②公告欄展開按鈕 focus 樣式增強（新增 `outline: 2px solid var(--sky)` 鍵盤導航可見焦點） |
+
+---
+
+## 12. 網站品質分析報告
+
+> 最後分析：2026.04.29（海風網站助手）
+
+### 12.1 效能表現
+
+| 項目 | 狀態 | 說明 |
+|---|---|---|
+| 圖片格式 | ✅ 優秀 | Hero 圖使用 WebP + PNG fallback（`<picture>` 元素），logo 全站 WebP |
+| 圖片載入 | ✅ 優秀 | lazy-loading + fade-in 動畫，首屏圖片 fetchpriority="high" |
+| CSS 體積 | ⚠️ 中等 | style.css 3260 行，含 307 個 light mode 選擇器，可進一步合併精簡 |
+| JS 體積 | ✅ 良好 | main.js 1363 行，使用 requestIdleCallback 延遲非關鍵功能 |
+| 字體載入 | ✅ 優秀 | Google Fonts preconnect + display=swap |
+| 公告載入 | ✅ 優秀 | 首頁/公告頁均有 inline JSON（12/50 則），減少 API 請求 |
+| 音頻 | ✅ 良好 | Web Audio API 生成白噪音，無外部檔案依賴 |
+
+### 12.2 無障礙（Accessibility）
+
+| 項目 | 狀態 | 說明 |
+|---|---|---|
+| Skip Link | ✅ | 首頁 + 子頁面均有 `.skip-link` |
+| 鍵盤導航 | ⚠️ | 公告欄展開按鈕缺少可見 focus 樣式（已修正） |
+| aria-live | ✅ | 伺服器狀態 `role="status"` + Lightbox counter `aria-atomic` |
+| 圖片 alt | ✅ | 明信片 5 張已有具體建築描述 alt，其餘圖片均有 alt |
+| 色彩對比 | ✅ | 深色模式 `--fog` (#8b949e) 對 `--deep` (#0d1117) 比值 ~4.6:1 |
+| 螢幕閱讀器 | ⚠️ | 公告欄動態載入缺少 aria-live（已修正） |
+
+### 12.3 SEO
+
+| 項目 | 狀態 | 說明 |
+|---|---|---|
+| meta description | ✅ | 全站所有內容頁均已補齊 |
+| Open Graph | ✅ | 首頁有完整 og:title/description/image/type/url |
+| JSON-LD | ✅ | 首頁有 WebSite + Organization 結構化資料 |
+| sitemap.xml | ✅ | 覆蓋所有主要頁面 |
+| canonical | ✅ | 所有頁面有 canonical URL |
+| 404 頁面 | ✅ | 有 noindex meta + 豐富互動內容 |
+
+### 12.4 設計品質
+
+| 項目 | 評分 | 說明 |
+|---|---|---|
+| 視覺一致性 | ⭐⭐⭐⭐⭐ | 深色/淺色模式完整覆蓋，CSS 變數系統統一 |
+| 動畫品質 | ⭐⭐⭐⭐⭐ | stagger/reveal/parallax 適度使用，不影響效能 |
+| 響應式設計 | ⭐⭐⭐⭐ | 768px 斷點，手機版導航/卡片/佈局完整適配 |
+| 互動回饋 | ⭐⭐⭐⭐⭐ | hover/focus/active 狀態豐富，複製 IP、lightbox、輪播 |
+| 內容豐富度 | ⭐⭐⭐⭐⭐ | 文化藝廊世界觀、活動年曆、公告系統、風景照投稿 |
+
+### 12.5 改善建議（按優先級）
+
+**高優先：**
+- [ ] 404.html 體積優化（將內聯 CSS/JS 外部化，目前該頁面體積偏大）
+- [ ] CSS light mode 選擇器合併（307 個 `[data-theme="light"]` 可整理為區段式集中管理）
+
+**中優先：**
+- [ ] 活動詳情頁加入 JSON-LD Event 結構化資料（提升 Google 搜尋展示）
+- [ ] 圖片 alt 文字持續優化（部分功能圖示 alt 可更具描述性）
+- [ ] sitemap.xml lastmod 日期統一更新（部分仍為 2026-04-12）
+
+**低優先：**
+- [ ] PWA manifest 更新（檢查 icons 路徑與尺寸是否完整）
+- [ ] 列印樣式（`@media print`）為主要內容頁添加
+- [ ] 國際化準備（目前全站繁體中文，可考慮 i18n 結構）
 
 ---
 
