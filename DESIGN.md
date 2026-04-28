@@ -541,6 +541,8 @@ website/
 | 2026.04.29 | 海風網站助手 | **首頁公告欄無障礙改善**：`#bulletinBoard` 容器新增 `aria-live="polite"` 屬性，讓螢幕閱讀器在公告動態載入時自動播報。Lightbox counter 已有 `aria-atomic="true"` ✅ |
 | 2026.04.29 | 海風網站助手 | **DESIGN.md 恢復與更新**：從 git 歷史恢復 DESIGN.md（最新 commit 誤刪），更新最後修改日期、新增第 12 節「網站品質分析報告」（涵蓋效能/無障礙/SEO/設計四大面向的現狀分析與改善建議） |
 | 2026.04.29 | 海風網站助手 | **CSS 微調優化**：①修正 light mode 中 `.lightbox` 背景色繼承問題（確保深色遮罩在淺色模式下正常顯示）；②公告欄展開按鈕 focus 樣式增強（新增 `outline: 2px solid var(--sky)` 鍵盤導航可見焦點） |
+| 2026.04.29 | 海風網站助手 | **首頁公告欄取消釘選**：inline JSON 中珍奶日公告 `pinned` 改為 `false`，移除 📌 標記和 shimmer 邊框動畫 |
+| 2026.04.29 | 海風網站助手 | **特色卡片 hover 動畫修復**：①淺色模式 `.feature-card:hover` 補上遺漏的 `transform:translateY(-8px)`（深色模式有但淺色模式從未有過，導致淺色模式下 hover 無上浮動畫）；②移除 `.feature-card` 的 `overflow:hidden`（會裁切 hover 光暈效果） |
 
 ---
 
