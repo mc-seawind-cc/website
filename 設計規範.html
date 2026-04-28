@@ -121,6 +121,8 @@
           <ul>
             <li><strong>超模</strong> — 俗稱「數值怪」，超出官方預期的強度上限或表現出壓倒性優勢。</li>
             <li><strong>復刻</strong></li>
+            <li><strong>特殊物品 ID</strong> — 特殊物品的識別碼，即 MMOItems 配置中的唯一鍵值（如 <code>2026DBF_06</code>）。</li>
+            <li><strong>上線</strong> — 物品正式開放玩家取得，進入玩家背包。</li>
           </ul>
         </div>
       </div>
@@ -188,15 +190,7 @@
         <h3 class="chapter-sub">▪ 第三節 物品管理</h3>
 
         <div class="rule-item">
-          <p><strong>1.</strong> 名詞解釋：</p>
-          <ul>
-            <li><strong>特殊物品 ID</strong> — 特殊物品的識別碼，即 MMOItems 配置中的唯一鍵值（如 <code>2026DBF_06</code>）。</li>
-            <li><strong>上線</strong> — 物品正式開放玩家取得，進入玩家背包。</li>
-          </ul>
-        </div>
-
-        <div class="rule-item">
-          <p><strong>2.</strong> ID 命名規則：</p>
+          <p><strong>1.</strong> 識別碼命名方式：</p>
           <ul>
             <li>格式：<code>前綴_序號</code>（如 <code>2026DBF_06</code>）。</li>
             <li>前綴為活動或系列的英文代號，使用大寫英文（如 <code>DBF</code> = 端午節、<code>BBA</code> = 珍奶日）。</li>
@@ -206,16 +200,15 @@
         </div>
 
         <div class="rule-item">
-          <p><strong>3.</strong> 上線後的限制：</p>
+          <p><strong>2.</strong> 上線後的限制：</p>
           <ul>
             <li>物品上線後，不得修改其 ID 或刪除該物品。</li>
             <li>如需替換或改版，應建立新 ID 的物品，由玩家自行兌換或由管理員補發。</li>
-            <li>僅在以下條件下可重建同 ID 物品：物品尚未有任何玩家取得、或經全服公告說明並完成補發後。</li>
           </ul>
         </div>
 
         <div class="rule-item">
-          <p><strong>4.</strong> 活動專案記錄：</p>
+          <p><strong>3.</strong> 活動專案記錄：</p>
           <ul>
             <li>每個活動或系列節日須於專案中記錄其代號（前綴）及對應活動名稱。</li>
             <li>每個物品須附上完整的 MMOItems 配置，至少包含：<code>material</code>（物品材質）、<code>name</code>（顯示名稱）、<code>displayed-type</code>（分類標籤）。</li>
