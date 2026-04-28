@@ -543,6 +543,8 @@ website/
 | 2026.04.29 | 海風網站助手 | **CSS 微調優化**：①修正 light mode 中 `.lightbox` 背景色繼承問題（確保深色遮罩在淺色模式下正常顯示）；②公告欄展開按鈕 focus 樣式增強（新增 `outline: 2px solid var(--sky)` 鍵盤導航可見焦點） |
 | 2026.04.29 | 海風網站助手 | **首頁公告欄取消釘選**：inline JSON 中珍奶日公告 `pinned` 改為 `false`，移除 📌 標記和 shimmer 邊框動畫 |
 | 2026.04.29 | 海風網站助手 | **特色卡片 hover 動畫修復**：①淺色模式 `.feature-card:hover` 補上遺漏的 `transform:translateY(-8px)`（深色模式有但淺色模式從未有過，導致淺色模式下 hover 無上浮動畫）；②移除 `.feature-card` 的 `overflow:hidden`（會裁切 hover 光暈效果） |
+| 2026.04.29 | 海風網站助手 | **全站淺色模式 hover 動畫修復**：10 個淺色模式 hover 規則補上遺漏的 `transform`（info-card/featured-event/lore-preview-card/postcard-item/join-step/card/carousel-slide/photo-item/lore-card/partner-row）。深色模式全部有但淺色模式覆蓋規則漏掉了 transform 屬性 |
+| 2026.04.29 | 海風網站助手 | **hover transition 時間統一**：info-card 0.2s→0.4s、carousel-slide img 0.3s→0.4s，與 feature-card/postcard-item 一致（0.4–0.5s） |
 
 ---
 
