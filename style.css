@@ -2253,8 +2253,10 @@ video.photo-item{cursor:pointer;height:200px;border:1px solid transparent}
 .join-step code{background:rgba(157,175,255,0.12);color:var(--sky);padding:1px 6px;border-radius:4px;font-size:0.78rem;font-family:'JetBrains Mono','Fira Code',monospace}
 .join-connector{display:flex;align-items:center;padding-top:40px;flex-shrink:0;position:relative}
 .join-connector::before{content:'';position:absolute;top:50%;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--sky),transparent);opacity:0.15;transform:translateY(-50%)}
-.join-connector::after{content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:8px;height:8px;background:var(--sky);border-radius:50%;opacity:0.4}
-.join-connector svg path{stroke-width:2;opacity:0.4}
+.join-connector::after{content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:8px;height:8px;background:var(--sky);border-radius:50%;opacity:0.4;animation:connector-dot-travel 2.5s ease-in-out infinite}
+@keyframes connector-dot-travel{0%,100%{left:15%;opacity:0.3;transform:translate(-50%,-50%) scale(0.8)}50%{left:85%;opacity:0.7;transform:translate(-50%,-50%) scale(1.2)}}
+.join-connector svg path{stroke-width:2;opacity:0.4;stroke-dasharray:6 4;animation:connector-dash-flow 1.5s linear infinite}
+@keyframes connector-dash-flow{to{stroke-dashoffset:-20}}
 
 [data-theme="light"] .join-step{background:#fff;border-color:rgba(0,0,0,0.06);box-shadow:0 1px 3px rgba(0,0,0,0.04)}
 [data-theme="light"] .join-step:hover{background:rgba(74,108,247,0.04);border-color:rgba(74,108,247,0.15);box-shadow:0 8px 24px rgba(0,0,0,0.06),0 0 16px -4px rgba(74,108,247,0.12)}
