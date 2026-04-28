@@ -813,7 +813,7 @@
 
         <!-- Quick Stats -->
         <div class="event-quick-stats">
-          <div class="eqs-item"><div class="eqs-num">6</div><div class="eqs-label">種原料</div></div>
+          <div class="eqs-item"><div class="eqs-num">10</div><div class="eqs-label">種原料</div></div>
           <div class="eqs-item"><div class="eqs-num">2</div><div class="eqs-label">種粽子</div></div>
           <div class="eqs-item"><div class="eqs-num">3</div><div class="eqs-label">限定稱號</div></div>
         </div>
@@ -932,7 +932,7 @@
             <span class="hs-icon">🐾</span>
             <div class="hs-num">步驟一</div>
             <h4>收集原料</h4>
-            <p>打 MythicMobs、打蠹魚、種植兌換，三種管道收集 6 種原料</p>
+            <p>打 MythicMobs、打蠹魚、釣魚、種植兌換，四種管道收集 10 種原料</p>
           </div>
           <div class="how-step">
             <span class="hs-icon">🫔</span>
@@ -966,11 +966,11 @@
 
         <!-- 取得管道 -->
         <h4 style="color:var(--white);font-size:0.95rem;margin:var(--space-lg) 0 var(--space-sm);">原料取得管道</h4>
-        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:var(--space-xl);">
+        <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:8px;margin-bottom:var(--space-xl);">
           <div style="padding:14px;background:rgba(0,0,0,0.12);border:1px solid rgba(255,255,255,0.04);border-radius:8px;text-align:center;">
             <div style="font-size:1.5rem;margin-bottom:6px;">🐾</div>
             <div style="font-size:0.85rem;font-weight:700;color:var(--cloud);">打 MythicMobs</div>
-            <div style="font-size:0.75rem;color:var(--fog);margin-top:4px;">端午豬→五花肉、端午雞→特殊蛋</div>
+            <div style="font-size:0.75rem;color:var(--fog);margin-top:4px;">端午豬→滷肉、端午雞→特殊蛋</div>
           </div>
           <div style="padding:14px;background:rgba(0,0,0,0.12);border:1px solid rgba(255,255,255,0.04);border-radius:8px;text-align:center;">
             <div style="font-size:1.5rem;margin-bottom:6px;">🐛</div>
@@ -978,9 +978,14 @@
             <div style="font-size:0.75rem;color:var(--fog);margin-top:4px;">蠹魚掉米蟲 → NPC 換糯米</div>
           </div>
           <div style="padding:14px;background:rgba(0,0,0,0.12);border:1px solid rgba(255,255,255,0.04);border-radius:8px;text-align:center;">
+            <div style="font-size:1.5rem;margin-bottom:6px;">🎣</div>
+            <div style="font-size:0.85rem;font-weight:700;color:var(--cloud);">釣魚</div>
+            <div style="font-size:0.75rem;color:var(--fog);margin-top:4px;">魷魚（直接釣）、金鉤蝦（寶箱→NPC）</div>
+          </div>
+          <div style="padding:14px;background:rgba(0,0,0,0.12);border:1px solid rgba(255,255,255,0.04);border-radius:8px;text-align:center;">
             <div style="font-size:1.5rem;margin-bottom:6px;">🌿</div>
             <div style="font-size:0.85rem;font-weight:700;color:var(--cloud);">種植兌換</div>
-            <div style="font-size:0.75rem;color:var(--fog);margin-top:4px;">竹子→粽葉、可可豆→花生</div>
+            <div style="font-size:0.75rem;color:var(--fog);margin-top:4px;">竹子→粽葉、可可豆→滷花生、蘑菇→台灣香菇、地獄橡木→栗子</div>
           </div>
         </div>
 
@@ -988,24 +993,52 @@
         <h4 style="color:var(--white);font-size:0.95rem;margin:var(--space-lg) 0 var(--space-sm);">原料與生吃效果</h4>
         <div class="ingredient-grid">
           <div class="ingredient-item">
-            <span class="ii-icon">🌾</span>
+            <span class="ii-icon">🍚</span>
             <div class="ii-info">
               <span class="ii-name">糯米</span>
               <span class="ii-effect bad">飽食 2 + 緩慢 I（0:05）</span>
             </div>
           </div>
           <div class="ingredient-item">
+            <span class="ii-icon">🦑</span>
+            <div class="ii-info">
+              <span class="ii-name">魷魚</span>
+              <span class="ii-effect bad">飽食 1 + 噁心 I（0:05）</span>
+            </div>
+          </div>
+          <div class="ingredient-item">
+            <span class="ii-icon">🥜</span>
+            <div class="ii-info">
+              <span class="ii-name">滷花生</span>
+              <span class="ii-effect ok">飽食 2（安全！）</span>
+            </div>
+          </div>
+          <div class="ingredient-item">
             <span class="ii-icon">🥩</span>
             <div class="ii-info">
-              <span class="ii-name">五花肉</span>
+              <span class="ii-name">滷肉</span>
               <span class="ii-effect bad">飽食 3 + 飢餓 I + 噁心 I</span>
             </div>
           </div>
           <div class="ingredient-item">
             <span class="ii-icon">🥚</span>
             <div class="ii-info">
-              <span class="ii-name">特殊蛋</span>
+              <span class="ii-name">鹹蛋黃</span>
               <span class="ii-effect bad">飽食 1 + 噁心 I（0:05）</span>
+            </div>
+          </div>
+          <div class="ingredient-item">
+            <span class="ii-icon">🍄</span>
+            <div class="ii-info">
+              <span class="ii-name">台灣香菇</span>
+              <span class="ii-effect ok">飽食 1（安全）</span>
+            </div>
+          </div>
+          <div class="ingredient-item">
+            <span class="ii-icon">🦐</span>
+            <div class="ii-info">
+              <span class="ii-name">金鉤蝦</span>
+              <span class="ii-effect ok">飽食 1（安全）</span>
             </div>
           </div>
           <div class="ingredient-item">
@@ -1016,10 +1049,10 @@
             </div>
           </div>
           <div class="ingredient-item">
-            <span class="ii-icon">🥜</span>
+            <span class="ii-icon">🌰</span>
             <div class="ii-info">
-              <span class="ii-name">花生</span>
-              <span class="ii-effect ok">飽食 2（安全！唯一無負面效果）</span>
+              <span class="ii-name">栗子</span>
+              <span class="ii-effect ok">飽食 2（安全）</span>
             </div>
           </div>
           <div class="ingredient-item">
@@ -1031,7 +1064,7 @@
           </div>
         </div>
         <p style="color:var(--fog);font-size:0.78rem;margin-top:var(--space-md);font-style:italic;">
-          💡 花生是唯一安全的生吃原料。米蟲是隱藏彩蛋——你確定要吃嗎？特殊蛋需先在工作台 1:1 合成鹹蛋黃，再用於包粽子。
+          💡 滷花生、台灣香菇、金鉤蝦、栗子是安全的生吃原料。米蟲是隱藏彩蛋——你確定要吃嗎？
         </p>
       </div>
 
@@ -1046,18 +1079,18 @@
               <span class="zongzi-card-name">🫔 南部粽</span>
               <span class="zongzi-card-type">水煮</span>
             </div>
-            <div class="zongzi-card-recipe">糯米×4 + 五花肉×2 + 鹹蛋黃×1 + 粽葉×2 + 花生×2</div>
+            <div class="zongzi-card-recipe">圓糯米 + 魷魚 + 滷花生 + 滷肉 + 鹹蛋黃 + 台灣香菇 + 金鉤蝦 + 粽葉</div>
             <div class="zongzi-card-effect">🍖 飽食 4 + 飽和 7 + 回復 I（0:30）</div>
-            <div class="zongzi-card-note">水煮派，多一味花生，效果偏向回復</div>
+            <div class="zongzi-card-note">水煮派，配料豐富的傳統口味</div>
           </div>
           <div class="zongzi-card">
             <div class="zongzi-card-header">
               <span class="zongzi-card-name">🫔 北部粽</span>
               <span class="zongzi-card-type">蒸煮</span>
             </div>
-            <div class="zongzi-card-recipe">糯米×4 + 五花肉×2 + 鹹蛋黃×1 + 粽葉×2</div>
+            <div class="zongzi-card-recipe">長糯米 + 金鉤蝦 + 栗子 + 滷肉 + 鹹蛋黃 + 台灣香菇 + 粽葉</div>
             <div class="zongzi-card-effect">🍖 飽食 4 + 飽和 7 + 速度 I（1:00）</div>
-            <div class="zongzi-card-note">蒸煮派，粒粒分明，效果偏向機動性</div>
+            <div class="zongzi-card-note">蒸煮派，粒粒分明的經典口味</div>
           </div>
         </div>
         <p style="color:var(--fog);font-size:0.82rem;line-height:1.6;">
