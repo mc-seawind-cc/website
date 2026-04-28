@@ -1,8 +1,25 @@
 {
   "version": 2,
-  "generatedAt": "2026-04-20T12:32:00.000000+08:00",
-  "count": 473,
+  "generatedAt": "2026-04-28T11:50:00.000+08:00",
+  "count": 474,
   "announcements": [
+    {
+      "tag": "維護",
+      "id": "#0291",
+      "date": "115.04.28",
+      "isoDate": "2026-04-28",
+      "timestamp": "2026-04-28T11:00:00.000+08:00",
+      "title": "維護通知",
+      "content": "- 伺服器於 4/28 11:00 ~ 4/28 17:00 進行維護。\n- 預計於近兩日再次維護，作合併分流準備。\n  - 討論區：https://discord.com/channels/1266311059552342078/1491418677646594241",
+      "images": [],
+      "localImages": [],
+      "reactions": [],
+      "reactionCount": 0,
+      "discordId": "",
+      "pinned": false,
+      "author": "",
+      "index": 0
+    },
     {
       "tag": "活動",
       "id": "#0027",
