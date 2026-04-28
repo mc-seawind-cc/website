@@ -225,7 +225,115 @@ website/
 
 ---
 
-## 8. 已知問題與待辦
+## 8. 活動子頁面設計指南
+
+> 所有活動詳情頁（`活動/*.html`）應遵循此指南，確保風格一致、維護容易。
+> 參考範例：`活動/珍奶日.html`（最完整的範例）
+
+### 8.1 頁面結構（由上到下）
+
+```
+1. Page Loader（海洋主題載入動畫）
+2. Skip Link + Scroll Progress + BG Atmosphere
+3. Navigation（與全站一致）
+4. Back Link（← 返回活動列表）
+5. Hero 區（標題 + CSS 藝術 + 描述 + Quick Stats）
+6. 基本資訊（info-grid）
+7. Section Divider
+8. NPC 區（皮膚圖 + 名稱 + 職責）
+9. Section Divider
+10. 時程規劃（視覺時間軸）
+11. Section Divider
+12. 玩法總覽（步驟卡片）
+13. Section Divider
+14. 活動內容區塊（原料/配方/票選/挑戰等，依活動性質調整）
+15. Section Divider（每個主要區塊之間）
+16. 稱號與獎勵
+17. Footer
+18. JS（時間軸動態更新 + 階段標籤 + 粒子動畫 + Page Loader dismiss）
+```
+
+### 8.2 Hero 區規範
+
+```html
+<div class="event-hero fade-in">
+  <!-- 浮動粒子容器（可選） -->
+  <div class="event-bubbles" id="eventBubbles" aria-hidden="true"></div>
+  
+  <!-- 活動類型徽章 -->
+  <div class="event-hero-badge">限時活動 · 日期</div>
+  
+  <!-- 當前階段標籤（JS 動態） -->
+  <div class="current-stage-banner active" id="currentStageBanner">
+    <span class="csb-dot"></span>
+    <span id="currentStageText">階段名稱</span>
+  </div>
+  
+  <h1>Emoji 活動名稱</h1>
+  
+  <!-- CSS 藝術（可選，用純 CSS 做活動主題圖案） -->
+  <div class="event-art">...</div>
+  
+  <p class="event-hero-desc">活動描述</p>
+  
+  <!-- Quick Stats（3 個關鍵數字） -->
+  <div class="event-quick-stats">
+    <div class="eqs-item"><div class="eqs-num">數字</div><div class="eqs-label">標籤</div></div>
+    ...
+  </div>
+</div>
+```
+
+**CSS 藝術規範：**
+- 使用純 CSS（div + background gradient + border-radius）
+- 不使用外部圖片
+- 顏色與活動主題色一致
+- 尺寸控制在 80–120px
+
+### 8.3 視覺時間軸
+
+使用 `.event-timeline-v` 系列 class，JS 根據當前日期動態更新：
+- `.etv-dot.done`：已完成階段（foam 綠色）
+- `.etv-dot.active`：當前階段（sky 藍色 + 發光）
+- `.etv-dot.upcoming`：未來階段（灰色）
+- `.etv-connector.done` / `.etv-connector.pending`：連接線
+
+### 8.4 區塊規範
+
+每個活動區塊使用 `.event-block`：
+```html
+<div class="event-block fade-in">
+  <div class="event-block-title">
+    <span class="ebt-icon">📦</span> 區塊標題
+  </div>
+  <!-- 內容 -->
+</div>
+```
+
+### 8.5 樣式規範
+
+- **頁面內聯 `<style>`**：只寫該活動特有的樣式
+- **通用樣式**：使用 `style.css` 中的 `.event-hero`、`.event-block`、`.info-grid` 等
+- **accent 色**：每個活動有專屬色調（珍奶日=sand、端午節=foam、風汐=lavender）
+- **Light mode**：必須撰寫 `[data-theme="light"]` 覆蓋
+- **Responsive**：必須撰寫 `@media (max-width: 768px)` 適配
+- **Print**：建議撰寫 `@media print` 樣式
+
+### 8.6 JavaScript 規範
+
+- 時間軸 + 階段標籤：根據 `Date.now()` 動態切換 `done`/`active`/`active` class
+- 浮動粒子：用 JS 動態建立 DOM 元素 + CSS animation
+- Page Loader：固定 pattern（`#pageLoader` → `.fade-out` → `remove()`）
+- 所有 JS 寫在 `</body>` 前的 `<script>` 區塊
+
+### 8.7 Cache Busting
+
+- 修改頁面內聯 CSS/JS 不需要更新 cache busting
+- 修改 `style.css` 或 `main.js` 後，所有引用它們的 HTML 都要更新 `?v=日期碼`
+
+---
+
+## 9. 已知問題與待辦
 
 ### 已修復 ✅
 - [x] 首頁新增精選活動橫幅（珍奶日預告）— 2026.04.18
@@ -258,7 +366,7 @@ website/
 
 ---
 
-## 9. 修改記錄
+## 10. 修改記錄
 
 | 日期 | 修改者 | 修改內容 |
 |---|---|---|
@@ -416,11 +524,13 @@ website/
 | 2026.04.28 | 海風網站助手 | 全站 76 頁 CSS/JS cache busting 統一更新至 280428c |
 | 2026.04.28 | 海風網站助手 | **活動頁新增端午節卡片**：限時活動區新增「🐉 2026 海風端午節」卡片（foam 色調，6/5–6/30），含四階段指示器（測試→建造→正式→收尾）+ JS 動態更新、玩法標籤（南北粽票選/立蛋挑戰/龍舟競賽/限定稱號）。限時活動計數 2→3。端午節詳情頁補上 page-loader 載入動畫（與其他頁面一致） |
 | 2026.04.28 | 海風網站助手 | **端午節南北粽票選改為「選一」制**：每人只能選一邊，選了不能改。活動結束後凡有上線過的玩家皆可獲得贏方稱號。詳情頁票選區塊 + 稱號表格同步更新。events repo DESIGN.md 同步 |
-| 2026.04.28 | 海風網站助手 | **端午節 NPC 設計**：名稱從「海風粽師」改為「粽粽」（§a§l粽粽 §6🐉），綠色中式服裝 skin。一個 NPC 包辦四項功能：原料兌換、粽子合成、陣營選擇、稱號領取。南北粽統一使用 NPC 兌換面板合成。網站詳情頁 + events repo 同步 |
+| 2026.04.28 | 海風網站助手 | **端午節 NPC 設計**：名稱從「海風粽師」改為「粽粽」（§a粽粽 §6🐉），綠色中式服裝 skin。一個 NPC 包辦四項功能：原料兌換、粽子合成、陣營選擇、稱號領取。南北粽統一使用 NPC 兌換面板合成。網站詳情頁 + events repo 同步 |
+| 2026.04.28 | 海風網站助手 | **端午節詳情頁全面重寫**：對標珍奶日設計品質——CSS 粽子藝術（三角粽葉+綁繩）、浮動葉片粒子動畫、視覺時間軸（JS 動態）、Quick Stats（6 原料/2 粽子/3 稱號）、NPC 區（粽粽皮膚+四功能+南北粽對話）、玩法總覽步驟卡、原料卡片網格、粽子對比卡片、票選/立蛋/龍舟/稱號區塊。全頁 1356 行，含 light mode + responsive + fade-in + section-divider + page-loader + back-link。NPC 位置改為小台北園區、顯示名稱移除 §l 粗體、對話改為南北粽對立網路梗 |
+| 2026.04.28 | 海風網站助手 | **DESIGN.md 新增第 8 節「活動子頁面設計指南」**：規範活動詳情頁的結構（Hero→基本資訊→NPC→時間軸→玩法→內容→稱號→Footer）、CSS 藝術規範、視覺時間軸規範、區塊規範、樣式規範（accent 色/Light mode/Responsive）、JS 規範、Cache Busting 規範。章節重新編號 8→11 |
 
 ---
 
-## 10. 注意事項
+## 11. 注意事項
 
 1. **每次修改都要更新此文件的修改記錄**（第 9 節）
 2. **CSS 結構不可破壞**：dark 樣式在前，light 覆蓋在該區段末尾

@@ -24,65 +24,696 @@
   <link rel="stylesheet" href="../style.css?v=280428c">
   <link rel="stylesheet" href="../music-player.css">
   <style>
-    .event-detail-header { text-align:center; padding:var(--space-2xl) var(--space-xl) var(--space-xl); position:relative; }
-    .event-detail-header::before { content:''; position:absolute; top:-40%; left:-10%; width:120%; height:180%; background:radial-gradient(ellipse at 50% 30%, rgba(168,230,207,0.05) 0%, transparent 60%); pointer-events:none; }
-    .event-detail-header > * { position:relative; z-index:1; }
-    .event-detail-header h1 { font-size:clamp(1.8rem,4vw,2.6rem); font-weight:800; color:var(--white); letter-spacing:-0.02em; margin-bottom:var(--space-sm); }
-    .event-detail-badge { display:inline-flex; align-items:center; gap:6px; font-size:0.8rem; font-weight:700; padding:5px 14px; border-radius:100px; background:rgba(255,170,50,0.12); color:#ffaa32; border:1px solid rgba(255,170,50,0.2); margin-bottom:var(--space-md); }
-    .event-detail-desc { color:var(--fog); font-size:1rem; max-width:600px; margin:0 auto; line-height:1.7; }
+    /* ═══ Event Detail Page — Dragon Boat Festival Edition ═══ */
 
-    .event-block { margin-bottom:var(--space-2xl); }
-    .event-block-title { font-size:1.1rem; font-weight:800; color:var(--white); margin-bottom:var(--space-md); padding-bottom:8px; border-bottom:2px solid rgba(168,230,207,0.12); display:flex; align-items:center; gap:8px; }
+    /* ── Hero ── */
+    .event-hero {
+      text-align: center;
+      padding: var(--space-2xl) var(--space-xl) var(--space-xl);
+      position: relative;
+      overflow: hidden;
+    }
+    .event-hero::before {
+      content: '';
+      position: absolute;
+      top: -60%; left: -20%; width: 140%; height: 200%;
+      background: radial-gradient(ellipse at 30% 20%, rgba(74,124,89,0.08) 0%, transparent 60%),
+                  radial-gradient(ellipse at 70% 80%, rgba(168,230,207,0.05) 0%, transparent 50%);
+      pointer-events: none;
+      z-index: 0;
+    }
+    .event-hero > * { position: relative; z-index: 1; }
 
-    .timeline { display:flex; gap:8px; margin:var(--space-lg) 0; flex-wrap:wrap; }
-    .timeline-item { flex:1; min-width:120px; padding:14px 12px; background:rgba(0,0,0,0.12); border:1px solid rgba(255,255,255,0.05); border-radius:var(--radius-sm); text-align:center; }
-    .timeline-item.active { border-color:rgba(168,230,207,0.3); background:rgba(168,230,207,0.06); }
-    .timeline-item .ti-phase { font-size:0.7rem; font-weight:700; color:var(--foam); text-transform:uppercase; letter-spacing:0.06em; margin-bottom:4px; }
-    .timeline-item .ti-name { font-size:0.88rem; font-weight:700; color:var(--white); margin-bottom:4px; }
-    .timeline-item .ti-desc { font-size:0.75rem; color:var(--fog); line-height:1.5; }
+    .event-hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      padding: 6px 16px;
+      border-radius: 100px;
+      background: rgba(168,230,207,0.1);
+      color: var(--foam);
+      border: 1px solid rgba(168,230,207,0.18);
+      margin-bottom: var(--space-md);
+      letter-spacing: 0.02em;
+    }
+    .event-hero h1 {
+      font-size: clamp(2rem, 5vw, 3rem);
+      font-weight: 900;
+      color: var(--white);
+      letter-spacing: -0.03em;
+      margin-bottom: var(--space-sm);
+      line-height: 1.2;
+    }
+    .event-hero-desc {
+      color: var(--fog);
+      font-size: 0.95rem;
+      max-width: 620px;
+      margin: 0 auto;
+      line-height: 1.8;
+    }
 
-    .ingredient-table { width:100%; border-collapse:collapse; margin:var(--space-md) 0; }
-    .ingredient-table th { text-align:left; font-size:0.78rem; font-weight:700; color:var(--fog); padding:8px 12px; border-bottom:1px solid rgba(255,255,255,0.08); text-transform:uppercase; letter-spacing:0.04em; }
-    .ingredient-table td { padding:10px 12px; font-size:0.88rem; color:var(--cloud); border-bottom:1px solid rgba(255,255,255,0.04); vertical-align:top; }
-    .ingredient-table tr:hover td { background:rgba(255,255,255,0.02); }
-    .ingredient-table .emoji-cell { font-size:1.2rem; text-align:center; width:40px; }
-    .ingredient-table .effect-bad { color:#ff9e9e; }
-    .ingredient-table .effect-ok { color:var(--foam); }
+    /* ── Zongzi CSS Art ── */
+    .zongzi-art {
+      display: flex;
+      justify-content: center;
+      margin: var(--space-xl) 0 var(--space-md);
+    }
+    .zongzi-wrap {
+      width: 100px;
+      height: 120px;
+      position: relative;
+    }
+    /* 粽葉主體 — 三角形 */
+    .zongzi-body {
+      width: 80px;
+      height: 90px;
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      background: linear-gradient(160deg, #5a9a6a 0%, #4a7c59 30%, #3d6b4a 60%, #2d5a3a 100%);
+      clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+      border-radius: 0 0 8px 8px;
+      box-shadow: 0 4px 20px rgba(45,90,58,0.4), inset 0 -8px 16px rgba(0,0,0,0.15);
+      overflow: hidden;
+    }
+    /* 粽葉紋理 */
+    .zongzi-body::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background:
+        linear-gradient(135deg, transparent 40%, rgba(255,255,255,0.06) 42%, transparent 44%),
+        linear-gradient(135deg, transparent 55%, rgba(255,255,255,0.04) 57%, transparent 59%),
+        linear-gradient(135deg, transparent 70%, rgba(255,255,255,0.05) 72%, transparent 74%);
+    }
+    /* 粽葉高光 */
+    .zongzi-body::after {
+      content: '';
+      position: absolute;
+      top: 8px; left: 18px;
+      width: 16px; height: 30px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.18), transparent);
+      border-radius: 50%;
+      transform: rotate(-15deg);
+    }
+    /* 綁繩 */
+    .zongzi-string {
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 4px;
+      height: 70px;
+      background: linear-gradient(180deg, #c49b6c, #a07850);
+      border-radius: 2px;
+      z-index: 2;
+      box-shadow: 1px 0 3px rgba(0,0,0,0.2);
+    }
+    .zongzi-string-cross {
+      position: absolute;
+      bottom: 30px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 60px;
+      height: 3px;
+      background: linear-gradient(90deg, #a07850, #c49b6c, #a07850);
+      border-radius: 2px;
+      z-index: 2;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+    }
+    /* 粽葉尖角裝飾 */
+    .zongzi-leaf-tip {
+      position: absolute;
+      top: 2px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 12px;
+      height: 20px;
+      background: linear-gradient(180deg, #6aaa7a, #4a7c59);
+      clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+      z-index: 3;
+    }
 
-    .zongzi-compare { display:grid; grid-template-columns:1fr 1fr; gap:var(--space-lg); margin:var(--space-lg) 0; }
-    .zongzi-card { padding:20px; background:rgba(0,0,0,0.12); border:1px solid rgba(255,255,255,0.06); border-radius:var(--radius-md); text-align:center; }
-    .zongzi-card h4 { font-size:1.1rem; font-weight:800; color:var(--white); margin-bottom:var(--space-sm); }
-    .zongzi-card .zongzi-emoji { font-size:2.5rem; margin-bottom:var(--space-sm); }
-    .zongzi-card p { font-size:0.85rem; color:var(--fog); line-height:1.6; }
-    .zongzi-card .zongzi-effect { margin-top:var(--space-sm); padding:8px 12px; background:rgba(168,230,207,0.08); border-radius:var(--radius-sm); font-size:0.82rem; color:var(--foam); }
+    /* ── Quick Stats ── */
+    .event-quick-stats {
+      display: flex;
+      justify-content: center;
+      gap: var(--space-xl);
+      margin: var(--space-lg) auto var(--space-xl);
+      flex-wrap: wrap;
+    }
+    .eqs-item { text-align: center; }
+    .eqs-num {
+      font-size: 1.8rem;
+      font-weight: 900;
+      background: linear-gradient(135deg, var(--foam), #5a9a6a);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      line-height: 1.2;
+    }
+    .eqs-label {
+      font-size: 0.72rem;
+      color: var(--fog);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-top: 2px;
+    }
 
-    .event-info-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(200px,1fr)); gap:10px; }
-    .event-info-item { padding:14px 16px; background:rgba(0,0,0,0.1); border:1px solid rgba(255,255,255,0.05); border-radius:var(--radius-sm); }
-    .event-info-item .ei-label { font-size:0.72rem; font-weight:600; color:var(--fog); text-transform:uppercase; letter-spacing:0.04em; margin-bottom:4px; }
-    .event-info-item .ei-value { font-size:0.95rem; font-weight:700; color:var(--white); }
+    /* ── Current Stage Banner ── */
+    .current-stage-banner {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 18px;
+      border-radius: 100px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      margin-bottom: var(--space-md);
+      animation: stage-glow 2s ease-in-out infinite;
+    }
+    .current-stage-banner.active {
+      background: rgba(168,230,207,0.1);
+      color: var(--foam);
+      border: 1px solid rgba(168,230,207,0.2);
+    }
+    .current-stage-banner .csb-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--foam);
+      animation: csb-pulse 1.5s ease-in-out infinite;
+    }
+    @keyframes csb-pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.5; transform: scale(1.3); }
+    }
+    @keyframes stage-glow {
+      0%, 100% { box-shadow: 0 0 0 rgba(168,230,207,0); }
+      50% { box-shadow: 0 0 12px rgba(168,230,207,0.15); }
+    }
 
-    .dragon-boat-diagram { padding:20px; background:rgba(0,0,0,0.15); border:1px solid rgba(255,255,255,0.05); border-radius:var(--radius-md); font-family:'Courier New',monospace; font-size:0.8rem; color:var(--fog); line-height:1.6; overflow-x:auto; white-space:pre; }
+    /* ── Visual Timeline ── */
+    .event-timeline-v {
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      gap: 0;
+      margin: var(--space-lg) auto var(--space-xl);
+      max-width: 900px;
+      position: relative;
+    }
+    .etv-stage {
+      flex: 1;
+      text-align: center;
+      position: relative;
+      padding: 0 8px;
+    }
+    .etv-dot {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      margin: 0 auto var(--space-sm);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.85rem;
+      font-weight: 700;
+      position: relative;
+      z-index: 2;
+      transition: all 0.3s;
+    }
+    .etv-dot.active {
+      background: linear-gradient(135deg, var(--foam), #5a9a6a);
+      color: var(--deep);
+      box-shadow: 0 0 16px rgba(168,230,207,0.35);
+    }
+    .etv-dot.upcoming {
+      background: rgba(255,255,255,0.06);
+      border: 2px solid rgba(255,255,255,0.12);
+      color: var(--fog);
+    }
+    .etv-dot.done {
+      background: rgba(168,230,207,0.15);
+      color: var(--foam);
+      border: 2px solid rgba(168,230,207,0.3);
+      box-shadow: none;
+    }
+    .etv-connector {
+      position: absolute;
+      top: 16px;
+      left: 50%;
+      right: -50%;
+      height: 2px;
+      z-index: 1;
+    }
+    .etv-connector.done {
+      background: linear-gradient(90deg, var(--foam), #5a9a6a);
+    }
+    .etv-connector.pending {
+      background: rgba(255,255,255,0.06);
+      background-image: repeating-linear-gradient(90deg, rgba(255,255,255,0.08) 0, rgba(255,255,255,0.08) 6px, transparent 6px, transparent 12px);
+    }
+    .etv-name {
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 2px;
+    }
+    .etv-date {
+      font-size: 0.7rem;
+      color: var(--foam);
+      margin-bottom: 4px;
+    }
+    .etv-desc {
+      font-size: 0.72rem;
+      color: var(--fog);
+      line-height: 1.5;
+    }
 
-    [data-theme="light"] .event-detail-header h1 { color:var(--cloud); }
-    [data-theme="light"] .event-block-title { color:var(--cloud); border-bottom-color:rgba(0,0,0,0.08); }
-    [data-theme="light"] .ingredient-table th { color:#6a737d; border-bottom-color:rgba(0,0,0,0.08); }
-    [data-theme="light"] .ingredient-table td { color:#444d56; border-bottom-color:rgba(0,0,0,0.04); }
-    [data-theme="light"] .ingredient-table tr:hover td { background:rgba(0,0,0,0.02); }
-    [data-theme="light"] .ingredient-table .effect-bad { color:#d73a49; }
-    [data-theme="light"] .ingredient-table .effect-ok { color:#22863a; }
-    [data-theme="light"] .zongzi-card { background:#fff; border-color:rgba(0,0,0,0.06); }
-    [data-theme="light"] .zongzi-card h4 { color:var(--cloud); }
-    [data-theme="light"] .zongzi-card p { color:#5a6270; }
-    [data-theme="light"] .zongzi-card .zongzi-effect { background:rgba(34,134,58,0.06); color:#22863a; }
-    [data-theme="light"] .timeline-item { background:#fff; border-color:rgba(0,0,0,0.06); }
-    [data-theme="light"] .timeline-item .ti-name { color:var(--cloud); }
-    [data-theme="light"] .event-info-item { background:#fff; border-color:rgba(0,0,0,0.06); }
-    [data-theme="light"] .event-info-item .ei-value { color:var(--cloud); }
-    [data-theme="light"] .dragon-boat-diagram { background:#f6f8fa; border-color:rgba(0,0,0,0.06); color:#444d56; }
+    /* ── Info Grid ── */
+    .info-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 10px; }
+    .info-item { padding: 14px 16px; background: rgba(0,0,0,0.12); border: 1px solid rgba(255,255,255,0.04); border-radius: 8px; }
+    .info-item .ii-label { font-size: 0.72rem; color: var(--fog); margin-bottom: 4px; }
+    .info-item .ii-value { font-size: 0.92rem; font-weight: 700; color: var(--cloud); }
 
-    @media(max-width:768px) {
-      .zongzi-compare { grid-template-columns:1fr; }
-      .timeline { flex-direction:column; }
+    /* ── How it works ── */
+    .how-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 12px;
+    }
+    .how-step {
+      text-align: center;
+      padding: 20px 16px;
+      background: rgba(0,0,0,0.12);
+      border: 1px solid rgba(255,255,255,0.04);
+      border-radius: var(--radius-md);
+      transition: all 0.3s var(--ease);
+    }
+    .how-step:hover {
+      transform: translateY(-4px);
+      border-color: rgba(168,230,207,0.15);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+    }
+    .how-step:hover .hs-icon { animation: how-bounce 0.4s ease; }
+    @keyframes how-bounce {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.15); }
+    }
+    .how-step .hs-icon {
+      font-size: 2rem;
+      margin-bottom: 8px;
+      display: block;
+    }
+    .how-step .hs-num {
+      font-size: 0.65rem;
+      font-weight: 700;
+      color: var(--foam);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 4px;
+    }
+    .how-step h4 {
+      font-size: 0.88rem;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 4px;
+    }
+    .how-step p {
+      font-size: 0.75rem;
+      color: var(--fog);
+      line-height: 1.5;
+    }
+
+    /* ── Ingredient Grid ── */
+    .ingredient-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+      gap: 8px;
+    }
+    .ingredient-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 14px;
+      background: rgba(0,0,0,0.12);
+      border: 1px solid rgba(255,255,255,0.04);
+      border-radius: 8px;
+      font-size: 0.82rem;
+      color: var(--cloud);
+      transition: all 0.2s;
+      position: relative;
+      overflow: hidden;
+    }
+    .ingredient-item:hover {
+      border-color: rgba(168,230,207,0.15);
+      background: rgba(168,230,207,0.04);
+    }
+    .ingredient-item::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: 8px;
+      background: radial-gradient(circle at 50% 50%, rgba(168,230,207,0.06), transparent);
+      opacity: 0;
+      transition: opacity 0.3s;
+      pointer-events: none;
+    }
+    .ingredient-item:hover::after { opacity: 1; }
+    .ingredient-item .ii-icon { font-size: 1.2rem; flex-shrink: 0; }
+    .ingredient-item .ii-info { display: flex; flex-direction: column; gap: 1px; }
+    .ingredient-item .ii-name { font-weight: 700; line-height: 1.3; }
+    .ingredient-item .ii-effect { font-size: 0.7rem; color: var(--fog); }
+    .ingredient-item .ii-effect.bad { color: #ff9e9e; }
+    .ingredient-item .ii-effect.ok { color: var(--foam); }
+
+    /* ── Zongzi Cards (Recipe Cards) ── */
+    .zongzi-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 12px;
+      margin-bottom: var(--space-xl);
+    }
+    .zongzi-card {
+      padding: 20px;
+      background: rgba(0,0,0,0.12);
+      border: 1px solid rgba(255,255,255,0.05);
+      border-radius: var(--radius-md);
+      transition: all 0.3s var(--ease);
+      position: relative;
+      overflow: hidden;
+    }
+    .zongzi-card:hover {
+      border-color: rgba(168,230,207,0.2);
+      background: rgba(168,230,207,0.04);
+      transform: translateY(-2px);
+    }
+    .zongzi-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 3px;
+      height: 100%;
+      background: linear-gradient(180deg, rgba(168,230,207,0.3), transparent);
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+    .zongzi-card:hover::before { opacity: 1; }
+    .zongzi-card-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 10px;
+    }
+    .zongzi-card-name {
+      font-size: 1rem;
+      font-weight: 800;
+      color: var(--white);
+      transition: color 0.2s;
+    }
+    .zongzi-card:hover .zongzi-card-name { color: var(--foam); }
+    .zongzi-card-type {
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: var(--foam);
+      background: rgba(168,230,207,0.1);
+      padding: 3px 10px;
+      border-radius: 100px;
+      white-space: nowrap;
+    }
+    .zongzi-card-recipe {
+      font-size: 0.8rem;
+      color: var(--fog);
+      margin-bottom: 10px;
+      line-height: 1.6;
+    }
+    .zongzi-card-effect {
+      padding: 8px 12px;
+      background: rgba(168,230,207,0.08);
+      border-radius: var(--radius-sm);
+      font-size: 0.82rem;
+      color: var(--foam);
+      font-weight: 500;
+    }
+    .zongzi-card-note {
+      margin-top: 8px;
+      font-size: 0.75rem;
+      color: var(--fog);
+    }
+    .zongzi-cards {
+      opacity: 0;
+      animation: zongzi-grid-in 0.5s var(--ease) forwards;
+    }
+    @keyframes zongzi-grid-in {
+      from { opacity: 0; transform: translateY(12px); }
+      to { opacity: 1; transform: none; }
+    }
+
+    /* ── Voting Section ── */
+    .vote-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-bottom: var(--space-md);
+    }
+    .vote-card {
+      padding: 20px;
+      border-radius: var(--radius-md);
+      text-align: center;
+      transition: all 0.3s var(--ease);
+    }
+    .vote-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.12);
+    }
+    .vote-card.south {
+      background: rgba(168,230,207,0.06);
+      border: 1px solid rgba(168,230,207,0.15);
+    }
+    .vote-card.north {
+      background: rgba(157,175,255,0.06);
+      border: 1px solid rgba(157,175,255,0.15);
+    }
+    .vote-card .vc-emoji { font-size: 2rem; margin-bottom: 6px; }
+    .vote-card .vc-label { font-size: 1rem; font-weight: 800; margin-bottom: 4px; }
+    .vote-card.south .vc-label { color: var(--foam); }
+    .vote-card.north .vc-label { color: var(--sky); }
+    .vote-card .vc-hint { font-size: 0.78rem; color: var(--fog); }
+
+    /* ── Challenge Cards ── */
+    .challenge-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 10px;
+    }
+    .challenge-card {
+      padding: 16px 18px;
+      border-radius: var(--radius-sm);
+      transition: all 0.3s var(--ease);
+    }
+    .challenge-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.12);
+    }
+    .challenge-card .cc-icon { font-size: 1.4rem; margin-bottom: 8px; }
+    .challenge-card .cc-title { font-size: 0.88rem; font-weight: 700; margin-bottom: 6px; }
+    .challenge-card .cc-desc { font-size: 0.78rem; color: var(--cloud); line-height: 1.6; }
+    .cc-egg { background: rgba(168,230,207,0.06); border: 1px solid rgba(168,230,207,0.1); }
+    .cc-egg .cc-title { color: var(--foam); }
+    .cc-boat { background: rgba(157,175,255,0.06); border: 1px solid rgba(157,175,255,0.1); }
+    .cc-boat .cc-title { color: var(--sky); }
+
+    /* ── Titles ── */
+    .title-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .title-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 14px;
+      background: rgba(168,230,207,0.06);
+      border: 1px solid rgba(168,230,207,0.12);
+      border-radius: 8px;
+      font-size: 0.82rem;
+      color: var(--cloud);
+      transition: all 0.2s;
+    }
+    .title-tag:hover {
+      border-color: rgba(168,230,207,0.25);
+      background: rgba(168,230,207,0.08);
+    }
+    .title-tag .tt-cond {
+      font-size: 0.68rem;
+      color: var(--fog);
+    }
+
+    /* ── Section blocks ── */
+    .event-block {
+      margin-bottom: var(--space-2xl);
+    }
+    .event-block-title {
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: var(--white);
+      margin-bottom: var(--space-lg);
+      padding-bottom: 10px;
+      border-bottom: 2px solid rgba(168,230,207,0.12);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .event-block-title .ebt-icon { font-size: 1.3rem; }
+
+    /* ── Back link ── */
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      color: var(--fog);
+      font-size: 0.85rem;
+      text-decoration: none;
+      padding: 6px 0;
+      transition: color 0.2s;
+      margin-bottom: var(--space-md);
+    }
+    .back-link:hover { color: var(--foam); }
+
+    /* ── Section divider ── */
+    .event-section-divider {
+      width: 60px;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, rgba(168,230,207,0.25), transparent);
+      margin: var(--space-2xl) auto;
+      border-radius: 1px;
+    }
+
+    /* ── MC Head Icons ── */
+    .mc-head {
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      vertical-align: middle;
+      margin-right: 2px;
+      image-rendering: pixelated;
+      border-radius: 2px;
+      flex-shrink: 0;
+    }
+
+    /* ── Floating Leaves (hero atmosphere) ── */
+    .zongzi-leaves {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+      pointer-events: none;
+      z-index: 0;
+    }
+    .zongzi-leaf {
+      position: absolute;
+      font-size: 1rem;
+      animation: leaf-float-up linear infinite;
+      opacity: 0;
+    }
+    @keyframes leaf-float-up {
+      0%   { transform: translateY(0) rotate(0deg) scale(1); opacity: 0; }
+      10%  { opacity: 0.7; }
+      50%  { opacity: 0.4; }
+      90%  { opacity: 0.15; }
+      100% { transform: translateY(-220px) rotate(180deg) scale(0.5); opacity: 0; }
+    }
+
+    /* ── Dragon Boat Diagram ── */
+    .dragon-boat-diagram {
+      padding: 20px;
+      background: rgba(0,0,0,0.15);
+      border: 1px solid rgba(255,255,255,0.05);
+      border-radius: var(--radius-md);
+      font-family: 'Courier New', monospace;
+      font-size: 0.8rem;
+      color: var(--fog);
+      line-height: 1.6;
+      overflow-x: auto;
+      white-space: pre;
+    }
+
+    /* ── Info callout ── */
+    .info-callout {
+      padding: 16px 20px;
+      background: linear-gradient(135deg, rgba(168,230,207,0.08), rgba(168,230,207,0.03));
+      border: 1px solid rgba(168,230,207,0.2);
+      border-radius: var(--radius-md);
+      margin-top: var(--space-lg);
+    }
+    .info-callout .ic-title {
+      font-size: 0.92rem;
+      font-weight: 700;
+      color: var(--foam);
+      margin-bottom: 8px;
+    }
+    .info-callout .ic-body {
+      font-size: 0.85rem;
+      color: var(--cloud);
+      line-height: 1.8;
+    }
+
+    /* ── Light mode ── */
+    [data-theme="light"] .event-hero h1 { color: var(--cloud); }
+    [data-theme="light"] .info-item { background: rgba(0,0,0,0.02); border-color: rgba(0,0,0,0.05); }
+    [data-theme="light"] .event-block-title { color: var(--cloud); border-bottom-color: rgba(168,230,207,0.1); }
+    [data-theme="light"] .etv-dot.done { background: rgba(168,230,207,0.2); border-color: rgba(168,230,207,0.4); }
+    [data-theme="light"] .etv-name { color: var(--cloud); }
+    [data-theme="light"] .etv-desc { color: #6b7280; }
+    [data-theme="light"] .etv-dot.upcoming { background: rgba(0,0,0,0.04); border-color: rgba(0,0,0,0.1); }
+    [data-theme="light"] .how-step { background: rgba(0,0,0,0.02); border-color: rgba(0,0,0,0.05); }
+    [data-theme="light"] .how-step h4 { color: var(--cloud); }
+    [data-theme="light"] .ingredient-item { color: #3a3f4b; background: rgba(0,0,0,0.02); border-color: rgba(0,0,0,0.05); }
+    [data-theme="light"] .ingredient-item .ii-effect { color: #6b7280; }
+    [data-theme="light"] .ingredient-item .ii-effect.bad { color: #d73a49; }
+    [data-theme="light"] .ingredient-item .ii-effect.ok { color: #22863a; }
+    [data-theme="light"] .zongzi-card { background: rgba(0,0,0,0.03); border-color: rgba(0,0,0,0.06); }
+    [data-theme="light"] .zongzi-card:hover { background: rgba(168,230,207,0.04); border-color: rgba(168,230,207,0.15); }
+    [data-theme="light"] .zongzi-card-name { color: var(--cloud); }
+    [data-theme="light"] .zongzi-card-recipe { color: #6b7280; }
+    [data-theme="light"] .zongzi-card-effect { background: rgba(34,134,58,0.06); color: #22863a; }
+    [data-theme="light"] .vote-card.south { background: rgba(34,134,58,0.04); border-color: rgba(34,134,58,0.12); }
+    [data-theme="light"] .vote-card.north { background: rgba(157,175,255,0.04); border-color: rgba(157,175,255,0.12); }
+    [data-theme="light"] .vote-card.south .vc-label { color: #22863a; }
+    [data-theme="light"] .vote-card.north .vc-label { color: #4a6cf7; }
+    [data-theme="light"] .challenge-card .cc-desc { color: #5a6270; }
+    [data-theme="light"] .title-tag { color: #3a3f4b; background: rgba(34,134,58,0.04); border-color: rgba(34,134,58,0.1); }
+    [data-theme="light"] .dragon-boat-diagram { background: #f6f8fa; border-color: rgba(0,0,0,0.06); color: #444d56; }
+    [data-theme="light"] .info-callout { background: linear-gradient(135deg, rgba(34,134,58,0.06), rgba(34,134,58,0.02)); border-color: rgba(34,134,58,0.15); }
+    [data-theme="light"] .info-callout .ic-title { color: #22863a; }
+    [data-theme="light"] .info-callout .ic-body { color: #444d56; }
+
+    /* ── Responsive ── */
+    @media (max-width: 768px) {
+      .event-quick-stats { gap: var(--space-lg); }
+      .eqs-num { font-size: 1.4rem; }
+      .event-timeline-v { flex-direction: column; align-items: center; gap: 0; }
+      .etv-stage { padding: 12px 0; }
+      .etv-connector { display: none; }
+      .how-grid { grid-template-columns: repeat(2, 1fr); }
+      .ingredient-grid { grid-template-columns: 1fr; }
+      .zongzi-cards { grid-template-columns: 1fr; }
+      .vote-grid { grid-template-columns: 1fr; }
+      .dragon-boat-diagram { font-size: 0.65rem; }
+    }
+    @media (max-width: 480px) {
+      .how-grid { grid-template-columns: 1fr; }
+    }
+
+    /* ── Print ── */
+    @media print {
+      .back-link, .nav, .footer, .scroll-progress, .bg-atmosphere, .event-section-divider, .zongzi-art, .zongzi-leaves, .current-stage-banner, .page-loader { display: none !important; }
+      .event-hero { padding: 16px 0; }
+      .zongzi-card, .challenge-card { break-inside: avoid; }
     }
   </style>
 </head>
@@ -146,171 +777,386 @@
   </nav>
 
   <div class="page">
-    <div id="mainContent" class="event-detail-header fade-in">
-      <span class="event-detail-badge">🐉 限時活動</span>
-      <h1>2026 海風端午節</h1>
-      <p class="event-detail-desc">收集肉粽、南北粽票選、立蛋挑戰、龍舟競賽——用 Minecraft 的方式過端午！</p>
-    </div>
+    <div class="content-section" id="mainContent">
 
-    <div class="content-section">
+      <!-- Breadcrumb -->
+      <a href="../活動" class="back-link">← 返回活動列表</a>
 
-      <!-- 基本資訊 -->
-      <div class="event-block">
-        <div class="event-block-title">📋 基本資訊</div>
-        <div class="event-info-grid">
-          <div class="event-info-item"><div class="ei-label">活動期間</div><div class="ei-value">6/5 – 6/30</div></div>
-          <div class="event-info-item"><div class="ei-label">正式期</div><div class="ei-value">6/10 – 6/27</div></div>
-          <div class="event-info-item"><div class="ei-label">端午節</div><div class="ei-value">6/19（農曆五月初五）</div></div>
-          <div class="event-info-item"><div class="ei-label">NPC</div><div class="ei-value">粽粽 🐉</div></div>
-          <div class="event-info-item"><div class="ei-label">核心玩法</div><div class="ei-value">收集 + 票選 + 立蛋 + 龍舟</div></div>
-          <div class="event-info-item"><div class="ei-label">活動道具</div><div class="ei-value">11 個 MMOItems</div></div>
+      <!-- ═══ Hero ═══ -->
+      <div class="event-hero fade-in">
+        <!-- Floating Leaf Particles -->
+        <div class="zongzi-leaves" id="zongziLeaves" aria-hidden="true"></div>
+
+        <div class="event-hero-badge">🐉 限時活動 · 6/5 – 6/30</div>
+
+        <!-- Current Stage Banner (JS 動態更新) -->
+        <div class="current-stage-banner active" id="currentStageBanner">
+          <span class="csb-dot"></span>
+          <span id="currentStageText">活動籌備中</span>
+        </div>
+
+        <h1>🐉 2026 海風端午節</h1>
+
+        <!-- CSS Zongzi Art -->
+        <div class="zongzi-art">
+          <div class="zongzi-wrap">
+            <div class="zongzi-leaf-tip"></div>
+            <div class="zongzi-body"></div>
+            <div class="zongzi-string"></div>
+            <div class="zongzi-string-cross"></div>
+          </div>
+        </div>
+
+        <p class="event-hero-desc">
+          收集肉粽、南北粽票選、立蛋挑戰、龍舟競賽——用 Minecraft 的方式過端午！找 NPC 粽粽包粽子、選陣營，爭奪限定稱號！
+        </p>
+
+        <!-- Quick Stats -->
+        <div class="event-quick-stats">
+          <div class="eqs-item"><div class="eqs-num">6</div><div class="eqs-label">種原料</div></div>
+          <div class="eqs-item"><div class="eqs-num">2</div><div class="eqs-label">種粽子</div></div>
+          <div class="eqs-item"><div class="eqs-num">3</div><div class="eqs-label">限定稱號</div></div>
         </div>
       </div>
 
-      <!-- 時程 -->
-      <div class="event-block">
-        <div class="event-block-title">📅 時程規劃</div>
-        <div class="timeline">
-          <div class="timeline-item">
-            <div class="ti-phase">測試期</div>
-            <div class="ti-name">5/29 – 6/4</div>
-            <div class="ti-desc">內部測試</div>
+      <!-- ═══ 基本資訊 ═══ -->
+      <div class="event-block fade-in">
+        <div class="event-block-title"><span class="ebt-icon">📋</span> 基本資訊</div>
+        <div class="info-grid">
+          <div class="info-item">
+            <div class="ii-label">活動期間</div>
+            <div class="ii-value">6/5 – 6/30</div>
           </div>
-          <div class="timeline-item">
-            <div class="ti-phase">建造期</div>
-            <div class="ti-name">6/5 – 6/9</div>
-            <div class="ti-desc">場地建造中</div>
+          <div class="info-item">
+            <div class="ii-label">正式期</div>
+            <div class="ii-value">6/10 – 6/27</div>
           </div>
-          <div class="timeline-item active">
-            <div class="ti-phase">正式期</div>
-            <div class="ti-name">6/10 – 6/27</div>
-            <div class="ti-desc">全部開放</div>
+          <div class="info-item">
+            <div class="ii-label">端午節</div>
+            <div class="ii-value">6/19（農曆五月初五）</div>
           </div>
-          <div class="timeline-item">
-            <div class="ti-phase">收尾期</div>
-            <div class="ti-name">6/28 – 6/30</div>
-            <div class="ti-desc">票選結算</div>
+          <div class="info-item">
+            <div class="ii-label">NPC</div>
+            <div class="ii-value">粽粽 🐉</div>
+          </div>
+          <div class="info-item">
+            <div class="ii-label">核心玩法</div>
+            <div class="ii-value">收集 + 票選 + 立蛋 + 龍舟</div>
+          </div>
+          <div class="info-item">
+            <div class="ii-label">活動道具</div>
+            <div class="ii-value">11 個 MMOItems</div>
           </div>
         </div>
       </div>
 
-      <!-- 收集系統 -->
-      <div class="event-block">
-        <div class="event-block-title">🍚 收集系統：肉粽</div>
-        <p style="color:var(--fog);font-size:0.9rem;margin-bottom:var(--space-md);line-height:1.7;">
+      <div class="event-section-divider"></div>
+
+      <!-- ═══ 活動 NPC ═══ -->
+      <div class="event-block fade-in">
+        <div class="event-block-title"><span class="ebt-icon">🐉</span> 活動 NPC</div>
+        <div style="display:flex;flex-direction:column;align-items:center;gap:12px;">
+          <img src="../assets/skins/粽粽_head.png" alt="粽粽" style="width:72px;height:72px;image-rendering:pixelated;border-radius:var(--radius-md);border:2px solid rgba(168,230,207,0.25);box-shadow:0 4px 16px rgba(0,0,0,0.2);" loading="lazy">
+          <div style="text-align:center;">
+            <div style="font-weight:800;color:var(--white);font-size:1.1rem;margin-bottom:4px;">§a粽粽 §6🐉</div>
+            <div style="font-size:0.82rem;color:var(--fog);margin-bottom:12px;">小台北園區 · 四合一功能 NPC</div>
+            <div style="font-size:0.85rem;color:var(--cloud);line-height:1.8;max-width:440px;margin:0 auto;">
+              「你支持南部粽還是北部粽？選了就不能改ㄛ！」<br>
+              「南部粽才是正統啦～水煮花生才是靈魂！」<br>
+              「北部粽蒸的才好吃！粒粒分明懂不懂！」
+            </div>
+            <div style="font-size:0.82rem;color:var(--foam);margin-bottom:8px;">綠色中式服裝</div>
+          </div>
+          <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:8px;width:100%;max-width:800px;">
+            <div style="padding:10px 14px;background:rgba(0,0,0,0.12);border:1px solid rgba(255,255,255,0.04);border-radius:8px;text-align:center;">
+              <div style="font-size:1.2rem;margin-bottom:4px;">🔄</div>
+              <div style="font-size:0.82rem;font-weight:700;color:var(--cloud);">原料兌換</div>
+            </div>
+            <div style="padding:10px 14px;background:rgba(0,0,0,0.12);border:1px solid rgba(255,255,255,0.04);border-radius:8px;text-align:center;">
+              <div style="font-size:1.2rem;margin-bottom:4px;">🫔</div>
+              <div style="font-size:0.82rem;font-weight:700;color:var(--cloud);">粽子合成</div>
+            </div>
+            <div style="padding:10px 14px;background:rgba(0,0,0,0.12);border:1px solid rgba(255,255,255,0.04);border-radius:8px;text-align:center;">
+              <div style="font-size:1.2rem;margin-bottom:4px;">🗳️</div>
+              <div style="font-size:0.82rem;font-weight:700;color:var(--cloud);">陣營選擇</div>
+            </div>
+            <div style="padding:10px 14px;background:rgba(0,0,0,0.12);border:1px solid rgba(255,255,255,0.04);border-radius:8px;text-align:center;">
+              <div style="font-size:1.2rem;margin-bottom:4px;">🏷️</div>
+              <div style="font-size:0.82rem;font-weight:700;color:var(--cloud);">稱號領取</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="event-section-divider"></div>
+
+      <!-- ═══ 時程規劃 ═══ -->
+      <div class="event-block fade-in">
+        <div class="event-block-title"><span class="ebt-icon">📅</span> 時程規劃</div>
+        <div class="event-timeline-v">
+          <div class="etv-stage">
+            <div class="etv-dot upcoming" style="width:auto;padding:0 8px;border-radius:100px;font-size:0.75rem;">測</div>
+            <div class="etv-connector pending"></div>
+            <div class="etv-name">測試期</div>
+            <div class="etv-date">5/29 – 6/4</div>
+            <div class="etv-desc">內部測試，確認系統穩定</div>
+          </div>
+          <div class="etv-stage">
+            <div class="etv-dot upcoming" style="width:auto;padding:0 8px;border-radius:100px;font-size:0.75rem;">建</div>
+            <div class="etv-connector pending"></div>
+            <div class="etv-name">建造期</div>
+            <div class="etv-date">6/5 – 6/9</div>
+            <div class="etv-desc">場地建造中，活動尚未開放</div>
+          </div>
+          <div class="etv-stage">
+            <div class="etv-dot upcoming" style="width:auto;padding:0 8px;border-radius:100px;font-size:0.75rem;">開</div>
+            <div class="etv-connector pending"></div>
+            <div class="etv-name">正式期</div>
+            <div class="etv-date">6/10 – 6/27</div>
+            <div class="etv-desc">收集、合成、票選、立蛋、龍舟全面開放</div>
+          </div>
+          <div class="etv-stage">
+            <div class="etv-dot upcoming" style="width:auto;padding:0 8px;border-radius:100px;font-size:0.75rem;">尾</div>
+            <div class="etv-name">收尾期</div>
+            <div class="etv-date">6/28 – 6/30</div>
+            <div class="etv-desc">票選結算，稱號發放</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="event-section-divider"></div>
+
+      <!-- ═══ 玩法總覽 ═══ -->
+      <div class="event-block fade-in">
+        <div class="event-block-title"><span class="ebt-icon">🎮</span> 玩法總覽</div>
+        <div class="how-grid">
+          <div class="how-step">
+            <span class="hs-icon">🐾</span>
+            <div class="hs-num">步驟一</div>
+            <h4>收集原料</h4>
+            <p>打 MythicMobs、打蠹魚、種植兌換，三種管道收集 6 種原料</p>
+          </div>
+          <div class="how-step">
+            <span class="hs-icon">🫔</span>
+            <div class="hs-num">步驟二</div>
+            <h4>包粽子</h4>
+            <p>找 NPC 粽粽，用原料合成南部粽或北部粽</p>
+          </div>
+          <div class="how-step">
+            <span class="hs-icon">🗳️</span>
+            <div class="hs-num">步驟三</div>
+            <h4>票選陣營</h4>
+            <p>選南部粽還是北部粽？每人只能選一邊，這就是你的票！</p>
+          </div>
+          <div class="how-step">
+            <span class="hs-icon">🏆</span>
+            <div class="hs-num">步驟四</div>
+            <h4>爭奪稱號</h4>
+            <p>參加立蛋挑戰、龍舟競賽，贏取限定稱號與獎盃</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="event-section-divider"></div>
+
+      <!-- ═══ 收集系統 ═══ -->
+      <div class="event-block fade-in">
+        <div class="event-block-title"><span class="ebt-icon">📦</span> 收集系統：原料</div>
+        <p style="color:var(--fog);font-size:0.85rem;margin-bottom:var(--space-lg);line-height:1.7;">
           透過三種管道收集原料，合成南部粽或北部粽。原料可直接食用，但效果嘛⋯⋯不如乖乖包粽子。
         </p>
 
+        <!-- 取得管道 -->
         <h4 style="color:var(--white);font-size:0.95rem;margin:var(--space-lg) 0 var(--space-sm);">原料取得管道</h4>
-        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:var(--space-lg);">
-          <div style="padding:12px;background:rgba(0,0,0,0.1);border:1px solid rgba(255,255,255,0.05);border-radius:var(--radius-sm);text-align:center;">
-            <div style="font-size:1.5rem;margin-bottom:4px;">🐾</div>
-            <div style="font-size:0.82rem;color:var(--white);">打 MythicMobs</div>
-            <div style="font-size:0.75rem;color:var(--fog);">端午豬→五花肉、端午雞→特殊蛋</div>
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:var(--space-xl);">
+          <div style="padding:14px;background:rgba(0,0,0,0.12);border:1px solid rgba(255,255,255,0.04);border-radius:8px;text-align:center;">
+            <div style="font-size:1.5rem;margin-bottom:6px;">🐾</div>
+            <div style="font-size:0.85rem;font-weight:700;color:var(--cloud);">打 MythicMobs</div>
+            <div style="font-size:0.75rem;color:var(--fog);margin-top:4px;">端午豬→五花肉、端午雞→特殊蛋</div>
           </div>
-          <div style="padding:12px;background:rgba(0,0,0,0.1);border:1px solid rgba(255,255,255,0.05);border-radius:var(--radius-sm);text-align:center;">
-            <div style="font-size:1.5rem;margin-bottom:4px;">🐛</div>
-            <div style="font-size:0.82rem;color:var(--white);">打蠹魚</div>
-            <div style="font-size:0.75rem;color:var(--fog);">蠹魚掉米蟲 → NPC 換糯米</div>
+          <div style="padding:14px;background:rgba(0,0,0,0.12);border:1px solid rgba(255,255,255,0.04);border-radius:8px;text-align:center;">
+            <div style="font-size:1.5rem;margin-bottom:6px;">🐛</div>
+            <div style="font-size:0.85rem;font-weight:700;color:var(--cloud);">打蠹魚</div>
+            <div style="font-size:0.75rem;color:var(--fog);margin-top:4px;">蠹魚掉米蟲 → NPC 換糯米</div>
           </div>
-          <div style="padding:12px;background:rgba(0,0,0,0.1);border:1px solid rgba(255,255,255,0.05);border-radius:var(--radius-sm);text-align:center;">
-            <div style="font-size:1.5rem;margin-bottom:4px;">🌿</div>
-            <div style="font-size:0.82rem;color:var(--white);">種植兌換</div>
-            <div style="font-size:0.75rem;color:var(--fog);">竹子→粽葉、可可豆→花生</div>
+          <div style="padding:14px;background:rgba(0,0,0,0.12);border:1px solid rgba(255,255,255,0.04);border-radius:8px;text-align:center;">
+            <div style="font-size:1.5rem;margin-bottom:6px;">🌿</div>
+            <div style="font-size:0.85rem;font-weight:700;color:var(--cloud);">種植兌換</div>
+            <div style="font-size:0.75rem;color:var(--fog);margin-top:4px;">竹子→粽葉、可可豆→花生</div>
           </div>
         </div>
 
+        <!-- 原料與生吃效果 -->
         <h4 style="color:var(--white);font-size:0.95rem;margin:var(--space-lg) 0 var(--space-sm);">原料與生吃效果</h4>
-        <table class="ingredient-table">
-          <thead>
-            <tr><th></th><th>原料</th><th>取得方式</th><th>生吃效果</th></tr>
-          </thead>
-          <tbody>
-            <tr><td class="emoji-cell">🌾</td><td>糯米</td><td>蠹魚掉米蟲 → NPC 兌換</td><td class="effect-bad">飽食 2 + 緩慢 I（0:05）</td></tr>
-            <tr><td class="emoji-cell">🥩</td><td>五花肉</td><td>殺 MythicMobs「端午豬」掉落</td><td class="effect-bad">飽食 3 + 飢餓 I（0:08）+ 噁心 I（0:03）</td></tr>
-            <tr><td class="emoji-cell">🥚</td><td>特殊蛋</td><td>殺 MythicMobs「端午雞」掉落</td><td class="effect-bad">飽食 1 + 噁心 I（0:05）</td></tr>
-            <tr><td class="emoji-cell">🌿</td><td>粽葉</td><td>種竹子 ×16 → NPC 兌換 ×2</td><td class="effect-bad">飽食 0 + 中毒 I（0:03）</td></tr>
-            <tr><td class="emoji-cell">🥜</td><td>花生</td><td>種可可豆 ×16 → NPC 兌換 ×2</td><td class="effect-ok">飽食 2（安全！唯一無負面效果）</td></tr>
-            <tr><td class="emoji-cell">🐛</td><td>米蟲</td><td>蠹魚掉落</td><td class="effect-bad">飽食 1 + 飢餓 II（0:10）+ 噁心 II（0:08）⚠️</td></tr>
-          </tbody>
-        </table>
-        <p style="color:var(--fog);font-size:0.8rem;margin-top:var(--space-sm);font-style:italic;">
+        <div class="ingredient-grid">
+          <div class="ingredient-item">
+            <span class="ii-icon">🌾</span>
+            <div class="ii-info">
+              <span class="ii-name">糯米</span>
+              <span class="ii-effect bad">飽食 2 + 緩慢 I（0:05）</span>
+            </div>
+          </div>
+          <div class="ingredient-item">
+            <span class="ii-icon">🥩</span>
+            <div class="ii-info">
+              <span class="ii-name">五花肉</span>
+              <span class="ii-effect bad">飽食 3 + 飢餓 I + 噁心 I</span>
+            </div>
+          </div>
+          <div class="ingredient-item">
+            <span class="ii-icon">🥚</span>
+            <div class="ii-info">
+              <span class="ii-name">特殊蛋</span>
+              <span class="ii-effect bad">飽食 1 + 噁心 I（0:05）</span>
+            </div>
+          </div>
+          <div class="ingredient-item">
+            <span class="ii-icon">🌿</span>
+            <div class="ii-info">
+              <span class="ii-name">粽葉</span>
+              <span class="ii-effect bad">飽食 0 + 中毒 I（0:03）</span>
+            </div>
+          </div>
+          <div class="ingredient-item">
+            <span class="ii-icon">🥜</span>
+            <div class="ii-info">
+              <span class="ii-name">花生</span>
+              <span class="ii-effect ok">飽食 2（安全！唯一無負面效果）</span>
+            </div>
+          </div>
+          <div class="ingredient-item">
+            <span class="ii-icon">🐛</span>
+            <div class="ii-info">
+              <span class="ii-name">米蟲</span>
+              <span class="ii-effect bad">飽食 1 + 飢餓 II + 噁心 II ⚠️</span>
+            </div>
+          </div>
+        </div>
+        <p style="color:var(--fog);font-size:0.78rem;margin-top:var(--space-md);font-style:italic;">
           💡 花生是唯一安全的生吃原料。米蟲是隱藏彩蛋——你確定要吃嗎？特殊蛋需先在工作台 1:1 合成鹹蛋黃，再用於包粽子。
         </p>
-
-        <h4 style="color:var(--white);font-size:0.95rem;margin:var(--space-xl) 0 var(--space-sm);">合成配方</h4>
-        <div class="zongzi-compare">
-          <div class="zongzi-card">
-            <div class="zongzi-emoji">🫔</div>
-            <h4>南部粽</h4>
-            <p style="font-size:0.78rem;color:var(--fog);margin-bottom:4px;">水煮｜NPC 兌換面板</p>
-            <p>糯米×4 + 五花肉×2 + 鹹蛋黃×1 + 粽葉×2 + 花生×2</p>
-            <div class="zongzi-effect">🍖 飽食 4 + 飽和 7 + 回復 I（0:30）</div>
-            <p style="margin-top:8px;font-size:0.78rem;">水煮派，多一味花生，效果偏向回復</p>
-          </div>
-          <div class="zongzi-card">
-            <div class="zongzi-emoji">🫔</div>
-            <h4>北部粽</h4>
-            <p style="font-size:0.78rem;color:var(--fog);margin-bottom:4px;">蒸煮｜NPC 兌換面板</p>
-            <p>糯米×4 + 五花肉×2 + 鹹蛋黃×1 + 粽葉×2</p>
-            <div class="zongzi-effect">🍖 飽食 4 + 飽和 7 + 速度 I（1:00）</div>
-            <p style="margin-top:8px;font-size:0.78rem;">蒸煮派，粒粒分明，效果偏向機動性</p>
-          </div>
-        </div>
       </div>
 
-      <!-- 票選活動 -->
-      <div class="event-block">
-        <div class="event-block-title">🗳️ 票選活動：南部粽 vs 北部粽</div>
-        <p style="color:var(--cloud);font-size:0.92rem;line-height:1.7;margin-bottom:var(--space-md);">
+      <div class="event-section-divider"></div>
+
+      <!-- ═══ 合成配方 ═══ -->
+      <div class="event-block fade-in">
+        <div class="event-block-title"><span class="ebt-icon">🫔</span> 合成配方</div>
+        <div class="zongzi-cards">
+          <div class="zongzi-card">
+            <div class="zongzi-card-header">
+              <span class="zongzi-card-name">🫔 南部粽</span>
+              <span class="zongzi-card-type">水煮</span>
+            </div>
+            <div class="zongzi-card-recipe">糯米×4 + 五花肉×2 + 鹹蛋黃×1 + 粽葉×2 + 花生×2</div>
+            <div class="zongzi-card-effect">🍖 飽食 4 + 飽和 7 + 回復 I（0:30）</div>
+            <div class="zongzi-card-note">水煮派，多一味花生，效果偏向回復</div>
+          </div>
+          <div class="zongzi-card">
+            <div class="zongzi-card-header">
+              <span class="zongzi-card-name">🫔 北部粽</span>
+              <span class="zongzi-card-type">蒸煮</span>
+            </div>
+            <div class="zongzi-card-recipe">糯米×4 + 五花肉×2 + 鹹蛋黃×1 + 粽葉×2</div>
+            <div class="zongzi-card-effect">🍖 飽食 4 + 飽和 7 + 速度 I（1:00）</div>
+            <div class="zongzi-card-note">蒸煮派，粒粒分明，效果偏向機動性</div>
+          </div>
+        </div>
+        <p style="color:var(--fog);font-size:0.82rem;line-height:1.6;">
+          💡 兩種粽子都透過 NPC 粽粽的兌換面板合成，不需要工作台。
+        </p>
+      </div>
+
+      <div class="event-section-divider"></div>
+
+      <!-- ═══ 票選活動 ═══ -->
+      <div class="event-block fade-in">
+        <div class="event-block-title"><span class="ebt-icon">🗳️</span> 票選活動：南部粽 vs 北部粽</div>
+        <p style="color:var(--cloud);font-size:0.92rem;line-height:1.7;margin-bottom:var(--space-lg);">
           做好粽子後，找 NPC「粽粽」選擇陣營——你只能選一邊，這就是你的票！
         </p>
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
-          <div style="padding:16px;background:rgba(222,172,128,0.06);border:1px solid rgba(222,172,128,0.15);border-radius:var(--radius-sm);text-align:center;">
-            <div style="font-size:1.8rem;margin-bottom:4px;">🫔</div>
-            <div style="color:var(--sand);">支持南部粽</div>
-            <div style="font-size:0.8rem;color:var(--fog);margin-top:4px;">合成南部粽 → 選擇陣營</div>
+        <div class="vote-grid">
+          <div class="vote-card south">
+            <div class="vc-emoji">🫔</div>
+            <div class="vc-label">支持南部粽</div>
+            <div class="vc-hint">合成南部粽 → 選擇陣營</div>
           </div>
-          <div style="padding:16px;background:rgba(157,175,255,0.06);border:1px solid rgba(157,175,255,0.15);border-radius:var(--radius-sm);text-align:center;">
-            <div style="font-size:1.8rem;margin-bottom:4px;">🫔</div>
-            <div style="color:var(--sky);">支持北部粽</div>
-            <div style="font-size:0.8rem;color:var(--fog);margin-top:4px;">合成北部粽 → 選擇陣營</div>
+          <div class="vote-card north">
+            <div class="vc-emoji">🫔</div>
+            <div class="vc-label">支持北部粽</div>
+            <div class="vc-hint">合成北部粽 → 選擇陣營</div>
           </div>
         </div>
-        <p style="color:var(--fog);font-size:0.82rem;margin-top:var(--space-md);line-height:1.6;">
-          ⚠️ 每人只能選一邊，選了就不能改。粽子吃完就沒了，想投票要再做一顆。<br>
-          🎁 活動結束後，凡在活動期間有上線過的玩家，皆可獲得贏方稱號！<br>
-          6/30 統計兌換人數公布贏家——這是一場粽子大戰！
-        </p>
+        <div class="info-callout">
+          <div class="ic-title">⚠️ 投票規則</div>
+          <div class="ic-body">
+            每人只能選一邊，選了就不能改。粽子吃完就沒了，想投票要再做一顆。<br>
+            🎁 活動結束後，凡在活動期間有上線過的玩家，皆可獲得贏方稱號！<br>
+            6/30 統計兌換人數公布贏家——這是一場粽子大戰！
+          </div>
+        </div>
       </div>
 
-      <!-- 立蛋挑戰 -->
-      <div class="event-block">
-        <div class="event-block-title">🥚 立蛋挑戰</div>
-        <div class="event-info-grid" style="margin-bottom:var(--space-md);">
-          <div class="event-info-item"><div class="ei-label">舉辦時間</div><div class="ei-value">6/19 19:30</div></div>
-          <div class="event-info-item"><div class="ei-label">時長</div><div class="ei-value">約 10 分鐘</div></div>
-          <div class="event-info-item"><div class="ei-label">嘗試次數</div><div class="ei-value">每人 3 次</div></div>
-          <div class="event-info-item"><div class="ei-label">投擲方式</div><div class="ei-value">Q 鍵丟棄雞蛋</div></div>
+      <div class="event-section-divider"></div>
+
+      <!-- ═══ 立蛋挑戰 ═══ -->
+      <div class="event-block fade-in">
+        <div class="event-block-title"><span class="ebt-icon">🥚</span> 立蛋挑戰</div>
+        <div class="info-grid" style="margin-bottom:var(--space-lg);">
+          <div class="info-item">
+            <div class="ii-label">舉辦時間</div>
+            <div class="ii-value">6/19 19:30</div>
+          </div>
+          <div class="info-item">
+            <div class="ii-label">時長</div>
+            <div class="ii-value">約 10 分鐘</div>
+          </div>
+          <div class="info-item">
+            <div class="ii-label">嘗試次數</div>
+            <div class="ii-value">每人 3 次</div>
+          </div>
+          <div class="info-item">
+            <div class="ii-label">投擲方式</div>
+            <div class="ii-value">Q 鍵丟棄雞蛋</div>
+          </div>
         </div>
         <p style="color:var(--cloud);font-size:0.92rem;line-height:1.7;">
           傳統端午立蛋，在海風變成 Minecraft 版的精準投擲！用 Q 鍵將雞蛋丟到目標區域，成功觸發判定 = 立蛋成功。
-          成功立蛋可獲得「🥚 立蛋獎」紀念道具（DRAGON_EGG），當天成功次數最多者額外獲得稱號「立蛋冠軍」🏆
         </p>
+        <div class="info-callout">
+          <div class="ic-title">🏆 獎勵</div>
+          <div class="ic-body">
+            成功立蛋可獲得「🥚 立蛋獎」紀念道具（龍蛋造型），每人最多 3 次機會。<br>
+            當天成功次數最多者額外獲得稱號「<strong style="color:var(--foam);">立蛋冠軍</strong>」🏆
+          </div>
+        </div>
       </div>
 
-      <!-- 龍舟競賽 -->
-      <div class="event-block">
-        <div class="event-block-title">🛶 龍舟競賽</div>
-        <div class="event-info-grid" style="margin-bottom:var(--space-md);">
-          <div class="event-info-item"><div class="ei-label">舉辦時間</div><div class="ei-value">6/20（六）20:00</div></div>
-          <div class="event-info-item"><div class="ei-label">時長</div><div class="ei-value">約 20 分鐘</div></div>
-          <div class="event-info-item"><div class="ei-label">賽道</div><div class="ei-value">冰道 80–100 格</div></div>
-          <div class="event-info-item"><div class="ei-label">冠軍獎勵</div><div class="ei-value">🏆 龍舟獎盃 + 稱號</div></div>
+      <div class="event-section-divider"></div>
+
+      <!-- ═══ 龍舟競賽 ═══ -->
+      <div class="event-block fade-in">
+        <div class="event-block-title"><span class="ebt-icon">🛶</span> 龍舟競賽</div>
+        <div class="info-grid" style="margin-bottom:var(--space-lg);">
+          <div class="info-item">
+            <div class="ii-label">舉辦時間</div>
+            <div class="ii-value">6/20（六）20:00</div>
+          </div>
+          <div class="info-item">
+            <div class="ii-label">時長</div>
+            <div class="ii-value">約 20 分鐘</div>
+          </div>
+          <div class="info-item">
+            <div class="ii-label">賽道</div>
+            <div class="ii-value">冰道 80–100 格</div>
+          </div>
+          <div class="info-item">
+            <div class="ii-label">冠軍獎勵</div>
+            <div class="ii-value">🏆 龍舟獎盃 + 稱號</div>
+          </div>
         </div>
-        <p style="color:var(--cloud);font-size:0.92rem;line-height:1.7;margin-bottom:var(--space-md);">
-          冰上划船賽——船在冰上飛馳是 Minecraft 經典玩法。2–4 人同時出發，最快到終點者勝。
-          掉船/翻船 → 回起點重來。報名請至 Discord！
+        <p style="color:var(--cloud);font-size:0.92rem;line-height:1.7;margin-bottom:var(--space-lg);">
+          冰上划船賽——船在冰上飛馳是 Minecraft 經典玩法。2–4 人同時出發，最快到終點者勝。掉船/翻船 → 回起點重來。報名請至 Discord！
         </p>
         <div class="dragon-boat-diagram">                    ┌─ 終點線（告示牌+壓力板）─┐
                     │                          │
@@ -332,25 +1178,32 @@
   └─ 起點線（告示牌+出發柵欄）</div>
       </div>
 
-      <!-- 稱號 -->
-      <div class="event-block">
-        <div class="event-block-title">🏷️ 稱號與獎勵</div>
-        <table class="ingredient-table">
-          <thead><tr><th></th><th>稱號 / 物品</th><th>取得條件</th></tr></thead>
-          <tbody>
-            <tr><td class="emoji-cell">🛶</td><td>「划船冠軍」＋ 🏆 划龍舟獎盃</td><td>龍舟賽冠軍</td></tr>
-            <tr><td class="emoji-cell">🥚</td><td>「立蛋冠軍」＋ 🥚 立蛋獎</td><td>立蛋挑戰冠軍（當天成功次數最多者）</td></tr>
-            <tr><td class="emoji-cell">🫔</td><td>贏方稱號（「吃南部粽」或「吃北部粽」）</td><td>活動結束後，凡有上線過的玩家皆可獲得贏方稱號</td></tr>
-          </tbody>
-        </table>
-        <p style="color:var(--fog);font-size:0.82rem;margin-top:var(--space-sm);">
-          稱號永久保留。南北粽稱號每人只能選一邊投票。活動結束後統計票數，贏方稱號發放給活動期間有上線過的所有玩家。立蛋成功可獲得「🥚 立蛋獎」紀念道具（龍蛋造型），每人最多 3 次機會。
-        </p>
+      <div class="event-section-divider"></div>
+
+      <!-- ═══ 限定稱號 ═══ -->
+      <div class="event-block fade-in">
+        <div class="event-block-title"><span class="ebt-icon">🏅</span> 限定稱號</div>
+        <div class="title-list">
+          <span class="title-tag">🛶 划船冠軍 <span class="tt-cond">龍舟賽冠軍</span></span>
+          <span class="title-tag">🥚 立蛋冠軍 <span class="tt-cond">立蛋挑戰冠軍</span></span>
+          <span class="title-tag">🫔 贏方稱號 <span class="tt-cond">人人有份，活動結束後發放</span></span>
+        </div>
+        <div class="info-callout">
+          <div class="ic-title">📋 稱號取得條件</div>
+          <div class="ic-body">
+            🛶 <strong style="color:var(--foam);">划船冠軍</strong>＋ 🏆 龍舟獎盃 — 龍舟競賽冠軍<br>
+            🥚 <strong style="color:var(--foam);">立蛋冠軍</strong>＋ 🥚 立蛋獎 — 立蛋挑戰當天成功次數最多者<br>
+            🫔 <strong style="color:var(--foam);">贏方稱號</strong>（「吃南部粽」或「吃北部粽」）— 活動結束後，凡有上線過的玩家皆可獲得贏方稱號<br><br>
+            稱號永久保留。南北粽稱號每人只能選一邊投票，6/30 統計票數公布贏家。
+          </div>
+        </div>
       </div>
 
-      <div class="section-actions">
+      <!-- 返回 -->
+      <div style="text-align:center;margin-top:var(--space-2xl);">
         <a href="../活動" class="btn btn-outline">← 返回活動列表</a>
       </div>
+
     </div>
   </div>
 
@@ -377,17 +1230,132 @@
   <script src="../tips.js" defer></script>
   <script src="../utils.js"></script>
   <script src="../main.js?v=280428c"></script>
+
+  <!-- Page Loader dismiss -->
   <script>
   (function(){
-    const loader = document.getElementById("pageLoader");
+    var loader = document.getElementById("pageLoader");
     if (!loader) return;
     function hideLoader() {
       loader.classList.add("fade-out");
-      setTimeout(() => loader.remove(), 600);
+      setTimeout(function(){ loader.remove(); }, 600);
     }
     if (document.readyState === "complete") { hideLoader(); }
     else { window.addEventListener("load", hideLoader); }
     setTimeout(hideLoader, 3000);
+  })();
+  </script>
+
+  <!-- 動態更新活動階段時間軸 -->
+  <script>
+  (function(){
+    var stages = document.querySelectorAll('.event-timeline-v .etv-stage');
+    if(stages.length < 4) return;
+    var now = Date.now();
+    var testEnd   = new Date('2026-06-05T00:00:00+08:00').getTime();
+    var buildEnd  = new Date('2026-06-10T00:00:00+08:00').getTime();
+    var mainEnd   = new Date('2026-06-28T00:00:00+08:00').getTime();
+    var finalEnd  = new Date('2026-07-01T00:00:00+08:00').getTime();
+
+    function setDot(el, state) {
+      el.classList.remove('active','upcoming','done');
+      el.classList.add(state);
+      if(state === 'done') {
+        el.style.background = 'rgba(168,230,207,0.15)';
+        el.style.color = 'var(--foam)';
+        el.style.border = '2px solid rgba(168,230,207,0.3)';
+        el.style.boxShadow = 'none';
+      } else if(state === 'active') {
+        el.style.background = '';
+        el.style.color = '';
+        el.style.border = '';
+        el.style.boxShadow = '';
+      } else {
+        el.style.background = '';
+        el.style.color = '';
+        el.style.border = '';
+        el.style.boxShadow = '';
+      }
+    }
+    function setConnector(el, state) {
+      el.classList.remove('done','pending');
+      el.classList.add(state);
+    }
+
+    var dots = [], connectors = [];
+    for(var i=0;i<stages.length;i++){
+      dots.push(stages[i].querySelector('.etv-dot'));
+      var conn = stages[i].querySelector('.etv-connector');
+      connectors.push(conn);
+    }
+
+    // Reset all
+    for(var i=0;i<dots.length;i++) setDot(dots[i],'upcoming');
+    for(var i=0;i<connectors.length;i++) if(connectors[i]) setConnector(connectors[i],'pending');
+
+    var stageText = '';
+    if(now < testEnd){
+      setDot(dots[0],'active');
+      stageText = '測試期進行中';
+    } else if(now < buildEnd){
+      setDot(dots[0],'done');
+      setDot(dots[1],'active');
+      if(connectors[0]) setConnector(connectors[0],'done');
+      stageText = '建造期 · 場地施工中';
+    } else if(now < mainEnd){
+      setDot(dots[0],'done');
+      setDot(dots[1],'done');
+      setDot(dots[2],'active');
+      if(connectors[0]) setConnector(connectors[0],'done');
+      if(connectors[1]) setConnector(connectors[1],'done');
+      stageText = '正式期 · 全部活動開放中';
+    } else if(now < finalEnd){
+      setDot(dots[0],'done');
+      setDot(dots[1],'done');
+      setDot(dots[2],'done');
+      setDot(dots[3],'active');
+      if(connectors[0]) setConnector(connectors[0],'done');
+      if(connectors[1]) setConnector(connectors[1],'done');
+      if(connectors[2]) setConnector(connectors[2],'done');
+      stageText = '收尾期 · 票選結算中';
+    } else {
+      for(var i=0;i<dots.length;i++) setDot(dots[i],'done');
+      for(var i=0;i<connectors.length;i++) if(connectors[i]) setConnector(connectors[i],'done');
+      stageText = '活動已結束';
+    }
+
+    // Update current stage banner
+    var banner = document.getElementById('currentStageBanner');
+    var bannerText = document.getElementById('currentStageText');
+    if(banner && bannerText) {
+      bannerText.textContent = stageText;
+      if(now >= finalEnd) {
+        banner.style.opacity = '0.5';
+        var dot = banner.querySelector('.csb-dot');
+        if(dot) { dot.style.animation = 'none'; dot.style.background = 'var(--fog)'; }
+      }
+    }
+  })();
+  </script>
+
+  <!-- 浮動粽葉粒子 -->
+  <script>
+  (function(){
+    var container = document.getElementById('zongziLeaves');
+    if(!container) return;
+    var emojis = ['🌿', '🫔', '🍃'];
+    var count = 14;
+    for(var i = 0; i < count; i++) {
+      var leaf = document.createElement('div');
+      leaf.className = 'zongzi-leaf';
+      leaf.textContent = emojis[i % emojis.length];
+      leaf.style.left = (3 + Math.random() * 94) + '%';
+      leaf.style.bottom = (Math.random() * 25) + '%';
+      leaf.style.animationDuration = (5 + Math.random() * 7) + 's';
+      leaf.style.animationDelay = (Math.random() * 10) + 's';
+      leaf.style.fontSize = (0.7 + Math.random() * 0.8) + 'rem';
+      container.appendChild(leaf);
+    }
   })();
   </script>
 </body>
