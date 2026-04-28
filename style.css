@@ -1837,7 +1837,7 @@ body{font-family:var(--font-body);background:var(--deep);color:var(--cloud);line
 .photo-section-title{font-size:1rem;font-weight:600;color:var(--cloud);margin-bottom:var(--space-md);padding-left:var(--space-sm);border-left:3px solid var(--sky)}
 .photo-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;max-width:1200px;margin:0 auto}
 .photo-item{width:100%;height:200px;object-fit:cover;display:block;border-radius:8px;transition:all var(--duration)var(--ease);cursor:zoom-in;border:1px solid transparent}
-.photo-item:hover{border-color:rgba(157,175,255,0.25);transform:translateY(-4px);box-shadow:0 8px 30px rgba(0,0,0,0.25);filter:brightness(1.1);z-index:2;position:relative}
+.photo-item:hover{border-color:rgba(157,175,255,0.25);transform:translateY(-4px) scale(1.04);box-shadow:0 8px 30px rgba(0,0,0,0.25);filter:brightness(1.1);z-index:2;position:relative}
 .photo-hidden{display:none}
 .photo-placeholder{grid-column:1 / -1;padding:var(--space-2xl);text-align:center;color:var(--fog);font-size:0.95rem;background:rgba(255,255,255,0.02);border:1px dashed rgba(255,255,255,0.1);border-radius:var(--radius-md)}
 .photo-more-btn{display:block;margin:var(--space-lg)auto 0}
@@ -1866,22 +1866,22 @@ body{font-family:var(--font-body);background:var(--deep);color:var(--cloud);line
 [data-theme="light"] .photo-hint-text code{background:rgba(74,108,247,0.1);color:var(--ocean-blue)}
 [data-theme="light"] .carousel-dot.active{background:var(--ocean-blue);box-shadow:0 0 8px rgba(87,138,255,0.25)}
 [data-theme="light"] .carousel-dot:hover{background:var(--sky);transform:scale(1.2)}
-[data-theme="light"] .carousel-slide img:hover{transform:translateY(-4px);box-shadow:0 8px 30px rgba(0,0,0,0.12),0 0 0 2px rgba(87,138,255,0.15)}
+[data-theme="light"] .carousel-slide img:hover{transform:translateY(-4px) scale(1.03);box-shadow:0 8px 30px rgba(0,0,0,0.12),0 0 0 2px rgba(87,138,255,0.15)}
 
 .photo-carousel{overflow:hidden;border-radius:var(--radius-lg);position:relative;content-visibility:auto;contain-intrinsic-size:auto 350px;padding:4px 0}
 .photo-carousel-track{display:flex;transition:transform 0.8s cubic-bezier(0.25,0.46,0.45,0.94)}
 .carousel-slide{flex:0 0 20%;padding:0 4px;box-sizing:border-box;min-width:0}
 .carousel-slide img{display:block;width:100%;aspect-ratio:16 / 10;object-fit:cover;border-radius:var(--radius-md);transition:transform 0.6s var(--ease),box-shadow 0.6s var(--ease),filter 0.6s var(--ease)}
-.carousel-slide img:hover{transform:translateY(-4px);box-shadow:0 8px 30px rgba(0,0,0,0.3),0 0 0 2px rgba(157,175,255,0.15);filter:brightness(1.08)}
+.carousel-slide img:hover{transform:translateY(-4px) scale(1.03);box-shadow:0 8px 30px rgba(0,0,0,0.3),0 0 0 2px rgba(157,175,255,0.15);filter:brightness(1.08)}
 .photo-carousel-dots{display:flex;justify-content:center;gap:8px;margin-top:var(--space-lg)}
 .carousel-dot{width:8px;height:8px;border-radius:50%;border:none;background:var(--mist);cursor:pointer;transition:all 0.4s var(--ease);padding:0;box-shadow:0 0 0 0 transparent}
 .carousel-dot.active{background:var(--sky);width:24px;border-radius:4px;box-shadow:0 0 8px rgba(157,175,255,0.3)}
 .carousel-dot:hover{background:var(--fog);transform:scale(1.2)}
 .postcard-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:var(--space-md);padding:var(--space-sm) 0}
 .postcard-item{border-radius:var(--radius-lg);overflow:hidden;position:relative;aspect-ratio:3 / 4;cursor:pointer;box-shadow:0 4px 20px rgba(0,0,0,0.2);transition:transform 0.7s var(--ease),box-shadow 0.7s var(--ease)}
-.postcard-item:hover{transform:translateY(-6px);box-shadow:0 16px 48px rgba(0,0,0,0.35),0 0 0 1px rgba(157,175,255,0.15)}
-.postcard-item img{width:100%;height:100%;object-fit:cover;transition:transform 0.8s var(--ease),filter 0.5s var(--ease)}
-.postcard-item:hover img{transform:scale(1.05);filter:brightness(1.1)saturate(1.1)}
+.postcard-item:hover{transform:translateY(-6px) scale(1.02);box-shadow:0 16px 48px rgba(0,0,0,0.35),0 0 0 1px rgba(157,175,255,0.15)}
+.postcard-item img{width:100%;height:100%;object-fit:cover;transition:transform 0.7s var(--ease),filter 0.7s var(--ease)}
+.postcard-item:hover img{transform:scale(1.12);filter:brightness(1.15)saturate(1.15)}
 .postcard-item::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,transparent 40%,rgba(0,0,0,0.5)100%);pointer-events:none;border-radius:var(--radius-lg);transition:opacity 0.4s var(--ease);opacity:0.6}
 .postcard-item:hover::after{opacity:1}
 .postcard-item .postcard-label{position:absolute;bottom:12px;left:12px;right:12px;z-index:2;font-size:0.72rem;font-weight:600;color:rgba(255,255,255,0.95);letter-spacing:0.04em;opacity:0;transform:translateY(8px);transition:opacity 0.4s var(--ease) 0.1s,transform 0.4s var(--ease) 0.1s;text-shadow:0 1px 4px rgba(0,0,0,0.5);pointer-events:none;display:inline-flex;align-items:center;gap:6px;background:rgba(0,0,0,0.45);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,0.1);border-radius:var(--radius-md);padding:6px 12px;width:fit-content;max-width:calc(100% - 24px)}
@@ -1889,9 +1889,9 @@ body{font-family:var(--font-body);background:var(--deep);color:var(--cloud);line
 .photo-date-card{text-align:center;padding:12px 24px;margin:0 auto var(--space-lg);max-width:400px;background:rgba(157,175,255,0.06);border:1px solid rgba(157,175,255,0.12);border-radius:var(--radius-md);font-size:0.85rem;color:var(--fog);box-shadow:0 2px 8px rgba(0,0,0,0.15)}
 .photo-float-counter{position:fixed;bottom:140px;right:20px;z-index:900;padding:8px 14px;background:rgba(13,17,23,0.85);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border:1px solid rgba(157,175,255,0.15);border-radius:10px;font-size:0.8rem;color:var(--cloud);pointer-events:none;display:flex;align-items:center;gap:6px;box-shadow:0 4px 12px rgba(0,0,0,0.3)}
 .carousel-slide img{cursor:zoom-in;transition:transform 0.6s var(--ease),box-shadow 0.6s var(--ease)}
-.carousel-slide img:hover{transform:translateY(-4px);box-shadow:0 8px 24px rgba(0,0,0,0.3)}
+.carousel-slide img:hover{transform:translateY(-4px) scale(1.03);box-shadow:0 8px 24px rgba(0,0,0,0.3)}
 [data-theme="light"] .postcard-item{box-shadow:0 4px 16px rgba(0,0,0,0.08)}
-[data-theme="light"] .postcard-item:hover{box-shadow:0 12px 36px rgba(0,0,0,0.12),0 0 0 1px rgba(74,108,247,0.12);transform:translateY(-6px)}
+[data-theme="light"] .postcard-item:hover{box-shadow:0 12px 36px rgba(0,0,0,0.12),0 0 0 1px rgba(74,108,247,0.12);transform:translateY(-6px) scale(1.02)}
 .postcard-fallback::after {
   content: '📷 圖片暫時無法載入';
   color: var(--fog);
@@ -1909,7 +1909,7 @@ video.photo-item{cursor:pointer;height:200px;border:1px solid transparent}
 }
 
 [data-theme="light"] .photo-item{border-color:rgba(0,0,0,0.06)}
-[data-theme="light"] .photo-item:hover{border-color:rgba(157,175,255,0.25);box-shadow:0 8px 24px rgba(0,0,0,0.06);transform:translateY(-4px)}
+[data-theme="light"] .photo-item:hover{border-color:rgba(157,175,255,0.25);box-shadow:0 8px 24px rgba(0,0,0,0.06);transform:translateY(-4px) scale(1.04)}
 [data-theme="light"] .photo-placeholder{background:#f5f7fa;border-color:rgba(0,0,0,0.08);color:#8a94a6}
 [data-theme="light"] .photo-counter{color:var(--fog)}
 [data-theme="light"] .photo-loading{color:var(--fog)}
