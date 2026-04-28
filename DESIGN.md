@@ -1,6 +1,6 @@
 # 海風 SeaWind 網站設計文件
 
-> 最後更新：2026.04.28（海風網站助手）
+> 最後更新：2026.04.28（海風網站助手）v2
 > 維護者：海風網站助手
 > Instagram：[@mc.seawind.cc](https://www.instagram.com/mc.seawind.cc/)
 
@@ -532,6 +532,12 @@ website/
 | 2026.04.28 | 海風網站助手 | **設計規範新增第三節「物品管理」**：規範特殊物品 ID 命名規則（前綴_序號、大寫英文、不可重複使用）、上線後限制（不得修改 ID 或刪除、替換需建新 ID）、活動專案記錄要求（代號 + 自訂物品配置）。原第三～七節重新編號為第四～八節。修訂日期更新至 115.04.28 |
 | 2026.04.28 | 海風網站助手 | **端午節原料擴充至 10 種 + ID 重新編號**：events repo items.yml 新增 5 種原料（魷魚/滷花生/台灣香菇/金鉤蝦/栗子），移除重複的舊「花生」，五花肉→滷肉。ID 重新編號為 01–15（01–04 活動道具、05–14 原料、15 加工品鹹蛋黃）。recipes.yml 北部粽從工作台 3×3 改為 NPC 兌換面板（與南部粽統一），NPC 名稱統一為「木地人」，新增全部 6 項種植兌換配方。mobs.yml/spawns.yml/DESIGN.md 同步更新 ID 引用 |
 | 2026.04.28 | 海風網站助手 | **全站插件名稱清除**：移除網站上所有插件英文名稱——端午節活動頁「MMOItems」→「活動道具」、「MythicMobs」→「怪物」（3 處）；歷史館「MMOItems」→「自訂物品」（1 處）；設計規範「MMOitems/ExecutableItems/MMOItems」→「自訂物品插件/自訂物品」（3 處）；公告 inline JSON + announcements.json「MMOitem」→「自訂物品」（5 處）；指南「SuperHarvest」→「連鎖採集功能」（3 處）、「Residence」→「領地系統」（1 處）。全站掃描確認無殘留 |
+| 2026.04.28 | 海風網站助手 | **風景照投稿區塊強化**：①Section description 改為含 `#風景照投稿` 頻道名稱的完整說明，取代原本簡略的「在DC上可以投稿」；②新增 `.photo-hint` 提示卡片（📸 圖示 + code 標籤顯示頻道名稱 + 說明文字），含玻璃質感背景 + hover 互動 + 淺色模式；③Section header 補上 `section-desc` 副標題。深色/淺色模式同步 |
+| 2026.04.28 | 海風網站助手 | **景觀明信片 Label 玻璃質感強化**：`.postcard-label` 從純文字浮現改為 `inline-flex` pill 樣式——新增 `backdrop-filter:blur(12px)` 毛玻璃背景、`rgba(0,0,0,0.45)` 半透明底色、`border:1px solid rgba(255,255,255,0.1)` 邊框、`border-radius:var(--radius-md)` 圓角、`padding:6px 12px` 內距、`width:fit-content` 自適應寬度。hover 浮現動效保持不變 |
+| 2026.04.28 | 海風網站助手 | **頁面載入動畫脈衝點點**：`.page-loader` 新增 `.loader-dots`（3 顆 6px 圓點，依序脈衝縮放 + 透明度動畫，1.4s 循環，各延遲 0.2s）。首頁 + 公告/文化藝廊/活動/海風團隊/社群須知/端午節共 7 個頁面同步加入 HTML |
+| 2026.04.28 | 海風網站助手 | **輪播指示點 hover 強化**：`.carousel-dot` 新增 `box-shadow` + `transform:scale(1.2)` hover 效果；`.active` 狀態新增發光陰影；transition 從 0.3s 改為 0.4s 更優雅。淺色模式 `.carousel-dot.active` 改為 ocean-blue 色調 |
+| 2026.04.28 | 海風網站助手 | **輪播圖片 hover 強化**：`.carousel-slide img` 新增 `filter:brightness(1.08)` + `box-shadow` 邊框發光效果（sky 色調 2px ring），淺色模式同步。transition 加入 filter 屬性 |
+| 2026.04.28 | 海風網站助手 | 全站 75 頁 CSS cache busting 統一更新至 280428d |
 
 ---
 
