@@ -497,6 +497,21 @@ body{font-family:var(--font-body);background:var(--deep);color:var(--cloud);line
 @keyframes countdown-glow-pulse-light{0%{text-shadow:0 0 8px rgba(196,155,108,0.2),0 0 16px rgba(196,155,108,0.1)}100%{text-shadow:0 0 12px rgba(196,155,108,0.3),0 0 24px rgba(196,155,108,0.15)}}
 
 /* Featured Event — Urgency Text */
+.featured-event-phase{display:flex;align-items:center;justify-content:center;gap:var(--space-sm);margin-bottom:var(--space-md);flex-wrap:wrap}
+.phase-label{display:inline-flex;align-items:center;gap:6px;padding:4px 14px;border-radius:100px;font-size:0.72rem;font-weight:700;letter-spacing:0.04em;background:rgba(196,155,108,0.12);border:1px solid rgba(196,155,108,0.25);color:#c49b6c;position:relative}
+.phase-label::before{content:'';width:6px;height:6px;border-radius:50%;background:currentColor;animation:phase-dot-pulse 2s ease-in-out infinite}
+@keyframes phase-dot-pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:0.5;transform:scale(0.8)}}
+.phase-next{font-size:0.7rem;color:var(--fog);opacity:0.7}
+.featured-event-phase.adjusting .phase-label{background:rgba(168,230,207,0.1);border-color:rgba(168,230,207,0.2);color:var(--foam)}
+.featured-event-phase.main-event .phase-label{background:rgba(157,175,255,0.1);border-color:rgba(157,175,255,0.2);color:var(--sky)}
+.featured-event-phase.redeeming .phase-label{background:rgba(171,114,249,0.1);border-color:rgba(171,114,249,0.2);color:var(--lavender)}
+.featured-event-phase.ended .phase-label{background:rgba(139,148,158,0.1);border-color:rgba(139,148,158,0.2);color:var(--fog)}
+.featured-event-phase.ended .phase-label::before{animation:none;opacity:0.4}
+[data-theme="light"] .phase-label{background:rgba(196,155,108,0.1);border-color:rgba(196,155,108,0.2);color:#b8860b}
+[data-theme="light"] .featured-event-phase.adjusting .phase-label{color:#2d8a5e;background:rgba(168,230,207,0.1);border-color:rgba(168,230,207,0.2)}
+[data-theme="light"] .featured-event-phase.main-event .phase-label{color:#4a6cf7;background:rgba(157,175,255,0.1);border-color:rgba(157,175,255,0.2)}
+[data-theme="light"] .featured-event-phase.redeeming .phase-label{color:#8b5cf6;background:rgba(171,114,249,0.1);border-color:rgba(171,114,249,0.2)}
+[data-theme="light"] .phase-next{color:#6a737d}
 .countdown-urgency{font-size:0.78rem;color:var(--sand);font-weight:500;letter-spacing:0.04em;margin-bottom:var(--space-sm);opacity:0.85;min-height:1.2em}
 [data-theme="light"] .countdown-urgency{color:#b8860b}
 

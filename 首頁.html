@@ -33,7 +33,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;800;900&family=Noto+Serif+TC:wght@700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=270427e">
+  <link rel="stylesheet" href="style.css?v=280428b">
   <link rel="stylesheet" href="music-player.css">
   <link rel="preload" href="music-player.js" as="script">
   <!-- JSON-LD 結構化資料 -->
@@ -168,9 +168,13 @@
         <div class="featured-event-glow" aria-hidden="true"></div>
         <div class="featured-event-inner">
           <span class="featured-event-badge">🧋 海風國際珍奶日</span>
+          <div class="featured-event-phase" id="eventPhase">
+            <span class="phase-label active-phase">調整期進行中</span>
+            <span class="phase-next">正式期 5/4 開跑</span>
+          </div>
           <div class="featured-event-progress">
             <div class="featured-event-progress-bar"><div class="featured-event-progress-fill" id="eventProgressFill" style="width:0%"></div></div>
-            <div class="featured-event-progress-text"><span>正式期 5/4</span><span id="eventProgressPct">—</span></div>
+            <div class="featured-event-progress-text"><span>調整期 4/27</span><span id="eventProgressPct">—</span></div>
           </div>
           <div class="countdown-urgency" id="countdownUrgency"></div>
           <div class="featured-event-countdown" id="featuredCountdown">
@@ -469,23 +473,58 @@
   - 置板凳蹲結果。", "images": [], "localImages": [], "reactions": [{"emoji": "emoji_119", "count": 1}], "reactionCount": 1, "discordId": "1491021983293636720", "pinned": false, "author": "神焰.cc", "index": 11}]}</script>
   <script src="tips.js" defer></script>
   <script src="utils.js"></script>
-  <script src="main.js?v=270427e"></script>
+  <script src="main.js?v=280428b"></script>
   <!-- 精選活動倒數計時 -->
   <script>
   (function(){
     const target = new Date('2026-05-04T00:00:00+08:00').getTime();
-    const announceDate = new Date('2026-04-20T00:00:00+08:00').getTime();
+    const adjustStart = new Date('2026-04-27T00:00:00+08:00').getTime();
+    const redeemEnd = new Date('2026-06-01T00:00:00+08:00').getTime();
     const el = document.getElementById('featuredCountdown');
     const fill = document.getElementById('eventProgressFill');
     const pct = document.getElementById('eventProgressPct');
     const urgency = document.getElementById('countdownUrgency');
+    const phaseEl = document.getElementById('eventPhase');
     if(!el) return;
+    function updatePhase(now){
+      if(!phaseEl) return;
+      const label = phaseEl.querySelector('.active-phase');
+      const next = phaseEl.querySelector('.phase-next');
+      if(now < adjustStart){
+        // Before adjustment: show upcoming
+        if(label) label.textContent = '即將開始';
+        if(next) next.textContent = '調整期 4/27';
+      } else if(now < target){
+        // Adjustment period
+        if(label) label.textContent = '調整期進行中';
+        if(next) next.textContent = '正式期 5/4 開跑';
+        phaseEl.classList.add('adjusting');
+      } else if(now < new Date('2026-05-28T00:00:00+08:00').getTime()){
+        // Main event
+        if(label) label.textContent = '正式期進行中';
+        if(next) next.textContent = '5/31 結束';
+        phaseEl.classList.remove('adjusting');
+        phaseEl.classList.add('main-event');
+      } else if(now < redeemEnd){
+        // Redeem period
+        if(label) label.textContent = '兌換期進行中';
+        if(next) next.textContent = '6/1 結束';
+        phaseEl.classList.remove('adjusting');
+        phaseEl.classList.add('redeeming');
+      } else {
+        // Event ended
+        if(label) label.textContent = '活動已結束';
+        if(next) next.textContent = '';
+        phaseEl.classList.add('ended');
+      }
+    }
     function tick(){
       const now = Date.now();
       const diff = target - now;
-      // Progress bar
-      const total = target - announceDate;
-      const elapsed = now - announceDate;
+      updatePhase(now);
+      // Progress bar — track from adjustment start to event end (5/31)
+      const elapsed = now - adjustStart;
+      const total = redeemEnd - adjustStart;
       const progress = Math.min(100, Math.max(0, (elapsed/total)*100));
       if(fill) fill.style.width = progress.toFixed(1)+'%';
       if(pct) pct.textContent = progress.toFixed(0)+'%';
@@ -495,7 +534,6 @@
         document.getElementById('cd-h').textContent='00';
         document.getElementById('cd-m').textContent='00';
         document.getElementById('cd-s').textContent='00';
-        // Replace all labels with single "已開跑" text
         const labels = el.querySelectorAll('.countdown-label');
         if(labels.length >= 1) labels[0].textContent='已開跑';
         for(let i=1;i<labels.length;i++) labels[i].style.display='none';
@@ -510,7 +548,6 @@
       document.getElementById('cd-h').textContent=String(h).padStart(2,'0');
       document.getElementById('cd-m').textContent=String(m).padStart(2,'0');
       document.getElementById('cd-s').textContent=String(s).padStart(2,'0');
-      // Urgency text
       if(urgency){
         if(d===0) urgency.textContent='🔥 今天開始！準備好了嗎？';
         else if(d===1) urgency.textContent='⚡ 明天就開始了！倒數中';
