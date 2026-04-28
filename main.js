@@ -674,6 +674,10 @@ function renderBulletin(board, items) {
       <button class="btn btn-outline btn-sm" id="bulletinMoreBtn">顯示更多（${showItems.length - VISIBLE} 則）</button>
     </div>`;
   }
+  // 查看全部公告連結（展開後顯示）
+  html += `<div class="bulletin-view-all" id="bulletinViewAll" style="display:none">
+    <a href="公告" class="btn btn-outline btn-sm">查看全部公告 →</a>
+  </div>`;
 
   board.innerHTML = html;
 
@@ -693,6 +697,9 @@ function renderBulletin(board, items) {
       board.querySelectorAll('.bulletin-hidden').forEach(el => el.classList.remove('bulletin-hidden'));
       const moreEl = document.getElementById('bulletinMore');
       if (moreEl) moreEl.style.display = 'none';
+      // Show "view all" link after expanding
+      const viewAll = document.getElementById('bulletinViewAll');
+      if (viewAll) viewAll.style.display = 'flex';
     });
   }
 }
