@@ -2470,10 +2470,10 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--sky);outline-offset
 :focus:not(:focus-visible){outline:none}
 
 /* ═══ Image Lazy-Load Fade-In ═══ */
-img[loading="lazy"]{opacity:0;transition:opacity 0.5s var(--ease)}
+img[loading="lazy"]{opacity:0;transition:opacity 0.5s var(--ease),transform 0.6s var(--ease),filter 0.6s var(--ease),box-shadow 0.6s var(--ease)}
 img[loading="lazy"].loaded{opacity:1}
 /* Already-cached images skip animation */
-img[loading="lazy"][complete].loaded{opacity:1;transition:none}
+img[loading="lazy"][complete].loaded{opacity:1;transition:opacity 0s,transform 0.6s var(--ease),filter 0.6s var(--ease),box-shadow 0.6s var(--ease)}
 
 .feature-showcase{display:grid;grid-template-columns:1fr 1fr;gap:var(--space-xl)}
 .feature-main{background:linear-gradient(135deg,rgba(157,175,255,0.08),rgba(168,230,207,0.05));border:1px solid rgba(157,175,255,0.12);border-radius:var(--radius-lg);padding:var(--space-2xl);display:flex;flex-direction:column;justify-content:center;text-align:center;transition:all var(--duration)var(--ease)}

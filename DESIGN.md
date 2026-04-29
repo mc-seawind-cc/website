@@ -546,6 +546,7 @@ website/
 | 2026.04.29 | 海風網站助手 | **全站淺色模式 hover 動畫修復**：10 個淺色模式 hover 規則補上遺漏的 `transform`（info-card/featured-event/lore-preview-card/postcard-item/join-step/card/carousel-slide/photo-item/lore-card/partner-row）。深色模式全部有但淺色模式覆蓋規則漏掉了 transform 屬性 |
 | 2026.04.29 | 海風網站助手 | **hover transition 時間統一**：info-card 0.2s→0.4s、carousel-slide img 0.3s→0.4s，與 feature-card/postcard-item 一致（0.4–0.5s） |
 | 2026.04.29 | 海風網站助手 | **活動詳情頁 JSON-LD Event 結構化資料**：全部 6 個活動詳情頁（珍奶日/端午節/生存起源/風汐系列/那個魚/攝影賽）加入 Schema.org Event 結構化資料，含 name/description/dates/location/organizer/offers/subEvent。限時活動含多階段 subEvent。提升 Google 搜尋展示效果（Rich Results）。DESIGN.md 改善建議標記為已完成 |
+| 2026.04.29 | 海風網站助手 | **修復卡片圖片 hover 動畫跳動**：`img[loading="lazy"]` 的 transition 規則（2473 行）覆蓋了卡片圖片的 hover transform/filter transition（同特異性後寫優先），導致 hover 時 scale 瞬間跳動無動畫。修復方式：lazy-load transition 限定為 opacity，不干擾其他屬性；`[complete].loaded` 同步保留 transform/filter/box-shadow transition。cache busting → 290429g |
 
 ---
 
