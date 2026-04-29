@@ -553,6 +553,8 @@ website/
 | 2026.04.29 | 海風網站助手 | **團隊頁頭像改為 2D 正臉**：全部 11 個 mc-heads.net 頭像從 `/head/`（3D 等角視角）改為 `/face/`（2D 平面正臉）。minotar.net 的 2 個（kafu_yi/peng1234）本身已是 2D 不需修改。共 13 個頭像統一為 2D 風格 |
 | 2026.04.29 | 海風網站助手 | **團隊頁 peng1234 暱稱更新**：暱稱從無改為「路人丙」，MC ID peng1234 改為小字標籤（與其他成員格式一致） |
 | 2026.04.29 | 海風網站助手 | **特色卡片 icon hover 動畫重構**：移除 `animation:none + transform:rotate(8deg)` 的瞬間跳轉，改為容器 `scale(1.08)` + 圖片獨立 `rotate(12deg) scale(1.12)` 分層動畫。idle 浮動動畫在 hover 時不中斷（避免跳幀），img 新增 0.5s transition 使旋轉/縮放平滑過渡。容器邊框 hover 時亮化。全站 cache busting → 290429i |
+| 2026.04.29 | 海風網站助手 | **首頁移除風景照投稿提示卡片**：刪除 `.photo-hint` 區塊（「投稿方式：在 Discord #風景照投稿 頻道上傳照片」），清理相關 CSS（8 條規則）。section-desc 已有頻道說明，不需重複 |
+| 2026.04.29 | 海風網站助手 | **修復 Lightbox 圖片上方被裁切**：`.lightbox-img` max-height 從 `90vh` 改為 `calc(90vh - 48px)`、新增 `margin-top:48px`，為關閉按鈕預留空間避免重疊。全站 cache busting → 290429j |
 
 ---
 
