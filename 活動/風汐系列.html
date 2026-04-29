@@ -23,6 +23,34 @@
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;800&family=Noto+Serif+TC:wght@700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../style.css?v=290429e">
   <link rel="stylesheet" href="../music-player.css">
+  <!-- JSON-LD Event 結構化資料 -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Event",
+    "name": "風汐系列",
+    "description": "以「風」與「潮汐」為主題的常駐系列活動，融合探索、解謎與建築元素。風汐碎片與風汐石貨幣系統，兌換特殊工具。",
+    "eventStatus": "https://schema.org/EventScheduled",
+    "eventAttendanceMode": "https://schema.org/OnlineEventAttendanceMode",
+    "location": {
+      "@type": "VirtualLocation",
+      "name": "海風 Minecraft 伺服器",
+      "url": "https://www.seawind.cc"
+    },
+    "organizer": {
+      "@type": "Organization",
+      "name": "海風伺服器",
+      "url": "https://www.seawind.cc"
+    },
+    "image": "https://www.seawind.cc/assets/img/logo.png",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "TWD",
+      "availability": "https://schema.org/InStock"
+    }
+  }
+  </script>
   <style>
     .event-detail-header { text-align:center; padding:var(--space-2xl) var(--space-xl) var(--space-xl); position:relative; }
     .event-detail-header::before { content:''; position:absolute; top:-40%; left:-10%; width:120%; height:180%; background:radial-gradient(ellipse at 50% 30%, rgba(171,114,249,0.05) 0%, transparent 60%); pointer-events:none; }

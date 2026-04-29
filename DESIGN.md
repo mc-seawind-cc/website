@@ -545,6 +545,7 @@ website/
 | 2026.04.29 | 海風網站助手 | **特色卡片 hover 動畫修復**：①淺色模式 `.feature-card:hover` 補上遺漏的 `transform:translateY(-8px)`（深色模式有但淺色模式從未有過，導致淺色模式下 hover 無上浮動畫）；②移除 `.feature-card` 的 `overflow:hidden`（會裁切 hover 光暈效果） |
 | 2026.04.29 | 海風網站助手 | **全站淺色模式 hover 動畫修復**：10 個淺色模式 hover 規則補上遺漏的 `transform`（info-card/featured-event/lore-preview-card/postcard-item/join-step/card/carousel-slide/photo-item/lore-card/partner-row）。深色模式全部有但淺色模式覆蓋規則漏掉了 transform 屬性 |
 | 2026.04.29 | 海風網站助手 | **hover transition 時間統一**：info-card 0.2s→0.4s、carousel-slide img 0.3s→0.4s，與 feature-card/postcard-item 一致（0.4–0.5s） |
+| 2026.04.29 | 海風網站助手 | **活動詳情頁 JSON-LD Event 結構化資料**：全部 6 個活動詳情頁（珍奶日/端午節/生存起源/風汐系列/那個魚/攝影賽）加入 Schema.org Event 結構化資料，含 name/description/dates/location/organizer/offers/subEvent。限時活動含多階段 subEvent。提升 Google 搜尋展示效果（Rich Results）。DESIGN.md 改善建議標記為已完成 |
 
 ---
 
@@ -603,7 +604,7 @@ website/
 - [ ] CSS light mode 選擇器合併（307 個 `[data-theme="light"]` 可整理為區段式集中管理）
 
 **中優先：**
-- [ ] 活動詳情頁加入 JSON-LD Event 結構化資料（提升 Google 搜尋展示）
+- [x] 活動詳情頁加入 JSON-LD Event 結構化資料（提升 Google 搜尋展示）— 2026.04.29 ✅
 - [ ] 圖片 alt 文字持續優化（部分功能圖示 alt 可更具描述性）
 - [ ] sitemap.xml lastmod 日期統一更新（部分仍為 2026-04-12）
 
