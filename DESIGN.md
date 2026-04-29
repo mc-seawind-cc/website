@@ -549,6 +549,7 @@ website/
 | 2026.04.29 | 海風網站助手 | **修復卡片圖片 hover 動畫跳動**：`img[loading="lazy"]` 的 transition 規則（2473 行）覆蓋了卡片圖片的 hover transform/filter transition（同特異性後寫優先），導致 hover 時 scale 瞬間跳動無動畫。修復方式：lazy-load transition 限定為 opacity，不干擾其他屬性；`[complete].loaded` 同步保留 transform/filter/box-shadow transition。cache busting → 290429g |
 | 2026.04.29 | 海風網站助手 | **修復風景照輪播不顯示 + 卡片圖片 hover 動畫完整修復**：①JS 動態建立的 carousel/photo 圖片（`createElement('img')`）不會被 DOMContentLoaded 時的 lazy-load observer 捕獲，導致永遠 `opacity:0`。修復：在 `buildCarousel()` 和 `loadBatch()` 中直接加入 load → `.loaded` 監聽器。②CSS lazy-load transition 改回只控制 opacity；卡片圖片（`.postcard-item img[loading="lazy"]` 等）用更高特異性選擇器（0,2,1）保留 transform/filter/box-shadow transition，確保 hover 動畫正常運作。cache busting → 290429h |
 | 2026.04.29 | 海風網站助手 | **團隊頁 kafu_yi 頭像修復**：mc-heads.net 用玩家名稱查詢回傳 Steve 預設皮膚，改用 UUID（9a50acb2bed0432eb89b1fef7dad0538）取得正確頭像。mc-heads.net 仍回傳 Steve，改用 minotar.net API 取得正確皮膚（藍色自訂皮膚）。新增 minotar.net dns-prefetch |
+| 2026.04.29 | 海風網站助手 | **團隊頁新增成員 peng1234**：行政部門新增 peng1234（策劃），使用 minotar.net 頭像。公務人員統計 10→11 |
 
 ---
 
