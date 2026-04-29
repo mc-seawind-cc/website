@@ -552,6 +552,7 @@ website/
 | 2026.04.29 | 海風網站助手 | **團隊頁新增成員 peng1234**：行政部門新增 peng1234（策劃），使用 minotar.net 頭像。公務人員統計 10→11 |
 | 2026.04.29 | 海風網站助手 | **團隊頁頭像改為 2D 正臉**：全部 11 個 mc-heads.net 頭像從 `/head/`（3D 等角視角）改為 `/face/`（2D 平面正臉）。minotar.net 的 2 個（kafu_yi/peng1234）本身已是 2D 不需修改。共 13 個頭像統一為 2D 風格 |
 | 2026.04.29 | 海風網站助手 | **團隊頁 peng1234 暱稱更新**：暱稱從無改為「路人丙」，MC ID peng1234 改為小字標籤（與其他成員格式一致） |
+| 2026.04.29 | 海風網站助手 | **特色卡片 icon hover 動畫重構**：移除 `animation:none + transform:rotate(8deg)` 的瞬間跳轉，改為容器 `scale(1.08)` + 圖片獨立 `rotate(12deg) scale(1.12)` 分層動畫。idle 浮動動畫在 hover 時不中斷（避免跳幀），img 新增 0.5s transition 使旋轉/縮放平滑過渡。容器邊框 hover 時亮化。全站 cache busting → 290429i |
 
 ---
 
