@@ -551,6 +551,7 @@ website/
 | 2026.04.29 | 海風網站助手 | **團隊頁 kafu_yi 頭像修復**：mc-heads.net 用玩家名稱查詢回傳 Steve 預設皮膚，改用 UUID（9a50acb2bed0432eb89b1fef7dad0538）取得正確頭像。mc-heads.net 仍回傳 Steve，改用 minotar.net API 取得正確皮膚（藍色自訂皮膚）。新增 minotar.net dns-prefetch |
 | 2026.04.29 | 海風網站助手 | **團隊頁新增成員 peng1234**：行政部門新增 peng1234（策劃），使用 minotar.net 頭像。公務人員統計 10→11 |
 | 2026.04.29 | 海風網站助手 | **團隊頁頭像改為 2D 正臉**：全部 11 個 mc-heads.net 頭像從 `/head/`（3D 等角視角）改為 `/face/`（2D 平面正臉）。minotar.net 的 2 個（kafu_yi/peng1234）本身已是 2D 不需修改。共 13 個頭像統一為 2D 風格 |
+| 2026.04.29 | 海風網站助手 | **團隊頁 peng1234 暱稱更新**：暱稱從無改為「路人丙」，MC ID peng1234 改為小字標籤（與其他成員格式一致） |
 
 ---
 
