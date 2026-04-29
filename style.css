@@ -614,10 +614,9 @@ body{font-family:var(--font-body);background:var(--deep);color:var(--cloud);line
 [data-theme="light"] .feature-card::before{opacity:0.5}
 [data-theme="light"] .feature-card:hover::before{opacity:1}
 [data-theme="light"] .feature-card::after{background:radial-gradient(ellipse at 50% 100%,color-mix(in srgb,var(--card-accent,var(--sky)) 6%,transparent) 0%,transparent 60%)}
-[data-theme="light"] .feature-card-icon{background:linear-gradient(135deg,color-mix(in srgb,var(--card-accent,var(--sky)) 10%,#fff),color-mix(in srgb,var(--card-accent,var(--sky)) 4%,#fff));border-color:color-mix(in srgb,var(--card-accent,var(--sky)) 12%,transparent)}
+[data-theme="light"] .feature-card-icon{background:rgba(240,242,255,0.9);border:1px solid rgba(100,130,220,0.12)}
 [data-theme="light"] .feature-card h4{color:var(--cloud)}
 [data-theme="light"] .feature-card p{color:#5a6270}
-[data-theme="light"] .feature-card-icon{background:rgba(240,242,255,0.9);border:1px solid rgba(100,130,220,0.12)}
 
 /* ── Feature card numbering removed ── */
 .feature-card-num{display:none}
