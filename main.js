@@ -979,6 +979,9 @@ function initPhotoGallery() {
         media.src = src;
         media.alt = `海風風景照 ${i + 1}`;
         media.loading = 'lazy';
+        // Dynamic images miss the DOMContentLoaded observer — add load listener directly
+        if (media.complete) { media.classList.add('loaded'); }
+        else { media.addEventListener('load', () => media.classList.add('loaded'), { once: true }); }
       }
       media.style.cursor = 'zoom-in';
       media.onerror = function() { this.parentElement.style.display = 'none'; };
@@ -1249,6 +1252,9 @@ function initPhotoPage() {
             img.className = 'photo-item';
             img.alt = `海風風景照 ${i + 1}`;
             img.loading = 'lazy';
+            // Dynamic images miss the DOMContentLoaded observer
+            if (img.complete) { img.classList.add('loaded'); }
+            else { img.addEventListener('load', () => img.classList.add('loaded'), { once: true }); }
             img.onerror = function() { this.style.display = 'none'; };
             grid.appendChild(img);
           }
