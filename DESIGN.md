@@ -548,6 +548,7 @@ website/
 | 2026.04.29 | 海風網站助手 | **活動詳情頁 JSON-LD Event 結構化資料**：全部 6 個活動詳情頁（珍奶日/端午節/生存起源/風汐系列/那個魚/攝影賽）加入 Schema.org Event 結構化資料，含 name/description/dates/location/organizer/offers/subEvent。限時活動含多階段 subEvent。提升 Google 搜尋展示效果（Rich Results）。DESIGN.md 改善建議標記為已完成 |
 | 2026.04.29 | 海風網站助手 | **修復卡片圖片 hover 動畫跳動**：`img[loading="lazy"]` 的 transition 規則（2473 行）覆蓋了卡片圖片的 hover transform/filter transition（同特異性後寫優先），導致 hover 時 scale 瞬間跳動無動畫。修復方式：lazy-load transition 限定為 opacity，不干擾其他屬性；`[complete].loaded` 同步保留 transform/filter/box-shadow transition。cache busting → 290429g |
 | 2026.04.29 | 海風網站助手 | **修復風景照輪播不顯示 + 卡片圖片 hover 動畫完整修復**：①JS 動態建立的 carousel/photo 圖片（`createElement('img')`）不會被 DOMContentLoaded 時的 lazy-load observer 捕獲，導致永遠 `opacity:0`。修復：在 `buildCarousel()` 和 `loadBatch()` 中直接加入 load → `.loaded` 監聽器。②CSS lazy-load transition 改回只控制 opacity；卡片圖片（`.postcard-item img[loading="lazy"]` 等）用更高特異性選擇器（0,2,1）保留 transform/filter/box-shadow transition，確保 hover 動畫正常運作。cache busting → 290429h |
+| 2026.04.29 | 海風網站助手 | **團隊頁 kafu_yi 頭像修復**：mc-heads.net 用玩家名稱查詢回傳 Steve 預設皮膚，改用 UUID（9a50acb2bed0432eb89b1fef7dad0538）取得正確頭像 |
 
 ---
 
