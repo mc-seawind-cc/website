@@ -5,7 +5,7 @@
 // 自動偵測子目錄深度，產生正確的 base path
 const SW_BASE = (() => {
   const path = location.pathname;
-  if (path.includes('/guide/') || path.includes('/lore/')) return '../';
+  if (path.includes('/guide/') || path.includes('/文化藝廊/')) return '../';
   return '';
 })();
 

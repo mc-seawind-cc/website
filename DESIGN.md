@@ -606,7 +606,7 @@ website/
 **中優先：**
 - [x] 活動詳情頁加入 JSON-LD Event 結構化資料（提升 Google 搜尋展示）— 2026.04.29 ✅
 - [ ] 圖片 alt 文字持續優化（部分功能圖示 alt 可更具描述性）
-- [ ] sitemap.xml lastmod 日期統一更新（部分仍為 2026-04-12）
+- [x] sitemap.xml lastmod 日期統一更新 — 全部已為 2026-04-29 ✅
 
 **低優先：**
 - [ ] PWA manifest 更新（檢查 icons 路徑與尺寸是否完整）
