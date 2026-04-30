@@ -6,9 +6,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>經濟系統 — 海風指南 — 海風 SeaWind</title>
   <link rel="canonical" href="https://www.seawind.cc/海風指南/經濟系統">
-  <meta name="description" content="海風伺服器經濟系統指南：風幣、任務幣、風汐碎片、石材的用途、取得方式與匯率。">
+  <meta name="description" content="海風伺服器經濟系統完整指南：風幣、任務幣、風汐碎片、石材四種貨幣的用途、取得方式、匯率與貨幣流向。">
   <meta property="og:title" content="經濟系統 — 海風指南 — 海風">
-  <meta property="og:description" content="風幣、任務幣、風汐碎片、石材——搞懂海風的錢怎麼來、怎麼花。">
+  <meta property="og:description" content="風幣、任務幣、風汐碎片、石材——搞懂海風的錢怎麼來、怎麼花、怎麼流動。">
   <meta property="og:image" content="https://www.seawind.cc/assets/img/logo.png">
   <meta property="og:type" content="website">
   <meta name="twitter:card" content="summary">
@@ -178,7 +178,7 @@
         <!-- ═══ Hero ═══ -->
         <div class="guide-v2-hero fade-in">
           <h1>💰 經濟系統</h1>
-          <p class="section-desc">海風的錢分成兩種：風幣是通用的，走到哪都能花；代幣是各系統自己用的，只能在對應的地方消費。剛來的話，先去<a href="銀行">銀行</a>把鑽石換成風幣就對了。</p>
+          <p class="section-desc">海風的經濟分成兩層：<strong>風幣</strong>是通用貨幣，走到哪都能花；<strong>代幣</strong>是各系統專屬的獎勵，只能在對應的地方消費。剛來的話，先到<a href="銀行">銀行</a>把鑽石換成風幣，有了錢就什麼都好辦。</p>
           <div class="guide-quick-stats">
             <div class="guide-qs-item"><span class="guide-qs-icon">💰</span><span>通用貨幣</span><span class="guide-qs-val">風幣</span></div>
             <div class="guide-qs-item"><span class="guide-qs-icon">🎫</span><span>專屬代幣</span><span class="guide-qs-val">3 種</span></div>
@@ -189,23 +189,68 @@
 
         <div class="guide-divider"></div>
 
-        <!-- ═══ 說明 ═══ -->
+        <!-- ═══ 貨幣總覽 ═══ -->
         <div class="guide-section-card fade-in" style="--card-accent:var(--ocean-blue)">
-          <h2><span class="sec-icon">📊</span> 海風的經濟長這樣</h2>
-          <p>海風只有一種通用貨幣：<strong>風幣</strong>。你在商店買東西、跟玩家交易、寄包裹，用的都是風幣。鑽石是硬通貨，拿到<a href="銀行">銀行</a>可以換風幣（1 顆 = 25 風幣）。</p>
-          <p style="margin-top:var(--space-sm)">除了風幣之外，還有三種<strong>代幣</strong>，各自綁定特定系統。任務幣做任務拿的，只能在任務商店花；風汐碎片拿來換高階工具；石材拿來<a href="建材小舖">買建材</a>。代幣之間不能互換，也不能當風幣用。</p>
-          <p style="margin-top:var(--space-sm)">簡單來說：<strong>有風幣就什麼都能買，代幣是各系統自己的獎勵。</strong></p>
+          <h2><span class="sec-icon">📊</span> 貨幣總覽</h2>
+          <p>海風一共有<strong>四種貨幣</strong>，分成兩類：</p>
+          <ul style="margin:var(--space-md) 0;padding-left:1.5em;color:var(--cloud);line-height:2.2">
+            <li><strong>通用貨幣（風幣）</strong> — 全伺服器通行，商店買賣、玩家交易、寄包裹都靠它</li>
+            <li><strong>專屬代幣（任務幣、風汐碎片、石材）</strong> — 各系統自己的獎勵，只能在對應的地方花</li>
+          </ul>
+          <p>代幣之間<strong>不能互換</strong>，也不能當風幣用。簡單來說：<strong>有風幣就什麼都能買，代幣是額外的系統獎勵。</strong></p>
 
           <div class="rules-table-wrap" style="margin-top:var(--space-lg)">
             <table class="rules-table">
-              <thead><tr><th>名稱</th><th>類型</th><th>形式</th><th>能交易嗎</th><th>用途</th></tr></thead>
+              <thead><tr><th>名稱</th><th>類型</th><th>形式</th><th>能交易嗎</th><th>主要用途</th></tr></thead>
               <tbody>
-                <tr><td><strong>💰 風幣</strong></td><td>貨幣</td><td>虛擬</td><td>✅ <code>/pay</code></td><td>NPC 商店、箱子商店、線上商城、郵寄、開店</td></tr>
-                <tr><td><strong>🎯 任務幣</strong></td><td>代幣</td><td>虛擬</td><td>❌</td><td>任務商店換東西（含風汐碎片）</td></tr>
-                <tr><td><strong>🌀 風汐碎片</strong></td><td>代幣</td><td>實體物品</td><td>✅</td><td>合成風汐石 → 換 +6/+7 工具</td></tr>
-                <tr><td><strong>🪨 石材</strong></td><td>代幣</td><td>實體物品</td><td>✅</td><td>建材小舖換建築材料</td></tr>
+                <tr><td><strong>💰 風幣</strong></td><td>通用貨幣</td><td>虛擬（系統帳戶）</td><td>✅ <code>/pay</code></td><td>NPC 商店、箱子商店、線上商城、郵寄、開店</td></tr>
+                <tr><td><strong>🎯 任務幣</strong></td><td>專屬代幣</td><td>虛擬（系統帳戶）</td><td>❌</td><td>任務商店換東西（含風汐碎片）</td></tr>
+                <tr><td><strong>🌀 風汐碎片</strong></td><td>專屬代幣</td><td>實體物品</td><td>✅ 面交</td><td>合成風汐石 → 換 +6/+7 工具</td></tr>
+                <tr><td><strong>🪨 石材</strong></td><td>專屬代幣</td><td>實體物品</td><td>✅ 面交</td><td><a href="建材小舖">建材小舖</a>換建築材料</td></tr>
               </tbody>
             </table>
+          </div>
+
+          <!-- 貨幣流向圖 -->
+          <div style="margin-top:var(--space-xl);padding:var(--space-lg);background:var(--drift);border-radius:var(--radius-lg);border:1px solid var(--mist);overflow-x:auto">
+            <pre style="margin:0;font-family:'Noto Sans TC',monospace;font-size:0.82rem;line-height:1.8;color:var(--cloud);white-space:pre;text-align:center">
+  ┌─────────────┐
+  │   💎 鑽石    │ ← 挖礦取得
+  └──────┬──────┘
+         │ 銀行兌換（1:25）
+         ▼
+  ┌─────────────┐     ┌──────────────┐     ┌─────────────┐
+  │  💰 風幣     │────→│  NPC 商店     │     │ 🪨 石材      │
+  │  （通用）    │────→│  箱子商店     │     │ （建材小舖） │
+  │             │────→│  線上商城     │     └──────┬──────┘
+  │             │────→│  蜂聊郵政     │            │ 指定材料兌換
+  └──────┬──────┘     └──────────────┘            ▼
+         │                                  ┌─────────────┐
+         │ /pay 轉帳                         │  建築材料    │
+         ▼                                  └─────────────┘
+  ┌─────────────┐
+  │  其他玩家    │
+  └─────────────┘
+
+  ┌─────────────┐     ┌──────────────┐     ┌─────────────┐
+  │  📋 任務     │────→│  🎯 任務幣    │────→│ 任務商店     │
+  │ （每日/社區）│     │  （不可交易） │     │ （含風汐碎片）│
+  └─────────────┘     └──────────────┘     └──────┬──────┘
+                                                   │
+  ┌─────────────┐                                  │
+  │  📅 簽到     │──────────────────────────────────→│
+  └─────────────┘         兩個取得管道                ▼
+                                              ┌─────────────┐
+                                              │  🌀 風汐碎片  │
+                                              │ （實體物品）  │
+                                              └──────┬──────┘
+                                                     │ 合成風汐石
+                                                     ▼
+                                              ┌─────────────┐
+                                              │  風汐石      │
+                                              │  → +6/+7 工具 │
+                                              └─────────────┘
+            </pre>
           </div>
         </div>
 
@@ -214,47 +259,67 @@
         <!-- ═══ 風幣 ═══ -->
         <div class="guide-section-card fade-in" style="--card-accent:var(--sand)">
           <h2><span class="sec-icon">💰</span> 風幣</h2>
-          <p>海風唯一的通用貨幣。存在系統裡，死了不會掉，也沒人能偷。基本上你在海風的每一筆交易都是用風幣。</p>
+          <p>海風唯一的通用貨幣，也是你在伺服器裡用得最多的錢。風幣存在系統帳戶裡，<strong>死了不會掉</strong>，也沒人能偷。你在海風的每一筆交易——買東西、賣東西、寄包裹、開店——都是用風幣。</p>
 
-          <h3 style="margin-top:var(--space-lg)">怎麼賺</h3>
+          <h3 style="margin-top:var(--space-lg)">💎 怎麼賺</h3>
           <div class="guide-eco-grid">
             <div class="guide-eco-card">
               <div class="guide-eco-icon">💎</div>
               <h4>銀行兌換</h4>
-              <p>鑽石拿去銀行換，<strong>1 顆 = 25 風幣</strong>。最穩定的收入。</p>
+              <p>挖到的鑽石拿到<a href="銀行">銀行</a>換，<strong>1 顆 = 25 風幣</strong>。固定匯率，最穩定的收入來源。</p>
             </div>
             <div class="guide-eco-card">
               <div class="guide-eco-icon">📅</div>
               <h4>每日簽到</h4>
-              <p>簽到會掉金錠、鑽石、經驗瓶之類的，拿去賣就是錢。</p>
+              <p>每天上線<a href="簽到系統">簽到</a>一次，獎勵包含金錠、鑽石、經驗瓶等。簽到本身不直接給風幣，但拿到的物品可以賣掉換錢。</p>
             </div>
             <div class="guide-eco-card">
               <div class="guide-eco-icon">📋</div>
               <h4>做任務</h4>
-              <p>每日任務、社區任務、冒險任務，完成都有獎勵。</p>
+              <p><a href="任務系統">每日任務、社區任務、冒險任務</a>都有獎勵。每日任務自動刷新，做完就有收入。</p>
             </div>
             <div class="guide-eco-card">
               <div class="guide-eco-icon">🏪</div>
-              <h4>賣東西</h4>
-              <p>開<a href="箱子商店">箱子商店</a>或用<a href="線上商城">線上商城</a>掛賣，讓別人用風幣跟你買。</p>
+              <h4>開店賣東西</h4>
+              <p>在市場區開<a href="箱子商店">箱子商店</a>，或用<a href="線上商城">線上商城</a>（<code>/ah</code>）掛賣物品。打到的稀有材料、多餘的裝備都能換錢。</p>
             </div>
             <div class="guide-eco-card">
               <div class="guide-eco-icon">💸</div>
-              <h4>別人轉給你</h4>
-              <p><code>/pay</code> 可以直接轉風幣。</p>
+              <h4>玩家轉帳</h4>
+              <p>其他玩家可以用 <code>/pay</code> 直接轉風幣給你。合作挖礦、幫忙建案都可以談報酬。</p>
             </div>
           </div>
 
-          <h3 style="margin-top:var(--space-lg)">怎麼花</h3>
-          <ul style="margin:var(--space-md) 0;padding-left:1.5em;color:var(--cloud);line-height:2.2">
-            <li><strong>NPC 商店</strong> — 重生點<a href="雜貨店">雜貨店</a>買基本材料</li>
-            <li><strong>箱子商店</strong> — 市場區逛其他玩家的店</li>
-            <li><strong>線上商城</strong> — <code>/ah</code> 看全服上架的商品</li>
-            <li><strong>開店</strong> — 開箱子商店要 25 風幣，改價 20 風幣</li>
-            <li><strong>寄東西</strong> — <a href="蜂聊郵政">蜂聊郵政</a>寄一次 1 風幣</li>
-          </ul>
+          <h3 style="margin-top:var(--space-lg)">🛒 怎麼花</h3>
+          <div class="guide-eco-grid">
+            <div class="guide-eco-card">
+              <div class="guide-eco-icon">🧓</div>
+              <h4>NPC 商店</h4>
+              <p>重生點<a href="雜貨店">雜貨店</a>買基本材料，方便新手快速取得必需品。</p>
+            </div>
+            <div class="guide-eco-card">
+              <div class="guide-eco-icon">📦</div>
+              <h4>箱子商店</h4>
+              <p>市場區逛其他玩家開的店，什麼都有賣。用 <code>/qs</code> 快速查看。</p>
+            </div>
+            <div class="guide-eco-card">
+              <div class="guide-eco-icon">🛒</div>
+              <h4>線上商城</h4>
+              <p>用 <code>/ah</code> 開啟全服拍賣平台，在家也能逛。上架費 10 風幣。</p>
+            </div>
+            <div class="guide-eco-card">
+              <div class="guide-eco-icon">📬</div>
+              <h4>蜂聊郵政</h4>
+              <p>用<a href="蜂聊郵政">蜂聊郵政</a>寄東西給其他玩家，一次 <strong>1 風幣</strong>。跨分流也收得到。</p>
+            </div>
+            <div class="guide-eco-card">
+              <div class="guide-eco-icon">🏪</div>
+              <h4>開店成本</h4>
+              <p>開一個<a href="箱子商店">箱子商店</a>要 <strong>25 風幣</strong>，改價 <strong>20 風幣</strong>。投資一次，長期收益。</p>
+            </div>
+          </div>
 
-          <div class="callout callout-tip"><span class="callout-icon">💡</span><span>剛來先挖幾顆鑽石，到<a href="銀行">銀行</a>換風幣，之後逛商店、寄東西都方便。</span></div>
+          <div class="callout callout-tip" style="margin-top:var(--space-lg)"><span class="callout-icon">💡</span><span>新手建議：先挖幾顆鑽石到<a href="銀行">銀行</a>換風幣（1 顆 = 25），有了 100～200 風幣就夠初期逛商店、寄東西了。之後靠簽到＋任務就能穩定收入。</span></div>
         </div>
 
         <div class="guide-divider"></div>
@@ -262,8 +327,18 @@
         <!-- ═══ 任務幣 ═══ -->
         <div class="guide-section-card fade-in" style="--card-accent:var(--foam)">
           <h2><span class="sec-icon">🎯</span> 任務幣</h2>
-          <p>做<a href="任務系統">任務</a>拿到的獎勵，不能轉給別人。可以在任務商店（<code>/plk shop</code>）換東西，最值得換的是<strong>風汐碎片</strong>——這是拿碎片的兩個管道之一。</p>
-          <div class="callout callout-tip"><span class="callout-icon">📖</span><span>任務幣的取得方式、商店內容、指令都在<a href="任務系統">任務系統</a>頁面。</span></div>
+          <p>做<a href="任務系統">任務</a>拿到的專屬獎勵。任務幣<strong>不能轉給別人</strong>，只能自己用。但它能換到一些很有價值的東西——最值得換的就是<strong>風汐碎片</strong>，這是取得碎片的兩個管道之一。</p>
+
+          <h3 style="margin-top:var(--space-lg)">怎麼用</h3>
+          <p>輸入 <code>/plk shop</code> 開啟任務商店，裡面有各種物品可以兌換。任務幣會隨著你每天做任務慢慢累積，不用急著花——攢多一點再換大獎也行。</p>
+
+          <h3 style="margin-top:var(--space-lg)">任務商店裡有什麼</h3>
+          <ul style="margin:var(--space-md) 0;padding-left:1.5em;color:var(--cloud);line-height:2.2">
+            <li><strong>🌀 風汐碎片</strong> — 最推薦的兌換選項，拿來合成高階工具</li>
+            <li>其他實用物品 — 詳細內容可在商店裡查看</li>
+          </ul>
+
+          <div class="callout callout-info" style="margin-top:var(--space-lg)"><span class="callout-icon">📖</span><span>任務幣的取得方式、每日任務類型、社區任務規則，詳見<a href="任務系統">任務系統</a>。</span></div>
         </div>
 
         <div class="guide-divider"></div>
@@ -271,55 +346,59 @@
         <!-- ═══ 風汐碎片 ═══ -->
         <div class="guide-section-card fade-in" style="--card-accent:var(--lavender)">
           <h2><span class="sec-icon">🌀</span> 風汐碎片</h2>
-          <p>風汐系列的基礎材料。碎片能合成風汐石，風汐石能換效率比鑽石更高的風汐工具。碎片是實體物品，<strong>死了會掉</strong>，別帶著亂跑。</p>
+          <p>風汐系列的基礎材料。碎片能合成風汐石，風汐石能換比鑽石更強的風汐工具——效率 VI 甚至效率 VII，而且<strong>不會壞</strong>。這是海風最頂級的裝備之一。</p>
 
-          <h3 style="margin-top:var(--space-lg)">取得管道（就這兩個）</h3>
+          <div class="callout callout-warn" style="margin-top:var(--space-md)"><span class="callout-icon">⚠️</span><span>碎片是<strong>實體物品</strong>，死了會掉！拿到後趕快存進<a href="倉庫">倉庫</a>或<a href="領地系統">領地</a>箱子裡，別帶著亂跑。</span></div>
+
+          <h3 style="margin-top:var(--space-lg)">取得管道（只有兩個）</h3>
+          <p>風汐碎片的取得管道非常少，這也是它珍貴的原因：</p>
           <div class="guide-eco-grid">
             <div class="guide-eco-card">
               <div class="guide-eco-icon">📅</div>
               <h4>每日簽到</h4>
-              <p>簽到獎勵偶爾會出碎片。</p>
+              <p><a href="簽到系統">簽到</a>獎勵偶爾會出碎片。每天簽到就有機會，不用額外做什麼。</p>
             </div>
             <div class="guide-eco-card">
               <div class="guide-eco-icon">🎯</div>
-              <h4>任務商店</h4>
-              <p>用任務幣在 <code>/plk shop</code> 換。</p>
+              <h4>任務商店兌換</h4>
+              <p>用任務幣在 <code>/plk shop</code> 換。做任務累積任務幣，再換碎片——這是比較穩定的方式。</p>
             </div>
           </div>
 
-          <h3 style="margin-top:var(--space-lg)">風汐系列</h3>
+          <h3 style="margin-top:var(--space-lg)">風汐系列三階層</h3>
+          <p>碎片 → 石 → 錠，三個階層，越往上越稀有：</p>
           <div class="guide-eco-grid">
             <div class="guide-eco-card">
               <div class="guide-eco-icon">🔹</div>
               <h4>風汐碎片</h4>
-              <p>基礎單位，合成風汐石用的，也能直接跟人交易。</p>
+              <p>基礎單位。簽到或任務商店取得，可以合成風汐石，也能直接跟其他玩家交易。</p>
             </div>
             <div class="guide-eco-card">
               <div class="guide-eco-icon">🔶</div>
               <h4>風汐石</h4>
-              <p>碎片合成來的，拿來換 +6/+7 工具。</p>
+              <p>碎片合成來的進階材料。拿來兌換 +6/+7 工具。同樣是實體物品，死了會掉。</p>
             </div>
             <div class="guide-eco-card">
               <div class="guide-eco-icon">🟠</div>
               <h4>風汐錠</h4>
-              <p>贊助專屬，還在規劃，目前拿不到。</p>
+              <p>贊助專屬的最高階材料。目前還在規劃中，暫時拿不到。</p>
             </div>
           </div>
 
           <h3 style="margin-top:var(--space-lg)">風汐工具</h3>
-          <p>比鑽石工具更強，而且不會壞：</p>
+          <p>比鑽石工具更強，而且<strong>不會壞</strong>。分兩階：</p>
           <div class="rules-table-wrap">
             <table class="rules-table">
-              <thead><tr><th>等級</th><th>工具</th><th>效率</th><th>兌換材料</th></tr></thead>
+              <thead><tr><th>等級</th><th>工具種類</th><th>效率</th><th>兌換材料</th></tr></thead>
               <tbody>
-                <tr><td><strong>+6</strong></td><td>風汐鎬 · 風汐鏟 · 風汐鋤 · 風汐斧</td><td>效率 VI</td><td>6 風汐石 ＋ 對應鑽石工具</td></tr>
-                <tr><td><strong>+7</strong></td><td>風汐鎬 · 風汐鏟 · 風汐鋤 · 風汐斧</td><td>效率 VII</td><td>6 風汐石 ＋ 對應 +6 工具</td></tr>
+                <tr><td><strong>+6</strong></td><td>風汐鎬 · 風汐鏟 · 風汐鋤 · 風汐斧</td><td>效率 VI</td><td>6 顆風汐石 ＋ 對應的鑽石工具</td></tr>
+                <tr><td><strong>+7</strong></td><td>風汐鎬 · 風汐鏟 · 風汐鋤 · 風汐斧</td><td>效率 VII</td><td>6 顆風汐石 ＋ 對應的 +6 工具</td></tr>
               </tbody>
             </table>
           </div>
-          <p style="margin-top:var(--space-sm);color:var(--fog);font-size:0.85rem">不可合成、不可熔煉、不可附魔、不可修復。</p>
+          <p style="margin-top:var(--space-sm);color:var(--fog);font-size:0.85rem">風汐工具不可合成、不可熔煉、不可附魔、不可修復。拿到就是最強狀態。</p>
 
-          <div class="callout callout-warn"><span class="callout-icon">⚠️</span><span>碎片和風汐石都是實體物品，死了會掉。存<a href="倉庫">倉庫</a>或<a href="領地系統">領地</a>箱子裡比較安全。</span></div>
+          <div class="callout callout-tip" style="margin-top:var(--space-lg)"><span class="callout-icon">💡</span><span>想升到 +7 工具，路徑是：先用碎片合風汐石（6 顆），兌換 +6 工具，再用 6 顆風汐石 + +6 工具升到 +7。總共需要 <strong>12 顆風汐石</strong>＋對應的鑽石工具。</span></div>
         </div>
 
         <div class="guide-divider"></div>
@@ -327,11 +406,19 @@
         <!-- ═══ 石材 ═══ -->
         <div class="guide-section-card fade-in" style="--card-accent:#85b1e0">
           <h2><span class="sec-icon">🪨</span> 石材</h2>
-          <p><a href="建材小舖">建材小舖</a>的專用代幣。在小舖用指定材料換石材，再用石材挑建築材料。石材是實體物品，可以跟其他玩家交易。</p>
+          <p><a href="建材小舖">建材小舖</a>的專用代幣。建材小舖是重生點附近的一間店，賣各種建築材料——最受歡迎的是<strong>雲杉暖木</strong>，也提供<strong>原木去皮</strong>服務。</p>
 
-          <p style="margin-top:var(--space-md)">建材小舖賣各種木材和石料，最受歡迎的是<strong>雲杉暖木</strong>。也提供<strong>原木去皮</strong>服務，帶原木來就能去樹皮。</p>
+          <h3 style="margin-top:var(--space-lg)">怎麼取得石材</h3>
+          <p>石材不是直接挖來的，而是用<strong>指定材料</strong>到建材小舖兌換。帶原料來，跟 NPC 互動，就能換成石材。石材是實體物品，可以跟其他玩家交易。</p>
 
-          <div class="callout callout-tip"><span class="callout-icon">💡</span><span>建材小舖在重生點雪帆巷（<code>45, 92, -67</code>），銀行附近。詳見<a href="建材小舖">建材小舖</a>。</span></div>
+          <h3 style="margin-top:var(--space-lg)">建材小舖有什麼</h3>
+          <ul style="margin:var(--space-md) 0;padding-left:1.5em;color:var(--cloud);line-height:2.2">
+            <li><strong>雲杉暖木</strong> — 最受歡迎的建材，暖色系木質</li>
+            <li><strong>原木去皮</strong> — 帶原木來就能去樹皮，免費服務</li>
+            <li><strong>各類木材與石料</strong> — 多種建築材料可選</li>
+          </ul>
+
+          <div class="callout callout-tip" style="margin-top:var(--space-lg)"><span class="callout-icon">💡</span><span>建材小舖在重生點雪帆巷（<code>45, 92, -67</code>），<a href="銀行">銀行</a>附近。第一次來的話，<code>/spawn</code> 回重生點，沿路牌走就到了。詳見<a href="建材小舖">建材小舖</a>。</span></div>
         </div>
 
         <div class="guide-divider"></div>
@@ -339,24 +426,64 @@
         <!-- ═══ 冷媒 ═══ -->
         <div class="guide-section-card fade-in" style="--card-accent:var(--sky)">
           <h2><span class="sec-icon">❄️</span> 冷媒（規劃中）</h2>
-          <p>未來<a href="../支持須知">贊助</a>時會拿到的回饋代幣。贊助方案還在設計，目前沒有開放。</p>
+          <p>未來<a href="../支持須知">贊助</a>時會拿到的回饋代幣。贊助方案還在設計中，目前<strong>尚未開放</strong>。</p>
 
           <h3 style="margin-top:var(--space-lg)">規劃方向</h3>
           <ul style="margin:var(--space-md) 0;padding-left:1.5em;color:var(--cloud);line-height:2.2">
             <li>依贊助金額獲得對應數量的冷媒</li>
-            <li>不會過期</li>
+            <li>不會過期，永久有效</li>
             <li>只能在專屬商店換特殊物品</li>
             <li>不能跟其他玩家交易</li>
-            <li>贊助前要先<a href="綁定帳號">綁定帳號</a></li>
+            <li>贊助前需要先<a href="綁定帳號">綁定帳號</a></li>
           </ul>
 
-          <div class="callout callout-tip"><span class="callout-icon">📢</span><span>正式上線會在 Discord 公告。</span></div>
+          <div class="callout callout-info" style="margin-top:var(--space-lg)"><span class="callout-icon">📢</span><span>正式上線會在 Discord 公告。想搶先了解贊助方案，請見<a href="../支持須知">支持須知</a>。</span></div>
+        </div>
+
+        <div class="guide-divider"></div>
+
+        <!-- ═══ 常見問題 ═══ -->
+        <div class="guide-section-card fade-in" style="--card-accent:var(--ocean-blue)">
+          <h2><span class="sec-icon">❓</span> 常見問題</h2>
+
+          <div class="guide-faq">
+            <div class="guide-faq-item">
+              <button class="guide-faq-q">風幣不夠用怎麼辦？</button>
+              <div class="guide-faq-a"><div class="guide-faq-a-inner">
+                每天<a href="簽到系統">簽到</a>＋做<a href="任務系統">任務</a>是最穩定的收入來源。也可以在<a href="銀行">銀行</a>用鑽石兌換（1 顆 = 25 風幣），或到市場區<a href="箱子商店">開箱子商店</a>賣東西。初期先挖幾顆鑽石換風幣就夠用了。
+              </div></div>
+            </div>
+            <div class="guide-faq-item">
+              <button class="guide-faq-q">任務幣可以轉給別人嗎？</button>
+              <div class="guide-faq-a"><div class="guide-faq-a-inner">
+                不行。任務幣是綁定在你帳號上的，不能交易、不能轉帳。只能自己在任務商店（<code>/plk shop</code>）消費。最推薦換<strong>風汐碎片</strong>。
+              </div></div>
+            </div>
+            <div class="guide-faq-item">
+              <button class="guide-faq-q">風汐碎片死了會掉嗎？</button>
+              <div class="guide-faq-a"><div class="guide-faq-a-inner">
+                會！碎片和風汐石都是<strong>實體物品</strong>，放在背包裡死亡時會掉落。拿到後趕快存進<a href="倉庫">倉庫</a>或<a href="領地系統">領地</a>箱子裡。風幣倒是不用擔心——存在系統帳戶裡，死了也不會少。
+              </div></div>
+            </div>
+            <div class="guide-faq-item">
+              <button class="guide-faq-q">代幣可以換成風幣嗎？</button>
+              <div class="guide-faq-a"><div class="guide-faq-a-inner">
+                不行。任務幣、風汐碎片、石材這三種代幣<strong>不能直接換成風幣</strong>。但風汐碎片和石材是實體物品，可以跟其他玩家面交易——價格就看你們自己談了。任務幣則完全不能交易。
+              </div></div>
+            </div>
+            <div class="guide-faq-item">
+              <button class="guide-faq-q">鑽石除了換風幣還有什麼用？</button>
+              <div class="guide-faq-a"><div class="guide-faq-a-inner">
+                鑽石本身也是重要的合成材料（裝備、附魔台等），不一定要全部換掉。建議保留一部分自用，多餘的再拿去<a href="銀行">銀行</a>換風幣。如果玩家市場的鑽石行情比銀行好，也可以在玩家之間交易。
+              </div></div>
+            </div>
+          </div>
         </div>
 
         <div class="guide-divider"></div>
 
         <!-- ═══ 常用指令 ═══ -->
-        <div class="guide-section-card fade-in" style="--card-accent:var(--ocean-blue)">
+        <div class="guide-section-card fade-in" style="--card-accent:var(--lavender)">
           <h2><span class="sec-icon">⌨️</span> 常用指令</h2>
           <div class="callout callout-tip"><span class="callout-icon">💡</span><span><code>&lt; &gt;</code> 必填，<code>[ ]</code> 選填。</span></div>
           <div class="guide-cmd-grid">
@@ -364,35 +491,42 @@
               <span class="guide-cmd-icon">💰</span>
               <div class="guide-cmd-body">
                 <div class="guide-cmd-name">/bal</div>
-                <div class="guide-cmd-desc">看自己的風幣</div>
+                <div class="guide-cmd-desc">查看自己的風幣餘額</div>
               </div>
             </div>
             <div class="guide-cmd-card">
               <span class="guide-cmd-icon">👀</span>
               <div class="guide-cmd-body">
                 <div class="guide-cmd-name">/bal &lt;玩家名&gt;</div>
-                <div class="guide-cmd-desc">看別人的風幣</div>
+                <div class="guide-cmd-desc">查看其他玩家的風幣</div>
               </div>
             </div>
             <div class="guide-cmd-card">
               <span class="guide-cmd-icon">💸</span>
               <div class="guide-cmd-body">
                 <div class="guide-cmd-name">/pay &lt;玩家名&gt; &lt;金額&gt;</div>
-                <div class="guide-cmd-desc">轉風幣給別人</div>
+                <div class="guide-cmd-desc">轉風幣給其他玩家</div>
+              </div>
+            </div>
+            <div class="guide-cmd-card">
+              <span class="guide-cmd-icon">🎯</span>
+              <div class="guide-cmd-body">
+                <div class="guide-cmd-name">/plk shop</div>
+                <div class="guide-cmd-desc">開啟任務幣商店</div>
               </div>
             </div>
             <div class="guide-cmd-card">
               <span class="guide-cmd-icon">🛒</span>
               <div class="guide-cmd-body">
                 <div class="guide-cmd-name">/ah</div>
-                <div class="guide-cmd-desc">開線上商城</div>
+                <div class="guide-cmd-desc">開啟線上商城</div>
               </div>
             </div>
             <div class="guide-cmd-card">
               <span class="guide-cmd-icon">📦</span>
               <div class="guide-cmd-body">
                 <div class="guide-cmd-name">/qs</div>
-                <div class="guide-cmd-desc">看箱子商店</div>
+                <div class="guide-cmd-desc">查看箱子商店</div>
               </div>
             </div>
           </div>
@@ -418,6 +552,13 @@
                 <p>石材兌換各種建築材料</p>
               </div>
             </a>
+            <a href="任務系統" class="guide-next-card">
+              <span class="guide-next-icon">📋</span>
+              <div class="guide-next-body">
+                <h4>任務系統</h4>
+                <p>做任務賺任務幣，兌換風汐碎片</p>
+              </div>
+            </a>
             <a href="簽到系統" class="guide-next-card">
               <span class="guide-next-icon">📅</span>
               <div class="guide-next-body">
@@ -425,11 +566,18 @@
                 <p>每天簽到領獎勵，含風汐碎片</p>
               </div>
             </a>
-            <a href="任務系統" class="guide-next-card">
-              <span class="guide-next-icon">📋</span>
+            <a href="箱子商店" class="guide-next-card">
+              <span class="guide-next-icon">📦</span>
               <div class="guide-next-body">
-                <h4>任務系統</h4>
-                <p>做任務賺任務幣，兌換風汐碎片</p>
+                <h4>箱子商店</h4>
+                <p>開店賣東西、逛市場</p>
+              </div>
+            </a>
+            <a href="線上商城" class="guide-next-card">
+              <span class="guide-next-icon">🛒</span>
+              <div class="guide-next-body">
+                <h4>線上商城</h4>
+                <p>遊戲內的全服拍賣平台</p>
               </div>
             </a>
             <a href="../支持須知" class="guide-next-card">
@@ -439,11 +587,11 @@
                 <p>贊助方案與冷媒回饋（規劃中）</p>
               </div>
             </a>
-            <a href="線上商城" class="guide-next-card">
-              <span class="guide-next-icon">🛒</span>
+            <a href="雜貨店" class="guide-next-card">
+              <span class="guide-next-icon">🧓</span>
               <div class="guide-next-body">
-                <h4>線上商城</h4>
-                <p>遊戲內的全服拍賣平台</p>
+                <h4>雜貨店</h4>
+                <p>NPC 商店買基本材料</p>
               </div>
             </a>
           </div>
@@ -480,6 +628,17 @@
 
   <script src="../utils.js"></script>
   <script src="../main.js?v=300430a"></script>
+  <script>
+  // FAQ Accordion
+  document.querySelectorAll('.guide-faq-q').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const item = btn.parentElement;
+      const wasOpen = item.classList.contains('open');
+      item.closest('.guide-faq').querySelectorAll('.guide-faq-item').forEach(i => i.classList.remove('open'));
+      if (!wasOpen) item.classList.add('open');
+    });
+  });
+  </script>
   <script>
   (function(){
     const loader = document.getElementById("pageLoader");
