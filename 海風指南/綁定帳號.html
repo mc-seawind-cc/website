@@ -18,10 +18,16 @@
   <link rel="icon" href="../assets/img/logo.png">
   <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;800&family=Noto+Serif+TC:wght@700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../style.css?v=290429j">
+  <link rel="stylesheet" href="../style.css?v=300430a">
   <link rel="stylesheet" href="../music-player.css">
 </head>
 <body>
+  <div class="page-loader" id="pageLoader">
+    <span class="loader-logo">海風</span>
+    <div class="loader-wave"></div>
+    <div class="loader-dots"><span></span><span></span><span></span></div>
+  </div>
+
   <a href="#mainContent" class="skip-link">跳到主要內容</a>
 
   <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
@@ -36,7 +42,7 @@
         <li><a href="../首頁">首頁</a></li>
         <li><a href="../公告">公告</a></li>
         <li class="nav-dropdown">
-          <a href="../文化藝廊" class="nav-dropdown-toggle">關於 <span class="arrow">▾</span></a>
+          <a href="../文化藝廊" class="nav-dropdown-toggle" aria-expanded="false" aria-haspopup="true">關於 <span class="arrow">▾</span></a>
           <ul class="dropdown-menu">
             <li><a href="../文化藝廊">文化藝廊</a></li>
             <li><a href="../活動">活動</a></li>
@@ -47,12 +53,13 @@
         </li>
         <li><a href="../海風指南">海風指南</a></li>
         <li class="nav-dropdown">
-          <a href="../社群須知" class="nav-dropdown-toggle">須知 <span class="arrow">▾</span></a>
+          <a href="../社群須知" class="nav-dropdown-toggle" aria-expanded="false" aria-haspopup="true">須知 <span class="arrow">▾</span></a>
           <ul class="dropdown-menu">
             <li><a href="../社群須知">社群須知</a></li>
             <li><a href="../支持須知">支持須知</a></li>
             <li><a href="../管理通則">管理通則</a></li>
             <li><a href="../公務人員須知">公務人員須知</a></li>
+            <li><a href="../設計規範">設計規範</a></li>
             <li><a href="../服務條款">服務條款</a></li>
             <li><a href="../隱私權政策">隱私權政策</a></li>
           </ul>
@@ -60,7 +67,7 @@
         <li><a href="../會員">會員</a></li>
         <li><a href="../相關連結">相關連結</a></li>
         <li class="nav-dropdown">
-          <a href="../合作夥伴" class="nav-dropdown-toggle">資料中心 <span class="arrow">▾</span></a>
+          <a href="../合作夥伴" class="nav-dropdown-toggle" aria-expanded="false" aria-haspopup="true">資料中心 <span class="arrow">▾</span></a>
           <ul class="dropdown-menu">
             <li><a href="../合作夥伴">合作夥伴</a></li>
             <li><a href="../違規處分">違規處分</a></li>
@@ -74,7 +81,16 @@
     </div>
   </nav>
   <div class="page">
-    <div id="mainContent" class="page-hero"><h1>綁定帳號</h1><p class="section-desc">建議大家都綁定帳號。</p></div>
+          <!-- ═══ Hero ═══ -->
+      <div class="guide-v2-hero fade-in">
+        <h1>綁定帳號</h1>
+          <p class="section-desc">建議大家都綁定帳號。</p>
+          <div class="guide-quick-stats">
+            <div class="guide-qs-item"><span class="guide-qs-icon">🔗</span><span>平台</span><span class="guide-qs-val">MC ↔ Discord</span></div>
+            <div class="guide-qs-item"><span class="guide-qs-icon">⌨️</span><span>指令</span><span class="guide-qs-val">/discord link</span></div>
+            <div class="guide-qs-item"><span class="guide-qs-icon">📬</span><span>功能</span><span class="guide-qs-val">跨平台通知</span></div>
+          </div>
+      </div>
     <div class="guide-layout">
 
             <!-- 側邊導覽 -->
@@ -178,7 +194,10 @@
       <div class="rules-intro fade-in">
         <p>把你的 Minecraft 帳號和 Discord 帳號綁在一起，解鎖跨平台功能，在遊戲裡和 Discord 上都能使用更多服務。</p>
       </div>
-      <div class="lore-block fade-in">
+
+        <div class="guide-divider"></div>
+
+        <div class="guide-section-card fade-in" style="--card-accent:var(--sky)">
         <h3>📋 為什麼要綁定？</h3>
         <p>綁定帳號後，你的 Minecraft 帳號和 Discord 帳號就會建立關聯。這讓你可以：</p>
         <ul style="list-style:none;padding:0;">
@@ -189,7 +208,10 @@
         </ul>
         <div class="callout callout-info"><span class="callout-icon">ℹ️</span><span>系統僅記錄 Minecraft 與 Discord 的帳號對應關係，不會儲存任何密碼或私人資訊。在必要時，管理員可以查看綁定資料。</span></div>
       </div>
-      <div class="lore-block fade-in">
+
+        <div class="guide-divider"></div>
+
+        <div class="guide-section-card fade-in">
         <h3>🔗 綁定步驟</h3>
         <ol class="steps">
           <li>在 Minecraft 遊戲內的聊天欄輸入 <code>/discord link</code>，系統會給你一組 <strong>驗證碼</strong>。</li>
@@ -198,7 +220,10 @@
         </ol>
         <div class="callout callout-tip"><span class="callout-icon">💡</span><span>驗證碼有時效性，拿到後請盡快使用。如果過期了，重新輸入 <code>/discord link</code> 取得新的即可。</span></div>
       </div>
-      <div class="lore-block fade-in">
+
+        <div class="guide-divider"></div>
+
+        <div class="guide-section-card fade-in">
         <h3>✅ 綁定後能做什麼</h3>
         <ul style="list-style:none;padding:0;">
           <li style="position:relative;padding-left:18px;color:var(--cloud);font-size:0.95rem;line-height:2;">在 Discord 使用機器人指令查詢遊戲內資料。</li>
@@ -207,7 +232,10 @@
           <li style="position:relative;padding-left:18px;color:var(--cloud);font-size:0.95rem;line-height:2;">在需要帳號驗證時（例如申訴、申請權限），綁定可以證明你是誰。</li>
         </ul>
       </div>
-      <div class="lore-block fade-in">
+
+        <div class="guide-divider"></div>
+
+        <div class="guide-section-card fade-in">
         <h3>🔍 常用指令</h3>
         <div class="rules-table-wrap"><table class="rules-table"><thead><tr><th>指令</th><th>說明</th></tr></thead><tbody>
           <tr><td><code>/discord link</code></td><td>取得綁定驗證碼</td></tr>
@@ -228,14 +256,9 @@
         <span class="footer-logo">海風伺服器 SeaWind.cc</span>
         <p class="footer-tagline">在風與海之間，有一個可以長久生存的地方</p>
       </div>
-      <div class="footer-meta">
-        <span class="footer-status"><span class="status-dot" id="footerStatusDot"></span><span id="footerStatus">查詢中</span></span>
-        <span class="footer-sep">·</span>
-        <span>台灣</span>
-        <span class="footer-sep">·</span>
-        <span>1.21.6 ~ 26.x</span>
-      </div>
       <div class="footer-links-row">
+        <a href="../合作夥伴">合作夥伴</a>
+        <span class="footer-dot">·</span>
         <a href="../服務條款">服務條款</a>
         <span class="footer-dot">·</span>
         <a href="../隱私權政策">隱私權政策</a>
@@ -243,12 +266,26 @@
       <div class="footer-bottom">
         <p>© 2026 海風伺服器 · 非 Mojang 官方營運 · service@seawind.cc</p>
       </div>
-      <p class="page-revise">網站最後修改日期 2026.04.29 / 總計修改 <span id="deployCount">—</span> 次</p>
+      <p class="page-revise">網站最後修改日期 2026.04.30 / 總計修改 <span id="deployCount">—</span> 次</p>
     </div>
   </footer>
 
   <script src="../utils.js"></script>
-  <script src="../main.js?v=290429h"></script>
+  <script src="../main.js?v=300430a"></script>
   <script src="../music-player.js" defer></script>
+
+  <script>
+  (function(){
+    const loader = document.getElementById("pageLoader");
+    if (!loader) return;
+    function hideLoader() {
+      loader.classList.add("fade-out");
+      setTimeout(() => loader.remove(), 600);
+    }
+    if (document.readyState === "complete") { hideLoader(); }
+    else { window.addEventListener("load", hideLoader); }
+    setTimeout(hideLoader, 3000);
+  })();
+  </script>
 </body>
 </html>
