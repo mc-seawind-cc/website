@@ -186,47 +186,76 @@
         </div>
       </aside>
 
-      <div class="guide-main">
-
-<div class="content-section">
-      <div class="breadcrumb fade-in">
+      <div class="guide-main"><div class="breadcrumb fade-in">
         <a href="../海風指南">海風指南</a>
         <span class="sep">›</span>
         <span class="current">互動記錄</span>
       </div>
-      <div class="rules-intro fade-in">
-        <p>想知道誰拆了你的牆、誰開了你的箱子？互動記錄幫你查得一清二楚。</p>
-      </div>
-
-        <div class="guide-divider"></div>
-
+      
+        
+        <!-- ═══ 功能說明 ═══ -->
         <div class="guide-section-card fade-in" style="--card-accent:var(--foam)">
-        <h3>📋 基本資訊</h3>
-        <ul class="rules-list">
-          <li>記錄保存 <strong>120 天</strong>，超過就查不到了。</li>
-        </ul>
-      </div>
+          <h2><span class="sec-icon">📋</span> 功能說明</h2>
+          <p>箱子裡的東西被偷了？建築被破壞了？<strong>互動記錄</strong>（CoreProtect）讓你查詢最近 <strong>120 天</strong>內，誰動了你的東西。只要點擊方塊就能查看記錄。</p>
+        </div>
 
         <div class="guide-divider"></div>
 
-        <div class="guide-section-card fade-in">
-        <h3>📝 記錄類型</h3>
-        <ul class="rules-list">
-          <li><strong>破壞</strong>：誰打掉了方塊</li>
-          <li><strong>放置</strong>：誰放了方塊</li>
-          <li><strong>開啟／關閉</strong>：誰開關了門、活板門等</li>
-          <li><strong>取出／放入</strong>：誰從箱子裡拿了或放了東西</li>
-        </ul>
-      </div>
+        <!-- ═══ 使用方式 ═══ -->
+        <div class="guide-section-card fade-in" style="--card-accent:var(--sand)">
+          <h2><span class="sec-icon">🔍</span> 使用方式</h2>
+          <div class="guide-steps-grid">
+            <div class="guide-step-card" style="--step-color:var(--sand)">
+              <span class="guide-step-num">1</span>
+              <h4>開啟檢查器</h4>
+              <p>輸入 <code>/co i</code> 開啟檢查模式</p>
+            </div>
+            <div class="guide-step-card" style="--step-color:var(--sand)">
+              <span class="guide-step-num">2</span>
+              <h4>點擊方塊</h4>
+              <p>對你想查的方塊點擊，就會顯示該方塊的互動記錄</p>
+            </div>
+            <div class="guide-step-card" style="--step-color:var(--sand)">
+              <span class="guide-step-num">3</span>
+              <h4>關閉檢查器</h4>
+              <p>再輸入一次 <code>/co i</code> 關閉檢查模式</p>
+            </div>
+          </div>
+        </div>
 
         <div class="guide-divider"></div>
 
-        <div class="guide-section-card fade-in">
-        <h3>🔍 常用指令</h3>
-        <div class="rules-table-wrap"><table class="rules-table"><thead><tr><th>指令</th><th>說明</th></tr></thead><tbody>
-          <tr><td><code>/co i</code></td><td>開關互動檢查器（開啟後點方塊即可查看紀錄）</td></tr>
-        </tbody></table></div>
-      </div>
+        <!-- ═══ 記錄類型 ═══ -->
+        <div class="guide-section-card fade-in" style="--card-accent:var(--lavender)">
+          <h2><span class="sec-icon">📝</span> 可查詢的記錄類型</h2>
+          <div class="rules-table-wrap">
+            <table class="rules-table">
+              <thead><tr><th>類型</th><th>說明</th></tr></thead>
+              <tbody>
+                <tr><td>🔨 破壞</td><td>誰打掉了這個方塊</td></tr>
+                <tr><td>🧱 放置</td><td>誰放了這個方塊</td></tr>
+                <tr><td>📦 開啟</td><td>誰開了這個容器</td></tr>
+                <tr><td>📥 取出</td><td>誰從容器裡拿了東西</td></tr>
+                <tr><td>📤 放入</td><td>誰往容器裡放了東西</td></tr>
+                <tr><td>🚪 互動</td><td>誰使用了這個方塊（門、按鈕等）</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="guide-divider"></div>
+
+        <!-- ═══ 常見情境 ═══ -->
+        <div class="guide-section-card fade-in" style="--card-accent:var(--ocean-blue)">
+          <h2><span class="sec-icon">💡</span> 常見使用情境</h2>
+          <ul class="rules-list">
+            <li><strong>東西被偷</strong>：用 <code>/co i</code> 點擊箱子，查看誰拿了東西</li>
+            <li><strong>建築被破壞</strong>：點擊被破壞的方塊位置，查看誰打掉的</li>
+            <li><strong>確認建造者</strong>：點擊方塊查看是誰放置的</li>
+            <li><strong>回溯操作</strong>：管理員可以使用回溯功能恢復被破壞的區域</li>
+          </ul>
+          <div class="callout callout-tip"><span class="callout-icon">💡</span><span>如果發現被破壞或被偷東西，請截圖記錄並向管理員舉報。互動記錄是最重要的證據。</span></div>
+        </div>
       <div class="guide-nav fade-in"><a href="領地系統" class="btn btn-outline">← 領地系統</a><a href="../海風指南" class="btn btn-outline">返回目錄</a><a href="地圖署名" class="btn btn-primary">地圖署名 →</a></div>
     </div>
   

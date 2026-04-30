@@ -187,46 +187,68 @@
         </div>
       </aside>
 
-      <div class="guide-main">
-
-<div class="content-section">
-      <div class="breadcrumb fade-in"><a href="../海風指南">海風指南</a><span class="sep">›</span><span class="current">電梯</span></div>
-      <div class="rules-intro fade-in">
-        <p>蓋了高樓卻懶得爬樓梯？電梯方塊讓你在不同樓層之間快速移動，上下樓再也不用搭梯子或繞螺旋梯。</p>
-      </div>
-
-        <div class="guide-divider"></div>
-
+      <div class="guide-main"><div class="breadcrumb fade-in"><a href="../海風指南">海風指南</a><span class="sep">›</span><span class="current">電梯</span></div>
+      
+        
+        <!-- ═══ 功能說明 ═══ -->
         <div class="guide-section-card fade-in" style="--card-accent:var(--sand)">
-        <h3>📖 設定教學</h3>
-        <p>電梯的樓層標記使用「浮雕石英方塊」（Chiseled Quartz Block）。</p>
-        <ul class="rules-list">
-          <li>在你想要當作樓層的位置，放置一塊「浮雕石英方塊」。</li>
-          <li>同一根垂直柱子上，每層樓都放一塊浮雕石英方塊，電梯就能辨認樓層。</li>
-          <li>站在浮雕石英方塊的正上方，就能使用電梯功能。</li>
-        </ul>
-      </div>
+          <h2><span class="sec-icon">🛗</span> 功能說明</h2>
+          <p>蓋了高樓不想爬樓梯？海風的<strong>電梯系統</strong>讓你用浮雕石英方塊作為樓層標記，按空白鍵上樓、蹲下鍵下樓，垂直移動超方便。</p>
+        </div>
 
         <div class="guide-divider"></div>
 
-        <div class="guide-section-card fade-in">
-        <h3>🎮 使用方式</h3>
-        <ul class="rules-list">
-          <li><strong>上樓</strong> — 站在浮雕石英方塊上，按下 <code>空白鍵</code>（跳躍），會傳送到上方最近的樓層。</li>
-          <li><strong>下樓</strong> — 站在浮雕石英方塊上，按下 <code>蹲下鍵</code>（Shift），會傳送到下方最近的樓層。</li>
-        </ul>
-      </div>
+        <!-- ═══ 設定教學 ═══ -->
+        <div class="guide-section-card fade-in" style="--card-accent:var(--foam)">
+          <h2><span class="sec-icon">📖</span> 設定教學</h2>
+          <div class="guide-steps-grid">
+            <div class="guide-step-card" style="--step-color:var(--foam)">
+              <span class="guide-step-num">1</span>
+              <h4>放置石英方塊</h4>
+              <p>在每一層樓的地板位置放一個<strong>浮雕石英方塊</strong>（Chiseled Quartz Block）</p>
+            </div>
+            <div class="guide-step-card" style="--step-color:var(--foam)">
+              <span class="guide-step-num">2</span>
+              <h4>對齊樓層</h4>
+              <p>每層的石英方塊要<strong>垂直對齊</strong>，電梯才能正常運作</p>
+            </div>
+            <div class="guide-step-card" style="--step-color:var(--foam)">
+              <span class="guide-step-num">3</span>
+              <h4>使用電梯</h4>
+              <p>站在石英方塊上，按<strong>空白鍵</strong>上樓、<strong>蹲下鍵</strong>下樓</p>
+            </div>
+          </div>
+        </div>
 
         <div class="guide-divider"></div>
 
-        <div class="guide-section-card fade-in">
-        <h3>⚠️ 注意事項</h3>
-        <ul class="rules-list">
-          <li><strong>樓層間距</strong> — 兩層樓之間至少需要隔 <strong>2 格</strong>以上的高度才能正常運作。距離太近會無法辨認。</li>
-          <li><strong>垂直對齊</strong> — 每層的浮雕石英方塊需要在同一根垂直線上，偏移的話電梯無法連通。</li>
-          <li><strong>不能有阻擋</strong> — 上下樓層之間不能有實體方塊擋住，否則傳送會失敗。</li>
-        </ul>
-      </div>
+        <!-- ═══ 使用方式 ═══ -->
+        <div class="guide-section-card fade-in" style="--card-accent:var(--lavender)">
+          <h2><span class="sec-icon">🎮</span> 使用方式</h2>
+          <div class="rules-table-wrap">
+            <table class="rules-table">
+              <thead><tr><th>操作</th><th>按鍵</th><th>效果</th></tr></thead>
+              <tbody>
+                <tr><td>上樓</td><td><strong>空白鍵</strong>（跳躍）</td><td>傳送到上一層的石英方塊</td></tr>
+                <tr><td>下樓</td><td><strong>Shift</strong>（蹲下）</td><td>傳送到下一層的石英方塊</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="guide-divider"></div>
+
+        <!-- ═══ 注意事項 ═══ -->
+        <div class="guide-section-card fade-in" style="--card-accent:var(--ocean-blue)">
+          <h2><span class="sec-icon">⚠️</span> 注意事項</h2>
+          <ul class="rules-list">
+            <li>必須使用<strong>浮雕石英方塊</strong>（Chiseled Quartz Block），其他方塊不行</li>
+            <li>每層的石英方塊要垂直對齊，歪了會傳送到錯誤的位置</li>
+            <li>電梯只在有石英方塊的樓層之間移動</li>
+            <li>適合用在高塔、摩天大樓、或是多層建築</li>
+          </ul>
+          <div class="callout callout-tip"><span class="callout-icon">💡</span><span>在石英方塊旁邊放告示牌寫樓層編號，方便記憶和導覽。</span></div>
+        </div>
       <div class="guide-nav fade-in"><a href="盔甲座編輯器" class="btn btn-outline">← 盔甲座編輯器</a><a href="../海風指南" class="btn btn-outline">返回目錄</a><a href="玻璃展示櫃" class="btn btn-primary">玻璃展示櫃 →</a></div>
     </div>
   
