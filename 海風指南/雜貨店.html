@@ -4,28 +4,33 @@
   <meta charset="UTF-8">
   <meta name="color-scheme" content="dark light">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>海風 — 海風指南 — 雜貨店</title>
+  <title>雜貨店 — 海風指南 — 海風 SeaWind</title>
   <link rel="canonical" href="https://www.seawind.cc/海風指南/雜貨店">
-  <meta name="description" content="海風伺服器雜貨店：在 Discord 論壇頻道建立自己的線上商店。">
+  <meta name="description" content="海風伺服器雜貨店：重生點 NPC 商店用風幣買材料，Discord 論壇讓玩家開設線上商店。">
   <meta property="og:title" content="雜貨店 — 海風指南 — 海風">
-  <meta property="og:description" content="海風伺服器雜貨店：在 Discord 論壇頻道建立自己的線上商店。">
-  <meta property="og:image" content="../assets/img/logo.png">
+  <meta property="og:description" content="重生點 NPC 商店用風幣買材料，Discord 論壇讓玩家開設線上商店。">
+  <meta property="og:image" content="https://www.seawind.cc/assets/img/logo.png">
   <meta property="og:type" content="website">
   <meta name="twitter:card" content="summary">
-  <meta name="twitter:image" content="../assets/img/logo.png">
+  <meta name="twitter:image" content="https://www.seawind.cc/assets/img/logo.png">
   <meta name="theme-color" content="#0d1117">
   <link rel="dns-prefetch" href="//cdn.discordapp.com">
-  <link rel="dns-prefetch" href="//truth.bahamut.com.tw">
-  <link rel="dns-prefetch" href="//api.mcsrvstat.us">
+  <link rel="icon" href="../assets/img/logo.png">
+  <link rel="apple-touch-icon" href="../assets/img/logo.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;800&family=Noto+Serif+TC:wght@700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../style.css?v=290429j">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;800;900&family=Noto+Serif+TC:wght@700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../style.css?v=300430a">
   <link rel="stylesheet" href="../music-player.css">
 </head>
 <body>
-  <a href="#mainContent" class="skip-link">跳到主要內容</a>
+  <div class="page-loader" id="pageLoader">
+    <span class="loader-logo">海風</span>
+    <div class="loader-wave"></div>
+    <div class="loader-dots"><span></span><span></span><span></span></div>
+  </div>
 
+  <a href="#mainContent" class="skip-link">跳到主要內容</a>
   <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
   <div class="bg-atmosphere"></div>
 
@@ -39,23 +44,24 @@
         <li><a href="../首頁">首頁</a></li>
         <li><a href="../公告">公告</a></li>
         <li class="nav-dropdown">
-          <a href="../文化藝廊" class="nav-dropdown-toggle">關於 <span class="arrow">▾</span></a>
+          <a href="../文化藝廊" class="nav-dropdown-toggle" aria-expanded="false" aria-haspopup="true">關於 <span class="arrow">▾</span></a>
           <ul class="dropdown-menu">
             <li><a href="../文化藝廊">文化藝廊</a></li>
             <li><a href="../活動">活動</a></li>
             <li><a href="../風景照">風景照</a></li>
-            <li><a href="../海風團隊">海風團隊</a></li>
             <li><a href="../歷史館">歷史館</a></li>
+            <li><a href="../海風團隊">海風團隊</a></li>
           </ul>
         </li>
         <li><a href="../海風指南">海風指南</a></li>
         <li class="nav-dropdown">
-          <a href="../社群須知" class="nav-dropdown-toggle">須知 <span class="arrow">▾</span></a>
+          <a href="../社群須知" class="nav-dropdown-toggle" aria-expanded="false" aria-haspopup="true">須知 <span class="arrow">▾</span></a>
           <ul class="dropdown-menu">
             <li><a href="../社群須知">社群須知</a></li>
             <li><a href="../支持須知">支持須知</a></li>
             <li><a href="../管理通則">管理通則</a></li>
             <li><a href="../公務人員須知">公務人員須知</a></li>
+            <li><a href="../設計規範">設計規範</a></li>
             <li><a href="../服務條款">服務條款</a></li>
             <li><a href="../隱私權政策">隱私權政策</a></li>
           </ul>
@@ -63,7 +69,7 @@
         <li><a href="../會員">會員</a></li>
         <li><a href="../相關連結">相關連結</a></li>
         <li class="nav-dropdown">
-          <a href="../合作夥伴" class="nav-dropdown-toggle">資料中心 <span class="arrow">▾</span></a>
+          <a href="../合作夥伴" class="nav-dropdown-toggle" aria-expanded="false" aria-haspopup="true">資料中心 <span class="arrow">▾</span></a>
           <ul class="dropdown-menu">
             <li><a href="../合作夥伴">合作夥伴</a></li>
             <li><a href="../違規處分">違規處分</a></li>
@@ -78,43 +84,34 @@
   </nav>
 
   <div class="page">
-    <div id="mainContent" class="page-hero">      <h1>雜貨店</h1>
-      <p class="section-desc">海風交易通。</p>    </div>
-
     <div class="guide-layout">
 
-            <!-- 側邊導覽 -->
       <aside class="guide-sidebar">
         <div class="guide-sidebar-inner">
           <div class="guide-sidebar-title">📖 海風指南</div>
           <nav class="guide-sidebar-nav">
-
             <div class="guide-sb-group">
               <a href="新手指引" class="guide-sb-link guide-sb-root">🚀 新手指引</a>
             </div>
-
             <div class="guide-sb-group">
               <span class="guide-sb-heading">💰 經濟與交易</span>
               <a href="經濟系統" class="guide-sb-link">經濟系統</a>
               <a href="線上商城" class="guide-sb-link">線上商城</a>
-              <a href="雜貨店" class="guide-sb-link">雜貨店</a>
+              <a href="雜貨店" class="guide-sb-link active">雜貨店</a>
               <a href="箱子商店" class="guide-sb-link">箱子商店</a>
             </div>
-
             <div class="guide-sb-group">
               <span class="guide-sb-heading">🛡️ 領地與保護</span>
               <a href="領地系統" class="guide-sb-link">領地系統</a>
               <a href="互動記錄" class="guide-sb-link">互動記錄</a>
               <a href="地圖署名" class="guide-sb-link">地圖署名</a>
             </div>
-
             <div class="guide-sb-group">
               <span class="guide-sb-heading">🚀 傳送系統</span>
               <a href="個人傳送點" class="guide-sb-link">個人傳送點</a>
               <a href="公共傳送點" class="guide-sb-link">公共傳送點</a>
               <a href="電梯" class="guide-sb-link">電梯</a>
             </div>
-
             <div class="guide-sb-group">
               <span class="guide-sb-heading">🎒 背包與倉庫</span>
               <a href="倉庫" class="guide-sb-link">倉庫系統</a>
@@ -122,20 +119,17 @@
               <a href="盔甲座編輯器" class="guide-sb-link">盔甲座編輯器</a>
               <a href="快捷界伏盒" class="guide-sb-link">快捷界伏盒</a>
             </div>
-
             <div class="guide-sb-group">
               <span class="guide-sb-heading">📋 任務與成長</span>
               <a href="任務系統" class="guide-sb-link">任務系統</a>
               <a href="簽到系統" class="guide-sb-link">簽到系統</a>
               <a href="稱號系統" class="guide-sb-link">稱號系統</a>
             </div>
-
             <div class="guide-sb-group">
               <span class="guide-sb-heading">💬 社群互動</span>
               <a href="蜂聊郵政" class="guide-sb-link">蜂聊郵政</a>
               <a href="靈魂出竅" class="guide-sb-link">靈魂出竅</a>
             </div>
-
             <div class="guide-sb-group">
               <span class="guide-sb-heading">🏛️ 大廳區域</span>
               <a href="大廳區域" class="guide-sb-link">大廳簡介</a>
@@ -144,7 +138,6 @@
               <a href="風語茶屋" class="guide-sb-link">風語茶屋</a>
               <a href="銀行" class="guide-sb-link">銀行</a>
             </div>
-
             <div class="guide-sb-group">
               <span class="guide-sb-heading">⚙️ 遊戲機制</span>
               <a href="遊戲機制" class="guide-sb-link">機制總覽</a>
@@ -160,89 +153,125 @@
               <a href="地震預警" class="guide-sb-link">地震預警</a>
               <a href="更多動作" class="guide-sb-link">更多動作</a>
             </div>
-
             <div class="guide-sb-group">
-              <span class="guide-sb-heading">⚙️ 伺服器設定</span>
+              <span class="guide-sb-heading">🖥️ 伺服器設定</span>
               <a href="伺服器選單" class="guide-sb-link">伺服器選單</a>
               <a href="綁定帳號" class="guide-sb-link">綁定帳號</a>
               <a href="地圖" class="guide-sb-link">線上地圖</a>
             </div>
-
             <div class="guide-sb-group">
               <span class="guide-sb-heading">⭐ 會員專屬</span>
               <a href="隱藏裝備" class="guide-sb-link">隱藏裝備</a>
             </div>
-
           </nav>
         </div>
       </aside>
 
-      <div class="guide-main">
+      <div class="guide-main" id="mainContent">
 
-<div class="content-section">
-      <div class="breadcrumb fade-in">
-        <a href="../海風指南">海風指南</a>
-        <span class="sep">›</span>
-        <span class="current">雜貨店</span>
+        <div class="breadcrumb fade-in">
+          <a href="../海風指南">海風指南</a>
+          <span class="sep">›</span>
+          <span class="current">雜貨店</span>
+        </div>
+
+        <div class="guide-v2-hero fade-in">
+          <h1>🏪 雜貨店</h1>
+          <p class="section-desc">海風的雜貨店系統分成兩種：NPC 商店和 Discord 雜貨店。隨時隨地做買賣。</p>
+          <div class="guide-quick-stats">
+            <div class="guide-qs-item"><span class="guide-qs-icon">🤖</span><span>NPC 商店</span><span class="guide-qs-val">重生點</span></div>
+            <div class="guide-qs-item"><span class="guide-qs-icon">💬</span><span>Discord 商店</span><span class="guide-qs-val">論壇頻道</span></div>
+            <div class="guide-qs-item"><span class="guide-qs-icon">💰</span><span>交易貨幣</span><span class="guide-qs-val">風幣</span></div>
+            <div class="guide-qs-item"><span class="guide-qs-icon">🕐</span><span>營業時間</span><span class="guide-qs-val">24 小時</span></div>
+          </div>
+        </div>
+
+        <div class="guide-divider"></div>
+
+        <!-- ═══ NPC 商店 ═══ -->
+        <div class="guide-section-card fade-in" style="--card-accent:var(--sand)">
+          <h2><span class="sec-icon">🤖</span> NPC 商店</h2>
+          <p>NPC 商店位於重生點區域，是由系統 NPC 經營的固定商店。你可以用<strong>風幣</strong>直接購買各種基本材料和消耗品，不需要跟其他玩家交易。</p>
+          <p>適合用來補充日常消耗的材料，像是建築方塊、食物、基本礦物等。缺什麼就來重生點逛逛，說不定有你需要的東西。</p>
+          <ul style="margin:var(--space-md) 0;padding-left:1.5em;color:var(--cloud);line-height:2">
+            <li>使用風幣付款，直接從帳戶扣除</li>
+            <li>商品種類由系統固定提供，價格會標示在介面上</li>
+            <li>24 小時營業，隨時都可以來買</li>
+          </ul>
+        </div>
+
+        <div class="guide-divider"></div>
+
+        <!-- ═══ Discord 雜貨店 ═══ -->
+        <div class="guide-section-card fade-in" style="--card-accent:var(--sky)">
+          <h2><span class="sec-icon">💬</span> Discord 雜貨店</h2>
+          <p>Discord 雜貨店是玩家之間的線上交易平台。任何玩家都可以在 Discord 的雜貨店論壇頻道開設自己的「店鋪貼文」，然後在貼文內上架商品。</p>
+          <p>買家看到喜歡的商品，只要<strong>點擊按鈕</strong>就能自動完成購買，商品會直接送進遊戲內的背包。你不需要在遊戲裡擺攤，也不需要跟買家約時間面對面交易。上架一次，隨時有人來買都能自動成交。</p>
+        </div>
+
+        <div class="guide-divider"></div>
+
+        <!-- ═══ 開店教學 ═══ -->
+        <div class="guide-section-card fade-in" style="--card-accent:var(--foam)">
+          <h2><span class="sec-icon">📖</span> 開店教學（賣家）</h2>
+          <div class="guide-steps-grid">
+            <div class="guide-step-card" style="--step-color:var(--foam)">
+              <div class="guide-step-num">1</div>
+              <h4>前往論壇</h4>
+              <p>前往 Discord 的<strong>雜貨店論壇頻道</strong></p>
+            </div>
+            <div class="guide-step-card" style="--step-color:var(--foam)">
+              <div class="guide-step-num">2</div>
+              <h4>建立店鋪</h4>
+              <p>建立一個新貼文作為你的店鋪（標題寫上店名或販售品項）</p>
+            </div>
+            <div class="guide-step-card" style="--step-color:var(--foam)">
+              <div class="guide-step-num">3</div>
+              <h4>上架商品</h4>
+              <p>在遊戲內手持物品，在貼文中輸入 <code>/sale &lt;價格&gt;</code></p>
+            </div>
+            <div class="guide-step-card" style="--step-color:var(--foam)">
+              <div class="guide-step-num">4</div>
+              <h4>自動成交</h4>
+              <p>系統會自動在貼文中生成互動按鈕，買家點擊即完成購買</p>
+            </div>
+          </div>
+          <div class="callout callout-tip"><span class="callout-icon">💡</span><span>每則貼文可以上架多個商品，建議把同類商品放在同一則貼文中，方便買家瀏覽。</span></div>
+        </div>
+
+        <div class="guide-divider"></div>
+
+        <!-- ═══ 購買教學 ═══ -->
+        <div class="guide-section-card fade-in" style="--card-accent:var(--lavender)">
+          <h2><span class="sec-icon">🛒</span> 購買教學（買家）</h2>
+          <div class="guide-steps-grid" style="grid-template-columns:repeat(auto-fit,minmax(180px,1fr))">
+            <div class="guide-step-card" style="--step-color:var(--lavender)">
+              <div class="guide-step-num">1</div>
+              <h4>瀏覽店鋪</h4>
+              <p>到 Discord 雜貨店論壇頻道，瀏覽各個店鋪貼文</p>
+            </div>
+            <div class="guide-step-card" style="--step-color:var(--lavender)">
+              <div class="guide-step-num">2</div>
+              <h4>找到商品</h4>
+              <p>找到你想要的商品，確認價格和數量</p>
+            </div>
+            <div class="guide-step-card" style="--step-color:var(--lavender)">
+              <div class="guide-step-num">3</div>
+              <h4>點擊購買</h4>
+              <p>點擊商品下方的<strong>互動按鈕</strong>，系統自動扣款送貨</p>
+            </div>
+          </div>
+          <div class="callout callout-tip"><span class="callout-icon">💡</span><span>購買前請確保你的風幣餘額足夠，且遊戲內背包有空間接收商品。</span></div>
+        </div>
+
+        <div class="guide-nav fade-in">
+          <a href="箱子商店" class="btn btn-outline">← 箱子商店</a>
+          <a href="../海風指南" class="btn btn-outline">返回目錄</a>
+          <a href="公共傳送點" class="btn btn-primary">公共傳送點 →</a>
+        </div>
+
       </div>
-
-      <div class="rules-intro fade-in">
-        <p>海風的雜貨店系統分成兩種：<strong>NPC 商店</strong>和<strong>Discord 雜貨店</strong>。NPC 商店在重生點，隨時可以用風幣買基本材料；Discord 雜貨店讓玩家在 Discord 論壇頻道開自己的線上商店，隨時隨地做買賣。</p>
-      </div>
-
-      <div class="lore-block fade-in">
-        <h3>🏪 NPC 商店</h3>
-        <p>NPC 商店位於重生點區域，是由系統 NPC 經營的固定商店。你可以用<strong>風幣</strong>直接購買各種基本材料和消耗品，不需要跟其他玩家交易。</p>
-        <p>適合用來補充日常消耗的材料，像是建築方塊、食物、基本礦物等。缺什麼就來重生點逛逛，說不定有你需要的東西。</p>
-        <ul class="rules-list">
-          <li>使用風幣付款，直接從帳戶扣除。</li>
-          <li>商品種類由系統固定提供，價格會標示在介面上。</li>
-          <li>24 小時營業，隨時都可以來買。</li>
-        </ul>
-      </div>
-
-      <div class="lore-block fade-in">
-        <h3>💬 Discord 雜貨店</h3>
-        <p>Discord 雜貨店是玩家之間的線上交易平台。任何玩家都可以在 Discord 的雜貨店論壇頻道開設自己的「店鋪貼文」，然後在貼文內上架商品。買家看到喜歡的商品，只要<strong>點擊按鈕</strong>就能自動完成購買，商品會直接送進遊戲內的背包。</p>
-        <p>這個系統的好處是：你不需要在遊戲裡擺攤，也不需要跟買家約時間面對面交易。上架一次，隨時有人來買都能自動成交。</p>
-      </div>
-
-      <div class="lore-block fade-in">
-        <h3>📖 開店教學（賣家）</h3>
-        <p>想在 Discord 雜貨店開店販售商品？照著以下步驟做：</p>
-        <ol class="rules-list">
-          <li>前往 Discord 的<strong>雜貨店論壇頻道</strong>。</li>
-          <li>建立一個新的貼文，作為你的店鋪（標題建議寫上你的店名或販售品項）。</li>
-          <li>在遊戲內<strong>手持</strong>你要上架的物品。</li>
-          <li>在你的貼文中輸入指令 <code>/sale &lt;價格&gt;</code>，例如 <code>/sale 100</code> 表示以 100 風幣上架。</li>
-          <li>系統會自動在貼文中生成一個帶有互動按鈕的商品訊息。</li>
-          <li>重複步驟 3-5，繼續上架更多商品。</li>
-        </ol>
-        <div class="callout callout-tip"><span class="callout-icon">💡</span><span>每則貼文可以上架多個商品，建議把同類商品放在同一則貼文中，方便買家瀏覽。</span></div>
-      </div>
-
-      <div class="lore-block fade-in">
-        <h3>🛒 購買教學（買家）</h3>
-        <p>在 Discord 雜貨店買東西超簡單：</p>
-        <ol class="rules-list">
-          <li>到 Discord 雜貨店論壇頻道，瀏覽各個店鋪貼文。</li>
-          <li>找到你想要的商品，確認價格和數量。</li>
-          <li>點擊商品下方的<strong>互動按鈕</strong>。</li>
-          <li>系統會自動扣除你的風幣，並將商品送入遊戲內背包。</li>
-        </ol>
-        <div class="callout callout-tip"><span class="callout-icon">💡</span><span>購買前請確保你的風幣餘額足夠，且遊戲內背包有空間接收商品。</span></div>
-      </div>
-
-      <div class="guide-nav fade-in">
-        <a href="箱子商店" class="btn btn-outline">← 箱子商店</a>
-        <a href="../海風指南" class="btn btn-outline">返回目錄</a>
-        <a href="公共傳送點" class="btn btn-primary">公共傳送點 →</a>
-      </div>
-
     </div>
-  
-      </div><!-- /guide-main -->
-    </div><!-- /guide-layout -->
   </div>
 
   <footer class="footer">
@@ -251,14 +280,9 @@
         <span class="footer-logo">海風伺服器 SeaWind.cc</span>
         <p class="footer-tagline">在風與海之間，有一個可以長久生存的地方</p>
       </div>
-      <div class="footer-meta">
-        <span class="footer-status"><span class="status-dot" id="footerStatusDot"></span><span id="footerStatus">查詢中</span></span>
-        <span class="footer-sep">·</span>
-        <span>台灣</span>
-        <span class="footer-sep">·</span>
-        <span>1.21.6 ~ 26.x</span>
-      </div>
       <div class="footer-links-row">
+        <a href="../合作夥伴">合作夥伴</a>
+        <span class="footer-dot">·</span>
         <a href="../服務條款">服務條款</a>
         <span class="footer-dot">·</span>
         <a href="../隱私權政策">隱私權政策</a>
@@ -266,12 +290,24 @@
       <div class="footer-bottom">
         <p>© 2026 海風伺服器 · 非 Mojang 官方營運 · service@seawind.cc</p>
       </div>
-      <p class="page-revise">網站最後修改日期 2026.04.29 / 總計修改 <span id="deployCount">—</span> 次</p>
+      <p class="page-revise">網站最後修改日期 2026.04.30 / 總計修改 <span id="deployCount">—</span> 次</p>
     </div>
   </footer>
 
   <script src="../utils.js"></script>
-  <script src="../main.js?v=290429h"></script>
-  <script src="../music-player.js" defer></script>
+  <script src="../main.js?v=300430a"></script>
+  <script>
+  (function(){
+    const loader = document.getElementById("pageLoader");
+    if (!loader) return;
+    function hideLoader() {
+      loader.classList.add("fade-out");
+      setTimeout(() => loader.remove(), 600);
+    }
+    if (document.readyState === "complete") { hideLoader(); }
+    else { window.addEventListener("load", hideLoader); }
+    setTimeout(hideLoader, 3000);
+  })();
+  </script>
 </body>
 </html>
