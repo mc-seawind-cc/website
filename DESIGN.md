@@ -563,6 +563,7 @@ website/
 | 2026.04.30 | 海風網站助手 | **新手指引全面重寫**：採用新設計系統——Hero 區含快速統計（位址/版本/難度/世界大小）、30 秒連線區（可複製 IP + 三步卡片）、出生點介紹、第一天指南（6 步視覺卡片）、必備指令（11 張指令卡片網格）、領地保護（4 步卡片）、賺錢之道（4 張經濟卡片）、常見問題（5 則摺疊式 FAQ）、下一步（6 張推薦閱讀卡片）。頁尾修正為 DESIGN.md 規範格式（移除 footer-meta / footer-status 多餘元素）。cache busting → 300430a |
 | 2026.04.30 | 海風網站助手 | **新手指引版本說明優化**：連線版本從模糊的「1.21.6 ~ 1.21.x」改為明確標示「1.21.11（推薦）｜1.21.6 以上皆可連線」，避免玩家誤解。Quick stats、連線資訊區、步驟說明、FAQ 四處同步更新 |
 | 2026.04.30 | 海風網站助手 | **經濟分類指南 v2 改版**：經濟系統、線上商城、箱子商店、雜貨店 4 頁從舊版 guide-layout + lore-block 升級至 v2 設計系統（guide-v2-hero + guide-quick-stats + guide-section-card + guide-cmd-grid + guide-eco-grid + guide-steps-grid）。內容文字維持現狀，版面全面重寫。Page loader + sidebar active 狀態 + breadcrumb + 導覽按鈕 + footer 規範格式。cache busting → 300430a |
+| 2026.04.30 | 海風網站助手 | **遊戲機制頁新增伺服器硬體資訊**：分流一（5C20G，分流 1–5）、分流二（1C4G，分流 6）。頁尾修正為規範格式 |
 
 ---
 
