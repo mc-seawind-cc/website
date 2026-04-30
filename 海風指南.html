@@ -93,60 +93,59 @@
     }
   </style>
 </head>
-<body>
-  <!-- 側邊欄 -->
-  <aside class="guide-sidebar-v2" id="guideSidebar" aria-label="指南目錄">
-        <div class="guide-sb-group">
-          <div class="guide-sb-title">快速開始</div>
-          <a href="#sec-start" class="guide-sb-link" data-section="start">
-            <span class="guide-sb-dot" style="background:#9dafff"></span>快速開始
-          </a>
-        </div>
-        <div class="guide-sb-group">
-          <div class="guide-sb-title">核心系統</div>
-          <a href="#sec-protect" class="guide-sb-link" data-section="protect">
-            <span class="guide-sb-dot" style="background:#a8e6cf"></span>領地與保護
-          </a>
-          <a href="#sec-move" class="guide-sb-link" data-section="move">
-            <span class="guide-sb-dot" style="background:#deac80"></span>傳送系統
-          </a>
-          <a href="#sec-money" class="guide-sb-link" data-section="money">
-            <span class="guide-sb-dot" style="background:#ffaa32"></span>經濟與交易
-          </a>
-        </div>
-        <div class="guide-sb-group">
-          <div class="guide-sb-title">遊戲玩法</div>
-          <a href="#sec-bag" class="guide-sb-link" data-section="bag">
-            <span class="guide-sb-dot" style="background:#ab72f9"></span>背包與倉庫
-          </a>
-          <a href="#sec-quest" class="guide-sb-link" data-section="quest">
-            <span class="guide-sb-dot" style="background:#58c2b0"></span>任務與成長
-          </a>
-          <a href="#sec-mining" class="guide-sb-link" data-section="mining">
-            <span class="guide-sb-dot" style="background:#deac80"></span>挖礦與資源
-          </a>
-          <a href="#sec-build" class="guide-sb-link" data-section="build">
-            <span class="guide-sb-dot" style="background:#a8e6cf"></span>建築工具
-          </a>
-          <a href="#sec-feature" class="guide-sb-link" data-section="feature">
-            <span class="guide-sb-dot" style="background:#578aff"></span>遊戲功能
-          </a>
-        </div>
-        <div class="guide-sb-group">
-          <div class="guide-sb-title">社群</div>
-          <a href="#sec-social" class="guide-sb-link" data-section="social">
-            <span class="guide-sb-dot" style="background:#85b1e0"></span>社群互動
-          </a>
-          <a href="#sec-lobby" class="guide-sb-link" data-section="lobby">
-            <span class="guide-sb-dot" style="background:#e0b5d4"></span>大廳導覽
-          </a>
-        </div>
-        <div class="guide-sb-group" style="margin-top:12px;padding-top:12px;border-top:1px solid rgba(255,255,255,0.06)">
-          <a href="海風指南/新手指引" class="guide-sb-link" style="color:#a8e6cf;font-weight:600">
-            🚀 新手指引
-          </a>
-        </div>
-      </aside>
+<body class="guide-index-page">
+  <a href="#mainContent" class="skip-link">跳到主要內容</a>
+  <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
+  <div class="bg-atmosphere"></div>
+
+  <nav class="nav">
+    <a href="首頁" class="nav-logo">
+      <picture><source srcset="assets/img/logo.webp" type="image/webp"><img src="assets/img/logo.png" alt="海風" class="nav-logo-img" width="48" height="48" fetchpriority="high"></picture>
+      <span>海風伺服器</span>
+    </a>
+    <div class="nav-right">
+      <ul class="nav-links">
+        <li><a href="首頁">首頁</a></li>
+        <li><a href="公告">公告</a></li>
+        <li class="nav-dropdown">
+          <a href="文化藝廊" class="nav-dropdown-toggle" aria-expanded="false" aria-haspopup="true">關於 <span class="arrow">▾</span></a>
+          <ul class="dropdown-menu">
+            <li><a href="文化藝廊">文化藝廊</a></li>
+            <li><a href="活動">活動</a></li>
+            <li><a href="風景照">風景照</a></li>
+            <li><a href="歷史館">歷史館</a></li>
+            <li><a href="海風團隊">海風團隊</a></li>
+          </ul>
+        </li>
+        <li><a href="海風指南" class="active">海風指南</a></li>
+        <li class="nav-dropdown">
+          <a href="社群須知" class="nav-dropdown-toggle" aria-expanded="false" aria-haspopup="true">須知 <span class="arrow">▾</span></a>
+          <ul class="dropdown-menu">
+            <li><a href="社群須知">社群須知</a></li>
+            <li><a href="支持須知">支持須知</a></li>
+            <li><a href="管理通則">管理通則</a></li>
+            <li><a href="公務人員須知">公務人員須知</a></li>
+            <li><a href="設計規範">設計規範</a></li>
+            <li><a href="服務條款">服務條款</a></li>
+            <li><a href="隱私權政策">隱私權政策</a></li>
+          </ul>
+        </li>
+        <li><a href="會員">會員</a></li>
+        <li><a href="相關連結">相關連結</a></li>
+        <li class="nav-dropdown">
+          <a href="合作夥伴" class="nav-dropdown-toggle" aria-expanded="false" aria-haspopup="true">資料中心 <span class="arrow">▾</span></a>
+          <ul class="dropdown-menu">
+            <li><a href="合作夥伴">合作夥伴</a></li>
+            <li><a href="違規處分">違規處分</a></li>
+          </ul>
+        </li>
+      </ul>
+      <button class="nav-theme" id="themeToggle" aria-label="切換主題"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg></button>
+      <button class="nav-toggle" aria-label="選單">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
 
   <div class="page">
     <div class="guide-hero fade-in">
@@ -787,8 +786,46 @@
     </div>
   </footer>
 
+  <button class="back-to-top" aria-label="回到頂部">↑</button>
+  <div id="musicPlayer">
+    <div class="mp-widget">
+      <div class="mp-header">
+        <span class="mp-icon">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 3v10.55A4 4 0 1 0 14 17V7h4V3h-6Z"></path></svg>
+        </span>
+        <span class="mp-title" id="mpTitle">Kumi Tanioka - Relic</span>
+        <span class="mp-vol-icon">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>
+        </span>
+      </div>
+      <div class="mp-body" id="mpBody">
+        <div class="mp-controls">
+          <button class="mp-ctrl" id="mpPrev" title="上一首">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M6 6h2v12H6zm3.5 6 8.5 6V6z"></path></svg>
+          </button>
+          <button class="mp-ctrl mp-play" id="mpPlay" title="播放">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" id="mpPlayIcon"><path d="M8 5v14l11-7z"></path></svg>
+          </button>
+          <button class="mp-ctrl" id="mpNext" title="下一首">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M6 18l8.5-6L6 6v12zM16 6v12h2V6h-2z"></path></svg>
+          </button>
+        </div>
+        <div class="mp-volume">
+          <input type="range" id="mpVol" min="0" max="100" value="15" class="mp-vol-slider">
+        </div>
+        <div class="mp-yt-badge">
+          <a href="https://www.youtube.com/playlist?list=PLefKpFQ8Pvy5aCLAGHD8Zmzsdljos-t2l" target="_blank" rel="noopener">
+            源 YouTube ↗
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="mp-muted-hint" style="cursor: pointer; pointer-events: auto;">🎵 點右下角可以放音樂</div>
+  <iframe id="ytPlayer" style="display:none" allow="autoplay"></iframe>
   <script src="tips.js" defer></script>
   <script src="utils.js"></script>
+  <script src="music-player.js"></script>
   <script src="main.js?v=300430b"></script>
   <script>
   document.addEventListener('DOMContentLoaded', () => {
@@ -899,5 +936,6 @@
     setTimeout(hideLoader, 3000);
   })();
   </script>
+  <div class="nav-backdrop"></div>
 </body>
 </html>
