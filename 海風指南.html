@@ -91,6 +91,230 @@
       grid-template-columns: 220px 1fr;
       gap: var(--space-xl);
     }
+
+    /* 側邊欄 v2 */
+    .guide-sidebar-v2 {
+      position: sticky;
+      top: 80px;
+      align-self: flex-start;
+      max-height: calc(100vh - 100px);
+      overflow-y: auto;
+      scrollbar-width: thin;
+      scrollbar-color: rgba(157,175,255,0.15) transparent;
+    }
+    .guide-sb-group {
+      display: flex;
+      flex-direction: column;
+      margin-bottom: var(--space-sm);
+    }
+    .guide-sb-title {
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--fog);
+      padding: var(--space-sm) 0 var(--space-xs);
+    }
+    .guide-sb-dot {
+      display: inline-block;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      margin-right: 6px;
+      vertical-align: middle;
+    }
+
+    /* 主內容區 */
+    .guide-main-v2 {
+      min-width: 0;
+    }
+
+    /* 快捷標籤 */
+    .guide-quick-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: var(--space-xl);
+    }
+    .guide-qt {
+      padding: 6px 16px;
+      border-radius: 99px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      border: 1px solid rgba(255,255,255,0.1);
+      background: transparent;
+      color: var(--fog);
+      cursor: pointer;
+      transition: all 0.2s var(--ease);
+      font-family: var(--font-body);
+    }
+    .guide-qt:hover {
+      border-color: var(--sky);
+      color: var(--sky);
+    }
+    .guide-qt.active {
+      background: rgba(157,175,255,0.12);
+      border-color: var(--sky);
+      color: var(--sky);
+    }
+    [data-theme="light"] .guide-qt {
+      border-color: rgba(0,0,0,0.1);
+      color: var(--fog);
+    }
+    [data-theme="light"] .guide-qt.active {
+      background: rgba(87,138,255,0.1);
+      border-color: var(--ocean-blue);
+      color: var(--ocean-blue);
+    }
+
+    /* 搜尋結果 */
+    .guide-search-results {
+      display: none;
+      margin-bottom: var(--space-xl);
+    }
+    .guide-search-results.active {
+      display: block;
+    }
+    .guide-search-results h3 {
+      font-size: 0.95rem;
+      color: var(--fog);
+      margin-bottom: var(--space-lg);
+    }
+    .guide-no-result {
+      text-align: center;
+      padding: var(--space-2xl) var(--space-lg);
+      color: var(--fog);
+    }
+
+    /* 分類區塊 */
+    .guide-cat {
+      margin-bottom: var(--space-2xl);
+    }
+    .guide-cat-header {
+      display: flex;
+      align-items: center;
+      gap: var(--space-md);
+      margin-bottom: var(--space-lg);
+    }
+    .guide-cat-bar {
+      width: 4px;
+      height: 24px;
+      border-radius: 2px;
+      flex-shrink: 0;
+    }
+    .guide-cat-header h2 {
+      font-size: 1.3rem;
+      font-weight: 800;
+      color: var(--white);
+      margin: 0;
+    }
+    .guide-cat-count {
+      font-size: 0.75rem;
+      color: var(--fog);
+      background: rgba(255,255,255,0.05);
+      padding: 2px 10px;
+      border-radius: 99px;
+      margin-left: auto;
+    }
+    [data-theme="light"] .guide-cat-count {
+      background: rgba(0,0,0,0.05);
+    }
+
+    /* 條目列表 */
+    .guide-entries {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    /* 單一條目 */
+    .guide-entry {
+      display: flex;
+      align-items: center;
+      gap: var(--space-md);
+      padding: var(--space-md) var(--space-lg);
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: var(--radius-md);
+      text-decoration: none;
+      color: var(--cloud);
+      transition: all 0.3s var(--ease);
+    }
+    .guide-entry:hover {
+      background: rgba(157,175,255,0.06);
+      border-color: rgba(157,175,255,0.15);
+      transform: translateX(4px);
+    }
+    .guide-entry-icon {
+      font-size: 1.4rem;
+      flex-shrink: 0;
+      width: 36px;
+      text-align: center;
+    }
+    .guide-entry-body {
+      flex: 1;
+      min-width: 0;
+    }
+    .guide-entry-title {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 2px;
+    }
+    .guide-entry-desc {
+      font-size: 0.82rem;
+      color: var(--fog);
+      line-height: 1.5;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+    .guide-entry-arrow {
+      color: var(--fog);
+      opacity: 0;
+      transform: translateX(-4px);
+      transition: all 0.3s var(--ease);
+      flex-shrink: 0;
+    }
+    .guide-entry:hover .guide-entry-arrow {
+      opacity: 1;
+      transform: translateX(0);
+    }
+    .guide-entry:hover .guide-entry-title {
+      color: var(--sky);
+    }
+
+    /* featured 條目（粗體標題） */
+    .guide-entry.featured .guide-entry-title {
+      font-size: 1rem;
+    }
+
+    [data-theme="light"] .guide-entry {
+      background: rgba(0,0,0,0.02);
+      border-color: rgba(0,0,0,0.06);
+    }
+    [data-theme="light"] .guide-entry:hover {
+      background: rgba(87,138,255,0.05);
+      border-color: rgba(87,138,255,0.15);
+    }
+    [data-theme="light"] .guide-entry:hover .guide-entry-title {
+      color: var(--ocean-blue);
+    }
+
+    /* 響應式 */
+    @media (max-width: 768px) {
+      .guide-layout-v2 {
+        grid-template-columns: 1fr;
+      }
+      .guide-sidebar-v2 {
+        position: static;
+        max-height: none;
+        overflow: visible;
+      }
+      .guide-entry-desc {
+        white-space: normal;
+      }
+    }
   </style>
 </head>
 <body class="guide-index-page">
