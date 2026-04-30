@@ -577,6 +577,7 @@ website/
 | 2026.04.30 | 海風網站助手 | **fix: 修復指南子頁面 SW_BASE 路徑偵測**：`main.js` 的 `SW_BASE` 偵測條件仍使用舊資料夾名 `/guide/`，改名為 `/海風指南/` 後未同步更新，導致所有指南子頁面（47 頁）的 `music-player.js`、`announcements.json`、`photos.json` 相對路徑全部 404。修復：`/guide/` → `/海風指南/` + 新增 `/活動/` 偵測。全站 82 個 HTML cache busting 統一更新至 300430b。 |
 | 2026.04.30 | 海風網站助手 | **fix: 修復海風指南主頁白畫面**：`海風指南.html` 的 `<style>` 區塊缺少 `</style></head><body>` 標籤，導致整頁 HTML 被瀏覽器當成 CSS 解析（白畫面）。line 96 的 `.<aside` 修正為 `<aside`。 |
 | 2026.04.30 | 海風網站助手 | **fix: 修復海風指南主頁黑畫面（結構性重建）**：①補齊 `<nav>` 導覽列（全站標準結構，海風指南 = active）；②補齊 `<a class="skip-link">` 無障礙跳轉；③補齊 `<div class="scroll-progress">` 滾動進度條；④補齊 `<div class="bg-atmosphere">` 背景氛圍；⑤移除 body 直接子層的 `<aside>`（原本在 `.page` 外面），在 `.page > #mainContent` 內保留唯一側邊欄（消除 ID `guideSidebar` 重複）；⑥補齊音樂播放器（`#musicPlayer` + `music-player.js`）、`back-to-top` 按鈕、`nav-backdrop` 手機版導航遮罩、`ytPlayer` iframe；⑦body 加上 `guide-index-page` class（使內聯 CSS `.guide-index-page .content-section` 選擇器生效）。 |
+| 2026.04.30 | 海風網站助手 | **fix: 海風指南主頁補齊缺失的 v2 CSS 樣式**：`style.css` 中沒有 `guide-sidebar-v2` / `guide-entry` / `guide-cat` / `guide-qt` 等索引頁專用 class 的 CSS 定義，導致側邊欄、分類標題、指南條目全部無樣式顯示。在頁面 `<style>` 區塊新增 ~220 行 CSS：側邊欄（sticky + scrollbar）、快捷標籤 pill 按鈕、搜尋結果區塊、分類區塊（accent bar + 計數徽章）、條目卡片（hover 滑動 + 箭頭浮現 + 標題變色）、featured 條目、淺色模式覆蓋、響應式 768px 單欄。 |
 
 ---
 
