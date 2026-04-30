@@ -1,6 +1,6 @@
 # 海風 SeaWind 網站設計文件
 
-> 最後更新：2026.04.29（海風網站助手）
+> 最後更新：2026.04.30（海風網站助手）
 > 維護者：海風網站助手
 > Instagram：[@mc.seawind.cc](https://www.instagram.com/mc.seawind.cc/)
 
@@ -557,6 +557,8 @@ website/
 | 2026.04.29 | 海風網站助手 | **修復 Lightbox 圖片上方被裁切**：`.lightbox-img` max-height 從 `90vh` 改為 `calc(90vh - 48px)`、新增 `margin-top:48px`，為關閉按鈕預留空間避免重疊。全站 cache busting → 290429j |
 | 2026.04.29 | 海風網站助手 | **新手指引大幅擴充**：新增「如何加入海風」（IP/版本/連線步驟）、「出生點小鎮」介紹、「必備指令速查」（11 條常用指令表格）、「領地保護教學」（木鏟圈地步驟）、「經濟入門」（風幣賺取方式）、「常見問題」（5 則 FAQ）、「下一步」推薦閱讀。導覽按鈕改為「領地系統 →」 |
 | 2026.04.29 | 海風網站助手 | **指南路徑重構**：`guide/` 資料夾改名為 `海風指南/`，42 個檔案從簡稱改為完整名稱（入門→新手指引、領地→領地系統、經濟→經濟系統 等）。全站 HTML + sitemap.xml + 海風指南主頁連結同步更新，與活動頁結構一致。canonical URL 全數更新 |
+| 2026.04.30 | 海風網站助手 | **指南子頁面新設計系統**：style.css 新增 Guide Sub-page v2 樣式（~150 行）——guide-v2-hero / guide-quick-stats / guide-section-card / guide-conn-block / guide-steps-grid / guide-step-card / guide-cmd-grid / guide-cmd-card / guide-eco-grid / guide-eco-card / guide-faq 摺疊式 / guide-next-grid / guide-back-link / guide-divider，含深色/淺色模式 + 響應式。cache busting → 300430a |
+| 2026.04.30 | 海風網站助手 | **新手指引全面重寫**：採用新設計系統——Hero 區含快速統計（位址/版本/難度/世界大小）、30 秒連線區（可複製 IP + 三步卡片）、出生點介紹、第一天指南（6 步視覺卡片）、必備指令（11 張指令卡片網格）、領地保護（4 步卡片）、賺錢之道（4 張經濟卡片）、常見問題（5 則摺疊式 FAQ）、下一步（6 張推薦閱讀卡片）。頁尾修正為 DESIGN.md 規範格式（移除 footer-meta / footer-status 多餘元素）。cache busting → 300430a |
 
 ---
 
