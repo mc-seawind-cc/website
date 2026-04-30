@@ -1,8 +1,10 @@
 # 海風 SeaWind 網站設計文件
 
+| 2026.05.01 | 海風網站助手 | **遊戲機制頁新增定期重啟說明**：在全分流設定區域新增「🔄 定期重啟」區塊，說明伺服器固定在每週一早上 6:00 進行例行重啟 |
+
 | 2026.04.30 | 海風網站助手 | **海風指南側邊欄連結修正**：①全站 42 個指南子頁面側邊欄「公開傳送點」→「公共傳送點」（與頁面名稱一致）；②`雲隱匠作.html` 重新命名為 `雪隱匠作.html`（匹配頁面標題及 canonical URL，修復指南索引頁 404 連結）；③全站側邊欄 `href="雲隱匠作"` → `href="雪隱匠作"`；④指南索引頁「公開傳送點」→「公共傳送點」；⑤新手指引頁兩處 `社群須知` 連結補上 `../` 前綴（從海風指南子目錄正確指向根目錄頁面） |
 
-> 最後更新：2026.04.30（海風網站助手）——指南子頁面內容全面重寫（24 頁內容升級）
+> 最後更新：2026.05.01（海風網站助手）——遊戲機制頁新增定期重啟說明
 > 維護者：海風網站助手
 > Instagram：[@mc.seawind.cc](https://www.instagram.com/mc.seawind.cc/)
 
@@ -578,6 +580,7 @@ website/
 | 2026.04.30 | 海風網站助手 | **fix: 修復海風指南主頁白畫面**：`海風指南.html` 的 `<style>` 區塊缺少 `</style></head><body>` 標籤，導致整頁 HTML 被瀏覽器當成 CSS 解析（白畫面）。line 96 的 `.<aside` 修正為 `<aside`。 |
 | 2026.04.30 | 海風網站助手 | **fix: 修復海風指南主頁黑畫面（結構性重建）**：①補齊 `<nav>` 導覽列（全站標準結構，海風指南 = active）；②補齊 `<a class="skip-link">` 無障礙跳轉；③補齊 `<div class="scroll-progress">` 滾動進度條；④補齊 `<div class="bg-atmosphere">` 背景氛圍；⑤移除 body 直接子層的 `<aside>`（原本在 `.page` 外面），在 `.page > #mainContent` 內保留唯一側邊欄（消除 ID `guideSidebar` 重複）；⑥補齊音樂播放器（`#musicPlayer` + `music-player.js`）、`back-to-top` 按鈕、`nav-backdrop` 手機版導航遮罩、`ytPlayer` iframe；⑦body 加上 `guide-index-page` class（使內聯 CSS `.guide-index-page .content-section` 選擇器生效）。 |
 | 2026.04.30 | 海風網站助手 | **fix: 海風指南主頁補齊缺失的 v2 CSS 樣式**：`style.css` 中沒有 `guide-sidebar-v2` / `guide-entry` / `guide-cat` / `guide-qt` 等索引頁專用 class 的 CSS 定義，導致側邊欄、分類標題、指南條目全部無樣式顯示。在頁面 `<style>` 區塊新增 ~220 行 CSS：側邊欄（sticky + scrollbar）、快捷標籤 pill 按鈕、搜尋結果區塊、分類區塊（accent bar + 計數徽章）、條目卡片（hover 滑動 + 箭頭浮現 + 標題變色）、featured 條目、淺色模式覆蓋、響應式 768px 單欄。 |
+| 2026.05.01 | 海風網站助手 | **遊戲機制頁新增定期重啟說明**：在全分流設定區域新增「🔄 定期重啟」區塊，說明伺服器固定在每週一早上 6:00 進行例行重啟。頁尾日期更新至 2026.05.01 |
 
 ---
 
