@@ -93,353 +93,58 @@
     }
 
     /* 側邊欄 */
-    .guide-sidebar-v2 {
-      position: sticky;
-      top: 80px;
-      align-self: start;
-      max-height: calc(100vh - 100px);
-      overflow-y: auto;
-      scrollbar-width: thin;
-      scrollbar-color: rgba(157,175,255,0.15) transparent;
-    }
-    .guide-sidebar-v2::-webkit-scrollbar { width: 4px; }
-    .guide-sidebar-v2::-webkit-scrollbar-thumb { background: rgba(157,175,255,0.15); border-radius: 2px; }
-
-    .guide-sb-group {
-      margin-bottom: var(--space-lg);
-    }
-    .guide-sb-title {
-      font-size: 0.7rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      color: var(--text-muted);
-      padding-bottom: var(--space-xs);
-      margin-bottom: 6px;
-    }
-    .guide-sb-link {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      padding: 7px 10px;
-      font-size: 0.82rem;
-      color: var(--fog);
-      text-decoration: none;
-      border-radius: 8px;
-      transition: all var(--duration) var(--ease);
-    }
-    .guide-sb-link:hover {
-      color: var(--sky);
-      background: rgba(157,175,255,0.06);
-    }
-    .guide-sb-link.active {
-      color: var(--sky);
-      background: rgba(157,175,255,0.1);
-      font-weight: 600;
-    }
-    .guide-sb-dot {
-      width: 6px;
-      height: 6px;
-      border-radius: 50%;
-      flex-shrink: 0;
-    }
-
-    [data-theme="light"] .guide-sb-link:hover { background: rgba(74,108,247,0.06); }
-    [data-theme="light"] .guide-sb-link.active { background: rgba(74,108,247,0.1); }
-
-    /* 主內容 */
-    .guide-main-v2 {
-      min-width: 0;
-    }
-
-    /* ═══ 分類區塊 ═══ */
-    .guide-cat {
-      margin-bottom: var(--space-2xl);
-    }
-    .guide-cat-header {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      margin-bottom: var(--space-lg);
-      padding-bottom: var(--space-sm);
-      border-bottom: 1px solid rgba(255,255,255,0.06);
-    }
-    .guide-cat-bar {
-      width: 4px;
-      height: 24px;
-      border-radius: 2px;
-      flex-shrink: 0;
-    }
-    .guide-cat-header h2 {
-      font-size: 1.15rem;
-      font-weight: 700;
-      color: var(--white);
-    }
-    .guide-cat-count {
-      margin-left: auto;
-      font-size: 0.72rem;
-      color: var(--text-muted);
-    }
-    [data-theme="light"] .guide-cat-header { border-bottom-color: rgba(0,0,0,0.06); }
-
-    /* 條目列表 */
-    .guide-entries {
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
-    }
-    .guide-entry {
-      display: grid;
-      grid-template-columns: 44px 1fr auto;
-      align-items: center;
-      gap: 12px;
-      padding: 12px 14px;
-      background: rgba(255,255,255,0.02);
-      border: 1px solid rgba(255,255,255,0.05);
-      border-radius: var(--radius-md);
-      text-decoration: none;
-      color: var(--cloud);
-      transition: all var(--duration) var(--ease);
-      border-left: 3px solid transparent;
-    }
-    .guide-entry:hover {
-      background: rgba(255,255,255,0.04);
-      border-color: rgba(157,175,255,0.15);
-      border-left-color: var(--entry-accent, var(--sky));
-      transform: translateX(4px);
-    }
-    .guide-entry-icon {
-      width: 44px;
-      height: 44px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: rgba(157,175,255,0.06);
-      border-radius: 10px;
-      font-size: 1.3rem;
-      flex-shrink: 0;
-    }
-    .guide-entry-body {
-      min-width: 0;
-    }
-    .guide-entry-title {
-      font-size: 0.92rem;
-      font-weight: 600;
-      color: var(--white);
-      margin-bottom: 1px;
-    }
-    .guide-entry-desc {
-      font-size: 0.78rem;
-      color: var(--fog);
-      display: -webkit-box;
-      -webkit-line-clamp: 2;
-      -webkit-box-orient: vertical;
-      overflow: hidden;
-    }
-    .guide-entry-arrow {
-      color: var(--fog);
-      font-size: 0.85rem;
-      opacity: 0;
-      transform: translateX(-4px);
-      transition: all var(--duration) var(--ease);
-    }
-    .guide-entry:hover .guide-entry-arrow {
-      opacity: 1;
-      transform: translateX(0);
-    }
-
-    .guide-entry.featured {
-      background: linear-gradient(135deg, rgba(157,175,255,0.05), rgba(168,230,207,0.02));
-      border-color: rgba(157,175,255,0.1);
-    }
-    .guide-entry.featured .guide-entry-title {
-      color: var(--sky);
-    }
-
-    [data-theme="light"] .guide-entry {
-      background: #fff;
-      border-color: rgba(0,0,0,0.05);
-    }
-    [data-theme="light"] .guide-entry:hover {
-      background: rgba(157,175,255,0.03);
-      border-color: rgba(157,175,255,0.2);
-      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
-    }
-    [data-theme="light"] .guide-entry-title { color: var(--cloud); }
-    [data-theme="light"] .guide-entry-desc { color: var(--fog); }
-    [data-theme="light"] .guide-entry.featured {
-      background: linear-gradient(135deg, rgba(157,175,255,0.05), rgba(168,230,207,0.03));
-    }
-
-    /* CTA */
-    .guide-cta {
-      text-align: center;
-      padding: var(--space-2xl) var(--space-lg);
-      background: linear-gradient(135deg, rgba(157,175,255,0.04), rgba(168,230,207,0.02));
-      border: 1px solid rgba(157,175,255,0.1);
-      border-radius: var(--radius-xl);
-      margin-bottom: var(--space-2xl);
-    }
-    .guide-cta h2 {
-      font-size: 1.3rem;
-      color: var(--white);
-      margin-bottom: var(--space-sm);
-    }
-    .guide-cta p {
-      color: var(--fog);
-      font-size: 0.95rem;
-      margin-bottom: var(--space-lg);
-    }
-    .guide-cta-btns {
-      display: flex;
-      gap: 12px;
-      justify-content: center;
-      flex-wrap: wrap;
-    }
-
-    /* 搜尋結果 */
-    .guide-search-results {
-      display: none;
-      margin-bottom: var(--space-2xl);
-    }
-    .guide-search-results.active { display: block; }
-    .guide-search-results h3 {
-      font-size: 0.9rem;
-      color: var(--fog);
-      margin-bottom: var(--space-md);
-    }
-    .guide-search-results h3 span { color: var(--sky); font-weight: 700; }
-    .guide-no-result {
-      text-align: center;
-      padding: var(--space-2xl);
-      color: var(--fog);
-    }
-
-    /* 快捷標籤 */
-    .guide-quick-tags {
-      display: flex;
-      gap: 8px;
-      flex-wrap: wrap;
-      justify-content: center;
-      margin-bottom: var(--space-xl);
-    }
-    .guide-qt {
-      padding: 7px 14px;
-      border-radius: 99px;
-      background: var(--ocean);
-      border: 1px solid var(--mist);
-      color: var(--fog);
-      font-size: 0.82rem;
-      cursor: pointer;
-      transition: all var(--duration) var(--ease);
-      font-family: var(--font-body);
-      white-space: nowrap;
-    }
-    .guide-qt:hover, .guide-qt.active {
-      background: rgba(157,175,255,0.1);
-      border-color: rgba(157,175,255,0.3);
-      color: var(--sky);
-    }
-    [data-theme="light"] .guide-qt {
-      background: rgba(0,0,0,0.03);
-      border-color: rgba(0,0,0,0.06);
-    }
-    [data-theme="light"] .guide-qt:hover, [data-theme="light"] .guide-qt.active {
-      background: rgba(74,108,247,0.08);
-      border-color: rgba(74,108,247,0.2);
-      color: #4a6cf7;
-    }
-
-    /* 響應式 */
-    @media (max-width: 900px) {
-      .guide-index-page .content-section { max-width: 100%; }
-      .guide-layout-v2 {
-        grid-template-columns: 1fr;
-      }
-      .guide-sidebar-v2 {
-        position: static;
-        max-height: none;
-        display: flex;
-        flex-wrap: wrap;
-        gap: 6px;
-        margin-bottom: var(--space-lg);
-      }
-      .guide-sb-group { margin-bottom: 0; }
-      .guide-sb-title { display: none; }
-      .guide-sb-link {
-        padding: 8px 14px;
-        font-size: 0.78rem;
-        border: 1px solid rgba(255,255,255,0.06);
-        border-radius: 99px;
-      }
-      [data-theme="light"] .guide-sb-link { border-color: rgba(0,0,0,0.06); }
-    }
-    @media (max-width: 480px) {
-      .guide-entry { grid-template-columns: 36px 1fr auto; padding: 10px 12px; }
-      .guide-entry-icon { width: 36px; height: 36px; font-size: 1.1rem; }
-      .guide-entry-title { font-size: 0.85rem; }
-      .guide-entry-desc { font-size: 0.72rem; -webkit-line-clamp: 1; }
-      .guide-quick-tags { padding: 0 var(--space-md); }
-      .guide-cta { padding: var(--space-xl) var(--space-md); }
-      .guide-cta-btns { flex-direction: column; }
-      .guide-cta-btns .btn { width: 100%; justify-content: center; min-height: 48px; }
-    }
-  </style>
-</head>
-<body class="guide-index-page">
-  <a href="#mainContent" class="skip-link">跳到主要內容</a>
-
-  <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
-  <div class="bg-atmosphere"></div>
-
-  <nav class="nav">
-    <a href="首頁" class="nav-logo">
-      <picture><source srcset="assets/img/logo.webp" type="image/webp"><img src="assets/img/logo.png" alt="海風" class="nav-logo-img" width="48" height="48" fetchpriority="high"></picture>
-      <span>海風伺服器</span>
-    </a>
-    <div class="nav-right">
-      <ul class="nav-links">
-        <li><a href="首頁">首頁</a></li>
-        <li><a href="公告">公告</a></li>
-        <li class="nav-dropdown">
-          <a href="文化藝廊" class="nav-dropdown-toggle" aria-expanded="false" aria-haspopup="true">關於 <span class="arrow">▾</span></a>
-          <ul class="dropdown-menu">
-            <li><a href="文化藝廊">文化藝廊</a></li>
-            <li><a href="活動">活動</a></li>
-            <li><a href="風景照">風景照</a></li>
-            <li><a href="歷史館">歷史館</a></li>
-            <li><a href="海風團隊">海風團隊</a></li>
-          </ul>
-        </li>
-        <li><a href="海風指南">海風指南</a></li>
-        <li class="nav-dropdown">
-          <a href="社群須知" class="nav-dropdown-toggle" aria-expanded="false" aria-haspopup="true">須知 <span class="arrow">▾</span></a>
-          <ul class="dropdown-menu">
-            <li><a href="社群須知">社群須知</a></li>
-            <li><a href="支持須知">支持須知</a></li>
-            <li><a href="管理通則">管理通則</a></li>
-            <li><a href="公務人員須知">公務人員須知</a></li>
-            <li><a href="設計規範">設計規範</a></li>
-            <li><a href="服務條款">服務條款</a></li>
-            <li><a href="隱私權政策">隱私權政策</a></li>
-          </ul>
-        </li>
-        <li><a href="會員">會員</a></li>
-        <li><a href="相關連結">相關連結</a></li>
-        <li class="nav-dropdown">
-          <a href="合作夥伴" class="nav-dropdown-toggle" aria-expanded="false" aria-haspopup="true">資料中心 <span class="arrow">▾</span></a>
-          <ul class="dropdown-menu">
-            <li><a href="合作夥伴">合作夥伴</a></li>
-            <li><a href="違規處分">違規處分</a></li>
-          </ul>
-        </li>
-      </ul>
-      <button class="nav-theme" id="themeToggle" aria-label="切換主題"></button>
-      <button class="nav-toggle" aria-label="選單">
-        <span></span><span></span><span></span>
-      </button>
-    </div>
-  </nav>
+    .<aside class="guide-sidebar-v2" id="guideSidebar" aria-label="指南目錄">
+        <div class="guide-sb-group">
+          <div class="guide-sb-title">快速開始</div>
+          <a href="#sec-start" class="guide-sb-link" data-section="start">
+            <span class="guide-sb-dot" style="background:#9dafff"></span>快速開始
+          </a>
+        </div>
+        <div class="guide-sb-group">
+          <div class="guide-sb-title">核心系統</div>
+          <a href="#sec-protect" class="guide-sb-link" data-section="protect">
+            <span class="guide-sb-dot" style="background:#a8e6cf"></span>領地與保護
+          </a>
+          <a href="#sec-move" class="guide-sb-link" data-section="move">
+            <span class="guide-sb-dot" style="background:#deac80"></span>傳送系統
+          </a>
+          <a href="#sec-money" class="guide-sb-link" data-section="money">
+            <span class="guide-sb-dot" style="background:#ffaa32"></span>經濟與交易
+          </a>
+        </div>
+        <div class="guide-sb-group">
+          <div class="guide-sb-title">遊戲玩法</div>
+          <a href="#sec-bag" class="guide-sb-link" data-section="bag">
+            <span class="guide-sb-dot" style="background:#ab72f9"></span>背包與倉庫
+          </a>
+          <a href="#sec-quest" class="guide-sb-link" data-section="quest">
+            <span class="guide-sb-dot" style="background:#58c2b0"></span>任務與成長
+          </a>
+          <a href="#sec-mining" class="guide-sb-link" data-section="mining">
+            <span class="guide-sb-dot" style="background:#deac80"></span>挖礦與資源
+          </a>
+          <a href="#sec-build" class="guide-sb-link" data-section="build">
+            <span class="guide-sb-dot" style="background:#a8e6cf"></span>建築工具
+          </a>
+          <a href="#sec-feature" class="guide-sb-link" data-section="feature">
+            <span class="guide-sb-dot" style="background:#578aff"></span>遊戲功能
+          </a>
+        </div>
+        <div class="guide-sb-group">
+          <div class="guide-sb-title">社群</div>
+          <a href="#sec-social" class="guide-sb-link" data-section="social">
+            <span class="guide-sb-dot" style="background:#85b1e0"></span>社群互動
+          </a>
+          <a href="#sec-lobby" class="guide-sb-link" data-section="lobby">
+            <span class="guide-sb-dot" style="background:#e0b5d4"></span>大廳導覽
+          </a>
+        </div>
+        <div class="guide-sb-group" style="margin-top:12px;padding-top:12px;border-top:1px solid rgba(255,255,255,0.06)">
+          <a href="海風指南/新手指引" class="guide-sb-link" style="color:#a8e6cf;font-weight:600">
+            🚀 新手指引
+          </a>
+        </div>
+      </aside>
 
   <div class="page">
     <div class="guide-hero fade-in">
@@ -477,8 +182,14 @@
           <a href="#sec-quest" class="guide-sb-link" data-section="quest">
             <span class="guide-sb-dot" style="background:#58c2b0"></span>任務與成長
           </a>
-          <a href="#sec-mech" class="guide-sb-link" data-section="mech">
-            <span class="guide-sb-dot" style="background:#578aff"></span>遊戲機制
+          <a href="#sec-mining" class="guide-sb-link" data-section="mining">
+            <span class="guide-sb-dot" style="background:#deac80"></span>挖礦與資源
+          </a>
+          <a href="#sec-build" class="guide-sb-link" data-section="build">
+            <span class="guide-sb-dot" style="background:#a8e6cf"></span>建築工具
+          </a>
+          <a href="#sec-feature" class="guide-sb-link" data-section="feature">
+            <span class="guide-sb-dot" style="background:#578aff"></span>遊戲功能
           </a>
         </div>
         <div class="guide-sb-group">
@@ -487,10 +198,7 @@
             <span class="guide-sb-dot" style="background:#85b1e0"></span>社群互動
           </a>
           <a href="#sec-lobby" class="guide-sb-link" data-section="lobby">
-            <span class="guide-sb-dot" style="background:#e0b5d4"></span>大廳區域
-          </a>
-          <a href="#sec-vip" class="guide-sb-link" data-section="vip">
-            <span class="guide-sb-dot" style="background:#ffb6c1"></span>會員專屬
+            <span class="guide-sb-dot" style="background:#e0b5d4"></span>大廳導覽
           </a>
         </div>
         <div class="guide-sb-group" style="margin-top:12px;padding-top:12px;border-top:1px solid rgba(255,255,255,0.06)">
@@ -536,15 +244,7 @@
         <div id="guideBrowse">
 
           <!-- 入門 CTA -->
-          <div class="guide-cta reveal-up">
-            <h2>🌊 第一次來海風？</h2>
-            <p>3 分鐘搞懂怎麼玩。從選單操作、領地保護到賺錢交易，一步步帶你上手。</p>
-            <div class="guide-cta-btns">
-              <a href="海風指南/新手指引" class="btn btn-primary">🚀 開始新手指引</a>
-              <a href="海風指南/綁定帳號" class="btn btn-outline">綁定帳號教學</a>
-            </div>
-          </div>
-
+          
           <!-- ═══ 快速開始 ═══ -->
           <div class="guide-cat reveal-up" data-section="start" id="sec-start">
             <div class="guide-cat-header">
@@ -557,7 +257,7 @@
                 <div class="guide-entry-icon">🌊</div>
                 <div class="guide-entry-body">
                   <div class="guide-entry-title">新手指引</div>
-                  <div class="guide-entry-desc">從零開始的海風生活：選單、簽到、建立據點、賺錢交易，一步步帶你融入伺服器</div>
+                  <div class="guide-entry-desc">從零開始的海風生活。選單、簽到、建立據點、賺錢交易，一步步帶你融入伺服器。</div>
                 </div>
                 <span class="guide-entry-arrow">→</span>
               </a>
@@ -565,7 +265,7 @@
                 <div class="guide-entry-icon">📱</div>
                 <div class="guide-entry-body">
                   <div class="guide-entry-title">伺服器選單</div>
-                  <div class="guide-entry-desc">海風的控制中心，所有功能的入口。快捷鍵 /menu 或潛行+副手鍵開啟，裡面有快速傳送、購物、任務等分頁</div>
+                  <div class="guide-entry-desc">海風的控制中心，所有功能的入口。快捷鍵 /menu 或潛行+副手鍵開啟。</div>
                 </div>
                 <span class="guide-entry-arrow">→</span>
               </a>
@@ -573,7 +273,7 @@
                 <div class="guide-entry-icon">🔗</div>
                 <div class="guide-entry-body">
                   <div class="guide-entry-title">綁定帳號</div>
-                  <div class="guide-entry-desc">將 Minecraft 與 Discord 帳號綁定，解鎖跨平台通知、郵件查詢、驗證等功能。使用 /discord link 取得驗證碼後到 Discord 完成綁定</div>
+                  <div class="guide-entry-desc">將 Minecraft 與 Discord 帳號綁定，解鎖跨平台通知、郵件查詢等功能。</div>
                 </div>
                 <span class="guide-entry-arrow">→</span>
               </a>
@@ -581,7 +281,7 @@
                 <div class="guide-entry-icon">🗺️</div>
                 <div class="guide-entry-body">
                   <div class="guide-entry-title">線上地圖</div>
-                  <div class="guide-entry-desc">即時世界地圖系統，邊走邊看位置自動更新。按 G 鍵或從選單「更多詳情」開啟，僅限 Java 版</div>
+                  <div class="guide-entry-desc">即時世界地圖系統，邊走邊看位置自動更新。按 G 鍵或從選單開啟。</div>
                 </div>
                 <span class="guide-entry-arrow">→</span>
               </a>
@@ -600,7 +300,7 @@
                 <div class="guide-entry-icon">🏠</div>
                 <div class="guide-entry-body">
                   <div class="guide-entry-title">領地系統</div>
-                  <div class="guide-entry-desc">你的家園圍籬。用木鋤選取範圍建立領地，別人就不能在你的地盤搞破壞或偷東西。支援權限管理、成員邀請、自訂規則設定</div>
+                  <div class="guide-entry-desc">用木鋤選取範圍建立領地，保護你的家園不被破壞。支援權限管理、成員邀請。</div>
                 </div>
                 <span class="guide-entry-arrow">→</span>
               </a>
@@ -608,7 +308,7 @@
                 <div class="guide-entry-icon">📋</div>
                 <div class="guide-entry-body">
                   <div class="guide-entry-title">互動記錄</div>
-                  <div class="guide-entry-desc">查誰動了你的東西。點擊方塊即可查看最近 120 天的破壞、放置、開啟、取出等記錄，用 /co i 開關檢查器</div>
+                  <div class="guide-entry-desc">查誰動了你的東西。點擊方塊即可查看最近 120 天的破壞、放置、開啟記錄。</div>
                 </div>
                 <span class="guide-entry-arrow">→</span>
               </a>
@@ -616,7 +316,7 @@
                 <div class="guide-entry-icon">🖼️</div>
                 <div class="guide-entry-body">
                   <div class="guide-entry-title">地圖署名</div>
-                  <div class="guide-entry-desc">署名後的地圖別人無法複製，保護你的地圖畫作品。僅署名者可複製或解除署名</div>
+                  <div class="guide-entry-desc">署名後的地圖別人無法複製，保護你的地圖畫作品。</div>
                 </div>
                 <span class="guide-entry-arrow">→</span>
               </a>
@@ -635,7 +335,7 @@
                 <div class="guide-entry-icon">📍</div>
                 <div class="guide-entry-body">
                   <div class="guide-entry-title">個人傳送點</div>
-                  <div class="guide-entry-desc">回家、回礦場、回商店——設定 home 點走到哪傳到哪。全分流共 20 個額度，省下大量跑路時間</div>
+                  <div class="guide-entry-desc">設定 home 點走到哪傳到哪。全分流共 20 個額度，省下大量跑路時間。</div>
                 </div>
                 <span class="guide-entry-arrow">→</span>
               </a>
@@ -643,7 +343,7 @@
                 <div class="guide-entry-icon">🌐</div>
                 <div class="guide-entry-body">
                   <div class="guide-entry-title">公共傳送點</div>
-                  <div class="guide-entry-desc">把你的礦場、刷怪塔或漂亮景點分享給大家，其他玩家一鍵就能到。每分流各 4 個額度</div>
+                  <div class="guide-entry-desc">把你的礦場或漂亮景點分享給大家，其他玩家一鍵就能到。</div>
                 </div>
                 <span class="guide-entry-arrow">→</span>
               </a>
@@ -651,7 +351,66 @@
                 <div class="guide-entry-icon">🛗</div>
                 <div class="guide-entry-body">
                   <div class="guide-entry-title">電梯</div>
-                  <div class="guide-entry-desc">蓋了高樓不用爬樓梯。垂直放置「浮雕石英方塊」作為樓層，按空白鍵上樓、蹲下鍵下樓</div>
+                  <div class="guide-entry-desc">垂直放置浮雕石英方塊作為樓層，按空白鍵上樓、蹲下鍵下樓。</div>
+                </div>
+                <span class="guide-entry-arrow">→</span>
+              </a>
+            </div>
+          </div>
+
+          <!-- ═══ 經濟與交易 ═══ -->
+          <div class="guide-cat reveal-up" data-section="money" id="sec-money">
+            <div class="guide-cat-header">
+              <div class="guide-cat-bar" style="background:linear-gradient(180deg,#ffaa32,#e09020)"></div>
+              <h2>經濟與交易</h2>
+              <span class="guide-cat-count">6 篇</span>
+            </div>
+            <div class="guide-entries">
+              <a href="海風指南/經濟系統" class="guide-entry featured" style="--entry-accent:#ffaa32">
+                <div class="guide-entry-icon">💎</div>
+                <div class="guide-entry-body">
+                  <div class="guide-entry-title">經濟系統</div>
+                  <div class="guide-entry-desc">海風有三種貨幣：風幣、任務幣、風汐碎片。鑽石 1:25 兌換風幣。</div>
+                </div>
+                <span class="guide-entry-arrow">→</span>
+              </a>
+              <a href="海風指南/線上商城" class="guide-entry" style="--entry-accent:#ffaa32">
+                <div class="guide-entry-icon">🛒</div>
+                <div class="guide-entry-body">
+                  <div class="guide-entry-title">線上商城</div>
+                  <div class="guide-entry-desc">遊戲內直接買賣的交易平台，每分流 10 件上架額度。</div>
+                </div>
+                <span class="guide-entry-arrow">→</span>
+              </a>
+              <a href="海風指南/箱子商店" class="guide-entry" style="--entry-accent:#ffaa32">
+                <div class="guide-entry-icon">📦</div>
+                <div class="guide-entry-body">
+                  <div class="guide-entry-title">箱子商店</div>
+                  <div class="guide-entry-desc">放箱子、丟商品、設價格，其他玩家直接用箱子買。每分流 120 個。</div>
+                </div>
+                <span class="guide-entry-arrow">→</span>
+              </a>
+              <a href="海風指南/銀行" class="guide-entry" style="--entry-accent:#ffaa32">
+                <div class="guide-entry-icon">🏦</div>
+                <div class="guide-entry-body">
+                  <div class="guide-entry-title">銀行</div>
+                  <div class="guide-entry-desc">用鑽石兌換風幣，匯率 1:25。位於格拉文特。</div>
+                </div>
+                <span class="guide-entry-arrow">→</span>
+              </a>
+              <a href="海風指南/雜貨店" class="guide-entry" style="--entry-accent:#ffaa32">
+                <div class="guide-entry-icon">🏪</div>
+                <div class="guide-entry-body">
+                  <div class="guide-entry-title">雜貨店</div>
+                  <div class="guide-entry-desc">NPC 商店 + Discord 雜貨店，24 小時隨時做買賣。</div>
+                </div>
+                <span class="guide-entry-arrow">→</span>
+              </a>
+              <a href="海風指南/建材小舖" class="guide-entry" style="--entry-accent:#ffaa32">
+                <div class="guide-entry-icon">🧱</div>
+                <div class="guide-entry-body">
+                  <div class="guide-entry-title">建材小舖</div>
+                  <div class="guide-entry-desc">販售各類建築木材與石料，含特產「雲杉暖木」。</div>
                 </div>
                 <span class="guide-entry-arrow">→</span>
               </a>
@@ -670,7 +429,7 @@
                 <div class="guide-entry-icon">🗄️</div>
                 <div class="guide-entry-body">
                   <div class="guide-entry-title">倉庫系統</div>
-                  <div class="guide-entry-desc">背包塞滿了？全分流共 16 個大倉庫 + 8 個小倉庫，隨時存取物品，不用擔心放不下。用 /inv 開啟倉庫列表</div>
+                  <div class="guide-entry-desc">全分流共 16 個大倉庫 + 8 個小倉庫，隨時存取物品。</div>
                 </div>
                 <span class="guide-entry-arrow">→</span>
               </a>
@@ -678,7 +437,7 @@
                 <div class="guide-entry-icon">🪟</div>
                 <div class="guide-entry-body">
                   <div class="guide-entry-title">玻璃展示櫃</div>
-                  <div class="guide-entry-desc">把寶物放進透明展示櫃，可調整方向、大小或開啟自動旋轉，取代傳統盔甲座與展示框</div>
+                  <div class="guide-entry-desc">把寶物放進透明展示櫃，可調整方向、大小或開啟自動旋轉。</div>
                 </div>
                 <span class="guide-entry-arrow">→</span>
               </a>
@@ -686,7 +445,7 @@
                 <div class="guide-entry-icon">🧍</div>
                 <div class="guide-entry-body">
                   <div class="guide-entry-title">盔甲座編輯器</div>
-                  <div class="guide-entry-desc">自由編輯盔甲座的姿勢與裝備。到重生點「雪隱匠作」接取冒險任務即可獲得編輯器工具</div>
+                  <div class="guide-entry-desc">自由編輯盔甲座的姿勢與裝備。到雪隱匠作接取任務獲得。</div>
                 </div>
                 <span class="guide-entry-arrow">→</span>
               </a>
@@ -694,7 +453,7 @@
                 <div class="guide-entry-icon">🎒</div>
                 <div class="guide-entry-body">
                   <div class="guide-entry-title">快捷界伏盒</div>
-                  <div class="guide-entry-desc">會員專屬的隨身額外背包，快速切換存取，背包管理更便利</div>
+                  <div class="guide-entry-desc">會員專屬的隨身額外背包，快速切換存取。</div>
                 </div>
                 <span class="guide-entry-arrow">→</span>
               </a>
@@ -713,7 +472,7 @@
                 <div class="guide-entry-icon">📜</div>
                 <div class="guide-entry-body">
                   <div class="guide-entry-title">任務系統</div>
-                  <div class="guide-entry-desc">每日任務自動刷新、冒險任務找 NPC 接取、社區任務每天凌晨更新。完成任務獲得「任務幣」，可在兌換商店換取獎勵</div>
+                  <div class="guide-entry-desc">每日任務自動刷新、冒險任務找 NPC 接取。完成獲得任務幣。</div>
                 </div>
                 <span class="guide-entry-arrow">→</span>
               </a>
@@ -721,7 +480,7 @@
                 <div class="guide-entry-icon">📅</div>
                 <div class="guide-entry-body">
                   <div class="guide-entry-title">簽到系統</div>
-                  <div class="guide-entry-desc">每天上線簽到領隨機獎勵。連續簽到有專屬稱號，累積簽到天數解鎖蛋糕類成就。特別的日子簽到或許有驚喜</div>
+                  <div class="guide-entry-desc">每天上線簽到領隨機獎勵。連續簽到有專屬稱號。</div>
                 </div>
                 <span class="guide-entry-arrow">→</span>
               </a>
@@ -729,133 +488,104 @@
                 <div class="guide-entry-icon">🏅</div>
                 <div class="guide-entry-body">
                   <div class="guide-entry-title">稱號系統</div>
-                  <div class="guide-entry-desc">顯示在名字旁邊的小標籤，展現你的身份與成就。有些稱號很稀有，是玩家之間互相認識的方式。用 /plt open 瀏覽、/plt shop 購買</div>
+                  <div class="guide-entry-desc">顯示在名字旁邊的小標籤，展現你的身份與成就。</div>
                 </div>
                 <span class="guide-entry-arrow">→</span>
               </a>
             </div>
           </div>
 
-          <!-- ═══ 經濟與交易 ═══ -->
-          <div class="guide-cat reveal-up" data-section="money" id="sec-money">
+          <!-- ═══ 挖礦與資源 ═══ -->
+          <div class="guide-cat reveal-up" data-section="mining" id="sec-mining">
             <div class="guide-cat-header">
-              <div class="guide-cat-bar" style="background:linear-gradient(180deg,#ffaa32,#e09020)"></div>
-              <h2>經濟與交易</h2>
-              <span class="guide-cat-count">4 篇</span>
+              <div class="guide-cat-bar" style="background:linear-gradient(180deg,#deac80,#c49460)"></div>
+              <h2>挖礦與資源</h2>
+              <span class="guide-cat-count">3 篇</span>
             </div>
             <div class="guide-entries">
-              <a href="海風指南/經濟系統" class="guide-entry featured" style="--entry-accent:#ffaa32">
-                <div class="guide-entry-icon">💎</div>
-                <div class="guide-entry-body">
-                  <div class="guide-entry-title">經濟系統</div>
-                  <div class="guide-entry-desc">海風有三種貨幣：風幣（官方貨幣，鑽石 1:25 兌換）、任務幣（完成任務獲得）、冷媒（贊助回饋）。風汐系列物品可兌換特殊工具</div>
-                </div>
-                <span class="guide-entry-arrow">→</span>
-              </a>
-              <a href="海風指南/線上商城" class="guide-entry" style="--entry-accent:#ffaa32">
-                <div class="guide-entry-icon">🛒</div>
-                <div class="guide-entry-body">
-                  <div class="guide-entry-title">線上商城</div>
-                  <div class="guide-entry-desc">遊戲內直接買賣的交易平台，不用面對面交易。每分流 10 件上架額度，標好價格等生意上門</div>
-                </div>
-                <span class="guide-entry-arrow">→</span>
-              </a>
-              <a href="海風指南/箱子商店" class="guide-entry" style="--entry-accent:#ffaa32">
-                <div class="guide-entry-icon">📦</div>
-                <div class="guide-entry-body">
-                  <div class="guide-entry-title">箱子商店</div>
-                  <div class="guide-entry-desc">最直覺的交易方式——放箱子、丟商品、設價格，其他玩家直接用箱子買。可設販賣或收購，每分流 120 個，適合蓋商店街</div>
-                </div>
-                <span class="guide-entry-arrow">→</span>
-              </a>
-              <a href="海風指南/雜貨店" class="guide-entry" style="--entry-accent:#ffaa32">
-                <div class="guide-entry-icon">🏪</div>
-                <div class="guide-entry-body">
-                  <div class="guide-entry-title">雜貨店</div>
-                  <div class="guide-entry-desc">NPC 商店 + Discord 雜貨店兩種管道，24 小時隨時做買賣，風幣交易的好去處</div>
-                </div>
-                <span class="guide-entry-arrow">→</span>
-              </a>
-            </div>
-          </div>
-
-          <!-- ═══ 遊戲機制 ═══ -->
-          <div class="guide-cat reveal-up" data-section="mech" id="sec-mech">
-            <div class="guide-cat-header">
-              <div class="guide-cat-bar" style="background:linear-gradient(180deg,#578aff,#3a6ae0)"></div>
-              <h2>遊戲機制</h2>
-              <span class="guide-cat-count">17 篇</span>
-            </div>
-            <div class="guide-entries">
-              <a href="海風指南/遊戲機制" class="guide-entry featured" style="--entry-accent:#578aff">
-                <div class="guide-entry-icon">📖</div>
-                <div class="guide-entry-body">
-                  <div class="guide-entry-title">機制總覽</div>
-                  <div class="guide-entry-desc">海風獨有玩法的完整一覽：世界大小（±40 萬）、困難難度、建築高度 639 層、寶庫冷卻時間等核心設定</div>
-                </div>
-                <span class="guide-entry-arrow">→</span>
-              </a>
-              <a href="海風指南/連鎖挖掘" class="guide-entry" style="--entry-accent:#578aff">
+              <a href="海風指南/連鎖挖掘" class="guide-entry featured" style="--entry-accent:#deac80">
                 <div class="guide-entry-icon">⛏️</div>
                 <div class="guide-entry-body">
                   <div class="guide-entry-title">連鎖挖掘</div>
-                  <div class="guide-entry-desc">蹲下挖掘時自動連鎖破壞同類型方塊，挖礦砍樹效率倍增</div>
+                  <div class="guide-entry-desc">蹲下挖掘時自動連鎖破壞同類型方塊，挖礦砍樹效率倍增。</div>
                 </div>
                 <span class="guide-entry-arrow">→</span>
               </a>
-              <a href="海風指南/礦物代換" class="guide-entry" style="--entry-accent:#578aff">
+              <a href="海風指南/礦物代換" class="guide-entry" style="--entry-accent:#deac80">
                 <div class="guide-entry-icon">💎</div>
                 <div class="guide-entry-body">
                   <div class="guide-entry-title">礦物代換</div>
-                  <div class="guide-entry-desc">礦石隨機生成機制，分布與原版大致相同，但只有方塊曝露時才生成，維護經濟平衡</div>
+                  <div class="guide-entry-desc">礦石隨機生成機制，只有方塊曝露時才生成，維護經濟平衡。</div>
                 </div>
                 <span class="guide-entry-arrow">→</span>
               </a>
-              <a href="海風指南/資源再生" class="guide-entry" style="--entry-accent:#578aff">
+              <a href="海風指南/資源再生" class="guide-entry" style="--entry-accent:#deac80">
                 <div class="guide-entry-icon">🔄</div>
                 <div class="guide-entry-body">
                   <div class="guide-entry-title">資源再生</div>
-                  <div class="guide-entry-desc">7 天沒人造訪的區塊會自動重置，礦脈取之不盡。領地覆蓋的區塊不受影響，安心建設</div>
+                  <div class="guide-entry-desc">7 天沒人造訪的區塊會自動重置，礦脈取之不盡。</div>
                 </div>
                 <span class="guide-entry-arrow">→</span>
               </a>
+            </div>
+          </div>
+
+          <!-- ═══ 建築工具 ═══ -->
+          <div class="guide-cat reveal-up" data-section="build" id="sec-build">
+            <div class="guide-cat-header">
+              <div class="guide-cat-bar" style="background:linear-gradient(180deg,#a8e6cf,#58c2b0)"></div>
+              <h2>建築工具</h2>
+              <span class="guide-cat-count">4 篇</span>
+            </div>
+            <div class="guide-entries">
+              <a href="海風指南/混凝土固化鍋" class="guide-entry" style="--entry-accent:#a8e6cf">
+                <div class="guide-entry-icon">🪣</div>
+                <div class="guide-entry-body">
+                  <div class="guide-entry-title">混凝土固化鍋</div>
+                  <div class="guide-entry-desc">混凝土粉末丟進裝水的鍋釜就能快速固化，不用一塊塊倒水。</div>
+                </div>
+                <span class="guide-entry-arrow">→</span>
+              </a>
+              <a href="海風指南/真實書櫃" class="guide-entry" style="--entry-accent:#a8e6cf">
+                <div class="guide-entry-icon">📚</div>
+                <div class="guide-entry-body">
+                  <div class="guide-entry-title">真實書櫃</div>
+                  <div class="guide-entry-desc">點擊書櫃開啟介面，放入書本打造真正的圖書館。</div>
+                </div>
+                <span class="guide-entry-arrow">→</span>
+              </a>
+              <a href="海風指南/蜂窩檢視" class="guide-entry" style="--entry-accent:#a8e6cf">
+                <div class="guide-entry-icon">🐝</div>
+                <div class="guide-entry-body">
+                  <div class="guide-entry-title">蜂窩檢視</div>
+                  <div class="guide-entry-desc">無模組也能查看蜂窩內部蜜蜂數量與蜂蜜飽滿程度。</div>
+                </div>
+                <span class="guide-entry-arrow">→</span>
+              </a>
+              <a href="海風指南/更多動作" class="guide-entry" style="--entry-accent:#a8e6cf">
+                <div class="guide-entry-icon">🪑</div>
+                <div class="guide-entry-body">
+                  <div class="guide-entry-title">更多動作</div>
+                  <div class="guide-entry-desc">點擊階梯或半磚直接坐下，點擊玩家可以坐在玩家身上。</div>
+                </div>
+                <span class="guide-entry-arrow">→</span>
+              </a>
+            </div>
+          </div>
+
+          <!-- ═══ 遊戲功能 ═══ -->
+          <div class="guide-cat reveal-up" data-section="feature" id="sec-feature">
+            <div class="guide-cat-header">
+              <div class="guide-cat-bar" style="background:linear-gradient(180deg,#578aff,#3a6ae0)"></div>
+              <h2>遊戲功能</h2>
+              <span class="guide-cat-count">9 篇</span>
+            </div>
+            <div class="guide-entries">
               <a href="海風指南/特殊合成" class="guide-entry" style="--entry-accent:#578aff">
                 <div class="guide-entry-icon">⚒️</div>
                 <div class="guide-entry-body">
                   <div class="guide-entry-title">特殊合成</div>
-                  <div class="guide-entry-desc">自訂合成配方：捕捉蛋分為「一次性」與「重複型」，直接合成無需權限，輕鬆獲得各類生物蛋</div>
-                </div>
-                <span class="guide-entry-arrow">→</span>
-              </a>
-              <a href="海風指南/混凝土固化鍋" class="guide-entry" style="--entry-accent:#578aff">
-                <div class="guide-entry-icon">🪣</div>
-                <div class="guide-entry-body">
-                  <div class="guide-entry-title">混凝土固化鍋</div>
-                  <div class="guide-entry-desc">把混凝土粉末丟進裝水的鍋釜就能快速固化，不用再一塊塊倒水，也減少固化機造成的卡頓</div>
-                </div>
-                <span class="guide-entry-arrow">→</span>
-              </a>
-              <a href="海風指南/真實書櫃" class="guide-entry" style="--entry-accent:#578aff">
-                <div class="guide-entry-icon">📚</div>
-                <div class="guide-entry-body">
-                  <div class="guide-entry-title">真實書櫃</div>
-                  <div class="guide-entry-desc">點擊書櫃開啟介面，可以放入書本、書與筆等書類物品，打造真正的圖書館</div>
-                </div>
-                <span class="guide-entry-arrow">→</span>
-              </a>
-              <a href="海風指南/蜂窩檢視" class="guide-entry" style="--entry-accent:#578aff">
-                <div class="guide-entry-icon">🐝</div>
-                <div class="guide-entry-body">
-                  <div class="guide-entry-title">蜂窩檢視</div>
-                  <div class="guide-entry-desc">無模組玩家也能點擊蜂窩或蜂箱查看內部蜜蜂數量與蜂蜜飽滿程度</div>
-                </div>
-                <span class="guide-entry-arrow">→</span>
-              </a>
-              <a href="海風指南/敲門與雙開" class="guide-entry" style="--entry-accent:#578aff">
-                <div class="guide-entry-icon">🚪</div>
-                <div class="guide-entry-body">
-                  <div class="guide-entry-title">敲門與雙開</div>
-                  <div class="guide-entry-desc">空手敲門發出敲門聲，點擊一扇門自動同步開啟兩扇。紅石也適用於雙開門機制</div>
+                  <div class="guide-entry-desc">自訂合成配方：捕捉蛋分為一次性與重複型，直接合成無需權限。</div>
                 </div>
                 <span class="guide-entry-arrow">→</span>
               </a>
@@ -863,23 +593,15 @@
                 <div class="guide-entry-icon">📦</div>
                 <div class="guide-entry-body">
                   <div class="guide-entry-title">穿牌開箱</div>
-                  <div class="guide-entry-desc">點擊告示牌或展示框直接開啟相連的容器（箱子、木桶、界伏盒等），蹲下點擊進入編輯模式</div>
+                  <div class="guide-entry-desc">點擊告示牌直接開啟相連的容器，蹲下點擊進入編輯模式。</div>
                 </div>
                 <span class="guide-entry-arrow">→</span>
               </a>
-              <a href="海風指南/地震預警" class="guide-entry" style="--entry-accent:#578aff">
-                <div class="guide-entry-icon">🌍</div>
+              <a href="海風指南/敲門與雙開" class="guide-entry" style="--entry-accent:#578aff">
+                <div class="guide-entry-icon">🚪</div>
                 <div class="guide-entry-body">
-                  <div class="guide-entry-title">地震預警</div>
-                  <div class="guide-entry-desc">台灣地震頻繁，海風在遊戲聊天室設有即時地震通知。發生大地震請立即「趴下、掩護、穩住」</div>
-                </div>
-                <span class="guide-entry-arrow">→</span>
-              </a>
-              <a href="海風指南/更多動作" class="guide-entry" style="--entry-accent:#578aff">
-                <div class="guide-entry-icon">🪑</div>
-                <div class="guide-entry-body">
-                  <div class="guide-entry-title">更多動作</div>
-                  <div class="guide-entry-desc">點擊階梯或半磚直接坐下，點擊玩家可以坐在玩家身上，更多互動動作讓遊戲更有趣</div>
+                  <div class="guide-entry-title">敲門與雙開</div>
+                  <div class="guide-entry-desc">空手敲門發出敲門聲，點擊一扇門自動同步開啟兩扇。</div>
                 </div>
                 <span class="guide-entry-arrow">→</span>
               </a>
@@ -887,7 +609,7 @@
                 <div class="guide-entry-icon">🧲</div>
                 <div class="guide-entry-body">
                   <div class="guide-entry-title">自動拾取</div>
-                  <div class="guide-entry-desc">打怪挖礦掉落物自動進背包，省去彎腰撿的麻煩</div>
+                  <div class="guide-entry-desc">打怪挖礦掉落物自動進背包，省去彎腰撿的麻煩。</div>
                 </div>
                 <span class="guide-entry-arrow">→</span>
               </a>
@@ -895,7 +617,7 @@
                 <div class="guide-entry-icon">🗑️</div>
                 <div class="guide-entry-body">
                   <div class="guide-entry-title">垃圾桶</div>
-                  <div class="guide-entry-desc">一鍵清除背包不需要的物品，背包管理更輕鬆</div>
+                  <div class="guide-entry-desc">一鍵清除背包不需要的物品，背包管理更輕鬆。</div>
                 </div>
                 <span class="guide-entry-arrow">→</span>
               </a>
@@ -903,7 +625,7 @@
                 <div class="guide-entry-icon">💤</div>
                 <div class="guide-entry-body">
                   <div class="guide-entry-title">掛機系統</div>
-                  <div class="guide-entry-desc">暫時離開也不怕，AFK 狀態自動維持</div>
+                  <div class="guide-entry-desc">暫時離開也不怕，AFK 狀態自動維持連線。</div>
                 </div>
                 <span class="guide-entry-arrow">→</span>
               </a>
@@ -911,7 +633,7 @@
                 <div class="guide-entry-icon">📦</div>
                 <div class="guide-entry-body">
                   <div class="guide-entry-title">自動整理</div>
-                  <div class="guide-entry-desc">一鍵整理背包，物品自動分類排好</div>
+                  <div class="guide-entry-desc">一鍵整理背包，物品自動分類排好。</div>
                 </div>
                 <span class="guide-entry-arrow">→</span>
               </a>
@@ -919,7 +641,15 @@
                 <div class="guide-entry-icon">👁️</div>
                 <div class="guide-entry-body">
                   <div class="guide-entry-title">容器預覽</div>
-                  <div class="guide-entry-desc">不開箱子也能看到裡面有什麼</div>
+                  <div class="guide-entry-desc">不開箱子也能看到裡面有什麼，逛商店街超方便。</div>
+                </div>
+                <span class="guide-entry-arrow">→</span>
+              </a>
+              <a href="海風指南/地震預警" class="guide-entry" style="--entry-accent:#578aff">
+                <div class="guide-entry-icon">🌍</div>
+                <div class="guide-entry-body">
+                  <div class="guide-entry-title">地震預警</div>
+                  <div class="guide-entry-desc">台灣地震頻繁，遊戲聊天室有即時地震通知。</div>
                 </div>
                 <span class="guide-entry-arrow">→</span>
               </a>
@@ -938,15 +668,7 @@
                 <div class="guide-entry-icon">📬</div>
                 <div class="guide-entry-body">
                   <div class="guide-entry-title">蜂聊郵政</div>
-                  <div class="guide-entry-desc">不在線也能傳訊息或寄物品給朋友，每次寄件 1 元。補償、獎勵或遺失物領回也透過信箱系統處理</div>
-                </div>
-                <span class="guide-entry-arrow">→</span>
-              </a>
-              <a href="海風指南/靈魂出竅" class="guide-entry" style="--entry-accent:#85b1e0">
-                <div class="guide-entry-icon">👻</div>
-                <div class="guide-entry-body">
-                  <div class="guide-entry-title">靈魂出竅</div>
-                  <div class="guide-entry-desc">進入自由觀察模式，穿牆飛行查看建築結構或觀察其他玩家，方便設計規劃或純粹閒逛</div>
+                  <div class="guide-entry-desc">不在線也能傳訊息或寄物品給朋友，每次寄件 1 元。</div>
                 </div>
                 <span class="guide-entry-arrow">→</span>
               </a>
@@ -954,34 +676,34 @@
                 <div class="guide-entry-icon">🏘️</div>
                 <div class="guide-entry-body">
                   <div class="guide-entry-title">社區系統</div>
-                  <div class="guide-entry-desc">自由成立社區，與其他玩家共建家園，申請後依規範管理</div>
+                  <div class="guide-entry-desc">自由成立社區，與其他玩家共建家園。</div>
+                </div>
+                <span class="guide-entry-arrow">→</span>
+              </a>
+              <a href="海風指南/靈魂出竅" class="guide-entry" style="--entry-accent:#85b1e0">
+                <div class="guide-entry-icon">👻</div>
+                <div class="guide-entry-body">
+                  <div class="guide-entry-title">靈魂出竅</div>
+                  <div class="guide-entry-desc">進入自由觀察模式，穿牆飛行查看建築結構。</div>
                 </div>
                 <span class="guide-entry-arrow">→</span>
               </a>
             </div>
           </div>
 
-          <!-- ═══ 大廳區域 ═══ -->
+          <!-- ═══ 大廳導覽 ═══ -->
           <div class="guide-cat reveal-up" data-section="lobby" id="sec-lobby">
             <div class="guide-cat-header">
               <div class="guide-cat-bar" style="background:linear-gradient(180deg,#e0b5d4,#c090b5)"></div>
-              <h2>大廳區域</h2>
-              <span class="guide-cat-count">5 篇</span>
+              <h2>大廳導覽</h2>
+              <span class="guide-cat-count">3 篇</span>
             </div>
             <div class="guide-entries">
               <a href="海風指南/大廳區域" class="guide-entry featured" style="--entry-accent:#e0b5d4">
                 <div class="guide-entry-icon">🏘️</div>
                 <div class="guide-entry-body">
                   <div class="guide-entry-title">大廳簡介</div>
-                  <div class="guide-entry-desc">重生點分為五大區域：重生點（格拉文特）、布雷特蘭、港口、小台北園區。每個區域都有 NPC、商店和冒險任務等你探索</div>
-                </div>
-                <span class="guide-entry-arrow">→</span>
-              </a>
-              <a href="海風指南/建材小舖" class="guide-entry" style="--entry-accent:#e0b5d4">
-                <div class="guide-entry-icon">🧱</div>
-                <div class="guide-entry-body">
-                  <div class="guide-entry-title">建材小舖</div>
-                  <div class="guide-entry-desc">販售各類建築木材與石料，包含著名特產「雲杉暖木」，也提供原木去皮服務。位於雪帆巷（45, 92, -67）</div>
+                  <div class="guide-entry-desc">重生點分為格拉文特、布雷特蘭、港口、小台北園區。每個區域都有 NPC 和商店。</div>
                 </div>
                 <span class="guide-entry-arrow">→</span>
               </a>
@@ -989,7 +711,7 @@
                 <div class="guide-entry-icon">⚒️</div>
                 <div class="guide-entry-body">
                   <div class="guide-entry-title">雪隱匠作</div>
-                  <div class="guide-entry-desc">重生點鐵匠鋪，可獲得盔甲座編輯器、雪山煤炭、邦布魔杖等特殊道具，也展示格拉文特土特產</div>
+                  <div class="guide-entry-desc">重生點鐵匠鋪，可獲得盔甲座編輯器、雪山煤炭等特殊道具。</div>
                 </div>
                 <span class="guide-entry-arrow">→</span>
               </a>
@@ -997,47 +719,45 @@
                 <div class="guide-entry-icon">🍵</div>
                 <div class="guide-entry-body">
                   <div class="guide-entry-title">風語茶屋</div>
-                  <div class="guide-entry-desc">販售增益飲品與點心，提供「與自然對話」的飲茶生活方式。餅乾很好吃，真的。</div>
-                </div>
-                <span class="guide-entry-arrow">→</span>
-              </a>
-              <a href="海風指南/銀行" class="guide-entry" style="--entry-accent:#e0b5d4">
-                <div class="guide-entry-icon">🏦</div>
-                <div class="guide-entry-body">
-                  <div class="guide-entry-title">銀行</div>
-                  <div class="guide-entry-desc">格拉文特分行，使用鑽石兌換風幣（匯率 1:25）。位於原沫路上，潮沫巷左轉、風語茶屋旁</div>
+                  <div class="guide-entry-desc">販售增益飲品與點心，提供「與自然對話」的飲茶生活方式。</div>
                 </div>
                 <span class="guide-entry-arrow">→</span>
               </a>
             </div>
           </div>
 
+        </div>
+
+
+          <!-- ═══ 快速開始 ═══ -->
+          
+
+          <!-- ═══ 領地與保護 ═══ -->
+          
+
+          <!-- ═══ 傳送系統 ═══ -->
+          
+
+          <!-- ═══ 背包與倉庫 ═══ -->
+          
+
+          <!-- ═══ 任務與成長 ═══ -->
+          
+
+          <!-- ═══ 經濟與交易 ═══ -->
+          
+
+          <!-- ═══ 遊戲機制 ═══ -->
+          
+
+          <!-- ═══ 社群互動 ═══ -->
+          
+
+          <!-- ═══ 大廳區域 ═══ -->
+          
+
           <!-- ═══ 會員專屬 ═══ -->
-          <div class="guide-cat reveal-up" data-section="vip" id="sec-vip">
-            <div class="guide-cat-header">
-              <div class="guide-cat-bar" style="background:linear-gradient(180deg,#ffb6c1,#e0889a)"></div>
-              <h2>會員專屬</h2>
-              <span class="guide-cat-count">2 篇</span>
-            </div>
-            <div class="guide-entries">
-              <a href="海風指南/快捷界伏盒" class="guide-entry" style="--entry-accent:#ffb6c1">
-                <div class="guide-entry-icon">🎒</div>
-                <div class="guide-entry-body">
-                  <div class="guide-entry-title">快捷界伏盒</div>
-                  <div class="guide-entry-desc">隨身額外背包空間，快速切換不同類型的物品儲存，告別背包塞滿的煩惱</div>
-                </div>
-                <span class="guide-entry-arrow">→</span>
-              </a>
-              <a href="海風指南/隱藏裝備" class="guide-entry" style="--entry-accent:#ffb6c1">
-                <div class="guide-entry-icon">🫥</div>
-                <div class="guide-entry-body">
-                  <div class="guide-entry-title">隱藏裝備</div>
-                  <div class="guide-entry-desc">隱藏身上裝備的外觀顯示，讓你的角色看起來更清爽，想秀什麼裝備由你決定</div>
-                </div>
-                <span class="guide-entry-arrow">→</span>
-              </a>
-            </div>
-          </div>
+          
 
         </div><!-- /guideBrowse -->
 
