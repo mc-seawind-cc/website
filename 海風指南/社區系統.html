@@ -4,20 +4,20 @@
   <meta charset="UTF-8"><meta name="color-scheme" content="dark light"><meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>海風 — 海風指南 — 社區系統</title>
   <link rel="canonical" href="https://www.seawind.cc/海風指南/社區系統">
-  <meta name="description" content="海風伺服器社區系統：歡迎玩家自由成立社區。">
+  <meta name="description" content="海風伺服器社區系統完整指南：成立社區、成員管理、社區升級、商店、簽到、兌換所、神石、社區對戰，打造你的專屬聚落。">
   <meta property="og:title" content="社區系統 — 海風指南 — 海風">
-  <meta property="og:description" content="海風伺服器社區系統：歡迎玩家自由成立社區。">
-  <meta property="og:image" content="assets/img/logo.png">
+  <meta property="og:description" content="海風伺服器社區系統完整指南：成立社區、成員管理、社區升級、商店、簽到、兌換所、神石、社區對戰，打造你的專屬聚落。">
+  <meta property="og:image" content="../assets/img/logo.png">
   <meta property="og:type" content="website">
   <meta name="twitter:card" content="summary">
-  <meta name="twitter:image" content="assets/img/logo.png">
+  <meta name="twitter:image" content="../assets/img/logo.png">
   <meta name="theme-color" content="#0d1117">
   <link rel="dns-prefetch" href="//cdn.discordapp.com">
   <link rel="dns-prefetch" href="//truth.bahamut.com.tw">
   <link rel="dns-prefetch" href="//api.mcsrvstat.us">
   <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;800&family=Noto+Serif+TC:wght@700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../style.css?v=300430b">
+  <link rel="stylesheet" href="../style.css?v=010501a">
   <link rel="stylesheet" href="../music-player.css">
 </head>
 <body>
@@ -79,25 +79,24 @@
       </button>
     </div>
   </nav>
-  <div class="page">
-          <!-- ═══ Hero ═══ -->
-      <div class="guide-v2-hero fade-in">
-        <h1>社區系統</h1>
-          <p class="section-desc">歡迎玩家自由成立社區。</p>
-          <div class="guide-quick-stats">
-            <div class="guide-qs-item"><span class="guide-qs-icon">🏘️</span><span>功能</span><span class="guide-qs-val">成立社區</span></div>
-            <div class="guide-qs-item"><span class="guide-qs-icon">👥</span><span>對象</span><span class="guide-qs-val">自由申請</span></div>
-            <div class="guide-qs-item"><span class="guide-qs-icon">📋</span><span>規範</span><span class="guide-qs-val">依規範管理</span></div>
-          </div>
+  <div class="page" id="mainContent">
+    <!-- ═══ Hero ═══ -->
+    <div class="guide-v2-hero fade-in">
+      <h1>社區系統</h1>
+      <p class="section-desc">和朋友一起打造專屬聚落，從成立到征戰，體驗完整的社區經營！</p>
+      <div class="guide-quick-stats">
+        <div class="guide-qs-item"><span class="guide-qs-icon">💰</span><span>成立費用</span><span class="guide-qs-val">48,000 風幣</span></div>
+        <div class="guide-qs-item"><span class="guide-qs-icon">📏</span><span>名稱上限</span><span class="guide-qs-val">6 字元</span></div>
+        <div class="guide-qs-item"><span class="guide-qs-icon">⚔️</span><span>對戰時間</span><span class="guide-qs-val">週六 19:00</span></div>
       </div>
-    <div class="guide-layout">
+    </div>
 
-            <!-- 側邊導覽 -->
+    <div class="guide-layout">
+      <!-- ═══ 側邊導覽 ═══ -->
       <aside class="guide-sidebar">
         <div class="guide-sidebar-inner">
           <div class="guide-sidebar-title">📖 海風指南</div>
           <nav class="guide-sidebar-nav">
-
             <div class="guide-sb-group">
               <span class="guide-sb-heading">🚀 快速開始</span>
               <a href="新手指引" class="guide-sb-link">新手指引</a>
@@ -182,59 +181,297 @@
               <a href="隱藏裝備" class="guide-sb-link">隱藏裝備</a>
               <a href="盔甲隱身" class="guide-sb-link">盔甲隱身</a>
             </div>
-</nav>
+          </nav>
         </div>
       </aside>
 
-      <div class="guide-main"><div class="breadcrumb fade-in">
-        <a href="../海風指南">海風指南</a>
-        <span class="sep">›</span>
-        <span class="current">社區系統</span>
-      </div>
-      
-        
-        <!-- ═══ 功能說明 ═══ -->
+      <div class="guide-main">
+        <div class="breadcrumb fade-in">
+          <a href="../海風指南">海風指南</a>
+          <span class="sep">›</span>
+          <span class="current">社區系統</span>
+        </div>
+
+        <!-- ═══ 什麼是社區 ═══ -->
         <div class="guide-section-card fade-in" style="--card-accent:var(--sky)">
           <h2><span class="sec-icon">🏘️</span> 什麼是社區</h2>
-          <p>社區就是一群玩家共同經營的聚落。你可以和朋友一起申請成立社區，建立自己的城鎮、村莊或基地群。</p>
-          <p>社區有專屬的領地保護、成員管理系統，還可以申請成為正式社區獲得更多功能。</p>
+          <p>社區是一群玩家共同經營的聚落。成立社區後，你可以邀請成員、管理社區資金、升級社區等級、舉辦社區對戰，打造一個有組織的玩家群體。</p>
+          <p>社區擁有專屬的成員系統、資金經濟、商店、公告、簽到、神石等功能，是海風伺服器中最重要的社交玩法之一。</p>
         </div>
 
         <div class="guide-divider"></div>
 
         <!-- ═══ 成立社區 ═══ -->
         <div class="guide-section-card fade-in" style="--card-accent:var(--foam)">
-          <h2><span class="sec-icon">📋</span> 如何成立社區</h2>
+          <h2><span class="sec-icon">🏗️</span> 成立社區</h2>
+          <p>在遊戲中輸入指令即可成立社區，不需要經過管理員審核：</p>
           <div class="guide-steps-grid">
-            <div class="guide-step-card" style="--step-color:var(--foam)">
-              <span class="guide-step-num">1</span>
-              <h4>找到地點</h4>
-              <p>選擇一個你想要建立社區的地點</p>
+            <div class="guide-step-card">
+              <span class="guide-step-icon">💬</span>
+              <h4>步驟一</h4>
+              <p>開啟社區列表介面，點擊「成立社區」按鈕。</p>
             </div>
-            <div class="guide-step-card" style="--step-color:var(--foam)">
-              <span class="guide-step-num">2</span>
-              <h4>申請成立</h4>
-              <p>到 Discord 社群提出申請，說明社區名稱和計畫</p>
+            <div class="guide-step-card">
+              <span class="guide-step-icon">✏️</span>
+              <h4>步驟二</h4>
+              <p>在聊天框輸入社區名稱（最多 6 字元）。輸入 <code>T</code> 可取消操作。</p>
             </div>
-            <div class="guide-step-card" style="--step-color:var(--foam)">
-              <span class="guide-step-num">3</span>
-              <h4>審核通過</h4>
-              <p>管理員審核後，你的社區就正式成立了</p>
+            <div class="guide-step-card">
+              <span class="guide-step-icon">💰</span>
+              <h4>步驟三</h4>
+              <p>支付 <strong>48,000 風幣</strong>即可成立。成立後全服會廣播通知！</p>
+            </div>
+          </div>
+          <div class="callout callout-tip"><span class="callout-icon">💡</span><span>社區名稱不能包含非法字元，也不能與現有社區重複。每人只能擁有一個社區。</span></div>
+        </div>
+
+        <div class="guide-divider"></div>
+
+        <!-- ═══ 社區主頁 ═══ -->
+        <div class="guide-section-card fade-in" style="--card-accent:var(--lavender)">
+          <h2><span class="sec-icon">🏠</span> 社區主頁功能</h2>
+          <p>進入社區後，你會看到社區主頁，包含以下功能：</p>
+          <div class="guide-steps-grid">
+            <div class="guide-step-card">
+              <span class="guide-step-icon">📢</span>
+              <h4>公告</h4>
+              <p>查看社區公告，社長可發布新公告（花費 5 社區資金）。</p>
+            </div>
+            <div class="guide-step-card">
+              <span class="guide-step-icon">📍</span>
+              <h4>駐地</h4>
+              <p>一鍵傳送至社區駐地，快速回家。</p>
+            </div>
+            <div class="guide-step-card">
+              <span class="guide-step-icon">👥</span>
+              <h4>成員列表</h4>
+              <p>查看所有成員的貢獻值、在線狀態、入社時間等資訊。</p>
+            </div>
+            <div class="guide-step-card">
+              <span class="guide-step-icon">📜</span>
+              <h4>任務</h4>
+              <p>查看並完成社區任務，為社區做出貢獻。</p>
+            </div>
+            <div class="guide-step-card">
+              <span class="guide-step-icon">📅</span>
+              <h4>簽到</h4>
+              <p>每日簽到獲得 50 貢獻值，免費簽到不花費風幣。</p>
+            </div>
+            <div class="guide-step-card">
+              <span class="guide-step-icon">🏪</span>
+              <h4>商店</h4>
+              <p>社區專屬商店，可用貢獻值購買物品，成員也可上架商品。</p>
+            </div>
+            <div class="guide-step-card">
+              <span class="guide-step-icon">💎</span>
+              <h4>兌換所</h4>
+              <p>將個人貢獻值轉換為社區資金，支持社區發展。</p>
+            </div>
+            <div class="guide-step-card">
+              <span class="guide-step-icon">⭐</span>
+              <h4>神石</h4>
+              <p>社區專屬設施，可升級以提升活躍值增長速度。</p>
+            </div>
+            <div class="guide-step-card">
+              <span class="guide-step-icon">⚔️</span>
+              <h4>活動</h4>
+              <p>參加社區對戰（排位賽／匹配賽），與其他社區一較高下。</p>
             </div>
           </div>
         </div>
 
         <div class="guide-divider"></div>
 
-        <!-- ═══ 社區規範 ═══ -->
+        <!-- ═══ 成員管理 ═══ -->
         <div class="guide-section-card fade-in" style="--card-accent:var(--sand)">
-          <h2><span class="sec-icon">📜</span> 社區規範</h2>
-          <ul class="rules-list">
-            <li>社區成員需遵守<a href="../社群須知">社群須知</a></li>
-            <li>社區領地由社區管理者負責管理</li>
-            <li>歡迎玩家自由成立社區，但需經過申請審核</li>
-            <li>詳細規範請查看<a href="../社群須知">社群須知</a></li>
-          </ul>
+          <h2><span class="sec-icon">👥</span> 成員管理</h2>
+          <p>社區有四種職位，權限由高到低：</p>
+          <div class="rules-table-wrap">
+            <table class="rules-table">
+              <thead><tr><th>職位</th><th>權限</th></tr></thead>
+              <tbody>
+                <tr><td>👑 社長</td><td>所有權限：升級、改名、邀請、審核、踢出、解散、公告、商店管理、駐地設定、友傷切換。</td></tr>
+                <tr><td>🛡️ 副社長</td><td>邀請成員、審核申請、發布公告、商店管理。</td></tr>
+                <tr><td>⚔️ 精英</td><td>商店上架、基本管理。</td></tr>
+                <tr><td>👤 成員</td><td>簽到、任務、商店購買、兌換貢獻值。</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <h3>加入社區的方式</h3>
+          <div class="guide-steps-grid">
+            <div class="guide-step-card">
+              <span class="guide-step-icon">📩</span>
+              <h4>邀請加入</h4>
+              <p>社長或副社長直接邀請你，不需審核。邀請花費 20 社區資金。</p>
+            </div>
+            <div class="guide-step-card">
+              <span class="guide-step-icon">📝</span>
+              <h4>申請加入</h4>
+              <p>在社區列表中點擊「申請加入」，等待社長或副社長審核。</p>
+            </div>
+          </div>
+          <div class="callout callout-tip"><span class="callout-icon">💡</span><span>入社模式可由社長在管理頁切換：「會長審核」或「不需審核」。切換花費 100 社區資金。</span></div>
+        </div>
+
+        <div class="guide-divider"></div>
+
+        <!-- ═══ 社區升級 ═══ -->
+        <div class="guide-section-card fade-in" style="--card-accent:var(--ocean-blue)">
+          <h2><span class="sec-icon">⬆️</span> 社區升級</h2>
+          <p>社區可以透過升級來擴展功能。升級需要同時滿足三個條件：</p>
+          <div class="guide-cmd-grid">
+            <div class="guide-cmd-card">
+              <div class="guide-cmd-name">💰 社區資金</div>
+              <div class="guide-cmd-desc">透過成員貢獻值兌換獲得，用於社區各種操作。</div>
+            </div>
+            <div class="guide-cmd-card">
+              <div class="guide-cmd-name">⚡ 社區活躍值</div>
+              <div class="guide-cmd-desc">成員在線時自動增長，神石可加速增長。</div>
+            </div>
+            <div class="guide-cmd-card">
+              <div class="guide-cmd-name">👥 成員數量</div>
+              <div class="guide-cmd-desc">達到指定成員人數才可升級。</div>
+            </div>
+          </div>
+          <h3>其他管理操作</h3>
+          <div class="rules-table-wrap">
+            <table class="rules-table">
+              <thead><tr><th>操作</th><th>費用</th><th>說明</th></tr></thead>
+              <tbody>
+                <tr><td>改名</td><td>500 社區資金</td><td>修改社區名稱。</td></tr>
+                <tr><td>修改描述</td><td>免費</td><td>設定社區介紹文字，最多 48 字。</td></tr>
+                <tr><td>切換友傷</td><td>100 社區資金</td><td>開關社區成員間的 PvP 傷害。</td></tr>
+                <tr><td>切換入社模式</td><td>100 社區資金</td><td>「會長審核」或「不需審核」。</td></tr>
+                <tr><td>解散社區</td><td>免費</td><td>永久解散社區，無法復原。</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="guide-divider"></div>
+
+        <!-- ═══ 貢獻與經濟 ═══ -->
+        <div class="guide-section-card fade-in" style="--card-accent:var(--foam)">
+          <h2><span class="sec-icon">💎</span> 貢獻與經濟</h2>
+          <p>社區有獨立的經濟系統，由「貢獻值」和「社區資金」組成：</p>
+          <div class="guide-steps-grid">
+            <div class="guide-step-card">
+              <span class="guide-step-icon">🪙</span>
+              <h4>貢獻值</h4>
+              <p>個人持有的社區貨幣。透過簽到（50/天）、任務、對戰獎勵獲得。可用於商店購買或兌換為社區資金。</p>
+            </div>
+            <div class="guide-step-card">
+              <span class="guide-step-icon">🏦</span>
+              <h4>社區資金</h4>
+              <p>社區共有的資金池。由成員在兌換所捐獻貢獻值而來。用於升級、改名、邀請、公告等操作。</p>
+            </div>
+          </div>
+          <h3>兌換所</h3>
+          <p>在兌換所中，你可以將貢獻值轉換為社區資金，支持社區發展：</p>
+          <div class="rules-table-wrap">
+            <table class="rules-table">
+              <thead><tr><th>選項</th><th>數量</th></tr></thead>
+              <tbody>
+                <tr><td>小額捐贈</td><td>100 貢獻值</td></tr>
+                <tr><td>大額捐贈</td><td>500 貢獻值</td></tr>
+                <tr><td>全部捐贈</td><td>全部貢獻值</td></tr>
+                <tr><td>自訂金額</td><td>自行輸入數值</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="guide-divider"></div>
+
+        <!-- ═══ 神石 ═══ -->
+        <div class="guide-section-card fade-in" style="--card-accent:var(--lavender)">
+          <h2><span class="sec-icon">⭐</span> 神石系統</h2>
+          <p>神石是社區專屬的升級設施，可提升社區活躍值的增長速度。活躍值每 5 分鐘自動增長一次，增長量取決於在線成員數和神石等級。</p>
+          <p>神石共有 7 階，升級需要花費社區資金：</p>
+          <div class="rules-table-wrap">
+            <table class="rules-table">
+              <thead><tr><th>等級</th><th>名稱</th><th>升級費用</th></tr></thead>
+              <tbody>
+                <tr><td>1 階</td><td>一階神石</td><td>6,000 社區資金</td></tr>
+                <tr><td>2 階</td><td>二階神石</td><td>20,000 社區資金</td></tr>
+                <tr><td>3 階</td><td>三階神石</td><td>40,000 社區資金</td></tr>
+                <tr><td>4–7 階</td><td>四～七階神石</td><td>各 40,000 社區資金</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="callout callout-tip"><span class="callout-icon">💡</span><span>活躍值是社區升級的關鍵條件之一，盡早升級神石可以讓社區成長更快！</span></div>
+        </div>
+
+        <div class="guide-divider"></div>
+
+        <!-- ═══ 社區對戰 ═══ -->
+        <div class="guide-section-card fade-in" style="--card-accent:var(--sand)">
+          <h2><span class="sec-icon">⚔️</span> 社區對戰</h2>
+          <p>社區對戰分為兩種模式，讓社區之間一較高下：</p>
+          <div class="guide-cmd-grid">
+            <div class="guide-cmd-card">
+              <div class="guide-cmd-name">🏆 排位賽</div>
+              <div class="guide-cmd-desc">每週六 19:00 開打。全服社區對決，排名越高獎勵越豐厚（社區資金＋活躍值＋貢獻值）。非比賽日開放報名。</div>
+            </div>
+            <div class="guide-cmd-card">
+              <div class="guide-cmd-name">🎯 匹配賽</div>
+              <div class="guide-cmd-desc">週一至週五 19:00–21:00 可參加。隨機匹配對手社區，每日最多獲得 3 次參與獎勵（貢獻值）。</div>
+            </div>
+          </div>
+          <h3>排位賽獎勵</h3>
+          <div class="rules-table-wrap">
+            <table class="rules-table">
+              <thead><tr><th>名次</th><th>社區資金</th><th>社區活躍</th><th>成員貢獻</th></tr></thead>
+              <tbody>
+                <tr><td>🥇 第一名</td><td>20</td><td>20</td><td>20</td></tr>
+                <tr><td>🥈 第二名</td><td>10</td><td>10</td><td>10</td></tr>
+                <tr><td>🥉 第三名</td><td>5</td><td>5</td><td>5</td></tr>
+                <tr><td>🎖️ 參賽</td><td>1</td><td>1</td><td>1</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="guide-divider"></div>
+
+        <!-- ═══ 社區標誌 ═══ -->
+        <div class="guide-section-card fade-in" style="--card-accent:var(--ocean-blue)">
+          <h2><span class="sec-icon">🎨</span> 社區標誌</h2>
+          <p>社區標誌是顯示在社區名稱旁邊的圖示。社長可在「標誌商店」中用社區資金購買，部分標誌需要社區達到指定等級才能購買。</p>
+          <p>已購買的標誌會存入「標誌倉庫」，可隨時切換使用。</p>
+        </div>
+
+        <div class="guide-divider"></div>
+
+        <!-- ═══ 常見問題 ═══ -->
+        <div class="guide-section-card fade-in" style="--card-accent:#85b1e0">
+          <h2><span class="sec-icon">❓</span> 常見問題</h2>
+          <div class="guide-faq">
+            <div class="guide-faq-item">
+              <button class="guide-faq-q">成立社區需要什麼條件？</button>
+              <div class="guide-faq-a"><div class="guide-faq-a-inner">只需要 48,000 風幣和一個未被使用的社區名稱（最多 6 字元）。每人只能擁有一個社區，在遊戲中操作即可，不需經過管理員審核。</div></div>
+            </div>
+            <div class="guide-faq-item">
+              <button class="guide-faq-q">貢獻值怎麼獲得？</button>
+              <div class="guide-faq-a"><div class="guide-faq-a-inner">主要透過三種方式：①每日簽到（免費，50 貢獻值）；②完成社區任務；③參加社區對戰獲得獎勵。</div></div>
+            </div>
+            <div class="guide-faq-item">
+              <button class="guide-faq-q">社區可以換社長嗎？</button>
+              <div class="guide-faq-a"><div class="guide-faq-a-inner">如果社長超過 120 天沒有上線，成員可以發起彈劾，將社長職位轉移給總貢獻值最高的成員。</div></div>
+            </div>
+            <div class="guide-faq-item">
+              <button class="guide-faq-q">退出社區後貢獻值會怎樣？</button>
+              <div class="guide-faq-a"><div class="guide-faq-a-inner">退出社區後，你的個人貢獻值會保留。但已兌換為社區資金的部分無法取回。加入新社區後可繼續使用貢獻值。</div></div>
+            </div>
+            <div class="guide-faq-item">
+              <button class="guide-faq-q">社區對戰怎麼參加？</button>
+              <div class="guide-faq-a"><div class="guide-faq-a-inner">排位賽每週六 19:00，由社長報名參加。匹配賽週一至週五 19:00–21:00，成員可自行發起匹配。對戰獎勵為貢獻值、社區資金和活躍值。</div></div>
+            </div>
+            <div class="guide-faq-item">
+              <button class="guide-faq-q">社區商店的物品怎麼上架？</button>
+              <div class="guide-faq-a"><div class="guide-faq-a-inner">所有成員都可以上架商品。主手持要賣的物品，點擊「上架商品」按鈕，然後在聊天框輸入「數量#單價」（例如 <code>1#100</code>）。上架收入為貢獻值。</div></div>
+            </div>
+          </div>
         </div>
 
         <div class="guide-divider"></div>
@@ -247,37 +484,35 @@
               <span class="guide-next-icon">🏠</span>
               <div class="guide-next-body">
                 <h4>領地系統</h4>
-                <p>保護社區建築</p>
+                <p>保護社區建築不受破壞。</p>
               </div>
             </a>
-            <a href="大廳區域" class="guide-next-card">
-              <span class="guide-next-icon">🏘️</span>
+            <a href="簽到系統" class="guide-next-card">
+              <span class="guide-next-icon">📅</span>
               <div class="guide-next-body">
-                <h4>大廳區域</h4>
-                <p>重生點各區域介紹</p>
+                <h4>簽到系統</h4>
+                <p>每日簽到獲得貢獻值。</p>
+              </div>
+            </a>
+            <a href="經濟系統" class="guide-next-card">
+              <span class="guide-next-icon">💰</span>
+              <div class="guide-next-body">
+                <h4>經濟系統</h4>
+                <p>了解風幣的賺取方式。</p>
               </div>
             </a>
           </div>
         </div>
-      
-        <div class="guide-divider"></div>
 
-        <div class="guide-section-card fade-in" style="--card-accent:#85b1e0">
-          <h2><span class="sec-icon">❓</span> 常見問題</h2>
-          <div class="guide-faq">
-            <div class="guide-faq-item">
-              <button class="guide-faq-q">這個功能要怎麼用？</button>
-              <div class="guide-faq-a"><div class="guide-faq-a-inner">請參考上方的使用教學區塊，依照步驟操作即可。如果有其他問題，可以到 Discord 開客服單詢問。</div></div>
-            </div>
-          </div>
+        <div class="guide-nav fade-in">
+          <a href="蜂聊郵政" class="btn btn-outline">← 蜂聊郵政</a>
+          <a href="../海風指南" class="btn btn-outline">返回目錄</a>
+          <a href="靈魂出竅" class="btn btn-primary">靈魂出竅 →</a>
         </div>
-
-      <div class="guide-nav fade-in"><a href="蜂聊郵政" class="btn btn-outline">← 蜂聊郵政</a><a href="../海風指南" class="btn btn-outline">返回目錄</a></div>
-    </div>
-  
       </div><!-- /guide-main -->
     </div><!-- /guide-layout -->
   </div>
+
   <footer class="footer">
     <div class="footer-inner">
       <div class="footer-brand">
@@ -294,12 +529,12 @@
       <div class="footer-bottom">
         <p>© 2026 海風伺服器 · 非 Mojang 官方營運 · service@seawind.cc</p>
       </div>
-      <p class="page-revise">網站最後修改日期 2026.04.30 / 總計修改 <span id="deployCount">—</span> 次</p>
+      <p class="page-revise">網站最後修改日期 2026.05.01 / 總計修改 <span id="deployCount">—</span> 次</p>
     </div>
   </footer>
 
   <script src="../utils.js"></script>
-  <script src="../main.js?v=300430b"></script>
+  <script src="../main.js?v=010501a"></script>
   <script src="../music-player.js" defer></script>
 
   <script>
