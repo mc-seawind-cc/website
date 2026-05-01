@@ -194,6 +194,7 @@
           <h2><span class="sec-icon">🫥</span> 功能說明</h2>
           <p>穿著全套鑽石裝卻不想讓別人看到？<strong>隱藏裝備</strong>功能讓你隱藏身上裝備的外觀顯示，但裝備的防禦效果<strong>照常運作</strong>。</p>
           <p>簡單來說：你穿著裝備，別人看不到，但你還是有防禦。</p>
+          <div class="callout callout-info"><span class="callout-icon">ℹ️</span><span>隱藏裝備只影響<strong>你自己的外觀顯示</strong>，其他玩家看你會像沒穿裝備一樣。但你的防禦值、附魔效果全部保留，戰鬥力完全不減。</span></div>
         </div>
 
         <div class="guide-divider"></div>
@@ -206,6 +207,7 @@
             <li><strong>自由搭配</strong>：想秀什麼裝備由你決定，不想露的就藏起來</li>
             <li><strong>低調奢華</strong>：穿著全套鑽石裝卻看起來像穿布衣</li>
             <li><strong>防禦不減</strong>：隱藏的是外觀，裝備效果完全保留</li>
+            <li><strong>拍照好看</strong>：截圖、錄影時不會被裝備外觀干擾</li>
           </ul>
         </div>
 
@@ -214,8 +216,36 @@
         <!-- ═══ 如何使用 ═══ -->
         <div class="guide-section-card fade-in" style="--card-accent:var(--sand)">
           <h2><span class="sec-icon">📖</span> 如何使用</h2>
-          <p>隱藏裝備是<strong>會員專屬</strong>功能。成為會員後即可在遊戲中使用隱藏裝備指令。</p>
+          <p>隱藏裝備是<strong>會員專屬</strong>功能。成為會員後，輸入指令即可切換顯示/隱藏。</p>
+          <div class="guide-cmd-grid">
+            <div class="guide-cmd-card">
+              <span class="guide-cmd-icon">🫥</span>
+              <div class="guide-cmd-body">
+                <div class="guide-cmd-name">/cosmetic hidearmor</div>
+                <div class="guide-cmd-desc">切換裝備隱藏/顯示</div>
+              </div>
+            </div>
+          </div>
+          <p style="margin-top:var(--space-md)">輸入一次隱藏，再輸入一次顯示。可以隨時切換，不用重新登入。</p>
           <div class="callout callout-tip"><span class="callout-icon">💡</span><span>詳細的會員方案與權益，請查看<a href="../會員">會員頁面</a>。</span></div>
+        </div>
+
+        <div class="guide-divider"></div>
+
+        <!-- ═══ 隱藏裝備 vs 盔甲隱身 ═══ -->
+        <div class="guide-section-card fade-in" style="--card-accent:var(--ocean-blue)">
+          <h2><span class="sec-icon">🆚</span> 隱藏裝備 vs 盔甲隱身</h2>
+          <p>海風有兩個外觀隱藏功能，名字很像但作用不同：</p>
+          <div class="rules-table-wrap">
+            <table class="rules-table">
+              <thead><tr><th>功能</th><th>隱藏什麼</th><th>誰能用</th><th>指令</th></tr></thead>
+              <tbody>
+                <tr><td><strong>隱藏裝備</strong></td><td>全身裝備外觀</td><td>會員</td><td><code>/cosmetic hidearmor</code></td></tr>
+                <tr><td><strong>盔甲隱身</strong></td><td>僅盔甲外觀</td><td>所有玩家</td><td>選單操作</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p style="margin-top:var(--space-sm);color:var(--fog);font-size:0.85rem">簡單來說：隱藏裝備是會員功能，可以隱藏全身；盔甲隱身是免費功能，只隱藏盔甲。</p>
         </div>
       
         <div class="guide-divider"></div>
@@ -224,8 +254,16 @@
           <h2><span class="sec-icon">❓</span> 常見問題</h2>
           <div class="guide-faq">
             <div class="guide-faq-item">
-              <button class="guide-faq-q">這個功能要怎麼用？</button>
-              <div class="guide-faq-a"><div class="guide-faq-a-inner">請參考上方的使用教學區塊，依照步驟操作即可。如果有其他問題，可以到 Discord 開客服單詢問。</div></div>
+              <button class="guide-faq-q">隱藏裝備後別人打我還會有防禦嗎？</button>
+              <div class="guide-faq-a"><div class="guide-faq-a-inner">會。隱藏的只是外觀顯示，裝備的防禦值、附魔效果（如保護、火焰保護等）全部保留。你穿鑽石裝被打的傷害跟沒隱藏時完全一樣。</div></div>
+            </div>
+            <div class="guide-faq-item">
+              <button class="guide-faq-q">隱藏裝備和盔甲隱身有什麼不同？</button>
+              <div class="guide-faq-a"><div class="guide-faq-a-inner">隱藏裝備是<strong>會員專屬</strong>，可以隱藏全身裝備外觀；盔甲隱身是<strong>免費功能</strong>，只隱藏盔甲部分。如果你只是不想看到頭盔，用盔甲隱身就夠了。</div></div>
+            </div>
+            <div class="guide-faq-item">
+              <button class="guide-faq-q">隱藏後我自己還看得到裝備嗎？</button>
+              <div class="guide-faq-a"><div class="guide-faq-a-inner">看得到。隱藏只影響其他玩家看到的你，你自己的背包、裝備欄介面完全正常，裝備圖示照常顯示。</div></div>
             </div>
           </div>
         </div>
@@ -236,17 +274,31 @@
         <div class="guide-section-card fade-in" style="--card-accent:var(--ocean-blue)">
           <h2><span class="sec-icon">📖</span> 相關頁面</h2>
           <div class="guide-next-grid">
+            <a href="盔甲隱身" class="guide-next-card">
+              <span class="guide-next-icon">👻</span>
+              <div class="guide-next-body">
+                <h4>盔甲隱身</h4>
+                <p>免費的盔甲外觀隱藏功能</p>
+              </div>
+            </a>
             <a href="快捷界伏盒" class="guide-next-card">
-              <span class="guide-next-icon">⭐</span>
+              <span class="guide-next-icon">🎒</span>
               <div class="guide-next-body">
                 <h4>快捷界伏盒</h4>
-                <p>了解更多。</p>
+                <p>會員專屬的隨身額外背包</p>
+              </div>
+            </a>
+            <a href="../會員" class="guide-next-card">
+              <span class="guide-next-icon">⭐</span>
+              <div class="guide-next-body">
+                <h4>會員</h4>
+                <p>了解會員方案與專屬權益</p>
               </div>
             </a>
           </div>
         </div>
 
-        <div class="guide-nav fade-in"><a href="../會員" class="btn btn-outline">← 快捷界伏盒</a><a href="../海風指南" class="btn btn-outline">返回目錄</a><a href="更多動作" class="btn btn-primary">更多動作 →</a></div>
+        <div class="guide-nav fade-in"><a href="盔甲隱身" class="btn btn-outline">← 盔甲隱身</a><a href="../海風指南" class="btn btn-outline">返回目錄</a><a href="../海風指南" class="btn btn-primary">返回目錄 →</a></div>
     </div>
   
       </div><!-- /guide-main -->
