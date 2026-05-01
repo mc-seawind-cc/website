@@ -23,59 +23,6 @@
   <link rel="stylesheet" href="../style.css?v=020502a">
   <link rel="stylesheet" href="../music-player.css">
   <style>
-  /* ═══ 貨幣流向圖 ═══ */
-  .currency-flow {
-    display: flex;
-    flex-direction: column;
-    gap: var(--space-md);
-    margin: var(--space-lg) 0;
-  }
-  .flow-row {
-    display: flex;
-    align-items: center;
-    gap: var(--space-sm);
-    flex-wrap: wrap;
-  }
-  .flow-node {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    padding: 8px 16px;
-    border-radius: var(--radius-md);
-    font-weight: 700;
-    font-size: 0.9rem;
-    white-space: nowrap;
-  }
-  .flow-node.earn {
-    background: rgba(168,230,207,0.12);
-    border: 1px solid rgba(168,230,207,0.3);
-    color: var(--foam);
-  }
-  .flow-node.spend {
-    background: rgba(222,172,128,0.12);
-    border: 1px solid rgba(222,172,128,0.3);
-    color: var(--sand);
-  }
-  .flow-node.token {
-    background: rgba(171,114,249,0.12);
-    border: 1px solid rgba(171,114,249,0.3);
-    color: var(--lavender);
-  }
-  .flow-arrow {
-    color: var(--fog);
-    font-size: 1.1rem;
-    flex-shrink: 0;
-  }
-  .flow-label {
-    font-size: 0.78rem;
-    color: var(--fog);
-    margin-left: 4px;
-  }
-  [data-theme="light"] .flow-node.earn { background: rgba(46,160,110,0.08); border-color: rgba(46,160,110,0.25); color: #1a7a4a; }
-  [data-theme="light"] .flow-node.spend { background: rgba(180,120,60,0.08); border-color: rgba(180,120,60,0.25); color: #8a5a20; }
-  [data-theme="light"] .flow-node.token { background: rgba(120,70,200,0.08); border-color: rgba(120,70,200,0.25); color: #6a3ab5; }
-  [data-theme="light"] .flow-arrow { color: #666; }
-
   /* ═══ 風汐升級階梯 ═══ */
   .upgrade-path {
     display: flex;
@@ -315,40 +262,6 @@
           </ul>
           <p>代幣之間<strong>不能互換</strong>，也不能當風幣用。簡單來說：<strong>有風幣就什麼都能買，代幣是額外的系統貨幣。</strong></p>
 
-          <!-- 貨幣流向圖 -->
-          <h3 style="margin-top:var(--space-xl)">🔄 貨幣怎麼流動</h3>
-          <div class="currency-flow">
-            <div class="flow-row">
-              <span class="flow-node earn">💎 鑽石</span>
-              <span class="flow-arrow">→</span>
-              <span class="flow-node earn">💰 風幣</span>
-              <span class="flow-label">銀行兌換（1:25）</span>
-            </div>
-            <div class="flow-row">
-              <span class="flow-node earn">📋 任務</span>
-              <span class="flow-arrow">→</span>
-              <span class="flow-node token">🎯 任務幣</span>
-              <span class="flow-arrow">→</span>
-              <span class="flow-node token">🌀 風汐碎片</span>
-              <span class="flow-arrow">→</span>
-              <span class="flow-node token">🔶 風汐石</span>
-              <span class="flow-label">任務商店兌換 → 合成</span>
-            </div>
-            <div class="flow-row">
-              <span class="flow-node earn">🪵 原木材料</span>
-              <span class="flow-arrow">→</span>
-              <span class="flow-node token">🪨 石材</span>
-              <span class="flow-arrow">→</span>
-              <span class="flow-node spend">🏗️ 建築材料</span>
-              <span class="flow-label">建材小舖兌換</span>
-            </div>
-            <div class="flow-row">
-              <span class="flow-node earn">💰 風幣</span>
-              <span class="flow-arrow">→</span>
-              <span class="flow-node spend">🛒 商店 / 📬 郵寄 / 🏘️ 社區</span>
-              <span class="flow-label">全服通用消費</span>
-            </div>
-          </div>
         </div>
 
         <div class="guide-divider"></div>
