@@ -80,16 +80,6 @@
     </div>
   </nav>
   <div class="page">
-          <!-- ═══ Hero ═══ -->
-      <div class="guide-v2-hero fade-in">
-        <h1>互動記錄</h1>
-          <p class="section-desc">神奇的記錄功能。</p>
-          <div class="guide-quick-stats">
-            <div class="guide-qs-item"><span class="guide-qs-icon">📋</span><span>查詢範圍</span><span class="guide-qs-val">120 天</span></div>
-            <div class="guide-qs-item"><span class="guide-qs-icon">🔍</span><span>指令</span><span class="guide-qs-val">/co i</span></div>
-            <div class="guide-qs-item"><span class="guide-qs-icon">💡</span><span>用法</span><span class="guide-qs-val">點擊方塊</span></div>
-          </div>
-      </div>
     <div class="guide-layout">
 
             <!-- 側邊導覽 -->
@@ -190,7 +180,20 @@
         <span class="sep">›</span>
         <span class="current">互動記錄</span>
       </div>
-      
+
+      <!-- ═══ Hero ═══ -->
+      <div class="guide-v2-hero fade-in">
+        <h1>互動記錄</h1>
+        <p class="section-desc">箱子被動了？建築被拆了？用互動記錄查詢誰碰過你的東西，120 天內的紀錄都查得到。</p>
+        <div class="guide-quick-stats">
+          <div class="guide-qs-item"><span class="guide-qs-icon">📅</span><span>記錄範圍</span><span class="guide-qs-val">120 天</span></div>
+          <div class="guide-qs-item"><span class="guide-qs-icon">📝</span><span>記錄類型</span><span class="guide-qs-val">6 種</span></div>
+          <div class="guide-qs-item"><span class="guide-qs-icon">⌨️</span><span>查詢指令</span><span class="guide-qs-val">/co i</span></div>
+        </div>
+      </div>
+
+      <div class="guide-divider"></div>
+
         
         <!-- ═══ 功能說明 ═══ -->
         <div class="guide-section-card fade-in" style="--card-accent:var(--foam)">
@@ -298,10 +301,17 @@
               </div>
             </a>
             <a href="物品署名" class="guide-next-card">
-              <span class="guide-next-icon">🛡️</span>
+              <span class="guide-next-icon">✍️</span>
               <div class="guide-next-body">
                 <h4>物品署名</h4>
                 <p>保護你的物品不被複製</p>
+              </div>
+            </a>
+            <a href="社區系統" class="guide-next-card">
+              <span class="guide-next-icon">🏘️</span>
+              <div class="guide-next-body">
+                <h4>社區系統</h4>
+                <p>和鄰居一起建立社區</p>
               </div>
             </a>
           </div>
@@ -347,5 +357,20 @@
 
   <script src="../main.js?v=020502a"></script>
   <script src="../music-player.js"></script>
-  </body>
+  
+  <!-- Page Loader dismiss -->
+  <script>
+  (function(){
+    var loader = document.getElementById("pageLoader");
+    if (!loader) return;
+    function hideLoader() {
+      loader.classList.add("fade-out");
+      setTimeout(function(){ loader.remove(); }, 600);
+    }
+    if (document.readyState === "complete") { hideLoader(); }
+    else { window.addEventListener("load", hideLoader); }
+    setTimeout(hideLoader, 3000);
+  })();
+  </script>
+</body>
 </html>

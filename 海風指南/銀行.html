@@ -263,6 +263,21 @@
 
         <div class="guide-divider"></div>
 
+        <!-- ═══ 銀行小知識 ═══ -->
+        <div class="guide-section-card fade-in" style="--card-accent:var(--lavender)">
+          <h2><span class="sec-icon">🧠</span> 銀行小知識</h2>
+          <ul class="rules-list">
+            <li><strong>匯率永遠不變</strong>：不管遊戲過了多久，銀行的匯率都是固定 1 顆鑽石 = 25 風幣，不會通膨也不會調整。</li>
+            <li><strong>可以分批換</strong>：不用一次把所有鑽石都換掉，想留幾顆備用隨時都可以再來。</li>
+            <li><strong>銀行 NPC 可以互動</strong>：走到櫃員旁邊點擊他就會跳出兌換介面，操作很直覺。</li>
+            <li><strong>風幣不會消失</strong>：風幣存在系統裡，不管你是死了還是重生，錢都不會少。</li>
+            <li><strong>銀行附近很熱鬧</strong>：銀行旁邊就是風語茶屋和建材小舖，一次逛完不繞路。</li>
+          </ul>
+          <div class="callout callout-tip"><span class="callout-icon">💡</span><span>如果手邊鑽石不多，建議先攢個幾顆再一次換，比較有感！</span></div>
+        </div>
+
+        <div class="guide-divider"></div>
+
         <!-- ═══ 相關頁面 ═══ -->
         <div class="guide-section-card fade-in" style="--card-accent:var(--ocean-blue)">
           <h2><span class="sec-icon">📖</span> 相關頁面</h2>
@@ -299,15 +314,23 @@
           <div class="guide-faq">
             <div class="guide-faq-item">
               <button class="guide-faq-q">匯率會變動嗎？</button>
-              <div class="guide-faq-a"><div class="guide-faq-a-inner">不會。固定 <strong>1 顆 = 25 風幣</strong>。</div></div>
+              <div class="guide-faq-a"><div class="guide-faq-a-inner">不會。固定 <strong>1 顆 = 25 風幣</strong>，不管什麼時候來都一樣。</div></div>
             </div>
             <div class="guide-faq-item">
               <button class="guide-faq-q">銀行在哪裡？</button>
-              <div class="guide-faq-a"><div class="guide-faq-a-inner">重生點原沫路，<a href='風語茶屋'>風語茶屋</a>旁邊。</div></div>
+              <div class="guide-faq-a"><div class="guide-faq-a-inner">重生點原沫路，<a href='風語茶屋'>風語茶屋</a>旁邊。用 <code>/spawn</code> 回重生點，沿著大路走到潮沫巷左轉就到了。</div></div>
             </div>
             <div class="guide-faq-item">
               <button class="guide-faq-q">可以反過來用風幣換鑽石嗎？</button>
-              <div class="guide-faq-a"><div class="guide-faq-a-inner">不行。銀行只做單向向兌換：鑽石→風幣。</div></div>
+              <div class="guide-faq-a"><div class="guide-faq-a-inner">不行。銀行只做單向兌換：鑽石→風幣。想買鑽石的話，可以到玩家市場看看有沒有人賣。</div></div>
+            </div>
+            <div class="guide-faq-item">
+              <button class="guide-faq-q">一定要換整組（64 顆）嗎？</button>
+              <div class="guide-faq-a"><div class="guide-faq-a-inner">不用，想換幾顆就換幾顆，1 顆也可以。分批換完全沒問題。</div></div>
+            </div>
+            <div class="guide-faq-item">
+              <button class="guide-faq-q">風幣有什麼用？</button>
+              <div class="guide-faq-a"><div class="guide-faq-a-inner">風幣是海風的主要貨幣，可以用來在<a href='箱子商店'>箱子商店</a>買東西、寄送包裹、使用各種服務。詳細可以看<a href='經濟系統'>經濟系統</a>介紹。</div></div>
             </div>
           </div>
         </div>
@@ -364,5 +387,20 @@
 
   <script src="../main.js?v=020502a"></script>
   <script src="../music-player.js"></script>
-  </body>
+  
+  <!-- Page Loader dismiss -->
+  <script>
+  (function(){
+    var loader = document.getElementById("pageLoader");
+    if (!loader) return;
+    function hideLoader() {
+      loader.classList.add("fade-out");
+      setTimeout(function(){ loader.remove(); }, 600);
+    }
+    if (document.readyState === "complete") { hideLoader(); }
+    else { window.addEventListener("load", hideLoader); }
+    setTimeout(hideLoader, 3000);
+  })();
+  </script>
+</body>
 </html>
