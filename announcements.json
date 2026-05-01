@@ -1,8 +1,25 @@
 {
   "version": 2,
-  "generatedAt": "2026-05-01T01:48:00.000+08:00",
-  "count": 483,
+  "generatedAt": "2026-05-02T04:57:00.000+08:00",
+  "count": 484,
   "announcements": [
+    {
+      "tag": "更新",
+      "id": "#0295",
+      "date": "115.05.02",
+      "isoDate": "2026-05-02",
+      "timestamp": "2026-05-02T04:57:00.000+08:00",
+      "title": "線上商城",
+      "content": "- 線上商城上架預設期限為 7 日。",
+      "images": [],
+      "localImages": [],
+      "reactions": [],
+      "reactionCount": 0,
+      "discordId": "",
+      "pinned": false,
+      "author": "",
+      "index": 0
+    },
     {
       "tag": "活動",
       "id": "#0028",
