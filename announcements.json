@@ -1,8 +1,30 @@
 {
   "version": 2,
   "generatedAt": "2026-05-01T01:48:00.000+08:00",
-  "count": 481,
+  "count": 482,
   "announcements": [
+    {
+      "tag": "活動",
+      "id": "#0029",
+      "date": "115.05.01",
+      "isoDate": "2026-05-01",
+      "timestamp": "2026-05-01T16:44:00.000+08:00",
+      "title": "海風珍奶日任務發放方式更動",
+      "content": "每日任務卷軸由原先收信領取，改為使用簽到領取。",
+      "images": [],
+      "localImages": [],
+      "reactions": [
+        {
+          "emoji": "wind_charge",
+          "count": 1
+        }
+      ],
+      "reactionCount": 1,
+      "discordId": "",
+      "pinned": false,
+      "author": "",
+      "index": 0
+    },
     {
       "tag": "更新",
       "id": "#0294",
