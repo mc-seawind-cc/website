@@ -262,7 +262,7 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://www.seawind.cc/海風指南/地圖署名.html</loc>
+    <loc>https://www.seawind.cc/海風指南/物品署名.html</loc>
     <lastmod>2026-04-29</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -310,6 +310,12 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://www.seawind.cc/海風指南/生存光源方塊.html</loc>
+    <lastmod>2026-05-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://www.seawind.cc/海風指南/靈魂出竅.html</loc>
     <lastmod>2026-04-29</lastmod>
     <changefreq>monthly</changefreq>
@@ -330,6 +336,12 @@
   <url>
     <loc>https://www.seawind.cc/海風指南/隱藏裝備.html</loc>
     <lastmod>2026-04-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.seawind.cc/海風指南/盔甲隱身.html</loc>
+    <lastmod>2026-05-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
