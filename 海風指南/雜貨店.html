@@ -6,9 +6,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>雜貨店 — 海風指南 — 海風 SeaWind</title>
   <link rel="canonical" href="https://www.seawind.cc/海風指南/雜貨店">
-  <meta name="description" content="海風伺服器雜貨店：重生點 NPC 商店用風幣買材料，Discord 論壇讓玩家開設線上商店。">
+  <meta name="description" content="海風伺服器雜貨店：NPC 商店買賣各種物品，Discord 論壇讓玩家開設線上商店。">
   <meta property="og:title" content="雜貨店 — 海風指南 — 海風">
-  <meta property="og:description" content="重生點 NPC 商店用風幣買材料，Discord 論壇讓玩家開設線上商店。">
+  <meta property="og:description" content="海風伺服器雜貨店：NPC 商店買賣各種物品，Discord 論壇讓玩家開設線上商店。">
   <meta property="og:image" content="https://www.seawind.cc/assets/img/logo.png">
   <meta property="og:type" content="website">
   <meta name="twitter:card" content="summary">
@@ -34,7 +34,7 @@
   <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
   <div class="bg-atmosphere"></div>
 
-    <nav class="nav">
+  <nav class="nav">
     <a href="../首頁" class="nav-logo">
       <picture><source srcset="../assets/img/logo.webp" type="image/webp"><img src="../assets/img/logo.png" alt="海風" class="nav-logo-img" width="48" height="48" fetchpriority="high"></picture>
       <span>海風伺服器</span>
@@ -84,9 +84,21 @@
   </nav>
 
   <div class="page">
+    <!-- ═══ Hero ═══ -->
+    <div class="guide-v2-hero fade-in">
+      <h1>🏪 雜貨店</h1>
+      <p class="section-desc">海風的雜貨店系統分成兩種：NPC 商店和 Discord 雜貨店。隨時隨地做買賣，缺什麼來這裡就對了。</p>
+      <div class="guide-quick-stats">
+        <div class="guide-qs-item"><span class="guide-qs-icon">🤖</span><span>NPC 商店</span><span class="guide-qs-val">重生點</span></div>
+        <div class="guide-qs-item"><span class="guide-qs-icon">💬</span><span>Discord 商店</span><span class="guide-qs-val">論壇頻道</span></div>
+        <div class="guide-qs-item"><span class="guide-qs-icon">💰</span><span>交易貨幣</span><span class="guide-qs-val">風幣</span></div>
+      </div>
+    </div>
+
     <div class="guide-layout">
 
-            <aside class="guide-sidebar">
+      <!-- 側邊導覽 -->
+      <aside class="guide-sidebar">
         <div class="guide-sidebar-inner">
           <div class="guide-sidebar-title">📖 海風指南</div>
           <nav class="guide-sidebar-nav">
@@ -186,15 +198,8 @@
           <span class="current">雜貨店</span>
         </div>
 
-        <div class="guide-v2-hero fade-in">
-          <h1>🏪 雜貨店</h1>
-          <p class="section-desc">海風的雜貨店系統分成兩種：NPC 商店和 Discord 雜貨店。隨時隨地做買賣。</p>
-          <div class="guide-quick-stats">
-            <div class="guide-qs-item"><span class="guide-qs-icon">🤖</span><span>NPC 商店</span><span class="guide-qs-val">重生點</span></div>
-            <div class="guide-qs-item"><span class="guide-qs-icon">💬</span><span>Discord 商店</span><span class="guide-qs-val">論壇頻道</span></div>
-            <div class="guide-qs-item"><span class="guide-qs-icon">💰</span><span>交易貨幣</span><span class="guide-qs-val">風幣</span></div>
-            <div class="guide-qs-item"><span class="guide-qs-icon">🕐</span><span>營業時間</span><span class="guide-qs-val">24 小時</span></div>
-          </div>
+        <div class="rules-intro fade-in">
+          <p>海風有兩種雜貨店系統：重生點的<strong>NPC 商店</strong>和 Discord 的<strong>玩家雜貨店</strong>。NPC 商店提供固定商品，隨時都能買；Discord 雜貨店讓玩家自己開店做買賣，價格更彈性。兩種商店都使用風幣交易。</p>
         </div>
 
         <div class="guide-divider"></div>
@@ -204,11 +209,40 @@
           <h2><span class="sec-icon">🤖</span> NPC 商店</h2>
           <p>NPC 商店位於重生點區域，是由系統 NPC 經營的固定商店。你可以用<strong>風幣</strong>直接購買各種基本材料和消耗品，不需要跟其他玩家交易。</p>
           <p>適合用來補充日常消耗的材料，像是建築方塊、食物、基本礦物等。缺什麼就來重生點逛逛，說不定有你需要的東西。</p>
-          <ul style="margin:var(--space-md) 0;padding-left:1.5em;color:var(--cloud);line-height:2">
-            <li>使用風幣付款，直接從帳戶扣除</li>
-            <li>商品種類由系統固定提供，價格會標示在介面上</li>
-            <li>24 小時營業，隨時都可以來買</li>
+          <h3 style="margin-top:var(--space-lg)">使用方式</h3>
+          <ol class="steps">
+            <li>前往重生點區域，找到 NPC 商店的位置。</li>
+            <li>與 NPC 商店互動（右鍵點擊），開啟商店介面。</li>
+            <li>瀏覽商品列表，找到你需要的物品。</li>
+            <li>點擊購買，風幣會自動從帳戶扣除，物品直接送進背包。</li>
+          </ol>
+          <ul class="rules-list" style="margin-top:var(--space-md)">
+            <li><strong>付款方式</strong> — 使用風幣付款，直接從帳戶扣除，不需要現金交易。</li>
+            <li><strong>商品種類</strong> — 由系統固定提供，包含各種基本材料和消耗品。</li>
+            <li><strong>營業時間</strong> — 24 小時營業，隨時都可以來買。</li>
+            <li><strong>價格固定</strong> — NPC 商店的價格是固定的，不會隨市場波動。</li>
           </ul>
+        </div>
+
+        <div class="guide-divider"></div>
+
+        <!-- ═══ NPC 商品分類 ═══ -->
+        <div class="guide-section-card fade-in" style="--card-accent:var(--teal)">
+          <h2><span class="sec-icon">📂</span> NPC 商店商品分類</h2>
+          <p>NPC 商店的商品大致分為以下幾類：</p>
+          <div class="rules-table-wrap">
+            <table class="rules-table">
+              <thead><tr><th>分類</th><th>商品範例</th><th>適合用途</th></tr></thead>
+              <tbody>
+                <tr><td>🧱 建築方塊</td><td>石頭、木板、磚塊、玻璃</td><td>蓋房子、裝飾建築</td></tr>
+                <tr><td>🍖 食物</td><td>麵包、烤肉、蛋糕、金蘋果</td><td>補充飽食度</td></tr>
+                <tr><td>⛏️ 基本礦物</td><td>鐵錠、煤炭、紅石</td><td>合成工具和裝備</td></tr>
+                <tr><td>🧪 消耗品</td><td>火把、經驗瓶、箭矢</td><td>日常冒險消耗</td></tr>
+                <tr><td>🌱 農業材料</td><td>種子、骨粉、肥料</td><td>種田、農場經營</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="callout callout-info"><span class="callout-icon">ℹ️</span><span>NPC 商店的商品和價格會不定期更新，實際以遊戲內顯示為準。如果找不到想要的物品，可以到 Discord 雜貨店看看有沒有玩家在賣。</span></div>
         </div>
 
         <div class="guide-divider"></div>
@@ -218,6 +252,13 @@
           <h2><span class="sec-icon">💬</span> Discord 雜貨店</h2>
           <p>Discord 雜貨店是玩家之間的線上交易平台。任何玩家都可以在 Discord 的雜貨店論壇頻道開設自己的「店鋪貼文」，然後在貼文內上架商品。</p>
           <p>買家看到喜歡的商品，只要<strong>點擊按鈕</strong>就能自動完成購買，商品會直接送進遊戲內的背包。你不需要在遊戲裡擺攤，也不需要跟買家約時間面對面交易。上架一次，隨時有人來買都能自動成交。</p>
+          <h3 style="margin-top:var(--space-lg)">特色</h3>
+          <ul class="rules-list">
+            <li><strong>24 小時營業</strong> — 不管你在不在線上，買家都能購買你的商品。</li>
+            <li><strong>自動成交</strong> — 買家點擊按鈕後，系統自動扣款送貨，不需要手動處理。</li>
+            <li><strong>自由定價</strong> — 價格由賣家自己決定，可以根據市場行情調整。</li>
+            <li><strong>跨分流交易</strong> — 不需要在同一個分流，Discord 上就能完成交易。</li>
+          </ul>
         </div>
 
         <div class="guide-divider"></div>
@@ -225,6 +266,7 @@
         <!-- ═══ 開店教學 ═══ -->
         <div class="guide-section-card fade-in" style="--card-accent:var(--foam)">
           <h2><span class="sec-icon">📖</span> 開店教學（賣家）</h2>
+          <p>想在 Discord 雜貨店開店做生意？幾個步驟就能開始：</p>
           <div class="guide-steps-grid">
             <div class="guide-step-card" style="--step-color:var(--foam)">
               <div class="guide-step-num">1</div>
@@ -247,7 +289,7 @@
               <p>系統會自動在貼文中生成互動按鈕，買家點擊即完成購買</p>
             </div>
           </div>
-          <div class="callout callout-tip"><span class="callout-icon">💡</span><span>每則貼文可以上架多個商品，建議把同類商品放在同一則貼文中，方便買家瀏覽。</span></div>
+          <div class="callout callout-tip"><span class="callout-icon">💡</span><span>每則貼文可以上架多個商品，建議把同類商品放在同一則貼文中，方便買家瀏覽。例如「建材類」一則、「食物類」一則。</span></div>
         </div>
 
         <div class="guide-divider"></div>
@@ -255,6 +297,7 @@
         <!-- ═══ 購買教學 ═══ -->
         <div class="guide-section-card fade-in" style="--card-accent:var(--lavender)">
           <h2><span class="sec-icon">🛒</span> 購買教學（買家）</h2>
+          <p>想在 Discord 雜貨店買東西？流程非常簡單：</p>
           <div class="guide-steps-grid" style="grid-template-columns:repeat(auto-fit,minmax(180px,1fr))">
             <div class="guide-step-card" style="--step-color:var(--lavender)">
               <div class="guide-step-num">1</div>
@@ -272,41 +315,89 @@
               <p>點擊商品下方的<strong>互動按鈕</strong>，系統自動扣款送貨</p>
             </div>
           </div>
-          <div class="callout callout-tip"><span class="callout-icon">💡</span><span>購買前請確保你的風幣餘額足夠，且遊戲內背包有空間接收商品。</span></div>
+          <div class="callout callout-tip"><span class="callout-icon">💡</span><span>購買前請確保你的風幣餘額足夠，且遊戲內背包有空間接收商品。如果背包滿了，商品可能無法送達。</span></div>
         </div>
 
-        
         <div class="guide-divider"></div>
 
+        <!-- ═══ 雜貨店 vs 箱子商店 ═══ -->
+        <div class="guide-section-card fade-in" style="--card-accent:var(--sand)">
+          <h2><span class="sec-icon">⚖️</span> 雜貨店 vs 箱子商店</h2>
+          <p>海風有多種交易方式，各有不同的特色：</p>
+          <div class="rules-table-wrap">
+            <table class="rules-table">
+              <thead><tr><th>比較項目</th><th>NPC 商店</th><th>Discord 雜貨店</th><th>箱子商店</th></tr></thead>
+              <tbody>
+                <tr><td>經營者</td><td>系統 NPC</td><td>玩家</td><td>玩家</td></tr>
+                <tr><td>位置</td><td>重生點</td><td>Discord 論壇</td><td>遊戲世界中</td></tr>
+                <tr><td>交易方式</td><td>與 NPC 互動</td><td>點擊 Discord 按鈕</td><td>與箱子商店互動</td></tr>
+                <tr><td>價格</td><td>系統固定</td><td>賣家自訂</td><td>賣家自訂</td></tr>
+                <tr><td>商品來源</td><td>系統提供</td><td>玩家提供</td><td>玩家提供</td></tr>
+                <tr><td>營業時間</td><td>24 小時</td><td>24 小時</td><td>24 小時</td></tr>
+                <tr><td>適合情境</td><td>買基本材料</td><td>買賣特殊物品</td><td>實體店面交易</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p style="margin-top:var(--space-md)"><strong>簡單來說：</strong></p>
+          <ul class="rules-list">
+            <li>缺基本材料 → 去 <strong>NPC 商店</strong>，價格固定、隨時可買。</li>
+            <li>想買賣特殊物品 → 去 <strong>Discord 雜貨店</strong>，價格彈性、選擇更多。</li>
+            <li>想開實體店面 → 用 <strong>箱子商店</strong>，在遊戲世界裡擺攤做生意。詳見<a href="箱子商店">箱子商店</a>。</li>
+          </ul>
+        </div>
+
+        <div class="guide-divider"></div>
+
+        <!-- ═══ 賣家小技巧 ═══ -->
+        <div class="guide-section-card fade-in" style="--card-accent:var(--teal)">
+          <h2><span class="sec-icon">💡</span> 賣家小技巧</h2>
+          <ul class="rules-list">
+            <li><strong>分類整理</strong> — 把同類商品放在同一則貼文中，方便買家瀏覽。例如「建材類」「食物類」「礦物類」分開上架。</li>
+            <li><strong>合理定價</strong> — 價格太高沒人買，太低虧自己。可以先看看其他玩家的定價，再決定自己的價格。</li>
+            <li><strong>寫清楚說明</strong> — 在貼文中標明商品名稱、數量、價格，讓買家一目瞭然。</li>
+            <li><strong>定期補貨</strong> — 商品賣完了記得補貨，保持店鋪活躍。長期沒更新的店鋪容易被忽略。</li>
+            <li><strong>搭配箱子商店</strong> — 如果你在遊戲裡有店面，可以在 Discord 雜貨店同步上架，增加曝光率。</li>
+          </ul>
+        </div>
+
+        <div class="guide-divider"></div>
+
+        <!-- ═══ 買家小技巧 ═══ -->
+        <div class="guide-section-card fade-in" style="--card-accent:var(--lavender)">
+          <h2><span class="sec-icon">💡</span> 買家小技巧</h2>
+          <ul class="rules-list">
+            <li><strong>貨比三家</strong> — 同樣的商品可能有不同賣家在賣，多逛幾家比比價格。</li>
+            <li><strong>注意庫存</strong> — 有些熱門商品可能已經賣完了，購買前確認庫存狀態。</li>
+            <li><strong>背包留空間</strong> — 購買前確保背包有足夠空間接收商品，不然可能送達失敗。</li>
+            <li><strong>善用搜尋</strong> — Discord 論壇支援搜尋功能，可以直接搜尋想要的商品名稱。</li>
+            <li><strong>NPC 商店先看看</strong> — 基本材料在 NPC 商店可能更便宜，先比較再決定在哪裡買。</li>
+          </ul>
+        </div>
+
+        <div class="guide-divider"></div>
+
+        <!-- ═══ FAQ ═══ -->
         <div class="guide-section-card fade-in" style="--card-accent:#85b1e0">
           <h2><span class="sec-icon">❓</span> 常見問題</h2>
           <div class="guide-faq">
             <div class="guide-faq-item">
               <button class="guide-faq-q">NPC 商店賣什麼？</button>
-              <div class="guide-faq-a"><div class="guide-faq-a-inner">各種基本材料和消耗品。適合補充日常消耗。</div></div>
+              <div class="guide-faq-a"><div class="guide-faq-a-inner">NPC 商店販售各種基本材料和消耗品，包含建築方塊、食物、基本礦物、消耗品和農業材料等。適合補充日常消耗的物資。商品和價格會不定期更新，實際以遊戲內顯示為準。</div></div>
             </div>
             <div class="guide-faq-item">
-              <button class="guide-faq-q">Discord 雜貨店是什麼？</button>
-              <div class="guide-faq-a"><div class="guide-faq-a-inner">Discord 論道頻道的玩家交易區。價格自己談。</div></div>
+              <button class="guide-faq-q">Discord 雜貨店怎麼用？</button>
+              <div class="guide-faq-a"><div class="guide-faq-a-inner">到 Discord 的雜貨店論壇頻道，瀏覽各個店鋪貼文。看到喜歡的商品，點擊商品下方的互動按鈕就能自動完成購買。商品會直接送進遊戲內的背包，風幣自動扣除。不需要在遊戲裡跟賣家面對面交易。</div></div>
             </div>
             <div class="guide-faq-item">
               <button class="guide-faq-q">雜貨店用什麼貨幣？</button>
-              <div class="guide-faq-a"><div class="guide-faq-a-inner">統一使用<strong>風幣</strong>。</div></div>
+              <div class="guide-faq-a"><div class="guide-faq-a-inner">統一使用<strong>風幣</strong>。風幣是海風的通用貨幣，可以透過多種方式獲得：做<a href='任務系統'>任務</a>、賣東西給其他玩家、參與活動等。詳見<a href='經濟系統'>經濟系統</a>。</div></div>
             </div>
           </div>
         </div>
 
-          </div>
-        </div>
-
-          </div>
-        </div>
-          </div>
-        </div>
-
-        
         <div class="guide-divider"></div>
 
+        <!-- ═══ 相關頁面 ═══ -->
         <div class="guide-section-card fade-in" style="--card-accent:var(--ocean-blue)">
           <h2><span class="sec-icon">📖</span> 相關頁面</h2>
           <div class="guide-next-grid">
@@ -317,34 +408,34 @@
                 <p>海風的貨幣與交易</p>
               </div>
             </a>
+            <a href="箱子商店" class="guide-next-card">
+              <span class="guide-next-icon">📦</span>
+              <div class="guide-next-body">
+                <h4>箱子商店</h4>
+                <p>在遊戲裡開實體店面</p>
+              </div>
+            </a>
             <a href="線上商城" class="guide-next-card">
-              <span class="guide-next-icon">💰</span>
+              <span class="guide-next-icon">🏪</span>
               <div class="guide-next-body">
                 <h4>線上商城</h4>
                 <p>遊戲內的全服拍賣平台</p>
-              </div>
-            </a>
-            <a href="箱子商店" class="guide-next-card">
-              <span class="guide-next-icon">💰</span>
-              <div class="guide-next-body">
-                <h4>箱子商店</h4>
-                <p>開店做生意</p>
               </div>
             </a>
           </div>
         </div>
 
         <div class="guide-nav fade-in">
-          <a href="箱子商店" class="btn btn-outline">← 箱子商店</a>
+          <a href="建材小舖" class="btn btn-outline">← 建材小舖</a>
           <a href="../海風指南" class="btn btn-outline">返回目錄</a>
-          <a href="公共傳送點" class="btn btn-primary">公共傳送點 →</a>
+          <a href="經濟系統" class="btn btn-primary">經濟系統 →</a>
         </div>
 
-      </div>
-    </div>
+      </div><!-- /guide-main -->
+    </div><!-- /guide-layout -->
   </div>
 
-    <footer class="footer">
+  <footer class="footer">
     <div class="footer-inner">
       <div class="footer-brand">
         <span class="footer-logo">海風伺服器 SeaWind.cc</span>
@@ -378,5 +469,5 @@
 
   <script src="../main.js?v=020502a"></script>
   <script src="../music-player.js"></script>
-  </body>
+</body>
 </html>

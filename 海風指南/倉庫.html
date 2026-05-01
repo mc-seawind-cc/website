@@ -190,31 +190,36 @@
         <span class="sep">›</span>
         <span class="current">倉庫</span>
       </div>
-      
-        
+
         <!-- ═══ 功能說明 ═══ -->
         <div class="guide-section-card fade-in" style="--card-accent:var(--lavender)">
           <h2><span class="sec-icon">🗄️</span> 功能說明</h2>
           <p>背包塞滿了？<strong>倉庫系統</strong>提供額外的儲存空間，全分流共 <strong>16 個大倉庫</strong>和 <strong>8 個小倉庫</strong>，而且跨分流共享——不管在哪個分流都能存取同一批倉庫。</p>
+          <p>倉庫是你的私人儲物空間，與背包獨立運作。你可以把暫時用不到的素材、珍貴的紀念品、大量囤積的建材統統丟進倉庫，背包瞬間清爽。最重要的是，倉庫裡的物品<strong>永遠不會因為死亡而掉落</strong>。</p>
+          <div class="callout callout-info"><span class="callout-icon">ℹ️</span><span>倉庫是海風伺服器的自訂功能，原版 Minecraft 沒有這個系統。善用倉庫可以大幅提升你的遊戲效率，再也不用擔心背包空間不夠。</span></div>
         </div>
 
         <div class="guide-divider"></div>
 
-        <!-- ═══ 基本資訊 ═══ -->
+        <!-- ═══ 倉庫容量 ═══ -->
         <div class="guide-section-card fade-in" style="--card-accent:var(--foam)">
-          <h2><span class="sec-icon">📋</span> 基本資訊</h2>
+          <h2><span class="sec-icon">📦</span> 倉庫容量</h2>
+          <p>倉庫分為大倉庫和小倉庫兩種規格，用途各有不同：</p>
           <div class="rules-table-wrap">
             <table class="rules-table">
-              <thead><tr><th>類型</th><th>數量</th><th>容量</th><th>備註</th></tr></thead>
+              <thead><tr><th>類型</th><th>數量</th><th>容量</th><th>適合存放</th></tr></thead>
               <tbody>
-                <tr><td>🗄️ 大倉庫。</td><td><strong>16 個</strong></td><td>每格可堆疊 64 個物品。</td><td>主要存放空間。</td></tr>
-                <tr><td>📦 小倉庫。</td><td><strong>8 個</strong></td><td>精簡儲存。</td><td>放常用物品。</td></tr>
+                <tr><td>🗄️ 大倉庫</td><td><strong>16 個</strong></td><td>每格可堆疊 64 個物品</td><td>大量素材、建材、食物</td></tr>
+                <tr><td>📦 小倉庫</td><td><strong>8 個</strong></td><td>精簡儲存空間</td><td>常用工具、貴重物品</td></tr>
               </tbody>
             </table>
           </div>
           <ul class="rules-list">
-            <li>倉庫內的物品<strong>跨分流共享</strong>，不管在哪個分流都能存取</li>
-            <li>倉庫是個人專屬的，別人無法開啟你的倉庫</li>
+            <li><strong>跨分流共享</strong>：不管你在哪個分流開啟倉庫，看到的都是同一批物品</li>
+            <li><strong>個人專屬</strong>：倉庫只有你自己能開啟，別人無法存取</li>
+            <li><strong>死亡安全</strong>：倉庫內的物品不會因為死亡而掉落</li>
+            <li><strong>永久保存</strong>：物品放在倉庫裡不會消失，可以放心長期存放</li>
+            <li><strong>快速存取</strong>：輸入一個指令就能開啟，比跑到箱子旁邊方便多了</li>
           </ul>
         </div>
 
@@ -223,28 +228,82 @@
         <!-- ═══ 使用方式 ═══ -->
         <div class="guide-section-card fade-in" style="--card-accent:var(--sand)">
           <h2><span class="sec-icon">⌨️</span> 使用方式</h2>
+          <p>開啟倉庫非常簡單，只需要一個指令：</p>
+          <div class="guide-cmd-grid">
+            <div class="guide-cmd-card">
+              <span class="guide-cmd-icon">🗄️</span>
+              <div class="guide-cmd-body">
+                <div class="guide-cmd-name">/inv</div>
+                <div class="guide-cmd-desc">開啟倉庫選單，選擇要使用的倉庫</div>
+              </div>
+            </div>
+          </div>
+          <div class="guide-steps-grid">
+            <div class="guide-step-card" style="--step-color:var(--sand)">
+              <span class="guide-step-num">1</span>
+              <h4>輸入指令</h4>
+              <p>在聊天欄輸入 <code>/inv</code>，倉庫選單會自動彈出</p>
+            </div>
+            <div class="guide-step-card" style="--step-color:var(--sand)">
+              <span class="guide-step-num">2</span>
+              <h4>選擇倉庫</h4>
+              <p>選單中會顯示所有可用的倉庫，點擊你要開啟的那個</p>
+            </div>
+            <div class="guide-step-card" style="--step-color:var(--sand)">
+              <span class="guide-step-num">3</span>
+              <h4>存取物品</h4>
+              <p>像操作箱子一樣，拖放物品即可完成存取</p>
+            </div>
+          </div>
+          <div class="callout callout-tip"><span class="callout-icon">💡</span><span>也可以從<strong>伺服器選單</strong>的「倉庫」入口直接開啟，不用記指令。</span></div>
+        </div>
+
+        <div class="guide-divider"></div>
+
+        <!-- ═══ 倉庫 vs 背包 ═══ -->
+        <div class="guide-section-card fade-in" style="--card-accent:var(--ocean-blue)">
+          <h2><span class="sec-icon">🆚</span> 倉庫 vs 背包</h2>
+          <p>倉庫和背包雖然都是存放物品的地方，但有幾個關鍵差異值得了解：</p>
           <div class="rules-table-wrap">
             <table class="rules-table">
-              <thead><tr><th>指令</th><th>說明</th></tr></thead>
+              <thead><tr><th>比較項目</th><th>背包</th><th>倉庫</th></tr></thead>
               <tbody>
-                <tr><td><code>/inv</code></td><td>開啟倉庫列表，選擇要使用的倉庫。</td></tr>
+                <tr><td>容量</td><td>36 格</td><td>16 大 + 8 小 倉庫</td></tr>
+                <tr><td>死亡掉落</td><td>⚠️ 物品會掉出</td><td>✅ 安全保存</td></tr>
+                <tr><td>跨分流</td><td>✅ 跟隨玩家</td><td>✅ 共享</td></tr>
+                <tr><td>開啟方式</td><td>按 E 鍵</td><td>輸入指令 /inv</td></tr>
+                <tr><td>他人可見</td><td>❌ 私人</td><td>❌ 私人</td></tr>
+            <tr><td>容量上限</td><td>36 格（固定）</td><td>16 大 + 8 小（可擴展）</td></tr>
+            <tr><td>安全性</td><td>死亡會掉落</td><td>永久安全保存</td></tr>
               </tbody>
             </table>
           </div>
-          <p>輸入指令後會跳出選單，點擊對應的倉庫就能開啟並存取物品。</p>
+          <p style="margin-top:var(--space-sm);color:var(--fog);font-size:0.85rem">簡單來說：背包是隨身攜帶的，倉庫是固定存放的。貴重物品建議放倉庫，冒險用的放背包。兩者搭配使用，才能最大化你的儲存效率，讓冒險更順暢。</p>
+          <div class="callout callout-info"><span class="callout-icon">ℹ️</span><span>倉庫裡的物品不會因為死亡而掉落，這是最重要的一點。出門探險前，先把身上的貴重物品存進倉庫再出發，可以大幅降低損失風險。</span></div>
         </div>
 
         <div class="guide-divider"></div>
 
         <!-- ═══ 使用技巧 ═══ -->
-        <div class="guide-section-card fade-in" style="--card-accent:var(--ocean-blue)">
+        <div class="guide-section-card fade-in" style="--card-accent:var(--lavender)">
           <h2><span class="sec-icon">💡</span> 使用技巧</h2>
           <ul class="rules-list">
-            <li>善用大倉庫放大量素材，小倉庫放常用工具或貴重物品</li>
-            <li>做好分類管理效率更高——例如 1 號放礦物、2 號放食物、3 號放建材</li>
-            <li>倉庫是全服通用的，不用擔心換分流後找不到東西</li>
-            <li>如果需要更多儲存空間，可以考慮使用<a href="快捷界伏盒">快捷界伏盒</a>（會員專屬）</li>
+            <li><strong>分類管理</strong>：善用大倉庫放大量素材，小倉庫放常用工具或貴重物品。建議依照用途編號——例如 1 號放礦物、2 號放食物、3 號放建材</li>
+            <li><strong>定期整理</strong>：每隔一段時間整理一次倉庫，把不再需要的物品清掉或賣掉，保持空間充裕</li>
+            <li><strong>貴重物品優先入倉</strong>：鑽石裝、附魔書、稀有素材等高價值物品，第一時間放進倉庫，避免死亡掉落</li>
+            <li><strong>搭配快捷界伏盒</strong>：如果需要更多隨身儲存空間，可以考慮使用<a href="快捷界伏盒">快捷界伏盒</a>（會員專屬）</li>
+            <li><strong>善用搜尋</strong>：倉庫數量多時，記住每個倉庫放什麼，找東西才不會手忙腳亂</li>
+            <li><strong>備份心態</strong>：重要物品分散存放，不要把所有雞蛋放在同一個籃子裡</li>
+            <li><strong>善用小倉庫</strong>：小倉庫雖然容量小，但拿來放日常用品（食物、火把、方塊）非常方便，省去在大倉庫裡翻找的時間</li>
+            <li><strong>探險前準備</strong>：出發探險前先到倉庫補充物資，回來後把戰利品存進倉庫，養成好習慣</li>
+            <li><strong>分區標記</strong>：可以用顏色或圖案來標記不同用途的倉庫，方便快速辨識</li>
+            <li><strong>定期清理</strong>：每隔一段時間清理不需要的物品，保持倉庫空間充裕</li>
+            <li><strong>搭配自動整理</strong>：使用<a href="自動整理">自動整理</a>功能快速整理背包，然後把多餘的物品存進倉庫</li>
+            <li><strong>旅行歸來整理</strong>：每次探險回來，先把戰利品分類存進對應的倉庫，養成好習慣就不會亂</li>
+            <li><strong>備用裝備存放</strong>：多餘的裝備放進倉庫備用，壞了隨時可以替換</li>
+            <li><strong>素材囤積</strong>：大量素材（石頭、木頭、礦物等）優先存進大倉庫，背包只帶冒險需要的量</li>
           </ul>
+          <div class="callout callout-tip"><span class="callout-icon">💡</span><span>良好的倉庫管理習慣能大幅提升遊戲效率。花幾分鐘整理，省下未來幾小時找東西的時間。</span></div>
         </div>
 
         <div class="guide-divider"></div>
@@ -257,19 +316,26 @@
               <span class="guide-next-icon">🎒</span>
               <div class="guide-next-body">
                 <h4>快捷界伏盒</h4>
-                <p>隨身額外背包</p>
+                <p>會員專屬的隨身額外背包</p>
               </div>
             </a>
             <a href="玻璃展示櫃" class="guide-next-card">
               <span class="guide-next-icon">🪟</span>
               <div class="guide-next-body">
                 <h4>玻璃展示櫃</h4>
-                <p>展示你的收藏</p>
+                <p>展示你的收藏品</p>
+              </div>
+            </a>
+            <a href="自動整理" class="guide-next-card">
+              <span class="guide-next-icon">🧹</span>
+              <div class="guide-next-body">
+                <h4>自動整理</h4>
+                <p>一鍵整理背包物品</p>
               </div>
             </a>
           </div>
         </div>
-      
+
         <div class="guide-divider"></div>
 
         <div class="guide-section-card fade-in" style="--card-accent:#85b1e0">
@@ -277,24 +343,16 @@
           <div class="guide-faq">
             <div class="guide-faq-item">
               <button class="guide-faq-q">倉庫怎麼開啟？</button>
-              <div class="guide-faq-a"><div class="guide-faq-a-inner">輸入 <code>/wd</code> 開啟倉庫介面。也可以從伺服器選單進入。</div></div>
+              <div class="guide-faq-a"><div class="guide-faq-a-inner">輸入 <code>/inv</code> 開啟倉庫介面，選單中會列出所有可用的倉庫。也可以從<strong>伺服器選單</strong>的「倉庫」入口直接開啟。兩個方式都很方便，選你喜歡的就好。</div></div>
             </div>
             <div class="guide-faq-item">
               <button class="guide-faq-q">倉庫的東西跨分流共享嗎？</button>
-              <div class="guide-faq-a"><div class="guide-faq-a-inner">是的。不管你在哪個分流開啟倉庫，看到的都是同一批物品。</div></div>
+              <div class="guide-faq-a"><div class="guide-faq-a-inner">是的。不管你在哪個分流開啟倉庫，看到的都是同一批物品。換分流不用擔心東西不見，這也是倉庫最方便的地方之一。</div></div>
             </div>
             <div class="guide-faq-item">
               <button class="guide-faq-q">倉庫會被別人偷嗎？</button>
-              <div class="guide-faq-a"><div class="guide-faq-a-inner">不會。倉庫是個人專屬的，只有你自己能開啟。</div></div>
+              <div class="guide-faq-a"><div class="guide-faq-a-inner">不會。倉庫是個人專屬的，只有你自己能開啟。即使別人知道你的帳號也無法存取你的倉庫。這是系統層級的保護，非常安全。</div></div>
             </div>
-          </div>
-        </div>
-
-          </div>
-        </div>
-
-          </div>
-        </div>
           </div>
         </div>
 

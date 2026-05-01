@@ -184,103 +184,167 @@
           <span class="current">掛機系統</span>
         </div>
 
+        <!-- ═══ Hero ═══ -->
         <div class="guide-v2-hero fade-in">
           <h1>💤 掛機系統</h1>
-          <p class="section-desc">暫時離開也不怕。進入 AFK 狀態後，系統會自動維持你的連線，不用擔心被踢出伺服器。</p>
+          <p class="section-desc">暫時離開也不怕。系統會自動偵測你的操作狀態，進入 AFK 模式後維持連線不中斷，讓你放心去做其他事。</p>
           <div class="guide-quick-stats">
-            <div class="guide-qs-item"><span class="guide-qs-icon">💤</span><span>狀態</span><span class="guide-qs-val">AFK</span></div>
-            <div class="guide-qs-item"><span class="guide-qs-icon">⏱️</span><span>觸發</span><span class="guide-qs-val">自動偵測</span></div>
+            <div class="guide-qs-item"><span class="guide-qs-icon">💤</span><span>狀態</span><span class="guide-qs-val">自動偵測</span></div>
+            <div class="guide-qs-item"><span class="guide-qs-icon">🛡️</span><span>防踢</span><span class="guide-qs-val">AFK 保護</span></div>
             <div class="guide-qs-item"><span class="guide-qs-icon">📢</span><span>顯示</span><span class="guide-qs-val">玩家列表標記</span></div>
           </div>
         </div>
 
         <div class="guide-divider"></div>
 
+        <!-- ═══ 什麼是 AFK ═══ -->
         <div class="guide-section-card fade-in" style="--card-accent:var(--foam)">
-          <h2><span class="sec-icon">💤</span> 功能說明</h2>
-          <p>掛機系統會自動偵測你的滑鼠和鍵盤操作。一段時間沒有操作後，系統會自動將你標記為 AFK（Away From Keyboard）狀態。其他玩家可以在玩家列表中看到你處於掛機狀態。</p>
-          <div class="callout callout-info"><span class="callout-icon">ℹ️</span><span>AFK 狀態下不會被伺服器自動踢出，適合暫時離開去吃飯、做功課等情境。</span></div>
+          <h2><span class="sec-icon">💤</span> 什麼是 AFK？</h2>
+          <p><strong>AFK</strong> 是英文「Away From Keyboard」的縮寫，意思是「離開鍵盤」。在海風伺服器中，掛機系統會自動偵測你的滑鼠和鍵盤操作——當你一段時間沒有任何操作時，系統會自動將你標記為 AFK 狀態。</p>
+          <p>進入 AFK 狀態後，你的玩家名稱旁邊會出現 AFK 標記，其他玩家在 Tab 玩家列表中一眼就能看到你正在掛機。最重要的是，<strong>AFK 狀態下你不會被伺服器自動踢出</strong>，可以安心離開去做其他事情。</p>
+          <div class="callout callout-info"><span class="callout-icon">ℹ️</span><span>AFK 狀態是全自動的——你不需要輸入任何指令，系統會根據你的操作狀態自動切換。</span></div>
         </div>
 
         <div class="guide-divider"></div>
 
+        <!-- ═══ AFK 狀態詳解 ═══ -->
         <div class="guide-section-card fade-in" style="--card-accent:var(--lavender)">
-          <h2><span class="sec-icon">📋</span> AFK 時的狀態</h2>
-          <p>進入 AFK 狀態後，以下事情會發生（或不發生）：</p>
-          <ul class="rules-list">
-            <li><strong>不會被踢出</strong>：一般玩家超過一定時間沒操作會被踢，AFK 狀態不受此限制</li>
-            <li><strong>怪物仍會生成</strong>：周圍的怪物刷新機制照常運作</li>
-            <li><strong>玩家列表可見</strong>：其他玩家能在 Tab 清單看到你標記為 AFK</li>
-            <li><strong>聊天室不會收到訊息</strong>：回來後聊天記錄不會補顯示</li>
-          </ul>
-        </div>
-
-        <div class="guide-divider"></div>
-
-        <div class="guide-section-card fade-in" style="--card-accent:var(--sand)">
-          <h2><span class="sec-icon">💡</span> 常見使用情境</h2>
-          <div class="guide-steps-grid" style="grid-template-columns:repeat(auto-fit,minmax(180px,1fr))">
-            <div class="guide-step-card" style="--step-color:var(--sand)">
-              <h4>🍚 去吃飯</h4>
-              <p>暫時離開去吃個飯，不用擔心被踢</p>
+          <h2><span class="sec-icon">📋</span> AFK 狀態詳解</h2>
+          <p>進入 AFK 狀態後，以下事情會發生（或不發生），請務必了解：</p>
+          <div class="guide-steps-grid">
+            <div class="guide-step-card" style="--step-color:var(--lavender)">
+              <h4>🛡️ 不會被踢出</h4>
+              <p>一般玩家超過一定時間沒操作會被踢出伺服器，AFK 狀態可以豁免這個限制，讓你長時間保持連線。</p>
             </div>
-            <div class="guide-step-card" style="--step-color:var(--sand)">
-              <h4>📖 做功課</h4>
-              <p>寫作業時保持連線，回來繼續玩</p>
+            <div class="guide-step-card" style="--step-color:var(--lavender)">
+              <h4>👹 怪物照常生成</h4>
+              <p>周圍的怪物刷新機制不會因為你 AFK 而停止。如果你掛在危險區域，仍然可能被怪物攻擊。</p>
             </div>
-            <div class="guide-step-card" style="--step-color:var(--sand)">
-              <h4>🏗️ 掛機等待</h4>
-              <p>等紅石機關完成、等農作物成熟</p>
+            <div class="guide-step-card" style="--step-color:var(--lavender)">
+              <h4>📢 Tab 列表可見</h4>
+              <p>其他玩家按下 Tab 鍵時，會在你的名字旁邊看到 AFK 標記，知道你正在掛機中。</p>
             </div>
-            <div class="guide-step-card" style="--step-color:var(--sand)">
-              <h4>💤 睡前掛機</h4>
-              <p>讓自動農場繼續運作一整晚</p>
+            <div class="guide-step-card" style="--step-color:var(--lavender)">
+              <h4>💬 訊息不會補顯示</h4>
+              <p>AFK 期間的聊天室訊息不會在你回來後補顯示，建議回來後查看重要訊息。</p>
             </div>
           </div>
         </div>
 
         <div class="guide-divider"></div>
 
+        <!-- ═══ 常見使用情境 ═══ -->
+        <div class="guide-section-card fade-in" style="--card-accent:var(--sand)">
+          <h2><span class="sec-icon">💡</span> 常見使用情境</h2>
+          <p>掛機系統在日常遊玩中非常實用，以下是一些常見的使用場景：</p>
+          <div class="guide-steps-grid" style="grid-template-columns:repeat(auto-fit,minmax(200px,1fr))">
+            <div class="guide-step-card" style="--step-color:var(--sand)">
+              <h4>🍚 去吃飯</h4>
+              <p>暫時離開去吃個飯，不用擔心被踢出伺服器，吃完飯回來繼續玩。</p>
+            </div>
+            <div class="guide-step-card" style="--step-color:var(--sand)">
+              <h4>📖 做功課</h4>
+              <p>寫作業或處理事情時保持連線，忙完後馬上回來繼續遊戲。</p>
+            </div>
+            <div class="guide-step-card" style="--step-color:var(--sand)">
+              <h4>🏗️ 等紅石機關</h4>
+              <p>有些紅石機關需要較長時間運作，掛機等待它自動完成。</p>
+            </div>
+            <div class="guide-step-card" style="--step-color:var(--sand)">
+              <h4>🌾 等農作物成熟</h4>
+              <p>在農場旁邊掛機，等作物自然生長後再收割。</p>
+            </div>
+            <div class="guide-step-card" style="--step-color:var(--sand)">
+              <h4>💤 睡前掛機</h4>
+              <p>讓自動農場或刷怪塔在你睡覺時繼續運作一整晚。</p>
+            </div>
+            <div class="guide-step-card" style="--step-color:var(--sand)">
+              <h4>🎁 等活動開始</h4>
+              <p>提前上線佔位置，等待伺服器活動正式開始。</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="guide-divider"></div>
+
+        <!-- ═══ 掛機安全指南 ═══ -->
         <div class="guide-section-card fade-in" style="--card-accent:var(--ocean-blue)">
+          <h2><span class="sec-icon">🛡️</span> 掛機安全指南</h2>
+          <p>雖然 AFK 狀態能防止被踢出，但掛機時仍需要注意安全。以下是幾個重要的安全建議：</p>
+          <ul class="rules-list">
+            <li><strong>選擇安全位置</strong>：掛機前確認周圍沒有怪物，最好待在領地內或有照明的地方。</li>
+            <li><strong>關閉 PvP</strong>：如果在開放 PvP 的區域，掛機時可能被其他玩家攻擊，請先確認安全。</li>
+            <li><strong>注意飢餓值</strong>：長時間掛機時飢餓值不會自動回復（除非有自動食物供應），回來後記得吃東西。</li>
+            <li><strong>避免佔用過多資源</strong>：長時間掛機可能會佔用伺服器資源，請適度使用，不要同時開多個帳號掛機。</li>
+            <li><strong>確認自動化設施</strong>：如果掛機是為了讓自動農場運作，請先確認設施運作正常，避免卡住或出錯。</li>
+          </ul>
+          <div class="callout callout-tip"><span class="callout-icon">💡</span><span>在領地內掛機是最安全的選擇。如果你還沒有領地，建議先閱讀<a href="領地系統">領地系統</a>了解如何建立自己的保護區域。</span></div>
+        </div>
+
+        <div class="guide-divider"></div>
+
+        <!-- ═══ 掛機與自動化 ═══ -->
+        <div class="guide-section-card fade-in" style="--card-accent:var(--foam)">
+          <h2><span class="sec-icon">⚙️</span> 掛機與自動化搭配</h2>
+          <p>掛機系統最強大的地方在於搭配各種自動化設施使用。以下是一些推薦的搭配方式：</p>
+          <div class="guide-steps-grid">
+            <div class="guide-step-card" style="--step-color:var(--foam)">
+              <h4>🌾 自動農場</h4>
+              <p>建造全自動農場後掛機等待，作物成熟後自動收割，搭配<a href="自動拾取">自動拾取</a>效果更佳。</p>
+            </div>
+            <div class="guide-step-card" style="--step-color:var(--foam)">
+              <h4>👹 刷怪塔</h4>
+              <p>在刷怪塔附近掛機，怪物會自動生成並被擊殺，掉落物自動進背包。</p>
+            </div>
+            <div class="guide-step-card" style="--step-color:var(--foam)">
+              <h4>🏭 自動熔爐</h4>
+              <p>設計自動供料的熔爐系統，掛機讓它慢慢燒礦或煮食物。</p>
+            </div>
+            <div class="guide-step-card" style="--step-color:var(--foam)">
+              <h4>📦 自動分類倉庫</h4>
+              <p>建造紅石分類倉庫，掛機讓物品自動歸類整理。</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="guide-divider"></div>
+
+        <!-- ═══ 注意事項 ═══ -->
+        <div class="guide-section-card fade-in" style="--card-accent:var(--lavender)">
           <h2><span class="sec-icon">⚠️</span> 注意事項</h2>
           <ul class="rules-list">
             <li>AFK 不代表完全安全——怪物仍然可能攻擊你，建議先找安全位置再掛機</li>
             <li>長時間掛機可能會佔用伺服器資源，請適度使用</li>
+            <li>掛機期間的聊天訊息不會補顯示，回來後記得查看重要訊息</li>
             <li>如果系統偵測到長時間完全無操作，仍有可能觸發自動踢出（視伺服器設定而定）</li>
+            <li>掛機時請確保電腦不會進入休眠模式，否則連線會中斷</li>
           </ul>
         </div>
 
-        
         <div class="guide-divider"></div>
 
+        <!-- ═══ FAQ ═══ -->
         <div class="guide-section-card fade-in" style="--card-accent:#85b1e0">
           <h2><span class="sec-icon">❓</span> 常見問題</h2>
           <div class="guide-faq">
             <div class="guide-faq-item">
               <button class="guide-faq-q">掛機時會被踢出嗎？</button>
-              <div class="guide-faq-a"><div class="guide-faq-a-inner">不會。AFK 狀態下系統會維持你的連線。</div></div>
+              <div class="guide-faq-a"><div class="guide-faq-a-inner">不會。AFK 狀態下系統會維持你的連線，不會被自動踢出。但如果網路中斷或電腦休眠，連線仍然會斷開。</div></div>
             </div>
             <div class="guide-faq-item">
               <button class="guide-faq-q">怎麼進入掛機狀態？</button>
-              <div class="guide-faq-a"><div class="guide-faq-a-inner">不需要手動操作。一段時間沒有操作，系統會自動偵測並標記為 AFK。</div></div>
+              <div class="guide-faq-a"><div class="guide-faq-a-inner">不需要手動操作。系統會自動偵測你的滑鼠和鍵盤操作，一段時間沒有操作就會自動標記為 AFK。開始操作後會自動恢復正常狀態。</div></div>
             </div>
             <div class="guide-faq-item">
               <button class="guide-faq-q">掛機時怪物還會生成嗎？</button>
-              <div class="guide-faq-a"><div class="guide-faq-a-inner">會。周圍的怪物刷新機制照常運作。</div></div>
+              <div class="guide-faq-a"><div class="guide-faq-a-inner">會。周圍的怪物刷新機制照常運作，所以掛機前請確認所在位置是安全的，最好在領地內或有充分照明的地方。</div></div>
             </div>
-          </div>
-        </div>
-
-          </div>
-        </div>
-
-          </div>
-        </div>
           </div>
         </div>
 
         <div class="guide-divider"></div>
 
+        <!-- ═══ 相關頁面 ═══ -->
         <div class="guide-section-card fade-in" style="--card-accent:var(--ocean-blue)">
           <h2><span class="sec-icon">📖</span> 相關頁面</h2>
           <div class="guide-next-grid">
@@ -291,11 +355,18 @@
                 <p>回來後記得簽到領獎勵</p>
               </div>
             </a>
-            <a href="遊戲機制" class="guide-next-card">
-              <span class="guide-next-icon">⚙️</span>
+            <a href="自動拾取" class="guide-next-card">
+              <span class="guide-next-icon">🧲</span>
               <div class="guide-next-body">
-                <h4>機制總覽</h4>
-                <p>海風所有遊戲機制一覽</p>
+                <h4>自動拾取</h4>
+                <p>掛機農場的最佳搭配</p>
+              </div>
+            </a>
+            <a href="領地系統" class="guide-next-card">
+              <span class="guide-next-icon">🛡️</span>
+              <div class="guide-next-body">
+                <h4>領地系統</h4>
+                <p>建立安全的掛機區域</p>
               </div>
             </a>
           </div>

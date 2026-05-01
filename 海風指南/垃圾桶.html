@@ -4,11 +4,11 @@
   <meta charset="UTF-8">
   <meta name="color-scheme" content="dark light">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>垃圾桶 — 海風指南 — 海風 SeaWind</title>
+  <title>垃圾桶 — 海風指南 — 海風</title>
   <link rel="canonical" href="https://www.seawind.cc/海風指南/垃圾桶">
-  <meta name="description" content="海風伺服器垃圾桶功能：一鍵清除背包不需要的物品，背包管理更輕鬆。">
+  <meta name="description" content="海風伺服器垃圾桶功能：開啟垃圾桶介面，丟棄不需要的物品，背包管理更輕鬆。">
   <meta property="og:title" content="垃圾桶 — 海風指南 — 海風">
-  <meta property="og:description" content="一鍵清除背包不需要的物品。">
+  <meta property="og:description" content="開啟垃圾桶介面，丟棄不需要的物品，背包管理更輕鬆。">
   <meta property="og:image" content="https://www.seawind.cc/assets/img/logo.png">
   <meta property="og:type" content="website">
   <meta name="twitter:card" content="summary">
@@ -34,7 +34,7 @@
   <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
   <div class="bg-atmosphere"></div>
 
-    <nav class="nav">
+  <nav class="nav">
     <a href="../首頁" class="nav-logo">
       <picture><source srcset="../assets/img/logo.webp" type="image/webp"><img src="../assets/img/logo.png" alt="海風" class="nav-logo-img" width="48" height="48" fetchpriority="high"></picture>
       <span>海風伺服器</span>
@@ -86,7 +86,8 @@
   <div class="page">
     <div class="guide-layout">
 
-            <aside class="guide-sidebar">
+      <!-- 側邊導覽 -->
+      <aside class="guide-sidebar">
         <div class="guide-sidebar-inner">
           <div class="guide-sidebar-title">📖 海風指南</div>
           <nav class="guide-sidebar-nav">
@@ -178,6 +179,7 @@
         </div>
       </aside>
 
+      <!-- ═══ 主要內容 ═══ -->
       <div class="guide-main" id="mainContent">
 
         <div class="breadcrumb fade-in">
@@ -189,7 +191,7 @@
         <!-- ═══ Hero ═══ -->
         <div class="guide-v2-hero fade-in">
           <h1>🗑️ 垃圾桶</h1>
-          <p class="section-desc">背包裡一堆不需要的東西？垃圾桶讓你一鍵清除，不用再一個一個丟。</p>
+          <p class="section-desc">背包裡一堆不需要的東西？垃圾桶讓你一鍵清除，不用再一個一個丟在地上。乾淨、快速、不留痕跡——但丟了就回不來。</p>
           <div class="guide-quick-stats">
             <div class="guide-qs-item"><span class="guide-qs-icon">🗑️</span><span>功能</span><span class="guide-qs-val">清除物品</span></div>
             <div class="guide-qs-item"><span class="guide-qs-icon">⌨️</span><span>指令</span><span class="guide-qs-val">/trash</span></div>
@@ -201,53 +203,158 @@
 
         <!-- ═══ 功能說明 ═══ -->
         <div class="guide-section-card fade-in" style="--card-accent:var(--foam)">
-          <h2><span class="sec-icon">🗑️</span> 功能說明</h2>
-          <p>垃圾桶是一個虛擬的丟棄空間。開啟後，把不要的物品丟進去就會直接消失。比直接丟在地上乾淨，也不會佔空間。</p>
-          <div class="rules-table-wrap">
-            <table class="rules-table">
-              <thead><tr><th>指令</th><th>說明</th></tr></thead>
-              <tbody>
-                <tr><td><code>/trash</code></td><td>開啟垃圾桶介面。</td></tr>
-              </tbody>
-            </table>
-          </div>
+          <h2><span class="sec-icon">🗑️</span> 什麼是垃圾桶</h2>
+          <p><strong>垃圾桶</strong>是一個虛擬的丟棄空間。開啟垃圾桶介面後，把不要的物品從背包拖進去，物品就會直接永久銷毀。比直接丟在地上更乾淨，也不會佔用伺服器空間。</p>
+          <p>挖礦回來一堆鵝卵石？釣魚釣到一堆垃圾？逛商店買錯東西？垃圾桶就是為這些情況準備的。</p>
+          <div class="callout callout-warn"><span class="callout-icon">⚠️</span><span><strong>重要警告：</strong>丟進垃圾桶的物品會被<strong>永久銷毀</strong>，無法復原！請在丟棄前仔細確認你真的不需要這些物品。如果不小心丟錯了珍貴物品，那是真的拿不回來的。</span></div>
         </div>
 
         <div class="guide-divider"></div>
 
         <!-- ═══ 使用方式 ═══ -->
-        <div class="guide-section-card fade-in" style="--card-accent:var(--sand)">
+        <div class="guide-section-card fade-in" style="--card-accent:var(--sky)">
           <h2><span class="sec-icon">📖</span> 使用方式</h2>
+          <div class="rules-table-wrap">
+            <table class="rules-table">
+              <thead>
+                <tr><th>操作</th><th>說明</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><code>/trash</code></td>
+                  <td>開啟垃圾桶介面，可以將物品拖入銷毀</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
           <div class="guide-steps-grid">
-            <div class="guide-step-card" style="--step-color:var(--sand)">
+            <div class="guide-step-card" style="--step-color:var(--sky)">
               <span class="guide-step-num">1</span>
               <h4>開啟垃圾桶</h4>
-              <p>輸入 <code>/trash</code> 開啟垃圾桶介面</p>
+              <p>在聊天欄輸入 <code>/trash</code>，垃圾桶介面會自動彈出</p>
             </div>
-            <div class="guide-step-card" style="--step-color:var(--sand)">
+            <div class="guide-step-card" style="--step-color:var(--sky)">
               <span class="guide-step-num">2</span>
-              <h4>丟入物品</h4>
-              <p>把不要的物品從背包拖進垃圾桶</p>
+              <h4>拖入物品</h4>
+              <p>把不要的物品從背包拖進垃圾桶介面，可以一次拖多個</p>
             </div>
-            <div class="guide-step-card" style="--step-color:var(--sand)">
+            <div class="guide-step-card" style="--step-color:var(--sky)">
               <span class="guide-step-num">3</span>
               <h4>關閉介面</h4>
-              <p>關閉介面後物品即永久清除</p>
+              <p>關閉垃圾桶介面，裡面的物品即永久銷毀，不可復原</p>
             </div>
           </div>
-          <div class="callout callout-warn"><span class="callout-icon">⚠️</span><span>丟進垃圾桶的物品<strong>無法復原</strong>！請確認你真的不需要再丟。如果不小心丟錯，可以用 <code>/co i</code> 查詢記錄，但物品本身已經消失了。</span></div>
         </div>
 
         <div class="guide-divider"></div>
 
-        <!-- ═══ 小技巧 ═══ -->
+        <!-- ═══ 適用情境 ═══ -->
+        <div class="guide-section-card fade-in" style="--card-accent:var(--sand)">
+          <h2><span class="sec-icon">💡</span> 適用情境</h2>
+          <div class="guide-steps-grid">
+            <div class="guide-step-card" style="--step-color:var(--sand)">
+              <h4>⛏️ 挖礦清理</h4>
+              <p>挖礦回來背包塞滿鵝卵石、泥土、砂礫這些沒用的方塊。開垃圾桶一次清掉，騰出空間放有價值的礦物。</p>
+            </div>
+            <div class="guide-step-card" style="--step-color:var(--sand)">
+              <h4>🎣 釣魚垃圾</h4>
+              <p>釣到的線、碗、皮革這些釣魚垃圾？直接丟垃圾桶，只保留有用的魚和寶物。</p>
+            </div>
+            <div class="guide-step-card" style="--step-color:var(--sand)">
+              <h4>🗡️ 掉落物清理</h4>
+              <p>刷怪塔收穫大量腐肉、箭矢等不需要的掉落物，垃圾桶幫你快速清除。</p>
+            </div>
+            <div class="guide-step-card" style="--step-color:var(--sand)">
+              <h4>🛒 購物糾錯</h4>
+              <p>在商店街買錯東西了？如果金額不大不想退貨，直接丟垃圾桶省事。</p>
+            </div>
+            <div class="guide-step-card" style="--step-color:var(--sand)">
+              <h4>📦 倉庫大掃除</h4>
+              <p>倉庫裡堆了一堆過期或不需要的物品？用垃圾桶批量清除，釋放儲存空間。</p>
+            </div>
+            <div class="guide-step-card" style="--step-color:var(--sand)">
+              <h4>🏗️ 建築剩料</h4>
+              <p>蓋完建築後剩下一堆零散的建材碎片，數量太少不值得留著？丟垃圾桶。</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="guide-divider"></div>
+
+        <!-- ═══ 注意事項 ═══ -->
         <div class="guide-section-card fade-in" style="--card-accent:var(--lavender)">
-          <h2><span class="sec-icon">💡</span> 小技巧</h2>
+          <h2><span class="sec-icon">⚠️</span> 注意事項</h2>
           <ul class="rules-list">
-            <li>挖礦挖到一堆鵝卵石？開垃圾桶一次清掉</li>
-            <li>搭配<a href="自動拾取">自動拾取</a>功能，撿到不需要的東西可以直接丟垃圾桶</li>
-            <li>貴重物品建議先存進<a href="倉庫">倉庫</a>再清理背包</li>
+            <li><strong>永久銷毀</strong>：丟進垃圾桶的物品會被<strong>永久銷毀</strong>，無法透過任何方式復原。這是垃圾桶最核心的特性，也是最需要謹慎的地方</li>
+            <li><strong>先檢查再丟</strong>：丟棄前請仔細確認物品。特別是附魔裝備、稀有材料、珍貴紀念品，丟錯了就真的沒了</li>
+            <li><strong>沒有容量限制</strong>：垃圾桶可以接收任意數量的物品，不用擔心空間不夠</li>
+            <li><strong>不佔空間</strong>：垃圾桶是虛擬空間，不會佔用伺服器的實體空間，也不會造成 lag</li>
+            <li><strong>比丟地上好</strong>：直接丟地上的物品會佔用實體空間、造成伺服器 lag，而且一段時間後才會消失。垃圾桶直接銷毀，乾淨又環保</li>
+            <li><strong>可查詢記錄</strong>：如果不確定自己丟了什麼，可以用 <code>/co i</code> 查詢互動記錄，但物品本身已經消失了</li>
           </ul>
+        </div>
+
+        <div class="guide-divider"></div>
+
+        <!-- ═══ 搭配功能 ═══ -->
+        <div class="guide-section-card fade-in" style="--card-accent:var(--ocean-blue)">
+          <h2><span class="sec-icon">🔗</span> 搭配其他功能</h2>
+          <ul class="rules-list">
+            <li><strong>搭配<a href="自動整理">自動整理</a></strong>：先用垃圾桶清掉不要的東西（圓石、腐肉、釣魚垃圾），再用自動整理把剩下的物品分好類。先清垃圾再整理，效果最好。</li>
+            <li><strong>搭配<a href="自動拾取">自動拾取</a></strong>：開啟自動拾取後，掉落物會自動進背包。如果你在刷怪塔旁邊，定期開垃圾桶清掉不需要的掉落物，保持背包空間充足。</li>
+            <li><strong>搭配<a href="倉庫">倉庫</a></strong>：大掃除時，先把貴重物品存進<a href="倉庫">倉庫</a>，再用垃圾桶清掉剩下的垃圾。安全第一，永遠先存後丟。</li>
+            <li><strong>搭配<a href="容器預覽">容器預覽</a></strong>：整理倉庫前，先用容器預覽確認每個箱子的內容，把不需要的物品移到垃圾桶銷毀。</li>
+          </ul>
+        </div>
+
+        <div class="guide-divider"></div>
+
+        <!-- ═══ 安全建議 ═══ -->
+        <div class="guide-section-card fade-in" style="--card-accent:var(--foam)">
+          <h2><span class="sec-icon">🛡️</span> 安全使用建議</h2>
+          <div class="guide-steps-grid">
+            <div class="guide-step-card" style="--step-color:var(--foam)">
+              <h4>📦 先存後丟</h4>
+              <p>在清理背包前，先把貴重物品存進<a href="倉庫">倉庫</a>。確認安全後再開垃圾桶，避免手滑丟錯。</p>
+            </div>
+            <div class="guide-step-card" style="--step-color:var(--foam)">
+              <h4>🔍 逐個確認</h4>
+              <p>不要一次拖太多物品進垃圾桶。逐個確認每個物品你真的不需要，特別是附魔裝備和稀有材料。</p>
+            </div>
+            <div class="guide-step-card" style="--step-color:var(--foam)">
+              <h4>📝 查詢記錄</h4>
+              <p>如果不確定自己丟了什麼，可以用 <code>/co i</code> 查詢互動記錄。雖然物品拿不回來，但至少知道自己丟了什麼。</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="guide-divider"></div>
+
+        <!-- ═══ FAQ ═══ -->
+        <div class="guide-section-card fade-in" style="--card-accent:#85b1e0">
+          <h2><span class="sec-icon">❓</span> 常見問題</h2>
+          <div class="guide-faq">
+            <div class="guide-faq-item">
+              <button class="guide-faq-q">丟進垃圾桶的東西拿得回來嗎？</button>
+              <div class="guide-faq-a"><div class="guide-faq-a-inner">拿不回來。垃圾桶是直接銷毀物品，丟進去的瞬間就永久消失了。沒有回收站、沒有暫存、沒有後悔藥。如果你不小心丟錯了珍貴物品，那是真的回不來了。所以丟之前請三思。</div></div>
+            </div>
+            <div class="guide-faq-item">
+              <button class="guide-faq-q">垃圾桶有容量限制嗎？</button>
+              <div class="guide-faq-a"><div class="guide-faq-a-inner">沒有。你可以丟任意數量的物品進垃圾桶，不用擔心空間不夠。垃圾桶是一個無限容量的銷毀空間。</div></div>
+            </div>
+            <div class="guide-faq-item">
+              <button class="guide-faq-q">跟直接丟地上有什麼不同？</button>
+              <div class="guide-faq-a"><div class="guide-faq-a-inner">直接丟地上的物品會以實體形式存在，佔用伺服器空間、造成 lag，而且要等一段時間才會自動消失。垃圾桶直接銷毀物品，不佔空間、不造成 lag，乾淨又環保。而且丟在地上別人還可以撿走，垃圾桶只有你自己知道你丟了什麼。</div></div>
+            </div>
+            <div class="guide-faq-item">
+              <button class="guide-faq-q">可以一次丟很多東西嗎？</button>
+              <div class="guide-faq-a"><div class="guide-faq-a-inner">可以。垃圾桶介面就像一個箱子，你可以把多個物品拖進去，關閉介面時一起銷毀。不過建議逐個確認，避免手滑丟錯貴重物品。</div></div>
+            </div>
+            <div class="guide-faq-item">
+              <button class="guide-faq-q">丟錯東西怎麼辦？</button>
+              <div class="guide-faq-a"><div class="guide-faq-a-inner">很遺憾，丟進垃圾桶的物品無法復原。你可以用 <code>/co i</code> 查詢互動記錄確認自己丟了什麼，但物品本身已經消失了。所以丟之前請務必確認。</div></div>
+            </div>
+          </div>
         </div>
 
         <div class="guide-divider"></div>
@@ -256,63 +363,42 @@
         <div class="guide-section-card fade-in" style="--card-accent:var(--ocean-blue)">
           <h2><span class="sec-icon">📖</span> 相關頁面</h2>
           <div class="guide-next-grid">
+            <a href="自動整理" class="guide-next-card">
+              <span class="guide-next-icon">📦</span>
+              <div class="guide-next-body">
+                <h4>自動整理</h4>
+                <p>清掉垃圾後，把剩下的物品整理好</p>
+              </div>
+            </a>
             <a href="自動拾取" class="guide-next-card">
               <span class="guide-next-icon">🧲</span>
               <div class="guide-next-body">
                 <h4>自動拾取</h4>
-                <p>搭配使用更順手</p>
+                <p>掉落物自動進背包，搭配垃圾桶使用</p>
               </div>
             </a>
             <a href="倉庫" class="guide-next-card">
               <span class="guide-next-icon">🗄️</span>
               <div class="guide-next-body">
                 <h4>倉庫系統</h4>
-                <p>貴重物品先存這裡</p>
+                <p>貴重物品先存這裡再清理背包</p>
               </div>
             </a>
           </div>
         </div>
 
-        
-        <div class="guide-divider"></div>
-
-        <div class="guide-section-card fade-in" style="--card-accent:#85b1e0">
-          <h2><span class="sec-icon">❓</span> 常見問題</h2>
-          <div class="guide-faq">
-            <div class="guide-faq-item">
-              <button class="guide-faq-q">丟進垃圾桶的東西拿得回來嗎？</button>
-              <div class="guide-faq-a"><div class="guide-faq-a-inner">拿不回來。垃圾桶是直接銷毀物品，丟之前請確認你真的不需要。</div></div>
-            </div>
-            <div class="guide-faq-item">
-              <button class="guide-faq-q">垃圾桶有容量限制嗎？</button>
-              <div class="guide-faq-a"><div class="guide-faq-a-inner">沒有。你可以丟任意數量的物品。</div></div>
-            </div>
-            <div class="guide-faq-item">
-              <button class="guide-faq-q">跟直接丟地上有什麼不同？</button>
-              <div class="guide-faq-a"><div class="guide-faq-a-inner">丟在地上會佔空間、造成 lag。垃圾桶直接銷毀，乾淨又安全。</div></div>
-            </div>
-          </div>
-        </div>
-
-          </div>
-        </div>
-
-          </div>
-        </div>
-          </div>
-        </div>
-
-      <div class="guide-nav fade-in">
-          <a href="更多動作" class="btn btn-outline">← 更多動作</a>
+        <!-- ═══ 導覽 ═══ -->
+        <div class="guide-nav fade-in">
+          <a href="自動拾取" class="btn btn-outline">← 自動拾取</a>
           <a href="../海風指南" class="btn btn-outline">返回目錄</a>
-          <a href="自動拾取" class="btn btn-primary">自動拾取 →</a>
+          <a href="掛機系統" class="btn btn-primary">掛機系統 →</a>
         </div>
 
-      </div>
-    </div>
-  </div>
+      </div><!-- /guide-main -->
+    </div><!-- /guide-layout -->
+  </div><!-- /page -->
 
-    <footer class="footer">
+  <footer class="footer">
     <div class="footer-inner">
       <div class="footer-brand">
         <span class="footer-logo">海風伺服器 SeaWind.cc</span>
@@ -346,5 +432,5 @@
 
   <script src="../main.js?v=020502a"></script>
   <script src="../music-player.js"></script>
-  </body>
+</body>
 </html>

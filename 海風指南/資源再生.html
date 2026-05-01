@@ -81,20 +81,20 @@
     </div>
   </nav>
   <div class="page">
-          <!-- ═══ Hero ═══ -->
+      <!-- ═══ Hero ═══ -->
       <div class="guide-v2-hero fade-in">
         <h1>資源再生</h1>
-          <p class="section-desc">省去資源界，將有限資源無限化。</p>
-          <div class="guide-quick-stats">
-            <div class="guide-qs-item"><span class="guide-qs-icon">🔄</span><span>週期</span><span class="guide-qs-val">7 天重置</span></div>
-            <div class="guide-qs-item"><span class="guide-qs-icon">🛡️</span><span>保護</span><span class="guide-qs-val">領地不受影響</span></div>
-            <div class="guide-qs-item"><span class="guide-qs-icon">⛏️</span><span>效果</span><span class="guide-qs-val">礦脈不枯竭</span></div>
-          </div>
+        <p class="section-desc">省去資源界，將有限資源無限化。</p>
+        <div class="guide-quick-stats">
+          <div class="guide-qs-item"><span class="guide-qs-icon">🔄</span><span>週期</span><span class="guide-qs-val">7 天重置</span></div>
+          <div class="guide-qs-item"><span class="guide-qs-icon">🛡️</span><span>保護</span><span class="guide-qs-val">領地不受影響</span></div>
+          <div class="guide-qs-item"><span class="guide-qs-icon">⛏️</span><span>效果</span><span class="guide-qs-val">礦脈不枯竭</span></div>
+        </div>
       </div>
     <div class="guide-layout">
 
-            <!-- 側邊導覽 -->
-            <aside class="guide-sidebar">
+      <!-- 側邊導覽 -->
+      <aside class="guide-sidebar">
         <div class="guide-sidebar-inner">
           <div class="guide-sidebar-title">📖 海風指南</div>
           <nav class="guide-sidebar-nav">
@@ -187,73 +187,157 @@
       </aside>
 
       <div class="guide-main"><div class="breadcrumb fade-in"><a href="../海風指南">海風指南</a><span class="sep">›</span><span class="current">資源再生</span></div>
-      
-        
+
         <!-- ═══ 機制說明 ═══ -->
         <div class="guide-section-card fade-in" style="--card-accent:var(--ocean-blue)">
           <h2><span class="sec-icon">🔄</span> 機制說明</h2>
-          <p>海風的<strong>資源再生</strong>機制確保地圖上的資源不會被永久挖光。超過 <strong>7 天</strong>沒有玩家造訪的區塊（chunk），系統會自動將其重置為初始狀態，礦物、地形都會恢復原樣。</p>
-          <div class="callout callout-info"><span class="callout-icon">ℹ️</span><span>一個區塊是 16×16 格的範圍。系統以「有沒有玩家進入該區塊」作為判斷標準，不是看有沒有挖東西。</span></div>
+          <p>海風的<strong>資源再生</strong>機制是伺服器的核心設計之一。在原版 Minecraft 中，礦物一旦被挖光就永遠消失了，玩家往往需要跑到很遠的地方才能找到新資源，甚至需要開闢專門的「資源界」。在海風，我們透過自動重置機制徹底解決了這個問題——<strong>地圖上的資源永遠不會被挖光</strong>。</p>
+          <div class="callout callout-info"><span class="callout-icon">ℹ️</span><span>簡單來說：超過 7 天沒人造訪的區域，系統會自動將其恢復到初始狀態，礦物、地形、植被全部重生。</span></div>
         </div>
 
         <div class="guide-divider"></div>
 
-        <!-- ═══ 領地保護 ═══ -->
+        <!-- ═══ 什麼是區塊（Chunk） ═══ -->
         <div class="guide-section-card fade-in" style="--card-accent:var(--foam)">
-          <h2><span class="sec-icon">🛡️</span> 領地保護</h2>
-          <p>有<a href="領地系統">領地</a>覆蓋的區塊<strong>不會被重置</strong>。所以你辛苦蓋的建築、整理的農場都是安全的。</p>
+          <h2><span class="sec-icon">📦</span> 什麼是區塊（Chunk）</h2>
+          <p>要理解資源再生，首先要認識「區塊」這個概念。Minecraft 的世界是由一個個<strong>區塊</strong>組成的，每個區塊是一個 <strong>16 × 16</strong> 格、從基岩層到世界頂部的立體空間。</p>
           <ul class="rules-list">
-            <li>只要領地存在，該區塊就永遠不會被重置</li>
-            <li>建議在重要建築周圍建立領地保護</li>
-            <li>礦場如果不建領地，7 天沒人來就會重置——這其實是好事，代表礦脈可以持續再生</li>
+            <li>一個區塊佔地 16 × 16 = <strong>256 格</strong>的平面範圍</li>
+            <li>從 Y = -64（基岩層）到 Y = 320（世界頂部）都屬於同一個區塊</li>
+            <li>你看到的每一片地形、每一座山、每一個洞穴都跨越了多個區塊</li>
+            <li>系統以<strong>區塊</strong>為單位進行重置，不是以單一方塊或區域</li>
           </ul>
+          <div class="callout callout-tip"><span class="callout-icon">💡</span><span>你可以按下 F3（Java 版）查看目前所在的區塊座標。畫面上會顯示目前區塊的 X / Z 座標。</span></div>
         </div>
 
         <div class="guide-divider"></div>
 
-        <!-- ═══ 善用資源再生 ═══ -->
+        <!-- ═══ 7 天重置週期 ═══ -->
         <div class="guide-section-card fade-in" style="--card-accent:var(--sand)">
-          <h2><span class="sec-icon">💡</span> 善用資源再生</h2>
-          <ul class="rules-list">
-            <li><strong>挖礦不用怕挖光</strong>：只要等 7 天，礦脈就會回來</li>
-            <li><strong>探險更有趣</strong>：每次去同一個地方可能都有新資源</li>
-            <li><strong>不用搶資源</strong>：伺服器資源是無限的，不用跟別人競爭</li>
-            <li><strong>砍樹也是</strong>：森林被砍光了？等 7 天就會長回來</li>
-          </ul>
-          <div class="callout callout-tip"><span class="callout-icon">💡</span><span>想要持續獲得資源？在礦場附近不建領地，定期去挖就好。7 天循環一次，永遠挖不完。</span></div>
+          <h2><span class="sec-icon">⏰</span> 7 天重置週期</h2>
+          <p>資源再生的運作邏輯非常直覺：<strong>只要一個區塊持續有人造訪，它就不會被重置；一旦連續 7 天沒有任何玩家進入該區塊，系統就會將其恢復到初始狀態。</strong></p>
+          <div class="rules-table-wrap">
+            <table class="rules-table">
+              <thead><tr><th>情境</th><th>結果</th><th>說明</th></tr></thead>
+              <tbody>
+                <tr><td>7 天內有人經過</td><td>❌ 不重置</td><td>只要有一個玩家進入該區塊，計時器就會重置</td></tr>
+                <tr><td>連續 7 天無人造訪</td><td>✅ 自動重置</td><td>區塊恢復初始狀態，所有資源重生</td></tr>
+                <tr><td>重置後再次造訪</td><td>🔄 重新計時</td><td>從最後一次造訪起重新計算 7 天</td></tr>
+                <tr><td>有<a href="領地系統">領地</a>覆蓋</td><td>🛡️ 永不重置</td><td>領地保護的區塊不受重置機制影響</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="callout callout-info"><span class="callout-icon">ℹ️</span><span>系統判斷的是「有沒有玩家進入該區塊」，而不是「有沒有在該區塊挖東西」。即使你只是路過，計時器也會被重置。</span></div>
         </div>
-      
+
         <div class="guide-divider"></div>
 
+        <!-- ═══ 領地保護規則 ═══ -->
+        <div class="guide-section-card fade-in" style="--card-accent:var(--lavender)">
+          <h2><span class="sec-icon">🛡️</span> 領地保護規則</h2>
+          <p><a href="領地系統">領地系統</a>與資源再生密切相關。有領地覆蓋的區塊<strong>完全不會被重置</strong>，這代表你的建築、農場、花園都是永久安全的。</p>
+          <ul class="rules-list">
+            <li><strong>領地內的區塊永不重置</strong>：只要領地存在，該區塊就永遠不會被系統觸發重置</li>
+            <li><strong>保護範圍是整個區塊</strong>：即使領地只覆蓋了區塊的一小部分，整個區塊都會受到保護</li>
+            <li><strong>礦場策略</strong>：如果你希望礦脈能持續再生，就不要在礦場建立領地——讓它保持「野生」狀態，7 天後自然重置</li>
+            <li><strong>建築策略</strong>：重要建築、倉庫、農場一定要用領地保護，避免意外重置</li>
+          </ul>
+          <div class="callout callout-tip"><span class="callout-icon">💡</span><span>最佳實踐：把領地建在你真正需要保護的地方（家、農場、倉庫），把礦場留在領地外面，讓它自然再生。</span></div>
+        </div>
+
+        <div class="guide-divider"></div>
+
+        <!-- ═══ 重置範圍 ═══ -->
+        <div class="guide-section-card fade-in" style="--card-accent:var(--foam)">
+          <h2><span class="sec-icon">🧩</span> 重置範圍與效果</h2>
+          <p>當一個區塊被重置時，以下內容會全部恢復到初始狀態：</p>
+          <ul class="rules-list">
+            <li><strong>礦物</strong>：所有礦脈重新生成，包括煤礦、鐵礦、金礦、鑽石、紅石、青金石、綠寶石等</li>
+            <li><strong>地形</strong>：地形方塊（石頭、泥土、砂礫、砂子等）恢復原狀</li>
+            <li><strong>洞穴</strong>：自然生成的洞穴和峽谷重新出現</li>
+            <li><strong>植被</strong>：草地、花朵、蘑菇、仙人掌等自然植被重生</li>
+            <li><strong>結構</strong>：礦坑、要塞、廢棄礦道等自然結構重新生成</li>
+          </ul>
+          <div class="callout callout-info"><span class="callout-icon">ℹ️</span><span>注意：玩家放置的方塊（建築、箱子等）如果不在領地保護範圍內，也會在重置時被移除。所以一定要用領地保護你的重要建築！</span></div>
+        </div>
+
+        <div class="guide-divider"></div>
+
+        <!-- ═══ 善用資源再生的策略 ═══ -->
+        <div class="guide-section-card fade-in" style="--card-accent:var(--sand)">
+          <h2><span class="sec-icon">💡</span> 善用資源再生的策略</h2>
+          <p>理解了資源再生機制後，你可以用更聪明的方式來規劃你的遊戲生活：</p>
+
+          <h3 style="margin-top:1.2rem;font-size:1.05rem;">🪓 挖礦策略</h3>
+          <ul class="rules-list">
+            <li><strong>不用怕挖光</strong>：只要等 7 天，礦脈就會回來。放心大膽地挖吧！</li>
+            <li><strong>建立「輪流礦場」</strong>：準備 2-3 個不同地點的礦場，輪流使用。當你在 A 礦場挖完，去 B 礦場挖，等 A 重置後再回去</li>
+            <li><strong>搭配<a href="連鎖挖掘">連鎖挖掘</a></strong>：連鎖挖掘可以一次挖掉整片礦脈，配合資源再生效率更高</li>
+            <li><strong>深層挖礦</strong>：鑽石等稀有礦物在深層（Y = -64 附近）最密集，重置後這些礦物會重新出現</li>
+          </ul>
+
+          <h3 style="margin-top:1.2rem;font-size:1.05rem;">🌳 資源採集策略</h3>
+          <ul class="rules-list">
+            <li><strong>森林砍伐</strong>：大規模砍樹不用擔心，7 天後森林會自動恢復</li>
+            <li><strong>農場資源</strong>：野生農作物（小麥、胡蘿蔔、馬鈴薯等）也會在重置後重生</li>
+            <li><strong>動物生成</strong>：重置後的區塊會重新生成動物，不用擔心動物滅絕</li>
+          </ul>
+
+          <h3 style="margin-top:1.2rem;font-size:1.05rem;">🏗️ 建築規劃策略</h3>
+          <ul class="rules-list">
+            <li><strong>家園一定要有領地</strong>：沒有領地保護的建築，7 天沒人來就會消失</li>
+            <li><strong>礦場不要建領地</strong>：這樣礦脈才能自然再生</li>
+            <li><strong>倉庫遠離礦場</strong>：把倉庫建在有領地保護的地方，礦場則留在野外</li>
+          </ul>
+
+          <div class="callout callout-tip"><span class="callout-icon">💡</span><span>不需要開闢「資源界」！在海風，主世界就是你的永久資源來源。只要善用 7 天循環，資源永遠用不完。</span></div>
+        </div>
+
+        <div class="guide-divider"></div>
+
+        <!-- ═══ 注意事項 ═══ -->
+        <div class="guide-section-card fade-in" style="--card-accent:var(--lavender)">
+          <h2><span class="sec-icon">⚠️</span> 注意事項</h2>
+          <ul class="rules-list">
+            <li><strong>定期造訪重要區域</strong>：如果你在野外有重要的臨時建築但沒有建領地，記得每 7 天內去拜訪一次，否則會被重置</li>
+            <li><strong>箱子內容物也會消失</strong>：沒有領地保護的箱子，裡面的物品會在重置時一起消失</li>
+            <li><strong>重置不可逆</strong>：一旦區塊被重置，之前放置的方塊和物品無法恢復</li>
+            <li><strong>領地費用值得投資</strong>：保護重要資產的領地費用，遠比重建一切的成本低</li>
+          </ul>
+        </div>
+
+        <div class="guide-divider"></div>
+
+        <!-- ═══ FAQ ═══ -->
         <div class="guide-section-card fade-in" style="--card-accent:#85b1e0">
           <h2><span class="sec-icon">❓</span> 常見問題</h2>
           <div class="guide-faq">
             <div class="guide-faq-item">
               <button class="guide-faq-q">多久會重置？</button>
-              <div class="guide-faq-a"><div class="guide-faq-a-inner">超過 <strong>7 天</strong>沒玩家造訪的區塊會自動重置。</div></div>
+              <div class="guide-faq-a"><div class="guide-faq-a-inner">超過 <strong>7 天</strong>（168 小時）沒有任何玩家造訪的區塊，會在下次系統檢查時自動重置。</div></div>
             </div>
             <div class="guide-faq-item">
               <button class="guide-faq-q">我的建築會被重置嗎？</button>
-              <div class="guide-faq-a"><div class="guide-faq-a-inner">有<a href='領地系統'>領地</a>覆蓋就不會。一定要用領地保護建築。</div></div>
+              <div class="guide-faq-a"><div class="guide-faq-a-inner">有<a href='領地系統'>領地</a>覆蓋就不會。沒有領地保護的建築，如果 7 天沒人來過就會被重置。一定要用領地保護重要建築！</div></div>
             </div>
             <div class="guide-faq-item">
               <button class="guide-faq-q">重置後礦物會重生嗎？</button>
-              <div class="guide-faq-a"><div class="guide-faq-a-inner">會。重置後恢復初始狀態，礦物、地形都會重新生成。</div></div>
+              <div class="guide-faq-a"><div class="guide-faq-a-inner">會。重置後恢復初始狀態，礦物、地形、洞穴、植被都會重新生成，就像一個全新的世界一樣。</div></div>
+            </div>
+            <div class="guide-faq-item">
+              <button class="guide-faq-q">路過一個區塊會重置計時器嗎？</button>
+              <div class="guide-faq-a"><div class="guide-faq-a-inner">會。只要有任何玩家進入該區塊（包括只是跑過去），計時器就會重置為 7 天。系統不看你在裡面做什麼，只看有沒有人來過。</div></div>
+            </div>
+            <div class="guide-faq-item">
+              <button class="guide-faq-q">礦場應不應該建領地？</button>
+              <div class="guide-faq-a"><div class="guide-faq-a-inner">不建議。礦場不建領地，才能讓礦脈在 7 天後自動再生。把領地留給家園和倉庫就好。</div></div>
             </div>
           </div>
         </div>
 
-          </div>
-        </div>
-
-          </div>
-        </div>
-          </div>
-        </div>
-
-        
         <div class="guide-divider"></div>
 
+        <!-- ═══ 相關頁面 ═══ -->
         <div class="guide-section-card fade-in" style="--card-accent:var(--ocean-blue)">
           <h2><span class="sec-icon">📖</span> 相關頁面</h2>
           <div class="guide-next-grid">
@@ -261,22 +345,27 @@
               <span class="guide-next-icon">⛏️</span>
               <div class="guide-next-body">
                 <h4>連鎖挖掘</h4>
-                <p>一次挖整棵樹、整片礦</p>
+                <p>一次挖整棵樹、整片礦，搭配資源再生效率翻倍</p>
               </div>
             </a>
             <a href="礦物代換" class="guide-next-card">
-              <span class="guide-next-icon">⛏️</span>
+              <span class="guide-next-icon">💎</span>
               <div class="guide-next-body">
                 <h4>礦物代換</h4>
-                <p>海風的礦物生成機制</p>
+                <p>了解海風的礦物生成機制</p>
+              </div>
+            </a>
+            <a href="領地系統" class="guide-next-card">
+              <span class="guide-next-icon">🛡️</span>
+              <div class="guide-next-body">
+                <h4>領地系統</h4>
+                <p>用領地保護你的建築不被重置</p>
               </div>
             </a>
           </div>
         </div>
 
         <div class="guide-nav fade-in"><a href="銀行" class="btn btn-outline">← 銀行</a><a href="../海風指南" class="btn btn-outline">返回目錄</a><a href="礦物代換" class="btn btn-primary">礦物代換 →</a></div>
-    </div>
-  
       </div><!-- /guide-main -->
     </div><!-- /guide-layout -->
   </div>

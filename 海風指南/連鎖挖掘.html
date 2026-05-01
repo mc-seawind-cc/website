@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html lang="zh-Hant">
 <head>
-  <meta charset="UTF-8"><meta name="color-scheme" content="dark light"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <meta name="color-scheme" content="dark light">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>海風 — 海風指南 — 連鎖挖掘</title>
   <link rel="canonical" href="https://www.seawind.cc/海風指南/連鎖挖掘">
   <meta name="description" content="一次挖整棵樹或整片礦。">
@@ -16,7 +18,8 @@
   <link rel="dns-prefetch" href="//truth.bahamut.com.tw">
   <link rel="dns-prefetch" href="//api.mcsrvstat.us">
   <link rel="icon" href="../assets/img/logo.png">
-  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;800&family=Noto+Serif+TC:wght@700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../style.css?v=020502a">
   <link rel="stylesheet" href="../music-player.css">
@@ -32,7 +35,8 @@
 
   <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
   <div class="bg-atmosphere"></div>
-    <nav class="nav">
+
+  <nav class="nav">
     <a href="../首頁" class="nav-logo">
       <picture><source srcset="../assets/img/logo.webp" type="image/webp"><img src="../assets/img/logo.png" alt="海風" class="nav-logo-img" width="48" height="48" fetchpriority="high"></picture>
       <span>海風伺服器</span>
@@ -80,21 +84,23 @@
       </button>
     </div>
   </nav>
+
   <div class="page">
-          <!-- ═══ Hero ═══ -->
-      <div class="guide-v2-hero fade-in">
-        <h1>連鎖挖掘</h1>
-          <p class="section-desc">一次挖整棵樹或整片礦。</p>
-          <div class="guide-quick-stats">
-            <div class="guide-qs-item"><span class="guide-qs-icon">⛏️</span><span>觸發</span><span class="guide-qs-val">蹲下挖掘</span></div>
-            <div class="guide-qs-item"><span class="guide-qs-icon">🌲</span><span>適用</span><span class="guide-qs-val">砍樹挖礦</span></div>
-            <div class="guide-qs-item"><span class="guide-qs-icon">⚡</span><span>效果</span><span class="guide-qs-val">連鎖破壞</span></div>
-          </div>
+    <!-- ═══ Hero ═══ -->
+    <div class="guide-v2-hero fade-in">
+      <h1>連鎖挖掘</h1>
+      <p class="section-desc">砍樹不用一棵一棵挖，挖礦不用一塊一塊敲。蹲下輕輕一整片搞定，省下大量時間！</p>
+      <div class="guide-quick-stats">
+        <div class="guide-qs-item"><span class="guide-qs-icon">⛏️</span><span>觸發</span><span class="guide-qs-val">蹲下挖掘</span></div>
+        <div class="guide-qs-item"><span class="guide-qs-icon">🌲</span><span>適用</span><span class="guide-qs-val">伐木 / 挖礦 / 收割</span></div>
+        <div class="guide-qs-item"><span class="guide-qs-icon">⚡</span><span>效果</span><span class="guide-qs-val">連鎖破壞</span></div>
       </div>
+    </div>
+
     <div class="guide-layout">
 
-            <!-- 側邊導覽 -->
-            <aside class="guide-sidebar">
+      <!-- 側邊導覽 -->
+      <aside class="guide-sidebar">
         <div class="guide-sidebar-inner">
           <div class="guide-sidebar-title">📖 海風指南</div>
           <nav class="guide-sidebar-nav">
@@ -188,169 +194,227 @@
 
       <div class="guide-main">
 
-<div class="content-section">
-      <div class="breadcrumb fade-in"><a href="../海風指南">海風指南</a><span class="sep">›</span><span class="current">連鎖挖掘</span></div>
-      <div class="rules-intro fade-in">
-        <p>連鎖採集功能，讓你一次挖整棵樹、整片礦、整塊田。蹲下輕輕一敲，全部搞定！</p>
-      </div>
+        <div class="content-section">
+          <div class="breadcrumb fade-in">
+            <a href="../海風指南">海風指南</a>
+            <span class="sep">›</span>
+            <span class="current">連鎖挖掘</span>
+          </div>
 
-        <div class="guide-divider"></div>
+          <div class="rules-intro fade-in">
+            <p>在原版 Minecraft 裡，砍一棵樹要一個一個方塊慢慢挖，挖礦也是一塊一塊敲。有了連鎖採集功能，你只要蹲下對樹木、礦石或農作物點一下，它就會自動把相連的同類方塊全部挖掉，省下大量時間。</p>
+            <p>連鎖採集支援三種功能：<strong>連鎖伐木</strong>、<strong>連鎖挖礦</strong>和<strong>連鎖收割</strong>，可以分別開關，依照你的需求調整。</p>
+          </div>
 
-        <div class="guide-section-card fade-in" style="--card-accent:var(--ocean-blue)">
-        <h2><span class="sec-icon">📋</span> 什麼是連鎖挖掘？</h2>
-        <p>在原版 Minecraft 裡，砍一棵樹要一個一個方塊慢慢挖。有了連鎖採集功能，你只要蹲下對樹木、礦石或農作物點一下，它就會自動把相連的同類方塊全部挖掉，省下大量時間。</p>
-        <p>插件支援三種功能：<strong>連鎖伐木</strong>、<strong>連鎖挖礦</strong>和<strong>連鎖收割</strong>，可以分別開關，依照你的需求調整。</p>
-      </div>
+          <div class="guide-divider"></div>
 
-        <div class="guide-divider"></div>
+          <!-- ═══ 連鎖伐木 ═══ -->
+          <div class="guide-section-card fade-in" style="--card-accent:var(--sand)">
+            <h2><span class="sec-icon">🪓</span> 連鎖伐木</h2>
+            <p><strong>用途：</strong>一次砍倒整棵樹，不用爬上去一個一個挖木頭。不管是橡木、樺木、叢林木還是櫻花樹，通通適用。</p>
+            <p><strong>使用方式：</strong></p>
+            <ol class="steps">
+              <li>手上拿著 <strong>斧頭</strong>（任何材質都可以，木斧也行）。</li>
+              <li>對著樹木的任意樹幹 <strong>蹲下 + 左鍵</strong>（按住 Shift 然後點擊樹幹）。</li>
+              <li>整棵樹的所有樹幹方塊都會自動掉落，樹葉也會跟著被清除！</li>
+            </ol>
+            <div class="callout callout-tip"><span class="callout-icon">💡</span><span>伐木時記得在樹下撿掉落物，不然木頭會 despwan 掉。背包空間也要夠大，大樹一次會掉很多木頭。搭配<a href="自動拾取">自動拾取</a>功能更方便。</span></div>
+          </div>
 
-        <div class="guide-section-card fade-in" style="--card-accent:var(--sand)">
-          <h2>🪓 連鎖伐木</h2>
-        <p><strong>用途：</strong>一次砍倒整棵樹，不用爬上去一個一個挖木頭。</p>
-        <p><strong>使用方式：</strong></p>
-        <ol class="steps">
-          <li>手上拿著 <strong>斧頭</strong>（任何材質都可以）。</li>
-          <li>對著樹木的任意樹幹 <strong>蹲下 + 左鍵</strong>（蹲下按 Shift，然後點擊樹幹）。</li>
-          <li>整棵樹的所有樹幹和樹葉都會自動掉落！</li>
-        </ol>
-        <div class="callout callout-tip"><span class="callout-icon">💡</span><span>伐木時記得在樹下撿掉落物，不然木頭會 despair 掉。背包空間也要夠大！</span></div>
-      </div>
+          <div class="guide-divider"></div>
 
-        <div class="guide-divider"></div>
+          <!-- ═══ 連鎖挖礦 ═══ -->
+          <div class="guide-section-card fade-in" style="--card-accent:var(--ocean-blue)">
+            <h2><span class="sec-icon">⛏️</span> 連鎖挖礦</h2>
+            <p><strong>用途：</strong>一次挖光相連的同種礦石，快速收集資源。看到一片礦脈，蹲下點一下就全部搞定。</p>
+            <p><strong>使用方式：</strong></p>
+            <ol class="steps">
+              <li>手上拿著 <strong>鎬子</strong>（建議用高階鎬子，效率更快）。</li>
+              <li>對著礦石 <strong>蹲下 + 左鍵</strong>。</li>
+              <li>所有相連的同種礦石會自動被挖掉，掉落物直接進背包。</li>
+            </ol>
+            <div class="callout callout-info"><span class="callout-icon">ℹ️</span><span>連鎖挖礦只會挖「相連」的同種礦石。如果礦脈中有不同種類的礦石（例如鐵礦和煤礦混在一起），它只會挖你點的那種。這讓你可以精準收集需要的礦物。</span></div>
+            <p style="margin-top:var(--space-md)"><strong>適用礦物：</strong></p>
+            <ul class="rules-list">
+              <li>煤礦、鐵礦、銅礦、金礦、鑽石礦、綠寶石礦、青金石礦、紅石礦</li>
+              <li>下界金礦、下界石英礦</li>
+              <li>深板岩礦石（深板岩層的礦石變體）</li>
+            </ul>
+          </div>
 
-        <div class="guide-section-card fade-in" style="--card-accent:var(--sand)">
-          <h2>⛏️ 連鎖挖礦</h2>
-        <p><strong>用途：</strong>一次挖光相連的同種礦石，快速收集資源。</p>
-        <p><strong>使用方式：</strong></p>
-        <ol class="steps">
-          <li>手上拿著 <strong>鎬子</strong>（建議用高階鎬子，效率更快）。</li>
-          <li>對著礦石 <strong>蹲下 + 左鍵</strong>。</li>
-          <li>所有相連的同種礦石會自動被挖掉，掉落物直接進背包。</li>
-        </ol>
-        <div class="callout callout-info"><span class="callout-icon">ℹ️</span><span>連鎖挖礦只會挖「相連」的同種礦石。如果礦脈中有不同種類的礦石（例如鐵礦和煤礦混在一起），它只會挖你點的那種。</span></div>
-      </div>
+          <div class="guide-divider"></div>
 
-        <div class="guide-divider"></div>
+          <!-- ═══ 連鎖收割 ═══ -->
+          <div class="guide-section-card fade-in" style="--card-accent:var(--teal)">
+            <h2><span class="sec-icon">🌾</span> 連鎖收割</h2>
+            <p><strong>用途：</strong>一次收完整片成熟農作物，不用一個一個右鍵。種了一大片田？蹲下點一下就全部收完。</p>
+            <p><strong>使用方式：</strong></p>
+            <ol class="steps">
+              <li>手上拿著 <strong>鋤頭</strong>（任何材質都可以）。</li>
+              <li>對著成熟的農作物 <strong>蹲下 + 左鍵</strong>。</li>
+              <li>範圍內所有成熟的同種作物會自動收割，掉落物進背包。</li>
+            </ol>
+            <div class="callout callout-tip"><span class="callout-icon">💡</span><span>收割只會收「成熟」的作物，還沒長大的不會動，所以不用擔心誤收。收割後記得重新種上，配合<a href="資源再生">資源再生</a>系統，農場可以持續運作。</span></div>
+            <p style="margin-top:var(--space-md)"><strong>適用作物：</strong></p>
+            <ul class="rules-list">
+              <li>小麥、胡蘿蔔、馬鈴薯、甜菜根</li>
+              <li>西瓜、南瓜（莖和果實分開處理）</li>
+              <li>甘蔗、仙人掌、竹子</li>
+              <li>地獄疙瘩、螢光莓</li>
+            </ul>
+          </div>
 
-        <div class="guide-section-card fade-in" style="--card-accent:var(--sand)">
-          <h2>🌾 連鎖收割</h2>
-        <p><strong>用途：</strong>一次收完整片成熟農作物，不用一個一個右鍵。</p>
-        <p><strong>使用方式：</strong></p>
-        <ol class="steps">
-          <li>手上拿著 <strong>鋤頭</strong>。</li>
-          <li>對著成熟的農作物 <strong>蹲下 + 左鍵</strong>。</li>
-          <li>範圍內所有成熟的同種作物會自動收割。</li>
-        </ol>
-        <div class="callout callout-tip"><span class="callout-icon">💡</span><span>收割只會收「成熟」的作物，還沒長大的不會動，所以不用擔心誤收。</span></div>
-      </div>
+          <div class="guide-divider"></div>
 
-        <div class="guide-divider"></div>
-
-        <div class="guide-section-card fade-in" style="--card-accent:var(--sand)">
-          <h2><span class="sec-icon">🔄</span> 使用模式</h2>
-        <p>連鎖採集有兩種觸發模式，你可以依照自己的喜好切換：</p>
-        <div class="rules-table-wrap">
-          <table class="rules-table">
-            <thead><tr><th>模式</th><th>操作方式</th><th>說明</th></tr></thead>
-            <tbody>
-              <tr><td><strong>經典模式</strong></td><td>直接左鍵。</td><td>不需要蹲下，直接左鍵就會觸發連鎖。速度快但容易誤觸。</td></tr>
-              <tr><td><strong>蹲下模式</strong></td><td>蹲下 + 左鍵。</td><td>必須按住蹲下（Shift）再左鍵才會觸發。更安全，推薦使用。</td></tr>
-            </tbody>
-          </table>
-        </div>
-        <p>切換模式：<code>/sh mode</code></p>
-      </div>
-
-        <div class="guide-divider"></div>
-
-        <div class="guide-section-card fade-in" style="--card-accent:var(--sand)">
-          <h2>🎛️ 開關功能</h2>
-        <p>你可以分別控制三種功能的開關，不需要全部一起開：</p>
-        <div class="rules-table-wrap">
-          <table class="rules-table">
-            <thead><tr><th>指令</th><th>說明</th></tr></thead>
-            <tbody>
-              <tr><td><code>/sh</code></td><td>開關所有連鎖功能（總開關）</td></tr>
-              <tr><td><code>/sh logging</code></td><td>開關連鎖伐木功能。</td></tr>
-              <tr><td><code>/sh mining</code></td><td>開關連鎖挖礦功能。</td></tr>
-              <tr><td><code>/sh farming</code></td><td>開關連鎖收割功能。</td></tr>
-              <tr><td><code>/sh mode</code></td><td>切換經典/蹲下模式。</td></tr>
-              <tr><td><code>/sh notify</code></td><td>開關連鎖採集的通知訊息。</td></tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-
-        <div class="guide-divider"></div>
-
-        <div class="guide-section-card fade-in" style="--card-accent:var(--sand)">
-          <h2><span class="sec-icon">💡</span> 範例情境</h2>
-        <p><strong>情境一：蓋建築需要大量木頭</strong></p>
-        <p>拿著斧頭跑到樹林裡，蹲下對樹幹左鍵，一棵大樹瞬間變成背包裡的木頭。再跑到下一棵，很快就收集了一大堆材料。</p>
-        <p><strong>情境二：下礦挖鑽石</strong></p>
-        <p>在洞穴裡看到一片礦石，拿著附有效率的鎬子蹲下點一下，整片礦脈瞬間挖光，掉落物直接進背包，省去一個一個挖的麻煩。</p>
-        <p><strong>情境三：收割農場</strong></p>
-        <p>家裡種了一大片小麥，成熟了卻要一個一個右鍵收？拿著鋤頭蹲下點一下，整片田瞬間收割完畢，掉落物自動收集。</p>
-      </div>
-      
-        <div class="guide-divider"></div>
-
-        <div class="guide-section-card fade-in" style="--card-accent:#85b1e0">
-          <h2><span class="sec-icon">❓</span> 常見問題</h2>
-          <div class="guide-faq">
-            <div class="guide-faq-item">
-              <button class="guide-faq-q">怎麼開啟連鎖挖掘？</button>
-              <div class="guide-faq-a"><div class="guide-faq-a-inner">蹲下（按住 Shift）對樹木、礦石或農作物點一下。也可以用指令切換。</div></div>
+          <!-- ═══ 使用模式 ═══ -->
+          <div class="guide-section-card fade-in" style="--card-accent:var(--lavender)">
+            <h2><span class="sec-icon">🔄</span> 觸發模式</h2>
+            <p>連鎖採集有兩種觸發模式，你可以依照自己的喜好切換：</p>
+            <div class="rules-table-wrap">
+              <table class="rules-table">
+                <thead><tr><th>模式</th><th>操作方式</th><th>說明</th></tr></thead>
+                <tbody>
+                  <tr><td><strong>經典模式</strong></td><td>直接左鍵</td><td>不需要蹲下，直接左鍵就會觸發連鎖。速度快但容易誤觸——可能不小心把家裡的柱子挖掉。</td></tr>
+                  <tr><td><strong>蹲下模式</strong></td><td>蹲下 + 左鍵</td><td>必須按住蹲下（Shift）再左鍵才會觸發。更安全，推薦使用。不蹲下時就是正常挖掘。</td></tr>
+                </tbody>
+              </table>
             </div>
-            <div class="guide-faq-item">
-              <button class="guide-faq-q">會消耗更多耐久嗎？</button>
-              <div class="guide-faq-a"><div class="guide-faq-a-inner">會。每個方塊都會消耗工具耐久。耐久不夠時連鎖會停止。</div></div>
+            <p style="margin-top:var(--space-md)">切換模式：<code>/sh mode</code></p>
+            <div class="callout callout-tip"><span class="callout-icon">💡</span><span>強烈建議使用「蹲下模式」。這樣平時正常挖方塊不會觸發連鎖，只有刻意蹲下時才會啟動，避免意外破壞建築。</span></div>
+          </div>
+
+          <div class="guide-divider"></div>
+
+          <!-- ═══ 開關功能 ═══ -->
+          <div class="guide-section-card fade-in" style="--card-accent:var(--sand)">
+            <h2><span class="sec-icon">🎛️</span> 開關功能</h2>
+            <p>你可以分別控制三種功能的開關，不需要全部一起開：</p>
+            <div class="rules-table-wrap">
+              <table class="rules-table">
+                <thead><tr><th>指令</th><th>說明</th></tr></thead>
+                <tbody>
+                  <tr><td><code>/sh</code></td><td>開關所有連鎖功能（總開關）。</td></tr>
+                  <tr><td><code>/sh logging</code></td><td>開關連鎖伐木功能。</td></tr>
+                  <tr><td><code>/sh mining</code></td><td>開關連鎖挖礦功能。</td></tr>
+                  <tr><td><code>/sh farming</code></td><td>開關連鎖收割功能。</td></tr>
+                  <tr><td><code>/sh mode</code></td><td>切換經典/蹲下模式。</td></tr>
+                  <tr><td><code>/sh notify</code></td><td>開關連鎖採集的通知訊息。</td></tr>
+                </tbody>
+              </table>
             </div>
-            <div class="guide-faq-item">
-              <button class="guide-faq-q">可以只開一種連鎖嗎？</button>
-              <div class="guide-faq-a"><div class="guide-faq-a-inner">可以。連鎖伐木、挖礦、收割可分別開關。</div></div>
-            </div>
+            <div class="callout callout-info"><span class="callout-icon">ℹ️</span><span>如果你只想用連鎖伐木而不想連鎖挖礦，可以單獨關閉挖礦功能。這樣在礦洞裡就不會不小心把整片礦脈挖光。</span></div>
           </div>
-        </div>
 
+          <div class="guide-divider"></div>
+
+          <!-- ═══ 注意事項 ═══ -->
+          <div class="guide-section-card fade-in" style="--card-accent:var(--foam)">
+            <h2><span class="sec-icon">⚠️</span> 注意事項</h2>
+            <ul class="rules-list">
+              <li><strong>工具耐久</strong> — 連鎖挖掘會消耗工具耐久。每個被挖掉的方塊都會扣耐久，一次挖太多可能直接把工具用壞。建議使用附有<a href="https://minecraft.wiki/zh/wiki/%E8%80%90%E4%B9%85">耐久</a>附魔的工具，或帶多把備用。</li>
+              <li><strong>背包空間</strong> — 大樹或大片礦脈一次會掉很多物品。如果背包空間不夠，多餘的掉落物會掉在地上，記得及時撿起來。搭配<a href="自動拾取">自動拾取</a>功能可以自動收集掉落物。</li>
+              <li><strong>領地權限</strong> — 在他人<a href="領地系統">領地</a>內，連鎖挖掘可能會受到權限限制。如果領地主人沒有開放破壞權限，連鎖挖掘就無法觸發。</li>
+              <li><strong>掉落物消失</strong> — 掉落物在地上一段時間後會消失（預設 5 分鐘）。連鎖挖掘一次產生大量掉落物時，要盡快撿起來。</li>
+              <li><strong>誤觸風險</strong> — 使用經典模式時，平時挖方塊也會觸發連鎖。建議切換到蹲下模式，避免意外破壞建築或重要結構。</li>
+              <li><strong>只挖同種方塊</strong> — 連鎖只會挖相同種類的方塊。混合礦脈中只會挖你點的那種，不用擔心把其他礦石也挖掉。</li>
+            </ul>
           </div>
-        </div>
 
+          <div class="guide-divider"></div>
+
+          <!-- ═══ 搭配資源再生 ═══ -->
+          <div class="guide-section-card fade-in" style="--card-accent:var(--sand)">
+            <h2><span class="sec-icon">🔄</span> 搭配資源再生</h2>
+            <p>海風有<a href="資源再生">資源再生</a>系統，未造訪的區塊會在 7 天後自動重置。這意味著：</p>
+            <ul class="rules-list">
+              <li><strong>礦脈會重生</strong> — 你挖光的礦脈，只要那個區塊一段時間沒人去，就會自動重置回原始狀態。不用擔心礦被挖完。</li>
+              <li><strong>樹林會重生</strong> — 砍光的樹林也會在區塊重置後重新長出來。可以放心大膽地砍。</li>
+              <li><strong>建議輪流開採</strong> — 不要一直挖同一個地方，輪流去不同的區域開採。等之前的區塊重置後再回去，資源就又有了。</li>
+            </ul>
+            <div class="callout callout-tip"><span class="callout-icon">💡</span><span>搭配<a href="公共傳送點">公共傳送點</a>設幾個礦場入口，輪流去不同的礦場開採，效率最高。</span></div>
           </div>
-        </div>
+
+          <div class="guide-divider"></div>
+
+          <!-- ═══ 使用情境 ═══ -->
+          <div class="guide-section-card fade-in" style="--card-accent:var(--teal)">
+            <h2><span class="sec-icon">💡</span> 使用情境</h2>
+            <p><strong>情境一：蓋建築需要大量木頭</strong></p>
+            <p>拿著斧頭跑到樹林裡，蹲下對樹幹左鍵，一棵大樹瞬間變成背包裡的木頭。再跑到下一棵，很快就收集了一大堆材料。配合<a href="資源再生">資源再生</a>，樹林會自動重生，永遠砍不完。</p>
+
+            <p style="margin-top:var(--space-lg)"><strong>情境二：下礦挖鑽石</strong></p>
+            <p>在洞穴裡看到一片礦石，拿著附有效率的鎬子蹲下點一下，整片礦脈瞬間挖光，掉落物直接進背包。省去一個一個挖的麻煩，挖礦效率大幅提升。</p>
+
+            <p style="margin-top:var(--space-lg)"><strong>情境三：收割農場</strong></p>
+            <p>家裡種了一大片小麥，成熟了卻要一個一個右鍵收？拿著鋤頭蹲下點一下，整片田瞬間收割完畢。掉落物自動收集，省時又省力。</p>
+
+            <p style="margin-top:var(--space-lg)"><strong>情境四：清理大規模建築</strong></p>
+            <p>需要拆除一個木造建築？用連鎖伐木可以快速清理木質結構。但要注意，連鎖只會挖同種方塊，如果建築混合了多種材料，需要分別處理。</p>
           </div>
-        </div>
 
-        
-        <div class="guide-divider"></div>
+          <div class="guide-divider"></div>
 
-        <div class="guide-section-card fade-in" style="--card-accent:var(--ocean-blue)">
-          <h2><span class="sec-icon">📖</span> 相關頁面</h2>
-          <div class="guide-next-grid">
-            <a href="礦物代換" class="guide-next-card">
-              <span class="guide-next-icon">⛏️</span>
-              <div class="guide-next-body">
-                <h4>礦物代換</h4>
-                <p>海風的礦物生成機制</p>
+          <!-- ═══ FAQ ═══ -->
+          <div class="guide-section-card fade-in" style="--card-accent:#85b1e0">
+            <h2><span class="sec-icon">❓</span> 常見問題</h2>
+            <div class="guide-faq">
+              <div class="guide-faq-item">
+                <button class="guide-faq-q">怎麼開啟連鎖挖掘？</button>
+                <div class="guide-faq-a"><div class="guide-faq-a-inner">預設是開啟的。使用方式是蹲下（按住 Shift）對樹木、礦石或農作物點一下。如果沒有觸發，可以用 <code>/sh</code> 檢查總開關是否開啟。也可以用 <code>/sh mode</code> 切換觸發模式。</div></div>
               </div>
-            </a>
-            <a href="資源再生" class="guide-next-card">
-              <span class="guide-next-icon">⛏️</span>
-              <div class="guide-next-body">
-                <h4>資源再生</h4>
-                <p>7天自動重置未造訪區塊</p>
+              <div class="guide-faq-item">
+                <button class="guide-faq-q">會消耗更多耐久嗎？</button>
+                <div class="guide-faq-a"><div class="guide-faq-a-inner">會。每個被連鎖挖掉的方塊都會消耗工具耐久。一次挖太多方塊可能直接把工具用壞。建議使用附有耐久附魔的工具，或帶多把備用。工具耐久不夠時，連鎖會自動停止在最後一個能挖的方塊。</div></div>
               </div>
-            </a>
+              <div class="guide-faq-item">
+                <button class="guide-faq-q">可以只開一種連鎖嗎？</button>
+                <div class="guide-faq-a"><div class="guide-faq-a-inner">可以。連鎖伐木、挖礦、收割可分別開關。例如只想用連鎖伐木，可以用 <code>/sh mining off</code> 和 <code>/sh farming off</code> 關閉其他兩種。這樣在礦洞裡就不會不小心把整片礦脈挖光。</div></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="guide-divider"></div>
+
+          <!-- ═══ 相關頁面 ═══ -->
+          <div class="guide-section-card fade-in" style="--card-accent:var(--ocean-blue)">
+            <h2><span class="sec-icon">📖</span> 相關頁面</h2>
+            <div class="guide-next-grid">
+              <a href="礦物代換" class="guide-next-card">
+                <span class="guide-next-icon">💎</span>
+                <div class="guide-next-body">
+                  <h4>礦物代換</h4>
+                  <p>海風的礦物生成機制</p>
+                </div>
+              </a>
+              <a href="資源再生" class="guide-next-card">
+                <span class="guide-next-icon">🔄</span>
+                <div class="guide-next-body">
+                  <h4>資源再生</h4>
+                  <p>7 天自動重置未造訪區塊</p>
+                </div>
+              </a>
+              <a href="自動拾取" class="guide-next-card">
+                <span class="guide-next-icon">🧲</span>
+                <div class="guide-next-body">
+                  <h4>自動拾取</h4>
+                  <p>掉落物自動進背包</p>
+                </div>
+              </a>
+            </div>
+          </div>
+
+          <div class="guide-nav fade-in">
+            <a href="資源再生" class="btn btn-outline">← 資源再生</a>
+            <a href="../海風指南" class="btn btn-outline">返回目錄</a>
+            <a href="礦物代換" class="btn btn-primary">礦物代換 →</a>
           </div>
         </div>
 
-        <div class="guide-nav fade-in"><a href="靈魂出竅" class="btn btn-outline">← 靈魂出竅</a><a href="../海風指南" class="btn btn-outline">返回目錄</a></div>
-    </div>
-  
       </div><!-- /guide-main -->
     </div><!-- /guide-layout -->
   </div>
-    <footer class="footer">
+
+  <footer class="footer">
     <div class="footer-inner">
       <div class="footer-brand">
         <span class="footer-logo">海風伺服器 SeaWind.cc</span>
@@ -370,7 +434,7 @@
     </div>
   </footer>
 
-<!-- Music Player -->
+  <!-- Music Player -->
   <div class="music-player" id="musicPlayer">
     <button class="music-btn" id="musicBtn" aria-label="音樂播放">
       <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
@@ -384,5 +448,5 @@
 
   <script src="../main.js?v=020502a"></script>
   <script src="../music-player.js"></script>
-  </body>
+</body>
 </html>

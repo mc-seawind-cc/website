@@ -4,9 +4,9 @@
   <meta charset="UTF-8">
   <meta name="color-scheme" content="dark light">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>海風 — 海風指南 — 遊戲機制</title>
+  <title>遊戲機制 — 海風指南 — 海風 SeaWind</title>
   <link rel="canonical" href="https://www.seawind.cc/海風指南/遊戲機制">
-  <meta name="description" content="海風伺服器遊戲機制修改與各分流設定。">
+  <meta name="description" content="海風伺服器遊戲機制修改與各分流設定，包含難度、邊界、定期重啟、硬體資訊等完整總覽。">
   <meta property="og:title" content="遊戲機制 — 海風指南 — 海風">
   <meta property="og:description" content="海風伺服器遊戲機制修改與各分流設定。">
   <meta property="og:image" content="../assets/img/logo.png">
@@ -29,7 +29,6 @@
   </div>
 
   <a href="#mainContent" class="skip-link">跳到主要內容</a>
-
   <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
   <div class="bg-atmosphere"></div>
 
@@ -83,18 +82,8 @@
   </nav>
 
   <div class="page">
-          <!-- ═══ Hero ═══ -->
-      <div class="guide-v2-hero fade-in">
-        <h1>遊戲機制</h1>
-          <p class="section-desc">列出海風修改的遊戲機制或遊戲資訊。</p>
-          <div class="guide-quick-stats">
-            <div class="guide-qs-item"><span class="guide-qs-icon">📖</span><span>內容</span><span class="guide-qs-val">完整一覽</span></div>
-            <div class="guide-qs-item"><span class="guide-qs-icon">🌍</span><span>世界</span><span class="guide-qs-val">±40 萬格</span></div>
-            <div class="guide-qs-item"><span class="guide-qs-icon">⚔️</span><span>難度</span><span class="guide-qs-val">困難</span></div>
-          </div>
-      </div><div class="guide-layout">
+    <div class="guide-layout">
 
-                  <!-- 側邊導覽 -->
             <aside class="guide-sidebar">
         <div class="guide-sidebar-inner">
           <div class="guide-sidebar-title">📖 海風指南</div>
@@ -187,174 +176,298 @@
         </div>
       </aside>
 
-      <div class="guide-main">
+      <div class="guide-main" id="mainContent">
 
-        <div class="content-section">
+        <div class="breadcrumb fade-in">
+          <a href="../海風指南">海風指南</a>
+          <span class="sep">›</span>
+          <span class="current">遊戲機制</span>
+        </div>
 
-          <div class="article-body fade-in">
-
-            <p>海風伺服器針對遊戲機制做了不少修改與調整，以下列出各分流共用及各自獨有的設定。</p>
-
-            <!-- 伺服器硬體 -->
-            <h2>🖥️ 伺服器硬體</h2>
-            <div class="rules-table-wrap">
-              <table class="rules-table">
-                <thead><tr><th>主機</th><th>CPU</th><th>記憶體</th></tr></thead>
-                <tbody>
-                  <tr><td><strong>分一</strong>（7950X）</td><td>5 核心</td><td>20 GB</td></tr>
-                  <tr><td><strong>分二</strong>（E5-2690v4）</td><td>2 核心</td><td>8 GB</td></tr>
-                  <tr><td><strong>測試分流</strong>（E5-2690v4）</td><td>2 核心</td><td>8 GB</td></tr>
-                  <tr><td><strong>活動分流</strong>（E5-2690v4）</td><td>2 核心</td><td>8 GB</td></tr>
-                </tbody>
-              </table>
-            </div>
-
-            <!-- 全分流設定 -->
-            <h2>全分流設定</h2>
-            <div class="callout callout-info">
-              <span class="callout-icon">📋</span>
-              <div>
-                <p><strong>伺服器版本</strong>：<code>1.21.11</code></p>
-                <p><strong>難易度</strong>：困難</p>
-              </div>
-            </div>
-
-            <h2><span class="sec-icon">🌍</span> 世界大小</h2>
-            <ul>
-              <li>主世界：<code>±40 萬</code></li>
-              <li>地獄：<code>±10 萬</code></li>
-              <li>終界：<code>±20 萬</code></li>
-            </ul>
-
-            <h2><span class="sec-icon">⚙️</span> 通用設定</h2>
-            <ul>
-              <li>跳過夜晚所需玩家比例：<code>50%</code></li>
-              <li><code>/trigger sit</code> 可讓玩家坐下</li>
-              <li>切石機新增木製品相關配方</li>
-              <li>界伏盒放置後會顯示自訂名稱</li>
-            </ul>
-
-            <h2><span class="sec-icon">💎</span> 寶庫冷卻時間</h2>
-            <ul>
-              <li>一般寶庫：<code>1 小時</code></li>
-              <li>不詳寶庫：<code>5 小時</code></li>
-            </ul>
-
-            <h2><span class="sec-icon">🔄</span> 定期重啟</h2>
-            <div class="callout callout-info">
-              <span class="callout-icon">⏰</span>
-              <div>
-                <p>伺服器固定在<strong>每週一早上 6:00</strong> 進行例行重啟，以維持穩定性與效能。重啟期間所有分流會短暫離線，請提前做好準備。</p>
-              </div>
-            </div>
-
-            <!-- 分流一 -->
-            <h2>分流一</h2>
-            <div class="callout callout-tip">
-              <span class="callout-icon">🌱</span>
-              <div>
-                <p><strong>種子碼</strong>：<code>-9039856519974773571</code></p>
-              </div>
-            </div>
-
-            <h2><span class="sec-icon">🏗️</span> 建築高度</h2>
-            <p>主世界建築高度上限提升至 <strong>639 層</strong>。</p>
-
-            <h2>🧪 實驗性機制</h2>
-            <ul>
-              <li>營火放置時不會自動點燃</li>
-              <li>蹲下挖掘半磚只會破壞選取的部分</li>
-              <li>站在切石機上方會受到傷害</li>
-              <li>蹲下點擊堆肥桶可一次性填滿</li>
-              <li>積雪最大厚度改為 5，且平滑過渡</li>
-              <li>青金石可留在附魔台中不被消耗</li>
-            </ul>
-
-            <h2><span class="sec-icon">👻</span> 快樂幽靈</h2>
-            <ul>
-              <li>跟隨與遊蕩距離調整為 <code>24</code></li>
-              <li>移動速度些許提升</li>
-            </ul>
-
-            <h2><span class="sec-icon">🛡️</span> 其他機制</h2>
-            <ul>
-              <li>不死圖騰在背包欄位內也會生效</li>
-              <li>動物繁殖冷卻時間縮短為 <code>5 秒</code></li>
-              <li>雪球丟向營火可將其熄滅</li>
-              <li>戴帽子：手持帽子物品對著自己或點擊其他玩家，可以把帽子戴在頭上</li>
-              <li>自殺指令：<code>/kill</code> 可以讓自己死亡回到重生點，被困住時很實用</li>
-            </ul>
-
-            <!-- 分流二 -->
-            <h2>分流二</h2>
-            <div class="callout callout-tip">
-              <span class="callout-icon">🌱</span>
-              <div>
-                <p><strong>種子碼</strong>：<code>9119518522136372468</code></p>
-              </div>
-            </div>
-
-            <h2><span class="sec-icon">⚔️</span> 突襲</h2>
-            <p>恢復突襲隊長擊殺後給予玩家不祥之兆的效果。</p>
-
-            <h2><span class="sec-icon">🔨</span> 其他</h2>
-            <ul>
-              <li>可以破壞基岩</li>
-            </ul>
-
+        <!-- ═══ Hero ═══ -->
+        <div class="guide-v2-hero fade-in">
+          <h1>⚙️ 遊戲機制</h1>
+          <p class="section-desc">海風伺服器針對原版遊戲機制做了不少調整與優化，讓生存體驗更順暢、更有趣。這裡列出各分流共用及各自獨有的設定，幫助你快速了解伺服器的運作方式。</p>
+          <div class="guide-quick-stats">
+            <div class="guide-qs-item"><span class="guide-qs-icon">🌍</span><span>世界邊界</span><span class="guide-qs-val">±40 萬格</span></div>
+            <div class="guide-qs-item"><span class="guide-qs-icon">⚔️</span><span>難度</span><span class="guide-qs-val">困難</span></div>
+            <div class="guide-qs-item"><span class="guide-qs-icon">🖥️</span><span>分流數量</span><span class="guide-qs-val">4 條</span></div>
           </div>
+        </div>
 
-          
         <div class="guide-divider"></div>
 
+        <!-- ═══ 伺服器硬體 ═══ -->
+        <div class="guide-section-card fade-in" style="--card-accent:var(--ocean-blue)">
+          <h2><span class="sec-icon">🖥️</span> 伺服器硬體</h2>
+          <p>海風採用多分流架構，各分流分配在不同的主機上，確保穩定運行。</p>
+          <div class="rules-table-wrap">
+            <table class="rules-table">
+              <thead><tr><th>分流</th><th>CPU</th><th>記憶體</th><th>用途</th></tr></thead>
+              <tbody>
+                <tr><td><strong>分流一</strong></td><td>AMD 7950X · 5 核心</td><td>20 GB</td><td>主要生存分流</td></tr>
+                <tr><td><strong>分流二</strong></td><td>E5-2690v4 · 2 核心</td><td>8 GB</td><td>第二生存分流</td></tr>
+                <tr><td><strong>測試分流</strong></td><td>E5-2690v4 · 2 核心</td><td>8 GB</td><td>新功能測試</td></tr>
+                <tr><td><strong>活動分流</strong></td><td>E5-2690v4 · 2 核心</td><td>8 GB</td><td>節日活動與特殊玩法</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="callout callout-info">
+            <span class="callout-icon">💡</span>
+            <div>
+              <p><strong>分流一</strong>是效能最好的分流，建議主要在分流一進行遊戲。如果分流一人數較多，可以考慮轉移到分流二。</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="guide-divider"></div>
+
+        <!-- ═══ 分流說明 ═══ -->
+        <div class="guide-section-card fade-in" style="--card-accent:var(--lavender)">
+          <h2><span class="sec-icon">🔀</span> 分流說明</h2>
+          <p>海風目前有 4 條分流，每條分流都有獨立的世界檔案，但共用帳號資料（風幣、倉庫、稱號等）。</p>
+
+          <h3 style="margin-top:var(--space-lg)">分流一 & 分流二</h3>
+          <p>主要的生存分流，玩家可以在兩條分流之間自由切換。兩個分流的世界種子不同，地形也不一樣，但共享同一套經濟與帳號系統。你的建築、領地、倉庫資料在兩條分流之間<strong>不互通</strong>，切換前請確認。</p>
+
+          <h3 style="margin-top:var(--space-md)">測試分流</h3>
+          <p>用於測試新功能與機制調整。測試分流的資料可能會不定期重置，請不要在上面投入太多心力建設。想搶先體驗新功能的玩家可以來這裡玩玩看。</p>
+
+          <h3 style="margin-top:var(--space-md)">活動分流</h3>
+          <p>舉辦節日活動或特殊玩法時開放。活動結束後通常會關閉或重置。留意公告就能知道活動分流的開放時間。</p>
+        </div>
+
+        <div class="guide-divider"></div>
+
+        <!-- ═══ 全分流通用設定 ═══ -->
+        <div class="guide-section-card fade-in" style="--card-accent:var(--sand)">
+          <h2><span class="sec-icon">⚙️</span> 全分流通用設定</h2>
+          <p>以下設定在所有分流中都適用：</p>
+
+          <div class="callout callout-info">
+            <span class="callout-icon">📋</span>
+            <div>
+              <p><strong>伺服器版本</strong>：<code>1.21.11</code>（建議使用此版本連線）</p>
+              <p><strong>難易度</strong>：困難</p>
+              <p><strong>遊戲模式</strong>：生存</p>
+            </div>
+          </div>
+
+          <h3 style="margin-top:var(--space-lg)">🌍 世界大小</h3>
+          <div class="rules-table-wrap">
+            <table class="rules-table">
+              <thead><tr><th>維度</th><th>邊界範圍</th></tr></thead>
+              <tbody>
+                <tr><td>主世界</td><td><code>±400,000</code>（±40 萬格）</td></tr>
+                <tr><td>地獄</td><td><code>±100,000</code>（±10 萬格）</td></tr>
+                <tr><td>終界</td><td><code>±200,000</code>（±20 萬格）</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h3 style="margin-top:var(--space-lg)">🛏️ 睡眠與跳夜</h3>
+          <ul>
+            <li>跳過夜晚所需玩家比例：<code>50%</code>（不用全部人都上床）</li>
+            <li>在領地內睡覺不會影響其他玩家的跳夜投票</li>
+          </ul>
+
+          <h3 style="margin-top:var(--space-md)">🎮 通用功能</h3>
+          <ul>
+            <li><code>/trigger sit</code> — 讓玩家原地坐下，RP 或拍照時很實用</li>
+            <li>切石機新增木製品相關配方，方便加工木板</li>
+            <li>界伏盒放置後會顯示自訂名稱，找東西更方便</li>
+            <li>不死圖騰放在背包欄位內也會生效（不一定要拿在手上）</li>
+          </ul>
+
+          <h3 style="margin-top:var(--space-md)">💎 寶庫冷卻時間</h3>
+          <ul>
+            <li>一般寶庫冷卻：<code>1 小時</code></li>
+            <li>不詳寶庫冷卻：<code>5 小時</code></li>
+          </ul>
+        </div>
+
+        <div class="guide-divider"></div>
+
+        <!-- ═══ 分流一專屬設定 ═══ -->
+        <div class="guide-section-card fade-in" style="--card-accent:var(--foam)">
+          <h2><span class="sec-icon">🌱</span> 分流一專屬設定</h2>
+
+          <div class="callout callout-tip">
+            <span class="callout-icon">🗺️</span>
+            <div>
+              <p><strong>種子碼</strong>：<code>-9039856519974773571</code></p>
+            </div>
+          </div>
+
+          <h3 style="margin-top:var(--space-lg)">🏗️ 建築高度</h3>
+          <p>主世界建築高度上限提升至 <strong>639 層</strong>（原版為 319 層），讓高樓建築有更多發揮空間。</p>
+
+          <h3 style="margin-top:var(--space-md)">🧪 實驗性機制</h3>
+          <ul>
+            <li><strong>營火不會自動點燃</strong> — 放置營火時不會自動著火，需要手動點火</li>
+            <li><strong>蹲下挖掘半磚</strong> — 蹲下時只會破壞選取的半磚部分，不會連帶破壞其他面</li>
+            <li><strong>切石機傷害</strong> — 站在切石機上方會受到少量傷害</li>
+            <li><strong>快速填滿堆肥桶</strong> — 蹲下點擊堆肥桶可一次性填滿</li>
+            <li><strong>積雪厚度</strong> — 最大厚度改為 5 層，且平滑過渡，雪地景觀更自然</li>
+            <li><strong>青金石保留</strong> — 青金石可留在附魔台中不被消耗</li>
+          </ul>
+
+          <h3 style="margin-top:var(--space-md)">👻 快樂幽靈調整</h3>
+          <ul>
+            <li>跟隨與遊蕩距離調整為 <code>24</code> 格</li>
+            <li>移動速度些許提升，跟隨主人更即時</li>
+          </ul>
+
+          <h3 style="margin-top:var(--space-md)">🛡️ 其他調整</h3>
+          <ul>
+            <li><strong>動物繁殖冷卻</strong> — 縮短為 <code>5 秒</code>（原版 5 分鐘）</li>
+            <li><strong>雪球滅火</strong> — 雪球丟向營火可將其熄滅</li>
+            <li><strong>戴帽子</strong> — 手持帽子物品對著自己或點擊其他玩家，可以把帽子戴在頭上</li>
+            <li><strong>自殺指令</strong> — <code>/kill</code> 可以讓自己死亡回到重生點，被困住時很實用</li>
+          </ul>
+        </div>
+
+        <div class="guide-divider"></div>
+
+        <!-- ═══ 分流二專屬設定 ═══ -->
+        <div class="guide-section-card fade-in" style="--card-accent:var(--sky)">
+          <h2><span class="sec-icon">⚔️</span> 分流二專屬設定</h2>
+
+          <div class="callout callout-tip">
+            <span class="callout-icon">🗺️</span>
+            <div>
+              <p><strong>種子碼</strong>：<code>9119518522136372468</code></p>
+            </div>
+          </div>
+
+          <h3 style="margin-top:var(--space-lg)">⚔️ 突襲機制</h3>
+          <p>恢復原版突襲機制 — 擊殺突襲隊長後會給予玩家<strong>不祥之兆</strong>效果，觸發村莊突襲事件。喜歡挑戰突襲玩法的玩家可以選擇分流二。</p>
+
+          <h3 style="margin-top:var(--space-md)">🔨 破壞基岩</h3>
+          <p>分流二允許玩家<strong>破壞基岩</strong>，這在原版中是不可能的。這個設定讓玩家可以自由進出地獄天花板上方，適合喜歡探索或建造特殊裝置的玩家。</p>
+        </div>
+
+        <div class="guide-divider"></div>
+
+        <!-- ═══ 定期重啟 ═══ -->
+        <div class="guide-section-card fade-in" style="--card-accent:var(--lavender)">
+          <h2><span class="sec-icon">🔄</span> 定期重啟</h2>
+          <p>為了維持伺服器穩定性與效能，海風會定期進行例行重啟。</p>
+
+          <div class="callout callout-info">
+            <span class="callout-icon">⏰</span>
+            <div>
+              <p><strong>重啟時間</strong>：每週一早上 6:00（台灣時間）</p>
+              <p><strong>影響範圍</strong>：所有分流同時離線</p>
+              <p><strong>預計時間</strong>：通常幾分鐘內完成</p>
+            </div>
+          </div>
+
+          <h3 style="margin-top:var(--space-lg)">重啟注意事項</h3>
+          <ul>
+            <li>重啟前會有系統廣播提醒，請提前做好準備</li>
+            <li>正在進行中的交易或操作請盡快完成</li>
+            <li>重啟期間所有分流會暫時無法連線，等待幾分鐘後重新連線即可</li>
+            <li>你的建築、物品、領地等資料都不會受到影響</li>
+            <li>如果重啟後遇到異常，可以到 Discord 反應</li>
+          </ul>
+        </div>
+
+        <div class="guide-divider"></div>
+
+        <!-- ═══ 遊戲規則 ═══ -->
+        <div class="guide-section-card fade-in" style="--card-accent:var(--sand)">
+          <h2><span class="sec-icon">📜</span> 遊戲規則</h2>
+          <p>海風是一個重視社群品質的伺服器，請遵守以下基本規則：</p>
+
+          <h3 style="margin-top:var(--space-lg)">✅ 允許的行為</h3>
+          <ul>
+            <li>自由建造、探索、開採資源</li>
+            <li>與其他玩家進行交易（箱子商店、線上商城等）</li>
+            <li>加入或創建社區</li>
+            <li>參加伺服器活動</li>
+            <li>使用各種便利功能（連鎖挖掘、自動拾取等）</li>
+          </ul>
+
+          <h3 style="margin-top:var(--space-md)">❌ 禁止的行為</h3>
+          <ul>
+            <li><strong>惡意破壞</strong> — 未經同意破壞他人建築或領地</li>
+            <li><strong>偷竊</strong> — 竊取其他玩家的物品或資源</li>
+            <li><strong>作弊</strong> — 使用外掛、漏洞或不當手段獲取利益</li>
+            <li><strong>惡意刷物品</strong> — 利用 Bug 無限複製物品</li>
+            <li><strong>騷擾</strong> — 對其他玩家進行人身攻擊或騷擾行為</li>
+            <li><strong>洗頻</strong> — 在聊天頻道重複發送無意義訊息</li>
+          </ul>
+
+          <div class="callout callout-tip">
+            <span class="callout-icon">📖</span>
+            <div>
+              <p>詳細的社群規範請參考<a href="../社群須知">社群須知</a>與<a href="../管理通則">管理通則</a>。違反規範將依據通則進行處分。</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="guide-divider"></div>
+
+        <!-- ═══ 常見問題 ═══ -->
         <div class="guide-section-card fade-in" style="--card-accent:#85b1e0">
           <h2><span class="sec-icon">❓</span> 常見問題</h2>
           <div class="guide-faq">
             <div class="guide-faq-item">
               <button class="guide-faq-q">伺服器版本是多少？</button>
-              <div class="guide-faq-a"><div class="guide-faq-a-inner"><strong>1.21.11</strong>。建議使用此版本連線。</div></div>
+              <div class="guide-faq-a"><div class="guide-faq-a-inner"><strong>1.21.11</strong>。建議使用此版本連線以獲得最佳體驗。版本不符可能會導致部分功能異常。</div></div>
             </div>
             <div class="guide-faq-item">
-              <button class="guide-faq-q">難度是什麼？</button>
-              <div class="guide-faq-a"><div class="guide-faq-a-inner"><strong>困難</strong>模式。</div></div>
+              <button class="guide-faq-q">分流一和分流二有什麼不同？</button>
+              <div class="guide-faq-a"><div class="guide-faq-a-inner">主要差異在於專屬設定：分流一有實驗性機制（快速堆肥、半磚精準挖掘等）和更高的建築高度（639 層）；分流二恢復原版突襲機制並允許破壞基岩。硬體方面分流一使用 7950X 效能較好。帳號資料（風幣、倉庫）在兩條分流之間共用，但建築和領地不互通。</div></div>
             </div>
             <div class="guide-faq-item">
               <button class="guide-faq-q">世界有多大？</button>
-              <div class="guide-faq-a"><div class="guide-faq-a-inner">主世界 ±40 萬格、地獄 ±10 萬格、終界 ±20 萬格。</div></div>
+              <div class="guide-faq-a"><div class="guide-faq-a-inner">主世界 ±40 萬格、地獄 ±10 萬格、終界 ±20 萬格。探索空間非常充足，不用擔心不夠用。</div></div>
+            </div>
+            <div class="guide-faq-item">
+              <button class="guide-faq-q">重啟會影響我的資料嗎？</button>
+              <div class="guide-faq-a"><div class="guide-faq-a-inner">不會。定期重啟只是為了維持效能，你的建築、物品、領地等所有資料都會完整保留。重啟前會有廣播提醒，讓你有時間做好準備。</div></div>
             </div>
           </div>
         </div>
 
-          </div>
-        </div>
-
-          </div>
-        </div>
-          </div>
-        </div>
-
-        
         <div class="guide-divider"></div>
 
+        <!-- ═══ 相關頁面 ═══ -->
         <div class="guide-section-card fade-in" style="--card-accent:var(--ocean-blue)">
           <h2><span class="sec-icon">📖</span> 相關頁面</h2>
           <div class="guide-next-grid">
-            <a href="連鎖挖掘" class="guide-next-card">
-              <span class="guide-next-icon">⚙️</span>
+            <a href="新手指引" class="guide-next-card">
+              <span class="guide-next-icon">🚀</span>
               <div class="guide-next-body">
-                <h4>連鎖挖掘</h4>
-                <p>一次挖整棵樹、整片礦</p>
+                <h4>新手指引</h4>
+                <p>剛加入海風？從這裡開始</p>
+              </div>
+            </a>
+            <a href="伺服器選單" class="guide-next-card">
+              <span class="guide-next-icon">📋</span>
+              <div class="guide-next-body">
+                <h4>伺服器選單</h4>
+                <p>快速傳送到各個功能區域</p>
+              </div>
+            </a>
+            <a href="資源再生" class="guide-next-card">
+              <span class="guide-next-icon">♻️</span>
+              <div class="guide-next-body">
+                <h4>資源再生</h4>
+                <p>資源不會枯竭的秘密</p>
               </div>
             </a>
           </div>
         </div>
 
         <div class="guide-nav fade-in">
-            <a href="大廳區域" class="btn btn-outline">← 大廳區域</a>
-            <a href="資源再生" class="btn btn-outline">資源再生 →</a>
-          </div>
-
+          <a href="伺服器選單" class="btn btn-outline">← 伺服器選單</a>
+          <a href="../海風指南" class="btn btn-outline">返回目錄</a>
+          <a href="新手指引" class="btn btn-primary">新手指引 →</a>
         </div>
+
       </div>
     </div>
   </div>

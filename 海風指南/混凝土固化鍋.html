@@ -187,52 +187,134 @@
       </aside>
 
       <div class="guide-main"><div class="breadcrumb fade-in"><a href="../海風指南">海風指南</a><span class="sep">›</span><span class="current">混凝土固化鍋</span></div>
-      
-        
+
         <!-- ═══ 功能說明 ═══ -->
         <div class="guide-section-card fade-in" style="--card-accent:var(--sand)">
           <h2><span class="sec-icon">🪣</span> 功能說明</h2>
-          <p>在原版 Minecraft 中，混凝土粉末必須接觸水源才能固化，通常需要蓋大型固化機。海風加入了<strong>混凝土固化鍋</strong>功能，讓你用更簡單的方式固化混凝土。</p>
-          <p>把混凝土粉末丟進裝有水的<strong>鍋釜</strong>（Cauldron），粉末碰到水就會自動固化成混凝土方塊。</p>
+          <p>在原版 Minecraft 中，混凝土粉末必須接觸水源才能固化，通常需要蓋大型固化機或挖水道。海風加入了<strong>混凝土固化鍋</strong>功能，讓你用一個鍋釜就能搞定，既省空間又不影響伺服器效能。</p>
+          <p>只要把混凝土粉末丟進裝有水的<strong>鍋釜</strong>（Cauldron），粉末碰到水就會自動固化成混凝土方塊。操作直覺、效率高，是建築玩家的必備工具。</p>
         </div>
 
         <div class="guide-divider"></div>
 
-        <!-- ═══ 使用方式 ═══ -->
+        <!-- ═══ 使用步驟 ═══ -->
         <div class="guide-section-card fade-in" style="--card-accent:var(--foam)">
-          <h2><span class="sec-icon">📖</span> 使用方式</h2>
+          <h2><span class="sec-icon">📖</span> 使用步驟教學</h2>
           <div class="guide-steps-grid">
             <div class="guide-step-card" style="--step-color:var(--foam)">
               <span class="guide-step-num">1</span>
               <h4>放置鍋釜</h4>
-              <p>在想要的位置放一個鍋釜</p>
+              <p>在想要的位置放一個鍋釜，確保周圍有足夠空間放置固化後的方塊</p>
             </div>
             <div class="guide-step-card" style="--step-color:var(--foam)">
               <span class="guide-step-num">2</span>
               <h4>裝水</h4>
-              <p>用水桶對鍋釜右鍵，裝滿水</p>
+              <p>用水桶對鍋釜右鍵裝滿水，鍋釜會顯示水位上升</p>
             </div>
             <div class="guide-step-card" style="--step-color:var(--foam)">
               <span class="guide-step-num">3</span>
               <h4>丟入粉末</h4>
-              <p>把混凝土粉末丟進去，碰到水就固化</p>
+              <p>把混凝土粉末丟進鍋釜（用 Q 鍵丟出物品），碰到水就自動固化</p>
+            </div>
+            <div class="guide-step-card" style="--step-color:var(--foam)">
+              <span class="guide-step-num">4</span>
+              <h4>拾取方塊</h4>
+              <p>固化後的混凝土方塊會出現在鍋釜附近，撿起來就能使用</p>
             </div>
           </div>
-          <div class="callout callout-tip"><span class="callout-icon">💡</span><span>固化後的混凝土方塊會自動出現在鍋釜附近，記得留空間給它。</span></div>
+          <div class="callout callout-tip"><span class="callout-icon">💡</span><span>整組粉末丟進去都行，它會一個一個固化。鍋釜裡的水不會用完，可以無限次使用。</span></div>
+        </div>
+
+        <div class="guide-divider"></div>
+
+        <!-- ═══ 支援的混凝土類型 ═══ -->
+        <div class="guide-section-card fade-in" style="--card-accent:var(--lavender)">
+          <h2><span class="sec-icon">🎨</span> 支援的混凝土類型</h2>
+          <p>所有 16 種顏色的混凝土粉末都可以透過固化鍋固化，包括：</p>
+          <div class="rules-table-wrap">
+            <table class="rules-table">
+              <thead><tr><th>顏色</th><th>顏色</th><th>顏色</th><th>顏色</th></tr></thead>
+              <tbody>
+                <tr><td>⬜ 白色</td><td>🟧 橙色</td><td>🟥 紅色</td><td>🟫 棕色</td></tr>
+                <tr><td>🟡 黃色</td><td>🟢 綠色</td><td>🟩 淺綠色</td><td>🔵 藍色</td></tr>
+                <tr><td>🔷 淺藍色</td><td>🟣 紫色</td><td>🩷 粉紅色</td><td>⬛ 黑色</td></tr>
+                <tr><td>⬜ 灰色</td><td>🔘 淺灰色</td><td>🔵 青色</td><td>🟦 品紅色</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p style="margin-top:var(--space-md);color:var(--fog);font-size:0.85rem">無論哪種顏色，固化方式都一樣。丟進鍋釜就對了！</p>
+        </div>
+
+        <div class="guide-divider"></div>
+
+        <!-- ═══ 放置與使用技巧 ═══ -->
+        <div class="guide-section-card fade-in" style="--card-accent:var(--ocean-blue)">
+          <h2><span class="sec-icon">💡</span> 放置與使用技巧</h2>
+          <ul class="rules-list">
+            <li><strong>批量固化</strong>：一次丟一整組（64 個）粉末進去也沒問題，會依序固化</li>
+            <li><strong>空間規劃</strong>：鍋釜周圍留至少一格空位，讓固化後的方塊有地方生成</li>
+            <li><strong>室內使用</strong>：不需要露天水源，室內也能用，非常適合建築工作室</li>
+            <li><strong>鍋釜不消耗水</strong>：裝滿水的鍋釜可以無限次使用，不需要一直補水</li>
+            <li><strong>顏色分類</strong>：建議按顏色分開放置鍋釜，避免混亂</li>
+            <li><strong>搭配箱子</strong>：在鍋釜旁邊放箱子，固化完直接收納，效率更高</li>
+          </ul>
         </div>
 
         <div class="guide-divider"></div>
 
         <!-- ═══ 好處 ═══ -->
-        <div class="guide-section-card fade-in" style="--card-accent:var(--lavender)">
+        <div class="guide-section-card fade-in" style="--card-accent:var(--foam)">
           <h2><span class="sec-icon">✨</span> 為什麼用固化鍋</h2>
+          <p>比起傳統的固化機，混凝土固化鍋有許多優勢：</p>
+          <div class="guide-steps-grid">
+            <div class="guide-step-card" style="--step-color:var(--foam)">
+              <span class="guide-step-num">1</span>
+              <h4>減少卡頓</h4>
+              <p>傳統固化機需要大量流水計算，容易造成伺服器延遲。固化鍋不需要流水，對伺服器更友善</p>
+            </div>
+            <div class="guide-step-card" style="--step-color:var(--foam)">
+              <span class="guide-step-num">2</span>
+              <h4>節省空間</h4>
+              <p>不用蓋大型固化設施，一個鍋釜就搞定，室內也能輕鬆使用</p>
+            </div>
+            <div class="guide-step-card" style="--step-color:var(--foam)">
+              <span class="guide-step-num">3</span>
+              <h4>操作簡單</h4>
+              <p>不需要紅石電路或複雜的水道設計，新手也能輕鬆上手</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="guide-divider"></div>
+
+        <!-- ═══ 建築應用 ═══ -->
+        <div class="guide-section-card fade-in" style="--card-accent:var(--sand)">
+          <h2><span class="sec-icon">🏗️</span> 搭配建築的應用</h2>
+          <p>混凝土是 Minecraft 中最受歡迎的建築方塊之一，表面乾淨、顏色飽和，非常適合用來建造現代風格的建築：</p>
           <ul class="rules-list">
-            <li><strong>減少卡頓</strong>：傳統固化機需要大量流水計算，容易造成伺服器延遲。固化鍋不需要流水，對伺服器更友善</li>
-            <li><strong>節省空間</strong>：不用蓋大型固化設施，一個鍋釜就搞定</li>
-            <li><strong>操作簡單</strong>：不需要紅石電路，新手也能輕鬆使用</li>
+            <li><strong>現代建築</strong>：白色和淺灰色混凝土是最常見的現代風外牆材料</li>
+            <li><strong>像素藝術</strong>：16 種顏色的混凝土可以做出超精緻的像素畫</li>
+            <li><strong>道路鋪設</strong>：黑色和灰色混凝土非常適合做道路和廣場</li>
+            <li><strong>室內裝潢</strong>：各種顏色的混凝土可以做出色彩繽紛的室內設計</li>
+            <li><strong>大型建築</strong>：混凝土的質感統一，大面積使用不會顯得雜亂</li>
+            <li><strong>搭配玻璃</strong>：混凝土搭配玻璃方塊，可以做出很棒的現代風效果</li>
+          </ul>
+          <div class="callout callout-tip"><span class="callout-icon">💡</span><span>在建材小舖可以購買各種混凝土粉末，搭配固化鍋一起使用，建築效率大幅提升！</span></div>
+        </div>
+
+        <div class="guide-divider"></div>
+
+        <!-- ═══ 注意事項 ═══ -->
+        <div class="guide-section-card fade-in" style="--card-accent:var(--lavender)">
+          <h2><span class="sec-icon">⚠️</span> 注意事項</h2>
+          <ul class="rules-list">
+            <li><strong>空間需求</strong>：鍋釜周圍需要有空間讓固化後的方塊生成，不要把鍋釜放在完全封閉的空間</li>
+            <li><strong>粉末丟出</strong>：用 Q 鍵（預設）丟出物品，不是右鍵放置。右鍵會把粉末放回背包</li>
+            <li><strong>顏色確認</strong>：丟入前確認粉末顏色是否正確，固化後無法變更顏色</li>
+            <li><strong>搭配建材小舖</strong>：如果懶得自己挖沙礫，可以在<a href="建材小舖">建材小舖</a>直接購買混凝土粉末</li>
           </ul>
         </div>
-      
+
         <div class="guide-divider"></div>
 
         <div class="guide-section-card fade-in" style="--card-accent:#85b1e0">
@@ -240,45 +322,43 @@
           <div class="guide-faq">
             <div class="guide-faq-item">
               <button class="guide-faq-q">為什麼不直接用水源固化？</button>
-              <div class="guide-faq-a"><div class="guide-faq-a-inner">水源固化需要大型固化機。用鍋釜只要一個方塊的位置，室內也方便。</div></div>
+              <div class="guide-faq-a"><div class="guide-faq-a-inner">水源固化需要大型固化機或水道設施，佔空間且容易造成伺服器卡頓。用鍋釜只要一個方塊的位置，室內也能方便使用，而且對伺服器效能更友善。</div></div>
             </div>
             <div class="guide-faq-item">
               <button class="guide-faq-q">鍋釜裡的水會用完嗎？</button>
-              <div class="guide-faq-a"><div class="guide-faq-a-inner">不會。鍋釜裡的水是無限的。</div></div>
+              <div class="guide-faq-a"><div class="guide-faq-a-inner">不會。鍋釜裡的水是無限的，可以無限次固化混凝土粉末，不需要補水。</div></div>
             </div>
             <div class="guide-faq-item">
               <button class="guide-faq-q">一次可以丟幾個粉末？</button>
-              <div class="guide-faq-a"><div class="guide-faq-a-inner">整組丟進去都行，它會一個一個固化。</div></div>
+              <div class="guide-faq-a"><div class="guide-faq-a-inner">整組丟進去都行，它會一個一個固化。一次丟 64 個也沒問題，只是需要等一下讓它全部固化完成。</div></div>
             </div>
           </div>
         </div>
 
-          </div>
-        </div>
-
-          </div>
-        </div>
-          </div>
-        </div>
-
-        
         <div class="guide-divider"></div>
 
         <div class="guide-section-card fade-in" style="--card-accent:var(--ocean-blue)">
           <h2><span class="sec-icon">📖</span> 相關頁面</h2>
           <div class="guide-next-grid">
             <a href="真實書櫃" class="guide-next-card">
-              <span class="guide-next-icon">🏗️</span>
+              <span class="guide-next-icon">📚</span>
               <div class="guide-next-body">
                 <h4>真實書櫃</h4>
                 <p>書櫃真的可以放書</p>
               </div>
             </a>
             <a href="蜂窩檢視" class="guide-next-card">
-              <span class="guide-next-icon">🏗️</span>
+              <span class="guide-next-icon">🐝</span>
               <div class="guide-next-body">
                 <h4>蜂窩檢視</h4>
                 <p>查看蜂窩內部資訊</p>
+              </div>
+            </a>
+            <a href="更多動作" class="guide-next-card">
+              <span class="guide-next-icon">🪑</span>
+              <div class="guide-next-body">
+                <h4>更多動作</h4>
+                <p>坐下、騎乘等互動</p>
               </div>
             </a>
           </div>

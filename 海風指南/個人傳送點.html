@@ -6,9 +6,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>海風 — 海風指南 — 個人傳送點</title>
   <link rel="canonical" href="https://www.seawind.cc/海風指南/個人傳送點">
-  <meta name="description" content="海風伺服器個人傳送點：設定自己的記錄點，隨時傳送，可跨分流。">
+  <meta name="description" content="海風伺服器個人傳送點：設定自己的記錄點，隨時傳送回家，全分流共用 20 個額度。">
   <meta property="og:title" content="個人傳送點 — 海風指南 — 海風">
-  <meta property="og:description" content="海風伺服器個人傳送點：設定自己的記錄點，隨時傳送，可跨分流。">
+  <meta property="og:description" content="海風伺服器個人傳送點：設定自己的記錄點，隨時傳送回家，全分流共用 20 個額度。">
   <meta property="og:image" content="../assets/img/logo.png">
   <meta property="og:type" content="website">
   <meta name="twitter:card" content="summary">
@@ -88,11 +88,11 @@
           <!-- ═══ Hero ═══ -->
       <div class="guide-v2-hero fade-in">
         <h1>個人傳送點</h1>
-          <p class="section-desc">傳送點分為公共與個人傳送點。</p>
+          <p class="section-desc">設定你自己的記錄點，隨時傳送回家、回礦場、回商店，省下大把跑路時間。</p>
           <div class="guide-quick-stats">
             <div class="guide-qs-item"><span class="guide-qs-icon">📍</span><span>上限</span><span class="guide-qs-val">20 個</span></div>
             <div class="guide-qs-item"><span class="guide-qs-icon">🌐</span><span>範圍</span><span class="guide-qs-val">全分流共用</span></div>
-            <div class="guide-qs-item"><span class="guide-qs-icon">⌨️</span><span>指令</span><span class="guide-qs-val">/sethome /home</span></div>
+            <div class="guide-qs-item"><span class="guide-qs-icon">⌨️</span><span>核心指令</span><span class="guide-qs-val">/home</span></div>
           </div>
       </div>
 
@@ -200,111 +200,182 @@
         <span class="current">個人傳送點</span>
       </div>
 
-      <div class="rules-intro fade-in">
-        <p>回家、回礦場、回商店……每次都要跑太遠了。個人傳送點讓你隨時設定位置座標，走到哪傳到哪，省下大把跑路時間。</p>
-        <div class="callout callout-tip"><span class="callout-icon">💡</span><span>此頁面不是<a href="公共傳送點">公共傳送點</a>。個人傳送點只有自己看得到、用得到。</span></div>
+        <!-- ═══ 功能說明 ═══ -->
+        <div class="guide-section-card fade-in" style="--card-accent:var(--sand)">
+        <h2><span class="sec-icon">📋</span> 什麼是個人傳送點？</h2>
+        <p>個人傳送點就是你的「回家按鈕」。在任何地方設定一個傳送點，以後不管跑到多遠，一個指令就能瞬間傳送回去。</p>
+        <p>每個玩家最多可以設定 <strong>20 個</strong>個人傳送點，全分流共用。你可以把常用的地點——家、礦場、商店、冒險據點——全部記下來，再也不用花時間跑路。</p>
+        <div class="callout callout-tip"><span class="callout-icon">💡</span><span>個人傳送點只有你自己看得到、用得到。其他玩家無法使用你的傳送點，也看不到它們的位置。</span></div>
       </div>
 
         <div class="guide-divider"></div>
 
+        <!-- ═══ 基本資訊 ═══ -->
         <div class="guide-section-card fade-in" style="--card-accent:var(--sand)">
-        <h2><span class="sec-icon">📋</span> 基本資訊</h2>
-        <ul class="rules-list">
-          <li>全分流共 <strong>20</strong> 個額度，跨分流共享。不管你在哪個分流，總共只能設 20 個。</li>
-          <li>每個傳送點可以自訂名稱，方便辨識。</li>
-          <li>只有你自己能看見和使用這些傳送點。</li>
-        </ul>
-      </div>
-
-        <div class="guide-divider"></div>
-
-        <div class="guide-section-card fade-in" style="--card-accent:var(--sand)">
-          <h2><span class="sec-icon">📖</span> 使用教學</h2>
-        <ul class="rules-list">
-          <li><strong>設定傳送點</strong> — 站在你想記住的位置，輸入 <code>/home set &lt;名稱&gt;</code>。例如站在礦場入口就輸入 <code>/home set 礦場</code>。</li>
-          <li><strong>傳送</strong> — 隨時輸入 <code>/home &lt;名稱&gt;</code> 就能立刻傳送到該位置。例如 <code>/home 礦場</code>。</li>
-          <li><strong>查看列表</strong> — 輸入 <code>/home list</code> 可以查看所有已設定的傳送點。</li>
-          <li><strong>刪除</strong> — 不再需要的傳送點用 <code>/home del &lt;名稱&gt;</code> 移除。例如 <code>/home del 礦場</code>。</li>
-        </ul>
-      </div>
-
-        <div class="guide-divider"></div>
-
-        <div class="guide-section-card fade-in" style="--card-accent:var(--sand)">
-          <h2><span class="sec-icon">💡</span> 使用情境</h2>
-        <ul class="rules-list">
-          <li><strong>礦場</strong> — 在礦場入口設一個，挖完礦直接傳回家整理背包。</li>
-          <li><strong>家</strong> — 主基地設一個，不管跑多遠都能秒回家。</li>
-          <li><strong>商店</strong> — 常去的商店或交易點設一個，買東西不用跑半天。</li>
-          <li><strong>冒險據點</strong> — 探險時在重要地標設一個，迷路了也能快速返回。</li>
-        </ul>
-      </div>
-
-        <div class="guide-divider"></div>
-
-        <div class="guide-section-card fade-in" style="--card-accent:var(--sand)">
-          <h2><span class="sec-icon">🔍</span> 常用指令</h2>
-        <div class="callout callout-tip"><span class="callout-icon">💡</span><span>提示：<code>&lt; &gt;</code> 為必選，<code>[ ]</code> 為可選。</span></div>
+          <h2><span class="sec-icon">📊</span> 基本資訊</h2>
         <div class="rules-table-wrap">
           <table class="rules-table">
-            <thead><tr><th>指令</th><th>說明</th></tr></thead>
+            <thead><tr><th>項目</th><th>說明</th></tr></thead>
             <tbody>
-              <tr><td><code>/home set &lt;名稱&gt;</code></td><td>在當前位置新增個人傳送點。</td></tr>
-              <tr><td><code>/home &lt;名稱&gt;</code></td><td>傳送至指定的個人傳送點。</td></tr>
-              <tr><td><code>/home del &lt;名稱&gt;</code></td><td>移除指定的個人傳送點。</td></tr>
-              <tr><td><code>/home list</code></td><td>列出所有個人傳送點。</td></tr>
+              <tr><td><strong>數量上限</strong></td><td>每個玩家最多 20 個個人傳送點</td></tr>
+              <tr><td><strong>共用範圍</strong></td><td>全分流共用，不管在哪個分流，總共只能設 20 個</td></tr>
+              <tr><td><strong>名稱自訂</strong></td><td>每個傳送點都可以自訂名稱，方便辨識（如「家」、「礦場」）</td></tr>
+              <tr><td><strong>隱私性</strong></td><td>只有你自己能看見和使用，其他玩家無法查看</td></tr>
+              <tr><td><strong>跨分流傳送</strong></td><td>可以從任何分流傳送到任何已設定的傳送點</td></tr>
             </tbody>
           </table>
         </div>
       </div>
 
-      
         <div class="guide-divider"></div>
 
+        <!-- ═══ 指令表 ═══ -->
+        <div class="guide-section-card fade-in" style="--card-accent:var(--lavender)">
+          <h2><span class="sec-icon">🔍</span> 指令一覽表</h2>
+        <div class="callout callout-tip"><span class="callout-icon">💡</span><span>提示：<code>&lt; &gt;</code> 為必選參數，<code>[ ]</code> 為可選參數。</span></div>
+        <div class="rules-table-wrap">
+          <table class="rules-table">
+            <thead><tr><th>指令</th><th>說明</th><th>範例</th></tr></thead>
+            <tbody>
+              <tr><td><code>/home set &lt;名稱&gt;</code></td><td>在當前位置新增個人傳送點</td><td><code>/home set 家</code></td></tr>
+              <tr><td><code>/home &lt;名稱&gt;</code></td><td>傳送至指定的個人傳送點</td><td><code>/home 家</code></td></tr>
+              <tr><td><code>/home list</code></td><td>列出所有已設定的個人傳送點</td><td><code>/home list</code></td></tr>
+              <tr><td><code>/home del &lt;名稱&gt;</code></td><td>移除指定的個人傳送點</td><td><code>/home del 礦場</code></td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="callout callout-info"><span class="callout-icon">ℹ️</span><span>傳送點名稱可以使用中文、英文或數字，但不能包含空格。建議用簡短好記的名稱，方便快速輸入。</span></div>
+      </div>
+
+        <div class="guide-divider"></div>
+
+        <!-- ═══ 使用教學 ═══ -->
+        <div class="guide-section-card fade-in" style="--card-accent:var(--lavender)">
+          <h2><span class="sec-icon">📖</span> 使用教學</h2>
+        <div class="guide-steps-grid">
+          <div class="guide-step-card" style="--step-color:var(--lavender)">
+            <span class="guide-step-num">1</span>
+            <h4>走到目的地</h4>
+            <p>移動到你想記住的位置，例如你的家門口、礦場入口或商店旁邊</p>
+          </div>
+          <div class="guide-step-card" style="--step-color:var(--lavender)">
+            <span class="guide-step-num">2</span>
+            <h4>設定傳送點</h4>
+            <p>在聊天欄輸入 <code>/home set 家</code>（名稱可自訂），系統會確認傳送點已建立</p>
+          </div>
+          <div class="guide-step-card" style="--step-color:var(--lavender)">
+            <span class="guide-step-num">3</span>
+            <h4>隨時傳送</h4>
+            <p>以後不管在哪裡，輸入 <code>/home 家</code> 就能瞬間回到這個位置</p>
+          </div>
+        </div>
+      </div>
+
+        <div class="guide-divider"></div>
+
+        <!-- ═══ 使用情境 ═══ -->
+        <div class="guide-section-card fade-in" style="--card-accent:var(--foam)">
+          <h2><span class="sec-icon">💡</span> 推薦使用情境</h2>
+        <ul class="rules-list">
+          <li><strong>🏠 家（主基地）</strong> — 最重要的傳送點，在主基地設一個，不管跑多遠都能秒回家整理背包、補充物資。</li>
+          <li><strong>⛏️ 礦場入口</strong> — 在礦場入口設一個，挖完礦直接傳回家整理，整理完再傳回礦場繼續挖，效率翻倍。</li>
+          <li><strong>🏪 常去的商店</strong> — 在你常去的箱子商店或交易點設一個，買東西不用跑半天。</li>
+          <li><strong>🏗️ 建築工地</strong> — 大型建築工程需要多次往返取材料，在工地設一個傳送點可以節省大量時間。</li>
+          <li><strong>🗺️ 冒險據點</strong> — 探險時在重要地標設一個，迷路了也能快速返回。探索完畢後記得刪除騰出額度。</li>
+          <li><strong>🌊 資源點</strong> — 甘蔗田、南瓜田、動物牧場等資源採集點，設傳送點方便定期收成。</li>
+        </ul>
+      </div>
+
+        <div class="guide-divider"></div>
+
+        <!-- ═══ 與公共傳送點的差異 ═══ -->
+        <div class="guide-section-card fade-in" style="--card-accent:var(--ocean-blue)">
+          <h2><span class="sec-icon">🔄</span> 個人傳送點 vs 公共傳送點</h2>
+        <p>海風有兩種傳送點系統，用途不同：</p>
+        <div class="rules-table-wrap">
+          <table class="rules-table">
+            <thead><tr><th>比較項目</th><th>個人傳送點</th><th>公共傳送點</th></tr></thead>
+            <tbody>
+              <tr><td><strong>設定者</strong></td><td>玩家自己設定</td><td>管理員預先設定</td></tr>
+              <tr><td><strong>可見性</strong></td><td>只有自己看得到</td><td>所有玩家都能看到</td></tr>
+              <tr><td><strong>數量</strong></td><td>最多 20 個</td><td>由管理員決定</td></tr>
+              <tr><td><strong>位置</strong></td><td>任何你想記住的地方</td><td>官方指定地點（商店、礦場等）</td></tr>
+              <tr><td><strong>使用方式</strong></td><td>輸入 <code>/home</code> 指令</td><td>從選單的傳送分頁選擇</td></tr>
+              <tr><td><strong>適合用途</strong></td><td>個人基地、私人礦場等</td><td>公共設施、商店街等</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="callout callout-info"><span class="callout-icon">ℹ️</span><span>兩種傳送點系統互不衝突，可以同時使用。建議把公共傳送點涵蓋不到的私人地點設為個人傳送點。</span></div>
+      </div>
+
+        <div class="guide-divider"></div>
+
+        <!-- ═══ 額度管理 ═══ -->
+        <div class="guide-section-card fade-in" style="--card-accent:var(--sand)">
+          <h2><span class="sec-icon">📦</span> 額度管理技巧</h2>
+        <ul class="rules-list">
+          <li><strong>優先設定常用地點</strong> — 家、礦場、商店這些每天都去的地方優先設定，偶爾才去一次的可以之後再加。</li>
+          <li><strong>定期清理</strong> — 用 <code>/home list</code> 查看所有傳送點，刪除不再需要的（如已挖完的礦場、已關閉的商店）。</li>
+          <li><strong>善用名稱</strong> — 取一個有意義的名稱，例如「家」、「礦場」、「商店」，而不是「a」、「b」、「c」，方便記憶和管理。</li>
+          <li><strong>探索完畢記得刪除</strong> — 探險時臨時設定的傳送點，探險結束後記得用 <code>/home del</code> 清除，騰出額度給更重要的地點。</li>
+        </ul>
+        <div class="callout callout-warn"><span class="callout-icon">⚠️</span><span>全分流共用 20 個額度。如果你在分流 A 設了 15 個，在分流 B 就只剩 5 個可以設定。刪除傳送點可以回收額度。</span></div>
+      </div>
+
+        <div class="guide-divider"></div>
+
+        <!-- ═══ 常見問題 ═══ -->
         <div class="guide-section-card fade-in" style="--card-accent:#85b1e0">
           <h2><span class="sec-icon">❓</span> 常見問題</h2>
           <div class="guide-faq">
             <div class="guide-faq-item">
               <button class="guide-faq-q">怎麼設定傳送點？</button>
-              <div class="guide-faq-a"><div class="guide-faq-a-inner">站在想設定的位置，輸入 <code>/sethome 名稱</code>。名稱可以自己取。</div></div>
+              <div class="guide-faq-a"><div class="guide-faq-a-inner">站在你想記住的位置，輸入 <code>/home set 名稱</code>。例如在家門口輸入 <code>/home set 家</code>。名稱可以自己取，建議用簡短好記的。</div></div>
             </div>
             <div class="guide-faq-item">
               <button class="guide-faq-q">額度用完了怎麼辦？</button>
-              <div class="guide-faq-a"><div class="guide-faq-a-inner">全分流共 20 個額度。刪除不需要的：<code>/delhome 名稱</code>。</div></div>
+              <div class="guide-faq-a"><div class="guide-faq-a-inner">全分流共 20 個額度。刪除不需要的傳送點來回收額度：<code>/home del 名稱</code>。建議定期用 <code>/home list</code> 檢查並清理不再使用的傳送點。</div></div>
             </div>
             <div class="guide-faq-item">
               <button class="guide-faq-q">傳送點跨分流嗎？</button>
-              <div class="guide-faq-a"><div class="guide-faq-a-inner">是的。20 個額度跨分流共享，所有分流都能使用。</div></div>
+              <div class="guide-faq-a"><div class="guide-faq-a-inner">是的。20 個額度跨分流共享，不管你在哪個分流設定的傳送點，所有分流都能使用。例如在分流 A 設定的「家」，在分流 B 也能用 <code>/home 家</code> 傳送過去。</div></div>
+            </div>
+            <div class="guide-faq-item">
+              <button class="guide-faq-q">其他玩家能用我的傳送點嗎？</button>
+              <div class="guide-faq-a"><div class="guide-faq-a-inner">不能。個人傳送點是完全私人的，只有你自己能看見和使用。如果想讓其他玩家也能傳送，需要使用<a href="公共傳送點">公共傳送點</a>系統（需要權限）。</div></div>
+            </div>
+            <div class="guide-faq-item">
+              <button class="guide-faq-q">傳送到錯誤的位置怎麼辦？</button>
+              <div class="guide-faq-a"><div class="guide-faq-a-inner">可以用 <code>/home del 名稱</code> 刪除錯誤的傳送點，然後在正確的位置重新用 <code>/home set 名稱</code> 設定。覆蓋同名傳送點也可以：直接在新位置重新 set 同一個名稱即可。</div></div>
             </div>
           </div>
         </div>
 
-          </div>
-        </div>
-
-          </div>
-        </div>
-          </div>
-        </div>
-
-        
         <div class="guide-divider"></div>
 
+        <!-- ═══ 相關頁面 ═══ -->
         <div class="guide-section-card fade-in" style="--card-accent:var(--ocean-blue)">
           <h2><span class="sec-icon">📖</span> 相關頁面</h2>
           <div class="guide-next-grid">
             <a href="公共傳送點" class="guide-next-card">
-              <span class="guide-next-icon">🚀</span>
+              <span class="guide-next-icon">📍</span>
               <div class="guide-next-body">
                 <h4>公共傳送點</h4>
-                <p>分享地點給全服玩家</p>
+                <p>官方設定的共享傳送點</p>
               </div>
             </a>
             <a href="電梯" class="guide-next-card">
-              <span class="guide-next-icon">🚀</span>
+              <span class="guide-next-icon">🛗</span>
               <div class="guide-next-body">
                 <h4>電梯</h4>
                 <p>垂直移動超方便</p>
+              </div>
+            </a>
+            <a href="領地系統" class="guide-next-card">
+              <span class="guide-next-icon">🛡️</span>
+              <div class="guide-next-body">
+                <h4>領地系統</h4>
+                <p>保護你的建築與財產</p>
               </div>
             </a>
           </div>
@@ -313,7 +384,7 @@
         <div class="guide-nav fade-in">
         <a href="公共傳送點" class="btn btn-outline">← 公共傳送點</a>
         <a href="../海風指南" class="btn btn-outline">返回目錄</a>
-        <a href="領地系統" class="btn btn-primary">領地系統 →</a>
+        <a href="電梯" class="btn btn-primary">電梯 →</a>
       </div>
 
     </div>

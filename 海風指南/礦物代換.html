@@ -4,9 +4,9 @@
   <meta charset="UTF-8"><meta name="color-scheme" content="dark light"><meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>海風 — 海風指南 — 礦物代換</title>
   <link rel="canonical" href="https://www.seawind.cc/海風指南/礦物代換">
-  <meta name="description" content="仿原版一樣的礦物生成機制。">
+  <meta name="description" content="海風獨特的礦物生成與代換機制。">
   <meta property="og:title" content="礦物代換 — 海風指南 — 海風">
-  <meta property="og:description" content="仿原版一樣的礦物生成機制。">
+  <meta property="og:description" content="海風獨特的礦物生成與代換機制。">
   <meta property="og:image" content="../assets/img/logo.png">
   <meta property="og:type" content="website">
   <meta name="twitter:card" content="summary">
@@ -81,20 +81,20 @@
     </div>
   </nav>
   <div class="page">
-          <!-- ═══ Hero ═══ -->
+      <!-- ═══ Hero ═══ -->
       <div class="guide-v2-hero fade-in">
         <h1>礦物代換</h1>
-          <p class="section-desc">仿原版一樣的礦物生成機制。</p>
-          <div class="guide-quick-stats">
-            <div class="guide-qs-item"><span class="guide-qs-icon">💎</span><span>機制</span><span class="guide-qs-val">隨機生成</span></div>
-            <div class="guide-qs-item"><span class="guide-qs-icon">🔍</span><span>條件</span><span class="guide-qs-val">方塊曝露</span></div>
-            <div class="guide-qs-item"><span class="guide-qs-icon">⚖️</span><span>目的</span><span class="guide-qs-val">經濟平衡</span></div>
-          </div>
+        <p class="section-desc">海風獨特的礦物生成與代換機制。</p>
+        <div class="guide-quick-stats">
+          <div class="guide-qs-item"><span class="guide-qs-icon">💎</span><span>機制</span><span class="guide-qs-val">隨機代換</span></div>
+          <div class="guide-qs-item"><span class="guide-qs-icon">🔍</span><span>條件</span><span class="guide-qs-val">方塊曝露</span></div>
+          <div class="guide-qs-item"><span class="guide-qs-icon">⚖️</span><span>目的</span><span class="guide-qs-val">經濟平衡</span></div>
+        </div>
       </div>
     <div class="guide-layout">
 
-            <!-- 側邊導覽 -->
-            <aside class="guide-sidebar">
+      <!-- 側邊導覽 -->
+      <aside class="guide-sidebar">
         <div class="guide-sidebar-inner">
           <div class="guide-sidebar-title">📖 海風指南</div>
           <nav class="guide-sidebar-nav">
@@ -187,17 +187,72 @@
       </aside>
 
       <div class="guide-main"><div class="breadcrumb fade-in"><a href="../海風指南">海風指南</a><span class="sep">›</span><span class="current">礦物代換</span></div>
-      
-        
+
         <!-- ═══ 機制說明 ═══ -->
         <div class="guide-section-card fade-in" style="--card-accent:var(--ocean-blue)">
           <h2><span class="sec-icon">💎</span> 機制說明</h2>
-          <p>海風的礦物生成機制和原版 Minecraft 有些不同，主要是為了維護伺服器的經濟平衡。</p>
+          <p>海風的礦物生成機制和原版 Minecraft 有些不同。我們導入了<strong>礦物代換</strong>系統，在礦物生成時進行隨機替換，目的是維護伺服器的經濟平衡，避免某些礦物過度氾濫或過度稀缺。</p>
           <ul class="rules-list">
-            <li>礦物分布與原版<strong>大致相同</strong>，鐵在低處、鑽石在深層、金在地獄等</li>
-            <li>礦物<strong>隨機生成</strong>：每次生成的位置和種類都有隨機性</li>
-            <li><strong>曝露才生成</strong>：只有方塊鄰近空氣（曝露在外）時才會生成礦物，埋在 solid stone 裡的不會出現</li>
+            <li><strong>隨機代換</strong>：礦物在生成時有一定機率被替換為其他種類的礦物</li>
+            <li><strong>曝露才生成</strong>：只有方塊鄰近空氣（曝露在外）時才會生成礦物，埋在實心石頭裡的不會出現</li>
+            <li><strong>分布大致相同</strong>：礦物的垂直分布範圍與原版一致，鐵在低處、鑽石在深層、綠寶石在山地</li>
           </ul>
+          <div class="callout callout-info"><span class="callout-icon">ℹ️</span><span>簡單來說：你挖到的礦物可能跟原版不太一樣，但整體分布規律是相似的。這是為了讓經濟更平衡、遊戲更有趣。</span></div>
+        </div>
+
+        <div class="guide-divider"></div>
+
+        <!-- ═══ 代換規則 ═══ -->
+        <div class="guide-section-card fade-in" style="--card-accent:var(--foam)">
+          <h2><span class="sec-icon">🔀</span> 代換規則</h2>
+          <p>礦物代換遵循以下規則：</p>
+          <ul class="rules-list">
+            <li><strong>同層替換</strong>：代換只發生在相同或相近層數的礦物之間，不會把深層礦物替換到地表</li>
+            <li><strong>機率性觸發</strong>：不是每次生成都會觸發代換，有一定的隨機機率</li>
+            <li><strong>稀有度調節</strong>：如果某種礦物在伺服器中過多，代換機率會降低它的出現頻率；反之則提高</li>
+            <li><strong>不影響已生成</strong>：代換只在區塊初次生成時觸發，已經存在的礦物不會被改變</li>
+          </ul>
+          <div class="callout callout-tip"><span class="callout-icon">💡</span><span>搭配<a href="資源再生">資源再生</a>機制，每次區塊重置時礦物都會重新生成，代換也會重新計算，讓你每次挖礦都有不同的體驗。</span></div>
+        </div>
+
+        <div class="guide-divider"></div>
+
+        <!-- ═══ 曝露生成機制 ═══ -->
+        <div class="guide-section-card fade-in" style="--card-accent:var(--sand)">
+          <h2><span class="sec-icon">🔍</span> 曝露生成機制</h2>
+          <p>海風的礦物生成有一個重要條件：<strong>方塊必須曝露在外</strong>（鄰近空氣）才會生成礦物。</p>
+          <ul class="rules-list">
+            <li>一個石頭方塊如果<strong>六面都被石頭包住</strong>，它不會被替換為礦物</li>
+            <li>只有<strong>至少一面鄰近空氣</strong>的方塊，才有機會被替換為礦物</li>
+            <li>這意味著你在<strong>洞穴牆壁、峽谷崖壁、裂縫表面</strong>更容易發現礦物</li>
+            <li>直接往實心石頭裡挖，礦物出現的機率會比較低</li>
+          </ul>
+          <div class="callout callout-tip"><span class="callout-icon">💡</span><span>挖礦時多留意天然洞穴和裂縫，曝露在外的礦物密度比盲目往下挖高得多。</span></div>
+        </div>
+
+        <div class="guide-divider"></div>
+
+        <!-- ═══ 各層礦物分布 ═══ -->
+        <div class="guide-section-card fade-in" style="--card-accent:var(--lavender)">
+          <h2><span class="sec-icon">📊</span> 各層礦物分布（參考）</h2>
+          <p>以下為海風礦物分布的參考數據。實際分布會因代換機制略有差異，但整體規律與原版一致：</p>
+          <div class="rules-table-wrap">
+            <table class="rules-table">
+              <thead><tr><th>礦物</th><th>最佳層數</th><th>分布範圍</th><th>備註</th></tr></thead>
+              <tbody>
+                <tr><td>🪨 煤礦</td><td>Y 5 ~ 127</td><td>非常廣泛</td><td>高處和低處都能找到，數量最多</td></tr>
+                <tr><td>🟤 銅礦</td><td>Y -16 ~ 112</td><td>中等廣泛</td><td>洞穴深處較多，用於製作銅錠</td></tr>
+                <tr><td>🟫 鐵礦</td><td>Y -64 ~ 72</td><td>廣泛</td><td>低層更密集，是最常用的礦物之一</td></tr>
+                <tr><td>🟡 金礦</td><td>Y -64 ~ 32</td><td>稀少</td><td>深層才有，數量不多</td></tr>
+                <tr><td>🔵 鑽石</td><td>Y -64 ~ -59</td><td>極稀少</td><td>最底層附近，最珍貴的礦物</td></tr>
+                <tr><td>🟢 綠寶石</td><td>Y -16 ~ 320</td><td>極稀少</td><td>僅在山地生物群系生成</td></tr>
+                <tr><td>🔴 紅石</td><td>Y -64 ~ 16</td><td>中等</td><td>深層分布，用於紅石電路</td></tr>
+                <tr><td>🟣 青金石</td><td>Y -64 ~ 64</td><td>廣泛</td><td>分布範圍廣，用於附魔和染料</td></tr>
+                <tr><td>🟠 方解石</td><td>Y -64 ~ 320</td><td>中等</td><td>主要在溶洞和尖塔生物群系</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="callout callout-info"><span class="callout-icon">ℹ️</span><span>以上為原版參考值。由於代換機制的存在，實際分布可能略有不同——你可能會在不尋常的地方發現意想不到的礦物。</span></div>
         </div>
 
         <div class="guide-divider"></div>
@@ -205,69 +260,78 @@
         <!-- ═══ 為什麼這樣設計 ═══ -->
         <div class="guide-section-card fade-in" style="--card-accent:var(--foam)">
           <h2><span class="sec-icon">⚖️</span> 為什麼這樣設計</h2>
-          <p>這個機制的目的是防止礦物過度集中在某些區域，維護經濟平衡：</p>
+          <p>礦物代換機制的目的是維護伺服器的長期經濟平衡：</p>
           <ul class="rules-list">
-            <li>避免出現「礦脈天堂」——某個坐標挖一次就爆富</li>
-            <li>讓所有玩家都有公平的挖礦機會</li>
-            <li>搭配<a href="資源再生">資源再生</a>機制，礦脈可以持續再生</li>
+            <li><strong>避免「礦脈天堂」</strong>：在原版中，某些特定坐標可能有超密集的礦脈，一次挖掘就能獲得大量資源。代換機制避免了這種情況</li>
+            <li><strong>公平的挖礦機會</strong>：所有玩家都有相近的挖礦體驗，不會因為找到一個特殊坐標就大幅領先</li>
+            <li><strong>穩定的物價</strong>：礦物供應量更穩定，<a href="經濟系統">經濟系統</a>中的物價不會劇烈波動</li>
+            <li><strong>探索更有樂趣</strong>：每次挖礦都可能發現不同的礦物組合，增加探索的驚喜感</li>
           </ul>
-          <div class="callout callout-tip"><span class="callout-icon">💡</span><span>挖礦時多留意洞穴和裂縫，曝露在外的方塊才有機會生成礦物。</span></div>
         </div>
 
         <div class="guide-divider"></div>
 
-        <!-- ═══ 各層礦物分布 ═══ -->
+        <!-- ═══ 挖礦策略 ═══ -->
         <div class="guide-section-card fade-in" style="--card-accent:var(--sand)">
-          <h2><span class="sec-icon">📊</span> 各層礦物分布（參考）</h2>
-          <div class="rules-table-wrap">
-            <table class="rules-table">
-              <thead><tr><th>礦物</th><th>最佳層數</th><th>備註</th></tr></thead>
-              <tbody>
-                <tr><td>🪨 煤礦。</td><td>Y 5–127。</td><td>分布廣泛，高處也有。</td></tr>
-                <tr><td>🟤 銅礦。</td><td>Y -16–112。</td><td>洞穴深處較多。</td></tr>
-                <tr><td>🟫 鐵礦。</td><td>Y -64–72。</td><td>低層較密集。</td></tr>
-                <tr><td>🟡 金礦。</td><td>Y -64–32。</td><td>稀少，深層才有。</td></tr>
-                <tr><td>🔵 鑽石。</td><td>Y -64～-59。</td><td>最底層附近。</td></tr>
-                <tr><td>🟢 綠寶石。</td><td>Y -16–320。</td><td>僅山地生物群系。</td></tr>
-                <tr><td>🔴 紅石。</td><td>Y -64–16。</td><td>深層分布。</td></tr>
-                <tr><td>🟣 青金石。</td><td>Y -64–64。</td><td>分布範圍廣。</td></tr>
-              </tbody>
-            </table>
-          </div>
-          <div class="callout callout-info"><span class="callout-icon">ℹ️</span><span>以上為原版參考值，實際分布可能因隨機機制略有差異。</span></div>
+          <h2><span class="sec-icon">⛏️</span> 挖礦策略</h2>
+          <p>了解了礦物代換機制後，以下是一些實用的挖礦建議：</p>
+
+          <h3 style="margin-top:1.2rem;font-size:1.05rem;">🎯 目標明確型</h3>
+          <ul class="rules-list">
+            <li><strong>挖鑽石</strong>：前往 Y = -64 附近的深層，在天然洞穴的牆壁上尋找曝露的鑽石礦脈</li>
+            <li><strong>挖鐵礦</strong>：Y = 16 以下都有，特別是 Y = -16 ~ 16 之間密度較高</li>
+            <li><strong>挖金礦</strong>：前往 Y = -64 ~ 32 的深層區域</li>
+            <li><strong>挖綠寶石</strong>：必須在山地生物群系，Y = -16 ~ 320 都有機會</li>
+          </ul>
+
+          <h3 style="margin-top:1.2rem;font-size:1.05rem;">💡 效率技巧</h3>
+          <ul class="rules-list">
+            <li><strong>利用天然洞穴</strong>：曝露生成機制讓洞穴牆壁上的礦物密度更高，比盲目挖隧道效率更好</li>
+            <li><strong>搭配<a href="連鎖挖掘">連鎖挖掘</a></strong>：發現礦脈後用連鎖挖掘一次挖完，大幅提升效率</li>
+            <li><strong>利用<a href="資源再生">資源再生</a></strong>：挖完一個區域後等 7 天，礦物會自動重生，建立輪流挖礦的循環</li>
+            <li><strong>帶好裝備</strong>：深層挖礦危險較多，記得帶足夠的食物、火把和備用裝備</li>
+          </ul>
+
+          <h3 style="margin-top:1.2rem;font-size:1.05rem;">⚠️ 注意事項</h3>
+          <ul class="rules-list">
+            <li>代換機制是<strong>隨機</strong>的，不能保證特定位置一定有特定礦物</li>
+            <li>已經被挖掉的礦物不會自動回來，需要等待<a href="資源再生">資源再生</a>重置區塊</li>
+            <li>代換只影響新生成的區塊，不會改變已經存在的世界</li>
+          </ul>
         </div>
-      
+
         <div class="guide-divider"></div>
 
+        <!-- ═══ FAQ ═══ -->
         <div class="guide-section-card fade-in" style="--card-accent:#85b1e0">
           <h2><span class="sec-icon">❓</span> 常見問題</h2>
           <div class="guide-faq">
             <div class="guide-faq-item">
-              <button class="guide-faq-q">為什麼礦物分布跟原版不同？</button>
-              <div class="guide-faq-a"><div class="guide-faq-a-inner">海風調整了礦物生成機制，維護經濟平衡。</div></div>
+              <button class="guide-faq-q">為什麼我挖到的礦物跟原版不一樣？</button>
+              <div class="guide-faq-a"><div class="guide-faq-a-inner">海風有礦物代換機制，礦物在生成時有機率被替換為其他種類。這是為了維護經濟平衡，讓遊戲更有趣。</div></div>
             </div>
             <div class="guide-faq-item">
               <button class="guide-faq-q">曝露才生成是什麼意思？</button>
-              <div class="guide-faq-a"><div class="guide-faq-a-inner">只有鄰近空氣的方塊才會生成礦物。埋在石頭裡的不會出現。</div></div>
+              <div class="guide-faq-a"><div class="guide-faq-a-inner">只有鄰近空氣的方塊才會生成礦物。埋在實心石頭裡的不會出現。所以多逛天然洞穴和裂縫，那裡的礦物密度更高。</div></div>
             </div>
             <div class="guide-faq-item">
               <button class="guide-faq-q">這樣設計有什麼好處？</button>
-              <div class="guide-faq-a"><div class="guide-faq-a-inner">防止礦物過度集中，讓每個玩家都有公平的機會。</div></div>
+              <div class="guide-faq-a"><div class="guide-faq-a-inner">防止礦物過度集中，讓每個玩家都有公平的挖礦機會，同時穩定伺服器經濟。</div></div>
+            </div>
+            <div class="guide-faq-item">
+              <button class="guide-faq-q">挖完的礦脈會回來嗎？</button>
+              <div class="guide-faq-a"><div class="guide-faq-a-inner">會。搭配<a href='資源再生'>資源再生</a>機制，7 天沒人造訪的區塊會自動重置，礦物會重新生成。</div></div>
+            </div>
+            <div class="guide-faq-item">
+              <button class="guide-faq-q">代換會影響已經存在的礦物嗎？</button>
+              <div class="guide-faq-a"><div class="guide-faq-a-inner">不會。代換只在區塊初次生成時觸發，已經挖到的礦物不會被改變。</div></div>
             </div>
           </div>
         </div>
 
-          </div>
-        </div>
-
-          </div>
-        </div>
-          </div>
-        </div>
-
-        
         <div class="guide-divider"></div>
 
+        <!-- ═══ 相關頁面 ═══ -->
         <div class="guide-section-card fade-in" style="--card-accent:var(--ocean-blue)">
           <h2><span class="sec-icon">📖</span> 相關頁面</h2>
           <div class="guide-next-grid">
@@ -275,22 +339,27 @@
               <span class="guide-next-icon">⛏️</span>
               <div class="guide-next-body">
                 <h4>連鎖挖掘</h4>
-                <p>一次挖整棵樹、整片礦</p>
+                <p>一次挖整棵樹、整片礦，大幅提升挖礦效率</p>
               </div>
             </a>
             <a href="資源再生" class="guide-next-card">
-              <span class="guide-next-icon">⛏️</span>
+              <span class="guide-next-icon">🔄</span>
               <div class="guide-next-body">
                 <h4>資源再生</h4>
-                <p>7天自動重置未造訪區塊</p>
+                <p>7 天自動重置未造訪區塊，礦脈永不枯竭</p>
+              </div>
+            </a>
+            <a href="經濟系統" class="guide-next-card">
+              <span class="guide-next-icon">💰</span>
+              <div class="guide-next-body">
+                <h4>經濟系統</h4>
+                <p>了解海風的經濟與交易機制</p>
               </div>
             </a>
           </div>
         </div>
 
         <div class="guide-nav fade-in"><a href="資源再生" class="btn btn-outline">← 資源再生</a><a href="../海風指南" class="btn btn-outline">返回目錄</a><a href="地震預警" class="btn btn-primary">地震預警 →</a></div>
-    </div>
-  
       </div><!-- /guide-main -->
     </div><!-- /guide-layout -->
   </div>

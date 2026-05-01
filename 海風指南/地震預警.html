@@ -2,11 +2,11 @@
 <html lang="zh-Hant">
 <head>
   <meta charset="UTF-8"><meta name="color-scheme" content="dark light"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>海風 — 海風指南 — 地震預警</title>
+  <title>地震預警 — 海風指南 — 海風</title>
   <link rel="canonical" href="https://www.seawind.cc/海風指南/地震預警">
-  <meta name="description" content="當有地震發生時跳出通知。">
+  <meta name="description" content="海風伺服器地震預警系統：即時接收台灣地震資訊，遊戲內自動顯示警報通知。">
   <meta property="og:title" content="地震預警 — 海風指南 — 海風">
-  <meta property="og:description" content="當有地震發生時跳出通知。">
+  <meta property="og:description" content="即時接收台灣地震資訊，遊戲內自動顯示警報通知。">
   <meta property="og:image" content="../assets/img/logo.png">
   <meta property="og:type" content="website">
   <meta name="twitter:card" content="summary">
@@ -32,7 +32,7 @@
 
   <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
   <div class="bg-atmosphere"></div>
-    <nav class="nav">
+  <nav class="nav">
     <a href="../首頁" class="nav-logo">
       <picture><source srcset="../assets/img/logo.webp" type="image/webp"><img src="../assets/img/logo.png" alt="海風" class="nav-logo-img" width="48" height="48" fetchpriority="high"></picture>
       <span>海風伺服器</span>
@@ -80,21 +80,12 @@
       </button>
     </div>
   </nav>
+
   <div class="page">
-          <!-- ═══ Hero ═══ -->
-      <div class="guide-v2-hero fade-in">
-        <h1>地震預警</h1>
-          <p class="section-desc">當有地震發生時跳出通知。</p>
-          <div class="guide-quick-stats">
-            <div class="guide-qs-item"><span class="guide-qs-icon">🌍</span><span>功能</span><span class="guide-qs-val">即時通知</span></div>
-            <div class="guide-qs-item"><span class="guide-qs-icon">🇹🇼</span><span>範圍</span><span class="guide-qs-val">台灣地震</span></div>
-            <div class="guide-qs-item"><span class="guide-qs-icon">🆘</span><span>動作</span><span class="guide-qs-val">趴下掩護穩住</span></div>
-          </div>
-      </div>
     <div class="guide-layout">
 
-            <!-- 側邊導覽 -->
-            <aside class="guide-sidebar">
+      <!-- 側邊導覽 -->
+      <aside class="guide-sidebar">
         <div class="guide-sidebar-inner">
           <div class="guide-sidebar-title">📖 海風指南</div>
           <nav class="guide-sidebar-nav">
@@ -186,85 +177,164 @@
         </div>
       </aside>
 
-      <div class="guide-main"><div class="breadcrumb fade-in"><a href="../海風指南">海風指南</a><span class="sep">›</span><span class="current">地震預警</span></div>
-      
-        
-        <!-- ═══ 什麼是地震預警 ═══ -->
+      <!-- ═══ 主要內容 ═══ -->
+      <div class="guide-main" id="mainContent">
+
+        <div class="breadcrumb fade-in">
+          <a href="../海風指南">海風指南</a>
+          <span class="sep">›</span>
+          <span class="current">地震預警</span>
+        </div>
+
+        <!-- ═══ Hero ═══ -->
+        <div class="guide-v2-hero fade-in">
+          <h1>🌍 地震預警</h1>
+          <p class="section-desc">台灣位於環太平洋地震帶上，地震頻繁。海風伺服器內建地震預警系統，當地震發生時自動在遊戲內顯示即時警報，讓你第一時間知道發生了什麼事。</p>
+          <div class="guide-quick-stats">
+            <div class="guide-qs-item"><span class="guide-qs-icon">🌍</span><span>功能</span><span class="guide-qs-val">即時警報</span></div>
+            <div class="guide-qs-item"><span class="guide-qs-icon">🇹🇼</span><span>範圍</span><span class="guide-qs-val">台灣地震</span></div>
+            <div class="guide-qs-item"><span class="guide-qs-icon">🆘</span><span>動作</span><span class="guide-qs-val">趴下掩護穩住</span></div>
+          </div>
+        </div>
+
+        <div class="guide-divider"></div>
+
+        <!-- ═══ 功能說明 ═══ -->
         <div class="guide-section-card fade-in" style="--card-accent:var(--sky)">
-          <h2><span class="sec-icon">🌍</span> 海風地震預警</h2>
-          <p>台灣位於環太平洋地震帶上，地震頻繁。海風伺服器接收到地震預警資訊後，會自動在遊戲聊天室發送即時通知，讓你第一時間知道發生了什麼事。</p>
-          <div class="callout callout-info"><span class="callout-icon">ℹ️</span><span>地震預警是海風的自動系統功能，不需要任何設定，上線就會自動接收。</span></div>
+          <h2><span class="sec-icon">🌍</span> 什麼是地震預警</h2>
+          <p>海風伺服器的<strong>地震預警系統</strong>是一個自動運作的安全功能。系統會即時接收台灣中央氣象署的地震監測資料，當偵測到地震發生時，會自動在遊戲聊天室發送即時通知，讓所有在線玩家第一時間知道地震資訊。</p>
+          <p>這個功能不需要任何設定或指令，只要你在線上就會自動接收。海風是少數擁有地震預警功能的 Minecraft 伺服器之一，這是我們對玩家安全的重視。</p>
+          <div class="callout callout-info"><span class="callout-icon">ℹ️</span><span>地震預警資訊來自台灣中央氣象署的地震監測網路，透過即時連線推送到遊戲內。預警時間有限，收到警報時地震可能已經開始或即將開始，請立即採取防護動作。</span></div>
+        </div>
+
+        <div class="guide-divider"></div>
+
+        <!-- ═══ 警報內容 ═══ -->
+        <div class="guide-section-card fade-in" style="--card-accent:var(--foam)">
+          <h2><span class="sec-icon">📋</span> 警報內容說明</h2>
+          <p>當地震發生時，遊戲內會自動顯示一則警報通知，內容包含以下資訊：</p>
+          <div class="guide-steps-grid">
+            <div class="guide-step-card" style="--step-color:var(--foam)">
+              <h4>📍 震央位置</h4>
+              <p>地震發生的確切位置，以台灣的縣市和鄉鎮表示。例如「花蓮縣秀林鄉」或「高雄市甲仙區」。</p>
+            </div>
+            <div class="guide-step-card" style="--step-color:var(--foam)">
+              <h4>📏 地震規模</h4>
+              <p>地震的芮氏規模，數字越大代表地震越強。規模 4.0 以上通常會發佈警報。</p>
+            </div>
+            <div class="guide-step-card" style="--step-color:var(--foam)">
+              <h4>🏔️ 震源深度</h4>
+              <p>地震發生的深度，以公里為單位。淺層地震（深度 < 30 公里）通常感覺更明顯。</p>
+            </div>
+            <div class="guide-step-card" style="--step-color:var(--foam)">
+              <h4>🌡️ 預估震度</h4>
+              <p>各地區的預估震度等級，從 1 級到 7 級。震度 4 級以上建議採取防護動作。</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="guide-divider"></div>
+
+        <!-- ═══ 如何辨識警報 ═══ -->
+        <div class="guide-section-card fade-in" style="--card-accent:var(--sand)">
+          <h2><span class="sec-icon">🔔</span> 如何辨識地震警報</h2>
+          <p>地震警報會以特殊格式顯示在聊天室中，與一般玩家訊息明顯不同：</p>
+          <ul class="rules-list">
+            <li><strong>醒目格式</strong>：警報會以特殊顏色和格式顯示，在聊天室中非常醒目，不容易被忽略</li>
+            <li><strong>自動推送</strong>：不需要任何操作，系統會自動發送到所有在線玩家的聊天室</li>
+            <li><strong>全服廣播</strong>：所有在線玩家都會同時收到相同的警報資訊</li>
+            <li><strong>無法關閉</strong>：這是全服自動系統，無法個別關閉或屏蔽</li>
+            <li><strong>即時性</strong>：從地震發生到遊戲內顯示警報，通常只有幾秒鐘的延遲</li>
+          </ul>
+          <div class="callout callout-tip"><span class="callout-icon">💡</span><span>如果你在遊戲中看到帶有地震相關資訊的醒目訊息突然出現，那就是地震預警系統發出的警報。請立即放下手邊的事情，注意自身安全。</span></div>
         </div>
 
         <div class="guide-divider"></div>
 
         <!-- ═══ 收到通知時 ═══ -->
-        <div class="guide-section-card fade-in" style="--card-accent:var(--foam)">
-          <h2><span class="sec-icon">🚨</span> 收到通知時該怎麼做</h2>
-          <p>遊戲中收到地震通知時，請依循防災口訣：</p>
+        <div class="guide-section-card fade-in" style="--card-accent:var(--lavender)">
+          <h2><span class="sec-icon">🚨</span> 收到警報時該怎麼做</h2>
+          <p>遊戲中收到地震警報時，請依循防災口訣：<strong>趴下、掩護、穩住</strong>。</p>
           <div class="guide-steps-grid">
-            <div class="guide-step-card" style="--step-color:var(--foam)">
+            <div class="guide-step-card" style="--step-color:var(--lavender)">
               <span class="guide-step-num">1</span>
               <h4>趴下</h4>
-              <p>立即蹲下（按住 Shift），降低重心避免跌倒</p>
+              <p>立即蹲下（按住 Shift 鍵），降低重心避免跌倒。在遊戲中按下蹲下鍵，現實中也請立刻蹲下。</p>
             </div>
-            <div class="guide-step-card" style="--step-color:var(--foam)">
+            <div class="guide-step-card" style="--step-color:var(--lavender)">
               <span class="guide-step-num">2</span>
               <h4>掩護</h4>
-              <p>躲在桌子或堅固家具下方，保護頭部</p>
+              <p>躲在桌子或堅固家具下方，保護頭部和頸部。遠離窗戶、書架、吊燈等可能掉落的物品。</p>
             </div>
-            <div class="guide-step-card" style="--step-color:var(--foam)">
+            <div class="guide-step-card" style="--step-color:var(--lavender)">
               <span class="guide-step-num">3</span>
               <h4>穩住</h4>
-              <p>抓住桌腳，等待搖晃停止，保持冷靜</p>
+              <p>抓住桌腳或穩固的支撐物，等待搖晃停止。保持冷靜，不要驚慌奔跑。</p>
             </div>
           </div>
-          <div class="callout callout-warn"><span class="callout-icon">⚠️</span><span>在遊戲中收到地震預警時，如果現實中也感受到搖晃，請優先確保自身安全！遊戲可以暫停，你的安全不行。</span></div>
+          <div class="callout callout-warn"><span class="callout-icon">⚠️</span><span><strong>安全第一！</strong>在遊戲中收到地震預警時，如果現實中也感受到搖晃，請<strong>優先確保自身安全</strong>！立即離開電腦、遠離危險物品、採取防護動作。遊戲可以暫停，你的安全不行。生命永遠比遊戲重要。</span></div>
         </div>
 
         <div class="guide-divider"></div>
 
         <!-- ═══ 小知識 ═══ -->
-        <div class="guide-section-card fade-in" style="--card-accent:var(--sand)">
-          <h2><span class="sec-icon">💡</span> 小知識</h2>
+        <div class="guide-section-card fade-in" style="--card-accent:var(--ocean-blue)">
+          <h2><span class="sec-icon">💡</span> 地震小知識</h2>
           <ul class="rules-list">
-            <li>地震預警資訊來自中央氣象署，透過 WebSocket 即時推送到遊戲內</li>
-            <li>通知會顯示震央位置、震級和預估震度</li>
-            <li>海風是少數有地震預警功能的 Minecraft 伺服器</li>
+            <li><strong>台灣位於地震帶</strong>：台灣正好位於歐亞板塊與菲律賓海板塊的交界處，屬於環太平洋地震帶的一部分，每年平均發生數千次地震</li>
+            <li><strong>震度 vs 規模</strong>：規模是地震釋放能量的大小（全球統一），震度是某地感受到的搖晃程度（各地不同）。同一個地震，離震央越近震度越高</li>
+            <li><strong>預警原理</strong>：地震波分為傳播快但搖晃小的 P 波，和傳播慢但搖晃大的 S 波。預警系統偵測到 P 波後，在 S 波到達前發出警報</li>
+            <li><strong>預警時間</strong>：預警時間取決於你與震央的距離。距離越遠，預警時間越長；如果在震央附近，可能警報到達時地震已經開始</li>
+            <li><strong>海風的特別之處</strong>：海風是少數擁有地震預警功能的 Minecraft 伺服器。這個功能展現了我們對玩家安全的重視，不只是遊戲，也關心你的現實生活</li>
           </ul>
         </div>
-      
+
         <div class="guide-divider"></div>
 
+        <!-- ═══ 注意事項 ═══ -->
+        <div class="guide-section-card fade-in" style="--card-accent:var(--foam)">
+          <h2><span class="sec-icon">⚠️</span> 注意事項</h2>
+          <ul class="rules-list">
+            <li><strong>無法關閉</strong>：地震預警是全服自動系統，所有在線玩家都會收到，無法個別關閉或屏蔽。這是為了確保每個人都能收到重要的安全資訊</li>
+            <li><strong>預警時間有限</strong>：預警系統的目的是爭取幾秒到幾十秒的應變時間。收到警報時地震可能已經開始，請立即採取防護動作</li>
+            <li><strong>優先現實安全</strong>：如果你在現實中也感受到搖晃，請<strong>立即</strong>放下遊戲，優先確保自身安全。遊戲不重要，你才重要</li>
+            <li><strong>保持冷靜</strong>：收到警報時不要驚慌。大部分地震都是小規模的，不會造成損害。但養成正確的應變習慣很重要</li>
+            <li><strong>定期演練</strong>：建議平時就熟悉「趴下、掩護、穩住」的動作，這樣真正遇到地震時才能本能反應</li>
+          </ul>
+        </div>
+
+        <div class="guide-divider"></div>
+
+        <!-- ═══ FAQ ═══ -->
         <div class="guide-section-card fade-in" style="--card-accent:#85b1e0">
           <h2><span class="sec-icon">❓</span> 常見問題</h2>
           <div class="guide-faq">
             <div class="guide-faq-item">
               <button class="guide-faq-q">收到地震警報該怎麼做？</button>
-              <div class="guide-faq-a"><div class="guide-faq-a-inner">依循防災口訣：<strong>趴下→掩護→穩住</strong>。在遊戲中蹲下（按住 Shift），現實中也要注意自身安全。</div></div>
+              <div class="guide-faq-a"><div class="guide-faq-a-inner">依循防災口訣：<strong>趴下→掩護→穩住</strong>。在遊戲中蹲下（按住 Shift），如果現實中也感受到搖晃，請立即離開電腦、遠離危險物品、採取防護動作。生命永遠比遊戲重要。</div></div>
             </div>
             <div class="guide-faq-item">
               <button class="guide-faq-q">可以關閉地震預警嗎？</button>
-              <div class="guide-faq-a"><div class="guide-faq-a-inner">不行。這是全服自動系統，所有在線玩家都會收到。</div></div>
+              <div class="guide-faq-a"><div class="guide-faq-a-inner">不行。地震預警是全服自動系統，所有在線玩家都會收到警報。這是為了確保每個人都能收到重要的安全資訊，無法個別關閉或屏蔽。</div></div>
             </div>
             <div class="guide-faq-item">
               <button class="guide-faq-q">預警準確嗎？</button>
-              <div class="guide-faq-a"><div class="guide-faq-a-inner">預警系統連接台灣的地震監測網路。但預警時間有限，收到警報時地震可能已經開始。</div></div>
+              <div class="guide-faq-a"><div class="guide-faq-a-inner">預警系統連接台灣中央氣象署的地震監測網路，資訊來源是官方的地震觀測資料。但預警時間有限——如果你離震央很近，收到警報時地震可能已經開始了。預警的目的是爭取應變時間，不是提前預測。</div></div>
+            </div>
+            <div class="guide-faq-item">
+              <button class="guide-faq-q">為什麼我在遊戲裡沒收到警報？</button>
+              <div class="guide-faq-a"><div class="guide-faq-a-inner">地震預警只在地震規模達到一定標準時才會發出。小規模地震（規模太小或震度太低）不會觸發警報。如果你確定有地震但沒收到警報，可能是規模未達發報標準。</div></div>
+            </div>
+            <div class="guide-faq-item">
+              <button class="guide-faq-q">地震預警會影響遊戲嗎？</button>
+              <div class="guide-faq-a"><div class="guide-faq-a-inner">不會。地震預警只是在聊天室顯示一則訊息，不會影響你的遊戲操作、不會暫停遊戲、不會改變遊戲世界。收到警報後你可以繼續遊戲，但建議先確認現實中的安全狀況。</div></div>
             </div>
           </div>
         </div>
 
-          </div>
-        </div>
-
-          </div>
-        </div>
-          </div>
-        </div>
-
-        
         <div class="guide-divider"></div>
 
+        <!-- ═══ 相關頁面 ═══ -->
         <div class="guide-section-card fade-in" style="--card-accent:var(--ocean-blue)">
           <h2><span class="sec-icon">📖</span> 相關頁面</h2>
           <div class="guide-next-grid">
@@ -272,33 +342,38 @@
               <span class="guide-next-icon">⚙️</span>
               <div class="guide-next-body">
                 <h4>特殊合成</h4>
-                <p>自訂合成配方</p>
+                <p>海風的自訂合成配方</p>
               </div>
             </a>
-            <a href="穿牌開箱" class="guide-next-card">
-              <span class="guide-next-icon">⚙️</span>
+            <a href="掛機系統" class="guide-next-card">
+              <span class="guide-next-icon">💤</span>
               <div class="guide-next-body">
-                <h4>穿牌開箱</h4>
-                <p>點擊告示牌直接開箱</p>
+                <h4>掛機系統</h4>
+                <p>掛機時也能收到地震預警</p>
               </div>
             </a>
-            <a href="遊戲機制" class="guide-next-card">
-              <span class="guide-next-icon">⚙️</span>
+            <a href="新手指引" class="guide-next-card">
+              <span class="guide-next-icon">📖</span>
               <div class="guide-next-body">
-                <h4>遊戲機制</h4>
-                <p>伺服器設定與遊戲機制調整</p>
+                <h4>新手指引</h4>
+                <p>了解海風的更多特色功能</p>
               </div>
             </a>
           </div>
         </div>
 
-        <div class="guide-nav fade-in"><a href="礦物代換" class="btn btn-outline">← 礦物代換</a><a href="../海風指南" class="btn btn-outline">返回目錄</a><a href="真實書櫃" class="btn btn-primary">真實書櫃 →</a></div>
-    </div>
-  
+        <!-- ═══ 導覽 ═══ -->
+        <div class="guide-nav fade-in">
+          <a href="容器預覽" class="btn btn-outline">← 容器預覽</a>
+          <a href="../海風指南" class="btn btn-outline">返回目錄</a>
+          <a href="特殊合成" class="btn btn-primary">特殊合成 →</a>
+        </div>
+
       </div><!-- /guide-main -->
     </div><!-- /guide-layout -->
-  </div>
-    <footer class="footer">
+  </div><!-- /page -->
+
+  <footer class="footer">
     <div class="footer-inner">
       <div class="footer-brand">
         <span class="footer-logo">海風伺服器 SeaWind.cc</span>
@@ -318,7 +393,7 @@
     </div>
   </footer>
 
-<!-- Music Player -->
+  <!-- Music Player -->
   <div class="music-player" id="musicPlayer">
     <button class="music-btn" id="musicBtn" aria-label="音樂播放">
       <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
@@ -332,5 +407,5 @@
 
   <script src="../main.js?v=020502a"></script>
   <script src="../music-player.js"></script>
-  </body>
+</body>
 </html>

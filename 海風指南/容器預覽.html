@@ -4,11 +4,11 @@
   <meta charset="UTF-8">
   <meta name="color-scheme" content="dark light">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>容器預覽 — 海風指南 — 海風 SeaWind</title>
+  <title>容器預覽 — 海風指南 — 海風</title>
   <link rel="canonical" href="https://www.seawind.cc/海風指南/容器預覽">
-  <meta name="description" content="海風伺服器容器預覽功能：不開箱子也能看到裡面有什麼。">
+  <meta name="description" content="海風伺服器容器預覽功能：懸停在容器上就能預覽裡面的物品，逛商店街不用逐個開箱。">
   <meta property="og:title" content="容器預覽 — 海風指南 — 海風">
-  <meta property="og:description" content="不開箱子也能看到裡面有什麼。">
+  <meta property="og:description" content="懸停在容器上就能預覽裡面的物品，逛商店街不用逐個開箱。">
   <meta property="og:image" content="https://www.seawind.cc/assets/img/logo.png">
   <meta property="og:type" content="website">
   <meta name="twitter:card" content="summary">
@@ -34,7 +34,7 @@
   <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
   <div class="bg-atmosphere"></div>
 
-    <nav class="nav">
+  <nav class="nav">
     <a href="../首頁" class="nav-logo">
       <picture><source srcset="../assets/img/logo.webp" type="image/webp"><img src="../assets/img/logo.png" alt="海風" class="nav-logo-img" width="48" height="48" fetchpriority="high"></picture>
       <span>海風伺服器</span>
@@ -85,7 +85,9 @@
 
   <div class="page">
     <div class="guide-layout">
-            <aside class="guide-sidebar">
+
+      <!-- 側邊導覽 -->
+      <aside class="guide-sidebar">
         <div class="guide-sidebar-inner">
           <div class="guide-sidebar-title">📖 海風指南</div>
           <nav class="guide-sidebar-nav">
@@ -177,16 +179,19 @@
         </div>
       </aside>
 
+      <!-- ═══ 主要內容 ═══ -->
       <div class="guide-main" id="mainContent">
+
         <div class="breadcrumb fade-in">
           <a href="../海風指南">海風指南</a>
           <span class="sep">›</span>
           <span class="current">容器預覽</span>
         </div>
 
+        <!-- ═══ Hero ═══ -->
         <div class="guide-v2-hero fade-in">
           <h1>👁️ 容器預覽</h1>
-          <p class="section-desc">不開箱子也能看到裡面有什麼。懸停在容器上就能預覽內容物，逛商店街超方便。</p>
+          <p class="section-desc">不開箱子也能看到裡面有什麼。滑鼠懸停在容器上，內容物一目瞭然——逛商店街從此不用逐個開箱。</p>
           <div class="guide-quick-stats">
             <div class="guide-qs-item"><span class="guide-qs-icon">👁️</span><span>功能</span><span class="guide-qs-val">懸停預覽</span></div>
             <div class="guide-qs-item"><span class="guide-qs-icon">📦</span><span>適用</span><span class="guide-qs-val">各種容器</span></div>
@@ -196,103 +201,176 @@
 
         <div class="guide-divider"></div>
 
+        <!-- ═══ 功能說明 ═══ -->
         <div class="guide-section-card fade-in" style="--card-accent:var(--foam)">
-          <h2><span class="sec-icon">👁️</span> 功能說明</h2>
-          <p><strong>容器預覽</strong>讓你在不開啟容器的情況下，直接看到裡面裝了什麼東西。把滑鼠懸停在箱子、木桶等容器上，就會跳出預覽介面顯示內容物。</p>
-          <p>逛商店街的時候特別好用——不用每個箱子都點開來看，懸停就知道有沒有你要的東西。</p>
-          <div class="callout callout-info"><span class="callout-icon">ℹ️</span><span>預覽只能「看」，不能直接從預覽介面拿取物品。要拿東西還是得打開容器。</span></div>
+          <h2><span class="sec-icon">👁️</span> 什麼是容器預覽</h2>
+          <p><strong>容器預覽</strong>讓你在不開啟容器的情況下，直接看到裡面裝了什麼東西。把滑鼠游標懸停在箱子、木桶等容器上，就會自動跳出預覽介面，顯示容器內的所有物品。</p>
+          <p>這個功能完全自動啟用，不需要任何指令或設定。只要游標移到容器上就會觸發，非常直覺。</p>
+          <div class="callout callout-info"><span class="callout-icon">ℹ️</span><span>預覽只能「看」，不能直接從預覽介面拿取或放入物品。要操作物品還是得打開容器。這是一個純觀察功能，讓你先確認內容再決定要不要開啟。</span></div>
         </div>
 
         <div class="guide-divider"></div>
 
+        <!-- ═══ 適用容器 ═══ -->
         <div class="guide-section-card fade-in" style="--card-accent:var(--sand)">
-          <h2><span class="sec-icon">📦</span> 適用容器</h2>
+          <h2><span class="sec-icon">📦</span> 適用容器類型</h2>
+          <p>容器預覽支援大多數常見的儲存容器，以下是完整清單：</p>
           <div class="guide-steps-grid" style="grid-template-columns:repeat(auto-fit,minmax(160px,1fr))">
             <div class="guide-step-card" style="--step-color:var(--sand)">
               <h4>📦 箱子</h4>
-              <p>最常用的容器，27 格</p>
+              <p>最常用的容器，27 格儲存空間。單箱子或雙聯箱子都可以預覽。</p>
             </div>
             <div class="guide-step-card" style="--step-color:var(--sand)">
               <h4>📦 陷阱箱</h4>
-              <p>外觀相同但含紅石訊號</p>
+              <p>外觀與一般箱子相同，但底部有紅石輸出。預覽功能同樣適用。</p>
             </div>
             <div class="guide-step-card" style="--step-color:var(--sand)">
               <h4>🪵 木桶</h4>
-              <p>側面開啟的儲存容器</p>
+              <p>從側面開啟的儲存容器，容量 27 格。懸停即可預覽內容。</p>
             </div>
             <div class="guide-step-card" style="--step-color:var(--sand)">
               <h4>🟫 界伏盒</h4>
-              <p>潛影盒升級版，可堆疊</p>
-            </div>
-            <div class="guide-step-card" style="--step-color:var(--sand)">
-              <h4>🪣 桶</h4>
-              <p>裝水、熔岩、牛奶等液體</p>
+              <p>可堆疊的儲存容器，每盒 27 格。用於大型倉庫系統很方便。</p>
             </div>
             <div class="guide-step-card" style="--step-color:var(--sand)">
               <h4>🎁 潛影盒</h4>
-              <p>可攜帶的移動收納</p>
+              <p>可攜帶的移動收納，破壞後物品不會掉落。懸停可預覽內容。</p>
+            </div>
+            <div class="guide-step-card" style="--step-color:var(--sand)">
+              <h4>🪣 桶</h4>
+              <p>裝水、熔岩、牛奶等液體的容器。預覽會顯示裝了什麼液體。</p>
+            </div>
+            <div class="guide-step-card" style="--step-color:var(--sand)">
+              <h4>🧪 藥水釀造台</h4>
+              <p>釀造中的藥水台也能預覽，查看正在釀造的藥水和材料。</p>
+            </div>
+            <div class="guide-step-card" style="--step-color:var(--sand)">
+              <h4>🔥 熔爐</h4>
+              <p>熔爐、煙燻爐、高爐都可以預覽，查看正在冶煉的物品和燃料。</p>
             </div>
           </div>
         </div>
 
         <div class="guide-divider"></div>
 
+        <!-- ═══ 使用教學 ═══ -->
+        <div class="guide-section-card fade-in" style="--card-accent:var(--sky)">
+          <h2><span class="sec-icon">📖</span> 使用教學</h2>
+          <p>容器預覽的使用方式非常簡單，完全不需要任何操作步驟：</p>
+          <div class="guide-steps-grid">
+            <div class="guide-step-card" style="--step-color:var(--sky)">
+              <span class="guide-step-num">1</span>
+              <h4>走向容器</h4>
+              <p>靠近你想查看的容器（箱子、木桶、界伏盒等），進入互動距離</p>
+            </div>
+            <div class="guide-step-card" style="--step-color:var(--sky)">
+              <span class="guide-step-num">2</span>
+              <h4>懸停游標</h4>
+              <p>將滑鼠游標移到容器上，不需要點擊，預覽介面會自動彈出</p>
+            </div>
+            <div class="guide-step-card" style="--step-color:var(--sky)">
+              <span class="guide-step-num">3</span>
+              <h4>查看內容</h4>
+              <p>預覽介面會顯示容器內所有物品的圖示和數量，看完直接移開游標即可關閉</p>
+            </div>
+          </div>
+          <div class="callout callout-tip"><span class="callout-icon">💡</span><span>預覽介面會阻擋你的視線，如果覺得干擾，只要把游標移開容器就會消失。不需要按任何鍵。</span></div>
+        </div>
+
+        <div class="guide-divider"></div>
+
+        <!-- ═══ 實際應用情境 ═══ -->
         <div class="guide-section-card fade-in" style="--card-accent:var(--lavender)">
-          <h2><span class="sec-icon">💡</span> 使用情境</h2>
+          <h2><span class="sec-icon">💡</span> 實際應用情境</h2>
+          <div class="guide-steps-grid">
+            <div class="guide-step-card" style="--step-color:var(--lavender)">
+              <h4>🛒 逛商店街</h4>
+              <p>這是容器預覽最常見的用途。逛商店街時，不用每個箱子都點開來看——懸停就知道有沒有你要的東西。快速掃過一整排箱子，找到目標再開啟交易，省下大量時間。</p>
+            </div>
+            <div class="guide-step-card" style="--step-color:var(--lavender)">
+              <h4>🗄️ 倉庫管理</h4>
+              <p>家裡有一整面牆的箱子？不用逐個開啟確認庫存。懸停掃過每個箱子，快速找到你需要的物品在哪個箱子裡。搭配良好的標籤系統，倉庫管理效率大幅提升。</p>
+            </div>
+            <div class="guide-step-card" style="--step-color:var(--lavender)">
+              <h4>🤝 交易確認</h4>
+              <p>跟其他玩家交易前，先用預覽確認對方箱子裡的內容是否正確。避免交易糾紛，確保雙方都看到一樣的東西。</p>
+            </div>
+            <div class="guide-step-card" style="--step-color:var(--lavender)">
+              <h4>👀 建築參觀</h4>
+              <p>參觀別人的建築時，好奇箱子裡裝了什麼？懸停看看就好。不打開就不會觸發互動，對建築主人來說也是最不打擾的方式。</p>
+            </div>
+            <div class="guide-step-card" style="--step-color:var(--lavender)">
+              <h4>🔍 尋找物品</h4>
+              <p>忘記東西放在哪個箱子了？用預覽功能快速掃過所有箱子，比一個一個開來找快得多。特別是在大型倉庫裡，效率差異非常明顯。</p>
+            </div>
+            <div class="guide-step-card" style="--step-color:var(--lavender)">
+              <h4>📊 庫存盤點</h4>
+              <p>需要統計某種物品的庫存數量？用預覽快速掃過所有箱子，心裡有個底再決定要不要補貨或出售。</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="guide-divider"></div>
+
+        <!-- ═══ 注意事項 ═══ -->
+        <div class="guide-section-card fade-in" style="--card-accent:var(--ocean-blue)">
+          <h2><span class="sec-icon">⚠️</span> 注意事項</h2>
           <ul class="rules-list">
-            <li><strong>逛商店街</strong>：懸停預覽箱子商店，快速確認有沒有你要的商品，省去逐個開啟的時間</li>
-            <li><strong>倉庫管理</strong>：不用開每個箱子就能確認庫存，快速找到需要的物品位置</li>
-            <li><strong>建築參觀</strong>：看別人建築裡的容器裝了什麼，滿足好奇心</li>
-            <li><strong>交易確認</strong>：跟其他玩家交易前，先預覽確認對方箱子裡的內容是否正確</li>
+            <li><strong>只能看不能動</strong>：預覽介面是純觀察功能，無法直接拿取或放入物品，操作物品還是得打開容器</li>
+            <li><strong>需要在互動距離內</strong>：你必須靠近容器才能觸發預覽，太遠的話游標移過去也不會顯示</li>
+            <li><strong>不消耗資源</strong>：預覽功能完全免費，不會消耗任何物品或金錢，可以無限次使用</li>
+            <li><strong>即時更新</strong>：容器內容如果有變化（例如其他人放入物品），重新懸停就會看到最新狀態</li>
+            <li><strong>自動啟用</strong>：不需要任何設定或指令，所有玩家都能直接使用</li>
           </ul>
         </div>
 
-        
         <div class="guide-divider"></div>
 
+        <!-- ═══ FAQ ═══ -->
         <div class="guide-section-card fade-in" style="--card-accent:#85b1e0">
           <h2><span class="sec-icon">❓</span> 常見問題</h2>
           <div class="guide-faq">
             <div class="guide-faq-item">
               <button class="guide-faq-q">哪些容器可以預覽？</button>
-              <div class="guide-faq-a"><div class="guide-faq-a-inner">箱子、陷阱箱、木桶、潛影盒等各種容器都可以。懸停即預覽。</div></div>
+              <div class="guide-faq-a"><div class="guide-faq-a-inner">箱子、陷阱箱、木桶、界伏盒、潛影盒、桶、熔爐、釀造台等各種容器都可以預覽。只要是可以儲存物品的方塊，懸停就會顯示預覽。</div></div>
             </div>
             <div class="guide-faq-item">
-              <button class="guide-faq-q">需要什麼才能用？</button>
-              <div class="guide-faq-a"><div class="guide-faq-a-inner">不需要任何設定或指令，自動啟用。</div></div>
+              <button class="guide-faq-q">需要什麼才能使用？</button>
+              <div class="guide-faq-a"><div class="guide-faq-a-inner">不需要任何設定或指令，容器預覽是自動啟用的功能。只要靠近容器並懸停游標就會觸發，所有玩家預設都能使用。</div></div>
             </div>
             <div class="guide-faq-item">
               <button class="guide-faq-q">預覽能看到全部東西嗎？</button>
-              <div class="guide-faq-a"><div class="guide-faq-a-inner">預覽介面會顯示容器內的所有物品。</div></div>
+              <div class="guide-faq-a"><div class="guide-faq-a-inner">是的，預覽介面會顯示容器內的所有物品，包括物品圖示和數量。如果容器是滿的（例如雙聯箱子 54 格），你會看到全部 54 個格子的內容。</div></div>
             </div>
-          </div>
-        </div>
-
-          </div>
-        </div>
-
-          </div>
-        </div>
+            <div class="guide-faq-item">
+              <button class="guide-faq-q">可以用預覽直接拿東西嗎？</button>
+              <div class="guide-faq-a"><div class="guide-faq-a-inner">不行。預覽是純觀察功能，只能看不能動。要拿取物品還是得正常點擊開啟容器。</div></div>
+            </div>
+            <div class="guide-faq-item">
+              <button class="guide-faq-q">預覽會被其他玩家看到嗎？</button>
+              <div class="guide-faq-a"><div class="guide-faq-a-inner">不會。預覽是你自己的客戶端顯示，其他玩家完全不會知道你在預覽哪個容器。這是完全私密的操作。</div></div>
+            </div>
           </div>
         </div>
 
         <div class="guide-divider"></div>
 
+        <!-- ═══ 相關頁面 ═══ -->
         <div class="guide-section-card fade-in" style="--card-accent:var(--ocean-blue)">
           <h2><span class="sec-icon">📖</span> 相關頁面</h2>
           <div class="guide-next-grid">
             <a href="箱子商店" class="guide-next-card">
-              <span class="guide-next-icon">📦</span>
+              <span class="guide-next-icon">💰</span>
               <div class="guide-next-body">
                 <h4>箱子商店</h4>
-                <p>逛商店街搭配預覽更好用</p>
+                <p>逛商店街搭配預覽功能更好用</p>
               </div>
             </a>
             <a href="穿牌開箱" class="guide-next-card">
-              <span class="guide-next-icon">📦</span>
+              <span class="guide-next-icon">📋</span>
               <div class="guide-next-body">
                 <h4>穿牌開箱</h4>
-                <p>點告示牌直接開容器</p>
+                <p>點告示牌直接開啟容器</p>
               </div>
             </a>
             <a href="倉庫" class="guide-next-card">
@@ -305,16 +383,18 @@
           </div>
         </div>
 
+        <!-- ═══ 導覽 ═══ -->
         <div class="guide-nav fade-in">
           <a href="自動整理" class="btn btn-outline">← 自動整理</a>
           <a href="../海風指南" class="btn btn-outline">返回目錄</a>
-          <a href="遊戲機制" class="btn btn-primary">機制總覽 →</a>
+          <a href="地震預警" class="btn btn-primary">地震預警 →</a>
         </div>
-      </div>
-    </div>
-  </div>
 
-    <footer class="footer">
+      </div><!-- /guide-main -->
+    </div><!-- /guide-layout -->
+  </div><!-- /page -->
+
+  <footer class="footer">
     <div class="footer-inner">
       <div class="footer-brand">
         <span class="footer-logo">海風伺服器 SeaWind.cc</span>
@@ -348,5 +428,5 @@
 
   <script src="../main.js?v=020502a"></script>
   <script src="../music-player.js"></script>
-  </body>
+</body>
 </html>

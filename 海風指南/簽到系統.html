@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html lang="zh-Hant">
 <head>
-  <meta charset="UTF-8"><meta name="color-scheme" content="dark light"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <meta name="color-scheme" content="dark light">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>海風 — 海風指南 — 簽到系統</title>
   <link rel="canonical" href="https://www.seawind.cc/海風指南/簽到系統">
   <meta name="description" content="海風伺服器簽到月曆：每天簽到或許有好東西。">
@@ -15,7 +17,8 @@
   <link rel="dns-prefetch" href="//cdn.discordapp.com">
   <link rel="dns-prefetch" href="//truth.bahamut.com.tw">
   <link rel="dns-prefetch" href="//api.mcsrvstat.us">
-  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;800&family=Noto+Serif+TC:wght@700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../style.css?v=020502a">
   <link rel="stylesheet" href="../music-player.css">
@@ -31,7 +34,8 @@
 
   <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
   <div class="bg-atmosphere"></div>
-    <nav class="nav">
+
+  <nav class="nav">
     <a href="../首頁" class="nav-logo">
       <picture><source srcset="../assets/img/logo.webp" type="image/webp"><img src="../assets/img/logo.png" alt="海風" class="nav-logo-img" width="48" height="48" fetchpriority="high"></picture>
       <span>海風伺服器</span>
@@ -79,21 +83,23 @@
       </button>
     </div>
   </nav>
+
   <div class="page">
-          <!-- ═══ Hero ═══ -->
-      <div class="guide-v2-hero fade-in">
-        <h1>簽到月曆</h1>
-          <p class="section-desc">每天簽到或許有好東西。</p>
-          <div class="guide-quick-stats">
-            <div class="guide-qs-item"><span class="guide-qs-icon">📅</span><span>頻率</span><span class="guide-qs-val">每天一次</span></div>
-            <div class="guide-qs-item"><span class="guide-qs-icon">🎁</span><span>獎勵</span><span class="guide-qs-val">隨機物品</span></div>
-            <div class="guide-qs-item"><span class="guide-qs-icon">🏅</span><span>成就</span><span class="guide-qs-val">累計天數</span></div>
-          </div>
+    <!-- ═══ Hero ═══ -->
+    <div class="guide-v2-hero fade-in">
+      <h1>簽到月曆</h1>
+      <p class="section-desc">每天上線先簽個到，花不到幾秒鐘就能拿獎勵。養成簽到的習慣，累積下來真的很可觀！</p>
+      <div class="guide-quick-stats">
+        <div class="guide-qs-item"><span class="guide-qs-icon">📅</span><span>頻率</span><span class="guide-qs-val">每天一次</span></div>
+        <div class="guide-qs-item"><span class="guide-qs-icon">🎁</span><span>獎勵</span><span class="guide-qs-val">隨機物品</span></div>
+        <div class="guide-qs-item"><span class="guide-qs-icon">🔥</span><span>連續</span><span class="guide-qs-val">額外稱號</span></div>
       </div>
+    </div>
+
     <div class="guide-layout">
 
-            <!-- 側邊導覽 -->
-            <aside class="guide-sidebar">
+      <!-- 側邊導覽 -->
+      <aside class="guide-sidebar">
         <div class="guide-sidebar-inner">
           <div class="guide-sidebar-title">📖 海風指南</div>
           <nav class="guide-sidebar-nav">
@@ -187,153 +193,228 @@
 
       <div class="guide-main">
 
-<div class="content-section">
-      <div class="breadcrumb fade-in">
-        <a href="../海風指南">海風指南</a>
-        <span class="sep">›</span>
-        <span class="current">簽到月曆</span>
-      </div>
-      <div class="rules-intro fade-in">
-        <p>每天上線先簽個到，花不到幾秒鐘就能拿獎勵。養成簽到的習慣，一天一點、一天一點，累積下來的獎勵真的很可觀！而且在特別的日子簽到，也許會有驚喜等著你。</p>
-      </div>
-
-        <div class="guide-divider"></div>
-
-        <div class="guide-section-card fade-in" style="--card-accent:var(--teal)">
-          <h2><span class="sec-icon">📅</span> 簽到類型</h2>
-          <p>簽到系統分成三種，各自追蹤不同的進度。</p>
-          <div class="rules-table-wrap">
-            <table class="rules-table">
-              <thead><tr><th>類型</th><th>說明</th><th>獎勵</th></tr></thead>
-              <tbody>
-                <tr><td>📅 每日簽到</td><td>每天可以簽到一次，免費的。</td><td>隨機獎勵（金錠、鑽石、經驗瓶等）。</td></tr>
-                <tr><td>🔥 連續簽到</td><td>連續天數不中斷地簽到。</td><td>達成里程碑可獲得專屬稱號。</td></tr>
-                <tr><td>📊 累積簽到</td><td>累計總共簽到幾天。</td><td>達到特定天數可獲得蛋糕類稱號。</td></tr>
-              </tbody>
-            </table>
+        <div class="content-section">
+          <div class="breadcrumb fade-in">
+            <a href="../海風指南">海風指南</a>
+            <span class="sep">›</span>
+            <span class="current">簽到月曆</span>
           </div>
-          <div class="callout callout-info"><span class="callout-icon">ℹ️</span><span>三種簽到類型各自獨立計算，每日簽到一次同時更新三種進度。</span></div>
-        </div>
 
-        <div class="guide-divider"></div>
-
-        <div class="guide-section-card fade-in" style="--card-accent:var(--sand)">
-          <h2><span class="sec-icon">🎁</span> 每日簽到獎勵一覽</h2>
-          <p>每日簽到可隨機獲得以下其中一種獎勵。</p>
-          <div class="rules-table-wrap">
-            <table class="rules-table">
-              <thead><tr><th>天數</th><th>獎勵</th><th>天數</th><th>獎勵</th></tr></thead>
-              <tbody>
-                <tr><td>1</td><td>💎 鑽石</td><td>16</td><td>🧨 煙火</td></tr>
-                <tr><td>2</td><td>🧵 線</td><td>17</td><td>🧶 線</td></tr>
-                <tr><td>3</td><td>🔴 紅石</td><td>18</td><td>🥚 雪球</td></tr>
-                <tr><td>4</td><td>🔴 紅石</td><td>19</td><td>🍪 餅乾</td></tr>
-                <tr><td>5</td><td>🟡 金錠</td><td>20</td><td>💎 鑽石</td></tr>
-                <tr><td>6</td><td>🟡 金錠</td><td>21</td><td>🟡 金錠</td></tr>
-                <tr><td>7</td><td>🍎 金蘋果</td><td>22</td><td>🍎 金蘋果</td></tr>
-                <tr><td>8</td><td>🔵 青金石</td><td>23</td><td>🟢 綠寶石</td></tr>
-                <tr><td>9</td><td>🎂 蛋糕</td><td>24</td><td>🟡 金蘿蔔</td></tr>
-                <tr><td>10</td><td>💎 鑽石</td><td>25</td><td>💎 鑽石</td></tr>
-                <tr><td>11</td><td>🧪 經驗瓶</td><td>26</td><td>🟡 金蘋果</td></tr>
-                <tr><td>12</td><td>🟡 金蘿蔔</td><td>27</td><td>⚪ 鐵錠</td></tr>
-                <tr><td>13</td><td>🟡 金錠</td><td>28</td><td>🐰 兔腳</td></tr>
-                <tr><td>14</td><td>🔴 紅石</td><td>29</td><td>🎂 蛋糕</td></tr>
-                <tr><td>15</td><td>🧪 經驗瓶</td><td>30</td><td>💎 鑽石</td></tr>
-              </tbody>
-            </table>
+          <div class="rules-intro fade-in">
+            <p>每天上線先簽個到，花不到幾秒鐘就能拿獎勵。簽到系統追蹤你的簽到紀錄，連續簽到還有額外獎勵。一天一點、一天一點，累積下來的獎勵真的很可觀！而且在特別的日子簽到，也許會有驚喜等著你。</p>
+            <div class="callout callout-tip"><span class="callout-icon">💡</span><span>簽到是每天最簡單的收入來源，只要上線點一下就好。建議養成每天簽到的習慣，搭配<a href="任務系統">任務系統</a>一起做，雙重收入更划算。</span></div>
           </div>
-        </div>
 
-        <div class="guide-divider"></div>
+          <div class="guide-divider"></div>
 
-        <div class="guide-section-card fade-in" style="--card-accent:var(--lavender)">
-          <h2><span class="sec-icon">🎉</span> 特別的日子</h2>
-          <p>在某些特別的日期（像是節日或紀念日）簽到，也許會發生特別的事情。可能是限定稱號、特殊道具，或是意想不到的驚喜獎勵。具體是什麼？那就等你自己去發現了。</p>
-          <div class="callout callout-tip"><span class="callout-icon">💡</span><span>海風的紀念日、各大節日（春節、萬聖節、聖誕節等）都可能有特別簽到獎勵，記得在這些日子上線簽到。</span></div>
-        </div>
-
-        <div class="guide-divider"></div>
-
-        <div class="guide-section-card fade-in" style="--card-accent:var(--foam)">
-          <h2><span class="sec-icon">🏅</span> 連續簽到稱號</h2>
-          <p>堅持簽到不中斷，就能獲得專屬稱號，顯示在你的名字旁邊。</p>
-          <div class="rules-table-wrap">
-            <table class="rules-table">
-              <thead><tr><th>連續天數</th><th>稱號</th></tr></thead>
-              <tbody>
-                <tr><td>7 天</td><td>📅 週簽達人</td></tr>
-                <tr><td>30 天</td><td>🔥 月簽王者</td></tr>
-                <tr><td>100 天</td><td>💎 百日傳說</td></tr>
-              </tbody>
-            </table>
+          <!-- ═══ 簽到方式 ═══ -->
+          <div class="guide-section-card fade-in" style="--card-accent:var(--teal)">
+            <h2><span class="sec-icon">📅</span> 簽到方式</h2>
+            <p>簽到非常簡單，只需要一個指令：</p>
+            <ol class="steps">
+              <li>輸入 <code>/signin</code> 開啟簽到月曆介面。</li>
+              <li>在月曆上點擊今天的日期，完成簽到。</li>
+              <li>系統會隨機發放一份獎勵，直接送進你的背包。</li>
+            </ol>
+            <div class="callout callout-info"><span class="callout-icon">ℹ️</span><span>每天只能簽到一次，簽過之後當天無法重複簽。簽到時間以伺服器時間為準（每天 00:00 重置）。</span></div>
           </div>
-          <div class="callout callout-info"><span class="callout-icon">ℹ️</span><span>連續簽到中斷後會重新計算天數，記得每天上線簽一下。</span></div>
-        </div>
 
-        <div class="guide-divider"></div>
+          <div class="guide-divider"></div>
 
-        <div class="guide-section-card fade-in" style="--card-accent:var(--ocean-blue)">
-          <h2><span class="sec-icon">⌨️</span> 常用指令</h2>
-          <div class="rules-table-wrap"><table class="rules-table"><thead><tr><th>指令</th><th>說明</th></tr></thead><tbody>
-            <tr><td><code>/signin</code></td><td>開啟簽到月曆。</td></tr>
-          </tbody></table></div>
-        </div>
-
-        <div class="guide-divider"></div>
-
-        <div class="guide-section-card fade-in" style="--card-accent:#85b1e0">
-          <h2><span class="sec-icon">❓</span> 常見問題</h2>
-          <div class="guide-faq">
-            <div class="guide-faq-item">
-              <button class="guide-faq-q">簽到獎勵會重複嗎？</button>
-              <div class="guide-faq-a"><div class="guide-faq-a-inner">會的。每日簽到的獎勵是隨機的，30 天一個循環，之後重新開始。每天都有機會抽到鑽石或金蘋果。</div></div>
+          <!-- ═══ 簽到類型 ═══ -->
+          <div class="guide-section-card fade-in" style="--card-accent:var(--sand)">
+            <h2><span class="sec-icon">📊</span> 三種簽到追蹤</h2>
+            <p>簽到系統同時追蹤三種不同的進度，各自獨立計算：</p>
+            <div class="rules-table-wrap">
+              <table class="rules-table">
+                <thead><tr><th>類型</th><th>說明</th><th>獎勵</th></tr></thead>
+                <tbody>
+                  <tr><td>📅 每日簽到</td><td>每天可以簽到一次，免費的。</td><td>隨機獎勵（金錠、鑽石、經驗瓶等）。</td></tr>
+                  <tr><td>🔥 連續簽到</td><td>連續天數不中斷地簽到。</td><td>達成里程碑可獲得專屬稱號。</td></tr>
+                  <tr><td>📊 累積簽到</td><td>累計總共簽到幾天（不論是否連續）。</td><td>達到特定天數可獲得蛋糕類稱號。</td></tr>
+                </tbody>
+              </table>
             </div>
-            <div class="guide-faq-item">
-              <button class="guide-faq-q">忘記簽到怎麼辦？</button>
-              <div class="guide-faq-a"><div class="guide-faq-a-inner">每日簽到沒有補簽機制，錯過就等明天。但連續簽到天數會中斷重新計算，所以盡量每天上線簽一下。</div></div>
+            <div class="callout callout-tip"><span class="callout-icon">💡</span><span>三種簽到類型各自獨立計算，每日簽到一次同時更新三種進度。即使連續簽到中斷了，累積簽到天數也不會歸零。</span></div>
+          </div>
+
+          <div class="guide-divider"></div>
+
+          <!-- ═══ 每日獎勵 ═══ -->
+          <div class="guide-section-card fade-in" style="--card-accent:var(--lavender)">
+            <h2><span class="sec-icon">🎁</span> 每日簽到獎勵一覽</h2>
+            <p>每日簽到會隨機獲得以下其中一種獎勵。30 天一個循環，之後重新開始：</p>
+            <div class="rules-table-wrap">
+              <table class="rules-table">
+                <thead><tr><th>天數</th><th>獎勵</th><th>天數</th><th>獎勵</th></tr></thead>
+                <tbody>
+                  <tr><td>1</td><td>💎 鑽石</td><td>16</td><td>🧨 煙火</td></tr>
+                  <tr><td>2</td><td>🧵 線</td><td>17</td><td>🧶 線</td></tr>
+                  <tr><td>3</td><td>🔴 紅石</td><td>18</td><td>🥚 雪球</td></tr>
+                  <tr><td>4</td><td>🔴 紅石</td><td>19</td><td>🍪 餅乾</td></tr>
+                  <tr><td>5</td><td>🟡 金錠</td><td>20</td><td>💎 鑽石</td></tr>
+                  <tr><td>6</td><td>🟡 金錠</td><td>21</td><td>🟡 金錠</td></tr>
+                  <tr><td>7</td><td>🍎 金蘋果</td><td>22</td><td>🍎 金蘋果</td></tr>
+                  <tr><td>8</td><td>🔵 青金石</td><td>23</td><td>🟢 綠寶石</td></tr>
+                  <tr><td>9</td><td>🎂 蛋糕</td><td>24</td><td>🟡 金蘿蔔</td></tr>
+                  <tr><td>10</td><td>💎 鑽石</td><td>25</td><td>💎 鑽石</td></tr>
+                  <tr><td>11</td><td>🧪 經驗瓶</td><td>26</td><td>🟡 金蘋果</td></tr>
+                  <tr><td>12</td><td>🟡 金蘿蔔</td><td>27</td><td>⚪ 鐵錠</td></tr>
+                  <tr><td>13</td><td>🟡 金錠</td><td>28</td><td>🐰 兔腳</td></tr>
+                  <tr><td>14</td><td>🔴 紅石</td><td>29</td><td>🎂 蛋糕</td></tr>
+                  <tr><td>15</td><td>🧪 經驗瓶</td><td>30</td><td>💎 鑽石</td></tr>
+                </tbody>
+              </table>
             </div>
-            <div class="guide-faq-item">
-              <button class="guide-faq-q">簽到可以累積嗎？例如一次簽 7 天？</button>
-              <div class="guide-faq-a"><div class="guide-faq-a-inner">不行。每天只能簽到一次，無法一次簽多天。連續簽到的意思是每天都要上線簽到，不能累積。</div></div>
+            <div class="callout callout-info"><span class="callout-icon">ℹ️</span><span>獎勵表會定期更新，實際獎勵以遊戲內顯示為準。每天都會有不同的隨機獎勵等著你！</span></div>
+          </div>
+
+          <div class="guide-divider"></div>
+
+          <!-- ═══ 連續簽到 ═══ -->
+          <div class="guide-section-card fade-in" style="--card-accent:var(--foam)">
+            <h2><span class="sec-icon">🔥</span> 連續簽到機制</h2>
+            <p>連續簽到是指每天都不中斷地簽到。堅持得越久，獎勵越豐厚：</p>
+            <div class="rules-table-wrap">
+              <table class="rules-table">
+                <thead><tr><th>連續天數</th><th>稱號</th><th>說明</th></tr></thead>
+                <tbody>
+                  <tr><td>7 天</td><td>📅 週簽達人</td><td>連續簽到一週即可獲得。</td></tr>
+                  <tr><td>30 天</td><td>🔥 月簽王者</td><td>連續簽到一個月，展現你的毅力。</td></tr>
+                  <tr><td>100 天</td><td>💎 百日傳說</td><td>連續簽到一百天，真正的簽到傳說。</td></tr>
+                </tbody>
+              </table>
             </div>
+            <div class="callout callout-tip"><span class="callout-icon">💡</span><span>連續簽到中斷後會重新計算天數。即使只差一天就達成里程碑，中斷了就得從頭來過。所以記得每天上線簽一下！</span></div>
+            <p style="margin-top:var(--space-md)"><strong>小提醒：</strong></p>
+            <ul class="rules-list">
+              <li>簽到時間以伺服器時間為準，每天 00:00 重置。</li>
+              <li>只要在當天 00:00 前完成簽到，就算連續。</li>
+              <li>如果今天忘記簽到，明天簽到時連續天數會從 1 重新開始。</li>
+              <li>累積簽到天數不受影響，只是連續天數歸零。</li>
+            </ul>
+          </div>
+
+          <div class="guide-divider"></div>
+
+          <!-- ═══ 累積簽到 ═══ -->
+          <div class="guide-section-card fade-in" style="--card-accent:var(--sand)">
+            <h2><span class="sec-icon">📊</span> 累積簽到</h2>
+            <p>累積簽到記錄的是你總共簽到過幾天，不管是否連續。即使偶爾忘記簽到，之前的天數也不會消失。</p>
+            <p>達到特定累積天數可以獲得專屬稱號，這些稱號會顯示在你的名字旁邊，讓其他玩家知道你是老玩家。</p>
+            <div class="callout callout-info"><span class="callout-icon">ℹ️</span><span>累積簽到天數是永久的，不會因為任何原因歸零。即使一個月沒上線，回來之後累積天數還是原來的數字。</span></div>
+          </div>
+
+          <div class="guide-divider"></div>
+
+          <!-- ═══ 特別日子 ═══ -->
+          <div class="guide-section-card fade-in" style="--card-accent:var(--lavender)">
+            <h2><span class="sec-icon">🎉</span> 特別的日子</h2>
+            <p>在某些特別的日期簽到，也許會發生特別的事情。可能是限定稱號、特殊道具，或是意想不到的驚喜獎勵。</p>
+            <p>以下是一些可能出現特別簽到獎勵的日子：</p>
+            <ul class="rules-list">
+              <li><strong>🎂 海風紀念日</strong> — 伺服器成立紀念日，通常會有特別的慶祝活動和限定獎勵。</li>
+              <li><strong>🧧 農曆新年</strong> — 春節期間簽到可能會獲得新年限定稱號或紅包道具。</li>
+              <li><strong>🎃 萬聖節</strong> — 10 月 31 日前後，可能會有南瓜主題的特別獎勵。</li>
+              <li><strong>🎄 聖誕節</strong> — 12 月 25 日前後，可能會有聖誕主題的限定物品。</li>
+              <li><strong>🎆 跨年</strong> — 12 月 31 日到 1 月 1 日，跨年簽到可能有特別驚喜。</li>
+            </ul>
+            <div class="callout callout-tip"><span class="callout-icon">💡</span><span>具體是什麼驚喜？那就等你自己去發現了。記得在這些特別的日子上線簽到，別錯過限定獎勵！</span></div>
+          </div>
+
+          <div class="guide-divider"></div>
+
+          <!-- ═══ 簽到小技巧 ═══ -->
+          <div class="guide-section-card fade-in" style="--card-accent:var(--teal)">
+            <h2><span class="sec-icon">💡</span> 簽到小技巧</h2>
+            <ul class="rules-list">
+              <li><strong>每天固定時間簽到</strong> — 餐成每天上線第一件事就簽到的習慣，避免忘記。可以跟<a href="任務系統">任務系統</a>一起做。</li>
+              <li><strong>不要中斷連續簽到</strong> — 連續簽到的稱號需要不中斷才能達成。如果差一天就到里程碑，千萬別忘記。</li>
+              <li><strong>注意特別日子</strong> — 節日和紀念日可能會有額外獎勵，這些限定獎勵錯過就沒了。</li>
+              <li><strong>背包留空間</strong> — 簽到獎勵會直接送進背包，如果背包滿了可能無法領取。簽到前先確認背包有空間。</li>
+              <li><strong>搭配任務一起做</strong> — 簽到和任務是每天最穩定的兩個收入來源，一起做效率最高。</li>
+            </ul>
+          </div>
+
+          <div class="guide-divider"></div>
+
+          <!-- ═══ 常用指令 ═══ -->
+          <div class="guide-section-card fade-in" style="--card-accent:var(--ocean-blue)">
+            <h2><span class="sec-icon">⌨️</span> 常用指令</h2>
+            <div class="rules-table-wrap">
+              <table class="rules-table">
+                <thead><tr><th>指令</th><th>說明</th></tr></thead>
+                <tbody>
+                  <tr><td><code>/signin</code></td><td>開啟簽到月曆介面，進行每日簽到。</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="callout callout-tip"><span class="callout-icon">💡</span><span>簽到只需要一個指令，非常簡單。你也可以從伺服器選單中找到簽到入口。</span></div>
+          </div>
+
+          <div class="guide-divider"></div>
+
+          <!-- ═══ FAQ ═══ -->
+          <div class="guide-section-card fade-in" style="--card-accent:#85b1e0">
+            <h2><span class="sec-icon">❓</span> 常見問題</h2>
+            <div class="guide-faq">
+              <div class="guide-faq-item">
+                <button class="guide-faq-q">簽到獎勵會重複嗎？</button>
+                <div class="guide-faq-a"><div class="guide-faq-a-inner">會的。每日簽到的獎勵表是 30 天一個循環，之後重新開始。每天都會隨機獲得當天對應的獎勵，所以即使同一個天數，每次簽到拿到的東西也可能不同。</div></div>
+              </div>
+              <div class="guide-faq-item">
+                <button class="guide-faq-q">忘記簽到怎麼辦？</button>
+                <div class="guide-faq-a"><div class="guide-faq-a-inner">每日簽到沒有補簽機制，錯過就等明天。連續簽到天數會中斷重新計算，但累積簽到天數不受影響。如果連續簽到快到里程碑了，建議設個鬧鐘提醒自己。</div></div>
+              </div>
+              <div class="guide-faq-item">
+                <button class="guide-faq-q">簽到可以累積嗎？例如一次簽 7 天？</button>
+                <div class="guide-faq-a"><div class="guide-faq-a-inner">不行。每天只能簽到一次，無法一次簽多天。連續簽到的意思是每天都要上線簽到，不能累積。這是為了鼓勵玩家持續上線，保持活躍。</div></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="guide-divider"></div>
+
+          <!-- ═══ 相關頁面 ═══ -->
+          <div class="guide-section-card fade-in" style="--card-accent:var(--ocean-blue)">
+            <h2><span class="sec-icon">📖</span> 相關頁面</h2>
+            <div class="guide-next-grid">
+              <a href="任務系統" class="guide-next-card">
+                <span class="guide-next-icon">📜</span>
+                <div class="guide-next-body">
+                  <h4>任務系統</h4>
+                  <p>簽到＋任務，雙重收入來源</p>
+                </div>
+              </a>
+              <a href="稱號系統" class="guide-next-card">
+                <span class="guide-next-icon">🏅</span>
+                <div class="guide-next-body">
+                  <h4>稱號系統</h4>
+                  <p>簽到稱號的完整一覽</p>
+                </div>
+              </a>
+              <a href="經濟系統" class="guide-next-card">
+                <span class="guide-next-icon">💰</span>
+                <div class="guide-next-body">
+                  <h4>經濟系統</h4>
+                  <p>簽到賺的獎勵怎麼花？</p>
+                </div>
+              </a>
+            </div>
+          </div>
+
+          <div class="guide-nav fade-in">
+            <a href="任務系統" class="btn btn-outline">← 任務系統</a>
+            <a href="../海風指南" class="btn btn-outline">返回目錄</a>
+            <a href="稱號系統" class="btn btn-primary">稱號系統 →</a>
           </div>
         </div>
 
-        <div class="guide-divider"></div>
-
-        <div class="guide-section-card fade-in" style="--card-accent:var(--ocean-blue)">
-          <h2><span class="sec-icon">📖</span> 相關頁面</h2>
-          <div class="guide-next-grid">
-            <a href="任務系統" class="guide-next-card">
-              <span class="guide-next-icon">📋</span>
-              <div class="guide-next-body">
-                <h4>任務系統</h4>
-                <p>簽到＋任務，雙重收入來源。</p>
-              </div>
-            </a>
-            <a href="稱號系統" class="guide-next-card">
-              <span class="guide-next-icon">🏅</span>
-              <div class="guide-next-body">
-                <h4>稱號系統</h4>
-                <p>簽到稱號的完整一覽。</p>
-              </div>
-            </a>
-            <a href="經濟系統" class="guide-next-card">
-              <span class="guide-next-icon">💰</span>
-              <div class="guide-next-body">
-                <h4>經濟系統</h4>
-                <p>簽到賺的風幣怎麼花？</p>
-              </div>
-            </a>
-          </div>
-        </div>
-<div class="guide-nav fade-in"><a href="物品署名" class="btn btn-outline">← 物品署名</a><a href="../海風指南" class="btn btn-outline">返回目錄</a><a href="倉庫" class="btn btn-primary">倉庫 →</a></div>
-    </div>
-  
       </div><!-- /guide-main -->
     </div><!-- /guide-layout -->
   </div>
-    <footer class="footer">
+
+  <footer class="footer">
     <div class="footer-inner">
       <div class="footer-brand">
         <span class="footer-logo">海風伺服器 SeaWind.cc</span>
@@ -353,7 +434,7 @@
     </div>
   </footer>
 
-<!-- Music Player -->
+  <!-- Music Player -->
   <div class="music-player" id="musicPlayer">
     <button class="music-btn" id="musicBtn" aria-label="音樂播放">
       <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
@@ -367,5 +448,5 @@
 
   <script src="../main.js?v=020502a"></script>
   <script src="../music-player.js"></script>
-  </body>
+</body>
 </html>
