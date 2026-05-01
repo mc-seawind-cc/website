@@ -20,8 +20,163 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;800;900&family=Noto+Serif+TC:wght@700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../style.css?v=300430b">
+  <link rel="stylesheet" href="../style.css?v=010501a">
   <link rel="stylesheet" href="../music-player.css">
+  <style>
+  /* ═══ 貨幣流向圖 ═══ */
+  .currency-flow {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+    margin: var(--space-lg) 0;
+  }
+  .flow-row {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    flex-wrap: wrap;
+  }
+  .flow-node {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 16px;
+    border-radius: var(--radius-md);
+    font-weight: 700;
+    font-size: 0.9rem;
+    white-space: nowrap;
+  }
+  .flow-node.earn {
+    background: rgba(168,230,207,0.12);
+    border: 1px solid rgba(168,230,207,0.3);
+    color: var(--foam);
+  }
+  .flow-node.spend {
+    background: rgba(222,172,128,0.12);
+    border: 1px solid rgba(222,172,128,0.3);
+    color: var(--sand);
+  }
+  .flow-node.token {
+    background: rgba(171,114,249,0.12);
+    border: 1px solid rgba(171,114,249,0.3);
+    color: var(--lavender);
+  }
+  .flow-arrow {
+    color: var(--fog);
+    font-size: 1.1rem;
+    flex-shrink: 0;
+  }
+  .flow-label {
+    font-size: 0.78rem;
+    color: var(--fog);
+    margin-left: 4px;
+  }
+  [data-theme="light"] .flow-node.earn { background: rgba(46,160,110,0.08); border-color: rgba(46,160,110,0.25); color: #1a7a4a; }
+  [data-theme="light"] .flow-node.spend { background: rgba(180,120,60,0.08); border-color: rgba(180,120,60,0.25); color: #8a5a20; }
+  [data-theme="light"] .flow-node.token { background: rgba(120,70,200,0.08); border-color: rgba(120,70,200,0.25); color: #6a3ab5; }
+  [data-theme="light"] .flow-arrow { color: #666; }
+
+  /* ═══ 風汐升級階梯 ═══ */
+  .upgrade-path {
+    display: flex;
+    align-items: stretch;
+    gap: 0;
+    margin: var(--space-lg) 0;
+    overflow-x: auto;
+  }
+  .upgrade-step {
+    flex: 1;
+    min-width: 140px;
+    text-align: center;
+    padding: var(--space-md) var(--space-sm);
+    position: relative;
+  }
+  .upgrade-step::after {
+    content: '→';
+    position: absolute;
+    right: -8px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--fog);
+    font-size: 1.2rem;
+    z-index: 1;
+  }
+  .upgrade-step:last-child::after { display: none; }
+  .upgrade-step-icon {
+    font-size: 2rem;
+    margin-bottom: 6px;
+  }
+  .upgrade-step-name {
+    font-weight: 700;
+    font-size: 0.85rem;
+    color: var(--white);
+    margin-bottom: 4px;
+  }
+  .upgrade-step-desc {
+    font-size: 0.75rem;
+    color: var(--fog);
+    line-height: 1.5;
+  }
+  .upgrade-step.from { background: rgba(157,175,255,0.06); border-radius: var(--radius-md) 0 0 var(--radius-md); }
+  .upgrade-step.mid { background: rgba(171,114,249,0.06); }
+  .upgrade-step.to { background: rgba(168,230,207,0.06); border-radius: 0 var(--radius-md) var(--radius-md) 0; }
+  [data-theme="light"] .upgrade-step-name { color: #1a1a2e; }
+
+  /* ═══ 新手快速起步 ═══ */
+  .quickstart-banner {
+    background: linear-gradient(135deg, rgba(222,172,128,0.1) 0%, rgba(157,175,255,0.1) 100%);
+    border: 1px solid rgba(222,172,128,0.2);
+    border-radius: var(--radius-lg);
+    padding: var(--space-lg);
+    margin: var(--space-lg) 0;
+  }
+  .quickstart-banner h3 {
+    font-size: 1.05rem;
+    color: var(--sand);
+    margin-bottom: var(--space-sm);
+  }
+  .quickstart-steps {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: var(--space-sm);
+    margin-top: var(--space-md);
+  }
+  .quickstart-step {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 10px 12px;
+    background: rgba(0,0,0,0.15);
+    border-radius: var(--radius-sm);
+    font-size: 0.85rem;
+    line-height: 1.6;
+    color: var(--cloud);
+  }
+  .quickstart-step .qs-num {
+    flex-shrink: 0;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--sand);
+    color: #0d1117;
+    border-radius: 50%;
+    font-weight: 800;
+    font-size: 0.75rem;
+  }
+  [data-theme="light"] .quickstart-banner { background: linear-gradient(135deg, rgba(180,120,60,0.06) 0%, rgba(80,120,200,0.06) 100%); border-color: rgba(180,120,60,0.15); }
+  [data-theme="light"] .quickstart-banner h3 { color: #8a5a20; }
+  [data-theme="light"] .quickstart-step { background: rgba(0,0,0,0.03); color: #444; }
+  [data-theme="light"] .quickstart-step .qs-num { background: #b4783c; color: #fff; }
+
+  @media (max-width: 768px) {
+    .upgrade-path { flex-direction: column; align-items: center; }
+    .upgrade-step { min-width: 100%; border-radius: var(--radius-md) !important; }
+    .upgrade-step::after { content: '↓'; right: 50%; top: auto; bottom: -12px; transform: translateX(50%); }
+    .quickstart-steps { grid-template-columns: 1fr; }
+  }
+  </style>
 </head>
 <body>
   <div class="page-loader" id="pageLoader">
@@ -189,12 +344,42 @@
         <!-- ═══ Hero ═══ -->
         <div class="guide-v2-hero fade-in">
           <h1>💰 經濟系統</h1>
-          <p class="section-desc">海風的經濟分成兩層：<strong>風幣</strong>是貨幣，走到哪都能花；<strong>代幣</strong>是各系統專屬的獎勵，只能在對應的地方消費。剛來的話，先到<a href="銀行">銀行</a>把鑽石換成風幣，有了錢就什麼都好辦。</p>
+          <p class="section-desc">海風的錢分成兩層：<strong>風幣</strong>是全服通用的貨幣，走到哪都能花；<strong>代幣</strong>是各系統專屬的獎勵，只能在對應的地方消費。剛來的話，先到<a href="銀行">銀行</a>把鑽石換成風幣，有了錢就什麼都好辦。</p>
           <div class="guide-quick-stats">
             <div class="guide-qs-item"><span class="guide-qs-icon">💰</span><span>貨幣</span><span class="guide-qs-val">風幣</span></div>
             <div class="guide-qs-item"><span class="guide-qs-icon">🎫</span><span>代幣</span><span class="guide-qs-val">3 種</span></div>
             <div class="guide-qs-item"><span class="guide-qs-icon">💎</span><span>鑽石匯率</span><span class="guide-qs-val">1 顆 = 25 風幣</span></div>
             <div class="guide-qs-item"><span class="guide-qs-icon">🏦</span><span>兌換地點</span><span class="guide-qs-val">格拉文特銀行</span></div>
+          </div>
+        </div>
+
+        <div class="guide-divider"></div>
+
+        <!-- ═══ 新手第一桶金 ═══ -->
+        <div class="guide-section-card fade-in" style="--card-accent:var(--sand)">
+          <h2><span class="sec-icon">🚀</span> 新手快速起步</h2>
+          <p>剛進海風不知道怎麼賺錢？照著這四步走，5 分鐘內就能拿到你的第一筆風幣。</p>
+
+          <div class="quickstart-banner">
+            <h3>💰 你的第一桶金</h3>
+            <div class="quickstart-steps">
+              <div class="quickstart-step">
+                <span class="qs-num">1</span>
+                <span>到<a href="銀行">銀行</a>用鑽石兌換風幣（1 顆 = 25），挖 4 顆就有 100 風幣</span>
+              </div>
+              <div class="quickstart-step">
+                <span class="qs-num">2</span>
+                <span>每天<a href="簽到系統">簽到</a>，獎勵包含金錠、鑽石、經驗瓶等物品</span>
+              </div>
+              <div class="quickstart-step">
+                <span class="qs-num">3</span>
+                <span>做<a href="任務系統">每日任務</a>，自動刷新、獎勵穩定，是最可靠的收入</span>
+              </div>
+              <div class="quickstart-step">
+                <span class="qs-num">4</span>
+                <span>有了 100～200 風幣就夠初期逛<a href="箱子商店">商店</a>、寄東西了</span>
+              </div>
+            </div>
           </div>
         </div>
 
@@ -222,7 +407,39 @@
             </table>
           </div>
 
-
+          <!-- 貨幣流向圖 -->
+          <h3 style="margin-top:var(--space-xl)">🔄 貨幣怎麼流動</h3>
+          <p style="color:var(--fog);font-size:0.85rem;margin-bottom:var(--space-sm)">四種貨幣的取得與消費方向一目了然：</p>
+          <div class="currency-flow">
+            <div class="flow-row">
+              <span class="flow-node earn">💎 鑽石</span>
+              <span class="flow-arrow">→</span>
+              <span class="flow-node earn">💰 風幣</span>
+              <span class="flow-label">銀行兌換（1:25）</span>
+            </div>
+            <div class="flow-row">
+              <span class="flow-node earn">📋 任務</span>
+              <span class="flow-arrow">→</span>
+              <span class="flow-node token">🎯 任務幣</span>
+              <span class="flow-arrow">→</span>
+              <span class="flow-node token">🌀 風汐碎片</span>
+              <span class="flow-label">任務商店兌換</span>
+            </div>
+            <div class="flow-row">
+              <span class="flow-node earn">🪵 原木材料</span>
+              <span class="flow-arrow">→</span>
+              <span class="flow-node token">🪨 石材</span>
+              <span class="flow-arrow">→</span>
+              <span class="flow-node spend">🏗️ 建築材料</span>
+              <span class="flow-label">建材小舖兌換</span>
+            </div>
+            <div class="flow-row">
+              <span class="flow-node earn">💰 風幣</span>
+              <span class="flow-arrow">→</span>
+              <span class="flow-node spend">🛒 商店 / 📦 開店 / 📬 郵寄</span>
+              <span class="flow-label">全服通用消費</span>
+            </div>
+          </div>
         </div>
 
         <div class="guide-divider"></div>
@@ -337,7 +554,7 @@
             <div class="guide-eco-card">
               <div class="guide-eco-icon">🎯</div>
               <h4>任務商店兌換</h4>
-              <p>用任務幣在 <code>/plk shop</code> 換。做任務累積任務幣，再換碎片——這是比較穩定的方式。</p>
+              <p>用任務幣在 <code>/plk shop</code> 換。做<a href="任務系統">任務</a>累積任務幣，再換碎片——這是比較穩定的方式。</p>
             </div>
           </div>
 
@@ -361,8 +578,32 @@
             </div>
           </div>
 
-          <h3 style="margin-top:var(--space-lg)">風汐工具</h3>
-          <p>比鑽石工具更強，而且<strong>不會壞</strong>。分兩階：</p>
+          <h3 style="margin-top:var(--space-lg)">風汐工具升級路徑</h3>
+          <p>比鑽石工具更強，而且<strong>不會壞</strong>。從碎片到 +7 工具的完整路徑：</p>
+
+          <div class="upgrade-path">
+            <div class="upgrade-step from">
+              <div class="upgrade-step-icon">🔹</div>
+              <div class="upgrade-step-name">風汐碎片</div>
+              <div class="upgrade-step-desc">簽到 / 任務商店<br>可交易</div>
+            </div>
+            <div class="upgrade-step mid">
+              <div class="upgrade-step-icon">🔶</div>
+              <div class="upgrade-step-name">風汐石 ×6</div>
+              <div class="upgrade-step-desc">碎片合成</div>
+            </div>
+            <div class="upgrade-step to">
+              <div class="upgrade-step-icon">⛏️</div>
+              <div class="upgrade-step-name">+6 工具</div>
+              <div class="upgrade-step-desc">6 顆風汐石<br>＋ 鑽石工具</div>
+            </div>
+            <div class="upgrade-step to">
+              <div class="upgrade-step-icon">⚡</div>
+              <div class="upgrade-step-name">+7 工具</div>
+              <div class="upgrade-step-desc">6 顆風汐石<br>＋ +6 工具</div>
+            </div>
+          </div>
+
           <div class="rules-table-wrap">
             <table class="rules-table">
               <thead><tr><th>等級</th><th>工具種類</th><th>效率</th><th>兌換材料</th></tr></thead>
@@ -451,6 +692,24 @@
               <button class="guide-faq-q">鑽石除了換風幣還有什麼用？</button>
               <div class="guide-faq-a"><div class="guide-faq-a-inner">
                 鑽石本身也是重要的合成材料（裝備、附魔台等），不一定要全部換掉。建議保留一部分自用，多餘的再拿去<a href="銀行">銀行</a>換風幣。如果玩家市場的鑽石行情比銀行好，也可以在玩家之間交易。
+              </div></div>
+            </div>
+            <div class="guide-faq-item">
+              <button class="guide-faq-q">風汐工具壞了怎麼辦？</button>
+              <div class="guide-faq-a"><div class="guide-faq-a-inner">
+                風汐工具<strong>不會壞</strong>。它沒有耐久度，不需要修復，拿到就是永久的。這也是它珍貴的原因之一——鑽石工具終究會磨損，風汐工具不會。
+              </div></div>
+            </div>
+            <div class="guide-faq-item">
+              <button class="guide-faq-q">開箱子商店要多少錢？</button>
+              <div class="guide-faq-a"><div class="guide-faq-a-inner">
+                開一個箱子商店要 <strong>25 風幣</strong>，之後改價格每次 <strong>20 風幣</strong>。市場區有專門的位置可以擺攤，用 <code>/qs</code> 可以快速查看所有商店。詳見<a href="箱子商店">箱子商店</a>。
+              </div></div>
+            </div>
+            <div class="guide-faq-item">
+              <button class="guide-faq-q">有沒有快速賺錢的方法？</button>
+              <div class="guide-faq-a"><div class="guide-faq-a-inner">
+                沒有一夜致富的方法，但有穩定的路線：①每天<a href="簽到系統">簽到</a>＋<a href="任務系統">做任務</a>（最穩定）；②挖鑽石到<a href="銀行">銀行</a>換（一次到位）；③在<a href="箱子商店">市場區</a>開店賣稀有物品（需要一點資本）；④幫其他玩家建案、挖礦談報酬（需要人脈）。簽到＋任務每天花不到 5 分鐘，長期下來很可觀。
               </div></div>
             </div>
           </div>
@@ -563,7 +822,6 @@
                 <p>贊助方案與冷媒回饋（規劃中）</p>
               </div>
             </a>
-
           </div>
         </div>
 
@@ -592,12 +850,12 @@
       <div class="footer-bottom">
         <p>© 2026 海風伺服器 · 非 Mojang 官方營運 · service@seawind.cc</p>
       </div>
-      <p class="page-revise">網站最後修改日期 2026.04.30 / 總計修改 <span id="deployCount">—</span> 次</p>
+      <p class="page-revise">網站最後修改日期 2026.05.01 / 總計修改 <span id="deployCount">—</span> 次</p>
     </div>
   </footer>
 
   <script src="../utils.js"></script>
-  <script src="../main.js?v=300430b"></script>
+  <script src="../main.js?v=010501a"></script>
   <script>
   // FAQ Accordion
   document.querySelectorAll('.guide-faq-q').forEach(btn => {
