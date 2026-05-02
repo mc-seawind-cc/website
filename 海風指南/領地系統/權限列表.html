@@ -4,7 +4,7 @@
   <meta charset="UTF-8"><meta name="color-scheme" content="dark light"><meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>權限列表 — 領地系統 — 海風指南 — 海風</title>
   <link rel="canonical" href="https://www.seawind.cc/海風指南/領地系統/權限列表">
-  <meta name="description" content="海風領地系統 114 種權限完整參考表：建造、戰鬥、火焰、生物、液體、傳送、特殊效果、物品、訊息。">
+  <meta name="description" content="海風領地系統 114 種權限完整參考表：建造與互動、火焰、生物、液體、傳送、特殊效果、物品、訊息。">
   <meta property="og:title" content="權限列表 — 領地系統 — 海風指南 — 海風">
   <meta property="og:description" content="海風領地系統 114 種權限完整參考表。">
   <meta property="og:image" content="../../assets/img/logo.png">
@@ -193,10 +193,10 @@
         <!-- ═══ Hero ═══ -->
         <div class="guide-v2-hero fade-in">
           <h1>⚙️ 領地權限</h1>
-          <p class="section-desc">領地系統支援 114 種玩家可設定的權限，分為 9 大類。這裡是完整的權限參考表。</p>
+          <p class="section-desc">領地系統支援 114 種玩家可設定的權限，分為 8 大類。這裡是完整的權限參考表。</p>
           <div class="guide-quick-stats">
             <div class="guide-qs-item"><span class="guide-qs-icon">⚙️</span><span>總計</span><span class="guide-qs-val">114 種</span></div>
-            <div class="guide-qs-item"><span class="guide-qs-icon">📂</span><span>分類</span><span class="guide-qs-val">9 大類</span></div>
+            <div class="guide-qs-item"><span class="guide-qs-icon">📂</span><span>分類</span><span class="guide-qs-val">8 大類</span></div>
             <div class="guide-qs-item"><span class="guide-qs-icon">🔧</span><span>指令</span><span class="guide-qs-val">/res set</span></div>
           </div>
         </div>
@@ -236,8 +236,7 @@
           <table class="rules-table" style="margin-top:var(--space-md)">
             <thead><tr><th>分類</th><th>數量</th><th>說明</th></tr></thead>
             <tbody>
-              <tr><td>🔨 建造與互動</td><td><strong>30</strong></td><td>建造、容器、合成、互動方塊、農業</td></tr>
-              <tr><td>⚔️ 戰鬥與傷害</td><td><strong>9</strong></td><td>PVP、射擊、怪物/動物攻擊</td></tr>
+              <tr><td>🔨 建造與互動</td><td><strong>39</strong></td><td>建造、容器、合成、互動方塊、農業、PVP、戰鬥</td></tr>
               <tr><td>🔥 火焰與爆炸</td><td><strong>9</strong></td><td>點火、TNT、苦力怕、凋零</td></tr>
               <tr><td>🐾 生物與生成</td><td><strong>18</strong></td><td>怪物/動物生成控制、牽繩、騎乘</td></tr>
               <tr><td>💧 液體與環境</td><td><strong>20</strong></td><td>水流、活塞、農作物、自然現象</td></tr>
@@ -256,9 +255,9 @@
           <h2><span class="sec-icon">📋</span> 完整權限列表</h2>
           <p>以下列出所有 114 個玩家可設定的權限。預設狀態標示為<span style="color:var(--foam)">允許</span>或<span style="color:#ff9e9e">禁止</span>。</p>
 
-        <!-- 🔨 建造與互動 — 30 個 -->
+        <!-- 🔨 建造與互動 — 39 個 -->
         <div class="perm-cat">
-          <div class="perm-cat-header" style="--cat-color:var(--foam)"><span class="perm-cat-icon">🔨</span><span class="perm-cat-name">建造與互動</span><span class="perm-cat-count">30</span></div>
+          <div class="perm-cat-header" style="--cat-color:var(--foam)"><span class="perm-cat-icon">🔨</span><span class="perm-cat-name">建造與互動</span><span class="perm-cat-count">39</span></div>
           <table class="perm-tbl"><thead><tr><th>權限</th><th>說明</th><th>預設</th></tr></thead><tbody>
             <tr><td><code>build</code></td><td>建造與破壞方塊（總開關）</td><td class="deny">禁止</td></tr>
             <tr><td><code>place</code></td><td>只控制放置方塊（覆蓋 build）</td><td class="deny">禁止</td></tr>
@@ -290,13 +289,7 @@
             <tr><td><code>honeycomb</code></td><td>採集蜂巢</td><td class="deny">禁止</td></tr>
             <tr><td><code>shear</code></td><td>剪羊毛</td><td class="deny">禁止</td></tr>
             <tr><td><code>egg</code></td><td>互動龍蛋</td><td class="deny">禁止</td></tr>
-          </tbody></table>
-        </div>
-
-        <!-- ⚔️ 戰鬥與傷害 — 9 個 -->
-        <div class="perm-cat">
-          <div class="perm-cat-header" style="--cat-color:#ff9e9e"><span class="perm-cat-icon">⚔️</span><span class="perm-cat-name">戰鬥與傷害</span><span class="perm-cat-count">9</span></div>
-          <table class="perm-tbl"><thead><tr><th>權限</th><th>說明</th><th>預設</th></tr></thead><tbody>
+          
             <tr><td><code>pvp</code></td><td>玩家互相戰鬥</td><td class="allow">允許</td></tr>
             <tr><td><code>damage</code></td><td>所有實體傷害（總開關）</td><td class="allow">允許</td></tr>
             <tr><td><code>shoot</code></td><td>射擊（弓、三叉戟等）</td><td class="deny">禁止</td></tr>
@@ -309,7 +302,9 @@
           </tbody></table>
         </div>
 
-        <!-- 🔥 火焰與爆炸 — 9 個 -->
+        
+
+      <!-- 🔥 火焰與爆炸 — 9 個 -->
         <div class="perm-cat">
           <div class="perm-cat-header" style="--cat-color:var(--sand)"><span class="perm-cat-icon">🔥</span><span class="perm-cat-name">火焰與爆炸</span><span class="perm-cat-count">9</span></div>
           <table class="perm-tbl"><thead><tr><th>權限</th><th>說明</th><th>預設</th></tr></thead><tbody>
