@@ -102,6 +102,8 @@
             <div class="guide-sb-group">
               <span class="guide-sb-heading">🛡️ 領地與保護</span>
               <a href="領地系統" class="guide-sb-link active">領地系統</a>
+              <a href="領地系統/權限列表" class="guide-sb-link">權限列表</a>
+              <a href="領地系統/領地列表" class="guide-sb-link">領地列表</a>
               <a href="互動記錄" class="guide-sb-link">互動記錄</a>
               <a href="物品署名" class="guide-sb-link">物品署名</a>
             </div>
@@ -351,7 +353,7 @@
           <h2><span class="sec-icon">📋</span> 權限列表</h2>
           <p>領地系統支援 <strong>114 種</strong>玩家可設定的權限，分為 9 大類。建造和容器存取預設禁止，大部分互動預設允許。</p>
           <div class="guide-entries" style="margin-top:var(--space-md)">
-            <a href="領地權限" class="guide-entry featured" style="--entry-accent:var(--lavender)">
+            <a href="領地系統/權限列表" class="guide-entry featured" style="--entry-accent:var(--lavender)">
               <div class="guide-entry-icon">⚙️</div>
               <div class="guide-entry-body">
                 <div class="guide-entry-title">查看完整權限列表 →</div>
@@ -359,35 +361,17 @@
               </div>
               <span class="guide-entry-arrow">→</span>
             </a>
+            <a href="領地系統/領地列表" class="guide-entry" style="--entry-accent:var(--foam)">
+              <div class="guide-entry-icon">📋</div>
+              <div class="guide-entry-body">
+                <div class="guide-entry-title">領地列表與評論 →</div>
+                <div class="guide-entry-desc">瀏覽公開領地、評論系統、管理自己的領地。</div>
+              </div>
+              <span class="guide-entry-arrow">→</span>
+            </a>
           </div>
         </div>
       </div>
-
-      <div class="guide-divider"></div>
-
-      <!-- ═══ 設定個別玩家權限 ═══ -->
-      <div class="guide-section-card fade-in" style="--card-accent:var(--foam)">
-        <h2><span class="sec-icon">👥</span> 設定個別玩家權限</h2>
-        <p>想讓朋友能進來但別人不行？用 <code>/res pset</code> 針對特定玩家設定：</p>
-        <div class="res-quickstart">
-          <div class="res-qs-card" style="--qs-color:var(--sky)">
-            <div class="res-qs-icon">✏️</div>
-            <h4>設定個人權限</h4>
-            <p><code>/res pset [領地] &lt;玩家&gt; &lt;權限&gt; [true/false/remove]</code></p>
-          </div>
-          <div class="res-qs-card" style="--qs-color:var(--foam)">
-            <div class="res-qs-icon">⚡</div>
-            <h4>一鍵給予常用權限</h4>
-            <p><code>/res padd [領地] &lt;玩家&gt;</code><br>自動給予建造、使用、開箱等基本權限</p>
-          </div>
-          <div class="res-qs-card" style="--qs-color:var(--sand)">
-            <div class="res-qs-icon">🗑️</div>
-            <h4>移除玩家權限</h4>
-            <p><code>/res pdel [領地] &lt;玩家&gt;</code><br>移除該玩家的所有特殊權限</p>
-          </div>
-        </div>
-      </div>
-
       <div class="guide-divider"></div>
 
       <!-- ═══ 訊息設定 ═══ -->
@@ -516,55 +500,6 @@
           </div>
         </div>
       </div>
-
-      <div class="guide-divider"></div>
-
-      <!-- ═══ 領地列表與評論 ═══ -->
-      <div class="guide-section-card fade-in" style="--card-accent:var(--lavender)">
-        <h2><span class="sec-icon">📋</span> 領地列表與評論</h2>
-        <p>海風有專屬的領地列表系統，讓你用介面瀏覽、搜尋和管理所有領地。輸入 <code>/reslist open</code> 即可開啟。</p>
-
-        <h3 style="margin-top:var(--space-lg)">瀏覽公開領地</h3>
-        <p>所有設為「公開」的領地都會出現在列表中。你可以：</p>
-        <ul class="rules-list">
-          <li><strong>查看資訊</strong> — 點擊領地查看擁有者、大小、成員數、評論等詳細資訊</li>
-          <li><strong>直接傳送</strong> — 右鍵點擊公開領地即可傳送過去（需有傳送權限）</li>
-          <li><strong>釘選收藏</strong> — 丟棄鍵（Q）釘選常用領地，方便快速找到</li>
-          <li><strong>排序篩選</strong> — 依照名稱、評論數或大小排序，支援升降序切換</li>
-        </ul>
-
-        <h3 style="margin-top:var(--space-lg)">評論系統</h3>
-        <p>你可以對公開領地留下評論，幫助其他玩家了解這個領地：</p>
-        <div class="guide-steps-grid">
-          <div class="guide-step-card" style="--step-color:var(--lavender)">
-            <div class="guide-step-num">1</div>
-            <h4>開啟領地資訊</h4>
-            <p>在領地列表中點擊想評論的領地</p>
-          </div>
-          <div class="guide-step-card" style="--step-color:var(--lavender)">
-            <div class="guide-step-num">2</div>
-            <h4>選擇好評或差評</h4>
-            <p>左鍵給予好評、右鍵給予差評，並在聊天欄輸入評論內容</p>
-          </div>
-          <div class="guide-step-card" style="--step-color:var(--lavender)">
-            <div class="guide-step-num">3</div>
-            <h4>完成評論</h4>
-            <p>評論會顯示在領地資訊中，所有玩家都能看到</p>
-          </div>
-        </div>
-
-        <h3 style="margin-top:var(--space-lg)">管理自己的領地</h3>
-        <p>領地擁有者可以透過列表管理自己的領地：</p>
-        <ul class="rules-list">
-          <li><strong>修改名稱</strong> — 左鍵點擊「標示」按鈕，在聊天欄輸入新名稱（最長 16 字元）</li>
-          <li><strong>修改描述</strong> — 右鍵點擊「標示」按鈕，輸入領地描述（支援換行 <code>\n</code>）</li>
-          <li><strong>更換圖標</strong> — 蹲下+左鍵點擊「標示」按鈕，將背包物品拖曳至指定位置</li>
-          <li><strong>公開/私人</strong> — 切換領地是否出現在公開列表中</li>
-          <li><strong>設定傳送點</strong> — 右鍵「傳送」按鈕，將目前站立位置設為領地傳送點</li>
-        </ul>
-        <div class="callout callout-tip"><span class="callout-icon">💡</span><span>領地圖標會顯示在列表中，選擇一個有辨識度的物品當圖標，讓別人更容易認出你的領地。部分物品（如箱子、鎖鏈、紅石）不能作為圖標。</span></div>
-      </div>
-
       <div class="guide-divider"></div>
 
       <!-- ═══ 常用指令總表 ═══ -->

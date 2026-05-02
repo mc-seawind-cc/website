@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8"><meta name="color-scheme" content="dark light"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>領地列表 — 領地系統 — 海風指南 — 海風</title>
+  <link rel="canonical" href="https://www.seawind.cc/海風指南/領地系統/領地列表">
+  <meta name="description" content="海風領地列表系統完整指南：瀏覽公開領地、評論系統、管理自己的領地、設定傳送點。">
+  <meta property="og:title" content="領地列表 — 領地系統 — 海風指南 — 海風">
+  <meta property="og:description" content="海風領地列表系統完整指南：瀏覽公開領地、評論系統、管理自己的領地。">
+  <meta property="og:image" content="../../assets/img/logo.png">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:image" content="../../assets/img/logo.png">
+  <meta name="theme-color" content="#0d1117">
+  <link rel="dns-prefetch" href="//cdn.discordapp.com">
+  <link rel="dns-prefetch" href="//truth.bahamut.com.tw">
+  <link rel="dns-prefetch" href="//api.mcsrvstat.us">
+  <link rel="icon" href="../../assets/img/logo.png">
+  <link rel="apple-touch-icon" href="../../assets/img/logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;800&family=Noto+Serif+TC:wght@700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../style.css?v=020503a">
+  <link rel="stylesheet" href="../../music-player.css">
+</head>
+<body>
+  <a class="skip-link" href="#mainContent">跳過導覽</a>
+  <div class="scroll-progress" id="scrollProgress"></div>
+  <div class="bg-atmosphere"></div>
+
+  <nav id="mainNav">
+    <div class="nav-inner">
+      <a href="../首頁" class="nav-logo">
+        <picture><source srcset="../../assets/img/logo.webp" type="image/webp"><img src="../../assets/img/logo.png" alt="海風" class="nav-logo-img" width="48" height="48" fetchpriority="high"></picture>
+        <span class="nav-logo-text">海風</span>
+      </a>
+      <button class="nav-hamburger" id="navToggle" aria-label="選單" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <div class="nav-links" id="navLinks">
+        <ul>
+          <li><a href="../首頁">首頁</a></li>
+          <li><a href="../公告">公告</a></li>
+          <li class="nav-dropdown">
+            <a href="../文化藝廊" class="nav-dropdown-toggle" aria-expanded="false" aria-haspopup="true">關於 <span class="arrow">▾</span></a>
+            <div class="nav-dropdown-menu">
+              <ul>
+                <li><a href="../文化藝廊">文化藝廊</a></li>
+                <li><a href="../活動">活動</a></li>
+                <li><a href="../風景照">風景照</a></li>
+                <li><a href="../歷史館">歷史館</a></li>
+                <li><a href="../海風團隊">海風團隊</a></li>
+              </ul>
+            </div>
+          </li>
+          <li><a href="../海風指南" class="active">海風指南</a></li>
+          <li class="nav-dropdown">
+            <a href="../社群須知" class="nav-dropdown-toggle" aria-expanded="false" aria-haspopup="true">須知 <span class="arrow">▾</span></a>
+            <div class="nav-dropdown-menu">
+              <ul>
+                <li><a href="../社群須知">社群須知</a></li>
+                <li><a href="../支持須知">支持須知</a></li>
+                <li><a href="../管理通則">管理通則</a></li>
+                <li><a href="../公務人員須知">公務人員須知</a></li>
+                <li><a href="../設計規範">設計規範</a></li>
+                <li><a href="../服務條款">服務條款</a></li>
+                <li><a href="../隱私權政策">隱私權政策</a></li>
+              </ul>
+            </div>
+          </li>
+          <li><a href="../會員">會員</a></li>
+          <li><a href="../相關連結">相關連結</a></li>
+          <li class="nav-dropdown">
+            <a href="../合作夥伴" class="nav-dropdown-toggle" aria-expanded="false" aria-haspopup="true">資料中心 <span class="arrow">▾</span></a>
+            <div class="nav-dropdown-menu">
+              <ul>
+                <li><a href="../合作夥伴">合作夥伴</a></li>
+                <li><a href="../違規處分">違規處分</a></li>
+              </ul>
+            </div>
+          </li>
+        </ul>
+        <button class="theme-toggle" id="themeToggle" aria-label="切換深淺色模式">🌙</button>
+      </div>
+    </div>
+  </nav>
+
+  <div id="pageLoader" class="page-loader"><div class="loader-logo">海風</div><div class="loader-wave"></div><div class="loader-dots"><span></span><span></span><span></span></div></div>
+
+  <main id="mainContent">
+    <div class="page guide-page">
+      <aside class="guide-sidebar" id="guideSidebar">
+        <div class="guide-sb-scroll">
+          <div class="guide-sb-group">
+            <span class="guide-sb-heading">🚀 快速開始</span>
+            <a href="../新手指引" class="guide-sb-link">新手指引</a>
+            <a href="../遊戲機制" class="guide-sb-link">遊戲機制</a>
+            <a href="../伺服器選單" class="guide-sb-link">伺服器選單</a>
+            <a href="../綁定帳號" class="guide-sb-link">綁定帳號</a>
+          </div>
+          <div class="guide-sb-group">
+            <span class="guide-sb-heading">🛡️ 領地與保護</span>
+            <a href="../領地系統" class="guide-sb-link">領地系統</a>
+            <a href="權限列表" class="guide-sb-link">權限列表</a>
+            <a href="領地列表" class="guide-sb-link active">領地列表</a>
+            <a href="../互動記錄" class="guide-sb-link">互動記錄</a>
+            <a href="../物品署名" class="guide-sb-link">物品署名</a>
+          </div>
+          <div class="guide-sb-group">
+            <span class="guide-sb-heading">🚀 傳送系統</span>
+            <a href="../個人傳送點" class="guide-sb-link">個人傳送點</a>
+            <a href="../公共傳送點" class="guide-sb-link">公共傳送點</a>
+            <a href="../電梯" class="guide-sb-link">電梯</a>
+          </div>
+          <div class="guide-sb-group">
+            <span class="guide-sb-heading">💰 經濟與交易</span>
+            <a href="../經濟系統" class="guide-sb-link">經濟系統</a>
+            <a href="../線上商城" class="guide-sb-link">線上商城</a>
+            <a href="../箱子商店" class="guide-sb-link">箱子商店</a>
+            <a href="../銀行" class="guide-sb-link">銀行</a>
+            <a href="../雜貨店" class="guide-sb-link">雜貨店</a>
+            <a href="../建材小舖" class="guide-sb-link">建材小舖</a>
+          </div>
+          <div class="guide-sb-group">
+            <span class="guide-sb-heading">⛏️ 挖礦與資源</span>
+            <a href="../礦物代換" class="guide-sb-link">礦物代換</a>
+            <a href="../資源再生" class="guide-sb-link">資源再生</a>
+            <a href="../連鎖挖掘" class="guide-sb-link">連鎖挖掘</a>
+          </div>
+          <div class="guide-sb-group">
+            <span class="guide-sb-heading">🏗️ 建築工具</span>
+            <a href="../電梯" class="guide-sb-link">電梯</a>
+            <a href="../快捷界伏盒" class="guide-sb-link">快捷界伏盒</a>
+            <a href="../倉庫" class="guide-sb-link">倉庫</a>
+            <a href="../自動整理" class="guide-sb-link">自動整理</a>
+          </div>
+          <div class="guide-sb-group">
+            <span class="guide-sb-heading">🎮 遊戲功能</span>
+            <a href="../簽到系統" class="guide-sb-link">簽到系統</a>
+            <a href="../任務系統" class="guide-sb-link">任務系統</a>
+            <a href="../稱號系統" class="guide-sb-link">稱號系統</a>
+            <a href="../社區系統" class="guide-sb-link">社區系統</a>
+            <a href="../掛機系統" class="guide-sb-link">掛機系統</a>
+            <a href="../自動拾取" class="guide-sb-link">自動拾取</a>
+            <a href="../地圖" class="guide-sb-link">地圖</a>
+            <a href="../地震預警" class="guide-sb-link">地震預警</a>
+          </div>
+          <div class="guide-sb-group">
+            <span class="guide-sb-heading">🏠 建築與裝飾</span>
+            <a href="../更多動作" class="guide-sb-link">更多動作</a>
+            <a href="../混凝土固化鍋" class="guide-sb-link">混凝土固化鍋</a>
+            <a href="../真實書櫃" class="guide-sb-link">真實書櫃</a>
+            <a href="../玻璃展示櫃" class="guide-sb-link">玻璃展示櫃</a>
+            <a href="../盔甲座編輯器" class="guide-sb-link">盔甲座編輯器</a>
+            <a href="../生存光源方塊" class="guide-sb-link">生存光源方塊</a>
+            <a href="../特殊合成" class="guide-sb-link">特殊合成</a>
+            <a href="../蜂窩檢視" class="guide-sb-link">蜂窩檢視</a>
+          </div>
+          <div class="guide-sb-group">
+            <span class="guide-sb-heading">👥 社群互動</span>
+            <a href="../蜂聊郵政" class="guide-sb-link">蜂聊郵政</a>
+            <a href="../敲門與雙開" class="guide-sb-link">敲門與雙開</a>
+            <a href="../社區系統" class="guide-sb-link">社區系統</a>
+          </div>
+          <div class="guide-sb-group">
+            <span class="guide-sb-heading">🎭 外觀與裝備</span>
+            <a href="../隱藏裝備" class="guide-sb-link">隱藏裝備</a>
+            <a href="../盔甲隱身" class="guide-sb-link">盔甲隱身</a>
+            <a href="../穿牌開箱" class="guide-sb-link">穿牌開箱</a>
+            <a href="../靈魂出竅" class="guide-sb-link">靈魂出竅</a>
+          </div>
+          <div class="guide-sb-group">
+            <span class="guide-sb-heading">🛒 商店與服務</span>
+            <a href="../雪隱匠作" class="guide-sb-link">雪隱匠作</a>
+            <a href="../風語茶屋" class="guide-sb-link">風語茶屋</a>
+            <a href="../雜貨店" class="guide-sb-link">雜貨店</a>
+            <a href="../建材小舖" class="guide-sb-link">建材小舖</a>
+            <a href="../垃圾桶" class="guide-sb-link">垃圾桶</a>
+            <a href="../容器預覽" class="guide-sb-link">容器預覽</a>
+          </div>
+          <div class="guide-sb-group">
+            <span class="guide-sb-heading">👑 會員專屬</span>
+            <a href="../大廳區域" class="guide-sb-link">大廳區域</a>
+          </div>
+        </div>
+      </aside>
+
+      <div class="guide-main" id="mainContent">
+        <div class="guide-breadcrumb">
+          <a href="../海風指南">海風指南</a> <span>›</span> <a href="../領地系統">領地系統</a> <span>›</span> <span class="current">領地列表</span>
+        </div>
+
+        <!-- ═══ Hero ═══ -->
+        <div class="guide-v2-hero fade-in" style="--hero-accent:var(--lavender)">
+          <h1>📋 領地列表</h1>
+          <p class="guide-hero-desc">海風有專屬的領地列表系統，讓你用介面瀏覽、搜尋和管理所有領地。輸入 <code>/reslist open</code> 即可開啟。</p>
+          <div class="guide-quick-stats">
+            <div class="guide-qt"><div class="guide-qt-num">/reslist open</div><div class="guide-qt-label">開啟列表</div></div>
+            <div class="guide-qt"><div class="guide-qt-num">公開/私人</div><div class="guide-qt-label">領地模式</div></div>
+            <div class="guide-qt"><div class="guide-qt-num">好評 / 差評</div><div class="guide-qt-label">評論系統</div></div>
+          </div>
+        </div>
+
+        <div class="guide-divider"></div>
+
+        <!-- ═══ 瀏覽公開領地 ═══ -->
+        <div class="guide-section-card fade-in" style="--card-accent:var(--lavender)">
+          <h2><span class="sec-icon">🔍</span> 瀏覽公開領地</h2>
+          <p>所有設為「公開」的領地都會出現在列表中。你可以：</p>
+          <ul class="rules-list">
+            <li><strong>查看資訊</strong> — 點擊領地查看擁有者、大小、成員數、評論等詳細資訊</li>
+            <li><strong>直接傳送</strong> — 右鍵點擊公開領地即可傳送過去（需有傳送權限）</li>
+            <li><strong>釘選收藏</strong> — 丟棄鍵（Q）釘選常用領地，方便快速找到</li>
+            <li><strong>排序篩選</strong> — 依照名稱、評論數或大小排序，支援升降序切換</li>
+          </ul>
+        </div>
+
+        <div class="guide-divider"></div>
+
+        <!-- ═══ 評論系統 ═══ -->
+        <div class="guide-section-card fade-in" style="--card-accent:var(--foam)">
+          <h2><span class="sec-icon">💬</span> 評論系統</h2>
+          <p>你可以對公開領地留下評論，幫助其他玩家了解這個領地：</p>
+          <div class="guide-steps-grid">
+            <div class="guide-step-card" style="--step-color:var(--foam)">
+              <div class="guide-step-num">1</div>
+              <h4>開啟領地資訊</h4>
+              <p>在領地列表中點擊想評論的領地</p>
+            </div>
+            <div class="guide-step-card" style="--step-color:var(--foam)">
+              <div class="guide-step-num">2</div>
+              <h4>選擇好評或差評</h4>
+              <p>左鍵給予好評、右鍵給予差評，並在聊天欄輸入評論內容</p>
+            </div>
+            <div class="guide-step-card" style="--step-color:var(--foam)">
+              <div class="guide-step-num">3</div>
+              <h4>完成評論</h4>
+              <p>評論會顯示在領地資訊中，所有玩家都能看到</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="guide-divider"></div>
+
+        <!-- ═══ 管理自己的領地 ═══ -->
+        <div class="guide-section-card fade-in" style="--card-accent:var(--sand)">
+          <h2><span class="sec-icon">⚙️</span> 管理自己的領地</h2>
+          <p>領地擁有者可以透過列表管理自己的領地：</p>
+          <ul class="rules-list">
+            <li><strong>修改名稱</strong> — 左鍵點擊「標示」按鈕，在聊天欄輸入新名稱（最長 16 字元）</li>
+            <li><strong>修改描述</strong> — 右鍵點擊「標示」按鈕，輸入領地描述（支援換行 <code>\n</code>）</li>
+            <li><strong>更換圖標</strong> — 蹲下+左鍵點擊「標示」按鈕，將背包物品拖曳至指定位置</li>
+            <li><strong>公開/私人</strong> — 切換領地是否出現在公開列表中</li>
+            <li><strong>設定傳送點</strong> — 右鍵「傳送」按鈕，將目前站立位置設為領地傳送點</li>
+          </ul>
+          <div class="callout callout-tip"><span class="callout-icon">💡</span><span>領地圖標會顯示在列表中，選擇一個有辨識度的物品當圖標，讓別人更容易認出你的領地。部分物品（如箱子、鎖鏈、紅石）不能作為圖標。</span></div>
+        </div>
+
+        <div class="guide-divider"></div>
+
+        <!-- ═══ 常用指令 ═══ -->
+        <div class="guide-section-card fade-in" style="--card-accent:var(--ocean-blue)">
+          <h2><span class="sec-icon">🔍</span> 常用指令</h2>
+          <div class="guide-cmd-grid">
+            <div class="guide-cmd-card">
+              <code>/reslist open</code>
+              <p>開啟領地列表介面</p>
+            </div>
+            <div class="guide-cmd-card">
+              <code>/reslist edit &lt;領地名&gt;</code>
+              <p>編輯領地的名稱、描述、圖標等設定</p>
+            </div>
+            <div class="guide-cmd-card">
+              <code>/reslist info &lt;領地名&gt;</code>
+              <p>查看領地詳細資訊</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="guide-divider"></div>
+
+        <!-- ═══ 常見問題 ═══ -->
+        <div class="guide-section-card fade-in" style="--card-accent:var(--sand)">
+          <h2><span class="sec-icon">❓</span> 常見問題</h2>
+          <div class="guide-faq">
+            <div class="guide-faq-item">
+              <button class="guide-faq-q">怎麼公開我的領地？</button>
+              <div class="guide-faq-a"><div class="guide-faq-a-inner">使用 <code>/reslist edit &lt;領地名&gt;</code> 開啟管理介面，將狀態切換為「公開」。公開後你的領地會出現在領地列表中，其他玩家可以瀏覽、評論和傳送。</div></div>
+            </div>
+            <div class="guide-faq-item">
+              <button class="guide-faq-q">怎麼留評論？</button>
+              <div class="guide-faq-a"><div class="guide-faq-a-inner">使用 <code>/reslist open</code> 開啟領地列表，點擊想評論的領地，再點擊「評論」按鈕。左鍵給好評、右鍵給差評，然後在聊天欄輸入評論內容即可。</div></div>
+            </div>
+            <div class="guide-faq-item">
+              <button class="guide-faq-q">領地名稱有字數限制嗎？</button>
+              <div class="guide-faq-a"><div class="guide-faq-a-inner">有的，領地名稱最長 16 個字元，支援中文。描述則支援換行（使用 <code>\n</code>），可以寫更詳細的介紹。</div></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="guide-divider"></div>
+
+        <!-- ═══ 相關頁面 ═══ -->
+        <div class="guide-section-card fade-in" style="--card-accent:var(--sky)">
+          <h2><span class="sec-icon">🔗</span> 相關頁面</h2>
+          <div class="guide-entries" style="margin-top:var(--space-md)">
+            <a href="../領地系統" class="guide-entry" style="--entry-accent:var(--foam)">
+              <div class="guide-entry-icon">🛡️</div>
+              <div class="guide-entry-body">
+                <div class="guide-entry-title">領地系統</div>
+                <div class="guide-entry-desc">建立領地、設定權限、管理子領地完整指南。</div>
+              </div>
+              <span class="guide-entry-arrow">→</span>
+            </a>
+            <a href="權限列表" class="guide-entry" style="--entry-accent:var(--lavender)">
+              <div class="guide-entry-icon">⚙️</div>
+              <div class="guide-entry-body">
+                <div class="guide-entry-title">權限列表</div>
+                <div class="guide-entry-desc">114 種權限完整參考表，含預設狀態與設定方式。</div>
+              </div>
+              <span class="guide-entry-arrow">→</span>
+            </a>
+            <a href="../互動記錄" class="guide-entry" style="--entry-accent:var(--sand)">
+              <div class="guide-entry-icon">📝</div>
+              <div class="guide-entry-body">
+                <div class="guide-entry-title">互動記錄</div>
+                <div class="guide-entry-desc">查看誰動過你的東西，領地內的完整操作紀錄。</div>
+              </div>
+              <span class="guide-entry-arrow">→</span>
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <span class="footer-logo">海風伺服器 SeaWind.cc</span>
+        <p class="footer-tagline">在風與海之間，有一個可以長久生存的地方</p>
+      </div>
+      <div class="footer-links-row">
+        <a href="../合作夥伴">合作夥伴</a>
+        <span class="footer-dot">·</span>
+        <a href="../服務條款">服務條款</a>
+        <span class="footer-dot">·</span>
+        <a href="../隱私權政策">隱私權政策</a>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2026 海風伺服器 · 非 Mojang 官方營運 · service@seawind.cc</p>
+      </div>
+      <p class="page-revise">網站最後修改日期 2026.05.03 / 總計修改 <span id="deployCount">—</span> 次</p>
+    </div>
+  </footer>
+
+  <div class="music-player" id="musicPlayer"><button class="mp-toggle" id="mpToggle" aria-label="音樂播放">🔇</button><div class="mp-panel" id="mpPanel"><div class="mp-info"><span class="mp-title" id="mpTitle">—</span><span class="mp-artist" id="mpArtist">—</span></div><input type="range" class="mp-vol" id="mpVol" min="0" max="1" step="0.05" value="0.3"></div></div>
+  <button class="back-to-top" id="backToTop" aria-label="回到頂部">↑</button>
+  <div class="nav-backdrop" id="navBackdrop"></div>
+
+  <script src="../../utils.js"></script>
+  <script src="../../main.js"></script>
+  <script src="../../music-player.js"></script>
+  <script src="../../tips.js"></script>
+</body>
+</html>
