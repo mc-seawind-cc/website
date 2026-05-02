@@ -235,59 +235,51 @@
 
         <div class="guide-divider"></div>
 
-        <div class="guide-section-card fade-in" style="--card-accent:var(--foam)">
-          <h2><span class="sec-icon">🔨</span> 建立領地：手動框選法</h2>
-        <p>最經典的方式，用木鋤選兩個對角點，精確控制領地大小。選取時會有<strong>粒子效果</strong>顯示範圍，方便確認。</p>
+                  <h2><span class="sec-icon">🏗️</span> 建立領地</h2>
+        <p>海風提供兩種建立領地的方式，選一個適合你的：</p>
+
+        <h3 style="margin-top:var(--space-lg)">🔨 手動框選法</h3>
+        <p>用木鋤選兩個對角點，精確控制領地大小。選取時會有<strong>粒子效果</strong>顯示範圍。</p>
         <div class="guide-steps-grid">
           <div class="guide-step-card" style="--step-color:var(--foam)">
             <span class="guide-step-icon">🪓</span>
             <h4>準備木鋤</h4>
-            <p>在工作台用木板＋木棍合成一把木鋤，這是預設的選取工具。</p>
+            <p>在工作台用木板＋木棍合成，這是預設的選取工具。</p>
           </div>
           <div class="guide-step-card" style="--step-color:var(--foam)">
             <span class="guide-step-icon">📍</span>
-            <h4>設定第一個點</h4>
-            <p>走到區域的一個角落，<strong>左鍵</strong>（挖掘鍵）點擊地面。看到提示訊息就代表成功。</p>
-          </div>
-          <div class="guide-step-card" style="--step-color:var(--foam)">
-            <span class="guide-step-icon">📐</span>
-            <h4>設定對角點</h4>
-            <p>走到對角的角落，<strong>右鍵</strong>（使用鍵）點擊地面。兩個點之間就是你的領地範圍。</p>
+            <h4>選兩個對角點</h4>
+            <p><strong>左鍵</strong>設定第一點，走到對角<strong>右鍵</strong>設定第二點。</p>
           </div>
           <div class="guide-step-card" style="--step-color:var(--foam)">
             <span class="guide-step-icon">✅</span>
-            <h4>建立完成</h4>
-            <p>輸入 <code>/res create &lt;名稱&gt;</code>，例如 <code>/res create 我的家</code>，領地就生效了！</p>
+            <h4>輸入指令</h4>
+            <p><code>/res create &lt;名稱&gt;</code>，例如 <code>/res create 我的家</code></p>
           </div>
         </div>
-        <div class="callout callout-tip"><span class="callout-icon">💡</span><span>名稱支援英文、數字、中文、底線和連字號，最長 64 字元。例如 <code>我的家</code>、<code>base01</code>、<code>海風小屋</code> 都可以。</span></div>
-        <div class="callout callout-info"><span class="callout-icon">ℹ️</span><span>快捷指令：<code>/res select vert</code> 將選取範圍垂直延伸到天空；<code>/res select chunk</code> 選取整個區塊（16×16）。</span></div>
-      </div>
 
-        <div class="guide-divider"></div>
-
-        <div class="guide-section-card fade-in" style="--card-accent:var(--foam)">
-          <h2><span class="sec-icon">⚡</span> 建立領地：自動框選法</h2>
-        <p>不想跑來跑去？站在中心點一個指令搞定！系統會自動偵測最佳範圍。</p>
+        <h3 style="margin-top:var(--space-lg)">⚡ 自動框選法</h3>
+        <p>不想跑來跑去？站在中心點一個指令搞定，系統自動偵測範圍和衝突。</p>
         <div class="guide-steps-grid">
           <div class="guide-step-card" style="--step-color:var(--foam)">
             <span class="guide-step-icon">🧭</span>
             <h4>站到中心點</h4>
-            <p>站在你想建立領地的<strong>正中心位置</strong>，系統會以你為中心向外擴展。</p>
+            <p>站在你想保護的區域<strong>正中心</strong>，系統以你為中心向外擴展。</p>
           </div>
           <div class="guide-step-card" style="--step-color:var(--foam)">
             <span class="guide-step-icon">⚡</span>
             <h4>輸入指令</h4>
-            <p><code>/res auto &lt;名稱&gt;</code>，例如 <code>/res auto 我的家</code>。系統自動偵測範圍和衝突。</p>
+            <p><code>/res auto &lt;名稱&gt;</code>，例如 <code>/res auto 我的家</code></p>
           </div>
           <div class="guide-step-card" style="--step-color:var(--foam)">
             <span class="guide-step-icon">✅</span>
-            <h4>確認建立</h4>
-            <p>系統會偵測是否與其他領地重疊，有衝突會提示你調整位置。沒問題就直接建立！</p>
+            <h4>自動完成</h4>
+            <p>系統偵測衝突後自動建立。可加半徑 <code>/res auto 我的家 50</code></p>
           </div>
         </div>
-        <div class="callout callout-info"><span class="callout-icon">ℹ️</span><span>可以指定半徑，例如 <code>/res auto 我的家 50</code> 會建立半徑 50 格的範圍。不指定則建立最大範圍。同名領地已存在時，系統會自動加編號（例如「我的家的領地1」）。</span></div>
-      </div>
+        <div class="callout callout-tip"><span class="callout-icon">💡</span><span>名稱支援英文、數字、中文、底線和連字號，最長 64 字元。快捷指令：<code>/res select vert</code> 垂直延伸到天空、<code>/res select chunk</code> 選取整個區塊。</span></div>
+
+        <div class="guide-divider"></div>
 
         <div class="guide-divider"></div>
 
