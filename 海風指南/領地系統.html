@@ -399,12 +399,62 @@
               <tr><td><code>/res select chunk</code></td><td>選取整個區塊（16×16）。</td></tr>
               <tr><td><code>/res unstuck</code></td><td>脫困指令，從被困的領地中脫出。</td></tr>
               <tr><td><code>/res flags</code></td><td>查看所有可用的 flags 列表。</td></tr>
+              <tr><td><code>/reslist open</code></td><td>開啟領地列表介面。</td></tr>
+              <tr><td><code>/reslist edit &lt;領地名&gt;</code></td><td>編輯領地資訊（名稱/描述/圖標）。</td></tr>
+              <tr><td><code>/reslist info &lt;領地名&gt;</code></td><td>查看領地詳細資訊。</td></tr>
               <tr><td><code>/res confirm</code></td><td>確認刪除領地。</td></tr>
             </tbody>
           </table>
         </div>
       </div>
       
+        <div class="guide-divider"></div>
+
+        <div class="guide-section-card fade-in" style="--card-accent:var(--foam)">
+          <h2><span class="sec-icon">📋</span> 領地列表</h2>
+          <p>海風有專屬的領地列表系統，讓你用介面瀏覽、搜尋和管理所有領地。輸入 <code>/reslist open</code> 即可開啟。</p>
+
+          <h3 style="margin-top:var(--space-lg)">瀏覽公開領地</h3>
+          <p>所有設為「公開」的領地都會出現在列表中。你可以：</p>
+          <ul class="rules-list">
+            <li><strong>查看資訊</strong> — 點擊領地查看擁有者、大小、成員數、評論等詳細資訊</li>
+            <li><strong>直接傳送</strong> — 右鍵點擊公開領地即可傳送過去（需有傳送權限）</li>
+            <li><strong>釘選收藏</strong> — 丟棄鍵（Q）釘選常用領地，方便快速找到</li>
+            <li><strong>排序篩選</strong> — 依照名稱、評論數或大小排序，支援升降序切換</li>
+          </ul>
+
+          <h3 style="margin-top:var(--space-lg)">評論系統</h3>
+          <p>你可以對公開領地留下評論，幫助其他玩家了解這個領地：</p>
+          <div class="guide-steps-grid">
+            <div class="guide-step-card" style="--step-color:var(--foam)">
+              <div class="guide-step-num">1</div>
+              <h4>開啟領地資訊</h4>
+              <p>在領地列表中點擊想評論的領地</p>
+            </div>
+            <div class="guide-step-card" style="--step-color:var(--foam)">
+              <div class="guide-step-num">2</div>
+              <h4>選擇好評或差評</h4>
+              <p>左鍵給予好評、右鍵給予差評，並在聊天欄輸入評論內容</p>
+            </div>
+            <div class="guide-step-card" style="--step-color:var(--foam)">
+              <div class="guide-step-num">3</div>
+              <h4>完成評論</h4>
+              <p>評論會顯示在領地資訊中，所有玩家都能看到</p>
+            </div>
+          </div>
+
+          <h3 style="margin-top:var(--space-lg)">管理自己的領地</h3>
+          <p>領地擁有者可以透過列表管理自己的領地：</p>
+          <ul class="rules-list">
+            <li><strong>修改名稱</strong> — 左鍵點擊「標示」按鈕，在聊天欄輸入新名稱（最長 16 字元）</li>
+            <li><strong>修改描述</strong> — 右鍵點擊「標示」按鈕，輸入領地描述（支援換行 <code>\n</code>）</li>
+            <li><strong>更換圖標</strong> — 蹲下+左鍵點擊「標示」按鈕，將背包物品拖曳至指定位置</li>
+            <li><strong>公開/私人</strong> — 切換領地是否出現在公開列表中</li>
+            <li><strong>設定傳送點</strong> — 右鍵「傳送」按鈕，將目前站立位置設為領地傳送點</li>
+          </ul>
+          <div class="callout callout-tip"><span class="callout-icon">💡</span><span>領地圖標會顯示在列表中，選擇一個有辨識度的物品當圖標，讓別人更容易認出你的領地。部分物品（如箱子、鎖鏈、紅石）不能作為圖標。</span></div>
+        </div>
+
         <div class="guide-divider"></div>
 
         <div class="guide-section-card fade-in" style="--card-accent:#85b1e0">
@@ -437,6 +487,14 @@
             <div class="guide-faq-item">
               <button class="guide-faq-q">被困在別人的領地出不來怎麼辦？</button>
               <div class="guide-faq-a"><div class="guide-faq-a-inner">輸入 <code>/res unstuck</code> 可以把自己傳送出被困的領地。這個功能預設開啟，不需要額外設定。</div></div>
+            </div>
+            <div class="guide-faq-item">
+              <button class="guide-faq-q">怎麼讓別人看到我的領地？</button>
+              <div class="guide-faq-a"><div class="guide-faq-a-inner">使用 <code>/reslist edit &lt;領地名&gt;</code> 開啟管理介面，將狀態切換為「公開」。公開後你的領地會出現在領地列表中，其他玩家可以瀏覽、評論和傳送。</div></div>
+            </div>
+            <div class="guide-faq-item">
+              <button class="guide-faq-q">怎麼對別人的領地留評論？</button>
+              <div class="guide-faq-a"><div class="guide-faq-a-inner">使用 <code>/reslist open</code> 開啟領地列表，點擊想評論的領地，再點擊「評論」按鈕。左鍵給好評、右鍵給差評，然後在聊天欄輸入評論內容即可。</div></div>
             </div>
           </div>
         </div>
