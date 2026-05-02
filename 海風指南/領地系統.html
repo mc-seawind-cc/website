@@ -6,9 +6,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>海風 — 海風指南 — 領地系統</title>
   <link rel="canonical" href="https://www.seawind.cc/海風指南/領地系統">
-  <meta name="description" content="海風伺服器領地系統：建立領地保護私人財產。">
+  <meta name="description" content="海風伺服器領地系統完整指南：建立領地保護家園、設定 110+ 種權限、管理子領地、瀏覽公開領地列表。免費使用、永久有效。">
   <meta property="og:title" content="領地系統 — 海風指南 — 海風">
-  <meta property="og:description" content="海風伺服器領地系統：建立領地保護私人財產。">
+  <meta property="og:description" content="海風伺服器領地系統完整指南：建立領地保護家園、設定 110+ 種權限、管理子領地、瀏覽公開領地列表。免費使用、永久有效。">
   <meta property="og:image" content="../assets/img/logo.png">
   <meta property="og:type" content="website">
   <meta name="twitter:card" content="summary">
@@ -20,7 +20,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;800&family=Noto+Serif+TC:wght@700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../style.css?v=020502a">
+  <link rel="stylesheet" href="../style.css?v=020502b">
   <link rel="stylesheet" href="../music-player.css">
 </head>
 <body>
@@ -85,13 +85,36 @@
   <div class="page">
           <!-- ═══ Hero ═══ -->
       <div class="guide-v2-hero fade-in">
-        <h1>領地系統</h1>
-          <p class="section-desc">建立領地，保護自己心愛的東西。</p>
-          <div class="guide-quick-stats">
-            <div class="guide-qs-item"><span class="guide-qs-icon">🏠</span><span>上限</span><span class="guide-qs-val">每分流 10 個</span></div>
-            <div class="guide-qs-item"><span class="guide-qs-icon">📏</span><span>範圍</span><span class="guide-qs-val">500×500 格</span></div>
-            <div class="guide-qs-item"><span class="guide-qs-icon">💰</span><span>費用</span><span class="guide-qs-val">免費</span></div>
+        <h1>🛡️ 領地系統</h1>
+        <p class="section-desc">用木鋤圈一塊地，守護你的心血。免費、永久、支援所有世界。</p>
+
+        <!-- CSS 藝術：領地示意 -->
+        <div class="res-hero-art" aria-hidden="true">
+          <div class="res-art-container">
+            <span class="res-art-corner tl">(−64)</span>
+            <span class="res-art-corner tr">Y 軸</span>
+            <span class="res-art-corner bl">3×3</span>
+            <span class="res-art-corner br">500×500</span>
+            <div class="res-art-grid">
+              <div class="res-art-cell"></div><div class="res-art-cell"></div><div class="res-art-cell"></div><div class="res-art-cell"></div><div class="res-art-cell"></div>
+              <div class="res-art-cell"></div><div class="res-art-cell claimed"></div><div class="res-art-cell claimed"></div><div class="res-art-cell claimed"></div><div class="res-art-cell"></div>
+              <div class="res-art-cell"></div><div class="res-art-cell claimed"></div><div class="res-art-cell center"></div><div class="res-art-cell claimed"></div><div class="res-art-cell"></div>
+              <div class="res-art-cell"></div><div class="res-art-cell claimed"></div><div class="res-art-cell claimed"></div><div class="res-art-cell claimed"></div><div class="res-art-cell"></div>
+            </div>
+            <div class="res-art-shield">
+              <div class="res-art-shield-bg"></div>
+              <svg viewBox="0 0 24 24" fill="none" stroke="var(--foam)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4" stroke="var(--foam)" stroke-width="2"/></svg>
+            </div>
+            <span class="res-art-label">你的領地</span>
           </div>
+        </div>
+
+        <div class="guide-quick-stats">
+          <div class="guide-qs-item"><span class="guide-qs-icon">🏠</span><span>上限</span><span class="guide-qs-val">每分流 10 個</span></div>
+          <div class="guide-qs-item"><span class="guide-qs-icon">📏</span><span>最大範圍</span><span class="guide-qs-val">500×500 格</span></div>
+          <div class="guide-qs-item"><span class="guide-qs-icon">💰</span><span>費用</span><span class="guide-qs-val">免費</span></div>
+          <div class="guide-qs-item"><span class="guide-qs-icon">⚙️</span><span>權限</span><span class="guide-qs-val">110+ 種</span></div>
+        </div>
       </div>
     <div class="guide-layout">
 
@@ -196,24 +219,46 @@
         <span class="sep">›</span>
         <span class="current">領地系統</span>
       </div>
+
       <div class="rules-intro fade-in">
-        <p>領地是海風的家園保護系統。建立領地後，別人不能在你的地盤搞破壞、偷東西或放置 TNT，你的建築和資源都會受到完整保護。不管你是蓋了一棟夢想小屋、挖了一座礦場，還是和朋友一起建了一座城市，領地都能確保你的心血不被破壞。</p>
-        <p>海風的領地系統免費使用，支援所有世界（主世界、地獄、終界），建立後永久有效。搭配領地列表，你還可以瀏覽其他玩家的公開領地、留下評論、直接傳送過去參觀。</p>
+        <p>在海風，不設領地就等於把家門敞開。建立領地後，別人不能在你的地盤搞破壞、偷東西或放置 TNT，你的建築和資源都會受到完整保護。不管你是蓋了一棟夢想小屋、挖了一座礦場，還是和朋友一起建了一座城市，領地都能確保你的心血不被破壞。</p>
+        <p>海風的領地系統<strong>免費使用</strong>，支援所有世界（主世界、地獄、終界），建立後<strong>永久有效</strong>。搭配領地列表，你還可以瀏覽其他玩家的公開領地、留下評論、直接傳送過去參觀。</p>
       </div>
 
-        <div class="guide-divider"></div>
+      <div class="guide-divider"></div>
 
-        <div class="guide-section-card fade-in" style="--card-accent:var(--foam)">
-        <h2><span class="sec-icon">📋</span> 什麼是領地？</h2>
-        <p>你可以把領地想像成「保護區」。在海風，如果你不設領地，任何人都可以跑來你家拆牆、拿走箱子裡的東西。建立領地就像在區域裡面定一個保護區，區內的方塊只有你和你允許的人才能動。</p>
-        <p>領地系統支援超過 <strong>110 種</strong>不同的權限設定，從最基本的建造、破壞，到進階的 PVP、火焰蔓延、怪物生成都可以控制。你可以精細調整每個區域的權限——例如允許朋友在你的農場採收，但禁止他們開箱子；或者在公共區域開放使用工作台，但禁止放置方塊。</p>
-        <p>建立領地後，你還可以透過<strong>領地列表</strong>（<code>/reslist open</code>）瀏覽所有公開領地、查看評論、直接傳送。你可以把自己的領地設為公開，讓其他玩家來參觀、留言，甚至給你好評！</p>
+      <!-- ═══ 什麼是領地 ═══ -->
+      <div class="guide-section-card fade-in" style="--card-accent:var(--foam)">
+        <h2><span class="sec-icon">🏠</span> 什麼是領地？</h2>
+        <p>你可以把領地想像成「保護區」。在海風，如果你不設領地，任何人都可以跑來你家拆牆、拿走箱子裡的東西。建立領地後，區內的方塊只有你和你允許的人才能動。</p>
+
+        <!-- 視覺化圖表 -->
+        <div class="res-diagram">
+          <div class="res-diagram-visual" aria-hidden="true">
+            <div class="res-diagram-cell outer"></div><div class="res-diagram-cell outer"></div><div class="res-diagram-cell outer"></div><div class="res-diagram-cell outer"></div>
+            <div class="res-diagram-cell outer"></div><div class="res-diagram-cell inner"></div><div class="res-diagram-cell inner"></div><div class="res-diagram-cell outer"></div>
+            <div class="res-diagram-cell outer"></div><div class="res-diagram-cell inner"></div><div class="res-diagram-cell house">🏠</div><div class="res-diagram-cell outer"></div>
+            <div class="res-diagram-cell outer"></div><div class="res-diagram-cell outer"></div><div class="res-diagram-cell outer"></div><div class="res-diagram-cell outer"></div>
+          </div>
+          <div class="res-diagram-text">
+            <h4>領地的運作方式</h4>
+            <p>用木鋤圈出一個區域（綠色部分），這塊地就受到保護。外人走得到你的領地（灰色），但不能破壞、放置或開啟容器。你還可以在領地內再畫一小塊「子領地」，給不同權限。</p>
+            <div class="res-legend">
+              <span class="res-legend-item"><span class="res-legend-dot inner"></span>受保護區域</span>
+              <span class="res-legend-item"><span class="res-legend-dot outer"></span>領地範圍</span>
+            </div>
+          </div>
+        </div>
+
+        <p>領地系統支援超過 <strong>110 種</strong>不同的權限設定，從最基本的建造、破壞，到進階的 PVP、火焰蔓延、怪物生成都可以控制。你可以精細調整每個區域的權限——例如允許朋友在你的農場採收，但禁止他們開箱子。</p>
+        <p>建立領地後，你還可以透過<strong>領地列表</strong>（<code>/reslist open</code>）瀏覽所有公開領地、查看評論、直接傳送。你可以把自己的領地設為公開，讓其他玩家來參觀、留言、給你好評！</p>
       </div>
 
-        <div class="guide-divider"></div>
+      <div class="guide-divider"></div>
 
-        <div class="guide-section-card fade-in" style="--card-accent:var(--foam)">
-          <h2><span class="sec-icon">📌</span> 基本資訊</h2>
+      <!-- ═══ 基本資訊 ═══ -->
+      <div class="guide-section-card fade-in" style="--card-accent:var(--sky)">
+        <h2><span class="sec-icon">📋</span> 基本資訊</h2>
         <div class="rules-table-wrap">
           <table class="rules-table">
             <thead><tr><th>項目</th><th>限制</th></tr></thead>
@@ -233,73 +278,98 @@
         <div class="callout callout-warn"><span class="callout-icon">⚠️</span><span>如果領地長期沒人使用（例如屋主很久沒上線），管理員有權將其刪除以釋放空間。建議保持活躍！</span></div>
       </div>
 
-        <div class="guide-divider"></div>
+      <div class="guide-divider"></div>
 
-                  <h2><span class="sec-icon">🏗️</span> 建立領地</h2>
+      <!-- ═══ 建立領地 ═══ -->
+      <div class="guide-section-card fade-in" style="--card-accent:var(--foam)">
+        <h2><span class="sec-icon">🏗️</span> 建立領地</h2>
         <p>海風提供兩種建立領地的方式，選一個適合你的：</p>
 
-        <h3 style="margin-top:var(--space-lg)">🔨 手動框選法</h3>
-        <p>用木鋤選兩個對角點，精確控制領地大小。選取時會有<strong>粒子效果</strong>顯示範圍。</p>
-        <div class="guide-steps-grid">
-          <div class="guide-step-card" style="--step-color:var(--foam)">
-            <span class="guide-step-icon">🪓</span>
-            <h4>準備木鋤</h4>
-            <p>在工作台用木板＋木棍合成，這是預設的選取工具。</p>
+        <div class="res-methods">
+          <!-- 手動框選法 -->
+          <div class="res-method" style="--method-color:var(--sky)">
+            <div class="res-method-badge manual">精確控制</div>
+            <h3>🔨 手動框選法</h3>
+            <p>用木鋤選兩個對角點，精確控制領地大小。選取時會有<strong>粒子效果</strong>顯示範圍。</p>
+            <div class="res-method-steps">
+              <div class="res-method-step">
+                <span class="res-method-step-num">1</span>
+                <span class="res-method-step-text">在工作台用<strong>木材＋木棍</strong>合成木鋤</span>
+              </div>
+              <div class="res-method-step">
+                <span class="res-method-step-num">2</span>
+                <span class="res-method-step-text"><strong>左鍵</strong>點方塊設定第一個角</span>
+              </div>
+              <div class="res-method-step">
+                <span class="res-method-step-num">3</span>
+                <span class="res-method-step-text">走到對角，<strong>右鍵</strong>點方塊設定第二個角</span>
+              </div>
+              <div class="res-method-step">
+                <span class="res-method-step-num">4</span>
+                <span class="res-method-step-text">輸入 <code>/res create &lt;名稱&gt;</code></span>
+              </div>
+            </div>
           </div>
-          <div class="guide-step-card" style="--step-color:var(--foam)">
-            <span class="guide-step-icon">📍</span>
-            <h4>選兩個對角點</h4>
-            <p><strong>左鍵</strong>設定第一點，走到對角<strong>右鍵</strong>設定第二點。</p>
-          </div>
-          <div class="guide-step-card" style="--step-color:var(--foam)">
-            <span class="guide-step-icon">✅</span>
-            <h4>輸入指令</h4>
-            <p><code>/res create &lt;名稱&gt;</code>，例如 <code>/res create 我的家</code></p>
+
+          <!-- 自動框選法 -->
+          <div class="res-method" style="--method-color:var(--sand)">
+            <div class="res-method-badge auto">快速方便</div>
+            <h3>⚡ 自動框選法</h3>
+            <p>不想跑來跑去？站在中心點一個指令搞定，系統自動偵測範圍和衝突。</p>
+            <div class="res-method-steps">
+              <div class="res-method-step">
+                <span class="res-method-step-num">1</span>
+                <span class="res-method-step-text">站在你想保護的區域<strong>正中心</strong></span>
+              </div>
+              <div class="res-method-step">
+                <span class="res-method-step-num">2</span>
+                <span class="res-method-step-text">輸入 <code>/res auto &lt;名稱&gt;</code></span>
+              </div>
+              <div class="res-method-step">
+                <span class="res-method-step-num">3</span>
+                <span class="res-method-step-text">系統偵測衝突後自動建立完成</span>
+              </div>
+            </div>
+            <div class="callout callout-tip" style="margin-top:var(--space-md)"><span class="callout-icon">💡</span><span>可加半徑：<code>/res auto 我的家 50</code></span></div>
           </div>
         </div>
 
-        <h3 style="margin-top:var(--space-lg)">⚡ 自動框選法</h3>
-        <p>不想跑來跑去？站在中心點一個指令搞定，系統自動偵測範圍和衝突。</p>
-        <div class="guide-steps-grid">
-          <div class="guide-step-card" style="--step-color:var(--foam)">
-            <span class="guide-step-icon">🧭</span>
-            <h4>站到中心點</h4>
-            <p>站在你想保護的區域<strong>正中心</strong>，系統以你為中心向外擴展。</p>
-          </div>
-          <div class="guide-step-card" style="--step-color:var(--foam)">
-            <span class="guide-step-icon">⚡</span>
-            <h4>輸入指令</h4>
-            <p><code>/res auto &lt;名稱&gt;</code>，例如 <code>/res auto 我的家</code></p>
-          </div>
-          <div class="guide-step-card" style="--step-color:var(--foam)">
-            <span class="guide-step-icon">✅</span>
-            <h4>自動完成</h4>
-            <p>系統偵測衝突後自動建立。可加半徑 <code>/res auto 我的家 50</code></p>
-          </div>
-        </div>
-        <div class="callout callout-tip"><span class="callout-icon">💡</span><span>名稱支援英文、數字、中文、底線和連字號，最長 64 字元。快捷指令：<code>/res select vert</code> 垂直延伸到天空、<code>/res select chunk</code> 選取整個區塊。</span></div>
+        <div class="callout callout-tip"><span class="callout-icon">💡</span><span>名稱支援英文、數字、中文、底線和連字號，最長 64 字元。快捷指令：<code>/res select vert</code> 垂直延伸到天空、<code>/res select chunk</code> 選取整個區塊（16×16）。</span></div>
+      </div>
 
-        <div class="guide-divider"></div>
+      <div class="guide-divider"></div>
 
-        <div class="guide-divider"></div>
-
-        <div class="guide-section-card fade-in" style="--card-accent:var(--foam)">
-          <h2><span class="sec-icon">⚙️</span> 管理領地：設定權限</h2>
+      <!-- ═══ 管理領地：設定權限 ═══ -->
+      <div class="guide-section-card fade-in" style="--card-accent:var(--lavender)">
+        <h2><span class="sec-icon">⚙️</span> 管理領地：設定權限</h2>
         <p>建立領地後，最重要的就是設定權限。權限決定了領地內允許或禁止哪些行為。所有權限預設都是「禁止」，只有你自己（領地擁有者）不受限制。</p>
 
-                <p>建立領地後，最重要的就是設定權限。權限決定了領地內允許或禁止哪些行為。所有權限預設都是「禁止」，只有你自己（領地擁有者）不受限制。</p>
-
         <h4 style="margin-top: var(--space-lg);">設定方式</h4>
-        <p><code>/res set [領地名稱] &lt;權限&gt; true/false</code> — 設定所有人適用的權限</p>
-        <p><code>/res pset [領地名稱] &lt;玩家&gt; &lt;權限&gt; true/false</code> — 設定特定玩家的權限</p>
-        <p><code>/res padd [領地名稱] &lt;玩家&gt;</code> — 一鍵給予玩家常用權限（建造、使用、開箱等）</p>
+        <div class="res-quickstart">
+          <div class="res-qs-card" style="--qs-color:var(--sky)">
+            <div class="res-qs-icon">🌐</div>
+            <h4>通用權限</h4>
+            <p><code>/res set [領地] &lt;權限&gt; true/false</code><br>設定所有人適用的權限</p>
+          </div>
+          <div class="res-qs-card" style="--qs-color:var(--foam)">
+            <div class="res-qs-icon">👤</div>
+            <h4>個人權限</h4>
+            <p><code>/res pset [領地] &lt;玩家&gt; &lt;權限&gt; true/false</code><br>設定特定玩家的權限</p>
+          </div>
+          <div class="res-qs-card" style="--qs-color:var(--sand)">
+            <div class="res-qs-icon">⚡</div>
+            <h4>一鍵給予</h4>
+            <p><code>/res padd [領地] &lt;玩家&gt;</code><br>一鍵給予常用權限（建造、使用、開箱等）</p>
+          </div>
+        </div>
 
         <h4 style="margin-top: var(--space-lg);">完整權限列表</h4>
         <p>點擊分類展開查看所有可用權限：</p>
 
-        <details class="guide-faq" style="margin-bottom:var(--space-sm)">
-          <summary>🔨 建造與互動（22 個）</summary>
-          <div class="rules-table-wrap" style="margin-top:var(--space-md)">
+        <!-- 🔨 建造與互動 -->
+        <details class="res-perm-cat" style="--cat-color:var(--foam)">
+          <summary>🔨 建造與互動 <span class="perm-count">22 個</span></summary>
+          <div class="rules-table-wrap">
             <table class="rules-table">
               <thead><tr><th>權限</th><th>作用</th><th>預設</th></tr></thead>
               <tbody>
@@ -330,9 +400,10 @@
           </div>
         </details>
 
-        <details class="guide-faq" style="margin-bottom:var(--space-sm)">
-          <summary>⚔️ 戰鬥與傷害（9 個）</summary>
-          <div class="rules-table-wrap" style="margin-top:var(--space-md)">
+        <!-- ⚔️ 戰鬥與傷害 -->
+        <details class="res-perm-cat" style="--cat-color:#ff9e9e">
+          <summary>⚔️ 戰鬥與傷害 <span class="perm-count">9 個</span></summary>
+          <div class="rules-table-wrap">
             <table class="rules-table">
               <thead><tr><th>權限</th><th>作用</th><th>預設</th></tr></thead>
               <tbody>
@@ -350,9 +421,10 @@
           </div>
         </details>
 
-        <details class="guide-faq" style="margin-bottom:var(--space-sm)">
-          <summary>🔥 火焰與爆炸（9 個）</summary>
-          <div class="rules-table-wrap" style="margin-top:var(--space-md)">
+        <!-- 🔥 火焰與爆炸 -->
+        <details class="res-perm-cat" style="--cat-color:var(--sand)">
+          <summary>🔥 火焰與爆炸 <span class="perm-count">9 個</span></summary>
+          <div class="rules-table-wrap">
             <table class="rules-table">
               <thead><tr><th>權限</th><th>作用</th><th>預設</th></tr></thead>
               <tbody>
@@ -370,9 +442,10 @@
           </div>
         </details>
 
-        <details class="guide-faq" style="margin-bottom:var(--space-sm)">
-          <summary>🐾 生物管理（5 個）</summary>
-          <div class="rules-table-wrap" style="margin-top:var(--space-md)">
+        <!-- 🐾 生物管理 -->
+        <details class="res-perm-cat" style="--cat-color:var(--lavender)">
+          <summary>🐾 生物管理 <span class="perm-count">5 個</span></summary>
+          <div class="rules-table-wrap">
             <table class="rules-table">
               <thead><tr><th>權限</th><th>作用</th><th>預設</th></tr></thead>
               <tbody>
@@ -386,9 +459,10 @@
           </div>
         </details>
 
-        <details class="guide-faq" style="margin-bottom:var(--space-sm)">
-          <summary>💧 液體與環境（12 個）</summary>
-          <div class="rules-table-wrap" style="margin-top:var(--space-md)">
+        <!-- 💧 液體與環境 -->
+        <details class="res-perm-cat" style="--cat-color:var(--sky)">
+          <summary>💧 液體與環境 <span class="perm-count">12 個</span></summary>
+          <div class="rules-table-wrap">
             <table class="rules-table">
               <thead><tr><th>權限</th><th>作用</th><th>預設</th></tr></thead>
               <tbody>
@@ -409,9 +483,10 @@
           </div>
         </details>
 
-        <details class="guide-faq" style="margin-bottom:var(--space-sm)">
-          <summary>🧭 傳送與移動（6 個）</summary>
-          <div class="rules-table-wrap" style="margin-top:var(--space-md)">
+        <!-- 🧭 傳送與移動 -->
+        <details class="res-perm-cat" style="--cat-color:#85b1e0">
+          <summary>🧭 傳送與移動 <span class="perm-count">6 個</span></summary>
+          <div class="rules-table-wrap">
             <table class="rules-table">
               <thead><tr><th>權限</th><th>作用</th><th>預設</th></tr></thead>
               <tbody>
@@ -426,9 +501,10 @@
           </div>
         </details>
 
-        <details class="guide-faq" style="margin-bottom:var(--space-sm)">
-          <summary>🎁 特殊效果（13 個）</summary>
-          <div class="rules-table-wrap" style="margin-top:var(--space-md)">
+        <!-- 🎁 特殊效果 -->
+        <details class="res-perm-cat" style="--cat-color:#e0a0f0">
+          <summary>🎁 特殊效果 <span class="perm-count">13 個</span></summary>
+          <div class="rules-table-wrap">
             <table class="rules-table">
               <thead><tr><th>權限</th><th>作用</th><th>預設</th></tr></thead>
               <tbody>
@@ -449,244 +525,328 @@
             </table>
           </div>
         </details>
-<div class="callout callout-tip"><span class="callout-icon">💡</span><span>輸入 <code>/res flags</code> 可查看完整權限列表。用 <code>/res padd &lt;玩家&gt;</code> 可一鍵給予常用權限（建造、使用、開箱、傳送等），不用一個一個設。</span></div>
+
+        <div class="callout callout-tip" style="margin-top:var(--space-md)"><span class="callout-icon">💡</span><span>輸入 <code>/res flags</code> 可查看完整權限列表。用 <code>/res padd &lt;玩家&gt;</code> 可一鍵給予常用權限（建造、使用、開箱、傳送等），不用一個一個設。</span></div>
         <div class="callout callout-info"><span class="callout-icon">ℹ️</span><span><strong>PVP 保護：</strong>PVP 預設為允許，建議在自己的領地設為 <code>/res set &lt;領地&gt; pvp false</code> 關閉。關閉後包含藥水效果（虛弱、中毒等）也會被阻擋。</span></div>
+      </div>
 
-        <h4 style="margin-top: var(--space-lg);">設定個別玩家權限</h4>
+      <div class="guide-divider"></div>
+
+      <!-- ═══ 設定個別玩家權限 ═══ -->
+      <div class="guide-section-card fade-in" style="--card-accent:var(--foam)">
+        <h2><span class="sec-icon">👥</span> 設定個別玩家權限</h2>
         <p>想讓朋友能進來但別人不行？用 <code>/res pset</code> 針對特定玩家設定：</p>
-        <p><code>/res pset [領地名稱] &lt;玩家名稱&gt; &lt;權限&gt; [true/false/remove]</code></p>
-        <p>例如：<code>/res pset 我的家 Steve build true</code> — 允許 Steve 在你的領地建造。</p>
-        <p>更簡單的方式是用 <code>/res padd</code> 直接給予玩家基本權限（建造、使用、開箱）：</p>
-        <p><code>/res padd [領地名稱] &lt;玩家名稱&gt;</code></p>
-        <p>移除玩家權限：<code>/res pdel [領地名稱] &lt;玩家名稱&gt;</code></p>
-      </div>
-
-        <div class="guide-divider"></div>
-
-        <div class="guide-section-card fade-in" style="--card-accent:var(--sand)">
-          <h2><span class="sec-icon">💬</span> 訊息設定</h2>
-          <p>領地有專屬的進出訊息功能。當玩家進入或離開你的領地時，聊天欄會自動顯示你設定的訊息。</p>
-          <ul class="rules-list">
-            <li><strong>進入訊息：</strong><code>/res message &lt;領地名稱&gt; enter &lt;訊息&gt;</code></li>
-            <li><strong>離開訊息：</strong><code>/res message &lt;領地名稱&gt; leave &lt;訊息&gt;</code></li>
-          </ul>
-          <div class="callout callout-tip"><span class="callout-icon">💡</span><span>訊息支援顏色代碼，例如 <code>&a</code> 是綠色、<code>&c</code> 是紅色。可以用 <code>%player</code> 顯示進入的玩家名稱、<code>%residence</code> 顯示領地名稱。</span></div>
+        <div class="res-quickstart">
+          <div class="res-qs-card" style="--qs-color:var(--sky)">
+            <div class="res-qs-icon">✏️</div>
+            <h4>設定個人權限</h4>
+            <p><code>/res pset [領地] &lt;玩家&gt; &lt;權限&gt; [true/false/remove]</code></p>
+          </div>
+          <div class="res-qs-card" style="--qs-color:var(--foam)">
+            <div class="res-qs-icon">⚡</div>
+            <h4>一鍵給予常用權限</h4>
+            <p><code>/res padd [領地] &lt;玩家&gt;</code><br>自動給予建造、使用、開箱等基本權限</p>
+          </div>
+          <div class="res-qs-card" style="--qs-color:var(--sand)">
+            <div class="res-qs-icon">🗑️</div>
+            <h4>移除玩家權限</h4>
+            <p><code>/res pdel [領地] &lt;玩家&gt;</code><br>移除該玩家的所有特殊權限</p>
+          </div>
         </div>
-
-        <div class="guide-divider"></div>
-
-        <div class="guide-section-card fade-in" style="--card-accent:var(--foam)">
-          <h2><span class="sec-icon">📐</span> 擴縮領地</h2>
-        <p>覺得領地太小或太大？可以用 expand 和 contract 調整大小。每次最多調整 <strong>100 格</strong>。</p>
-        <h4 style="margin-top: var(--space-lg);">擴大領地</h4>
-        <p><code>/res expand &lt;格數&gt; [方向]</code></p>
-        <ol class="steps">
-          <li>面向你想擴大的方向（例如面向北邊就是往北擴），或在指令中指定方向（<code>up</code>/<code>down</code>/<code>north</code>/<code>south</code>/<code>east</code>/<code>west</code>）。</li>
-          <li>輸入指令，例如 <code>/res expand 50</code> 往前方擴大 50 格，或 <code>/res expand 10 up</code> 往上擴大 10 格。</li>
-        </ol>
-        <h4 style="margin-top: var(--space-lg);">縮小領地</h4>
-        <p><code>/res contract &lt;格數&gt; [方向]</code></p>
-        <ol class="steps">
-          <li>背對你想縮小的方向（例如面向南邊就是從北邊縮），或在指令中指定方向。</li>
-          <li>輸入指令，例如 <code>/res contract 30</code> 從背後方向縮小 30 格。</li>
-        </ol>
       </div>
 
-        <div class="guide-divider"></div>
+      <div class="guide-divider"></div>
 
-        <div class="guide-section-card fade-in" style="--card-accent:var(--foam)">
-          <h2><span class="sec-icon">🏗️</span> 子領地</h2>
-        <p>子領地（Subzone）就是在你的大領地裡面再畫一小塊，給那一小塊不同的權限。這功能叫做「zones within zones」。</p>
-        <p>常見用途：</p>
-        <ul style="list-style:none;padding:0;">
-          <li style="position:relative;padding-left:18px;color:var(--cloud);font-size:0.95rem;line-height:2;">在自己的領地內設一個「公共區域」，讓所有人可以使用工作台。</li>
-          <li style="position:relative;padding-left:18px;color:var(--cloud);font-size:0.95rem;line-height:2;">給朋友一個獨立的「房間」，只有他能在裡面建造。</li>
-          <li style="position:relative;padding-left:18px;color:var(--cloud);font-size:0.95rem;line-height:2;">保護特定建築物，有不同的權限設定。</li>
+      <!-- ═══ 訊息設定 ═══ -->
+      <div class="guide-section-card fade-in" style="--card-accent:var(--sand)">
+        <h2><span class="sec-icon">💬</span> 訊息設定</h2>
+        <p>領地有專屬的進出訊息功能。當玩家進入或離開你的領地時，聊天欄會自動顯示你設定的訊息。</p>
+        <ul class="rules-list">
+          <li><strong>進入訊息：</strong><code>/res message &lt;領地名稱&gt; enter &lt;訊息&gt;</code></li>
+          <li><strong>離開訊息：</strong><code>/res message &lt;領地名稱&gt; leave &lt;訊息&gt;</code></li>
         </ul>
-        <p>建立子領地的方式和建立一般領地一樣，只是在父領地的範圍內操作即可。每分流最多可以有 <strong>50 個</strong>子領地。</p>
+        <div class="callout callout-tip"><span class="callout-icon">💡</span><span>訊息支援顏色代碼，例如 <code>&a</code> 是綠色、<code>&c</code> 是紅色。可以用 <code>%player</code> 顯示進入的玩家名稱、<code>%residence</code> 顯示領地名稱。</span></div>
       </div>
 
-        <div class="guide-divider"></div>
+      <div class="guide-divider"></div>
 
-        <div class="guide-section-card fade-in" style="--card-accent:var(--foam)">
-          <h2><span class="sec-icon">🗑️</span> 刪除領地</h2>
+      <!-- ═══ 擴縮領地 ═══ -->
+      <div class="guide-section-card fade-in" style="--card-accent:var(--sky)">
+        <h2><span class="sec-icon">📐</span> 擴縮領地</h2>
+        <p>覺得領地太小或太大？可以用 expand 和 contract 調整大小。每次最多調整 <strong>100 格</strong>。</p>
+        <div class="res-methods">
+          <div class="res-method" style="--method-color:var(--foam)">
+            <h3>📏 擴大領地</h3>
+            <p><code>/res expand &lt;格數&gt; [方向]</code></p>
+            <div class="res-method-steps">
+              <div class="res-method-step">
+                <span class="res-method-step-num">1</span>
+                <span class="res-method-step-text">面向你想擴大的方向，或在指令中指定（<code>up</code>/<code>down</code>/<code>north</code>/<code>south</code>/<code>east</code>/<code>west</code>）</span>
+              </div>
+              <div class="res-method-step">
+                <span class="res-method-step-num">2</span>
+                <span class="res-method-step-text">輸入指令，例如 <code>/res expand 50</code> 往前方擴大 50 格</span>
+              </div>
+            </div>
+          </div>
+          <div class="res-method" style="--method-color:var(--sand)">
+            <h3>📐 縮小領地</h3>
+            <p><code>/res contract &lt;格數&gt; [方向]</code></p>
+            <div class="res-method-steps">
+              <div class="res-method-step">
+                <span class="res-method-step-num">1</span>
+                <span class="res-method-step-text">背對你想縮小的方向，或在指令中指定方向</span>
+              </div>
+              <div class="res-method-step">
+                <span class="res-method-step-num">2</span>
+                <span class="res-method-step-text">輸入指令，例如 <code>/res contract 30</code> 從背後方向縮小 30 格</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="guide-divider"></div>
+
+      <!-- ═══ 子領地 ═══ -->
+      <div class="guide-section-card fade-in" style="--card-accent:var(--foam)">
+        <h2><span class="sec-icon">🏗️</span> 子領地</h2>
+        <p>子領地（Subzone）就是在你的大領地裡面再畫一小塊，給那小塊不同的權限。常見用途：</p>
+        <ul style="list-style:none;padding:0;">
+          <li style="position:relative;padding-left:18px;color:var(--cloud);font-size:0.95rem;line-height:2;">在自己的領地內設一個「公共區域」，讓所有人可以使用工作台</li>
+          <li style="position:relative;padding-left:18px;color:var(--cloud);font-size:0.95rem;line-height:2;">給朋友一個獨立的「房間」，只有他能在裡面建造</li>
+          <li style="position:relative;padding-left:18px;color:var(--cloud);font-size:0.95rem;line-height:2;">保護特定建築物，有不同的權限設定</li>
+        </ul>
+        <p>建立子領地的方式和建立一般領地一樣，只是在父領地的範圍內操作即可。每分流最多可以有 <strong>50 個</strong>子領地，最多支援 <strong>3 層</strong>嵌套。</p>
+      </div>
+
+      <div class="guide-divider"></div>
+
+      <!-- ═══ 刪除領地 ═══ -->
+      <div class="guide-section-card fade-in" style="--card-accent:#ff9e9e">
+        <h2><span class="sec-icon">🗑️</span> 刪除領地</h2>
         <p><code>/res remove &lt;領地名稱&gt;</code></p>
         <ol class="steps">
-          <li>輸入指令，例如 <code>/res remove 我的家</code>。</li>
-          <li>系統會要求確認，再輸入 <code>/res confirm</code> 完成刪除。</li>
+          <li>輸入指令，例如 <code>/res remove 我的家</code></li>
+          <li>系統會要求確認，再輸入 <code>/res confirm</code> 完成刪除</li>
         </ol>
         <div class="callout callout-warn"><span class="callout-icon">⚠️</span><span>刪除後無法復原！領地內的所有權限設定也會一併刪除。請謹慎操作。</span></div>
       </div>
 
-        <div class="guide-divider"></div>
+      <div class="guide-divider"></div>
 
-        <div class="guide-section-card fade-in" style="--card-accent:var(--foam)">
-          <h2><span class="sec-icon">📊</span> 查看領地資訊</h2>
-        <p><code>/res info [領地名稱]</code> — 查看指定領地的詳細資訊（大小、擁有者、權限等）。</p>
-        <p><code>/res list</code> — 列出你擁有的所有領地。</p>
-        <p><code>/res tp &lt;領地名稱&gt;</code> — 傳送到你的某個領地（有 3 秒傳送延遲）。</p>
-        <p><code>/res kick &lt;玩家&gt;</code> — 把某人踢出你的領地。</p>
-        <p><code>/res ban &lt;玩家&gt;</code> — 禁止某人進入你的領地。</p>
-        <p><code>/res unstuck</code> — 如果被困在某個領地出不來，用這個指令脫困。</p>
-      </div>
-
-        <div class="guide-divider"></div>
-
-        <div class="guide-section-card fade-in" style="--card-accent:var(--foam)">
-          <h2><span class="sec-icon">📋</span> 領地列表與評論</h2>
-          <p>海風有專屬的領地列表系統，讓你用介面瀏覽、搜尋和管理所有領地。輸入 <code>/reslist open</code> 即可開啟。</p>
-
-          <h3 style="margin-top:var(--space-lg)">瀏覽公開領地</h3>
-          <p>所有設為「公開」的領地都會出現在列表中。你可以：</p>
-          <ul class="rules-list">
-            <li><strong>查看資訊</strong> — 點擊領地查看擁有者、大小、成員數、評論等詳細資訊</li>
-            <li><strong>直接傳送</strong> — 右鍵點擊公開領地即可傳送過去（需有傳送權限）</li>
-            <li><strong>釘選收藏</strong> — 丟棄鍵（Q）釘選常用領地，方便快速找到</li>
-            <li><strong>排序篩選</strong> — 依照名稱、評論數或大小排序，支援升降序切換</li>
-          </ul>
-
-          <h3 style="margin-top:var(--space-lg)">評論系統</h3>
-          <p>你可以對公開領地留下評論，幫助其他玩家了解這個領地：</p>
-          <div class="guide-steps-grid">
-            <div class="guide-step-card" style="--step-color:var(--foam)">
-              <div class="guide-step-num">1</div>
-              <h4>開啟領地資訊</h4>
-              <p>在領地列表中點擊想評論的領地</p>
-            </div>
-            <div class="guide-step-card" style="--step-color:var(--foam)">
-              <div class="guide-step-num">2</div>
-              <h4>選擇好評或差評</h4>
-              <p>左鍵給予好評、右鍵給予差評，並在聊天欄輸入評論內容</p>
-            </div>
-            <div class="guide-step-card" style="--step-color:var(--foam)">
-              <div class="guide-step-num">3</div>
-              <h4>完成評論</h4>
-              <p>評論會顯示在領地資訊中，所有玩家都能看到</p>
+      <!-- ═══ 查看領地資訊 ═══ -->
+      <div class="guide-section-card fade-in" style="--card-accent:var(--sky)">
+        <h2><span class="sec-icon">📊</span> 查看領地資訊</h2>
+        <div class="guide-cmd-grid">
+          <div class="guide-cmd-card">
+            <span class="guide-cmd-icon">ℹ️</span>
+            <div class="guide-cmd-body">
+              <div class="guide-cmd-name">/res info [領地名稱]</div>
+              <div class="guide-cmd-desc">查看指定領地的詳細資訊（大小、擁有者、權限等）</div>
             </div>
           </div>
+          <div class="guide-cmd-card">
+            <span class="guide-cmd-icon">📋</span>
+            <div class="guide-cmd-body">
+              <div class="guide-cmd-name">/res list</div>
+              <div class="guide-cmd-desc">列出你擁有的所有領地</div>
+            </div>
+          </div>
+          <div class="guide-cmd-card">
+            <span class="guide-cmd-icon">🚀</span>
+            <div class="guide-cmd-body">
+              <div class="guide-cmd-name">/res tp &lt;領地名稱&gt;</div>
+              <div class="guide-cmd-desc">傳送到你的某個領地（有 3 秒傳送延遲）</div>
+            </div>
+          </div>
+          <div class="guide-cmd-card">
+            <span class="guide-cmd-icon">👢</span>
+            <div class="guide-cmd-body">
+              <div class="guide-cmd-name">/res kick &lt;玩家&gt;</div>
+              <div class="guide-cmd-desc">把某人踢出你的領地</div>
+            </div>
+          </div>
+          <div class="guide-cmd-card">
+            <span class="guide-cmd-icon">🚫</span>
+            <div class="guide-cmd-body">
+              <div class="guide-cmd-name">/res ban &lt;玩家&gt;</div>
+              <div class="guide-cmd-desc">禁止某人進入你的領地</div>
+            </div>
+          </div>
+          <div class="guide-cmd-card">
+            <span class="guide-cmd-icon">🆘</span>
+            <div class="guide-cmd-body">
+              <div class="guide-cmd-name">/res unstuck</div>
+              <div class="guide-cmd-desc">被困在領地出不來？用這個指令脫困</div>
+            </div>
+          </div>
+        </div>
+      </div>
 
-          <h3 style="margin-top:var(--space-lg)">管理自己的領地</h3>
-          <p>領地擁有者可以透過列表管理自己的領地：</p>
-          <ul class="rules-list">
-            <li><strong>修改名稱</strong> — 左鍵點擊「標示」按鈕，在聊天欄輸入新名稱（最長 16 字元）</li>
-            <li><strong>修改描述</strong> — 右鍵點擊「標示」按鈕，輸入領地描述（支援換行 <code>\n</code>）</li>
-            <li><strong>更換圖標</strong> — 蹲下+左鍵點擊「標示」按鈕，將背包物品拖曳至指定位置</li>
-            <li><strong>公開/私人</strong> — 切換領地是否出現在公開列表中</li>
-            <li><strong>設定傳送點</strong> — 右鍵「傳送」按鈕，將目前站立位置設為領地傳送點</li>
-          </ul>
-          <div class="callout callout-tip"><span class="callout-icon">💡</span><span>領地圖標會顯示在列表中，選擇一個有辨識度的物品當圖標，讓別人更容易認出你的領地。部分物品（如箱子、鎖鏈、紅石）不能作為圖標。</span></div>
+      <div class="guide-divider"></div>
+
+      <!-- ═══ 領地列表與評論 ═══ -->
+      <div class="guide-section-card fade-in" style="--card-accent:var(--lavender)">
+        <h2><span class="sec-icon">📋</span> 領地列表與評論</h2>
+        <p>海風有專屬的領地列表系統，讓你用介面瀏覽、搜尋和管理所有領地。輸入 <code>/reslist open</code> 即可開啟。</p>
+
+        <h3 style="margin-top:var(--space-lg)">瀏覽公開領地</h3>
+        <p>所有設為「公開」的領地都會出現在列表中。你可以：</p>
+        <ul class="rules-list">
+          <li><strong>查看資訊</strong> — 點擊領地查看擁有者、大小、成員數、評論等詳細資訊</li>
+          <li><strong>直接傳送</strong> — 右鍵點擊公開領地即可傳送過去（需有傳送權限）</li>
+          <li><strong>釘選收藏</strong> — 丟棄鍵（Q）釘選常用領地，方便快速找到</li>
+          <li><strong>排序篩選</strong> — 依照名稱、評論數或大小排序，支援升降序切換</li>
+        </ul>
+
+        <h3 style="margin-top:var(--space-lg)">評論系統</h3>
+        <p>你可以對公開領地留下評論，幫助其他玩家了解這個領地：</p>
+        <div class="guide-steps-grid">
+          <div class="guide-step-card" style="--step-color:var(--lavender)">
+            <div class="guide-step-num">1</div>
+            <h4>開啟領地資訊</h4>
+            <p>在領地列表中點擊想評論的領地</p>
+          </div>
+          <div class="guide-step-card" style="--step-color:var(--lavender)">
+            <div class="guide-step-num">2</div>
+            <h4>選擇好評或差評</h4>
+            <p>左鍵給予好評、右鍵給予差評，並在聊天欄輸入評論內容</p>
+          </div>
+          <div class="guide-step-card" style="--step-color:var(--lavender)">
+            <div class="guide-step-num">3</div>
+            <h4>完成評論</h4>
+            <p>評論會顯示在領地資訊中，所有玩家都能看到</p>
+          </div>
         </div>
 
-        
-        <div class="guide-divider"></div>
+        <h3 style="margin-top:var(--space-lg)">管理自己的領地</h3>
+        <p>領地擁有者可以透過列表管理自己的領地：</p>
+        <ul class="rules-list">
+          <li><strong>修改名稱</strong> — 左鍵點擊「標示」按鈕，在聊天欄輸入新名稱（最長 16 字元）</li>
+          <li><strong>修改描述</strong> — 右鍵點擊「標示」按鈕，輸入領地描述（支援換行 <code>\n</code>）</li>
+          <li><strong>更換圖標</strong> — 蹲下+左鍵點擊「標示」按鈕，將背包物品拖曳至指定位置</li>
+          <li><strong>公開/私人</strong> — 切換領地是否出現在公開列表中</li>
+          <li><strong>設定傳送點</strong> — 右鍵「傳送」按鈕，將目前站立位置設為領地傳送點</li>
+        </ul>
+        <div class="callout callout-tip"><span class="callout-icon">💡</span><span>領地圖標會顯示在列表中，選擇一個有辨識度的物品當圖標，讓別人更容易認出你的領地。部分物品（如箱子、鎖鏈、紅石）不能作為圖標。</span></div>
+      </div>
 
-        <div class="guide-divider"></div>
+      <div class="guide-divider"></div>
 
-        <div class="guide-section-card fade-in" style="--card-accent:var(--foam)">
-          <h2><span class="sec-icon">🔍</span> 常用指令總表</h2>
+      <!-- ═══ 常用指令總表 ═══ -->
+      <div class="guide-section-card fade-in" style="--card-accent:var(--ocean-blue)">
+        <h2><span class="sec-icon">🔍</span> 常用指令總表</h2>
         <div class="callout callout-tip"><span class="callout-icon">💡</span><span>提示：<code>&lt; &gt;</code> 為必選參數，<code>[ ]</code> 為可選參數。</span></div>
         <div class="rules-table-wrap">
           <table class="rules-table">
             <thead><tr><th>指令</th><th>說明</th></tr></thead>
             <tbody>
-              <tr><td><code>/res create &lt;領地名稱&gt;</code></td><td>手動框選並建立領地。</td></tr>
-              <tr><td><code>/res auto &lt;領地名稱&gt; [半徑]</code></td><td>自動框選並建立領地。</td></tr>
+              <tr><td><code>/res create &lt;領地名稱&gt;</code></td><td>手動框選並建立領地</td></tr>
+              <tr><td><code>/res auto &lt;領地名稱&gt; [半徑]</code></td><td>自動框選並建立領地</td></tr>
               <tr><td><code>/res remove &lt;領地名稱&gt;</code></td><td>刪除領地（需 /res confirm 確認）</td></tr>
-              <tr><td><code>/res info [領地名稱]</code></td><td>查看領地詳細資訊。</td></tr>
-              <tr><td><code>/res list</code></td><td>列出你擁有的所有領地。</td></tr>
-              <tr><td><code>/res set [領地名稱] &lt;權限&gt; [值]</code></td><td>設定領地通用權限。</td></tr>
-              <tr><td><code>/res pset [領地名稱] &lt;玩家&gt; &lt;權限&gt; [值]</code></td><td>設定個別玩家權限。</td></tr>
-              <tr><td><code>/res padd [領地名稱] &lt;玩家&gt;</code></td><td>給予玩家基本權限。</td></tr>
-              <tr><td><code>/res pdel [領地名稱] &lt;玩家&gt;</code></td><td>移除玩家基本權限。</td></tr>
-
-              <tr><td><code>/res tp &lt;領地名稱&gt;</code></td><td>傳送到指定領地。</td></tr>
-              <tr><td><code>/res kick &lt;玩家&gt;</code></td><td>將玩家踢出領地。</td></tr>
-              <tr><td><code>/res ban &lt;玩家&gt;</code></td><td>禁止玩家進入領地。</td></tr>
+              <tr><td><code>/res info [領地名稱]</code></td><td>查看領地詳細資訊</td></tr>
+              <tr><td><code>/res list</code></td><td>列出你擁有的所有領地</td></tr>
+              <tr><td><code>/res set [領地名稱] &lt;權限&gt; [值]</code></td><td>設定領地通用權限</td></tr>
+              <tr><td><code>/res pset [領地名稱] &lt;玩家&gt; &lt;權限&gt; [值]</code></td><td>設定個別玩家權限</td></tr>
+              <tr><td><code>/res padd [領地名稱] &lt;玩家&gt;</code></td><td>給予玩家基本權限</td></tr>
+              <tr><td><code>/res pdel [領地名稱] &lt;玩家&gt;</code></td><td>移除玩家基本權限</td></tr>
+              <tr><td><code>/res tp &lt;領地名稱&gt;</code></td><td>傳送到指定領地</td></tr>
+              <tr><td><code>/res kick &lt;玩家&gt;</code></td><td>將玩家踢出領地</td></tr>
+              <tr><td><code>/res ban &lt;玩家&gt;</code></td><td>禁止玩家進入領地</td></tr>
               <tr><td><code>/res expand &lt;格數&gt; [方向]</code></td><td>擴大領地（方向：up/down/north/south/east/west）</td></tr>
-              <tr><td><code>/res contract &lt;格數&gt; [方向]</code></td><td>縮小領地。</td></tr>
-              <tr><td><code>/res message &lt;領地&gt; enter &lt;訊息&gt;</code></td><td>設定進入領地訊息。</td></tr>
-              <tr><td><code>/res message &lt;領地&gt; leave &lt;訊息&gt;</code></td><td>設定離開領地訊息。</td></tr>
-              <tr><td><code>/res select vert</code></td><td>選取範圍垂直延伸到天空。</td></tr>
-              <tr><td><code>/res select chunk</code></td><td>選取整個區塊（16×16）。</td></tr>
-              <tr><td><code>/res unstuck</code></td><td>脫困指令，從被困的領地中脫出。</td></tr>
-              <tr><td><code>/res flags</code></td><td>查看所有可用的權限列表。</td></tr>
-              <tr><td><code>/reslist open</code></td><td>開啟領地列表介面。</td></tr>
-              <tr><td><code>/reslist edit &lt;領地名&gt;</code></td><td>編輯領地資訊（名稱/描述/圖標）。</td></tr>
-              <tr><td><code>/reslist info &lt;領地名&gt;</code></td><td>查看領地詳細資訊。</td></tr>
-              <tr><td><code>/res confirm</code></td><td>確認刪除領地。</td></tr>
+              <tr><td><code>/res contract &lt;格數&gt; [方向]</code></td><td>縮小領地</td></tr>
+              <tr><td><code>/res message &lt;領地&gt; enter &lt;訊息&gt;</code></td><td>設定進入領地訊息</td></tr>
+              <tr><td><code>/res message &lt;領地&gt; leave &lt;訊息&gt;</code></td><td>設定離開領地訊息</td></tr>
+              <tr><td><code>/res select vert</code></td><td>選取範圍垂直延伸到天空</td></tr>
+              <tr><td><code>/res select chunk</code></td><td>選取整個區塊（16×16）</td></tr>
+              <tr><td><code>/res unstuck</code></td><td>脫困指令，從被困的領地中脫出</td></tr>
+              <tr><td><code>/res flags</code></td><td>查看所有可用的權限列表</td></tr>
+              <tr><td><code>/reslist open</code></td><td>開啟領地列表介面</td></tr>
+              <tr><td><code>/reslist edit &lt;領地名&gt;</code></td><td>編輯領地資訊（名稱/描述/圖標）</td></tr>
+              <tr><td><code>/reslist info &lt;領地名&gt;</code></td><td>查看領地詳細資訊</td></tr>
+              <tr><td><code>/res confirm</code></td><td>確認刪除領地</td></tr>
             </tbody>
           </table>
         </div>
       </div>
-      
-        <div class="guide-divider"></div>
 
-        <div class="guide-section-card fade-in" style="--card-accent:#85b1e0">
-          <h2><span class="sec-icon">❓</span> 常見問題</h2>
-          <div class="guide-faq">
-            <div class="guide-faq-item">
-              <button class="guide-faq-q">怎麼建立領地？</button>
-              <div class="guide-faq-a"><div class="guide-faq-a-inner">用<strong>木鋤</strong>選取兩個對角點，然後輸入建立指令。</div></div>
-            </div>
-            <div class="guide-faq-item">
-              <button class="guide-faq-q">領地要花多少錢？</button>
-              <div class="guide-faq-a"><div class="guide-faq-a-inner">完全免費！海風的領地系統不收費，建立、擴大、縮小都不用花風幣。</div></div>
-            </div>
-            <div class="guide-faq-item">
-              <button class="guide-faq-q">別人可以進我的領地嗎？</button>
-              <div class="guide-faq-a"><div class="guide-faq-a-inner">可以走進，但不能破壞、放置或開啟容器。你可以設定 <code>move false</code> 完全禁止進入，或用 <code>/res padd</code> 允許特定玩家。</div></div>
-            </div>
-            <div class="guide-faq-item">
-              <button class="guide-faq-q">領地可以設在地獄或終界嗎？</button>
-              <div class="guide-faq-a"><div class="guide-faq-a-inner">可以！領地系統支援所有世界，包括主世界、地獄和終界。建立方式一樣，只是在不同世界操作。</div></div>
-            </div>
-            <div class="guide-faq-item">
-              <button class="guide-faq-q">傳送到領地要等多久？</button>
-              <div class="guide-faq-a"><div class="guide-faq-a-inner">使用 <code>/res tp</code> 傳送到領地有 <strong>3 秒</strong>的傳送延遲，傳送時會顯示提示訊息。期間移動不會取消傳送。</div></div>
-            </div>
-            <div class="guide-faq-item">
-              <button class="guide-faq-q">領地名稱可以用中文嗎？</button>
-              <div class="guide-faq-a"><div class="guide-faq-a-inner">可以！領地名稱支援英文、數字、中文、底線和連字號，最長 64 字元。例如 <code>我的家</code>、<code>海風基地</code> 都可以。</div></div>
-            </div>
-            <div class="guide-faq-item">
-              <button class="guide-faq-q">被困在別人的領地出不來怎麼辦？</button>
-              <div class="guide-faq-a"><div class="guide-faq-a-inner">輸入 <code>/res unstuck</code> 可以把自己傳送出被困的領地。這個功能預設開啟，不需要額外設定。</div></div>
-            </div>
-            <div class="guide-faq-item">
-              <button class="guide-faq-q">怎麼讓別人看到我的領地？</button>
-              <div class="guide-faq-a"><div class="guide-faq-a-inner">使用 <code>/reslist edit &lt;領地名&gt;</code> 開啟管理介面，將狀態切換為「公開」。公開後你的領地會出現在領地列表中，其他玩家可以瀏覽、評論和傳送。</div></div>
-            </div>
-            <div class="guide-faq-item">
-              <button class="guide-faq-q">怎麼對別人的領地留評論？</button>
-              <div class="guide-faq-a"><div class="guide-faq-a-inner">使用 <code>/reslist open</code> 開啟領地列表，點擊想評論的領地，再點擊「評論」按鈕。左鍵給好評、右鍵給差評，然後在聊天欄輸入評論內容即可。</div></div>
-            </div>
+      <div class="guide-divider"></div>
+
+      <!-- ═══ 常見問題 ═══ -->
+      <div class="guide-section-card fade-in" style="--card-accent:#85b1e0">
+        <h2><span class="sec-icon">❓</span> 常見問題</h2>
+        <div class="guide-faq">
+          <div class="guide-faq-item">
+            <button class="guide-faq-q">怎麼建立領地？</button>
+            <div class="guide-faq-a"><div class="guide-faq-a-inner">用<strong>木鋤</strong>選取兩個對角點，然後輸入 <code>/res create &lt;名稱&gt;</code>。不想跑來跑去的話，站在中心點用 <code>/res auto &lt;名稱&gt;</code> 一個指令搞定。</div></div>
+          </div>
+          <div class="guide-faq-item">
+            <button class="guide-faq-q">領地要花多少錢？</button>
+            <div class="guide-faq-a"><div class="guide-faq-a-inner">完全免費！海風的領地系統不收費，建立、擴大、縮小都不用花風幣。</div></div>
+          </div>
+          <div class="guide-faq-item">
+            <button class="guide-faq-q">別人可以進我的領地嗎？</button>
+            <div class="guide-faq-a"><div class="guide-faq-a-inner">可以走進，但不能破壞、放置或開啟容器。你可以設定 <code>move false</code> 完全禁止進入，或用 <code>/res padd</code> 允許特定玩家。</div></div>
+          </div>
+          <div class="guide-faq-item">
+            <button class="guide-faq-q">領地可以設在地獄或終界嗎？</button>
+            <div class="guide-faq-a"><div class="guide-faq-a-inner">可以！領地系統支援所有世界，包括主世界、地獄和終界。建立方式一樣，只是在不同世界操作。</div></div>
+          </div>
+          <div class="guide-faq-item">
+            <button class="guide-faq-q">傳送到領地要等多久？</button>
+            <div class="guide-faq-a"><div class="guide-faq-a-inner">使用 <code>/res tp</code> 傳送到領地有 <strong>3 秒</strong>的傳送延遲，傳送時會顯示提示訊息。期間移動不會取消傳送。</div></div>
+          </div>
+          <div class="guide-faq-item">
+            <button class="guide-faq-q">領地名稱可以用中文嗎？</button>
+            <div class="guide-faq-a"><div class="guide-faq-a-inner">可以！領地名稱支援英文、數字、中文、底線和連字號，最長 64 字元。例如 <code>我的家</code>、<code>海風基地</code> 都可以。</div></div>
+          </div>
+          <div class="guide-faq-item">
+            <button class="guide-faq-q">被困在別人的領地出不來怎麼辦？</button>
+            <div class="guide-faq-a"><div class="guide-faq-a-inner">輸入 <code>/res unstuck</code> 可以把自己傳送出被困的領地。這個功能預設開啟，不需要額外設定。</div></div>
+          </div>
+          <div class="guide-faq-item">
+            <button class="guide-faq-q">怎麼讓別人看到我的領地？</button>
+            <div class="guide-faq-a"><div class="guide-faq-a-inner">使用 <code>/reslist edit &lt;領地名&gt;</code> 開啟管理介面，將狀態切換為「公開」。公開後你的領地會出現在領地列表中，其他玩家可以瀏覽、評論和傳送。</div></div>
+          </div>
+          <div class="guide-faq-item">
+            <button class="guide-faq-q">怎麼對別人的領地留評論？</button>
+            <div class="guide-faq-a"><div class="guide-faq-a-inner">使用 <code>/reslist open</code> 開啟領地列表，點擊想評論的領地，再點擊「評論」按鈕。左鍵給好評、右鍵給差評，然後在聊天欄輸入評論內容即可。</div></div>
           </div>
         </div>
+      </div>
 
-        
-        <div class="guide-divider"></div>
+      <div class="guide-divider"></div>
 
-        <div class="guide-section-card fade-in" style="--card-accent:var(--ocean-blue)">
-          <h2><span class="sec-icon">📖</span> 相關頁面</h2>
-          <div class="guide-next-grid">
-            <a href="互動記錄" class="guide-next-card">
-              <span class="guide-next-icon">🛡️</span>
-              <div class="guide-next-body">
-                <h4>互動記錄</h4>
-                <p>查誰動了你的東西</p>
-              </div>
-            </a>
-            <a href="物品署名" class="guide-next-card">
-              <span class="guide-next-icon">🛡️</span>
-              <div class="guide-next-body">
-                <h4>物品署名</h4>
-                <p>保護你的物品不被複製</p>
-              </div>
-            </a>
-          </div>
+      <!-- ═══ 相關頁面 ═══ -->
+      <div class="guide-section-card fade-in" style="--card-accent:var(--ocean-blue)">
+        <h2><span class="sec-icon">📖</span> 相關頁面</h2>
+        <div class="guide-next-grid">
+          <a href="互動記錄" class="guide-next-card">
+            <span class="guide-next-icon">🛡️</span>
+            <div class="guide-next-body">
+              <h4>互動記錄</h4>
+              <p>查誰動了你的東西</p>
+            </div>
+          </a>
+          <a href="物品署名" class="guide-next-card">
+            <span class="guide-next-icon">✍️</span>
+            <div class="guide-next-body">
+              <h4>物品署名</h4>
+              <p>保護你的物品不被複製</p>
+            </div>
+          </a>
+          <a href="個人傳送點" class="guide-next-card">
+            <span class="guide-next-icon">📍</span>
+            <div class="guide-next-body">
+              <h4>個人傳送點</h4>
+              <p>設定你的傳送座標</p>
+            </div>
+          </a>
         </div>
+      </div>
 
-        <div class="guide-nav fade-in">
+      <div class="guide-nav fade-in">
         <a href="個人傳送點" class="btn btn-outline">← 個人傳送點</a>
         <a href="../海風指南" class="btn btn-outline">返回目錄</a>
         <a href="互動記錄" class="btn btn-primary">互動記錄 →</a>
