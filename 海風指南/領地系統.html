@@ -22,7 +22,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;800&family=Noto+Serif+TC:wght@700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../style.css?v=020502c">
+  <link rel="stylesheet" href="../style.css?v=030503a">
   <link rel="stylesheet" href="../music-player.css">
 </head>
 <body>
@@ -441,13 +441,115 @@
       <!-- ═══ 子領地 ═══ -->
       <div class="guide-section-card fade-in" style="--card-accent:var(--foam)">
         <h2><span class="sec-icon">🏗️</span> 子領地</h2>
-        <p>子領地（Subzone）就是在你的大領地裡面再畫一小塊，給那小塊不同的權限。常見用途：</p>
-        <ul style="list-style:none;padding:0;">
-          <li style="position:relative;padding-left:18px;color:var(--cloud);font-size:0.95rem;line-height:2;">在自己的領地內設一個「公共區域」，讓所有人可以使用工作台</li>
-          <li style="position:relative;padding-left:18px;color:var(--cloud);font-size:0.95rem;line-height:2;">給朋友一個獨立的「房間」，只有他能在裡面建造</li>
-          <li style="position:relative;padding-left:18px;color:var(--cloud);font-size:0.95rem;line-height:2;">保護特定建築物，有不同的權限設定</li>
-        </ul>
-        <p>建立子領地的方式和建立一般領地一樣，只是在父領地的範圍內操作即可。每分流最多可以有 <strong>50 個</strong>子領地，最多支援 <strong>3 層</strong>嵌套。</p>
+        <p>子領地就是在你的大領地裡面再畫一小塊，讓那小塊擁有獨立的權限設定。你可以把子領地想成「領地中的領地」——大範圍保護整個基地，小範圍精細控制每個房間。</p>
+
+        <!-- 嵌套視覺化 -->
+        <div class="sz-nest-diagram">
+          <div class="sz-nest-visual">
+            <div class="sz-nest-ring sz-ring-1">
+              <span class="sz-ring-label">🏠 我的基地</span>
+              <div class="sz-nest-ring sz-ring-2">
+                <span class="sz-ring-label">🔧 工作區</span>
+                <div class="sz-nest-ring sz-ring-3">
+                  <span class="sz-ring-label">🔒 私人倉庫</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="sz-nest-legend">
+            <div class="sz-legend-item"><span class="sz-legend-dot" style="background:var(--foam)"></span>第 1 層：主領地</div>
+            <div class="sz-legend-item"><span class="sz-legend-dot" style="background:var(--sky)"></span>第 2 層：子領地</div>
+            <div class="sz-legend-item"><span class="sz-legend-dot" style="background:var(--lavender)"></span>第 3 層：子子領地</div>
+          </div>
+        </div>
+
+        <!-- 快速統計 -->
+        <div class="sz-stats">
+          <div class="sz-stat"><div class="sz-stat-num">50</div><div class="sz-stat-label">每分子領地上限</div></div>
+          <div class="sz-stat"><div class="sz-stat-num">3</div><div class="sz-stat-label">最多嵌套層級</div></div>
+          <div class="sz-stat"><div class="sz-stat-num">獨立</div><div class="sz-stat-label">每層獨立權限</div></div>
+        </div>
+      </div>
+
+      <div class="guide-divider"></div>
+
+      <!-- ═══ 子領地用途 ═══ -->
+      <div class="guide-section-card fade-in" style="--card-accent:var(--sky)">
+        <h2><span class="sec-icon">💡</span> 常見用途</h2>
+        <p>子領地的應用非常靈活，以下是最常見的三種情境：</p>
+        <div class="sz-use-grid">
+          <div class="sz-use-card" style="--use-color:var(--foam)">
+            <div class="sz-use-icon">🤝</div>
+            <h4>公共區域</h4>
+            <p>在領地內設一塊「公共區域」，讓所有人可以使用工作台、熔爐或交易，但不能破壞其他東西。</p>
+          </div>
+          <div class="sz-use-card" style="--use-color:var(--sky)">
+            <div class="sz-use-icon">🚪</div>
+            <h4>朋友房間</h4>
+            <p>給朋友一個獨立的房間，只有他能在裡面建造和放置方塊，但不能動領地其他地方。</p>
+          </div>
+          <div class="sz-use-card" style="--use-color:var(--lavender)">
+            <div class="sz-use-icon">🏰</div>
+            <h4>分區保護</h4>
+            <p>花園、倉庫、紅石區各自獨立設定，不同區域不同權限，管理更精細。</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="guide-divider"></div>
+
+      <!-- ═══ 建立子領地 ═══ -->
+      <div class="guide-section-card fade-in" style="--card-accent:var(--foam)">
+        <h2><span class="sec-icon">📐</span> 建立子領地</h2>
+        <p>建立方式和建立一般領地完全一樣，只是<strong>必須在父領地範圍內</strong>操作：</p>
+        <div class="guide-steps-grid">
+          <div class="guide-step-card" style="--step-color:var(--foam)">
+            <div class="guide-step-num">1</div>
+            <h4>拿木鋤</h4>
+            <p>手持木鋤（合成方式見領地系統主頁）</p>
+          </div>
+          <div class="guide-step-card" style="--step-color:var(--foam)">
+            <div class="guide-step-num">2</div>
+            <h4>框選範圍</h4>
+            <p>左鍵點第一個角、右鍵點對角，範圍必須在父領地內</p>
+          </div>
+          <div class="guide-step-card" style="--step-color:var(--foam)">
+            <div class="guide-step-num">3</div>
+            <h4>建立完成</h4>
+            <p>輸入 <code>/res create 子領地名稱</code>，子領地會繼承父領地的世界</p>
+          </div>
+        </div>
+        <div class="callout callout-tip"><span class="callout-icon">💡</span><span>快捷方式：站在子領地中心點，輸入 <code>/res create 子領地名稱</code>，系統會自動以你為中心框出預設大小的範圍。</span></div>
+      </div>
+
+      <div class="guide-divider"></div>
+
+      <!-- ═══ 嵌套規則 ═══ -->
+      <div class="guide-section-card fade-in" style="--card-accent:var(--lavender)">
+        <h2><span class="sec-icon">📐</span> 嵌套規則</h2>
+        <p>子領地可以繼續往下細分，但有幾個限制要注意：</p>
+        <div class="sz-rules-grid">
+          <div class="sz-rule-card">
+            <div class="sz-rule-icon">📏</div>
+            <h4>範圍限制</h4>
+            <p>子領地<strong>不能超出</strong>父領地的範圍，必須完全包含在內。</p>
+          </div>
+          <div class="sz-rule-card">
+            <div class="sz-rule-icon">🔄</div>
+            <h4>權限繼承</h4>
+            <p>子領地會<strong>繼承父領地的預設權限</strong>，但可以自行覆蓋任何設定。</p>
+          </div>
+          <div class="sz-rule-card">
+            <div class="sz-rule-icon">📦</div>
+            <h4>數量限制</h4>
+            <p>每個主領地最多 <strong>50 個</strong>子領地，每分子領地還能再分子領地（最多 3 層）。</p>
+          </div>
+          <div class="sz-rule-card">
+            <div class="sz-rule-icon">🏷️</div>
+            <h4>命名規則</h4>
+            <p>子領地名稱在同一個父領地內<strong>不能重複</strong>，支援中文命名。</p>
+          </div>
+        </div>
       </div>
 
       <div class="guide-divider"></div>

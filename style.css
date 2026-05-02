@@ -3559,3 +3559,72 @@ html, body {
 .res-qs-header{display:flex;align-items:center;gap:var(--space-sm);margin-bottom:4px}
 .res-qs-header .res-qs-icon{margin-bottom:0}
 .res-qs-header h4{margin-bottom:0}
+
+/* ═══ 子領地視覺化 ═══ */
+.sz-nest-diagram{display:flex;align-items:center;gap:var(--space-xl);margin:var(--space-xl)0;padding:var(--space-lg);background:linear-gradient(135deg,rgba(168,230,207,0.04),rgba(157,175,255,0.04));border:1px solid rgba(168,230,207,0.1);border-radius:var(--radius-xl);flex-wrap:wrap}
+.sz-nest-visual{flex:0 0 auto;display:flex;align-items:center;justify-content:center;min-width:260px;min-height:200px}
+.sz-nest-ring{display:flex;align-items:center;justify-content:center;position:relative;border-radius:var(--radius-lg);border:2px dashed;transition:all 0.3s var(--ease)}
+.sz-ring-1{width:240px;height:180px;border-color:rgba(168,230,207,0.35);background:rgba(168,230,207,0.04);flex-direction:column;gap:var(--space-sm)}
+.sz-ring-2{width:160px;height:110px;border-color:rgba(157,175,255,0.35);background:rgba(157,175,255,0.05);flex-direction:column;gap:4px}
+.sz-ring-3{width:90px;height:60px;border-color:rgba(171,114,249,0.4);background:rgba(171,114,249,0.06);display:flex;align-items:center;justify-content:center}
+.sz-ring-label{font-size:0.72rem;font-weight:700;white-space:nowrap;pointer-events:none}
+.sz-ring-1>.sz-ring-label{position:absolute;top:-26px;left:0;color:var(--foam)}
+.sz-ring-2>.sz-ring-label{position:absolute;top:-22px;left:8px;color:var(--sky)}
+.sz-ring-3>.sz-ring-label{color:var(--lavender);font-size:0.65rem}
+.sz-nest-legend{flex:1;min-width:180px;display:flex;flex-direction:column;gap:var(--space-sm)}
+.sz-legend-item{display:flex;align-items:center;gap:8px;font-size:0.82rem;color:var(--fog)}
+.sz-legend-dot{width:10px;height:10px;border-radius:3px;flex-shrink:0}
+[data-theme="light"] .sz-nest-diagram{background:linear-gradient(135deg,rgba(56,180,139,0.03),rgba(74,108,247,0.03));border-color:rgba(56,180,139,0.12)}
+[data-theme="light"] .sz-ring-1{border-color:rgba(56,180,139,0.3);background:rgba(56,180,139,0.04)}
+[data-theme="light"] .sz-ring-2{border-color:rgba(74,108,247,0.3);background:rgba(74,108,247,0.04)}
+[data-theme="light"] .sz-ring-3{border-color:rgba(139,92,246,0.35);background:rgba(139,92,246,0.05)}
+[data-theme="light"] .sz-ring-1>.sz-ring-label{color:var(--ocean-blue)}
+[data-theme="light"] .sz-ring-2>.sz-ring-label{color:var(--sky)}
+[data-theme="light"] .sz-ring-3>.sz-ring-label{color:var(--lavender)}
+
+/* 子領地快速統計 */
+.sz-stats{display:flex;gap:var(--space-md);margin-top:var(--space-lg);justify-content:center;flex-wrap:wrap}
+.sz-stat{display:flex;flex-direction:column;align-items:center;gap:4px;padding:var(--space-md)var(--space-lg);background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.06);border-radius:var(--radius-lg);min-width:100px;transition:all var(--duration)var(--ease)}
+.sz-stat:hover{background:rgba(255,255,255,0.04);border-color:rgba(168,230,207,0.15);transform:translateY(-2px)}
+.sz-stat-num{font-size:1.4rem;font-weight:800;color:var(--foam);font-family:var(--font-heading)}
+.sz-stat-label{font-size:0.72rem;color:var(--fog);text-align:center}
+[data-theme="light"] .sz-stat{background:#fff;border-color:rgba(0,0,0,0.06)}
+[data-theme="light"] .sz-stat:hover{box-shadow:0 4px 12px rgba(0,0,0,0.06)}
+[data-theme="light"] .sz-stat-num{color:var(--ocean-blue)}
+
+/* 子領地用途卡片 */
+.sz-use-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:var(--space-md);margin:var(--space-lg)0}
+.sz-use-card{position:relative;padding:var(--space-lg);border-radius:var(--radius-lg);border:1px solid rgba(255,255,255,0.06);background:rgba(255,255,255,0.02);overflow:hidden;transition:all var(--duration)var(--ease)}
+.sz-use-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--use-color,var(--foam));opacity:0.5}
+.sz-use-card:hover{transform:translateY(-3px);border-color:rgba(255,255,255,0.12);box-shadow:0 6px 20px rgba(0,0,0,0.12)}
+.sz-use-card:hover::before{opacity:0.9}
+.sz-use-icon{font-size:1.6rem;margin-bottom:var(--space-sm)}
+.sz-use-card h4{font-size:0.95rem;font-weight:700;color:var(--white);margin-bottom:6px}
+.sz-use-card p{font-size:0.82rem;color:var(--fog);line-height:1.65;margin:0}
+[data-theme="light"] .sz-use-card{background:#fff;border-color:rgba(0,0,0,0.06)}
+[data-theme="light"] .sz-use-card:hover{box-shadow:0 4px 12px rgba(0,0,0,0.06)}
+
+/* 子領地規則卡片 */
+.sz-rules-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:var(--space-md);margin:var(--space-lg)0}
+.sz-rule-card{padding:var(--space-lg);border-radius:var(--radius-lg);border:1px solid rgba(255,255,255,0.06);background:rgba(255,255,255,0.02);transition:all var(--duration)var(--ease);text-align:center}
+.sz-rule-card:hover{transform:translateY(-3px);border-color:rgba(171,114,249,0.2);box-shadow:0 4px 16px rgba(0,0,0,0.1)}
+.sz-rule-icon{font-size:1.5rem;margin-bottom:var(--space-sm)}
+.sz-rule-card h4{font-size:0.9rem;font-weight:700;color:var(--white);margin-bottom:6px}
+.sz-rule-card p{font-size:0.8rem;color:var(--fog);line-height:1.6;margin:0}
+.sz-rule-card strong{color:var(--lavender)}
+[data-theme="light"] .sz-rule-card{background:#fff;border-color:rgba(0,0,0,0.06)}
+[data-theme="light"] .sz-rule-card:hover{box-shadow:0 4px 12px rgba(0,0,0,0.06)}
+[data-theme="light"] .sz-rule-card strong{color:var(--ocean-blue)}
+
+/* 子領地響應式 */
+@media(max-width:768px){
+  .sz-nest-diagram{flex-direction:column;align-items:center}
+  .sz-nest-visual{min-width:auto;width:100%;justify-content:center}
+  .sz-ring-1{width:200px;height:160px}
+  .sz-ring-2{width:130px;height:95px}
+  .sz-ring-3{width:72px;height:50px}
+  .sz-nest-legend{align-items:center}
+  .sz-stats{gap:var(--space-sm)}
+  .sz-stat{min-width:80px;padding:var(--space-sm)var(--space-md)}
+  .sz-stat-num{font-size:1.1rem}
+}
