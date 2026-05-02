@@ -3554,3 +3554,8 @@ html, body {
   .cta-section{padding:var(--space-xl)var(--space-md);margin-top:var(--space-xl)}
   .cta-actions{flex-direction:column;align-items:stretch}
 }
+
+/* res-qs: icon + title inline */
+.res-qs-header{display:flex;align-items:center;gap:var(--space-sm);margin-bottom:4px}
+.res-qs-header .res-qs-icon{margin-bottom:0}
+.res-qs-header h4{margin-bottom:0}
