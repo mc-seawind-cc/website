@@ -64,9 +64,11 @@
     color: var(--fog);
     line-height: 1.5;
   }
-  .upgrade-step.from { background: rgba(157,175,255,0.06); border-radius: var(--radius-md) 0 0 var(--radius-md); }
+  .upgrade-step:first-child { border-radius: var(--radius-md) 0 0 var(--radius-md); }
+  .upgrade-step:last-child { border-radius: 0 var(--radius-md) var(--radius-md) 0; }
+  .upgrade-step.from { background: rgba(157,175,255,0.06); }
   .upgrade-step.mid { background: rgba(171,114,249,0.06); }
-  .upgrade-step.to { background: rgba(168,230,207,0.06); border-radius: 0 var(--radius-md) var(--radius-md) 0; }
+  .upgrade-step.to { background: rgba(168,230,207,0.06); }
   [data-theme="light"] .upgrade-step-name { color: #1a1a2e; }
 
   @media (max-width: 768px) {
