@@ -328,20 +328,20 @@
       <!-- ═══ 領地權限 ═══ -->
       <div class="guide-section-card fade-in" style="--card-accent:var(--lavender)">
         <h2><span class="sec-icon">⚙️</span> 領地權限</h2>
-        <p>建立領地後，最重要的就是設定權限。權限決定了領地內允許或禁止哪些行為。<strong>建造和容器存取預設是禁止的</strong>（外人不能拆你的牆、開你的箱子），但大部分互動行為預設是允許的（例如開門、使用工作台、與村民交易）。領地系統支援 <strong>114 種</strong>玩家可設定的權限，分為 8 大類。</p>
+        <p>建立領地後，下一步就是設定權限——決定誰能在你的地盤上做什麼。<strong>預設情況下，外人不能建造也不能開箱子</strong>，但像開門、使用工作台、與村民交易這類互動是允許的。如果需要更細緻的控制，海風提供了 <strong>114 種</strong>權限，涵蓋 8 大分類，從建造到戰鬥都能單獨調整。</p>
 
         <div class="res-quickstart">
           <div class="res-qs-card" style="--qs-color:var(--sky)">
             <div class="res-qs-header"><div class="res-qs-icon">🌐</div><h4>通用權限</h4></div>
-            <p><code>/res set [領地] &lt;權限&gt; true/false</code><br>設定所有人適用的權限</p>
+            <p>輸入 <code>/res set</code> 開啟圖形化設定介面，直接勾選要開放或關閉的權限，不用手動打指令。</p>
           </div>
           <div class="res-qs-card" style="--qs-color:var(--foam)">
             <div class="res-qs-header"><div class="res-qs-icon">👤</div><h4>個人權限</h4></div>
-            <p><code>/res pset [領地] &lt;玩家&gt; &lt;權限&gt; true/false</code><br>設定特定玩家的權限</p>
+            <p>輸入 <code>/res pset 玩家名</code> 開啟該玩家的權限介面，可以單獨調整某個人的權限，不受通用設定影響。</p>
           </div>
           <div class="res-qs-card" style="--qs-color:var(--sand)">
             <div class="res-qs-header"><div class="res-qs-icon">⚡</div><h4>基礎權限</h4></div>
-            <p><code>/res padd [領地] &lt;玩家&gt;</code><br>一鍵給予常用權限（建造、使用、開箱等）</p>
+            <p><code>/res padd &lt;玩家&gt;</code> 一鍵給予常用權限（建造、使用、開箱等），適合快速讓朋友入住。</p>
           </div>
         </div>
 
@@ -630,8 +630,8 @@
               <tr><td><code>/res remove &lt;領地名稱&gt;</code></td><td>刪除領地（需 /res confirm 確認）</td></tr>
               <tr><td><code>/res info [領地名稱]</code></td><td>查看領地詳細資訊</td></tr>
               <tr><td><code>/res list</code></td><td>列出你擁有的所有領地</td></tr>
-              <tr><td><code>/res set [領地名稱] &lt;權限&gt; [值]</code></td><td>設定領地通用權限</td></tr>
-              <tr><td><code>/res pset [領地名稱] &lt;玩家&gt; &lt;權限&gt; [值]</code></td><td>設定個別玩家權限</td></tr>
+              <tr><td><code>/res set [領地名稱]</code></td><td>開啟通用權限設定介面</td></tr>
+              <tr><td><code>/res pset [領地名稱] &lt;玩家&gt;</code></td><td>開啟指定玩家的權限設定介面</td></tr>
               <tr><td><code>/res padd [領地名稱] &lt;玩家&gt;</code></td><td>給予玩家基本權限</td></tr>
               <tr><td><code>/res pdel [領地名稱] &lt;玩家&gt;</code></td><td>移除玩家基本權限</td></tr>
               <tr><td><code>/res tp &lt;領地名稱&gt;</code></td><td>傳送到指定領地</td></tr>
