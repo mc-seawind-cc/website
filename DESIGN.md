@@ -1,4 +1,6 @@
 # 海風 SeaWind 網站設計文件
+| 2026.05.02 | 海風網站助手 | **領地系統指南權限列表改為緊湊表格**：從卡片式格子佈局（perm-grid/perm-card）改為分類表格（perm-tbl），每個分類一張表，欄位：權限名稱／說明／預設狀態。大幅縮短版面佔用，CSS 新增 .perm-tbl 系列樣式（深色/淺色模式） |
+| 2026.05.02 | 海風網站助手 | **領地系統指南權限數量確認**：114 種正確（Hero 快速統計、meta/og description、內文、權限列表標題同步確認） |
 | 2026.05.02 | 海風網站助手 | **全站 49 個指南頁面一致性修復**：①`<title>` 格式統一為「頁面名 — 海風指南 — 海風」（修正 41 頁：25 頁順序反轉＋10 頁多餘 SeaWind＋6 頁其他格式）；②og:image/twitter:image 絕對路徑→相對路徑（12 頁）；③Google Fonts 字重統一為 400;500;700;800，移除多餘 900（12 頁）；④cache busting 統一為 020502b（領地系統 020502d→020502b） |
 | 2026.05.02 | 海風網站助手 | **領地系統指南 Hero 區調整**：①移除 CSS 藝術（網格領地示意圖＋盾牌圖示）；②修正 Hero 位置（從 guide-layout 外移到 guide-main 內）；③精簡簡介文字（兩段合為一段）；④權限數量修正為 120 種 |
 | 2026.05.02 | 海風網站助手 | **領地系統指南權限列表對齊插件配置**：根據 Residence panels/flags.yml 全面更新——①移除 `flowinprotection`（領地級別設定，非玩家權限）；②新增 41 個玩家可用權限：建造與互動 +6（anvilbreak/anchor/diode/note/flowerpot/cake/copper）、生物與生成 +8（nmonsters/smonsters/cmonsters/nanimals/sanimals/canimals/phantomspawn/nametag）、液體與環境 +5（grow/coraldryup/dryup/hotfloor/dragongrief/snowball/snowtrail）、傳送與移動 +2（elytra/goathorn）、特殊效果 +4（wspeed1/wspeed2/respawn/dye）、新增「物品與載具」分類 5 個（itemdrop/itempickup/vehicledestroy/vehicleplacing/subzone）；③7 個分類→8 個分類（新增「物品與載具」）；④總計 76→120 個權限；⑤Hero 快速統計更新為「120 種」 |
@@ -411,7 +413,8 @@ website/
 | 日期 | 修改者 | 修改內容 |
 |---|---|---|
 | 2026.05.02 | 海風網站助手 | **全站 49 個指南頁面一致性修復**：①`<title>` 格式統一為「頁面名 — 海風指南 — 海風」（41 頁修正）；②og:image/twitter:image 絕對→相對路徑（12 頁）；③Google Fonts 字重移除多餘 900（12 頁）；④cache busting 統一 020502b |
-| 2026.05.02 | 海風網站助手 | **領地系統指南「什麼是領地」區塊更新**：①權限數量「超過 110 種」→「120 種」（對齊 Hero 快速統計）；②meta/og description 同步更新 |
+| 2026.05.02 | 海風網站助手 | **領地系統指南權限列表改為緊湊表格**：perm-grid/perm-card→perm-tbl（分類表格），CSS 新增 .perm-tbl 樣式 |
+| 2026.05.02 | 海風網站助手 | **領地系統指南權限數量確認**：114 種正確 |
 | 2026.05.02 | 海風網站助手 | **領地系統指南視覺化圖表修復**：①網格 4×3→5×5；②顏色對比增強；③說明文字重寫；④圖例更新 |
 | 2026.05.02 | 海風網站助手 | **領地系統指南權限預設說明修正**：「所有權限預設都是禁止」→實際為 70 個預設允許（門/工作台/交易/怪物生成等）、38 個預設禁止（建造/容器/點火等），修正為「建造和容器存取預設禁止，大部分互動預設允許」 |
 | 2026.05.02 | 海風網站助手 | **領地系統指南移除管理員專用權限**：根據 Residence flags.yml 配置，jump2/jump3/nofly 為 FlagPermission:false（管理員專用），從玩家權限表中移除；特殊效果 17→15 個 |

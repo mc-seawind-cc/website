@@ -2226,6 +2226,20 @@ video.photo-item{cursor:pointer;height:200px;border:1px solid transparent}
 .perm-card-default{font-size:0.68rem;font-weight:600;margin-top:auto;padding-top:4px}
 .perm-card-default.allow{color:var(--foam,#a8e6cf)}
 .perm-card-default.deny{color:#ff9e9e}
+/* ═══ 權限表格（緊湊版） ═══ */
+.perm-tbl{width:100%;border-collapse:collapse;font-size:0.82rem;margin-bottom:var(--space-sm)}
+.perm-tbl th{text-align:left;font-size:0.72rem;font-weight:600;text-transform:uppercase;letter-spacing:0.06em;color:var(--fog);padding:6px 10px;border-bottom:1px solid rgba(255,255,255,0.08)}
+.perm-tbl td{padding:5px 10px;border-bottom:1px solid rgba(255,255,255,0.04);color:var(--cloud);line-height:1.4;vertical-align:top}
+.perm-tbl tr:hover td{background:rgba(157,175,255,0.04)}
+.perm-tbl code{font-family:'SF Mono',Consolas,'Noto Sans TC',monospace;font-size:0.78rem;font-weight:700;color:var(--sky);white-space:nowrap}
+.perm-tbl .allow{color:var(--foam);font-weight:600;font-size:0.75rem;white-space:nowrap}
+.perm-tbl .deny{color:#ff9e9e;font-weight:600;font-size:0.75rem;white-space:nowrap}
+[data-theme="light"] .perm-tbl th{color:var(--fog);border-bottom-color:rgba(0,0,0,0.1)}
+[data-theme="light"] .perm-tbl td{border-bottom-color:rgba(0,0,0,0.05);color:#333}
+[data-theme="light"] .perm-tbl tr:hover td{background:rgba(87,138,255,0.04)}
+[data-theme="light"] .perm-tbl code{color:var(--ocean-blue)}
+[data-theme="light"] .perm-tbl .allow{color:#2e7d32}
+[data-theme="light"] .perm-tbl .deny{color:#c62828}
 [data-theme="light"] .perm-card{background:#fff;border-color:rgba(0,0,0,0.08)}
 [data-theme="light"] .perm-card:hover{border-color:var(--cat-color,var(--sky))}
 [data-theme="light"] .perm-card-name{color:var(--ocean-blue,#4a6cf7)}
