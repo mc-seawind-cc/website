@@ -2212,6 +2212,25 @@ video.photo-item{cursor:pointer;height:200px;border:1px solid transparent}
 .res-diagram-cell.outer{background:rgba(139,148,158,0.12);border-color:rgba(139,148,158,0.2)}
 .res-diagram-cell.inner{background:rgba(168,230,207,0.2);border-color:rgba(168,230,207,0.45);box-shadow:0 0 6px rgba(168,230,207,0.15)}
 .res-diagram-cell.house{background:rgba(168,230,207,0.35);border-color:var(--foam);display:flex;align-items:center;justify-content:center;font-size:1rem}
+/* Permission Card Grid */
+.perm-cat{margin-bottom:var(--space-lg)}
+.perm-cat-header{display:flex;align-items:center;gap:8px;margin-bottom:var(--space-sm);padding-bottom:6px;border-bottom:2px solid var(--cat-color,var(--sky))}
+.perm-cat-icon{font-size:1.1rem}
+.perm-cat-name{font-size:0.9rem;font-weight:700;color:var(--white)}
+.perm-cat-count{font-size:0.7rem;font-weight:600;padding:2px 8px;border-radius:99px;background:rgba(255,255,255,0.06);color:var(--fog);margin-left:auto}
+.perm-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:8px}
+.perm-card{background:var(--ocean,#161b22);border:1px solid var(--mist,#21283b);border-left:3px solid var(--cat-color,var(--sky));border-radius:var(--radius-sm,6px);padding:10px 12px;display:flex;flex-direction:column;gap:4px;transition:border-color 0.2s}
+.perm-card:hover{border-color:var(--cat-color,var(--sky))}
+.perm-card-name{font-family:'SF Mono',Consolas,'Noto Sans TC',monospace;font-size:0.82rem;font-weight:700;color:var(--sky,#9dafff);word-break:break-all}
+.perm-card-desc{font-size:0.75rem;color:var(--fog,#8b949e);line-height:1.5}
+.perm-card-default{font-size:0.68rem;font-weight:600;margin-top:auto;padding-top:4px}
+.perm-card-default.allow{color:var(--foam,#a8e6cf)}
+.perm-card-default.deny{color:#ff9e9e}
+[data-theme="light"] .perm-card{background:#fff;border-color:rgba(0,0,0,0.08)}
+[data-theme="light"] .perm-card:hover{border-color:var(--cat-color,var(--sky))}
+[data-theme="light"] .perm-card-name{color:var(--ocean-blue,#4a6cf7)}
+[data-theme="light"] .perm-cat-header{border-bottom-color:var(--cat-color,var(--sky))}
+[data-theme="light"] .perm-cat-count{background:rgba(0,0,0,0.04);color:var(--fog)}
 .res-diagram-text{flex:1;min-width:200px}
 .res-diagram-text h4{font-size:0.95rem;font-weight:700;color:var(--white);margin-bottom:var(--space-sm)}
 .res-diagram-text p{font-size:0.85rem;color:var(--fog);line-height:1.7;margin:0}
