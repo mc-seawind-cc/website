@@ -345,9 +345,9 @@
           </div>
         </div>
 
-        <h4 style="margin-top: var(--space-lg);">完整權限列表（114 個玩家可設定）</h4>
-        <p>以下權限根據插件配置整理，點擊分類展開查看：</p>
-
+        <details class="perm-list-toggle">
+          <summary class="perm-list-summary">📋 查看完整權限列表（114 個玩家可設定）</summary>
+          <div class="perm-list-inner">
         <!-- 🔨 建造與互動 — 30 個 -->
         <div class="perm-cat">
           <div class="perm-cat-header" style="--cat-color:var(--foam)">
@@ -567,6 +567,8 @@
 
         <div class="callout callout-tip" style="margin-top:var(--space-md)"><span class="callout-icon">💡</span><span>輸入 <code>/res flags</code> 可查看完整權限列表。用 <code>/res padd &lt;玩家&gt;</code> 可一鍵給予常用權限（建造、使用、開箱、傳送等），不用一個一個設。</span></div>
         <div class="callout callout-info"><span class="callout-icon">ℹ️</span><span><strong>PVP 保護：</strong>PVP 預設為允許，建議在自己的領地設為 <code>/res set &lt;領地&gt; pvp false</code> 關閉。關閉後包含藥水效果（虛弱、中毒等）也會被阻擋。</span></div>
+          </div>
+        </details>
       </div>
 
       <div class="guide-divider"></div>

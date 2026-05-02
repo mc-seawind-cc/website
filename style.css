@@ -2231,6 +2231,15 @@ video.photo-item{cursor:pointer;height:200px;border:1px solid transparent}
 [data-theme="light"] .perm-card-name{color:var(--ocean-blue,#4a6cf7)}
 [data-theme="light"] .perm-cat-header{border-bottom-color:var(--cat-color,var(--sky))}
 [data-theme="light"] .perm-cat-count{background:rgba(0,0,0,0.04);color:var(--fog)}
+.perm-list-toggle{margin-top:var(--space-md)}
+.perm-list-summary{cursor:pointer;font-size:0.95rem;font-weight:700;color:var(--sky);padding:var(--space-md) var(--space-lg);background:var(--ocean);border:1px solid var(--mist);border-radius:var(--radius-md);transition:all 0.2s var(--ease);list-style:none;display:flex;align-items:center;gap:8px}
+.perm-list-summary::-webkit-details-marker{display:none}
+.perm-list-summary::before{content:'▸';transition:transform 0.2s var(--ease);font-size:0.8rem}
+.perm-list-toggle[open] .perm-list-summary::before{transform:rotate(90deg)}
+.perm-list-summary:hover{border-color:var(--sky);color:var(--white)}
+.perm-list-inner{padding-top:var(--space-lg)}
+[data-theme="light"] .perm-list-summary{background:#fff;border-color:rgba(0,0,0,0.08);color:var(--ocean-blue)}
+[data-theme="light"] .perm-list-summary:hover{border-color:var(--ocean-blue)}
 .res-diagram-text{flex:1;min-width:200px}
 .res-diagram-text h4{font-size:0.95rem;font-weight:700;color:var(--white);margin-bottom:var(--space-sm)}
 .res-diagram-text p{font-size:0.85rem;color:var(--fog);line-height:1.7;margin:0}
