@@ -436,7 +436,7 @@
 
         <h4 style="margin-top: var(--space-lg);">設定個別玩家權限</h4>
         <p>想讓朋友能進來但別人不行？用 <code>/res pset</code> 針對特定玩家設定：</p>
-        <p><code>/res pset [領地名稱] &lt;玩家名稱&gt; &lt;flag&gt; [true/false/remove]</code></p>
+        <p><code>/res pset [領地名稱] &lt;玩家名稱&gt; &lt;權限&gt; [true/false/remove]</code></p>
         <p>例如：<code>/res pset 我的家 Steve build true</code> — 允許 Steve 在你的領地建造。</p>
         <p>更簡單的方式是用 <code>/res padd</code> 直接給予玩家基本權限（建造、使用、開箱）：</p>
         <p><code>/res padd [領地名稱] &lt;玩家名稱&gt;</code></p>
@@ -504,7 +504,7 @@
 
         <div class="guide-section-card fade-in" style="--card-accent:var(--foam)">
           <h2><span class="sec-icon">📊</span> 查看領地資訊</h2>
-        <p><code>/res info [領地名稱]</code> — 查看指定領地的詳細資訊（大小、擁有者、flags 等）。</p>
+        <p><code>/res info [領地名稱]</code> — 查看指定領地的詳細資訊（大小、擁有者、權限等）。</p>
         <p><code>/res list</code> — 列出你擁有的所有領地。</p>
         <p><code>/res tp &lt;領地名稱&gt;</code> — 傳送到你的某個領地（有 3 秒傳送延遲）。</p>
         <p><code>/res kick &lt;玩家&gt;</code> — 把某人踢出你的領地。</p>
@@ -576,8 +576,8 @@
               <tr><td><code>/res remove &lt;領地名稱&gt;</code></td><td>刪除領地（需 /res confirm 確認）</td></tr>
               <tr><td><code>/res info [領地名稱]</code></td><td>查看領地詳細資訊。</td></tr>
               <tr><td><code>/res list</code></td><td>列出你擁有的所有領地。</td></tr>
-              <tr><td><code>/res set [領地名稱] &lt;flag&gt; [值]</code></td><td>設定領地通用權限。</td></tr>
-              <tr><td><code>/res pset [領地名稱] &lt;玩家&gt; &lt;flag&gt; [值]</code></td><td>設定個別玩家權限。</td></tr>
+              <tr><td><code>/res set [領地名稱] &lt;權限&gt; [值]</code></td><td>設定領地通用權限。</td></tr>
+              <tr><td><code>/res pset [領地名稱] &lt;玩家&gt; &lt;權限&gt; [值]</code></td><td>設定個別玩家權限。</td></tr>
               <tr><td><code>/res padd [領地名稱] &lt;玩家&gt;</code></td><td>給予玩家基本權限。</td></tr>
               <tr><td><code>/res pdel [領地名稱] &lt;玩家&gt;</code></td><td>移除玩家基本權限。</td></tr>
 
@@ -591,7 +591,7 @@
               <tr><td><code>/res select vert</code></td><td>選取範圍垂直延伸到天空。</td></tr>
               <tr><td><code>/res select chunk</code></td><td>選取整個區塊（16×16）。</td></tr>
               <tr><td><code>/res unstuck</code></td><td>脫困指令，從被困的領地中脫出。</td></tr>
-              <tr><td><code>/res flags</code></td><td>查看所有可用的 flags 列表。</td></tr>
+              <tr><td><code>/res flags</code></td><td>查看所有可用的權限列表。</td></tr>
               <tr><td><code>/reslist open</code></td><td>開啟領地列表介面。</td></tr>
               <tr><td><code>/reslist edit &lt;領地名&gt;</code></td><td>編輯領地資訊（名稱/描述/圖標）。</td></tr>
               <tr><td><code>/reslist info &lt;領地名&gt;</code></td><td>查看領地詳細資訊。</td></tr>
