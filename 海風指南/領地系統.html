@@ -216,12 +216,16 @@
           <table class="rules-table">
             <thead><tr><th>項目</th><th>限制</th></tr></thead>
             <tbody>
-              <tr><td>領地數量。</td><td>每分流各 <strong>10 個</strong></td></tr>
-              <tr><td>子領地數量。</td><td>每分流各 <strong>50 個</strong></td></tr>
-              <tr><td>長寬範圍。</td><td><strong>500×500</strong> 格</td></tr>
-              <tr><td>高度範圍。</td><td>不限（地面到基岩層）</td></tr>
-              <tr><td>建立費用。</td><td>免費</td></tr>
-              <tr><td>有效期限。</td><td>永久（管理員刪除除外）</td></tr>
+              <tr><td>領地數量</td><td>每分流各 <strong>10 個</strong></td></tr>
+              <tr><td>子領地數量</td><td>每分流各 <strong>50 個</strong></td></tr>
+              <tr><td>子領地層級</td><td>最多 <strong>3 層</strong>（子領地內再分子領地）</td></tr>
+              <tr><td>每個領地區域數</td><td>最多 <strong>500 個</strong></td></tr>
+              <tr><td>長寬範圍</td><td><strong>3 ~ 500×500</strong> 格</td></tr>
+              <tr><td>高度範圍</td><td><strong>-64 ~ 704</strong>（Y 軸）</td></tr>
+              <tr><td>建立費用</td><td>免費</td></tr>
+              <tr><td>有效期限</td><td>永久（管理員刪除除外）</td></tr>
+              <tr><td>選擇工具</td><td>木鋤（預設）</td></tr>
+              <tr><td>領地名稱</td><td>最長 64 字元，支援英文、數字、中文、底線和連字號</td></tr>
             </tbody>
           </table>
         </div>
@@ -232,7 +236,7 @@
 
         <div class="guide-section-card fade-in" style="--card-accent:var(--foam)">
           <h2><span class="sec-icon">🔨</span> 建立領地：手動框選法</h2>
-        <p>最經典的方式，用木鋤自己選範圍，精確控制領地大小。</p>
+        <p>最經典的方式，用木鋤自己選範圍，精確控制領地大小。選取時會有<strong>粒子效果</strong>顯示選取範圍，方便確認。</p>
         <p><code>/res create &lt;領地名稱&gt;</code></p>
         <ol class="steps">
           <li>拿一把 <strong>木鋤</strong>（在工作台上用木板 + 木棍合成）。</li>
@@ -240,20 +244,22 @@
           <li>走到對角的角落，用木鋤 <strong>右鍵</strong>（預設使用鍵）點擊地面，設定第二個點。</li>
           <li>輸入 <code>/res create 我的家</code>（名稱可自訂），領地就建立完成了！</li>
         </ol>
-        <div class="callout callout-tip"><span class="callout-icon">💡</span><span>名稱只能用英文、數字和底線，不能用空格或中文。例如 <code>my_home</code>、<code>base01</code> 都可以。</span></div>
+        <div class="callout callout-tip"><span class="callout-icon">💡</span><span>領地名稱支援英文、數字、中文、底線和連字號，最長 64 字元。例如 <code>我的家</code>、<code>base01</code>、<code>海風小屋</code> 都可以。</span></div>
+        <div class="callout callout-info"><span class="callout-icon">ℹ️</span><span>選取時可以用 <code>/res select vert</code> 快速將選取範圍從腳下延伸到天空，省去手動調整高度的步驟。也可以用 <code>/res select chunk</code> 選取整個區塊（16×16）。</span></div>
       </div>
 
         <div class="guide-divider"></div>
 
         <div class="guide-section-card fade-in" style="--card-accent:var(--foam)">
           <h2><span class="sec-icon">⚡</span> 建立領地：自動框選法</h2>
-        <p>不想跑來跑去？站在中心點一個指令搞定！</p>
+        <p>不想跑來跑去？站在中心點一個指令搞定！系統會自動偵測最佳範圍。</p>
         <p><code>/res auto &lt;領地名稱&gt; [半徑]</code></p>
         <ol class="steps">
           <li>站在你想建立領地的 <strong>正中心位置</strong>。</li>
           <li>輸入指令，例如 <code>/res auto 我的家</code>。系統會自動以你為中心向外擴展。</li>
+          <li>系統會偵測是否與其他領地重疊，如果有衝突會提示你調整位置。</li>
         </ol>
-        <div class="callout callout-info"><span class="callout-icon">ℹ️</span><span>不指定半徑的話，預設會建立 <strong>500×384×500</strong> 的最大範圍領地。你也可以指定半徑，例如 <code>/res auto 我的家 50</code> 會建立 100×100 的範圍。</span></div>
+        <div class="callout callout-info"><span class="callout-icon">ℹ️</span><span>不指定半徑的話，預設會建立最大範圍的領地。你也可以指定半徑，例如 <code>/res auto 我的家 50</code> 會建立以你為中心、半徑 50 格的範圍。如果同名領地已存在，系統會自動在名稱後加上編號（例如「我的家的領地1」）。</span></div>
       </div>
 
         <div class="guide-divider"></div>
@@ -282,7 +288,8 @@
           </table>
         </div>
         <p>例如，要禁止所有人建造：<code>/res set 我的家 build false</code></p>
-        <div class="callout callout-tip"><span class="callout-icon">💡</span><span>輸入 <code>/res flags</code> 可以查看完整的 flags 列表。</span></div>
+        <div class="callout callout-tip"><span class="callout-icon">💡</span><span>輸入 <code>/res flags</code> 可以查看完整的 flags 列表。海風支援超過 <strong>110 種</strong>不同的 flags，從基本的建造、使用，到進階的火焰蔓延、怪物生成、PVP 等都可以控制。</span></div>
+        <div class="callout callout-info"><span class="callout-icon">ℹ️</span><span><strong>PVP 保護：</strong>在領地內，如果 PVP flag 設為 false（預設），玩家之間無法互相傷害。包含藥水效果（如虛弱、中毒）也會被阻擋。</span></div>
 
         <h4 style="margin-top: var(--space-lg);">設定個別玩家權限</h4>
         <p>想讓朋友能進來但別人不行？用 <code>/res pset</code> 針對特定玩家設定：</p>
@@ -295,19 +302,31 @@
 
         <div class="guide-divider"></div>
 
+        <div class="guide-section-card fade-in" style="--card-accent:var(--sand)">
+          <h2><span class="sec-icon">💬</span> 訊息設定</h2>
+          <p>領地有專屬的進出訊息功能。當玩家進入或離開你的領地時，聊天欄會自動顯示你設定的訊息。</p>
+          <ul class="rules-list">
+            <li><strong>進入訊息：</strong><code>/res message &lt;領地名稱&gt; enter &lt;訊息&gt;</code></li>
+            <li><strong>離開訊息：</strong><code>/res message &lt;領地名稱&gt; leave &lt;訊息&gt;</code></li>
+          </ul>
+          <div class="callout callout-tip"><span class="callout-icon">💡</span><span>訊息支援顏色代碼，例如 <code>&a</code> 是綠色、<code>&c</code> 是紅色。可以用 <code>%player</code> 顯示進入的玩家名稱、<code>%residence</code> 顯示領地名稱。</span></div>
+        </div>
+
+        <div class="guide-divider"></div>
+
         <div class="guide-section-card fade-in" style="--card-accent:var(--foam)">
           <h2><span class="sec-icon">📐</span> 擴縮領地</h2>
         <p>覺得領地太小或太大？可以用 expand 和 contract 調整大小。每次最多調整 <strong>100 格</strong>。</p>
         <h4 style="margin-top: var(--space-lg);">擴大領地</h4>
-        <p><code>/res expand &lt;格數&gt;</code></p>
+        <p><code>/res expand &lt;格數&gt; [方向]</code></p>
         <ol class="steps">
-          <li>面向你想擴大的方向（例如面向北邊就是往北擴）。</li>
-          <li>輸入指令，例如 <code>/res expand 50</code> 往前方擴大 50 格。</li>
+          <li>面向你想擴大的方向（例如面向北邊就是往北擴），或在指令中指定方向（<code>up</code>/<code>down</code>/<code>north</code>/<code>south</code>/<code>east</code>/<code>west</code>）。</li>
+          <li>輸入指令，例如 <code>/res expand 50</code> 往前方擴大 50 格，或 <code>/res expand 10 up</code> 往上擴大 10 格。</li>
         </ol>
         <h4 style="margin-top: var(--space-lg);">縮小領地</h4>
-        <p><code>/res contract &lt;格數&gt;</code></p>
+        <p><code>/res contract &lt;格數&gt; [方向]</code></p>
         <ol class="steps">
-          <li>背對你想縮小的方向（例如面向南邊就是從北邊縮）。</li>
+          <li>背對你想縮小的方向（例如面向南邊就是從北邊縮），或在指令中指定方向。</li>
           <li>輸入指令，例如 <code>/res contract 30</code> 從背後方向縮小 30 格。</li>
         </ol>
       </div>
@@ -344,9 +363,10 @@
           <h2><span class="sec-icon">📊</span> 查看領地資訊</h2>
         <p><code>/res info [領地名稱]</code> — 查看指定領地的詳細資訊（大小、擁有者、flags 等）。</p>
         <p><code>/res list</code> — 列出你擁有的所有領地。</p>
-        <p><code>/res tp &lt;領地名稱&gt;</code> — 傳送到你的某個領地。</p>
+        <p><code>/res tp &lt;領地名稱&gt;</code> — 傳送到你的某個領地（有 3 秒傳送延遲）。</p>
         <p><code>/res kick &lt;玩家&gt;</code> — 把某人踢出你的領地。</p>
         <p><code>/res ban &lt;玩家&gt;</code> — 禁止某人進入你的領地。</p>
+        <p><code>/res unstuck</code> — 如果被困在某個領地出不來，用這個指令脫困。</p>
       </div>
 
         <div class="guide-divider"></div>
@@ -367,11 +387,17 @@
               <tr><td><code>/res pset [領地名稱] &lt;玩家&gt; &lt;flag&gt; [值]</code></td><td>設定個別玩家權限。</td></tr>
               <tr><td><code>/res padd [領地名稱] &lt;玩家&gt;</code></td><td>給予玩家基本權限。</td></tr>
               <tr><td><code>/res pdel [領地名稱] &lt;玩家&gt;</code></td><td>移除玩家基本權限。</td></tr>
-              <tr><td><code>/res expand &lt;格數&gt;</code></td><td>面向方向擴大領地（每次最多 100 格）</td></tr>
-              <tr><td><code>/res contract &lt;格數&gt;</code></td><td>背對方向縮小領地（每次最多 100 格）</td></tr>
+
               <tr><td><code>/res tp &lt;領地名稱&gt;</code></td><td>傳送到指定領地。</td></tr>
               <tr><td><code>/res kick &lt;玩家&gt;</code></td><td>將玩家踢出領地。</td></tr>
               <tr><td><code>/res ban &lt;玩家&gt;</code></td><td>禁止玩家進入領地。</td></tr>
+              <tr><td><code>/res expand &lt;格數&gt; [方向]</code></td><td>擴大領地（方向：up/down/north/south/east/west）</td></tr>
+              <tr><td><code>/res contract &lt;格數&gt; [方向]</code></td><td>縮小領地。</td></tr>
+              <tr><td><code>/res message &lt;領地&gt; enter &lt;訊息&gt;</code></td><td>設定進入領地訊息。</td></tr>
+              <tr><td><code>/res message &lt;領地&gt; leave &lt;訊息&gt;</code></td><td>設定離開領地訊息。</td></tr>
+              <tr><td><code>/res select vert</code></td><td>選取範圍垂直延伸到天空。</td></tr>
+              <tr><td><code>/res select chunk</code></td><td>選取整個區塊（16×16）。</td></tr>
+              <tr><td><code>/res unstuck</code></td><td>脫困指令，從被困的領地中脫出。</td></tr>
               <tr><td><code>/res flags</code></td><td>查看所有可用的 flags 列表。</td></tr>
               <tr><td><code>/res confirm</code></td><td>確認刪除領地。</td></tr>
             </tbody>
@@ -390,11 +416,27 @@
             </div>
             <div class="guide-faq-item">
               <button class="guide-faq-q">領地要花多少錢？</button>
-              <div class="guide-faq-a"><div class="guide-faq-a-inner">取決於面積。越大越貴。遊戲中會顯示價格。</div></div>
+              <div class="guide-faq-a"><div class="guide-faq-a-inner">完全免費！海風的領地系統不收費，建立、擴大、縮小都不用花風幣。</div></div>
             </div>
             <div class="guide-faq-item">
               <button class="guide-faq-q">別人可以進我的領地嗎？</button>
-              <div class="guide-faq-a"><div class="guide-faq-a-inner">可以走進，但不能破壞、放置或開啟容器。你可以設定允許特定玩家。</div></div>
+              <div class="guide-faq-a"><div class="guide-faq-a-inner">可以走進，但不能破壞、放置或開啟容器。你可以設定 <code>move false</code> 完全禁止進入，或用 <code>/res padd</code> 允許特定玩家。</div></div>
+            </div>
+            <div class="guide-faq-item">
+              <button class="guide-faq-q">領地可以設在地獄或終界嗎？</button>
+              <div class="guide-faq-a"><div class="guide-faq-a-inner">可以！領地系統支援所有世界，包括主世界、地獄和終界。建立方式一樣，只是在不同世界操作。</div></div>
+            </div>
+            <div class="guide-faq-item">
+              <button class="guide-faq-q">傳送到領地要等多久？</button>
+              <div class="guide-faq-a"><div class="guide-faq-a-inner">使用 <code>/res tp</code> 傳送到領地有 <strong>3 秒</strong>的傳送延遲，傳送時會顯示提示訊息。期間移動不會取消傳送。</div></div>
+            </div>
+            <div class="guide-faq-item">
+              <button class="guide-faq-q">領地名稱可以用中文嗎？</button>
+              <div class="guide-faq-a"><div class="guide-faq-a-inner">可以！領地名稱支援英文、數字、中文、底線和連字號，最長 64 字元。例如 <code>我的家</code>、<code>海風基地</code> 都可以。</div></div>
+            </div>
+            <div class="guide-faq-item">
+              <button class="guide-faq-q">被困在別人的領地出不來怎麼辦？</button>
+              <div class="guide-faq-a"><div class="guide-faq-a-inner">輸入 <code>/res unstuck</code> 可以把自己傳送出被困的領地。這個功能預設開啟，不需要額外設定。</div></div>
             </div>
           </div>
         </div>
