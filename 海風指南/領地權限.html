@@ -439,6 +439,31 @@
 
         <div class="guide-divider"></div>
 
+        <!-- ═══ 常見問題 ═══ -->
+        <div class="guide-section-card fade-in" style="--card-accent:var(--sand)">
+          <h2><span class="sec-icon">❓</span> 常見問題</h2>
+          <div class="guide-faq">
+            <div class="guide-faq-item">
+              <button class="guide-faq-q">所有權限預設都是禁止的嗎？</button>
+              <div class="guide-faq-a"><div class="guide-faq-a-inner">不是。大部分互動類權限（開門、使用工作台、交易等）預設是允許的；建造和容器存取類權限預設是禁止的。你可以用 <code>/res info</code> 查看目前領地的權限設定。</div></div>
+            </div>
+            <div class="guide-faq-item">
+              <button class="guide-faq-q">我可以只給某個人特定權限嗎？</button>
+              <div class="guide-faq-a"><div class="guide-faq-a-inner">可以。用 <code>/res pset 領地名稱 玩家名稱 權限名稱 allow/deny</code> 就能針對單獨玩家設定權限。例如 <code>/res pset 我的家 Steve build allow</code> 就能讓 Steve 在你的領地建造。</div></div>
+            </div>
+            <div class="guide-faq-item">
+              <button class="guide-faq-q">設定錯了怎麼辦？</button>
+              <div class="guide-faq-a"><div class="guide-faq-a-inner">用 <code>/res remove 領地名稱 權限名稱</code> 可以移除特定權限設定，恢復預設值。或者用 <code>/res default 領地名稱</code> 把所有權限重置為預設。</div></div>
+            </div>
+            <div class="guide-faq-item">
+              <button class="guide-faq-q">flags 和 pset 有什麼差別？</button>
+              <div class="guide-faq-a"><div class="guide-faq-a-inner"><code>/res set 領地名稱 權限名稱</code> 是設定整個領地的權限（所有人都適用）；<code>/res pset 領地名稱 玩家 權限名稱</code> 是針對特定玩家設定。簡單說，set 是全領地規則，pset 是個人例外。</div></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="guide-divider"></div>
+
         <!-- ═══ 相關頁面 ═══ -->
         <div class="guide-section-card fade-in" style="--card-accent:var(--sky)">
           <h2><span class="sec-icon">🔗</span> 相關頁面</h2>
@@ -462,11 +487,12 @@
           </div>
         </div>
 
-      </div>
-    </div>
+      </div><!-- /guide-main -->
+    </div><!-- /guide-layout -->
+  </div>
   </div>
 
-<footer class="footer">
+  <footer class="footer">
     <div class="footer-inner">
       <div class="footer-brand">
         <span class="footer-logo">海風伺服器 SeaWind.cc</span>
@@ -515,8 +541,5 @@
     setTimeout(hideLoader, 3000);
   })();
   </script>
-</body>
-</html>
-
 </body>
 </html>
