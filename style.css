@@ -2181,6 +2181,23 @@ video.photo-item{cursor:pointer;height:200px;border:1px solid transparent}
 [data-theme="light"] .guide-next-card:hover{box-shadow:0 2px 8px rgba(0,0,0,0.04)}
 [data-theme="light"] .guide-next-body h4{color:var(--cloud)}
 
+/* Guide Entry Cards (相關頁面 / 內部導航) */
+.guide-entries{display:flex;flex-direction:column;gap:var(--space-sm);margin:var(--space-md)0}
+.guide-entry{display:flex;align-items:center;gap:var(--space-md);padding:var(--space-md)var(--space-lg);background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.06);border-left:3px solid var(--entry-accent,var(--sky));border-radius:var(--radius-md);text-decoration:none;color:var(--cloud);transition:all var(--duration)var(--ease)}
+.guide-entry:hover{background:rgba(255,255,255,0.04);border-color:var(--entry-accent,var(--sky));transform:translateX(4px)}
+.guide-entry.featured{background:rgba(157,175,255,0.05);border-color:rgba(157,175,255,0.12);border-left-width:4px}
+.guide-entry.featured:hover{background:rgba(157,175,255,0.08)}
+.guide-entry-icon{font-size:1.4rem;flex-shrink:0}
+.guide-entry-body{min-width:0;flex:1}
+.guide-entry-title{font-size:0.9rem;font-weight:700;color:var(--white);margin-bottom:2px}
+.guide-entry-desc{font-size:0.78rem;color:var(--fog);line-height:1.5}
+.guide-entry-arrow{font-size:0.85rem;color:var(--fog);flex-shrink:0;transition:transform 0.2s}
+.guide-entry:hover .guide-entry-arrow{transform:translateX(3px);color:var(--entry-accent,var(--sky))}
+[data-theme="light"] .guide-entry{background:#fff;border-color:rgba(0,0,0,0.06)}
+[data-theme="light"] .guide-entry:hover{box-shadow:0 2px 8px rgba(0,0,0,0.04);border-color:var(--entry-accent,var(--sky))}
+[data-theme="light"] .guide-entry.featured{background:rgba(87,138,255,0.04);border-color:rgba(87,138,255,0.15)}
+[data-theme="light"] .guide-entry-title{color:var(--cloud)}
+
 /* Back Link */
 .guide-back-link{display:inline-flex;align-items:center;gap:6px;font-size:0.82rem;color:var(--fog);text-decoration:none;margin-bottom:var(--space-lg);transition:all var(--duration)var(--ease)}
 .guide-back-link:hover{color:var(--sky);transform:translateX(-3px)}
