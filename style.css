@@ -2207,11 +2207,11 @@ video.photo-item{cursor:pointer;height:200px;border:1px solid transparent}
 
 /* ═══ 領地視覺化圖表 ═══ */
 .res-diagram{display:flex;align-items:center;gap:var(--space-xl);margin:var(--space-xl)0;padding:var(--space-lg);background:linear-gradient(135deg,rgba(168,230,207,0.04),rgba(157,175,255,0.04));border:1px solid rgba(168,230,207,0.1);border-radius:var(--radius-xl);flex-wrap:wrap}
-.res-diagram-visual{flex:0 0 auto;display:grid;grid-template-columns:repeat(4,36px);grid-template-rows:repeat(3,36px);gap:4px;position:relative}
-.res-diagram-cell{border-radius:6px;border:2px solid transparent;transition:all 0.3s var(--ease)}
-.res-diagram-cell.outer{background:rgba(157,175,255,0.08);border-color:rgba(157,175,255,0.15)}
-.res-diagram-cell.inner{background:rgba(168,230,207,0.15);border-color:rgba(168,230,207,0.3);box-shadow:0 0 8px rgba(168,230,207,0.15)}
-.res-diagram-cell.house{background:rgba(168,230,207,0.25);border-color:var(--foam);display:flex;align-items:center;justify-content:center;font-size:1.1rem}
+.res-diagram-visual{flex:0 0 auto;display:grid;grid-template-columns:repeat(5,32px);grid-template-rows:repeat(5,32px);gap:3px;position:relative}
+.res-diagram-cell{border-radius:5px;border:2px solid transparent;transition:all 0.3s var(--ease)}
+.res-diagram-cell.outer{background:rgba(139,148,158,0.12);border-color:rgba(139,148,158,0.2)}
+.res-diagram-cell.inner{background:rgba(168,230,207,0.2);border-color:rgba(168,230,207,0.45);box-shadow:0 0 6px rgba(168,230,207,0.15)}
+.res-diagram-cell.house{background:rgba(168,230,207,0.35);border-color:var(--foam);display:flex;align-items:center;justify-content:center;font-size:1rem}
 .res-diagram-text{flex:1;min-width:200px}
 .res-diagram-text h4{font-size:0.95rem;font-weight:700;color:var(--white);margin-bottom:var(--space-sm)}
 .res-diagram-text p{font-size:0.85rem;color:var(--fog);line-height:1.7;margin:0}
@@ -2221,9 +2221,9 @@ video.photo-item{cursor:pointer;height:200px;border:1px solid transparent}
 .res-legend-dot.inner{background:rgba(168,230,207,0.3);border:1px solid rgba(168,230,207,0.5)}
 .res-legend-dot.outer{background:rgba(157,175,255,0.12);border:1px solid rgba(157,175,255,0.25)}
 [data-theme="light"] .res-diagram{background:linear-gradient(135deg,rgba(74,108,247,0.03),rgba(56,180,139,0.03));border-color:rgba(74,108,247,0.1)}
-[data-theme="light"] .res-diagram-cell.outer{background:rgba(74,108,247,0.06);border-color:rgba(74,108,247,0.12)}
-[data-theme="light"] .res-diagram-cell.inner{background:rgba(56,180,139,0.1);border-color:rgba(56,180,139,0.25)}
-[data-theme="light"] .res-diagram-cell.house{background:rgba(56,180,139,0.2);border-color:var(--ocean-blue)}
+[data-theme="light"] .res-diagram-cell.outer{background:rgba(100,116,139,0.08);border-color:rgba(100,116,139,0.18)}
+[data-theme="light"] .res-diagram-cell.inner{background:rgba(56,180,139,0.12);border-color:rgba(56,180,139,0.35)}
+[data-theme="light"] .res-diagram-cell.house{background:rgba(56,180,139,0.25);border-color:var(--ocean-blue)}
 
 /* ═══ 建立方式對比 ═══ */
 .res-methods{display:grid;grid-template-columns:1fr 1fr;gap:var(--space-lg);margin:var(--space-xl)0}
