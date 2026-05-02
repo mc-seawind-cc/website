@@ -113,7 +113,7 @@
           <div class="guide-qs-item"><span class="guide-qs-icon">🏠</span><span>上限</span><span class="guide-qs-val">每分流 10 個</span></div>
           <div class="guide-qs-item"><span class="guide-qs-icon">📏</span><span>最大範圍</span><span class="guide-qs-val">500×500 格</span></div>
           <div class="guide-qs-item"><span class="guide-qs-icon">💰</span><span>費用</span><span class="guide-qs-val">免費</span></div>
-          <div class="guide-qs-item"><span class="guide-qs-icon">⚙️</span><span>權限</span><span class="guide-qs-val">110+ 種</span></div>
+          <div class="guide-qs-item"><span class="guide-qs-icon">⚙️</span><span>權限</span><span class="guide-qs-val">117 種</span></div>
         </div>
       </div>
     <div class="guide-layout">
@@ -364,11 +364,11 @@
         </div>
 
         <h4 style="margin-top: var(--space-lg);">完整權限列表</h4>
-        <p>點擊分類展開查看所有可用權限：</p>
+        <p>以下權限根據插件配置整理，點擊分類展開查看：</p>
 
         <!-- 🔨 建造與互動 -->
         <details class="res-perm-cat" style="--cat-color:var(--foam)">
-          <summary>🔨 建造與互動 <span class="perm-count">22 個</span></summary>
+          <summary>🔨 建造與互動 <span class="perm-count">28 個</span></summary>
           <div class="rules-table-wrap">
             <table class="rules-table">
               <thead><tr><th>權限</th><th>作用</th><th>預設</th></tr></thead>
@@ -382,12 +382,19 @@
                 <tr><td><strong><code>enchant</code></strong></td><td>使用附魔台</td><td>✅</td></tr>
                 <tr><td><strong><code>brew</code></strong></td><td>使用釀造台</td><td>✅</td></tr>
                 <tr><td><strong><code>anvil</code></strong></td><td>使用鐵砧</td><td>✅</td></tr>
+                <tr><td><strong><code>anvilbreak</code></strong></td><td>鐵砧在領地內損壞</td><td>✅</td></tr>
                 <tr><td><strong><code>beacon</code></strong></td><td>使用信標</td><td>✅</td></tr>
                 <tr><td><strong><code>bed</code></strong></td><td>使用床（設重生點）</td><td>✅</td></tr>
+                <tr><td><strong><code>anchor</code></strong></td><td>使用重生錨</td><td>✅</td></tr>
                 <tr><td><strong><code>door</code></strong></td><td>開關門和活板門</td><td>✅</td></tr>
                 <tr><td><strong><code>button</code></strong></td><td>按按鈕</td><td>✅</td></tr>
                 <tr><td><strong><code>lever</code></strong></td><td>拉拉桿</td><td>✅</td></tr>
                 <tr><td><strong><code>pressure</code></strong></td><td>踩壓力板</td><td>✅</td></tr>
+                <tr><td><strong><code>diode</code></strong></td><td>使用紅石中繼器</td><td>✅</td></tr>
+                <tr><td><strong><code>note</code></strong></td><td>使用音階盒</td><td>✅</td></tr>
+                <tr><td><strong><code>flowerpot</code></strong></td><td>使用花盆</td><td>✅</td></tr>
+                <tr><td><strong><code>cake</code></strong></td><td>吃蛋糕</td><td>✅</td></tr>
+                <tr><td><strong><code>copper</code></strong></td><td>修改銅製方塊（氧化/塗蠟）</td><td>✅</td></tr>
                 <tr><td><strong><code>trade</code></strong></td><td>與村民交易</td><td>✅</td></tr>
                 <tr><td><strong><code>harvest</code></strong></td><td>收穫作物</td><td>❌</td></tr>
                 <tr><td><strong><code>honey</code></strong></td><td>採集蜂蜜</td><td>❌</td></tr>
@@ -442,18 +449,26 @@
           </div>
         </details>
 
-        <!-- 🐾 生物管理 -->
+        <!-- 🐾 生物與生成 -->
         <details class="res-perm-cat" style="--cat-color:var(--lavender)">
-          <summary>🐾 生物管理 <span class="perm-count">5 個</span></summary>
+          <summary>🐾 生物與生成 <span class="perm-count">13 個</span></summary>
           <div class="rules-table-wrap">
             <table class="rules-table">
               <thead><tr><th>權限</th><th>作用</th><th>預設</th></tr></thead>
               <tbody>
                 <tr><td><strong><code>monsters</code></strong></td><td>怪物生成（總開關）</td><td>✅</td></tr>
+                <tr><td><strong><code>nmonsters</code></strong></td><td>自然怪物生成</td><td>✅</td></tr>
+                <tr><td><strong><code>smonsters</code></strong></td><td>刷怪蛋/刷怪籠生成怪物</td><td>✅</td></tr>
+                <tr><td><strong><code>cmonsters</code></strong></td><td>自訂怪物生成</td><td>✅</td></tr>
                 <tr><td><strong><code>animals</code></strong></td><td>動物生成（總開關）</td><td>✅</td></tr>
+                <tr><td><strong><code>nanimals</code></strong></td><td>自然動物生成</td><td>✅</td></tr>
+                <tr><td><strong><code>sanimals</code></strong></td><td>刷怪蛋生成動物</td><td>✅</td></tr>
+                <tr><td><strong><code>canimals</code></strong></td><td>自訂動物生成</td><td>✅</td></tr>
                 <tr><td><strong><code>nomobs</code></strong></td><td>阻止怪物進入領地</td><td>✅</td></tr>
+                <tr><td><strong><code>phantomspawn</code></strong></td><td>夜魅生成</td><td>✅</td></tr>
                 <tr><td><strong><code>leash</code></strong></td><td>使用牽繩</td><td>❌</td></tr>
                 <tr><td><strong><code>riding</code></strong></td><td>騎乘馬匹等載具</td><td>❌</td></tr>
+                <tr><td><strong><code>nametag</code></strong></td><td>使用命名牌</td><td>❌</td></tr>
               </tbody>
             </table>
           </div>
@@ -461,7 +476,7 @@
 
         <!-- 💧 液體與環境 -->
         <details class="res-perm-cat" style="--cat-color:var(--sky)">
-          <summary>💧 液體與環境 <span class="perm-count">12 個</span></summary>
+          <summary>💧 液體與環境 <span class="perm-count">17 個</span></summary>
           <div class="rules-table-wrap">
             <table class="rules-table">
               <thead><tr><th>權限</th><th>作用</th><th>預設</th></tr></thead>
@@ -469,15 +484,21 @@
                 <tr><td><strong><code>flow</code></strong></td><td>液體流動（水+岩漿）</td><td>✅</td></tr>
                 <tr><td><strong><code>waterflow</code></strong></td><td>水流動（覆蓋 flow）</td><td>✅</td></tr>
                 <tr><td><strong><code>lavaflow</code></strong></td><td>岩漿流動（覆蓋 flow）</td><td>✅</td></tr>
-                <tr><td><strong><code>flowinprotection</code></strong></td><td>液體從外面流入領地</td><td>✅</td></tr>
                 <tr><td><strong><code>piston</code></strong></td><td>活塞推動/拉動方塊</td><td>✅</td></tr>
                 <tr><td><strong><code>pistonprotection</code></strong></td><td>活塞將方塊推入/拉出領地</td><td>❌</td></tr>
                 <tr><td><strong><code>trample</code></strong></td><td>踩踏農作物</td><td>✅</td></tr>
                 <tr><td><strong><code>decay</code></strong></td><td>樹葉腐爛</td><td>✅</td></tr>
                 <tr><td><strong><code>spread</code></strong></td><td>方塊蔓延（菌絲等）</td><td>✅</td></tr>
+                <tr><td><strong><code>grow</code></strong></td><td>植物生長（農作物、樹苗等）</td><td>✅</td></tr>
                 <tr><td><strong><code>iceform</code></strong></td><td>結冰</td><td>✅</td></tr>
                 <tr><td><strong><code>icemelt</code></strong></td><td>冰融化</td><td>✅</td></tr>
                 <tr><td><strong><code>skulk</code></strong></td><td>Skulk 催化劑蔓延</td><td>✅</td></tr>
+                <tr><td><strong><code>coraldryup</code></strong></td><td>珊瑚乾燥</td><td>✅</td></tr>
+                <tr><td><strong><code>dryup</code></strong></td><td>農田乾燥</td><td>✅</td></tr>
+                <tr><td><strong><code>hotfloor</code></strong></td><td>岩漿塊傷害</td><td>✅</td></tr>
+                <tr><td><strong><code>dragongrief</code></strong></td><td>終界龍破壞方塊</td><td>❌</td></tr>
+                <tr><td><strong><code>snowball</code></strong></td><td>雪球擊退效果</td><td>✅</td></tr>
+                <tr><td><strong><code>snowtrail</code></strong></td><td>雪人留下雪痕</td><td>✅</td></tr>
               </tbody>
             </table>
           </div>
@@ -485,7 +506,7 @@
 
         <!-- 🧭 傳送與移動 -->
         <details class="res-perm-cat" style="--cat-color:#85b1e0">
-          <summary>🧭 傳送與移動 <span class="perm-count">6 個</span></summary>
+          <summary>🧭 傳送與移動 <span class="perm-count">8 個</span></summary>
           <div class="rules-table-wrap">
             <table class="rules-table">
               <thead><tr><th>權限</th><th>作用</th><th>預設</th></tr></thead>
@@ -496,6 +517,8 @@
                 <tr><td><strong><code>enderpearl</code></strong></td><td>末影珍珠傳送</td><td>✅</td></tr>
                 <tr><td><strong><code>fly</code></strong></td><td>飛行</td><td>✅</td></tr>
                 <tr><td><strong><code>nofly</code></strong></td><td>禁止飛行</td><td>❌</td></tr>
+                <tr><td><strong><code>elytra</code></strong></td><td>使用鞘翅飛行</td><td>✅</td></tr>
+                <tr><td><strong><code>goathorn</code></strong></td><td>使用山羊角</td><td>✅</td></tr>
               </tbody>
             </table>
           </div>
@@ -503,7 +526,7 @@
 
         <!-- 🎁 特殊效果 -->
         <details class="res-perm-cat" style="--cat-color:#e0a0f0">
-          <summary>🎁 特殊效果 <span class="perm-count">13 個</span></summary>
+          <summary>🎁 特殊效果 <span class="perm-count">17 個</span></summary>
           <div class="rules-table-wrap">
             <table class="rules-table">
               <thead><tr><th>權限</th><th>作用</th><th>預設</th></tr></thead>
@@ -515,12 +538,33 @@
                 <tr><td><strong><code>keepinv</code></strong></td><td>死亡保留物品欄</td><td>❌</td></tr>
                 <tr><td><strong><code>jump2</code></strong></td><td>二格跳躍高度</td><td>❌</td></tr>
                 <tr><td><strong><code>jump3</code></strong></td><td>三格跳躍高度</td><td>❌</td></tr>
+                <tr><td><strong><code>wspeed1</code></strong></td><td>調整步行速度（慢速）</td><td>✅</td></tr>
+                <tr><td><strong><code>wspeed2</code></strong></td><td>調整步行速度（快速）</td><td>✅</td></tr>
                 <tr><td><strong><code>day</code></strong></td><td>強制白天</td><td>✅</td></tr>
                 <tr><td><strong><code>night</code></strong></td><td>強制夜晚</td><td>✅</td></tr>
                 <tr><td><strong><code>rain</code></strong></td><td>強制下雨</td><td>✅</td></tr>
                 <tr><td><strong><code>sun</code></strong></td><td>強制晴天</td><td>✅</td></tr>
                 <tr><td><strong><code>glow</code></strong></td><td>進入領地發光效果</td><td>✅</td></tr>
                 <tr><td><strong><code>nodurability</code></strong></td><td>裝備不消耗耐久</td><td>❌</td></tr>
+                <tr><td><strong><code>respawn</code></strong></td><td>在領地內自動重生</td><td>❌</td></tr>
+                <tr><td><strong><code>dye</code></strong></td><td>對羊使用染料</td><td>✅</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </details>
+
+        <!-- 🎒 物品與載具 -->
+        <details class="res-perm-cat" style="--cat-color:var(--sand)">
+          <summary>🎒 物品與載具 <span class="perm-count">5 個</span></summary>
+          <div class="rules-table-wrap">
+            <table class="rules-table">
+              <thead><tr><th>權限</th><th>作用</th><th>預設</th></tr></thead>
+              <tbody>
+                <tr><td><strong><code>itemdrop</code></strong></td><td>丟棄物品</td><td>✅</td></tr>
+                <tr><td><strong><code>itempickup</code></strong></td><td>撿起物品</td><td>✅</td></tr>
+                <tr><td><strong><code>vehicledestroy</code></strong></td><td>破壞載具（礦車、船等）</td><td>❌</td></tr>
+                <tr><td><strong><code>vehicleplacing</code></strong></td><td>放置載具（礦車、船等）</td><td>❌</td></tr>
+                <tr><td><strong><code>subzone</code></strong></td><td>在領地內建立子領地</td><td>✅</td></tr>
               </tbody>
             </table>
           </div>
