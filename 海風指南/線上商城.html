@@ -202,15 +202,17 @@
         <!-- ═══ 基本介紹 ═══ -->
         <div class="guide-section-card fade-in" style="--card-accent:var(--sky)">
           <h2><span class="sec-icon">📋</span> 基本介紹</h2>
-          <p>線上商城是海風的全域拍賣系統，所有分流的玩家都可以在這裡上架和購買商品。交易使用<strong>風幣</strong>作為貨幣，售出的款項會自動匯入你的帳戶。</p>
+          <p>線上商城是海風的全域拍賣系統，所有分流的玩家都可以在這裡上架和購買商品。交易使用<strong>風幣</strong>作為貨幣，售出的款項會自動匯入你的帳戶。系統支援兩種交易模式：「一口價」直接購買和「競拍」出價競爭。</p>
 
           <h3 style="margin-top:var(--space-lg)">核心特色</h3>
           <ul>
             <li><strong>全分流交易</strong> — 不管你在哪條分流上架，所有分流的玩家都能看到並購買</li>
+            <li><strong>兩種模式</strong> — 一口價（直接購買）和競拍（出價競爭），自由選擇</li>
             <li><strong>自動收款</strong> — 商品售出後，風幣自動存入你的帳戶，不用手動領取</li>
-            <li><strong>免費上架</strong> — 上架不收手續費，可選擇花 50 風幣公告商品</li>
+            <li><strong>免費上架</strong> — 上架不收手續費，預設上架期限為 2 天</li>
+            <li><strong>商品廣告</strong> — 花費 50 風幣廣告商品，全服廣播通知其他玩家</li>
             <li><strong>安全交易</strong> — 透過系統進行，不怕被騙或交易糾紛</li>
-            <li><strong>隨時管理</strong> — 可以隨時查看、下架自己的商品</li>
+            <li><strong>隨時管理</strong> — 可以隨時查看、下架自己的商品，過期商品會進入取件櫃</li>
           </ul>
         </div>
 
@@ -253,6 +255,52 @@
               <p>探索取得的特殊物品、稀有掉落物等。價格波動大，買賣前建議先比價。</p>
             </div>
           </div>
+        </div>
+
+        <div class="guide-divider"></div>
+
+        <!-- ═══ 兩種交易模式 ═══ -->
+        <div class="guide-section-card fade-in" style="--card-accent:var(--lavender)">
+          <h2><span class="sec-icon">🔄</span> 兩種交易模式</h2>
+          <p>線上商城支援兩種交易模式，上架時可以自由選擇：</p>
+          <div class="rules-table-wrap">
+            <table class="rules-table">
+              <thead><tr><th>比較項目</th><th>💰 一口價</th><th>🔨 競拍</th></tr></thead>
+              <tbody>
+                <tr><td><strong>交易方式</strong></td><td>設定固定價格，買家直接購買</td><td>設定起標價，買家出價競爭</td></tr>
+                <tr><td><strong>適合商品</strong></td><td>常見材料、消耗品、標準商品</td><td>稀有物品、特殊裝備、高價商品</td></tr>
+                <tr><td><strong>成交速度</strong></td><td>快（買家直接付款取貨）</td><td>較慢（需等待競拍結束）</td></tr>
+                <tr><td><strong>價格策略</strong></td><td>參考市價，穩定定價</td><td>起標價可較低，讓市場決定價值</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="callout callout-tip"><span class="callout-icon">💡</span><span>不確定要選哪種？一般材料用一口價，稀有物品用競拍。競拍結束前其他玩家可以出更高價，所以起標價不用設太高。</span></div>
+        </div>
+
+        <div class="guide-divider"></div>
+
+        <!-- ═══ 商品廣告 ═══ -->
+        <div class="guide-section-card fade-in" style="--card-accent:var(--sand)">
+          <h2><span class="sec-icon">📢</span> 商品廣告</h2>
+          <p>想讓你的商品更快賣出？可以使用廣告功能！花費 <strong>50 風幣</strong>就能在全服廣播你的商品資訊，所有在線玩家都會看到通知。</p>
+          <div class="guide-steps-grid">
+            <div class="guide-step-card" style="--step-color:var(--sand)">
+              <div class="guide-step-num">1</div>
+              <h4>上架商品</h4>
+              <p>先正常上架商品（<code>/ah sell &lt;價格&gt;</code>）</p>
+            </div>
+            <div class="guide-step-card" style="--step-color:var(--sand)">
+              <div class="guide-step-num">2</div>
+              <h4>選擇廣告</h4>
+              <p>在商品中心找到該商品，點擊「廣告」按鈕</p>
+            </div>
+            <div class="guide-step-card" style="--step-color:var(--sand)">
+              <div class="guide-step-num">3</div>
+              <h4>全服廣播</h4>
+              <p>系統自動扣除 50 風幣，全服玩家都會收到商品通知</p>
+            </div>
+          </div>
+          <div class="callout callout-info"><span class="callout-icon">ℹ️</span><span>廣告費從你的風幣餘額扣除。如果餘額不足，廣告不會發送。</span></div>
         </div>
 
         <div class="guide-divider"></div>
@@ -361,6 +409,34 @@
                 <div class="guide-cmd-desc">查看已過期的商品，領取回到背包。記得定期檢查，別讓商品過期太久。</div>
               </div>
             </div>
+            <div class="guide-cmd-card">
+              <span class="guide-cmd-icon">📬</span>
+              <div class="guide-cmd-body">
+                <div class="guide-cmd-name">/ah redeem</div>
+                <div class="guide-cmd-desc">領取取件櫃中的商品和款項。競拍結束或商品過期後，物品會進入取件櫃等待領取。</div>
+              </div>
+            </div>
+            <div class="guide-cmd-card">
+              <span class="guide-cmd-icon">👤</span>
+              <div class="guide-cmd-body">
+                <div class="guide-cmd-name">/ah profile</div>
+                <div class="guide-cmd-desc">開啟商品中心，查看你所有上架中的商品、已過期商品和交易紀錄。</div>
+              </div>
+            </div>
+            <div class="guide-cmd-card">
+              <span class="guide-cmd-icon">👀</span>
+              <div class="guide-cmd-body">
+                <div class="guide-cmd-name">/ah view &lt;玩家&gt;</div>
+                <div class="guide-cmd-desc">查看其他玩家上架的商品。逛逛別人的商店，說不定能找到好貨。</div>
+              </div>
+            </div>
+            <div class="guide-cmd-card">
+              <span class="guide-cmd-icon">⭐</span>
+              <div class="guide-cmd-body">
+                <div class="guide-cmd-name">/ah watch</div>
+                <div class="guide-cmd-desc">開啟關注商品列表，追蹤你感興趣的商品動態。</div>
+              </div>
+            </div>
           </div>
         </div>
 
@@ -461,32 +537,17 @@
 
         <div class="guide-divider"></div>
 
-        <!-- ═══ 常見問題 ═══ -->
-        <div class="guide-section-card fade-in" style="--card-accent:#85b1e0">
-          <h2><span class="sec-icon">❓</span> 常見問題</h2>
-          <div class="guide-faq">
-            <div class="guide-faq-item">
-              <button class="guide-faq-q">上架要手續費嗎？</button>
-              <div class="guide-faq-a"><div class="guide-faq-a-inner">上架<strong>完全免費</strong>，不會收取任何費用。上架時可以選擇花 <strong>50 風幣</strong>發布公告，讓全服玩家看到你的商品。公告是可選的，不花錢也能正常上架。商品預設上架期限為 <strong>2 天</strong>。</div></div>
-            </div>
-            <div class="guide-faq-item">
-              <button class="guide-faq-q">商品賣不掉怎麼辦？</button>
-              <div class="guide-faq-a"><div class="guide-faq-a-inner">商品到期後會進入過期狀態，用 <code>/ah expired</code> 就能領取回來。也可以主動下架：用 <code>/ah selling</code> 找到商品後選擇下架。建議調整價格重新上架，或改到箱子商店販售。</div></div>
-            </div>
-            <div class="guide-faq-item">
-              <button class="guide-faq-q">可以同時上架幾件商品？</button>
-              <div class="guide-faq-a"><div class="guide-faq-a-inner">每人最多 <strong>10 件</strong>，全分流共用這個額度。意思是不管你在哪條分流上架，總共只能同時有 10 件商品在商城裡。想要更多額度可以考慮搭配箱子商店使用。</div></div>
-            </div>
-            <div class="guide-faq-item">
-              <button class="guide-faq-q">不同分流可以互相購買嗎？</button>
-              <div class="guide-faq-a"><div class="guide-faq-a-inner"><strong>可以！</strong>線上商城是全分流共用的。你在分流一上架的商品，分流二的玩家也能看到並購買。這也是商城最大的優勢之一 — 不用在同一條分流就能完成交易。</div></div>
-            </div>
-          </div>
-        </div>
-
-        <div class="guide-divider"></div>
-
-        <!-- ═══ 相關頁面 ═══ -->
+                <!-- ═══ 常見問題 ═══ -->
+          <div class="guide-section-card fade-in" style="--card-accent:#85b1e0">
+            <h2><span class="sec-icon">❓</span> 常見問題</h2>
+            <details class="guide-faq"><summary>一口價和競拍有什麼差別？</summary><p>一口價是設定固定價格，買家看到價格合適就能直接購買，適合常見材料和消耗品。競拍是設定起標價，買家輪流出價，價高者得，適合稀有物品或不確定價值的商品。競拍通常能賣到更好的價格，但需要等待一段時間。</p></details>
+            <details class="guide-faq"><summary>商品上架後多久會過期？</summary><p>預設上架期限為 2 天。如果 2 天內沒有賣出，商品會自動下架並進入取件櫃，你可以用 <code>/ah redeem</code> 或 <code>/ah expired</code> 領回。</p></details>
+            <details class="guide-faq"><summary>取件櫃是什麼？</summary><p>取件櫃是存放過期商品和競拍款項的地方。當商品過期、競拍結束或有人購買你的商品時，物品或風幣會先進入取件櫃。記得定期用 <code>/ah redeem</code> 領取，避免累積太多。</p></details>
+            <details class="guide-faq"><summary>可以同時上架多少商品？</summary><p>預設最多同時上架 10 個商品。如果你需要更多上架位，可以透過會員等方式提升上限。</p></details>
+            <details class="guide-faq"><summary>商品被買走後風幣去哪了？</summary><p>商品售出後，風幣會自動存入你的帳戶。如果使用競拍模式，款項會進入取件櫃，需要用 <code>/ah redeem</code> 領取。</p></details>
+            <details class="guide-faq"><summary>有哪些物品不能上架？</summary><p>基岩和選單物品等特殊方塊被列為黑名單，無法上架。這是為了防止玩家意外賣掉重要物品或破壞遊戲平衡。</p></details>
+            <details class="guide-faq"><summary>怎麼幫商品做廣告？</summary><p>上架商品後，在商品中心找到該商品，點擊「廣告」按鈕。花費 50 風幣就能在全服廣播你的商品資訊，讓所有在線玩家看到。廣告能大幅提高商品的曝光率和成交速度。</p></details>
+          </div><!-- ═══ 相關頁面 ═══ -->
         <div class="guide-section-card fade-in" style="--card-accent:var(--ocean-blue)">
           <h2><span class="sec-icon">📖</span> 相關頁面</h2>
           <div class="guide-next-grid">
