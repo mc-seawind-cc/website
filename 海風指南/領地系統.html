@@ -392,19 +392,6 @@
       </div>
       <div class="guide-divider"></div>
 
-      <!-- ═══ 訊息設定 ═══ -->
-      <div class="guide-section-card fade-in" style="--card-accent:var(--sand)">
-        <h2><span class="sec-icon">💬</span> 訊息設定</h2>
-        <p>領地有專屬的進出訊息功能。當玩家進入或離開你的領地時，聊天欄會自動顯示你設定的訊息。</p>
-        <ul class="rules-list">
-          <li><strong>進入訊息：</strong><code>/res message &lt;領地名稱&gt; enter &lt;訊息&gt;</code></li>
-          <li><strong>離開訊息：</strong><code>/res message &lt;領地名稱&gt; leave &lt;訊息&gt;</code></li>
-        </ul>
-        <div class="callout callout-tip"><span class="callout-icon">💡</span><span>訊息支援顏色代碼，例如 <code>&a</code> 是綠色、<code>&c</code> 是紅色。可以用 <code>%player%</code> 顯示進入的玩家名稱、<code>%residence%</code> 顯示領地名稱。</span></div>
-      </div>
-
-      <div class="guide-divider"></div>
-
       <!-- ═══ 擴縮領地 ═══ -->
       <div class="guide-section-card fade-in" style="--card-accent:var(--sky)">
         <h2><span class="sec-icon">📐</span> 擴縮領地</h2>
@@ -439,6 +426,19 @@
             </div>
           </div>
         </div>
+      </div>
+
+      <div class="guide-divider"></div>
+
+      <!-- ═══ 刪除領地 ═══ -->
+      <div class="guide-section-card fade-in" style="--card-accent:#ff9e9e">
+        <h2><span class="sec-icon">🗑️</span> 刪除領地</h2>
+        <p><code>/res remove &lt;領地名稱&gt;</code></p>
+        <ol class="steps">
+          <li>輸入指令，例如 <code>/res remove 我的家</code></li>
+          <li>系統會要求確認，再輸入 <code>/res confirm</code> 完成刪除</li>
+        </ol>
+        <div class="callout callout-warn"><span class="callout-icon">⚠️</span><span>刪除後無法復原！領地內的所有權限設定也會一併刪除。請謹慎操作。</span></div>
       </div>
 
       <div class="guide-divider"></div>
@@ -533,15 +533,15 @@
 
       <div class="guide-divider"></div>
 
-      <!-- ═══ 刪除領地 ═══ -->
-      <div class="guide-section-card fade-in" style="--card-accent:#ff9e9e">
-        <h2><span class="sec-icon">🗑️</span> 刪除領地</h2>
-        <p><code>/res remove &lt;領地名稱&gt;</code></p>
-        <ol class="steps">
-          <li>輸入指令，例如 <code>/res remove 我的家</code></li>
-          <li>系統會要求確認，再輸入 <code>/res confirm</code> 完成刪除</li>
-        </ol>
-        <div class="callout callout-warn"><span class="callout-icon">⚠️</span><span>刪除後無法復原！領地內的所有權限設定也會一併刪除。請謹慎操作。</span></div>
+      <!-- ═══ 訊息設定 ═══ -->
+      <div class="guide-section-card fade-in" style="--card-accent:var(--sand)">
+        <h2><span class="sec-icon">💬</span> 訊息設定</h2>
+        <p>領地有專屬的進出訊息功能。當玩家進入或離開你的領地時，聊天欄會自動顯示你設定的訊息。</p>
+        <ul class="rules-list">
+          <li><strong>進入訊息：</strong><code>/res message &lt;領地名稱&gt; enter &lt;訊息&gt;</code></li>
+          <li><strong>離開訊息：</strong><code>/res message &lt;領地名稱&gt; leave &lt;訊息&gt;</code></li>
+        </ul>
+        <div class="callout callout-tip"><span class="callout-icon">💡</span><span>訊息支援顏色代碼，例如 <code>&a</code> 是綠色、<code>&c</code> 是紅色。可以用 <code>%player%</code> 顯示進入的玩家名稱、<code>%residence%</code> 顯示領地名稱。</span></div>
       </div>
 
       <div class="guide-divider"></div>
