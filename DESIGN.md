@@ -1,4 +1,5 @@
 # 海風 SeaWind 網站設計文件
+| 2026.05.03 | 海風網站助手 | **①移除 perm-tbl 權限名稱底線**（回復原樣）；**②res-qs-card 內 code 元素加黑底樣式**：`display:block` + `background:rgba(0,0,0,0.25)` + monospace，讓指令語法（如 /res set）以程式碼區塊風格顯示。全站 85 頁 cache busting → 030503d |
 | 2026.05.03 | 海風網站助手 | **權限列表頁面合併「權限總覽」與「完整權限列表」**：①移除獨立的「權限總覽」section card，將總覽表格整合至「完整權限列表」區塊內（作為 intro table）；②總覽表「數量」欄新增 `text-align:center` 對齊；③perm-tbl CSS 新增欄寬固定（首欄 160px、末欄 60px 居中）確保格子對齊 |
 | 2026.05.03 | 海風網站助手 | **權限列表頁面 perm-tbl 權限名稱加底線**：`.perm-tbl code` 新增 `text-decoration:underline;text-underline-offset:2px`，讓權限名稱（build/place/destroy 等）有底線更容易辨識。全站 85 頁 cache busting → 030503c |
 | 2026.05.03 | 海風網站助手 | **新增公告 #0297**（小修復——修復無法使用 /tpgui 的問題）+ announcements.json 485→486 則，首頁/公告頁 inline JSON 同步更新 |
@@ -55,7 +56,7 @@
 
 | 2026.05.02 | 海風網站助手 | **領地系統指南「什麼是領地」區塊更新**：①權限數量「超過 110 種」→「120 種」（對齊 Hero 快速統計）；②meta description 同步更新（110+→120）；③og:description 同步更新 |
 
-> 最後更新：2026.05.03 23:26（海風網站助手）
+> 最後更新：2026.05.03 23:34（海風網站助手）
 > 維護者：海風網站助手
 > Instagram：[@mc.seawind.cc](https://www.instagram.com/mc.seawind.cc/)
 
@@ -429,6 +430,7 @@ website/
 
 | 日期 | 修改者 | 修改內容 |
 |---|---|---|
+| 2026.05.03 | 海風網站助手 | **①移除 perm-tbl 底線；②res-qs-card code 加黑底樣式**。全站 cache busting → 030503d |
 | 2026.05.03 | 海風網站助手 | **權限列表頁面合併「權限總覽」與「完整權限列表」**：①移除獨立 section card，總覽表整合至完整列表區塊；②數量欄居中對齊；③perm-tbl 新增欄寬固定（首欄 160px、末欄 60px） |
 | 2026.05.03 | 海風網站助手 | **權限列表頁面 perm-tbl 權限名稱加底線**：`.perm-tbl code` 新增 `text-decoration:underline`。全站 85 頁 cache busting → 030503c |
 | 2026.05.03 | 海風網站助手 | **新增公告 #0297**（小修復——修復無法使用 /tpgui 的問題）+ announcements.json 485→486 則，首頁/公告頁 inline JSON 同步更新 |
