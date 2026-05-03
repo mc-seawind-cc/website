@@ -6,9 +6,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>領地系統 — 海風指南 — 海風</title>
   <link rel="canonical" href="https://www.seawind.cc/海風指南/領地系統">
-  <meta name="description" content="海風伺服器領地系統完整指南：建立領地保護家園、設定 114 種權限、管理子領地、瀏覽公開領地列表。免費使用、永久有效。">
+  <meta name="description" content="海風伺服器領地系統完整指南：建立領地保護家園、管理子領地、瀏覽公開領地列表。免費使用、永久有效。">
   <meta property="og:title" content="領地系統 — 海風指南 — 海風">
-  <meta property="og:description" content="海風伺服器領地系統完整指南：建立領地保護家園、設定 114 種權限、管理子領地、瀏覽公開領地列表。免費使用、永久有效。">
+  <meta property="og:description" content="海風伺服器領地系統完整指南：建立領地保護家園、管理子領地、瀏覽公開領地列表。免費使用、永久有效。">
   <meta property="og:image" content="../assets/img/logo.png">
   <meta property="og:type" content="website">
   <meta name="twitter:card" content="summary">
@@ -200,8 +200,6 @@
           <div class="guide-qs-item"><span class="guide-qs-icon">🏠</span><span>上限</span><span class="guide-qs-val">每分流 10 個</span></div>
           <div class="guide-qs-item"><span class="guide-qs-icon">📏</span><span>最大範圍</span><span class="guide-qs-val">500×500 格</span></div>
           <div class="guide-qs-item"><span class="guide-qs-icon">💰</span><span>費用</span><span class="guide-qs-val">免費</span></div>
-          <div class="guide-qs-item"><span class="guide-qs-icon">⚙️</span><span>權限</span><span class="guide-qs-val">114 種</span></div>
-          <div class="guide-qs-item"><span class="guide-qs-icon">🚀</span><span>傳送延遲</span><span class="guide-qs-val">3 秒</span></div>
         </div>
       </div>
 
@@ -237,7 +235,7 @@
           </div>
         </div>
 
-        <p>領地系統支援 <strong>114 種</strong>玩家可設定的權限，從最基本的建造、破壞，到進階的 PVP、火焰蔓延、怪物生成都可以控制。你可以精細調整每個區域的權限——例如允許朋友在你的農場採收，但禁止他們開箱子。</p>
+        <p>領地系統支援多種玩家可設定的權限，從最基本的建造、破壞，到進階的 PVP、火焰蔓延、怪物生成都可以控制。你可以精細調整每個區域的權限——例如允許朋友在你的農場採收，但禁止他們開箱子。</p>
         <p>建立領地後，你還可以透過<strong>領地列表</strong>（<code>/reslist open</code>）瀏覽所有公開領地、查看評論、直接傳送。你可以把自己的領地設為公開，讓其他玩家來參觀、留言、給你好評！</p>
       </div>
 
@@ -322,6 +320,12 @@
         </div>
 
         <div class="callout callout-tip"><span class="callout-icon">💡</span><span>名稱支援英文、數字、中文、底線和連字號，最長 64 字元。快捷指令：<code>/res select vert</code> 垂直延伸到天空、<code>/res select chunk</code> 選取整個區塊（16×16）。</span></div>
+
+        <div class="guide-divider"></div>
+
+        <h3><span class="sec-icon">📐</span> 建立子領地</h3>
+        <p>子領地就是在你的大領地裡面再畫一小塊，讓那小塊擁有獨立的權限設定。建立方式和上面完全一樣，只是<strong>必須在父領地範圍內</strong>操作。子領地會<strong>繼承父領地的預設權限</strong>，但可以自行覆蓋任何設定。</p>
+        <div class="callout callout-tip"><span class="callout-icon">💡</span><span>快捷方式：站在子領地中心點，輸入 <code>/res create 子領地名稱</code>，系統會自動以你為中心框出預設大小的範圍。</span></div>
       </div>
 
       <div class="guide-divider"></div>
@@ -329,7 +333,7 @@
       <!-- ═══ 領地權限 ═══ -->
       <div class="guide-section-card fade-in" style="--card-accent:var(--lavender)">
         <h2><span class="sec-icon">⚙️</span> 領地權限</h2>
-        <p>建立領地後，下一步就是設定權限——決定誰能在你的地盤上做什麼。<strong>預設情況下，外人不能建造、不能開箱子，也不能開門或使用工作台</strong>。如果要讓朋友使用這些功能，需要用指令或圖形介面來開放權限。海風提供了 <strong>114 種</strong>玩家可設定的權限，涵蓋 8 大分類，從建造到戰鬥都能單獨調整。</p>
+        <p>建立領地後，下一步就是設定權限——決定誰能在你的地盤上做什麼。<strong>預設情況下，外人不能建造、不能開箱子，也不能開門或使用工作台</strong>。如果要讓朋友使用這些功能，需要用指令或圖形介面來開放權限。海風提供了多種玩家可設定的權限，涵蓋 8 大分類，從建造到戰鬥都能單獨調整。</p>
 
         <div class="res-quickstart">
           <div class="res-qs-card" style="--qs-color:var(--sky)">
@@ -350,7 +354,7 @@
           <div class="guide-entry-icon">📋</div>
           <div class="guide-entry-body">
             <div class="guide-entry-title">查看完整權限列表 →</div>
-            <div class="guide-entry-desc">114 個權限完整參考表，含預設狀態、設定方式、PVP 保護說明。</div>
+            <div class="guide-entry-desc">所有權限完整參考表，含預設狀態、設定方式、PVP 保護說明。</div>
           </div>
           <span class="guide-entry-arrow">→</span>
         </a>
@@ -442,7 +446,7 @@
       <!-- ═══ 子領地 ═══ -->
       <div class="guide-section-card fade-in" style="--card-accent:var(--foam)">
         <h2><span class="sec-icon">🏗️</span> 子領地</h2>
-        <p>子領地就是在你的大領地裡面再畫一小塊，讓那小塊擁有獨立的權限設定。你可以把子領地想成「領地中的領地」——大範圍保護整個基地，小範圍精細控制每個房間。</p>
+        <p>子領地就是在你的大領地裡面再畫一小塊，讓那小塊擁有獨立的權限設定。你可以把子領地想成「領地中的領地」——大範圍保護整個基地，小範圍精細控制每個房間。子領地會<strong>繼承父領地的預設權限</strong>，但可以自行覆蓋任何設定。</p>
 
         <!-- 嵌套視覺化 -->
         <div class="sz-nest-diagram">
@@ -466,7 +470,7 @@
 
         <!-- 快速統計 -->
         <div class="sz-stats">
-          <div class="sz-stat"><div class="sz-stat-num">50</div><div class="sz-stat-label">每分子領地上限</div></div>
+          <div class="sz-stat"><div class="sz-stat-num">50</div><div class="sz-stat-label">每個主領地的子領地上限</div></div>
           <div class="sz-stat"><div class="sz-stat-num">3</div><div class="sz-stat-label">最多嵌套層級</div></div>
           <div class="sz-stat"><div class="sz-stat-num">獨立</div><div class="sz-stat-label">每層獨立權限</div></div>
         </div>
@@ -499,32 +503,6 @@
 
       <div class="guide-divider"></div>
 
-      <!-- ═══ 建立子領地 ═══ -->
-      <div class="guide-section-card fade-in" style="--card-accent:var(--foam)">
-        <h2><span class="sec-icon">📐</span> 建立子領地</h2>
-        <p>建立方式和建立一般領地完全一樣，只是<strong>必須在父領地範圍內</strong>操作：</p>
-        <div class="guide-steps-grid">
-          <div class="guide-step-card" style="--step-color:var(--foam)">
-            <div class="guide-step-num">1</div>
-            <h4>拿木鋤</h4>
-            <p>手持木鋤（合成方式見領地系統主頁）。</p>
-          </div>
-          <div class="guide-step-card" style="--step-color:var(--foam)">
-            <div class="guide-step-num">2</div>
-            <h4>框選範圍</h4>
-            <p>左鍵點第一個角、右鍵點對角，範圍必須在父領地內。</p>
-          </div>
-          <div class="guide-step-card" style="--step-color:var(--foam)">
-            <div class="guide-step-num">3</div>
-            <h4>建立完成</h4>
-            <p>輸入 <code>/res create 子領地名稱</code>，子領地會繼承父領地的世界。</p>
-          </div>
-        </div>
-        <div class="callout callout-tip"><span class="callout-icon">💡</span><span>快捷方式：站在子領地中心點，輸入 <code>/res create 子領地名稱</code>，系統會自動以你為中心框出預設大小的範圍。</span></div>
-      </div>
-
-      <div class="guide-divider"></div>
-
       <!-- ═══ 嵌套規則 ═══ -->
       <div class="guide-section-card fade-in" style="--card-accent:var(--lavender)">
         <h2><span class="sec-icon">📐</span> 嵌套規則</h2>
@@ -543,7 +521,7 @@
           <div class="sz-rule-card">
             <div class="sz-rule-icon">📦</div>
             <h4>數量限制</h4>
-            <p>每個主領地最多 <strong>50 個</strong>子領地，每分子領地還能再分子領地（最多 3 層）。</p>
+            <p>每個主領地最多 <strong>50 個</strong>子領地，每個子領地還能再往下細分（最多 3 層）。</p>
           </div>
           <div class="sz-rule-card">
             <div class="sz-rule-icon">🏷️</div>
