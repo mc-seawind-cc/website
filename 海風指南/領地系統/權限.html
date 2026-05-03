@@ -19,7 +19,7 @@
   <link rel="apple-touch-icon" href="../../assets/img/logo.png">
   <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;800&family=Noto+Serif+TC:wght@700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../../style.css?v=040504a">
+  <link rel="stylesheet" href="../../style.css?v=040504b">
   <link rel="stylesheet" href="../../music-player.css">
 </head>
 <body>
@@ -101,6 +101,7 @@
               <span class="guide-sb-heading">🛡️ 領地與保護</span>
               <a href="../領地系統" class="guide-sb-link">領地系統</a>
               <a href="權限" class="guide-sb-link active">領地權限</a>
+              <a href="列表" class="guide-sb-link">領地列表</a>
               <a href="../互動記錄" class="guide-sb-link">互動記錄</a>
               <a href="../物品署名" class="guide-sb-link">物品署名</a>
             </div>
@@ -228,24 +229,14 @@
         <!-- ═══ 設定方式 ═══ -->
         <div class="guide-section-card fade-in" style="--card-accent:var(--sky)">
           <h2><span class="sec-icon">🔧</span> 設定方式</h2>
-          <div class="res-quickstart">
-            <div class="res-qs-card" style="--qs-color:var(--sky)">
-              <div class="res-qs-icon">🌐</div>
-              <h4>通用權限</h4>
-              <p><code>/res set [領地] &lt;權限&gt; true/false</code><br>設定所有人適用的權限</p>
-            </div>
-            <div class="res-qs-card" style="--qs-color:var(--foam)">
-              <div class="res-qs-icon">👤</div>
-              <h4>玩家權限</h4>
-              <p><code>/res pset [領地] &lt;玩家&gt; &lt;權限&gt; true/false</code><br>設定特定玩家的權限</p>
-            </div>
-            <div class="res-qs-card" style="--qs-color:var(--sand)">
-              <div class="res-qs-icon">⚡</div>
-              <h4>一鍵給予</h4>
-              <p><code>/res padd [領地] &lt;玩家&gt;</code><br>一鍵給予常用權限（建造、使用、開箱等）</p>
-            </div>
-          </div>
-          <div class="callout callout-tip" style="margin-top:var(--space-md)"><span class="callout-icon">💡</span><span><code>/res flags</code> 查看完整列表。用 <code>/res padd &lt;玩家&gt;</code> 一鍵給予常用權限。</span></div>
+          <p>有三種指令可以設定權限，從大範圍到個人化依序使用：</p>
+          <ul class="rules-list">
+            <li><strong><code>/res set [領地名] &lt;權限&gt; true/false/remove</code></strong> — 通用權限，套用在所有人身上。打開後會看到勾選式 GUI，直接勾選想設定的權限。</li>
+            <li><strong><code>/res pset [領地名] &lt;玩家名&gt; &lt;權限&gt; true/false/remove</code></strong> — 玩家權限，覆蓋通用設定。例如通用禁止建造，但你可以特別允許某位朋友建造。</li>
+            <li><strong><code>/res padd [領地名] &lt;玩家名&gt;</code></strong> — 一鍵給予常用權限（建造、使用、開箱、門、紅石），適合快速開放給朋友。</li>
+            <li><strong><code>/res pdel [領地名] &lt;玩家名&gt;</code></strong> — 移除該玩家的所有特殊權限，恢復為通用設定。</li>
+          </ul>
+          <div class="callout callout-tip"><span class="callout-icon">💡</span><span>操作時必須站在領地內才有效。用 <code>/res flags</code> 查看完整權限列表。混用技巧：先用 <code>padd</code> 一鍵開放基本權限，再用 <code>pset</code> 微調個別權限。</span></div>
           <div class="callout callout-info"><span class="callout-icon">ℹ️</span><span><strong>PVP 保護：</strong>PVP 預設允許，建議設 <code>/res set &lt;領地&gt; pvp false</code> 關閉（含藥水效果）。</span></div>
         </div>
 
@@ -272,8 +263,8 @@
           </table>
 
         <!-- 🔨 建造與互動 — 39 個 -->
-        <div class="perm-cat">
-          <div class="perm-cat-header" style="--cat-color:var(--foam)"><span class="perm-cat-icon">🔨</span><span class="perm-cat-name">建造與互動</span><span class="perm-cat-count">39</span></div>
+        <details class="perm-cat">
+          <summary class="perm-cat-header" style="--cat-color:var(--foam)"><span class="perm-cat-icon">🔨</span><span class="perm-cat-name">建造與互動</span><span class="perm-cat-count">39</span></summary>
           <table class="perm-tbl"><thead><tr><th>權限</th><th>說明</th><th>預設</th></tr></thead><tbody>
             <tr><td><code>build</code></td><td>建造與破壞方塊（總開關）</td><td class="deny">禁止</td></tr>
             <tr><td><code>place</code></td><td>只控制放置方塊（覆蓋 build）</td><td class="deny">禁止</td></tr>
@@ -305,7 +296,6 @@
             <tr><td><code>honeycomb</code></td><td>採集蜂巢</td><td class="deny">禁止</td></tr>
             <tr><td><code>shear</code></td><td>剪羊毛</td><td class="deny">禁止</td></tr>
             <tr><td><code>egg</code></td><td>互動龍蛋</td><td class="deny">禁止</td></tr>
-          
             <tr><td><code>pvp</code></td><td>玩家互相戰鬥</td><td class="allow">允許</td></tr>
             <tr><td><code>damage</code></td><td>所有實體傷害（總開關）</td><td class="allow">允許</td></tr>
             <tr><td><code>shoot</code></td><td>射擊（弓、三叉戟等）</td><td class="deny">禁止</td></tr>
@@ -316,13 +306,11 @@
             <tr><td><code>animalfeeding</code></td><td>餵食動物</td><td class="allow">允許</td></tr>
             <tr><td><code>admin</code></td><td>管理領地權限（可修改其他人的權限設定）</td><td class="deny">禁止</td></tr>
           </tbody></table>
-        </div>
+        </details>
 
-        
-
-      <!-- 🔥 火焰與爆炸 — 9 個 -->
-        <div class="perm-cat">
-          <div class="perm-cat-header" style="--cat-color:var(--sand)"><span class="perm-cat-icon">🔥</span><span class="perm-cat-name">火焰與爆炸</span><span class="perm-cat-count">9</span></div>
+        <!-- 🔥 火焰與爆炸 — 9 個 -->
+        <details class="perm-cat">
+          <summary class="perm-cat-header" style="--cat-color:var(--sand)"><span class="perm-cat-icon">🔥</span><span class="perm-cat-name">火焰與爆炸</span><span class="perm-cat-count">9</span></summary>
           <table class="perm-tbl"><thead><tr><th>權限</th><th>說明</th><th>預設</th></tr></thead><tbody>
             <tr><td><code>ignite</code></td><td>點火（打火石）</td><td class="deny">禁止</td></tr>
             <tr><td><code>firespread</code></td><td>火焰蔓延</td><td class="deny">禁止</td></tr>
@@ -334,11 +322,11 @@
             <tr><td><code>witherdamage</code></td><td>凋零傷害</td><td class="deny">禁止</td></tr>
             <tr><td><code>witherdestruction</code></td><td>凋零破壞方塊</td><td class="deny">禁止</td></tr>
           </tbody></table>
-        </div>
+        </details>
 
         <!-- 🐾 生物與生成 — 18 個 -->
-        <div class="perm-cat">
-          <div class="perm-cat-header" style="--cat-color:var(--lavender)"><span class="perm-cat-icon">🐾</span><span class="perm-cat-name">生物與生成</span><span class="perm-cat-count">18</span></div>
+        <details class="perm-cat">
+          <summary class="perm-cat-header" style="--cat-color:var(--lavender)"><span class="perm-cat-icon">🐾</span><span class="perm-cat-name">生物與生成</span><span class="perm-cat-count">18</span></summary>
           <table class="perm-tbl"><thead><tr><th>權限</th><th>說明</th><th>預設</th></tr></thead><tbody>
             <tr><td><code>monsters</code></td><td>怪物生成（總開關）</td><td class="allow">允許</td></tr>
             <tr><td><code>nmonsters</code></td><td>自然怪物生成</td><td class="allow">允許</td></tr>
@@ -359,11 +347,11 @@
             <tr><td><code>mobexpdrop</code></td><td>怪物掉落經驗值</td><td class="allow">允許</td></tr>
             <tr><td><code>mobitemdrop</code></td><td>怪物掉落物品</td><td class="allow">允許</td></tr>
           </tbody></table>
-        </div>
+        </details>
 
         <!-- 💧 液體與環境 — 20 個 -->
-        <div class="perm-cat">
-          <div class="perm-cat-header" style="--cat-color:var(--sky)"><span class="perm-cat-icon">💧</span><span class="perm-cat-name">液體與環境</span><span class="perm-cat-count">20</span></div>
+        <details class="perm-cat">
+          <summary class="perm-cat-header" style="--cat-color:var(--sky)"><span class="perm-cat-icon">💧</span><span class="perm-cat-name">液體與環境</span><span class="perm-cat-count">20</span></summary>
           <table class="perm-tbl"><thead><tr><th>權限</th><th>說明</th><th>預設</th></tr></thead><tbody>
             <tr><td><code>flow</code></td><td>液體流動（水＋岩漿）</td><td class="allow">允許</td></tr>
             <tr><td><code>waterflow</code></td><td>水流動（覆蓋 flow）</td><td class="allow">允許</td></tr>
@@ -386,11 +374,11 @@
             <tr><td><code>fallinprotection</code></td><td>方塊落入領地（沙子等）</td><td class="allow">允許</td></tr>
             <tr><td><code>flowinprotection</code></td><td>液體從外部流入領地</td><td class="allow">允許</td></tr>
           </tbody></table>
-        </div>
+        </details>
 
         <!-- 🧭 傳送與移動 — 7 個 -->
-        <div class="perm-cat">
-          <div class="perm-cat-header" style="--cat-color:#85b1e0"><span class="perm-cat-icon">🧭</span><span class="perm-cat-name">傳送與移動</span><span class="perm-cat-count">7</span></div>
+        <details class="perm-cat">
+          <summary class="perm-cat-header" style="--cat-color:#85b1e0"><span class="perm-cat-icon">🧭</span><span class="perm-cat-name">傳送與移動</span><span class="perm-cat-count">7</span></summary>
           <table class="perm-tbl"><thead><tr><th>權限</th><th>說明</th><th>預設</th></tr></thead><tbody>
             <tr><td><code>move</code></td><td>進入或待在領地內</td><td class="allow">允許</td></tr>
             <tr><td><code>tp</code></td><td>傳送到此領地（/res tp）</td><td class="deny">禁止</td></tr>
@@ -400,17 +388,14 @@
             <tr><td><code>elytra</code></td><td>鞘翅飛行</td><td class="allow">允許</td></tr>
             <tr><td><code>goathorn</code></td><td>山羊角</td><td class="allow">允許</td></tr>
           </tbody></table>
-        </div>
+        </details>
 
         <!-- 🎁 特殊效果 — 10 個 -->
-        <div class="perm-cat">
-          <div class="perm-cat-header" style="--cat-color:#e0a0f0"><span class="perm-cat-icon">🎁</span><span class="perm-cat-name">特殊效果</span><span class="perm-cat-count">10</span></div>
+        <details class="perm-cat">
+          <summary class="perm-cat-header" style="--cat-color:#e0a0f0"><span class="perm-cat-icon">🎁</span><span class="perm-cat-name">特殊效果</span><span class="perm-cat-count">10</span></summary>
           <table class="perm-tbl"><thead><tr><th>權限</th><th>說明</th><th>預設</th></tr></thead><tbody>
             <tr><td><code>healing</code></td><td>自動治療玩家</td><td class="allow">允許</td></tr>
             <tr><td><code>feed</code></td><td>自動餵飽玩家</td><td class="allow">允許</td></tr>
-            
-            
-            
             <tr><td><code>wspeed1</code></td><td>步行速度（慢速）</td><td class="allow">允許</td></tr>
             <tr><td><code>wspeed2</code></td><td>步行速度（快速）</td><td class="allow">允許</td></tr>
             <tr><td><code>day</code></td><td>強制白天</td><td class="allow">允許</td></tr>
@@ -419,14 +404,12 @@
             <tr><td><code>sun</code></td><td>強制晴天</td><td class="allow">允許</td></tr>
             <tr><td><code>glow</code></td><td>進入領地發光</td><td class="allow">允許</td></tr>
             <tr><td><code>dye</code></td><td>對羊使用染料</td><td class="allow">允許</td></tr>
-            
-            
           </tbody></table>
-        </div>
+        </details>
 
         <!-- 🎒 物品與載具 — 6 個 -->
-        <div class="perm-cat">
-          <div class="perm-cat-header" style="--cat-color:var(--sand)"><span class="perm-cat-icon">🎒</span><span class="perm-cat-name">物品與載具</span><span class="perm-cat-count">6</span></div>
+        <details class="perm-cat">
+          <summary class="perm-cat-header" style="--cat-color:var(--sand)"><span class="perm-cat-icon">🎒</span><span class="perm-cat-name">物品與載具</span><span class="perm-cat-count">6</span></summary>
           <table class="perm-tbl"><thead><tr><th>權限</th><th>說明</th><th>預設</th></tr></thead><tbody>
             <tr><td><code>itemdrop</code></td><td>丟棄物品</td><td class="allow">允許</td></tr>
             <tr><td><code>itempickup</code></td><td>撿起物品</td><td class="allow">允許</td></tr>
@@ -435,11 +418,11 @@
             <tr><td><code>subzone</code></td><td>建立子領地</td><td class="allow">允許</td></tr>
             <tr><td><code>shop</code></td><td>加入特殊商店列表</td><td class="allow">允許</td></tr>
           </tbody></table>
-        </div>
+        </details>
 
         <!-- 📋 訊息與顯示 — 5 個 -->
-        <div class="perm-cat">
-          <div class="perm-cat-header" style="--cat-color:var(--fog)"><span class="perm-cat-icon">📋</span><span class="perm-cat-name">訊息與顯示</span><span class="perm-cat-count">5</span></div>
+        <details class="perm-cat">
+          <summary class="perm-cat-header" style="--cat-color:var(--fog)"><span class="perm-cat-icon">📋</span><span class="perm-cat-name">訊息與顯示</span><span class="perm-cat-count">5</span></summary>
           <table class="perm-tbl"><thead><tr><th>權限</th><th>說明</th><th>預設</th></tr></thead><tbody>
             <tr><td><code>chat</code></td><td>加入領地聊天室</td><td class="allow">允許</td></tr>
             <tr><td><code>title</code></td><td>進入/離開領地訊息</td><td class="allow">允許</td></tr>
@@ -447,34 +430,10 @@
             <tr><td><code>hidden</code></td><td>從領地列表中隱藏</td><td class="allow">允許</td></tr>
             <tr><td><code>visualizer</code></td><td>進入領地時顯示粒子邊界視覺化</td><td class="allow">允許</td></tr>
           </tbody></table>
-        </div>
+        </details>
 
         <div class="guide-divider"></div>
 <div class="guide-divider"></div>
-
-      <!-- ═══ 設定個別玩家權限 ═══ -->
-      <div class="guide-section-card fade-in" style="--card-accent:var(--foam)">
-        <h2><span class="sec-icon">👥</span> 設定個別玩家權限</h2>
-        <p>想讓朋友能進來但別人不行？用 <code>/res pset</code> 針對特定玩家設定：</p>
-        <div class="res-quickstart">
-          <div class="res-qs-card" style="--qs-color:var(--sky)">
-            <div class="res-qs-icon">✏️</div>
-            <h4>設定玩家權限</h4>
-            <p><code>/res pset [領地] &lt;玩家&gt; &lt;權限&gt; [true/false/remove]</code></p>
-          </div>
-          <div class="res-qs-card" style="--qs-color:var(--foam)">
-            <div class="res-qs-icon">⚡</div>
-            <h4>一鍵給予常用權限</h4>
-            <p><code>/res padd [領地] &lt;玩家&gt;</code><br>自動給予建造、使用、開箱等基本權限</p>
-          </div>
-          <div class="res-qs-card" style="--qs-color:var(--sand)">
-            <div class="res-qs-icon">🗑️</div>
-            <h4>移除玩家權限</h4>
-            <p><code>/res pdel [領地] &lt;玩家&gt;</code><br>移除該玩家的所有特殊權限</p>
-          </div>
-        </div>
-      </div>
-
 
         <!-- ═══ 常見問題 ═══ -->
         <div class="guide-section-card fade-in" style="--card-accent:var(--sand)">
@@ -561,7 +520,7 @@
     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="18 15 12 9 6 15"/></svg>
   </button>
 
-  <script src="../../main.js?v=040504a"></script>
+  <script src="../../main.js?v=040504b"></script>
   <script src="../../music-player.js"></script>
 
   <!-- Page Loader dismiss -->
