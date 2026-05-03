@@ -362,5 +362,18 @@
   <script src="../../main.js"></script>
   <script src="../../music-player.js"></script>
   <script src="../../tips.js"></script>
+  <script>
+  (function(){
+    var loader = document.getElementById("pageLoader");
+    if (!loader) return;
+    function hideLoader() {
+      loader.classList.add("fade-out");
+      setTimeout(function(){ loader.remove(); }, 600);
+    }
+    if (document.readyState === "complete") { hideLoader(); }
+    else { window.addEventListener("load", hideLoader); }
+    setTimeout(hideLoader, 3000);
+  })();
+  </script>
 </body>
 </html>
