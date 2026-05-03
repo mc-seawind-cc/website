@@ -2247,6 +2247,8 @@ video.photo-item{cursor:pointer;height:200px;border:1px solid transparent}
 .perm-tbl{width:100%;border-collapse:collapse;font-size:0.82rem;margin-bottom:var(--space-sm)}
 .perm-tbl th{text-align:left;font-size:0.72rem;font-weight:600;text-transform:uppercase;letter-spacing:0.06em;color:var(--fog);padding:6px 10px;border-bottom:1px solid rgba(255,255,255,0.08)}
 .perm-tbl td{padding:5px 10px;border-bottom:1px solid rgba(255,255,255,0.04);color:var(--cloud);line-height:1.4;vertical-align:top}
+.perm-tbl th:first-child,.perm-tbl td:first-child{width:160px;white-space:nowrap}
+.perm-tbl th:last-child,.perm-tbl td:last-child{width:60px;text-align:center}
 .perm-tbl tr:hover td{background:rgba(157,175,255,0.04)}
 .perm-tbl code{font-family:'SF Mono',Consolas,'Noto Sans TC',monospace;font-size:0.78rem;font-weight:700;color:var(--sky);white-space:nowrap;text-decoration:underline;text-underline-offset:2px}
 .perm-tbl .allow{color:var(--foam);font-weight:600;font-size:0.75rem;white-space:nowrap}
