@@ -22,7 +22,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;800&family=Noto+Serif+TC:wght@700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../style.css?v=030503d">
+  <link rel="stylesheet" href="../style.css?v=040504a">
   <link rel="stylesheet" href="../music-player.css">
 </head>
 <body>
@@ -102,8 +102,8 @@
             <div class="guide-sb-group">
               <span class="guide-sb-heading">🛡️ 領地與保護</span>
               <a href="領地系統" class="guide-sb-link active">領地系統</a>
-              <a href="領地系統/權限列表" class="guide-sb-link">權限列表</a>
-              <a href="領地系統/領地列表" class="guide-sb-link">領地列表</a>
+              <a href="領地系統/權限" class="guide-sb-link">領地權限</a>
+              <a href="領地系統/列表" class="guide-sb-link">領地列表</a>
               <a href="互動記錄" class="guide-sb-link">互動記錄</a>
               <a href="物品署名" class="guide-sb-link">物品署名</a>
             </div>
@@ -324,7 +324,7 @@
         <div class="guide-divider"></div>
 
         <h3><span class="sec-icon">📐</span> 建立子領地</h3>
-        <p>子領地就是在你的大領地裡面再畫一小塊，讓那小塊擁有獨立的權限設定。建立方式和上面完全一樣，只是<strong>必須在父領地範圍內</strong>操作。子領地會<strong>繼承父領地的預設權限</strong>，但可以自行覆蓋任何設定。</p>
+        <p>子領地就是在你的大領地裡面再畫一小塊，讓那小塊擁有獨立的權限設定。建立方式和上面完全一樣，只是<strong>必須在主領地範圍內</strong>操作。子領地會<strong>繼承父領地的預設權限</strong>，但可以自行覆蓋任何設定。</p>
         <div class="callout callout-tip"><span class="callout-icon">💡</span><span>快捷方式：站在子領地中心點，輸入 <code>/res create 子領地名稱</code>，系統會自動以你為中心框出預設大小的範圍。</span></div>
       </div>
 
@@ -334,24 +334,6 @@
       <div class="guide-section-card fade-in" style="--card-accent:var(--lavender)">
         <h2><span class="sec-icon">⚙️</span> 領地權限</h2>
         <p>建立領地後，下一步就是設定權限——決定誰能在你的地盤上做什麼。<strong>預設情況下，外人不能建造、不能開箱子，也不能開門或使用工作台</strong>。如果要讓朋友使用這些功能，就需要開放權限。</p>
-
-        <!-- 權限三態 -->
-        <h3>權限的三種狀態</h3>
-        <p>每個權限都有三種狀態，你可以針對不同需求靈活設定：</p>
-        <div class="res-quickstart">
-          <div class="res-qs-card" style="--qs-color:var(--foam)">
-            <div class="res-qs-header"><div class="res-qs-icon">✅</div><h4>允許（true）</h4></div>
-            <p>開放這項權限。例如設定 <code>build true</code> 就代表允許在領地內建造方塊。</p>
-          </div>
-          <div class="res-qs-card" style="--qs-color:#ff9e9e">
-            <div class="res-qs-header"><div class="res-qs-icon">❌</div><h4>拒絕（false）</h4></div>
-            <p>明確禁止這項行為。例如設定 <code>container false</code> 就代表禁止開啟箱子、熔爐等容器。</p>
-          </div>
-          <div class="res-qs-card" style="--qs-color:var(--sand)">
-            <div class="res-qs-header"><div class="res-qs-icon">🔄</div><h4>移除（remove）</h4></div>
-            <p>恢復為預設值。不特別允許也不特別拒絕，交給系統預設處理。</p>
-          </div>
-        </div>
 
         <!-- 三種設定方式 -->
         <h3>三種設定方式</h3>
@@ -365,13 +347,13 @@
             <p><code>/res set 領地名稱</code> — 設定指定領地</p>
           </div>
           <div class="res-qs-card" style="--qs-color:var(--foam)">
-            <div class="res-qs-header"><div class="res-qs-icon">👤</div><h4>個人權限（指定玩家）</h4></div>
+            <div class="res-qs-header"><div class="res-qs-icon">👤</div><h4>玩家權限（指定玩家）</h4></div>
             <p>幫<strong>特定玩家</strong>設定專屬權限，會<strong>覆蓋通用設定</strong>。例如通用設定關閉建造，但你可以單獨允許某個朋友建造。介面操作方式和通用權限一樣。</p>
             <p><code>/res pset 玩家名</code> — 設定該玩家在你站的領地的權限</p>
             <p><code>/res pset 領地名稱 玩家名</code> — 設定指定領地</p>
           </div>
           <div class="res-qs-card" style="--qs-color:var(--sand)">
-            <div class="res-qs-header"><div class="res-qs-icon">⚡</div><h4>快速給予（一鍵開放）</h4></div>
+            <div class="res-qs-header"><div class="res-qs-icon">⚡</div><h4>修改基本權限（快速給予）</h4></div>
             <p>一個指令<strong>同時開放多項常用權限</strong>，適合讓朋友快速入住。開放的權限包含：建造（build）、使用（use）、開箱（container）、開門（door）、紅石（redstone）等基本互動。</p>
             <p><code>/res padd 玩家名</code> — 給予基本權限</p>
             <p><code>/res pdel 玩家名</code> — 移除基本權限</p>
@@ -393,11 +375,11 @@
               </div>
               <div class="res-method-step">
                 <span class="res-method-step-num">2</span>
-                <span class="res-method-step-text">輸入 <code>/res padd 小明</code>，完成！小明現在可以在你的領地建造、開箱、開門、使用工作台。</span>
+                <span class="res-method-step-text">輸入 <code>/res padd 冒險者</code>，完成！冒險者現在可以在你的領地建造、開箱、開門、使用工作台。</span>
               </div>
               <div class="res-method-step">
                 <span class="res-method-step-num">3</span>
-                <span class="res-method-step-text">如果之後想移除，輸入 <code>/res pdel 小明</code> 即可。</span>
+                <span class="res-method-step-text">如果之後想移除，輸入 <code>/res pdel 冒險者</code> 即可。</span>
               </div>
             </div>
           </div>
@@ -407,7 +389,7 @@
             <div class="res-method-steps">
               <div class="res-method-step">
                 <span class="res-method-step-num">1</span>
-                <span class="res-method-step-text"><strong>站在你的領地內</strong>，輸入 <code>/res pset 小明</code>。</span>
+                <span class="res-method-step-text"><strong>站在你的領地內</strong>，輸入 <code>/res pset 冒險者</code>。</span>
               </div>
               <div class="res-method-step">
                 <span class="res-method-step-num">2</span>
@@ -415,18 +397,18 @@
               </div>
               <div class="res-method-step">
                 <span class="res-method-step-num">3</span>
-                <span class="res-method-step-text">例如：想讓小明開箱但不能建造 → 輸入 <code>build false</code> 再輸入 <code>container true</code>。</span>
+                <span class="res-method-step-text">例如：想讓冒險者開箱但不能建造 → 輸入 <code>build false</code> 再輸入 <code>container true</code>。</span>
               </div>
             </div>
           </div>
         </div>
 
-        <div class="callout callout-tip"><span class="callout-icon">💡</span><span>進階技巧：<code>/res padd</code> 和 <code>/res pset</code> 可以混用。先用 <code>padd</code> 快速開放基本權限，再用 <code>pset</code> 微調——例如先 padd 給朋友全部權限，再用 <code>/res pset 小明</code> 把 PVP 關掉。</span></div>
+        <div class="callout callout-tip"><span class="callout-icon">💡</span><span>進階技巧：<code>/res padd</code> 和 <code>/res pset</code> 可以混用。先用 <code>padd</code> 快速開放基本權限，再用 <code>pset</code> 微調——例如先 padd 給朋友全部權限，再用 <code>/res pset 冒險者</code> 把 PVP 關掉。</span></div>
 
-        <a href="領地系統/權限列表" class="guide-entry featured" style="--entry-accent:var(--lavender);margin-top:var(--space-lg)">
+        <a href="領地系統/權限" class="guide-entry featured" style="--entry-accent:var(--lavender);margin-top:var(--space-lg)">
           <div class="guide-entry-icon">📋</div>
           <div class="guide-entry-body">
-            <div class="guide-entry-title">查看完整權限列表 →</div>
+            <div class="guide-entry-title">查看完整權限 →</div>
             <div class="guide-entry-desc">所有權限完整參考表，含預設狀態、設定方式、PVP 保護說明。</div>
           </div>
           <span class="guide-entry-arrow">→</span>
@@ -453,7 +435,7 @@
               <p>修改名稱、描述、圖標，切換公開/私人，設定傳送點。</p>
             </div>
           </div>
-          <a href="領地系統/領地列表" class="guide-entry featured" style="--entry-accent:var(--foam);margin-top:var(--space-lg)">
+          <a href="領地系統/列表" class="guide-entry featured" style="--entry-accent:var(--foam);margin-top:var(--space-lg)">
             <div class="guide-entry-icon">📋</div>
             <div class="guide-entry-body">
               <div class="guide-entry-title">查看領地列表指南 →</div>
@@ -805,7 +787,7 @@
       <div class="footer-bottom">
         <p>© 2026 海風伺服器 · 非 Mojang 官方營運 · service@seawind.cc</p>
       </div>
-      <p class="page-revise">網站最後修改日期 2026.05.03 / 總計修改 <span id="deployCount">—</span> 次</p>
+      <p class="page-revise">網站最後修改日期 2026.05.04 / 總計修改 <span id="deployCount">—</span> 次</p>
     </div>
   </footer>
 
@@ -821,7 +803,7 @@
     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="18 15 12 9 6 15"/></svg>
   </button>
 
-  <script src="../main.js?v=030503d"></script>
+  <script src="../main.js?v=040504a"></script>
   <script src="../music-player.js"></script>
   
   <!-- Page Loader dismiss -->

@@ -2,10 +2,10 @@
 <html lang="zh-Hant">
 <head>
   <meta charset="UTF-8"><meta name="color-scheme" content="dark light"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>權限列表 — 領地系統 — 海風指南 — 海風</title>
-  <link rel="canonical" href="https://www.seawind.cc/海風指南/領地系統/權限列表">
+  <title>權限 — 領地系統 — 海風指南 — 海風</title>
+  <link rel="canonical" href="https://www.seawind.cc/海風指南/領地系統/權限">
   <meta name="description" content="海風領地系統 114 種權限完整參考表：建造與互動、火焰、生物、液體、傳送、特殊效果、物品、訊息。">
-  <meta property="og:title" content="權限列表 — 領地系統 — 海風指南 — 海風">
+  <meta property="og:title" content="權限 — 領地系統 — 海風指南 — 海風">
   <meta property="og:description" content="海風領地系統 114 種權限完整參考表。">
   <meta property="og:image" content="../../assets/img/logo.png">
   <meta property="og:type" content="website">
@@ -19,7 +19,7 @@
   <link rel="apple-touch-icon" href="../../assets/img/logo.png">
   <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;800&family=Noto+Serif+TC:wght@700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../../style.css?v=030503d">
+  <link rel="stylesheet" href="../../style.css?v=040504a">
   <link rel="stylesheet" href="../../music-player.css">
 </head>
 <body>
@@ -100,7 +100,7 @@
             <div class="guide-sb-group">
               <span class="guide-sb-heading">🛡️ 領地與保護</span>
               <a href="../領地系統" class="guide-sb-link">領地系統</a>
-              <a href="權限列表" class="guide-sb-link active">權限列表</a>
+              <a href="權限" class="guide-sb-link active">領地權限</a>
               <a href="../互動記錄" class="guide-sb-link">互動記錄</a>
               <a href="../物品署名" class="guide-sb-link">物品署名</a>
             </div>
@@ -187,17 +187,39 @@
           <span class="sep">›</span>
           <a href="../領地系統">領地系統</a>
           <span class="sep">›</span>
-          <span class="current">領地權限</span>
+          <span class="current">權限</span>
         </div>
 
         <!-- ═══ Hero ═══ -->
         <div class="guide-v2-hero fade-in">
-          <h1>⚙️ 領地權限</h1>
+          <h1>⚙️ 權限</h1>
           <p class="section-desc">領地系統支援 114 種玩家可設定的權限，分為 8 大類。這裡是完整的權限參考表。</p>
           <div class="guide-quick-stats">
             <div class="guide-qs-item"><span class="guide-qs-icon">⚙️</span><span>總計</span><span class="guide-qs-val">114 種</span></div>
             <div class="guide-qs-item"><span class="guide-qs-icon">📂</span><span>分類</span><span class="guide-qs-val">8 大類</span></div>
             <div class="guide-qs-item"><span class="guide-qs-icon">🔧</span><span>指令</span><span class="guide-qs-val">/res set</span></div>
+          </div>
+        </div>
+
+        <div class="guide-divider"></div>
+
+        <!-- ═══ 權限三態 ═══ -->
+        <div class="guide-section-card fade-in" style="--card-accent:var(--foam)">
+          <h2><span class="sec-icon">🔄</span> 權限的三種狀態</h2>
+          <p>每個權限都有三種狀態，你可以針對不同需求靈活設定：</p>
+          <div class="res-quickstart">
+            <div class="res-qs-card" style="--qs-color:var(--foam)">
+              <div class="res-qs-header"><div class="res-qs-icon">✅</div><h4>允許（true）</h4></div>
+              <p>開放這項權限。例如設定 <code>build true</code> 就代表允許在領地內建造方塊。</p>
+            </div>
+            <div class="res-qs-card" style="--qs-color:#ff9e9e">
+              <div class="res-qs-header"><div class="res-qs-icon">❌</div><h4>拒絕（false）</h4></div>
+              <p>明確禁止這項行為。例如設定 <code>container false</code> 就代表禁止開啟箱子、熔爐等容器。</p>
+            </div>
+            <div class="res-qs-card" style="--qs-color:var(--sand)">
+              <div class="res-qs-header"><div class="res-qs-icon">🔄</div><h4>移除（remove）</h4></div>
+              <p>恢復為預設值。不特別允許也不特別拒絕，交給系統預設處理。</p>
+            </div>
           </div>
         </div>
 
@@ -523,7 +545,7 @@
       <div class="footer-bottom">
         <p>© 2026 海風伺服器 · 非 Mojang 官方營運 · service@seawind.cc</p>
       </div>
-      <p class="page-revise">網站最後修改日期 2026.05.03 / 總計修改 <span id="deployCount">—</span> 次</p>
+      <p class="page-revise">網站最後修改日期 2026.05.04 / 總計修改 <span id="deployCount">—</span> 次</p>
     </div>
   </footer>
 
@@ -539,7 +561,7 @@
     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="18 15 12 9 6 15"/></svg>
   </button>
 
-  <script src="../../main.js?v=030503d"></script>
+  <script src="../../main.js?v=040504a"></script>
   <script src="../../music-player.js"></script>
 
   <!-- Page Loader dismiss -->
