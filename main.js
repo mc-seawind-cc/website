@@ -163,6 +163,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initPostcardLightbox();
     initGeneralLightbox();
     initGuideSidebar();
+    initGuideFaq();
     initScrollRestore();
   };
 
@@ -1138,6 +1139,25 @@ function initGuideSidebar() {
   }, { rootMargin: '-80px 0px -60% 0px', threshold: 0 });
 
   groups.forEach(g => observer.observe(g.target));
+}
+
+// --- Guide FAQ Toggle ---
+function initGuideFaq() {
+  document.querySelectorAll('.guide-faq-q').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const item = btn.closest('.guide-faq-item');
+      if (!item) return;
+      const isOpen = item.classList.contains('open');
+      // Close all other items in the same FAQ group
+      const group = btn.closest('.guide-faq');
+      if (group) {
+        group.querySelectorAll('.guide-faq-item.open').forEach(openItem => {
+          if (openItem !== item) openItem.classList.remove('open');
+        });
+      }
+      item.classList.toggle('open', !isOpen);
+    });
+  });
 }
 
 // --- Photo Page (風景照.html 全部照片頁面) ---
