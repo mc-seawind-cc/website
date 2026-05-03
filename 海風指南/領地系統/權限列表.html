@@ -236,14 +236,14 @@
           <table class="rules-table" style="margin-top:var(--space-md)">
             <thead><tr><th>分類</th><th>數量</th><th>說明</th></tr></thead>
             <tbody>
-              <tr><td>🔨 建造與互動</td><td><strong>39</strong></td><td>建造、容器、合成、互動方塊、農業、PVP、戰鬥</td></tr>
+              <tr><td>🔨 建造與互動</td><td><strong>39</strong></td><td>建造、容器、合成、互動方塊、農業、PVP、管理</td></tr>
               <tr><td>🔥 火焰與爆炸</td><td><strong>9</strong></td><td>點火、TNT、苦力怕、凋零</td></tr>
               <tr><td>🐾 生物與生成</td><td><strong>18</strong></td><td>怪物/動物生成控制、牽繩、騎乘</td></tr>
               <tr><td>💧 液體與環境</td><td><strong>20</strong></td><td>水流、活塞、農作物、自然現象</td></tr>
               <tr><td>🧭 傳送與移動</td><td><strong>7</strong></td><td>進出領地、傳送、飛行</td></tr>
-              <tr><td>🎁 特殊效果</td><td><strong>15</strong></td><td>自動治療、天氣、死亡保護</td></tr>
+              <tr><td>🎁 特殊效果</td><td><strong>10</strong></td><td>自動治療、天氣、死亡保護</td></tr>
               <tr><td>🎒 物品與載具</td><td><strong>6</strong></td><td>丟撿物品、載具、子領地</td></tr>
-              <tr><td>📋 訊息與顯示</td><td><strong>4</strong></td><td>聊天室、進出訊息、隱藏</td></tr>
+              <tr><td>📋 訊息與顯示</td><td><strong>5</strong></td><td>聊天室、進出訊息、隱藏、視覺化</td></tr>
             </tbody>
           </table>
         </div>
@@ -298,7 +298,7 @@
             <tr><td><code>mobkilling</code></td><td>攻擊怪物</td><td class="allow">允許</td></tr>
             <tr><td><code>animalkilling</code></td><td>攻擊動物</td><td class="deny">禁止</td></tr>
             <tr><td><code>animalfeeding</code></td><td>餵食動物</td><td class="allow">允許</td></tr>
-            <tr><td><code>friendlyfire</code></td><td>同隊友軍傷害</td><td class="deny">禁止</td></tr>
+            <tr><td><code>admin</code></td><td>管理領地權限（可修改其他人的權限設定）</td><td class="deny">禁止</td></tr>
           </tbody></table>
         </div>
 
@@ -386,15 +386,15 @@
           </tbody></table>
         </div>
 
-        <!-- 🎁 特殊效果 — 15 個 -->
+        <!-- 🎁 特殊效果 — 10 個 -->
         <div class="perm-cat">
-          <div class="perm-cat-header" style="--cat-color:#e0a0f0"><span class="perm-cat-icon">🎁</span><span class="perm-cat-name">特殊效果</span><span class="perm-cat-count">15</span></div>
+          <div class="perm-cat-header" style="--cat-color:#e0a0f0"><span class="perm-cat-icon">🎁</span><span class="perm-cat-name">特殊效果</span><span class="perm-cat-count">10</span></div>
           <table class="perm-tbl"><thead><tr><th>權限</th><th>說明</th><th>預設</th></tr></thead><tbody>
             <tr><td><code>healing</code></td><td>自動治療玩家</td><td class="allow">允許</td></tr>
             <tr><td><code>feed</code></td><td>自動餵飽玩家</td><td class="allow">允許</td></tr>
-            <tr><td><code>safezone</code></td><td>清除不良效果</td><td class="deny">禁止</td></tr>
-            <tr><td><code>keepexp</code></td><td>死亡保留經驗值</td><td class="deny">禁止</td></tr>
-            <tr><td><code>keepinv</code></td><td>死亡保留物品欄</td><td class="deny">禁止</td></tr>
+            
+            
+            
             <tr><td><code>wspeed1</code></td><td>步行速度（慢速）</td><td class="allow">允許</td></tr>
             <tr><td><code>wspeed2</code></td><td>步行速度（快速）</td><td class="allow">允許</td></tr>
             <tr><td><code>day</code></td><td>強制白天</td><td class="allow">允許</td></tr>
@@ -403,8 +403,8 @@
             <tr><td><code>sun</code></td><td>強制晴天</td><td class="allow">允許</td></tr>
             <tr><td><code>glow</code></td><td>進入領地發光</td><td class="allow">允許</td></tr>
             <tr><td><code>dye</code></td><td>對羊使用染料</td><td class="allow">允許</td></tr>
-            <tr><td><code>nodurability</code></td><td>裝備不消耗耐久</td><td class="deny">禁止</td></tr>
-            <tr><td><code>respawn</code></td><td>在領地內自動重生</td><td class="deny">禁止</td></tr>
+            
+            
           </tbody></table>
         </div>
 
@@ -421,14 +421,15 @@
           </tbody></table>
         </div>
 
-        <!-- 📋 訊息與顯示 — 4 個 -->
+        <!-- 📋 訊息與顯示 — 5 個 -->
         <div class="perm-cat">
-          <div class="perm-cat-header" style="--cat-color:var(--fog)"><span class="perm-cat-icon">📋</span><span class="perm-cat-name">訊息與顯示</span><span class="perm-cat-count">4</span></div>
+          <div class="perm-cat-header" style="--cat-color:var(--fog)"><span class="perm-cat-icon">📋</span><span class="perm-cat-name">訊息與顯示</span><span class="perm-cat-count">5</span></div>
           <table class="perm-tbl"><thead><tr><th>權限</th><th>說明</th><th>預設</th></tr></thead><tbody>
             <tr><td><code>chat</code></td><td>加入領地聊天室</td><td class="allow">允許</td></tr>
             <tr><td><code>title</code></td><td>進入/離開領地訊息</td><td class="allow">允許</td></tr>
             <tr><td><code>coords</code></td><td>隱藏領地座標</td><td class="allow">允許</td></tr>
             <tr><td><code>hidden</code></td><td>從領地列表中隱藏</td><td class="allow">允許</td></tr>
+            <tr><td><code>visualizer</code></td><td>進入領地時顯示粒子邊界視覺化</td><td class="allow">允許</td></tr>
           </tbody></table>
         </div>
 
