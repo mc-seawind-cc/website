@@ -2081,8 +2081,8 @@ video.photo-item{cursor:pointer;height:200px;border:1px solid transparent}
 .guide-v2-hero .section-desc{color:var(--fog);font-size:1rem;max-width:520px;margin:0 auto var(--space-lg);position:relative}
 
 /* Quick Stats Bar */
-.guide-quick-stats{display:flex;justify-content:center;gap:var(--space-lg);flex-wrap:wrap;position:relative}
-.guide-qs-item{display:flex;align-items:center;gap:8px;padding:8px 16px;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.06);border-radius:var(--radius-lg);font-size:0.82rem;color:var(--fog)}
+.guide-quick-stats{display:flex;justify-content:center;gap:var(--space-sm);flex-wrap:wrap;position:relative}
+.guide-qs-item{display:flex;align-items:center;gap:8px;padding:8px 16px;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.06);border-radius:var(--radius-lg);font-size:0.82rem;color:var(--fog);flex:1 1 0;min-width:0;justify-content:center}
 .guide-qs-icon{font-size:1rem}
 .guide-qs-val{font-weight:700;color:var(--white)}
 [data-theme="light"] .guide-qs-item{background:#fff;border-color:rgba(0,0,0,0.06);box-shadow:0 1px 3px rgba(0,0,0,0.04)}
