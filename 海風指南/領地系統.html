@@ -333,22 +333,83 @@
       <!-- ═══ 領地權限 ═══ -->
       <div class="guide-section-card fade-in" style="--card-accent:var(--lavender)">
         <h2><span class="sec-icon">⚙️</span> 領地權限</h2>
-        <p>建立領地後，下一步就是設定權限——決定誰能在你的地盤上做什麼。<strong>預設情況下，外人不能建造、不能開箱子，也不能開門或使用工作台</strong>。如果要讓朋友使用這些功能，需要用指令或圖形介面來開放權限。海風提供了多種玩家可設定的權限，涵蓋 8 大分類，從建造到戰鬥都能單獨調整。</p>
+        <p>建立領地後，下一步就是設定權限——決定誰能在你的地盤上做什麼。<strong>預設情況下，外人不能建造、不能開箱子，也不能開門或使用工作台</strong>。如果要讓朋友使用這些功能，就需要開放權限。</p>
+
+        <!-- 權限三態 -->
+        <h3>權限的三種狀態</h3>
+        <p>每個權限都有三種狀態，你可以針對不同需求靈活設定：</p>
+        <div class="res-quickstart">
+          <div class="res-qs-card" style="--qs-color:var(--foam)">
+            <div class="res-qs-header"><div class="res-qs-icon">✅</div><h4>允許（true）</h4></div>
+            <p>開放這項權限。例如設定 <code>build true</code> 就代表允許在領地內建造方塊。</p>
+          </div>
+          <div class="res-qs-card" style="--qs-color:#ff9e9e">
+            <div class="res-qs-header"><div class="res-qs-icon">❌</div><h4>拒絕（false）</h4></div>
+            <p>明確禁止這項行為。例如設定 <code>container false</code> 就代表禁止開啟箱子、熔爐等容器。</p>
+          </div>
+          <div class="res-qs-card" style="--qs-color:var(--sand)">
+            <div class="res-qs-header"><div class="res-qs-icon">🔄</div><h4>移除（remove）</h4></div>
+            <p>恢復為預設值。不特別允許也不特別拒絕，交給系統預設處理。</p>
+          </div>
+        </div>
+
+        <!-- 三種設定方式 -->
+        <h3>三種設定方式</h3>
+        <p>根據情境選擇最適合的方式：</p>
 
         <div class="res-quickstart">
           <div class="res-qs-card" style="--qs-color:var(--sky)">
-            <div class="res-qs-header"><div class="res-qs-icon">🌐</div><h4>通用權限</h4></div>
-            <p>輸入 <code>/res set</code> 開啟圖形化設定介面，設定要開放或關閉的權限，不用手動打指令。</p>
+            <div class="res-qs-header"><div class="res-qs-icon">🌐</div><h4>通用權限（所有人）</h4></div>
+            <p>輸入 <code>/res set</code> 開啟圖形化介面——所有權限會以勾選清單呈現，直接點選要開放或關閉的項目，不用手動打指令。<strong>這個設定會套用到所有非成員的玩家</strong>。</p>
           </div>
           <div class="res-qs-card" style="--qs-color:var(--foam)">
-            <div class="res-qs-header"><div class="res-qs-icon">👤</div><h4>玩家權限</h4></div>
-            <p>輸入 <code>/res pset 玩家名</code> 開啟該玩家的權限介面，可以單獨調整某個人的權限，不受通用設定影響。</p>
+            <div class="res-qs-header"><div class="res-qs-icon">👤</div><h4>個人權限（指定玩家）</h4></div>
+            <p>輸入 <code>/res pset 玩家名</code> 開啟該玩家的專屬權限介面。<strong>個人權限會覆蓋通用設定</strong>——例如通用設定關閉建造，但你可以單獨允許某個朋友建造。</p>
           </div>
           <div class="res-qs-card" style="--qs-color:var(--sand)">
-            <div class="res-qs-header"><div class="res-qs-icon">⚡</div><h4>基本權限</h4></div>
-            <p><code>/res padd &lt;玩家&gt;</code> 一鍵給予常用權限（建造、使用、開箱等），適合快速讓朋友入住。</p>
+            <div class="res-qs-header"><div class="res-qs-icon">⚡</div><h4>快速給予（一鍵開放）</h4></div>
+            <p>輸入 <code>/res padd 玩家名</code> 一鍵給予常用權限（建造、使用、開箱、開門等），適合讓朋友快速入住。<strong>不需要逐項設定</strong>，一個指令搞定。</p>
           </div>
         </div>
+
+        <!-- 實際操作流程 -->
+        <h3>實際操作流程</h3>
+        <div class="res-methods">
+          <div class="res-method" style="--method-color:var(--foam)">
+            <div class="res-method-badge manual">最簡單</div>
+            <h3>⚡ 讓朋友能使用你的領地</h3>
+            <div class="res-method-steps">
+              <div class="res-method-step">
+                <span class="res-method-step-num">1</span>
+                <span class="res-method-step-text">站在你的領地內。</span>
+              </div>
+              <div class="res-method-step">
+                <span class="res-method-step-num">2</span>
+                <span class="res-method-step-text">輸入 <code>/res padd 朋友的ID</code>，完成！對方現在可以建造、開箱、開門。</span>
+              </div>
+            </div>
+          </div>
+          <div class="res-method" style="--method-color:var(--sky)">
+            <div class="res-method-badge auto">精細控制</div>
+            <h3>🎛️ 自訂某人的權限</h3>
+            <div class="res-method-steps">
+              <div class="res-method-step">
+                <span class="res-method-step-num">1</span>
+                <span class="res-method-step-text">站在你的領地內，輸入 <code>/res pset 朋友的ID</code>。</span>
+              </div>
+              <div class="res-method-step">
+                <span class="res-method-step-num">2</span>
+                <span class="res-method-step-text">在彈出的介面中，逐一勾選要開放或關閉的權限項目。</span>
+              </div>
+              <div class="res-method-step">
+                <span class="res-method-step-num">3</span>
+                <span class="res-method-step-text">例如：只允許開箱但不允許建造，設定 <code>build false</code> + <code>container true</code>。</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="callout callout-tip"><span class="callout-icon">💡</span><span>小提醒：<code>/res padd</code> 和 <code>/res pset</code> 可以混用。先用 <code>padd</code> 快速開放基本權限，再用 <code>pset</code> 微調個別項目。例如先 padd 給朋友全部權限，再用 pset 把 PVP 關掉。</span></div>
 
         <a href="領地系統/權限列表" class="guide-entry featured" style="--entry-accent:var(--lavender);margin-top:var(--space-lg)">
           <div class="guide-entry-icon">📋</div>
