@@ -2267,6 +2267,34 @@ video.photo-item{cursor:pointer;height:200px;border:1px solid transparent}
 [data-theme="light"] .perm-tbl .allow{color:#2e7d32}
 [data-theme="light"] .perm-tbl .deny{color:#c62828}
 [data-theme="light"] .perm-card{background:#fff;border-color:rgba(0,0,0,0.08)}
+
+/* ═══ 設定方式卡片格子 ═══ */
+.perm-setup-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--space-md);margin:var(--space-lg)0}
+.perm-setup-card{position:relative;text-align:center;padding:var(--space-lg) var(--space-md);border-radius:var(--radius-lg);border:1px solid rgba(255,255,255,0.06);background:rgba(255,255,255,0.02);transition:all var(--duration)var(--ease);overflow:hidden}
+.perm-setup-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--psc-color,var(--sky));opacity:0.6}
+.perm-setup-card:hover{transform:translateY(-3px);border-color:rgba(255,255,255,0.12);box-shadow:0 6px 20px rgba(0,0,0,0.15)}
+.perm-setup-icon{font-size:1.6rem;margin-bottom:var(--space-sm)}
+.perm-setup-cmd{font-family:monospace;font-size:0.95rem;font-weight:700;color:var(--white);margin-bottom:4px}
+.perm-setup-label{font-size:0.82rem;font-weight:600;color:var(--cloud);margin-bottom:2px}
+.perm-setup-desc{font-size:0.72rem;color:var(--fog)}
+
+/* ═══ 權限卡片格子 ═══ */
+.perm-card-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(110px,1fr));gap:6px;padding:var(--space-md) 0}
+.perm-card{display:flex;align-items:center;justify-content:space-between;gap:6px;padding:6px 10px;border-radius:var(--radius-sm);font-size:0.78rem;border:1px solid rgba(255,255,255,0.06);transition:all 0.2s var(--ease)}
+.perm-card:hover{border-color:rgba(255,255,255,0.12);transform:translateY(-1px)}
+.perm-card.allow{background:rgba(168,230,207,0.04)}
+.perm-card.deny{background:rgba(255,158,158,0.04)}
+.perm-card-name{font-family:monospace;font-weight:600;color:var(--cloud);font-size:0.75rem;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.perm-card-dot{font-size:0.65rem;flex-shrink:0}
+[data-theme="light"] .perm-setup-card{background:#ffffff;border-color:rgba(0,0,0,0.06)}
+[data-theme="light"] .perm-setup-card:hover{box-shadow:0 6px 20px rgba(0,0,0,0.06);border-color:rgba(100,130,220,0.15)}
+[data-theme="light"] .perm-setup-cmd{color:var(--cloud)}
+[data-theme="light"] .perm-card.allow{background:rgba(0,121,76,0.04)}
+[data-theme="light"] .perm-card.deny{background:rgba(200,50,50,0.04)}
+@media(max-width:768px){
+  .perm-setup-grid{grid-template-columns:repeat(2,1fr)}
+  .perm-card-grid{grid-template-columns:repeat(auto-fill,minmax(100px,1fr))}
+}
 [data-theme="light"] .perm-card:hover{border-color:var(--cat-color,var(--sky))}
 [data-theme="light"] .perm-card-name{color:var(--ocean-blue,#4a6cf7)}
 [data-theme="light"] .perm-cat{border-color:rgba(0,0,0,0.06)}
