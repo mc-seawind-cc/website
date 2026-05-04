@@ -753,7 +753,7 @@
           </div>
           <!-- 即時倒數計時徽章 -->
           <div class="event-countdown-badge" id="eventCountdownBadge">
-            <span class="event-countdown-label">距離正式期開始</span>
+            <span class="event-countdown-label" id="evCdLabel">距離活動結束</span>
             <span class="event-countdown-nums"><span id="evCdD">--</span>天 <span id="evCdH">--</span>:<span id="evCdM">--</span>:<span id="evCdS">--</span></span>
           </div>
           <p class="event-desc">
@@ -768,9 +768,9 @@
           <div class="event-stages" id="bubbleTeaStages">
             <span class="event-stage done" title="測試期 · 4/20–4/26">測</span>
             <span class="event-stage-arrow">→</span>
-            <span class="event-stage active" title="調整期 · 4/27–5/3">調整期</span>
+            <span class="event-stage done" title="調整期 · 4/27–5/3">調整期</span>
             <span class="event-stage-arrow">→</span>
-            <span class="event-stage" title="正式期 · 5/4–5/27">開始</span>
+            <span class="event-stage active" title="正式期 · 5/4–5/27">開始</span>
             <span class="event-stage-arrow">→</span>
             <span class="event-stage" title="兌換期 · 5/28–5/31">尾</span>
           </div>
@@ -1012,13 +1012,35 @@
   (function(){
     const badge = document.getElementById('eventCountdownBadge');
     if(!badge) return;
-    const target = new Date('2026-05-04T00:00:00+08:00').getTime();
+    const mainStart = new Date('2026-05-04T00:00:00+08:00').getTime();
+    const mainEnd = new Date('2026-05-28T00:00:00+08:00').getTime();
+    const redeemEnd = new Date('2026-06-01T00:00:00+08:00').getTime();
+    const adjustStart = new Date('2026-04-27T00:00:00+08:00').getTime();
+    const labelEl = document.getElementById('evCdLabel');
     function tick(){
-      const diff = target - Date.now();
+      const now = Date.now();
+      let target;
+      if(now < mainStart){
+        target = mainStart;
+        if(labelEl) labelEl.textContent = '距離正式期開始';
+      } else if(now < mainEnd){
+        target = mainEnd;
+        if(labelEl) labelEl.textContent = '距離活動結束';
+      } else if(now < redeemEnd){
+        target = redeemEnd;
+        if(labelEl) labelEl.textContent = '距離兌換結束';
+      } else {
+        badge.classList.add('expired');
+        badge.querySelector('.event-countdown-label').textContent = '🧋 活動已結束';
+        badge.querySelector('.event-countdown-nums').textContent = '明年見！';
+        clearInterval(evTimer);
+        return;
+      }
+      const diff = target - now;
       if(diff <= 0){
         badge.classList.add('expired');
-        badge.querySelector('.event-countdown-label').textContent = '🧋 正式期已開始！';
-        badge.querySelector('.event-countdown-nums').textContent = '快來參加吧';
+        badge.querySelector('.event-countdown-label').textContent = '🧋 本階段已結束';
+        badge.querySelector('.event-countdown-nums').textContent = '';
         clearInterval(evTimer);
         return;
       }
