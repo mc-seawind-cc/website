@@ -170,12 +170,12 @@
         <div class="featured-event-inner">
           <span class="featured-event-badge">🧋 海風國際珍奶日</span>
           <div class="featured-event-phase" id="eventPhase">
-            <span class="phase-label active-phase">調整期進行中</span>
-            <span class="phase-next">正式期 5/4 開跑</span>
+            <span class="phase-label active-phase">正式期進行中</span>
+            <span class="phase-next">5/31 結束</span>
           </div>
           <div class="featured-event-progress">
             <div class="featured-event-progress-bar"><div class="featured-event-progress-fill" id="eventProgressFill" style="width:0%"></div></div>
-            <div class="featured-event-progress-text"><span>調整期 4/27</span><span id="eventProgressPct">—</span></div>
+            <div class="featured-event-progress-text"><span>正式期 5/4</span><span id="eventProgressPct">—</span></div>
           </div>
           <div class="countdown-urgency" id="countdownUrgency"></div>
           <div class="featured-event-countdown" id="featuredCountdown">
@@ -191,9 +191,9 @@
           <div class="featured-event-timeline">
             <span class="timeline-stage done" title="測試期 4/20–4/26">測試</span>
             <span class="timeline-connector"></span>
-            <span class="timeline-stage active" title="調整期 4/27–5/3">調整</span>
+            <span class="timeline-stage done" title="調整期 4/27–5/3">調整</span>
             <span class="timeline-connector"></span>
-            <span class="timeline-stage" title="正式期 5/4–5/27">正式</span>
+            <span class="timeline-stage active" title="正式期 5/4–5/27">正式</span>
             <span class="timeline-connector"></span>
             <span class="timeline-stage" title="兌換期 5/28–5/31">兌換</span>
           </div>
@@ -454,9 +454,10 @@
   <!-- 精選活動倒數計時 -->
   <script>
   (function(){
-    const target = new Date('2026-05-04T00:00:00+08:00').getTime();
-    const adjustStart = new Date('2026-04-27T00:00:00+08:00').getTime();
+    const mainStart = new Date('2026-05-04T00:00:00+08:00').getTime();
+    const mainEnd = new Date('2026-05-28T00:00:00+08:00').getTime();
     const redeemEnd = new Date('2026-06-01T00:00:00+08:00').getTime();
+    const adjustStart = new Date('2026-04-27T00:00:00+08:00').getTime();
     const el = document.getElementById('featuredCountdown');
     const fill = document.getElementById('eventProgressFill');
     const pct = document.getElementById('eventProgressPct');
@@ -468,28 +469,23 @@
       const label = phaseEl.querySelector('.active-phase');
       const next = phaseEl.querySelector('.phase-next');
       if(now < adjustStart){
-        // Before adjustment: show upcoming
         if(label) label.textContent = '即將開始';
         if(next) next.textContent = '調整期 4/27';
-      } else if(now < target){
-        // Adjustment period
+      } else if(now < mainStart){
         if(label) label.textContent = '調整期進行中';
         if(next) next.textContent = '正式期 5/4 開跑';
         phaseEl.classList.add('adjusting');
-      } else if(now < new Date('2026-05-28T00:00:00+08:00').getTime()){
-        // Main event
+      } else if(now < mainEnd){
         if(label) label.textContent = '正式期進行中';
         if(next) next.textContent = '5/31 結束';
         phaseEl.classList.remove('adjusting');
         phaseEl.classList.add('main-event');
       } else if(now < redeemEnd){
-        // Redeem period
         if(label) label.textContent = '兌換期進行中';
         if(next) next.textContent = '6/1 結束';
         phaseEl.classList.remove('adjusting');
         phaseEl.classList.add('redeeming');
       } else {
-        // Event ended
         if(label) label.textContent = '活動已結束';
         if(next) next.textContent = '';
         phaseEl.classList.add('ended');
@@ -497,14 +493,57 @@
     }
     function tick(){
       const now = Date.now();
-      const diff = target - now;
       updatePhase(now);
-      // Progress bar — track from adjustment start to event end (5/31)
-      const elapsed = now - adjustStart;
-      const total = redeemEnd - adjustStart;
+
+      // 根據當前階段決定倒數目標
+      let target, progressStart, progressEnd, progressLabel;
+      if(now < mainStart){
+        // 調整期：倒數到正式期
+        target = mainStart;
+        progressStart = adjustStart;
+        progressEnd = mainEnd;
+        progressLabel = '調整期 4/27';
+      } else if(now < mainEnd){
+        // 正式期：倒數到結束
+        target = mainEnd;
+        progressStart = mainStart;
+        progressEnd = redeemEnd;
+        progressLabel = '正式期 5/4';
+      } else if(now < redeemEnd){
+        // 兌換期：倒數到結束
+        target = redeemEnd;
+        progressStart = mainStart;
+        progressEnd = redeemEnd;
+        progressLabel = '兌換期 5/28';
+      } else {
+        // 活動結束
+        el.classList.add('expired');
+        document.getElementById('cd-d').textContent='🎉';
+        document.getElementById('cd-h').textContent='00';
+        document.getElementById('cd-m').textContent='00';
+        document.getElementById('cd-s').textContent='00';
+        const labels = el.querySelectorAll('.countdown-label');
+        if(labels.length >= 1) labels[0].textContent='已結束';
+        for(let i=1;i<labels.length;i++) labels[i].style.display='none';
+        if(urgency) urgency.textContent='🧋 活動已結束，明年見！';
+        if(fill) fill.style.width='100%';
+        if(pct) pct.textContent='100%';
+        clearInterval(timer);
+        return;
+      }
+
+      // 進度條
+      const elapsed = now - progressStart;
+      const total = progressEnd - progressStart;
       const progress = Math.min(100, Math.max(0, (elapsed/total)*100));
       if(fill) fill.style.width = progress.toFixed(1)+'%';
       if(pct) pct.textContent = progress.toFixed(0)+'%';
+      // 更新進度條標籤
+      const progressTextEl = document.querySelector('.featured-event-progress-text span:first-child');
+      if(progressTextEl) progressTextEl.textContent = progressLabel;
+
+      // 倒數計時
+      const diff = target - now;
       if(diff <= 0){
         el.classList.add('expired');
         document.getElementById('cd-d').textContent='🎉';
@@ -512,11 +551,9 @@
         document.getElementById('cd-m').textContent='00';
         document.getElementById('cd-s').textContent='00';
         const labels = el.querySelectorAll('.countdown-label');
-        if(labels.length >= 1) labels[0].textContent='已開跑';
+        if(labels.length >= 1) labels[0].textContent='已結束';
         for(let i=1;i<labels.length;i++) labels[i].style.display='none';
-        if(urgency) urgency.textContent='🧋 正式期已開始！快來參加吧';
-        if(fill) fill.style.width='100%';
-        if(pct) pct.textContent='進行中';
+        if(urgency) urgency.textContent='🧋 本階段已結束';
         clearInterval(timer);
         return;
       }
@@ -526,10 +563,19 @@
       document.getElementById('cd-m').textContent=String(m).padStart(2,'0');
       document.getElementById('cd-s').textContent=String(s).padStart(2,'0');
       if(urgency){
-        if(d===0) urgency.textContent='🔥 今天開始！準備好了嗎？';
-        else if(d===1) urgency.textContent='⚡ 明天就開始了！倒數中';
-        else if(d<=3) urgency.textContent='🌊 即將開始，敬請期待';
-        else urgency.textContent='📅 5/4 正式期開跑 → 5/31 結束';
+        if(now >= mainStart && now < mainEnd){
+          if(d===0) urgency.textContent='🔥 今天是最後一天！把握機會';
+          else if(d===1) urgency.textContent='⚡ 明天就結束了！快來參加';
+          else if(d<=3) urgency.textContent='🌊 即將結束，敬請把握';
+          else urgency.textContent='🧋 正式期進行中 → 5/28 結束';
+        } else if(now >= adjustStart && now < mainStart){
+          if(d===0) urgency.textContent='🔥 今天開始！準備好了嗎？';
+          else if(d===1) urgency.textContent='⚡ 明天就開始了！倒數中';
+          else if(d<=3) urgency.textContent='🌊 即將開始，敬請期待';
+          else urgency.textContent='📅 5/4 正式期開跑 → 5/31 結束';
+        } else if(now >= mainEnd && now < redeemEnd){
+          urgency.textContent='🎁 兌換期進行中 → 6/1 結束';
+        }
       }
     }
     tick();
@@ -539,15 +585,10 @@
     const stages = document.querySelectorAll('.featured-event-timeline .timeline-stage');
     if(stages.length === 4){
       const now = Date.now();
-      const testEnd = new Date('2026-04-27T00:00:00+08:00').getTime();
-      const warmEnd = new Date('2026-05-04T00:00:00+08:00').getTime();
-      const mainEnd = new Date('2026-05-28T00:00:00+08:00').getTime();
-      const redeemEnd = new Date('2026-06-01T00:00:00+08:00').getTime();
-      // 重設所有階段
       stages.forEach(s => { s.classList.remove('done','active'); });
-      if(now < testEnd){
+      if(now < adjustStart){
         stages[0].classList.add('active');
-      } else if(now < warmEnd){
+      } else if(now < mainStart){
         stages[0].classList.add('done');
         stages[1].classList.add('active');
       } else if(now < mainEnd){
