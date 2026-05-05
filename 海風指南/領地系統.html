@@ -22,7 +22,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;800&family=Noto+Serif+TC:wght@700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../style.css?v=040504b">
+  <link rel="stylesheet" href="../style.css?v=050505a">
   <link rel="stylesheet" href="../music-player.css">
 </head>
 <body>
@@ -324,7 +324,7 @@
         <div class="guide-divider"></div>
 
         <h3><span class="sec-icon">📐</span> 建立子領地</h3>
-        <p>子領地就是在你的大領地裡面再畫一小塊，讓那小塊擁有獨立的權限設定。建立方式和上面完全一樣，只是<strong>必須在主領地範圍內</strong>操作。子領地會<strong>繼承父領地的預設權限</strong>，但可以自行覆蓋任何設定。</p>
+        <p>子領地就是在你的大領地裡面再畫一小塊，讓那小塊擁有獨立的權限設定。建立方式和上面完全一樣，只是<strong>必須在主領地範圍內</strong>操作。子領地會<strong>繼承主領地的預設權限</strong>，但可以自行覆蓋任何設定。</p>
         <div class="callout callout-tip"><span class="callout-icon">💡</span><span>快捷方式：站在子領地中心點，輸入 <code>/res create 子領地名稱</code>，系統會自動以你為中心框出預設大小的範圍。</span></div>
       </div>
 
@@ -487,7 +487,7 @@
       <!-- ═══ 子領地 ═══ -->
       <div class="guide-section-card fade-in" style="--card-accent:var(--foam)">
         <h2><span class="sec-icon">🏗️</span> 子領地</h2>
-        <p>子領地就是在你的大領地裡面再畫一小塊，讓那小塊擁有獨立的權限設定。你可以把子領地想成「領地中的領地」——大範圍保護整個基地，小範圍精細控制每個房間。子領地會<strong>繼承父領地的預設權限</strong>，但可以自行覆蓋任何設定。</p>
+        <p>子領地就是在你的大領地裡面再畫一小塊，讓那小塊擁有獨立的權限設定。你可以把子領地想成「領地中的領地」——大範圍保護整個基地，小範圍精細控制每個房間。子領地會<strong>繼承主領地的預設權限</strong>，但可以自行覆蓋任何設定。</p>
 
         <!-- 嵌套視覺化 -->
         <div class="sz-nest-diagram">
@@ -515,13 +515,11 @@
           <div class="sz-stat"><div class="sz-stat-num">3</div><div class="sz-stat-label">最多嵌套層級</div></div>
           <div class="sz-stat"><div class="sz-stat-num">獨立</div><div class="sz-stat-label">每層獨立權限</div></div>
         </div>
-      </div>
 
-      <div class="guide-divider"></div>
+        <div class="guide-divider" style="margin:var(--space-lg) 0"></div>
 
-      <!-- ═══ 子領地用途 ═══ -->
-      <div class="guide-section-card fade-in" style="--card-accent:var(--sky)">
-        <h2><span class="sec-icon">💡</span> 常見用途</h2>
+        <!-- ═══ 子領地用途 ═══ -->
+        <h3><span class="sec-icon">💡</span> 常見用途</h3>
         <p>子領地的應用非常靈活，以下是最常見的三種情境：</p>
         <div class="sz-use-grid">
           <div class="sz-use-card" style="--use-color:var(--foam)">
@@ -540,24 +538,22 @@
             <p>花園、倉庫、紅石區各自獨立設定，不同區域不同權限，管理更精細。</p>
           </div>
         </div>
-      </div>
 
-      <div class="guide-divider"></div>
+        <div class="guide-divider" style="margin:var(--space-lg) 0"></div>
 
-      <!-- ═══ 嵌套規則 ═══ -->
-      <div class="guide-section-card fade-in" style="--card-accent:var(--lavender)">
-        <h2><span class="sec-icon">📐</span> 嵌套規則</h2>
+        <!-- ═══ 嵌套規則 ═══ -->
+        <h3><span class="sec-icon">📐</span> 嵌套規則</h3>
         <p>子領地可以繼續往下細分，但有幾個限制要注意：</p>
         <div class="sz-rules-grid">
           <div class="sz-rule-card">
             <div class="sz-rule-icon">📏</div>
             <h4>範圍限制</h4>
-            <p>子領地<strong>不能超出</strong>父領地的範圍，必須完全包含在內。</p>
+            <p>子領地<strong>不能超出</strong>主領地的範圍，必須完全包含在內。</p>
           </div>
           <div class="sz-rule-card">
             <div class="sz-rule-icon">🔄</div>
             <h4>權限繼承</h4>
-            <p>子領地會<strong>繼承父領地的預設權限</strong>，但可以自行覆蓋任何設定。</p>
+            <p>子領地會<strong>繼承主領地的預設權限</strong>，但可以自行覆蓋任何設定。</p>
           </div>
           <div class="sz-rule-card">
             <div class="sz-rule-icon">📦</div>
@@ -567,7 +563,7 @@
           <div class="sz-rule-card">
             <div class="sz-rule-icon">🏷️</div>
             <h4>命名規則</h4>
-            <p>子領地名稱在同一個父領地內<strong>不能重複</strong>，支援中文命名。</p>
+            <p>子領地名稱在同一個主領地內<strong>不能重複</strong>，支援中文命名。</p>
           </div>
         </div>
       </div>
