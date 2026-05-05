@@ -1,4 +1,5 @@
 # 海風 SeaWind 網站設計文件
+| 2026.05.05 | 海風網站助手 | **新增公告 #0139（票選伺服器標籤）+ #0298（修復選單）**：announcements.json 486→488 則，首頁/公告頁 inline JSON 同步更新 |
 | 2026.05.05 | 海風網站助手 | **領地列表頁面重建**：舊版模板（nav-inner/nav-hamburger）改為主站標準模板（nav/nav-toggle），統一 sidebar/footer/music-player/back-to-top 結構，breadcrumb/section-card/FAQ/相關頁面/導航按鈕全部對齊主站風格。cache busting → 050505a |
 | 2026.05.05 | 海風網站助手 | **權限頁面重新設計**：①「設定方式」從文字列表改為 4 張卡片格子（/res set、/res pset、/res padd、/res pdel），各帶圖示＋指令＋標籤＋簡述；②「完整權限列表」8 個分類的 `<table>` 全部改為 compact card grid（`perm-card-grid`），每個權限一張小卡顯示名稱＋預設狀態圓點（🟢允許/🔴禁止），hover 有微互動；③CSS 新增 `.perm-setup-grid` / `.perm-card-grid` 系列樣式含深色/淺色/響應式。cache busting → 050505a |
 | 2026.05.05 | 海風網站助手 | **活動頁隱藏端午節卡片**：端午節活動尚未上線，卡片加 `display:none` 隱藏；限時活動計數 3→2；頁尾日期更新至 2026.05.05 |
@@ -65,7 +66,7 @@
 
 | 2026.05.02 | 海風網站助手 | **領地系統指南「什麼是領地」區塊更新**：①權限數量「超過 110 種」→「120 種」（對齊 Hero 快速統計）；②meta description 同步更新（110+→120）；③og:description 同步更新 |
 
-> 最後更新：2026.05.05 01:45（海風網站助手）
+> 最後更新：2026.05.05 16:50（海風網站助手）
 > 維護者：海風網站助手
 > Instagram：[@mc.seawind.cc](https://www.instagram.com/mc.seawind.cc/)
 
@@ -439,6 +440,7 @@ website/
 
 | 日期 | 修改者 | 修改內容 |
 |---|---|---|
+| 2026.05.05 | 海風網站助手 | **新增公告 #0139（票選伺服器標籤）+ #0298（修復選單）**：announcements.json 486→488 則，首頁/公告頁 inline JSON 同步更新 |
 | 2026.05.05 | 海風網站助手 | **領地列表頁面重建**：舊版模板（nav-inner/nav-hamburger）改為主站標準模板（nav/nav-toggle），統一 sidebar/footer/music-player/back-to-top 結構，breadcrumb/section-card/FAQ/相關頁面/導航按鈕全部對齊主站風格。cache busting → 050505a |
 | 2026.05.05 | 海風網站助手 | **權限頁面重新設計**：①「設定方式」從文字列表改為 4 張卡片格子（/res set、/res pset、/res padd、/res pdel），各帶圖示＋指令＋標籤＋簡述；②「完整權限列表」8 個分類的 `<table>` 全部改為 compact card grid（`perm-card-grid`），每個權限一張小卡顯示名稱＋預設狀態圓點（🟢允許/🔴禁止），hover 有微互動；③CSS 新增 `.perm-setup-grid` / `.perm-card-grid` 系列樣式含深色/淺色/響應式。cache busting → 050505a |
 | 2026.05.05 | 海風網站助手 | **活動頁隱藏端午節卡片**：端午節活動尚未上線，卡片加 `display:none` 隱藏；限時活動計數 3→2；頁尾日期更新至 2026.05.05 |

@@ -1,8 +1,64 @@
 {
   "version": 2,
-  "generatedAt": "2026-05-02T16:43:00.000+08:00",
-  "count": 486,
+  "generatedAt": "2026-05-05T16:50:00.000+08:00",
+  "count": 488,
   "announcements": [
+    {
+      "tag": "更新",
+      "id": "#0298",
+      "date": "115.05.04",
+      "isoDate": "2026-05-04",
+      "timestamp": "2026-05-04T00:00:00.000+08:00",
+      "title": "修復選單",
+      "content": "- 選單新增地圖按鈕。\n- 修復選單顯示錯誤和各種問題。",
+      "images": [],
+      "localImages": [],
+      "reactions": [],
+      "reactionCount": 0,
+      "discordId": "",
+      "pinned": false,
+      "author": "",
+      "index": 0
+    },
+    {
+      "tag": "公告",
+      "id": "#0139",
+      "date": "115.05.04",
+      "isoDate": "2026-05-04",
+      "timestamp": "2026-05-04T00:00:00.000+08:00",
+      "title": "票選伺服器標籤",
+      "content": "- 請於官方群組此區域下方投票區投票：",
+      "images": [],
+      "localImages": [],
+      "reactions": [
+        {
+          "emoji": "wind_charge",
+          "count": 1
+        }
+      ],
+      "reactionCount": 1,
+      "discordId": "",
+      "pinned": false,
+      "author": "",
+      "index": 0
+    },
+    {
+      "tag": "修復",
+      "id": "#0297",
+      "date": "115.05.03",
+      "isoDate": "2026-05-03",
+      "timestamp": "2026-05-03T23:09:00.000+08:00",
+      "title": "小修復",
+      "content": "- 修復無法使用 /tpgui 的問題。",
+      "images": [],
+      "localImages": [],
+      "reactions": [],
+      "reactionCount": 0,
+      "discordId": "",
+      "pinned": false,
+      "author": "",
+      "index": 0
+    },
     {
       "tag": "更新",
       "id": "#0296",
@@ -32,50 +88,6 @@
       "localImages": [],
       "reactions": [],
       "reactionCount": 0,
-      "discordId": "",
-      "pinned": false,
-      "author": "",
-      "index": 0
-    },
-    {
-      "tag": "活動",
-      "id": "#0028",
-      "date": "115.04.28",
-      "isoDate": "2026-04-28",
-      "timestamp": "2026-04-28T10:00:00.000+08:00",
-      "title": "海風珍奶日！",
-      "content": "不只湊熱鬧，還提倡環保？！活動所有飲品僅可使用環保杯承裝，不提供一次性塑膠用品。\n\n時間：\n- 任務郵件將於 4/29 過後每日早上發送。\n- 活動時間 5/4 ~ 5/27。\n- 兌換期為 5/28 ~ 5/31。\n\n活動玩法：\n1. 每日上午 10:00 系統會寄送任務郵件，完成任務獲得原料＋環保杯。\n2. 完成任務收集 14 種原料。\n3. 前往「手搖站」，用原料和環保杯兌換 13 種限定飲品～\n\n人物介紹：\n- 茶茶 — 兌換原料與特殊物品。\n- 小珍 — 13 種飲品任選阿。\n- 杉杉來持（贊助商）— 5/28 過後短暫停留於手搖站，可以找他換限定稱號哦！\n\n限定稱號：\n- 凡於活動期間上線皆可獲得「手搖達人」。\n- 透過兌換可以獲得：「海風茶王、珍奶大師」。\n- 會員可額外獲得「金牌茶友」。\n\n網站看更多 → [海風網站](https://www.seawind.cc/活動/國際珍奶日)",
-      "images": [],
-      "localImages": [],
-      "reactions": [
-        {
-          "emoji": "wind_charge",
-          "count": 9
-        }
-      ],
-      "reactionCount": 9,
-      "discordId": "",
-      "pinned": false,
-      "author": "",
-      "index": 0
-    },
-    {
-      "tag": "活動",
-      "id": "#0029",
-      "date": "115.05.01",
-      "isoDate": "2026-05-01",
-      "timestamp": "2026-05-01T16:44:00.000+08:00",
-      "title": "海風珍奶日任務發放方式更動",
-      "content": "每日任務卷軸由原先收信領取，改為使用簽到領取。",
-      "images": [],
-      "localImages": [],
-      "reactions": [
-        {
-          "emoji": "wind_charge",
-          "count": 1
-        }
-      ],
-      "reactionCount": 1,
       "discordId": "",
       "pinned": false,
       "author": "",
@@ -114,6 +126,28 @@
       "pinned": false,
       "author": "",
       "index": 1
+    },
+    {
+      "tag": "活動",
+      "id": "#0029",
+      "date": "115.05.01",
+      "isoDate": "2026-05-01",
+      "timestamp": "2026-05-01T16:44:00.000+08:00",
+      "title": "海風珍奶日任務發放方式更動",
+      "content": "每日任務卷軸由原先收信領取，改為使用簽到領取。",
+      "images": [],
+      "localImages": [],
+      "reactions": [
+        {
+          "emoji": "wind_charge",
+          "count": 1
+        }
+      ],
+      "reactionCount": 1,
+      "discordId": "",
+      "pinned": false,
+      "author": "",
+      "index": 0
     },
     {
       "tag": "維護",
@@ -219,6 +253,28 @@
     },
     {
       "tag": "活動",
+      "id": "#0028",
+      "date": "115.04.28",
+      "isoDate": "2026-04-28",
+      "timestamp": "2026-04-28T10:00:00.000+08:00",
+      "title": "海風珍奶日！",
+      "content": "不只湊熱鬧，還提倡環保？！活動所有飲品僅可使用環保杯承裝，不提供一次性塑膠用品。\n\n時間：\n- 任務郵件將於 4/29 過後每日早上發送。\n- 活動時間 5/4 ~ 5/27。\n- 兌換期為 5/28 ~ 5/31。\n\n活動玩法：\n1. 每日上午 10:00 系統會寄送任務郵件，完成任務獲得原料＋環保杯。\n2. 完成任務收集 14 種原料。\n3. 前往「手搖站」，用原料和環保杯兌換 13 種限定飲品～\n\n人物介紹：\n- 茶茶 — 兌換原料與特殊物品。\n- 小珍 — 13 種飲品任選阿。\n- 杉杉來持（贊助商）— 5/28 過後短暫停留於手搖站，可以找他換限定稱號哦！\n\n限定稱號：\n- 凡於活動期間上線皆可獲得「手搖達人」。\n- 透過兌換可以獲得：「海風茶王、珍奶大師」。\n- 會員可額外獲得「金牌茶友」。\n\n網站看更多 → [海風網站](https://www.seawind.cc/活動/國際珍奶日)",
+      "images": [],
+      "localImages": [],
+      "reactions": [
+        {
+          "emoji": "wind_charge",
+          "count": 9
+        }
+      ],
+      "reactionCount": 9,
+      "discordId": "",
+      "pinned": false,
+      "author": "",
+      "index": 0
+    },
+    {
+      "tag": "活動",
       "id": "#0027",
       "date": "115.04.20",
       "isoDate": "2026-04-20",
@@ -233,6 +289,23 @@
       "pinned": false,
       "author": "",
       "index": 8
+    },
+    {
+      "tag": "更新",
+      "id": "#0290",
+      "date": "115.04.18",
+      "isoDate": "2026-04-18",
+      "timestamp": "2026-04-18T16:20:00.000+08:00",
+      "title": "更新郵政系統",
+      "content": "- 預計於下次重啟時更新郵政，於本次測試官方郵件狀態。",
+      "images": [],
+      "localImages": [],
+      "reactions": [],
+      "reactionCount": 0,
+      "discordId": "",
+      "pinned": false,
+      "author": "",
+      "index": 10
     },
     {
       "tag": "公告",
@@ -254,23 +327,6 @@
       "pinned": false,
       "author": "",
       "index": 9
-    },
-    {
-      "tag": "更新",
-      "id": "#0290",
-      "date": "115.04.18",
-      "isoDate": "2026-04-18",
-      "timestamp": "2026-04-18T16:20:00.000+08:00",
-      "title": "更新郵政系統",
-      "content": "- 預計於下次重啟時更新郵政，於本次測試官方郵件狀態。",
-      "images": [],
-      "localImages": [],
-      "reactions": [],
-      "reactionCount": 0,
-      "discordId": "",
-      "pinned": false,
-      "author": "",
-      "index": 10
     },
     {
       "tag": "維護",
@@ -436,27 +492,6 @@
       "index": 19
     },
     {
-      "tag": "更新",
-      "id": "#0286",
-      "date": "115.04.05",
-      "isoDate": "2026-04-05",
-      "timestamp": "2026-04-07T17:34:52.844+08:00",
-      "title": "地圖加修復錯誤",
-      "content": "- 修復同步聊天訊息延遲問題。\n- 新增[地圖]系統。\n  - 僅限 Java 版本可用。\n  - 透過快速動作鍵G、遊戲目錄點擊更多詳情開啟。",
-      "images": [
-        "https://cdn.discordapp.com/attachments/1270267126011396152/1491008352304496650/image.png?ex=69db673c&is=69da15bc&hm=1857675b5f4c0e9f7fec5b59736f26cad66c71924901e5bf53f382508d46cf6b&"
-      ],
-      "localImages": [
-        "assets/announcements/0286_0.webp"
-      ],
-      "reactions": [],
-      "reactionCount": 0,
-      "discordId": "1491008352552226816",
-      "pinned": false,
-      "author": "神焰.cc",
-      "index": 20
-    },
-    {
       "tag": "公告",
       "id": "#0125",
       "date": "115.04.07",
@@ -499,6 +534,27 @@
       "pinned": false,
       "author": "白貓",
       "index": 22
+    },
+    {
+      "tag": "更新",
+      "id": "#0286",
+      "date": "115.04.05",
+      "isoDate": "2026-04-05",
+      "timestamp": "2026-04-07T17:34:52.844+08:00",
+      "title": "地圖加修復錯誤",
+      "content": "- 修復同步聊天訊息延遲問題。\n- 新增[地圖]系統。\n  - 僅限 Java 版本可用。\n  - 透過快速動作鍵G、遊戲目錄點擊更多詳情開啟。",
+      "images": [
+        "https://cdn.discordapp.com/attachments/1270267126011396152/1491008352304496650/image.png?ex=69db673c&is=69da15bc&hm=1857675b5f4c0e9f7fec5b59736f26cad66c71924901e5bf53f382508d46cf6b&"
+      ],
+      "localImages": [
+        "assets/announcements/0286_0.webp"
+      ],
+      "reactions": [],
+      "reactionCount": 0,
+      "discordId": "1491008352552226816",
+      "pinned": false,
+      "author": "神焰.cc",
+      "index": 20
     },
     {
       "tag": "更新",
@@ -552,6 +608,28 @@
       "index": 25
     },
     {
+      "tag": "更新",
+      "id": "#0282",
+      "date": "115.04.03",
+      "isoDate": "2026-04-03",
+      "timestamp": "2026-04-03T17:47:36.864+08:00",
+      "title": "頻道更新",
+      "content": "- 將 #社區專欄 移至封存，並於 #▏論壇．📬▕ 新增社區標籤。\n- 新增 #違規處分 。",
+      "images": [],
+      "localImages": [],
+      "reactions": [
+        {
+          "emoji": "🤡",
+          "count": 1
+        }
+      ],
+      "reactionCount": 1,
+      "discordId": "1489562005621833759",
+      "pinned": false,
+      "author": "神焰.cc",
+      "index": 27
+    },
+    {
       "tag": "公告",
       "id": "#0123",
       "date": "115.04.03",
@@ -576,28 +654,6 @@
       "pinned": false,
       "author": "神焰.cc",
       "index": 26
-    },
-    {
-      "tag": "更新",
-      "id": "#0282",
-      "date": "115.04.03",
-      "isoDate": "2026-04-03",
-      "timestamp": "2026-04-03T17:47:36.864+08:00",
-      "title": "頻道更新",
-      "content": "- 將 #社區專欄 移至封存，並於 #▏論壇．📬▕ 新增社區標籤。\n- 新增 #違規處分 。",
-      "images": [],
-      "localImages": [],
-      "reactions": [
-        {
-          "emoji": "🤡",
-          "count": 1
-        }
-      ],
-      "reactionCount": 1,
-      "discordId": "1489562005621833759",
-      "pinned": false,
-      "author": "神焰.cc",
-      "index": 27
     },
     {
       "tag": "活動",
@@ -884,6 +940,23 @@
       "index": 42
     },
     {
+      "tag": "更新",
+      "id": "#0271",
+      "date": "115.03.10",
+      "isoDate": "2026-03-10",
+      "timestamp": "2026-03-10T22:12:09.474+08:00",
+      "title": "重生路牌",
+      "content": "- 於重生點新增了路牌，指示重生點建築方位。",
+      "images": [],
+      "localImages": [],
+      "reactions": [],
+      "reactionCount": 0,
+      "discordId": "1480931271399178261",
+      "pinned": false,
+      "author": "神焰.cc",
+      "index": 44
+    },
+    {
       "tag": "公告",
       "id": "#0118",
       "date": "115.03.10",
@@ -908,23 +981,6 @@
       "pinned": false,
       "author": "神焰.cc",
       "index": 43
-    },
-    {
-      "tag": "更新",
-      "id": "#0271",
-      "date": "115.03.10",
-      "isoDate": "2026-03-10",
-      "timestamp": "2026-03-10T22:12:09.474+08:00",
-      "title": "重生路牌",
-      "content": "- 於重生點新增了路牌，指示重生點建築方位。",
-      "images": [],
-      "localImages": [],
-      "reactions": [],
-      "reactionCount": 0,
-      "discordId": "1480931271399178261",
-      "pinned": false,
-      "author": "神焰.cc",
-      "index": 44
     },
     {
       "tag": "更新",
@@ -1218,6 +1274,32 @@
       "index": 59
     },
     {
+      "tag": "更新",
+      "id": "#0255",
+      "date": "115.01.15",
+      "isoDate": "2026-01-15",
+      "timestamp": "2026-01-15T00:38:17.523+08:00",
+      "title": "伺服器升級-主更新",
+      "content": "1. 領地更新：\n  - 按鈕圖標。\n  - 權限中文名稱以及描述。\n\n2. 新增個人傳送點介面。\n  - [/home]介面。\n\n3. 稱號更新：\n  - 更新格式與各稱號描述。\n  - 將稱號改為四字以對稱與美觀。\n\n4. 任務更新：\n  - 新增更多任務詳見[任務資料庫](<[文件連結](https://seawind-cc.notion.site/269fa143253b803b89a5e873008dbad5?v=269fa143253b804db95b000c7bec97b7)>)。\n  - 新增任務描述。\n  - 固定獎勵內容。\n  - 每日任務圖標設為比對稀有度的染料，提升辨識。\n  - 更新介面格式。\n\n5. 社區：\n  - 將銀行修改為兌換所。\n  - 描述格式更新。\n\n6. 地震預警系統修正格式和換新。\n\n7. 更換[礦物代換](https://discord.com/channels/1266311059552342078/1439591055782842442)系統。\n\n8. 分流一調整內容：\n  - 隨機傳送修改為 ±1萬 ~ ±20萬。\n  - 世界邊界大小擴至 ±40萬格。",
+      "images": [],
+      "localImages": [],
+      "reactions": [
+        {
+          "emoji": "✅",
+          "count": 2
+        },
+        {
+          "emoji": "🔥",
+          "count": 1
+        }
+      ],
+      "reactionCount": 3,
+      "discordId": "1461036714654044271",
+      "pinned": false,
+      "author": "神焰.cc",
+      "index": 62
+    },
+    {
       "tag": "公告",
       "id": "#0117",
       "date": "115.01.15",
@@ -1255,32 +1337,6 @@
       "pinned": false,
       "author": "神焰.cc",
       "index": 61
-    },
-    {
-      "tag": "更新",
-      "id": "#0255",
-      "date": "115.01.15",
-      "isoDate": "2026-01-15",
-      "timestamp": "2026-01-15T00:38:17.523+08:00",
-      "title": "伺服器升級-主更新",
-      "content": "1. 領地更新：\n  - 按鈕圖標。\n  - 權限中文名稱以及描述。\n\n2. 新增個人傳送點介面。\n  - [/home]介面。\n\n3. 稱號更新：\n  - 更新格式與各稱號描述。\n  - 將稱號改為四字以對稱與美觀。\n\n4. 任務更新：\n  - 新增更多任務詳見[任務資料庫](<[文件連結](https://seawind-cc.notion.site/269fa143253b803b89a5e873008dbad5?v=269fa143253b804db95b000c7bec97b7)>)。\n  - 新增任務描述。\n  - 固定獎勵內容。\n  - 每日任務圖標設為比對稀有度的染料，提升辨識。\n  - 更新介面格式。\n\n5. 社區：\n  - 將銀行修改為兌換所。\n  - 描述格式更新。\n\n6. 地震預警系統修正格式和換新。\n\n7. 更換[礦物代換](https://discord.com/channels/1266311059552342078/1439591055782842442)系統。\n\n8. 分流一調整內容：\n  - 隨機傳送修改為 ±1萬 ~ ±20萬。\n  - 世界邊界大小擴至 ±40萬格。",
-      "images": [],
-      "localImages": [],
-      "reactions": [
-        {
-          "emoji": "✅",
-          "count": 2
-        },
-        {
-          "emoji": "🔥",
-          "count": 1
-        }
-      ],
-      "reactionCount": 3,
-      "discordId": "1461036714654044271",
-      "pinned": false,
-      "author": "神焰.cc",
-      "index": 62
     },
     {
       "tag": "公告",
@@ -1424,25 +1480,6 @@
       "index": 69
     },
     {
-      "tag": "活動",
-      "id": "#0024",
-      "date": "114.09.02",
-      "isoDate": "2025-09-02",
-      "timestamp": "2025-11-02T16:07:41.896+08:00",
-      "title": "第四屆攝影大賽結束！",
-      "content": "恭喜 @Yabi 的作品〈陰間〉榮獲本屆海風攝影大賽冠軍，獎勵發放陸續中，請稍後在信箱查收！\n其餘佳作： @teckyun 的〈「一切歸零，但希望從未離開」〉、 @teckyun  的〈火光之後〉、 @Yabi 的〈奈何橋〉、 @Zhong🍁 的〈黎明的啟程〉將會刊登至官方 Pinterest 社群並獲得 3000 風幣。\n### **石頭：**\n暑假已結束，大家提交的作品明顯減少，因此我們將賽期延長了一個月，另外__**往後除了暑假，每屆賽期都延至兩個月，並且獎勵加倍！**__\n本次冠軍作品〈陰間〉看似敘述生命的終點，時則闡述了輪迴的概念，死亡的寂靜之後，是新旅途新生命這全新篇章悄然揭幕之時，陰森的綠色光線以及奈何橋的文化意義，簡潔俐落的表達了其構思。而簡練的文案敘述也絲毫不拖泥帶水，也留給了欣賞者無窮無盡的想像空間！\n### **主教：**\n這一次的作品雖然不多，但每個作品的意象都有很好的呈現出來。而這次的冠軍作品非常的有水準，也是本人目前評此攝影比賽中看過在對於色彩與構圖掌控的最適當的，唯一美中不足的是作品名稱與作品內容較無法完美呈現「新篇章」這個主題，或許文案可以增加一些文字讓讀者更有聯想與共鳴。同時，也希望各位可以踴躍參加！表達自己看到的世界！\n# 「尾聲，新生」\n時間也悄悄來到了 2025 年末，2025 年發生了哪些有趣刺激又令你印象深刻的事呢？抑或是對於一個年頭的結束感到哀傷呢？一個故事的結束代表的是另一個新故事的開始，請以「尾聲，新生」為題，盡情發揮！",
-      "images": [
-        "https://cdn.discordapp.com/attachments/1270267176812806255/1434454635954966539/image.png?ex=69e33c7c&is=69e1eafc&hm=492171f8a1a2328e81305cad7cdb2e711fbc3d48eab966387fe7913df833d6a8&"
-      ],
-      "localImages": [],
-      "reactions": [],
-      "reactionCount": 0,
-      "discordId": "1434453905332502622",
-      "pinned": false,
-      "author": "[石來運轉]Lapis von Windesburg",
-      "index": 70
-    },
-    {
       "tag": "更新",
       "id": "#0250",
       "date": "114.11.02",
@@ -1562,23 +1599,6 @@
       "index": 77
     },
     {
-      "tag": "公告",
-      "id": "#0112",
-      "date": "114.09.23",
-      "isoDate": "2025-09-23",
-      "timestamp": "2025-09-23T12:32:51.337+08:00",
-      "title": "規則更新",
-      "content": "1. 本次更新 #▏社群須知．📜▕ 如下：\n  - 第三章為「違規處理」。\n  - 第四章為「伺服器聲明」。\n  - 將宣傳相關移動至第一章。",
-      "images": [],
-      "localImages": [],
-      "reactions": [],
-      "reactionCount": 0,
-      "discordId": "1419904323785064528",
-      "pinned": false,
-      "author": "神焰.cc",
-      "index": 78
-    },
-    {
       "tag": "更新",
       "id": "#0244",
       "date": "114.09.23",
@@ -1594,6 +1614,23 @@
       "pinned": false,
       "author": "神焰.cc",
       "index": 79
+    },
+    {
+      "tag": "公告",
+      "id": "#0112",
+      "date": "114.09.23",
+      "isoDate": "2025-09-23",
+      "timestamp": "2025-09-23T12:32:51.337+08:00",
+      "title": "規則更新",
+      "content": "1. 本次更新 #▏社群須知．📜▕ 如下：\n  - 第三章為「違規處理」。\n  - 第四章為「伺服器聲明」。\n  - 將宣傳相關移動至第一章。",
+      "images": [],
+      "localImages": [],
+      "reactions": [],
+      "reactionCount": 0,
+      "discordId": "1419904323785064528",
+      "pinned": false,
+      "author": "神焰.cc",
+      "index": 78
     },
     {
       "tag": "更新",
@@ -1827,6 +1864,25 @@
       "index": 89
     },
     {
+      "tag": "活動",
+      "id": "#0024",
+      "date": "114.09.02",
+      "isoDate": "2025-09-02",
+      "timestamp": "2025-11-02T16:07:41.896+08:00",
+      "title": "第四屆攝影大賽結束！",
+      "content": "恭喜 @Yabi 的作品〈陰間〉榮獲本屆海風攝影大賽冠軍，獎勵發放陸續中，請稍後在信箱查收！\n其餘佳作： @teckyun 的〈「一切歸零，但希望從未離開」〉、 @teckyun  的〈火光之後〉、 @Yabi 的〈奈何橋〉、 @Zhong🍁 的〈黎明的啟程〉將會刊登至官方 Pinterest 社群並獲得 3000 風幣。\n### **石頭：**\n暑假已結束，大家提交的作品明顯減少，因此我們將賽期延長了一個月，另外__**往後除了暑假，每屆賽期都延至兩個月，並且獎勵加倍！**__\n本次冠軍作品〈陰間〉看似敘述生命的終點，時則闡述了輪迴的概念，死亡的寂靜之後，是新旅途新生命這全新篇章悄然揭幕之時，陰森的綠色光線以及奈何橋的文化意義，簡潔俐落的表達了其構思。而簡練的文案敘述也絲毫不拖泥帶水，也留給了欣賞者無窮無盡的想像空間！\n### **主教：**\n這一次的作品雖然不多，但每個作品的意象都有很好的呈現出來。而這次的冠軍作品非常的有水準，也是本人目前評此攝影比賽中看過在對於色彩與構圖掌控的最適當的，唯一美中不足的是作品名稱與作品內容較無法完美呈現「新篇章」這個主題，或許文案可以增加一些文字讓讀者更有聯想與共鳴。同時，也希望各位可以踴躍參加！表達自己看到的世界！\n# 「尾聲，新生」\n時間也悄悄來到了 2025 年末，2025 年發生了哪些有趣刺激又令你印象深刻的事呢？抑或是對於一個年頭的結束感到哀傷呢？一個故事的結束代表的是另一個新故事的開始，請以「尾聲，新生」為題，盡情發揮！",
+      "images": [
+        "https://cdn.discordapp.com/attachments/1270267176812806255/1434454635954966539/image.png?ex=69e33c7c&is=69e1eafc&hm=492171f8a1a2328e81305cad7cdb2e711fbc3d48eab966387fe7913df833d6a8&"
+      ],
+      "localImages": [],
+      "reactions": [],
+      "reactionCount": 0,
+      "discordId": "1434453905332502622",
+      "pinned": false,
+      "author": "[石來運轉]Lapis von Windesburg",
+      "index": 70
+    },
+    {
       "tag": "更新",
       "id": "#0237",
       "date": "114.09.01",
@@ -1974,6 +2030,23 @@
     },
     {
       "tag": "公告",
+      "id": "#0023",
+      "date": "114.08.18",
+      "isoDate": "2025-08-18",
+      "timestamp": "2025-08-18T02:10:53.532+08:00",
+      "title": "維護通知",
+      "content": "- 伺服器維護預計花費一至二小時。",
+      "images": [],
+      "localImages": [],
+      "reactions": [],
+      "reactionCount": 0,
+      "discordId": "1406701838404685906",
+      "pinned": false,
+      "author": "神焰.cc",
+      "index": 98
+    },
+    {
+      "tag": "公告",
       "id": "#0022",
       "date": "114.08.18",
       "isoDate": "2025-08-18",
@@ -1993,23 +2066,6 @@
       "pinned": false,
       "author": "神焰.cc",
       "index": 97
-    },
-    {
-      "tag": "公告",
-      "id": "#0023",
-      "date": "114.08.18",
-      "isoDate": "2025-08-18",
-      "timestamp": "2025-08-18T02:10:53.532+08:00",
-      "title": "維護通知",
-      "content": "- 伺服器維護預計花費一至二小時。",
-      "images": [],
-      "localImages": [],
-      "reactions": [],
-      "reactionCount": 0,
-      "discordId": "1406701838404685906",
-      "pinned": false,
-      "author": "神焰.cc",
-      "index": 98
     },
     {
       "tag": "更新",
@@ -2089,6 +2145,23 @@
       "index": 102
     },
     {
+      "tag": "更新",
+      "id": "#0227",
+      "date": "114.08.08",
+      "isoDate": "2025-08-08",
+      "timestamp": "2025-08-08T01:09:28.078+08:00",
+      "title": "設個人傳送點",
+      "content": "1. 修復了無法使用中文設定個人傳送點的問題。",
+      "images": [],
+      "localImages": [],
+      "reactions": [],
+      "reactionCount": 0,
+      "discordId": "1403062501834494103",
+      "pinned": false,
+      "author": "神焰.cc",
+      "index": 104
+    },
+    {
       "tag": "公告",
       "id": "#00108",
       "date": "114.08.08",
@@ -2116,20 +2189,20 @@
     },
     {
       "tag": "更新",
-      "id": "#0227",
-      "date": "114.08.08",
-      "isoDate": "2025-08-08",
-      "timestamp": "2025-08-08T01:09:28.078+08:00",
-      "title": "設個人傳送點",
-      "content": "1. 修復了無法使用中文設定個人傳送點的問題。",
+      "id": "#0226",
+      "date": "114.08.07",
+      "isoDate": "2025-08-07",
+      "timestamp": "2025-08-07T00:54:29.867+08:00",
+      "title": "稱號小更新",
+      "content": "1. 更新了稱號系統的文字排版，避免造成困擾。",
       "images": [],
       "localImages": [],
       "reactions": [],
       "reactionCount": 0,
-      "discordId": "1403062501834494103",
+      "discordId": "1402696346598903888",
       "pinned": false,
       "author": "神焰.cc",
-      "index": 104
+      "index": 106
     },
     {
       "tag": "維護",
@@ -2162,23 +2235,6 @@
       "index": 105
     },
     {
-      "tag": "更新",
-      "id": "#0226",
-      "date": "114.08.07",
-      "isoDate": "2025-08-07",
-      "timestamp": "2025-08-07T00:54:29.867+08:00",
-      "title": "稱號小更新",
-      "content": "1. 更新了稱號系統的文字排版，避免造成困擾。",
-      "images": [],
-      "localImages": [],
-      "reactions": [],
-      "reactionCount": 0,
-      "discordId": "1402696346598903888",
-      "pinned": false,
-      "author": "神焰.cc",
-      "index": 106
-    },
-    {
       "tag": "公告",
       "id": "#0107",
       "date": "114.08.06",
@@ -2196,38 +2252,21 @@
       "index": 107
     },
     {
-      "tag": "活動",
-      "id": "#0022",
-      "date": "114.05.02",
-      "isoDate": "2025-05-02",
-      "timestamp": "2025-08-06T17:55:36.799+08:00",
-      "title": "海風誕辰系列活動",
-      "content": "### 1. 海風生日普天同慶\n-# 「海風徐徐、星辰移轉」\n\n - 8/6 ~ 8/13進入海貓貓的小窩可領取\n  - 風汐碎片 + 鑽石 + 稱號「海風見證者」 + 「海風一周年慶祝蛋糕」\n\n### 2. 海風：序\n-# 一點過去的碎片，記錄了你和海貓貓的起源......\n-# 前往「你」的家，換回你和他的回憶。\n\n- 此為常駐副本，與海風誕辰一同推出\n- 領取任務請至海貓貓的小窩，與海貓貓對話即可接受任務\n- 座標server 1 x:2 y:94 z:254，可經由大廳聯外道路尋訪\n- 任務順序\n  - 海風:序\n  - 撿了一隻貓\n  - 貓一直響，怎麼回事？\n  - 我是，海貓貓！！\n- 完成所有任務將獲得 4風汐碎片 + 「暮下」(盾牌)",
+      "tag": "更新",
+      "id": "#0225",
+      "date": "114.08.01",
+      "isoDate": "2025-08-01",
+      "timestamp": "2025-08-01T18:35:57.436+08:00",
+      "title": "選單小更新",
+      "content": "1. 更新傳送頁面：\n  - 將傳送點移至第二頁。\n  - 將分流與活動統一至第一頁。",
       "images": [],
       "localImages": [],
-      "reactions": [
-        {
-          "emoji": "🇨",
-          "count": 5
-        },
-        {
-          "emoji": "🇦",
-          "count": 5
-        },
-        {
-          "emoji": "🇹",
-          "count": 5
-        },
-        {
-          "emoji": "🎉",
-          "count": 3
-        }
-      ],
-      "reactionCount": 18,
-      "discordId": "1402590930871128106",
+      "reactions": [],
+      "reactionCount": 0,
+      "discordId": "1400789144430579862",
       "pinned": false,
-      "author": "燕子",
-      "index": 108
+      "author": "神焰.cc",
+      "index": 110
     },
     {
       "tag": "公告",
@@ -2250,23 +2289,6 @@
       "pinned": false,
       "author": "神焰.cc",
       "index": 109
-    },
-    {
-      "tag": "更新",
-      "id": "#0225",
-      "date": "114.08.01",
-      "isoDate": "2025-08-01",
-      "timestamp": "2025-08-01T18:35:57.436+08:00",
-      "title": "選單小更新",
-      "content": "1. 更新傳送頁面：\n  - 將傳送點移至第二頁。\n  - 將分流與活動統一至第一頁。",
-      "images": [],
-      "localImages": [],
-      "reactions": [],
-      "reactionCount": 0,
-      "discordId": "1400789144430579862",
-      "pinned": false,
-      "author": "神焰.cc",
-      "index": 110
     },
     {
       "tag": "活動",
@@ -2350,23 +2372,6 @@
       "index": 114
     },
     {
-      "tag": "公告",
-      "id": "#0105",
-      "date": "114.07.26",
-      "isoDate": "2025-07-26",
-      "timestamp": "2025-07-26T18:27:00.083+08:00",
-      "title": "搬遷至邊界內",
-      "content": "### 伺服器將在 8/9 限制邊界，請玩家搬至限制區域內，或請管理員遷移。\n\n1. 分流一\n  - 主世界：±20萬格\n  - 地　獄：±10萬格\n  - 終　界：±20萬格\n2. 分流二\n  - 主世界：±20萬格\n  - 地　獄：±10萬格\n  - 終　界：±10萬格",
-      "images": [],
-      "localImages": [],
-      "reactions": [],
-      "reactionCount": 0,
-      "discordId": "1398612563415011380",
-      "pinned": false,
-      "author": "神焰.cc",
-      "index": 115
-    },
-    {
       "tag": "更新",
       "id": "#0221",
       "date": "114.07.26",
@@ -2386,6 +2391,23 @@
       "pinned": false,
       "author": "神焰.cc",
       "index": 116
+    },
+    {
+      "tag": "公告",
+      "id": "#0105",
+      "date": "114.07.26",
+      "isoDate": "2025-07-26",
+      "timestamp": "2025-07-26T18:27:00.083+08:00",
+      "title": "搬遷至邊界內",
+      "content": "### 伺服器將在 8/9 限制邊界，請玩家搬至限制區域內，或請管理員遷移。\n\n1. 分流一\n  - 主世界：±20萬格\n  - 地　獄：±10萬格\n  - 終　界：±20萬格\n2. 分流二\n  - 主世界：±20萬格\n  - 地　獄：±10萬格\n  - 終　界：±10萬格",
+      "images": [],
+      "localImages": [],
+      "reactions": [],
+      "reactionCount": 0,
+      "discordId": "1398612563415011380",
+      "pinned": false,
+      "author": "神焰.cc",
+      "index": 115
     },
     {
       "tag": "更新",
@@ -2958,28 +2980,6 @@
       "index": 146
     },
     {
-      "tag": "公告",
-      "id": "#0100",
-      "date": "114.05.31",
-      "isoDate": "2025-05-31",
-      "timestamp": "2025-05-31T15:17:10.193+08:00",
-      "title": "海風社區系統上線啦",
-      "content": "由 @RiaDavies 提出的建議，社區系統於今日凌晨設定完畢（[更新#0196](https://discord.com/channels/1266311059552342078/1270267126011396152/1378041939320111157)），目前除社區對戰場地佈置中外皆可使用。\n- Discord 社區頻道： #▏．成立社區．▕\n- 社區資訊： #deleted-channel\n- 討論區域： #公會與社區",
-      "images": [],
-      "localImages": [],
-      "reactions": [
-        {
-          "emoji": "✅",
-          "count": 3
-        }
-      ],
-      "reactionCount": 3,
-      "discordId": "1378271070280220692",
-      "pinned": false,
-      "author": "神焰.cc",
-      "index": 147
-    },
-    {
       "tag": "更新",
       "id": "#0197",
       "date": "114.05.31",
@@ -3029,6 +3029,28 @@
       "pinned": false,
       "author": "神焰.cc",
       "index": 149
+    },
+    {
+      "tag": "公告",
+      "id": "#0100",
+      "date": "114.05.31",
+      "isoDate": "2025-05-31",
+      "timestamp": "2025-05-31T15:17:10.193+08:00",
+      "title": "海風社區系統上線啦",
+      "content": "由 @RiaDavies 提出的建議，社區系統於今日凌晨設定完畢（[更新#0196](https://discord.com/channels/1266311059552342078/1270267126011396152/1378041939320111157)），目前除社區對戰場地佈置中外皆可使用。\n- Discord 社區頻道： #▏．成立社區．▕\n- 社區資訊： #deleted-channel\n- 討論區域： #公會與社區",
+      "images": [],
+      "localImages": [],
+      "reactions": [
+        {
+          "emoji": "✅",
+          "count": 3
+        }
+      ],
+      "reactionCount": 3,
+      "discordId": "1378271070280220692",
+      "pinned": false,
+      "author": "神焰.cc",
+      "index": 147
     },
     {
       "tag": "更新",
@@ -3211,23 +3233,6 @@
       "index": 156
     },
     {
-      "tag": "更新",
-      "id": "#0190",
-      "date": "114.05.13",
-      "isoDate": "2025-05-13",
-      "timestamp": "2025-05-15T17:18:29.86+08:00",
-      "title": "新增伺服器標籤",
-      "content": "1. 我們抽到了 Discord 新功能[伺服器標籤](https://support.discord.com/hc/zh-tw/articles/31444248479639-伺服器標籤)，海風標籤為「我是風子」。",
-      "images": [],
-      "localImages": [],
-      "reactions": [],
-      "reactionCount": 0,
-      "discordId": "1372503397567299594",
-      "pinned": false,
-      "author": "神焰.cc",
-      "index": 157
-    },
-    {
       "tag": "維護",
       "id": "#0018",
       "date": "114.05.15",
@@ -3248,6 +3253,23 @@
       "pinned": false,
       "author": "跩.der",
       "index": 158
+    },
+    {
+      "tag": "更新",
+      "id": "#0190",
+      "date": "114.05.13",
+      "isoDate": "2025-05-13",
+      "timestamp": "2025-05-15T17:18:29.86+08:00",
+      "title": "新增伺服器標籤",
+      "content": "1. 我們抽到了 Discord 新功能[伺服器標籤](https://support.discord.com/hc/zh-tw/articles/31444248479639-伺服器標籤)，海風標籤為「我是風子」。",
+      "images": [],
+      "localImages": [],
+      "reactions": [],
+      "reactionCount": 0,
+      "discordId": "1372503397567299594",
+      "pinned": false,
+      "author": "神焰.cc",
+      "index": 157
     },
     {
       "tag": "更新",
@@ -3409,6 +3431,40 @@
     },
     {
       "tag": "活動",
+      "id": "#0022",
+      "date": "114.05.02",
+      "isoDate": "2025-05-02",
+      "timestamp": "2025-08-06T17:55:36.799+08:00",
+      "title": "海風誕辰系列活動",
+      "content": "### 1. 海風生日普天同慶\n-# 「海風徐徐、星辰移轉」\n\n - 8/6 ~ 8/13進入海貓貓的小窩可領取\n  - 風汐碎片 + 鑽石 + 稱號「海風見證者」 + 「海風一周年慶祝蛋糕」\n\n### 2. 海風：序\n-# 一點過去的碎片，記錄了你和海貓貓的起源......\n-# 前往「你」的家，換回你和他的回憶。\n\n- 此為常駐副本，與海風誕辰一同推出\n- 領取任務請至海貓貓的小窩，與海貓貓對話即可接受任務\n- 座標server 1 x:2 y:94 z:254，可經由大廳聯外道路尋訪\n- 任務順序\n  - 海風:序\n  - 撿了一隻貓\n  - 貓一直響，怎麼回事？\n  - 我是，海貓貓！！\n- 完成所有任務將獲得 4風汐碎片 + 「暮下」(盾牌)",
+      "images": [],
+      "localImages": [],
+      "reactions": [
+        {
+          "emoji": "🇨",
+          "count": 5
+        },
+        {
+          "emoji": "🇦",
+          "count": 5
+        },
+        {
+          "emoji": "🇹",
+          "count": 5
+        },
+        {
+          "emoji": "🎉",
+          "count": 3
+        }
+      ],
+      "reactionCount": 18,
+      "discordId": "1402590930871128106",
+      "pinned": false,
+      "author": "燕子",
+      "index": 108
+    },
+    {
+      "tag": "活動",
       "id": "#0018",
       "date": "114.05.02",
       "isoDate": "2025-05-02",
@@ -3463,23 +3519,6 @@
       "index": 168
     },
     {
-      "tag": "維護",
-      "id": "#0016",
-      "date": "114.04.30",
-      "isoDate": "2025-04-30",
-      "timestamp": "2025-04-30T23:33:56.764+08:00",
-      "title": "緊急維護通知",
-      "content": "伺服器錯誤，緊急關閉。",
-      "images": [],
-      "localImages": [],
-      "reactions": [],
-      "reactionCount": 0,
-      "discordId": "1367162064266596422",
-      "pinned": false,
-      "author": "[石來運轉]Lapis von Windesburg",
-      "index": 169
-    },
-    {
       "tag": "更新",
       "id": "#0183",
       "date": "114.04.30",
@@ -3495,6 +3534,23 @@
       "pinned": false,
       "author": "神焰.cc",
       "index": 170
+    },
+    {
+      "tag": "維護",
+      "id": "#0016",
+      "date": "114.04.30",
+      "isoDate": "2025-04-30",
+      "timestamp": "2025-04-30T23:33:56.764+08:00",
+      "title": "緊急維護通知",
+      "content": "伺服器錯誤，緊急關閉。",
+      "images": [],
+      "localImages": [],
+      "reactions": [],
+      "reactionCount": 0,
+      "discordId": "1367162064266596422",
+      "pinned": false,
+      "author": "[石來運轉]Lapis von Windesburg",
+      "index": 169
     },
     {
       "tag": "更新",
@@ -3514,23 +3570,6 @@
       "index": 171
     },
     {
-      "tag": "公告",
-      "id": "#0097",
-      "date": "114.04.25",
-      "isoDate": "2025-04-25",
-      "timestamp": "2025-04-25T19:45:30.341+08:00",
-      "title": "個人傳送點故障",
-      "content": "在 04/16~04/25 設定的個人傳送點因 [更新#0173](https://discord.com/channels/1266311059552342078/1270267126011396152/1361966376612401282) 時設定問題，會造成傳送點無法傳送，請自行重設或請管理員協助，造成不便敬請見諒。",
-      "images": [],
-      "localImages": [],
-      "reactions": [],
-      "reactionCount": 0,
-      "discordId": "1365292636034044024",
-      "pinned": false,
-      "author": "神焰.cc",
-      "index": 172
-    },
-    {
       "tag": "更新",
       "id": "#0181",
       "date": "114.04.25",
@@ -3548,21 +3587,21 @@
       "index": 173
     },
     {
-      "tag": "維護",
-      "id": "#0015",
-      "date": "114.04.23",
-      "isoDate": "2025-04-23",
-      "timestamp": "2025-04-24T22:40:35.395+08:00",
-      "title": "緊急維護通知",
-      "content": "- 伺服器維護時間：\n  - ` 2025/04/24 22:40 ~ 2025/04/25 00:00 `。\n  - 維護可能提早結束。",
+      "tag": "公告",
+      "id": "#0097",
+      "date": "114.04.25",
+      "isoDate": "2025-04-25",
+      "timestamp": "2025-04-25T19:45:30.341+08:00",
+      "title": "個人傳送點故障",
+      "content": "在 04/16~04/25 設定的個人傳送點因 [更新#0173](https://discord.com/channels/1266311059552342078/1270267126011396152/1361966376612401282) 時設定問題，會造成傳送點無法傳送，請自行重設或請管理員協助，造成不便敬請見諒。",
       "images": [],
       "localImages": [],
       "reactions": [],
       "reactionCount": 0,
-      "discordId": "1364974309558321242",
+      "discordId": "1365292636034044024",
       "pinned": false,
       "author": "神焰.cc",
-      "index": 174
+      "index": 172
     },
     {
       "tag": "更新",
@@ -3585,6 +3624,23 @@
       "pinned": false,
       "author": "神焰.cc",
       "index": 175
+    },
+    {
+      "tag": "維護",
+      "id": "#0015",
+      "date": "114.04.23",
+      "isoDate": "2025-04-23",
+      "timestamp": "2025-04-24T22:40:35.395+08:00",
+      "title": "緊急維護通知",
+      "content": "- 伺服器維護時間：\n  - ` 2025/04/24 22:40 ~ 2025/04/25 00:00 `。\n  - 維護可能提早結束。",
+      "images": [],
+      "localImages": [],
+      "reactions": [],
+      "reactionCount": 0,
+      "discordId": "1364974309558321242",
+      "pinned": false,
+      "author": "神焰.cc",
+      "index": 174
     },
     {
       "tag": "維護",
@@ -3806,23 +3862,6 @@
       "index": 186
     },
     {
-      "tag": "維護",
-      "id": "#0013",
-      "date": "114.04.12",
-      "isoDate": "2025-04-12",
-      "timestamp": "2025-04-14T23:32:22.175+08:00",
-      "title": "維護通知",
-      "content": "- 伺服器維護時間：\n  - ` 2025/04/15 01:00 ~ 2025/04/15 03:00 `。",
-      "images": [],
-      "localImages": [],
-      "reactions": [],
-      "reactionCount": 0,
-      "discordId": "1361363461682237823",
-      "pinned": false,
-      "author": "神焰.cc",
-      "index": 187
-    },
-    {
       "tag": "更新",
       "id": "#0171",
       "date": "114.04.14",
@@ -3866,23 +3905,6 @@
       "pinned": false,
       "author": "[石來運轉]Lapis von Windesburg",
       "index": 189
-    },
-    {
-      "tag": "維護",
-      "id": "#0012",
-      "date": "114.04.11",
-      "isoDate": "2025-04-11",
-      "timestamp": "2025-04-13T14:39:42.679+08:00",
-      "title": "維護通知",
-      "content": "- 伺服器維護時間：\n  - ` 2025/04/13 03:00 ~ 2025/04/13 03:40 `。",
-      "images": [],
-      "localImages": [],
-      "reactions": [],
-      "reactionCount": 0,
-      "discordId": "1360867025974726676",
-      "pinned": false,
-      "author": "神焰.cc",
-      "index": 190
     },
     {
       "tag": "公告",
@@ -3930,6 +3952,40 @@
       "pinned": false,
       "author": "神焰.cc",
       "index": 192
+    },
+    {
+      "tag": "維護",
+      "id": "#0013",
+      "date": "114.04.12",
+      "isoDate": "2025-04-12",
+      "timestamp": "2025-04-14T23:32:22.175+08:00",
+      "title": "維護通知",
+      "content": "- 伺服器維護時間：\n  - ` 2025/04/15 01:00 ~ 2025/04/15 03:00 `。",
+      "images": [],
+      "localImages": [],
+      "reactions": [],
+      "reactionCount": 0,
+      "discordId": "1361363461682237823",
+      "pinned": false,
+      "author": "神焰.cc",
+      "index": 187
+    },
+    {
+      "tag": "維護",
+      "id": "#0012",
+      "date": "114.04.11",
+      "isoDate": "2025-04-11",
+      "timestamp": "2025-04-13T14:39:42.679+08:00",
+      "title": "維護通知",
+      "content": "- 伺服器維護時間：\n  - ` 2025/04/13 03:00 ~ 2025/04/13 03:40 `。",
+      "images": [],
+      "localImages": [],
+      "reactions": [],
+      "reactionCount": 0,
+      "discordId": "1360867025974726676",
+      "pinned": false,
+      "author": "神焰.cc",
+      "index": 190
     },
     {
       "tag": "維護",
@@ -4032,23 +4088,6 @@
       "index": 197
     },
     {
-      "tag": "公告",
-      "id": "#0095",
-      "date": "114.04.06",
-      "isoDate": "2025-04-06",
-      "timestamp": "2025-04-06T12:16:17.084+08:00",
-      "title": "補救高延遲",
-      "content": "風子們好，現在高延遲的情況得以修復了！\n- 使用新的連線位址` tw.seawind.cc `。\n  - 感謝 @藍色底線五一二五 修復此問題。",
-      "images": [],
-      "localImages": [],
-      "reactions": [],
-      "reactionCount": 0,
-      "discordId": "1358294216433733794",
-      "pinned": false,
-      "author": "神焰.cc",
-      "index": 198
-    },
-    {
       "tag": "更新",
       "id": "#0165",
       "date": "114.04.06",
@@ -4069,6 +4108,23 @@
       "pinned": false,
       "author": "神焰.cc",
       "index": 199
+    },
+    {
+      "tag": "公告",
+      "id": "#0095",
+      "date": "114.04.06",
+      "isoDate": "2025-04-06",
+      "timestamp": "2025-04-06T12:16:17.084+08:00",
+      "title": "補救高延遲",
+      "content": "風子們好，現在高延遲的情況得以修復了！\n- 使用新的連線位址` tw.seawind.cc `。\n  - 感謝 @藍色底線五一二五 修復此問題。",
+      "images": [],
+      "localImages": [],
+      "reactions": [],
+      "reactionCount": 0,
+      "discordId": "1358294216433733794",
+      "pinned": false,
+      "author": "神焰.cc",
+      "index": 198
     },
     {
       "tag": "公告",
@@ -4250,23 +4306,6 @@
       "index": 206
     },
     {
-      "tag": "活動",
-      "id": "#0013",
-      "date": "114.04.02",
-      "isoDate": "2025-04-02",
-      "timestamp": "2025-04-02T16:52:50.107+08:00",
-      "title": "海風號-懷舊之旅",
-      "content": "搭乘海風號，穿梭時空，穿越回「純麥生存服」時代。\n\n目睹時間停止的瞬間，探索完好無損的歷史古蹟。\n\n也許可以找到被時間埋藏的寶藏、回憶或古蹟呢？\n\n- 類　　型　：　直達車\n- 座　　位　：　1~4 車\n- 票　　價　：　免費\n- 日　　期　：　未知\n\n- 沿途停靠　：\n  1. 純麥時代（112-10-21 ~ 113-08-06）\n\n- 本活動為四梯次開放，本次為第一梯次。\n- 點擊下方報名此活動。\n\n- 本活動場地預計將於分流三進行，並使用多世界插件進入。\n- 特別感謝「藍冰伺服器 @藍色底線五一二五 」為此次活動提供場地。",
-      "images": [],
-      "localImages": [],
-      "reactions": [],
-      "reactionCount": 0,
-      "discordId": "1356914261154070558",
-      "pinned": false,
-      "author": "神焰.cc",
-      "index": 207
-    },
-    {
       "tag": "更新",
       "id": "#0161",
       "date": "114.04.02",
@@ -4286,6 +4325,23 @@
       "pinned": false,
       "author": "神焰.cc",
       "index": 208
+    },
+    {
+      "tag": "活動",
+      "id": "#0013",
+      "date": "114.04.02",
+      "isoDate": "2025-04-02",
+      "timestamp": "2025-04-02T16:52:50.107+08:00",
+      "title": "海風號-懷舊之旅",
+      "content": "搭乘海風號，穿梭時空，穿越回「純麥生存服」時代。\n\n目睹時間停止的瞬間，探索完好無損的歷史古蹟。\n\n也許可以找到被時間埋藏的寶藏、回憶或古蹟呢？\n\n- 類　　型　：　直達車\n- 座　　位　：　1~4 車\n- 票　　價　：　免費\n- 日　　期　：　未知\n\n- 沿途停靠　：\n  1. 純麥時代（112-10-21 ~ 113-08-06）\n\n- 本活動為四梯次開放，本次為第一梯次。\n- 點擊下方報名此活動。\n\n- 本活動場地預計將於分流三進行，並使用多世界插件進入。\n- 特別感謝「藍冰伺服器 @藍色底線五一二五 」為此次活動提供場地。",
+      "images": [],
+      "localImages": [],
+      "reactions": [],
+      "reactionCount": 0,
+      "discordId": "1356914261154070558",
+      "pinned": false,
+      "author": "神焰.cc",
+      "index": 207
     },
     {
       "tag": "更新",
@@ -4325,28 +4381,6 @@
       "pinned": false,
       "author": "神焰.cc",
       "index": 210
-    },
-    {
-      "tag": "公告",
-      "id": "#0093",
-      "date": "114.03.30",
-      "isoDate": "2025-03-30",
-      "timestamp": "2025-03-30T22:12:21.395+08:00",
-      "title": "壞啦",
-      "content": " - 昨日硬碟空間滿了，所以公開傳送點與 NPC商店 在資料儲存時損壞。\n   - ~~有需求在自己重創一下~~。",
-      "images": [],
-      "localImages": [],
-      "reactions": [
-        {
-          "emoji": "emoji_12",
-          "count": 4
-        }
-      ],
-      "reactionCount": 4,
-      "discordId": "1355907507767476417",
-      "pinned": false,
-      "author": "跩.der",
-      "index": 211
     },
     {
       "tag": "更新",
@@ -4410,6 +4444,45 @@
     },
     {
       "tag": "公告",
+      "id": "#0093",
+      "date": "114.03.30",
+      "isoDate": "2025-03-30",
+      "timestamp": "2025-03-30T22:12:21.395+08:00",
+      "title": "壞啦",
+      "content": " - 昨日硬碟空間滿了，所以公開傳送點與 NPC商店 在資料儲存時損壞。\n   - ~~有需求在自己重創一下~~。",
+      "images": [],
+      "localImages": [],
+      "reactions": [
+        {
+          "emoji": "emoji_12",
+          "count": 4
+        }
+      ],
+      "reactionCount": 4,
+      "discordId": "1355907507767476417",
+      "pinned": false,
+      "author": "跩.der",
+      "index": 211
+    },
+    {
+      "tag": "更新",
+      "id": "#0155",
+      "date": "114.03.29",
+      "isoDate": "2025-03-29",
+      "timestamp": "2025-03-29T00:03:06.545+08:00",
+      "title": "分二更新",
+      "content": "1. 開放分流二。\n  - 因分流二性質特殊，不支援自訂物品插件，包含任何除原版外的特殊物品（例如：鋼劍、各階魚套等裝備、武器或物品）。\n  - 因此請勿在分流二使用這些物品，以免東西損壞。",
+      "images": [],
+      "localImages": [],
+      "reactions": [],
+      "reactionCount": 0,
+      "discordId": "1355210603815370802",
+      "pinned": false,
+      "author": "神焰.cc",
+      "index": 217
+    },
+    {
+      "tag": "公告",
       "id": "#0092",
       "date": "114.03.29",
       "isoDate": "2025-03-29",
@@ -4448,40 +4521,6 @@
     },
     {
       "tag": "更新",
-      "id": "#0155",
-      "date": "114.03.29",
-      "isoDate": "2025-03-29",
-      "timestamp": "2025-03-29T00:03:06.545+08:00",
-      "title": "分二更新",
-      "content": "1. 開放分流二。\n  - 因分流二性質特殊，不支援自訂物品插件，包含任何除原版外的特殊物品（例如：鋼劍、各階魚套等裝備、武器或物品）。\n  - 因此請勿在分流二使用這些物品，以免東西損壞。",
-      "images": [],
-      "localImages": [],
-      "reactions": [],
-      "reactionCount": 0,
-      "discordId": "1355210603815370802",
-      "pinned": false,
-      "author": "神焰.cc",
-      "index": 217
-    },
-    {
-      "tag": "公告",
-      "id": "#0090",
-      "date": "114.03.28",
-      "isoDate": "2025-03-28",
-      "timestamp": "2025-03-28T23:35:50.657+08:00",
-      "title": "必看",
-      "content": "# :report_button::report_button::report_button: 必看 :report_button::report_button::report_button:\n因分流二性質特殊，\n不支援自訂物品插件，\n包含任何除原版外的特殊物品（例如：鋼劍、各階魚套等裝備、武器或物品）。\n因此，\n# 請勿在分流二使用這些物品，以免東西損壞。",
-      "images": [],
-      "localImages": [],
-      "reactions": [],
-      "reactionCount": 0,
-      "discordId": "1355203742403662005",
-      "pinned": false,
-      "author": "跩.der",
-      "index": 218
-    },
-    {
-      "tag": "更新",
       "id": "#0154",
       "date": "114.03.28",
       "isoDate": "2025-03-28",
@@ -4496,23 +4535,6 @@
       "pinned": false,
       "author": "跩.der",
       "index": 219
-    },
-    {
-      "tag": "維護",
-      "id": "#0010",
-      "date": "114.03.28",
-      "isoDate": "2025-03-28",
-      "timestamp": "2025-03-28T17:46:16.364+08:00",
-      "title": "維護通知",
-      "content": "- 昨天沒維護好，所以需要做分流二的資料同步設定。\n  - 感謝 @藍色底線五一二五 協助設定。\n  - 時間：` 2025/03/28　17:50 ~ 2025/03/28　20:00 `。",
-      "images": [],
-      "localImages": [],
-      "reactions": [],
-      "reactionCount": 0,
-      "discordId": "1355115769842765915",
-      "pinned": false,
-      "author": "神焰.cc",
-      "index": 220
     },
     {
       "tag": "更新",
@@ -4539,6 +4561,40 @@
       "pinned": false,
       "author": "神焰.cc",
       "index": 221
+    },
+    {
+      "tag": "公告",
+      "id": "#0090",
+      "date": "114.03.28",
+      "isoDate": "2025-03-28",
+      "timestamp": "2025-03-28T23:35:50.657+08:00",
+      "title": "必看",
+      "content": "# :report_button::report_button::report_button: 必看 :report_button::report_button::report_button:\n因分流二性質特殊，\n不支援自訂物品插件，\n包含任何除原版外的特殊物品（例如：鋼劍、各階魚套等裝備、武器或物品）。\n因此，\n# 請勿在分流二使用這些物品，以免東西損壞。",
+      "images": [],
+      "localImages": [],
+      "reactions": [],
+      "reactionCount": 0,
+      "discordId": "1355203742403662005",
+      "pinned": false,
+      "author": "跩.der",
+      "index": 218
+    },
+    {
+      "tag": "維護",
+      "id": "#0010",
+      "date": "114.03.28",
+      "isoDate": "2025-03-28",
+      "timestamp": "2025-03-28T17:46:16.364+08:00",
+      "title": "維護通知",
+      "content": "- 昨天沒維護好，所以需要做分流二的資料同步設定。\n  - 感謝 @藍色底線五一二五 協助設定。\n  - 時間：` 2025/03/28　17:50 ~ 2025/03/28　20:00 `。",
+      "images": [],
+      "localImages": [],
+      "reactions": [],
+      "reactionCount": 0,
+      "discordId": "1355115769842765915",
+      "pinned": false,
+      "author": "神焰.cc",
+      "index": 220
     },
     {
       "tag": "維護",
@@ -4725,25 +4781,6 @@
       "index": 229
     },
     {
-      "tag": "活動",
-      "id": "#0012",
-      "date": "114.03.19",
-      "isoDate": "2025-03-19",
-      "timestamp": "2025-03-19T12:06:53.407+08:00",
-      "title": "第一屆MCU聯合盃MBR麥塊大逃殺競賽",
-      "content": "第一屆MCU聯合盃MBR麥塊大逃殺競賽開始報名了！本次本會結合所有合作夥伴與友好團隊，快來報名吧！\n\nMBR麥塊大逃殺是由CBC在參考APEX等吃雞遊戲後，製作的一張大逃殺吃雞主題的地圖。無自然回血、毒圈等元素應有盡有。\n- 參加獎勵：\n  1. 特殊稱號×1。\n  2. 風幣×500。\n- 冠軍獎勵：\n  1. 特殊稱號×2。\n  2. 風幣×2000。\n  3. 會員資格×2月。\n### 報名資訊\n- 報名時間即日起至4/1日。\n- 以三人為一組報名，僅接受具正版Minecraft者報名。\n- 場次選擇：\n  1. 4/12\n  - 16:00、20:00\n  2. 4/13\n  - 16:00、20:00\n### 活動地點\n- 待報名截止後，由《麥塊社群聯合會》公布伺服器 IP 位址。\n\n報名網址：[表單連結](https://forms.gle/7mixhxG3QXzjbyCx6)",
-      "images": [
-        "https://cdn.discordapp.com/attachments/1270267176812806255/1351769346619473930/M.C.U_-1.png?ex=69e303ce&is=69e1b24e&hm=8232838f6d379c73d948e64384eb86b844689769163d7c292e969972079601f7&"
-      ],
-      "localImages": [],
-      "reactions": [],
-      "reactionCount": 0,
-      "discordId": "1351768870620364832",
-      "pinned": false,
-      "author": "神焰.cc",
-      "index": 230
-    },
-    {
       "tag": "更新",
       "id": "#0147",
       "date": "114.03.19",
@@ -4768,6 +4805,25 @@
       "pinned": false,
       "author": "神焰.cc",
       "index": 231
+    },
+    {
+      "tag": "活動",
+      "id": "#0012",
+      "date": "114.03.19",
+      "isoDate": "2025-03-19",
+      "timestamp": "2025-03-19T12:06:53.407+08:00",
+      "title": "第一屆MCU聯合盃MBR麥塊大逃殺競賽",
+      "content": "第一屆MCU聯合盃MBR麥塊大逃殺競賽開始報名了！本次本會結合所有合作夥伴與友好團隊，快來報名吧！\n\nMBR麥塊大逃殺是由CBC在參考APEX等吃雞遊戲後，製作的一張大逃殺吃雞主題的地圖。無自然回血、毒圈等元素應有盡有。\n- 參加獎勵：\n  1. 特殊稱號×1。\n  2. 風幣×500。\n- 冠軍獎勵：\n  1. 特殊稱號×2。\n  2. 風幣×2000。\n  3. 會員資格×2月。\n### 報名資訊\n- 報名時間即日起至4/1日。\n- 以三人為一組報名，僅接受具正版Minecraft者報名。\n- 場次選擇：\n  1. 4/12\n  - 16:00、20:00\n  2. 4/13\n  - 16:00、20:00\n### 活動地點\n- 待報名截止後，由《麥塊社群聯合會》公布伺服器 IP 位址。\n\n報名網址：[表單連結](https://forms.gle/7mixhxG3QXzjbyCx6)",
+      "images": [
+        "https://cdn.discordapp.com/attachments/1270267176812806255/1351769346619473930/M.C.U_-1.png?ex=69e303ce&is=69e1b24e&hm=8232838f6d379c73d948e64384eb86b844689769163d7c292e969972079601f7&"
+      ],
+      "localImages": [],
+      "reactions": [],
+      "reactionCount": 0,
+      "discordId": "1351768870620364832",
+      "pinned": false,
+      "author": "神焰.cc",
+      "index": 230
     },
     {
       "tag": "更新",
@@ -4881,6 +4937,36 @@
       "index": 237
     },
     {
+      "tag": "公告",
+      "id": "#0086",
+      "date": "114.03.14",
+      "isoDate": "2025-03-14",
+      "timestamp": "2025-03-14T22:27:20.634+08:00",
+      "title": "實體，降！",
+      "content": "- 我們將陸續更改分流一的生物設定。\n  - 比如怪物生的更少更慢之類的。\n- 感謝[藍冰伺服器](https://discord.com/channels/1266311059552342078/1349240204204183573)幫我們：\n  - 加開了分流二，目前還在測試中。\n  - 更換了網路商，設定網路、分流。\n  - 更多的技術支援。\n- ||今天情人節， @羽瓏.jpg 說：「我要吃巧克力」。||",
+      "images": [],
+      "localImages": [],
+      "reactions": [
+        {
+          "emoji": "mc_end_rod",
+          "count": 2
+        },
+        {
+          "emoji": "fujiwaradepressed",
+          "count": 2
+        },
+        {
+          "emoji": "✅",
+          "count": 1
+        }
+      ],
+      "reactionCount": 5,
+      "discordId": "1350113073599483924",
+      "pinned": false,
+      "author": "神焰.cc",
+      "index": 240
+    },
+    {
       "tag": "維護",
       "id": "#0008",
       "date": "114.03.14",
@@ -4919,36 +5005,6 @@
       "index": 239
     },
     {
-      "tag": "公告",
-      "id": "#0086",
-      "date": "114.03.14",
-      "isoDate": "2025-03-14",
-      "timestamp": "2025-03-14T22:27:20.634+08:00",
-      "title": "實體，降！",
-      "content": "- 我們將陸續更改分流一的生物設定。\n  - 比如怪物生的更少更慢之類的。\n- 感謝[藍冰伺服器](https://discord.com/channels/1266311059552342078/1349240204204183573)幫我們：\n  - 加開了分流二，目前還在測試中。\n  - 更換了網路商，設定網路、分流。\n  - 更多的技術支援。\n- ||今天情人節， @羽瓏.jpg 說：「我要吃巧克力」。||",
-      "images": [],
-      "localImages": [],
-      "reactions": [
-        {
-          "emoji": "mc_end_rod",
-          "count": 2
-        },
-        {
-          "emoji": "fujiwaradepressed",
-          "count": 2
-        },
-        {
-          "emoji": "✅",
-          "count": 1
-        }
-      ],
-      "reactionCount": 5,
-      "discordId": "1350113073599483924",
-      "pinned": false,
-      "author": "神焰.cc",
-      "index": 240
-    },
-    {
       "tag": "維護",
       "id": "#0006",
       "date": "114.03.14",
@@ -4966,23 +5022,6 @@
       "index": 241
     },
     {
-      "tag": "維護",
-      "id": "#0005",
-      "date": "114.03.12",
-      "isoDate": "2025-03-12",
-      "timestamp": "2025-03-12T16:34:15.09+08:00",
-      "title": "停機通知",
-      "content": "- 由於台電停電，伺服器暫停運行。\n  - 時間：不知道，等臺電恢復。",
-      "images": [],
-      "localImages": [],
-      "reactions": [],
-      "reactionCount": 0,
-      "discordId": "1349299439256469565",
-      "pinned": false,
-      "author": "神焰.cc",
-      "index": 242
-    },
-    {
       "tag": "公告",
       "id": "#0085",
       "date": "114.03.12",
@@ -4998,6 +5037,23 @@
       "pinned": false,
       "author": "神焰.cc",
       "index": 243
+    },
+    {
+      "tag": "維護",
+      "id": "#0005",
+      "date": "114.03.12",
+      "isoDate": "2025-03-12",
+      "timestamp": "2025-03-12T16:34:15.09+08:00",
+      "title": "停機通知",
+      "content": "- 由於台電停電，伺服器暫停運行。\n  - 時間：不知道，等臺電恢復。",
+      "images": [],
+      "localImages": [],
+      "reactions": [],
+      "reactionCount": 0,
+      "discordId": "1349299439256469565",
+      "pinned": false,
+      "author": "神焰.cc",
+      "index": 242
     },
     {
       "tag": "公告",
@@ -5329,28 +5385,6 @@
       "index": 256
     },
     {
-      "tag": "活動",
-      "id": "#0011",
-      "date": "114.02.26",
-      "isoDate": "2025-02-26",
-      "timestamp": "2025-02-27T10:04:39.551+08:00",
-      "title": "獵殺時刻",
-      "content": "## :bundle:　「　獵殺時刻　」\n-# @活動通知  /  114.02.26 /  #0011\n\n### :chest_minecart:　遊戲模式\n- 採局數形式。\n  - 活動共3局。\n  - 每局10分鐘。\n### :chest_minecart:　分數計算\n- 場上將有數隻`被狩獵者`。\n  - 擊殺`本尊+5分`。\n  - 擊殺`分身+1分`。\n### :chest_minecart:　獲勝條件\n- 分數最高者即贏家。\n### 遊戲開始\n1. ` 被狩獵者 `將會被隨機傳送到地圖上的某個位置並開始逃亡。\n2. 所有玩家將在開局` 10秒 `後獲得` 被狩獵者 `的大致座標（每60秒更新一次）。\n3. 玩家需要在時間內擊殺` 被狩獵者 `。\n\n- 被狩獵者的能力：\n  - 血量增強。\n  - 移動速度加成，能夠短暫 衝刺 或 瞬間位移（冷卻時間 30 秒）。\n  - 隱身技能，能在短時間內消失（5秒，冷卻60秒）。\n  - 反擊技能，釋放一次範圍傷害，擊退周圍玩家（冷卻60秒）。\n- 分流：測試分流。\n  - 使用指令` /server server2 `前往。\n- 時間為` 2025/03/02 14：00 `。",
-      "images": [],
-      "localImages": [],
-      "reactions": [
-        {
-          "emoji": "Augh",
-          "count": 3
-        }
-      ],
-      "reactionCount": 3,
-      "discordId": "1344490352886939649",
-      "pinned": false,
-      "author": "跩.der",
-      "index": 257
-    },
-    {
       "tag": "公告",
       "id": "#0077",
       "date": "114.02.26",
@@ -5375,6 +5409,28 @@
       "pinned": false,
       "author": "神焰.cc",
       "index": 258
+    },
+    {
+      "tag": "活動",
+      "id": "#0011",
+      "date": "114.02.26",
+      "isoDate": "2025-02-26",
+      "timestamp": "2025-02-27T10:04:39.551+08:00",
+      "title": "獵殺時刻",
+      "content": "## :bundle:　「　獵殺時刻　」\n-# @活動通知  /  114.02.26 /  #0011\n\n### :chest_minecart:　遊戲模式\n- 採局數形式。\n  - 活動共3局。\n  - 每局10分鐘。\n### :chest_minecart:　分數計算\n- 場上將有數隻`被狩獵者`。\n  - 擊殺`本尊+5分`。\n  - 擊殺`分身+1分`。\n### :chest_minecart:　獲勝條件\n- 分數最高者即贏家。\n### 遊戲開始\n1. ` 被狩獵者 `將會被隨機傳送到地圖上的某個位置並開始逃亡。\n2. 所有玩家將在開局` 10秒 `後獲得` 被狩獵者 `的大致座標（每60秒更新一次）。\n3. 玩家需要在時間內擊殺` 被狩獵者 `。\n\n- 被狩獵者的能力：\n  - 血量增強。\n  - 移動速度加成，能夠短暫 衝刺 或 瞬間位移（冷卻時間 30 秒）。\n  - 隱身技能，能在短時間內消失（5秒，冷卻60秒）。\n  - 反擊技能，釋放一次範圍傷害，擊退周圍玩家（冷卻60秒）。\n- 分流：測試分流。\n  - 使用指令` /server server2 `前往。\n- 時間為` 2025/03/02 14：00 `。",
+      "images": [],
+      "localImages": [],
+      "reactions": [
+        {
+          "emoji": "Augh",
+          "count": 3
+        }
+      ],
+      "reactionCount": 3,
+      "discordId": "1344490352886939649",
+      "pinned": false,
+      "author": "跩.der",
+      "index": 257
     },
     {
       "tag": "更新",
@@ -5825,6 +5881,23 @@
       "index": 275
     },
     {
+      "tag": "公告",
+      "id": "#0074",
+      "date": "114.01.25",
+      "isoDate": "2025-01-25",
+      "timestamp": "2025-01-25T04:52:52.962+08:00",
+      "title": "海風開放公測中",
+      "content": "- 已恢復：\n  - 玩家背包、終界箱資料。\n  - 部分NPC。\n\n- 已修正：\n  - 血量、移動速度等數值錯誤。\n\n- 版本、插件不斷的需要更新，因此伺服器改回公測狀態。\n  - 擁有內測資格的玩家可於分流二（測試服）搶先體驗更新內容。\n  - 內容會一直更動。\n  - 資料與分流一不互通。\n  - 未來更新方式轉為整體更新。\n  - 減少發生只有更新一個內容的情況。\n  - 減少發生修復更新的情況。\n  - 增加穩定性。\n\n- 遊玩過程中有疑慮可以開啟#▏客服中心．🔔▕提問。\n  - 遊玩過程中遇到bug請回報。\n  - 部分內容測試中，尚未完全。\n\n- 歡迎玩家填寫調查問卷。\n  - 填寫遊戲ID欄用途為紀錄填寫玩家為及數量。\n  - [調查問卷連結](https://forms.gle/VN6zEtK8XzJyWiY58)。",
+      "images": [],
+      "localImages": [],
+      "reactions": [],
+      "reactionCount": 0,
+      "discordId": "1332453092201070603",
+      "pinned": false,
+      "author": "神焰.cc",
+      "index": 277
+    },
+    {
       "tag": "活動",
       "id": "#0010",
       "date": "114.01.25",
@@ -5845,79 +5918,6 @@
       "pinned": false,
       "author": "神焰.cc",
       "index": 276
-    },
-    {
-      "tag": "公告",
-      "id": "#0074",
-      "date": "114.01.25",
-      "isoDate": "2025-01-25",
-      "timestamp": "2025-01-25T04:52:52.962+08:00",
-      "title": "海風開放公測中",
-      "content": "- 已恢復：\n  - 玩家背包、終界箱資料。\n  - 部分NPC。\n\n- 已修正：\n  - 血量、移動速度等數值錯誤。\n\n- 版本、插件不斷的需要更新，因此伺服器改回公測狀態。\n  - 擁有內測資格的玩家可於分流二（測試服）搶先體驗更新內容。\n  - 內容會一直更動。\n  - 資料與分流一不互通。\n  - 未來更新方式轉為整體更新。\n  - 減少發生只有更新一個內容的情況。\n  - 減少發生修復更新的情況。\n  - 增加穩定性。\n\n- 遊玩過程中有疑慮可以開啟#▏客服中心．🔔▕提問。\n  - 遊玩過程中遇到bug請回報。\n  - 部分內容測試中，尚未完全。\n\n- 歡迎玩家填寫調查問卷。\n  - 填寫遊戲ID欄用途為紀錄填寫玩家為及數量。\n  - [調查問卷連結](https://forms.gle/VN6zEtK8XzJyWiY58)。",
-      "images": [],
-      "localImages": [],
-      "reactions": [],
-      "reactionCount": 0,
-      "discordId": "1332453092201070603",
-      "pinned": false,
-      "author": "神焰.cc",
-      "index": 277
-    },
-    {
-      "tag": "公告",
-      "id": "#0073",
-      "date": "114.01.24",
-      "isoDate": "2025-01-24",
-      "timestamp": "2025-01-24T23:15:29.738+08:00",
-      "title": "更換",
-      "content": "把身上的特殊物品扔出\n等待幾秒再撿起\n可更換成最新狀態\n\n如有發現物品不可更換請開單或 @跩.der",
-      "images": [],
-      "localImages": [],
-      "reactions": [],
-      "reactionCount": 0,
-      "discordId": "1332368185965416559",
-      "pinned": false,
-      "author": "跩.der",
-      "index": 278
-    },
-    {
-      "tag": "維護",
-      "id": "#0002",
-      "date": "114.01.24",
-      "isoDate": "2025-01-24",
-      "timestamp": "2025-01-24T14:01:51.23+08:00",
-      "title": "版本升級",
-      "content": "- 此次維護將研究玩家資料，我好像發現了什麼。\n  - 時間：` 2025/01/24　14:00 ~ 2025/01/25　22:30 `。\n  - 方式：部分時段關閉。",
-      "images": [],
-      "localImages": [],
-      "reactions": [],
-      "reactionCount": 0,
-      "discordId": "1332228857444696167",
-      "pinned": false,
-      "author": "神焰.cc",
-      "index": 279
-    },
-    {
-      "tag": "公告",
-      "id": "#0072",
-      "date": "114.01.24",
-      "isoDate": "2025-01-24",
-      "timestamp": "2025-01-24T11:08:22.667+08:00",
-      "title": "回報",
-      "content": "~~# 回報資料遺失記得留ID~~\n~~## 不然不知道你是誰~~\n~~### 不會通靈~~\n# 神焰說先不用開單",
-      "images": [],
-      "localImages": [],
-      "reactions": [
-        {
-          "emoji": "😂",
-          "count": 5
-        }
-      ],
-      "reactionCount": 5,
-      "discordId": "1332185200767270993",
-      "pinned": false,
-      "author": "跩.der",
-      "index": 280
     },
     {
       "tag": "更新",
@@ -5944,6 +5944,62 @@
       "pinned": false,
       "author": "神焰.cc",
       "index": 281
+    },
+    {
+      "tag": "公告",
+      "id": "#0073",
+      "date": "114.01.24",
+      "isoDate": "2025-01-24",
+      "timestamp": "2025-01-24T23:15:29.738+08:00",
+      "title": "更換",
+      "content": "把身上的特殊物品扔出\n等待幾秒再撿起\n可更換成最新狀態\n\n如有發現物品不可更換請開單或 @跩.der",
+      "images": [],
+      "localImages": [],
+      "reactions": [],
+      "reactionCount": 0,
+      "discordId": "1332368185965416559",
+      "pinned": false,
+      "author": "跩.der",
+      "index": 278
+    },
+    {
+      "tag": "公告",
+      "id": "#0072",
+      "date": "114.01.24",
+      "isoDate": "2025-01-24",
+      "timestamp": "2025-01-24T11:08:22.667+08:00",
+      "title": "回報",
+      "content": "~~# 回報資料遺失記得留ID~~\n~~## 不然不知道你是誰~~\n~~### 不會通靈~~\n# 神焰說先不用開單",
+      "images": [],
+      "localImages": [],
+      "reactions": [
+        {
+          "emoji": "😂",
+          "count": 5
+        }
+      ],
+      "reactionCount": 5,
+      "discordId": "1332185200767270993",
+      "pinned": false,
+      "author": "跩.der",
+      "index": 280
+    },
+    {
+      "tag": "維護",
+      "id": "#0002",
+      "date": "114.01.24",
+      "isoDate": "2025-01-24",
+      "timestamp": "2025-01-24T14:01:51.23+08:00",
+      "title": "版本升級",
+      "content": "- 此次維護將研究玩家資料，我好像發現了什麼。\n  - 時間：` 2025/01/24　14:00 ~ 2025/01/25　22:30 `。\n  - 方式：部分時段關閉。",
+      "images": [],
+      "localImages": [],
+      "reactions": [],
+      "reactionCount": 0,
+      "discordId": "1332228857444696167",
+      "pinned": false,
+      "author": "神焰.cc",
+      "index": 279
     },
     {
       "tag": "更新",
@@ -5982,6 +6038,28 @@
       "pinned": false,
       "author": "神焰.cc",
       "index": 283
+    },
+    {
+      "tag": "更新",
+      "id": "#0120",
+      "date": "114.01.22",
+      "isoDate": "2025-01-22",
+      "timestamp": "2025-01-22T04:29:24.122+08:00",
+      "title": "1.21.3小更新",
+      "content": "- 新增箱子商店、名叫社區的公會插件。\n- 修改Tab、右側資訊欄、玩家名條底下的欄位資訊。\n- 修改生物生成方式、伺服器視野距離等。",
+      "images": [],
+      "localImages": [],
+      "reactions": [
+        {
+          "emoji": "Augh",
+          "count": 2
+        }
+      ],
+      "reactionCount": 2,
+      "discordId": "1331360019500765204",
+      "pinned": false,
+      "author": "神焰.cc",
+      "index": 286
     },
     {
       "tag": "公告",
@@ -6031,28 +6109,6 @@
       "index": 285
     },
     {
-      "tag": "更新",
-      "id": "#0120",
-      "date": "114.01.22",
-      "isoDate": "2025-01-22",
-      "timestamp": "2025-01-22T04:29:24.122+08:00",
-      "title": "1.21.3小更新",
-      "content": "- 新增箱子商店、名叫社區的公會插件。\n- 修改Tab、右側資訊欄、玩家名條底下的欄位資訊。\n- 修改生物生成方式、伺服器視野距離等。",
-      "images": [],
-      "localImages": [],
-      "reactions": [
-        {
-          "emoji": "Augh",
-          "count": 2
-        }
-      ],
-      "reactionCount": 2,
-      "discordId": "1331360019500765204",
-      "pinned": false,
-      "author": "神焰.cc",
-      "index": 286
-    },
-    {
       "tag": "活動",
       "id": "#0009",
       "date": "114.01.21",
@@ -6079,6 +6135,40 @@
       "index": 287
     },
     {
+      "tag": "更新",
+      "id": "#0119",
+      "date": "114.01.18",
+      "isoDate": "2025-01-18",
+      "timestamp": "2025-01-19T00:04:07.394+08:00",
+      "title": "線上商城資料庫更換",
+      "content": "- 線上商城改成使用MySQL資料庫。",
+      "images": [],
+      "localImages": [],
+      "reactions": [],
+      "reactionCount": 0,
+      "discordId": "1330206096308047962",
+      "pinned": false,
+      "author": "神焰.cc",
+      "index": 289
+    },
+    {
+      "tag": "更新",
+      "id": "#0118",
+      "date": "114.01.18",
+      "isoDate": "2025-01-18",
+      "timestamp": "2025-01-18T14:40:13.788+08:00",
+      "title": "頻道小更新",
+      "content": "- 更改了Discord頻道排版。\n- 更改了各通知頻道的格式。",
+      "images": [],
+      "localImages": [],
+      "reactions": [],
+      "reactionCount": 0,
+      "discordId": "1330064187879198750",
+      "pinned": false,
+      "author": "神焰.cc",
+      "index": 291
+    },
+    {
       "tag": "公告",
       "id": "#0069",
       "date": "114.01.18",
@@ -6101,23 +6191,6 @@
       "index": 288
     },
     {
-      "tag": "更新",
-      "id": "#0119",
-      "date": "114.01.18",
-      "isoDate": "2025-01-18",
-      "timestamp": "2025-01-19T00:04:07.394+08:00",
-      "title": "線上商城資料庫更換",
-      "content": "- 線上商城改成使用MySQL資料庫。",
-      "images": [],
-      "localImages": [],
-      "reactions": [],
-      "reactionCount": 0,
-      "discordId": "1330206096308047962",
-      "pinned": false,
-      "author": "神焰.cc",
-      "index": 289
-    },
-    {
       "tag": "公告",
       "id": "#0068",
       "date": "114.01.18",
@@ -6133,23 +6206,6 @@
       "pinned": false,
       "author": "海風伺服器",
       "index": 290
-    },
-    {
-      "tag": "更新",
-      "id": "#0118",
-      "date": "114.01.18",
-      "isoDate": "2025-01-18",
-      "timestamp": "2025-01-18T14:40:13.788+08:00",
-      "title": "頻道小更新",
-      "content": "- 更改了Discord頻道排版。\n- 更改了各通知頻道的格式。",
-      "images": [],
-      "localImages": [],
-      "reactions": [],
-      "reactionCount": 0,
-      "discordId": "1330064187879198750",
-      "pinned": false,
-      "author": "神焰.cc",
-      "index": 291
     },
     {
       "tag": "更新",
@@ -6529,6 +6585,49 @@
     },
     {
       "tag": "公告",
+      "id": "#0061",
+      "date": "113.12.39",
+      "isoDate": "2024-12-39",
+      "timestamp": "2024-12-29T00:22:05.853+08:00",
+      "title": "緊急修復重啟",
+      "content": "- 已修復中華民國停滯的錯誤(原先不會轉動)。",
+      "images": [
+        "https://cdn.discordapp.com/attachments/1270267062308175922/1322600474196836432/image.png?ex=69dbc6ad&is=69da752d&hm=f47dfaabfac6850dd4f4f43791136c271ac999cfd6938fcd0b9dd0ef97e7e424&"
+      ],
+      "localImages": [
+        "assets/announcements/0061_0.webp"
+      ],
+      "reactions": [
+        {
+          "emoji": "😂",
+          "count": 2
+        }
+      ],
+      "reactionCount": 2,
+      "discordId": "1322600474515607632",
+      "pinned": false,
+      "author": "神焰.cc",
+      "index": 314
+    },
+    {
+      "tag": "更新",
+      "id": "#0104",
+      "date": "113.12.31",
+      "isoDate": "2024-12-31",
+      "timestamp": "2024-12-31T00:17:20.979+08:00",
+      "title": "新增頻道",
+      "content": "- 新增頻道：\n  - [Discord 頻道](https://discord.com/channels/1266311059552342078/1323283748145463387)\n  - [Discord 頻道](https://discord.com/channels/1266311059552342078/1317843656815673364)",
+      "images": [],
+      "localImages": [],
+      "reactions": [],
+      "reactionCount": 0,
+      "discordId": "1323324055398383777",
+      "pinned": false,
+      "author": "神焰.cc",
+      "index": 310
+    },
+    {
+      "tag": "公告",
       "id": "#0064",
       "date": "113.12.31",
       "isoDate": "2024-12-31",
@@ -6574,23 +6673,6 @@
       "pinned": false,
       "author": "跩.der",
       "index": 309
-    },
-    {
-      "tag": "更新",
-      "id": "#0104",
-      "date": "113.12.31",
-      "isoDate": "2024-12-31",
-      "timestamp": "2024-12-31T00:17:20.979+08:00",
-      "title": "新增頻道",
-      "content": "- 新增頻道：\n  - [Discord 頻道](https://discord.com/channels/1266311059552342078/1323283748145463387)\n  - [Discord 頻道](https://discord.com/channels/1266311059552342078/1317843656815673364)",
-      "images": [],
-      "localImages": [],
-      "reactions": [],
-      "reactionCount": 0,
-      "discordId": "1323324055398383777",
-      "pinned": false,
-      "author": "神焰.cc",
-      "index": 310
     },
     {
       "tag": "公告",
@@ -6689,32 +6771,6 @@
       "pinned": false,
       "author": "神焰.cc",
       "index": 313
-    },
-    {
-      "tag": "公告",
-      "id": "#0061",
-      "date": "113.12.39",
-      "isoDate": "2024-12-39",
-      "timestamp": "2024-12-29T00:22:05.853+08:00",
-      "title": "緊急修復重啟",
-      "content": "- 已修復中華民國停滯的錯誤(原先不會轉動)。",
-      "images": [
-        "https://cdn.discordapp.com/attachments/1270267062308175922/1322600474196836432/image.png?ex=69dbc6ad&is=69da752d&hm=f47dfaabfac6850dd4f4f43791136c271ac999cfd6938fcd0b9dd0ef97e7e424&"
-      ],
-      "localImages": [
-        "assets/announcements/0061_0.webp"
-      ],
-      "reactions": [
-        {
-          "emoji": "😂",
-          "count": 2
-        }
-      ],
-      "reactionCount": 2,
-      "discordId": "1322600474515607632",
-      "pinned": false,
-      "author": "神焰.cc",
-      "index": 314
     },
     {
       "tag": "更新",
@@ -6961,28 +7017,6 @@
       "index": 325
     },
     {
-      "tag": "活動",
-      "id": "#0005",
-      "date": "113.12.14",
-      "isoDate": "2024-12-14",
-      "timestamp": "2024-12-14T21:51:34.134+08:00",
-      "title": "海風聖誕村",
-      "content": "### - 活動地點\n使用指令`/res tp XMAS`即可傳送至本次活動場地。\n使用指令`/menu`或`蹲下+丟棄鍵`打開「選單」，再點擊「傳送」，以打開「官方傳送點介面」，點擊活動名稱之按鈕即可傳送至活動場地。\n大廳也有地標點及傳送\n### - 活動時間\n活動開放：` 2024/12/14 ~ 2025/01/25 00:00 `。\n活動商城：` 2024/12/16 ~ 2025/02/01 00:00`。",
-      "images": [],
-      "localImages": [],
-      "reactions": [
-        {
-          "emoji": "Augh",
-          "count": 1
-        }
-      ],
-      "reactionCount": 1,
-      "discordId": "1317489162622074960",
-      "pinned": false,
-      "author": "跩.der",
-      "index": 326
-    },
-    {
       "tag": "更新",
       "id": "#0092",
       "date": "113.12.14",
@@ -7006,6 +7040,28 @@
       "pinned": false,
       "author": "神焰.cc",
       "index": 327
+    },
+    {
+      "tag": "活動",
+      "id": "#0005",
+      "date": "113.12.14",
+      "isoDate": "2024-12-14",
+      "timestamp": "2024-12-14T21:51:34.134+08:00",
+      "title": "海風聖誕村",
+      "content": "### - 活動地點\n使用指令`/res tp XMAS`即可傳送至本次活動場地。\n使用指令`/menu`或`蹲下+丟棄鍵`打開「選單」，再點擊「傳送」，以打開「官方傳送點介面」，點擊活動名稱之按鈕即可傳送至活動場地。\n大廳也有地標點及傳送\n### - 活動時間\n活動開放：` 2024/12/14 ~ 2025/01/25 00:00 `。\n活動商城：` 2024/12/16 ~ 2025/02/01 00:00`。",
+      "images": [],
+      "localImages": [],
+      "reactions": [
+        {
+          "emoji": "Augh",
+          "count": 1
+        }
+      ],
+      "reactionCount": 1,
+      "discordId": "1317489162622074960",
+      "pinned": false,
+      "author": "跩.der",
+      "index": 326
     },
     {
       "tag": "更新",
@@ -7032,40 +7088,6 @@
       "pinned": false,
       "author": "神焰.cc",
       "index": 328
-    },
-    {
-      "tag": "公告",
-      "id": "#0060",
-      "date": "113.12.13",
-      "isoDate": "2024-12-13",
-      "timestamp": "2024-12-13T17:59:42.724+08:00",
-      "title": "伺服器已開啟",
-      "content": "- 伺服器維護完畢。",
-      "images": [],
-      "localImages": [],
-      "reactions": [],
-      "reactionCount": 0,
-      "discordId": "1317068426073739324",
-      "pinned": false,
-      "author": "神焰.cc",
-      "index": 329
-    },
-    {
-      "tag": "公告",
-      "id": "#0059",
-      "date": "113.12.13",
-      "isoDate": "2024-12-13",
-      "timestamp": "2024-12-13T16:29:37.971+08:00",
-      "title": "伺服器維護",
-      "content": "- 伺服器將在` 2024/12/13 16:30 ~ 2024/12/13 17:00 `進行維護。",
-      "images": [],
-      "localImages": [],
-      "reactions": [],
-      "reactionCount": 0,
-      "discordId": "1317045756896481300",
-      "pinned": false,
-      "author": "神焰.cc",
-      "index": 330
     },
     {
       "tag": "更新",
@@ -7104,6 +7126,40 @@
       "pinned": false,
       "author": "神焰.cc",
       "index": 332
+    },
+    {
+      "tag": "公告",
+      "id": "#0060",
+      "date": "113.12.13",
+      "isoDate": "2024-12-13",
+      "timestamp": "2024-12-13T17:59:42.724+08:00",
+      "title": "伺服器已開啟",
+      "content": "- 伺服器維護完畢。",
+      "images": [],
+      "localImages": [],
+      "reactions": [],
+      "reactionCount": 0,
+      "discordId": "1317068426073739324",
+      "pinned": false,
+      "author": "神焰.cc",
+      "index": 329
+    },
+    {
+      "tag": "公告",
+      "id": "#0059",
+      "date": "113.12.13",
+      "isoDate": "2024-12-13",
+      "timestamp": "2024-12-13T16:29:37.971+08:00",
+      "title": "伺服器維護",
+      "content": "- 伺服器將在` 2024/12/13 16:30 ~ 2024/12/13 17:00 `進行維護。",
+      "images": [],
+      "localImages": [],
+      "reactions": [],
+      "reactionCount": 0,
+      "discordId": "1317045756896481300",
+      "pinned": false,
+      "author": "神焰.cc",
+      "index": 330
     },
     {
       "tag": "更新",
@@ -7386,24 +7442,20 @@
     },
     {
       "tag": "公告",
-      "id": "#0054",
+      "id": "#0097",
       "date": "113.11.30",
       "isoDate": "2024-11-30",
-      "timestamp": "2024-11-30T14:34:33.758+08:00",
-      "title": "工具或裝備附魔錯誤",
-      "content": "- 近日發現部分玩家附魔的` 工具或裝備 `和沒附魔的感覺一樣，如你也遇到了此情況，請立即開單聯絡#▏客服中心．🔔▕回報。",
-      "images": [
-        "https://cdn.discordapp.com/attachments/1270267062308175922/1312305756070219837/image.png?ex=69db3cf9&is=69d9eb79&hm=a32f378d2a1b8d26a59c132e3f40023e3265ccfe31dc3aebbe134eb72a8a910a&"
-      ],
-      "localImages": [
-        "assets/announcements/0054_0.webp"
-      ],
+      "timestamp": "2024-11-30T14:27:08.514+08:00",
+      "title": "維護完畢",
+      "content": "- 伺服器維護完畢，已開放進入。\n  - 詳細更新請至#▏更新．📙▕ 查看更新編號[#0097](https://discord.com/channels/1266311059552342078/1270267126011396152/1312303111582384239)之資訊。\n  - 目前伺服器有許多錯誤。如發現了` 錯誤、不正確、奇怪的東西 `請至#▏客服中心．🔔▕開單並詳細的描述，感謝玩家。",
+      "images": [],
+      "localImages": [],
       "reactions": [],
       "reactionCount": 0,
-      "discordId": "1312305756275474462",
+      "discordId": "1312303888787046464",
       "pinned": false,
       "author": "神焰.cc",
-      "index": 345
+      "index": 347
     },
     {
       "tag": "更新",
@@ -7425,23 +7477,6 @@
       "pinned": false,
       "author": "神焰.cc",
       "index": 346
-    },
-    {
-      "tag": "公告",
-      "id": "#0097",
-      "date": "113.11.30",
-      "isoDate": "2024-11-30",
-      "timestamp": "2024-11-30T14:27:08.514+08:00",
-      "title": "維護完畢",
-      "content": "- 伺服器維護完畢，已開放進入。\n  - 詳細更新請至#▏更新．📙▕ 查看更新編號[#0097](https://discord.com/channels/1266311059552342078/1270267126011396152/1312303111582384239)之資訊。\n  - 目前伺服器有許多錯誤。如發現了` 錯誤、不正確、奇怪的東西 `請至#▏客服中心．🔔▕開單並詳細的描述，感謝玩家。",
-      "images": [],
-      "localImages": [],
-      "reactions": [],
-      "reactionCount": 0,
-      "discordId": "1312303888787046464",
-      "pinned": false,
-      "author": "神焰.cc",
-      "index": 347
     },
     {
       "tag": "更新",
@@ -7487,20 +7522,24 @@
     },
     {
       "tag": "公告",
-      "id": "#0052",
-      "date": "113.11.18",
-      "isoDate": "2024-11-18",
-      "timestamp": "2024-11-30T12:31:39.807+08:00",
-      "title": "伺服器維護",
-      "content": "- 伺服器將在` 2024/11/30 12:35 ~ 2024/11/30 21:00 `進行維護。\n  - 維護結束時將公告。",
-      "images": [],
-      "localImages": [],
+      "id": "#0054",
+      "date": "113.11.30",
+      "isoDate": "2024-11-30",
+      "timestamp": "2024-11-30T14:34:33.758+08:00",
+      "title": "工具或裝備附魔錯誤",
+      "content": "- 近日發現部分玩家附魔的` 工具或裝備 `和沒附魔的感覺一樣，如你也遇到了此情況，請立即開單聯絡#▏客服中心．🔔▕回報。",
+      "images": [
+        "https://cdn.discordapp.com/attachments/1270267062308175922/1312305756070219837/image.png?ex=69db3cf9&is=69d9eb79&hm=a32f378d2a1b8d26a59c132e3f40023e3265ccfe31dc3aebbe134eb72a8a910a&"
+      ],
+      "localImages": [
+        "assets/announcements/0054_0.webp"
+      ],
       "reactions": [],
       "reactionCount": 0,
-      "discordId": "1312274827683299390",
+      "discordId": "1312305756275474462",
       "pinned": false,
       "author": "神焰.cc",
-      "index": 349
+      "index": 345
     },
     {
       "tag": "更新",
@@ -7708,6 +7747,45 @@
       "index": 359
     },
     {
+      "tag": "更新",
+      "id": "#0071",
+      "date": "113.11.18",
+      "isoDate": "2024-11-18",
+      "timestamp": "2024-11-18T20:28:32.322+08:00",
+      "title": "更新海風指南",
+      "content": "- 更新#▏海風指南．🧭▕：\n  - [Discord 頻道](https://discord.com/channels/1266311059552342078/1308045524250656819)\n  - [Discord 頻道](https://discord.com/channels/1266311059552342078/1308044464874586232)",
+      "images": [],
+      "localImages": [],
+      "reactions": [
+        {
+          "emoji": "👍🏻",
+          "count": 1
+        }
+      ],
+      "reactionCount": 1,
+      "discordId": "1308046182882476042",
+      "pinned": false,
+      "author": "神焰.cc",
+      "index": 361
+    },
+    {
+      "tag": "公告",
+      "id": "#0052",
+      "date": "113.11.18",
+      "isoDate": "2024-11-18",
+      "timestamp": "2024-11-30T12:31:39.807+08:00",
+      "title": "伺服器維護",
+      "content": "- 伺服器將在` 2024/11/30 12:35 ~ 2024/11/30 21:00 `進行維護。\n  - 維護結束時將公告。",
+      "images": [],
+      "localImages": [],
+      "reactions": [],
+      "reactionCount": 0,
+      "discordId": "1312274827683299390",
+      "pinned": false,
+      "author": "神焰.cc",
+      "index": 349
+    },
+    {
       "tag": "公告",
       "id": "#0048",
       "date": "113.11.18",
@@ -7732,28 +7810,6 @@
       "pinned": false,
       "author": "神焰.cc",
       "index": 360
-    },
-    {
-      "tag": "更新",
-      "id": "#0071",
-      "date": "113.11.18",
-      "isoDate": "2024-11-18",
-      "timestamp": "2024-11-18T20:28:32.322+08:00",
-      "title": "更新海風指南",
-      "content": "- 更新#▏海風指南．🧭▕：\n  - [Discord 頻道](https://discord.com/channels/1266311059552342078/1308045524250656819)\n  - [Discord 頻道](https://discord.com/channels/1266311059552342078/1308044464874586232)",
-      "images": [],
-      "localImages": [],
-      "reactions": [
-        {
-          "emoji": "👍🏻",
-          "count": 1
-        }
-      ],
-      "reactionCount": 1,
-      "discordId": "1308046182882476042",
-      "pinned": false,
-      "author": "神焰.cc",
-      "index": 361
     },
     {
       "tag": "更新",
@@ -7952,23 +8008,6 @@
       "index": 371
     },
     {
-      "tag": "公告",
-      "id": "#0045",
-      "date": "113.11.03",
-      "isoDate": "2024-11-03",
-      "timestamp": "2024-11-03T04:16:08.748+08:00",
-      "title": "新增一坨進度（成就）",
-      "content": "- 伺服器新增了一堆新進度（成就），給已經沒目標的玩家解鎖（？）",
-      "images": [],
-      "localImages": [],
-      "reactions": [],
-      "reactionCount": 0,
-      "discordId": "1302365654212415630",
-      "pinned": false,
-      "author": "神焰.cc",
-      "index": 372
-    },
-    {
       "tag": "更新",
       "id": "#0062",
       "date": "113.11.03",
@@ -7984,6 +8023,23 @@
       "pinned": false,
       "author": "神焰.cc",
       "index": 373
+    },
+    {
+      "tag": "公告",
+      "id": "#0045",
+      "date": "113.11.03",
+      "isoDate": "2024-11-03",
+      "timestamp": "2024-11-03T04:16:08.748+08:00",
+      "title": "新增一坨進度（成就）",
+      "content": "- 伺服器新增了一堆新進度（成就），給已經沒目標的玩家解鎖（？）",
+      "images": [],
+      "localImages": [],
+      "reactions": [],
+      "reactionCount": 0,
+      "discordId": "1302365654212415630",
+      "pinned": false,
+      "author": "神焰.cc",
+      "index": 372
     },
     {
       "tag": "活動",
@@ -8148,6 +8204,28 @@
       "index": 382
     },
     {
+      "tag": "更新",
+      "id": "#0057",
+      "date": "113.10.20",
+      "isoDate": "2024-10-20",
+      "timestamp": "2024-10-20T01:37:42.927+08:00",
+      "title": "海風官方繪師開樓了！？",
+      "content": "- 新增頻道#▏海貓貓窩．🎨▕，此處將放置關於海風吉祥物「海貓貓」的圖文，可以多多支持或提出看法。\n  - 作品歸創作者所有，未經創作者允許的儲存、轉載、使用、改圖、印製、盈利……一律禁止。",
+      "images": [],
+      "localImages": [],
+      "reactions": [
+        {
+          "emoji": "AD_owohehe",
+          "count": 4
+        }
+      ],
+      "reactionCount": 4,
+      "discordId": "1297252353791230063",
+      "pinned": false,
+      "author": "神焰.cc",
+      "index": 385
+    },
+    {
       "tag": "公告",
       "id": "#0040",
       "date": "113.10.20",
@@ -8180,28 +8258,6 @@
       "pinned": false,
       "author": "神焰.cc",
       "index": 384
-    },
-    {
-      "tag": "更新",
-      "id": "#0057",
-      "date": "113.10.20",
-      "isoDate": "2024-10-20",
-      "timestamp": "2024-10-20T01:37:42.927+08:00",
-      "title": "海風官方繪師開樓了！？",
-      "content": "- 新增頻道#▏海貓貓窩．🎨▕，此處將放置關於海風吉祥物「海貓貓」的圖文，可以多多支持或提出看法。\n  - 作品歸創作者所有，未經創作者允許的儲存、轉載、使用、改圖、印製、盈利……一律禁止。",
-      "images": [],
-      "localImages": [],
-      "reactions": [
-        {
-          "emoji": "AD_owohehe",
-          "count": 4
-        }
-      ],
-      "reactionCount": 4,
-      "discordId": "1297252353791230063",
-      "pinned": false,
-      "author": "神焰.cc",
-      "index": 385
     },
     {
       "tag": "公告",
@@ -8436,23 +8492,6 @@
       "index": 397
     },
     {
-      "tag": "公告",
-      "id": "#0035",
-      "date": "113.10.04",
-      "isoDate": "2024-10-04",
-      "timestamp": "2024-10-04T13:19:37.898+08:00",
-      "title": "伺服器開啟",
-      "content": "- 維護補償可使用` /wkkit mail `打開禮包郵箱領取。",
-      "images": [],
-      "localImages": [],
-      "reactions": [],
-      "reactionCount": 0,
-      "discordId": "1291630790932959273",
-      "pinned": false,
-      "author": "神焰.cc",
-      "index": 398
-    },
-    {
       "tag": "更新",
       "id": "#0047",
       "date": "113.10.04",
@@ -8468,6 +8507,23 @@
       "pinned": false,
       "author": "神焰.cc",
       "index": 399
+    },
+    {
+      "tag": "公告",
+      "id": "#0035",
+      "date": "113.10.04",
+      "isoDate": "2024-10-04",
+      "timestamp": "2024-10-04T13:19:37.898+08:00",
+      "title": "伺服器開啟",
+      "content": "- 維護補償可使用` /wkkit mail `打開禮包郵箱領取。",
+      "images": [],
+      "localImages": [],
+      "reactions": [],
+      "reactionCount": 0,
+      "discordId": "1291630790932959273",
+      "pinned": false,
+      "author": "神焰.cc",
+      "index": 398
     },
     {
       "tag": "公告",
@@ -8512,27 +8568,6 @@
       "index": 400
     },
     {
-      "tag": "公告",
-      "id": "#0033",
-      "date": "113.10.02",
-      "isoDate": "2024-10-02",
-      "timestamp": "2024-10-02T23:30:44.266+08:00",
-      "title": "改了被改的暱稱",
-      "content": " - 新增了` 不想改暱稱 `身分組，如果暱稱不想被改的玩家，可以到<id:customize>領取。",
-      "images": [
-        "https://cdn.discordapp.com/attachments/1270267062308175922/1291059804822966332/image.png?ex=69dbbaa4&is=69da6924&hm=5915e05a4ecc6e31cf8692917c03ba615a2c403e0c777c383759bf52dda03b29&"
-      ],
-      "localImages": [
-        "assets/announcements/0033_0.webp"
-      ],
-      "reactions": [],
-      "reactionCount": 0,
-      "discordId": "1291059805095591946",
-      "pinned": false,
-      "author": "神焰.cc",
-      "index": 401
-    },
-    {
       "tag": "更新",
       "id": "#0046",
       "date": "113.10.02",
@@ -8557,6 +8592,27 @@
       "pinned": false,
       "author": "神焰.cc",
       "index": 402
+    },
+    {
+      "tag": "公告",
+      "id": "#0033",
+      "date": "113.10.02",
+      "isoDate": "2024-10-02",
+      "timestamp": "2024-10-02T23:30:44.266+08:00",
+      "title": "改了被改的暱稱",
+      "content": " - 新增了` 不想改暱稱 `身分組，如果暱稱不想被改的玩家，可以到<id:customize>領取。",
+      "images": [
+        "https://cdn.discordapp.com/attachments/1270267062308175922/1291059804822966332/image.png?ex=69dbbaa4&is=69da6924&hm=5915e05a4ecc6e31cf8692917c03ba615a2c403e0c777c383759bf52dda03b29&"
+      ],
+      "localImages": [
+        "assets/announcements/0033_0.webp"
+      ],
+      "reactions": [],
+      "reactionCount": 0,
+      "discordId": "1291059805095591946",
+      "pinned": false,
+      "author": "神焰.cc",
+      "index": 401
     },
     {
       "tag": "公告",
@@ -8691,6 +8747,40 @@
       "index": 408
     },
     {
+      "tag": "更新",
+      "id": "#0043",
+      "date": "113.09.22",
+      "isoDate": "2024-09-22",
+      "timestamp": "2024-09-22T12:31:26.035+08:00",
+      "title": "選單音效更新",
+      "content": "- 更改選單點擊音效。",
+      "images": [],
+      "localImages": [],
+      "reactions": [],
+      "reactionCount": 0,
+      "discordId": "1287270007193079831",
+      "pinned": false,
+      "author": "羽瓏.jpg",
+      "index": 411
+    },
+    {
+      "tag": "公告",
+      "id": "#0028",
+      "date": "113.09.22",
+      "isoDate": "2024-09-22",
+      "timestamp": "2024-09-22T16:48:18.355+08:00",
+      "title": "線上商城更換",
+      "content": " - 伺服器將更換線上商城系統，更換完畢前請勿販售物品。\n   - 請將上架的物品取回，期限為` 10/01 00:00 `，逾時不候。",
+      "images": [],
+      "localImages": [],
+      "reactions": [],
+      "reactionCount": 0,
+      "discordId": "1287334651148369941",
+      "pinned": false,
+      "author": "神焰.cc",
+      "index": 410
+    },
+    {
       "tag": "活動",
       "id": "#0002",
       "date": "113.09.22",
@@ -8719,40 +8809,6 @@
       "pinned": false,
       "author": "跩.der",
       "index": 409
-    },
-    {
-      "tag": "公告",
-      "id": "#0028",
-      "date": "113.09.22",
-      "isoDate": "2024-09-22",
-      "timestamp": "2024-09-22T16:48:18.355+08:00",
-      "title": "線上商城更換",
-      "content": " - 伺服器將更換線上商城系統，更換完畢前請勿販售物品。\n   - 請將上架的物品取回，期限為` 10/01 00:00 `，逾時不候。",
-      "images": [],
-      "localImages": [],
-      "reactions": [],
-      "reactionCount": 0,
-      "discordId": "1287334651148369941",
-      "pinned": false,
-      "author": "神焰.cc",
-      "index": 410
-    },
-    {
-      "tag": "更新",
-      "id": "#0043",
-      "date": "113.09.22",
-      "isoDate": "2024-09-22",
-      "timestamp": "2024-09-22T12:31:26.035+08:00",
-      "title": "選單音效更新",
-      "content": "- 更改選單點擊音效。",
-      "images": [],
-      "localImages": [],
-      "reactions": [],
-      "reactionCount": 0,
-      "discordId": "1287270007193079831",
-      "pinned": false,
-      "author": "羽瓏.jpg",
-      "index": 411
     },
     {
       "tag": "更新",
@@ -8936,6 +8992,23 @@
       "index": 419
     },
     {
+      "tag": "更新",
+      "id": "#0038",
+      "date": "113.09.14",
+      "isoDate": "2024-09-14",
+      "timestamp": "2024-09-14T13:04:15.03+08:00",
+      "title": "修改介面格式",
+      "content": "- 選單和領地列表格式翻新。",
+      "images": [],
+      "localImages": [],
+      "reactions": [],
+      "reactionCount": 0,
+      "discordId": "1284379162832015423",
+      "pinned": false,
+      "author": "神焰.cc",
+      "index": 421
+    },
+    {
       "tag": "公告",
       "id": "#0024",
       "date": "113.09.14",
@@ -8956,23 +9029,6 @@
       "pinned": false,
       "author": "神焰.cc",
       "index": 420
-    },
-    {
-      "tag": "更新",
-      "id": "#0038",
-      "date": "113.09.14",
-      "isoDate": "2024-09-14",
-      "timestamp": "2024-09-14T13:04:15.03+08:00",
-      "title": "修改介面格式",
-      "content": "- 選單和領地列表格式翻新。",
-      "images": [],
-      "localImages": [],
-      "reactions": [],
-      "reactionCount": 0,
-      "discordId": "1284379162832015423",
-      "pinned": false,
-      "author": "神焰.cc",
-      "index": 421
     },
     {
       "tag": "更新",
@@ -9120,6 +9176,36 @@
       "index": 429
     },
     {
+      "tag": "更新",
+      "id": "#0031",
+      "date": "113.09.08",
+      "isoDate": "2024-09-08",
+      "timestamp": "2024-09-08T21:44:25.396+08:00",
+      "title": "更新日誌",
+      "content": "- 修改生物的生成方式、時間......等。\n- 新增：\n  - 實體上限系統。\n  - 編號資料庫線上查詢系統。",
+      "images": [
+        "https://cdn.discordapp.com/attachments/1270267126011396152/1282335741472411658/image.png?ex=69dba1b9&is=69da5039&hm=b741b40d440962c3a4cd98172250becdc1e13ccfbe12d3701b133f356ad9aed6&"
+      ],
+      "localImages": [
+        "assets/announcements/0031_0.webp"
+      ],
+      "reactions": [
+        {
+          "emoji": "emoji_280",
+          "count": 1
+        },
+        {
+          "emoji": "✅",
+          "count": 1
+        }
+      ],
+      "reactionCount": 2,
+      "discordId": "1282335741401239654",
+      "pinned": false,
+      "author": "神焰.cc",
+      "index": 431
+    },
+    {
       "tag": "公告",
       "id": "#0021",
       "date": "113.09.08",
@@ -9156,36 +9242,6 @@
       "pinned": false,
       "author": "羽瓏.jpg",
       "index": 430
-    },
-    {
-      "tag": "更新",
-      "id": "#0031",
-      "date": "113.09.08",
-      "isoDate": "2024-09-08",
-      "timestamp": "2024-09-08T21:44:25.396+08:00",
-      "title": "更新日誌",
-      "content": "- 修改生物的生成方式、時間......等。\n- 新增：\n  - 實體上限系統。\n  - 編號資料庫線上查詢系統。",
-      "images": [
-        "https://cdn.discordapp.com/attachments/1270267126011396152/1282335741472411658/image.png?ex=69dba1b9&is=69da5039&hm=b741b40d440962c3a4cd98172250becdc1e13ccfbe12d3701b133f356ad9aed6&"
-      ],
-      "localImages": [
-        "assets/announcements/0031_0.webp"
-      ],
-      "reactions": [
-        {
-          "emoji": "emoji_280",
-          "count": 1
-        },
-        {
-          "emoji": "✅",
-          "count": 1
-        }
-      ],
-      "reactionCount": 2,
-      "discordId": "1282335741401239654",
-      "pinned": false,
-      "author": "神焰.cc",
-      "index": 431
     },
     {
       "tag": "公告",
@@ -9435,23 +9491,6 @@
       "index": 440
     },
     {
-      "tag": "公告",
-      "id": "#0015",
-      "date": "113.08.31",
-      "isoDate": "2024-08-31",
-      "timestamp": "2024-08-31T15:51:59.523+08:00",
-      "title": "伺服器重啟",
-      "content": "- 伺服器將在` 2024/08/31 16:00 `重啟。\n - 將調整容器預覽部分功能。",
-      "images": [],
-      "localImages": [],
-      "reactions": [],
-      "reactionCount": 0,
-      "discordId": "1279347946256859137",
-      "pinned": false,
-      "author": "神焰.cc",
-      "index": 441
-    },
-    {
       "tag": "更新",
       "id": "#0026",
       "date": "113.08.31",
@@ -9470,20 +9509,20 @@
     },
     {
       "tag": "公告",
-      "id": "#0014",
-      "date": "113.08.30",
-      "isoDate": "2024-08-30",
-      "timestamp": "2024-08-30T15:56:30.399+08:00",
+      "id": "#0015",
+      "date": "113.08.31",
+      "isoDate": "2024-08-31",
+      "timestamp": "2024-08-31T15:51:59.523+08:00",
       "title": "伺服器重啟",
-      "content": "- 伺服器將在` 2024/08/30 16:00 `重啟。",
+      "content": "- 伺服器將在` 2024/08/31 16:00 `重啟。\n - 將調整容器預覽部分功能。",
       "images": [],
       "localImages": [],
       "reactions": [],
       "reactionCount": 0,
-      "discordId": "1278986694527553546",
+      "discordId": "1279347946256859137",
       "pinned": false,
       "author": "神焰.cc",
-      "index": 443
+      "index": 441
     },
     {
       "tag": "更新",
@@ -9520,6 +9559,23 @@
       "index": 445
     },
     {
+      "tag": "公告",
+      "id": "#0014",
+      "date": "113.08.30",
+      "isoDate": "2024-08-30",
+      "timestamp": "2024-08-30T15:56:30.399+08:00",
+      "title": "伺服器重啟",
+      "content": "- 伺服器將在` 2024/08/30 16:00 `重啟。",
+      "images": [],
+      "localImages": [],
+      "reactions": [],
+      "reactionCount": 0,
+      "discordId": "1278986694527553546",
+      "pinned": false,
+      "author": "神焰.cc",
+      "index": 443
+    },
+    {
       "tag": "更新",
       "id": "#0023",
       "date": "113.08.29",
@@ -9554,6 +9610,23 @@
       "index": 447
     },
     {
+      "tag": "更新",
+      "id": "#0022",
+      "date": "113.08.28",
+      "isoDate": "2024-08-28",
+      "timestamp": "2024-08-28T03:10:46.206+08:00",
+      "title": "更新日誌",
+      "content": "- [Discord 頻道](https://discord.com/channels/1266311059552342078/1270266349272170579新增重啟時間)",
+      "images": [],
+      "localImages": [],
+      "reactions": [],
+      "reactionCount": 0,
+      "discordId": "1278069214883610757",
+      "pinned": false,
+      "author": "神焰.cc",
+      "index": 449
+    },
+    {
       "tag": "公告",
       "id": "#0012",
       "date": "113.08.28",
@@ -9574,23 +9647,6 @@
       "pinned": false,
       "author": "神焰.cc",
       "index": 448
-    },
-    {
-      "tag": "更新",
-      "id": "#0022",
-      "date": "113.08.28",
-      "isoDate": "2024-08-28",
-      "timestamp": "2024-08-28T03:10:46.206+08:00",
-      "title": "更新日誌",
-      "content": "- [Discord 頻道](https://discord.com/channels/1266311059552342078/1270266349272170579新增重啟時間)",
-      "images": [],
-      "localImages": [],
-      "reactions": [],
-      "reactionCount": 0,
-      "discordId": "1278069214883610757",
-      "pinned": false,
-      "author": "神焰.cc",
-      "index": 449
     },
     {
       "tag": "公告",
@@ -9674,6 +9730,40 @@
       "index": 453
     },
     {
+      "tag": "更新",
+      "id": "#0017",
+      "date": "113.08.24",
+      "isoDate": "2024-08-24",
+      "timestamp": "2024-08-24T14:22:54.582+08:00",
+      "title": "﻿ :diamond:　「　更新日誌　」",
+      "content": "- 建材小舖新增商人。",
+      "images": [],
+      "localImages": [],
+      "reactions": [],
+      "reactionCount": 0,
+      "discordId": "1276788812890116177",
+      "pinned": false,
+      "author": "神焰.cc",
+      "index": 455
+    },
+    {
+      "tag": "更新",
+      "id": "#0016",
+      "date": "113.08.24",
+      "isoDate": "2024-08-24",
+      "timestamp": "2024-08-24T02:56:52.114+08:00",
+      "title": "﻿ :diamond:　「　更新日誌　」",
+      "content": "- 任務獎勵：\n  - `  A級 200元  `。\n  - `  B級 100元  `。\n  - `  C級 50元  `。\n  - `  D級 30元  `。\n  - `  E級 15元  `。\n  - `  F級 10元  `。",
+      "images": [],
+      "localImages": [],
+      "reactions": [],
+      "reactionCount": 0,
+      "discordId": "1276616164985929793",
+      "pinned": false,
+      "author": "神焰.cc",
+      "index": 457
+    },
+    {
       "tag": "公告",
       "id": "#0010",
       "date": "113.08.24",
@@ -9696,23 +9786,6 @@
       "index": 454
     },
     {
-      "tag": "更新",
-      "id": "#0017",
-      "date": "113.08.24",
-      "isoDate": "2024-08-24",
-      "timestamp": "2024-08-24T14:22:54.582+08:00",
-      "title": "﻿ :diamond:　「　更新日誌　」",
-      "content": "- 建材小舖新增商人。",
-      "images": [],
-      "localImages": [],
-      "reactions": [],
-      "reactionCount": 0,
-      "discordId": "1276788812890116177",
-      "pinned": false,
-      "author": "神焰.cc",
-      "index": 455
-    },
-    {
       "tag": "公告",
       "id": "#0009",
       "date": "113.08.24",
@@ -9728,23 +9801,6 @@
       "pinned": false,
       "author": "神焰.cc",
       "index": 456
-    },
-    {
-      "tag": "更新",
-      "id": "#0016",
-      "date": "113.08.24",
-      "isoDate": "2024-08-24",
-      "timestamp": "2024-08-24T02:56:52.114+08:00",
-      "title": "﻿ :diamond:　「　更新日誌　」",
-      "content": "- 任務獎勵：\n  - `  A級 200元  `。\n  - `  B級 100元  `。\n  - `  C級 50元  `。\n  - `  D級 30元  `。\n  - `  E級 15元  `。\n  - `  F級 10元  `。",
-      "images": [],
-      "localImages": [],
-      "reactions": [],
-      "reactionCount": 0,
-      "discordId": "1276616164985929793",
-      "pinned": false,
-      "author": "神焰.cc",
-      "index": 457
     },
     {
       "tag": "更新",
@@ -9933,6 +9989,23 @@
       "index": 467
     },
     {
+      "tag": "公告",
+      "id": "#0007",
+      "date": "113.08.16",
+      "isoDate": "2024-08-16",
+      "timestamp": "2024-08-16T13:37:53.072+08:00",
+      "title": "開放遊玩時間",
+      "content": "1. 伺服器今日開放時間：` 13:40 ~ 19:40 `。\n2. home點已經修復。",
+      "images": [],
+      "localImages": [],
+      "reactions": [],
+      "reactionCount": 0,
+      "discordId": "1273878379011244062",
+      "pinned": false,
+      "author": "神焰.cc",
+      "index": 470
+    },
+    {
       "tag": "更新",
       "id": "#0006",
       "date": "113.08.16",
@@ -9968,23 +10041,6 @@
     },
     {
       "tag": "公告",
-      "id": "#0007",
-      "date": "113.08.16",
-      "isoDate": "2024-08-16",
-      "timestamp": "2024-08-16T13:37:53.072+08:00",
-      "title": "開放遊玩時間",
-      "content": "1. 伺服器今日開放時間：` 13:40 ~ 19:40 `。\n2. home點已經修復。",
-      "images": [],
-      "localImages": [],
-      "reactions": [],
-      "reactionCount": 0,
-      "discordId": "1273878379011244062",
-      "pinned": false,
-      "author": "神焰.cc",
-      "index": 470
-    },
-    {
-      "tag": "公告",
       "id": "#0006",
       "date": "113.08.15",
       "isoDate": "2024-08-15",
@@ -9999,23 +10055,6 @@
       "pinned": false,
       "author": "神焰.cc",
       "index": 471
-    },
-    {
-      "tag": "更新",
-      "id": "#0004",
-      "date": "113.08.15",
-      "isoDate": "2024-08-15",
-      "timestamp": "2024-08-15T20:34:59.706+08:00",
-      "title": "更新日誌",
-      "content": "- 開啟防噴。",
-      "images": [],
-      "localImages": [],
-      "reactions": [],
-      "reactionCount": 0,
-      "discordId": "1273620960456474807",
-      "pinned": false,
-      "author": "神焰.cc",
-      "index": 472
     },
     {
       "tag": "公告",
@@ -10033,6 +10072,23 @@
       "pinned": false,
       "author": "神焰.cc",
       "index": 473
+    },
+    {
+      "tag": "更新",
+      "id": "#0004",
+      "date": "113.08.15",
+      "isoDate": "2024-08-15",
+      "timestamp": "2024-08-15T20:34:59.706+08:00",
+      "title": "更新日誌",
+      "content": "- 開啟防噴。",
+      "images": [],
+      "localImages": [],
+      "reactions": [],
+      "reactionCount": 0,
+      "discordId": "1273620960456474807",
+      "pinned": false,
+      "author": "神焰.cc",
+      "index": 472
     },
     {
       "tag": "更新",
@@ -10074,23 +10130,6 @@
       "index": 475
     },
     {
-      "tag": "更新",
-      "id": "#0001",
-      "date": "113.08.14",
-      "isoDate": "2024-08-14",
-      "timestamp": "2024-08-14T14:08:11.168+08:00",
-      "title": "更新日誌",
-      "content": "- 新增@超風繪師「@羽瓏.jpg」。\n- 安裝箱子商店。\n- 海風服測試版本目前為0.1。",
-      "images": [],
-      "localImages": [],
-      "reactions": [],
-      "reactionCount": 0,
-      "discordId": "1273161228927107084",
-      "pinned": false,
-      "author": "神焰.cc",
-      "index": 476
-    },
-    {
       "tag": "公告",
       "id": "#0004",
       "date": "113.08.14",
@@ -10111,6 +10150,23 @@
       "pinned": true,
       "author": "神焰.cc",
       "index": 477
+    },
+    {
+      "tag": "更新",
+      "id": "#0001",
+      "date": "113.08.14",
+      "isoDate": "2024-08-14",
+      "timestamp": "2024-08-14T14:08:11.168+08:00",
+      "title": "更新日誌",
+      "content": "- 新增@超風繪師「@羽瓏.jpg」。\n- 安裝箱子商店。\n- 海風服測試版本目前為0.1。",
+      "images": [],
+      "localImages": [],
+      "reactions": [],
+      "reactionCount": 0,
+      "discordId": "1273161228927107084",
+      "pinned": false,
+      "author": "神焰.cc",
+      "index": 476
     },
     {
       "tag": "公告",
@@ -10181,23 +10237,6 @@
       "pinned": false,
       "author": "神焰.cc",
       "index": 480
-    },
-    {
-      "tag": "修復",
-      "id": "#0297",
-      "date": "115.05.03",
-      "isoDate": "2026-05-03",
-      "timestamp": "2026-05-03T23:09:00.000+08:00",
-      "title": "小修復",
-      "content": "- 修復無法使用 /tpgui 的問題。",
-      "images": [],
-      "localImages": [],
-      "reactions": [],
-      "reactionCount": 0,
-      "discordId": "",
-      "pinned": false,
-      "author": "",
-      "index": 0
     }
   ]
 }
