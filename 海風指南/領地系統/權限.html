@@ -19,7 +19,7 @@
   <link rel="apple-touch-icon" href="../../assets/img/logo.png">
   <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;800&family=Noto+Serif+TC:wght@700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../../style.css?v=050505a">
+  <link rel="stylesheet" href="../../style.css?v=060506a">
   <link rel="stylesheet" href="../../music-player.css">
 </head>
 <body>
@@ -263,190 +263,186 @@
         <!-- ═══ 完整權限列表 ═══ -->
         <div class="guide-section-card fade-in" style="--card-accent:var(--lavender)">
           <h2><span class="sec-icon">📋</span> 完整權限列表</h2>
-          <p>建造、容器存取、互動行為<strong>全部預設禁止</strong>（外人不能拆牆、開箱子、也不能開門）。以下列出所有 114 個玩家可設定的權限，分為 8 大類。預設狀態標示為<span style="color:var(--foam)">允許</span>或<span style="color:#ff9e9e">禁止</span>。</p>
+          <p>建造、容器存取、互動行為<strong>全部預設禁止</strong>（外人不能拆牆、開箱子、也不能開門）。以下列出所有 114 個玩家可設定的權限，分為 8 大類。</p>
 
-          <!-- 權限總覽 -->
-          <table class="rules-table" style="margin-top:var(--space-md);margin-bottom:var(--space-lg)">
-            <thead><tr><th>分類</th><th style="text-align:center">數量</th><th>說明</th></tr></thead>
-            <tbody>
-              <tr><td>🔨 建造與互動</td><td style="text-align:center"><strong>39</strong></td><td>建造、容器、合成、互動方塊、農業、PVP、管理</td></tr>
-              <tr><td>🔥 火焰與爆炸</td><td style="text-align:center"><strong>9</strong></td><td>點火、TNT、苦力怕、凋零</td></tr>
-              <tr><td>🐾 生物與生成</td><td style="text-align:center"><strong>18</strong></td><td>怪物/動物生成控制、牽繩、騎乘</td></tr>
-              <tr><td>💧 液體與環境</td><td style="text-align:center"><strong>20</strong></td><td>水流、活塞、農作物、自然現象</td></tr>
-              <tr><td>🧭 傳送與移動</td><td style="text-align:center"><strong>7</strong></td><td>進出領地、傳送、飛行</td></tr>
-              <tr><td>🎁 特殊效果</td><td style="text-align:center"><strong>10</strong></td><td>自動治療、天氣、死亡保護</td></tr>
-              <tr><td>🎒 物品與載具</td><td style="text-align:center"><strong>6</strong></td><td>丟撿物品、載具、子領地</td></tr>
-              <tr><td>📋 訊息與顯示</td><td style="text-align:center"><strong>5</strong></td><td>聊天室、進出訊息、隱藏、視覺化</td></tr>
-            </tbody>
-          </table>
+          <!-- 搜尋 + 篩選 -->
+          <div class="perm-filter-bar">
+            <div class="perm-search-wrap">
+              <svg class="perm-search-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+              <input type="text" class="perm-search" id="permSearch" placeholder="搜尋權限名稱或說明…" autocomplete="off">
+            </div>
+            <div class="perm-filter-btns">
+              <button class="perm-filter-btn active" data-filter="all">全部</button>
+              <button class="perm-filter-btn" data-filter="deny">僅禁止</button>
+              <button class="perm-filter-btn" data-filter="allow">僅允許</button>
+            </div>
+            <span class="perm-result-count" id="permResultCount">114 個權限</span>
+          </div>
 
         <!-- 🔨 建造與互動 — 39 個 -->
-        <details class="perm-cat">
+        <details class="perm-cat" open>
           <summary class="perm-cat-header" style="--cat-color:var(--foam)"><span class="perm-cat-icon">🔨</span><span class="perm-cat-name">建造與互動</span><span class="perm-cat-count">39</span></summary>
-          <div class="perm-card-grid">
-            <div class="perm-card deny"><span class="perm-card-name">build</span><span class="perm-card-dot">🔴</span></div>
-            <div class="perm-card deny"><span class="perm-card-name">place</span><span class="perm-card-dot">🔴</span></div>
-            <div class="perm-card deny"><span class="perm-card-name">destroy</span><span class="perm-card-dot">🔴</span></div>
-            <div class="perm-card deny"><span class="perm-card-name">use</span><span class="perm-card-dot">🔴</span></div>
-            <div class="perm-card deny"><span class="perm-card-name">container</span><span class="perm-card-dot">🔴</span></div>
-            <div class="perm-card allow"><span class="perm-card-name">craft</span><span class="perm-card-dot">🟢</span></div>
-            <div class="perm-card allow"><span class="perm-card-name">table</span><span class="perm-card-dot">🟢</span></div>
-            <div class="perm-card allow"><span class="perm-card-name">enchant</span><span class="perm-card-dot">🟢</span></div>
-            <div class="perm-card allow"><span class="perm-card-name">brew</span><span class="perm-card-dot">🟢</span></div>
-            <div class="perm-card allow"><span class="perm-card-name">anvil</span><span class="perm-card-dot">🟢</span></div>
-            <div class="perm-card allow"><span class="perm-card-name">anvilbreak</span><span class="perm-card-dot">🟢</span></div>
-            <div class="perm-card allow"><span class="perm-card-name">beacon</span><span class="perm-card-dot">🟢</span></div>
-            <div class="perm-card allow"><span class="perm-card-name">bed</span><span class="perm-card-dot">🟢</span></div>
-            <div class="perm-card allow"><span class="perm-card-name">anchor</span><span class="perm-card-dot">🟢</span></div>
-            <div class="perm-card allow"><span class="perm-card-name">door</span><span class="perm-card-dot">🟢</span></div>
-            <div class="perm-card allow"><span class="perm-card-name">button</span><span class="perm-card-dot">🟢</span></div>
-            <div class="perm-card allow"><span class="perm-card-name">lever</span><span class="perm-card-dot">🟢</span></div>
-            <div class="perm-card allow"><span class="perm-card-name">pressure</span><span class="perm-card-dot">🟢</span></div>
-            <div class="perm-card allow"><span class="perm-card-name">diode</span><span class="perm-card-dot">🟢</span></div>
-            <div class="perm-card allow"><span class="perm-card-name">note</span><span class="perm-card-dot">🟢</span></div>
-            <div class="perm-card allow"><span class="perm-card-name">flowerpot</span><span class="perm-card-dot">🟢</span></div>
-            <div class="perm-card allow"><span class="perm-card-name">cake</span><span class="perm-card-dot">🟢</span></div>
-            <div class="perm-card allow"><span class="perm-card-name">copper</span><span class="perm-card-dot">🟢</span></div>
-            <div class="perm-card allow"><span class="perm-card-name">trade</span><span class="perm-card-dot">🟢</span></div>
-            <div class="perm-card allow"><span class="perm-card-name">brush</span><span class="perm-card-dot">🟢</span></div>
-            <div class="perm-card deny"><span class="perm-card-name">harvest</span><span class="perm-card-dot">🔴</span></div>
-            <div class="perm-card deny"><span class="perm-card-name">honey</span><span class="perm-card-dot">🔴</span></div>
-            <div class="perm-card deny"><span class="perm-card-name">honeycomb</span><span class="perm-card-dot">🔴</span></div>
-            <div class="perm-card deny"><span class="perm-card-name">shear</span><span class="perm-card-dot">🔴</span></div>
-            <div class="perm-card deny"><span class="perm-card-name">egg</span><span class="perm-card-dot">🔴</span></div>
-            <div class="perm-card allow"><span class="perm-card-name">pvp</span><span class="perm-card-dot">🟢</span></div>
-            <div class="perm-card allow"><span class="perm-card-name">damage</span><span class="perm-card-dot">🟢</span></div>
-            <div class="perm-card deny"><span class="perm-card-name">shoot</span><span class="perm-card-dot">🔴</span></div>
-            <div class="perm-card deny"><span class="perm-card-name">hook</span><span class="perm-card-dot">🔴</span></div>
-            <div class="perm-card allow"><span class="perm-card-name">falldamage</span><span class="perm-card-dot">🟢</span></div>
-            <div class="perm-card allow"><span class="perm-card-name">mobkilling</span><span class="perm-card-dot">🟢</span></div>
-            <div class="perm-card deny"><span class="perm-card-name">animalkilling</span><span class="perm-card-dot">🔴</span></div>
-            <div class="perm-card allow"><span class="perm-card-name">animalfeeding</span><span class="perm-card-dot">🟢</span></div>
-            <div class="perm-card deny"><span class="perm-card-name">admin</span><span class="perm-card-dot">🔴</span></div>
-          </div>
+          <table class="perm-tbl"><thead><tr><th>權限</th><th>說明</th><th>預設</th></tr></thead><tbody>
+            <tr class="perm-row deny"><td><code>build</code></td><td>建造方塊（放置＋破壞的總開關）</td><td class="deny">禁止</td></tr>
+            <tr class="perm-row deny"><td><code>place</code></td><td>放置方塊（覆蓋 build，僅控制放置）</td><td class="deny">禁止</td></tr>
+            <tr class="perm-row deny"><td><code>destroy</code></td><td>破壞方塊（覆蓋 build，僅控制破壞）</td><td class="deny">禁止</td></tr>
+            <tr class="perm-row deny"><td><code>use</code></td><td>互動方塊（門、按鈕、工作台等的總開關）</td><td class="deny">禁止</td></tr>
+            <tr class="perm-row deny"><td><code>container</code></td><td>開啟容器（箱子、熔爐、發射器等）</td><td class="deny">禁止</td></tr>
+            <tr class="perm-row allow"><td><code>craft</code></td><td>快速組合：同時開放工作台、附魔台、釀造台</td><td class="allow">允許</td></tr>
+            <tr class="perm-row allow"><td><code>table</code></td><td>使用工作台</td><td class="allow">允許</td></tr>
+            <tr class="perm-row allow"><td><code>enchant</code></td><td>使用附魔台</td><td class="allow">允許</td></tr>
+            <tr class="perm-row allow"><td><code>brew</code></td><td>使用釀造台</td><td class="allow">允許</td></tr>
+            <tr class="perm-row allow"><td><code>anvil</code></td><td>使用鐵砧</td><td class="allow">允許</td></tr>
+            <tr class="perm-row allow"><td><code>anvilbreak</code></td><td>鐵砧因使用而損壞</td><td class="allow">允許</td></tr>
+            <tr class="perm-row allow"><td><code>beacon</code></td><td>使用信標</td><td class="allow">允許</td></tr>
+            <tr class="perm-row allow"><td><code>bed</code></td><td>使用床（設置重生點／睡覺）</td><td class="allow">允許</td></tr>
+            <tr class="perm-row allow"><td><code>anchor</code></td><td>使用重生錨</td><td class="allow">允許</td></tr>
+            <tr class="perm-row allow"><td><code>door</code></td><td>開關門和活板門</td><td class="allow">允許</td></tr>
+            <tr class="perm-row allow"><td><code>button</code></td><td>按下按鈕</td><td class="allow">允許</td></tr>
+            <tr class="perm-row allow"><td><code>lever</code></td><td>拉動拉桿</td><td class="allow">允許</td></tr>
+            <tr class="perm-row allow"><td><code>pressure</code></td><td>踩踏壓力板</td><td class="allow">允許</td></tr>
+            <tr class="perm-row allow"><td><code>diode</code></td><td>使用中繼器和比較器</td><td class="allow">允許</td></tr>
+            <tr class="perm-row allow"><td><code>note</code></td><td>使用音符盒</td><td class="allow">允許</td></tr>
+            <tr class="perm-row allow"><td><code>flowerpot</code></td><td>使用花盆</td><td class="allow">允許</td></tr>
+            <tr class="perm-row allow"><td><code>cake</code></td><td>吃蛋糕</td><td class="allow">允許</td></tr>
+            <tr class="perm-row allow"><td><code>copper</code></td><td>使用蜜蠟擦拭銅塊</td><td class="allow">允許</td></tr>
+            <tr class="perm-row allow"><td><code>trade</code></td><td>與村民交易</td><td class="allow">允許</td></tr>
+            <tr class="perm-row allow"><td><code>brush</code></td><td>使用考古刷</td><td class="allow">允許</td></tr>
+            <tr class="perm-row deny"><td><code>harvest</code></td><td>收割農作物（右鍵成熟作物）</td><td class="deny">禁止</td></tr>
+            <tr class="perm-row deny"><td><code>honey</code></td><td>採集蜂蜜（用玻璃瓶）</td><td class="deny">禁止</td></tr>
+            <tr class="perm-row deny"><td><code>honeycomb</code></td><td>採集蜂巢（用剪刀）</td><td class="deny">禁止</td></tr>
+            <tr class="perm-row deny"><td><code>shear</code></td><td>剪羊毛</td><td class="deny">禁止</td></tr>
+            <tr class="perm-row deny"><td><code>egg</code></td><td>與龍蛋互動</td><td class="deny">禁止</td></tr>
+            <tr class="perm-row allow"><td><code>pvp</code></td><td>玩家之間互相攻擊</td><td class="allow">允許</td></tr>
+            <tr class="perm-row allow"><td><code>damage</code></td><td>所有實體傷害（含怪物攻擊玩家）</td><td class="allow">允許</td></tr>
+            <tr class="perm-row deny"><td><code>shoot</code></td><td>發射投射物（弓、三叉戟、雪球等）</td><td class="deny">禁止</td></tr>
+            <tr class="perm-row deny"><td><code>hook</code></td><td>釣魚鉤鉤住實體</td><td class="deny">禁止</td></tr>
+            <tr class="perm-row allow"><td><code>falldamage</code></td><td>摔落傷害（允許＝會受傷）</td><td class="allow">允許</td></tr>
+            <tr class="perm-row allow"><td><code>mobkilling</code></td><td>攻擊怪物</td><td class="allow">允許</td></tr>
+            <tr class="perm-row deny"><td><code>animalkilling</code></td><td>攻擊動物</td><td class="deny">禁止</td></tr>
+            <tr class="perm-row allow"><td><code>animalfeeding</code></td><td>餵食動物</td><td class="allow">允許</td></tr>
+            <tr class="perm-row deny"><td><code>admin</code></td><td>領地管理員權限（可設定所有 flag）</td><td class="deny">禁止</td></tr>
+          </tbody></table>
         </details>
 
-        <details class="perm-cat">
+        <details class="perm-cat" open>
           <summary class="perm-cat-header" style="--cat-color:var(--sand)"><span class="perm-cat-icon">🔥</span><span class="perm-cat-name">火焰與爆炸</span><span class="perm-cat-count">9</span></summary>
-          <div class="perm-card-grid">
-            <div class="perm-card deny"><span class="perm-card-name">ignite</span><span class="perm-card-dot">🔴</span></div>
-            <div class="perm-card deny"><span class="perm-card-name">firespread</span><span class="perm-card-dot">🔴</span></div>
-            <div class="perm-card deny"><span class="perm-card-name">tnt</span><span class="perm-card-dot">🔴</span></div>
-            <div class="perm-card deny"><span class="perm-card-name">creeper</span><span class="perm-card-dot">🔴</span></div>
-            <div class="perm-card deny"><span class="perm-card-name">explode</span><span class="perm-card-dot">🔴</span></div>
-            <div class="perm-card allow"><span class="perm-card-name">fireball</span><span class="perm-card-dot">🟢</span></div>
-            <div class="perm-card deny"><span class="perm-card-name">witherspawn</span><span class="perm-card-dot">🔴</span></div>
-            <div class="perm-card deny"><span class="perm-card-name">witherdamage</span><span class="perm-card-dot">🔴</span></div>
-            <div class="perm-card deny"><span class="perm-card-name">witherdestruction</span><span class="perm-card-dot">🔴</span></div>
-          </div>
+          <table class="perm-tbl"><thead><tr><th>權限</th><th>說明</th><th>預設</th></tr></thead><tbody>
+            <tr class="perm-row deny"><td><code>ignite</code></td><td>使用打火石點火</td><td class="deny">禁止</td></tr>
+            <tr class="perm-row deny"><td><code>firespread</code></td><td>火焰蔓延</td><td class="deny">禁止</td></tr>
+            <tr class="perm-row deny"><td><code>tnt</code></td><td>TNT 爆炸</td><td class="deny">禁止</td></tr>
+            <tr class="perm-row deny"><td><code>creeper</code></td><td>苦力怕爆炸</td><td class="deny">禁止</td></tr>
+            <tr class="perm-row deny"><td><code>explode</code></td><td>所有爆炸（總開關）</td><td class="deny">禁止</td></tr>
+            <tr class="perm-row allow"><td><code>fireball</code></td><td>火焰彈（地獄門傳送、烈焰人攻擊）</td><td class="allow">允許</td></tr>
+            <tr class="perm-row deny"><td><code>witherspawn</code></td><td>凋零怪生成</td><td class="deny">禁止</td></tr>
+            <tr class="perm-row deny"><td><code>witherdamage</code></td><td>凋零怪傷害</td><td class="deny">禁止</td></tr>
+            <tr class="perm-row deny"><td><code>witherdestruction</code></td><td>凋零怪破壞方塊</td><td class="deny">禁止</td></tr>
+          </tbody></table>
         </details>
 
-        <details class="perm-cat">
+        <details class="perm-cat" open>
           <summary class="perm-cat-header" style="--cat-color:var(--lavender)"><span class="perm-cat-icon">🐾</span><span class="perm-cat-name">生物與生成</span><span class="perm-cat-count">18</span></summary>
-          <div class="perm-card-grid">
-            <div class="perm-card allow"><span class="perm-card-name">monsters</span><span class="perm-card-dot">🟢</span></div>
-            <div class="perm-card allow"><span class="perm-card-name">nmonsters</span><span class="perm-card-dot">🟢</span></div>
-            <div class="perm-card allow"><span class="perm-card-name">smonsters</span><span class="perm-card-dot">🟢</span></div>
-            <div class="perm-card allow"><span class="perm-card-name">cmonsters</span><span class="perm-card-dot">🟢</span></div>
-            <div class="perm-card allow"><span class="perm-card-name">animals</span><span class="perm-card-dot">🟢</span></div>
-            <div class="perm-card allow"><span class="perm-card-name">nanimals</span><span class="perm-card-dot">🟢</span></div>
-            <div class="perm-card allow"><span class="perm-card-name">sanimals</span><span class="perm-card-dot">🟢</span></div>
-            <div class="perm-card allow"><span class="perm-card-name">canimals</span><span class="perm-card-dot">🟢</span></div>
-            <div class="perm-card allow"><span class="perm-card-name">nomobs</span><span class="perm-card-dot">🟢</span></div>
-            <div class="perm-card allow"><span class="perm-card-name">phantomspawn</span><span class="perm-card-dot">🟢</span></div>
-            <div class="perm-card deny"><span class="perm-card-name">leash</span><span class="perm-card-dot">🔴</span></div>
-            <div class="perm-card deny"><span class="perm-card-name">riding</span><span class="perm-card-dot">🔴</span></div>
-            <div class="perm-card deny"><span class="perm-card-name">nametag</span><span class="perm-card-dot">🔴</span></div>
-            <div class="perm-card allow"><span class="perm-card-name">burn</span><span class="perm-card-dot">🟢</span></div>
-            <div class="perm-card allow"><span class="perm-card-name">boarding</span><span class="perm-card-dot">🟢</span></div>
-            <div class="perm-card allow"><span class="perm-card-name">golemopenchest</span><span class="perm-card-dot">🟢</span></div>
-            <div class="perm-card allow"><span class="perm-card-name">mobexpdrop</span><span class="perm-card-dot">🟢</span></div>
-            <div class="perm-card allow"><span class="perm-card-name">mobitemdrop</span><span class="perm-card-dot">🟢</span></div>
-          </div>
+          <table class="perm-tbl"><thead><tr><th>權限</th><th>說明</th><th>預設</th></tr></thead><tbody>
+            <tr class="perm-row allow"><td><code>monsters</code></td><td>怪物自然生成（總開關）</td><td class="allow">允許</td></tr>
+            <tr class="perm-row allow"><td><code>nmonsters</code></td><td>自然怪物生成（由系統產生）</td><td class="allow">允許</td></tr>
+            <tr class="perm-row allow"><td><code>smonsters</code></td><td>刷怪蛋／生怪磚怪物生成</td><td class="allow">允許</td></tr>
+            <tr class="perm-row allow"><td><code>cmonsters</code></td><td>自訂怪物生成（插件額外產生）</td><td class="allow">允許</td></tr>
+            <tr class="perm-row allow"><td><code>animals</code></td><td>動物生成（總開關）</td><td class="allow">允許</td></tr>
+            <tr class="perm-row allow"><td><code>nanimals</code></td><td>自然動物生成</td><td class="allow">允許</td></tr>
+            <tr class="perm-row allow"><td><code>sanimals</code></td><td>刷怪蛋動物生成</td><td class="allow">允許</td></tr>
+            <tr class="perm-row allow"><td><code>canimals</code></td><td>自訂動物生成</td><td class="allow">允許</td></tr>
+            <tr class="perm-row allow"><td><code>nomobs</code></td><td>阻止怪物進入領地（需開啟自動清除）</td><td class="allow">允許</td></tr>
+            <tr class="perm-row allow"><td><code>phantomspawn</code></td><td>幻翼生成</td><td class="allow">允許</td></tr>
+            <tr class="perm-row deny"><td><code>leash</code></td><td>使用牽繩（拴繩）</td><td class="deny">禁止</td></tr>
+            <tr class="perm-row deny"><td><code>riding</code></td><td>騎乘（馬、驢、豬等）</td><td class="deny">禁止</td></tr>
+            <tr class="perm-row deny"><td><code>nametag</code></td><td>使用命名牌</td><td class="deny">禁止</td></tr>
+            <tr class="perm-row allow"><td><code>burn</code></td><td>生物在領地內燃燒（太陽灼傷等）</td><td class="allow">允許</td></tr>
+            <tr class="perm-row allow"><td><code>boarding</code></td><td>動物上船／礦車</td><td class="allow">允許</td></tr>
+            <tr class="perm-row allow"><td><code>golemopenchest</code></td><td>鐵傀儡開啟箱子</td><td class="allow">允許</td></tr>
+            <tr class="perm-row allow"><td><code>mobexpdrop</code></td><td>怪物掉落經驗值</td><td class="allow">允許</td></tr>
+            <tr class="perm-row allow"><td><code>mobitemdrop</code></td><td>怪物掉落物品</td><td class="allow">允許</td></tr>
+          </tbody></table>
         </details>
 
-        <details class="perm-cat">
+        <details class="perm-cat" open>
           <summary class="perm-cat-header" style="--cat-color:var(--sky)"><span class="perm-cat-icon">💧</span><span class="perm-cat-name">液體與環境</span><span class="perm-cat-count">20</span></summary>
-          <div class="perm-card-grid">
-            <div class="perm-card allow"><span class="perm-card-name">flow</span><span class="perm-card-dot">🟢</span></div>
-            <div class="perm-card allow"><span class="perm-card-name">waterflow</span><span class="perm-card-dot">🟢</span></div>
-            <div class="perm-card allow"><span class="perm-card-name">lavaflow</span><span class="perm-card-dot">🟢</span></div>
-            <div class="perm-card allow"><span class="perm-card-name">piston</span><span class="perm-card-dot">🟢</span></div>
-            <div class="perm-card deny"><span class="perm-card-name">pistonprotection</span><span class="perm-card-dot">🔴</span></div>
-            <div class="perm-card allow"><span class="perm-card-name">trample</span><span class="perm-card-dot">🟢</span></div>
-            <div class="perm-card allow"><span class="perm-card-name">decay</span><span class="perm-card-dot">🟢</span></div>
-            <div class="perm-card allow"><span class="perm-card-name">spread</span><span class="perm-card-dot">🟢</span></div>
-            <div class="perm-card allow"><span class="perm-card-name">grow</span><span class="perm-card-dot">🟢</span></div>
-            <div class="perm-card allow"><span class="perm-card-name">iceform</span><span class="perm-card-dot">🟢</span></div>
-            <div class="perm-card allow"><span class="perm-card-name">icemelt</span><span class="perm-card-dot">🟢</span></div>
-            <div class="perm-card allow"><span class="perm-card-name">skulk</span><span class="perm-card-dot">🟢</span></div>
-            <div class="perm-card allow"><span class="perm-card-name">coraldryup</span><span class="perm-card-dot">🟢</span></div>
-            <div class="perm-card allow"><span class="perm-card-name">dryup</span><span class="perm-card-dot">🟢</span></div>
-            <div class="perm-card allow"><span class="perm-card-name">hotfloor</span><span class="perm-card-dot">🟢</span></div>
-            <div class="perm-card deny"><span class="perm-card-name">dragongrief</span><span class="perm-card-dot">🔴</span></div>
-            <div class="perm-card allow"><span class="perm-card-name">snowball</span><span class="perm-card-dot">🟢</span></div>
-            <div class="perm-card allow"><span class="perm-card-name">snowtrail</span><span class="perm-card-dot">🟢</span></div>
-            <div class="perm-card allow"><span class="perm-card-name">fallinprotection</span><span class="perm-card-dot">🟢</span></div>
-            <div class="perm-card allow"><span class="perm-card-name">flowinprotection</span><span class="perm-card-dot">🟢</span></div>
-          </div>
+          <table class="perm-tbl"><thead><tr><th>權限</th><th>說明</th><th>預設</th></tr></thead><tbody>
+            <tr class="perm-row allow"><td><code>flow</code></td><td>液體流動（水＋岩漿的總開關）</td><td class="allow">允許</td></tr>
+            <tr class="perm-row allow"><td><code>waterflow</code></td><td>水流動（覆蓋 flow，僅控制水）</td><td class="allow">允許</td></tr>
+            <tr class="perm-row allow"><td><code>lavaflow</code></td><td>岩漿流動（覆蓋 flow，僅控制岩漿）</td><td class="allow">允許</td></tr>
+            <tr class="perm-row allow"><td><code>piston</code></td><td>活塞推動／拉動方塊</td><td class="allow">允許</td></tr>
+            <tr class="perm-row deny"><td><code>pistonprotection</code></td><td>阻止活塞將方塊推出領地</td><td class="deny">禁止</td></tr>
+            <tr class="perm-row allow"><td><code>trample</code></td><td>踩踏耕地（使其變回泥土）</td><td class="allow">允許</td></tr>
+            <tr class="perm-row allow"><td><code>decay</code></td><td>樹葉自然腐爛</td><td class="allow">允許</td></tr>
+            <tr class="perm-row allow"><td><code>spread</code></td><td>方塊蔓延（草、菌絲、地獄疙瘩等）</td><td class="allow">允許</td></tr>
+            <tr class="perm-row allow"><td><code>grow</code></td><td>植物生長（農作物、樹木、甘蔗等）</td><td class="allow">允許</td></tr>
+            <tr class="perm-row allow"><td><code>iceform</code></td><td>冰形成（水在寒冷生物群系結冰）</td><td class="allow">允許</td></tr>
+            <tr class="perm-row allow"><td><code>icemelt</code></td><td>冰融化</td><td class="allow">允許</td></tr>
+            <tr class="perm-row allow"><td><code>skulk</code></td><td>深淵寄生體蔓延</td><td class="allow">允許</td></tr>
+            <tr class="perm-row allow"><td><code>coraldryup</code></td><td>珊瑚乾燥（離開水後變成死亡珊瑚）</td><td class="allow">允許</td></tr>
+            <tr class="perm-row allow"><td><code>dryup</code></td><td>耕地乾裂（不澆水變回泥土）</td><td class="allow">允許</td></tr>
+            <tr class="perm-row allow"><td><code>hotfloor</code></td><td>熔岩方塊傷害（站在岩漿塊上受傷）</td><td class="allow">允許</td></tr>
+            <tr class="perm-row deny"><td><code>dragongrief</code></td><td>終界龍破壞方塊</td><td class="deny">禁止</td></tr>
+            <tr class="perm-row allow"><td><code>snowball</code></td><td>雪球擊退效果</td><td class="allow">允許</td></tr>
+            <tr class="perm-row allow"><td><code>snowtrail</code></td><td>雪人在方塊上留下雪</td><td class="allow">允許</td></tr>
+            <tr class="perm-row allow"><td><code>fallinprotection</code></td><td>阻止方塊掉入領地（沙子、礫石等）</td><td class="allow">允許</td></tr>
+            <tr class="perm-row allow"><td><code>flowinprotection</code></td><td>阻止液體從外部流入領地</td><td class="allow">允許</td></tr>
+          </tbody></table>
         </details>
 
-        <details class="perm-cat">
+        <details class="perm-cat" open>
           <summary class="perm-cat-header" style="--cat-color:#85b1e0"><span class="perm-cat-icon">🧭</span><span class="perm-cat-name">傳送與移動</span><span class="perm-cat-count">7</span></summary>
-          <div class="perm-card-grid">
-            <div class="perm-card allow"><span class="perm-card-name">move</span><span class="perm-card-dot">🟢</span></div>
-            <div class="perm-card deny"><span class="perm-card-name">tp</span><span class="perm-card-dot">🔴</span></div>
-            <div class="perm-card allow"><span class="perm-card-name">chorustp</span><span class="perm-card-dot">🟢</span></div>
-            <div class="perm-card allow"><span class="perm-card-name">enderpearl</span><span class="perm-card-dot">🟢</span></div>
-            <div class="perm-card allow"><span class="perm-card-name">fly</span><span class="perm-card-dot">🟢</span></div>
-            <div class="perm-card allow"><span class="perm-card-name">elytra</span><span class="perm-card-dot">🟢</span></div>
-            <div class="perm-card allow"><span class="perm-card-name">goathorn</span><span class="perm-card-dot">🟢</span></div>
-          </div>
+          <table class="perm-tbl"><thead><tr><th>權限</th><th>說明</th><th>預設</th></tr></thead><tbody>
+            <tr class="perm-row allow"><td><code>move</code></td><td>在領地內移動（關閉＝無法進入）</td><td class="allow">允許</td></tr>
+            <tr class="perm-row deny"><td><code>tp</code></td><td>傳送到此領地（/res tp）</td><td class="deny">禁止</td></tr>
+            <tr class="perm-row allow"><td><code>chorustp</code></td><td>使用瞬移果實傳送</td><td class="allow">允許</td></tr>
+            <tr class="perm-row allow"><td><code>enderpearl</code></td><td>使用終界珍珠傳送</td><td class="allow">允許</td></tr>
+            <tr class="perm-row allow"><td><code>fly</code></td><td>在領地內飛行</td><td class="allow">允許</td></tr>
+            <tr class="perm-row allow"><td><code>elytra</code></td><td>使用鞘翅滑翔</td><td class="allow">允許</td></tr>
+            <tr class="perm-row allow"><td><code>goathorn</code></td><td>使用山羊號角</td><td class="allow">允許</td></tr>
+          </tbody></table>
         </details>
 
-        <details class="perm-cat">
+        <details class="perm-cat" open>
           <summary class="perm-cat-header" style="--cat-color:#e0a0f0"><span class="perm-cat-icon">🎁</span><span class="perm-cat-name">特殊效果</span><span class="perm-cat-count">10</span></summary>
-          <div class="perm-card-grid">
-            <div class="perm-card allow"><span class="perm-card-name">healing</span><span class="perm-card-dot">🟢</span></div>
-            <div class="perm-card allow"><span class="perm-card-name">feed</span><span class="perm-card-dot">🟢</span></div>
-            <div class="perm-card allow"><span class="perm-card-name">wspeed1</span><span class="perm-card-dot">🟢</span></div>
-            <div class="perm-card allow"><span class="perm-card-name">wspeed2</span><span class="perm-card-dot">🟢</span></div>
-            <div class="perm-card allow"><span class="perm-card-name">day</span><span class="perm-card-dot">🟢</span></div>
-            <div class="perm-card allow"><span class="perm-card-name">night</span><span class="perm-card-dot">🟢</span></div>
-            <div class="perm-card allow"><span class="perm-card-name">rain</span><span class="perm-card-dot">🟢</span></div>
-            <div class="perm-card allow"><span class="perm-card-name">sun</span><span class="perm-card-dot">🟢</span></div>
-            <div class="perm-card allow"><span class="perm-card-name">glow</span><span class="perm-card-dot">🟢</span></div>
-            <div class="perm-card allow"><span class="perm-card-name">dye</span><span class="perm-card-dot">🟢</span></div>
-          </div>
+          <table class="perm-tbl"><thead><tr><th>權限</th><th>說明</th><th>預設</th></tr></thead><tbody>
+            <tr class="perm-row allow"><td><code>healing</code></td><td>自動治療（在領地內持續回血）</td><td class="allow">允許</td></tr>
+            <tr class="perm-row allow"><td><code>feed</code></td><td>自動飽食（在領地內持續恢復飽食度）</td><td class="allow">允許</td></tr>
+            <tr class="perm-row allow"><td><code>wspeed1</code></td><td>行走速度第一級調整</td><td class="allow">允許</td></tr>
+            <tr class="perm-row allow"><td><code>wspeed2</code></td><td>行走速度第二級調整</td><td class="allow">允許</td></tr>
+            <tr class="perm-row allow"><td><code>day</code></td><td>設定領地為白天</td><td class="allow">允許</td></tr>
+            <tr class="perm-row allow"><td><code>night</code></td><td>設定領地為夜晚</td><td class="allow">允許</td></tr>
+            <tr class="perm-row allow"><td><code>rain</code></td><td>設定領地天氣為下雨</td><td class="allow">允許</td></tr>
+            <tr class="perm-row allow"><td><code>sun</code></td><td>設定領地天氣為晴天</td><td class="allow">允許</td></tr>
+            <tr class="perm-row allow"><td><code>glow</code></td><td>進入領地時玩家發光</td><td class="allow">允許</td></tr>
+            <tr class="perm-row allow"><td><code>dye</code></td><td>對羊使用染料</td><td class="allow">允許</td></tr>
+          </tbody></table>
         </details>
 
-        <details class="perm-cat">
+        <details class="perm-cat" open>
           <summary class="perm-cat-header" style="--cat-color:var(--sand)"><span class="perm-cat-icon">🎒</span><span class="perm-cat-name">物品與載具</span><span class="perm-cat-count">6</span></summary>
-          <div class="perm-card-grid">
-            <div class="perm-card allow"><span class="perm-card-name">itemdrop</span><span class="perm-card-dot">🟢</span></div>
-            <div class="perm-card allow"><span class="perm-card-name">itempickup</span><span class="perm-card-dot">🟢</span></div>
-            <div class="perm-card deny"><span class="perm-card-name">vehicledestroy</span><span class="perm-card-dot">🔴</span></div>
-            <div class="perm-card deny"><span class="perm-card-name">vehicleplacing</span><span class="perm-card-dot">🔴</span></div>
-            <div class="perm-card allow"><span class="perm-card-name">subzone</span><span class="perm-card-dot">🟢</span></div>
-            <div class="perm-card allow"><span class="perm-card-name">shop</span><span class="perm-card-dot">🟢</span></div>
-          </div>
+          <table class="perm-tbl"><thead><tr><th>權限</th><th>說明</th><th>預設</th></tr></thead><tbody>
+            <tr class="perm-row allow"><td><code>itemdrop</code></td><td>丟棄物品</td><td class="allow">允許</td></tr>
+            <tr class="perm-row allow"><td><code>itempickup</code></td><td>撿起物品</td><td class="allow">允許</td></tr>
+            <tr class="perm-row deny"><td><code>vehicledestroy</code></td><td>破壞載具（礦車、船）</td><td class="deny">禁止</td></tr>
+            <tr class="perm-row deny"><td><code>vehicleplacing</code></td><td>放置載具（礦車、船）</td><td class="deny">禁止</td></tr>
+            <tr class="perm-row allow"><td><code>subzone</code></td><td>建立子領地</td><td class="allow">允許</td></tr>
+            <tr class="perm-row allow"><td><code>shop</code></td><td>將領地加入商店列表</td><td class="allow">允許</td></tr>
+          </tbody></table>
         </details>
 
-        <details class="perm-cat">
+        <details class="perm-cat" open>
           <summary class="perm-cat-header" style="--cat-color:var(--fog)"><span class="perm-cat-icon">📋</span><span class="perm-cat-name">訊息與顯示</span><span class="perm-cat-count">5</span></summary>
-          <div class="perm-card-grid">
-            <div class="perm-card allow"><span class="perm-card-name">chat</span><span class="perm-card-dot">🟢</span></div>
-            <div class="perm-card allow"><span class="perm-card-name">title</span><span class="perm-card-dot">🟢</span></div>
-            <div class="perm-card allow"><span class="perm-card-name">coords</span><span class="perm-card-dot">🟢</span></div>
-            <div class="perm-card allow"><span class="perm-card-name">hidden</span><span class="perm-card-dot">🟢</span></div>
-            <div class="perm-card allow"><span class="perm-card-name">visualizer</span><span class="perm-card-dot">🟢</span></div>
-          </div>
+          <table class="perm-tbl"><thead><tr><th>權限</th><th>說明</th><th>預設</th></tr></thead><tbody>
+            <tr class="perm-row allow"><td><code>chat</code></td><td>加入領地聊天頻道</td><td class="allow">允許</td></tr>
+            <tr class="perm-row allow"><td><code>title</code></td><td>顯示進入／離開領地的訊息</td><td class="allow">允許</td></tr>
+            <tr class="perm-row allow"><td><code>coords</code></td><td>隱藏領地座標</td><td class="allow">允許</td></tr>
+            <tr class="perm-row allow"><td><code>hidden</code></td><td>從領地列表中隱藏此領地</td><td class="allow">允許</td></tr>
+            <tr class="perm-row allow"><td><code>visualizer</code></td><td>顯示領地範圍粒子邊框</td><td class="allow">允許</td></tr>
+          </tbody></table>
         </details>
 
         <div class="guide-divider"></div>
-
-        <div class="guide-divider"></div>
-<div class="guide-divider"></div>
 
         <!-- ═══ 常見問題 ═══ -->
         <div class="guide-section-card fade-in" style="--card-accent:var(--sand)">
@@ -517,7 +513,7 @@
       <div class="footer-bottom">
         <p>© 2026 海風伺服器 · 非 Mojang 官方營運 · service@seawind.cc</p>
       </div>
-      <p class="page-revise">網站最後修改日期 2026.05.05 / 總計修改 <span id="deployCount">—</span> 次</p>
+      <p class="page-revise">網站最後修改日期 2026.05.06 / 總計修改 <span id="deployCount">—</span> 次</p>
     </div>
   </footer>
 
@@ -533,7 +529,7 @@
     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="18 15 12 9 6 15"/></svg>
   </button>
 
-  <script src="../../main.js?v=050505a"></script>
+  <script src="../../main.js?v=060506a"></script>
   <script src="../../music-player.js"></script>
 
   <!-- Page Loader dismiss -->
@@ -548,6 +544,71 @@
     if (document.readyState === "complete") { hideLoader(); }
     else { window.addEventListener("load", hideLoader); }
     setTimeout(hideLoader, 3000);
+  })();
+  </script>
+
+  <!-- 權限搜尋與篩選 -->
+  <script>
+  (function(){
+    var searchInput = document.getElementById("permSearch");
+    var resultCount = document.getElementById("permResultCount");
+    var filterBtns = document.querySelectorAll(".perm-filter-btn");
+    var rows = document.querySelectorAll(".perm-row");
+    var cats = document.querySelectorAll(".perm-cat");
+    if (!searchInput || !rows.length) return;
+
+    var currentFilter = "all";
+
+    function applyFilter() {
+      var query = searchInput.value.trim().toLowerCase();
+      var visible = 0;
+
+      rows.forEach(function(row) {
+        var flagName = row.querySelector("code");
+        var desc = row.querySelectorAll("td")[1];
+        var nameText = flagName ? flagName.textContent.toLowerCase() : "";
+        var descText = desc ? desc.textContent.toLowerCase() : "";
+        var isDeny = row.classList.contains("deny");
+        var isAllow = row.classList.contains("allow");
+
+        var matchFilter = (currentFilter === "all") ||
+                          (currentFilter === "deny" && isDeny) ||
+                          (currentFilter === "allow" && isAllow);
+        var matchSearch = !query || nameText.indexOf(query) !== -1 || descText.indexOf(query) !== -1;
+
+        if (matchFilter && matchSearch) {
+          row.classList.remove("hidden");
+          visible++;
+        } else {
+          row.classList.add("hidden");
+        }
+      });
+
+      // 隱藏空分類
+      cats.forEach(function(cat) {
+        var visibleRows = cat.querySelectorAll(".perm-row:not(.hidden)");
+        if (visibleRows.length === 0) {
+          cat.classList.add("perm-cat-empty");
+        } else {
+          cat.classList.remove("perm-cat-empty");
+        }
+      });
+
+      resultCount.textContent = visible + " 個權限";
+    }
+
+    // 搜尋
+    searchInput.addEventListener("input", applyFilter);
+
+    // 篩選按鈕
+    filterBtns.forEach(function(btn) {
+      btn.addEventListener("click", function() {
+        filterBtns.forEach(function(b) { b.classList.remove("active"); });
+        btn.classList.add("active");
+        currentFilter = btn.getAttribute("data-filter");
+        applyFilter();
+      });
+    });
   })();
   </script>
 </body>
