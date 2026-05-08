@@ -1,4 +1,5 @@
 # 海風 SeaWind 網站設計文件
+| 2026.05.08 | 海風網站助手 | **活動頁倒數計時重寫**：①DOM 元素快取＋null check 防禦（evCdD/evCdH/evCdM/evCdS）；②evTimer 變數提升問題修復（改為 updateCountdown 回傳值控制計時器開關）；③clearInterval 改為安全寫法（return false 停止）；④移除 scientific notation（864e5→86400000）；⑤階段指示器變數名避免 mainEnd/redeemEnd shadowing |
 | 2026.05.08 | 海風網站助手 | **活動列表頁修復**：①修復限時活動標籤破損 HTML（多餘 `<span class="label-count">` 標籤導致頁面顯示異常）；②Hero 活動狀態摘要「珍奶日調整期中」→「珍奶日 正式期中」（5/4 已進入正式期）；③style.css cache busting → 080508a；④main.js cache busting → 080508a；⑤頁尾日期 → 2026.05.08 |
 | 2026.05.08 | 海風網站助手 | **端午節頁面修復**：①移除 NPC 對話文本（5 句南北粽戰鬥台詞，應存放於活動專案 NPC 設定）；②移除重複 JSON-LD 結構化資料（head 內兩個→保留一個）；③NPC 頭像暫改 mc-heads.net API（`木地人_head.png` 尚未製作）；④新增 mc-heads.net dns-prefetch；⑤main.js cache busting → 080508a；⑥頁尾日期 → 2026.05.08。活動列表頁卡片維持隱藏 |
 | 2026.05.08 | 海風網站助手 | **新增公告 #0141（主機維護——05/09 00:00 ~ 05/12 00:00 系統性維護）**：announcements.json 488→489 則，首頁/公告頁 inline JSON 同步更新 |
@@ -71,7 +72,7 @@
 
 | 2026.05.02 | 海風網站助手 | **領地系統指南「什麼是領地」區塊更新**：①權限數量「超過 110 種」→「120 種」（對齊 Hero 快速統計）；②meta description 同步更新（110+→120）；③og:description 同步更新 |
 
-> 最後更新：2026.05.08 21:39（海風網站助手）
+> 最後更新：2026.05.08 22:12（海風網站助手）
 > 維護者：海風網站助手
 > Instagram：[@mc.seawind.cc](https://www.instagram.com/mc.seawind.cc/)
 
@@ -445,8 +446,8 @@ website/
 
 | 日期 | 修改者 | 修改內容 |
 |---|---|---|
-| 2026.05.08 | 海風網站助手 | **活動列表頁修復**：①修復限時活動標籤破損 HTML（多餘 `<span class="label-count">` 標籤導致頁面顯示異常）；②Hero 活動狀態摘要「珍奶日調整期中」→「珍奶日 正式期中」（5/4 已進入正式期）；③style.css cache busting → 080508a；④main.js cache busting → 080508a；⑤頁尾日期 → 2026.05.08 |
-| 2026.05.08 | 海風網站助手 | **端午節頁面修復**：①移除 NPC 對話文本（5 句南北粽戰鬥台詞，應存放於活動專案 NPC 設定）；②移除重複 JSON-LD 結構化資料；③NPC 頭像暫改 mc-heads.net API；④新增 mc-heads.net dns-prefetch；⑤main.js cache busting → 080508a；⑥頁尾日期 → 2026.05.08。活動列表頁卡片維持隱藏 |
+| 2026.05.08 | 海風網站助手 | **活動頁倒數計時重寫**：①DOM 元素快取＋null check 防禦；②evTimer 變數提升問題修復（改為 updateCountdown 回傳值控制計時器開關）；③clearInterval 改為安全寫法；④移除 scientific notation；⑤階段指示器變數名避免 shadowing |
+| 2026.05.08 | 海風網站助手 | **活動列表頁修復**：①修復限時活動標籤破損 HTML；②Hero「珍奶日調整期中」→「珍奶日 正式期中」；③style.css/main.js cache busting → 080508a；④頁尾日期 → 2026.05.08 |
 | 2026.05.08 | 海風網站助手 | **新增公告 #0141（主機維護——05/09 00:00 ~ 05/12 00:00 系統性維護）**：announcements.json 488→489 則，首頁/公告頁 inline JSON 同步更新 |
 | 2026.05.06 | 海風網站助手 | **領地權限頁「完整權限列表」重新設計**：①移除總覽表格（分類標題已有計數，表格多餘）；②每個權限從純英文名稱+狀態圓點改為表格三欄（權限名稱／中文說明／預設狀態），說明文字根據插件 flags.yml 註解翻譯；③新增搜尋框（即時過濾權限名稱或說明）+ 篩選按鈕（全部／僅禁止／僅允許）+ 結果計數；④搜尋或篩選時自動隱藏空分類；⑤所有分類預設展開（`open`）。CSS 新增 `.perm-filter-bar` / `.perm-search` / `.perm-filter-btn` 系列樣式含深色/淺色模式。全站 cache busting → 060506a |
 | 2026.05.05 | 海風網站助手 | **領地系統指南「子領地」區塊合併**：①「常見用途」和「嵌套規則」從獨立 section card 合併為子領地的 h3 子標題（內部用 guide-divider 分隔），減少頁面卡片數量使結構更緊湊；②全頁 5 處「父領地」→「主領地」（含建立子領地說明、嵌套規則範圍/權限/命名）。cache busting → 050505a |
