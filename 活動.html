@@ -1010,16 +1010,22 @@
   <!-- 活動頁珍奶日倒數計時 + 階段動態更新 -->
   <script>
   (function(){
-    const badge = document.getElementById('eventCountdownBadge');
+    var badge = document.getElementById('eventCountdownBadge');
     if(!badge) return;
-    const mainStart = new Date('2026-05-04T00:00:00+08:00').getTime();
-    const mainEnd = new Date('2026-05-28T00:00:00+08:00').getTime();
-    const redeemEnd = new Date('2026-06-01T00:00:00+08:00').getTime();
-    const adjustStart = new Date('2026-04-27T00:00:00+08:00').getTime();
-    const labelEl = document.getElementById('evCdLabel');
-    function tick(){
-      const now = Date.now();
-      let target;
+    var dEl = document.getElementById('evCdD');
+    var hEl = document.getElementById('evCdH');
+    var mEl = document.getElementById('evCdM');
+    var sEl = document.getElementById('evCdS');
+    var labelEl = document.getElementById('evCdLabel');
+    if(!dEl||!hEl||!mEl||!sEl) return;
+
+    var mainStart = new Date('2026-05-04T00:00:00+08:00').getTime();
+    var mainEnd   = new Date('2026-05-28T00:00:00+08:00').getTime();
+    var redeemEnd = new Date('2026-06-01T00:00:00+08:00').getTime();
+
+    function updateCountdown(){
+      var now = Date.now();
+      var target, diff;
       if(now < mainStart){
         target = mainStart;
         if(labelEl) labelEl.textContent = '距離正式期開始';
@@ -1031,47 +1037,53 @@
         if(labelEl) labelEl.textContent = '距離兌換結束';
       } else {
         badge.classList.add('expired');
-        badge.querySelector('.event-countdown-label').textContent = '🧋 活動已結束';
+        if(labelEl) labelEl.textContent = '🧋 活動已結束';
         badge.querySelector('.event-countdown-nums').textContent = '明年見！';
-        clearInterval(evTimer);
-        return;
+        return false;
       }
-      const diff = target - now;
+      diff = target - now;
       if(diff <= 0){
         badge.classList.add('expired');
-        badge.querySelector('.event-countdown-label').textContent = '🧋 本階段已結束';
+        if(labelEl) labelEl.textContent = '🧋 本階段已結束';
         badge.querySelector('.event-countdown-nums').textContent = '';
-        clearInterval(evTimer);
-        return;
+        return false;
       }
-      const d=Math.floor(diff/864e5), h=Math.floor((diff%864e5)/36e5), m=Math.floor((diff%36e5)/6e4), s=Math.floor((diff%6e4)/1e3);
-      document.getElementById('evCdD').textContent=String(d).padStart(2,'0');
-      document.getElementById('evCdH').textContent=String(h).padStart(2,'0');
-      document.getElementById('evCdM').textContent=String(m).padStart(2,'0');
-      document.getElementById('evCdS').textContent=String(s).padStart(2,'0');
+      var dd = Math.floor(diff / 86400000);
+      var hh = Math.floor((diff % 86400000) / 3600000);
+      var mm = Math.floor((diff % 3600000) / 60000);
+      var ss = Math.floor((diff % 60000) / 1000);
+      dEl.textContent = dd < 10 ? '0'+dd : ''+dd;
+      hEl.textContent = hh < 10 ? '0'+hh : ''+hh;
+      mEl.textContent = mm < 10 ? '0'+mm : ''+mm;
+      sEl.textContent = ss < 10 ? '0'+ss : ''+ss;
+      return true;
     }
-    tick();
-    const evTimer = setInterval(tick,1000);
+
+    // 首次立即更新，失敗則不啟動計時器
+    if(!updateCountdown()) return;
+    var timer = setInterval(function(){
+      if(!updateCountdown()) clearInterval(timer);
+    }, 1000);
 
     // 動態更新珍奶日階段指示器（與首頁時間軸同步）
     var stages = document.querySelectorAll('#bubbleTeaStages .event-stage');
     if(stages.length === 4){
       var now = Date.now();
-      var testEnd = new Date('2026-04-27T00:00:00+08:00').getTime();
-      var warmEnd = new Date('2026-05-04T00:00:00+08:00').getTime();
-      var mainEnd = new Date('2026-05-28T00:00:00+08:00').getTime();
-      var redeemEnd = new Date('2026-06-01T00:00:00+08:00').getTime();
+      var testEnd  = new Date('2026-04-27T00:00:00+08:00').getTime();
+      var warmEnd  = new Date('2026-05-04T00:00:00+08:00').getTime();
+      var mainEnd2 = new Date('2026-05-28T00:00:00+08:00').getTime();
+      var redeemEnd2 = new Date('2026-06-01T00:00:00+08:00').getTime();
       stages.forEach(function(s){ s.classList.remove('done','active'); });
       if(now < testEnd){
         stages[0].classList.add('active');
       } else if(now < warmEnd){
         stages[0].classList.add('done');
         stages[1].classList.add('active');
-      } else if(now < mainEnd){
+      } else if(now < mainEnd2){
         stages[0].classList.add('done');
         stages[1].classList.add('done');
         stages[2].classList.add('active');
-      } else if(now < redeemEnd){
+      } else if(now < redeemEnd2){
         stages[0].classList.add('done');
         stages[1].classList.add('done');
         stages[2].classList.add('done');
