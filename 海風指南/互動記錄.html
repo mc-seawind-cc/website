@@ -19,7 +19,7 @@
   <link rel="dns-prefetch" href="//api.mcsrvstat.us">
   <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;800&family=Noto+Serif+TC:wght@700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../style.css?v=060506a">
+  <link rel="stylesheet" href="../style.css?v=090509a">
   <link rel="stylesheet" href="../music-player.css">
 </head>
 <body>
@@ -187,8 +187,8 @@
 
       <!-- ═══ Hero ═══ -->
       <div class="guide-v2-hero fade-in">
-        <h1>互動記錄</h1>
-        <p class="section-desc">箱子被動了？建築被拆了？用互動記錄查詢誰碰過你的東西，120 天內的紀錄都查得到。</p>
+        <h1>🔍 互動記錄</h1>
+        <p class="section-desc">箱子被動了？建築被拆了？用互動記錄查詢誰碰過你的東西，120 天內的紀錄都查得到。這是解決物品糾紛、追蹤破壞行為最重要的工具。</p>
         <div class="guide-quick-stats">
           <div class="guide-qs-item"><span class="guide-qs-icon">📅</span><span>記錄範圍</span><span class="guide-qs-val">120 天</span></div>
           <div class="guide-qs-item"><span class="guide-qs-icon">📝</span><span>記錄類型</span><span class="guide-qs-val">6 種</span></div>
@@ -203,6 +203,8 @@
         <div class="guide-section-card fade-in" style="--card-accent:var(--foam)">
           <h2><span class="sec-icon">📋</span> 功能說明</h2>
           <p>箱子裡的東西被偷了？建築被破壞了？<strong>互動記錄</strong>讓你查詢最近 <strong>120 天</strong>內，誰動了你的東西。只要點擊方塊就能查看記錄。</p>
+          <p>互動記錄系統會自動記錄伺服器上所有方塊的變動，包含破壞、放置、容器開關、物品進出等。不管是誰做的，系統都留有紀錄。這也是管理員處理糾紛時最重要的依據。</p>
+          <div class="callout callout-info"><span class="callout-icon">ℹ️</span><span>互動記錄是全伺服器共用的，不只是你領地內的紀錄。任何地方的方塊變動都能查詢。</span></div>
         </div>
 
         <div class="guide-divider"></div>
@@ -210,23 +212,25 @@
         <!-- ═══ 使用方式 ═══ -->
         <div class="guide-section-card fade-in" style="--card-accent:var(--sand)">
           <h2><span class="sec-icon">🔍</span> 使用方式</h2>
+          <p>使用互動記錄只需要三個步驟：開啟檢查器、點擊方塊、查看結果。</p>
           <div class="guide-steps-grid">
             <div class="guide-step-card" style="--step-color:var(--sand)">
               <span class="guide-step-num">1</span>
               <h4>開啟檢查器</h4>
-              <p>輸入 <code>/co i</code> 開啟檢查模式</p>
+              <p>輸入 <code>/co i</code> 開啟檢查模式。開啟後你會看到提示訊息。</p>
             </div>
             <div class="guide-step-card" style="--step-color:var(--sand)">
               <span class="guide-step-num">2</span>
               <h4>點擊方塊</h4>
-              <p>對你想查的方塊點擊，就會顯示該方塊的互動記錄</p>
+              <p>對你想查的方塊點擊（左鍵或右鍵皆可），就會顯示該方塊的互動記錄。</p>
             </div>
             <div class="guide-step-card" style="--step-color:var(--sand)">
               <span class="guide-step-num">3</span>
               <h4>關閉檢查器</h4>
-              <p>再輸入一次 <code>/co i</code> 關閉檢查模式</p>
+              <p>查完後再輸入一次 <code>/co i</code> 關閉檢查模式。忘記關也沒關係，不會影響其他玩家。</p>
             </div>
           </div>
+          <div class="callout callout-tip"><span class="callout-icon">💡</span><span>按住 Shift 鍵再點擊方塊，可以一次查看該位置周圍更大範圍的記錄，適合大面積破壞的調查。</span></div>
         </div>
 
         <div class="guide-divider"></div>
@@ -234,16 +238,17 @@
         <!-- ═══ 記錄類型 ═══ -->
         <div class="guide-section-card fade-in" style="--card-accent:var(--lavender)">
           <h2><span class="sec-icon">📝</span> 可查詢的記錄類型</h2>
+          <p>互動記錄能查詢以下六種方塊變動，幾乎涵蓋了所有玩家操作：</p>
           <div class="rules-table-wrap">
             <table class="rules-table">
-              <thead><tr><th>類型</th><th>說明</th></tr></thead>
+              <thead><tr><th>類型</th><th>說明</th><th>常見情境</th></tr></thead>
               <tbody>
-                <tr><td>🔨 破壞</td><td>誰打掉了這個方塊</td></tr>
-                <tr><td>🧱 放置</td><td>誰放了這個方塊</td></tr>
-                <tr><td>📦 開啟</td><td>誰開了這個容器</td></tr>
-                <tr><td>📥 取出</td><td>誰從容器裡拿了東西</td></tr>
-                <tr><td>📤 放入</td><td>誰往容器裡放了東西</td></tr>
-                <tr><td>🚪 互動</td><td>誰使用了這個方塊（門、按鈕等）</td></tr>
+                <tr><td>🔨 破壞</td><td>誰打掉了這個方塊</td><td>建築被拆、圍牆被挖</td></tr>
+                <tr><td>🧱 放置</td><td>誰放了這個方塊</td><td>確認建造者、找出亂放方塊的人</td></tr>
+                <tr><td>📦 開啟</td><td>誰開了這個容器</td><td>箱子被翻過、追蹤可疑開啟</td></tr>
+                <tr><td>📥 取出</td><td>誰從容器裡拿了東西</td><td>物品被偷、確認誰拿走了什麼</td></tr>
+                <tr><td>📤 放入</td><td>誰往容器裡放了東西</td><td>追蹤物品來源、確認捐贈者</td></tr>
+                <tr><td>🚪 互動</td><td>誰使用了這個方塊</td><td>門被誰開過、按鈕被誰按過</td></tr>
               </tbody>
             </table>
           </div>
@@ -251,16 +256,64 @@
 
         <div class="guide-divider"></div>
 
+        <!-- ═══ 進階查詢 ═══ -->
+        <div class="guide-section-card fade-in" style="--card-accent:var(--sky)">
+          <h2><span class="sec-icon">⌨️</span> 進階查詢</h2>
+          <p>除了基本的點擊查詢，你也可以用指令進行更精確的搜尋：</p>
+          <div class="guide-cmd-grid">
+            <div class="guide-cmd-card">
+              <span class="guide-cmd-icon">🔎</span>
+              <div class="guide-cmd-body">
+                <div class="guide-cmd-name">/co lookup u:&lt;玩家&gt; t:24h</div>
+                <div class="guide-cmd-desc">查詢某玩家最近 24 小時的操作記錄。<code>u:</code> 指定玩家，<code>t:</code> 指定時間範圍（例：1h、24h、7d）。</div>
+              </div>
+            </div>
+            <div class="guide-cmd-card">
+              <span class="guide-cmd-icon">📍</span>
+              <div class="guide-cmd-body">
+                <div class="guide-cmd-name">/co lookup r:5 t:1d</div>
+                <div class="guide-cmd-desc">查詢周圍 5 格範圍內、最近 1 天的記錄。<code>r:</code> 指定範圍半徑。適合調查大面積破壞。</div>
+              </div>
+            </div>
+            <div class="guide-cmd-card">
+              <span class="guide-cmd-icon">🧱</span>
+              <div class="guide-cmd-body">
+                <div class="guide-cmd-name">/co lookup u:&lt;玩家&gt; a:block</div>
+                <div class="guide-cmd-desc">只查詢方塊操作（破壞/放置），過濾掉容器操作。也可以用 <code>a:container</code> 只查容器。</div>
+              </div>
+            </div>
+          </div>
+          <div class="callout callout-info"><span class="callout-icon">ℹ️</span><span>一般玩家只能查看記錄。如果需要回溯（恢復被破壞的區域），請向管理員申請。</span></div>
+        </div>
+
+        <div class="guide-divider"></div>
+
         <!-- ═══ 常見情境 ═══ -->
         <div class="guide-section-card fade-in" style="--card-accent:var(--ocean-blue)">
           <h2><span class="sec-icon">💡</span> 常見使用情境</h2>
-          <ul class="rules-list">
-            <li><strong>東西被偷</strong>：用 <code>/co i</code> 點擊箱子，查看誰拿了東西</li>
-            <li><strong>建築被破壞</strong>：點擊被破壞的方塊位置，查看誰打掉的</li>
-            <li><strong>確認建造者</strong>：點擊方塊查看是誰放置的</li>
-            <li><strong>回溯操作</strong>：管理員可以使用回溯功能恢復被破壞的區域</li>
-          </ul>
-          <div class="callout callout-tip"><span class="callout-icon">💡</span><span>如果發現被破壞或被偷東西，請截圖記錄並向管理員舉報。互動記錄是最重要的證據。</span></div>
+          <div class="guide-eco-grid">
+            <div class="guide-eco-card">
+              <div class="guide-eco-icon">📦</div>
+              <h4>東西被偷</h4>
+              <p>用 <code>/co i</code> 點擊箱子，查看誰拿了東西。記錄會顯示拿走的物品名稱和數量。</p>
+            </div>
+            <div class="guide-eco-card">
+              <div class="guide-eco-icon">🏗️</div>
+              <h4>建築被破壞</h4>
+              <p>點擊被破壞的方塊位置，查看誰打掉的。如果範圍很大，可以用進階指令查詢周圍區域。</p>
+            </div>
+            <div class="guide-eco-card">
+              <div class="guide-eco-icon">🔍</div>
+              <h4>確認建造者</h4>
+              <p>點擊方塊查看是誰放置的。在公共區域遇到不明建築時，可以查出建造者。</p>
+            </div>
+            <div class="guide-eco-card">
+              <div class="guide-eco-icon">🛡️</div>
+              <h4>回溯修復</h4>
+              <p>管理員可以使用回溯功能恢復被破壞的區域。發現問題後先截圖記錄，再向管理員申請回溯。</p>
+            </div>
+          </div>
+          <div class="callout callout-tip"><span class="callout-icon">💡</span><span>發現被破壞或被偷東西，請先截圖保存記錄，再到 Discord 開客服單向管理員舉報。記錄截圖是最有力的證據。</span></div>
         </div>
       
         <div class="guide-divider"></div>
@@ -270,7 +323,7 @@
           <div class="guide-faq">
             <div class="guide-faq-item">
               <button class="guide-faq-q">可以查多久以前的記錄？</button>
-              <div class="guide-faq-a"><div class="guide-faq-a-inner">最近 <strong>120 天</strong>內的記錄都可以查詢。超過 120 天的記錄會被自動清除。</div></div>
+              <div class="guide-faq-a"><div class="guide-faq-a-inner">最近 <strong>120 天</strong>內的記錄都可以查詢。超過 120 天的記錄會被自動清除，所以發現問題要盡早查詢。</div></div>
             </div>
             <div class="guide-faq-item">
               <button class="guide-faq-q">只能查自己的東西嗎？</button>
@@ -278,7 +331,15 @@
             </div>
             <div class="guide-faq-item">
               <button class="guide-faq-q">查到被偷了怎麼辦？</button>
-              <div class="guide-faq-a"><div class="guide-faq-a-inner">把查到的記錄截圖，到 Discord 開客服單向管理員舉報。記錄截圖是最好的證據。</div></div>
+              <div class="guide-faq-a"><div class="guide-faq-a-inner">把查到的記錄截圖，到 Discord 開客服單向管理員舉報。記錄截圖是最好的證據，管理員可以透過回溯功能幫你恢復。</div></div>
+            </div>
+            <div class="guide-faq-item">
+              <button class="guide-faq-q">用 /co i 點擊後沒有顯示記錄？</button>
+              <div class="guide-faq-a"><div class="guide-faq-a-inner">可能是該方塊在過去 120 天內沒有被任何人操作過，或是你忘記開啟檢查器。確認聊天欄有提示「檢查器已開啟」再點擊方塊。</div></div>
+            </div>
+            <div class="guide-faq-item">
+              <button class="guide-faq-q">互動記錄會影響遊戲效能嗎？</button>
+              <div class="guide-faq-a"><div class="guide-faq-a-inner">不會。互動記錄是伺服器後台自動運作的，對你的遊戲體驗完全沒有影響。查詢時也不會造成延遲。</div></div>
             </div>
           </div>
         </div>
@@ -334,7 +395,7 @@
       <div class="footer-bottom">
         <p>© 2026 海風伺服器 · 非 Mojang 官方營運 · service@seawind.cc</p>
       </div>
-      <p class="page-revise">網站最後修改日期 2026.05.02 / 總計修改 <span id="deployCount">—</span> 次</p>
+      <p class="page-revise">網站最後修改日期 2026.05.09 / 總計修改 <span id="deployCount">—</span> 次</p>
     </div>
   </footer>
 
@@ -350,7 +411,7 @@
     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="18 15 12 9 6 15"/></svg>
   </button>
 
-  <script src="../main.js?v=040504b"></script>
+  <script src="../main.js?v=090509a"></script>
   <script src="../music-player.js"></script>
   
   <!-- Page Loader dismiss -->

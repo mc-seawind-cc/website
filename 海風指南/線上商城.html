@@ -20,7 +20,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;800&family=Noto+Serif+TC:wght@700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../style.css?v=060506a">
+  <link rel="stylesheet" href="../style.css?v=090509a">
   <link rel="stylesheet" href="../music-player.css">
 </head>
 <body>
@@ -539,17 +539,44 @@
 
         <div class="guide-divider"></div>
 
-                <!-- ═══ 常見問題 ═══ -->
-          <div class="guide-section-card fade-in" style="--card-accent:#85b1e0">
-            <h2><span class="sec-icon">❓</span> 常見問題</h2>
-            <details class="guide-faq"><summary>一口價和競拍有什麼差別？</summary><p>一口價是設定固定價格，買家看到價格合適就能直接購買，適合常見材料和消耗品。競拍是設定起標價，買家輪流出價，價高者得，適合稀有物品或不確定價值的商品。競拍通常能賣到更好的價格，但需要等待一段時間。</p></details>
-            <details class="guide-faq"><summary>商品上架後多久會過期？</summary><p>預設上架期限為 2 天。如果 2 天內沒有賣出，商品會自動下架並進入取件櫃，你可以用 <code>/ah redeem</code> 或 <code>/ah expired</code> 領回。</p></details>
-            <details class="guide-faq"><summary>取件櫃是什麼？</summary><p>取件櫃是存放過期商品和競拍款項的地方。當商品過期、競拍結束或有人購買你的商品時，物品或風幣會先進入取件櫃。記得定期用 <code>/ah redeem</code> 領取，避免累積太多。</p></details>
-            <details class="guide-faq"><summary>可以同時上架多少商品？</summary><p>預設最多同時上架 10 個商品。如果你需要更多上架位，可以透過會員等方式提升上限。</p></details>
-            <details class="guide-faq"><summary>商品被買走後風幣去哪了？</summary><p>商品售出後，風幣會自動存入你的帳戶。如果使用競拍模式，款項會進入取件櫃，需要用 <code>/ah redeem</code> 領取。</p></details>
-            <details class="guide-faq"><summary>有哪些物品不能上架？</summary><p>基岩和選單物品等特殊方塊被列為黑名單，無法上架。這是為了防止玩家意外賣掉重要物品或破壞遊戲平衡。</p></details>
-            <details class="guide-faq"><summary>怎麼幫商品做廣告？</summary><p>上架商品後，在商品中心找到該商品，點擊「廣告」按鈕。花費 50 風幣就能在全服廣播你的商品資訊，讓所有在線玩家看到。廣告能大幅提高商品的曝光率和成交速度。</p></details>
-          </div><!-- ═══ 相關頁面 ═══ -->
+        <!-- ═══ 常見問題 ═══ -->
+        <div class="guide-section-card fade-in" style="--card-accent:#85b1e0">
+          <h2><span class="sec-icon">❓</span> 常見問題</h2>
+          <div class="guide-faq">
+            <div class="guide-faq-item">
+              <button class="guide-faq-q">一口價和競拍有什麼差別？</button>
+              <div class="guide-faq-a"><div class="guide-faq-a-inner">一口價是設定固定價格，買家看到價格合適就能直接購買，適合常見材料和消耗品。競拍是設定起標價，買家輪流出價，價高者得，適合稀有物品或不確定價值的商品。競拍通常能賣到更好的價格，但需要等待一段時間。</div></div>
+            </div>
+            <div class="guide-faq-item">
+              <button class="guide-faq-q">商品上架後多久會過期？</button>
+              <div class="guide-faq-a"><div class="guide-faq-a-inner">預設上架期限為 2 天。如果 2 天內沒有賣出，商品會自動下架並進入取件櫃，你可以用 <code>/ah redeem</code> 或 <code>/ah expired</code> 領回。</div></div>
+            </div>
+            <div class="guide-faq-item">
+              <button class="guide-faq-q">取件櫃是什麼？</button>
+              <div class="guide-faq-a"><div class="guide-faq-a-inner">取件櫃是存放過期商品和競拍款項的地方。當商品過期、競拍結束或有人購買你的商品時，物品或風幣會先進入取件櫃。記得定期用 <code>/ah redeem</code> 領取，避免累積太多。</div></div>
+            </div>
+            <div class="guide-faq-item">
+              <button class="guide-faq-q">可以同時上架多少商品？</button>
+              <div class="guide-faq-a"><div class="guide-faq-a-inner">預設最多同時上架 10 個商品。如果你需要更多上架位，可以透過會員等方式提升上限。</div></div>
+            </div>
+            <div class="guide-faq-item">
+              <button class="guide-faq-q">商品被買走後風幣去哪了？</button>
+              <div class="guide-faq-a"><div class="guide-faq-a-inner">商品售出後，風幣會自動存入你的帳戶。如果使用競拍模式，款項會進入取件櫃，需要用 <code>/ah redeem</code> 領取。</div></div>
+            </div>
+            <div class="guide-faq-item">
+              <button class="guide-faq-q">有哪些物品不能上架？</button>
+              <div class="guide-faq-a"><div class="guide-faq-a-inner">基岩和選單物品等特殊方塊被列為黑名單，無法上架。這是為了防止玩家意外賣掉重要物品或破壞遊戲平衡。</div></div>
+            </div>
+            <div class="guide-faq-item">
+              <button class="guide-faq-q">怎麼幫商品做廣告？</button>
+              <div class="guide-faq-a"><div class="guide-faq-a-inner">上架商品後，在商品中心找到該商品，點擊「廣告」按鈕。花費 50 風幣就能在全服廣播你的商品資訊，讓所有在線玩家看到。廣告能大幅提高商品的曝光率和成交速度。</div></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="guide-divider"></div>
+
+        <!-- ═══ 相關頁面 ═══ -->
         <div class="guide-section-card fade-in" style="--card-accent:var(--ocean-blue)">
           <h2><span class="sec-icon">📖</span> 相關頁面</h2>
           <div class="guide-next-grid">
@@ -603,7 +630,7 @@
       <div class="footer-bottom">
         <p>© 2026 海風伺服器 · 非 Mojang 官方營運 · service@seawind.cc</p>
       </div>
-      <p class="page-revise">網站最後修改日期 2026.05.02 / 總計修改 <span id="deployCount">—</span> 次</p>
+      <p class="page-revise">網站最後修改日期 2026.05.09 / 總計修改 <span id="deployCount">—</span> 次</p>
     </div>
   </footer>
 
@@ -619,7 +646,7 @@
     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="18 15 12 9 6 15"/></svg>
   </button>
 
-  <script src="../main.js?v=040504b"></script>
+  <script src="../main.js?v=090509a"></script>
   <script src="../music-player.js"></script>
   
   <!-- Page Loader dismiss -->
