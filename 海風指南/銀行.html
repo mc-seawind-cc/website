@@ -20,7 +20,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;800&family=Noto+Serif+TC:wght@700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../style.css?v=060506a">
+  <link rel="stylesheet" href="../style.css?v=090509a">
   <link rel="stylesheet" href="../music-player.css">
 </head>
 <body>
@@ -280,6 +280,26 @@
 
         <div class="guide-divider"></div>
 
+        <div class="guide-divider"></div>
+
+        <!-- ═══ 銀行 vs 玩家市場 ═══ -->
+        <div class="guide-section-card fade-in" style="--card-accent:var(--sand)">
+          <h2><span class="sec-icon">⚖️</span> 銀行 vs 玩家市場</h2>
+          <p>鑽石換風幣不只有銀行一種方式。你也可以在玩家市場跟其他玩家交易，兩種方式各有優缺：</p>
+          <div class="rules-table-wrap">
+            <table class="rules-table">
+              <thead><tr><th>比較項目</th><th>🏦 銀行</th><th>👥 玩家市場</th></tr></thead>
+              <tbody>
+                <tr><td><strong>匣率</strong></td><td>固定 1:25</td><td>浮動，通常 1:30～1:50</td></tr>
+                <tr><td><strong>方便性</strong></td><td>隨時可換，NPC 操作</td><td>需要找到賣家</td></tr>
+                <tr><td><strong>安全性</strong></td><td>系統保障，零風險</td><td>面交或箱子商店</td></tr>
+                <tr><td><strong>適合對象</strong></td><td>新手、懶得比價</td><td>想多賚一點的老手</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="callout callout-tip"><span class="callout-icon">💡</span><span>如果只是小量兌換（幾顆鑽石），銀行就夠用了。換整組以上可以先逛逛玩家市場比價。</span></div>
+        </div>
+
         <!-- ═══ 相關頁面 ═══ -->
         <div class="guide-section-card fade-in" style="--card-accent:var(--ocean-blue)">
           <h2><span class="sec-icon">📖</span> 相關頁面</h2>
@@ -303,6 +323,20 @@
               <div class="guide-next-body">
                 <h4>風語茶屋</h4>
                 <p>銀行的鄰居，重生點休息處</p>
+              </div>
+            </a>
+            <a href="箱子商店" class="guide-next-card">
+              <span class="guide-next-icon">📦</span>
+              <div class="guide-next-body">
+                <h4>箱子商店</h4>
+                <p>用風幣在玩家商店買東西</p>
+              </div>
+            </a>
+            <a href="雜貨店" class="guide-next-card">
+              <span class="guide-next-icon">🏪</span>
+              <div class="guide-next-body">
+                <h4>雜貨店</h4>
+                <p>NPC 商店，各種日常用品</p>
               </div>
             </a>
           </div>
@@ -334,6 +368,14 @@
               <button class="guide-faq-q">風幣有什麼用？</button>
               <div class="guide-faq-a"><div class="guide-faq-a-inner">風幣是海風的主要貨幣，可以用來在<a href='箱子商店'>箱子商店</a>買東西、寄送包裹、使用各種服務。詳細可以看<a href='經濟系統'>經濟系統</a>介紹。</div></div>
             </div>
+            <div class="guide-faq-item">
+              <button class="guide-faq-q">新手推薦先換多少鑽石？</button>
+              <div class="guide-faq-a"><div class="guide-faq-a-inner">建議先換 4～8 顆（100～200 風幣），夠你買基本材料和逛商店就好。留一些鑽石備用，之後做裝備或交易都用得到。</div></div>
+            </div>
+            <div class="guide-faq-item">
+              <button class="guide-faq-q">銀行有營業時間嗎？</button>
+              <div class="guide-faq-a"><div class="guide-faq-a-inner">沒有。銀行 NPC 24 小時都在，溜晨三點也能換。隨時去隨時換，不用等。</div></div>
+            </div>
           </div>
         </div>
 
@@ -363,7 +405,7 @@
       <div class="footer-bottom">
         <p>© 2026 海風伺服器 · 非 Mojang 官方營運 · service@seawind.cc</p>
       </div>
-      <p class="page-revise">網站最後修改日期 2026.05.02 / 總計修改 <span id="deployCount">—</span> 次</p>
+      <p class="page-revise">網站最後修改日期 2026.05.09 / 總計修改 <span id="deployCount">—</span> 次</p>
     </div>
   </footer>
 
@@ -379,7 +421,7 @@
     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="18 15 12 9 6 15"/></svg>
   </button>
 
-  <script src="../main.js?v=040504b"></script>
+  <script src="../main.js?v=090509a"></script>
   <script src="../music-player.js"></script>
   
   <!-- Page Loader dismiss -->
