@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <link rel="canonical" href="https://www.seawind.cc/客服單">
+  <meta name="color-scheme" content="dark light">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>客服工單 — 海風</title>
+  <meta name="description" content="遇到問題或有建議？填寫客服工單，海風團隊會盡快處理。">
+  <link rel="icon" href="assets/img/logo.png">
+  <link rel="apple-touch-icon" href="assets/img/logo.png">
+  <link rel="manifest" href="manifest.json">
+  <meta property="og:title" content="客服工單 — 海風">
+  <meta property="og:description" content="遇到問題或有建議？填寫客服工單，海風團隊會盡快處理。">
+  <meta property="og:image" content="https://www.seawind.cc/assets/img/logo.png">
+  <meta property="og:type" content="website">
+  <meta name="theme-color" content="#0d1117">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;800&family=Noto+Serif+TC:wght@700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css?v=110511g">
+  <link rel="stylesheet" href="music-player.css?v=110511m">
+  <style>
+    .pd-hero{text-align:center;padding:var(--space-2xl) var(--space-lg) var(--space-xl);position:relative;overflow:hidden}
+    .pd-hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 70% 60% at 50% 0%,rgba(157,175,255,0.06),transparent 70%);pointer-events:none}
+    .pd-hero h1{font-size:clamp(1.6rem,4vw,2.2rem);font-weight:800;margin-bottom:var(--space-sm);position:relative}
+    .pd-hero-desc{color:var(--fog);font-size:0.95rem;max-width:520px;margin:0 auto;line-height:1.8;position:relative}
+
+    .pd-body{max-width:720px;margin:0 auto;padding:0 var(--space-lg) var(--space-2xl)}
+    .pd-body .section-card{background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.06);border-radius:var(--radius-xl);padding:var(--space-xl);margin-bottom:var(--space-lg)}
+    .pd-body .section-card h2{font-size:1.1rem;font-weight:700;color:var(--white);margin-bottom:var(--space-md);display:flex;align-items:center;gap:var(--space-sm)}
+    .pd-body p{color:var(--cloud);font-size:0.95rem;line-height:1.9;margin-bottom:var(--space-md)}
+    .pd-body p:last-child{margin-bottom:0}
+
+    .pd-note{display:flex;align-items:flex-start;gap:var(--space-md);padding:var(--space-md) var(--space-lg);background:rgba(157,175,255,0.04);border-left:3px solid rgba(157,175,255,0.2);border-radius:0 var(--radius-md) var(--radius-md) 0;margin-bottom:var(--space-md);font-size:0.88rem;color:var(--cloud);line-height:1.7}
+    .pd-note:last-child{margin-bottom:0}
+    .pd-note-icon{flex-shrink:0;font-size:1rem;margin-top:2px}
+
+    /* ── Form ── */
+    .pd-form{margin-top:var(--space-lg)}
+    .pd-form-field{margin-bottom:var(--space-lg)}
+    .pd-form-label{display:block;font-size:0.85rem;font-weight:700;color:var(--sky);margin-bottom:8px}
+    .pd-form-required{color:#ff6b6b;font-size:0.75rem}
+    .pd-form-optional{font-size:0.68rem;font-weight:500;color:var(--fog);background:rgba(157,175,255,0.06);padding:2px 8px;border-radius:8px;margin-left:4px}
+    .pd-form-desc{font-size:0.78rem;color:var(--fog);font-weight:400;margin-top:4px;line-height:1.6}
+    .pd-form-input,.pd-form-textarea{width:100%;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);border-radius:var(--radius-md);padding:12px 16px;color:var(--cloud);font-size:0.9rem;font-family:var(--font-body);line-height:1.6;transition:border-color 0.2s,box-shadow 0.2s;box-sizing:border-box}
+    .pd-form-input:focus,.pd-form-textarea:focus{outline:none;border-color:var(--sky);box-shadow:0 0 0 3px rgba(157,175,255,0.12)}
+    .pd-form-input::placeholder,.pd-form-textarea::placeholder{color:var(--text-muted);font-size:0.85rem}
+    .pd-form-textarea{resize:vertical;min-height:120px}
+    .pd-form-hint{text-align:right;font-size:0.72rem;color:var(--text-muted);margin-top:4px}
+
+    .pd-form-radio-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:var(--space-sm)}
+    .pd-form-radio{display:flex;align-items:center;gap:8px;padding:10px 14px;background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.06);border-radius:var(--radius-md);cursor:pointer;font-size:0.88rem;color:var(--cloud);transition:border-color 0.2s,background 0.2s}
+    .pd-form-radio:hover{border-color:rgba(157,175,255,0.2);background:rgba(157,175,255,0.03)}
+    .pd-form-radio input{display:none}
+    .pd-form-radio:has(input:checked){border-color:var(--sky);background:rgba(157,175,255,0.06);box-shadow:0 0 0 1px var(--sky)}
+    .pd-form-radio:has(input:checked) span{color:var(--white);font-weight:600}
+    .pd-form-radio.error{border-color:rgba(255,107,107,0.4);animation:form-shake 0.4s}
+
+    .pd-form-submit{width:100%;padding:14px;border:none;border-radius:var(--radius-lg);background:linear-gradient(135deg,var(--sky),var(--ocean-blue));color:#fff;font-size:0.95rem;font-weight:700;font-family:var(--font-body);cursor:pointer;transition:transform 0.15s,box-shadow 0.2s,opacity 0.2s;position:relative;overflow:hidden}
+    .pd-form-submit:hover{transform:translateY(-1px);box-shadow:0 4px 20px rgba(157,175,255,0.25)}
+    .pd-form-submit:active{transform:translateY(0)}
+    .pd-form-submit:disabled{opacity:0.5;cursor:not-allowed;transform:none}
+    .pd-form-spinner{display:inline-block;width:16px;height:16px;border:2px solid rgba(255,255,255,0.3);border-top-color:#fff;border-radius:50%;animation:form-spin 0.6s linear infinite;vertical-align:middle;margin-right:6px}
+
+    .pd-form-result{margin-top:var(--space-md);padding:12px 16px;border-radius:var(--radius-md);font-size:0.88rem;line-height:1.6;text-align:center}
+    .pd-form-result.success{background:rgba(168,230,207,0.08);border:1px solid rgba(168,230,207,0.2);color:var(--foam)}
+    .pd-form-result.error{background:rgba(255,107,107,0.08);border:1px solid rgba(255,107,107,0.2);color:#ff6b6b}
+
+    .pd-form-input.error,.pd-form-textarea.error{border-color:rgba(255,107,107,0.5);animation:form-shake 0.4s}
+
+    @keyframes form-shake{0%,100%{transform:translateX(0)}20%,60%{transform:translateX(-4px)}40%,80%{transform:translateX(4px)}}
+    @keyframes form-spin{to{transform:rotate(360deg)}}
+
+    [data-theme="light"] .pd-hero::before{background:radial-gradient(ellipse 70% 60% at 50% 0%,rgba(74,108,247,0.04),transparent 70%)}
+    [data-theme="light"] .pd-body .section-card{background:#fff;border-color:rgba(0,0,0,0.06)}
+    [data-theme="light"] .pd-body .section-card h2{color:var(--cloud)}
+    [data-theme="light"] .pd-body p{color:#4a5568}
+    [data-theme="light"] .pd-note{background:rgba(74,108,247,0.04);border-left-color:rgba(74,108,247,0.2)}
+    [data-theme="light"] .pd-form-input,[data-theme="light"] .pd-form-textarea{background:#fff;border-color:rgba(0,0,0,0.1);color:#2d3748}
+    [data-theme="light"] .pd-form-input:focus,[data-theme="light"] .pd-form-textarea:focus{border-color:#4a6cf7;box-shadow:0 0 0 3px rgba(74,108,247,0.1)}
+    [data-theme="light"] .pd-form-input::placeholder,[data-theme="light"] .pd-form-textarea::placeholder{color:#a0aec0}
+    [data-theme="light"] .pd-form-radio{background:#f8f9fb;border-color:rgba(0,0,0,0.06);color:#2d3748}
+    [data-theme="light"] .pd-form-radio:hover{border-color:rgba(74,108,247,0.2);background:rgba(74,108,247,0.02)}
+    [data-theme="light"] .pd-form-radio:has(input:checked){border-color:#4a6cf7;background:rgba(74,108,247,0.06);box-shadow:0 0 0 1px #4a6cf7}
+    [data-theme="light"] .pd-form-radio:has(input:checked) span{color:#2d3748}
+    [data-theme="light"] .pd-form-submit{background:linear-gradient(135deg,#4a6cf7,#578aff)}
+    [data-theme="light"] .pd-form-result.success{background:rgba(0,121,76,0.06);border-color:rgba(0,121,76,0.15);color:#00794c}
+    [data-theme="light"] .pd-form-result.error{background:rgba(220,53,69,0.06);border-color:rgba(220,53,69,0.15);color:#dc3545}
+
+    @media(max-width:768px){
+      .pd-body{padding:0 var(--space-md) var(--space-xl)}
+      .pd-body .section-card{padding:var(--space-lg)}
+      .pd-form-radio-grid{grid-template-columns:1fr}
+    }
+  </style>
+</head>
+<body>
+  <div class="page-loader" id="pageLoader">
+    <span class="loader-logo">海風</span>
+    <div class="loader-wave"></div>
+    <div class="loader-dots"><span></span><span></span><span></span></div>
+  </div>
+
+  <a href="#mainContent" class="skip-link">跳到主要內容</a>
+  <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
+  <div class="bg-atmosphere"></div>
+
+  <nav class="nav">
+    <a href="首頁" class="nav-logo">
+      <picture><source srcset="assets/img/logo.webp" type="image/webp"><img src="assets/img/logo.png" alt="海風" class="nav-logo-img" width="48" height="48" fetchpriority="high"></picture>
+      <span>海風伺服器</span>
+    </a>
+    <div class="nav-right">
+      <ul class="nav-links">
+        <li><a href="首頁">首頁</a></li>
+        <li><a href="公告">公告</a></li>
+        <li class="nav-dropdown">
+          <a href="文化藝廊" class="nav-dropdown-toggle" aria-expanded="false" aria-haspopup="true">關於 <span class="arrow">▾</span></a>
+          <ul class="dropdown-menu">
+            <li><a href="文化藝廊">文化藝廊</a></li>
+            <li><a href="活動">活動</a></li>
+            <li><a href="風景照">風景照</a></li>
+            <li><a href="歷史館">歷史館</a></li>
+            <li><a href="海風團隊">海風團隊</a></li>
+          </ul>
+        </li>
+        <li><a href="海風指南">海風指南</a></li>
+        <li class="nav-dropdown">
+          <a href="社群須知" class="nav-dropdown-toggle" aria-expanded="false" aria-haspopup="true">須知 <span class="arrow">▾</span></a>
+          <ul class="dropdown-menu">
+            <li><a href="社群須知">社群須知</a></li>
+            <li><a href="支持須知">支持須知</a></li>
+            <li><a href="管理通則">管理通則</a></li>
+            <li><a href="公務人員須知">公務人員須知</a></li>
+            <li><a href="設計規範">設計規範</a></li>
+            <li><a href="服務條款">服務條款</a></li>
+            <li><a href="隱私權政策">隱私權政策</a></li>
+          </ul>
+        </li>
+        <li><a href="會員">會員</a></li>
+        <li><a href="相關連結">相關連結</a></li>
+        <li class="nav-dropdown">
+          <a href="合作夥伴" class="nav-dropdown-toggle" aria-expanded="false" aria-haspopup="true">資料中心 <span class="arrow">▾</span></a>
+          <ul class="dropdown-menu">
+            <li><a href="合作夥伴">合作夥伴</a></li>
+            <li><a href="客服單">客服單</a></li>
+            <li><a href="違規處分">違規處分</a></li>
+          </ul>
+        </li>
+      </ul>
+      <button class="nav-theme" id="themeToggle" aria-label="切換主題"></button>
+      <button class="nav-toggle" aria-label="選單">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <div class="page">
+    <div id="mainContent">
+
+      <div class="pd-hero fade-in">
+        <h1>📋 客服工單</h1>
+        <p class="pd-hero-desc">遇到問題或有建議？填寫工單告訴我們，團隊會盡快處理。</p>
+      </div>
+
+      <div class="pd-body">
+
+        <!-- 注意事項 -->
+        <div class="section-card fade-in">
+          <h2>⚠️ 提交須知</h2>
+          <div class="pd-note"><span class="pd-note-icon">🐛</span><span><strong>問題回報</strong>：請盡量描述重現步驟，附上截圖可以幫助我們更快處理。</span></div>
+          <div class="pd-note"><span class="pd-note-icon">⏱️</span><span>通常 1–3 天內會回覆，緊急問題請直接在 Discord 聯繫管理員。</span></div>
+          <div class="pd-note"><span class="pd-note-icon">💬</span><span>也可以直接在 <a href="https://discord.gg/HdS2HrJEH7" style="color:var(--sky)">Discord</a> 反應問題。</span></div>
+        </div>
+
+        <!-- 工單表單 -->
+        <div class="section-card fade-in">
+          <h2>📮 提交工單</h2>
+
+          <form id="ticketForm" class="pd-form" novalidate>
+            <!-- 1. 類型 -->
+            <div class="pd-form-field">
+              <label class="pd-form-label">類型 <span class="pd-form-required">*</span></label>
+              <div class="pd-form-radio-grid">
+                <label class="pd-form-radio"><input type="radio" name="ticket-type" value="🐛 問題回報" required><span>🐛 問題回報</span></label>
+                <label class="pd-form-radio"><input type="radio" name="ticket-type" value="💡 建議"><span>💡 建議</span></label>
+                <label class="pd-form-radio"><input type="radio" name="ticket-type" value="❓ 問題詢問"><span>❓ 問題詢問</span></label>
+                <label class="pd-form-radio"><input type="radio" name="ticket-type" value="🙋 其他"><span>🙋 其他</span></label>
+              </div>
+            </div>
+
+            <!-- 2. 標題 -->
+            <div class="pd-form-field">
+              <label class="pd-form-label" for="ticket-title">標題 <span class="pd-form-required">*</span></label>
+              <div class="pd-form-desc">一句話描述你的問題或建議。</div>
+              <input type="text" id="ticket-title" class="pd-form-input" placeholder="例：領地權限設定異常" required maxlength="100">
+            </div>
+
+            <!-- 3. 詳細內容 -->
+            <div class="pd-form-field">
+              <label class="pd-form-label" for="ticket-detail">詳細內容 <span class="pd-form-required">*</span></label>
+              <div class="pd-form-desc">具體描述問題的狀況、重現步驟，或建議的詳細內容。</div>
+              <textarea id="ticket-detail" class="pd-form-textarea" placeholder="請詳細描述..." rows="5" required maxlength="2000"></textarea>
+              <div class="pd-form-hint"><span id="detailCount">0</span> / 2000</div>
+            </div>
+
+            <!-- 4. 遊戲 ID -->
+            <div class="pd-form-field">
+              <label class="pd-form-label" for="ticket-ign">遊戲 ID <span class="pd-form-optional">選填</span></label>
+              <div class="pd-form-desc">你的 Minecraft 遊戲名稱，方便我們在遊戲內確認狀況。</div>
+              <input type="text" id="ticket-ign" class="pd-form-input" placeholder="你的 Minecraft ID" maxlength="50">
+            </div>
+
+            <!-- 5. 聯絡方式 -->
+            <div class="pd-form-field">
+              <label class="pd-form-label" for="ticket-contact">聯絡方式 <span class="pd-form-optional">選填</span></label>
+              <div class="pd-form-desc">Discord 使用者名稱或 Email，方便我們回覆你。</div>
+              <input type="text" id="ticket-contact" class="pd-form-input" placeholder="例：username 或 email@example.com" maxlength="100">
+            </div>
+
+            <!-- 送出 -->
+            <button type="submit" class="pd-form-submit" id="submitBtn">
+              <span id="submitText">📤 送出工單</span>
+              <span id="submitLoading" style="display:none"><span class="pd-form-spinner"></span> 送出中...</span>
+            </button>
+
+            <!-- 結果訊息 -->
+            <div class="pd-form-result" id="formResult" style="display:none"></div>
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <span class="footer-logo">海風伺服器 SeaWind.cc</span>
+        <p class="footer-tagline">在風與海之間，有一個可以長久生存的地方</p>
+      </div>
+      <div class="footer-links-row">
+        <a href="合作夥伴">合作夥伴</a>
+        <span class="footer-dot">·</span>
+        <a href="服務條款">服務條款</a>
+        <span class="footer-dot">·</span>
+        <a href="隱私權政策">隱私權政策</a>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2026 海風伺服器 · 非 Mojang 官方營運 · service@seawind.cc</p>
+      </div>
+      <p class="page-revise">網站最後修改日期 2026.05.11 / 總計修改 <span id="deployCount">—</span> 次</p>
+    </div>
+  </footer>
+
+  <script>
+  (function(){
+    /* ── Page Loader ── */
+    const loader=document.getElementById('pageLoader');
+    if(loader){function hide(){loader.classList.add('fade-out');setTimeout(()=>loader.remove(),600)};if(document.readyState==='complete'){hide()}else{window.addEventListener('load',hide)};setTimeout(hide,3000)}
+
+    /* ── Ticket Form ── */
+    const WEBHOOK_URL='https://discord.com/api/webhooks/1503258095801995304/xW79OYK6cHC5VmeWhLdUH_MZDR6itXSzQUlkdr-Pbmeu4abt1NPgeSxfUZ1jOzS2a3a3';
+    const form=document.getElementById('ticketForm');
+    if(!form)return;
+
+    const submitBtn=document.getElementById('submitBtn');
+    const submitText=document.getElementById('submitText');
+    const submitLoading=document.getElementById('submitLoading');
+    const formResult=document.getElementById('formResult');
+    const detailInput=document.getElementById('ticket-detail');
+    const detailCount=document.getElementById('detailCount');
+
+    /* ── Character counter ── */
+    if(detailInput&&detailCount){
+      function update(){detailCount.textContent=detailInput.value.length}
+      detailInput.addEventListener('input',update);
+      update();
+    }
+
+    /* ── Validation ── */
+    function clearErrors(){
+      form.querySelectorAll('.error').forEach(function(el){el.classList.remove('error')});
+      form.querySelectorAll('.pd-form-radio.error').forEach(function(el){el.classList.remove('error')});
+    }
+    function markError(el){if(el)el.classList.add('error')}
+
+    function validate(){
+      clearErrors();
+      let valid=true;
+      const title=document.getElementById('ticket-title');
+      const detail=document.getElementById('ticket-detail');
+      const typeChecked=form.querySelector('input[name="ticket-type"]:checked');
+      if(!typeChecked){form.querySelectorAll('.pd-form-radio').forEach(function(r){r.classList.add('error')});valid=false}
+      if(!title.value.trim()){markError(title);valid=false}
+      if(!detail.value.trim()){markError(detail);valid=false}
+      return valid;
+    }
+
+    /* ── Submit ── */
+    form.addEventListener('submit',function(e){
+      e.preventDefault();
+      if(!validate())return;
+
+      submitBtn.disabled=true;
+      submitText.style.display='none';
+      submitLoading.style.display='inline-flex';
+      formResult.style.display='none';
+
+      const type=form.querySelector('input[name="ticket-type"]:checked').value;
+      const title=document.getElementById('ticket-title').value.trim();
+      const detail=detailInput.value.trim();
+      const ign=document.getElementById('ticket-ign').value.trim();
+      const contact=document.getElementById('ticket-contact').value.trim();
+
+      const fields=[
+        {name:'類型',value:type},
+        {name:'標題',value:title},
+        {name:'詳細內容',value:detail.length>1024?detail.substring(0,1021)+'...':detail}
+      ];
+      if(ign)fields.push({name:'遊戲ID',value:ign});
+      if(contact)fields.push({name:'聯絡方式',value:contact});
+
+      const embed={
+        title:'客服工單',
+        color:0x9dafff,
+        fields:fields,
+        timestamp:new Date().toISOString(),
+        footer:{text:'海風線上工單系統'}
+      };
+
+      fetch(WEBHOOK_URL,{
+        method:'POST',
+        headers:{'Content-Type':'application/json'},
+        body:JSON.stringify({embeds:[embed]})
+      }).then(function(resp){
+        if(resp.ok){
+          formResult.className='pd-form-result success';
+          formResult.textContent='✅ 工單送出成功！團隊會在 1–3 天內處理。';
+          formResult.style.display='block';
+          form.reset();
+          if(detailCount)detailCount.textContent='0';
+        }else{
+          resp.text().then(function(t){console.error('Webhook error:',t)});
+          handleError(new Error('HTTP '+resp.status));
+        }
+        resetBtn();
+      }).catch(function(err){
+        console.error('Submit error:',err);
+        formResult.className='pd-form-result error';
+        formResult.textContent='❌ 送出失敗，請稍後再試，或直接在 Discord 聯繫管理員。';
+        formResult.style.display='block';
+        resetBtn();
+      });
+    });
+
+    function resetBtn(){
+      submitBtn.disabled=false;
+      submitText.style.display='inline';
+      submitLoading.style.display='none';
+    }
+  })();
+  </script>
+  <script src="utils.js"></script>
+  <script src="main.js?v=110511n"></script>
+</body>
+</html>
