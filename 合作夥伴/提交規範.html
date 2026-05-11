@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <link rel="canonical" href="https://www.seawind.cc/合作夥伴/提交規範">
+  <meta name="color-scheme" content="dark light">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>合作夥伴提交規範 — 海風</title>
+  <meta name="description" content="成為海風合作夥伴的提交規範與流程說明。">
+  <link rel="icon" href="../assets/img/logo.png">
+  <link rel="apple-touch-icon" href="../assets/img/logo.png">
+  <link rel="manifest" href="../manifest.json">
+  <meta property="og:title" content="合作夥伴提交規範 — 海風">
+  <meta property="og:description" content="成為海風合作夥伴的提交規範與流程說明。">
+  <meta property="og:image" content="../assets/img/logo.png">
+  <meta property="og:type" content="website">
+  <meta name="theme-color" content="#0d1117">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;800&family=Noto+Serif+TC:wght@700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../style.css?v=110511f">
+  <link rel="stylesheet" href="../music-player.css">
+  <style>
+    .pd-hero{text-align:center;padding:var(--space-2xl) var(--space-lg) var(--space-xl);position:relative;overflow:hidden}
+    .pd-hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 70% 60% at 50% 0%,rgba(168,230,207,0.08),transparent 70%);pointer-events:none}
+    .pd-hero h1{font-size:clamp(1.6rem,4vw,2.2rem);font-weight:800;margin-bottom:var(--space-sm);position:relative}
+    .pd-hero-desc{color:var(--fog);font-size:0.95rem;max-width:520px;margin:0 auto;line-height:1.8;position:relative}
+    .back-link{display:inline-flex;align-items:center;gap:6px;color:var(--fog);font-size:0.85rem;text-decoration:none;margin-bottom:var(--space-lg);position:relative;z-index:10;transition:color 0.2s}
+    .back-link:hover{color:var(--sky)}
+
+    .pd-body{max-width:720px;margin:0 auto;padding:0 var(--space-lg) var(--space-2xl)}
+    .pd-body .section-card{background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.06);border-radius:var(--radius-xl);padding:var(--space-xl);margin-bottom:var(--space-lg)}
+    .pd-body .section-card h2{font-size:1.1rem;font-weight:700;color:var(--white);margin-bottom:var(--space-md);display:flex;align-items:center;gap:var(--space-sm)}
+    .pd-body p{color:var(--cloud);font-size:0.95rem;line-height:1.9;margin-bottom:var(--space-md)}
+    .pd-body p:last-child{margin-bottom:0}
+
+    .pd-field{margin-bottom:var(--space-lg)}
+    .pd-field-label{font-size:0.82rem;font-weight:700;color:var(--sky);margin-bottom:6px;display:flex;align-items:center;gap:6px}
+    .pd-field-optional{font-size:0.68rem;font-weight:500;color:var(--fog);background:rgba(157,175,255,0.06);padding:2px 8px;border-radius:8px}
+    .pd-field-box{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.06);border-radius:var(--radius-md);padding:var(--space-md) var(--space-lg);color:var(--cloud);font-size:0.9rem;line-height:1.7}
+    .pd-field-box code{background:rgba(157,175,255,0.08);padding:2px 6px;border-radius:4px;font-size:0.82rem;color:var(--sky)}
+
+    .pd-note{display:flex;align-items:flex-start;gap:var(--space-md);padding:var(--space-md) var(--space-lg);background:rgba(157,175,255,0.04);border-left:3px solid rgba(157,175,255,0.2);border-radius:0 var(--radius-md) var(--radius-md) 0;margin-bottom:var(--space-md);font-size:0.88rem;color:var(--cloud);line-height:1.7}
+    .pd-note:last-child{margin-bottom:0}
+    .pd-note-icon{flex-shrink:0;font-size:1rem;margin-top:2px}
+
+    .pd-type-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:var(--space-sm)}
+    .pd-type-item{padding:var(--space-sm) var(--space-md);background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.06);border-radius:var(--radius-md);font-size:0.88rem;color:var(--cloud)}
+
+    .pd-submit{display:flex;align-items:center;gap:var(--space-md);padding:var(--space-lg);background:linear-gradient(135deg,rgba(157,175,255,0.04),rgba(168,230,207,0.03));border:1px solid rgba(157,175,255,0.1);border-radius:var(--radius-xl);margin-top:var(--space-lg)}
+    .pd-submit-icon{font-size:1.6rem;flex-shrink:0}
+    .pd-submit-text{font-size:0.9rem;color:var(--cloud);line-height:1.7}
+    .pd-submit-text strong{color:var(--white)}
+
+    [data-theme="light"] .pd-hero::before{background:radial-gradient(ellipse 70% 60% at 50% 0%,rgba(74,108,247,0.05),transparent 70%)}
+    [data-theme="light"] .pd-body .section-card{background:#fff;border-color:rgba(0,0,0,0.06)}
+    [data-theme="light"] .pd-body .section-card h2{color:var(--cloud)}
+    [data-theme="light"] .pd-body p{color:#4a5568}
+    [data-theme="light"] .pd-field-box{background:#f8f9fb;border-color:rgba(0,0,0,0.06)}
+    [data-theme="light"] .pd-field-box code{background:rgba(74,108,247,0.08);color:#4a6cf7}
+    [data-theme="light"] .pd-note{background:rgba(74,108,247,0.04);border-left-color:rgba(74,108,247,0.2)}
+    [data-theme="light"] .pd-type-item{background:#f8f9fb;border-color:rgba(0,0,0,0.06)}
+    [data-theme="light"] .pd-submit{background:linear-gradient(135deg,rgba(74,108,247,0.04),rgba(88,194,176,0.03));border-color:rgba(74,108,247,0.1)}
+    [data-theme="light"] .pd-submit-text strong{color:var(--cloud)}
+
+    @media(max-width:768px){
+      .pd-body{padding:0 var(--space-md) var(--space-xl)}
+      .pd-body .section-card{padding:var(--space-lg)}
+      .pd-type-grid{grid-template-columns:1fr}
+    }
+  </style>
+</head>
+<body>
+  <div class="page-loader" id="pageLoader">
+    <span class="loader-logo">海風</span>
+    <div class="loader-wave"></div>
+    <div class="loader-dots"><span></span><span></span><span></span></div>
+  </div>
+
+  <a href="#mainContent" class="skip-link">跳到主要內容</a>
+  <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
+  <div class="bg-atmosphere"></div>
+
+  <nav class="nav">
+    <a href="../首頁" class="nav-logo">
+      <picture><source srcset="../assets/img/logo.webp" type="image/webp"><img src="../assets/img/logo.png" alt="海風" class="nav-logo-img" width="48" height="48" fetchpriority="high"></picture>
+      <span>海風伺服器</span>
+    </a>
+    <div class="nav-right">
+      <ul class="nav-links">
+        <li><a href="../首頁">首頁</a></li>
+        <li><a href="../公告">公告</a></li>
+        <li class="nav-dropdown">
+          <a href="../文化藝廊" class="nav-dropdown-toggle" aria-expanded="false" aria-haspopup="true">關於 <span class="arrow">▾</span></a>
+          <ul class="dropdown-menu">
+            <li><a href="../文化藝廊">文化藝廊</a></li>
+            <li><a href="../活動">活動</a></li>
+            <li><a href="../風景照">風景照</a></li>
+            <li><a href="../歷史館">歷史館</a></li>
+            <li><a href="../海風團隊">海風團隊</a></li>
+          </ul>
+        </li>
+        <li><a href="../海風指南">海風指南</a></li>
+        <li class="nav-dropdown">
+          <a href="../社群須知" class="nav-dropdown-toggle" aria-expanded="false" aria-haspopup="true">須知 <span class="arrow">▾</span></a>
+          <ul class="dropdown-menu">
+            <li><a href="../社群須知">社群須知</a></li>
+            <li><a href="../支持須知">支持須知</a></li>
+            <li><a href="../管理通則">管理通則</a></li>
+            <li><a href="../公務人員須知">公務人員須知</a></li>
+            <li><a href="../設計規範">設計規範</a></li>
+            <li><a href="../服務條款">服務條款</a></li>
+            <li><a href="../隱私權政策">隱私權政策</a></li>
+          </ul>
+        </li>
+        <li><a href="../會員">會員</a></li>
+        <li><a href="../相關連結">相關連結</a></li>
+        <li class="nav-dropdown">
+          <a href="../合作夥伴" class="nav-dropdown-toggle" aria-expanded="false" aria-haspopup="true">資料中心 <span class="arrow">▾</span></a>
+          <ul class="dropdown-menu">
+            <li><a href="../合作夥伴">合作夥伴</a></li>
+            <li><a href="../違規處分">違規處分</a></li>
+          </ul>
+        </li>
+      </ul>
+      <button class="nav-theme" id="themeToggle" aria-label="切換主題"></button>
+      <button class="nav-toggle" aria-label="選單">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <div class="page">
+    <div id="mainContent">
+
+      <div class="pd-hero fade-in">
+        <a href="../合作夥伴" class="back-link">← 返回合作夥伴</a>
+        <h1>📋 合作夥伴提交規範</h1>
+        <p class="pd-hero-desc">歡迎成為海風的合作夥伴！請依照以下格式提供資訊，我們會幫你放到網站上。</p>
+      </div>
+
+      <div class="pd-body">
+
+        <div class="section-card fade-in">
+          <h2>📝 需要提供的資訊</h2>
+
+          <div class="pd-field">
+            <div class="pd-field-label">1. 社群名稱</div>
+            <div class="pd-field-box">你的社群全名</div>
+          </div>
+
+          <div class="pd-field">
+            <div class="pd-field-label">2. 文宣 <span class="pd-field-optional">長度不拘</span></div>
+            <div class="pd-field-box">你的完整宣傳內容，會原封不動放在詳情頁上。可以自由發揮，想寫什麼就寫什麼。</div>
+          </div>
+
+          <div class="pd-field">
+            <div class="pd-field-label">3. 簡介 <span class="pd-field-optional">選填，20 字內</span></div>
+            <div class="pd-field-box">一句話介紹，會顯示在合作夥伴卡片上。可以自訂，例如「溫馨小社群，你的第二個遊樂天地」。沒寫的話我們會幫你從文宣裡抓重點。</div>
+          </div>
+
+          <div class="pd-field">
+            <div class="pd-field-label">4. Discord 邀請連結</div>
+            <div class="pd-field-box"><code>https://discord.gg/xxxxx</code></div>
+          </div>
+
+          <div class="pd-field">
+            <div class="pd-field-label">5. 社群圖示 <span class="pd-field-optional">選填</span></div>
+            <div class="pd-field-box">請提供正方形圖片（建議 256×256 以上），格式 PNG 或 WebP。沒有的話，我們會用 Discord 伺服器圖示。</div>
+          </div>
+
+          <div class="pd-field">
+            <div class="pd-field-label">6. 社群類型</div>
+            <div class="pd-type-grid">
+              <div class="pd-type-item">💬 群組</div>
+              <div class="pd-type-item">🌐 網站</div>
+              <div class="pd-type-item">🎮 Minecraft 伺服器</div>
+              <div class="pd-type-item">📦 其他</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="section-card fade-in">
+          <h2>⚠️ 注意事項</h2>
+          <div class="pd-note"><span class="pd-note-icon">✅</span><span><strong>文宣會原封不動放上去</strong>，不會修改你的內容，請放心書寫。</span></div>
+          <div class="pd-note"><span class="pd-note-icon">✅</span><span><strong>簡介可以自訂</strong>，如果沒寫，我們會幫你從文宣裡抓重點。</span></div>
+          <div class="pd-note"><span class="pd-note-icon">🔤</span><span>可以使用一般符號（+×÷=!@#$% 等），但<strong>不支援 Markdown 排版</strong>（如 <code>~~</code>、<code>***</code>、<code>###</code>、縮排等）。</span></div>
+          <div class="pd-note"><span class="pd-note-icon">📄</span><span>如果文宣比較長，我們會幫你做一個專屬詳情頁。</span></div>
+          <div class="pd-note"><span class="pd-note-icon">⏱️</span><span>提交後請等待確認，通常 1–3 天內會上線。</span></div>
+        </div>
+
+        <div class="section-card fade-in">
+          <h2>📮 提交方式</h2>
+          <p>將填好的資訊直接私訊海風管理員，或在 Discord 開啟工單提交。</p>
+          <div class="pd-submit">
+            <span class="pd-submit-icon">💬</span>
+            <div class="pd-submit-text"><strong>Discord 提交</strong><br>加入海風 Discord 後，私訊管理員或開啟工單即可。</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <span class="footer-logo">海風伺服器 SeaWind.cc</span>
+        <p class="footer-tagline">在風與海之間，有一個可以長久生存的地方</p>
+      </div>
+      <div class="footer-links-row">
+        <a href="../合作夥伴">合作夥伴</a>
+        <span class="footer-dot">·</span>
+        <a href="../服務條款">服務條款</a>
+        <span class="footer-dot">·</span>
+        <a href="../隱私權政策">隱私權政策</a>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2026 海風伺服器 · 非 Mojang 官方營運 · service@seawind.cc</p>
+      </div>
+      <p class="page-revise">網站最後修改日期 2026.05.11 / 總計修改 <span id="deployCount">—</span> 次</p>
+    </div>
+  </footer>
+
+  <script>
+  (function(){
+    const loader=document.getElementById('pageLoader');
+    if(!loader)return;
+    function hide(){loader.classList.add('fade-out');setTimeout(()=>loader.remove(),600)}
+    if(document.readyState==='complete'){hide()}else{window.addEventListener('load',hide)}
+    setTimeout(hide,3000);
+  })();
+  </script>
+  <script src="../utils.js"></script>
+  <script src="../main.js?v=110511f"></script>
+</body>
+</html>
