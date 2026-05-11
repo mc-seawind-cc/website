@@ -5,24 +5,68 @@
   <link rel="canonical" href="https://www.seawind.cc/合作夥伴/麥塊社群聯合會">
   <meta name="color-scheme" content="dark light">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>海風 — 合作夥伴 — MCU 麥塊社群聯合會</title>
-  <meta name="description" content="海風伺服器與 MCU 麥塊社群聯合會的合作夥伴關係介紹。MCU 是台灣最大的 Minecraft 社群聯合組織。">
+  <title>合作夥伴 — MCU 麥塊社群聯合會 — 海風</title>
+  <meta name="description" content="MCU 麥塊社群聯合會——以 Discord 為核心的 Minecraft 交流平台，提供技術交流、委託中介與合作媒合。">
   <link rel="icon" href="../assets/img/logo.png">
   <link rel="apple-touch-icon" href="../assets/img/logo.png">
   <link rel="manifest" href="../manifest.json">
+  <meta property="og:title" content="合作夥伴 — MCU 麥塊社群聯合會 — 海風">
+  <meta property="og:description" content="以 Discord 為核心的 Minecraft 交流平台。">
+  <meta property="og:image" content="../assets/img/logo.png">
+  <meta property="og:type" content="website">
+  <meta name="theme-color" content="#0d1117">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;800&family=Noto+Serif+TC:wght@700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../style.css?v=060506a">
+  <link rel="stylesheet" href="../style.css?v=110511f">
   <link rel="stylesheet" href="../music-player.css">
+  <style>
+    .pd-hero{text-align:center;padding:var(--space-2xl) var(--space-lg) var(--space-xl);position:relative;overflow:hidden}
+    .pd-hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 70% 60% at 50% 0%,rgba(157,175,255,0.1),transparent 70%);pointer-events:none}
+    .pd-icon{width:80px;height:80px;border-radius:20px;margin:0 auto var(--space-md);overflow:hidden;border:2px solid rgba(255,255,255,0.1);position:relative}
+    .pd-icon img{width:100%;height:100%;object-fit:cover}
+    .pd-hero h1{font-size:clamp(1.6rem,4vw,2.2rem);font-weight:800;margin-bottom:var(--space-sm);position:relative}
+    .pd-subtitle{color:var(--fog);font-size:0.9rem;margin-bottom:var(--space-sm);position:relative}
+    .pd-meta{display:flex;align-items:center;justify-content:center;gap:var(--space-md);color:var(--fog);font-size:0.85rem;position:relative}
+    .pd-meta .partner-badge{font-size:0.72rem}
+    .pd-meta .partner-members::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--foam);display:inline-block}
+
+    .pd-body{max-width:720px;margin:0 auto;padding:0 var(--space-lg) var(--space-2xl)}
+    .pd-body .section-card{background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.06);border-radius:var(--radius-xl);padding:var(--space-xl);margin-bottom:var(--space-lg)}
+    .pd-body .section-card h2{font-size:1.1rem;font-weight:700;color:var(--white);margin-bottom:var(--space-md);display:flex;align-items:center;gap:var(--space-sm)}
+    .pd-body p{color:var(--cloud);font-size:0.95rem;line-height:1.9;margin-bottom:var(--space-md)}
+    .pd-body p:last-child{margin-bottom:0}
+    .pd-body .pd-highlight{color:var(--sky);font-weight:600}
+    .pd-body .pd-cta{display:inline-flex;align-items:center;gap:6px;margin-top:var(--space-lg);padding:10px 20px;background:rgba(88,194,176,0.1);border:1px solid rgba(88,194,176,0.2);border-radius:var(--radius-md);color:var(--foam);text-decoration:none;font-weight:600;font-size:0.9rem;transition:all 0.3s var(--ease)}
+    .pd-body .pd-cta:hover{background:rgba(88,194,176,0.15);border-color:rgba(88,194,176,0.35);transform:translateY(-2px)}
+
+    [data-theme="light"] .pd-hero::before{background:radial-gradient(ellipse 70% 60% at 50% 0%,rgba(74,108,247,0.06),transparent 70%)}
+    [data-theme="light"] .pd-body .section-card{background:#fff;border-color:rgba(0,0,0,0.06)}
+    [data-theme="light"] .pd-body .section-card h2{color:var(--cloud)}
+    [data-theme="light"] .pd-body p{color:#4a5568}
+    [data-theme="light"] .pd-body .pd-highlight{color:#4a6cf7}
+    [data-theme="light"] .pd-body .pd-cta{background:rgba(88,194,176,0.08);border-color:rgba(88,194,176,0.15);color:#2d8a6e}
+
+    @media(max-width:768px){
+      .pd-body{padding:0 var(--space-md) var(--space-xl)}
+      .pd-body .section-card{padding:var(--space-lg)}
+    }
+  </style>
 </head>
 <body>
+  <div class="page-loader" id="pageLoader">
+    <span class="loader-logo">海風</span>
+    <div class="loader-wave"></div>
+    <div class="loader-dots"><span></span><span></span><span></span></div>
+  </div>
+
+  <a href="#mainContent" class="skip-link">跳到主要內容</a>
   <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
   <div class="bg-atmosphere"></div>
 
   <nav class="nav">
     <a href="../首頁" class="nav-logo">
-      <picture><source srcset="assets/img/logo.webp" type="image/webp"><img src="../assets/img/logo.png" alt="海風" class="nav-logo-img" width="48" height="48" fetchpriority="high"></picture>
+      <picture><source srcset="../assets/img/logo.webp" type="image/webp"><img src="../assets/img/logo.png" alt="海風" class="nav-logo-img" width="48" height="48" fetchpriority="high"></picture>
       <span>海風伺服器</span>
     </a>
     <div class="nav-right">
@@ -70,40 +114,60 @@
   </nav>
 
   <div class="page">
-    <div class="content-section" style="padding-top: 120px;">
+    <div id="mainContent">
+
       <a href="../合作夥伴" class="back-link">← 返回合作夥伴</a>
-      <div class="article-hero fade-in">
-        <picture><source srcset="assets/img/mcu.webp" type="image/webp"><img src="../assets/img/mcu.png" class="article-cover" alt="MCU 麥塊社群聯合會"></picture>
-        <span class="lore-card-tag">社群平台</span>
-        <h1>MCU — Minecraft Community Union</h1>
-        <p class="article-subtitle">麥塊社群聯合會</p>
-      </div>
-      <article class="article-body fade-in">
-        <p>隨著華人 Minecraft 圈發展多年，玩家群體逐漸衰退，許多中小型團隊因技術力不足、缺少新血而陷入困境，甚至難以被更多人看見。同時，玩家間的交流不夠深入，使得整體環境難以扭轉頹勢。</p>
-        <p>基於此，MCU 誕生了——一個以 Discord 為核心的 Minecraft 交流平台，歡迎各大團體與玩家加入。</p>
 
-        <h2>🌍 純粹的交流平台</h2>
-        <p>開放且平等的交流空間，讓團隊與玩家可以在此分享經驗、交流心得、拓展人脈，促進 Minecraft 華人圈的繁榮發展。這裡沒有階級制度，無論是新手玩家還是資深創作者，大家都能自由討論、合作，共同壯大這個生態圈！</p>
-
-        <h2>🔧 技術交流平台</h2>
-        <p>伺服器、材質包、插件、模組，任何你需要的技術，我們這都有經驗人士來與你交流！若你擁有非凡的經驗，我們也歡迎你來分享你的經歷！</p>
-
-        <h2>💼 委託中介平台</h2>
-        <p>希望提供委託、接單卻找不到合適的地方？想打造專屬的 Minecraft 地圖，卻苦無優秀的建築師？需要技術支援，如插件開發、材質包製作，但不知從何尋找專業人士？MCU 提供可靠的委託中介服務，幫助你輕鬆對接 Minecraft 專業人才。無論是建築、美術、指令、插件開發，甚至是代肝服務，你都能在這裡找到最適合的客戶或承接者！</p>
-
-        <h2>🤝 找尋合作平台</h2>
-        <p>許多團隊並非不願意合作，而是缺少合適的聯繫管道。MCU 創建了一個專為合作而生的平台，聚集各領域的 Minecraft 人才，讓志同道合的夥伴能夠攜手合作。經典傳奇地圖《盤靈古域》，亦是由紅石口袋與 MayorTW 合作與資源整合才得以誕生。</p>
-
-        <p style="margin-top: var(--space-xl); color: var(--sky); font-weight: 600;">🎉 MCU 正處於初創階段，誠邀每一位仍對 Minecraft 保有熱忱的你加入！</p>
-
-        <div class="partner-links" style="margin-top: var(--space-lg);">
-          <a href="https://discord.gg/KrTQZVP4VF" class="partner-link partner-link-discord">💬 加入 MCU Discord</a>
+      <div class="pd-hero fade-in">
+        <div class="pd-icon">
+          <img src="https://cdn.discordapp.com/icons/1345432876749033532/4e7a2df3827946a938db84e83811f1fa.webp?size=128" alt="MCU 麥塊社群聯合會">
         </div>
-      </article>
+        <h1>MCU — 麥塊社群聯合會</h1>
+        <p class="pd-subtitle">Minecraft Community Union</p>
+        <div class="pd-meta">
+          <span class="partner-badge">群組</span>
+          <span class="partner-members" id="memberCount">—</span>
+        </div>
+      </div>
+
+      <div class="pd-body">
+
+        <div class="section-card fade-in">
+          <h2>📢 宣傳文</h2>
+          <p>隨著華人 Minecraft 圈發展多年，玩家群體逐漸衰退，許多中小型團隊因技術力不足、缺少新血而陷入困境，甚至難以被更多人看見。同時，玩家間的交流不夠深入，使得整體環境難以扭轉頹勢。</p>
+          <p>基於此，MCU 誕生了——一個以 Discord 為核心的 Minecraft 交流平台，歡迎各大團體與玩家加入。</p>
+        </div>
+
+        <div class="section-card fade-in">
+          <h2>🌍 純粹的交流平台</h2>
+          <p>開放且平等的交流空間，讓團隊與玩家可以在此分享經驗、交流心得、拓展人脈，促進 Minecraft 華人圈的繁榮發展。這裡沒有階級制度，無論是新手玩家還是資深創作者，大家都能自由討論、合作，共同壯大這個生態圈！</p>
+        </div>
+
+        <div class="section-card fade-in">
+          <h2>🔧 技術交流平台</h2>
+          <p>伺服器、材質包、插件、模組，任何你需要的技術，我們這都有經驗人士來與你交流！若你擁有非凡的經驗，我們也歡迎你來分享你的經歷！</p>
+        </div>
+
+        <div class="section-card fade-in">
+          <h2>💼 委託中介平台</h2>
+          <p>希望提供委託、接單卻找不到合適的地方？想打造專屬的 Minecraft 地圖，卻苦無優秀的建築師？需要技術支援，如插件開發、材質包製作，但不知從何尋找專業人士？MCU 提供可靠的委託中介服務，幫助你輕鬆對接 Minecraft 專業人才。無論是建築、美術、指令、插件開發，甚至是代肝服務，你都能在這裡找到最適合的客戶或承接者！</p>
+        </div>
+
+        <div class="section-card fade-in">
+          <h2>🤝 找尋合作平台</h2>
+          <p>許多團隊並非不願意合作，而是缺少合適的聯繫管道。MCU 創建了一個專為合作而生的平台，聚集各領域的 Minecraft 人才，讓志同道合的夥伴能夠攜手合作。經典傳奇地圖《盤靈古域》，亦是由紅石口袋與 MayorTW 合作與資源整合才得以誕生。</p>
+        </div>
+
+        <div class="section-card fade-in">
+          <p class="pd-highlight">🎉 MCU 正處於初創階段，誠邀每一位仍對 Minecraft 保有熱忱的你加入！</p>
+          <a href="https://discord.gg/KrTQZVP4VF" target="_blank" rel="noopener" class="pd-cta">💬 加入 MCU Discord</a>
+        </div>
+
+      </div>
     </div>
   </div>
 
-              <footer class="footer">
+  <footer class="footer">
     <div class="footer-inner">
       <div class="footer-brand">
         <span class="footer-logo">海風伺服器 SeaWind.cc</span>
@@ -119,11 +183,26 @@
       <div class="footer-bottom">
         <p>© 2026 海風伺服器 · 非 Mojang 官方營運 · service@seawind.cc</p>
       </div>
-      <p class="page-revise">網站最後修改日期 2026.04.29 / 總計修改 <span id="deployCount">—</span> 次</p>
+      <p class="page-revise">網站最後修改日期 2026.05.11 / 總計修改 <span id="deployCount">—</span> 次</p>
     </div>
   </footer>
 
+  <script>
+  (function(){
+    const loader=document.getElementById('pageLoader');
+    if(!loader)return;
+    function hide(){loader.classList.add('fade-out');setTimeout(()=>loader.remove(),600)}
+    if(document.readyState==='complete'){hide()}else{window.addEventListener('load',hide)}
+    setTimeout(hide,3000);
+  })();
+  fetch('https://discord.com/api/v10/invites/KrTQZVP4VF?with_counts=true')
+    .then(r=>r.json())
+    .then(d=>{
+      const el=document.getElementById('memberCount');
+      if(el&&d.approximate_member_count)el.textContent=d.approximate_member_count.toLocaleString()+' 人';
+    }).catch(()=>{});
+  </script>
   <script src="../utils.js"></script>
-  <script src="../main.js?v=040504b"></script>
+  <script src="../main.js?v=110511f"></script>
 </body>
 </html>
