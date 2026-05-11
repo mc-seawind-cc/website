@@ -63,10 +63,74 @@
     [data-theme="light"] .pd-submit{background:linear-gradient(135deg,rgba(74,108,247,0.04),rgba(88,194,176,0.03));border-color:rgba(74,108,247,0.1)}
     [data-theme="light"] .pd-submit-text strong{color:var(--cloud)}
 
+    /* ── Partner Form ── */
+    .pd-form{margin-top:var(--space-lg)}
+    .pd-form-field{margin-bottom:var(--space-lg)}
+    .pd-form-label{display:block;font-size:0.85rem;font-weight:700;color:var(--sky);margin-bottom:8px}
+    .pd-form-required{color:#ff6b6b;font-size:0.75rem}
+    .pd-form-optional{font-size:0.68rem;font-weight:500;color:var(--fog);background:rgba(157,175,255,0.06);padding:2px 8px;border-radius:8px;margin-left:4px}
+    .pd-form-input,.pd-form-textarea{width:100%;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);border-radius:var(--radius-md);padding:12px 16px;color:var(--cloud);font-size:0.9rem;font-family:var(--font-body);line-height:1.6;transition:border-color 0.2s,box-shadow 0.2s}
+    .pd-form-input:focus,.pd-form-textarea:focus{outline:none;border-color:var(--sky);box-shadow:0 0 0 3px rgba(157,175,255,0.12)}
+    .pd-form-input::placeholder,.pd-form-textarea::placeholder{color:var(--text-muted);font-size:0.85rem}
+    .pd-form-textarea{resize:vertical;min-height:120px}
+    .pd-form-hint{text-align:right;font-size:0.72rem;color:var(--text-muted);margin-top:4px}
+
+    .pd-form-upload{position:relative;border:2px dashed rgba(255,255,255,0.08);border-radius:var(--radius-lg);overflow:hidden;transition:border-color 0.2s,background 0.2s;cursor:pointer}
+    .pd-form-upload:hover{border-color:rgba(157,175,255,0.25);background:rgba(157,175,255,0.02)}
+    .pd-form-upload.dragover{border-color:var(--sky);background:rgba(157,175,255,0.05)}
+    .pd-form-file{position:absolute;inset:0;opacity:0;cursor:pointer;z-index:2}
+    .pd-form-upload-inner{display:flex;flex-direction:column;align-items:center;gap:6px;padding:var(--space-xl) var(--space-lg);text-align:center}
+    .pd-form-upload-icon{font-size:2rem;opacity:0.6}
+    .pd-form-upload-text{font-size:0.88rem;color:var(--fog)}
+    .pd-form-upload-hint{font-size:0.72rem;color:var(--text-muted)}
+    .pd-form-preview{position:relative;display:flex;align-items:center;gap:var(--space-md);padding:var(--space-md) var(--space-lg)}
+    .pd-form-preview img{width:64px;height:64px;border-radius:var(--radius-md);object-fit:cover;border:1px solid rgba(255,255,255,0.08)}
+    .pd-form-preview-remove{position:absolute;top:8px;right:12px;width:24px;height:24px;border-radius:50%;border:none;background:rgba(255,107,107,0.15);color:#ff6b6b;font-size:0.75rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background 0.2s}
+    .pd-form-preview-remove:hover{background:rgba(255,107,107,0.3)}
+
+    .pd-form-radio-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:var(--space-sm)}
+    .pd-form-radio{display:flex;align-items:center;gap:8px;padding:10px 14px;background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.06);border-radius:var(--radius-md);cursor:pointer;font-size:0.88rem;color:var(--cloud);transition:border-color 0.2s,background 0.2s}
+    .pd-form-radio:hover{border-color:rgba(157,175,255,0.2);background:rgba(157,175,255,0.03)}
+    .pd-form-radio input{display:none}
+    .pd-form-radio:has(input:checked){border-color:var(--sky);background:rgba(157,175,255,0.06);box-shadow:0 0 0 1px var(--sky)}
+    .pd-form-radio:has(input:checked) span{color:var(--white);font-weight:600}
+    .pd-form-radio.error{border-color:rgba(255,107,107,0.4);animation:form-shake 0.4s}
+
+    .pd-form-submit{width:100%;padding:14px;border:none;border-radius:var(--radius-lg);background:linear-gradient(135deg,var(--sky),var(--ocean-blue));color:#fff;font-size:0.95rem;font-weight:700;font-family:var(--font-body);cursor:pointer;transition:transform 0.15s,box-shadow 0.2s,opacity 0.2s;position:relative;overflow:hidden}
+    .pd-form-submit:hover{transform:translateY(-1px);box-shadow:0 4px 20px rgba(157,175,255,0.25)}
+    .pd-form-submit:active{transform:translateY(0)}
+    .pd-form-submit:disabled{opacity:0.5;cursor:not-allowed;transform:none}
+    .pd-form-spinner{display:inline-block;width:16px;height:16px;border:2px solid rgba(255,255,255,0.3);border-top-color:#fff;border-radius:50%;animation:form-spin 0.6s linear infinite;vertical-align:middle;margin-right:6px}
+
+    .pd-form-result{margin-top:var(--space-md);padding:12px 16px;border-radius:var(--radius-md);font-size:0.88rem;line-height:1.6;text-align:center}
+    .pd-form-result.success{background:rgba(168,230,207,0.08);border:1px solid rgba(168,230,207,0.2);color:var(--foam)}
+    .pd-form-result.error{background:rgba(255,107,107,0.08);border:1px solid rgba(255,107,107,0.2);color:#ff6b6b}
+
+    .pd-form-input.error,.pd-form-textarea.error{border-color:rgba(255,107,107,0.5);animation:form-shake 0.4s}
+
+    @keyframes form-shake{0%,100%{transform:translateX(0)}20%,60%{transform:translateX(-4px)}40%,80%{transform:translateX(4px)}}
+    @keyframes form-spin{to{transform:rotate(360deg)}}
+
+    [data-theme="light"] .pd-form-input,[data-theme="light"] .pd-form-textarea{background:#fff;border-color:rgba(0,0,0,0.1);color:#2d3748}
+    [data-theme="light"] .pd-form-input:focus,[data-theme="light"] .pd-form-textarea:focus{border-color:#4a6cf7;box-shadow:0 0 0 3px rgba(74,108,247,0.1)}
+    [data-theme="light"] .pd-form-input::placeholder,[data-theme="light"] .pd-form-textarea::placeholder{color:#a0aec0}
+    [data-theme="light"] .pd-form-upload{border-color:rgba(0,0,0,0.1);background:#fff}
+    [data-theme="light"] .pd-form-upload:hover{border-color:rgba(74,108,247,0.3);background:rgba(74,108,247,0.02)}
+    [data-theme="light"] .pd-form-upload.dragover{border-color:#4a6cf7;background:rgba(74,108,247,0.04)}
+    [data-theme="light"] .pd-form-preview img{border-color:rgba(0,0,0,0.08)}
+    [data-theme="light"] .pd-form-radio{background:#f8f9fb;border-color:rgba(0,0,0,0.06);color:#2d3748}
+    [data-theme="light"] .pd-form-radio:hover{border-color:rgba(74,108,247,0.2);background:rgba(74,108,247,0.02)}
+    [data-theme="light"] .pd-form-radio:has(input:checked){border-color:#4a6cf7;background:rgba(74,108,247,0.06);box-shadow:0 0 0 1px #4a6cf7}
+    [data-theme="light"] .pd-form-radio:has(input:checked) span{color:#2d3748}
+    [data-theme="light"] .pd-form-submit{background:linear-gradient(135deg,#4a6cf7,#578aff)}
+    [data-theme="light"] .pd-form-result.success{background:rgba(0,121,76,0.06);border-color:rgba(0,121,76,0.15);color:#00794c}
+    [data-theme="light"] .pd-form-result.error{background:rgba(220,53,69,0.06);border-color:rgba(220,53,69,0.15);color:#dc3545}
+
     @media(max-width:768px){
       .pd-body{padding:0 var(--space-md) var(--space-xl)}
       .pd-body .section-card{padding:var(--space-lg)}
       .pd-type-grid{grid-template-columns:1fr}
+      .pd-form-radio-grid{grid-template-columns:1fr}
     }
   </style>
 </head>
@@ -190,12 +254,75 @@
         </div>
 
         <div class="section-card fade-in">
-          <h2>📮 提交方式</h2>
-          <p>將填好的資訊直接私訊海風管理員，或在 Discord 開啟工單提交。</p>
-          <div class="pd-submit">
-            <span class="pd-submit-icon">💬</span>
-            <div class="pd-submit-text"><strong>Discord 提交</strong><br>加入海風 Discord 後，私訊管理員或開啟工單即可。</div>
-          </div>
+          <h2>📮 線上提交</h2>
+          <p>填好下方表單直接送出，我們會在 Discord 收到通知。送出後通常 1–3 天內會上線。</p>
+
+          <form id="partnerForm" class="pd-form" novalidate>
+            <!-- 1. 社群名稱 -->
+            <div class="pd-form-field">
+              <label class="pd-form-label" for="pf-name">社群名稱 <span class="pd-form-required">*</span></label>
+              <input type="text" id="pf-name" class="pd-form-input" placeholder="你的社群全名" required maxlength="100">
+            </div>
+
+            <!-- 2. 文宣 -->
+            <div class="pd-form-field">
+              <label class="pd-form-label" for="pf-promo">文宣 <span class="pd-form-required">*</span></label>
+              <textarea id="pf-promo" class="pd-form-textarea" placeholder="你的完整宣傳內容，會原封不動放在詳情頁上。可以自由發揮，想寫什麼就寫什麼。" required rows="6" maxlength="2000"></textarea>
+              <div class="pd-form-hint"><span id="promoCount">0</span> / 2000</div>
+            </div>
+
+            <!-- 3. 簡介 -->
+            <div class="pd-form-field">
+              <label class="pd-form-label" for="pf-brief">簡介 <span class="pd-form-optional">選填，20 字內</span></label>
+              <input type="text" id="pf-brief" class="pd-form-input" placeholder="一句話介紹，會顯示在合作夥伴卡片上" maxlength="20">
+              <div class="pd-form-hint"><span id="briefCount">0</span> / 20</div>
+            </div>
+
+            <!-- 4. Discord 邀請連結 -->
+            <div class="pd-form-field">
+              <label class="pd-form-label" for="pf-invite">Discord 邀請連結 <span class="pd-form-required">*</span></label>
+              <input type="url" id="pf-invite" class="pd-form-input" placeholder="https://discord.gg/xxxxx" required>
+            </div>
+
+            <!-- 5. 社群圖示 -->
+            <div class="pd-form-field">
+              <label class="pd-form-label" for="pf-icon">社群圖示 <span class="pd-form-optional">選填</span></label>
+              <div class="pd-form-upload" id="uploadZone">
+                <input type="file" id="pf-icon" class="pd-form-file" accept="image/png,image/jpeg,image/webp,image/gif">
+                <div class="pd-form-upload-inner" id="uploadInner">
+                  <span class="pd-form-upload-icon">🖼️</span>
+                  <span class="pd-form-upload-text">點擊上傳或拖曳圖片</span>
+                  <span class="pd-form-upload-hint">PNG / WebP / JPG，建議 256×256 以上</span>
+                </div>
+                <div class="pd-form-preview" id="uploadPreview" style="display:none">
+                  <img id="previewImg" alt="預覽">
+                  <button type="button" class="pd-form-preview-remove" id="removeFile" title="移除">✕</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- 6. 社群類型 -->
+            <div class="pd-form-field">
+              <label class="pd-form-label">社群類型 <span class="pd-form-required">*</span></label>
+              <div class="pd-form-radio-grid">
+                <label class="pd-form-radio"><input type="radio" name="pf-type" value="💬 群組" required><span>💬 群組</span></label>
+                <label class="pd-form-radio"><input type="radio" name="pf-type" value="🌐 網站"><span>🌐 網站</span></label>
+                <label class="pd-form-radio"><input type="radio" name="pf-type" value="🎮 Minecraft 伺服器"><span>🎮 Minecraft 伺服器</span></label>
+                <label class="pd-form-radio"><input type="radio" name="pf-type" value="📦 其他"><span>📦 其他</span></label>
+              </div>
+            </div>
+
+            <!-- 送出 -->
+            <button type="submit" class="pd-form-submit" id="submitBtn">
+              <span class="pd-form-submit-text" id="submitText">📤 送出申請</span>
+              <span class="pd-form-submit-loading" id="submitLoading" style="display:none">
+                <span class="pd-form-spinner"></span> 送出中...
+              </span>
+            </button>
+
+            <!-- 結果訊息 -->
+            <div class="pd-form-result" id="formResult" style="display:none"></div>
+          </form>
         </div>
 
       </div>
@@ -224,11 +351,190 @@
 
   <script>
   (function(){
+    /* ── Page Loader ── */
     const loader=document.getElementById('pageLoader');
-    if(!loader)return;
-    function hide(){loader.classList.add('fade-out');setTimeout(()=>loader.remove(),600)}
-    if(document.readyState==='complete'){hide()}else{window.addEventListener('load',hide)}
-    setTimeout(hide,3000);
+    if(loader){function hide(){loader.classList.add('fade-out');setTimeout(()=>loader.remove(),600)};if(document.readyState==='complete'){hide()}else{window.addEventListener('load',hide)};setTimeout(hide,3000)}
+
+    /* ── Partner Form ── */
+    const WEBHOOK_URL='https://discord.com/api/webhooks/1503258095801995304/xW79OYK6cHC5VmeWhLdUH_MZDR6itXSzQUlkdr-Pbmeu4abt1NPgeSxfUZ1jOzS2a3a3';
+    const form=document.getElementById('partnerForm');
+    if(!form)return;
+
+    const submitBtn=document.getElementById('submitBtn');
+    const submitText=document.getElementById('submitText');
+    const submitLoading=document.getElementById('submitLoading');
+    const formResult=document.getElementById('formResult');
+    const promoInput=document.getElementById('pf-promo');
+    const briefInput=document.getElementById('pf-brief');
+    const promoCount=document.getElementById('promoCount');
+    const briefCount=document.getElementById('briefCount');
+    const fileInput=document.getElementById('pf-icon');
+    const uploadZone=document.getElementById('uploadZone');
+    const uploadInner=document.getElementById('uploadInner');
+    const uploadPreview=document.getElementById('uploadPreview');
+    const previewImg=document.getElementById('previewImg');
+    const removeFile=document.getElementById('removeFile');
+
+    let selectedFile=null;
+
+    /* ── Character counter ── */
+    function bindCounter(input,counter,max){
+      if(!input||!counter)return;
+      function update(){counter.textContent=input.value.length}
+      input.addEventListener('input',update);
+      update();
+    }
+    bindCounter(promoInput,promoCount,2000);
+    bindCounter(briefInput,briefCount,20);
+
+    /* ── File upload ── */
+    function showPreview(file){
+      if(!file||!file.type.startsWith('image/'))return;
+      selectedFile=file;
+      const reader=new FileReader();
+      reader.onload=function(e){
+        previewImg.src=e.target.result;
+        uploadInner.style.display='none';
+        uploadPreview.style.display='flex';
+      };
+      reader.readAsDataURL(file);
+    }
+
+    function clearFile(){
+      selectedFile=null;
+      fileInput.value='';
+      previewImg.src='';
+      uploadInner.style.display='flex';
+      uploadPreview.style.display='none';
+    }
+
+    if(fileInput)fileInput.addEventListener('change',function(e){
+      if(e.target.files&&e.target.files[0])showPreview(e.target.files[0]);
+    });
+    if(removeFile)removeFile.addEventListener('click',function(e){
+      e.preventDefault();e.stopPropagation();clearFile();
+    });
+
+    /* ── Drag & Drop ── */
+    if(uploadZone){
+      uploadZone.addEventListener('dragover',function(e){e.preventDefault();uploadZone.classList.add('dragover')});
+      uploadZone.addEventListener('dragleave',function(){uploadZone.classList.remove('dragover')});
+      uploadZone.addEventListener('drop',function(e){
+        e.preventDefault();uploadZone.classList.remove('dragover');
+        if(e.dataTransfer.files&&e.dataTransfer.files[0])showPreview(e.dataTransfer.files[0]);
+      });
+    }
+
+    /* ── Validation ── */
+    function clearErrors(){
+      form.querySelectorAll('.error').forEach(function(el){el.classList.remove('error')});
+      form.querySelectorAll('.pd-form-radio.error').forEach(function(el){el.classList.remove('error')});
+    }
+
+    function markError(el){
+      if(el)el.classList.add('error');
+    }
+
+    function validate(){
+      clearErrors();
+      let valid=true;
+      const name=document.getElementById('pf-name');
+      const invite=document.getElementById('pf-invite');
+      const typeChecked=form.querySelector('input[name="pf-type"]:checked');
+
+      if(!name.value.trim()){markError(name);valid=false}
+      if(!promoInput.value.trim()){markError(promoInput);valid=false}
+      if(!invite.value.trim()){markError(invite);valid=false}
+      else if(!/^https?:\/\/(discord\.gg|discord\.com\/invite|discordapp\.com\/invite)\//i.test(invite.value.trim())){
+        markError(invite);valid=false;
+      }
+      if(!typeChecked){
+        form.querySelectorAll('.pd-form-radio').forEach(function(r){r.classList.add('error')});
+        valid=false;
+      }
+      return valid;
+    }
+
+    /* ── Submit ── */
+    form.addEventListener('submit',function(e){
+      e.preventDefault();
+      if(!validate())return;
+
+      submitBtn.disabled=true;
+      submitText.style.display='none';
+      submitLoading.style.display='inline-flex';
+      formResult.style.display='none';
+
+      var name=document.getElementById('pf-name').value.trim();
+      var promo=promoInput.value.trim();
+      var brief=briefInput.value.trim();
+      var invite=document.getElementById('pf-invite').value.trim();
+      var type=form.querySelector('input[name="pf-type"]:checked').value;
+
+      var fields=[
+        {name:'📋 社群名稱',value:name},
+        {name:'📝 文宣',value:promo.length>1024?promo.substring(0,1021)+'...':promo},
+        {name:'🔗 Discord 邀請連結',value:invite},
+        {name:'🏷️ 社群類型',value:type}
+      ];
+      if(brief)fields.splice(2,0,{name:'💬 簡介',value:brief});
+
+      var embed={
+        title:'🆕 新合作夥伴申請',
+        color:0x9dafff,
+        fields:fields,
+        timestamp:new Date().toISOString(),
+        footer:{text:'海風合作夥伴提交系統'}
+      };
+
+      if(selectedFile){
+        var formData=new FormData();
+        formData.append('payload_json',JSON.stringify({embeds:[embed]}));
+        formData.append('file1',selectedFile,selectedFile.name);
+
+        fetch(WEBHOOK_URL,{method:'POST',body:formData})
+        .then(handleResponse)
+        .catch(handleError);
+      }else{
+        fetch(WEBHOOK_URL,{
+          method:'POST',
+          headers:{'Content-Type':'application/json'},
+          body:JSON.stringify({embeds:[embed]})
+        })
+        .then(handleResponse)
+        .catch(handleError);
+      }
+    });
+
+    function handleResponse(resp){
+      if(resp.ok){
+        formResult.className='pd-form-result success';
+        formResult.textContent='✅ 送出成功！我們會在 1–3 天內處理，感謝你的提交。';
+        formResult.style.display='block';
+        form.reset();
+        clearFile();
+        promoCount.textContent='0';
+        briefCount.textContent='0';
+      }else{
+        resp.text().then(function(t){console.error('Webhook error:',t)});
+        handleError(new Error('HTTP '+resp.status));
+      }
+      resetBtn();
+    }
+
+    function handleError(err){
+      console.error('Submit error:',err);
+      formResult.className='pd-form-result error';
+      formResult.textContent='❌ 送出失敗，請稍後再試，或直接私訊海風管理員。';
+      formResult.style.display='block';
+      resetBtn();
+    }
+
+    function resetBtn(){
+      submitBtn.disabled=false;
+      submitText.style.display='inline';
+      submitLoading.style.display='none';
+    }
   })();
   </script>
   <script src="../utils.js"></script>
