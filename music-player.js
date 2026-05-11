@@ -222,20 +222,19 @@ const MUSIC_PLAYER = (() => {
   // ===== 音量圖示（依音量/靜音狀態切換） =====
   function updateVolumeIcon() {
     const volIcon = document.getElementById('ftVolIcon');
+    const volBtn = document.getElementById('ftVolBtn');
     if (!volIcon) return;
     const vol = player && playerReady && player.getVolume ? player.getVolume() : 15;
     let svg;
     if (muted || vol === 0) {
-      // 靜音
       svg = '<path d="M3 9v6h4l5 5V4L7 9H3z"/><line x1="18" y1="9" x2="22" y2="15" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><line x1="22" y1="9" x2="18" y2="15" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>';
     } else if (vol < 40) {
-      // 低音量
       svg = '<path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3A4.5 4.5 0 0 0 14 8.5v7a4.5 4.5 0 0 0 2.5-3.5z"/>';
     } else {
-      // 正常音量
       svg = '<path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3A4.5 4.5 0 0 0 14 8.5v7a4.5 4.5 0 0 0 2.5-3.5zM14 3.23v2.06a7 7 0 0 1 0 13.42v2.06A9 9 0 0 0 14 3.23z"/>';
     }
     volIcon.innerHTML = svg;
+    if (volBtn) volBtn.classList.toggle('muted', muted || vol === 0);
   }
 
   // ===== 建立 UI =====
@@ -251,41 +250,32 @@ const MUSIC_PLAYER = (() => {
         </button>
         <div class="ft-panel-wrap">
           <div class="ft-panel" id="ftPanel">
-            <div class="ft-panel-header">
-              <div class="ft-panel-icon" id="ftPanelIcon">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 3v10.55A4 4 0 1 0 14 17V7h4V3h-6Z"/></svg>
-              </div>
-              <div class="ft-panel-info">
+            <div class="ft-panel-head">
+              <div class="ft-panel-meta">
                 <div class="ft-panel-title" id="ftTitle">音樂</div>
                 <div class="ft-panel-artist" id="ftArtist"></div>
               </div>
+              <button class="ft-vol-btn" id="ftVolBtn" aria-label="靜音切換" title="靜音切換">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" id="ftVolIcon"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3A4.5 4.5 0 0 0 14 8.5v7a4.5 4.5 0 0 0 2.5-3.5zM14 3.23v2.06a7 7 0 0 1 0 13.42v2.06A9 9 0 0 0 14 3.23z"/></svg>
+              </button>
             </div>
-            <!-- 播放進度條 -->
             <div class="ft-panel-progress">
-              <span class="ft-progress-time" id="ftCurTime">0:00</span>
               <input type="range" id="ftProgress" min="0" max="100" value="0" class="ft-progress-slider" aria-label="播放進度">
+            </div>
+            <div class="ft-panel-row">
+              <span class="ft-progress-time" id="ftCurTime">0:00</span>
+              <div class="ft-panel-controls">
+                <button class="ft-panel-ctrl" id="ftPrev" aria-label="上一首" title="上一首">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M6 6h2v12H6zm3.5 6 8.5 6V6z"/></svg>
+                </button>
+                <button class="ft-panel-ctrl ft-panel-play" id="ftPlay" aria-label="播放／暫停" title="播放／暫停">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" id="ftPlayIcon"><path d="M9 6.5v11l8.5-5.5z"/></svg>
+                </button>
+                <button class="ft-panel-ctrl" id="ftNext" aria-label="下一首" title="下一首">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M6 18l8.5-6L6 6v12zM16 6v12h2V6h-2z"/></svg>
+                </button>
+              </div>
               <span class="ft-progress-time" id="ftDurTime">0:00</span>
-            </div>
-            <div class="ft-panel-controls">
-              <button class="ft-panel-ctrl" id="ftPrev" aria-label="上一首" title="上一首">
-                <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M6 6h2v12H6zm3.5 6 8.5 6V6z"/></svg>
-              </button>
-              <button class="ft-panel-ctrl ft-panel-play" id="ftPlay" aria-label="播放／暫停" title="播放／暫停">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" id="ftPlayIcon"><path d="M9 6.5v11l8.5-5.5z"/></svg>
-              </button>
-              <button class="ft-panel-ctrl" id="ftNext" aria-label="下一首" title="下一首">
-                <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M6 18l8.5-6L6 6v12zM16 6v12h2V6h-2z"/></svg>
-              </button>
-            </div>
-            <div class="ft-panel-vol">
-              <span class="ft-vol-icon" id="ftVolIcon">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" opacity="0.5"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3A4.5 4.5 0 0 0 14 8.5v7a4.5 4.5 0 0 0 2.5-3.5zM14 3.23v2.06a7 7 0 0 1 0 13.42v2.06A9 9 0 0 0 14 3.23z"/></svg>
-              </span>
-              <input type="range" id="ftVol" min="0" max="100" value="15" class="ft-vol-slider" aria-label="音量">
-            </div>
-            <div class="ft-panel-status">
-              <span class="ft-panel-status-text" id="ftStatusText">就緒</span>
-              <span class="ft-panel-pin-hint" id="ftPinHint">點擊按鈕固定面板</span>
             </div>
           </div>
         </div>
@@ -318,14 +308,12 @@ const MUSIC_PLAYER = (() => {
     const musicWrap = document.getElementById('ftMusicWrap');
     const panel = document.getElementById('ftPanel');
     const topBtn = document.getElementById('ftTopBtn');
-    const pinHint = document.getElementById('ftPinHint');
 
     // 音樂按鈕：點擊切換固定
     musicBtn.addEventListener('click', (e) => {
       pinned = !pinned;
       panel.classList.toggle('pinned', pinned);
       musicBtn.classList.toggle('pinned', pinned);
-      if (pinHint) pinHint.textContent = pinned ? '再次點擊取消固定' : '點擊按鈕固定面板';
     });
 
     // hover 顯示面板（帶延遲防止閃爍）
@@ -363,17 +351,20 @@ const MUSIC_PLAYER = (() => {
       e.stopPropagation();
       nextTrack();
     });
-    document.getElementById('ftVol').addEventListener('input', (e) => {
-      if (player && playerReady) {
-        const vol = parseInt(e.target.value);
-        player.setVolume(vol);
-        if (muted && vol > 0) {
-          muted = false;
-          player.unMute();
-          localStorage.setItem('sw-music-unmuted', '1');
-        }
-        updateVolumeIcon();
+
+    // 音量按鈕：靜音切換
+    document.getElementById('ftVolBtn').addEventListener('click', (e) => {
+      e.stopPropagation();
+      if (!player || !playerReady) return;
+      if (muted) {
+        muted = false;
+        try { player.unMute(); player.setVolume(15); } catch (e) {}
+        localStorage.setItem('sw-music-unmuted', '1');
+      } else {
+        muted = true;
+        try { player.mute(); } catch (e) {}
       }
+      updateVolumeIcon();
     });
 
     // 進度條拖曳
@@ -426,7 +417,6 @@ const MUSIC_PLAYER = (() => {
         const currentVol = player.getVolume ? player.getVolume() : 15;
         if (currentVol === 0) {
           player.setVolume(15);
-          document.getElementById('ftVol').value = 15;
         }
       } catch (e) {}
       localStorage.setItem('sw-music-unmuted', '1');
@@ -534,7 +524,6 @@ const MUSIC_PLAYER = (() => {
 
     if (saved && saved.videoId) {
       player.setVolume(saved.volume || 15);
-      document.getElementById('ftVol').value = saved.volume || 15;
       // 相容舊格式（displayTitle 可能包含 "藝人 — 曲名"）
       let displayTitle = saved.displayTitle || '';
       let displayArtist = saved.artist || '';
@@ -569,7 +558,6 @@ const MUSIC_PLAYER = (() => {
 
     // 無儲存狀態 → 隨機播放
     player.setVolume(15);
-    document.getElementById('ftVol').value = 15;
     const idx = getRandomTrackIndex();
     pushHistory(idx);
     const track = FALLBACK[idx];
@@ -585,26 +573,19 @@ const MUSIC_PLAYER = (() => {
   }
 
   function onPlayerStateChange(event) {
-    const statusEl = document.getElementById('ftStatusText');
     if (event.data === YT.PlayerState.ENDED) {
-      // 自動下一首（走歷史或隨機）
       nextTrack();
     }
     if (event.data === YT.PlayerState.PLAYING) {
       isPlaying = true;
       updatePlayBtn(true);
       updateVolumeIcon();
-      if (statusEl) statusEl.textContent = '播放中';
       setTimeout(updateDisplay, 300);
     }
     if (event.data === YT.PlayerState.PAUSED) {
       isPlaying = false;
       updatePlayBtn(false);
-      if (statusEl) statusEl.textContent = '已暫停';
       saveState();
-    }
-    if (event.data === YT.PlayerState.BUFFERING) {
-      if (statusEl) statusEl.textContent = '載入中…';
     }
   }
 

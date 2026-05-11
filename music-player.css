@@ -1,5 +1,5 @@
 /* ═══════════════════════════════════════
-   海風浮動工具列 — 重新設計
+   海風浮動工具列 — 簡約風
    音樂播放器 + 回到頂部
    ═══════════════════════════════════════ */
 
@@ -18,8 +18,8 @@
 
 /* ── 共用按鈕樣式 ── */
 .ft-btn {
-  width: 48px;
-  height: 48px;
+  width: 46px;
+  height: 46px;
   border-radius: 50%;
   border: none;
   background: #111827;
@@ -31,16 +31,13 @@
   transition: all 0.3s var(--ease);
   position: relative;
   padding: 0;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.45),
-              inset 0 1px 0 rgba(255, 255, 255, 0.04);
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.4);
 }
 
 .ft-btn:hover {
-  background: #19223a;
-  transform: scale(1.08);
-  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.5),
-              0 0 20px rgba(157, 175, 255, 0.1),
-              inset 0 1px 0 rgba(255, 255, 255, 0.06);
+  background: #1a2236;
+  transform: scale(1.06);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
 }
 
 .ft-btn:active {
@@ -54,34 +51,33 @@
 
 .ft-music.playing {
   color: var(--foam);
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.45),
-              0 0 24px rgba(168, 230, 207, 0.1),
-              inset 0 1px 0 rgba(255, 255, 255, 0.04);
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.4),
+              0 0 20px rgba(168, 230, 207, 0.08);
 }
 
 .ft-music.playing::after {
   content: '';
   position: absolute;
-  inset: -4px;
+  inset: -3px;
   border-radius: 50%;
-  border: 2px solid rgba(168, 230, 207, 0.2);
+  border: 1.5px solid rgba(168, 230, 207, 0.15);
   animation: ft-ring-pulse 2.5s ease-in-out infinite;
   pointer-events: none;
 }
 
 @keyframes ft-ring-pulse {
-  0%, 100% { opacity: 0.2; transform: scale(1); }
-  50% { opacity: 0.6; transform: scale(1.08); }
+  0%, 100% { opacity: 0.15; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(1.06); }
 }
 
-/* ── 固定狀態指示（小圓點） ── */
+/* ── 固定狀態指示 ── */
 .ft-music.pinned::before {
   content: '';
   position: absolute;
-  bottom: 2px;
-  right: 2px;
-  width: 8px;
-  height: 8px;
+  bottom: 1px;
+  right: 1px;
+  width: 7px;
+  height: 7px;
   border-radius: 50%;
   background: var(--sky);
   border: 2px solid #111827;
@@ -93,31 +89,28 @@
   position: relative;
 }
 
-/* ── 展開面板（緊貼按鈕左側） ── */
+/* ── 展開面板 ── */
 .ft-panel-wrap {
   position: absolute;
   bottom: 0;
-  right: 58px;
+  right: 56px;
   pointer-events: auto;
 }
 
 .ft-panel {
   background: #111827;
-  border: 1px solid rgba(157, 175, 255, 0.12);
-  border-radius: 16px;
-  padding: 0;
-  width: 260px;
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.6),
-              0 0 0 1px rgba(157, 175, 255, 0.05) inset;
+  border: 1px solid rgba(157, 175, 255, 0.08);
+  border-radius: 14px;
+  width: 220px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
   opacity: 0;
   pointer-events: none;
-  transform: translateX(8px) scale(0.95);
-  transition: all 0.25s var(--ease);
+  transform: translateX(6px) scale(0.96);
+  transition: all 0.2s var(--ease);
   transform-origin: right center;
   overflow: hidden;
 }
 
-/* hover（JS 控制）或固定時顯示 */
 .ft-panel.hover,
 .ft-panel.pinned {
   opacity: 1;
@@ -125,40 +118,21 @@
   transform: translateX(0) scale(1);
 }
 
-/* ── 面板頂部：曲目資訊 ── */
-.ft-panel-header {
-  padding: 14px 16px 10px;
-  border-bottom: 1px solid rgba(157, 175, 255, 0.06);
+/* ── 面板頂部：曲目資訊 + 音量 ── */
+.ft-panel-head {
+  padding: 12px 14px 8px;
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 8px;
 }
 
-.ft-panel-icon {
-  width: 36px;
-  height: 36px;
-  border-radius: 10px;
-  background: rgba(157, 175, 255, 0.08);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-  color: var(--sky);
-  font-size: 16px;
-}
-
-.ft-music.playing .ft-panel-icon {
-  background: rgba(168, 230, 207, 0.1);
-  color: var(--foam);
-}
-
-.ft-panel-info {
+.ft-panel-meta {
   flex: 1;
   min-width: 0;
 }
 
 .ft-panel-title {
-  font-size: 0.82rem;
+  font-size: 0.78rem;
   font-weight: 600;
   color: var(--white);
   white-space: nowrap;
@@ -168,7 +142,7 @@
 }
 
 .ft-panel-artist {
-  font-size: 0.7rem;
+  font-size: 0.65rem;
   color: var(--fog);
   white-space: nowrap;
   overflow: hidden;
@@ -176,25 +150,35 @@
   margin-top: 1px;
 }
 
-/* ── 面板進度條 ── */
-.ft-panel-progress {
+/* ── 音量按鈕 ── */
+.ft-vol-btn {
+  background: none;
+  border: none;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
   display: flex;
   align-items: center;
-  gap: 8px;
-  padding: 6px 16px 2px;
-}
-
-.ft-progress-time {
-  font-size: 0.6rem;
+  justify-content: center;
   color: var(--fog);
-  opacity: 0.7;
-  min-width: 28px;
-  font-variant-numeric: tabular-nums;
-  user-select: none;
+  cursor: pointer;
+  transition: all 0.2s;
+  padding: 0;
+  flex-shrink: 0;
 }
 
-.ft-progress-time:last-child {
-  text-align: right;
+.ft-vol-btn:hover {
+  color: var(--white);
+  background: rgba(157, 175, 255, 0.08);
+}
+
+.ft-vol-btn.muted {
+  color: rgba(139, 148, 158, 0.45);
+}
+
+/* ── 進度條 ── */
+.ft-panel-progress {
+  padding: 0 14px;
 }
 
 .ft-progress-slider {
@@ -203,180 +187,106 @@
   width: 100%;
   height: 3px;
   border-radius: 2px;
-  background: rgba(157, 175, 255, 0.1);
+  background: rgba(157, 175, 255, 0.08);
   outline: none;
   cursor: pointer;
-  flex: 1;
 }
 
 .ft-progress-slider::-webkit-slider-thumb {
   -webkit-appearance: none;
-  width: 10px;
-  height: 10px;
+  width: 8px;
+  height: 8px;
   border-radius: 50%;
   background: var(--sky);
   border: none;
   cursor: pointer;
-  box-shadow: 0 0 6px rgba(157, 175, 255, 0.3);
+  box-shadow: 0 0 4px rgba(157, 175, 255, 0.3);
   transition: box-shadow 0.2s, transform 0.2s;
   opacity: 0;
 }
 
 .ft-progress-slider:hover::-webkit-slider-thumb {
   opacity: 1;
-  box-shadow: 0 0 10px rgba(157, 175, 255, 0.5);
-  transform: scale(1.2);
+  box-shadow: 0 0 8px rgba(157, 175, 255, 0.5);
+  transform: scale(1.3);
 }
 
 .ft-progress-slider::-moz-range-thumb {
-  width: 10px;
-  height: 10px;
+  width: 8px;
+  height: 8px;
   border-radius: 50%;
   background: var(--sky);
   border: none;
   cursor: pointer;
-  box-shadow: 0 0 6px rgba(157, 175, 255, 0.3);
+  box-shadow: 0 0 4px rgba(157, 175, 255, 0.3);
 }
 
 .ft-progress-slider::-moz-range-track {
   height: 3px;
   border-radius: 2px;
-  background: rgba(157, 175, 255, 0.1);
+  background: rgba(157, 175, 255, 0.08);
   border: none;
 }
 
-/* ── 面板控制區 ── */
+/* ── 底部列：時間 + 控制 ── */
+.ft-panel-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 6px 14px 10px;
+}
+
+.ft-progress-time {
+  font-size: 0.58rem;
+  color: var(--fog);
+  opacity: 0.6;
+  min-width: 26px;
+  font-variant-numeric: tabular-nums;
+  user-select: none;
+}
+
+.ft-progress-time:last-child {
+  text-align: right;
+}
+
+/* ── 控制按鈕 ── */
 .ft-panel-controls {
   display: flex;
   align-items: center;
-  justify-content: center;
-  gap: 6px;
-  padding: 10px 16px 12px;
+  gap: 2px;
 }
 
 .ft-panel-ctrl {
   background: none;
   border: none;
   border-radius: 50%;
-  width: 36px;
-  height: 36px;
+  width: 32px;
+  height: 32px;
   display: flex;
   align-items: center;
   justify-content: center;
   color: var(--cloud);
   cursor: pointer;
-  transition: all 0.2s;
+  transition: all 0.15s;
   padding: 0;
 }
 
 .ft-panel-ctrl:hover {
-  background: rgba(157, 175, 255, 0.1);
   color: var(--white);
 }
 
 .ft-panel-ctrl:active {
-  transform: scale(0.88);
+  transform: scale(0.85);
 }
 
 .ft-panel-play {
-  width: 42px;
-  height: 42px;
-  background: rgba(157, 175, 255, 0.1);
-  border: 1px solid rgba(157, 175, 255, 0.15);
+  width: 34px;
+  height: 34px;
   color: var(--sky);
 }
 
 .ft-panel-play:hover {
-  background: rgba(157, 175, 255, 0.2);
-  border-color: rgba(157, 175, 255, 0.3);
-  box-shadow: 0 0 20px rgba(157, 175, 255, 0.15);
   color: var(--white);
-}
-
-/* ── 面板音量 ── */
-.ft-panel-vol {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  padding: 0 16px 14px;
-}
-
-.ft-vol-icon {
-  color: var(--fog);
-  flex-shrink: 0;
-  display: flex;
-}
-
-.ft-vol-slider {
-  -webkit-appearance: none;
-  appearance: none;
-  width: 100%;
-  height: 4px;
-  border-radius: 2px;
-  background: rgba(157, 175, 255, 0.1);
-  outline: none;
-  cursor: pointer;
-}
-
-.ft-vol-slider::-webkit-slider-thumb {
-  -webkit-appearance: none;
-  width: 14px;
-  height: 14px;
-  border-radius: 50%;
-  background: var(--sky);
-  border: none;
-  cursor: pointer;
-  box-shadow: 0 0 8px rgba(157, 175, 255, 0.3);
-  transition: box-shadow 0.2s, transform 0.2s;
-}
-
-.ft-vol-slider::-webkit-slider-thumb:hover {
-  box-shadow: 0 0 14px rgba(157, 175, 255, 0.5);
-  transform: scale(1.15);
-}
-
-.ft-vol-slider::-moz-range-thumb {
-  width: 14px;
-  height: 14px;
-  border-radius: 50%;
-  background: var(--sky);
-  border: none;
-  cursor: pointer;
-  box-shadow: 0 0 8px rgba(157, 175, 255, 0.3);
-}
-
-.ft-vol-slider::-moz-range-track {
-  height: 4px;
-  border-radius: 2px;
-  background: rgba(157, 175, 255, 0.1);
-  border: none;
-}
-
-/* ── 面板底部：狀態列 ── */
-.ft-panel-status {
-  padding: 8px 16px;
-  border-top: 1px solid rgba(157, 175, 255, 0.06);
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.ft-panel-status-text {
-  font-size: 0.65rem;
-  color: var(--fog);
-  opacity: 0.7;
-}
-
-.ft-panel-pin-hint {
-  font-size: 0.6rem;
-  color: var(--fog);
-  opacity: 0.5;
-  transition: opacity 0.2s;
-}
-
-.ft-panel.hover .ft-panel-pin-hint,
-.ft-panel.pinned .ft-panel-pin-hint {
-  opacity: 0.8;
 }
 
 /* ── 回到頂部 ── */
@@ -396,15 +306,15 @@
 /* ── 靜音提示 ── */
 .ft-muted-hint {
   position: fixed;
-  bottom: 80px;
+  bottom: 76px;
   right: 20px;
   background: #111827;
-  border: 1px solid rgba(157, 175, 255, 0.12);
-  border-radius: 12px;
-  padding: 10px 16px;
-  font-size: 0.78rem;
+  border: 1px solid rgba(157, 175, 255, 0.08);
+  border-radius: 10px;
+  padding: 8px 14px;
+  font-size: 0.72rem;
   color: var(--cloud);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.45);
   z-index: 901;
   animation: ft-hint-in 0.4s var(--ease) forwards, ft-hint-out 0.4s ease 6s forwards;
   pointer-events: auto;
@@ -413,7 +323,7 @@
 }
 
 @keyframes ft-hint-in {
-  from { opacity: 0; transform: translateY(8px); }
+  from { opacity: 0; transform: translateY(6px); }
   to { opacity: 1; transform: translateY(0); }
 }
 
@@ -425,24 +335,22 @@
 [data-theme="light"] .ft-btn {
   background: #ffffff;
   color: #4a6cf7;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1),
-              inset 0 1px 0 rgba(0, 0, 0, 0.04);
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
 }
 
 [data-theme="light"] .ft-btn:hover {
-  background: #f0f2ff;
-  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.12),
-              0 0 20px rgba(74, 108, 247, 0.08);
+  background: #f5f6ff;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
 }
 
 [data-theme="light"] .ft-music.playing {
   color: #00794c;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1),
-              0 0 24px rgba(0, 121, 76, 0.06);
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08),
+              0 0 16px rgba(0, 121, 76, 0.05);
 }
 
 [data-theme="light"] .ft-music.playing::after {
-  border-color: rgba(0, 121, 76, 0.15);
+  border-color: rgba(0, 121, 76, 0.12);
 }
 
 [data-theme="light"] .ft-music.pinned::before {
@@ -452,23 +360,8 @@
 
 [data-theme="light"] .ft-panel {
   background: #ffffff;
-  border-color: rgba(0, 0, 0, 0.08);
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.12),
-              0 0 0 1px rgba(0, 0, 0, 0.03) inset;
-}
-
-[data-theme="light"] .ft-panel-header {
-  border-bottom-color: rgba(0, 0, 0, 0.05);
-}
-
-[data-theme="light"] .ft-panel-icon {
-  background: rgba(74, 108, 247, 0.08);
-  color: #4a6cf7;
-}
-
-[data-theme="light"] .ft-music.playing .ft-panel-icon {
-  background: rgba(0, 121, 76, 0.08);
-  color: #00794c;
+  border-color: rgba(0, 0, 0, 0.06);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
 }
 
 [data-theme="light"] .ft-panel-title {
@@ -479,57 +372,21 @@
   color: #6b7280;
 }
 
-[data-theme="light"] .ft-panel-ctrl {
-  color: #4b5563;
+[data-theme="light"] .ft-vol-btn {
+  color: #9ca3af;
 }
 
-[data-theme="light"] .ft-panel-ctrl:hover {
-  background: rgba(0, 0, 0, 0.04);
+[data-theme="light"] .ft-vol-btn:hover {
   color: #1a1a2e;
+  background: rgba(0, 0, 0, 0.04);
 }
 
-[data-theme="light"] .ft-panel-play {
-  background: rgba(74, 108, 247, 0.08);
-  border-color: rgba(74, 108, 247, 0.2);
-  color: #4a6cf7;
-}
-
-[data-theme="light"] .ft-panel-play:hover {
-  background: rgba(74, 108, 247, 0.15);
-  border-color: rgba(74, 108, 247, 0.35);
-}
-
-[data-theme="light"] .ft-panel-vol-icon {
-  color: #6b7280;
-}
-
-[data-theme="light"] .ft-vol-slider {
-  background: rgba(0, 0, 0, 0.08);
-}
-
-[data-theme="light"] .ft-vol-slider::-webkit-slider-thumb {
-  background: #4a6cf7;
-}
-
-[data-theme="light"] .ft-vol-slider::-moz-range-thumb {
-  background: #4a6cf7;
-}
-
-[data-theme="light"] .ft-panel-status {
-  border-top-color: rgba(0, 0, 0, 0.05);
-}
-
-[data-theme="light"] .ft-panel-status-text,
-[data-theme="light"] .ft-panel-pin-hint {
-  color: #9ca3af;
-}
-
-[data-theme="light"] .ft-progress-time {
-  color: #9ca3af;
+[data-theme="light"] .ft-vol-btn.muted {
+  color: rgba(156, 163, 175, 0.4);
 }
 
 [data-theme="light"] .ft-progress-slider {
-  background: rgba(0, 0, 0, 0.08);
+  background: rgba(0, 0, 0, 0.06);
 }
 
 [data-theme="light"] .ft-progress-slider::-webkit-slider-thumb {
@@ -540,11 +397,31 @@
   background: #4a6cf7;
 }
 
+[data-theme="light"] .ft-progress-time {
+  color: #9ca3af;
+}
+
+[data-theme="light"] .ft-panel-ctrl {
+  color: #6b7280;
+}
+
+[data-theme="light"] .ft-panel-ctrl:hover {
+  color: #1a1a2e;
+}
+
+[data-theme="light"] .ft-panel-play {
+  color: #4a6cf7;
+}
+
+[data-theme="light"] .ft-panel-play:hover {
+  color: #1a1a2e;
+}
+
 [data-theme="light"] .ft-muted-hint {
   background: #ffffff;
-  border-color: rgba(0, 0, 0, 0.08);
+  border-color: rgba(0, 0, 0, 0.06);
   color: #374151;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
 }
 
 /* ═══ 響應式 ═══ */
@@ -556,46 +433,35 @@
   }
 
   .ft-btn {
-    width: 44px;
-    height: 44px;
+    width: 42px;
+    height: 42px;
   }
 
-  /* 手機：面板改為向上展開，避免左側溢出 */
   .ft-panel-wrap {
     position: absolute;
-    bottom: 54px;
-    right: -6px;
+    bottom: 52px;
+    right: -4px;
   }
 
   .ft-panel {
-    width: 260px;
+    width: 210px;
     transform-origin: bottom right;
   }
 
-  .ft-panel.hover,
-  .ft-panel.pinned {
-    transform: translateY(0) scale(1);
-  }
-
   .ft-muted-hint {
-    bottom: 72px;
+    bottom: 66px;
     right: 14px;
-    font-size: 0.72rem;
+    font-size: 0.68rem;
   }
 
   .ft-progress-slider::-webkit-slider-thumb {
-    opacity: 1; /* 觸控設備顯示 thumb */
-    width: 14px;
-    height: 14px;
+    opacity: 1;
+    width: 12px;
+    height: 12px;
   }
 
   .ft-progress-slider::-moz-range-thumb {
-    width: 14px;
-    height: 14px;
-  }
-
-  .ft-vol-slider::-webkit-slider-thumb {
-    width: 16px;
-    height: 16px;
+    width: 12px;
+    height: 12px;
   }
 }
