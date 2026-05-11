@@ -1,5 +1,5 @@
 /* ═══════════════════════════════════════
-   海風浮動工具列 — 簡約整合版
+   海風浮動工具列 — 重新設計
    音樂播放器 + 回到頂部
    ═══════════════════════════════════════ */
 
@@ -12,17 +12,17 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 8px;
+  gap: 10px;
   font-family: var(--font-body);
 }
 
 /* ── 共用按鈕樣式 ── */
 .ft-btn {
-  width: 44px;
-  height: 44px;
+  width: 48px;
+  height: 48px;
   border-radius: 50%;
-  border: 1px solid rgba(157, 175, 255, 0.2);
-  background: #141a27;
+  border: none;
+  background: #111827;
   color: var(--sky);
   cursor: pointer;
   display: flex;
@@ -31,14 +31,16 @@
   transition: all 0.3s var(--ease);
   position: relative;
   padding: 0;
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.45),
+              inset 0 1px 0 rgba(255, 255, 255, 0.04);
 }
 
 .ft-btn:hover {
-  background: #1a2235;
-  border-color: rgba(157, 175, 255, 0.35);
+  background: #19223a;
   transform: scale(1.08);
-  box-shadow: 0 4px 20px rgba(157, 175, 255, 0.15);
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.5),
+              0 0 20px rgba(157, 175, 255, 0.1),
+              inset 0 1px 0 rgba(255, 255, 255, 0.06);
 }
 
 .ft-btn:active {
@@ -51,91 +53,146 @@
 }
 
 .ft-music.playing {
-  border-color: rgba(168, 230, 207, 0.35);
   color: var(--foam);
-  box-shadow: 0 2px 16px rgba(168, 230, 207, 0.12);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.45),
+              0 0 24px rgba(168, 230, 207, 0.1),
+              inset 0 1px 0 rgba(255, 255, 255, 0.04);
 }
 
 .ft-music.playing::after {
   content: '';
   position: absolute;
-  inset: -3px;
+  inset: -4px;
   border-radius: 50%;
-  border: 1.5px solid rgba(168, 230, 207, 0.2);
-  animation: ft-ring-pulse 2s ease-in-out infinite;
+  border: 2px solid rgba(168, 230, 207, 0.2);
+  animation: ft-ring-pulse 2.5s ease-in-out infinite;
+  pointer-events: none;
 }
 
 @keyframes ft-ring-pulse {
-  0%, 100% { opacity: 0.3; transform: scale(1); }
-  50% { opacity: 0.7; transform: scale(1.06); }
+  0%, 100% { opacity: 0.2; transform: scale(1); }
+  50% { opacity: 0.6; transform: scale(1.08); }
 }
 
-/* ── 曲目提示（hover 時顯示） ── */
-.ft-track-tip {
+/* ── 固定狀態指示（小圓點） ── */
+.ft-music.pinned::before {
+  content: '';
   position: absolute;
-  right: 54px;
-  top: 50%;
-  transform: translateY(-50%);
-  background: #1a2235;
-  border: 1px solid rgba(157, 175, 255, 0.15);
-  border-radius: var(--radius-md);
-  padding: 6px 12px;
-  font-size: 0.72rem;
-  color: var(--cloud);
-  white-space: nowrap;
-  max-width: 200px;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.2s, transform 0.2s;
-  transform: translateY(-50%) translateX(4px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+  bottom: 2px;
+  right: 2px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--sky);
+  border: 2px solid #111827;
+  z-index: 2;
 }
 
-.ft-music:hover .ft-track-tip {
-  opacity: 1;
-  transform: translateY(-50%) translateX(0);
+/* ── hover 橋接區 ── */
+.ft-music-wrap {
+  position: relative;
 }
 
 /* ── 展開面板 ── */
-.ft-panel {
+.ft-panel-wrap {
   position: absolute;
-  bottom: 54px;
-  right: 0;
-  background: #161d2e;
-  border: 1px solid rgba(157, 175, 255, 0.15);
-  border-radius: var(--radius-lg);
-  padding: 14px 16px;
-  min-width: 200px;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+  bottom: 0;
+  right: 58px;
+  padding: 12px 12px 12px 20px;
+  /* 透明橋接區，接收 hover 事件 */
+  pointer-events: auto;
+}
+
+.ft-panel {
+  background: #111827;
+  border: 1px solid rgba(157, 175, 255, 0.12);
+  border-radius: 16px;
+  padding: 0;
+  width: 260px;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.6),
+              0 0 0 1px rgba(157, 175, 255, 0.05) inset;
   opacity: 0;
   pointer-events: none;
-  transform: translateY(8px) scale(0.96);
+  transform: translateX(8px) scale(0.95);
   transition: all 0.25s var(--ease);
-  transform-origin: bottom right;
+  transform-origin: right center;
+  overflow: hidden;
 }
 
-.ft-panel.open {
+/* hover 或固定時顯示 */
+.ft-music-wrap:hover .ft-panel,
+.ft-panel.pinned {
   opacity: 1;
   pointer-events: auto;
-  transform: translateY(0) scale(1);
+  transform: translateX(0) scale(1);
 }
 
+/* ── 面板頂部：曲目資訊 ── */
+.ft-panel-header {
+  padding: 14px 16px 10px;
+  border-bottom: 1px solid rgba(157, 175, 255, 0.06);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.ft-panel-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  background: rgba(157, 175, 255, 0.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: var(--sky);
+  font-size: 16px;
+}
+
+.ft-music.playing .ft-panel-icon {
+  background: rgba(168, 230, 207, 0.1);
+  color: var(--foam);
+}
+
+.ft-panel-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.ft-panel-title {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--white);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  line-height: 1.3;
+}
+
+.ft-panel-artist {
+  font-size: 0.7rem;
+  color: var(--fog);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-top: 1px;
+}
+
+/* ── 面板控制區 ── */
 .ft-panel-controls {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 4px;
-  margin-bottom: 12px;
+  gap: 6px;
+  padding: 10px 16px 12px;
 }
 
 .ft-panel-ctrl {
   background: none;
   border: none;
-  border-radius: var(--radius-sm);
-  width: 32px;
-  height: 32px;
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -151,83 +208,108 @@
 }
 
 .ft-panel-ctrl:active {
-  transform: scale(0.9);
+  transform: scale(0.88);
 }
 
 .ft-panel-play {
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
+  width: 42px;
+  height: 42px;
   background: rgba(157, 175, 255, 0.1);
   border: 1px solid rgba(157, 175, 255, 0.15);
   color: var(--sky);
 }
 
 .ft-panel-play:hover {
-  background: rgba(157, 175, 255, 0.18);
+  background: rgba(157, 175, 255, 0.2);
   border-color: rgba(157, 175, 255, 0.3);
-  box-shadow: 0 0 16px rgba(157, 175, 255, 0.12);
+  box-shadow: 0 0 20px rgba(157, 175, 255, 0.15);
+  color: var(--white);
 }
 
-.ft-panel-title {
-  font-size: 0.72rem;
-  color: var(--fog);
-  text-align: center;
-  margin-bottom: 10px;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
+/* ── 面板音量 ── */
 .ft-panel-vol {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 10px;
+  padding: 0 16px 14px;
+}
+
+.ft-vol-icon {
+  color: var(--fog);
+  flex-shrink: 0;
+  display: flex;
 }
 
 .ft-vol-slider {
   -webkit-appearance: none;
   appearance: none;
   width: 100%;
-  height: 3px;
+  height: 4px;
   border-radius: 2px;
-  background: rgba(157, 175, 255, 0.12);
+  background: rgba(157, 175, 255, 0.1);
   outline: none;
   cursor: pointer;
 }
 
 .ft-vol-slider::-webkit-slider-thumb {
   -webkit-appearance: none;
-  width: 12px;
-  height: 12px;
+  width: 14px;
+  height: 14px;
   border-radius: 50%;
   background: var(--sky);
   border: none;
   cursor: pointer;
-  box-shadow: 0 0 6px rgba(157, 175, 255, 0.3);
+  box-shadow: 0 0 8px rgba(157, 175, 255, 0.3);
   transition: box-shadow 0.2s, transform 0.2s;
 }
 
 .ft-vol-slider::-webkit-slider-thumb:hover {
-  box-shadow: 0 0 12px rgba(157, 175, 255, 0.5);
-  transform: scale(1.2);
+  box-shadow: 0 0 14px rgba(157, 175, 255, 0.5);
+  transform: scale(1.15);
 }
 
 .ft-vol-slider::-moz-range-thumb {
-  width: 12px;
-  height: 12px;
+  width: 14px;
+  height: 14px;
   border-radius: 50%;
   background: var(--sky);
   border: none;
   cursor: pointer;
-  box-shadow: 0 0 6px rgba(157, 175, 255, 0.3);
+  box-shadow: 0 0 8px rgba(157, 175, 255, 0.3);
 }
 
 .ft-vol-slider::-moz-range-track {
-  height: 3px;
+  height: 4px;
   border-radius: 2px;
-  background: rgba(157, 175, 255, 0.12);
+  background: rgba(157, 175, 255, 0.1);
   border: none;
+}
+
+/* ── 面板底部：狀態列 ── */
+.ft-panel-status {
+  padding: 8px 16px;
+  border-top: 1px solid rgba(157, 175, 255, 0.06);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.ft-panel-status-text {
+  font-size: 0.65rem;
+  color: var(--fog);
+  opacity: 0.7;
+}
+
+.ft-panel-pin-hint {
+  font-size: 0.6rem;
+  color: var(--fog);
+  opacity: 0.5;
+  transition: opacity 0.2s;
+}
+
+.ft-music:hover .ft-panel-pin-hint,
+.ft-panel.pinned .ft-panel-pin-hint {
+  opacity: 0.8;
 }
 
 /* ── 回到頂部 ── */
@@ -247,15 +329,15 @@
 /* ── 靜音提示 ── */
 .ft-muted-hint {
   position: fixed;
-  bottom: 78px;
+  bottom: 80px;
   right: 20px;
-  background: #1a2235;
-  border: 1px solid rgba(157, 175, 255, 0.15);
-  border-radius: var(--radius-md);
-  padding: 8px 14px;
-  font-size: 0.75rem;
+  background: #111827;
+  border: 1px solid rgba(157, 175, 255, 0.12);
+  border-radius: 12px;
+  padding: 10px 16px;
+  font-size: 0.78rem;
   color: var(--cloud);
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
   z-index: 901;
   animation: ft-hint-in 0.4s var(--ease) forwards, ft-hint-out 0.4s ease 6s forwards;
   pointer-events: auto;
@@ -275,46 +357,68 @@
 /* ═══ 淺色模式 ═══ */
 [data-theme="light"] .ft-btn {
   background: #ffffff;
-  border-color: rgba(0, 0, 0, 0.1);
-  color: var(--sky);
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+  color: #4a6cf7;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1),
+              inset 0 1px 0 rgba(0, 0, 0, 0.04);
 }
 
 [data-theme="light"] .ft-btn:hover {
-  background: #f5f7ff;
-  border-color: rgba(74, 108, 247, 0.3);
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  background: #f0f2ff;
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.12),
+              0 0 20px rgba(74, 108, 247, 0.08);
 }
 
 [data-theme="light"] .ft-music.playing {
-  border-color: rgba(0, 121, 76, 0.3);
   color: #00794c;
-  box-shadow: 0 2px 16px rgba(0, 121, 76, 0.08);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1),
+              0 0 24px rgba(0, 121, 76, 0.06);
 }
 
 [data-theme="light"] .ft-music.playing::after {
   border-color: rgba(0, 121, 76, 0.15);
 }
 
-[data-theme="light"] .ft-track-tip {
-  background: #ffffff;
-  border-color: rgba(0, 0, 0, 0.08);
-  color: #2d3748;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+[data-theme="light"] .ft-music.pinned::before {
+  background: #4a6cf7;
+  border-color: #ffffff;
 }
 
 [data-theme="light"] .ft-panel {
   background: #ffffff;
   border-color: rgba(0, 0, 0, 0.08);
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.12),
+              0 0 0 1px rgba(0, 0, 0, 0.03) inset;
+}
+
+[data-theme="light"] .ft-panel-header {
+  border-bottom-color: rgba(0, 0, 0, 0.05);
+}
+
+[data-theme="light"] .ft-panel-icon {
+  background: rgba(74, 108, 247, 0.08);
+  color: #4a6cf7;
+}
+
+[data-theme="light"] .ft-music.playing .ft-panel-icon {
+  background: rgba(0, 121, 76, 0.08);
+  color: #00794c;
+}
+
+[data-theme="light"] .ft-panel-title {
+  color: #1a1a2e;
+}
+
+[data-theme="light"] .ft-panel-artist {
+  color: #6b7280;
 }
 
 [data-theme="light"] .ft-panel-ctrl {
-  color: #2d3748;
+  color: #4b5563;
 }
 
 [data-theme="light"] .ft-panel-ctrl:hover {
   background: rgba(0, 0, 0, 0.04);
+  color: #1a1a2e;
 }
 
 [data-theme="light"] .ft-panel-play {
@@ -328,8 +432,8 @@
   border-color: rgba(74, 108, 247, 0.35);
 }
 
-[data-theme="light"] .ft-panel-title {
-  color: rgba(0, 0, 0, 0.4);
+[data-theme="light"] .ft-panel-vol-icon {
+  color: #6b7280;
 }
 
 [data-theme="light"] .ft-vol-slider {
@@ -344,11 +448,20 @@
   background: #4a6cf7;
 }
 
+[data-theme="light"] .ft-panel-status {
+  border-top-color: rgba(0, 0, 0, 0.05);
+}
+
+[data-theme="light"] .ft-panel-status-text,
+[data-theme="light"] .ft-panel-pin-hint {
+  color: #9ca3af;
+}
+
 [data-theme="light"] .ft-muted-hint {
   background: #ffffff;
   border-color: rgba(0, 0, 0, 0.08);
-  color: #2d3748;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+  color: #374151;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
 }
 
 /* ═══ 響應式 ═══ */
@@ -356,22 +469,25 @@
   #floatToolbar {
     bottom: 14px;
     right: 14px;
-    gap: 6px;
+    gap: 8px;
   }
 
   .ft-btn {
-    width: 40px;
-    height: 40px;
+    width: 44px;
+    height: 44px;
   }
 
   .ft-panel {
-    min-width: 180px;
-    padding: 12px 14px;
+    width: 230px;
+  }
+
+  .ft-panel-wrap {
+    right: 52px;
   }
 
   .ft-muted-hint {
-    bottom: 68px;
+    bottom: 72px;
     right: 14px;
-    font-size: 0.7rem;
+    font-size: 0.72rem;
   }
 }

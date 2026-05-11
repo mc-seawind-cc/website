@@ -1,4 +1,4 @@
-// 海風浮動工具列 — 音樂播放器 + 回到頂部（簡約整合版）
+// 海風浮動工具列 — 音樂播放器 + 回到頂部（重新設計版）
 
 const MUSIC_PLAYER = (() => {
   const PLAYLIST_ID = 'PLefKpFQ8Pvy5aCLAGHD8Zmzsdljos-t2l';
@@ -97,7 +97,7 @@ const MUSIC_PLAYER = (() => {
     { id: 'G49EncT1T14', title: 'Eld Unknown', artist: 'Amos Roddy', album: '1.21.6' },
     { id: 'TRY0tH78Tjk', title: 'Endless', artist: 'Amos Roddy', album: '1.21.6' },
     { id: 'Qtf8YFw8iZg', title: 'Creator', artist: 'Amos Roddy', album: '1.21.6' },
-    { id: 'EZsjkfWQ2Vs', title: 'Creator (Music Box Version)', artist: 'Amos Roddy', album: '1.21.6' },
+    { id: 'EZsjkfWQ2Vs', title: 'Creator (Music Box)', artist: 'Amos Roddy', album: '1.21.6' },
     { id: 'dEgjOyBwIaE', title: 'Precipice', artist: 'Amos Roddy', album: '1.21.6' },
     { id: 'URr3lmSj9g4', title: 'Lilypad', artist: 'Amos Roddy', album: '1.21.8' },
     { id: 'NPzukBv7w2w', title: 'Below and Above', artist: 'Amos Roddy', album: '1.21.8' },
@@ -110,7 +110,11 @@ const MUSIC_PLAYER = (() => {
   FALLBACK.forEach(t => { TRACK_MAP[t.id] = t; });
 
   function formatTitle(track) {
-    return track ? track.artist + ' — ' + track.title : '';
+    return track ? track.title : '';
+  }
+
+  function formatArtist(track) {
+    return track ? track.artist + ' · ' + track.album : '';
   }
 
   function findTrack(videoId) {
@@ -123,7 +127,7 @@ const MUSIC_PLAYER = (() => {
   let titleTimer = null;
   let currentVideoId = '';
   let muted = true;
-  let panelOpen = false;
+  let pinned = false;
 
   // ===== 狀態存取 =====
   function saveState() {
@@ -136,6 +140,7 @@ const MUSIC_PLAYER = (() => {
       localStorage.setItem(STATE_KEY, JSON.stringify({
         videoId: vid,
         displayTitle: track ? formatTitle(track) : (data.title || ''),
+        artist: track ? formatArtist(track) : '',
         time: time,
         playing: isPlaying,
         muted: muted,
@@ -158,16 +163,15 @@ const MUSIC_PLAYER = (() => {
   // ===== UI 更新 =====
   function updateDisplay() {
     const titleEl = document.getElementById('ftTitle');
-    const tipEl = document.getElementById('ftTrackTip');
+    const artistEl = document.getElementById('ftArtist');
     if (!titleEl || !player || !playerReady) return;
     try {
       const data = player.getVideoData();
       const vid = data.video_id || '';
       currentVideoId = vid;
       const track = findTrack(vid);
-      const text = track ? formatTitle(track) : (data.title || '音樂');
-      titleEl.textContent = text;
-      if (tipEl) tipEl.textContent = text;
+      titleEl.textContent = track ? formatTitle(track) : (data.title || '音樂');
+      if (artistEl) artistEl.textContent = track ? formatArtist(track) : '';
     } catch (e) {}
   }
 
@@ -179,12 +183,19 @@ const MUSIC_PLAYER = (() => {
   function updatePlayBtn(playing) {
     const icon = document.getElementById('ftPlayIcon');
     const btn = document.getElementById('ftMusicBtn');
+    const panelIcon = document.getElementById('ftPanelIcon');
     if (icon) {
       icon.innerHTML = playing
         ? '<rect x="7" y="5" width="3.5" height="14" rx="1"/><rect x="13.5" y="5" width="3.5" height="14" rx="1"/>'
         : '<path d="M9 6.5v11l8.5-5.5z"/>';
     }
     if (btn) btn.classList.toggle('playing', playing);
+    // 面板圖示切換音符 / 播放中波形
+    if (panelIcon) {
+      panelIcon.innerHTML = playing
+        ? '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 12h2m3 0h2m3 0h2m3 0h2"/><path d="M4 8h2m3 0h2m3 0h2m3 0h2"/><path d="M4 16h2m3 0h2m3 0h2m3 0h2"/></svg>'
+        : '<svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 3v10.55A4 4 0 1 0 14 17V7h4V3h-6Z"/></svg>';
+    }
   }
 
   // ===== 建立 UI =====
@@ -192,29 +203,47 @@ const MUSIC_PLAYER = (() => {
     const toolbar = document.createElement('div');
     toolbar.id = 'floatToolbar';
     toolbar.innerHTML = `
-      <button class="ft-btn ft-music" id="ftMusicBtn" aria-label="音樂播放器">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-          <path d="M12 3v10.55A4 4 0 1 0 14 17V7h4V3h-6Z"/>
-        </svg>
-        <span class="ft-track-tip" id="ftTrackTip">音樂</span>
-        <div class="ft-panel" id="ftPanel">
-          <div class="ft-panel-title" id="ftTitle">音樂</div>
-          <div class="ft-panel-controls">
-            <button class="ft-panel-ctrl" id="ftPrev" title="上一首">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M6 6h2v12H6zm3.5 6 8.5 6V6z"/></svg>
-            </button>
-            <button class="ft-panel-ctrl ft-panel-play" id="ftPlay" title="播放/暫停">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" id="ftPlayIcon"><path d="M9 6.5v11l8.5-5.5z"/></svg>
-            </button>
-            <button class="ft-panel-ctrl" id="ftNext" title="下一首">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M6 18l8.5-6L6 6v12zM16 6v12h2V6h-2z"/></svg>
-            </button>
-          </div>
-          <div class="ft-panel-vol">
-            <input type="range" id="ftVol" min="0" max="100" value="15" class="ft-vol-slider">
+      <div class="ft-music-wrap" id="ftMusicWrap">
+        <button class="ft-btn ft-music" id="ftMusicBtn" aria-label="音樂播放器">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 3v10.55A4 4 0 1 0 14 17V7h4V3h-6Z"/>
+          </svg>
+        </button>
+        <div class="ft-panel-wrap">
+          <div class="ft-panel" id="ftPanel">
+            <div class="ft-panel-header">
+              <div class="ft-panel-icon" id="ftPanelIcon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 3v10.55A4 4 0 1 0 14 17V7h4V3h-6Z"/></svg>
+              </div>
+              <div class="ft-panel-info">
+                <div class="ft-panel-title" id="ftTitle">音樂</div>
+                <div class="ft-panel-artist" id="ftArtist"></div>
+              </div>
+            </div>
+            <div class="ft-panel-controls">
+              <button class="ft-panel-ctrl" id="ftPrev" title="上一首">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M6 6h2v12H6zm3.5 6 8.5 6V6z"/></svg>
+              </button>
+              <button class="ft-panel-ctrl ft-panel-play" id="ftPlay" title="播放／暫停">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" id="ftPlayIcon"><path d="M9 6.5v11l8.5-5.5z"/></svg>
+              </button>
+              <button class="ft-panel-ctrl" id="ftNext" title="下一首">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M6 18l8.5-6L6 6v12zM16 6v12h2V6h-2z"/></svg>
+              </button>
+            </div>
+            <div class="ft-panel-vol">
+              <span class="ft-vol-icon">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" opacity="0.5"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3A4.5 4.5 0 0 0 14 8.5v7a4.5 4.5 0 0 0 2.5-3.5zM14 3.23v2.06a7 7 0 0 1 0 13.42v2.06A9 9 0 0 0 14 3.23z"/></svg>
+              </span>
+              <input type="range" id="ftVol" min="0" max="100" value="15" class="ft-vol-slider">
+            </div>
+            <div class="ft-panel-status">
+              <span class="ft-panel-status-text" id="ftStatusText">就緒</span>
+              <span class="ft-panel-pin-hint" id="ftPinHint">點擊按鈕固定面板</span>
+            </div>
           </div>
         </div>
-      </button>
+      </div>
       <button class="ft-btn ft-top" id="ftTopBtn" aria-label="回到頂部">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 15l-6-6-6 6"/></svg>
       </button>
@@ -240,21 +269,29 @@ const MUSIC_PLAYER = (() => {
   // ===== 事件綁定 =====
   function bindEvents() {
     const musicBtn = document.getElementById('ftMusicBtn');
+    const musicWrap = document.getElementById('ftMusicWrap');
     const panel = document.getElementById('ftPanel');
     const topBtn = document.getElementById('ftTopBtn');
+    const pinHint = document.getElementById('ftPinHint');
 
-    // 音樂按鈕：點擊切換展開面板
+    // 音樂按鈕：點擊切換固定
     musicBtn.addEventListener('click', (e) => {
-      if (e.target.closest('.ft-panel')) return; // 面板內操作不關閉
-      panelOpen = !panelOpen;
-      panel.classList.toggle('open', panelOpen);
+      pinned = !pinned;
+      panel.classList.toggle('pinned', pinned);
+      musicBtn.classList.toggle('pinned', pinned);
+      if (pinHint) pinHint.textContent = pinned ? '再次點擊取消固定' : '點擊按鈕固定面板';
     });
 
-    // 點擊外部關閉面板
+    // 點擊面板內部不觸發關閉
+    panel.addEventListener('click', (e) => {
+      e.stopPropagation();
+    });
+
+    // 點擊外部關閉（未固定時）
     document.addEventListener('click', (e) => {
-      if (panelOpen && !e.target.closest('#ftMusicBtn')) {
-        panelOpen = false;
-        panel.classList.remove('open');
+      if (pinned) return;
+      if (!e.target.closest('#ftMusicWrap')) {
+        // hover 偵測會處理，這裡只是備案
       }
     });
 
@@ -364,7 +401,9 @@ const MUSIC_PLAYER = (() => {
       document.getElementById('ftVol').value = saved.volume || 15;
       if (saved.displayTitle) {
         document.getElementById('ftTitle').textContent = saved.displayTitle;
-        document.getElementById('ftTrackTip').textContent = saved.displayTitle;
+      }
+      if (saved.artist) {
+        document.getElementById('ftArtist').textContent = saved.artist;
       }
       if (saved.muted === true) { muted = true; try { player.mute(); } catch (e) {} }
       else if (saved.muted === false) { muted = false; try { player.unMute(); } catch (e) {} }
@@ -387,7 +426,7 @@ const MUSIC_PLAYER = (() => {
     document.getElementById('ftVol').value = 15;
     const randomTrack = FALLBACK[Math.floor(Math.random() * FALLBACK.length)];
     document.getElementById('ftTitle').textContent = formatTitle(randomTrack);
-    document.getElementById('ftTrackTip').textContent = formatTitle(randomTrack);
+    document.getElementById('ftArtist').textContent = formatArtist(randomTrack);
     try {
       player.loadVideoById(randomTrack.id);
       setTimeout(() => player.playVideo(), 600);
@@ -396,6 +435,7 @@ const MUSIC_PLAYER = (() => {
   }
 
   function onPlayerStateChange(event) {
+    const statusEl = document.getElementById('ftStatusText');
     if (event.data === YT.PlayerState.ENDED) {
       const randomTrack = FALLBACK[Math.floor(Math.random() * FALLBACK.length)];
       try { player.loadVideoById(randomTrack.id); } catch (e) {}
@@ -403,12 +443,17 @@ const MUSIC_PLAYER = (() => {
     if (event.data === YT.PlayerState.PLAYING) {
       isPlaying = true;
       updatePlayBtn(true);
+      if (statusEl) statusEl.textContent = '播放中';
       setTimeout(updateDisplay, 300);
     }
     if (event.data === YT.PlayerState.PAUSED) {
       isPlaying = false;
       updatePlayBtn(false);
+      if (statusEl) statusEl.textContent = '已暫停';
       saveState();
+    }
+    if (event.data === YT.PlayerState.BUFFERING) {
+      if (statusEl) statusEl.textContent = '載入中…';
     }
   }
 
