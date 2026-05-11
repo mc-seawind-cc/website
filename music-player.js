@@ -1,5 +1,4 @@
-// 海風音樂播放器 — YouTube 嵌入式
-// 全域播放：切換頁面時自動保存/恢復播放狀態
+// 海風浮動工具列 — 音樂播放器 + 回到頂部（簡約整合版）
 
 const MUSIC_PLAYER = (() => {
   const PLAYLIST_ID = 'PLefKpFQ8Pvy5aCLAGHD8Zmzsdljos-t2l';
@@ -107,17 +106,13 @@ const MUSIC_PLAYER = (() => {
     { id: 'wDaqicVmpqo', title: 'Fireflies', artist: 'Amos Roddy', album: '1.21.8' },
   ];
 
-  // videoId → 曲目資料 快速查找
   const TRACK_MAP = {};
   FALLBACK.forEach(t => { TRACK_MAP[t.id] = t; });
 
-  // 格式化顯示標題
   function formatTitle(track) {
-    if (!track) return '';
-    return track.artist + ' - ' + track.title;
+    return track ? track.artist + ' — ' + track.title : '';
   }
 
-  // 從 videoId 查找曲目
   function findTrack(videoId) {
     return TRACK_MAP[videoId] || null;
   }
@@ -127,7 +122,8 @@ const MUSIC_PLAYER = (() => {
   let playerReady = false;
   let titleTimer = null;
   let currentVideoId = '';
-  let muted = true; // 初始靜音，互動後解除
+  let muted = true;
+  let panelOpen = false;
 
   // ===== 狀態存取 =====
   function saveState() {
@@ -137,18 +133,16 @@ const MUSIC_PLAYER = (() => {
       const data = player.getVideoData ? player.getVideoData() : {};
       const vid = data.video_id || currentVideoId || '';
       const track = findTrack(vid);
-      const displayTitle = track ? formatTitle(track) : (data.title || '');
-
       localStorage.setItem(STATE_KEY, JSON.stringify({
         videoId: vid,
-        displayTitle: displayTitle,
+        displayTitle: track ? formatTitle(track) : (data.title || ''),
         time: time,
         playing: isPlaying,
         muted: muted,
         volume: player.getVolume ? player.getVolume() : 15,
         ts: Date.now()
       }));
-    } catch (e) { /* ignore */ }
+    } catch (e) {}
   }
 
   function loadState() {
@@ -161,115 +155,123 @@ const MUSIC_PLAYER = (() => {
     } catch (e) { return null; }
   }
 
-  // ===== 標題更新 =====
+  // ===== UI 更新 =====
   function updateDisplay() {
-    const titleEl = document.getElementById('mpTitle');
+    const titleEl = document.getElementById('ftTitle');
+    const tipEl = document.getElementById('ftTrackTip');
     if (!titleEl || !player || !playerReady) return;
     try {
       const data = player.getVideoData();
       const vid = data.video_id || '';
       currentVideoId = vid;
       const track = findTrack(vid);
-      if (track) {
-        titleEl.textContent = formatTitle(track);
-        titleEl.title = formatTitle(track);
-      } else if (data && data.title) {
-        titleEl.textContent = data.title;
-        titleEl.title = data.title;
-      }
-    } catch (e) { /* ignore */ }
+      const text = track ? formatTitle(track) : (data.title || '音樂');
+      titleEl.textContent = text;
+      if (tipEl) tipEl.textContent = text;
+    } catch (e) {}
   }
 
   function startTitlePolling() {
     if (titleTimer) clearInterval(titleTimer);
-    titleTimer = setInterval(function() {
-      if (isPlaying) updateDisplay();
-    }, 3000);
+    titleTimer = setInterval(() => { if (isPlaying) updateDisplay(); }, 3000);
   }
 
   function updatePlayBtn(playing) {
-    const icon = document.getElementById('mpPlayIcon');
-    if (!icon) return;
-    if (playing) {
-      icon.innerHTML = '<rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/>';
-    } else {
-      icon.innerHTML = '<path d="M8 5v14l11-7z"/>';
+    const icon = document.getElementById('ftPlayIcon');
+    const btn = document.getElementById('ftMusicBtn');
+    if (icon) {
+      icon.innerHTML = playing
+        ? '<rect x="7" y="5" width="3.5" height="14" rx="1"/><rect x="13.5" y="5" width="3.5" height="14" rx="1"/>'
+        : '<path d="M9 6.5v11l8.5-5.5z"/>';
     }
+    if (btn) btn.classList.toggle('playing', playing);
   }
 
-  // ===== UI =====
+  // ===== 建立 UI =====
   function createUI() {
-    const container = document.createElement('div');
-    container.id = 'musicPlayer';
-    container.innerHTML = `
-      <div class="mp-widget">
-        <div class="mp-header">
-          <span class="mp-icon">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 3v10.55A4 4 0 1 0 14 17V7h4V3h-6Z"/></svg>
-          </span>
-          <span class="mp-title" id="mpTitle">載入中...</span>
-          <span class="mp-vol-icon">
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>
-          </span>
-        </div>
-        <div class="mp-body" id="mpBody">
-          <div class="mp-controls">
-            <button class="mp-ctrl" id="mpPrev" title="上一首">
+    const toolbar = document.createElement('div');
+    toolbar.id = 'floatToolbar';
+    toolbar.innerHTML = `
+      <button class="ft-btn ft-music" id="ftMusicBtn" aria-label="音樂播放器">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12 3v10.55A4 4 0 1 0 14 17V7h4V3h-6Z"/>
+        </svg>
+        <span class="ft-track-tip" id="ftTrackTip">音樂</span>
+        <div class="ft-panel" id="ftPanel">
+          <div class="ft-panel-title" id="ftTitle">音樂</div>
+          <div class="ft-panel-controls">
+            <button class="ft-panel-ctrl" id="ftPrev" title="上一首">
               <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M6 6h2v12H6zm3.5 6 8.5 6V6z"/></svg>
             </button>
-            <button class="mp-ctrl mp-play" id="mpPlay" title="播放">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" id="mpPlayIcon"><path d="M8 5v14l11-7z"/></svg>
+            <button class="ft-panel-ctrl ft-panel-play" id="ftPlay" title="播放/暫停">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" id="ftPlayIcon"><path d="M9 6.5v11l8.5-5.5z"/></svg>
             </button>
-            <button class="mp-ctrl" id="mpNext" title="下一首">
+            <button class="ft-panel-ctrl" id="ftNext" title="下一首">
               <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M6 18l8.5-6L6 6v12zM16 6v12h2V6h-2z"/></svg>
             </button>
           </div>
-          <div class="mp-volume">
-            <input type="range" id="mpVol" min="0" max="100" value="15" class="mp-vol-slider">
-          </div>
-          <div class="mp-yt-badge">
-            <a href="https://www.youtube.com/playlist?list=${PLAYLIST_ID}" target="_blank" rel="noopener">
-              源 YouTube ↗
-            </a>
+          <div class="ft-panel-vol">
+            <input type="range" id="ftVol" min="0" max="100" value="15" class="ft-vol-slider">
           </div>
         </div>
-      </div>
+      </button>
+      <button class="ft-btn ft-top" id="ftTopBtn" aria-label="回到頂部">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 15l-6-6-6 6"/></svg>
+      </button>
     `;
-    document.body.appendChild(container);
+    document.body.appendChild(toolbar);
 
-    // 靜音提示（僅首次訪問顯示）
-    if (!localStorage.getItem('sw-music-unmuted')) {
-      var hint = document.createElement('div');
-      hint.className = 'mp-muted-hint';
-      hint.textContent = '🎵 點右下角可以放音樂';
-      hint.style.cursor = 'pointer';
-      hint.style.pointerEvents = 'auto';
-      hint.addEventListener('click', function() {
-        this.remove();
-      });
-      document.body.appendChild(hint);
-    }
-
+    // 隱藏的 YouTube 播放器
     const yt = document.createElement('div');
     yt.id = 'ytPlayer';
     yt.style.cssText = 'position:absolute;top:-9999px;width:1px;height:1px;opacity:0;pointer-events:none;';
     document.body.appendChild(yt);
+
+    // 靜音提示
+    if (!localStorage.getItem('sw-music-unmuted')) {
+      const hint = document.createElement('div');
+      hint.className = 'ft-muted-hint';
+      hint.textContent = '🎵 點右下角可以放音樂';
+      hint.addEventListener('click', () => hint.remove());
+      document.body.appendChild(hint);
+    }
   }
 
+  // ===== 事件綁定 =====
   function bindEvents() {
-    document.getElementById('mpPlay').addEventListener('click', function(e) {
+    const musicBtn = document.getElementById('ftMusicBtn');
+    const panel = document.getElementById('ftPanel');
+    const topBtn = document.getElementById('ftTopBtn');
+
+    // 音樂按鈕：點擊切換展開面板
+    musicBtn.addEventListener('click', (e) => {
+      if (e.target.closest('.ft-panel')) return; // 面板內操作不關閉
+      panelOpen = !panelOpen;
+      panel.classList.toggle('open', panelOpen);
+    });
+
+    // 點擊外部關閉面板
+    document.addEventListener('click', (e) => {
+      if (panelOpen && !e.target.closest('#ftMusicBtn')) {
+        panelOpen = false;
+        panel.classList.remove('open');
+      }
+    });
+
+    // 播放控制
+    document.getElementById('ftPlay').addEventListener('click', (e) => {
       e.stopPropagation();
       togglePlay();
     });
-    document.getElementById('mpPrev').addEventListener('click', function(e) {
+    document.getElementById('ftPrev').addEventListener('click', (e) => {
       e.stopPropagation();
       prevTrack();
     });
-    document.getElementById('mpNext').addEventListener('click', function(e) {
+    document.getElementById('ftNext').addEventListener('click', (e) => {
       e.stopPropagation();
       nextTrack();
     });
-    document.getElementById('mpVol').addEventListener('input', function(e) {
+    document.getElementById('ftVol').addEventListener('input', (e) => {
       if (player && playerReady) {
         player.setVolume(parseInt(e.target.value));
         if (muted && parseInt(e.target.value) > 0) {
@@ -280,9 +282,25 @@ const MUSIC_PLAYER = (() => {
       }
     });
 
-    // 首次互動解除靜音（只在從未互動過時顯示提示）
-    var hasInteracted = localStorage.getItem('sw-music-unmuted');
-    if (hasInteracted) {
+    // 回到頂部
+    topBtn.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    // 滾動顯示回到頂部
+    let ticking = false;
+    window.addEventListener('scroll', () => {
+      if (!ticking) {
+        requestAnimationFrame(() => {
+          topBtn.classList.toggle('visible', window.scrollY > 400);
+          ticking = false;
+        });
+        ticking = true;
+      }
+    }, { passive: true });
+
+    // 首次互動解除靜音
+    if (localStorage.getItem('sw-music-unmuted')) {
       muted = false;
     }
 
@@ -292,24 +310,24 @@ const MUSIC_PLAYER = (() => {
       try {
         player.unMute();
         player.setVolume(15);
-        document.getElementById('mpVol').value = 15;
-      } catch(e) {}
+        document.getElementById('ftVol').value = 15;
+      } catch (e) {}
       localStorage.setItem('sw-music-unmuted', '1');
       document.removeEventListener('click', unmuteOnInteract);
       document.removeEventListener('keydown', unmuteOnInteract);
       document.removeEventListener('touchstart', unmuteOnInteract);
-      var hint = document.querySelector('.mp-muted-hint');
+      const hint = document.querySelector('.ft-muted-hint');
       if (hint) hint.remove();
     }
 
-    if (!hasInteracted) {
-      document.addEventListener('click', unmuteOnInteract, { once: false });
-      document.addEventListener('keydown', unmuteOnInteract, { once: false });
-      document.addEventListener('touchstart', unmuteOnInteract, { once: false });
+    if (!localStorage.getItem('sw-music-unmuted')) {
+      document.addEventListener('click', unmuteOnInteract);
+      document.addEventListener('keydown', unmuteOnInteract);
+      document.addEventListener('touchstart', unmuteOnInteract);
     }
 
     window.addEventListener('beforeunload', saveState);
-    document.addEventListener('visibilitychange', function() {
+    document.addEventListener('visibilitychange', () => {
       if (document.visibilityState === 'hidden') saveState();
     });
   }
@@ -318,88 +336,69 @@ const MUSIC_PLAYER = (() => {
   function togglePlay() {
     if (!player || !playerReady) return;
     try {
-      if (isPlaying) { player.pauseVideo(); } else { player.playVideo(); }
-    } catch (e) { /* ignore */ }
+      isPlaying ? player.pauseVideo() : player.playVideo();
+    } catch (e) {}
   }
 
   function prevTrack() {
     if (!playerReady) return;
-    const randomTrack = FALLBACK[Math.floor(Math.random() * FALLBACK.length)];
-    try { player.loadVideoById(randomTrack.id); } catch(e) {}
+    try { player.loadVideoById(FALLBACK[Math.floor(Math.random() * FALLBACK.length)].id); } catch (e) {}
   }
 
   function nextTrack() {
     if (!playerReady) return;
-    const randomTrack = FALLBACK[Math.floor(Math.random() * FALLBACK.length)];
-    try { player.loadVideoById(randomTrack.id); } catch(e) {}
+    try { player.loadVideoById(FALLBACK[Math.floor(Math.random() * FALLBACK.length)].id); } catch (e) {}
   }
 
-  // ===== YouTube 播放器回呼 =====
+  // ===== YouTube 回呼 =====
   function onPlayerReady(event) {
     playerReady = true;
     const saved = loadState();
 
-    // 如果之前已互動過，直接解除靜音
     if (!muted) {
-      try { player.unMute(); } catch(e) {}
+      try { player.unMute(); } catch (e) {}
     }
 
     if (saved && saved.videoId) {
       player.setVolume(saved.volume || 15);
-      document.getElementById('mpVol').value = saved.volume || 15;
-
-      // 恢復時先顯示儲存的標題
+      document.getElementById('ftVol').value = saved.volume || 15;
       if (saved.displayTitle) {
-        document.getElementById('mpTitle').textContent = saved.displayTitle;
+        document.getElementById('ftTitle').textContent = saved.displayTitle;
+        document.getElementById('ftTrackTip').textContent = saved.displayTitle;
       }
-
-      // 恢復靜音狀態
-      if (saved.muted === true) {
-        muted = true;
-        try { player.mute(); } catch(e) {}
-      } else if (saved.muted === false) {
-        muted = false;
-        try { player.unMute(); } catch(e) {}
-      }
+      if (saved.muted === true) { muted = true; try { player.mute(); } catch (e) {} }
+      else if (saved.muted === false) { muted = false; try { player.unMute(); } catch (e) {} }
 
       player.loadVideoById(saved.videoId);
       const shouldPlay = saved.playing;
       const resumeTime = saved.time || 0;
-
-      setTimeout(function() {
+      setTimeout(() => {
         try {
           if (resumeTime > 0.5) player.seekTo(resumeTime, true);
-          if (shouldPlay) {
-            player.playVideo();
-          } else {
-            player.pauseVideo();
-          }
-        } catch(e) {}
+          shouldPlay ? player.playVideo() : player.pauseVideo();
+        } catch (e) {}
       }, 800);
       startTitlePolling();
       return;
     }
 
-    // 無儲存狀態 → 隨機從曲庫選一首開始播放
+    // 無儲存狀態 → 隨機播放
     player.setVolume(15);
-    document.getElementById('mpVol').value = 15;
+    document.getElementById('ftVol').value = 15;
     const randomTrack = FALLBACK[Math.floor(Math.random() * FALLBACK.length)];
-    document.getElementById('mpTitle').textContent = formatTitle(randomTrack);
+    document.getElementById('ftTitle').textContent = formatTitle(randomTrack);
+    document.getElementById('ftTrackTip').textContent = formatTitle(randomTrack);
     try {
       player.loadVideoById(randomTrack.id);
-      setTimeout(function() { player.playVideo(); }, 600);
-    } catch (e) {
-      player.loadVideoById(FALLBACK[0].id);
-      setTimeout(function() { player.playVideo(); }, 600);
-    }
+      setTimeout(() => player.playVideo(), 600);
+    } catch (e) {}
     startTitlePolling();
   }
 
   function onPlayerStateChange(event) {
     if (event.data === YT.PlayerState.ENDED) {
-      // 隨機播放下一首
       const randomTrack = FALLBACK[Math.floor(Math.random() * FALLBACK.length)];
-      try { player.loadVideoById(randomTrack.id); } catch(e) {}
+      try { player.loadVideoById(randomTrack.id); } catch (e) {}
     }
     if (event.data === YT.PlayerState.PLAYING) {
       isPlaying = true;
@@ -409,7 +408,7 @@ const MUSIC_PLAYER = (() => {
     if (event.data === YT.PlayerState.PAUSED) {
       isPlaying = false;
       updatePlayBtn(false);
-      saveState(); // 立即保存暫停狀態
+      saveState();
     }
   }
 
@@ -418,32 +417,19 @@ const MUSIC_PLAYER = (() => {
     createUI();
     bindEvents();
 
-    document.getElementById('mpTitle').textContent = '音樂';
-
     const tag = document.createElement('script');
     tag.src = 'https://www.youtube.com/iframe_api';
     const firstScript = document.getElementsByTagName('script')[0];
     firstScript.parentNode.insertBefore(tag, firstScript);
 
-    window.onYouTubeIframeAPIReady = function() {
+    window.onYouTubeIframeAPIReady = function () {
       player = new YT.Player('ytPlayer', {
-        height: '1',
-        width: '1',
-        playerVars: {
-          autoplay: 1,
-          mute: 1,
-          controls: 0,
-          disablekb: 1,
-          fs: 0,
-          modestbranding: 1,
-          loop: 0,
-        },
+        height: '1', width: '1',
+        playerVars: { autoplay: 1, mute: 1, controls: 0, disablekb: 1, fs: 0, modestbranding: 1 },
         events: {
           onReady: onPlayerReady,
           onStateChange: onPlayerStateChange,
-          onError: function(event) {
-            setTimeout(function() { try { player.nextVideo(); } catch(e) {} }, 1000);
-          }
+          onError: () => setTimeout(() => { try { player.nextVideo(); } catch (e) {} }, 1000)
         }
       });
     };
