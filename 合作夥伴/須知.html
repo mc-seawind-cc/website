@@ -323,6 +323,13 @@
               </div>
             </div>
 
+            <!-- 8. 其他 -->
+            <div class="pd-form-field">
+              <label class="pd-form-label" for="pf-extra">其他 <span class="pd-form-optional">選填</span></label>
+              <textarea id="pf-extra" class="pd-form-textarea" placeholder="有任何想補充的資訊，都可以寫在這裡。" rows="3" maxlength="1000"></textarea>
+              <div class="pd-form-hint"><span id="extraCount">0</span> / 1000</div>
+            </div>
+
             <!-- 送出 -->
             <button type="submit" class="pd-form-submit" id="submitBtn">
               <span class="pd-form-submit-text" id="submitText">📤 送出申請</span>
@@ -379,6 +386,8 @@
     const briefInput=document.getElementById('pf-brief');
     const promoCount=document.getElementById('promoCount');
     const briefCount=document.getElementById('briefCount');
+    const extraInput=document.getElementById('pf-extra');
+    const extraCount=document.getElementById('extraCount');
     const fileInput=document.getElementById('pf-icon');
     const uploadZone=document.getElementById('uploadZone');
     const uploadInner=document.getElementById('uploadInner');
@@ -397,6 +406,7 @@
     }
     bindCounter(promoInput,promoCount,2000);
     bindCounter(briefInput,briefCount,20);
+    bindCounter(extraInput,extraCount,1000);
 
     /* ── File upload ── */
     function showPreview(file){
@@ -480,6 +490,7 @@
       var brief=briefInput.value.trim();
       var invite=document.getElementById('pf-invite').value.trim();
       var website=document.getElementById('pf-website').value.trim();
+      var extra=extraInput.value.trim();
       var type=form.querySelector('input[name="pf-type"]:checked').value;
 
       var fields=[
@@ -489,6 +500,7 @@
       if(brief)fields.splice(1,0,{name:'簡介',value:brief});
       fields.push({name:'連結',value:invite||'（未填寫）'});
       if(website)fields.push({name:'網站',value:website});
+      if(extra)fields.push({name:'其他',value:extra.length>1024?extra.substring(0,1021)+'...':extra});
       fields.push({name:'社群類型',value:type});
 
       var embed={
