@@ -78,6 +78,9 @@
     .pd-form-textarea{resize:vertical;min-height:120px}
     .pd-form-hint{text-align:right;font-size:0.72rem;color:var(--text-muted);margin-top:4px}
 
+    .pd-form-row{display:grid;grid-template-columns:1fr 1fr;gap:var(--space-md);margin-bottom:var(--space-lg)}
+    .pd-form-row .pd-form-field{margin-bottom:0}
+
     .pd-form-radio-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:var(--space-sm)}
     .pd-form-radio{display:flex;align-items:center;gap:8px;padding:10px 14px;background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.06);border-radius:var(--radius-md);cursor:pointer;font-size:0.88rem;color:var(--cloud);transition:border-color 0.2s,background 0.2s}
     .pd-form-radio:hover{border-color:rgba(157,175,255,0.2);background:rgba(157,175,255,0.03)}
@@ -160,6 +163,7 @@
       .pd-body{padding:0 var(--space-md) var(--space-xl)}
       .pd-body .section-card{padding:var(--space-lg)}
       .ticket-type-grid{grid-template-columns:1fr}
+      .pd-form-row{grid-template-columns:1fr}
       .pd-form-radio-grid{grid-template-columns:1fr}
       .subtype-pills{gap:6px}
       .subtype-pill{padding:6px 12px;font-size:0.82rem}
@@ -314,9 +318,9 @@
           <h2>✏️ 填寫內容</h2>
 
           <form id="ticketForm" class="pd-form" novalidate>
-            <!-- 標題 -->
+            <!-- 回報主旨 -->
             <div class="pd-form-field">
-              <label class="pd-form-label" for="ticket-title">標題 <span class="pd-form-required">*</span></label>
+              <label class="pd-form-label" for="ticket-title">回報主旨 <span class="pd-form-required">*</span></label>
               <div class="pd-form-desc">簡單講一下你遇到的事或想提的建議。</div>
               <input type="text" id="ticket-title" class="pd-form-input" placeholder="例：領地權限怪怪的" required maxlength="100">
             </div>
@@ -331,14 +335,40 @@
 
             <!-- 遊戲 ID -->
             <div class="pd-form-field" id="fieldIGN">
-              <label class="pd-form-label" for="ticket-ign">你的遊戲 ID <span class="pd-form-optional">選填</span></label>
+              <label class="pd-form-label" for="ticket-ign">回報者遊戲 ID <span class="pd-form-optional">選填</span></label>
               <div class="pd-form-desc">讓我們能在遊戲裡找到你，方便確認狀況。</div>
               <input type="text" id="ticket-ign" class="pd-form-input" placeholder="你在 Minecraft 裡的名字" maxlength="50">
             </div>
 
-            <!-- 聯絡方式 -->
+            <!-- 座標 & 領地 -->
+            <div class="pd-form-row">
+              <div class="pd-form-field">
+                <label class="pd-form-label" for="ticket-coord">座標 <span class="pd-form-optional">選填</span></label>
+                <input type="text" id="ticket-coord" class="pd-form-input" placeholder="例：120, 64, -340" maxlength="50">
+              </div>
+              <div class="pd-form-field">
+                <label class="pd-form-label" for="ticket-res">領地 <span class="pd-form-optional">選填</span></label>
+                <input type="text" id="ticket-res" class="pd-form-input" placeholder="例：小明的家" maxlength="50">
+              </div>
+            </div>
+
+            <!-- 截圖上傳 -->
             <div class="pd-form-field">
-              <label class="pd-form-label" for="ticket-contact">怎麼聯絡你 <span class="pd-form-optional">選填</span></label>
+              <label class="pd-form-label">截圖上傳 <span class="pd-form-optional">選填，最多 10 張</span></label>
+              <div class="pd-form-desc">附上截圖能幫助我們更快理解狀況。</div>
+              <div class="pd-form-upload" id="uploadZoneReport">
+                <input type="file" id="report-files" accept="image/png,image/jpeg,image/webp,image/gif" multiple>
+                <div class="pd-form-upload-icon">📸</div>
+                <div class="pd-form-upload-text">拖曳圖片到這裡，或 <strong>點擊上傳</strong></div>
+                <div class="pd-form-upload-text" style="font-size:0.75rem;margin-top:4px">支援 PNG / JPG / WebP / GIF</div>
+              </div>
+              <div class="pd-form-gallery" id="uploadGalleryReport"></div>
+              <div class="pd-form-gallery-count" id="galleryCountReport"></div>
+            </div>
+
+            <!-- 聯絡資訊 -->
+            <div class="pd-form-field">
+              <label class="pd-form-label" for="ticket-contact">聯絡資訊 <span class="pd-form-optional">選填</span></label>
               <div class="pd-form-desc">留個 Discord 名稱或 Email，我們處理好才能通知你。</div>
               <input type="text" id="ticket-contact" class="pd-form-input" placeholder="例：yourname 或 email@example.com" maxlength="100">
             </div>
@@ -476,6 +506,59 @@
 
     let currentType=null;
     let uploadedFiles=[];
+    let reportFiles=[];
+
+    /* ── Report upload ── */
+    const reportUploadZone=document.getElementById('uploadZoneReport');
+    const reportFileInput=document.getElementById('report-files');
+    const reportGallery=document.getElementById('uploadGalleryReport');
+    const reportGalleryCount=document.getElementById('galleryCountReport');
+
+    if(reportFileInput){
+      reportFileInput.addEventListener('change',function(e){handleReportFiles(e.target.files)});
+      if(reportUploadZone){
+        ['dragenter','dragover'].forEach(function(ev){
+          reportUploadZone.addEventListener(ev,function(e){e.preventDefault();e.stopPropagation();reportUploadZone.classList.add('dragover')});
+        });
+        ['dragleave','drop'].forEach(function(ev){
+          reportUploadZone.addEventListener(ev,function(e){e.preventDefault();e.stopPropagation();reportUploadZone.classList.remove('dragover')});
+        });
+        reportUploadZone.addEventListener('drop',function(e){handleReportFiles(e.dataTransfer.files)});
+      }
+    }
+
+    function handleReportFiles(files){
+      if(!files)return;
+      for(var i=0;i<files.length;i++){
+        if(reportFiles.length>=MAX_FILES)break;
+        var f=files[i];
+        if(!f.type.startsWith('image/'))continue;
+        if(f.size>8*1024*1024)continue;
+        reportFiles.push(f);
+      }
+      renderReportGallery();
+    }
+
+    function renderReportGallery(){
+      reportGallery.innerHTML='';
+      reportFiles.forEach(function(f,idx){
+        var item=document.createElement('div');
+        item.className='pd-form-gallery-item';
+        var img=document.createElement('img');
+        img.src=URL.createObjectURL(f);
+        img.alt=f.name;
+        item.appendChild(img);
+        var btn=document.createElement('button');
+        btn.className='remove';
+        btn.textContent='\u00d7';
+        btn.type='button';
+        btn.onclick=function(){reportFiles.splice(idx,1);renderReportGallery()};
+        item.appendChild(btn);
+        reportGallery.appendChild(item);
+      });
+      reportGalleryCount.textContent=reportFiles.length>0?reportFiles.length+' / '+MAX_FILES+' 張':'';
+      if(reportFileInput)reportFileInput.value='';
+    }
 
     /* ── Character counters ── */
     function bindCounter(input,counter){if(input&&counter){function u(){counter.textContent=input.value.length};input.addEventListener('input',u);u()}}
@@ -668,16 +751,21 @@
       var title=document.getElementById('ticket-title').value.trim();
       var detail=detailInput.value.trim();
       var ign=document.getElementById('ticket-ign').value.trim();
+      var coord=document.getElementById('ticket-coord').value.trim();
+      var res=document.getElementById('ticket-res').value.trim();
       var contact=document.getElementById('ticket-contact').value.trim();
 
       /* Build embed */
       var fields=[
         {name:'類型',value:TYPE_LABELS[type]+' \u2014 '+subtype,inline:true},
-        {name:'標題',value:title},
+        {name:'回報主旨',value:title},
         {name:'詳細內容',value:detail.length>1024?detail.substring(0,1021)+'...':detail}
       ];
-      if(ign)fields.push({name:'遊戲ID',value:ign,inline:true});
-      if(contact)fields.push({name:'聯絡方式',value:contact,inline:true});
+      if(ign)fields.push({name:'回報者遊戲ID',value:ign,inline:true});
+      if(coord)fields.push({name:'座標',value:coord,inline:true});
+      if(res)fields.push({name:'領地',value:res,inline:true});
+      if(contact)fields.push({name:'聯絡資訊',value:contact,inline:true});
+      if(reportFiles.length>0)fields.push({name:'截圖',value:reportFiles.length+' 張圖片（見附件）',inline:true});
 
       /* Partner extra fields */
       if(type==='partner'){
@@ -710,10 +798,14 @@
       };
 
       /* Send with or without files */
-      if(type==='partner'&&uploadedFiles.length>0){
+      var allFiles=[];
+      if(type==='partner')allFiles=uploadedFiles;
+      else allFiles=reportFiles;
+
+      if(allFiles.length>0){
         var formData=new FormData();
         formData.append('payload_json',JSON.stringify({embeds:[embed]}));
-        uploadedFiles.forEach(function(f,i){
+        allFiles.forEach(function(f,i){
           formData.append('files['+i+']',f,f.name);
         });
         fetch(WEBHOOK_URL,{method:'POST',body:formData}).then(handleResponse).catch(handleError);
@@ -736,7 +828,9 @@
         var bc=document.getElementById('briefCount');if(bc)bc.textContent='0';
         var pc=document.getElementById('promoCount');if(pc)pc.textContent='0';
         uploadedFiles=[];
+        reportFiles=[];
         renderGallery();
+        renderReportGallery();
         /* Reset type/subtype selection */
         typeCards.forEach(function(c){c.classList.remove('active')});
         Object.values(subtypeWraps).forEach(function(w){w.classList.remove('show')});
