@@ -135,14 +135,15 @@ const MUSIC_PLAYER = (() => {
   const history = [];
   let historyIndex = -1;
 
+  // 觸控偵測
+  const isTouchDevice = ('ontouchstart' in window) || (navigator.maxTouchPoints > 0);
+
   function pushHistory(trackIndex) {
-    // 移除歷史中当前位置之後的記錄（新的分支）
     if (historyIndex < history.length - 1) {
       history.splice(historyIndex + 1);
     }
     history.push(trackIndex);
     historyIndex = history.length - 1;
-    // 限制歷史長度
     if (history.length > 50) {
       history.shift();
       historyIndex--;
@@ -219,7 +220,7 @@ const MUSIC_PLAYER = (() => {
     if (btn) btn.classList.toggle('playing', playing);
   }
 
-  // ===== 音量圖示（依音量/靜音狀態切換） =====
+  // ===== 音量圖示 =====
   function updateVolumeIcon() {
     const volIcon = document.getElementById('ftVolIcon');
     const volBtn = document.getElementById('ftVolBtn');
@@ -237,6 +238,29 @@ const MUSIC_PLAYER = (() => {
     if (volBtn) volBtn.classList.toggle('muted', muted || vol === 0);
   }
 
+  // ===== 面板開關 =====
+  function openPanel() {
+    const panel = document.getElementById('ftPanel');
+    if (panel) panel.classList.add('hover');
+  }
+
+  function closePanel() {
+    const panel = document.getElementById('ftPanel');
+    if (panel && !pinned) panel.classList.remove('hover');
+  }
+
+  function togglePinned() {
+    pinned = !pinned;
+    const panel = document.getElementById('ftPanel');
+    const musicBtn = document.getElementById('ftMusicBtn');
+    if (panel) panel.classList.toggle('pinned', pinned);
+    if (musicBtn) musicBtn.classList.toggle('pinned', pinned);
+    // 取消固定時，同時移除 hover（面板收起）
+    if (!pinned) {
+      if (panel) panel.classList.remove('hover');
+    }
+  }
+
   // ===== 建立 UI =====
   function createUI() {
     const toolbar = document.createElement('div');
@@ -250,6 +274,10 @@ const MUSIC_PLAYER = (() => {
         </button>
         <div class="ft-panel-wrap">
           <div class="ft-panel" id="ftPanel">
+            <!-- 關閉按鈕（手機可見） -->
+            <button class="ft-close-btn" id="ftCloseBtn" aria-label="關閉面板" title="關閉">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            </button>
             <div class="ft-panel-head">
               <div class="ft-panel-meta">
                 <div class="ft-panel-title" id="ftTitle">音樂</div>
@@ -307,38 +335,88 @@ const MUSIC_PLAYER = (() => {
     const musicBtn = document.getElementById('ftMusicBtn');
     const musicWrap = document.getElementById('ftMusicWrap');
     const panel = document.getElementById('ftPanel');
+    const closeBtn = document.getElementById('ftCloseBtn');
     const topBtn = document.getElementById('ftTopBtn');
 
-    // 音樂按鈕：點擊切換固定
-    musicBtn.addEventListener('click', (e) => {
-      pinned = !pinned;
-      panel.classList.toggle('pinned', pinned);
-      musicBtn.classList.toggle('pinned', pinned);
-    });
-
-    // hover 顯示面板（帶延遲防止閃爍）
-    let hoverTimer = null;
-    function showPanel() {
-      clearTimeout(hoverTimer);
-      panel.classList.add('hover');
+    // ---- 音樂按鈕點擊邏輯 ----
+    if (isTouchDevice) {
+      // 手機端：點擊 → 打開面板（固定），再點音樂按鈕 → 關閉面板
+      musicBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        if (pinned) {
+          // 已經固定 → 關閉
+          togglePinned();
+        } else {
+          // 未固定 → 固定打開
+          togglePinned();
+          openPanel();
+        }
+      });
+    } else {
+      // 桌面端：點擊切換固定（hover 已經能開面板）
+      musicBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        togglePinned();
+      });
     }
-    function scheduleHide() {
-      clearTimeout(hoverTimer);
-      hoverTimer = setTimeout(() => {
-        if (!pinned) panel.classList.remove('hover');
-      }, 200);
-    }
-    musicBtn.addEventListener('mouseenter', showPanel);
-    musicBtn.addEventListener('mouseleave', scheduleHide);
-    panel.addEventListener('mouseenter', showPanel);
-    panel.addEventListener('mouseleave', scheduleHide);
 
-    // 點擊面板內部不觸發關閉
+    // ---- 關閉按鈕 ----
+    if (closeBtn) {
+      closeBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        pinned = false;
+        const musicBtnEl = document.getElementById('ftMusicBtn');
+        panel.classList.remove('pinned', 'hover');
+        if (musicBtnEl) musicBtnEl.classList.remove('pinned');
+      });
+    }
+
+    // ---- 桌面端 hover ----
+    if (!isTouchDevice) {
+      let hoverTimer = null;
+      function showPanel() {
+        clearTimeout(hoverTimer);
+        openPanel();
+      }
+      function scheduleHide() {
+        clearTimeout(hoverTimer);
+        hoverTimer = setTimeout(closePanel, 200);
+      }
+      musicBtn.addEventListener('mouseenter', showPanel);
+      musicBtn.addEventListener('mouseleave', scheduleHide);
+      panel.addEventListener('mouseenter', showPanel);
+      panel.addEventListener('mouseleave', scheduleHide);
+    }
+
+    // ---- 點擊面板內部不觸發關閉 ----
     panel.addEventListener('click', (e) => {
       e.stopPropagation();
     });
 
-    // 播放控制
+    // ---- 點擊外部關閉面板（手機＋桌面都適用） ----
+    document.addEventListener('click', (e) => {
+      if (!pinned) return;
+      // 如果點擊不在工具列範圍內 → 關閉
+      if (!musicWrap.contains(e.target)) {
+        pinned = false;
+        panel.classList.remove('pinned', 'hover');
+        musicBtn.classList.remove('pinned');
+      }
+    });
+
+    // ---- 手機端：面板區域外的 touch 也關閉 ----
+    if (isTouchDevice) {
+      document.addEventListener('touchstart', (e) => {
+        if (!pinned) return;
+        if (!musicWrap.contains(e.target)) {
+          pinned = false;
+          panel.classList.remove('pinned', 'hover');
+          musicBtn.classList.remove('pinned');
+        }
+      }, { passive: true });
+    }
+
+    // ---- 播放控制 ----
     document.getElementById('ftPlay').addEventListener('click', (e) => {
       e.stopPropagation();
       togglePlay();
@@ -352,7 +430,7 @@ const MUSIC_PLAYER = (() => {
       nextTrack();
     });
 
-    // 音量按鈕：靜音切換
+    // ---- 音量按鈕 ----
     document.getElementById('ftVolBtn').addEventListener('click', (e) => {
       e.stopPropagation();
       if (!player || !playerReady) return;
@@ -367,7 +445,7 @@ const MUSIC_PLAYER = (() => {
       updateVolumeIcon();
     });
 
-    // 進度條拖曳
+    // ---- 進度條拖曳 ----
     const progressSlider = document.getElementById('ftProgress');
     progressSlider.addEventListener('input', (e) => {
       seeking = true;
@@ -386,12 +464,12 @@ const MUSIC_PLAYER = (() => {
       seeking = false;
     });
 
-    // 回到頂部
+    // ---- 回到頂部 ----
     topBtn.addEventListener('click', () => {
       window.scrollTo({ top: 0, behavior: 'smooth' });
     });
 
-    // 滾動顯示回到頂部
+    // ---- 滾動顯示回到頂部 ----
     let ticking = false;
     window.addEventListener('scroll', () => {
       if (!ticking) {
@@ -403,7 +481,7 @@ const MUSIC_PLAYER = (() => {
       }
     }, { passive: true });
 
-    // 首次互動解除靜音
+    // ---- 首次互動解除靜音 ----
     if (localStorage.getItem('sw-music-unmuted')) {
       muted = false;
     }
@@ -413,7 +491,6 @@ const MUSIC_PLAYER = (() => {
       muted = false;
       try {
         player.unMute();
-        // 保留用戶設定的音量，不強制重設
         const currentVol = player.getVolume ? player.getVolume() : 15;
         if (currentVol === 0) {
           player.setVolume(15);
@@ -460,7 +537,6 @@ const MUSIC_PLAYER = (() => {
     const durEl = document.getElementById('ftDurTime');
     if (slider) {
       slider.value = pct;
-      // 漸層填充進度條
       slider.style.background = 'linear-gradient(to right, var(--sky) 0%, var(--sky) ' + pct + '%, rgba(157,175,255,0.1) ' + pct + '%, rgba(157,175,255,0.1) 100%)';
     }
     if (curEl) curEl.textContent = formatTime(cur);
@@ -488,7 +564,6 @@ const MUSIC_PLAYER = (() => {
         const idx = history[historyIndex];
         player.loadVideoById(FALLBACK[idx].id);
       } else {
-        // 沒有歷史，隨機一首
         const idx = getRandomTrackIndex();
         pushHistory(idx);
         player.loadVideoById(FALLBACK[idx].id);
@@ -500,12 +575,10 @@ const MUSIC_PLAYER = (() => {
     if (!playerReady) return;
     try {
       if (historyIndex < history.length - 1) {
-        // 前進歷史
         historyIndex++;
         const idx = history[historyIndex];
         player.loadVideoById(FALLBACK[idx].id);
       } else {
-        // 隨機新曲
         const idx = getRandomTrackIndex();
         pushHistory(idx);
         player.loadVideoById(FALLBACK[idx].id);
@@ -524,7 +597,6 @@ const MUSIC_PLAYER = (() => {
 
     if (saved && saved.videoId) {
       player.setVolume(saved.volume || 15);
-      // 相容舊格式（displayTitle 可能包含 "藝人 — 曲名"）
       let displayTitle = saved.displayTitle || '';
       let displayArtist = saved.artist || '';
       if (displayTitle.includes(' — ') && !displayArtist) {
@@ -537,7 +609,6 @@ const MUSIC_PLAYER = (() => {
       if (saved.muted === true) { muted = true; try { player.mute(); } catch (e) {} }
       else if (saved.muted === false) { muted = false; try { player.unMute(); } catch (e) {} }
 
-      // 將恢復的曲目加入歷史
       const savedIdx = FALLBACK.findIndex(t => t.id === saved.videoId);
       if (savedIdx !== -1) pushHistory(savedIdx);
 
