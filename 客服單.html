@@ -483,6 +483,28 @@
     bindCounter(document.getElementById('pf-brief'),document.getElementById('briefCount'));
     bindCounter(document.getElementById('pf-promo'),document.getElementById('promoCount'));
 
+    /* ── Sub-type descriptions ── */
+    const SUB_DESC={
+      '帳號處理':'帳號被盜、忘記密碼、綁定問題、帳號異常登入，請說明你的帳號和大概發生時間。',
+      '檢舉':'檢舉其他玩家的違規行為，請附上截圖或影片連結，並說明時間和發生了什麼事。',
+      '提告':'根據管理通則提起正式告訴，請說明被告、事由、時間，並附上證據。',
+      '申訴':'對處分結果有異議想申訴，請說明你的理由和相關事證。',
+      '疑慮':'對規則、制度、或管理方式有疑慮想反映，歡迎直接說。',
+      '回報異常':'遊戲內發現 bug、物品消失、領地異常等技術問題，請說明怎麼發生的。',
+      '規章解釋':'看不懂某條規則？想確認某個行為是否違規？直接問就好。',
+      '領地問題':'領地被入侵、權限設定出問題、領地不見了，請說明領地名稱和狀況。',
+      '其他':'上面都沒選到？沒關係，在這裡說明你想回報的事就好。',
+      '應徵':'聊聊你的相關經驗、為什麼想加入海風團隊、可以投入多少時間。',
+      '請願（上訴）':'根據管理通則提出上訴請願，請說明上訴理由和依據。',
+      '提議法律草案':'想為海風訂一條新規則？請寫清楚草案內容和制定理由。',
+      '提議政策':'對伺服器營運方向有想法？歡迎提出你的政策建議。',
+      '否決請願':'對現行規則或政策有異議想提出否決，請說明理由。',
+      '💬 群組':'Discord 群組、LINE 群組等社群平台的合作申請。',
+      '🌐 網站':'網站、論壇、Wiki 等網路平台的合作申請。',
+      '🏗️ 工作室':'建築工作室、紅石團隊、影音創作者等的合作申請。',
+      '📦 其他':'上面沒列到的合作類型，在詳細說明裡告訴我們就好。'
+    };
+
     /* ── Type selection ── */
     typeCards.forEach(function(card){
       card.addEventListener('click',function(){
@@ -520,20 +542,25 @@
         partnerFields.classList.remove('show');
         applyFields.classList.remove('show');
 
+        /* Get selected sub-type value */
+        var subInput=parent.querySelector('input:checked');
+        var subVal=subInput?subInput.value:'';
+
+        /* Update description based on sub-type */
+        if(SUB_DESC[subVal]){
+          detailDesc.textContent=SUB_DESC[subVal];
+        }
+
         if(currentType==='partner'){
           partnerFields.classList.add('show');
           document.getElementById('fieldIGN').style.display='none';
-          detailDesc.textContent='聊聊你們的社群在做什麼，以及為什麼想跟海風合作～';
         }else if(currentType==='admin'){
-          var sub=parent.querySelector('input:checked');
-          if(sub&&sub.value==='應徵'){
+          if(subVal==='應徵'){
             applyFields.classList.add('show');
           }
           document.getElementById('fieldIGN').style.display='';
-          detailDesc.textContent='說說你的想法或計畫。應徵的話，聊聊你的經驗和為什麼想加入～';
         }else{
           document.getElementById('fieldIGN').style.display='';
-          detailDesc.textContent='把事情說清楚，怎麼發生的、什麼時候、截圖連結等等，讓我們能快速幫你處理。';
         }
 
         /* Smooth scroll to form */
