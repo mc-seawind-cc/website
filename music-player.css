@@ -88,18 +88,16 @@
   z-index: 2;
 }
 
-/* ── hover 橋接區 ── */
+/* ── hover 容器 ── */
 .ft-music-wrap {
   position: relative;
 }
 
-/* ── 展開面板 ── */
+/* ── 展開面板（緊貼按鈕左側） ── */
 .ft-panel-wrap {
   position: absolute;
   bottom: 0;
   right: 58px;
-  padding: 12px 12px 12px 20px;
-  /* 透明橋接區，接收 hover 事件 */
   pointer-events: auto;
 }
 
@@ -119,8 +117,8 @@
   overflow: hidden;
 }
 
-/* hover 或固定時顯示 */
-.ft-music-wrap:hover .ft-panel,
+/* hover（JS 控制）或固定時顯示 */
+.ft-panel.hover,
 .ft-panel.pinned {
   opacity: 1;
   pointer-events: auto;
@@ -307,7 +305,7 @@
   transition: opacity 0.2s;
 }
 
-.ft-music:hover .ft-panel-pin-hint,
+.ft-panel.hover .ft-panel-pin-hint,
 .ft-panel.pinned .ft-panel-pin-hint {
   opacity: 0.8;
 }

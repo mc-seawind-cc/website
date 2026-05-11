@@ -282,17 +282,26 @@ const MUSIC_PLAYER = (() => {
       if (pinHint) pinHint.textContent = pinned ? '再次點擊取消固定' : '點擊按鈕固定面板';
     });
 
+    // hover 顯示面板（帶延遲防止閃爍）
+    let hoverTimer = null;
+    function showPanel() {
+      clearTimeout(hoverTimer);
+      panel.classList.add('hover');
+    }
+    function scheduleHide() {
+      clearTimeout(hoverTimer);
+      hoverTimer = setTimeout(() => {
+        if (!pinned) panel.classList.remove('hover');
+      }, 200);
+    }
+    musicBtn.addEventListener('mouseenter', showPanel);
+    musicBtn.addEventListener('mouseleave', scheduleHide);
+    panel.addEventListener('mouseenter', showPanel);
+    panel.addEventListener('mouseleave', scheduleHide);
+
     // 點擊面板內部不觸發關閉
     panel.addEventListener('click', (e) => {
       e.stopPropagation();
-    });
-
-    // 點擊外部關閉（未固定時）
-    document.addEventListener('click', (e) => {
-      if (pinned) return;
-      if (!e.target.closest('#ftMusicWrap')) {
-        // hover 偵測會處理，這裡只是備案
-      }
     });
 
     // 播放控制
