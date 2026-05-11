@@ -6,12 +6,12 @@
   <meta name="color-scheme" content="dark light">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>會員 — 海風</title>
-  <meta name="description" content="海風會員每月 200 冷媒，領地擴充、傳送點加倍、隨地開啟工具、自動簽到、郵件免費等專屬回饋。">
+  <meta name="description" content="海風會員三階方案：微風 100、海風 200、嵐風 500 冷媒/月。領地擴充、傳送點加倍、隨地開啟工具、自動簽到等專屬回饋。">
   <link rel="icon" href="assets/img/logo.png">
   <link rel="apple-touch-icon" href="assets/img/logo.png">
   <link rel="manifest" href="manifest.json">
   <meta property="og:title" content="會員 — 海風">
-  <meta property="og:description" content="海風會員每月 200 冷媒，支持海風獲得專屬回饋。">
+  <meta property="og:description" content="海風會員三階方案，支持海風獲得專屬回饋。">
   <meta property="og:image" content="assets/img/logo.png">
   <meta property="og:type" content="website">
   <meta name="twitter:card" content="summary">
@@ -20,65 +20,171 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;800&family=Noto+Serif+TC:wght@700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=110511c">
+  <link rel="stylesheet" href="style.css?v=110511d">
   <link rel="stylesheet" href="music-player.css">
   <style>
-    /* === Member Hero === */
-    .member-hero-badge{display:inline-flex;align-items:center;gap:6px;padding:6px 18px;border-radius:24px;font-size:0.82rem;font-weight:700;background:linear-gradient(135deg,var(--sky),var(--ocean-blue));color:var(--deep);margin-bottom:var(--space-md)}
-    .member-price-card{display:flex;align-items:center;justify-content:center;gap:var(--space-lg);margin:var(--space-xl) auto;max-width:420px;padding:var(--space-xl);background:rgba(255,255,255,0.03);border:1px solid rgba(157,175,255,0.15);border-radius:var(--radius-xl);text-align:center}
-    .member-price-amount{font-size:3rem;font-weight:800;color:var(--sky);line-height:1}
-    .member-price-unit{font-size:0.85rem;color:var(--fog);margin-top:4px}
-    .member-price-divider{width:1px;height:48px;background:rgba(255,255,255,0.1)}
-    .member-price-note{font-size:0.85rem;color:var(--fog);line-height:1.6}
-    .member-price-note strong{color:var(--cloud)}
-    [data-theme="light"] .member-price-card{background:#fff;border-color:rgba(74,108,247,0.15)}
+    /* ═══════════════════════════════════════
+       Member Page — Three-Tier Design
+       ═══════════════════════════════════════ */
+
+    /* === Hero === */
+    .mem-hero{position:relative;text-align:center;padding:var(--space-2xl) var(--space-lg) var(--space-xl);overflow:hidden}
+    .mem-hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 70% 60% at 50% 0%,rgba(157,175,255,0.1),transparent 70%),radial-gradient(ellipse 50% 40% at 30% 80%,rgba(168,230,207,0.06),transparent 70%),radial-gradient(ellipse 40% 40% at 75% 70%,rgba(171,114,249,0.05),transparent 70%);pointer-events:none}
+    .mem-hero-badge{display:inline-flex;align-items:center;gap:6px;padding:6px 20px;border-radius:24px;font-size:0.82rem;font-weight:700;background:linear-gradient(135deg,var(--sky),var(--ocean-blue));color:var(--deep);margin-bottom:var(--space-md);position:relative}
+    .mem-hero h1{font-size:clamp(1.8rem,4vw,2.5rem);font-weight:800;margin-bottom:var(--space-sm);position:relative}
+    .mem-hero h1 .mem-wave{display:inline-block;animation:mem-wave 2.5s ease-in-out infinite}
+    @keyframes mem-wave{0%,100%{transform:rotate(0)}25%{transform:rotate(12deg)}75%{transform:rotate(-8deg)}}
+    .mem-hero-desc{color:var(--fog);font-size:1rem;max-width:520px;margin:0 auto;line-height:1.8;position:relative}
+    .mem-hero-note{display:inline-flex;align-items:center;gap:6px;margin-top:var(--space-md);padding:8px 18px;background:rgba(168,230,207,0.08);border:1px solid rgba(168,230,207,0.15);border-radius:var(--radius-md);font-size:0.82rem;color:var(--foam);position:relative}
+    .mem-hero-note::before{content:'💡';font-size:0.9rem}
+
+    /* === Floating Bubbles === */
+    .mem-bubbles{position:absolute;inset:0;pointer-events:none;overflow:hidden}
+    .mem-bubble{position:absolute;bottom:-20px;border-radius:50%;background:radial-gradient(circle at 30% 30%,rgba(157,175,255,0.2),rgba(157,175,255,0.05));animation:mem-float linear infinite}
+    @keyframes mem-float{0%{transform:translateY(0) scale(1);opacity:0.6}100%{transform:translateY(-110vh) scale(0.3);opacity:0}}
+
+    /* === Pricing Cards === */
+    .mem-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--space-lg);max-width:960px;margin:0 auto var(--space-2xl);align-items:start}
+    .mem-card{position:relative;background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.06);border-radius:var(--radius-xl);padding:var(--space-xl) var(--space-lg);text-align:center;transition:all 0.4s var(--ease)}
+    .mem-card:hover{transform:translateY(-6px);border-color:rgba(157,175,255,0.2)}
+    .mem-card::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;border-radius:var(--radius-xl) var(--radius-xl) 0 0}
+
+    /* Breeze - soft green */
+    .mem-card-breeze{--card-color:var(--foam)}
+    .mem-card-breeze::before{background:linear-gradient(90deg,var(--foam),var(--teal))}
+    .mem-card-breeze:hover{box-shadow:0 8px 32px rgba(168,230,207,0.1)}
+
+    /* SeaWind - featured blue */
+    .mem-card-seawind{--card-color:var(--sky);transform:scale(1.05);z-index:2;border-color:rgba(157,175,255,0.2);background:rgba(157,175,255,0.04)}
+    .mem-card-seawind::before{background:linear-gradient(90deg,var(--sky),var(--ocean-blue),var(--lavender));height:5px}
+    .mem-card-seawind:hover{transform:scale(1.05) translateY(-6px);box-shadow:0 12px 40px rgba(157,175,255,0.15)}
+    .mem-card-seawind .mem-card-tag{display:inline-block}
+
+    /* Storm - premium purple */
+    .mem-card-storm{--card-color:var(--lavender)}
+    .mem-card-storm::before{background:linear-gradient(90deg,var(--lavender),var(--royal))}
+    .mem-card-storm:hover{box-shadow:0 8px 32px rgba(171,114,249,0.1)}
+
+    .mem-card-tag{display:none;padding:4px 14px;border-radius:12px;font-size:0.72rem;font-weight:700;background:var(--sky);color:var(--deep);margin-bottom:var(--space-md);letter-spacing:0.04em}
+    .mem-card-icon{font-size:2.2rem;margin-bottom:var(--space-sm)}
+    .mem-card-name{font-size:1.1rem;font-weight:800;color:var(--white);margin-bottom:2px}
+    .mem-card-tier{font-size:0.78rem;color:var(--fog);margin-bottom:var(--space-md)}
+    .mem-card-price{margin-bottom:var(--space-lg)}
+    .mem-card-amount{font-size:2.8rem;font-weight:800;color:var(--card-color);line-height:1}
+    .mem-card-unit{font-size:0.82rem;color:var(--fog);margin-top:4px}
+    .mem-card-divider{width:40px;height:2px;background:var(--card-color);opacity:0.3;margin:0 auto var(--space-lg);border-radius:1px}
+    .mem-card-perks{list-style:none;text-align:left;margin-bottom:var(--space-lg)}
+    .mem-card-perks li{padding:6px 0;font-size:0.85rem;color:var(--cloud);display:flex;align-items:flex-start;gap:8px;line-height:1.5}
+    .mem-card-perks li::before{content:'✓';color:var(--card-color);font-weight:700;flex-shrink:0;margin-top:1px}
+    .mem-card-perks li.disabled{color:var(--fog);opacity:0.4}
+    .mem-card-perks li.disabled::before{content:'✗';color:var(--fog)}
+    .mem-card-cta{display:block;padding:12px;border-radius:var(--radius-md);font-weight:700;font-size:0.9rem;text-decoration:none;transition:all 0.3s var(--ease);border:2px solid var(--card-color);color:var(--card-color);background:transparent}
+    .mem-card-cta:hover{background:var(--card-color);color:var(--deep);transform:translateY(-2px);box-shadow:0 4px 16px rgba(157,175,255,0.2)}
+    .mem-card-seawind .mem-card-cta{background:var(--sky);color:var(--deep);border-color:var(--sky)}
+    .mem-card-seawind .mem-card-cta:hover{background:var(--white);box-shadow:0 6px 24px rgba(157,175,255,0.3)}
 
     /* === Comparison Table === */
-    .compare-wrap{overflow-x:auto;margin:var(--space-lg) 0;-webkit-overflow-scrolling:touch}
-    .compare-table{width:100%;border-collapse:separate;border-spacing:0;font-size:0.85rem}
-    .compare-table thead th{position:sticky;top:0;background:var(--drift);color:var(--white);font-weight:700;padding:12px 14px;text-align:center;border-bottom:2px solid rgba(157,175,255,0.15);white-space:nowrap;z-index:1}
-    .compare-table thead th:first-child{text-align:left;min-width:120px}
-    .compare-table thead th.col-default{color:var(--fog)}
-    .compare-table thead th.col-member{color:var(--sky)}
-    .compare-table tbody td{padding:10px 14px;text-align:center;border-bottom:1px solid rgba(255,255,255,0.04);color:var(--cloud);vertical-align:middle}
-    .compare-table tbody td:first-child{text-align:left;font-weight:600;color:var(--white)}
-    .compare-table tbody tr:hover td{background:rgba(157,175,255,0.03)}
-    .compare-table .cat-row td{background:rgba(157,175,255,0.05);font-weight:700;color:var(--sky);font-size:0.8rem;text-transform:uppercase;letter-spacing:0.06em;padding:8px 14px}
-    .compare-table .val-yes{color:var(--foam);font-weight:700}
-    .compare-table .val-no{color:var(--fog);opacity:0.35}
-    .compare-table .val-highlight{color:var(--sky);font-weight:700}
-    [data-theme="light"] .compare-table thead th{background:#f0f2f5;border-bottom-color:rgba(74,108,247,0.15)}
-    [data-theme="light"] .compare-table tbody td{border-bottom-color:rgba(0,0,0,0.04)}
-    [data-theme="light"] .compare-table tbody tr:hover td{background:rgba(74,108,247,0.03)}
-    [data-theme="light"] .compare-table .cat-row td{background:rgba(74,108,247,0.05)}
+    .mem-compare{overflow-x:auto;margin:var(--space-lg) 0;-webkit-overflow-scrolling:touch;border-radius:var(--radius-lg);border:1px solid rgba(255,255,255,0.06)}
+    .mem-compare table{width:100%;border-collapse:separate;border-spacing:0;font-size:0.85rem}
+    .mem-compare thead th{position:sticky;top:0;background:var(--drift);color:var(--white);font-weight:700;padding:12px 14px;text-align:center;border-bottom:2px solid rgba(157,175,255,0.15);white-space:nowrap;z-index:1}
+    .mem-compare thead th:first-child{text-align:left;min-width:130px}
+    .mem-compare thead th:nth-child(2){color:var(--foam)}
+    .mem-compare thead th:nth-child(3){color:var(--sky)}
+    .mem-compare thead th:nth-child(4){color:var(--lavender)}
+    .mem-compare tbody td{padding:10px 14px;text-align:center;border-bottom:1px solid rgba(255,255,255,0.04);color:var(--cloud);vertical-align:middle}
+    .mem-compare tbody td:first-child{text-align:left;font-weight:600;color:var(--white)}
+    .mem-compare tbody tr:hover td{background:rgba(157,175,255,0.03)}
+    .mem-compare .cat-row td{background:rgba(157,175,255,0.05);font-weight:700;color:var(--sky);font-size:0.8rem;letter-spacing:0.04em;padding:8px 14px}
+    .mem-compare .val-yes{color:var(--foam);font-weight:700}
+    .mem-compare .val-no{color:var(--fog);opacity:0.3}
+    .mem-compare .val-hi{font-weight:700}
+    .mem-compare .val-hi-b{color:var(--foam)}
+    .mem-compare .val-hi-s{color:var(--sky)}
+    .mem-compare .val-hi-p{color:var(--lavender)}
+    .mem-compare .col-rec{background:rgba(157,175,255,0.03)}
+    .mem-compare thead th.col-rec{background:var(--mist)}
+
+    [data-theme="light"] .mem-compare{border-color:rgba(0,0,0,0.08)}
+    [data-theme="light"] .mem-compare thead th{background:#f0f2f5;border-bottom-color:rgba(74,108,247,0.15)}
+    [data-theme="light"] .mem-compare tbody td{border-bottom-color:rgba(0,0,0,0.04)}
+    [data-theme="light"] .mem-compare tbody tr:hover td{background:rgba(74,108,247,0.03)}
+    [data-theme="light"] .mem-compare .cat-row td{background:rgba(74,108,247,0.05)}
+    [data-theme="light"] .mem-compare thead th.col-rec{background:#e8ecf2}
 
     /* === Process Steps === */
-    .process-steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:var(--space-md);margin:var(--space-lg)0}
-    .process-step{position:relative;padding:var(--space-lg);background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.06);border-radius:var(--radius-lg);text-align:center;transition:all var(--duration)var(--ease)}
-    .process-step::before{content:'';position:absolute;top:0;left:0;width:3px;height:100%;background:var(--sky);opacity:0.3;border-radius:var(--radius-lg) 0 0 var(--radius-lg)}
-    .process-step:hover{transform:translateY(-3px);border-color:rgba(157,175,255,0.15)}
-    .process-step-num{display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;background:var(--sky);color:var(--deep);border-radius:50%;font-size:0.85rem;font-weight:800;margin-bottom:var(--space-sm)}
-    .process-step h4{font-size:0.92rem;font-weight:700;color:var(--white);margin-bottom:4px}
-    .process-step p{font-size:0.82rem;color:var(--fog);line-height:1.6;margin:0}
-    [data-theme="light"] .process-step{background:#fff;border-color:rgba(0,0,0,0.06)}
-    [data-theme="light"] .process-step:hover{box-shadow:0 4px 12px rgba(0,0,0,0.06)}
+    .mem-steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:var(--space-md);margin:var(--space-lg) 0}
+    .mem-step{position:relative;padding:var(--space-lg);background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.06);border-radius:var(--radius-lg);text-align:center;transition:all var(--duration) var(--ease)}
+    .mem-step::before{content:'';position:absolute;top:0;left:0;width:3px;height:100%;background:var(--sky);opacity:0.3;border-radius:var(--radius-lg) 0 0 var(--radius-lg)}
+    .mem-step:hover{transform:translateY(-3px);border-color:rgba(157,175,255,0.15)}
+    .mem-step-num{display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;background:var(--sky);color:var(--deep);border-radius:50%;font-size:0.85rem;font-weight:800;margin-bottom:var(--space-sm)}
+    .mem-step h4{font-size:0.92rem;font-weight:700;color:var(--white);margin-bottom:4px}
+    .mem-step p{font-size:0.82rem;color:var(--fog);line-height:1.6;margin:0}
+    [data-theme="light"] .mem-step{background:#fff;border-color:rgba(0,0,0,0.06)}
+    [data-theme="light"] .mem-step:hover{box-shadow:0 4px 12px rgba(0,0,0,0.06)}
 
-    /* === Rules Notice === */
-    .rules-notice{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:var(--space-md);margin:var(--space-lg)0}
-    .rules-notice-item{display:flex;align-items:flex-start;gap:var(--space-md);padding:var(--space-md)var(--space-lg);background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.06);border-radius:var(--radius-md);transition:all var(--duration)var(--ease)}
-    .rules-notice-item:hover{background:rgba(255,255,255,0.04);border-color:rgba(157,175,255,0.12)}
-    .rules-notice-icon{font-size:1.2rem;flex-shrink:0;margin-top:2px}
-    .rules-notice-body{min-width:0}
-    .rules-notice-body h4{font-size:0.88rem;font-weight:700;color:var(--white);margin-bottom:2px}
-    .rules-notice-body p{font-size:0.8rem;color:var(--fog);line-height:1.5;margin:0}
-    [data-theme="light"] .rules-notice-item{background:#fff;border-color:rgba(0,0,0,0.06)}
+    /* === Notice Grid === */
+    .mem-notices{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:var(--space-md);margin:var(--space-lg) 0}
+    .mem-notice{display:flex;align-items:flex-start;gap:var(--space-md);padding:var(--space-md) var(--space-lg);background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.06);border-radius:var(--radius-md);transition:all var(--duration) var(--ease)}
+    .mem-notice:hover{background:rgba(255,255,255,0.04);border-color:rgba(157,175,255,0.12)}
+    .mem-notice-icon{font-size:1.2rem;flex-shrink:0;margin-top:2px}
+    .mem-notice-body{min-width:0}
+    .mem-notice-body h4{font-size:0.88rem;font-weight:700;color:var(--white);margin-bottom:2px}
+    .mem-notice-body p{font-size:0.8rem;color:var(--fog);line-height:1.5;margin:0}
+    [data-theme="light"] .mem-notice{background:#fff;border-color:rgba(0,0,0,0.06)}
+
+    /* === FAQ === */
+    .mem-faq{margin:var(--space-lg) 0}
+    .mem-faq-item{border:1px solid rgba(255,255,255,0.06);border-radius:var(--radius-md);margin-bottom:var(--space-sm);overflow:hidden;transition:border-color var(--duration) var(--ease)}
+    .mem-faq-item.open{border-color:rgba(157,175,255,0.2)}
+    .mem-faq-q{display:flex;align-items:center;justify-content:space-between;gap:var(--space-md);padding:var(--space-md) var(--space-lg);cursor:pointer;background:rgba(255,255,255,0.02);transition:all var(--duration) var(--ease);font-family:var(--font-body);border:none;width:100%;text-align:left;color:var(--cloud);font-size:0.92rem;font-weight:600}
+    .mem-faq-q:hover{background:rgba(255,255,255,0.04)}
+    .mem-faq-q::after{content:'▸';flex-shrink:0;color:var(--fog);transition:transform var(--duration) var(--ease);font-size:0.85rem}
+    .mem-faq-item.open .mem-faq-q::after{transform:rotate(90deg)}
+    .mem-faq-item.open .mem-faq-q{color:var(--sky);background:rgba(157,175,255,0.04)}
+    .mem-faq-a{max-height:0;overflow:hidden;transition:max-height 0.35s ease,padding 0.35s ease}
+    .mem-faq-item.open .mem-faq-a{max-height:500px}
+    .mem-faq-a-inner{padding:0 var(--space-lg) var(--space-lg);color:var(--fog);font-size:0.88rem;line-height:1.8}
+    [data-theme="light"] .mem-faq-item{border-color:rgba(0,0,0,0.06)}
+    [data-theme="light"] .mem-faq-item.open{border-color:rgba(74,108,247,0.2)}
+    [data-theme="light"] .mem-faq-q{background:#fff}
+    [data-theme="light"] .mem-faq-q:hover{background:rgba(74,108,247,0.03)}
+    [data-theme="light"] .mem-faq-item.open .mem-faq-q{color:#4a6cf7;background:rgba(74,108,247,0.04)}
+
+    /* === Related === */
+    .mem-related-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:var(--space-md);margin:var(--space-lg) 0}
+    .mem-related-card{display:flex;align-items:center;gap:var(--space-md);padding:var(--space-md) var(--space-lg);background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.06);border-radius:var(--radius-md);text-decoration:none;color:var(--cloud);transition:all var(--duration) var(--ease)}
+    .mem-related-card:hover{background:rgba(255,255,255,0.04);border-color:rgba(157,175,255,0.15);transform:translateX(3px)}
+    .mem-related-icon{font-size:1.4rem;flex-shrink:0}
+    .mem-related-body{min-width:0}
+    .mem-related-body h4{font-size:0.88rem;font-weight:700;color:var(--white);margin-bottom:2px}
+    .mem-related-body p{font-size:0.78rem;color:var(--fog);line-height:1.4;margin:0}
+    [data-theme="light"] .mem-related-card{background:#fff;border-color:rgba(0,0,0,0.06)}
+    [data-theme="light"] .mem-related-card:hover{box-shadow:0 4px 12px rgba(0,0,0,0.06)}
+
+    /* === Light Mode Overrides === */
+    [data-theme="light"] .mem-hero::before{background:radial-gradient(ellipse 70% 60% at 50% 0%,rgba(74,108,247,0.08),transparent 70%)}
+    [data-theme="light"] .mem-card{background:#fff;border-color:rgba(0,0,0,0.06)}
+    [data-theme="light"] .mem-card-seawind{background:rgba(74,108,247,0.04);border-color:rgba(74,108,247,0.2)}
+    [data-theme="light"] .mem-card:hover{box-shadow:0 6px 20px rgba(0,0,0,0.06)}
+    [data-theme="light"] .mem-card-seawind:hover{box-shadow:0 10px 30px rgba(74,108,247,0.12)}
+    [data-theme="light"] .mem-card-cta{border-color:var(--ocean-blue);color:var(--ocean-blue)}
+    [data-theme="light"] .mem-card-cta:hover{background:var(--ocean-blue);color:#fff}
+    [data-theme="light"] .mem-card-seawind .mem-card-cta{background:var(--ocean-blue);color:#fff;border-color:var(--ocean-blue)}
+    [data-theme="light"] .mem-card-seawind .mem-card-cta:hover{background:var(--sky)}
+    [data-theme="light"] .mem-card-seawind .mem-card-tag{background:var(--ocean-blue)}
+    [data-theme="light"] .mem-hero-note{background:rgba(74,108,247,0.06);border-color:rgba(74,108,247,0.12);color:var(--ocean-blue)}
 
     /* === Responsive === */
-    @media(max-width:768px){
-      .member-price-card{flex-direction:column;gap:var(--space-md)}
-      .member-price-divider{width:48px;height:1px}
-      .compare-table{font-size:0.78rem}
-      .compare-table thead th,.compare-table tbody td{padding:8px 10px}
+    @media(max-width:900px){
+      .mem-cards{grid-template-columns:1fr;max-width:400px}
+      .mem-card-seawind{transform:none;order:-1}
+      .mem-card-seawind:hover{transform:translateY(-6px)}
+      .mem-compare{font-size:0.78rem}
+      .mem-compare thead th,.mem-compare tbody td{padding:8px 10px}
+    }
+    @media(max-width:480px){
+      .mem-cards{max-width:100%}
+      .mem-card{padding:var(--space-lg) var(--space-md)}
     }
   </style>
 </head>
@@ -144,237 +250,332 @@
   </nav>
 
   <div class="page">
-    <div id="mainContent" class="guide-v2-hero fade-in">
-      <div class="member-hero-badge">💎 會員方案</div>
-      <h1>🌊 海風會員</h1>
-      <p class="section-desc">支持海風，獲得專屬回饋。每一份贊助都是讓這個家更好的力量。</p>
-      <div class="member-price-card">
-        <div>
-          <div class="member-price-amount">200</div>
-          <div class="member-price-unit">冷媒 / 月</div>
-        </div>
-        <div class="member-price-divider"></div>
-        <div class="member-price-note">
-          <strong>1 元台幣 = 1 元冷媒</strong><br>
-          每支持 1 元，可回饋 1 元冷媒
-        </div>
-      </div>
-    </div>
+    <div id="mainContent">
 
-    <div class="content-section">
-
-      <!-- === 完整回饋對比 === -->
-      <div class="guide-section-card fade-in" style="--card-accent:var(--foam)">
-        <h2><span class="sec-icon">📊</span> 完整回饋對比</h2>
-        <p>預設玩家與會員的所有差異一覽。</p>
-
-        <div class="compare-wrap">
-          <table class="compare-table">
-            <thead>
-              <tr>
-                <th>項目</th>
-                <th class="col-default">預設玩家</th>
-                <th class="col-member">會員（每月）</th>
-              </tr>
-            </thead>
-            <tbody>
-              <!-- 領地 -->
-              <tr class="cat-row"><td colspan="3">🏰 領地</td></tr>
-              <tr><td>主領地</td><td>10+10</td><td class="val-highlight">20+20</td></tr>
-              <tr><td>子領地</td><td>50+50</td><td class="val-highlight">100+100</td></tr>
-
-              <!-- 傳送點 -->
-              <tr class="cat-row"><td colspan="3">📍 傳送點</td></tr>
-              <tr><td>個人傳送點</td><td>20</td><td class="val-highlight">40</td></tr>
-              <tr><td>公開傳送點</td><td>4+4</td><td class="val-highlight">8+8</td></tr>
-
-              <!-- 交易 -->
-              <tr class="cat-row"><td colspan="3">🏪 交易</td></tr>
-              <tr><td>線上商城</td><td>10</td><td class="val-highlight">15</td></tr>
-              <tr><td>箱子商店</td><td>120</td><td class="val-highlight">250</td></tr>
-
-              <!-- 隨地開 -->
-              <tr class="cat-row"><td colspan="3">🧰 隨地開啟</td></tr>
-              <tr><td>界伏盒</td><td class="val-no">✗</td><td class="val-yes">✓</td></tr>
-              <tr><td>工作台</td><td class="val-no">✗</td><td class="val-yes">✓</td></tr>
-              <tr><td>鍛造台</td><td class="val-no">✗</td><td class="val-yes">✓</td></tr>
-              <tr><td>製圖台</td><td class="val-no">✗</td><td class="val-yes">✓</td></tr>
-              <tr><td>紡織機</td><td class="val-no">✗</td><td class="val-yes">✓</td></tr>
-              <tr><td>鐵砧</td><td class="val-no">✗</td><td class="val-yes">✓</td></tr>
-              <tr><td>砂輪</td><td class="val-no">✗</td><td class="val-yes">✓</td></tr>
-
-              <!-- 簽到月曆 -->
-              <tr class="cat-row"><td colspan="3">📅 簽到月曆</td></tr>
-              <tr><td>自動簽到</td><td class="val-no">✗</td><td class="val-yes">✓</td></tr>
-              <tr><td>風汐錠</td><td class="val-no">✗</td><td class="val-highlight">×2</td></tr>
-
-              <!-- 稱號 -->
-              <tr class="cat-row"><td colspan="3">🏷️ 稱號</td></tr>
-              <tr><td>遊戲稱號</td><td>玩家</td><td class="val-highlight">海風會員</td></tr>
-              <tr><td>DC 稱號</td><td class="val-no">✗</td><td class="val-yes">✓</td></tr>
-
-              <!-- 郵件 -->
-              <tr class="cat-row"><td colspan="3">✉️ 郵件</td></tr>
-              <tr><td>郵件費用</td><td>1 冷媒</td><td class="val-yes">免費</td></tr>
-
-              <!-- 倉庫 -->
-              <tr class="cat-row"><td colspan="3">📦 倉庫</td></tr>
-              <tr><td>大倉庫</td><td>16</td><td class="val-highlight">32</td></tr>
-              <tr><td>小倉庫</td><td>8</td><td class="val-highlight">16</td></tr>
-
-              <!-- 權限 -->
-              <tr class="cat-row"><td colspan="3">🎩 權限</td></tr>
-              <tr><td>戴帽子</td><td>任務後永久</td><td>期間可用</td></tr>
-
-              <!-- 其他 -->
-              <tr class="cat-row"><td colspan="3">✨ 其他</td></tr>
-              <tr><td>變更自身大小</td><td class="val-no">✗</td><td class="val-yes">✓</td></tr>
-              <tr><td>隱藏裝備</td><td class="val-no">✗</td><td class="val-yes">✓</td></tr>
-              <tr><td>使用顏色代碼</td><td class="val-no">✗</td><td class="val-yes">✓</td></tr>
-            </tbody>
-          </table>
-        </div>
+      <!-- ═══ Hero ═══ -->
+      <div class="mem-hero fade-in">
+        <div class="mem-bubbles" id="memBubbles" aria-hidden="true"></div>
+        <div class="mem-hero-badge">💎 會員方案</div>
+        <h1><span class="mem-wave">🌊</span> 海風會員</h1>
+        <p class="mem-hero-desc">支持海風，獲得專屬回饋。<br>每一份支持都是讓這個家更好的力量。</p>
+        <div class="mem-hero-note">會員特權不影響遊戲公平，僅提供便利與名額擴充</div>
       </div>
 
-      <div class="guide-divider"></div>
+      <!-- ═══ Pricing Cards ═══ -->
+      <div class="content-section">
 
-      <!-- === 贊助流程 === -->
-      <div class="guide-section-card fade-in" style="--card-accent:var(--ocean-blue)">
-        <h2><span class="sec-icon">💰</span> 贊助流程</h2>
-        <p>簡單三步驟，完成贊助。</p>
+        <div class="mem-cards fade-in">
 
-        <div class="process-steps">
-          <div class="process-step">
-            <div class="process-step-num">1</div>
-            <h4>聯繫管理員</h4>
-            <p>至 Discord 私訊管理員或開啟工單</p>
+          <!-- 微風 -->
+          <div class="mem-card mem-card-breeze">
+            <div class="mem-card-icon">🌬️</div>
+            <div class="mem-card-name">微風</div>
+            <div class="mem-card-tier">輕鬆支持</div>
+            <div class="mem-card-price">
+              <div class="mem-card-amount">100</div>
+              <div class="mem-card-unit">冷媒 / 月</div>
+            </div>
+            <div class="mem-card-divider"></div>
+            <ul class="mem-card-perks">
+              <li>領地上限 +10</li>
+              <li>個人傳送點 30 個</li>
+              <li>箱子商店上限 180 個</li>
+              <li>隨地開啟工作台、鐵砧</li>
+              <li>大倉庫 24 格</li>
+              <li>遊戲稱號「海風微風」</li>
+              <li class="disabled">聊天顏色代碼</li>
+              <li class="disabled">自動簽到</li>
+              <li class="disabled">郵件免費</li>
+            </ul>
+            <a href="#" class="mem-card-cta">選擇微風</a>
           </div>
-          <div class="process-step">
-            <div class="process-step-num">2</div>
-            <h4>告知方案</h4>
-            <p>告知想贊助的金額（每月 200 冷媒）</p>
+
+          <!-- 海風（推薦） -->
+          <div class="mem-card mem-card-seawind">
+            <div class="mem-card-tag">✦ 推薦方案</div>
+            <div class="mem-card-icon">🌊</div>
+            <div class="mem-card-name">海風</div>
+            <div class="mem-card-tier">核心會員</div>
+            <div class="mem-card-price">
+              <div class="mem-card-amount">200</div>
+              <div class="mem-card-unit">冷媒 / 月</div>
+            </div>
+            <div class="mem-card-divider"></div>
+            <ul class="mem-card-perks">
+              <li>領地上限 +20</li>
+              <li>個人傳送點 40 個</li>
+              <li>箱子商店上限 250 個</li>
+              <li>隨地開啟界伏盒、工作台、鍛造台、製圖台、紡織機、鐵砧、砂輪</li>
+              <li>大倉庫 32 格、小倉庫 16 格</li>
+              <li>遊戲稱號「海風會員」＋ DC 稱號</li>
+              <li>聊天顏色代碼</li>
+              <li>自動簽到＋風汐錠 ×2</li>
+              <li>郵件免費</li>
+              <li>隨時戴帽子</li>
+              <li>隱藏裝備</li>
+              <li>變更自身大小</li>
+            </ul>
+            <a href="#" class="mem-card-cta">選擇海風</a>
           </div>
-          <div class="process-step">
-            <div class="process-step-num">3</div>
-            <h4>完成付款</h4>
-            <p>線上銀行轉帳或超商中信無卡轉帳</p>
+
+          <!-- 嵐風 -->
+          <div class="mem-card mem-card-storm">
+            <div class="mem-card-icon">🌪️</div>
+            <div class="mem-card-name">嵐風</div>
+            <div class="mem-card-tier">頂級支持</div>
+            <div class="mem-card-price">
+              <div class="mem-card-amount">500</div>
+              <div class="mem-card-unit">冷媒 / 月</div>
+            </div>
+            <div class="mem-card-divider"></div>
+            <ul class="mem-card-perks">
+              <li>領地上限 +40</li>
+              <li>個人傳送點 60 個</li>
+              <li>箱子商店上限 400 個</li>
+              <li>隨地開啟界伏盒、工作台、鍛造台、製圖台、紡織機、鐵砧、砂輪</li>
+              <li>大倉庫 48 格、小倉庫 24 格</li>
+              <li>遊戲稱號「海風嵐風」＋ DC 稱號</li>
+              <li>聊天顏色代碼</li>
+              <li>自動簽到＋風汐錠 ×2</li>
+              <li>郵件免費</li>
+              <li>隨時戴帽子</li>
+              <li>隱藏裝備</li>
+              <li>變更自身大小</li>
+              <li>專屬粒子效果</li>
+              <li>優先客服支援</li>
+            </ul>
+            <a href="#" class="mem-card-cta">選擇嵐風</a>
+          </div>
+
+        </div>
+
+        <div class="guide-divider"></div>
+
+        <!-- ═══ 完整回饋對比 ═══ -->
+        <div class="guide-section-card fade-in" style="--card-accent:var(--sky)">
+          <h2><span class="sec-icon">📊</span> 完整回饋對比</h2>
+          <p>四種身分的所有差異一覽。</p>
+
+          <div class="mem-compare">
+            <table>
+              <thead>
+                <tr>
+                  <th>項目</th>
+                  <th>預設玩家</th>
+                  <th>🌬️ 微風</th>
+                  <th class="col-rec">🌊 海風</th>
+                  <th>🌪️ 嵐風</th>
+                </tr>
+              </thead>
+              <tbody>
+                <!-- 領地 -->
+                <tr class="cat-row"><td colspan="5">🏰 領地</td></tr>
+                <tr><td>主領地</td><td>10+10</td><td class="val-hi val-hi-b">20+20</td><td class="val-hi val-hi-s col-rec">30+30</td><td class="val-hi val-hi-p">50+50</td></tr>
+                <tr><td>子領地</td><td>50+50</td><td class="val-hi val-hi-b">60+60</td><td class="val-hi val-hi-s col-rec">100+100</td><td class="val-hi val-hi-p">150+150</td></tr>
+
+                <!-- 傳送點 -->
+                <tr class="cat-row"><td colspan="5">📍 傳送點</td></tr>
+                <tr><td>個人傳送點</td><td>20</td><td class="val-hi val-hi-b">30</td><td class="val-hi val-hi-s col-rec">40</td><td class="val-hi val-hi-p">60</td></tr>
+                <tr><td>公開傳送點</td><td>4+4</td><td class="val-hi val-hi-b">6+6</td><td class="val-hi val-hi-s col-rec">8+8</td><td class="val-hi val-hi-p">12+12</td></tr>
+
+                <!-- 交易 -->
+                <tr class="cat-row"><td colspan="5">🏪 交易</td></tr>
+                <tr><td>線上商城</td><td>10</td><td class="val-hi val-hi-b">12</td><td class="val-hi val-hi-s col-rec">15</td><td class="val-hi val-hi-p">20</td></tr>
+                <tr><td>箱子商店</td><td>120</td><td class="val-hi val-hi-b">180</td><td class="val-hi val-hi-s col-rec">250</td><td class="val-hi val-hi-p">400</td></tr>
+
+                <!-- 隨地開啟 -->
+                <tr class="cat-row"><td colspan="5">🧰 隨地開啟</td></tr>
+                <tr><td>工作台</td><td class="val-no">✗</td><td class="val-yes">✓</td><td class="val-yes col-rec">✓</td><td class="val-yes">✓</td></tr>
+                <tr><td>鐵砧</td><td class="val-no">✗</td><td class="val-yes">✓</td><td class="val-yes col-rec">✓</td><td class="val-yes">✓</td></tr>
+                <tr><td>界伏盒</td><td class="val-no">✗</td><td class="val-no">✗</td><td class="val-yes col-rec">✓</td><td class="val-yes">✓</td></tr>
+                <tr><td>鍛造台</td><td class="val-no">✗</td><td class="val-no">✗</td><td class="val-yes col-rec">✓</td><td class="val-yes">✓</td></tr>
+                <tr><td>製圖台</td><td class="val-no">✗</td><td class="val-no">✗</td><td class="val-yes col-rec">✓</td><td class="val-yes">✓</td></tr>
+                <tr><td>紡織機</td><td class="val-no">✗</td><td class="val-no">✗</td><td class="val-yes col-rec">✓</td><td class="val-yes">✓</td></tr>
+                <tr><td>砂輪</td><td class="val-no">✗</td><td class="val-no">✗</td><td class="val-yes col-rec">✓</td><td class="val-yes">✓</td></tr>
+
+                <!-- 倉庫 -->
+                <tr class="cat-row"><td colspan="5">📦 倉庫</td></tr>
+                <tr><td>大倉庫</td><td>16</td><td class="val-hi val-hi-b">24</td><td class="val-hi val-hi-s col-rec">32</td><td class="val-hi val-hi-p">48</td></tr>
+                <tr><td>小倉庫</td><td>8</td><td class="val-hi val-hi-b">8</td><td class="val-hi val-hi-s col-rec">16</td><td class="val-hi val-hi-p">24</td></tr>
+
+                <!-- 簽到月曆 -->
+                <tr class="cat-row"><td colspan="5">📅 簽到月曆</td></tr>
+                <tr><td>自動簽到</td><td class="val-no">✗</td><td class="val-no">✗</td><td class="val-yes col-rec">✓</td><td class="val-yes">✓</td></tr>
+                <tr><td>風汐錠</td><td class="val-no">✗</td><td class="val-no">✗</td><td class="val-hi val-hi-s col-rec">×2</td><td class="val-hi val-hi-p">×2</td></tr>
+
+                <!-- 稱號 -->
+                <tr class="cat-row"><td colspan="5">🏷️ 稱號</td></tr>
+                <tr><td>遊戲稱號</td><td>玩家</td><td class="val-hi val-hi-b">海風微風</td><td class="val-hi val-hi-s col-rec">海風會員</td><td class="val-hi val-hi-p">海風嵐風</td></tr>
+                <tr><td>DC 稱號</td><td class="val-no">✗</td><td class="val-no">✗</td><td class="val-yes col-rec">✓</td><td class="val-yes">✓</td></tr>
+
+                <!-- 郵件 -->
+                <tr class="cat-row"><td colspan="5">✉️ 郵件</td></tr>
+                <tr><td>郵件費用</td><td>1 冷媒</td><td>1 冷媒</td><td class="val-yes col-rec">免費</td><td class="val-yes">免費</td></tr>
+
+                <!-- 權限 -->
+                <tr class="cat-row"><td colspan="5">🎩 權限</td></tr>
+                <tr><td>戴帽子</td><td>任務後永久</td><td>任務後永久</td><td class="col-rec">期間可用</td><td>期間可用</td></tr>
+                <tr><td>隱藏裝備</td><td class="val-no">✗</td><td class="val-no">✗</td><td class="val-yes col-rec">✓</td><td class="val-yes">✓</td></tr>
+                <tr><td>變更自身大小</td><td class="val-no">✗</td><td class="val-no">✗</td><td class="val-yes col-rec">✓</td><td class="val-yes">✓</td></tr>
+                <tr><td>使用顏色代碼</td><td class="val-no">✗</td><td class="val-no">✗</td><td class="val-yes col-rec">✓</td><td class="val-yes">✓</td></tr>
+
+                <!-- 嵐風專屬 -->
+                <tr class="cat-row"><td colspan="5">✨ 嵐風專屬</td></tr>
+                <tr><td>專屬粒子效果</td><td class="val-no">✗</td><td class="val-no">✗</td><td class="val-no col-rec">✗</td><td class="val-hi val-hi-p">✓</td></tr>
+                <tr><td>優先客服支援</td><td class="val-no">✗</td><td class="val-no">✗</td><td class="val-no col-rec">✗</td><td class="val-hi val-hi-p">✓</td></tr>
+              </tbody>
+            </table>
           </div>
         </div>
-      </div>
 
-      <div class="guide-divider"></div>
+        <div class="guide-divider"></div>
 
-      <!-- === 注意事項 === -->
-      <div class="guide-section-card fade-in" style="--card-accent:var(--fog)">
-        <h2><span class="sec-icon">📌</span> 注意事項</h2>
+        <!-- ═══ 贊助流程 ═══ -->
+        <div class="guide-section-card fade-in" style="--card-accent:var(--ocean-blue)">
+          <h2><span class="sec-icon">💰</span> 贊助流程</h2>
+          <p>簡單三步驟，完成贊助。</p>
 
-        <div class="rules-notice">
-          <div class="rules-notice-item">
-            <span class="rules-notice-icon">🔗</span>
-            <div class="rules-notice-body">
-              <h4>前置條件</h4>
-              <p>回饋僅給予已綁定帳號的玩家</p>
+          <div class="mem-steps">
+            <div class="mem-step">
+              <div class="mem-step-num">1</div>
+              <h4>聯繫管理員</h4>
+              <p>至 Discord 私訊管理員或開啟工單</p>
             </div>
-          </div>
-          <div class="rules-notice-item">
-            <span class="rules-notice-icon">↩️</span>
-            <div class="rules-notice-body">
-              <h4>退款政策</h4>
-              <p>贊助屬於自願行為，故不予退款</p>
+            <div class="mem-step">
+              <div class="mem-step-num">2</div>
+              <h4>告知方案</h4>
+              <p>告知想贊助的方案與金額</p>
             </div>
-          </div>
-          <div class="rules-notice-item">
-            <span class="rules-notice-icon">🔄</span>
-            <div class="rules-notice-body">
-              <h4>回饋調整</h4>
-              <p>回饋內容可能隨伺服器調整而更動</p>
-            </div>
-          </div>
-          <div class="rules-notice-item">
-            <span class="rules-notice-icon">⚠️</span>
-            <div class="rules-notice-body">
-              <h4>未成年者</h4>
-              <p>須經法定代理人事先同意後方可贊助</p>
-            </div>
-          </div>
-          <div class="rules-notice-item">
-            <span class="rules-notice-icon">🚫</span>
-            <div class="rules-notice-body">
-              <h4>違規者</h4>
-              <p>將失去回饋資格</p>
-            </div>
-          </div>
-          <div class="rules-notice-item">
-            <span class="rules-notice-icon">📋</span>
-            <div class="rules-notice-body">
-              <h4>同意條款</h4>
-              <p>贊助成立後視同同意本注意事項</p>
+            <div class="mem-step">
+              <div class="mem-step-num">3</div>
+              <h4>完成付款</h4>
+              <p>線上銀行轉帳或超商中信無卡轉帳</p>
             </div>
           </div>
         </div>
-      </div>
 
-      <div class="guide-divider"></div>
+        <div class="guide-divider"></div>
 
-      <!-- === 常見問題 === -->
-      <div class="guide-section-card fade-in" style="--card-accent:var(--sky)">
-        <h2><span class="sec-icon">❓</span> 常見問題</h2>
+        <!-- ═══ 注意事項 ═══ -->
+        <div class="guide-section-card fade-in" style="--card-accent:var(--fog)">
+          <h2><span class="sec-icon">📌</span> 注意事項</h2>
 
-        <div class="guide-faq">
-          <div class="guide-faq-item">
-            <button class="guide-faq-q">贊助後多久能收到回饋？</button>
-            <div class="guide-faq-a"><div class="guide-faq-a-inner">完成付款並確認後，管理員會在 24 小時內處理回饋。如遇假日可能順延。</div></div>
-          </div>
-          <div class="guide-faq-item">
-            <button class="guide-faq-q">冷媒和台幣的匯率是多少？</button>
-            <div class="guide-faq-a"><div class="guide-faq-a-inner">1 元台幣 = 1 元冷媒。例如贊助 200 元台幣，即獲得 200 冷媒的會員資格。</div></div>
-          </div>
-          <div class="guide-faq-item">
-            <button class="guide-faq-q">可以用遊戲內貨幣購買會員嗎？</button>
-            <div class="guide-faq-a"><div class="guide-faq-a-inner">不行。會員贊助僅接受台幣付款，不支援遊戲內貨幣兌換。</div></div>
-          </div>
-          <div class="guide-faq-item">
-            <button class="guide-faq-q">停止贊助後回饋會消失嗎？</button>
-            <div class="guide-faq-a"><div class="guide-faq-a-inner">會員資格按月計算，停止贊助後當期回饋仍有效，到期後恢復為預設玩家狀態。</div></div>
-          </div>
-          <div class="guide-faq-item">
-            <button class="guide-faq-q">稱號是永久的嗎？</button>
-            <div class="guide-faq-a"><div class="guide-faq-a-inner">稱號在會員期間有效。停止贊助後，稱號會恢復為預設的「玩家」。</div></div>
+          <div class="mem-notices">
+            <div class="mem-notice">
+              <span class="mem-notice-icon">🔗</span>
+              <div class="mem-notice-body">
+                <h4>前置條件</h4>
+                <p>回饋僅給予已綁定帳號的玩家</p>
+              </div>
+            </div>
+            <div class="mem-notice">
+              <span class="mem-notice-icon">↩️</span>
+              <div class="mem-notice-body">
+                <h4>退款政策</h4>
+                <p>贊助屬於自願行為，故不予退款</p>
+              </div>
+            </div>
+            <div class="mem-notice">
+              <span class="mem-notice-icon">🔄</span>
+              <div class="mem-notice-body">
+                <h4>回饋調整</h4>
+                <p>回饋內容可能隨伺服器調整而更動</p>
+              </div>
+            </div>
+            <div class="mem-notice">
+              <span class="mem-notice-icon">⚠️</span>
+              <div class="mem-notice-body">
+                <h4>未成年者</h4>
+                <p>須經法定代理人事先同意後方可贊助</p>
+              </div>
+            </div>
+            <div class="mem-notice">
+              <span class="mem-notice-icon">🚫</span>
+              <div class="mem-notice-body">
+                <h4>違規者</h4>
+                <p>將失去回饋資格</p>
+              </div>
+            </div>
+            <div class="mem-notice">
+              <span class="mem-notice-icon">📋</span>
+              <div class="mem-notice-body">
+                <h4>同意條款</h4>
+                <p>贊助成立後視同同意本注意事項</p>
+              </div>
+            </div>
           </div>
         </div>
-      </div>
 
-      <div class="guide-divider"></div>
+        <div class="guide-divider"></div>
 
-      <!-- === 相關頁面 === -->
-      <div class="guide-section-card fade-in" style="--card-accent:var(--lavender)">
-        <h2><span class="sec-icon">📖</span> 相關頁面</h2>
+        <!-- ═══ 常見問題 ═══ -->
+        <div class="guide-section-card fade-in" style="--card-accent:var(--sky)">
+          <h2><span class="sec-icon">❓</span> 常見問題</h2>
 
-        <div class="guide-next-grid">
-          <a href="支持須知" class="guide-next-card">
-            <span class="guide-next-icon">📋</span>
-            <div class="guide-next-body">
-              <h4>支持須知</h4>
-              <p>贊助注意事項與聲明</p>
+          <div class="mem-faq">
+            <div class="mem-faq-item">
+              <button class="mem-faq-q">贊助後多久能收到回饋？</button>
+              <div class="mem-faq-a"><div class="mem-faq-a-inner">完成付款並確認後，管理員會在 24 小時內處理回饋。如遇假日可能順延。</div></div>
             </div>
-          </a>
-          <a href="海風指南/綁定帳號" class="guide-next-card">
-            <span class="guide-next-icon">🔗</span>
-            <div class="guide-next-body">
-              <h4>綁定帳號</h4>
-              <p>贊助前請先完成帳號綁定</p>
+            <div class="mem-faq-item">
+              <button class="mem-faq-q">冷媒和台幣的匯率是多少？</button>
+              <div class="mem-faq-a"><div class="mem-faq-a-inner">1 元台幣 = 1 元冷媒。例如贊助 200 元台幣，即獲得 200 冷媒的會員資格。</div></div>
             </div>
-          </a>
-          <a href="社群須知" class="guide-next-card">
-            <span class="guide-next-icon">📋</span>
-            <div class="guide-next-body">
-              <h4>社群須知</h4>
-              <p>了解海風社群規範</p>
+            <div class="mem-faq-item">
+              <button class="mem-faq-q">可以用遊戲內貨幣購買會員嗎？</button>
+              <div class="mem-faq-a"><div class="mem-faq-a-inner">不行。會員贊助僅接受台幣付款，不支援遊戲內貨幣兌換。</div></div>
             </div>
-          </a>
+            <div class="mem-faq-item">
+              <button class="mem-faq-q">停止贊助後回饋會消失嗎？</button>
+              <div class="mem-faq-a"><div class="mem-faq-a-inner">會員資格按月計算，停止贊助後當期回饋仍有效，到期後恢復為預設玩家狀態。</div></div>
+            </div>
+            <div class="mem-faq-item">
+              <button class="mem-faq-q">可以中途升級或降級方案嗎？</button>
+              <div class="mem-faq-a"><div class="mem-faq-a-inner">可以。聯繫管理員即可調整方案，下一期生效。當期已付金額不退差額。</div></div>
+            </div>
+            <div class="mem-faq-item">
+              <button class="mem-faq-q">稱號是永久的嗎？</button>
+              <div class="mem-faq-a"><div class="mem-faq-a-inner">稱號在會員期間有效。停止贊助後，稱號會恢復為預設的「玩家」。</div></div>
+            </div>
+            <div class="mem-faq-item">
+              <button class="mem-faq-q">會員會影響遊戲平衡嗎？</button>
+              <div class="mem-faq-a"><div class="mem-faq-a-inner">不會。會員特權僅限便利性功能（隨地開啟工具、自動簽到等）和名額擴充（領地、傳送點數量），不包含任何戰鬥、資源取得或經驗加成。</div></div>
+            </div>
+          </div>
         </div>
-      </div>
 
+        <div class="guide-divider"></div>
+
+        <!-- ═══ 相關頁面 ═══ -->
+        <div class="guide-section-card fade-in" style="--card-accent:var(--lavender)">
+          <h2><span class="sec-icon">📖</span> 相關頁面</h2>
+
+          <div class="mem-related-grid">
+            <a href="支持須知" class="mem-related-card">
+              <span class="mem-related-icon">📋</span>
+              <div class="mem-related-body">
+                <h4>支持須知</h4>
+                <p>贊助注意事項與聲明</p>
+              </div>
+            </a>
+            <a href="海風指南/綁定帳號" class="mem-related-card">
+              <span class="mem-related-icon">🔗</span>
+              <div class="mem-related-body">
+                <h4>綁定帳號</h4>
+                <p>贊助前請先完成帳號綁定</p>
+              </div>
+            </a>
+            <a href="社群須知" class="mem-related-card">
+              <span class="mem-related-icon">📋</span>
+              <div class="mem-related-body">
+                <h4>社群須知</h4>
+                <p>了解海風社群規範</p>
+              </div>
+            </a>
+          </div>
+        </div>
+
+      </div>
     </div>
   </div>
 
@@ -398,21 +599,41 @@
     </div>
   </footer>
 
-  <!-- Page Loader dismiss -->
+  <!-- Page Loader + Bubbles + FAQ -->
   <script>
   (function(){
+    /* Page Loader */
     const loader = document.getElementById('pageLoader');
-    if (!loader) return;
-    function hideLoader() {
-      loader.classList.add('fade-out');
-      setTimeout(() => loader.remove(), 600);
+    if (loader) {
+      function hideLoader(){loader.classList.add('fade-out');setTimeout(()=>loader.remove(),600)}
+      if(document.readyState==='complete'){hideLoader()}else{window.addEventListener('load',hideLoader)}
+      setTimeout(hideLoader,3000);
     }
-    if (document.readyState === 'complete') { hideLoader(); }
-    else { window.addEventListener('load', hideLoader); }
-    setTimeout(hideLoader, 3000);
+
+    /* Floating Bubbles */
+    const bc = document.getElementById('memBubbles');
+    if (bc) {
+      for (let i = 0; i < 15; i++) {
+        const b = document.createElement('div');
+        b.className = 'mem-bubble';
+        const size = 4 + Math.random() * 12;
+        b.style.cssText = `width:${size}px;height:${size}px;left:${Math.random()*100}%;animation-duration:${6+Math.random()*8}s;animation-delay:${Math.random()*6}s`;
+        bc.appendChild(b);
+      }
+    }
+
+    /* FAQ Toggle */
+    document.querySelectorAll('.mem-faq-q').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const item = btn.parentElement;
+        const wasOpen = item.classList.contains('open');
+        item.parentElement.querySelectorAll('.mem-faq-item.open').forEach(i => i.classList.remove('open'));
+        if (!wasOpen) item.classList.add('open');
+      });
+    });
   })();
   </script>
   <script src="utils.js"></script>
-  <script src="main.js?v=110511c"></script>
+  <script src="main.js?v=110511d"></script>
 </body>
 </html>
