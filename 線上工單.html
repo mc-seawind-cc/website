@@ -613,6 +613,25 @@
       '🏗️ 工作室':'建築工作室、紅石團隊、影音創作者等的合作申請。',
       '📦 其他':'上面沒列到的合作類型，在詳細說明裡告訴我們就好。'
     };
+    const SUB_PLACEHOLDER={
+      '帳號處理':'例：我的帳號昨天突然登不進去，顯示密碼錯誤...',
+      '檢舉':'例：今天下午在分流一，玩家 xxx 無故破壞我的建築...',
+      '提告':'例：我要提告玩家 xxx，事由是偷竊我的箱子裡的物品...',
+      '申訴':'例：我對 #0012 處分有異議，原因是...',
+      '疑慮':'例：我覺得某條規則可能有模糊地帶，想確認一下...',
+      '回報異常':'例：我的箱子裡的東西突然不見了，領地顯示正常...',
+      '規章解釋':'例：請問在別人家附近蓋建築算不算違規？',
+      '領地問題':'例：我的領地「xxx」被人入侵了，權限設定好像失效...',
+      '其他':'例：我想回報一件事...',
+      '應徵':'例：我有兩年管理經驗，之前在 xxx 伺服器當過...',
+      '請願（上訴）':'例：我認為處分過重，理由是...',
+      '提議法律草案':'例：草案：禁止在公共區域放置紅石機關。理由：...',
+      '提議政策':'例：建議增設一個新手專用分流，原因是...',
+      '否決請願':'例：我認為某條規則應該廢除，理由是...',
+      '💬 群組':'例：我們是一個 500 人的 Discord 建築社群...',
+      '🌐 網站':'例：我們是一個 Minecraft Wiki 網站...',
+      '🏗️ 工作室':'例：我們是 3 人的建築工作室，專門做中式建築...',
+      '📦 其他':'例：我們想跟海風合作一個企劃...'}
 
     /* ── Type selection ── */
     typeCards.forEach(function(card){
@@ -660,6 +679,9 @@
         /* Update description based on sub-type */
         if(SUB_DESC[subVal]){
           detailDesc.textContent=SUB_DESC[subVal];
+        }
+        if(SUB_PLACEHOLDER[subVal]){
+          detailInput.placeholder=SUB_PLACEHOLDER[subVal];
         }
 
         if(currentType==='partner'){
@@ -852,6 +874,8 @@
         formResult.textContent='\u2705 工單送出成功！團隊會在一週內處理，請留意 Discord 或 Email 回覆通知。';
         formResult.style.display='block';
         form.reset();
+        detailInput.placeholder='可以說說發生了什麼、怎麼發生的、截圖連結等等...';
+        detailDesc.textContent='把事情的來龍去脈說清楚，越詳細我們越好處理。';
         if(detailCount)detailCount.textContent='0';
         var bc=document.getElementById('briefCount');if(bc)bc.textContent='0';
         var pc=document.getElementById('promoCount');if(pc)pc.textContent='0';
