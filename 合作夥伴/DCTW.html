@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <link rel="canonical" href="https://www.seawind.cc/合作夥伴/DCTW">
+  <meta name="color-scheme" content="dark light">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>合作夥伴 — DCTW — 海風</title>
+  <meta name="description" content="DCTW——全台最完善的 Discord 宣傳平台。穩定運行、介面美觀，提供數據分析與評論系統。">
+  <link rel="icon" href="../assets/img/logo.png">
+  <link rel="apple-touch-icon" href="../assets/img/logo.png">
+  <link rel="manifest" href="../manifest.json">
+  <meta property="og:title" content="合作夥伴 — DCTW — 海風">
+  <meta property="og:description" content="全台最完善的 Discord 宣傳平台。">
+  <meta property="og:image" content="../assets/img/logo.png">
+  <meta property="og:type" content="website">
+  <meta name="theme-color" content="#0d1117">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;800&family=Noto+Serif+TC:wght@700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../style.css?v=110511f">
+  <link rel="stylesheet" href="../music-player.css">
+  <style>
+    .back-link{display:inline-flex;align-items:center;gap:6px;color:var(--fog);font-size:0.85rem;text-decoration:none;margin-bottom:var(--space-lg);position:relative;z-index:10;transition:color 0.2s}
+    .back-link:hover{color:var(--sky)}
+    .pd-hero{text-align:center;padding:var(--space-2xl) var(--space-lg) var(--space-xl);position:relative;overflow:hidden}
+    .pd-hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 70% 60% at 50% 0%,rgba(168,230,207,0.08),transparent 70%);pointer-events:none}
+    .pd-icon{width:80px;height:80px;border-radius:20px;margin:0 auto var(--space-md);overflow:hidden;border:2px solid rgba(255,255,255,0.1);position:relative}
+    .pd-icon img{width:100%;height:100%;object-fit:cover}
+    .pd-hero h1{font-size:clamp(1.6rem,4vw,2.2rem);font-weight:800;margin-bottom:var(--space-sm);position:relative}
+    .pd-subtitle{color:var(--fog);font-size:0.9rem;margin-bottom:var(--space-sm);position:relative}
+    .pd-meta{display:flex;align-items:center;justify-content:center;gap:var(--space-md);color:var(--fog);font-size:0.85rem;position:relative}
+    .pd-meta .partner-badge{font-size:0.72rem}
+
+    .pd-body{max-width:720px;margin:0 auto;padding:0 var(--space-lg) var(--space-2xl)}
+    .pd-body .section-card{background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.06);border-radius:var(--radius-xl);padding:var(--space-xl);margin-bottom:var(--space-lg)}
+    .pd-body .section-card h2{font-size:1.1rem;font-weight:700;color:var(--white);margin-bottom:var(--space-md);display:flex;align-items:center;gap:var(--space-sm)}
+    .pd-body p{color:var(--cloud);font-size:0.95rem;line-height:1.9;margin-bottom:var(--space-md)}
+    .pd-body p:last-child{margin-bottom:0}
+
+    .pd-feature{display:flex;align-items:flex-start;gap:var(--space-md);padding:var(--space-md) 0;border-bottom:1px solid rgba(255,255,255,0.04)}
+    .pd-feature:last-child{border-bottom:none}
+    .pd-feature-icon{font-size:1.2rem;flex-shrink:0;margin-top:2px}
+    .pd-feature-text{flex:1}
+    .pd-feature-title{font-weight:700;color:var(--white);font-size:0.92rem;margin-bottom:4px}
+    .pd-feature-desc{color:var(--fog);font-size:0.88rem;line-height:1.7;margin-bottom:0}
+
+    .pd-highlight{background:linear-gradient(135deg,rgba(157,175,255,0.06),rgba(168,230,207,0.04));border:1px solid rgba(157,175,255,0.12);border-radius:var(--radius-lg);padding:var(--space-lg);text-align:center;margin-bottom:var(--space-lg)}
+    .pd-highlight p{color:var(--sky);font-weight:700;font-size:1rem;margin-bottom:0}
+
+    .pd-links{display:flex;flex-wrap:wrap;gap:var(--space-md);margin-top:var(--space-lg)}
+    .pd-link{display:inline-flex;align-items:center;gap:6px;padding:10px 20px;background:rgba(157,175,255,0.06);border:1px solid rgba(157,175,255,0.12);border-radius:var(--radius-md);color:var(--sky);text-decoration:none;font-weight:600;font-size:0.9rem;transition:all 0.3s var(--ease)}
+    .pd-link:hover{background:rgba(157,175,255,0.12);border-color:rgba(157,175,255,0.25);transform:translateY(-2px)}
+
+    [data-theme="light"] .pd-hero::before{background:radial-gradient(ellipse 70% 60% at 50% 0%,rgba(74,108,247,0.05),transparent 70%)}
+    [data-theme="light"] .pd-body .section-card{background:#fff;border-color:rgba(0,0,0,0.06)}
+    [data-theme="light"] .pd-body .section-card h2{color:var(--cloud)}
+    [data-theme="light"] .pd-body p{color:#4a5568}
+    [data-theme="light"] .pd-feature{border-bottom-color:rgba(0,0,0,0.04)}
+    [data-theme="light"] .pd-feature-title{color:var(--cloud)}
+    [data-theme="light"] .pd-feature-desc{color:#5a6270}
+    [data-theme="light"] .pd-highlight{background:linear-gradient(135deg,rgba(74,108,247,0.04),rgba(88,194,176,0.03));border-color:rgba(74,108,247,0.1)}
+    [data-theme="light"] .pd-highlight p{color:#4a6cf7}
+    [data-theme="light"] .pd-link{background:rgba(74,108,247,0.06);border-color:rgba(74,108,247,0.12);color:#4a6cf7}
+    [data-theme="light"] .pd-link:hover{background:rgba(74,108,247,0.1);border-color:rgba(74,108,247,0.25)}
+
+    @media(max-width:768px){
+      .pd-body{padding:0 var(--space-md) var(--space-xl)}
+      .pd-body .section-card{padding:var(--space-lg)}
+      .pd-links{flex-direction:column}
+    }
+  </style>
+</head>
+<body>
+  <div class="page-loader" id="pageLoader">
+    <span class="loader-logo">海風</span>
+    <div class="loader-wave"></div>
+    <div class="loader-dots"><span></span><span></span><span></span></div>
+  </div>
+
+  <a href="#mainContent" class="skip-link">跳到主要內容</a>
+  <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
+  <div class="bg-atmosphere"></div>
+
+  <nav class="nav">
+    <a href="../首頁" class="nav-logo">
+      <picture><source srcset="../assets/img/logo.webp" type="image/webp"><img src="../assets/img/logo.png" alt="海風" class="nav-logo-img" width="48" height="48" fetchpriority="high"></picture>
+      <span>海風伺服器</span>
+    </a>
+    <div class="nav-right">
+      <ul class="nav-links">
+        <li><a href="../首頁">首頁</a></li>
+        <li><a href="../公告">公告</a></li>
+        <li class="nav-dropdown">
+          <a href="../文化藝廊" class="nav-dropdown-toggle" aria-expanded="false" aria-haspopup="true">關於 <span class="arrow">▾</span></a>
+          <ul class="dropdown-menu">
+            <li><a href="../文化藝廊">文化藝廊</a></li>
+            <li><a href="../活動">活動</a></li>
+            <li><a href="../風景照">風景照</a></li>
+            <li><a href="../歷史館">歷史館</a></li>
+            <li><a href="../海風團隊">海風團隊</a></li>
+          </ul>
+        </li>
+        <li><a href="../海風指南">海風指南</a></li>
+        <li class="nav-dropdown">
+          <a href="../社群須知" class="nav-dropdown-toggle" aria-expanded="false" aria-haspopup="true">須知 <span class="arrow">▾</span></a>
+          <ul class="dropdown-menu">
+            <li><a href="../社群須知">社群須知</a></li>
+            <li><a href="../支持須知">支持須知</a></li>
+            <li><a href="../管理通則">管理通則</a></li>
+            <li><a href="../公務人員須知">公務人員須知</a></li>
+            <li><a href="../設計規範">設計規範</a></li>
+            <li><a href="../服務條款">服務條款</a></li>
+            <li><a href="../隱私權政策">隱私權政策</a></li>
+          </ul>
+        </li>
+        <li><a href="../會員">會員</a></li>
+        <li><a href="../相關連結">相關連結</a></li>
+        <li class="nav-dropdown">
+          <a href="../合作夥伴" class="nav-dropdown-toggle" aria-expanded="false" aria-haspopup="true">資料中心 <span class="arrow">▾</span></a>
+          <ul class="dropdown-menu">
+            <li><a href="../合作夥伴">合作夥伴</a></li>
+            <li><a href="../違規處分">違規處分</a></li>
+          </ul>
+        </li>
+      </ul>
+      <button class="nav-theme" id="themeToggle" aria-label="切換主題"></button>
+      <button class="nav-toggle" aria-label="選單">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <div class="page">
+    <div id="mainContent">
+
+      <div class="pd-hero fade-in">
+        <a href="../合作夥伴" class="back-link">← 返回合作夥伴</a>
+        <div class="pd-icon">
+          <img src="https://dctw.xyz/favicon.ico" alt="DCTW" onerror="this.parentElement.innerHTML='DCTW'">
+        </div>
+        <h1>DCTW</h1>
+        <p class="pd-subtitle">全台最完善的 Discord 宣傳平台</p>
+        <div class="pd-meta">
+          <span class="partner-badge">網站</span>
+        </div>
+      </div>
+
+      <div class="pd-body">
+
+        <!-- 平台特色 -->
+        <div class="section-card fade-in">
+          <h2>🏔️ 平台特色</h2>
+
+          <div class="pd-feature">
+            <span class="pd-feature-icon">🛠️</span>
+            <div class="pd-feature-text">
+              <div class="pd-feature-title">穩定運行，不會再有長時間的下線</div>
+              <div class="pd-feature-desc">不會再有長時間的下線且無人維護，旨在維護您的使用體驗！</div>
+            </div>
+          </div>
+
+          <div class="pd-feature">
+            <span class="pd-feature-icon">🌁</span>
+            <div class="pd-feature-text">
+              <div class="pd-feature-title">介面美觀，唯一支持深淺色背景主題切換</div>
+              <div class="pd-feature-desc">網站不僅介面美觀，還支持 ⚫ 深色 / ⚪ 淺色 顏色主題切換！</div>
+            </div>
+          </div>
+
+          <div class="pd-feature">
+            <span class="pd-feature-icon">🏕️</span>
+            <div class="pd-feature-text">
+              <div class="pd-feature-title">教學完善，擁有最完整與完善的教學文檔</div>
+              <div class="pd-feature-desc">我們擁有最完善的教學文檔，讓您不必耗費極大的心力在研究使用方式上！</div>
+            </div>
+          </div>
+
+          <div class="pd-feature">
+            <span class="pd-feature-icon">🧰</span>
+            <div class="pd-feature-text">
+              <div class="pd-feature-title">多元服務，Discord 工具箱幫您省時省力</div>
+              <div class="pd-feature-desc">我們擁有實用的 Discord 工具箱，透過官方預先製作的小工具來省時省力！</div>
+            </div>
+          </div>
+
+          <div class="pd-feature">
+            <span class="pd-feature-icon">📰</span>
+            <div class="pd-feature-text">
+              <div class="pd-feature-title">類別眾多，無須在汪洋大海上四處奔波</div>
+              <div class="pd-feature-desc">我們擁有 Discord 機器人、伺服器、伺服器模板 等多種資訊可供用戶發掘！</div>
+            </div>
+          </div>
+
+          <div class="pd-feature">
+            <span class="pd-feature-icon">👍</span>
+            <div class="pd-feature-text">
+              <div class="pd-feature-title">更新極快，只需要三天開發者就可以把你要的功能開發出來</div>
+              <div class="pd-feature-desc">跟懶惰說掰掰，在 DCTW 上不存在忽略用戶建議與怠惰開發的可能！</div>
+            </div>
+          </div>
+
+          <div class="pd-feature">
+            <span class="pd-feature-icon">🖇️</span>
+            <div class="pd-feature-text">
+              <div class="pd-feature-title">網址好記，直接搜尋即可進入我們的官方網站</div>
+              <div class="pd-feature-desc">我們的網站簡單又直接 (dctw.xyz)，或是在 Google 上搜尋 dctw 也可以！</div>
+            </div>
+          </div>
+
+          <div class="pd-feature">
+            <span class="pd-feature-icon">📊</span>
+            <div class="pd-feature-text">
+              <div class="pd-feature-title">數據分析，直觀感受機器人或伺服器的成長幅度</div>
+              <div class="pd-feature-desc">我們為機器人、伺服器皆配置了 30 日的數據分析功能，並且開放用戶下載原始數據！</div>
+            </div>
+          </div>
+
+          <div class="pd-feature">
+            <span class="pd-feature-icon">💬</span>
+            <div class="pd-feature-text">
+              <div class="pd-feature-title">評論系統，全台第一個裝配評論系統的宣傳平台</div>
+              <div class="pd-feature-desc">我們為機器人、伺服器、伺服器模板皆配置了評論系統，讓您可以查閱到其他用戶的實時回饋！</div>
+            </div>
+          </div>
+
+          <div class="pd-feature">
+            <span class="pd-feature-icon">🏷️</span>
+            <div class="pd-feature-text">
+              <div class="pd-feature-title">伺服器標籤，全台唯一支持伺服器標籤同步的宣傳平台</div>
+              <div class="pd-feature-desc">我們服務的更新速度極快，不會落下任何一個 Discord 的新功能！</div>
+            </div>
+          </div>
+
+          <div class="pd-feature">
+            <span class="pd-feature-icon">🤖</span>
+            <div class="pd-feature-text">
+              <div class="pd-feature-title">機器人連動，使用指令即可置頂機器人、伺服器、伺服器模板</div>
+              <div class="pd-feature-desc">我們的 DCTW 機器人擁有許多便捷的指令，讓您無須親臨網站也可以置頂或投票！</div>
+            </div>
+          </div>
+
+          <div class="pd-feature">
+            <span class="pd-feature-icon">🔗</span>
+            <div class="pd-feature-text">
+              <div class="pd-feature-title">自訂短連結，跟 Discord 長到不行的邀請連結說掰掰</div>
+              <div class="pd-feature-desc">我們提供短連結轉址服務，提升了排版的簡易度與美觀度！</div>
+            </div>
+          </div>
+
+          <div class="pd-feature">
+            <span class="pd-feature-icon">🔞</span>
+            <div class="pd-feature-text">
+              <div class="pd-feature-title">限制級內容，支持 NSFW 內容分級制度</div>
+              <div class="pd-feature-desc">我們積極推動服務的分級制度，讓敏感資訊不會輕易出現在您眼中！</div>
+            </div>
+          </div>
+
+          <div class="pd-feature">
+            <span class="pd-feature-icon">🚓</span>
+            <div class="pd-feature-text">
+              <div class="pd-feature-title">安全性極高，官方內測人員為您實時把關</div>
+              <div class="pd-feature-desc">我們擁有超級強大的內測人員，盡可能在您發現錯誤前就先抓蟲出來！</div>
+            </div>
+          </div>
+
+          <div class="pd-feature">
+            <span class="pd-feature-icon">🔦</span>
+            <div class="pd-feature-text">
+              <div class="pd-feature-title">關鍵字系統，讓您所上傳的項目可以更快發現潛在客群</div>
+              <div class="pd-feature-desc">我們加強了本服務的搜尋系統，讓用戶可以一搜就找到您的項目！</div>
+            </div>
+          </div>
+
+          <div class="pd-feature">
+            <span class="pd-feature-icon">⚙️</span>
+            <div class="pd-feature-text">
+              <div class="pd-feature-title">多種項目資料，讓您所上傳的項目可以擁有更多完整資訊</div>
+              <div class="pd-feature-desc">從簡單的社群連結到伺服器管理員，亦或是上傳項目截圖，更或是自動同步機器人指令，我們通通都有！</div>
+            </div>
+          </div>
+
+          <div class="pd-feature">
+            <span class="pd-feature-icon">💻</span>
+            <div class="pd-feature-text">
+              <div class="pd-feature-title">API 全面開放，與開發者站在同一陣線</div>
+              <div class="pd-feature-desc">無論是投票或置頂，皆可以透過 DCTW 的官方 API 進行使用！</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 結語 -->
+        <div class="pd-highlight fade-in">
+          <p>🔥 不需要再為低安全性、沒在維護的宣傳平台困擾。DCTW 就是您的全新選擇！</p>
+        </div>
+        <div class="pd-highlight fade-in">
+          <p>🔥 發布至今榮獲眾多好評，用戶的心聲我們都有聽到！</p>
+        </div>
+
+        <!-- 連結 -->
+        <div class="pd-links fade-in">
+          <a href="https://dctw.xyz/" target="_blank" rel="noopener" class="pd-link">🌐 官方網站</a>
+          <a href="https://discord.gg/VDnT3Dyb5A" target="_blank" rel="noopener" class="pd-link">💬 官方群組</a>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <span class="footer-logo">海風伺服器 SeaWind.cc</span>
+        <p class="footer-tagline">在風與海之間，有一個可以長久生存的地方</p>
+      </div>
+      <div class="footer-links-row">
+        <a href="../合作夥伴">合作夥伴</a>
+        <span class="footer-dot">·</span>
+        <a href="../服務條款">服務條款</a>
+        <span class="footer-dot">·</span>
+        <a href="../隱私權政策">隱私權政策</a>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2026 海風伺服器 · 非 Mojang 官方營運 · service@seawind.cc</p>
+      </div>
+      <p class="page-revise">網站最後修改日期 2026.05.11 / 總計修改 <span id="deployCount">—</span> 次</p>
+    </div>
+  </footer>
+
+  <script>
+  (function(){
+    const loader=document.getElementById('pageLoader');
+    if(!loader)return;
+    function hide(){loader.classList.add('fade-out');setTimeout(()=>loader.remove(),600)}
+    if(document.readyState==='complete'){hide()}else{window.addEventListener('load',hide)}
+    setTimeout(hide,3000);
+  })();
+  </script>
+  <script src="../utils.js"></script>
+  <script src="../main.js?v=110511f"></script>
+</body>
+</html>
