@@ -190,12 +190,7 @@ const MUSIC_PLAYER = (() => {
         : '<path d="M9 6.5v11l8.5-5.5z"/>';
     }
     if (btn) btn.classList.toggle('playing', playing);
-    // 面板圖示切換音符 / 播放中波形
-    if (panelIcon) {
-      panelIcon.innerHTML = playing
-        ? '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 12h2m3 0h2m3 0h2m3 0h2"/><path d="M4 8h2m3 0h2m3 0h2m3 0h2"/><path d="M4 16h2m3 0h2m3 0h2m3 0h2"/></svg>'
-        : '<svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 3v10.55A4 4 0 1 0 14 17V7h4V3h-6Z"/></svg>';
-    }
+    // 面板圖示統一音符
   }
 
   // ===== 建立 UI =====
