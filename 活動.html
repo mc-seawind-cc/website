@@ -1005,6 +1005,20 @@
   </footer>
 
   <script src="tips.js" defer></script>
+  <!-- Page Loader dismiss -->
+  <script>
+  (function(){
+    const loader = document.getElementById('pageLoader');
+    if (!loader) return;
+    function hideLoader() {
+      loader.classList.add('fade-out');
+      setTimeout(() => loader.remove(), 600);
+    }
+    if (document.readyState === 'complete') { hideLoader(); }
+    else { window.addEventListener('load', hideLoader); }
+    setTimeout(hideLoader, 3000);
+  })();
+  </script>
   <script src="utils.js"></script>
   <script src="main.js?v=080508a"></script>
   <!-- 活動頁珍奶日倒數計時 + 階段動態更新 (v2) -->

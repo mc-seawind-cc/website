@@ -583,6 +583,20 @@
     <div class="lb-counter" id="lbCounter"></div>
   </div>
 
+  <!-- Page Loader dismiss -->
+  <script>
+  (function(){
+    const loader = document.getElementById('pageLoader');
+    if (!loader) return;
+    function hideLoader() {
+      loader.classList.add('fade-out');
+      setTimeout(() => loader.remove(), 600);
+    }
+    if (document.readyState === 'complete') { hideLoader(); }
+    else { window.addEventListener('load', hideLoader); }
+    setTimeout(hideLoader, 3000);
+  })();
+  </script>
   <script src="utils.js"></script>
   <script src="main.js?v=040504b"></script>
   <!-- Inline announcements (最新 50 則，減少首次載入延遲) -->

@@ -223,6 +223,20 @@
     </div>
   </footer>
 
+  <!-- Page Loader dismiss -->
+  <script>
+  (function(){
+    const loader = document.getElementById('pageLoader');
+    if (!loader) return;
+    function hideLoader() {
+      loader.classList.add('fade-out');
+      setTimeout(() => loader.remove(), 600);
+    }
+    if (document.readyState === 'complete') { hideLoader(); }
+    else { window.addEventListener('load', hideLoader); }
+    setTimeout(hideLoader, 3000);
+  })();
+  </script>
   <script src="utils.js"></script>
   <script src="main.js?v=040504b"></script>
   <script>
