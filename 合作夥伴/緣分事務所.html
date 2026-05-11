@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <link rel="canonical" href="https://www.seawind.cc/合作夥伴/緣分事務所">
+  <meta name="color-scheme" content="dark light">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>海風 — 合作夥伴 — 緣分事務所</title>
+  <meta name="description" content="海風伺服器與緣分事務所的合作夥伴關係介紹。緣分事務所是以交友、娛樂與互動為主的 Discord 社群。">
+  <link rel="icon" href="../assets/img/logo.png">
+  <link rel="apple-touch-icon" href="../assets/img/logo.png">
+  <link rel="manifest" href="../manifest.json">
+  <meta property="og:title" content="海風 — 合作夥伴 — 緣分事務所">
+  <meta property="og:description" content="緣分事務所是以交友、娛樂與互動為主的 Discord 社群。">
+  <meta property="og:image" content="../assets/img/logo.png">
+  <meta property="og:type" content="website">
+  <meta name="theme-color" content="#0d1117">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;800&family=Noto+Serif+TC:wght@700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../style.css?v=110511f">
+  <link rel="stylesheet" href="../music-player.css">
+  <style>
+    .partner-detail-hero{text-align:center;padding:var(--space-2xl) var(--space-lg) var(--space-xl);position:relative;overflow:hidden}
+    .partner-detail-hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 70% 60% at 50% 0%,rgba(224,181,212,0.1),transparent 70%);pointer-events:none}
+    .partner-detail-icon{width:80px;height:80px;border-radius:20px;margin:0 auto var(--space-md);overflow:hidden;border:2px solid rgba(255,255,255,0.1);position:relative}
+    .partner-detail-icon img{width:100%;height:100%;object-fit:cover}
+    .partner-detail-hero h1{font-size:clamp(1.6rem,4vw,2.2rem);font-weight:800;margin-bottom:var(--space-sm);position:relative}
+    .partner-detail-meta{display:flex;align-items:center;justify-content:center;gap:var(--space-md);color:var(--fog);font-size:0.85rem;position:relative}
+    .partner-detail-meta .partner-badge{font-size:0.72rem}
+    .partner-detail-meta .partner-members::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--foam);display:inline-block}
+
+    .partner-detail-body{max-width:720px;margin:0 auto;padding:0 var(--space-lg) var(--space-2xl)}
+    .partner-detail-body .section-card{background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.06);border-radius:var(--radius-xl);padding:var(--space-xl);margin-bottom:var(--space-lg)}
+    .partner-detail-body .section-card h2{font-size:1.1rem;font-weight:700;color:var(--white);margin-bottom:var(--space-md);display:flex;align-items:center;gap:var(--space-sm)}
+    .partner-detail-body .promo-text{color:var(--cloud);font-size:0.95rem;line-height:2;white-space:pre-line}
+    .partner-detail-body .promo-link{display:inline-flex;align-items:center;gap:6px;margin-top:var(--space-lg);padding:10px 20px;background:rgba(88,194,176,0.1);border:1px solid rgba(88,194,176,0.2);border-radius:var(--radius-md);color:var(--foam);text-decoration:none;font-weight:600;font-size:0.9rem;transition:all 0.3s var(--ease)}
+    .partner-detail-body .promo-link:hover{background:rgba(88,194,176,0.15);border-color:rgba(88,194,176,0.35);transform:translateY(-2px)}
+
+    [data-theme="light"] .partner-detail-hero::before{background:radial-gradient(ellipse 70% 60% at 50% 0%,rgba(224,181,212,0.08),transparent 70%)}
+    [data-theme="light"] .partner-detail-body .section-card{background:#fff;border-color:rgba(0,0,0,0.06)}
+    [data-theme="light"] .partner-detail-body .section-card h2{color:var(--cloud)}
+    [data-theme="light"] .partner-detail-body .promo-text{color:#4a5568}
+    [data-theme="light"] .partner-detail-body .promo-link{background:rgba(88,194,176,0.08);border-color:rgba(88,194,176,0.15);color:#2d8a6e}
+
+    @media(max-width:768px){
+      .partner-detail-body{padding:0 var(--space-md) var(--space-xl)}
+      .partner-detail-body .section-card{padding:var(--space-lg)}
+    }
+  </style>
+</head>
+<body>
+  <div class="page-loader" id="pageLoader">
+    <span class="loader-logo">海風</span>
+    <div class="loader-wave"></div>
+    <div class="loader-dots"><span></span><span></span><span></span></div>
+  </div>
+
+  <a href="#mainContent" class="skip-link">跳到主要內容</a>
+  <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
+  <div class="bg-atmosphere"></div>
+
+  <nav class="nav">
+    <a href="../首頁" class="nav-logo">
+      <picture><source srcset="../assets/img/logo.webp" type="image/webp"><img src="../assets/img/logo.png" alt="海風" class="nav-logo-img" width="48" height="48" fetchpriority="high"></picture>
+      <span>海風伺服器</span>
+    </a>
+    <div class="nav-right">
+      <ul class="nav-links">
+        <li><a href="../首頁">首頁</a></li>
+        <li><a href="../公告">公告</a></li>
+        <li class="nav-dropdown">
+          <a href="../文化藝廊" class="nav-dropdown-toggle" aria-expanded="false" aria-haspopup="true">關於 <span class="arrow">▾</span></a>
+          <ul class="dropdown-menu">
+            <li><a href="../文化藝廊">文化藝廊</a></li>
+            <li><a href="../活動">活動</a></li>
+            <li><a href="../風景照">風景照</a></li>
+            <li><a href="../歷史館">歷史館</a></li>
+            <li><a href="../海風團隊">海風團隊</a></li>
+          </ul>
+        </li>
+        <li><a href="../海風指南">海風指南</a></li>
+        <li class="nav-dropdown">
+          <a href="../社群須知" class="nav-dropdown-toggle" aria-expanded="false" aria-haspopup="true">須知 <span class="arrow">▾</span></a>
+          <ul class="dropdown-menu">
+            <li><a href="../社群須知">社群須知</a></li>
+            <li><a href="../支持須知">支持須知</a></li>
+            <li><a href="../管理通則">管理通則</a></li>
+            <li><a href="../公務人員須知">公務人員須知</a></li>
+            <li><a href="../設計規範">設計規範</a></li>
+            <li><a href="../服務條款">服務條款</a></li>
+            <li><a href="../隱私權政策">隱私權政策</a></li>
+          </ul>
+        </li>
+        <li><a href="../會員">會員</a></li>
+        <li><a href="../相關連結">相關連結</a></li>
+        <li class="nav-dropdown">
+          <a href="../合作夥伴" class="nav-dropdown-toggle" aria-expanded="false" aria-haspopup="true">資料中心 <span class="arrow">▾</span></a>
+          <ul class="dropdown-menu">
+            <li><a href="../合作夥伴">合作夥伴</a></li>
+            <li><a href="../違規處分">違規處分</a></li>
+          </ul>
+        </li>
+      </ul>
+      <button class="nav-theme" id="themeToggle" aria-label="切換主題"></button>
+      <button class="nav-toggle" aria-label="選單">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <div class="page">
+    <div id="mainContent">
+
+      <a href="../合作夥伴" class="back-link">← 返回合作夥伴</a>
+
+      <div class="partner-detail-hero fade-in">
+        <div class="partner-detail-icon">
+          <img src="https://cdn.discordapp.com/icons/1476245840304668672/77eae78df413791006a08738e510f3bf.webp?size=128" alt="緣分事務所">
+        </div>
+        <h1>💕 緣分事務所</h1>
+        <div class="partner-detail-meta">
+          <span class="partner-badge">Discord 社群</span>
+          <span class="partner-members" id="memberCount">—</span>
+        </div>
+      </div>
+
+      <div class="partner-detail-body">
+
+        <div class="section-card fade-in">
+          <h2>📢 宣傳文</h2>
+          <div class="promo-text">歡迎進入我們的大家庭
+本群組是一個以交友、娛樂與互動為主的社群
+
+不管你是想找人聊天、打遊戲，還是單純想認識新朋友，都很歡迎加入我們！
+
+群主和管理員也會不定期舉辦小活動、團康、 遊戲，努力讓大家可以更輕鬆地互相認識，我們不定期會開配對活動，用自然的方式使倆人相遇！
+
+然後如果滿500人群主會女裝，
+滿1000人群主女裝跳舞
+滿2000人群主立志成為男娘</div>
+          <a href="https://discord.gg/DZ2QvY4GHd" target="_blank" rel="noopener" class="promo-link">💬 加入緣分事務所 Discord</a>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <span class="footer-logo">海風伺服器 SeaWind.cc</span>
+        <p class="footer-tagline">在風與海之間，有一個可以長久生存的地方</p>
+      </div>
+      <div class="footer-links-row">
+        <a href="../合作夥伴">合作夥伴</a>
+        <span class="footer-dot">·</span>
+        <a href="../服務條款">服務條款</a>
+        <span class="footer-dot">·</span>
+        <a href="../隱私權政策">隱私權政策</a>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2026 海風伺服器 · 非 Mojang 官方營運 · service@seawind.cc</p>
+      </div>
+      <p class="page-revise">網站最後修改日期 2026.05.11 / 總計修改 <span id="deployCount">—</span> 次</p>
+    </div>
+  </footer>
+
+  <script>
+  (function(){
+    const loader=document.getElementById('pageLoader');
+    if(!loader)return;
+    function hide(){loader.classList.add('fade-out');setTimeout(()=>loader.remove(),600)}
+    if(document.readyState==='complete'){hide()}else{window.addEventListener('load',hide)}
+    setTimeout(hide,3000);
+  })();
+  fetch('https://discord.com/api/v10/invites/DZ2QvY4GHd?with_counts=true')
+    .then(r=>r.json())
+    .then(d=>{
+      const el=document.getElementById('memberCount');
+      if(el&&d.approximate_member_count)el.textContent=d.approximate_member_count.toLocaleString()+' 人';
+    }).catch(()=>{});
+  </script>
+  <script src="../utils.js"></script>
+  <script src="../main.js?v=110511f"></script>
+</body>
+</html>
