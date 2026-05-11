@@ -224,7 +224,7 @@
           </div>
 
           <div class="pd-field">
-            <div class="pd-field-label">4. 社群連結</div>
+            <div class="pd-field-label">4. 社群連結 <span class="pd-field-optional">選填</span></div>
             <div class="pd-field-box">Discord 邀請連結、社群頁面等，格式 <code>https://...</code></div>
           </div>
 
@@ -278,15 +278,15 @@
 
             <!-- 3. 文宣 -->
             <div class="pd-form-field">
-              <label class="pd-form-label" for="pf-promo">文宣 <span class="pd-form-optional">長度不拘</span></label>
-              <textarea id="pf-promo" class="pd-form-textarea" placeholder="你的完整宣傳內容，會原封不動放在詳情頁上。可以自由發揮，想寫什麼就寫什麼。" rows="6" maxlength="2000"></textarea>
+              <label class="pd-form-label" for="pf-promo">文宣 <span class="pd-form-required">*</span></label>
+              <textarea id="pf-promo" class="pd-form-textarea" placeholder="你的完整宣傳內容，會原封不動放在詳情頁上。可以自由發揮，想寫什麼就寫什麼。" required rows="6" maxlength="2000"></textarea>
               <div class="pd-form-hint"><span id="promoCount">0</span> / 2000</div>
             </div>
 
             <!-- 4. 社群連結 -->
             <div class="pd-form-field">
-              <label class="pd-form-label" for="pf-invite">社群連結 <span class="pd-form-required">*</span></label>
-              <input type="url" id="pf-invite" class="pd-form-input" placeholder="https://discord.gg/xxxxx 或社群頁面" required>
+              <label class="pd-form-label" for="pf-invite">社群連結 <span class="pd-form-optional">選填</span></label>
+              <input type="url" id="pf-invite" class="pd-form-input" placeholder="https://discord.gg/xxxxx 或社群頁面">
             </div>
 
             <!-- 5. 網站連結 -->
@@ -454,8 +454,8 @@
       const typeChecked=form.querySelector('input[name="pf-type"]:checked');
 
       if(!name.value.trim()){markError(name);valid=false}
-      if(!invite.value.trim()){markError(invite);valid=false}
-      else if(!/^https?:\/\/.+/i.test(invite.value.trim())){
+      if(!promoInput.value.trim()){markError(promoInput);valid=false}
+      if(invite.value.trim()&&!/^https?:\/\/.+/i.test(invite.value.trim())){
         markError(invite);valid=false;
       }
       if(!typeChecked){
@@ -487,7 +487,7 @@
         {name:'文宣',value:(promo.length>1024?promo.substring(0,1021)+'...':promo)||'（未填寫）'}
       ];
       if(brief)fields.splice(1,0,{name:'簡介',value:brief});
-      fields.push({name:'連結',value:invite});
+      fields.push({name:'連結',value:invite||'（未填寫）'});
       if(website)fields.push({name:'網站',value:website});
       fields.push({name:'社群類型',value:type});
 
