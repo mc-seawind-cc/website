@@ -81,9 +81,7 @@
     .partner-card:hover .partner-arrow{background:rgba(157,175,255,0.12);color:var(--sky);transform:translateX(3px)}
 
     /* === Featured Card (larger) === */
-    .partner-card-featured{grid-column:1/-1;padding:var(--space-2xl);gap:var(--space-xl)}
-    .partner-card-featured .partner-icon{width:72px;height:72px;border-radius:18px}
-    .partner-card-featured .partner-name{font-size:1.2rem}
+    .partner-card-featured{grid-column:1/-1;padding:var(--space-xl);gap:var(--space-lg)}
     .partner-card-featured .partner-desc{-webkit-line-clamp:unset}
 
     /* === CTA === */
@@ -109,9 +107,8 @@
     @media(max-width:768px){
       .partner-grid{grid-template-columns:1fr}
       .partner-card{padding:var(--space-lg);gap:var(--space-md)}
-      .partner-card-featured{padding:var(--space-xl)}
+      .partner-card-featured{padding:var(--space-lg)}
       .partner-icon{width:48px;height:48px;border-radius:12px;font-size:0.82rem}
-      .partner-card-featured .partner-icon{width:56px;height:56px;border-radius:14px}
       .partner-hero-stats{gap:var(--space-lg)}
       .partner-hero-stat-num{font-size:1.4rem}
     }
