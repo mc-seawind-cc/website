@@ -209,36 +209,41 @@
           <h2>📝 需要提供的資訊</h2>
 
           <div class="pd-field">
-            <div class="pd-field-label">1. 社群名稱</div>
+            <div class="pd-field-label">1. 名稱</div>
             <div class="pd-field-box">你的社群全名</div>
           </div>
 
           <div class="pd-field">
-            <div class="pd-field-label">2. 文宣 <span class="pd-field-optional">長度不拘</span></div>
-            <div class="pd-field-box">你的完整宣傳內容，會原封不動放在詳情頁上。可以自由發揮，想寫什麼就寫什麼。</div>
-          </div>
-
-          <div class="pd-field">
-            <div class="pd-field-label">3. 簡介 <span class="pd-field-optional">選填，20 字內</span></div>
+            <div class="pd-field-label">2. 簡介 <span class="pd-field-optional">選填，20 字內</span></div>
             <div class="pd-field-box">一句話介紹，會顯示在合作夥伴卡片上。可以自訂，例如「溫馨小社群，你的第二個遊樂天地」。沒寫的話我們會幫你從文宣裡抓重點。</div>
           </div>
 
           <div class="pd-field">
+            <div class="pd-field-label">3. 文宣 <span class="pd-field-optional">長度不拘</span></div>
+            <div class="pd-field-box">你的完整宣傳內容，會原封不動放在詳情頁上。可以自由發揮，想寫什麼就寫什麼。</div>
+          </div>
+
+          <div class="pd-field">
             <div class="pd-field-label">4. 社群連結</div>
-            <div class="pd-field-box">Discord 邀請連結、網站、社群頁面等，格式 <code>https://...</code></div>
+            <div class="pd-field-box">Discord 邀請連結、社群頁面等，格式 <code>https://...</code></div>
           </div>
 
           <div class="pd-field">
-            <div class="pd-field-label">5. 社群圖示 <span class="pd-field-optional">選填</span></div>
-            <div class="pd-field-box">請提供正方形圖片（建議 256×256 以上），格式 PNG 或 WebP。沒有的話，我們會用 Discord 伺服器圖示。</div>
+            <div class="pd-field-label">5. 網站連結 <span class="pd-field-optional">選填</span></div>
+            <div class="pd-field-box">官方網站或相關網頁，格式 <code>https://...</code></div>
           </div>
 
           <div class="pd-field">
-            <div class="pd-field-label">6. 社群類型</div>
+            <div class="pd-field-label">6. 展示照片 <span class="pd-field-optional">選填</span></div>
+            <div class="pd-field-box">請提供圖片（建議 256×256 以上），格式 PNG 或 WebP。會用在合作夥伴卡片或詳情頁展示。</div>
+          </div>
+
+          <div class="pd-field">
+            <div class="pd-field-label">7. 類型</div>
             <div class="pd-type-grid">
               <div class="pd-type-item">💬 群組</div>
               <div class="pd-type-item">🌐 網站</div>
-              <div class="pd-type-item">🎮 Minecraft 伺服器</div>
+              <div class="pd-type-item">🏗️ 工作室</div>
               <div class="pd-type-item">📦 其他</div>
             </div>
           </div>
@@ -258,35 +263,41 @@
           <p>填好下方表單直接送出，我們會在 Discord 收到通知。送出後通常 1–3 天內會上線。</p>
 
           <form id="partnerForm" class="pd-form" novalidate>
-            <!-- 1. 社群名稱 -->
+            <!-- 1. 名稱 -->
             <div class="pd-form-field">
-              <label class="pd-form-label" for="pf-name">社群名稱 <span class="pd-form-required">*</span></label>
+              <label class="pd-form-label" for="pf-name">名稱 <span class="pd-form-required">*</span></label>
               <input type="text" id="pf-name" class="pd-form-input" placeholder="你的社群全名" required maxlength="100">
             </div>
 
-            <!-- 2. 文宣 -->
-            <div class="pd-form-field">
-              <label class="pd-form-label" for="pf-promo">文宣 <span class="pd-form-required">*</span></label>
-              <textarea id="pf-promo" class="pd-form-textarea" placeholder="你的完整宣傳內容，會原封不動放在詳情頁上。可以自由發揮，想寫什麼就寫什麼。" required rows="6" maxlength="2000"></textarea>
-              <div class="pd-form-hint"><span id="promoCount">0</span> / 2000</div>
-            </div>
-
-            <!-- 3. 簡介 -->
+            <!-- 2. 簡介 -->
             <div class="pd-form-field">
               <label class="pd-form-label" for="pf-brief">簡介 <span class="pd-form-optional">選填，20 字內</span></label>
               <input type="text" id="pf-brief" class="pd-form-input" placeholder="一句話介紹，會顯示在合作夥伴卡片上" maxlength="20">
               <div class="pd-form-hint"><span id="briefCount">0</span> / 20</div>
             </div>
 
-            <!-- 4. Discord 邀請連結 -->
+            <!-- 3. 文宣 -->
             <div class="pd-form-field">
-              <label class="pd-form-label" for="pf-invite">社群連結 <span class="pd-form-required">*</span></label>
-              <input type="url" id="pf-invite" class="pd-form-input" placeholder="https://discord.gg/xxxxx 或你的網站" required>
+              <label class="pd-form-label" for="pf-promo">文宣 <span class="pd-form-optional">長度不拘</span></label>
+              <textarea id="pf-promo" class="pd-form-textarea" placeholder="你的完整宣傳內容，會原封不動放在詳情頁上。可以自由發揮，想寫什麼就寫什麼。" rows="6" maxlength="2000"></textarea>
+              <div class="pd-form-hint"><span id="promoCount">0</span> / 2000</div>
             </div>
 
-            <!-- 5. 社群圖示 -->
+            <!-- 4. 社群連結 -->
             <div class="pd-form-field">
-              <label class="pd-form-label" for="pf-icon">社群圖示 <span class="pd-form-optional">選填</span></label>
+              <label class="pd-form-label" for="pf-invite">社群連結 <span class="pd-form-required">*</span></label>
+              <input type="url" id="pf-invite" class="pd-form-input" placeholder="https://discord.gg/xxxxx 或社群頁面" required>
+            </div>
+
+            <!-- 5. 網站連結 -->
+            <div class="pd-form-field">
+              <label class="pd-form-label" for="pf-website">網站連結 <span class="pd-form-optional">選填</span></label>
+              <input type="url" id="pf-website" class="pd-form-input" placeholder="https://你的網站">
+            </div>
+
+            <!-- 6. 展示照片 -->
+            <div class="pd-form-field">
+              <label class="pd-form-label" for="pf-icon">展示照片 <span class="pd-form-optional">選填</span></label>
               <div class="pd-form-upload" id="uploadZone">
                 <input type="file" id="pf-icon" class="pd-form-file" accept="image/png,image/jpeg,image/webp,image/gif">
                 <div class="pd-form-upload-inner" id="uploadInner">
@@ -301,13 +312,13 @@
               </div>
             </div>
 
-            <!-- 6. 社群類型 -->
+            <!-- 7. 類型 -->
             <div class="pd-form-field">
-              <label class="pd-form-label">社群類型 <span class="pd-form-required">*</span></label>
+              <label class="pd-form-label">類型 <span class="pd-form-required">*</span></label>
               <div class="pd-form-radio-grid">
                 <label class="pd-form-radio"><input type="radio" name="pf-type" value="💬 群組" required><span>💬 群組</span></label>
                 <label class="pd-form-radio"><input type="radio" name="pf-type" value="🌐 網站"><span>🌐 網站</span></label>
-                <label class="pd-form-radio"><input type="radio" name="pf-type" value="🎮 Minecraft 伺服器"><span>🎮 Minecraft 伺服器</span></label>
+                <label class="pd-form-radio"><input type="radio" name="pf-type" value="🏗️ 工作室"><span>🏗️ 工作室</span></label>
                 <label class="pd-form-radio"><input type="radio" name="pf-type" value="📦 其他"><span>📦 其他</span></label>
               </div>
             </div>
@@ -443,7 +454,6 @@
       const typeChecked=form.querySelector('input[name="pf-type"]:checked');
 
       if(!name.value.trim()){markError(name);valid=false}
-      if(!promoInput.value.trim()){markError(promoInput);valid=false}
       if(!invite.value.trim()){markError(invite);valid=false}
       else if(!/^https?:\/\/.+/i.test(invite.value.trim())){
         markError(invite);valid=false;
@@ -469,15 +479,17 @@
       var promo=promoInput.value.trim();
       var brief=briefInput.value.trim();
       var invite=document.getElementById('pf-invite').value.trim();
+      var website=document.getElementById('pf-website').value.trim();
       var type=form.querySelector('input[name="pf-type"]:checked').value;
 
       var fields=[
         {name:'名稱',value:name},
-        {name:'文宣',value:promo.length>1024?promo.substring(0,1021)+'...':promo},
-        {name:'連結',value:invite},
-        {name:'社群類型',value:type}
+        {name:'文宣',value:(promo.length>1024?promo.substring(0,1021)+'...':promo)||'（未填寫）'}
       ];
       if(brief)fields.splice(1,0,{name:'簡介',value:brief});
+      fields.push({name:'連結',value:invite});
+      if(website)fields.push({name:'網站',value:website});
+      fields.push({name:'社群類型',value:type});
 
       var embed={
         title:'合作夥伴申請單',
