@@ -763,10 +763,10 @@
         {name:'詳細內容',value:detail.length>1024?detail.substring(0,1021)+'...':detail}
       ];
       if(ign)fields.push({name:'回報者遊戲ID',value:ign,inline:true});
-      if(coord)fields.push({name:'座標',value:coord,inline:true});
-      if(res)fields.push({name:'領地',value:res,inline:true});
+      if(coord)fields.push({name:'座標',value:coord});
+      if(res)fields.push({name:'領地',value:res});
       if(contact)fields.push({name:'聯絡資訊',value:contact,inline:true});
-      if(reportFiles.length>0)fields.push({name:'截圖',value:reportFiles.length+' 張圖片（見附件）',inline:true});
+      if(reportFiles.length>0)fields.push({name:'截圖',value:reportFiles.length+' 張圖片（見下方附件）',inline:true});
 
       /* Partner extra fields */
       if(type==='partner'){
