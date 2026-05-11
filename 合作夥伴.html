@@ -70,6 +70,7 @@
     /* === Info === */
     .partner-info{flex:1;min-width:0}
     .partner-name{font-size:1.05rem;font-weight:700;color:var(--white);margin-bottom:4px;line-height:1.4}
+    .partner-tag{display:inline-block;padding:1px 7px;border-radius:6px;font-size:0.62rem;font-weight:600;background:rgba(157,175,255,0.1);color:var(--sky);border:1px solid rgba(157,175,255,0.15);margin-left:6px;vertical-align:middle;letter-spacing:0.03em}
     .partner-desc{font-size:0.85rem;color:var(--fog);line-height:1.7;margin-bottom:10px;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
     .partner-bottom{display:flex;align-items:center;gap:8px}
     .partner-badge{display:inline-block;padding:3px 10px;border-radius:99px;font-size:0.68rem;font-weight:600;background:rgba(157,175,255,0.06);color:var(--sky);border:1px solid rgba(157,175,255,0.1)}
@@ -99,6 +100,7 @@
     [data-theme="light"] .partner-card{background:#fff;border-color:rgba(0,0,0,0.06)}
     [data-theme="light"] .partner-card:hover{background:#fff;border-color:color-mix(in srgb,var(--card-accent,var(--sky)) 30%,rgba(0,0,0,0.06));box-shadow:0 8px 24px rgba(0,0,0,0.06)}
     [data-theme="light"] .partner-name{color:var(--cloud)}
+    [data-theme="light"] .partner-tag{background:rgba(74,108,247,0.08);color:#4a6cf7;border-color:rgba(74,108,247,0.15)}
     [data-theme="light"] .partner-desc{color:#5a6270}
     [data-theme="light"] .partner-cta{background:linear-gradient(135deg,rgba(157,175,255,0.06),rgba(168,230,207,0.04));border-color:rgba(157,175,255,0.15)}
     [data-theme="light"] .partner-cta h3{color:var(--cloud)}
@@ -236,7 +238,7 @@
         <div class="partner-grid fade-in">
 
           <!-- 緣分事務所（featured） -->
-          <a href="合作夥伴/緣分事務所" class="partner-card partner-card-featured" data-dc="DZ2QvY4GHd" style="--card-accent:var(--rose)">
+          <a href="合作夥伴/緣分事務所" class="partner-card partner-card-featured" data-dc="DZ2QvY4GHd" data-dc-tag="" style="--card-accent:var(--rose)">
             <div class="partner-icon ic-rose"><img src="https://cdn.discordapp.com/icons/1476245840304668672/77eae78df413791006a08738e510f3bf.webp?size=96" alt="緣分事務所" loading="lazy" onerror="this.parentElement.innerHTML='💕'"></div>
             <div class="partner-info">
               <div class="partner-name">緣分事務所</div>
@@ -250,7 +252,7 @@
           </a>
 
           <!-- MCU -->
-          <a href="合作夥伴/麥塊社群聯合會" class="partner-card" data-dc="pDhSkSMC9g" style="--card-accent:var(--sky)">
+          <a href="合作夥伴/麥塊社群聯合會" class="partner-card" data-dc="pDhSkSMC9g" data-dc-tag="" style="--card-accent:var(--sky)">
             <div class="partner-icon ic-sky"><img src="https://cdn.discordapp.com/icons/1345432876749033532/4e7a2df3827946a938db84e83811f1fa.webp?size=96" alt="MCU" loading="lazy" onerror="this.parentElement.innerHTML='MCU'"></div>
             <div class="partner-info">
               <div class="partner-name">MCU — 麥塊社群聯合會</div>
@@ -264,7 +266,7 @@
           </a>
 
           <!-- 洛羽民宿 -->
-          <a href="https://discord.gg/8xddxqMp4F" target="_blank" rel="noopener" class="partner-card" data-dc="8xddxqMp4F" style="--card-accent:var(--sand)">
+          <a href="https://discord.gg/8xddxqMp4F" target="_blank" rel="noopener" class="partner-card" data-dc="8xddxqMp4F" data-dc-tag="" style="--card-accent:var(--sand)">
             <div class="partner-icon ic-sand"><img src="https://cdn.discordapp.com/icons/1165538971091226694/a40dfaeacc00fbf665fd7df83669c4fa.webp?size=96" alt="洛羽民宿" loading="lazy" onerror="this.parentElement.innerHTML='🏠'"></div>
             <div class="partner-info">
               <div class="partner-name">洛羽民宿</div>
@@ -278,7 +280,7 @@
           </a>
 
           <!-- 狐緣神社 -->
-          <a href="https://discord.gg/ar2cmH5wMX" target="_blank" rel="noopener" class="partner-card" data-dc="ar2cmH5wMX" style="--card-accent:var(--blush)">
+          <a href="https://discord.gg/ar2cmH5wMX" target="_blank" rel="noopener" class="partner-card" data-dc="ar2cmH5wMX" data-dc-tag="" style="--card-accent:var(--blush)">
             <div class="partner-icon ic-blush"><img src="https://cdn.discordapp.com/icons/1193449112796942426/84ff5f8075572abf8cf65837614611b8.webp?size=96" alt="狐緣神社" loading="lazy" onerror="this.parentElement.innerHTML='狐'"></div>
             <div class="partner-info">
               <div class="partner-name">狐緣神社 Kitsune Shrine</div>
@@ -292,7 +294,7 @@
           </a>
 
           <!-- 冰鳥國 -->
-          <a href="https://discord.gg/Z2xyR57FPy" target="_blank" rel="noopener" class="partner-card" data-dc="Z2xyR57FPy" style="--card-accent:var(--teal)">
+          <a href="https://discord.gg/Z2xyR57FPy" target="_blank" rel="noopener" class="partner-card" data-dc="Z2xyR57FPy" data-dc-tag="" style="--card-accent:var(--teal)">
             <div class="partner-icon ic-teal"><img src="https://cdn.discordapp.com/icons/1277924819643400233/406f4e3704b903444442eeff5f75f674.webp?size=96" alt="冰鳥國" loading="lazy" onerror="this.parentElement.innerHTML='冰鳥'"></div>
             <div class="partner-info">
               <div class="partner-name">冰鳥國 Ice Bird Country</div>
@@ -306,7 +308,7 @@
           </a>
 
           <!-- 蔚藍幻境 -->
-          <a href="https://discord.gg/Zc7vwaFeyR" target="_blank" rel="noopener" class="partner-card" data-dc="Zc7vwaFeyR" style="--card-accent:var(--lavender)">
+          <a href="https://discord.gg/Zc7vwaFeyR" target="_blank" rel="noopener" class="partner-card" data-dc="Zc7vwaFeyR" data-dc-tag="" style="--card-accent:var(--lavender)">
             <div class="partner-icon ic-lav"><img src="https://cdn.discordapp.com/icons/1456665701849763842/5387e01e2d100c3c1c0aaa1b843dbdd2.webp?size=96" alt="蔚藍幻境" loading="lazy" onerror="this.parentElement.innerHTML='蔚藍'"></div>
             <div class="partner-info">
               <div class="partner-name">蔚藍幻境</div>
@@ -369,7 +371,7 @@
   <script src="utils.js"></script>
   <script src="main.js?v=110511f"></script>
   <script>
-  /* ═══ Discord 即時人數 ═══ */
+  /* ═══ Discord 即時人數 + 標籤 ═══ */
   (function(){
     const cards=document.querySelectorAll('[data-dc]');
     if(!cards.length)return;
@@ -377,6 +379,9 @@
     cards.forEach(card=>{
       const code=card.dataset.dc;
       const el=card.querySelector('[data-dc-count]');
+      const tag=card.dataset.dcTag;
+      const nameEl=card.querySelector('.partner-name');
+      if(tag&&nameEl){const s=document.createElement('span');s.className='partner-tag';s.textContent=tag;nameEl.appendChild(s)}
       if(!el)return;
       fetch('https://discord.com/api/v10/invites/'+code+'?with_counts=true')
         .then(r=>r.json())
