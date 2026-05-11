@@ -224,8 +224,8 @@
           </div>
 
           <div class="pd-field">
-            <div class="pd-field-label">4. Discord 邀請連結</div>
-            <div class="pd-field-box"><code>https://discord.gg/xxxxx</code></div>
+            <div class="pd-field-label">4. 社群連結</div>
+            <div class="pd-field-box">Discord 邀請連結、網站、社群頁面等，格式 <code>https://...</code></div>
           </div>
 
           <div class="pd-field">
@@ -280,8 +280,8 @@
 
             <!-- 4. Discord 邀請連結 -->
             <div class="pd-form-field">
-              <label class="pd-form-label" for="pf-invite">Discord 邀請連結 <span class="pd-form-required">*</span></label>
-              <input type="url" id="pf-invite" class="pd-form-input" placeholder="https://discord.gg/xxxxx" required>
+              <label class="pd-form-label" for="pf-invite">社群連結 <span class="pd-form-required">*</span></label>
+              <input type="url" id="pf-invite" class="pd-form-input" placeholder="https://discord.gg/xxxxx 或你的網站" required>
             </div>
 
             <!-- 5. 社群圖示 -->
@@ -445,7 +445,7 @@
       if(!name.value.trim()){markError(name);valid=false}
       if(!promoInput.value.trim()){markError(promoInput);valid=false}
       if(!invite.value.trim()){markError(invite);valid=false}
-      else if(!/^https?:\/\/(discord\.gg|discord\.com\/invite|discordapp\.com\/invite)\//i.test(invite.value.trim())){
+      else if(!/^https?:\/\/.+/i.test(invite.value.trim())){
         markError(invite);valid=false;
       }
       if(!typeChecked){
@@ -474,7 +474,7 @@
       var fields=[
         {name:'📋 社群名稱',value:name},
         {name:'📝 文宣',value:promo.length>1024?promo.substring(0,1021)+'...':promo},
-        {name:'🔗 Discord 邀請連結',value:invite},
+        {name:'🔗 社群連結',value:invite},
         {name:'🏷️ 社群類型',value:type}
       ];
       if(brief)fields.splice(2,0,{name:'💬 簡介',value:brief});
