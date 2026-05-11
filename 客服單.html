@@ -232,46 +232,46 @@
 
       <div class="pd-hero fade-in">
         <h1>📋 線上工單系統</h1>
-        <p class="pd-hero-desc">回報問題、行政申請、合作夥伴申請——選擇類型，填寫表單，團隊會盡快處理。</p>
+        <p class="pd-hero-desc">遇到問題、有想法想提、還是想跟海風合作？<br>選個類型填一填，我們會盡快處理 ✨</p>
       </div>
 
       <div class="pd-body">
 
         <!-- 提交須知 -->
         <div class="section-card fade-in">
-          <h2>⚠️ 提交須知</h2>
-          <div class="pd-note"><span class="pd-note-icon">📝</span><span><strong>填寫完整</strong>：資訊越詳細，處理速度越快。問題回報請附上截圖或重現步驟。</span></div>
-          <div class="pd-note"><span class="pd-note-icon">⏱️</span><span><strong>處理時間</strong>：通常一週內處理完成，請留意 Discord 或 Email 回覆通知。緊急問題請直接在 Discord 聯繫管理員。</span></div>
-          <div class="pd-note"><span class="pd-note-icon">🔒</span><span><strong>隱私保障</strong>：工單內容僅管理團隊可見，不會公開。</span></div>
+          <h2>💡 小提醒</h2>
+          <div class="pd-note"><span class="pd-note-icon">📝</span><span>寫得越清楚，處理越快。問題回報的話，附個截圖或說明怎麼發生的，我們會超感謝 🙏</span></div>
+          <div class="pd-note"><span class="pd-note-icon">⏱️</span><span>大約一週內會處理好，期間請留意 Discord 或 Email 有沒有我們的回覆。如果是超緊急的事，直接在 Discord 找管理員比較快！</span></div>
+          <div class="pd-note"><span class="pd-note-icon">🔒</span><span>放心，工單內容只有管理團隊看得到，不會外流。</span></div>
         </div>
 
         <!-- 選擇工單類型 -->
         <div class="section-card fade-in">
-          <h2>📌 選擇工單類型</h2>
+          <h2>📌 你要開什麼單？</h2>
           <div class="ticket-type-grid" id="typeGrid">
             <label class="ticket-type-card" data-type="report">
               <input type="radio" name="ticket-category" value="report">
               <span class="ticket-type-icon">🐛</span>
               <div class="ticket-type-name">回報工單</div>
-              <div class="ticket-type-desc">帳號處理、檢舉、<br>提告、申訴、回報異常</div>
+              <div class="ticket-type-desc">遊戲遇到 bug、被人欺負、<br>帳號出問題、規則看不懂</div>
             </label>
             <label class="ticket-type-card" data-type="admin">
               <input type="radio" name="ticket-category" value="admin">
               <span class="ticket-type-icon">📋</span>
               <div class="ticket-type-name">行政工單</div>
-              <div class="ticket-type-desc">應徵、請願上訴、<br>提議法律草案、政策</div>
+              <div class="ticket-type-desc">想加入團隊、對處分上訴、<br>想提新政策或法律草案</div>
             </label>
             <label class="ticket-type-card" data-type="partner">
               <input type="radio" name="ticket-category" value="partner">
               <span class="ticket-type-icon">🤝</span>
               <div class="ticket-type-name">合作工單</div>
-              <div class="ticket-type-desc">合作夥伴申請、<br>社群/工作室合作</div>
+              <div class="ticket-type-desc">你的社群或工作室<br>想跟海風一起搞事</div>
             </label>
           </div>
 
           <!-- 回報工單 — 子類型 -->
           <div class="subtype-wrap" id="subtype-report">
-            <div class="subtype-label">回報類型</div>
+            <div class="subtype-label">哪種狀況？</div>
             <div class="subtype-pills" data-accent="report" id="reportPills">
               <label class="subtype-pill"><input type="radio" name="report-sub" value="帳號處理"><span>帳號處理</span></label>
               <label class="subtype-pill"><input type="radio" name="report-sub" value="檢舉"><span>檢舉</span></label>
@@ -287,7 +287,7 @@
 
           <!-- 行政工單 — 子類型 -->
           <div class="subtype-wrap" id="subtype-admin">
-            <div class="subtype-label">行政類型</div>
+            <div class="subtype-label">你要做什麼？</div>
             <div class="subtype-pills" data-accent="admin" id="adminPills">
               <label class="subtype-pill"><input type="radio" name="admin-sub" value="應徵"><span>應徵</span></label>
               <label class="subtype-pill"><input type="radio" name="admin-sub" value="請願（上訴）"><span>請願（上訴）</span></label>
@@ -299,7 +299,7 @@
 
           <!-- 合作工單 — 子類型 -->
           <div class="subtype-wrap" id="subtype-partner">
-            <div class="subtype-label">合作類型</div>
+            <div class="subtype-label">你的合作類型</div>
             <div class="subtype-pills" data-accent="partner" id="partnerPills">
               <label class="subtype-pill"><input type="radio" name="partner-sub" value="💬 群組"><span>💬 群組</span></label>
               <label class="subtype-pill"><input type="radio" name="partner-sub" value="🌐 網站"><span>🌐 網站</span></label>
@@ -316,67 +316,69 @@
           <form id="ticketForm" class="pd-form" novalidate>
             <!-- 標題 -->
             <div class="pd-form-field">
-              <label class="pd-form-label" for="ticket-title">標題 <span class="pd-form-required">*</span></label>
-              <div class="pd-form-desc">一句話概括你的工單內容。</div>
-              <input type="text" id="ticket-title" class="pd-form-input" placeholder="例：領地權限設定異常" required maxlength="100">
+              <label class="pd-form-label" for="ticket-title">一句話說清楚 <span class="pd-form-required">*</span></label>
+              <div class="pd-form-desc">簡單講一下你遇到的事或想提的建議。</div>
+              <input type="text" id="ticket-title" class="pd-form-input" placeholder="例：領地權限怪怪的" required maxlength="100">
             </div>
 
             <!-- 詳細內容 -->
             <div class="pd-form-field">
-              <label class="pd-form-label" for="ticket-detail">詳細內容 <span class="pd-form-required">*</span></label>
-              <div class="pd-form-desc" id="detailDesc">具體描述問題的狀況、重現步驟，或你的建議內容。</div>
-              <textarea id="ticket-detail" class="pd-form-textarea" placeholder="請詳細描述..." rows="5" required maxlength="2000"></textarea>
+              <label class="pd-form-label" for="ticket-detail">詳細說明 <span class="pd-form-required">*</span></label>
+              <div class="pd-form-desc" id="detailDesc">把事情的來龍去脈說清楚，越詳細我們越好處理。</div>
+              <textarea id="ticket-detail" class="pd-form-textarea" placeholder="可以說說發生了什麼、怎麼發生的、截圖連結等等..." rows="5" required maxlength="2000"></textarea>
               <div class="pd-form-hint"><span id="detailCount">0</span> / 2000</div>
             </div>
 
             <!-- 遊戲 ID -->
             <div class="pd-form-field" id="fieldIGN">
-              <label class="pd-form-label" for="ticket-ign">遊戲 ID <span class="pd-form-optional">選填</span></label>
-              <div class="pd-form-desc">你的 Minecraft 遊戲名稱，方便我們在遊戲內確認狀況。</div>
-              <input type="text" id="ticket-ign" class="pd-form-input" placeholder="你的 Minecraft ID" maxlength="50">
+              <label class="pd-form-label" for="ticket-ign">你的遊戲 ID <span class="pd-form-optional">選填</span></label>
+              <div class="pd-form-desc">讓我們能在遊戲裡找到你，方便確認狀況。</div>
+              <input type="text" id="ticket-ign" class="pd-form-input" placeholder="你在 Minecraft 裡的名字" maxlength="50">
             </div>
 
             <!-- 聯絡方式 -->
             <div class="pd-form-field">
-              <label class="pd-form-label" for="ticket-contact">聯絡方式 <span class="pd-form-optional">選填</span></label>
-              <div class="pd-form-desc">Discord 使用者名稱或 Email，方便我們回覆你。</div>
-              <input type="text" id="ticket-contact" class="pd-form-input" placeholder="例：username 或 email@example.com" maxlength="100">
+              <label class="pd-form-label" for="ticket-contact">怎麼聯絡你 <span class="pd-form-optional">選填</span></label>
+              <div class="pd-form-desc">留個 Discord 名稱或 Email，我們處理好才能通知你。</div>
+              <input type="text" id="ticket-contact" class="pd-form-input" placeholder="例：yourname 或 email@example.com" maxlength="100">
             </div>
 
             <!-- ── 合作工單專屬欄位 ── -->
             <div class="form-section" id="partnerFields">
               <div class="pd-form-field">
-                <label class="pd-form-label" for="pf-name">社群 / 工作室名稱 <span class="pd-form-required">*</span></label>
-                <div class="pd-form-desc">你的社群或工作室全名。</div>
+                <label class="pd-form-label" for="pf-name">你的社群或工作室叫什麼 <span class="pd-form-required">*</span></label>
+                <div class="pd-form-desc">全名就好，讓我們知道要跟誰合作。</div>
                 <input type="text" id="pf-name" class="pd-form-input" placeholder="例：某某建築工作室" maxlength="100">
               </div>
 
               <div class="pd-form-field">
-                <label class="pd-form-label" for="pf-brief">一句話介紹 <span class="pd-form-optional">選填，50 字內</span></label>
+                <label class="pd-form-label" for="pf-brief">一句話介紹自己 <span class="pd-form-optional">選填，50 字內</span></label>
+                <div class="pd-form-desc">會顯示在合作夥伴卡片上，沒寫我們幫你從文宣抓重點。</div>
                 <input type="text" id="pf-brief" class="pd-form-input" placeholder="例：溫馨小社群，專注生存與建築" maxlength="50">
                 <div class="pd-form-hint"><span id="briefCount">0</span> / 50</div>
               </div>
 
               <div class="pd-form-field">
-                <label class="pd-form-label" for="pf-promo">宣傳文 <span class="pd-form-optional">選填</span></label>
-                <div class="pd-form-desc">你的完整宣傳內容，會直接展示在合作夥伴詳情頁。支援 <code>## 標題</code> 分隔區塊。</div>
-                <textarea id="pf-promo" class="pd-form-textarea" placeholder="你的完整宣傳內容..." rows="6" maxlength="2000"></textarea>
+                <label class="pd-form-label" for="pf-promo">你的宣傳文 <span class="pd-form-optional">選填</span></label>
+                <div class="pd-form-desc">會直接放在合作夥伴詳情頁上，可以用 <code>## 標題</code> 分隔不同區塊。沒有就不建詳情頁。</div>
+                <textarea id="pf-promo" class="pd-form-textarea" placeholder="寫寫你們在做什麼、有什麼特色..." rows="6" maxlength="2000"></textarea>
                 <div class="pd-form-hint"><span id="promoCount">0</span> / 2000</div>
               </div>
 
               <div class="pd-form-field">
                 <label class="pd-form-label" for="pf-invite">社群連結 <span class="pd-form-optional">選填</span></label>
-                <input type="url" id="pf-invite" class="pd-form-input" placeholder="https://discord.gg/xxxxx 或社群頁面">
+                <div class="pd-form-desc">Discord 邀請連結、FB 粉專、IG 之類的都行。</div>
+                <input type="url" id="pf-invite" class="pd-form-input" placeholder="https://discord.gg/xxxxx">
               </div>
 
               <div class="pd-form-field">
-                <label class="pd-form-label" for="pf-website">網站連結 <span class="pd-form-optional">選填</span></label>
+                <label class="pd-form-label" for="pf-website">網站 <span class="pd-form-optional">選填</span></label>
                 <input type="url" id="pf-website" class="pd-form-input" placeholder="https://你的網站">
               </div>
 
               <div class="pd-form-field">
                 <label class="pd-form-label">展示照片 <span class="pd-form-optional">選填，最多 10 張</span></label>
-                <div class="pd-form-desc">上傳你的社群/工作室代表性圖片，會展示在合作夥伴詳情頁。</div>
+                <div class="pd-form-desc">放一些代表性的圖片，讓大家認識你們。</div>
                 <div class="pd-form-upload" id="uploadZone">
                   <input type="file" id="pf-files" accept="image/png,image/jpeg,image/webp,image/gif" multiple>
                   <div class="pd-form-upload-icon">📸</div>
@@ -391,17 +393,17 @@
             <!-- ── 行政工單 — 應徵專屬欄位 ── -->
             <div class="form-section" id="applyFields">
               <div class="pd-form-field">
-                <label class="pd-form-label" for="apply-position">應徵職位 <span class="pd-form-required">*</span></label>
+                <label class="pd-form-label" for="apply-position">想應徵什麼職位 <span class="pd-form-required">*</span></label>
                 <select id="apply-position" class="pd-form-select">
-                  <option value="">請選擇...</option>
-                  <option value="行政·策劃">行政 · 策劃</option>
-                  <option value="行政·行政">行政 · 行政</option>
-                  <option value="技術·插件">技術 · 插件</option>
-                  <option value="技術·主機">技術 · 主機</option>
-                  <option value="文化·建築">文化 · 建築</option>
-                  <option value="文化·美術">文化 · 美術</option>
-                  <option value="司法·審判">司法 · 審判</option>
-                  <option value="其他">其他（請在詳細內容說明）</option>
+                  <option value="">選一個...</option>
+                  <option value="行政·策劃">行政 · 策劃（活動設計、數值調整）</option>
+                  <option value="行政·行政">行政 · 行政（社群管理、公告發布）</option>
+                  <option value="技術·插件">技術 · 插件（插件開發、設定調整）</option>
+                  <option value="技術·主機">技術 · 主機（伺服器維護、效能優化）</option>
+                  <option value="文化·建築">文化 · 建築（場景設計、紅石機關）</option>
+                  <option value="文化·美術">文化 · 美術（網站設計、美術素材）</option>
+                  <option value="司法·審判">司法 · 審判（違規審理、規章解釋）</option>
+                  <option value="其他">其他（在詳細說明裡告訴我們）</option>
                 </select>
               </div>
             </div>
@@ -521,17 +523,17 @@
         if(currentType==='partner'){
           partnerFields.classList.add('show');
           document.getElementById('fieldIGN').style.display='none';
-          detailDesc.textContent='介紹你的社群/工作室，以及為什麼想跟海風合作。';
+          detailDesc.textContent='聊聊你們的社群在做什麼，以及為什麼想跟海風合作～';
         }else if(currentType==='admin'){
           var sub=parent.querySelector('input:checked');
           if(sub&&sub.value==='應徵'){
             applyFields.classList.add('show');
           }
           document.getElementById('fieldIGN').style.display='';
-          detailDesc.textContent='詳細說明你的申請內容。應徵請說明你的經驗與動機。';
+          detailDesc.textContent='說說你的想法或計畫。應徵的話，聊聊你的經驗和為什麼想加入～';
         }else{
           document.getElementById('fieldIGN').style.display='';
-          detailDesc.textContent='具體描述問題的狀況、重現步驟，或建議的詳細內容。';
+          detailDesc.textContent='把事情說清楚，怎麼發生的、什麼時候、截圖連結等等，讓我們能快速幫你處理。';
         }
 
         /* Smooth scroll to form */
