@@ -219,8 +219,8 @@
           </div>
 
           <div class="pd-field">
-            <div class="pd-field-label">3. 文宣 <span class="pd-field-optional">長度不拘</span></div>
-            <div class="pd-field-box">你的完整宣傳內容，會原封不動放在詳情頁上。可以自由發揮，想寫什麼就寫什麼。</div>
+            <div class="pd-field-label">3. 文宣 <span class="pd-field-optional">選填，長度不拘</span></div>
+            <div class="pd-field-box">你的完整宣傳內容，會原封不動放在詳情頁上。可以使用 <code>## 標題</code> 分隔卡片區塊（如聯合會詳情頁）。沒有的話就不會建立詳情頁。</div>
           </div>
 
           <div class="pd-field">
@@ -253,8 +253,8 @@
           <h2>⚠️ 注意事項</h2>
           <div class="pd-note"><span class="pd-note-icon">✅</span><span><strong>文宣會原封不動放上去</strong>，不會修改你的內容，請放心書寫。</span></div>
           <div class="pd-note"><span class="pd-note-icon">✅</span><span><strong>簡介可以自訂</strong>，如果沒寫，我們會幫你從文宣裡抓重點。</span></div>
-          <div class="pd-note"><span class="pd-note-icon">🔤</span><span>可以使用一般符號（+×÷=!@#$% 等），但<strong>不支援 Markdown 排版</strong>（如 <code>~~</code>、<code>***</code>、<code>###</code>、縮排等）。</span></div>
-          <div class="pd-note"><span class="pd-note-icon">📄</span><span>如果文宣比較長，我們會幫你做一個專屬詳情頁。</span></div>
+          <div class="pd-note"><span class="pd-note-icon">🔤</span><span>可以使用 <code>## 標題</code> 分隔卡片區塊，其餘排版（如 <code>~~</code>、<code>***</code>、縮排等）不支援。</span></div>
+          <div class="pd-note"><span class="pd-note-icon">📄</span><span>如果有填寫文宣，我們會幫你做一個專屬詳情頁；沒有文宣就不會建立。</span></div>
           <div class="pd-note"><span class="pd-note-icon">⏱️</span><span>提交後請等待確認，通常 1–3 天內會上線。</span></div>
         </div>
 
@@ -278,8 +278,8 @@
 
             <!-- 3. 文宣 -->
             <div class="pd-form-field">
-              <label class="pd-form-label" for="pf-promo">文宣 <span class="pd-form-required">*</span></label>
-              <textarea id="pf-promo" class="pd-form-textarea" placeholder="你的完整宣傳內容，會原封不動放在詳情頁上。可以自由發揮，想寫什麼就寫什麼。" required rows="6" maxlength="2000"></textarea>
+              <label class="pd-form-label" for="pf-promo">文宣 <span class="pd-form-optional">選填</span></label>
+              <textarea id="pf-promo" class="pd-form-textarea" placeholder="你的完整宣傳內容，會原封不動放在詳情頁上。可用 ## 標題 分隔卡片區塊。" rows="6" maxlength="2000"></textarea>
               <div class="pd-form-hint"><span id="promoCount">0</span> / 2000</div>
             </div>
 
@@ -464,7 +464,6 @@
       const typeChecked=form.querySelector('input[name="pf-type"]:checked');
 
       if(!name.value.trim()){markError(name);valid=false}
-      if(!promoInput.value.trim()){markError(promoInput);valid=false}
       if(invite.value.trim()&&!/^https?:\/\/.+/i.test(invite.value.trim())){
         markError(invite);valid=false;
       }
