@@ -399,12 +399,16 @@ const MUSIC_PLAYER = (() => {
     if (saved && saved.videoId) {
       player.setVolume(saved.volume || 15);
       document.getElementById('ftVol').value = saved.volume || 15;
-      if (saved.displayTitle) {
-        document.getElementById('ftTitle').textContent = saved.displayTitle;
+      // 相容舊格式（displayTitle 可能包含 "藝人 — 曲名"）
+      let displayTitle = saved.displayTitle || '';
+      let displayArtist = saved.artist || '';
+      if (displayTitle.includes(' — ') && !displayArtist) {
+        const parts = displayTitle.split(' — ');
+        displayArtist = parts[0];
+        displayTitle = parts.slice(1).join(' — ');
       }
-      if (saved.artist) {
-        document.getElementById('ftArtist').textContent = saved.artist;
-      }
+      document.getElementById('ftTitle').textContent = displayTitle || '音樂';
+      document.getElementById('ftArtist').textContent = displayArtist;
       if (saved.muted === true) { muted = true; try { player.mute(); } catch (e) {} }
       else if (saved.muted === false) { muted = false; try { player.unMute(); } catch (e) {} }
 
