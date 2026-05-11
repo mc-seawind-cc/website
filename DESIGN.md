@@ -1,4 +1,5 @@
 # 海風 SeaWind 網站設計文件
+| 2026.05.11 | 海風網站助手 | **MCU 詳情頁介紹文更新**：使用完整版宣傳文（原封不動）；Discord 連結更新為 pDhSkSMC9g；合作夥伴頁 data-dc 同步 |
 | 2026.05.11 | 海風網站助手 | **合作夥伴詳情頁統一模板**：①MCU 從舊版 article-hero 重寫為 pd-hero/pd-body 模板（與緣分事務所一致）；②統一 CSS class（pd-hero/pd-icon/pd-meta/pd-body/pd-cta）；③badge 統一「群組」；④兩頁都有 page-loader/skip-link/og meta/Discord 即時人數；⑤cache busting 統一 110511f |
 | 2026.05.11 | 海風網站助手 | **合作夥伴資料夾重構**：①新增 `合作夥伴/` 資料夾存放詳情頁（麥塊社群聯合會.html、緣分事務所.html）；②partner-mcu.html 改為 redirect；③合作夥伴卡片 MCU 連結改為 `合作夥伴/麥塊社群聯合會`；④緣分事務所卡片連結改為詳情頁、簡介精簡；⑤詳情頁含即時 Discord 人數 + 宣傳文原封不動展示；⑥提交規範更新（簡介可自訂+宣傳文原封不動+不支援 Markdown）。頁尾日期 → 2026.05.11 |
 | 2026.05.11 | 海風網站助手 | **合作夥伴頁即時人數＋分類重整**：①DCTW 獨佔「社群平台」分類（1 個），MCU 移至「Discord 社群」（6 個）；②Discord invite API 即時抓取人數（`data-dc` 屬性 + fetch），Hero 統計改為總人數動態更新；③修復狐緣神社 icon 404（hash 過期）＋洛羽民宿 icon 更新；④移除靜態人數文字改為即時載入 |
@@ -703,6 +704,7 @@ website/
 ---
 
 ## 10. 修改記錄
+| 2026.05.11 | 海風網站助手 | **MCU 詳情頁介紹文更新**：使用完整版宣傳文（原封不動）；Discord 連結更新為 pDhSkSMC9g |
 | 2026.05.11 | 海風網站助手 | **合作夥伴詳情頁統一模板**：①MCU 從舊版 article-hero 重寫為 pd-hero/pd-body 模板；②統一 CSS class；③badge 統一「群組」；④兩頁都有 page-loader/skip-link/og meta/Discord 即時人數；⑤cache busting 統一 110511f |
 | 2026.05.11 | 海風網站助手 | **合作夥伴資料夾重構**：①新增 `合作夥伴/` 資料夾存放詳情頁（麥塊社群聯合會.html、緣分事務所.html）；②partner-mcu.html 改為 redirect；③合作夥伴卡片 MCU 連結改為 `合作夥伴/麥塊社群聯合會`；④緣分事務所卡片連結改為詳情頁、簡介精簡；⑤詳情頁含即時 Discord 人數 + 宣傳文原封不動展示；⑥提交規範更新（簡介可自訂+宣傳文原封不動+不支援 Markdown）。頁尾日期 → 2026.05.11 |
 
