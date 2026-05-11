@@ -125,9 +125,37 @@ const MUSIC_PLAYER = (() => {
   let isPlaying = false;
   let playerReady = false;
   let titleTimer = null;
+  let progressTimer = null;
   let currentVideoId = '';
   let muted = true;
   let pinned = false;
+  let seeking = false;
+
+  // 播放歷史（支援上一首/下一首）
+  const history = [];
+  let historyIndex = -1;
+
+  function pushHistory(trackIndex) {
+    // 移除歷史中当前位置之後的記錄（新的分支）
+    if (historyIndex < history.length - 1) {
+      history.splice(historyIndex + 1);
+    }
+    history.push(trackIndex);
+    historyIndex = history.length - 1;
+    // 限制歷史長度
+    if (history.length > 50) {
+      history.shift();
+      historyIndex--;
+    }
+  }
+
+  function getRandomTrackIndex() {
+    let idx;
+    do {
+      idx = Math.floor(Math.random() * FALLBACK.length);
+    } while (FALLBACK.length > 1 && history.length > 0 && idx === history[historyIndex]);
+    return idx;
+  }
 
   // ===== 狀態存取 =====
   function saveState() {
@@ -183,14 +211,31 @@ const MUSIC_PLAYER = (() => {
   function updatePlayBtn(playing) {
     const icon = document.getElementById('ftPlayIcon');
     const btn = document.getElementById('ftMusicBtn');
-    const panelIcon = document.getElementById('ftPanelIcon');
     if (icon) {
       icon.innerHTML = playing
         ? '<rect x="7" y="5" width="3.5" height="14" rx="1"/><rect x="13.5" y="5" width="3.5" height="14" rx="1"/>'
         : '<path d="M9 6.5v11l8.5-5.5z"/>';
     }
     if (btn) btn.classList.toggle('playing', playing);
-    // 面板圖示統一音符
+  }
+
+  // ===== 音量圖示（依音量/靜音狀態切換） =====
+  function updateVolumeIcon() {
+    const volIcon = document.getElementById('ftVolIcon');
+    if (!volIcon) return;
+    const vol = player && playerReady && player.getVolume ? player.getVolume() : 15;
+    let svg;
+    if (muted || vol === 0) {
+      // 靜音
+      svg = '<path d="M3 9v6h4l5 5V4L7 9H3z"/><line x1="18" y1="9" x2="22" y2="15" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><line x1="22" y1="9" x2="18" y2="15" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>';
+    } else if (vol < 40) {
+      // 低音量
+      svg = '<path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3A4.5 4.5 0 0 0 14 8.5v7a4.5 4.5 0 0 0 2.5-3.5z"/>';
+    } else {
+      // 正常音量
+      svg = '<path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3A4.5 4.5 0 0 0 14 8.5v7a4.5 4.5 0 0 0 2.5-3.5zM14 3.23v2.06a7 7 0 0 1 0 13.42v2.06A9 9 0 0 0 14 3.23z"/>';
+    }
+    volIcon.innerHTML = svg;
   }
 
   // ===== 建立 UI =====
@@ -215,22 +260,28 @@ const MUSIC_PLAYER = (() => {
                 <div class="ft-panel-artist" id="ftArtist"></div>
               </div>
             </div>
+            <!-- 播放進度條 -->
+            <div class="ft-panel-progress">
+              <span class="ft-progress-time" id="ftCurTime">0:00</span>
+              <input type="range" id="ftProgress" min="0" max="100" value="0" class="ft-progress-slider" aria-label="播放進度">
+              <span class="ft-progress-time" id="ftDurTime">0:00</span>
+            </div>
             <div class="ft-panel-controls">
-              <button class="ft-panel-ctrl" id="ftPrev" title="上一首">
+              <button class="ft-panel-ctrl" id="ftPrev" aria-label="上一首" title="上一首">
                 <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M6 6h2v12H6zm3.5 6 8.5 6V6z"/></svg>
               </button>
-              <button class="ft-panel-ctrl ft-panel-play" id="ftPlay" title="播放／暫停">
+              <button class="ft-panel-ctrl ft-panel-play" id="ftPlay" aria-label="播放／暫停" title="播放／暫停">
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" id="ftPlayIcon"><path d="M9 6.5v11l8.5-5.5z"/></svg>
               </button>
-              <button class="ft-panel-ctrl" id="ftNext" title="下一首">
+              <button class="ft-panel-ctrl" id="ftNext" aria-label="下一首" title="下一首">
                 <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M6 18l8.5-6L6 6v12zM16 6v12h2V6h-2z"/></svg>
               </button>
             </div>
             <div class="ft-panel-vol">
-              <span class="ft-vol-icon">
+              <span class="ft-vol-icon" id="ftVolIcon">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" opacity="0.5"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3A4.5 4.5 0 0 0 14 8.5v7a4.5 4.5 0 0 0 2.5-3.5zM14 3.23v2.06a7 7 0 0 1 0 13.42v2.06A9 9 0 0 0 14 3.23z"/></svg>
               </span>
-              <input type="range" id="ftVol" min="0" max="100" value="15" class="ft-vol-slider">
+              <input type="range" id="ftVol" min="0" max="100" value="15" class="ft-vol-slider" aria-label="音量">
             </div>
             <div class="ft-panel-status">
               <span class="ft-panel-status-text" id="ftStatusText">就緒</span>
@@ -314,13 +365,34 @@ const MUSIC_PLAYER = (() => {
     });
     document.getElementById('ftVol').addEventListener('input', (e) => {
       if (player && playerReady) {
-        player.setVolume(parseInt(e.target.value));
-        if (muted && parseInt(e.target.value) > 0) {
+        const vol = parseInt(e.target.value);
+        player.setVolume(vol);
+        if (muted && vol > 0) {
           muted = false;
           player.unMute();
           localStorage.setItem('sw-music-unmuted', '1');
         }
+        updateVolumeIcon();
       }
+    });
+
+    // 進度條拖曳
+    const progressSlider = document.getElementById('ftProgress');
+    progressSlider.addEventListener('input', (e) => {
+      seeking = true;
+      const pct = parseInt(e.target.value);
+      if (player && playerReady && player.getDuration) {
+        const time = (pct / 100) * player.getDuration();
+        document.getElementById('ftCurTime').textContent = formatTime(time);
+      }
+    });
+    progressSlider.addEventListener('change', (e) => {
+      if (player && playerReady && player.getDuration) {
+        const pct = parseInt(e.target.value);
+        const time = (pct / 100) * player.getDuration();
+        player.seekTo(time, true);
+      }
+      seeking = false;
     });
 
     // 回到頂部
@@ -350,10 +422,15 @@ const MUSIC_PLAYER = (() => {
       muted = false;
       try {
         player.unMute();
-        player.setVolume(15);
-        document.getElementById('ftVol').value = 15;
+        // 保留用戶設定的音量，不強制重設
+        const currentVol = player.getVolume ? player.getVolume() : 15;
+        if (currentVol === 0) {
+          player.setVolume(15);
+          document.getElementById('ftVol').value = 15;
+        }
       } catch (e) {}
       localStorage.setItem('sw-music-unmuted', '1');
+      updateVolumeIcon();
       document.removeEventListener('click', unmuteOnInteract);
       document.removeEventListener('keydown', unmuteOnInteract);
       document.removeEventListener('touchstart', unmuteOnInteract);
@@ -373,6 +450,38 @@ const MUSIC_PLAYER = (() => {
     });
   }
 
+  // ===== 時間格式 =====
+  function formatTime(sec) {
+    if (!sec || isNaN(sec) || !isFinite(sec)) return '0:00';
+    const m = Math.floor(sec / 60);
+    const s = Math.floor(sec % 60);
+    return m + ':' + (s < 10 ? '0' : '') + s;
+  }
+
+  // ===== 進度更新 =====
+  function updateProgress() {
+    if (!player || !playerReady || !player.getCurrentTime || !player.getDuration) return;
+    if (seeking) return;
+    const cur = player.getCurrentTime();
+    const dur = player.getDuration();
+    const pct = dur > 0 ? (cur / dur) * 100 : 0;
+    const slider = document.getElementById('ftProgress');
+    const curEl = document.getElementById('ftCurTime');
+    const durEl = document.getElementById('ftDurTime');
+    if (slider) {
+      slider.value = pct;
+      // 漸層填充進度條
+      slider.style.background = 'linear-gradient(to right, var(--sky) 0%, var(--sky) ' + pct + '%, rgba(157,175,255,0.1) ' + pct + '%, rgba(157,175,255,0.1) 100%)';
+    }
+    if (curEl) curEl.textContent = formatTime(cur);
+    if (durEl) durEl.textContent = formatTime(dur);
+  }
+
+  function startProgressPolling() {
+    if (progressTimer) clearInterval(progressTimer);
+    progressTimer = setInterval(updateProgress, 500);
+  }
+
   // ===== 播放控制 =====
   function togglePlay() {
     if (!player || !playerReady) return;
@@ -383,12 +492,35 @@ const MUSIC_PLAYER = (() => {
 
   function prevTrack() {
     if (!playerReady) return;
-    try { player.loadVideoById(FALLBACK[Math.floor(Math.random() * FALLBACK.length)].id); } catch (e) {}
+    try {
+      if (history.length > 1 && historyIndex > 0) {
+        historyIndex--;
+        const idx = history[historyIndex];
+        player.loadVideoById(FALLBACK[idx].id);
+      } else {
+        // 沒有歷史，隨機一首
+        const idx = getRandomTrackIndex();
+        pushHistory(idx);
+        player.loadVideoById(FALLBACK[idx].id);
+      }
+    } catch (e) {}
   }
 
   function nextTrack() {
     if (!playerReady) return;
-    try { player.loadVideoById(FALLBACK[Math.floor(Math.random() * FALLBACK.length)].id); } catch (e) {}
+    try {
+      if (historyIndex < history.length - 1) {
+        // 前進歷史
+        historyIndex++;
+        const idx = history[historyIndex];
+        player.loadVideoById(FALLBACK[idx].id);
+      } else {
+        // 隨機新曲
+        const idx = getRandomTrackIndex();
+        pushHistory(idx);
+        player.loadVideoById(FALLBACK[idx].id);
+      }
+    } catch (e) {}
   }
 
   // ===== YouTube 回呼 =====
@@ -416,6 +548,10 @@ const MUSIC_PLAYER = (() => {
       if (saved.muted === true) { muted = true; try { player.mute(); } catch (e) {} }
       else if (saved.muted === false) { muted = false; try { player.unMute(); } catch (e) {} }
 
+      // 將恢復的曲目加入歷史
+      const savedIdx = FALLBACK.findIndex(t => t.id === saved.videoId);
+      if (savedIdx !== -1) pushHistory(savedIdx);
+
       player.loadVideoById(saved.videoId);
       const shouldPlay = saved.playing;
       const resumeTime = saved.time || 0;
@@ -426,31 +562,38 @@ const MUSIC_PLAYER = (() => {
         } catch (e) {}
       }, 800);
       startTitlePolling();
+      startProgressPolling();
+      updateVolumeIcon();
       return;
     }
 
     // 無儲存狀態 → 隨機播放
     player.setVolume(15);
     document.getElementById('ftVol').value = 15;
-    const randomTrack = FALLBACK[Math.floor(Math.random() * FALLBACK.length)];
-    document.getElementById('ftTitle').textContent = formatTitle(randomTrack);
-    document.getElementById('ftArtist').textContent = formatArtist(randomTrack);
+    const idx = getRandomTrackIndex();
+    pushHistory(idx);
+    const track = FALLBACK[idx];
+    document.getElementById('ftTitle').textContent = formatTitle(track);
+    document.getElementById('ftArtist').textContent = formatArtist(track);
     try {
-      player.loadVideoById(randomTrack.id);
+      player.loadVideoById(track.id);
       setTimeout(() => player.playVideo(), 600);
     } catch (e) {}
     startTitlePolling();
+    startProgressPolling();
+    updateVolumeIcon();
   }
 
   function onPlayerStateChange(event) {
     const statusEl = document.getElementById('ftStatusText');
     if (event.data === YT.PlayerState.ENDED) {
-      const randomTrack = FALLBACK[Math.floor(Math.random() * FALLBACK.length)];
-      try { player.loadVideoById(randomTrack.id); } catch (e) {}
+      // 自動下一首（走歷史或隨機）
+      nextTrack();
     }
     if (event.data === YT.PlayerState.PLAYING) {
       isPlaying = true;
       updatePlayBtn(true);
+      updateVolumeIcon();
       if (statusEl) statusEl.textContent = '播放中';
       setTimeout(updateDisplay, 300);
     }

@@ -176,6 +176,75 @@
   margin-top: 1px;
 }
 
+/* ── 面板進度條 ── */
+.ft-panel-progress {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 16px 2px;
+}
+
+.ft-progress-time {
+  font-size: 0.6rem;
+  color: var(--fog);
+  opacity: 0.7;
+  min-width: 28px;
+  font-variant-numeric: tabular-nums;
+  user-select: none;
+}
+
+.ft-progress-time:last-child {
+  text-align: right;
+}
+
+.ft-progress-slider {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 3px;
+  border-radius: 2px;
+  background: rgba(157, 175, 255, 0.1);
+  outline: none;
+  cursor: pointer;
+  flex: 1;
+}
+
+.ft-progress-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--sky);
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 0 6px rgba(157, 175, 255, 0.3);
+  transition: box-shadow 0.2s, transform 0.2s;
+  opacity: 0;
+}
+
+.ft-progress-slider:hover::-webkit-slider-thumb {
+  opacity: 1;
+  box-shadow: 0 0 10px rgba(157, 175, 255, 0.5);
+  transform: scale(1.2);
+}
+
+.ft-progress-slider::-moz-range-thumb {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--sky);
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 0 6px rgba(157, 175, 255, 0.3);
+}
+
+.ft-progress-slider::-moz-range-track {
+  height: 3px;
+  border-radius: 2px;
+  background: rgba(157, 175, 255, 0.1);
+  border: none;
+}
+
 /* ── 面板控制區 ── */
 .ft-panel-controls {
   display: flex;
@@ -455,6 +524,22 @@
   color: #9ca3af;
 }
 
+[data-theme="light"] .ft-progress-time {
+  color: #9ca3af;
+}
+
+[data-theme="light"] .ft-progress-slider {
+  background: rgba(0, 0, 0, 0.08);
+}
+
+[data-theme="light"] .ft-progress-slider::-webkit-slider-thumb {
+  background: #4a6cf7;
+}
+
+[data-theme="light"] .ft-progress-slider::-moz-range-thumb {
+  background: #4a6cf7;
+}
+
 [data-theme="light"] .ft-muted-hint {
   background: #ffffff;
   border-color: rgba(0, 0, 0, 0.08);
@@ -475,17 +560,42 @@
     height: 44px;
   }
 
-  .ft-panel {
-    width: 230px;
+  /* 手機：面板改為向上展開，避免左側溢出 */
+  .ft-panel-wrap {
+    position: absolute;
+    bottom: 54px;
+    right: -6px;
   }
 
-  .ft-panel-wrap {
-    right: 52px;
+  .ft-panel {
+    width: 260px;
+    transform-origin: bottom right;
+  }
+
+  .ft-panel.hover,
+  .ft-panel.pinned {
+    transform: translateY(0) scale(1);
   }
 
   .ft-muted-hint {
     bottom: 72px;
     right: 14px;
     font-size: 0.72rem;
+  }
+
+  .ft-progress-slider::-webkit-slider-thumb {
+    opacity: 1; /* 觸控設備顯示 thumb */
+    width: 14px;
+    height: 14px;
+  }
+
+  .ft-progress-slider::-moz-range-thumb {
+    width: 14px;
+    height: 14px;
+  }
+
+  .ft-vol-slider::-webkit-slider-thumb {
+    width: 16px;
+    height: 16px;
   }
 }
