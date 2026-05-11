@@ -472,19 +472,19 @@
       var type=form.querySelector('input[name="pf-type"]:checked').value;
 
       var fields=[
-        {name:'📋 社群名稱',value:name},
-        {name:'📝 文宣',value:promo.length>1024?promo.substring(0,1021)+'...':promo},
-        {name:'🔗 社群連結',value:invite},
-        {name:'🏷️ 社群類型',value:type}
+        {name:'名稱',value:name},
+        {name:'文宣',value:promo.length>1024?promo.substring(0,1021)+'...':promo},
+        {name:'連結',value:invite},
+        {name:'社群類型',value:type}
       ];
-      if(brief)fields.splice(2,0,{name:'💬 簡介',value:brief});
+      if(brief)fields.splice(1,0,{name:'簡介',value:brief});
 
       var embed={
-        title:'🆕 新合作夥伴申請',
+        title:'合作夥伴申請單',
         color:0x9dafff,
         fields:fields,
         timestamp:new Date().toISOString(),
-        footer:{text:'海風合作夥伴提交系統'}
+        footer:{text:'海風線上工單系統'}
       };
 
       if(selectedFile){
