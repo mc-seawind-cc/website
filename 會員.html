@@ -5,24 +5,131 @@
   <link rel="canonical" href="https://www.seawind.cc/會員">
   <meta name="color-scheme" content="dark light">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>海風 — 會員</title>
-  <meta name="description" content="海風伺服器會員專屬特權與功能。">
+  <title>會員 — 海風</title>
+  <meta name="description" content="海風會員贊助方案：青會員 100 / 藍會員 200 / 紫會員 500 冷媒每月。領地擴充、傳送點、隨地開啟工具、自動簽到等專屬回饋。">
   <link rel="icon" href="assets/img/logo.png">
   <link rel="apple-touch-icon" href="assets/img/logo.png">
   <link rel="manifest" href="manifest.json">
   <meta property="og:title" content="會員 — 海風">
-  <meta property="og:description" content="海風伺服器會員專屬特權與功能。">
+  <meta property="og:description" content="海風會員贊助方案：三階會員、累計里程碑、連續加成、推薦獎勵。">
   <meta property="og:image" content="assets/img/logo.png">
   <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:image" content="assets/img/logo.png">
+  <meta name="theme-color" content="#0d1117">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;800&family=Noto+Serif+TC:wght@700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=060506a">
+  <link rel="stylesheet" href="style.css?v=110511b">
   <link rel="stylesheet" href="music-player.css">
+  <style>
+    /* === Sponsor Tiers === */
+    .sponsor-tiers{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--space-lg);margin:var(--space-xl)0}
+    .sponsor-tier{position:relative;padding:var(--space-xl)var(--space-lg);border-radius:var(--radius-xl);border:1px solid rgba(255,255,255,0.06);background:rgba(255,255,255,0.02);text-align:center;transition:all var(--duration)var(--ease);overflow:hidden}
+    .sponsor-tier::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:var(--tier-color);opacity:0.7}
+    .sponsor-tier:hover{transform:translateY(-6px);border-color:var(--tier-color);box-shadow:0 8px 32px rgba(0,0,0,0.2)}
+    .sponsor-tier-badge{display:inline-block;padding:4px 14px;border-radius:20px;font-size:0.75rem;font-weight:700;letter-spacing:0.05em;margin-bottom:var(--space-md);background:var(--tier-color);color:var(--deep)}
+    .sponsor-tier-name{font-size:1.4rem;font-weight:800;color:var(--white);margin-bottom:4px}
+    .sponsor-tier-price{font-size:2rem;font-weight:800;color:var(--tier-color);margin-bottom:var(--space-sm)}
+    .sponsor-tier-price span{font-size:0.85rem;font-weight:500;color:var(--fog)}
+    .sponsor-tier-desc{font-size:0.82rem;color:var(--fog);line-height:1.6;margin-bottom:var(--space-md)}
+    .sponsor-tier-features{list-style:none;padding:0;margin:0;text-align:left}
+    .sponsor-tier-features li{padding:6px 0;font-size:0.85rem;color:var(--cloud);display:flex;align-items:center;gap:8px;border-bottom:1px solid rgba(255,255,255,0.04)}
+    .sponsor-tier-features li:last-child{border-bottom:none}
+    .sponsor-tier-features .check{color:var(--foam);font-weight:700}
+    .sponsor-tier-features .cross{color:var(--fog);opacity:0.4}
+    .sponsor-tier.highlight{border-color:rgba(74,141,255,0.3);background:rgba(74,141,255,0.04)}
+    .sponsor-tier.highlight::before{opacity:1}
+    .sponsor-tier.highlight .sponsor-tier-badge{box-shadow:0 2px 12px rgba(74,141,255,0.3)}
+    [data-theme="light"] .sponsor-tier{background:#fff;border-color:rgba(0,0,0,0.06)}
+    [data-theme="light"] .sponsor-tier:hover{box-shadow:0 8px 24px rgba(0,0,0,0.08)}
+    [data-theme="light"] .sponsor-tier.highlight{background:rgba(87,138,255,0.03);border-color:rgba(87,138,255,0.2)}
+    [data-theme="light"] .sponsor-tier-features li{border-bottom-color:rgba(0,0,0,0.04)}
+
+    /* === Comparison Table === */
+    .compare-wrap{overflow-x:auto;margin:var(--space-lg)0;-webkit-overflow-scrolling:touch}
+    .compare-table{width:100%;border-collapse:separate;border-spacing:0;font-size:0.85rem}
+    .compare-table thead th{position:sticky;top:0;background:var(--drift);color:var(--white);font-weight:700;padding:12px 14px;text-align:center;border-bottom:2px solid rgba(157,175,255,0.15);white-space:nowrap;z-index:1}
+    .compare-table thead th:first-child{text-align:left;min-width:120px}
+    .compare-table thead th.col-default{color:var(--fog)}
+    .compare-table thead th.col-cyan{color:#4dd0e1}
+    .compare-table thead th.col-blue{color:#578aff}
+    .compare-table thead th.col-purple{color:#ab72f9}
+    .compare-table tbody td{padding:10px 14px;text-align:center;border-bottom:1px solid rgba(255,255,255,0.04);color:var(--cloud);vertical-align:middle}
+    .compare-table tbody td:first-child{text-align:left;font-weight:600;color:var(--white)}
+    .compare-table tbody tr:hover td{background:rgba(157,175,255,0.03)}
+    .compare-table .cat-row td{background:rgba(157,175,255,0.05);font-weight:700;color:var(--sky);font-size:0.8rem;text-transform:uppercase;letter-spacing:0.06em;padding:8px 14px}
+    .compare-table .val-yes{color:var(--foam);font-weight:700}
+    .compare-table .val-no{color:var(--fog);opacity:0.35}
+    .compare-table .val-highlight{color:var(--sky);font-weight:700}
+    [data-theme="light"] .compare-table thead th{background:#f0f2f5;border-bottom-color:rgba(74,108,247,0.15)}
+    [data-theme="light"] .compare-table tbody td{border-bottom-color:rgba(0,0,0,0.04)}
+    [data-theme="light"] .compare-table tbody tr:hover td{background:rgba(74,108,247,0.03)}
+    [data-theme="light"] .compare-table .cat-row td{background:rgba(74,108,247,0.05)}
+
+    /* === Milestone / Bonus Cards === */
+    .milestone-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:var(--space-md);margin:var(--space-lg)0}
+    .milestone-card{position:relative;padding:var(--space-lg);background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.06);border-radius:var(--radius-lg);text-align:center;transition:all var(--duration)var(--ease);overflow:hidden}
+    .milestone-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--ms-color,var(--sand));opacity:0.5}
+    .milestone-card:hover{transform:translateY(-3px);border-color:rgba(255,255,255,0.12)}
+    .milestone-amount{font-size:1.4rem;font-weight:800;color:var(--ms-color,var(--sand));margin-bottom:4px}
+    .milestone-amount span{font-size:0.7rem;font-weight:500;color:var(--fog)}
+    .milestone-title{font-size:0.95rem;font-weight:700;color:var(--white);margin-bottom:4px}
+    .milestone-reward{font-size:0.78rem;color:var(--fog);line-height:1.5}
+    [data-theme="light"] .milestone-card{background:#fff;border-color:rgba(0,0,0,0.06)}
+    [data-theme="light"] .milestone-card:hover{box-shadow:0 4px 12px rgba(0,0,0,0.06)}
+
+    /* === Bonus Grid === */
+    .bonus-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:var(--space-md);margin:var(--space-lg)0}
+    .bonus-card{padding:var(--space-lg);background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.06);border-radius:var(--radius-lg);transition:all var(--duration)var(--ease)}
+    .bonus-card:hover{transform:translateY(-3px);border-color:rgba(255,255,255,0.12)}
+    .bonus-card-header{display:flex;align-items:center;gap:8px;margin-bottom:var(--space-sm)}
+    .bonus-card-icon{font-size:1.3rem}
+    .bonus-card-title{font-size:0.92rem;font-weight:700;color:var(--white)}
+    .bonus-card-desc{font-size:0.82rem;color:var(--fog);line-height:1.6}
+    .bonus-card-tag{display:inline-block;margin-top:8px;padding:2px 10px;border-radius:12px;font-size:0.72rem;font-weight:600;background:rgba(168,230,207,0.12);color:var(--foam)}
+    [data-theme="light"] .bonus-card{background:#fff;border-color:rgba(0,0,0,0.06)}
+    [data-theme="light"] .bonus-card:hover{box-shadow:0 4px 12px rgba(0,0,0,0.06)}
+
+    /* === Process Steps === */
+    .process-steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:var(--space-md);margin:var(--space-lg)0}
+    .process-step{position:relative;padding:var(--space-lg);background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.06);border-radius:var(--radius-lg);text-align:center;transition:all var(--duration)var(--ease)}
+    .process-step::before{content:'';position:absolute;top:0;left:0;width:3px;height:100%;background:var(--sky);opacity:0.3;border-radius:var(--radius-lg) 0 0 var(--radius-lg)}
+    .process-step:hover{transform:translateY(-3px);border-color:rgba(157,175,255,0.15)}
+    .process-step-num{display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;background:var(--sky);color:var(--deep);border-radius:50%;font-size:0.85rem;font-weight:800;margin-bottom:var(--space-sm)}
+    .process-step h4{font-size:0.92rem;font-weight:700;color:var(--white);margin-bottom:4px}
+    .process-step p{font-size:0.82rem;color:var(--fog);line-height:1.6;margin:0}
+    [data-theme="light"] .process-step{background:#fff;border-color:rgba(0,0,0,0.06)}
+    [data-theme="light"] .process-step:hover{box-shadow:0 4px 12px rgba(0,0,0,0.06)}
+
+    /* === Rules Notice === */
+    .rules-notice{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:var(--space-md);margin:var(--space-lg)0}
+    .rules-notice-item{display:flex;align-items:flex-start;gap:var(--space-md);padding:var(--space-md)var(--space-lg);background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.06);border-radius:var(--radius-md);transition:all var(--duration)var(--ease)}
+    .rules-notice-item:hover{background:rgba(255,255,255,0.04);border-color:rgba(157,175,255,0.12)}
+    .rules-notice-icon{font-size:1.2rem;flex-shrink:0;margin-top:2px}
+    .rules-notice-body{min-width:0}
+    .rules-notice-body h4{font-size:0.88rem;font-weight:700;color:var(--white);margin-bottom:2px}
+    .rules-notice-body p{font-size:0.8rem;color:var(--fog);line-height:1.5;margin:0}
+    [data-theme="light"] .rules-notice-item{background:#fff;border-color:rgba(0,0,0,0.06)}
+
+    /* === Responsive === */
+    @media(max-width:768px){
+      .sponsor-tiers{grid-template-columns:1fr;gap:var(--space-md)}
+      .compare-table{font-size:0.78rem}
+      .compare-table thead th,.compare-table tbody td{padding:8px 10px}
+      .milestone-grid{grid-template-columns:repeat(2,1fr)}
+    }
+  </style>
 </head>
 <body>
-  <a href="#mainContent" class="skip-link">跳到主要內容</a>
+  <!-- Page Loader -->
+  <div class="page-loader" id="pageLoader">
+    <span class="loader-logo">海風</span>
+    <div class="loader-wave"></div>
+    <div class="loader-dots"><span></span><span></span><span></span></div>
+  </div>
 
+  <a href="#mainContent" class="skip-link">跳到主要內容</a>
   <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
   <div class="bg-atmosphere"></div>
 
@@ -58,7 +165,7 @@
             <li><a href="隱私權政策">隱私權政策</a></li>
           </ul>
         </li>
-        <li><a href="會員">會員</a></li>
+        <li><a href="會員" class="active">會員</a></li>
         <li><a href="相關連結">相關連結</a></li>
         <li class="nav-dropdown">
           <a href="合作夥伴" class="nav-dropdown-toggle" aria-expanded="false" aria-haspopup="true">資料中心 <span class="arrow">▾</span></a>
@@ -76,93 +183,407 @@
   </nav>
 
   <div class="page">
-    <div id="mainContent" class="page-hero fade-in">      <h1>會員</h1>
-      <p class="section-desc"><span class="typewriter" data-text="海風伺服器會員專屬特權與功能。"></span></p>    </div>
+    <div id="mainContent" class="guide-v2-hero fade-in">
+      <h1>🌊 海風會員</h1>
+      <p class="section-desc">支持海風，獲得專屬回饋。每一份贊助都是讓這個家更好的力量。</p>
+      <div class="guide-quick-stats">
+        <div class="guide-qs-item"><span class="guide-qs-icon">🟢</span> 青會員 <span class="guide-qs-val">100</span>/月</div>
+        <div class="guide-qs-item"><span class="guide-qs-icon">🔵</span> 藍會員 <span class="guide-qs-val">200</span>/月</div>
+        <div class="guide-qs-item"><span class="guide-qs-icon">🟣</span> 紫會員 <span class="guide-qs-val">500</span>/月</div>
+      </div>
+    </div>
 
     <div class="content-section">
 
-      <div class="rules-intro fade-in">
-        <p>會員為海風伺服器的付費支援方案，享有額外功能與特權。</p>
-        <p>贊助相關注意事項請詳閱<a href="支持須知">支持須知</a>。</p>
+      <!-- === 方案總覽 === -->
+      <div class="guide-section-card fade-in" style="--card-accent:var(--sky)">
+        <h2><span class="sec-icon">💎</span> 方案總覽</h2>
+        <p>三種會員階級，用顏色區分。階級越高，回饋越多。</p>
+
+        <div class="sponsor-tiers">
+          <!-- 青會員 -->
+          <div class="sponsor-tier" style="--tier-color:#4dd0e1">
+            <div class="sponsor-tier-badge">青會員</div>
+            <div class="sponsor-tier-price">100 <span>冷媒/月</span></div>
+            <p class="sponsor-tier-desc">輕度支持，享受基礎加成</p>
+            <ul class="sponsor-tier-features">
+              <li><span class="check">✓</span> 海風會員稱號（青色）</li>
+              <li><span class="check">✓</span> 領地擴充（主 15+15 / 子 75+75）</li>
+              <li><span class="check">✓</span> 傳送點增加（個人 30 / 公開 6+6）</li>
+              <li><span class="check">✓</span> 商店擴充（線上 12 / 箱子 180）</li>
+              <li><span class="check">✓</span> 倉庫擴充（大 24 / 小 12）</li>
+              <li><span class="cross">—</span> 隨地開啟工具</li>
+              <li><span class="cross">—</span> 自動簽到 / 風汐錠</li>
+            </ul>
+          </div>
+
+          <!-- 藍會員 -->
+          <div class="sponsor-tier highlight" style="--tier-color:#578aff">
+            <div class="sponsor-tier-badge">藍會員</div>
+            <div class="sponsor-tier-price">200 <span>冷媒/月</span></div>
+            <p class="sponsor-tier-desc">核心會員，全面升級體驗</p>
+            <ul class="sponsor-tier-features">
+              <li><span class="check">✓</span> 海風會員稱號（藍色）</li>
+              <li><span class="check">✓</span> 領地擴充（主 20+20 / 子 100+100）</li>
+              <li><span class="check">✓</span> 傳送點增加（個人 40 / 公開 8+8）</li>
+              <li><span class="check">✓</span> 商店擴充（線上 15 / 箱子 250）</li>
+              <li><span class="check">✓</span> 倉庫擴充（大 32 / 小 16）</li>
+              <li><span class="check">✓</span> 隨地開啟 7 種工具</li>
+              <li><span class="check">✓</span> 自動簽到 + 風汐錠 ×2</li>
+              <li><span class="check">✓</span> 郵件免費</li>
+              <li><span class="check">✓</span> 變更大小 / 隱藏裝備 / 顏色代碼</li>
+            </ul>
+          </div>
+
+          <!-- 紫會員 -->
+          <div class="sponsor-tier" style="--tier-color:#ab72f9">
+            <div class="sponsor-tier-badge">紫會員</div>
+            <div class="sponsor-tier-price">500 <span>冷媒/月</span></div>
+            <p class="sponsor-tier-desc">重度支持，守護海風的夥伴</p>
+            <ul class="sponsor-tier-features">
+              <li><span class="check">✓</span> 海風會員稱號（紫色）</li>
+              <li><span class="check">✓</span> 領地擴充（主 25+25 / 子 125+125）</li>
+              <li><span class="check">✓</span> 傳送點增加（個人 50 / 公開 10+10）</li>
+              <li><span class="check">✓</span> 商店擴充（線上 20 / 箱子 350）</li>
+              <li><span class="check">✓</span> 倉庫擴充（大 40 / 小 20）</li>
+              <li><span class="check">✓</span> 隨地開啟 7 種工具</li>
+              <li><span class="check">✓</span> 自動簽到 + 風汐錠 ×3</li>
+              <li><span class="check">✓</span> 郵件免費</li>
+              <li><span class="check">✓</span> 變更大小 / 隱藏裝備 / 顏色代碼</li>
+              <li><span class="check">✓</span> 專屬粒子效果</li>
+              <li><span class="check">✓</span> 稱號自訂顏色</li>
+            </ul>
+          </div>
+        </div>
       </div>
 
-      <div class="lore-block fade-in">
-        <h3>⭐ 會員方案</h3>
-        <div class="rules-table-wrap">
-          <table class="rules-table">
-            <thead><tr><th>項目</th><th>說明</th></tr></thead>
+      <div class="guide-divider"></div>
+
+      <!-- === 完整回饋對比 === -->
+      <div class="guide-section-card fade-in" style="--card-accent:var(--foam)">
+        <h2><span class="sec-icon">📊</span> 完整回饋對比</h2>
+        <p>所有會員回饋一覽，與預設玩家的差異。</p>
+
+        <div class="compare-wrap">
+          <table class="compare-table">
+            <thead>
+              <tr>
+                <th>項目</th>
+                <th class="col-default">預設</th>
+                <th class="col-cyan">🟢 青</th>
+                <th class="col-blue">🔵 藍</th>
+                <th class="col-purple">🟣 紫</th>
+              </tr>
+            </thead>
             <tbody>
-              <tr><td>💰 價格</td><td><strong>200 元</strong></td></tr>
-              <tr><td>🏷️ 遊戲稱號</td><td>遊戲內名稱將變更為「海風會員」</td></tr>
-              <tr><td>📅 有效期限</td><td>一個月（自動展延）</td></tr>
+              <!-- 稱號 -->
+              <tr class="cat-row"><td colspan="5">🏷️ 稱號</td></tr>
+              <tr><td>遊戲稱號</td><td>玩家</td><td class="val-highlight">海風會員</td><td class="val-highlight">海風會員</td><td class="val-highlight">海風會員</td></tr>
+              <tr><td>稱號顏色</td><td class="val-no">—</td><td style="color:#4dd0e1;font-weight:700">青色</td><td style="color:#578aff;font-weight:700">藍色</td><td style="color:#ab72f9;font-weight:700">紫色</td></tr>
+              <tr><td>DC 稱號</td><td class="val-no">✗</td><td class="val-yes">✓</td><td class="val-yes">✓</td><td class="val-yes">✓</td></tr>
+
+              <!-- 領地 -->
+              <tr class="cat-row"><td colspan="5">🏰 領地</td></tr>
+              <tr><td>主領地</td><td>10+10</td><td>15+15</td><td>20+20</td><td class="val-highlight">25+25</td></tr>
+              <tr><td>子領地</td><td>50+50</td><td>75+75</td><td>100+100</td><td class="val-highlight">125+125</td></tr>
+
+              <!-- 傳送點 -->
+              <tr class="cat-row"><td colspan="5">📍 傳送點</td></tr>
+              <tr><td>個人傳送點</td><td>20</td><td>30</td><td>40</td><td class="val-highlight">50</td></tr>
+              <tr><td>公開傳送點</td><td>4+4</td><td>6+6</td><td>8+8</td><td class="val-highlight">10+10</td></tr>
+
+              <!-- 商店 -->
+              <tr class="cat-row"><td colspan="5">🏪 商店</td></tr>
+              <tr><td>線上商城</td><td>10</td><td>12</td><td>15</td><td class="val-highlight">20</td></tr>
+              <tr><td>箱子商店</td><td>120</td><td>180</td><td>250</td><td class="val-highlight">350</td></tr>
+
+              <!-- 隨地開 -->
+              <tr class="cat-row"><td colspan="5">🧰 隨地開啟</td></tr>
+              <tr><td>界伏盒</td><td class="val-no">✗</td><td class="val-no">✗</td><td class="val-yes">✓</td><td class="val-yes">✓</td></tr>
+              <tr><td>工作台</td><td class="val-no">✗</td><td class="val-no">✗</td><td class="val-yes">✓</td><td class="val-yes">✓</td></tr>
+              <tr><td>鍛造台</td><td class="val-no">✗</td><td class="val-no">✗</td><td class="val-yes">✓</td><td class="val-yes">✓</td></tr>
+              <tr><td>製圖台</td><td class="val-no">✗</td><td class="val-no">✗</td><td class="val-yes">✓</td><td class="val-yes">✓</td></tr>
+              <tr><td>紡織機</td><td class="val-no">✗</td><td class="val-no">✗</td><td class="val-yes">✓</td><td class="val-yes">✓</td></tr>
+              <tr><td>鐵砧</td><td class="val-no">✗</td><td class="val-no">✗</td><td class="val-yes">✓</td><td class="val-yes">✓</td></tr>
+              <tr><td>砂輪</td><td class="val-no">✗</td><td class="val-no">✗</td><td class="val-yes">✓</td><td class="val-yes">✓</td></tr>
+
+              <!-- 簽到 -->
+              <tr class="cat-row"><td colspan="5">📅 簽到</td></tr>
+              <tr><td>自動簽到</td><td class="val-no">✗</td><td class="val-no">✗</td><td class="val-yes">✓</td><td class="val-yes">✓</td></tr>
+              <tr><td>風汐錠</td><td class="val-no">✗</td><td class="val-no">✗</td><td>×2</td><td class="val-highlight">×3</td></tr>
+
+              <!-- 郵件 -->
+              <tr class="cat-row"><td colspan="5">✉️ 郵件</td></tr>
+              <tr><td>郵寄費用</td><td>1</td><td>1</td><td class="val-yes">免費</td><td class="val-yes">免費</td></tr>
+
+              <!-- 倉庫 -->
+              <tr class="cat-row"><td colspan="5">📦 倉庫</td></tr>
+              <tr><td>大倉庫</td><td>16</td><td>24</td><td>32</td><td class="val-highlight">40</td></tr>
+              <tr><td>小倉庫</td><td>8</td><td>12</td><td>16</td><td class="val-highlight">20</td></tr>
+
+              <!-- 權限 -->
+              <tr class="cat-row"><td colspan="5">🎩 權限</td></tr>
+              <tr><td>戴帽子</td><td>任務後永久</td><td>任務後永久</td><td>期間可用</td><td>期間可用</td></tr>
+
+              <!-- 其他 -->
+              <tr class="cat-row"><td colspan="5">✨ 其他</td></tr>
+              <tr><td>變更大小</td><td class="val-no">✗</td><td class="val-no">✗</td><td class="val-yes">✓</td><td class="val-yes">✓</td></tr>
+              <tr><td>隱藏裝備</td><td class="val-no">✗</td><td class="val-no">✗</td><td class="val-yes">✓</td><td class="val-yes">✓</td></tr>
+              <tr><td>顏色代碼</td><td class="val-no">✗</td><td class="val-no">✗</td><td class="val-yes">✓</td><td class="val-yes">✓</td></tr>
+
+              <!-- 紫專屬 -->
+              <tr class="cat-row"><td colspan="5">👑 紫會員專屬</td></tr>
+              <tr><td>專屬粒子效果</td><td class="val-no">✗</td><td class="val-no">✗</td><td class="val-no">✗</td><td class="val-yes">✓</td></tr>
+              <tr><td>稱號自訂顏色</td><td class="val-no">✗</td><td class="val-no">✗</td><td class="val-no">✗</td><td class="val-yes">✓</td></tr>
             </tbody>
           </table>
         </div>
-        <p style="color:var(--fog);font-size:0.85rem;margin-top:8px;">有意申請請至 <a href="https://discord.gg/HdS2HrJEH7" target="_blank" rel="noopener">Discord</a> 開啟行政客服單。</p>
       </div>
 
-      <div class="member-table-wrap fade-in">
-        <table class="member-table">
-          <thead>
-            <tr>
-              <th>功能</th>
-              <th>預設玩家</th>
-              <th>會員</th>
-            </tr>
-          </thead>
-          <tbody>
-            <!-- 領地 -->
-            <tr class="member-cat"><td colspan="3">🛡️ 領地</td></tr>
-            <tr><td>主領地</td><td>10+10</td><td>20+20</td></tr>
-            <tr><td>子領地</td><td>50+50</td><td>100+100</td></tr>
-            <!-- 傳送點 -->
-            <tr class="member-cat"><td colspan="3">🚀 傳送點</td></tr>
-            <tr><td>個人</td><td>20</td><td>40</td></tr>
-            <tr><td>公開</td><td>4+4</td><td>8+8</td></tr>
-            <!-- 交易 -->
-            <tr class="member-cat"><td colspan="3">💰 交易</td></tr>
-            <tr><td>線上商城</td><td>10</td><td>15</td></tr>
-            <tr><td>箱子商店</td><td>120</td><td>250</td></tr>
-            <!-- 隨地開 -->
-            <tr class="member-cat"><td colspan="3">📦 隨地開</td></tr>
-            <tr><td>界伏盒</td><td>✕</td><td>✔</td></tr>
-            <tr><td>工作台</td><td>✕</td><td>✔</td></tr>
-            <tr><td>鍛造台</td><td>✕</td><td>✔</td></tr>
-            <tr><td>製圖台</td><td>✕</td><td>✔</td></tr>
-            <tr><td>紡織機</td><td>✕</td><td>✔</td></tr>
-            <tr><td>鐵砧</td><td>✕</td><td>✔</td></tr>
-            <tr><td>砂輪</td><td>✕</td><td>✔</td></tr>
-            <!-- 簽到月曆 -->
-            <tr class="member-cat"><td colspan="3">📅 簽到月曆</td></tr>
-            <tr><td>自動簽到</td><td>✕</td><td>✔</td></tr>
-            <tr><td>風汐錠</td><td>✕</td><td>2</td></tr>
-            <!-- 稱號 -->
-            <tr class="member-cat"><td colspan="3">🏷️ 稱號</td></tr>
-            <tr><td>遊戲稱號</td><td>玩家</td><td>海風會員</td></tr>
-            <tr><td>DC 稱號</td><td>✕</td><td>海風會員</td></tr>
-            <!-- 郵件 -->
-            <tr class="member-cat"><td colspan="3">✉️ 郵件</td></tr>
-            <tr><td>費用</td><td>1</td><td>✕</td></tr>
-            <!-- 倉庫 -->
-            <tr class="member-cat"><td colspan="3">🎒 倉庫</td></tr>
-            <tr><td>大倉庫</td><td>16</td><td>32</td></tr>
-            <tr><td>小倉庫</td><td>8</td><td>16</td></tr>
-            <!-- 權限 -->
-            <tr class="member-cat"><td colspan="3">👑 權限</td></tr>
-            <tr><td>戴帽子</td><td>完成任務後（永久可使用）</td><td>給予使用權（期間可使用）</td></tr>
-            <!-- 其他 -->
-            <tr class="member-cat"><td colspan="3">✨ 其他</td></tr>
-            <tr><td>變更自身大小</td><td>✕</td><td>✔</td></tr>
-            <tr><td>隱藏裝備</td><td>✕</td><td>✔</td></tr>
-            <tr><td>使用顏色代碼</td><td>✕</td><td>✔</td></tr>
-          </tbody>
-        </table>
+      <div class="guide-divider"></div>
+
+      <!-- === 累計里程碑 === -->
+      <div class="guide-section-card fade-in" style="--card-accent:var(--sand)">
+        <h2><span class="sec-icon">🏆</span> 累計贊助里程碑</h2>
+        <p>長期支持海風的夥伴，累計金額達標即可獲得專屬稱號與獎勵。</p>
+
+        <div class="milestone-grid">
+          <div class="milestone-card" style="--ms-color:#c9d1d9">
+            <div class="milestone-amount">200 <span>冷媒</span></div>
+            <div class="milestone-title">初次支持</div>
+            <div class="milestone-reward">紀念稱號</div>
+          </div>
+          <div class="milestone-card" style="--ms-color:#deac80">
+            <div class="milestone-amount">500 <span>冷媒</span></div>
+            <div class="milestone-title">海風常客</div>
+            <div class="milestone-reward">稱號 + 風幣 5,000</div>
+          </div>
+          <div class="milestone-card" style="--ms-color:#a8e6cf">
+            <div class="milestone-amount">1,000 <span>冷媒</span></div>
+            <div class="milestone-title">海風家人</div>
+            <div class="milestone-reward">稱號 + 冷媒 100</div>
+          </div>
+          <div class="milestone-card" style="--ms-color:#9dafff">
+            <div class="milestone-amount">2,000 <span>冷媒</span></div>
+            <div class="milestone-title">海風元老</div>
+            <div class="milestone-reward">稱號 + 專屬紀念物品</div>
+          </div>
+          <div class="milestone-card" style="--ms-color:#ab72f9">
+            <div class="milestone-amount">5,000 <span>冷媒</span></div>
+            <div class="milestone-title">海風傳說</div>
+            <div class="milestone-reward">稱號 + 文化藝廊永久銘刻</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="guide-divider"></div>
+
+      <!-- === 連續贊助加成 === -->
+      <div class="guide-section-card fade-in" style="--card-accent:var(--lavender)">
+        <h2><span class="sec-icon">🔥</span> 連續贊助加成</h2>
+        <p>持續支持的夥伴，每個月都能獲得額外加成。</p>
+
+        <div class="bonus-grid">
+          <div class="bonus-card">
+            <div class="bonus-card-header">
+              <span class="bonus-card-icon">🌱</span>
+              <span class="bonus-card-title">3 個月</span>
+            </div>
+            <p class="bonus-card-desc">風汐錠每個月額外 +1</p>
+            <span class="bonus-card-tag">起步加成</span>
+          </div>
+          <div class="bonus-card">
+            <div class="bonus-card-header">
+              <span class="bonus-card-icon">🔥</span>
+              <span class="bonus-card-title">6 個月</span>
+            </div>
+            <p class="bonus-card-desc">風汐錠每個月額外 +2</p>
+            <span class="bonus-card-tag">海風鐵粉 稱號</span>
+          </div>
+          <div class="bonus-card">
+            <div class="bonus-card-header">
+              <span class="bonus-card-icon">👑</span>
+              <span class="bonus-card-title">12 個月</span>
+            </div>
+            <p class="bonus-card-desc">風汐錠每個月額外 +3 + 紀念品</p>
+            <span class="bonus-card-tag">海風見證 稱號</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="guide-divider"></div>
+
+      <!-- === 推薦獎勵 === -->
+      <div class="guide-section-card fade-in" style="--card-accent:var(--foam)">
+        <h2><span class="sec-icon">🤝</span> 推薦獎勵</h2>
+        <p>邀請朋友一起支持海風，雙方都能獲得獎勵。</p>
+
+        <div class="bonus-grid">
+          <div class="bonus-card">
+            <div class="bonus-card-header">
+              <span class="bonus-card-icon">🎁</span>
+              <span class="bonus-card-title">推薦 1 人</span>
+            </div>
+            <p class="bonus-card-desc">推薦人與被推薦人各獲得 50 冷媒</p>
+          </div>
+          <div class="bonus-card">
+            <div class="bonus-card-header">
+              <span class="bonus-card-icon">🏅</span>
+              <span class="bonus-card-title">累計推薦 3 人</span>
+            </div>
+            <p class="bonus-card-desc">獲得專屬稱號「人脈王」</p>
+            <span class="bonus-card-tag">限定稱號</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="guide-divider"></div>
+
+      <!-- === 贊助流程 === -->
+      <div class="guide-section-card fade-in" style="--card-accent:var(--ocean-blue)">
+        <h2><span class="sec-icon">💰</span> 贊助流程</h2>
+        <p>簡單三步驟，完成贊助。</p>
+
+        <div class="process-steps">
+          <div class="process-step">
+            <div class="process-step-num">1</div>
+            <h4>聯繫管理員</h4>
+            <p>至 Discord 私訊管理員或開啟工單</p>
+          </div>
+          <div class="process-step">
+            <div class="process-step-num">2</div>
+            <h4>選擇方案</h4>
+            <p>告知想贊助的等級與金額</p>
+          </div>
+          <div class="process-step">
+            <div class="process-step-num">3</div>
+            <h4>完成付款</h4>
+            <p>線上銀行轉帳或超商中信無卡轉帳</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="guide-divider"></div>
+
+      <!-- === 注意事項 === -->
+      <div class="guide-section-card fade-in" style="--card-accent:var(--fog)">
+        <h2><span class="sec-icon">📌</span> 注意事項</h2>
+
+        <div class="rules-notice">
+          <div class="rules-notice-item">
+            <span class="rules-notice-icon">🔗</span>
+            <div class="rules-notice-body">
+              <h4>前置條件</h4>
+              <p>回饋僅給予已綁定帳號的玩家</p>
+            </div>
+          </div>
+          <div class="rules-notice-item">
+            <span class="rules-notice-icon">↩️</span>
+            <div class="rules-notice-body">
+              <h4>退款政策</h4>
+              <p>贊助屬於自願行為，故不予退款</p>
+            </div>
+          </div>
+          <div class="rules-notice-item">
+            <span class="rules-notice-icon">🔄</span>
+            <div class="rules-notice-body">
+              <h4>回饋調整</h4>
+              <p>回饋內容可能隨伺服器調整而更動</p>
+            </div>
+          </div>
+          <div class="rules-notice-item">
+            <span class="rules-notice-icon">⚠️</span>
+            <div class="rules-notice-body">
+              <h4>未成年者</h4>
+              <p>須經法定代理人事先同意後方可贊助</p>
+            </div>
+          </div>
+          <div class="rules-notice-item">
+            <span class="rules-notice-icon">🚫</span>
+            <div class="rules-notice-body">
+              <h4>違規者</h4>
+              <p>將失去回饋資格</p>
+            </div>
+          </div>
+          <div class="rules-notice-item">
+            <span class="rules-notice-icon">📋</span>
+            <div class="rules-notice-body">
+              <h4>同意條款</h4>
+              <p>贊助成立後視同同意本注意事項</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="guide-divider"></div>
+
+      <!-- === 常見問題 === -->
+      <div class="guide-section-card fade-in" style="--card-accent:var(--sky)">
+        <h2><span class="sec-icon">❓</span> 常見問題</h2>
+
+        <div class="guide-faq">
+          <div class="guide-faq-item">
+            <button class="guide-faq-q">贊助後多久能收到回饋？</button>
+            <div class="guide-faq-a"><div class="guide-faq-a-inner">完成付款並確認後，管理員會在 24 小時內處理回饋。如遇假日可能順延。</div></div>
+          </div>
+          <div class="guide-faq-item">
+            <button class="guide-faq-q">可以中途升級或降級嗎？</button>
+            <div class="guide-faq-a"><div class="guide-faq-a-inner">可以。聯繫管理員即可調整等級，差額按比例計算。降級則在當期結束後生效。</div></div>
+          </div>
+          <div class="guide-faq-item">
+            <button class="guide-faq-q">稱號顏色是永久的嗎？</button>
+            <div class="guide-faq-a"><div class="guide-faq-a-inner">稱號在會員期間有效。停止贊助後，稱號會恢復為預設的「玩家」。累計里程碑獲得的稱號則是永久的。</div></div>
+          </div>
+          <div class="guide-faq-item">
+            <button class="guide-faq-q">冷媒和台幣的匯率是多少？</button>
+            <div class="guide-faq-a"><div class="guide-faq-a-inner">1 元台幣 = 1 元冷媒。例如贊助 200 元台幣，即獲得 200 冷媒的會員資格。</div></div>
+          </div>
+          <div class="guide-faq-item">
+            <button class="guide-faq-q">可以用遊戲內貨幣購買會員嗎？</button>
+            <div class="guide-faq-a"><div class="guide-faq-a-inner">不行。會員贊助僅接受台幣付款，不支援遊戲內貨幣兌換。</div></div>
+          </div>
+          <div class="guide-faq-item">
+            <button class="guide-faq-q">推薦獎勵怎麼領取？</button>
+            <div class="guide-faq-a"><div class="guide-faq-a-inner">被推薦人完成首次贊助後，雙方各獲得 50 冷媒。推薦時請告知管理員推薦人的遊戲名稱。</div></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="guide-divider"></div>
+
+      <!-- === 相關頁面 === -->
+      <div class="guide-section-card fade-in" style="--card-accent:var(--lavender)">
+        <h2><span class="sec-icon">📖</span> 相關頁面</h2>
+
+        <div class="guide-next-grid">
+          <a href="支持須知" class="guide-next-card">
+            <span class="guide-next-icon">📋</span>
+            <div class="guide-next-body">
+              <h4>支持須知</h4>
+              <p>贊助注意事項與聲明</p>
+            </div>
+          </a>
+          <a href="海風指南/綁定帳號" class="guide-next-card">
+            <span class="guide-next-icon">🔗</span>
+            <div class="guide-next-body">
+              <h4>綁定帳號</h4>
+              <p>贊助前請先完成帳號綁定</p>
+            </div>
+          </a>
+          <a href="社群須知" class="guide-next-card">
+            <span class="guide-next-icon">📋</span>
+            <div class="guide-next-body">
+              <h4>社群須知</h4>
+              <p>了解海風社群規範</p>
+            </div>
+          </a>
+        </div>
       </div>
 
     </div>
   </div>
 
-              <footer class="footer">
+  <footer class="footer">
     <div class="footer-inner">
       <div class="footer-brand">
         <span class="footer-logo">海風伺服器 SeaWind.cc</span>
@@ -178,11 +599,11 @@
       <div class="footer-bottom">
         <p>© 2026 海風伺服器 · 非 Mojang 官方營運 · service@seawind.cc</p>
       </div>
-      <p class="page-revise">網站最後修改日期 2026.04.29 / 總計修改 <span id="deployCount">—</span> 次</p>
+      <p class="page-revise">網站最後修改日期 2026.05.11 / 總計修改 <span id="deployCount">—</span> 次</p>
     </div>
   </footer>
 
   <script src="utils.js"></script>
-  <script src="main.js?v=040504b"></script>
+  <script src="main.js?v=110511b"></script>
 </body>
 </html>
