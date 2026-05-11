@@ -75,6 +75,8 @@
     .partner-badge{display:inline-block;padding:3px 10px;border-radius:99px;font-size:0.68rem;font-weight:600;background:rgba(157,175,255,0.06);color:var(--sky);border:1px solid rgba(157,175,255,0.1)}
     .partner-members{display:inline-flex;align-items:center;gap:4px;font-size:0.72rem;color:var(--fog)}
     .partner-members::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--foam);display:inline-block}
+    .partner-members.loading::after{content:'';width:8px;height:8px;border-radius:50%;border:2px solid var(--fog);border-top-color:var(--foam);animation:pm-spin 0.8s linear infinite;display:inline-block;margin-left:4px}
+    @keyframes pm-spin{to{transform:rotate(360deg)}}
     .partner-arrow{display:inline-flex;align-items:center;justify-content:center;width:24px;height:24px;border-radius:50%;background:rgba(255,255,255,0.04);color:var(--fog);font-size:0.75rem;margin-left:auto;flex-shrink:0;transition:all 0.3s var(--ease)}
     .partner-card:hover .partner-arrow{background:rgba(157,175,255,0.12);color:var(--sky);transform:translateX(3px)}
 
@@ -185,11 +187,15 @@
         <p class="partner-hero-desc">海風與不同社群合作，共同打造更豐富的遊戲體驗。</p>
         <div class="partner-hero-stats">
           <div class="partner-hero-stat">
-            <div class="partner-hero-stat-num">7</div>
-            <div class="partner-hero-stat-label">合作社群</div>
+            <div class="partner-hero-stat-num" id="dcTotalCount">—</div>
+            <div class="partner-hero-stat-label">合作社群總人數</div>
           </div>
           <div class="partner-hero-stat">
-            <div class="partner-hero-stat-num">2</div>
+            <div class="partner-hero-stat-num">6</div>
+            <div class="partner-hero-stat-label">Discord 社群</div>
+          </div>
+          <div class="partner-hero-stat">
+            <div class="partner-hero-stat-num">1</div>
             <div class="partner-hero-stat-label">社群平台</div>
           </div>
         </div>
@@ -202,21 +208,9 @@
           <span class="partner-cat-icon">🌐</span>
           <span class="partner-cat-label">社群平台</span>
           <span class="partner-cat-line"></span>
-          <span class="partner-cat-count">2 個</span>
+          <span class="partner-cat-count">1 個</span>
         </div>
         <div class="partner-grid fade-in">
-
-          <a href="partner-mcu" class="partner-card" style="--card-accent:var(--sky)">
-            <div class="partner-icon ic-sky"><img src="https://cdn.discordapp.com/icons/1345432876749033532/4e7a2df3827946a938db84e83811f1fa.webp?size=96" alt="MCU" loading="lazy" onerror="this.parentElement.innerHTML='MCU'"></div>
-            <div class="partner-info">
-              <div class="partner-name">MCU — 麥塊社群聯合會</div>
-              <div class="partner-desc">以 Discord 為核心的 Minecraft 交流平台，提供技術交流、委託中介與合作媒合。</div>
-              <div class="partner-bottom">
-                <span class="partner-badge">社群平台</span>
-                <span class="partner-arrow">→</span>
-              </div>
-            </div>
-          </a>
 
           <a href="https://dctw.xyz/" target="_blank" rel="noopener" class="partner-card" style="--card-accent:var(--foam)">
             <div class="partner-icon ic-foam"><img src="https://dctw.xyz/favicon.ico" alt="DCTW" loading="lazy" onerror="this.parentElement.innerHTML='DCT'"></div>
@@ -237,72 +231,89 @@
           <span class="partner-cat-icon">💬</span>
           <span class="partner-cat-label">Discord 社群</span>
           <span class="partner-cat-line"></span>
-          <span class="partner-cat-count">5 個</span>
+          <span class="partner-cat-count">6 個</span>
         </div>
         <div class="partner-grid fade-in">
 
           <!-- 緣分事務所（featured） -->
-          <a href="https://discord.gg/DZ2QvY4GHd" target="_blank" rel="noopener" class="partner-card partner-card-featured" style="--card-accent:var(--rose)">
+          <a href="https://discord.gg/DZ2QvY4GHd" target="_blank" rel="noopener" class="partner-card partner-card-featured" data-dc="DZ2QvY4GHd" style="--card-accent:var(--rose)">
             <div class="partner-icon ic-rose"><img src="https://cdn.discordapp.com/icons/1476245840304668672/77eae78df413791006a08738e510f3bf.webp?size=96" alt="緣分事務所" loading="lazy" onerror="this.parentElement.innerHTML='💕'"></div>
             <div class="partner-info">
               <div class="partner-name">緣分事務所</div>
               <div class="partner-desc">以交友、娛樂與互動為主的社群。想找人聊天、打遊戲、認識新朋友都歡迎！不定期舉辦小活動、團康遊戲，還有配對活動，用自然的方式使倆人相遇。</div>
               <div class="partner-bottom">
                 <span class="partner-badge">Discord</span>
-                <span class="partner-members">1,580 人</span>
+                <span class="partner-members loading" data-dc-count>—</span>
                 <span class="partner-arrow">→</span>
               </div>
             </div>
           </a>
 
-          <!-- 冰鳥國 -->
-          <a href="https://discord.gg/Z2xyR57FPy" target="_blank" rel="noopener" class="partner-card" style="--card-accent:var(--teal)">
-            <div class="partner-icon ic-teal"><img src="https://cdn.discordapp.com/icons/1277924819643400233/406f4e3704b903444442eeff5f75f674.webp?size=96" alt="冰鳥國" loading="lazy" onerror="this.parentElement.innerHTML='冰鳥'"></div>
+          <!-- MCU -->
+          <a href="partner-mcu" class="partner-card" data-dc="KrTQZVP4VF" style="--card-accent:var(--sky)">
+            <div class="partner-icon ic-sky"><img src="https://cdn.discordapp.com/icons/1345432876749033532/4e7a2df3827946a938db84e83811f1fa.webp?size=96" alt="MCU" loading="lazy" onerror="this.parentElement.innerHTML='MCU'"></div>
             <div class="partner-info">
-              <div class="partner-name">冰鳥國 Ice Bird Country</div>
-              <div class="partner-desc">溫馨的小社群，你的第二個遊樂天地。</div>
+              <div class="partner-name">MCU — 麥塊社群聯合會</div>
+              <div class="partner-desc">以 Discord 為核心的 Minecraft 交流平台，提供技術交流、委託中介與合作媒合。</div>
               <div class="partner-bottom">
                 <span class="partner-badge">Discord</span>
-                <span class="partner-arrow">→</span>
-              </div>
-            </div>
-          </a>
-
-          <!-- 狐緣神社 -->
-          <a href="https://discord.gg/ar2cmH5wMX" target="_blank" rel="noopener" class="partner-card" style="--card-accent:var(--blush)">
-            <div class="partner-icon ic-blush"><img src="https://cdn.discordapp.com/icons/1193449112796942426/9aa810ac8a0ce272c52c133900578f4a.webp?size=96" alt="狐緣神社" loading="lazy" onerror="this.parentElement.innerHTML='狐'"></div>
-            <div class="partner-info">
-              <div class="partner-name">狐緣神社 Kitsune Shrine</div>
-              <div class="partner-desc">可愛 × 互動 × 狐狸等級 × 遊戲娛樂，3,000 人社群。等級系統、精品抽獎、神社小舖、專屬身分組。</div>
-              <div class="partner-bottom">
-                <span class="partner-badge">Discord</span>
-                <span class="partner-members">3,000+ 人</span>
-                <span class="partner-arrow">→</span>
-              </div>
-            </div>
-          </a>
-
-          <!-- 蔚藍幻境 -->
-          <a href="https://discord.gg/Zc7vwaFeyR" target="_blank" rel="noopener" class="partner-card" style="--card-accent:var(--lavender)">
-            <div class="partner-icon ic-lav"><img src="https://cdn.discordapp.com/icons/1456665701849763842/5387e01e2d100c3c1c0aaa1b843dbdd2.webp?size=96" alt="蔚藍幻境" loading="lazy" onerror="this.parentElement.innerHTML='蔚藍'"></div>
-            <div class="partner-info">
-              <div class="partner-name">蔚藍幻境</div>
-              <div class="partner-desc">目前為測試階段。</div>
-              <div class="partner-bottom">
-                <span class="partner-badge">Discord</span>
+                <span class="partner-members loading" data-dc-count>—</span>
                 <span class="partner-arrow">→</span>
               </div>
             </div>
           </a>
 
           <!-- 洛羽民宿 -->
-          <a href="https://discord.gg/8xddxqMp4F" target="_blank" rel="noopener" class="partner-card" style="--card-accent:var(--sand)">
-            <div class="partner-icon ic-sand"><img src="https://cdn.discordapp.com/icons/1165538971091226694/dccf2d5f5bd9abe820eb8332d6604587.webp?size=96" alt="洛羽民宿" loading="lazy" onerror="this.parentElement.innerHTML='🏠'"></div>
+          <a href="https://discord.gg/8xddxqMp4F" target="_blank" rel="noopener" class="partner-card" data-dc="8xddxqMp4F" style="--card-accent:var(--sand)">
+            <div class="partner-icon ic-sand"><img src="https://cdn.discordapp.com/icons/1165538971091226694/a40dfaeacc00fbf665fd7df83669c4fa.webp?size=96" alt="洛羽民宿" loading="lazy" onerror="this.parentElement.innerHTML='🏠'"></div>
             <div class="partner-info">
               <div class="partner-name">洛羽民宿</div>
               <div class="partner-desc">羊駝｜日式民宿｜輕鬆交友、多種遊戲可揪團、線下聚會。語音聊天、每日問答、抽獎多活動多。</div>
               <div class="partner-bottom">
                 <span class="partner-badge">Discord</span>
+                <span class="partner-members loading" data-dc-count>—</span>
+                <span class="partner-arrow">→</span>
+              </div>
+            </div>
+          </a>
+
+          <!-- 狐緣神社 -->
+          <a href="https://discord.gg/ar2cmH5wMX" target="_blank" rel="noopener" class="partner-card" data-dc="ar2cmH5wMX" style="--card-accent:var(--blush)">
+            <div class="partner-icon ic-blush"><img src="https://cdn.discordapp.com/icons/1193449112796942426/84ff5f8075572abf8cf65837614611b8.webp?size=96" alt="狐緣神社" loading="lazy" onerror="this.parentElement.innerHTML='狐'"></div>
+            <div class="partner-info">
+              <div class="partner-name">狐緣神社 Kitsune Shrine</div>
+              <div class="partner-desc">可愛 × 互動 × 狐狸等級 × 遊戲娛樂。等級系統、精品抽獎、神社小舖、專屬身分組。</div>
+              <div class="partner-bottom">
+                <span class="partner-badge">Discord</span>
+                <span class="partner-members loading" data-dc-count>—</span>
+                <span class="partner-arrow">→</span>
+              </div>
+            </div>
+          </a>
+
+          <!-- 冰鳥國 -->
+          <a href="https://discord.gg/Z2xyR57FPy" target="_blank" rel="noopener" class="partner-card" data-dc="Z2xyR57FPy" style="--card-accent:var(--teal)">
+            <div class="partner-icon ic-teal"><img src="https://cdn.discordapp.com/icons/1277924819643400233/406f4e3704b903444442eeff5f75f674.webp?size=96" alt="冰鳥國" loading="lazy" onerror="this.parentElement.innerHTML='冰鳥'"></div>
+            <div class="partner-info">
+              <div class="partner-name">冰鳥國 Ice Bird Country</div>
+              <div class="partner-desc">溫馨的小社群，你的第二個遊樂天地。</div>
+              <div class="partner-bottom">
+                <span class="partner-badge">Discord</span>
+                <span class="partner-members loading" data-dc-count>—</span>
+                <span class="partner-arrow">→</span>
+              </div>
+            </div>
+          </a>
+
+          <!-- 蔚藍幻境 -->
+          <a href="https://discord.gg/Zc7vwaFeyR" target="_blank" rel="noopener" class="partner-card" data-dc="Zc7vwaFeyR" style="--card-accent:var(--lavender)">
+            <div class="partner-icon ic-lav"><img src="https://cdn.discordapp.com/icons/1456665701849763842/5387e01e2d100c3c1c0aaa1b843dbdd2.webp?size=96" alt="蔚藍幻境" loading="lazy" onerror="this.parentElement.innerHTML='蔚藍'"></div>
+            <div class="partner-info">
+              <div class="partner-name">蔚藍幻境</div>
+              <div class="partner-desc">目前為測試階段。</div>
+              <div class="partner-bottom">
+                <span class="partner-badge">Discord</span>
+                <span class="partner-members loading" data-dc-count>—</span>
                 <span class="partner-arrow">→</span>
               </div>
             </div>
@@ -357,5 +368,31 @@
   </script>
   <script src="utils.js"></script>
   <script src="main.js?v=110511f"></script>
+  <script>
+  /* ═══ Discord 即時人數 ═══ */
+  (function(){
+    const cards=document.querySelectorAll('[data-dc]');
+    if(!cards.length)return;
+    let total=0;
+    cards.forEach(card=>{
+      const code=card.dataset.dc;
+      const el=card.querySelector('[data-dc-count]');
+      if(!el)return;
+      fetch('https://discord.com/api/v10/invites/'+code+'?with_counts=true')
+        .then(r=>r.json())
+        .then(d=>{
+          const n=d.approximate_member_count;
+          if(n){
+            el.textContent=n.toLocaleString()+' 人';
+            el.classList.remove('loading');
+            total+=n;
+            const heroEl=document.getElementById('dcTotalCount');
+            if(heroEl)heroEl.textContent=total.toLocaleString();
+          }
+        })
+        .catch(()=>{el.textContent='—';el.classList.remove('loading')});
+    });
+  })();
+  </script>
 </body>
 </html>
