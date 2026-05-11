@@ -480,7 +480,8 @@
     if(loader){function hide(){loader.classList.add('fade-out');setTimeout(()=>loader.remove(),600)};if(document.readyState==='complete'){hide()}else{window.addEventListener('load',hide)};setTimeout(hide,3000)}
 
     /* ── Constants ── */
-    const WEBHOOK_URL='https://jolly-base-dc79.taiwan-shihyuan.workers.dev/';
+    const WEBHOOK_URL='https://broad-dawn-d62b.taiwan-shihyuan.workers.dev/';
+    const SECRET_HEADER={'X-SW-Token':'sw-form-2026-x7k9m'};
     const MAX_FILES=10;
     const EMBED_COLORS={report:0xff9e9e,admin:0xab72f9,partner:0xa8e6cf};
     const TYPE_LABELS={report:'回報工單',admin:'行政工單',partner:'合作工單'};
@@ -808,11 +809,11 @@
         allFiles.forEach(function(f,i){
           formData.append('files['+i+']',f,f.name);
         });
-        fetch(WEBHOOK_URL,{method:'POST',body:formData}).then(handleResponse).catch(handleError);
+        fetch(WEBHOOK_URL,{method:'POST',body:formData,headers:SECRET_HEADER}).then(handleResponse).catch(handleError);
       }else{
         fetch(WEBHOOK_URL,{
           method:'POST',
-          headers:{'Content-Type':'application/json'},
+          headers:Object.assign({'Content-Type':'application/json'},SECRET_HEADER),
           body:JSON.stringify({embeds:[embed]})
         }).then(handleResponse).catch(handleError);
       }
