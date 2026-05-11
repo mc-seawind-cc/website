@@ -214,8 +214,8 @@
           </div>
 
           <div class="pd-field">
-            <div class="pd-field-label">2. 簡介 <span class="pd-field-optional">選填，20 字內</span></div>
-            <div class="pd-field-box">一句話介紹，會顯示在合作夥伴卡片上。可以自訂，例如「溫馨小社群，你的第二個遊樂天地」。沒寫的話我們會幫你從文宣裡抓重點。</div>
+            <div class="pd-field-label">2. 簡介 <span class="pd-field-optional">選填，50 字內</span></div>
+            <div class="pd-field-box">一句話介紹，會顯示在合作夥伴卡片上。可以自訂，例如「溫馨小社群，專注生存與建築，歡迎所有人加入你的第二個遊樂天地」。沒寫的話我們會幫你從文宣裡抓重點。</div>
           </div>
 
           <div class="pd-field">
@@ -271,9 +271,9 @@
 
             <!-- 2. 簡介 -->
             <div class="pd-form-field">
-              <label class="pd-form-label" for="pf-brief">簡介 <span class="pd-form-optional">選填，20 字內</span></label>
-              <input type="text" id="pf-brief" class="pd-form-input" placeholder="一句話介紹，會顯示在合作夥伴卡片上" maxlength="20">
-              <div class="pd-form-hint"><span id="briefCount">0</span> / 20</div>
+              <label class="pd-form-label" for="pf-brief">簡介 <span class="pd-form-optional">選填，50 字內</span></label>
+              <input type="text" id="pf-brief" class="pd-form-input" placeholder="一句話介紹，會顯示在合作夥伴卡片上" maxlength="50">
+              <div class="pd-form-hint"><span id="briefCount">0</span> / 50</div>
             </div>
 
             <!-- 3. 文宣 -->
@@ -405,7 +405,7 @@
       update();
     }
     bindCounter(promoInput,promoCount,2000);
-    bindCounter(briefInput,briefCount,20);
+    bindCounter(briefInput,briefCount,50);
     bindCounter(extraInput,extraCount,1000);
 
     /* ── File upload ── */
