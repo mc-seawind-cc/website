@@ -788,25 +788,25 @@
 
     /* ── Title field customization per sub-type ── */
     const SUB_TITLE={
-      '帳號處理':{label:'問題摘要',desc:'簡單描述你的帳號問題。',placeholder:'例：帳號登不進去'},
-      '檢舉':{label:'檢舉摘要',desc:'簡單描述對方做了什麼。',placeholder:'例：玩家 xxx 無故破壞建築'},
-      '提告':{label:'告訴摘要',desc:'簡單描述告訴事由。',placeholder:'例：提告玩家 xxx 偷竊物品'},
-      '申訴':{label:'申訴摘要',desc:'簡單描述你要申訴的處分。',placeholder:'例：對 #0012 處分提出申訴'},
-      '疑慮':{label:'疑慮摘要',desc:'簡單描述你的疑慮。',placeholder:'例：某條規則的適用範圍'},
-      '回報異常':{label:'異常摘要',desc:'簡單描述發現的異常狀況。',placeholder:'例：箱子裡的物品突然消失'},
-      '規章解釋':{label:'問題摘要',desc:'簡單描述你想確認的規則。',placeholder:'例：在別人家附近蓋建築算違規嗎'},
-      '領地問題':{label:'問題摘要',desc:'簡單描述領地遇到的問題。',placeholder:'例：領地權限設定失效'},
-      '其他':{label:'摘要',desc:'簡單描述你想回報的事。',placeholder:'例：有一件事想反映'},
-      '應徵':{label:'應徵摘要',desc:'簡單描述你想應徵的職位和動機。',placeholder:'例：應徵行政策劃，對活動設計有興趣'},
-      '請願（上訴）':{label:'上訴摘要',desc:'簡單描述你要上訴的處分。',placeholder:'例：上訴 #0012 處分'},
-      '提議法律草案':{label:'草案名稱',desc:'給你的草案取個名字。',placeholder:'例：公共區域紅石機關管理辦法'},
-      '提議政策':{label:'政策名稱',desc:'簡單描述你的政策建議。',placeholder:'例：增設新手專用分流'},
-      '否決請願':{label:'否決摘要',desc:'簡單描述你要否決的規則或政策。',placeholder:'例：否決第 xx 條規則'},
-      '💬 群組':{label:'合作摘要',desc:'簡單說明你想怎麼合作。',placeholder:'例：想讓群組成員加入海風'},
-      '🌐 網站':{label:'合作摘要',desc:'簡單說明你想怎麼合作。',placeholder:'例：想在網站上推薦海風'},
-      '🏗️ 工作室':{label:'合作摘要',desc:'簡單說明你想怎麼合作。',placeholder:'例：想幫海風做建築作品'},
-      '🎬 創作者':{label:'合作摘要',desc:'簡單說明你想怎麼合作。',placeholder:'例：想拍海風的生存系列影片'},
-      '📦 其他':{label:'合作摘要',desc:'簡單說明你想怎麼合作。',placeholder:'例：想跟海風合辦一個活動'}
+      '帳號處理':{desc:'簡單描述你的帳號問題。',placeholder:'例：帳號登不進去'},
+      '檢舉':{desc:'簡單描述對方做了什麼。',placeholder:'例：玩家 xxx 無故破壞建築'},
+      '提告':{desc:'簡單描述告訴事由。',placeholder:'例：提告玩家 xxx 偷竊物品'},
+      '申訴':{desc:'簡單描述你要申訴的處分。',placeholder:'例：對 #0012 處分提出申訴'},
+      '疑慮':{desc:'簡單描述你的疑慮。',placeholder:'例：某條規則的適用範圍'},
+      '回報異常':{desc:'簡單描述發現的異常狀況。',placeholder:'例：箱子裡的物品突然消失'},
+      '規章解釋':{desc:'簡單描述你想確認的規則。',placeholder:'例：在別人家附近蓋建築算違規嗎'},
+      '領地問題':{desc:'簡單描述領地遇到的問題。',placeholder:'例：領地權限設定失效'},
+      '其他':{desc:'簡單描述你想回報的事。',placeholder:'例：有一件事想反映'},
+      '應徵':{desc:'簡單描述你想應徵的職位和動機。',placeholder:'例：應徵行政策劃，對活動設計有興趣'},
+      '請願（上訴）':{desc:'簡單描述你要上訴的處分。',placeholder:'例：上訴 #0012 處分'},
+      '提議法律草案':{desc:'給你的草案取個名字。',placeholder:'例：公共區域紅石機關管理辦法'},
+      '提議政策':{desc:'簡單描述你的政策建議。',placeholder:'例：增設新手專用分流'},
+      '否決請願':{desc:'簡單描述你要否決的規則或政策。',placeholder:'例：否決第 xx 條規則'},
+      '💬 群組':{desc:'簡單說明你想怎麼合作。',placeholder:'例：想讓群組成員加入海風'},
+      '🌐 網站':{desc:'簡單說明你想怎麼合作。',placeholder:'例：想在網站上推薦海風'},
+      '🏗️ 工作室':{desc:'簡單說明你想怎麼合作。',placeholder:'例：想幫海風做建築作品'},
+      '🎬 創作者':{desc:'簡單說明你想怎麼合作。',placeholder:'例：想拍海風的生存系列影片'},
+      '📦 其他':{desc:'簡單說明你想怎麼合作。',placeholder:'例：想跟海風合辦一個活動'}
     };
 
     /* ── Type selection ── */
@@ -860,15 +860,12 @@
           detailInput.placeholder=SUB_PLACEHOLDER[subVal];
         }
         /* Update title field based on sub-type */
-        var titleLabel=document.querySelector('label[for="ticket-title"]');
-        var titleDesc=titleLabel?titleLabel.nextElementSibling:null;
+        var titleDesc=document.querySelector('#ticket-title').closest('.pd-form-field').querySelector('.pd-form-desc');
         var titleInput=document.getElementById('ticket-title');
         if(SUB_TITLE[subVal]){
-          if(titleLabel)titleLabel.innerHTML=SUB_TITLE[subVal].label+' <span class="pd-form-required">*</span>';
           if(titleDesc)titleDesc.textContent=SUB_TITLE[subVal].desc;
           if(titleInput)titleInput.placeholder=SUB_TITLE[subVal].placeholder;
         }else{
-          if(titleLabel)titleLabel.innerHTML='回報主旨 <span class="pd-form-required">*</span>';
           if(titleDesc)titleDesc.textContent='簡單講一下你遇到的事或想提的建議。';
           if(titleInput)titleInput.placeholder='例：領地權限怪怪的';
         }
@@ -1028,11 +1025,9 @@
       var contact=document.getElementById('ticket-contact').value.trim();
 
       /* Build embed */
-      var titleLabel=document.querySelector('label[for="ticket-title"]');
-      var titleLabelText=titleLabel?titleLabel.textContent.replace(' *','').trim():'主旨';
       var fields=[
         {name:'類型',value:TYPE_LABELS[type]+' \u2014 '+subtype,inline:true},
-        {name:titleLabelText,value:title},
+        {name:'回報主旨',value:title},
         {name:'詳細內容',value:detail.length>1024?detail.substring(0,1021)+'...':detail}
       ];
       if(ign)fields.push({name:'回報者遊戲ID',value:ign,inline:true});
@@ -1152,11 +1147,9 @@
         form.reset();
         detailInput.placeholder='可以說說發生了什麼、怎麼發生的、截圖連結等等...';
         detailDesc.textContent='把事情的來龍去脈說清楚，越詳細我們越好處理。';
-        /* Reset title field */
-        var titleLabel=document.querySelector('label[for="ticket-title"]');
-        var titleDesc=titleLabel?titleLabel.nextElementSibling:null;
-        if(titleLabel)titleLabel.innerHTML='回報主旨 <span class="pd-form-required">*</span>';
-        if(titleDesc)titleDesc.textContent='簡單講一下你遇到的事或想提的建議。';
+        /* Reset title desc */
+        var titleDescReset=document.querySelector('#ticket-title').closest('.pd-form-field').querySelector('.pd-form-desc');
+        if(titleDescReset)titleDescReset.textContent='簡單講一下你遇到的事或想提的建議。';
         if(detailCount)detailCount.textContent='0';
         document.querySelectorAll('.pd-form-hint span').forEach(function(s){s.textContent='0'});
         uploadedFiles=[];
