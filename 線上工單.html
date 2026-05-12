@@ -364,7 +364,7 @@
             </div>
 
             <!-- 座標 & 領地 -->
-            <div class="pd-form-row">
+            <div class="pd-form-row" id="fieldCoordRes">
               <div class="pd-form-field">
                 <label class="pd-form-label" for="ticket-coord">座標 <span class="pd-form-optional">選填</span></label>
                 <input type="text" id="ticket-coord" class="pd-form-input" placeholder="例：120, 64, -340" maxlength="50">
@@ -875,18 +875,24 @@
         if(currentType==='partner'){
           partnerFields.classList.add('show');
           document.getElementById('fieldIGN').style.display='none';
+          document.getElementById('fieldCoordRes').style.display='none';
           /* Show correct partner type form */
           document.querySelectorAll('.partner-type-form').forEach(function(f){f.style.display='none'});
           var pfMap={'💬 群組':'pf-group','🌐 網站':'pf-website','🏗️ 工作室':'pf-studio','🎬 創作者':'pf-creator','📦 其他':'pf-other'};
           var pfId=pfMap[subVal];
           if(pfId){var pfEl=document.getElementById(pfId);if(pfEl)pfEl.style.display='block'}
         }else if(currentType==='admin'){
+          document.getElementById('fieldIGN').style.display='';
+          document.getElementById('fieldCoordRes').style.display='none';
+          if(subVal==='應徵'){
           if(subVal==='應徵'){
             applyFields.classList.add('show');
           }
           document.getElementById('fieldIGN').style.display='';
+          document.getElementById('fieldCoordRes').style.display='';
         }else{
           document.getElementById('fieldIGN').style.display='';
+          document.getElementById('fieldCoordRes').style.display='';
         }
 
         /* Smooth scroll to form */
