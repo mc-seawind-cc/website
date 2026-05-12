@@ -797,11 +797,6 @@
       '規章解釋':{desc:'簡單描述你想確認的規則。',placeholder:'例：在別人家附近蓋建築算違規嗎'},
       '領地問題':{desc:'簡單描述領地遇到的問題。',placeholder:'例：領地權限設定失效'},
       '其他':{desc:'簡單描述你想回報的事。',placeholder:'例：有一件事想反映'},
-      '應徵':{desc:'簡單描述你想應徵的職位和動機。',placeholder:'例：應徵行政策劃，對活動設計有興趣'},
-      '請願（上訴）':{desc:'簡單描述你要上訴的處分。',placeholder:'例：上訴 #0012 處分'},
-      '提議法律草案':{desc:'給你的草案取個名字。',placeholder:'例：公共區域紅石機關管理辦法'},
-      '提議政策':{desc:'簡單描述你的政策建議。',placeholder:'例：增設新手專用分流'},
-      '否決請願':{desc:'簡單描述你要否決的規則或政策。',placeholder:'例：否決第 xx 條規則'},
       '💬 群組':{desc:'簡單說明你想怎麼合作。',placeholder:'例：想讓群組成員加入海風'},
       '🌐 網站':{desc:'簡單說明你想怎麼合作。',placeholder:'例：想在網站上推薦海風'},
       '🏗️ 工作室':{desc:'簡單說明你想怎麼合作。',placeholder:'例：想幫海風做建築作品'},
@@ -862,10 +857,17 @@
         /* Update title field based on sub-type */
         var titleDesc=document.querySelector('#ticket-title').closest('.pd-form-field').querySelector('.pd-form-desc');
         var titleInput=document.getElementById('ticket-title');
-        if(SUB_TITLE[subVal]){
+        var titleLabelEl=document.querySelector('label[for="ticket-title"]');
+        if(currentType==='admin'){
+          if(titleLabelEl)titleLabelEl.innerHTML='主旨 <span class="pd-form-required">*</span>';
+          if(titleDesc)titleDesc.textContent='簡單講一下你的事由。';
+          if(titleInput)titleInput.placeholder='例：應徵行政策劃';
+        }else if(SUB_TITLE[subVal]){
+          if(titleLabelEl)titleLabelEl.innerHTML='回報主旨 <span class="pd-form-required">*</span>';
           if(titleDesc)titleDesc.textContent=SUB_TITLE[subVal].desc;
           if(titleInput)titleInput.placeholder=SUB_TITLE[subVal].placeholder;
         }else{
+          if(titleLabelEl)titleLabelEl.innerHTML='回報主旨 <span class="pd-form-required">*</span>';
           if(titleDesc)titleDesc.textContent='簡單講一下你遇到的事或想提的建議。';
           if(titleInput)titleInput.placeholder='例：領地權限怪怪的';
         }
@@ -1147,9 +1149,11 @@
         form.reset();
         detailInput.placeholder='可以說說發生了什麼、怎麼發生的、截圖連結等等...';
         detailDesc.textContent='把事情的來龍去脈說清楚，越詳細我們越好處理。';
-        /* Reset title desc */
+        /* Reset title field */
         var titleDescReset=document.querySelector('#ticket-title').closest('.pd-form-field').querySelector('.pd-form-desc');
+        var titleLabelReset=document.querySelector('label[for="ticket-title"]');
         if(titleDescReset)titleDescReset.textContent='簡單講一下你遇到的事或想提的建議。';
+        if(titleLabelReset)titleLabelReset.innerHTML='回報主旨 <span class="pd-form-required">*</span>';
         if(detailCount)detailCount.textContent='0';
         document.querySelectorAll('.pd-form-hint span').forEach(function(s){s.textContent='0'});
         uploadedFiles=[];
