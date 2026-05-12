@@ -422,13 +422,13 @@
                   <input type="url" id="pf-g-invite" class="pd-form-input" placeholder="https://discord.gg/xxxxx">
                 </div>
                 <div class="pd-form-field">
-                  <label class="pd-form-label" for="pf-g-brief">一句話介紹 <span class="pd-form-optional">選填，50 字內</span></label>
+                  <label class="pd-form-label" for="pf-g-brief">簡介 <span class="pd-form-optional">選填，50 字內</span></label>
                   <div class="pd-form-desc">會顯示在合作夥伴卡片上，沒寫我們幫你抓重點。</div>
                   <input type="text" id="pf-g-brief" class="pd-form-input" placeholder="例：溫馨小社群，專注生存與建築" maxlength="50">
                 </div>
                 <div class="pd-form-field">
                   <label class="pd-form-label" for="pf-g-promo">宣傳文 <span class="pd-form-optional">選填</span></label>
-                  <div class="pd-form-desc">會直接放在詳情頁上，可以用 <code>## 標題</code> 分區塊。沒寫就不建詳情頁。</div>
+                  <div class="pd-form-desc">會直接放在詳情頁上，可以用 <code>## 標題</code> 分隔區塊。若沒寫就不會建立詳情頁。</div>
                   <textarea id="pf-g-promo" class="pd-form-textarea" placeholder="寫寫你們在做什麼、有什麼特色..." rows="6" maxlength="2000"></textarea>
                   <div class="pd-form-hint"><span id="promoCount-g">0</span> / 2000</div>
                 </div>
@@ -438,14 +438,15 @@
               <div class="partner-type-form" id="pf-website" style="display:none">
                 <div class="pd-form-field">
                   <label class="pd-form-label" for="pf-w-name">網站名稱 <span class="pd-form-required">*</span></label>
-                  <input type="text" id="pf-w-name" class="pd-form-input" placeholder="例：某某 Minecraft Wiki" maxlength="100">
+                  <input type="text" id="pf-w-name" class="pd-form-input" placeholder="例：某某 Minecraft 資訊站" maxlength="100">
                 </div>
                 <div class="pd-form-field">
                   <label class="pd-form-label">網站類型 <span class="pd-form-required">*</span></label>
                   <div class="pd-form-radio-grid" id="pf-w-type">
                     <label class="pd-form-radio"><input type="radio" name="pf-w-cat" value="論壇"><span>📋 論壇</span></label>
-                    <label class="pd-form-radio"><input type="radio" name="pf-w-cat" value="Wiki"><span>📖 Wiki</span></label>
                     <label class="pd-form-radio"><input type="radio" name="pf-w-cat" value="工具網站"><span>🔧 工具網站</span></label>
+                    <label class="pd-form-radio"><input type="radio" name="pf-w-cat" value="影音平台"><span>🎬 影音平台</span></label>
+                    <label class="pd-form-radio"><input type="radio" name="pf-w-cat" value="社群平台"><span>👥 社群平台</span></label>
                     <label class="pd-form-radio"><input type="radio" name="pf-w-cat" value="其他"><span>🌐 其他</span></label>
                   </div>
                 </div>
@@ -454,13 +455,13 @@
                   <input type="url" id="pf-w-url" class="pd-form-input" placeholder="https://你的網站">
                 </div>
                 <div class="pd-form-field">
-                  <label class="pd-form-label" for="pf-w-brief">一句話介紹 <span class="pd-form-optional">選填，50 字內</span></label>
+                  <label class="pd-form-label" for="pf-w-brief">簡介 <span class="pd-form-optional">選填，50 字內</span></label>
                   <div class="pd-form-desc">會顯示在合作夥伴卡片上，沒寫我們幫你抓重點。</div>
                   <input type="text" id="pf-w-brief" class="pd-form-input" placeholder="例：全台最大的 Minecraft 資料庫" maxlength="50">
                 </div>
                 <div class="pd-form-field">
                   <label class="pd-form-label" for="pf-w-promo">宣傳文 <span class="pd-form-optional">選填</span></label>
-                  <div class="pd-form-desc">會直接放在詳情頁上，可以用 <code>## 標題</code> 分區塊。沒寫就不建詳情頁。</div>
+                  <div class="pd-form-desc">會直接放在詳情頁上，可以用 <code>## 標題</code> 分隔區塊。若沒寫就不會建立詳情頁。</div>
                   <textarea id="pf-w-promo" class="pd-form-textarea" placeholder="寫寫你們網站在做什麼、有什麼內容..." rows="6" maxlength="2000"></textarea>
                   <div class="pd-form-hint"><span id="promoCount-w">0</span> / 2000</div>
                 </div>
@@ -479,6 +480,8 @@
                     <label class="pd-form-radio"><input type="radio" name="pf-s-cat" value="紅石"><span>🔴 紅石</span></label>
                     <label class="pd-form-radio"><input type="radio" name="pf-s-cat" value="地圖"><span>🗺️ 地圖</span></label>
                     <label class="pd-form-radio"><input type="radio" name="pf-s-cat" value="美術"><span>🎨 美術</span></label>
+                    <label class="pd-form-radio"><input type="radio" name="pf-s-cat" value="插件"><span>🔌 插件</span></label>
+                    <label class="pd-form-radio"><input type="radio" name="pf-s-cat" value="託管"><span>🖥️ 託管</span></label>
                     <label class="pd-form-radio"><input type="radio" name="pf-s-cat" value="綜合"><span>✨ 綜合</span></label>
                     <label class="pd-form-radio"><input type="radio" name="pf-s-cat" value="其他"><span>📦 其他</span></label>
                   </div>
@@ -489,13 +492,18 @@
                   <input type="url" id="pf-s-portfolio" class="pd-form-input" placeholder="https://你的作品集">
                 </div>
                 <div class="pd-form-field">
-                  <label class="pd-form-label" for="pf-s-brief">一句話介紹 <span class="pd-form-optional">選填，50 字內</span></label>
+                  <label class="pd-form-label" for="pf-s-link">其他連結 <span class="pd-form-optional">選填</span></label>
+                  <div class="pd-form-desc">網站、社群、其他平台連結。</div>
+                  <input type="url" id="pf-s-link" class="pd-form-input" placeholder="https://你的網站或社群">
+                </div>
+                <div class="pd-form-field">
+                  <label class="pd-form-label" for="pf-s-brief">簡介 <span class="pd-form-optional">選填，50 字內</span></label>
                   <div class="pd-form-desc">會顯示在合作夥伴卡片上，沒寫我們幫你抓重點。</div>
                   <input type="text" id="pf-s-brief" class="pd-form-input" placeholder="例：專精中式建築，5 年經驗" maxlength="50">
                 </div>
                 <div class="pd-form-field">
                   <label class="pd-form-label" for="pf-s-promo">宣傳文 <span class="pd-form-optional">選填</span></label>
-                  <div class="pd-form-desc">會直接放在詳情頁上，可以用 <code>## 標題</code> 分區塊。沒寫就不建詳情頁。</div>
+                  <div class="pd-form-desc">會直接放在詳情頁上，可以用 <code>## 標題</code> 分隔區塊。若沒寫就不會建立詳情頁。</div>
                   <textarea id="pf-s-promo" class="pd-form-textarea" placeholder="寫寫你們做過什麼、擅長什麼..." rows="6" maxlength="2000"></textarea>
                   <div class="pd-form-hint"><span id="promoCount-s">0</span> / 2000</div>
                 </div>
@@ -532,13 +540,13 @@
                   </div>
                 </div>
                 <div class="pd-form-field">
-                  <label class="pd-form-label" for="pf-c-brief">一句話介紹 <span class="pd-form-optional">選填，50 字內</span></label>
+                  <label class="pd-form-label" for="pf-c-brief">簡介 <span class="pd-form-optional">選填，50 字內</span></label>
                   <div class="pd-form-desc">會顯示在合作夥伴卡片上，沒寫我們幫你抓重點。</div>
                   <input type="text" id="pf-c-brief" class="pd-form-input" placeholder="例：主打生存實況，週更兩集" maxlength="50">
                 </div>
                 <div class="pd-form-field">
                   <label class="pd-form-label" for="pf-c-promo">宣傳文 <span class="pd-form-optional">選填</span></label>
-                  <div class="pd-form-desc">會直接放在詳情頁上，可以用 <code>## 標題</code> 分區塊。沒寫就不建詳情頁。</div>
+                  <div class="pd-form-desc">會直接放在詳情頁上，可以用 <code>## 標題</code> 分隔區塊。若沒寫就不會建立詳情頁。</div>
                   <textarea id="pf-c-promo" class="pd-form-textarea" placeholder="寫寫你的頻道內容、風格..." rows="6" maxlength="2000"></textarea>
                   <div class="pd-form-hint"><span id="promoCount-c">0</span> / 2000</div>
                 </div>
@@ -556,13 +564,13 @@
                   <textarea id="pf-o-type" class="pd-form-textarea" placeholder="例：我們是一個活動企劃團隊，想跟海風合辦線上活動..." rows="3" maxlength="500"></textarea>
                 </div>
                 <div class="pd-form-field">
-                  <label class="pd-form-label" for="pf-o-brief">一句話介紹 <span class="pd-form-optional">選填，50 字內</span></label>
+                  <label class="pd-form-label" for="pf-o-brief">簡介 <span class="pd-form-optional">選填，50 字內</span></label>
                   <div class="pd-form-desc">會顯示在合作夥伴卡片上，沒寫我們幫你抓重點。</div>
                   <input type="text" id="pf-o-brief" class="pd-form-input" placeholder="例：專門策劃 Minecraft 線上活動" maxlength="50">
                 </div>
                 <div class="pd-form-field">
                   <label class="pd-form-label" for="pf-o-promo">宣傳文 <span class="pd-form-optional">選填</span></label>
-                  <div class="pd-form-desc">會直接放在詳情頁上，可以用 <code>## 標題</code> 分區塊。沒寫就不建詳情頁。</div>
+                  <div class="pd-form-desc">會直接放在詳情頁上，可以用 <code>## 標題</code> 分隔區塊。若沒寫就不會建立詳情頁。</div>
                   <textarea id="pf-o-promo" class="pd-form-textarea" placeholder="寫寫你們在做什麼..." rows="6" maxlength="2000"></textarea>
                   <div class="pd-form-hint"><span id="promoCount-o">0</span> / 2000</div>
                 </div>
@@ -758,7 +766,7 @@
       '否決請願':'對現行規則或政策有異議想提出否決，請說明理由。',
       '規章解釋':'看不懂某條規則？想確認某個行為是否違規？直接問就好。',
       '💬 群組':'Discord 群組、LINE 群組等社群平台的合作申請。',
-      '🌐 網站':'網站、論壇、Wiki 等網路平台的合作申請。',
+      '🌐 網站':'網站、論壇、工具網站等網路平台的合作申請。',
       '🏗️ 工作室':'建築工作室、紅石團隊、影音創作者等的合作申請。',
       '🎬 創作者':'實況主、Youtuber、建築師、地圖創作者等的合作申請。',
       '📦 其他':'上面沒列到的合作類型，在簡單說明裡告訴我們就好。'
@@ -777,7 +785,7 @@
       '否決請願':'例：我認為某條規則應該廢除，理由是...',
       '規章解釋':'例：請問在別人家附近蓋建築算不算違規？',
       '💬 群組':'例：我們是一個 500 人的 Discord 建築社群...',
-      '🌐 網站':'例：我們是一個 Minecraft Wiki 網站...',
+      '🌐 網站':'例：我們是一個 Minecraft 資訊網站...',
       '🏗️ 工作室':'例：我們是 3 人的建築工作室，專門做中式建築...',
       '🎬 創作者':'例：我是 Minecraft 實況主，主要做生存系列...',
       '📦 其他':'例：我們想跟海風合作一個企劃...'};
@@ -797,7 +805,7 @@
       '否決請願':{label:'主旨',desc:'你想否決哪條規則？',placeholder:'例：否決某條建築限制規定'},
       '規章解釋':{label:'主旨',desc:'你想問哪條規則？',placeholder:'例：領地相關規則的適用範圍'},
       '💬 群組':{label:'名稱',desc:'你的群組叫什麼名字？',placeholder:'例：某某建築交流群'},
-      '🌐 網站':{label:'名稱',desc:'你的網站叫什麼名字？',placeholder:'例：某某 Minecraft Wiki'},
+      '🌐 網站':{label:'名稱',desc:'你的網站叫什麼名字？',placeholder:'例：某某 Minecraft 資訊站'},
       '🏗️ 工作室':{label:'名稱',desc:'你的工作室叫什麼名字？',placeholder:'例：某某建築工作室'},
       '🎬 創作者':{label:'名稱',desc:'你的頻道或創作者名稱？',placeholder:'例：某某玩 Minecraft'},
       '📦 其他':{label:'名稱',desc:'你的社群或團隊叫什麼名字？',placeholder:'例：某某活動企劃團隊'}
@@ -1069,11 +1077,13 @@
           var sn=document.getElementById('pf-s-name').value.trim();
           var st=document.querySelector('#pf-s-type input:checked');
           var sp=document.getElementById('pf-s-portfolio').value.trim();
+          var sl=document.getElementById('pf-s-link').value.trim();
           var sb=document.getElementById('pf-s-brief').value.trim();
           var sm=document.getElementById('pf-s-promo').value.trim();
           if(sn)fields.unshift({name:'工作室名稱',value:sn,inline:true});
           if(st)fields.push({name:'專長領域',value:st.value,inline:true});
           if(sp)fields.push({name:'作品集',value:sp});
+          if(sl)fields.push({name:'其他連結',value:sl});
           if(sb)fields.push({name:'簡介',value:sb});
           if(sm)fields.push({name:'宣傳文',value:sm.length>1024?sm.substring(0,1021)+'...':sm});
         }else if(subVal2==='🎬 創作者'){
