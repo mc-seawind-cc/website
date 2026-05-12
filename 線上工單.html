@@ -289,7 +289,7 @@
                   <input type="radio" name="ticket-category" value="partner">
                   <span class="ticket-type-icon">🤝</span>
                   <div class="ticket-type-name">合作工單</div>
-                  <div class="ticket-type-desc">社群、工作室、網站、<br>創作者</div>
+                  <div class="ticket-type-desc">合作夥伴申請</div>
                 </label>
               </div>
 
@@ -339,9 +339,9 @@
               <h2>✏️ 填寫內容</h2>
 
           <form id="ticketForm" class="pd-form" novalidate>
-            <!-- 回報主旨 -->
+            <!-- 主旨 -->
             <div class="pd-form-field">
-              <label class="pd-form-label" for="ticket-title">回報主旨 <span class="pd-form-required">*</span></label>
+              <label class="pd-form-label" for="ticket-title">主旨 <span class="pd-form-required">*</span></label>
               <div class="pd-form-desc">簡單講一下你遇到的事或想提的建議。</div>
               <input type="text" id="ticket-title" class="pd-form-input" placeholder="例：領地權限怪怪的" required maxlength="100">
             </div>
@@ -850,17 +850,10 @@
         /* Update title field based on sub-type */
         var titleDesc=document.querySelector('#ticket-title').closest('.pd-form-field').querySelector('.pd-form-desc');
         var titleInput=document.getElementById('ticket-title');
-        var titleLabelEl=document.querySelector('label[for="ticket-title"]');
-        if(currentType==='admin'){
-          if(titleLabelEl)titleLabelEl.innerHTML='主旨 <span class="pd-form-required">*</span>';
-          if(titleDesc)titleDesc.textContent='簡單講一下你的事由。';
-          if(titleInput)titleInput.placeholder='例：應徵行政策劃';
-        }else if(SUB_TITLE[subVal]){
-          if(titleLabelEl)titleLabelEl.innerHTML='回報主旨 <span class="pd-form-required">*</span>';
+        if(SUB_TITLE[subVal]){
           if(titleDesc)titleDesc.textContent=SUB_TITLE[subVal].desc;
           if(titleInput)titleInput.placeholder=SUB_TITLE[subVal].placeholder;
         }else{
-          if(titleLabelEl)titleLabelEl.innerHTML='回報主旨 <span class="pd-form-required">*</span>';
           if(titleDesc)titleDesc.textContent='簡單講一下你遇到的事或想提的建議。';
           if(titleInput)titleInput.placeholder='例：領地權限怪怪的';
         }
@@ -1025,7 +1018,7 @@
       /* Build embed */
       var fields=[
         {name:'類型',value:TYPE_LABELS[type]+' \u2014 '+subtype,inline:true},
-        {name:'回報主旨',value:title},
+        {name:'主旨',value:title},
         {name:'詳細內容',value:detail.length>1024?detail.substring(0,1021)+'...':detail}
       ];
       if(ign)fields.push({name:'回報者遊戲ID',value:ign,inline:true});
@@ -1145,11 +1138,9 @@
         form.reset();
         detailInput.placeholder='可以說說發生了什麼、怎麼發生的、截圖連結等等...';
         detailDesc.textContent='把事情的來龍去脈說清楚，越詳細我們越好處理。';
-        /* Reset title field */
+        /* Reset title desc */
         var titleDescReset=document.querySelector('#ticket-title').closest('.pd-form-field').querySelector('.pd-form-desc');
-        var titleLabelReset=document.querySelector('label[for="ticket-title"]');
         if(titleDescReset)titleDescReset.textContent='簡單講一下你遇到的事或想提的建議。';
-        if(titleLabelReset)titleLabelReset.innerHTML='回報主旨 <span class="pd-form-required">*</span>';
         if(detailCount)detailCount.textContent='0';
         document.querySelectorAll('.pd-form-hint span').forEach(function(s){s.textContent='0'});
         uploadedFiles=[];
