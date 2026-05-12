@@ -275,21 +275,23 @@
      * 支持牆會員資料
      * ─────────────────────────────────────
      * 格式：
-     *   name    : 遊戲暱稱（顯示用）
-     *   id      : Minecraft 玩家 ID（用於 mc-heads.net 頭像）
+     *   name    : 顯示名稱（可自訂，如「匿名」或暱稱）
+     *   id      : Minecraft 遊戲 ID（必填，用於頭像抓取）
+     *   anon    : true = 匿名（隱藏遊戲 ID，頭像仍用 id 抓取）
      *   joined  : 加入日期（YYYY-MM）
      *   active  : true = 現役 / false = 歷屆
      *   featured: true = 置頂展示（可選，佔兩欄）
      *   msg     : 感言（選填）
      *   hue     : 卡片頂部色彩（sand/foam/sky/lavender/blush/teal，選填）
      *
+     * 匿名會員：name 顯示「匿名」，遊戲 ID 不會出現，但頭像還是用 id 抓取。
      * 新增會員：在陣列尾端加一個物件即可。
      */
     var members = [
       /* ── 範例（請替換為真實資料）── */
-      { name: "神焰",   id: "Taiwan_shihyuan", joined: "2024-01", active: true, featured: true, hue: "sand",     msg: "謝謝大家一路以來的支持！" },
-      { name: "白貓",   id: "WhiteMeowGX",     joined: "2024-01", active: true, hue: "foam",     msg: "海風是我第二個家。" },
-      { name: "噗嚕",   id: "Blue_5125",        joined: "2024-03", active: true, hue: "sky",      msg: "一起讓海風更好！" }
+      { name: "神焰",   id: "Taiwan_shihyuan", joined: "2024-01", active: true, featured: true, hue: "sand", msg: "謝謝大家一路以來的支持！" },
+      { name: "白貓",   id: "WhiteMeowGX",     joined: "2024-01", active: true, hue: "foam", msg: "海風是我第二個家。" },
+      { name: "匿名",   id: "Blue_5125",        anon: true, joined: "2024-03", active: true, hue: "sky", msg: "默默支持就好。" }
     ];
 
     /* ── Hue 輪替（未指定時自動分配）── */
@@ -312,18 +314,20 @@
       el.className = "sw-card" + (featured ? " sw-card-featured" : "");
       el.setAttribute("data-hue", hue);
 
+      var isAnon    = m.anon === true;
       var badgeClass = m.active ? "sw-badge-active" : "sw-badge-expired";
       var badgeText  = m.active ? "現役" : "曾是會員";
-      var idLine     = m.id ? '<small>' + m.id + '</small>' : '';
-      var msgHtml    = m.msg
+      var displayName = isAnon ? "匿名" : m.name;
+      var idLine = (!isAnon && m.id) ? '<small>' + m.id + '</small>' : '';
+      var msgHtml = m.msg
         ? '<div class="sw-msg">' + m.msg + '</div>'
         : '';
 
       el.innerHTML =
         '<div class="sw-header">' +
-          '<div class="sw-avatar"><img src="' + avatarUrl(m.id) + '" alt="' + m.name + ' 的頭像" loading="lazy"></div>' +
+          '<div class="sw-avatar"><img src="' + avatarUrl(m.id) + '" alt="' + displayName + ' 的頭像" loading="lazy"></div>' +
           '<div class="sw-name-block">' +
-            '<div class="sw-name">' + m.name + idLine + '</div>' +
+            '<div class="sw-name">' + displayName + idLine + '</div>' +
             '<span class="sw-badge ' + badgeClass + '">' + badgeText + '</span>' +
           '</div>' +
         '</div>' +
