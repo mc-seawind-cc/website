@@ -44,16 +44,15 @@
     .sw-section-head h2{font-size:1rem;font-weight:700;color:var(--white);white-space:nowrap}
     .sw-section-head .line{flex:1;height:1px;background:linear-gradient(90deg,rgba(222,172,128,0.15),transparent)}
 
-    /* === Wall Grid — masonry-like with varied heights === */
-    .sw-wall{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--space-md)}
+    /* === Wall Grid === */
+    .sw-wall{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:10px}
 
-    /* === Card === */
-    .sw-card{position:relative;padding:var(--space-lg);background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.06);border-radius:var(--radius-xl);transition:all 0.4s var(--ease);overflow:hidden}
-    .sw-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--card-hue,var(--sand));opacity:0.5;transition:opacity 0.4s var(--ease)}
-    .sw-card:hover{border-color:color-mix(in srgb,var(--card-hue,var(--sand)) 25%,transparent);transform:translateY(-4px);box-shadow:0 12px 32px rgba(0,0,0,0.12)}
-    .sw-card:hover::before{opacity:0.9}
+    /* === Card — compact tile === */
+    .sw-card{position:relative;display:flex;align-items:center;gap:var(--space-md);padding:10px 14px;background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.06);border-radius:var(--radius-md);transition:all 0.3s var(--ease);overflow:hidden}
+    .sw-card::before{content:'';position:absolute;top:0;left:0;bottom:0;width:3px;background:var(--card-hue,var(--sand));opacity:0.5;transition:opacity 0.3s var(--ease)}
+    .sw-card:hover{border-color:color-mix(in srgb,var(--card-hue,var(--sand)) 25%,transparent);transform:translateY(-2px);box-shadow:0 6px 16px rgba(0,0,0,0.1)}
 
-    /* Card accent colors — each card gets a slightly different hue */
+    /* Card accent colors */
     .sw-card[data-hue="sand"]    {--card-hue:var(--sand)}
     .sw-card[data-hue="foam"]    {--card-hue:var(--foam)}
     .sw-card[data-hue="sky"]     {--card-hue:var(--sky)}
@@ -61,58 +60,48 @@
     .sw-card[data-hue="blush"]   {--card-hue:var(--blush)}
     .sw-card[data-hue="teal"]    {--card-hue:var(--teal)}
 
-    /* Featured — warm glow */
-    .sw-card-featured{grid-column:span 2;background:linear-gradient(135deg,rgba(222,172,128,0.05),rgba(168,230,207,0.03));border-color:rgba(222,172,128,0.15)}
-    .sw-card-featured::before{height:4px;opacity:0.7}
+    /* Featured — same size, just highlighted */
+    .sw-card-featured{border-color:rgba(222,172,128,0.2);background:linear-gradient(135deg,rgba(222,172,128,0.04),rgba(168,230,207,0.02))}
+    .sw-card-featured::before{opacity:0.8}
 
-    /* Avatar */
-    .sw-avatar{width:52px;height:52px;border-radius:14px;overflow:hidden;flex-shrink:0;border:2px solid rgba(255,255,255,0.06);transition:transform 0.3s var(--ease),border-color 0.3s var(--ease)}
+    /* Avatar — small */
+    .sw-avatar{width:32px;height:32px;border-radius:8px;overflow:hidden;flex-shrink:0;border:1px solid rgba(255,255,255,0.08);transition:transform 0.3s var(--ease)}
     .sw-avatar img{width:100%;height:100%;object-fit:cover;image-rendering:pixelated}
-    .sw-card:hover .sw-avatar{transform:scale(1.06);border-color:color-mix(in srgb,var(--card-hue,var(--sand)) 30%,transparent)}
-    .sw-card-featured .sw-avatar{width:60px;height:60px;border-radius:16px}
+    .sw-card:hover .sw-avatar{transform:scale(1.08)}
 
-    /* Header: avatar + name + badge */
-    .sw-header{display:flex;align-items:center;gap:var(--space-md);margin-bottom:var(--space-md)}
-    .sw-name-block{flex:1;min-width:0}
-    .sw-name{font-size:0.95rem;font-weight:700;color:var(--white);line-height:1.4}
-    .sw-name small{display:block;color:var(--fog);font-size:0.72rem;font-weight:400;margin-top:1px}
-    .sw-badge{display:inline-block;padding:2px 9px;border-radius:8px;font-size:0.66rem;font-weight:700;letter-spacing:0.02em}
-    .sw-badge-active{background:rgba(168,230,207,0.1);color:var(--foam);border:1px solid rgba(168,230,207,0.15)}
+    /* Info */
+    .sw-info{flex:1;min-width:0}
+    .sw-name{font-size:0.82rem;font-weight:700;color:var(--white);line-height:1.3;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+    .sw-name small{color:var(--fog);font-size:0.68rem;font-weight:400;margin-left:4px}
+    .sw-meta{display:flex;align-items:center;gap:4px;margin-top:2px}
+    .sw-badge{display:inline-block;padding:1px 6px;border-radius:6px;font-size:0.6rem;font-weight:600}
+    .sw-badge-active{background:rgba(168,230,207,0.1);color:var(--foam);border:1px solid rgba(168,230,207,0.12)}
     .sw-badge-expired{background:rgba(255,255,255,0.04);color:var(--fog);border:1px solid rgba(255,255,255,0.06)}
+    .sw-joined{font-size:0.64rem;color:var(--fog)}
 
-    /* Message — the heart of the card */
-    .sw-msg{font-size:0.88rem;color:var(--cloud);line-height:1.8;margin-bottom:var(--space-md);position:relative;padding-left:var(--space-lg)}
-    .sw-msg::before{content:'"';position:absolute;left:0;top:-4px;font-size:2rem;font-family:var(--font-serif);color:color-mix(in srgb,var(--card-hue,var(--sand)) 40%,transparent);line-height:1}
+    /* Message — hidden by default, show on hover */
+    .sw-msg{display:none;font-size:0.78rem;color:var(--cloud);line-height:1.6;margin-top:6px;padding-left:12px;border-left:2px solid color-mix(in srgb,var(--card-hue,var(--sand)) 30%,transparent)}
+    .sw-card-has-msg .sw-msg{display:block}
+    .sw-card-has-msg{cursor:default}
 
-    /* Footer: joined date */
-    .sw-footer{display:flex;align-items:center;justify-content:space-between;font-size:0.72rem;color:var(--fog)}
-    .sw-joined{display:flex;align-items:center;gap:4px}
-    .sw-joined::before{content:'';width:5px;height:5px;border-radius:50%;background:color-mix(in srgb,var(--card-hue,var(--sand)) 40%,transparent)}
+    /* Empty */
+    .sw-empty{text-align:center;padding:var(--space-xl) var(--space-lg);color:var(--fog)}
+    .sw-empty-icon{font-size:2rem;margin-bottom:var(--space-sm);opacity:0.4}
 
-    /* === Empty === */
-    .sw-empty{text-align:center;padding:var(--space-2xl) var(--space-lg);color:var(--fog)}
-    .sw-empty-icon{font-size:2.2rem;margin-bottom:var(--space-md);opacity:0.4}
+    /* CTA */
+    .sw-cta{position:relative;text-align:center;padding:var(--space-xl) var(--space-lg);background:linear-gradient(135deg,rgba(222,172,128,0.04),rgba(168,230,207,0.02));border:1px solid rgba(222,172,128,0.1);border-radius:var(--radius-lg);margin-top:var(--space-2xl);overflow:hidden}
+    .sw-cta h3{font-size:0.95rem;font-weight:700;color:var(--white);margin-bottom:4px;position:relative}
+    .sw-cta p{font-size:0.82rem;color:var(--fog);margin-bottom:var(--space-md);position:relative}
 
-    /* === CTA === */
-    .sw-cta{position:relative;text-align:center;padding:var(--space-2xl) var(--space-xl);background:linear-gradient(135deg,rgba(222,172,128,0.04),rgba(168,230,207,0.02));border:1px solid rgba(222,172,128,0.1);border-radius:var(--radius-xl);margin-top:var(--space-2xl);overflow:hidden}
-    .sw-cta::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 60% at 50% 0%,rgba(222,172,128,0.06),transparent 70%);pointer-events:none}
-    .sw-cta h3{font-size:1.05rem;font-weight:700;color:var(--white);margin-bottom:6px;position:relative}
-    .sw-cta p{font-size:0.88rem;color:var(--fog);margin-bottom:var(--space-lg);position:relative}
-
-    /* === Light Mode === */
+    /* Light Mode */
     [data-theme="light"] .sw-card{background:#fff;border-color:rgba(0,0,0,0.06)}
-    [data-theme="light"] .sw-card:hover{box-shadow:0 8px 24px rgba(0,0,0,0.08)}
-    [data-theme="light"] .sw-card-featured{background:linear-gradient(135deg,rgba(222,172,128,0.04),rgba(88,194,176,0.02))}
-    [data-theme="light"] .sw-cta{background:linear-gradient(135deg,rgba(222,172,128,0.04),rgba(88,194,176,0.02))}
+    [data-theme="light"] .sw-card:hover{box-shadow:0 4px 12px rgba(0,0,0,0.06)}
+    [data-theme="light"] .sw-card-featured{background:linear-gradient(135deg,rgba(222,172,128,0.03),rgba(88,194,176,0.02))}
+    [data-theme="light"] .sw-cta{background:linear-gradient(135deg,rgba(222,172,128,0.03),rgba(88,194,176,0.02))}
 
-    /* === Responsive === */
-    @media(max-width:900px){
-      .sw-wall{grid-template-columns:repeat(2,1fr)}
-      .sw-card-featured{grid-column:span 2}
-    }
+    /* Responsive */
     @media(max-width:580px){
-      .sw-wall{grid-template-columns:1fr}
-      .sw-card-featured{grid-column:auto}
+      .sw-wall{grid-template-columns:repeat(2,1fr)}
     }
   </style>
 </head>
@@ -312,30 +301,28 @@
 
     function renderCard(m, featured) {
       var hue = m.hue || nextHue();
-      var el = document.createElement("div");
-      el.className = "sw-card" + (featured ? " sw-card-featured" : "");
-      el.setAttribute("data-hue", hue);
-
-      var isAnon    = m.anon === true;
+      var isAnon = m.anon === true;
+      var displayName = isAnon ? "匿名" : m.name;
+      var idSmall = (!isAnon && m.id) ? '<small>' + m.id + '</small>' : '';
+      var hasMsg = !!m.msg;
       var badgeClass = m.active ? "sw-badge-active" : "sw-badge-expired";
       var badgeText  = m.active ? "現役" : "曾是會員";
-      var displayName = isAnon ? "匿名" : m.name;
-      var idLine = (!isAnon && m.id) ? '<small>' + m.id + '</small>' : '';
-      var msgHtml = m.msg
-        ? '<div class="sw-msg">' + m.msg + '</div>'
-        : '';
+
+      var el = document.createElement("div");
+      el.className = "sw-card" + (featured ? " sw-card-featured" : "") + (hasMsg ? " sw-card-has-msg" : "");
+      el.setAttribute("data-hue", hue);
+
+      var msgHtml = hasMsg ? '<div class="sw-msg">' + m.msg + '</div>' : '';
 
       el.innerHTML =
-        '<div class="sw-header">' +
-          '<div class="sw-avatar"><img src="' + avatarUrl(m.id) + '" alt="' + displayName + ' 的頭像" loading="lazy"></div>' +
-          '<div class="sw-name-block">' +
-            '<div class="sw-name">' + displayName + idLine + '</div>' +
+        '<div class="sw-avatar"><img src="' + avatarUrl(m.id) + '" alt="' + displayName + '" loading="lazy"></div>' +
+        '<div class="sw-info">' +
+          '<div class="sw-name">' + displayName + idSmall + '</div>' +
+          '<div class="sw-meta">' +
             '<span class="sw-badge ' + badgeClass + '">' + badgeText + '</span>' +
+            '<span class="sw-joined">' + m.joined + '</span>' +
           '</div>' +
-        '</div>' +
-        msgHtml +
-        '<div class="sw-footer">' +
-          '<span class="sw-joined">' + m.joined + ' 加入</span>' +
+          msgHtml +
         '</div>';
       return el;
     }
