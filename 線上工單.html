@@ -401,10 +401,6 @@
               <!-- ══ 💬 群組 ══ -->
               <div class="partner-type-form" id="pf-group" style="display:none">
                 <div class="pd-form-field">
-                  <label class="pd-form-label" for="pf-g-name">群組名稱 <span class="pd-form-required">*</span></label>
-                  <input type="text" id="pf-g-name" class="pd-form-input" placeholder="例：某某建築交流群" maxlength="100">
-                </div>
-                <div class="pd-form-field">
                   <label class="pd-form-label">群組平台 <span class="pd-form-required">*</span></label>
                   <div class="pd-form-radio-grid" id="pf-g-platform">
                     <label class="pd-form-radio"><input type="radio" name="pf-g-type" value="Discord"><span>💬 Discord</span></label>
@@ -436,10 +432,6 @@
 
               <!-- ══ 🌐 網站 ══ -->
               <div class="partner-type-form" id="pf-website" style="display:none">
-                <div class="pd-form-field">
-                  <label class="pd-form-label" for="pf-w-name">網站名稱 <span class="pd-form-required">*</span></label>
-                  <input type="text" id="pf-w-name" class="pd-form-input" placeholder="例：某某 Minecraft 資訊站" maxlength="100">
-                </div>
                 <div class="pd-form-field">
                   <label class="pd-form-label">網站類型 <span class="pd-form-required">*</span></label>
                   <div class="pd-form-radio-grid" id="pf-w-type">
@@ -814,8 +806,8 @@
       '規章解釋':{label:'主旨',desc:'你想問哪條規則？',placeholder:'例：領地相關規則的適用範圍'},
       '💬 群組':{label:'名稱',desc:'你的群組叫什麼名字？',placeholder:'例：某某建築交流群'},
       '🌐 網站':{label:'名稱',desc:'你的網站叫什麼名字？',placeholder:'例：某某 Minecraft 資訊站'},
-      '🏗️ 工作室':{label:'名稱',desc:'你的工作室叫什麼名字？',placeholder:'例：某某建築工作室'},
-      '🎬 創作者':{label:'名稱',desc:'你的頻道或創作者名稱？',placeholder:'例：某某玩 Minecraft'},
+      '🏗️ 工作室':{label:'工作室名稱',desc:'你的工作室叫什麼名字？',placeholder:'例：某某建築工作室'},
+      '🎬 創作者':{label:'頻道或創作者名稱',desc:'你的頻道或創作者名稱？',placeholder:'例：某某玩 Minecraft'},
       '📦 其他':{label:'名稱',desc:'你的社群或團隊叫什麼名字？',placeholder:'例：某某活動企劃團隊'}
     };
 
@@ -975,15 +967,11 @@
         var subtypeInput=document.querySelector('#subtype-partner input:checked');
         var subVal=subtypeInput?subtypeInput.value:'';
         if(subVal==='💬 群組'){
-          var n=document.getElementById('pf-g-name');
           var t=document.querySelector('#pf-g-platform input:checked');
-          if(!n.value.trim()){markError(n);valid=false}
           if(!t){document.getElementById('pf-g-platform').closest('.pd-form-field').querySelector('.pd-form-radio-grid').classList.add('error');valid=false}
         }else if(subVal==='🌐 網站'){
-          var n=document.getElementById('pf-w-name');
           var t=document.querySelector('#pf-w-type input:checked');
           var u=document.getElementById('pf-w-url');
-          if(!n.value.trim()){markError(n);valid=false}
           if(!t){valid=false}
           if(!u.value.trim()){markError(u);valid=false}
         }else if(subVal==='🏗️ 工作室'){
@@ -1058,25 +1046,21 @@
         var subVal2=subtypeInput2?subtypeInput2.value:'';
 
         if(subVal2==='💬 群組'){
-          var pn=document.getElementById('pf-g-name').value.trim();
           var pt=document.querySelector('#pf-g-platform input:checked');
           var pm=document.getElementById('pf-g-members').value.trim();
           var pi=document.getElementById('pf-g-invite').value.trim();
           var pb=document.getElementById('pf-g-brief').value.trim();
           var pp=document.getElementById('pf-g-promo').value.trim();
-          if(pn)fields.unshift({name:'群組名稱',value:pn,inline:true});
           if(pt)fields.push({name:'平台',value:pt.value,inline:true});
           if(pm)fields.push({name:'成員人數',value:pm,inline:true});
           if(pi)fields.push({name:'邀請連結',value:pi});
           if(pb)fields.push({name:'簡介',value:pb});
           if(pp)fields.push({name:'宣傳文',value:pp.length>1024?pp.substring(0,1021)+'...':pp});
         }else if(subVal2==='🌐 網站'){
-          var wn=document.getElementById('pf-w-name').value.trim();
           var wt=document.querySelector('#pf-w-type input:checked');
           var wu=document.getElementById('pf-w-url').value.trim();
           var wb=document.getElementById('pf-w-brief').value.trim();
           var wp=document.getElementById('pf-w-promo').value.trim();
-          if(wn)fields.unshift({name:'網站名稱',value:wn,inline:true});
           if(wt)fields.push({name:'網站類型',value:wt.value,inline:true});
           if(wu)fields.push({name:'網站連結',value:wu});
           if(wb)fields.push({name:'簡介',value:wb});
