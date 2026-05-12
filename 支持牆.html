@@ -190,18 +190,7 @@
             <span class="line"></span>
             <span class="count" id="swActiveCount">—</span>
           </div>
-          <div class="sw-wall" id="swActiveWall"></div>
-        </div>
-
-        <div class="guide-divider"></div>
-
-        <!-- ═══ 歷屆會員 ═══ -->
-        <div class="sw-section fade-in">
-          <div class="sw-section-head">
-            <h2>🕰️ 歷屆會員</h2>
-            <span class="line"></span>
-          </div>
-          <div class="sw-wall" id="swPastWall"></div>
+          <div class="sw-wall" id="swWall"></div>
         </div>
 
         <div class="guide-divider"></div>
@@ -269,19 +258,19 @@
      *   id      : Minecraft 遊戲 ID（必填，用於頭像抓取）
      *   anon    : true = 匿名（隱藏遊戲 ID，頭像仍用 id 抓取）
      *   joined  : 加入日期（YYYY-MM）
-     *   active  : true = 現役 / false = 歷屆
-     *   featured: true = 置頂展示（可選，佔兩欄）
+     *   featured: true = 置頂展示（可選）
      *   msg     : 感言（選填）
      *   hue     : 卡片頂部色彩（sand/foam/sky/lavender/blush/teal，選填）
      *
      * 匿名會員：name 顯示「匿名」，遊戲 ID 不會出現，但頭像還是用 id 抓取。
+     * 排序規則：越早加入越上面，越晚加入越下面。featured 的會員置頂。
      * 新增會員：在陣列尾端加一個物件即可。
      */
     var members = [
       /* ── 範例（請替換為真實資料）── */
-      { name: "神焰",   id: "Taiwan_shihyuan", joined: "2024-01", active: true, featured: true, hue: "sand", msg: "謝謝大家一路以來的支持！" },
-      { name: "白貓",   id: "WhiteMeowGX",     joined: "2024-01", active: true, hue: "foam", msg: "海風是我第二個家。" },
-      { name: "匿名",   id: "Blue_5125",        anon: true, joined: "2024-03", active: true, hue: "sky", msg: "默默支持就好。" }
+      { name: "神焰",   id: "Taiwan_shihyuan", joined: "2024-01", featured: true, hue: "sand", msg: "謝謝大家一路以來的支持！" },
+      { name: "白貓",   id: "WhiteMeowGX",     joined: "2024-01", hue: "foam", msg: "海風是我第二個家。" },
+      { name: "匿名",   id: "Blue_5125",        anon: true, joined: "2024-03", hue: "sky", msg: "默默支持就好。" }
     ];
 
     /* ── Hue 輪替（未指定時自動分配）── */
@@ -305,8 +294,6 @@
       var displayName = isAnon ? "匿名" : m.name;
       var idSmall = (!isAnon && m.id) ? '<small>' + m.id + '</small>' : '';
       var hasMsg = !!m.msg;
-      var badgeClass = m.active ? "sw-badge-active" : "sw-badge-expired";
-      var badgeText  = m.active ? "現役" : "曾是會員";
 
       var el = document.createElement("div");
       el.className = "sw-card" + (featured ? " sw-card-featured" : "") + (hasMsg ? " sw-card-has-msg" : "");
@@ -319,7 +306,6 @@
         '<div class="sw-info">' +
           '<div class="sw-name">' + displayName + idSmall + '</div>' +
           '<div class="sw-meta">' +
-            '<span class="sw-badge ' + badgeClass + '">' + badgeText + '</span>' +
             '<span class="sw-joined">' + m.joined + '</span>' +
           '</div>' +
           msgHtml +
@@ -327,23 +313,20 @@
       return el;
     }
 
-    var activeMembers = members.filter(function(m){ return m.active });
-    var pastMembers   = members.filter(function(m){ return !m.active });
-    var featured      = activeMembers.filter(function(m){ return m.featured });
-    var normalActive  = activeMembers.filter(function(m){ return !m.featured });
+    /* Sort: featured first, then by joined date (earliest → latest) */
+    var sorted = members.slice().sort(function(a, b) {
+      if (a.featured && !b.featured) return -1;
+      if (!a.featured && b.featured) return 1;
+      return a.joined.localeCompare(b.joined);
+    });
+
+    var wall = document.getElementById("swWall");
+    var countEl = document.getElementById("swActiveCount");
 
     hueIdx = 0;
-    featured.concat(normalActive).forEach(function(m){ activeWall.appendChild(renderCard(m, m.featured)) });
-    hueIdx = 0;
-    pastMembers.forEach(function(m){ pastWall.appendChild(renderCard(m, false)) });
+    sorted.forEach(function(m){ wall.appendChild(renderCard(m, m.featured)) });
 
-    totalNum.textContent  = members.length;
-    activeCnt.textContent = members.length + " 人";
-
-    /* Hide past section if empty */
-    if (pastMembers.length === 0) {
-      pastWall.innerHTML = '<div class="sw-empty"><div class="sw-empty-icon">🕰️</div><p>暫無歷屆會員紀錄</p></div>';
-    }
+    countEl.textContent = members.length + " 人";
   })();
   </script>
 </body>
