@@ -26,76 +26,93 @@
   <style>
     /* ═══════════════════════════════════════
        支持牆 — Support Wall
-       Style aligned with 海風團隊
+       溫暖 × 感謝 × 個人化
        ═══════════════════════════════════════ */
 
     /* === Hero === */
-    .sw-hero{position:relative;text-align:center;padding:var(--space-2xl) var(--space-xl) var(--space-xl);max-width:800px;margin:0 auto;overflow:hidden}
-    .sw-hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 70% 60% at 50% 0%,rgba(157,175,255,0.08),transparent 70%),radial-gradient(ellipse 50% 40% at 30% 80%,rgba(168,230,207,0.05),transparent 70%);pointer-events:none}
+    .sw-hero{position:relative;text-align:center;padding:var(--space-2xl) var(--space-xl) var(--space-xl);max-width:720px;margin:0 auto;overflow:hidden}
+    .sw-hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 50% at 50% 0%,rgba(222,172,128,0.1),transparent 70%),radial-gradient(ellipse 40% 40% at 70% 80%,rgba(168,230,207,0.05),transparent 70%);pointer-events:none}
     .sw-hero h1{font-size:clamp(1.8rem,4vw,2.5rem);font-weight:800;margin-bottom:var(--space-sm);position:relative}
-    .sw-hero h1 .sw-heart{display:inline-block;animation:sw-pulse 1.5s ease-in-out infinite}
-    @keyframes sw-pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.2)}}
-    .sw-hero-desc{color:var(--fog);font-size:1rem;max-width:520px;margin:0 auto;line-height:1.8;position:relative}
+    .sw-hero-desc{color:var(--fog);font-size:1rem;max-width:480px;margin:0 auto;line-height:1.8;position:relative}
+    .sw-hero-count{display:inline-flex;align-items:center;gap:8px;margin-top:var(--space-lg);padding:10px 24px;border-radius:99px;background:rgba(222,172,128,0.08);border:1px solid rgba(222,172,128,0.15);position:relative}
+    .sw-hero-count-num{font-size:1.3rem;font-weight:800;color:var(--sand)}
+    .sw-hero-count-label{font-size:0.82rem;color:var(--fog)}
 
-    /* === Stats (same pattern as team-stats) === */
-    .sw-stats{display:flex;gap:10px;margin:var(--space-xl) auto;max-width:480px;flex-wrap:wrap}
-    .sw-stat{background:var(--ocean);border:1px solid var(--mist);border-radius:var(--radius-md);padding:14px 20px;text-align:center;flex:1;min-width:80px;transition:border-color 0.2s}
-    .sw-stat:hover{border-color:rgba(157,175,255,0.15)}
-    .sw-stat .num{font-size:1.4rem;font-weight:800;color:var(--cloud);line-height:1.2}
-    .sw-stat .label{font-size:0.68rem;color:var(--fog);margin-top:2px;text-transform:uppercase;letter-spacing:0.5px}
+    /* === Section === */
+    .sw-section{margin:var(--space-2xl) 0}
+    .sw-section-head{display:flex;align-items:center;gap:var(--space-md);margin-bottom:var(--space-lg)}
+    .sw-section-head h2{font-size:1rem;font-weight:700;color:var(--white);white-space:nowrap}
+    .sw-section-head .line{flex:1;height:1px;background:linear-gradient(90deg,rgba(222,172,128,0.15),transparent)}
 
-    /* === Section Header === */
-    .sw-section{margin:var(--space-2xl) 0 var(--space-lg)}
-    .sw-section-title{display:flex;align-items:center;gap:var(--space-md);margin-bottom:var(--space-lg)}
-    .sw-section-title h2{font-size:1.1rem;font-weight:700;color:var(--white);white-space:nowrap}
-    .sw-section-title .line{flex:1;height:1px;background:linear-gradient(90deg,rgba(157,175,255,0.15),transparent)}
-    .sw-section-title .count{font-size:0.72rem;color:var(--fog);background:rgba(157,175,255,0.06);padding:2px 10px;border-radius:12px;font-weight:600}
+    /* === Wall Grid — masonry-like with varied heights === */
+    .sw-wall{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--space-md)}
 
-    /* === Member List (team-style rows) === */
-    .sw-members{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:var(--space-md)}
-    .sw-member{display:flex;align-items:center;gap:var(--space-md);padding:var(--space-md) var(--space-lg);background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.06);border-radius:var(--radius-lg);transition:all 0.3s var(--ease)}
-    .sw-member:hover{background:rgba(255,255,255,0.04);border-color:rgba(157,175,255,0.12);transform:translateY(-2px)}
+    /* === Card === */
+    .sw-card{position:relative;padding:var(--space-lg);background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.06);border-radius:var(--radius-xl);transition:all 0.4s var(--ease);overflow:hidden}
+    .sw-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--card-hue,var(--sand));opacity:0.5;transition:opacity 0.4s var(--ease)}
+    .sw-card:hover{border-color:color-mix(in srgb,var(--card-hue,var(--sand)) 25%,transparent);transform:translateY(-4px);box-shadow:0 12px 32px rgba(0,0,0,0.12)}
+    .sw-card:hover::before{opacity:0.9}
 
-    /* Avatar — same as team-skin */
-    .sw-skin{width:48px;height:48px;border-radius:12px;flex-shrink:0;image-rendering:pixelated;transition:transform 0.3s var(--ease)}
-    .sw-member:hover .sw-skin{transform:scale(1.08) rotate(-2deg)}
+    /* Card accent colors — each card gets a slightly different hue */
+    .sw-card[data-hue="sand"]    {--card-hue:var(--sand)}
+    .sw-card[data-hue="foam"]    {--card-hue:var(--foam)}
+    .sw-card[data-hue="sky"]     {--card-hue:var(--sky)}
+    .sw-card[data-hue="lavender"]{--card-hue:var(--lavender)}
+    .sw-card[data-hue="blush"]   {--card-hue:var(--blush)}
+    .sw-card[data-hue="teal"]    {--card-hue:var(--teal)}
 
-    /* Info */
-    .sw-info{flex:1;min-width:0}
-    .sw-name{font-size:0.92rem;font-weight:700;color:var(--white);line-height:1.4}
-    .sw-name small{color:var(--fog);font-size:0.72rem;font-weight:400;margin-left:4px}
-    .sw-meta{display:flex;align-items:center;gap:6px;margin-top:4px;flex-wrap:wrap}
-    .sw-badge{display:inline-block;padding:2px 8px;border-radius:8px;font-size:0.68rem;font-weight:600}
+    /* Featured — warm glow */
+    .sw-card-featured{grid-column:span 2;background:linear-gradient(135deg,rgba(222,172,128,0.05),rgba(168,230,207,0.03));border-color:rgba(222,172,128,0.15)}
+    .sw-card-featured::before{height:4px;opacity:0.7}
+
+    /* Avatar */
+    .sw-avatar{width:52px;height:52px;border-radius:14px;overflow:hidden;flex-shrink:0;border:2px solid rgba(255,255,255,0.06);transition:transform 0.3s var(--ease),border-color 0.3s var(--ease)}
+    .sw-avatar img{width:100%;height:100%;object-fit:cover;image-rendering:pixelated}
+    .sw-card:hover .sw-avatar{transform:scale(1.06);border-color:color-mix(in srgb,var(--card-hue,var(--sand)) 30%,transparent)}
+    .sw-card-featured .sw-avatar{width:60px;height:60px;border-radius:16px}
+
+    /* Header: avatar + name + badge */
+    .sw-header{display:flex;align-items:center;gap:var(--space-md);margin-bottom:var(--space-md)}
+    .sw-name-block{flex:1;min-width:0}
+    .sw-name{font-size:0.95rem;font-weight:700;color:var(--white);line-height:1.4}
+    .sw-name small{display:block;color:var(--fog);font-size:0.72rem;font-weight:400;margin-top:1px}
+    .sw-badge{display:inline-block;padding:2px 9px;border-radius:8px;font-size:0.66rem;font-weight:700;letter-spacing:0.02em}
     .sw-badge-active{background:rgba(168,230,207,0.1);color:var(--foam);border:1px solid rgba(168,230,207,0.15)}
     .sw-badge-expired{background:rgba(255,255,255,0.04);color:var(--fog);border:1px solid rgba(255,255,255,0.06)}
-    .sw-joined{font-size:0.72rem;color:var(--fog)}
-    .sw-msg{font-size:0.78rem;color:var(--fog);line-height:1.5;margin-top:4px;font-style:italic}
 
-    /* Featured — slightly larger */
-    .sw-featured{grid-column:1/-1;padding:var(--space-lg) var(--space-xl);background:linear-gradient(135deg,rgba(157,175,255,0.04),rgba(168,230,207,0.03));border:1px solid rgba(157,175,255,0.12)}
-    .sw-featured .sw-skin{width:56px;height:56px;border-radius:14px}
-    .sw-featured .sw-name{font-size:1rem}
+    /* Message — the heart of the card */
+    .sw-msg{font-size:0.88rem;color:var(--cloud);line-height:1.8;margin-bottom:var(--space-md);position:relative;padding-left:var(--space-lg)}
+    .sw-msg::before{content:'"';position:absolute;left:0;top:-4px;font-size:2rem;font-family:var(--font-serif);color:color-mix(in srgb,var(--card-hue,var(--sand)) 40%,transparent);line-height:1}
 
-    /* Empty */
-    .sw-empty{text-align:center;padding:var(--space-2xl);color:var(--fog)}
-    .sw-empty-icon{font-size:2.5rem;margin-bottom:var(--space-md);opacity:0.5}
+    /* Footer: joined date */
+    .sw-footer{display:flex;align-items:center;justify-content:space-between;font-size:0.72rem;color:var(--fog)}
+    .sw-joined{display:flex;align-items:center;gap:4px}
+    .sw-joined::before{content:'';width:5px;height:5px;border-radius:50%;background:color-mix(in srgb,var(--card-hue,var(--sand)) 40%,transparent)}
 
-    /* CTA */
-    .sw-cta{display:flex;align-items:center;justify-content:center;gap:var(--space-md);margin-top:var(--space-2xl);padding:var(--space-xl);background:linear-gradient(135deg,rgba(157,175,255,0.04),rgba(168,230,207,0.03));border:1px solid rgba(157,175,255,0.1);border-radius:var(--radius-xl);text-align:center}
-    .sw-cta-text{flex:1}
-    .sw-cta-text h3{font-size:1rem;font-weight:700;color:var(--white);margin-bottom:4px}
-    .sw-cta-text p{font-size:0.85rem;color:var(--fog);margin:0}
+    /* === Empty === */
+    .sw-empty{text-align:center;padding:var(--space-2xl) var(--space-lg);color:var(--fog)}
+    .sw-empty-icon{font-size:2.2rem;margin-bottom:var(--space-md);opacity:0.4}
 
-    /* Light Mode */
-    [data-theme="light"] .sw-member{background:#fff;border-color:rgba(0,0,0,0.06)}
-    [data-theme="light"] .sw-member:hover{box-shadow:0 4px 12px rgba(0,0,0,0.06)}
-    [data-theme="light"] .sw-featured{background:linear-gradient(135deg,rgba(74,108,247,0.03),rgba(88,194,176,0.02));border-color:rgba(74,108,247,0.1)}
-    [data-theme="light"] .sw-cta{background:linear-gradient(135deg,rgba(74,108,247,0.03),rgba(88,194,176,0.02));border-color:rgba(74,108,247,0.1)}
+    /* === CTA === */
+    .sw-cta{position:relative;text-align:center;padding:var(--space-2xl) var(--space-xl);background:linear-gradient(135deg,rgba(222,172,128,0.04),rgba(168,230,207,0.02));border:1px solid rgba(222,172,128,0.1);border-radius:var(--radius-xl);margin-top:var(--space-2xl);overflow:hidden}
+    .sw-cta::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 60% at 50% 0%,rgba(222,172,128,0.06),transparent 70%);pointer-events:none}
+    .sw-cta h3{font-size:1.05rem;font-weight:700;color:var(--white);margin-bottom:6px;position:relative}
+    .sw-cta p{font-size:0.88rem;color:var(--fog);margin-bottom:var(--space-lg);position:relative}
 
-    /* Responsive */
-    @media(max-width:768px){
-      .sw-members{grid-template-columns:1fr}
-      .sw-featured{grid-column:auto}
+    /* === Light Mode === */
+    [data-theme="light"] .sw-card{background:#fff;border-color:rgba(0,0,0,0.06)}
+    [data-theme="light"] .sw-card:hover{box-shadow:0 8px 24px rgba(0,0,0,0.08)}
+    [data-theme="light"] .sw-card-featured{background:linear-gradient(135deg,rgba(222,172,128,0.04),rgba(88,194,176,0.02))}
+    [data-theme="light"] .sw-cta{background:linear-gradient(135deg,rgba(222,172,128,0.04),rgba(88,194,176,0.02))}
+
+    /* === Responsive === */
+    @media(max-width:900px){
+      .sw-wall{grid-template-columns:repeat(2,1fr)}
+      .sw-card-featured{grid-column:span 2}
+    }
+    @media(max-width:580px){
+      .sw-wall{grid-template-columns:1fr}
+      .sw-card-featured{grid-column:auto}
     }
   </style>
 </head>
@@ -167,17 +184,11 @@
 
       <!-- ═══ Hero ═══ -->
       <div class="sw-hero fade-in">
-        <h1><span class="sw-heart">💛</span> 支持牆</h1>
+        <h1>💛 支持牆</h1>
         <p class="sw-hero-desc">感謝每一位支持海風的你。<br>是你們讓這個家變得更好。</p>
-        <div class="sw-stats">
-          <div class="sw-stat">
-            <span class="num" id="swTotal">—</span>
-            <span class="label">總支持</span>
-          </div>
-          <div class="sw-stat">
-            <span class="num" id="swActive">—</span>
-            <span class="label">現役</span>
-          </div>
+        <div class="sw-hero-count">
+          <span class="sw-hero-count-num" id="swTotal">—</span>
+          <span class="sw-hero-count-label">位支持者</span>
         </div>
       </div>
 
@@ -185,35 +196,31 @@
 
         <!-- ═══ 現役會員 ═══ -->
         <div class="sw-section fade-in">
-          <div class="sw-section-title">
+          <div class="sw-section-head">
             <h2>🌊 現役會員</h2>
             <span class="line"></span>
-            <span class="count" id="swActiveCount">—</span>
           </div>
-          <div class="sw-members" id="swActiveWall"></div>
+          <div class="sw-wall" id="swActiveWall"></div>
         </div>
 
         <div class="guide-divider"></div>
 
         <!-- ═══ 歷屆會員 ═══ -->
         <div class="sw-section fade-in">
-          <div class="sw-section-title">
+          <div class="sw-section-head">
             <h2>🕰️ 歷屆會員</h2>
             <span class="line"></span>
-            <span class="count" id="swPastCount">—</span>
           </div>
-          <div class="sw-members" id="swPastWall"></div>
+          <div class="sw-wall" id="swPastWall"></div>
         </div>
 
         <div class="guide-divider"></div>
 
-        <!-- ═══ 成為會員 ═══ -->
+        <!-- ═══ CTA ═══ -->
         <div class="sw-cta fade-in">
-          <div class="sw-cta-text">
-            <h3>想讓你的名字出現在這裡？</h3>
-            <p>支持海風，成為這個家的一份子。</p>
-          </div>
-          <a href="會員" class="btn btn-primary" style="flex-shrink:0">了解會員方案 →</a>
+          <h3>想讓你的名字出現在這裡？</h3>
+          <p>支持海風，成為這個家的一份子。</p>
+          <a href="會員" class="btn btn-primary">了解會員方案 →</a>
         </div>
 
       </div>
@@ -272,47 +279,57 @@
      *   id      : Minecraft 玩家 ID（用於 mc-heads.net 頭像）
      *   joined  : 加入日期（YYYY-MM）
      *   active  : true = 現役 / false = 歷屆
-     *   featured: true = 置頂展示（可選）
+     *   featured: true = 置頂展示（可選，佔兩欄）
      *   msg     : 感言（選填）
+     *   hue     : 卡片頂部色彩（sand/foam/sky/lavender/blush/teal，選填）
      *
      * 新增會員：在陣列尾端加一個物件即可。
-     * 如果不知道玩家 ID，avatar 可填 UUID（如 bb5ce2af-e6d5-...）。
      */
     var members = [
       /* ── 範例（請替換為真實資料）── */
-      { name: "神焰",   id: "Taiwan_shihyuan", joined: "2024-01", active: true, featured: true, msg: "謝謝大家一路以來的支持！" },
-      { name: "白貓",   id: "WhiteMeowGX",     joined: "2024-01", active: true, msg: "海風是我第二個家。" },
-      { name: "噗嚕",   id: "Blue_5125",        joined: "2024-03", active: true, msg: "一起讓海風更好！" }
+      { name: "神焰",   id: "Taiwan_shihyuan", joined: "2024-01", active: true, featured: true, hue: "sand",     msg: "謝謝大家一路以來的支持！" },
+      { name: "白貓",   id: "WhiteMeowGX",     joined: "2024-01", active: true, hue: "foam",     msg: "海風是我第二個家。" },
+      { name: "噗嚕",   id: "Blue_5125",        joined: "2024-03", active: true, hue: "sky",      msg: "一起讓海風更好！" }
     ];
+
+    /* ── Hue 輪替（未指定時自動分配）── */
+    var hues = ["sand","foam","sky","lavender","blush","teal"];
+    var hueIdx = 0;
+    function nextHue() { var h = hues[hueIdx % hues.length]; hueIdx++; return h; }
 
     /* ── 渲染 ── */
     var activeWall = document.getElementById("swActiveWall");
     var pastWall   = document.getElementById("swPastWall");
-    var activeNum  = document.getElementById("swActive");
     var totalNum   = document.getElementById("swTotal");
-    var activeCnt  = document.getElementById("swActiveCount");
-    var pastCnt    = document.getElementById("swPastCount");
 
     function avatarUrl(id) {
       return "https://mc-heads.net/face/" + encodeURIComponent(id) + "/100";
     }
 
     function renderCard(m, featured) {
+      var hue = m.hue || nextHue();
       var el = document.createElement("div");
-      el.className = featured ? "sw-member sw-featured" : "sw-member";
+      el.className = "sw-card" + (featured ? " sw-card-featured" : "");
+      el.setAttribute("data-hue", hue);
+
       var badgeClass = m.active ? "sw-badge-active" : "sw-badge-expired";
       var badgeText  = m.active ? "現役" : "曾是會員";
-      var idSmall    = m.id ? ' <small>' + m.id + '</small>' : '';
-      var msgHtml    = m.msg ? '<div class="sw-msg">「' + m.msg + '」</div>' : '';
+      var idLine     = m.id ? '<small>' + m.id + '</small>' : '';
+      var msgHtml    = m.msg
+        ? '<div class="sw-msg">' + m.msg + '</div>'
+        : '';
+
       el.innerHTML =
-        '<img class="sw-skin" src="' + avatarUrl(m.id) + '" alt="' + m.name + ' 的頭像" loading="lazy">' +
-        '<div class="sw-info">' +
-          '<div class="sw-name">' + m.name + idSmall + '</div>' +
-          '<div class="sw-meta">' +
+        '<div class="sw-header">' +
+          '<div class="sw-avatar"><img src="' + avatarUrl(m.id) + '" alt="' + m.name + ' 的頭像" loading="lazy"></div>' +
+          '<div class="sw-name-block">' +
+            '<div class="sw-name">' + m.name + idLine + '</div>' +
             '<span class="sw-badge ' + badgeClass + '">' + badgeText + '</span>' +
-            '<span class="sw-joined">' + m.joined + '</span>' +
           '</div>' +
-          msgHtml +
+        '</div>' +
+        msgHtml +
+        '<div class="sw-footer">' +
+          '<span class="sw-joined">' + m.joined + ' 加入</span>' +
         '</div>';
       return el;
     }
@@ -322,15 +339,12 @@
     var featured      = activeMembers.filter(function(m){ return m.featured });
     var normalActive  = activeMembers.filter(function(m){ return !m.featured });
 
-    /* Featured first, then normal */
+    hueIdx = 0;
     featured.concat(normalActive).forEach(function(m){ activeWall.appendChild(renderCard(m, m.featured)) });
+    hueIdx = 0;
     pastMembers.forEach(function(m){ pastWall.appendChild(renderCard(m, false)) });
 
-    /* Stats */
-    totalNum.textContent  = members.length;
-    activeNum.textContent = activeMembers.length;
-    activeCnt.textContent = activeMembers.length + " 人";
-    pastCnt.textContent   = pastMembers.length + " 人";
+    totalNum.textContent = members.length;
 
     /* Hide past section if empty */
     if (pastMembers.length === 0) {
