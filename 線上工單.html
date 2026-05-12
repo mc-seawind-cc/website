@@ -29,7 +29,7 @@
     .pd-hero-desc{color:var(--fog);font-size:0.95rem;max-width:560px;margin:0 auto;line-height:1.8;position:relative}
 
     .pd-body{max-width:720px;margin:0 auto;padding:0 var(--space-lg) var(--space-2xl);transition:max-width 0.45s var(--ease)}
-    .pd-body:has(.ticket-layout.has-type){max-width:1000px}
+    .pd-body:has(.ticket-layout.has-type){max-width:1060px}
     .pd-body .section-card{background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.06);border-radius:var(--radius-xl);padding:var(--space-xl);margin-bottom:var(--space-lg)}
     .pd-body .section-card h2{font-size:1.1rem;font-weight:700;color:var(--white);margin-bottom:var(--space-md);display:flex;align-items:center;gap:var(--space-sm)}
     .pd-body p{color:var(--cloud);font-size:0.95rem;line-height:1.9;margin-bottom:var(--space-md)}
@@ -41,7 +41,7 @@
 
     /* ── Two-Panel Layout ── */
     .ticket-layout{display:flex;gap:var(--space-xl);align-items:flex-start}
-    .ticket-left{flex:1 1 0;min-width:0;transition:all 0.45s var(--ease)}
+    .ticket-left{flex:1.4 1 0;min-width:0;transition:all 0.45s var(--ease)}
     .ticket-left .section-card{padding:var(--space-lg)}
     .ticket-left .pd-note{padding:var(--space-sm) var(--space-md);font-size:0.82rem}
     .ticket-left .ticket-type-card{padding:var(--space-md) var(--space-sm)}
@@ -49,7 +49,7 @@
     .ticket-left .ticket-type-name{font-size:0.85rem}
     .ticket-left .ticket-type-desc{font-size:0.7rem}
     .ticket-right{flex:0 1 0;max-width:0;overflow:hidden;opacity:0;transform:translateX(30px);transition:all 0.45s var(--ease)}
-    .ticket-layout.has-type .ticket-right{flex:1.3 1 0;max-width:650px;opacity:1;transform:translateX(0);overflow:visible}
+    .ticket-layout.has-type .ticket-right{flex:1 1 0;max-width:600px;opacity:1;transform:translateX(0);overflow:visible}
 
     /* ── Type Selector ── */
     .ticket-type-grid{display:grid;grid-template-columns:1fr;gap:var(--space-xs);margin-bottom:var(--space-lg)}
