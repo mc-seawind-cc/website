@@ -398,37 +398,182 @@
 
             <!-- ── 合作工單專屬欄位 ── -->
             <div class="form-section" id="partnerFields">
-              <div class="pd-form-field">
-                <label class="pd-form-label" for="pf-name">社群或工作室名稱 <span class="pd-form-required">*</span></label>
-                <div class="pd-form-desc">全名就好。</div>
-                <input type="text" id="pf-name" class="pd-form-input" placeholder="例：某某建築工作室" maxlength="100">
+
+              <!-- ══ 💬 群組 ══ -->
+              <div class="partner-type-form" id="pf-group" style="display:none">
+                <div class="pd-form-field">
+                  <label class="pd-form-label" for="pf-g-name">群組名稱 <span class="pd-form-required">*</span></label>
+                  <input type="text" id="pf-g-name" class="pd-form-input" placeholder="例：某某建築交流群" maxlength="100">
+                </div>
+                <div class="pd-form-field">
+                  <label class="pd-form-label">群組平台 <span class="pd-form-required">*</span></label>
+                  <div class="pd-form-radio-grid" id="pf-g-platform">
+                    <label class="pd-form-radio"><input type="radio" name="pf-g-type" value="Discord"><span>💬 Discord</span></label>
+                    <label class="pd-form-radio"><input type="radio" name="pf-g-type" value="LINE"><span>💚 LINE</span></label>
+                    <label class="pd-form-radio"><input type="radio" name="pf-g-type" value="Telegram"><span>✈️ Telegram</span></label>
+                    <label class="pd-form-radio"><input type="radio" name="pf-g-type" value="其他"><span>📱 其他</span></label>
+                  </div>
+                </div>
+                <div class="pd-form-field">
+                  <label class="pd-form-label" for="pf-g-members">成員人數 <span class="pd-form-optional">選填</span></label>
+                  <input type="text" id="pf-g-members" class="pd-form-input" placeholder="例：300" maxlength="20">
+                </div>
+                <div class="pd-form-field">
+                  <label class="pd-form-label" for="pf-g-invite">邀請連結 <span class="pd-form-optional">選填</span></label>
+                  <input type="url" id="pf-g-invite" class="pd-form-input" placeholder="https://discord.gg/xxxxx">
+                </div>
+                <div class="pd-form-field">
+                  <label class="pd-form-label" for="pf-g-brief">一句話介紹 <span class="pd-form-optional">選填，50 字內</span></label>
+                  <div class="pd-form-desc">會顯示在合作夥伴卡片上，沒寫我們幫你抓重點。</div>
+                  <input type="text" id="pf-g-brief" class="pd-form-input" placeholder="例：溫馨小社群，專注生存與建築" maxlength="50">
+                </div>
+                <div class="pd-form-field">
+                  <label class="pd-form-label" for="pf-g-promo">宣傳文 <span class="pd-form-optional">選填</span></label>
+                  <div class="pd-form-desc">會直接放在詳情頁上，可以用 <code>## 標題</code> 分區塊。沒寫就不建詳情頁。</div>
+                  <textarea id="pf-g-promo" class="pd-form-textarea" placeholder="寫寫你們在做什麼、有什麼特色..." rows="6" maxlength="2000"></textarea>
+                  <div class="pd-form-hint"><span id="promoCount-g">0</span> / 2000</div>
+                </div>
               </div>
 
-              <div class="pd-form-field">
-                <label class="pd-form-label" for="pf-brief">一句話介紹自己 <span class="pd-form-optional">選填，50 字內</span></label>
-                <div class="pd-form-desc">會顯示在合作夥伴卡片上，沒寫我們幫你抓重點。</div>
-                <input type="text" id="pf-brief" class="pd-form-input" placeholder="例：溫馨小社群，專注生存與建築" maxlength="50">
-                <div class="pd-form-hint"><span id="briefCount">0</span> / 50</div>
+              <!-- ══ 🌐 網站 ══ -->
+              <div class="partner-type-form" id="pf-website" style="display:none">
+                <div class="pd-form-field">
+                  <label class="pd-form-label" for="pf-w-name">網站名稱 <span class="pd-form-required">*</span></label>
+                  <input type="text" id="pf-w-name" class="pd-form-input" placeholder="例：某某 Minecraft Wiki" maxlength="100">
+                </div>
+                <div class="pd-form-field">
+                  <label class="pd-form-label">網站類型 <span class="pd-form-required">*</span></label>
+                  <div class="pd-form-radio-grid" id="pf-w-type">
+                    <label class="pd-form-radio"><input type="radio" name="pf-w-cat" value="論壇"><span>📋 論壇</span></label>
+                    <label class="pd-form-radio"><input type="radio" name="pf-w-cat" value="Wiki"><span>📖 Wiki</span></label>
+                    <label class="pd-form-radio"><input type="radio" name="pf-w-cat" value="工具網站"><span>🔧 工具網站</span></label>
+                    <label class="pd-form-radio"><input type="radio" name="pf-w-cat" value="其他"><span>🌐 其他</span></label>
+                  </div>
+                </div>
+                <div class="pd-form-field">
+                  <label class="pd-form-label" for="pf-w-url">網站連結 <span class="pd-form-required">*</span></label>
+                  <input type="url" id="pf-w-url" class="pd-form-input" placeholder="https://你的網站">
+                </div>
+                <div class="pd-form-field">
+                  <label class="pd-form-label" for="pf-w-brief">一句話介紹 <span class="pd-form-optional">選填，50 字內</span></label>
+                  <div class="pd-form-desc">會顯示在合作夥伴卡片上，沒寫我們幫你抓重點。</div>
+                  <input type="text" id="pf-w-brief" class="pd-form-input" placeholder="例：全台最大的 Minecraft 資料庫" maxlength="50">
+                </div>
+                <div class="pd-form-field">
+                  <label class="pd-form-label" for="pf-w-promo">宣傳文 <span class="pd-form-optional">選填</span></label>
+                  <div class="pd-form-desc">會直接放在詳情頁上，可以用 <code>## 標題</code> 分區塊。沒寫就不建詳情頁。</div>
+                  <textarea id="pf-w-promo" class="pd-form-textarea" placeholder="寫寫你們網站在做什麼、有什麼內容..." rows="6" maxlength="2000"></textarea>
+                  <div class="pd-form-hint"><span id="promoCount-w">0</span> / 2000</div>
+                </div>
               </div>
 
-              <div class="pd-form-field">
-                <label class="pd-form-label" for="pf-promo">宣傳文 <span class="pd-form-optional">選填</span></label>
-                <div class="pd-form-desc">會直接放在詳情頁上，可以用 <code>## 標題</code> 分區塊。沒寫就不建詳情頁。</div>
-                <textarea id="pf-promo" class="pd-form-textarea" placeholder="寫寫你們在做什麼、有什麼特色..." rows="6" maxlength="2000"></textarea>
-                <div class="pd-form-hint"><span id="promoCount">0</span> / 2000</div>
+              <!-- ══ 🏗️ 工作室 ══ -->
+              <div class="partner-type-form" id="pf-studio" style="display:none">
+                <div class="pd-form-field">
+                  <label class="pd-form-label" for="pf-s-name">工作室名稱 <span class="pd-form-required">*</span></label>
+                  <input type="text" id="pf-s-name" class="pd-form-input" placeholder="例：某某建築工作室" maxlength="100">
+                </div>
+                <div class="pd-form-field">
+                  <label class="pd-form-label">專長領域 <span class="pd-form-required">*</span></label>
+                  <div class="pd-form-radio-grid" id="pf-s-type">
+                    <label class="pd-form-radio"><input type="radio" name="pf-s-cat" value="建築"><span>🏗️ 建築</span></label>
+                    <label class="pd-form-radio"><input type="radio" name="pf-s-cat" value="紅石"><span>🔴 紅石</span></label>
+                    <label class="pd-form-radio"><input type="radio" name="pf-s-cat" value="地圖"><span>🗺️ 地圖</span></label>
+                    <label class="pd-form-radio"><input type="radio" name="pf-s-cat" value="美術"><span>🎨 美術</span></label>
+                    <label class="pd-form-radio"><input type="radio" name="pf-s-cat" value="綜合"><span>✨ 綜合</span></label>
+                    <label class="pd-form-radio"><input type="radio" name="pf-s-cat" value="其他"><span>📦 其他</span></label>
+                  </div>
+                </div>
+                <div class="pd-form-field">
+                  <label class="pd-form-label" for="pf-s-portfolio">作品集連結 <span class="pd-form-optional">選填</span></label>
+                  <div class="pd-form-desc">有作品集網站或 Discord 頻道可以附上。</div>
+                  <input type="url" id="pf-s-portfolio" class="pd-form-input" placeholder="https://你的作品集">
+                </div>
+                <div class="pd-form-field">
+                  <label class="pd-form-label" for="pf-s-brief">一句話介紹 <span class="pd-form-optional">選填，50 字內</span></label>
+                  <div class="pd-form-desc">會顯示在合作夥伴卡片上，沒寫我們幫你抓重點。</div>
+                  <input type="text" id="pf-s-brief" class="pd-form-input" placeholder="例：專精中式建築，5 年經驗" maxlength="50">
+                </div>
+                <div class="pd-form-field">
+                  <label class="pd-form-label" for="pf-s-promo">宣傳文 <span class="pd-form-optional">選填</span></label>
+                  <div class="pd-form-desc">會直接放在詳情頁上，可以用 <code>## 標題</code> 分區塊。沒寫就不建詳情頁。</div>
+                  <textarea id="pf-s-promo" class="pd-form-textarea" placeholder="寫寫你們做過什麼、擅長什麼..." rows="6" maxlength="2000"></textarea>
+                  <div class="pd-form-hint"><span id="promoCount-s">0</span> / 2000</div>
+                </div>
               </div>
 
-              <div class="pd-form-field">
-                <label class="pd-form-label" for="pf-invite">社群連結 <span class="pd-form-optional">選填</span></label>
-                <div class="pd-form-desc">Discord、FB、IG 都行。</div>
-                <input type="url" id="pf-invite" class="pd-form-input" placeholder="https://discord.gg/xxxxx">
+              <!-- ══ 🎬 創作者 ══ -->
+              <div class="partner-type-form" id="pf-creator" style="display:none">
+                <div class="pd-form-field">
+                  <label class="pd-form-label" for="pf-c-name">頻道或創作者名稱 <span class="pd-form-required">*</span></label>
+                  <input type="text" id="pf-c-name" class="pd-form-input" placeholder="例：某某玩 Minecraft" maxlength="100">
+                </div>
+                <div class="pd-form-field">
+                  <label class="pd-form-label">主要平台 <span class="pd-form-required">*</span></label>
+                  <div class="pd-form-radio-grid" id="pf-c-platform">
+                    <label class="pd-form-radio"><input type="radio" name="pf-c-type" value="YouTube"><span>▶️ YouTube</span></label>
+                    <label class="pd-form-radio"><input type="radio" name="pf-c-type" value="Twitch"><span>🟣 Twitch</span></label>
+                    <label class="pd-form-radio"><input type="radio" name="pf-c-type" value="巴哈姆特"><span>🎮 巴哈姆特</span></label>
+                    <label class="pd-form-radio"><input type="radio" name="pf-c-type" value="其他"><span>📱 其他</span></label>
+                  </div>
+                </div>
+                <div class="pd-form-field">
+                  <label class="pd-form-label" for="pf-c-link">頻道連結 <span class="pd-form-optional">選填</span></label>
+                  <input type="url" id="pf-c-link" class="pd-form-input" placeholder="https://youtube.com/@你的頻道">
+                </div>
+                <div class="pd-form-field">
+                  <label class="pd-form-label">內容類型 <span class="pd-form-optional">選填</span></label>
+                  <div class="pd-form-radio-grid" id="pf-c-content">
+                    <label class="pd-form-radio"><input type="radio" name="pf-c-cat" value="生存"><span>🌿 生存</span></label>
+                    <label class="pd-form-radio"><input type="radio" name="pf-c-cat" value="建築"><span>🏗️ 建築</span></label>
+                    <label class="pd-form-radio"><input type="radio" name="pf-c-cat" value="紅石"><span>🔴 紅石</span></label>
+                    <label class="pd-form-radio"><input type="radio" name="pf-c-cat" value="生電"><span>⚙️ 生電</span></label>
+                    <label class="pd-form-radio"><input type="radio" name="pf-c-cat" value="實況"><span>🎙️ 實況</span></label>
+                    <label class="pd-form-radio"><input type="radio" name="pf-c-cat" value="其他"><span>✨ 其他</span></label>
+                  </div>
+                </div>
+                <div class="pd-form-field">
+                  <label class="pd-form-label" for="pf-c-brief">一句話介紹 <span class="pd-form-optional">選填，50 字內</span></label>
+                  <div class="pd-form-desc">會顯示在合作夥伴卡片上，沒寫我們幫你抓重點。</div>
+                  <input type="text" id="pf-c-brief" class="pd-form-input" placeholder="例：主打生存實況，週更兩集" maxlength="50">
+                </div>
+                <div class="pd-form-field">
+                  <label class="pd-form-label" for="pf-c-promo">宣傳文 <span class="pd-form-optional">選填</span></label>
+                  <div class="pd-form-desc">會直接放在詳情頁上，可以用 <code>## 標題</code> 分區塊。沒寫就不建詳情頁。</div>
+                  <textarea id="pf-c-promo" class="pd-form-textarea" placeholder="寫寫你的頻道內容、風格..." rows="6" maxlength="2000"></textarea>
+                  <div class="pd-form-hint"><span id="promoCount-c">0</span> / 2000</div>
+                </div>
               </div>
 
-              <div class="pd-form-field">
-                <label class="pd-form-label" for="pf-website">網站 <span class="pd-form-optional">選填</span></label>
-                <input type="url" id="pf-website" class="pd-form-input" placeholder="https://你的網站">
+              <!-- ══ 📦 其他 ══ -->
+              <div class="partner-type-form" id="pf-other" style="display:none">
+                <div class="pd-form-field">
+                  <label class="pd-form-label" for="pf-o-name">名稱 <span class="pd-form-required">*</span></label>
+                  <input type="text" id="pf-o-name" class="pd-form-input" placeholder="你的社群、團隊或個人名稱" maxlength="100">
+                </div>
+                <div class="pd-form-field">
+                  <label class="pd-form-label" for="pf-o-type">合作類型說明 <span class="pd-form-required">*</span></label>
+                  <div class="pd-form-desc">簡單講一下你想合作的方式或內容。</div>
+                  <textarea id="pf-o-type" class="pd-form-textarea" placeholder="例：我們是一個活動企劃團隊，想跟海風合辦線上活動..." rows="3" maxlength="500"></textarea>
+                </div>
+                <div class="pd-form-field">
+                  <label class="pd-form-label" for="pf-o-brief">一句話介紹 <span class="pd-form-optional">選填，50 字內</span></label>
+                  <div class="pd-form-desc">會顯示在合作夥伴卡片上，沒寫我們幫你抓重點。</div>
+                  <input type="text" id="pf-o-brief" class="pd-form-input" placeholder="例：專門策劃 Minecraft 線上活動" maxlength="50">
+                </div>
+                <div class="pd-form-field">
+                  <label class="pd-form-label" for="pf-o-promo">宣傳文 <span class="pd-form-optional">選填</span></label>
+                  <div class="pd-form-desc">會直接放在詳情頁上，可以用 <code>## 標題</code> 分區塊。沒寫就不建詳情頁。</div>
+                  <textarea id="pf-o-promo" class="pd-form-textarea" placeholder="寫寫你們在做什麼..." rows="6" maxlength="2000"></textarea>
+                  <div class="pd-form-hint"><span id="promoCount-o">0</span> / 2000</div>
+                </div>
+                <div class="pd-form-field">
+                  <label class="pd-form-label" for="pf-o-link">社群連結 <span class="pd-form-optional">選填</span></label>
+                  <input type="url" id="pf-o-link" class="pd-form-input" placeholder="https://你的網站或社群">
+                </div>
               </div>
 
+              <!-- ══ 共用：展示照片 ══ -->
               <div class="pd-form-field">
                 <label class="pd-form-label">展示照片 <span class="pd-form-optional">選填，最多 10 張</span></label>
                 <div class="pd-form-desc">放些代表性圖片，讓大家認識你們。</div>
@@ -591,8 +736,12 @@
     /* ── Character counters ── */
     function bindCounter(input,counter){if(input&&counter){function u(){counter.textContent=input.value.length};input.addEventListener('input',u);u()}}
     bindCounter(detailInput,detailCount);
-    bindCounter(document.getElementById('pf-brief'),document.getElementById('briefCount'));
-    bindCounter(document.getElementById('pf-promo'),document.getElementById('promoCount'));
+    /* Partner type counters */
+    bindCounter(document.getElementById('pf-g-promo'),document.getElementById('promoCount-g'));
+    bindCounter(document.getElementById('pf-w-promo'),document.getElementById('promoCount-w'));
+    bindCounter(document.getElementById('pf-s-promo'),document.getElementById('promoCount-s'));
+    bindCounter(document.getElementById('pf-c-promo'),document.getElementById('promoCount-c'));
+    bindCounter(document.getElementById('pf-o-promo'),document.getElementById('promoCount-o'));
 
     /* ── Sub-type descriptions ── */
     const SUB_DESC={
@@ -691,6 +840,11 @@
         if(currentType==='partner'){
           partnerFields.classList.add('show');
           document.getElementById('fieldIGN').style.display='none';
+          /* Show correct partner type form */
+          document.querySelectorAll('.partner-type-form').forEach(function(f){f.style.display='none'});
+          var pfMap={'💬 群組':'pf-group','🌐 網站':'pf-website','🏗️ 工作室':'pf-studio','🎬 創作者':'pf-creator','📦 其他':'pf-other'};
+          var pfId=pfMap[subVal];
+          if(pfId){var pfEl=document.getElementById(pfId);if(pfEl)pfEl.style.display='block'}
         }else if(currentType==='admin'){
           if(subVal==='應徵'){
             applyFields.classList.add('show');
@@ -767,10 +921,38 @@
       if(!title.value.trim()){markError(title);valid=false}
       if(!detail.value.trim()){markError(detail);valid=false}
 
-      /* Partner: name required */
+      /* Partner: per-type required fields */
       if(currentType==='partner'){
-        var name=document.getElementById('pf-name');
-        if(!name.value.trim()){markError(name);valid=false}
+        var subtypeInput=document.querySelector('#subtype-partner input:checked');
+        var subVal=subtypeInput?subtypeInput.value:'';
+        if(subVal==='💬 群組'){
+          var n=document.getElementById('pf-g-name');
+          var t=document.querySelector('#pf-g-platform input:checked');
+          if(!n.value.trim()){markError(n);valid=false}
+          if(!t){document.getElementById('pf-g-platform').closest('.pd-form-field').querySelector('.pd-form-radio-grid').classList.add('error');valid=false}
+        }else if(subVal==='🌐 網站'){
+          var n=document.getElementById('pf-w-name');
+          var t=document.querySelector('#pf-w-type input:checked');
+          var u=document.getElementById('pf-w-url');
+          if(!n.value.trim()){markError(n);valid=false}
+          if(!t){valid=false}
+          if(!u.value.trim()){markError(u);valid=false}
+        }else if(subVal==='🏗️ 工作室'){
+          var n=document.getElementById('pf-s-name');
+          var t=document.querySelector('#pf-s-type input:checked');
+          if(!n.value.trim()){markError(n);valid=false}
+          if(!t){valid=false}
+        }else if(subVal==='🎬 創作者'){
+          var n=document.getElementById('pf-c-name');
+          var t=document.querySelector('#pf-c-platform input:checked');
+          if(!n.value.trim()){markError(n);valid=false}
+          if(!t){valid=false}
+        }else if(subVal==='📦 其他'){
+          var n=document.getElementById('pf-o-name');
+          var t=document.getElementById('pf-o-type');
+          if(!n.value.trim()){markError(n);valid=false}
+          if(!t.value.trim()){markError(t);valid=false}
+        }
       }
 
       /* Admin apply: position required */
@@ -823,17 +1005,69 @@
 
       /* Partner extra fields */
       if(type==='partner'){
-        var pfName=document.getElementById('pf-name').value.trim();
-        var pfBrief=document.getElementById('pf-brief').value.trim();
-        var pfPromo=document.getElementById('pf-promo').value.trim();
-        var pfInvite=document.getElementById('pf-invite').value.trim();
-        var pfWebsite=document.getElementById('pf-website').value.trim();
+        var subtypeInput2=document.querySelector('#subtype-partner input:checked');
+        var subVal2=subtypeInput2?subtypeInput2.value:'';
 
-        if(pfName)fields.unshift({name:'社群/工作室',value:pfName,inline:true});
-        if(pfBrief)fields.push({name:'簡介',value:pfBrief});
-        if(pfPromo)fields.push({name:'宣傳文',value:pfPromo.length>1024?pfPromo.substring(0,1021)+'...':pfPromo});
-        if(pfInvite)fields.push({name:'社群連結',value:pfInvite,inline:true});
-        if(pfWebsite)fields.push({name:'網站連結',value:pfWebsite,inline:true});
+        if(subVal2==='💬 群組'){
+          var pn=document.getElementById('pf-g-name').value.trim();
+          var pt=document.querySelector('#pf-g-platform input:checked');
+          var pm=document.getElementById('pf-g-members').value.trim();
+          var pi=document.getElementById('pf-g-invite').value.trim();
+          var pb=document.getElementById('pf-g-brief').value.trim();
+          var pp=document.getElementById('pf-g-promo').value.trim();
+          if(pn)fields.unshift({name:'群組名稱',value:pn,inline:true});
+          if(pt)fields.push({name:'平台',value:pt.value,inline:true});
+          if(pm)fields.push({name:'成員人數',value:pm,inline:true});
+          if(pi)fields.push({name:'邀請連結',value:pi});
+          if(pb)fields.push({name:'簡介',value:pb});
+          if(pp)fields.push({name:'宣傳文',value:pp.length>1024?pp.substring(0,1021)+'...':pp});
+        }else if(subVal2==='🌐 網站'){
+          var wn=document.getElementById('pf-w-name').value.trim();
+          var wt=document.querySelector('#pf-w-type input:checked');
+          var wu=document.getElementById('pf-w-url').value.trim();
+          var wb=document.getElementById('pf-w-brief').value.trim();
+          var wp=document.getElementById('pf-w-promo').value.trim();
+          if(wn)fields.unshift({name:'網站名稱',value:wn,inline:true});
+          if(wt)fields.push({name:'網站類型',value:wt.value,inline:true});
+          if(wu)fields.push({name:'網站連結',value:wu});
+          if(wb)fields.push({name:'簡介',value:wb});
+          if(wp)fields.push({name:'宣傳文',value:wp.length>1024?wp.substring(0,1021)+'...':wp});
+        }else if(subVal2==='🏗️ 工作室'){
+          var sn=document.getElementById('pf-s-name').value.trim();
+          var st=document.querySelector('#pf-s-type input:checked');
+          var sp=document.getElementById('pf-s-portfolio').value.trim();
+          var sb=document.getElementById('pf-s-brief').value.trim();
+          var sm=document.getElementById('pf-s-promo').value.trim();
+          if(sn)fields.unshift({name:'工作室名稱',value:sn,inline:true});
+          if(st)fields.push({name:'專長領域',value:st.value,inline:true});
+          if(sp)fields.push({name:'作品集',value:sp});
+          if(sb)fields.push({name:'簡介',value:sb});
+          if(sm)fields.push({name:'宣傳文',value:sm.length>1024?sm.substring(0,1021)+'...':sm});
+        }else if(subVal2==='🎬 創作者'){
+          var cn=document.getElementById('pf-c-name').value.trim();
+          var ct=document.querySelector('#pf-c-platform input:checked');
+          var cl=document.getElementById('pf-c-link').value.trim();
+          var cc=document.querySelector('#pf-c-content input:checked');
+          var cb=document.getElementById('pf-c-brief').value.trim();
+          var cm=document.getElementById('pf-c-promo').value.trim();
+          if(cn)fields.unshift({name:'頻道名稱',value:cn,inline:true});
+          if(ct)fields.push({name:'平台',value:ct.value,inline:true});
+          if(cl)fields.push({name:'頻道連結',value:cl});
+          if(cc)fields.push({name:'內容類型',value:cc.value,inline:true});
+          if(cb)fields.push({name:'簡介',value:cb});
+          if(cm)fields.push({name:'宣傳文',value:cm.length>1024?cm.substring(0,1021)+'...':cm});
+        }else if(subVal2==='📦 其他'){
+          var on=document.getElementById('pf-o-name').value.trim();
+          var ot=document.getElementById('pf-o-type').value.trim();
+          var ob=document.getElementById('pf-o-brief').value.trim();
+          var op=document.getElementById('pf-o-promo').value.trim();
+          var ol=document.getElementById('pf-o-link').value.trim();
+          if(on)fields.unshift({name:'名稱',value:on,inline:true});
+          if(ot)fields.push({name:'合作類型',value:ot});
+          if(ob)fields.push({name:'簡介',value:ob});
+          if(op)fields.push({name:'宣傳文',value:op.length>1024?op.substring(0,1021)+'...':op});
+          if(ol)fields.push({name:'社群連結',value:ol});
+        }
         if(uploadedFiles.length>0)fields.push({name:'展示照片',value:uploadedFiles.length+' 張圖片（見附件）',inline:true});
       }
 
@@ -881,12 +1115,13 @@
         detailInput.placeholder='可以說說發生了什麼、怎麼發生的、截圖連結等等...';
         detailDesc.textContent='把事情的來龍去脈說清楚，越詳細我們越好處理。';
         if(detailCount)detailCount.textContent='0';
-        var bc=document.getElementById('briefCount');if(bc)bc.textContent='0';
-        var pc=document.getElementById('promoCount');if(pc)pc.textContent='0';
+        document.querySelectorAll('.pd-form-hint span').forEach(function(s){s.textContent='0'});
         uploadedFiles=[];
         reportFiles=[];
         renderGallery();
         renderReportGallery();
+        /* Reset partner type forms */
+        document.querySelectorAll('.partner-type-form').forEach(function(f){f.style.display='none'});
         /* Reset type/subtype selection */
         typeCards.forEach(function(c){c.classList.remove('active')});
         Object.values(subtypeWraps).forEach(function(w){w.classList.remove('show')});
