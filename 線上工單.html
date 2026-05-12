@@ -300,7 +300,6 @@
                   <label class="subtype-pill"><input type="radio" name="report-sub" value="帳號處理"><span>帳號處理</span></label>
                   <label class="subtype-pill"><input type="radio" name="report-sub" value="檢舉"><span>檢舉</span></label>
                   <label class="subtype-pill"><input type="radio" name="report-sub" value="提告"><span>提告</span></label>
-                  <label class="subtype-pill"><input type="radio" name="report-sub" value="申訴"><span>申訴</span></label>
                   <label class="subtype-pill"><input type="radio" name="report-sub" value="疑慮"><span>疑慮</span></label>
                   <label class="subtype-pill"><input type="radio" name="report-sub" value="回報異常"><span>回報異常</span></label>
                   <label class="subtype-pill"><input type="radio" name="report-sub" value="規章解釋"><span>規章解釋</span></label>
@@ -314,7 +313,7 @@
                 <div class="subtype-label">你要做什麼？</div>
                 <div class="subtype-pills" data-accent="admin" id="adminPills">
                   <label class="subtype-pill"><input type="radio" name="admin-sub" value="應徵"><span>應徵</span></label>
-                  <label class="subtype-pill"><input type="radio" name="admin-sub" value="請願（上訴）"><span>請願（上訴）</span></label>
+                  <label class="subtype-pill"><input type="radio" name="admin-sub" value="請願（上訴/申訴）"><span>請願（上訴/申訴）</span></label>
                   <label class="subtype-pill"><input type="radio" name="admin-sub" value="提議法律草案"><span>提議法律草案</span></label>
                   <label class="subtype-pill"><input type="radio" name="admin-sub" value="提議政策"><span>提議政策</span></label>
                   <label class="subtype-pill"><input type="radio" name="admin-sub" value="否決請願"><span>否決請願</span></label>
@@ -749,14 +748,13 @@
       '帳號處理':'帳號被盜、忘記密碼、綁定問題、帳號異常登入，請說明你的帳號和大概發生時間。',
       '檢舉':'檢舉其他玩家的違規行為，請附上截圖或影片連結，並說明時間和發生了什麼事。',
       '提告':'根據管理通則提起正式告訴，請說明被告、事由、時間，並附上證據。',
-      '申訴':'對處分結果有異議想申訴，請說明你的理由和相關事證。',
       '疑慮':'對規則、制度、或管理方式有疑慮想反映，歡迎直接說。',
       '回報異常':'遊戲內發現 bug、物品消失、領地異常等技術問題，請說明怎麼發生的。',
       '規章解釋':'看不懂某條規則？想確認某個行為是否違規？直接問就好。',
       '領地問題':'領地被入侵、權限設定出問題、領地不見了，請說明領地名稱和狀況。',
       '其他':'上面都沒選到？沒關係，在這裡說明你想回報的事就好。',
       '應徵':'聊聊你的相關經驗、為什麼想加入海風團隊、可以投入多少時間。',
-      '請願（上訴）':'根據管理通則提出上訴請願，請說明上訴理由和依據。',
+      '請願（上訴/申訴）':'對處分結果有異議想上訴或申訴，請說明你的理由和相關事證。',
       '提議法律草案':'想為海風訂一條新規則？請寫清楚草案內容和制定理由。',
       '提議政策':'對伺服器營運方向有想法？歡迎提出你的政策建議。',
       '否決請願':'對現行規則或政策有異議想提出否決，請說明理由。',
@@ -770,14 +768,13 @@
       '帳號處理':'例：我的帳號昨天突然登不進去，顯示密碼錯誤...',
       '檢舉':'例：今天下午在分流一，玩家 xxx 無故破壞我的建築...',
       '提告':'例：我要提告玩家 xxx，事由是偷竊我的箱子裡的物品...',
-      '申訴':'例：我對 #0012 處分有異議，原因是...',
       '疑慮':'例：我覺得某條規則可能有模糊地帶，想確認一下...',
       '回報異常':'例：我的箱子裡的東西突然不見了，領地顯示正常...',
       '規章解釋':'例：請問在別人家附近蓋建築算不算違規？',
       '領地問題':'例：我的領地「xxx」被人入侵了，權限設定好像失效...',
       '其他':'例：我想回報一件事...',
       '應徵':'例：我有兩年管理經驗，之前在 xxx 伺服器當過...',
-      '請願（上訴）':'例：我認為處分過重，理由是...',
+      '請願（上訴/申訴）':'例：我認為處分過重，理由是...',
       '提議法律草案':'例：草案：禁止在公共區域放置紅石機關。理由：...',
       '提議政策':'例：建議增設一個新手專用分流，原因是...',
       '否決請願':'例：我認為某條規則應該廢除，理由是...',
@@ -792,7 +789,6 @@
       '帳號處理':{desc:'簡單描述你的帳號問題。',placeholder:'例：帳號登不進去'},
       '檢舉':{desc:'簡單描述對方做了什麼。',placeholder:'例：玩家 xxx 無故破壞建築'},
       '提告':{desc:'簡單描述告訴事由。',placeholder:'例：提告玩家 xxx 偷竊物品'},
-      '申訴':{desc:'簡單描述你要申訴的處分。',placeholder:'例：對 #0012 處分提出申訴'},
       '疑慮':{desc:'簡單描述你的疑慮。',placeholder:'例：某條規則的適用範圍'},
       '回報異常':{desc:'簡單描述發現的異常狀況。',placeholder:'例：箱子裡的物品突然消失'},
       '規章解釋':{desc:'簡單描述你想確認的規則。',placeholder:'例：在別人家附近蓋建築算違規嗎'},
