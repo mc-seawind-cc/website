@@ -520,6 +520,9 @@
                   <div class="pd-form-radio-grid" id="pf-c-platform">
                     <label class="pd-form-radio"><input type="radio" name="pf-c-type" value="YouTube"><span>▶️ YouTube</span></label>
                     <label class="pd-form-radio"><input type="radio" name="pf-c-type" value="Twitch"><span>🟣 Twitch</span></label>
+                    <label class="pd-form-radio"><input type="radio" name="pf-c-type" value="Instagram"><span>📸 Instagram</span></label>
+                    <label class="pd-form-radio"><input type="radio" name="pf-c-type" value="Facebook"><span>📘 Facebook</span></label>
+                    <label class="pd-form-radio"><input type="radio" name="pf-c-type" value="Threads"><span>🧵 Threads</span></label>
                     <label class="pd-form-radio"><input type="radio" name="pf-c-type" value="巴哈姆特"><span>🎮 巴哈姆特</span></label>
                     <label class="pd-form-radio"><input type="radio" name="pf-c-type" value="其他"><span>📱 其他</span></label>
                   </div>
@@ -527,6 +530,11 @@
                 <div class="pd-form-field">
                   <label class="pd-form-label" for="pf-c-link">頻道連結 <span class="pd-form-optional">選填</span></label>
                   <input type="url" id="pf-c-link" class="pd-form-input" placeholder="https://youtube.com/@你的頻道">
+                </div>
+                <div class="pd-form-field">
+                  <label class="pd-form-label" for="pf-c-other-link">其他連結 <span class="pd-form-optional">選填</span></label>
+                  <div class="pd-form-desc">網站、社群、其他平台連結。</div>
+                  <input type="url" id="pf-c-other-link" class="pd-form-input" placeholder="https://你的網站或社群">
                 </div>
                 <div class="pd-form-field">
                   <label class="pd-form-label">內容類型 <span class="pd-form-optional">選填</span></label>
@@ -1090,12 +1098,14 @@
           var cn=document.getElementById('pf-c-name').value.trim();
           var ct=document.querySelector('#pf-c-platform input:checked');
           var cl=document.getElementById('pf-c-link').value.trim();
+          var col=document.getElementById('pf-c-other-link').value.trim();
           var cc=document.querySelector('#pf-c-content input:checked');
           var cb=document.getElementById('pf-c-brief').value.trim();
           var cm=document.getElementById('pf-c-promo').value.trim();
           if(cn)fields.unshift({name:'頻道名稱',value:cn,inline:true});
           if(ct)fields.push({name:'平台',value:ct.value,inline:true});
           if(cl)fields.push({name:'頻道連結',value:cl});
+          if(col)fields.push({name:'其他連結',value:col});
           if(cc)fields.push({name:'內容類型',value:cc.value,inline:true});
           if(cb)fields.push({name:'簡介',value:cb});
           if(cm)fields.push({name:'宣傳文',value:cm.length>1024?cm.substring(0,1021)+'...':cm});
