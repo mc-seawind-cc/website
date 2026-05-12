@@ -194,11 +194,12 @@
 
       <div class="content-section">
 
-        <!-- ═══ 現役會員 ═══ -->
+        <!-- ═══ 會員 ═══ -->
         <div class="sw-section fade-in">
           <div class="sw-section-head">
-            <h2>🌊 現役會員</h2>
+            <h2>🌊 會員</h2>
             <span class="line"></span>
+            <span class="count" id="swActiveCount">—</span>
           </div>
           <div class="sw-wall" id="swActiveWall"></div>
         </div>
@@ -303,6 +304,7 @@
     var activeWall = document.getElementById("swActiveWall");
     var pastWall   = document.getElementById("swPastWall");
     var totalNum   = document.getElementById("swTotal");
+    var activeCnt  = document.getElementById("swActiveCount");
 
     function avatarUrl(id) {
       return "https://mc-heads.net/face/" + encodeURIComponent(id) + "/100";
@@ -348,7 +350,8 @@
     hueIdx = 0;
     pastMembers.forEach(function(m){ pastWall.appendChild(renderCard(m, false)) });
 
-    totalNum.textContent = members.length;
+    totalNum.textContent  = members.length;
+    activeCnt.textContent = members.length + " 人";
 
     /* Hide past section if empty */
     if (pastMembers.length === 0) {
