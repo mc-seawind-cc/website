@@ -340,11 +340,11 @@
               <h2>✏️ 填寫內容</h2>
 
           <form id="ticketForm" class="pd-form" novalidate>
-            <!-- 主旨 -->
+            <!-- 名稱 / 主旨（依工單類型動態切換） -->
             <div class="pd-form-field">
-              <label class="pd-form-label" for="ticket-title">主旨 <span class="pd-form-required">*</span></label>
-              <div class="pd-form-desc">簡單講一下你遇到的事或想提的建議。</div>
-              <input type="text" id="ticket-title" class="pd-form-input" placeholder="例：領地權限怪怪的" required maxlength="100">
+              <label class="pd-form-label" for="ticket-title" id="titleLabel">名稱 <span class="pd-form-required">*</span></label>
+              <div class="pd-form-desc" id="titleDesc">你的群組、工作室或頻道叫什麼名字？</div>
+              <input type="text" id="ticket-title" class="pd-form-input" placeholder="例：某某建築交流群" required maxlength="100">
             </div>
 
             <!-- 詳細內容 -->
@@ -377,7 +377,7 @@
             <!-- 附圖上傳 -->
             <div class="pd-form-field">
               <label class="pd-form-label">附圖上傳 <span class="pd-form-optional">選填，最多 10 張</span></label>
-              <div class="pd-form-desc">附上截圖能幫助我們更快理解狀況。</div>
+              <div class="pd-form-desc">附上截圖能幫助我們更快理解狀況。上傳的圖片可能會展示在網站上。</div>
               <div class="pd-form-upload" id="uploadZoneReport">
                 <input type="file" id="report-files" accept="image/png,image/jpeg,image/webp,image/gif" multiple>
                 <div class="pd-form-upload-icon">📸</div>
@@ -784,18 +784,23 @@
 
     /* ── Title field customization per sub-type ── */
     const SUB_TITLE={
-      '帳號處理':{desc:'簡單描述你的帳號問題。',placeholder:'例：帳號登不進去'},
-      '檢舉':{desc:'簡單描述對方做了什麼。',placeholder:'例：玩家 xxx 無故破壞建築'},
-      '提告':{desc:'簡單描述告訴事由。',placeholder:'例：提告玩家 xxx 偷竊物品'},
-      '疑慮':{desc:'簡單描述你的疑慮。',placeholder:'例：某條規則的適用範圍'},
-      '回報異常':{desc:'簡單描述發現的異常狀況。',placeholder:'例：箱子裡的物品突然消失'},
-      '領地問題':{desc:'簡單描述領地遇到的問題。',placeholder:'例：領地權限設定失效'},
-      '其他':{desc:'簡單描述你想回報的事。',placeholder:'例：有一件事想反映'},
-      '💬 群組':{desc:'簡單說明你想怎麼合作。',placeholder:'例：想讓群組成員加入海風'},
-      '🌐 網站':{desc:'簡單說明你想怎麼合作。',placeholder:'例：想在網站上推薦海風'},
-      '🏗️ 工作室':{desc:'簡單說明你想怎麼合作。',placeholder:'例：想幫海風做建築作品'},
-      '🎬 創作者':{desc:'簡單說明你想怎麼合作。',placeholder:'例：想拍海風的生存系列影片'},
-      '📦 其他':{desc:'簡單說明你想怎麼合作。',placeholder:'例：想跟海風合辦一個活動'}
+      '帳號處理':{label:'主旨',desc:'簡單描述你的帳號問題。',placeholder:'例：帳號登不進去'},
+      '檢舉':{label:'主旨',desc:'簡單描述對方做了什麼。',placeholder:'例：玩家 xxx 無故破壞建築'},
+      '提告':{label:'主旨',desc:'簡單描述告訴事由。',placeholder:'例：提告玩家 xxx 偷竊物品'},
+      '疑慮':{label:'主旨',desc:'簡單描述你的疑慮。',placeholder:'例：某條規則的適用範圍'},
+      '回報異常':{label:'主旨',desc:'簡單描述發現的異常狀況。',placeholder:'例：箱子裡的物品突然消失'},
+      '領地問題':{label:'主旨',desc:'簡單描述領地遇到的問題。',placeholder:'例：領地權限設定失效'},
+      '其他':{label:'主旨',desc:'簡單描述你想回報的事。',placeholder:'例：有一件事想反映'},
+      '應徵':{label:'主旨',desc:'你想應徵什麼職位？',placeholder:'例：應徵客服職位'},
+      '請願（上訴/申訴）':{label:'主旨',desc:'簡單描述你的上訴或申訴事由。',placeholder:'例：對處分結果提出上訴'},
+      '提議法律草案':{label:'主旨',desc:'你想提議什麼新規則？',placeholder:'例：提議建築保護相關法規'},
+      '否決請願':{label:'主旨',desc:'你想否決哪條規則？',placeholder:'例：否決某條建築限制規定'},
+      '規章解釋':{label:'主旨',desc:'你想問哪條規則？',placeholder:'例：領地相關規則的適用範圍'},
+      '💬 群組':{label:'名稱',desc:'你的群組叫什麼名字？',placeholder:'例：某某建築交流群'},
+      '🌐 網站':{label:'名稱',desc:'你的網站叫什麼名字？',placeholder:'例：某某 Minecraft Wiki'},
+      '🏗️ 工作室':{label:'名稱',desc:'你的工作室叫什麼名字？',placeholder:'例：某某建築工作室'},
+      '🎬 創作者':{label:'名稱',desc:'你的頻道或創作者名稱？',placeholder:'例：某某玩 Minecraft'},
+      '📦 其他':{label:'名稱',desc:'你的社群或團隊叫什麼名字？',placeholder:'例：某某活動企劃團隊'}
     };
 
     /* ── Type selection ── */
@@ -849,12 +854,15 @@
           detailInput.placeholder=SUB_PLACEHOLDER[subVal];
         }
         /* Update title field based on sub-type */
-        var titleDesc=document.querySelector('#ticket-title').closest('.pd-form-field').querySelector('.pd-form-desc');
+        var titleLabel=document.getElementById('titleLabel');
+        var titleDesc=document.getElementById('titleDesc');
         var titleInput=document.getElementById('ticket-title');
         if(SUB_TITLE[subVal]){
+          if(titleLabel)titleLabel.innerHTML=SUB_TITLE[subVal].label+' <span class="pd-form-required">*</span>';
           if(titleDesc)titleDesc.textContent=SUB_TITLE[subVal].desc;
           if(titleInput)titleInput.placeholder=SUB_TITLE[subVal].placeholder;
         }else{
+          if(titleLabel)titleLabel.innerHTML='主旨 <span class="pd-form-required">*</span>';
           if(titleDesc)titleDesc.textContent='簡單講一下你遇到的事或想提的建議。';
           if(titleInput)titleInput.placeholder='例：領地權限怪怪的';
         }
@@ -1019,7 +1027,7 @@
       /* Build embed */
       var fields=[
         {name:'類型',value:TYPE_LABELS[type]+' \u2014 '+subtype,inline:true},
-        {name:'主旨',value:title},
+        {name:type==='partner'?'名稱':'主旨',value:title},
         {name:'詳細內容',value:detail.length>1024?detail.substring(0,1021)+'...':detail}
       ];
       if(ign)fields.push({name:'回報者遊戲ID',value:ign,inline:true});
@@ -1139,9 +1147,13 @@
         form.reset();
         detailInput.placeholder='可以說說發生了什麼、怎麼發生的、截圖連結等等...';
         detailDesc.textContent='把事情的來龍去脈說清楚，越詳細我們越好處理。';
-        /* Reset title desc */
-        var titleDescReset=document.querySelector('#ticket-title').closest('.pd-form-field').querySelector('.pd-form-desc');
-        if(titleDescReset)titleDescReset.textContent='簡單講一下你遇到的事或想提的建議。';
+        /* Reset title desc & label */
+        var titleLabelReset=document.getElementById('titleLabel');
+        var titleDescReset=document.getElementById('titleDesc');
+        var titleInputReset=document.getElementById('ticket-title');
+        if(titleLabelReset)titleLabelReset.innerHTML='名稱 <span class="pd-form-required">*</span>';
+        if(titleDescReset)titleDescReset.textContent='你的群組、工作室或頻道叫什麼名字？';
+        if(titleInputReset)titleInputReset.placeholder='例：某某建築交流群';
         if(detailCount)detailCount.textContent='0';
         document.querySelectorAll('.pd-form-hint span').forEach(function(s){s.textContent='0'});
         uploadedFiles=[];
