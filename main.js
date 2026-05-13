@@ -5,7 +5,10 @@
 // 自動偵測子目錄深度，產生正確的 base path
 const SW_BASE = (() => {
   const path = location.pathname;
-  if (path.includes('/海風指南/') || path.includes('/文化藝廊/') || path.includes('/活動/') || path.includes('/合作夥伴/')) return '../';
+  // 2 層子目錄（如 資料中心/合作夥伴/、海風指南/領地系統/）
+  if (path.includes('/資料中心/合作夥伴/')) return '../../';
+  // 1 層子目錄
+  if (path.includes('/海風指南/') || path.includes('/文化藝廊/') || path.includes('/活動/') || path.includes('/合作夥伴/') || path.includes('/資料中心/')) return '../';
   return '';
 })();
 
