@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <link rel="canonical" href="https://www.seawind.cc/資料中心/違規處分">
+  <meta name="color-scheme" content="dark light">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>海風 — 資料中心 — 違規處分</title>
+  <meta name="description" content="海風伺服器違規處分紀錄。">
+  <link rel="icon" href="assets/img/logo.png">
+  <link rel="apple-touch-icon" href="assets/img/logo.png">
+  <link rel="manifest" href="manifest.json">
+  <meta property="og:title" content="違規處分 — 海風">
+  <meta property="og:description" content="海風伺服器違規處分紀錄。">
+  <meta property="og:image" content="assets/img/logo.png">
+  <meta property="og:type" content="website">
+  <meta name="theme-color" content="#0d1117">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css?v=110511n">
+  <link rel="stylesheet" href="music-player.css?v=120512a">
+  <link rel="preload" href="music-player.js?v=120512a" as="script">
+  <style>
+    /* ═══ 違規處分頁面 ═══ */
+
+    /* 統計列 */
+    .pen-stats {
+      display: flex;
+      gap: 10px;
+      margin-bottom: var(--space-xl);
+      flex-wrap: wrap;
+    }
+    .pen-stat {
+      background: var(--ocean);
+      border: 1px solid var(--mist);
+      border-radius: var(--radius-md);
+      padding: 14px 20px;
+      text-align: center;
+      flex: 1;
+      min-width: 80px;
+      transition: border-color 0.2s;
+    }
+    .pen-stat:hover { border-color: rgba(157,175,255,0.15); }
+    .pen-stat .num { font-size: 1.4rem; font-weight: 800; color: var(--cloud); line-height: 1.2; }
+    .pen-stat .label { font-size: 0.68rem; color: var(--fog); margin-top: 2px; text-transform: uppercase; letter-spacing: 0.5px; }
+    .pen-stat.stat-permanent { border-left: 3px solid rgba(255,100,100,0.5); }
+    .pen-stat.stat-temp { border-left: 3px solid rgba(255,170,50,0.5); }
+
+    /* 處分列表 */
+    .pen-list { display: flex; flex-direction: column; gap: 4px; }
+
+    /* 卡片 */
+    .pen-card {
+      background: var(--ocean);
+      border: 1px solid var(--mist);
+      border-radius: 12px;
+      overflow: hidden;
+      transition: all 0.3s var(--ease);
+    }
+    .pen-card:hover { border-color: rgba(255,255,255,0.1); }
+    .pen-card.open {
+      border-color: rgba(255,130,130,0.2);
+      box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+    }
+
+    /* 卡片頭 */
+    .pen-head {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 12px 16px;
+      cursor: pointer;
+      user-select: none;
+      transition: background 0.2s;
+      min-height: 48px;
+    }
+    .pen-head:hover { background: rgba(255,255,255,0.02); }
+    [data-theme="light"] .pen-head:hover { background: rgba(0,0,0,0.01); }
+
+    .pen-date {
+      font-size: 0.72rem;
+      color: var(--fog);
+      flex-shrink: 0;
+      min-width: 68px;
+      font-variant-numeric: tabular-nums;
+    }
+    .pen-title-wrap {
+      flex: 1;
+      min-width: 0;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .pen-players {
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--white);
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+    .pen-type {
+      font-size: 0.78rem;
+      color: var(--fog);
+      flex-shrink: 0;
+    }
+    .pen-right {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      flex-shrink: 0;
+    }
+    .pen-id {
+      font-size: 0.7rem;
+      color: var(--sky);
+      font-family: 'JetBrains Mono', 'Cascadia Code', monospace;
+      font-weight: 600;
+      background: rgba(157,175,255,0.06);
+      padding: 2px 8px;
+      border-radius: 4px;
+    }
+    .pen-badge {
+      font-size: 0.62rem;
+      padding: 2px 8px;
+      border-radius: 99px;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+    .badge-permanent { background: rgba(255,100,100,0.12); color: #ff6b6b; }
+    .badge-temp { background: rgba(255,170,50,0.12); color: #ffaa32; }
+    .pen-case-tag {
+      font-size: 0.62rem;
+      padding: 2px 8px;
+      border-radius: 99px;
+      font-weight: 700;
+      white-space: nowrap;
+      letter-spacing: 0.5px;
+    }
+    [data-theme="light"] .badge-permanent { background: rgba(255,60,60,0.08); color: #dc3545; }
+    [data-theme="light"] .badge-temp { background: rgba(255,170,50,0.08); color: #e69500; }
+    [data-theme="light"] .pen-case-tag { background: rgba(0,0,0,0.04) !important; }
+
+    .pen-arrow {
+      color: var(--fog);
+      font-size: 0.72rem;
+      transition: transform 0.25s var(--ease);
+    }
+    .pen-card.open .pen-arrow { transform: rotate(180deg); }
+
+    /* 卡片內容 */
+    .pen-body {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s cubic-bezier(0.4,0,0.2,1);
+    }
+    .pen-card.open .pen-body { max-height: none; }
+    .pen-body-inner {
+      padding: 16px 18px 14px;
+      background: rgba(255,255,255,0.01);
+      border-top: 1px solid rgba(255,130,130,0.06);
+    }
+    [data-theme="light"] .pen-body-inner {
+      background: rgba(0,0,0,0.005);
+      border-top-color: rgba(0,0,0,0.04);
+    }
+
+    /* 結構化詳情 */
+    .pen-detail {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 6px 16px;
+      font-size: 0.88rem;
+      line-height: 1.8;
+    }
+    .pen-detail-label {
+      color: var(--fog);
+      font-size: 0.78rem;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+    .pen-detail-value {
+      color: var(--cloud);
+    }
+    .pen-detail-value code {
+      background: rgba(157,175,255,0.08);
+      padding: 1px 6px;
+      border-radius: 4px;
+      font-size: 0.85em;
+      font-family: 'JetBrains Mono', monospace;
+      color: var(--sky);
+    }
+    .pen-detail-value a {
+      color: var(--sky);
+      text-decoration: none;
+      border-bottom: 1px solid rgba(157,175,255,0.3);
+    }
+    .pen-detail-value a:hover { border-bottom-color: var(--sky); }
+    .pen-detail-full {
+      grid-column: 1 / -1;
+      margin-top: 4px;
+      padding-top: 10px;
+      border-top: 1px solid rgba(255,255,255,0.04);
+      color: var(--fog);
+      font-size: 0.82rem;
+      line-height: 1.9;
+    }
+    [data-theme="light"] .pen-detail-full { border-top-color: rgba(0,0,0,0.04); }
+
+    /* Judgment document styling */
+    .pen-detail-value code {
+      font-size: 0.82em;
+    }
+    .pen-party { display: inline-flex; align-items: center; gap: 6px; }
+    .pen-party-role {
+      display: inline-block;
+      font-size: 0.68rem;
+      font-weight: 700;
+      padding: 1px 7px;
+      border-radius: 4px;
+      letter-spacing: 0.5px;
+    }
+    .role-defendant { background: rgba(255,100,100,0.1); color: #ff6b6b; }
+    .role-plaintiff { background: rgba(157,175,255,0.1); color: var(--sky); }
+    .role-prosecutor { background: rgba(171,114,249,0.1); color: var(--lavender); }
+    .role-reported { background: rgba(255,170,50,0.1); color: #ffaa32; }
+    [data-theme="light"] .role-defendant { background: rgba(255,60,60,0.06); color: #dc3545; }
+    [data-theme="light"] .role-plaintiff { background: rgba(74,108,247,0.06); color: #4a6cf7; }
+    [data-theme="light"] .role-prosecutor { background: rgba(139,92,246,0.06); color: #8b5cf6; }
+    [data-theme="light"] .role-reported { background: rgba(230,150,0,0.06); color: #e69500; }
+    .pen-judge-presiding {
+      display: inline-block;
+      font-size: 0.68rem;
+      font-weight: 700;
+      padding: 1px 7px;
+      border-radius: 4px;
+      background: rgba(171,114,249,0.1);
+      color: var(--lavender);
+    }
+    .pen-judge {
+      display: inline-block;
+      font-size: 0.68rem;
+      font-weight: 600;
+      padding: 1px 7px;
+      border-radius: 4px;
+      background: rgba(157,175,255,0.06);
+      color: var(--fog);
+    }
+    [data-theme="light"] .pen-judge-presiding { background: rgba(139,92,246,0.06); color: #8b5cf6; }
+    [data-theme="light"] .pen-judge { background: rgba(0,0,0,0.04); color: var(--fog); }
+
+    .pen-detail .judgment-main {
+      background: rgba(255,100,100,0.03);
+      border-left: 3px solid rgba(255,100,100,0.2);
+      padding: 12px 16px;
+      border-radius: 0 8px 8px 0;
+      margin: 4px 0;
+      line-height: 2;
+    }
+    [data-theme="light"] .pen-detail .judgment-main {
+      background: rgba(255,60,60,0.02);
+      border-left-color: rgba(255,60,60,0.15);
+    }
+
+    /* PDF 附件 */
+    .pen-pdf-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 14px;
+      background: rgba(255,100,100,0.06);
+      border: 1px solid rgba(255,100,100,0.12);
+      border-radius: 99px;
+      color: var(--cloud);
+      font-size: 0.8rem;
+      text-decoration: none;
+      transition: all 0.2s;
+      margin-top: 8px;
+    }
+    .pen-pdf-link:hover {
+      background: rgba(255,100,100,0.12);
+      border-color: rgba(255,100,100,0.25);
+    }
+
+    /* Evidence images */
+    .pen-evidence-grid {
+      grid-column: 1 / -1;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+      gap: 8px;
+      margin-top: 6px;
+    }
+    .pen-evidence-img {
+      width: 100%;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+    .pen-evidence-img:hover { opacity: 0.85; }
+
+    /* 淺色主題 */
+    [data-theme="light"] .pen-stat { background: #fff; border-color: rgba(0,0,0,0.06); }
+    [data-theme="light"] .pen-card { background: #fff; border-color: rgba(0,0,0,0.06); }
+    [data-theme="light"] .pen-card.open { border-color: rgba(255,130,130,0.15); box-shadow: 0 4px 16px rgba(0,0,0,0.05); }
+    [data-theme="light"] .pen-players { color: var(--cloud); }
+
+    /* RWD */
+    @media (max-width: 768px) {
+      .pen-stats { gap: 6px; }
+      .pen-stat { padding: 10px 12px; }
+      .pen-stat .num { font-size: 1.1rem; }
+      .pen-head { gap: 6px; padding: 10px 12px; }
+      .pen-date { min-width: 52px; font-size: 0.66rem; }
+      .pen-players { font-size: 0.8rem; }
+      .pen-type { display: none; }
+      .pen-id { font-size: 0.62rem; padding: 1px 5px; }
+      .pen-detail { font-size: 0.84rem; }
+    }
+  </style>
+</head>
+<body>
+  <a href="#mainContent" class="skip-link">跳到主要內容</a>
+
+  <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
+  <div class="bg-atmosphere"></div>
+
+  <nav class="nav">
+    <a href="../首頁" class="nav-logo">
+      <picture><source srcset="assets/img/logo.webp" type="image/webp"><img src="assets/img/logo.png" alt="海風" class="nav-logo-img" width="48" height="48" fetchpriority="high"></picture>
+      <span>海風伺服器</span>
+    </a>
+    <div class="nav-right">
+      <ul class="nav-links">
+        <li><a href="../首頁">首頁</a></li>
+        <li><a href="../公告">公告</a></li>
+        <li class="nav-dropdown">
+          <a href="../文化藝廊" class="nav-dropdown-toggle" aria-expanded="false" aria-haspopup="true">關於 <span class="arrow">▾</span></a>
+          <ul class="dropdown-menu">
+            <li><a href="../文化藝廊">文化藝廊</a></li>
+            <li><a href="../活動">活動</a></li>
+            <li><a href="../風景照">風景照</a></li>
+            <li><a href="../歷史館">歷史館</a></li>
+            <li><a href="../海風團隊">海風團隊</a></li>
+          </ul>
+        </li>
+        <li><a href="../海風指南">海風指南</a></li>
+        <li class="nav-dropdown">
+          <a href="../社群須知" class="nav-dropdown-toggle" aria-expanded="false" aria-haspopup="true">須知 <span class="arrow">▾</span></a>
+          <ul class="dropdown-menu">
+            <li><a href="../社群須知">社群須知</a></li>
+            <li><a href="../支持須知">支持須知</a></li>
+            <li><a href="../管理通則">管理通則</a></li>
+            <li><a href="../公務人員須知">公務人員須知</a></li>
+            <li><a href="../設計規範">設計規範</a></li>
+            <li><a href="../服務條款">服務條款</a></li>
+            <li><a href="../隱私權政策">隱私權政策</a></li>
+          </ul>
+        </li>
+        <li><a href="../會員">會員</a></li>
+        <li><a href="../相關連結">相關連結</a></li>
+        <li class="nav-dropdown">
+          <a href="合作夥伴" class="nav-dropdown-toggle" aria-expanded="false" aria-haspopup="true">資料中心 <span class="arrow">▾</span></a>
+          <ul class="dropdown-menu">
+            <li><a href="合作夥伴">合作夥伴</a></li>
+            <li><a href="支持牆">支持牆</a></li>
+            <li><a href="線上工單">線上工單</a></li>
+            <li><a href="../違規處分">違規處分</a></li>
+          </ul>
+        </li>
+      </ul>
+      <button class="nav-theme" id="themeToggle" aria-label="切換主題"></button>
+      <button class="nav-toggle" aria-label="選單">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <div class="page">
+    <div id="mainContent" class="page-hero fade-in">
+      <h1>違規處分</h1>
+      <p class="section-desc">海風伺服器違規處分紀錄，如對處分有異議請至 Discord 線上工單申訴。</p>
+    </div>
+
+    <div class="content-section">
+      <!-- 統計 -->
+      <div class="pen-stats fade-in" id="penStats"></div>
+
+      <!-- 處分列表 -->
+      <div class="pen-list fade-in" id="penList"></div>
+    </div>
+  </div>
+
+              <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <span class="footer-logo">海風伺服器 SeaWind.cc</span>
+        <p class="footer-tagline">在風與海之間，有一個可以長久生存的地方</p>
+      </div>
+      <div class="footer-links-row">
+        <a href="合作夥伴">合作夥伴</a>
+        <span class="footer-dot">·</span>
+        <a href="../服務條款">服務條款</a>
+        <span class="footer-dot">·</span>
+        <a href="../隱私權政策">隱私權政策</a>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2026 海風伺服器 · 非 Mojang 官方營運 · service@seawind.cc</p>
+      </div>
+      <p class="page-revise">網站最後修改日期 2026.05.12 / 總計修改 <span id="deployCount">—</span> 次</p>
+    </div>
+  </footer>
+
+  <script src="utils.js"></script>
+  <script src="main.js?v=120512a"></script>
+  <script>
+  (() => {
+    'use strict';
+    const listEl = document.getElementById('penList');
+    const statsEl = document.getElementById('penStats');
+
+    fetch('penalties.json')
+      .then(r => r.json())
+      .then(data => {
+        const items = data.penalties || [];
+        render(items);
+      })
+      .catch(() => {
+        listEl.innerHTML = '<p style="text-align:center;color:var(--fog);padding:20px;">載入失敗</p>';
+      });
+
+    function render(items) {
+      // Stats
+      const permanent = items.filter(i => /永久/.test(i.title)).length;
+      const temp = items.filter(i => /停權|禁言/.test(i.title) && !/永久/.test(i.title)).length;
+      statsEl.innerHTML = `
+        <div class="pen-stat"><div class="num">${items.length}</div><div class="label">統計案件量</div></div>
+        <div class="pen-stat stat-permanent"><div class="num" style="color:#ff6b6b">${permanent}</div><div class="label">永久停權</div></div>
+        <div class="pen-stat stat-temp"><div class="num" style="color:#ffaa32">${temp}</div><div class="label">暫時處分</div></div>
+      `;
+
+      // Cards
+      let html = '';
+      items.forEach((item, i) => {
+        const date = item.date || '—';
+        const badge = getBadge(item.title);
+        const idLabel = buildCaseId(item);
+
+        // Player display = defendant name
+        const playerDisplay = item.defendant || (item.players.length ? item.players.join('、') : extractTitle(item));
+
+        const detail = buildDetail(item);
+
+        html += `<div class="pen-card" data-idx="${i}">
+          <div class="pen-head" onclick="this.closest('.pen-card').classList.toggle('open')">
+            <span class="pen-date">${date}</span>
+            <div class="pen-title-wrap">
+              <span class="pen-players">${esc(playerDisplay)}</span>
+            </div>
+            <span class="pen-right">
+              ${idLabel}
+              ${badge}
+              <span class="pen-arrow">▾</span>
+            </span>
+          </div>
+          <div class="pen-body">
+            <div class="pen-body-inner">
+              <div class="pen-detail">${detail}</div>
+            </div>
+          </div>
+        </div>`;
+      });
+      listEl.innerHTML = html;
+    }
+
+    /* Build case ID label: 訴字/簡字 tag + case number */
+    function buildCaseId(item) {
+      if (item.caseYear && item.caseType && item.caseNum) {
+        const label = `${item.caseYear}年度${item.caseType}字第${item.caseNum}號`;
+        const isLawsuit = item.caseType === '訴';
+        const tagColor = isLawsuit ? 'var(--lavender)' : 'var(--sky)';
+        const tagBg = isLawsuit ? 'rgba(171,114,249,0.12)' : 'rgba(157,175,255,0.1)';
+        const tagLabel = isLawsuit ? '訴字' : '簡字';
+        return `<span class="pen-case-tag" style="color:${tagColor};background:${tagBg}">${tagLabel}</span><span class="pen-id">${label}</span>`;
+      }
+      return item.id ? `<span class="pen-id">${item.id}</span>` : '';
+    }
+
+    function buildDetail(item) {
+      const content = item.content || '';
+
+      // Detect format: new judgment document vs old Discord format
+      if (content.startsWith('海風法院')) {
+        return buildJudgment(item, content);
+      }
+      return buildLegacy(item, content);
+    }
+
+    /* ── New: render full judgment document ── */
+    function buildJudgment(item, content) {
+      let html = '';
+
+      // 當事人
+      const parties = [];
+      if (item.defendant)   parties.push({ role: '被告', name: item.defendant, cls: 'role-defendant' });
+      if (item.plaintiff)   parties.push({ role: '原告', name: item.plaintiff, cls: 'role-plaintiff' });
+      if (item.prosecutor)  parties.push({ role: '公訴人', name: item.prosecutor, cls: 'role-prosecutor' });
+      if (item.reportedBy)  parties.push({ role: '經舉發', name: item.reportedBy, cls: 'role-reported' });
+
+      if (parties.length) {
+        parties.forEach(p => {
+          html += `<span class="pen-detail-label">${esc(p.role)}</span>`;
+          html += `<span class="pen-detail-value">${esc(p.name)}</span>`;
+        });
+      }
+
+      // 主文
+      const mainMatch = content.match(/主文[：:]\s*\n([\s\S]*?)(?=\n事實及理由|\n事實)/);
+      if (mainMatch) {
+        html += `<span class="pen-detail-label">主文</span>`;
+        html += `<span class="pen-detail-value"><span class="judgment-main">${esc(mainMatch[1].trim())}</span></span>`;
+      }
+
+      // 事實及理由
+      const factsMatch = content.match(/事實及理由[：:]\s*\n([\s\S]*?)(?=\n中\s*華|\n附件)/);
+      if (factsMatch) {
+        html += `<span class="pen-detail-label">事實及理由</span>`;
+        html += `<span class="pen-detail-value" style="line-height:2;white-space:pre-line">${esc(factsMatch[1].trim())}</span>`;
+      }
+
+      // 附件 + 證據截圖合併
+      if (item.images && item.images.length) {
+        html += `<span class="pen-detail-label">附件（檢附證據）</span>`;
+        html += `<div class="pen-evidence-grid">`;
+        item.images.forEach((img, idx) => {
+          html += `<img src="${esc(img)}" alt="證據截圖 ${idx+1}" class="pen-evidence-img" loading="lazy" onclick="window.open('${esc(img)}','_blank')">`;
+        });
+        html += `</div>`;
+      }
+
+      return html;
+    }
+
+    /* ── Legacy: render old Discord-format penalties ── */
+    function buildLegacy(item, content) {
+      let html = '';
+
+      // 當事人
+      const parties = [];
+      if (item.defendant)   parties.push({ role: '被告', name: item.defendant, cls: 'role-defendant' });
+      if (item.plaintiff)   parties.push({ role: '原告', name: item.plaintiff, cls: 'role-plaintiff' });
+      if (item.prosecutor)  parties.push({ role: '公訴人', name: item.prosecutor, cls: 'role-prosecutor' });
+      if (item.reportedBy)  parties.push({ role: '經舉發', name: item.reportedBy, cls: 'role-reported' });
+
+      if (parties.length) {
+        parties.forEach(p => {
+          html += `<span class="pen-detail-label">${esc(p.role)}</span>`;
+          html += `<span class="pen-detail-value">${esc(p.name)}</span>`;
+        });
+      }
+
+      // Rule
+      const ruleMatch = content.match(/違反規章[：:]\s*\n?\s*[>]*\s*[-•]\s*(.+)/);
+      if (ruleMatch) {
+        html += `<span class="pen-detail-label">違反規章</span>`;
+        html += `<span class="pen-detail-value">${esc(ruleMatch[1].trim())}</span>`;
+      }
+
+      // Penalty
+      const oldPenalty = content.match(/懲\s*處\s*[：:]\s*(.+)/);
+      if (oldPenalty) {
+        html += `<span class="pen-detail-label">懲處</span>`;
+        html += `<span class="pen-detail-value">${esc(oldPenalty[1].trim())}</span>`;
+      }
+
+      // 附件 + 證據截圖合併
+      if (item.images && item.images.length) {
+        html += `<span class="pen-detail-label">附件（檢附證據）</span>`;
+        html += `<div class="pen-evidence-grid">`;
+        item.images.forEach((img, idx) => {
+          html += `<img src="${esc(img)}" alt="證據截圖 ${idx+1}" class="pen-evidence-img" loading="lazy" onclick="window.open('${esc(img)}','_blank')">`;
+        });
+        html += `</div>`;
+      }
+
+      return html;
+    }
+
+    function extractTitle(item) {
+      const content = item.content || '';
+      // Try to get player names from various formats
+      // New format: code blocks
+      const codeBlocks = content.match(/``\s*([^`]+?)\s*``/g);
+      if (codeBlocks && codeBlocks.length) {
+        const names = codeBlocks.map(b => b.replace(/``/g, '').trim()).filter(n => n && n !== '可' && n !== '不可');
+        if (names.length) return names.join('、');
+      }
+      // Old format: @mentions
+      const mentions = content.match(/@[\w\u4e00-\u9fff.]+/g);
+      if (mentions && mentions.length) return mentions.join('、');
+      return item.title || '處分';
+    }
+
+    function getBadge(title) {
+      if (/永久/.test(title)) return '<span class="pen-badge badge-permanent">永久</span>';
+      if (/停權|禁言/.test(title)) return '<span class="pen-badge badge-temp">暫時</span>';
+      return '<span class="pen-badge badge-temp">處分</span>';
+    }
+
+    function esc(s) {
+      if (!s) return '';
+      const d = document.createElement('div');
+      d.textContent = s;
+      return d.innerHTML;
+    }
+  })();
+  </script>
+</body>
+</html>

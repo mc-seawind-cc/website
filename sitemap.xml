@@ -44,13 +44,13 @@
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.seawind.cc/合作夥伴.html</loc>
+    <loc>https://www.seawind.cc/資料中心/合作夥伴.html</loc>
     <lastmod>2026-05-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.seawind.cc/線上工單.html</loc>
+    <loc>https://www.seawind.cc/資料中心/線上工單.html</loc>
     <lastmod>2026-05-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -207,7 +207,7 @@
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://www.seawind.cc/違規處分.html</loc>
+    <loc>https://www.seawind.cc/資料中心/違規處分.html</loc>
     <lastmod>2026-05-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
@@ -497,6 +497,24 @@
   <url>
     <loc>https://www.seawind.cc/partner-mcu.html</loc>
     <lastmod>2026-05-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.seawind.cc/資料中心/合作夥伴/麥塊社群聯合會.html</loc>
+    <lastmod>2026-05-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.seawind.cc/資料中心/合作夥伴/緣分事務所.html</loc>
+    <lastmod>2026-05-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.seawind.cc/資料中心/合作夥伴/DCTW.html</loc>
+    <lastmod>2026-05-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
