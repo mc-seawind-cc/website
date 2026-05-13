@@ -2,21 +2,562 @@
 <html lang="zh-Hant">
 <head>
   <meta charset="UTF-8">
+  <link rel="canonical" href="https://www.seawind.cc/贊助">
   <meta name="color-scheme" content="dark light">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="refresh" content="0; url=會員.html">
   <title>贊助 — 海風</title>
-  <link rel="canonical" href="https://www.seawind.cc/會員">
+  <meta name="description" content="支持海風伺服器，每一份贊助都用在伺服器維運、活動舉辦與內容開發。了解贊助方式、資金用途與常見問題。">
   <link rel="icon" href="assets/img/logo.png">
   <link rel="apple-touch-icon" href="assets/img/logo.png">
   <link rel="manifest" href="manifest.json">
+  <meta property="og:title" content="贊助 — 海風">
+  <meta property="og:description" content="支持海風伺服器，每一份贊助都用在伺服器維運、活動舉辦與內容開發。">
+  <meta property="og:image" content="assets/img/logo.png">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:image" content="assets/img/logo.png">
+  <meta name="theme-color" content="#0d1117">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;800&family=Noto+Serif+TC:wght@700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css?v=130513b">
+  <link rel="stylesheet" href="music-player.css?v=130513b">
+  <link rel="preload" href="music-player.js?v=130513b" as="script">
   <style>
-    body{background:#0d1117;display:flex;align-items:center;justify-content:center;min-height:100vh;margin:0;font-family:'Noto Sans TC',sans-serif;color:#8b949e}
-    a{color:#9dafff;text-decoration:none}a:hover{text-decoration:underline}
+    /* ═══════════════════════════════════════
+       Sponsorship Page — 2026.05.13
+       贊助頁：為什麼贊助＋怎麼贊助
+       accent = sand (#deac80)
+       ═══════════════════════════════════════ */
+
+    /* === Hero === */
+    .sp-hero{position:relative;text-align:center;padding:var(--space-2xl) var(--space-lg) var(--space-xl);overflow:hidden}
+    .sp-hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 50% at 50% 0%,rgba(222,172,128,0.1),transparent 70%),radial-gradient(ellipse 40% 40% at 25% 80%,rgba(157,175,255,0.06),transparent 70%),radial-gradient(ellipse 35% 35% at 80% 70%,rgba(168,230,207,0.05),transparent 70%);pointer-events:none}
+    .sp-hero-badge{display:inline-flex;align-items:center;gap:6px;padding:6px 20px;border-radius:24px;font-size:0.82rem;font-weight:700;background:linear-gradient(135deg,var(--sand),#e8c49a);color:var(--deep);margin-bottom:var(--space-md);position:relative}
+    .sp-hero h1{font-size:clamp(1.8rem,4vw,2.5rem);font-weight:800;margin-bottom:var(--space-sm);position:relative}
+    .sp-hero h1 .sp-heart{display:inline-block;animation:sp-beat 1.4s ease-in-out infinite}
+    @keyframes sp-beat{0%,100%{transform:scale(1)}15%{transform:scale(1.2)}30%{transform:scale(1)}}
+    .sp-hero-desc{color:var(--fog);font-size:1rem;max-width:560px;margin:0 auto;line-height:1.8;position:relative}
+    .sp-hero-note{display:inline-flex;align-items:center;gap:6px;margin-top:var(--space-md);padding:8px 18px;background:rgba(222,172,128,0.08);border:1px solid rgba(222,172,128,0.15);border-radius:var(--radius-md);font-size:0.82rem;color:var(--sand);position:relative}
+    .sp-hero-note::before{content:'💡';font-size:0.9rem}
+
+    /* === Floating Particles === */
+    .sp-particles{position:absolute;inset:0;pointer-events:none;overflow:hidden}
+    .sp-particle{position:absolute;border-radius:50%;background:radial-gradient(circle at 30% 30%,rgba(222,172,128,0.25),rgba(222,172,128,0.05));animation:sp-float linear infinite}
+    @keyframes sp-float{0%{transform:translateY(0) scale(1);opacity:0.5}100%{transform:translateY(-110vh) scale(0.2);opacity:0}}
+
+    /* === Trust Banner === */
+    .sp-trust{display:flex;justify-content:center;gap:var(--space-xl);flex-wrap:wrap;margin:var(--space-xl) 0 var(--space-2xl);position:relative}
+    .sp-trust-item{text-align:center}
+    .sp-trust-num{font-size:2rem;font-weight:800;color:var(--sand);line-height:1}
+    .sp-trust-label{font-size:0.78rem;color:var(--fog);margin-top:4px}
+    [data-theme="light"] .sp-trust-num{color:#b8860b}
+
+    /* === Funds Grid === */
+    .sp-funds-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:var(--space-md);margin:var(--space-lg) 0}
+    .sp-fund{position:relative;padding:var(--space-lg);background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.06);border-radius:var(--radius-lg);overflow:hidden;transition:all var(--duration) var(--ease)}
+    .sp-fund:hover{transform:translateY(-3px);border-color:rgba(222,172,128,0.2)}
+    .sp-fund::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--fund-accent,var(--sand));opacity:0.5}
+    .sp-fund-icon{font-size:1.6rem;margin-bottom:var(--space-sm)}
+    .sp-fund h4{font-size:0.92rem;font-weight:700;color:var(--white);margin-bottom:4px}
+    .sp-fund p{font-size:0.82rem;color:var(--fog);line-height:1.6;margin:0}
+    .sp-fund-pct{position:absolute;top:var(--space-md);right:var(--space-md);font-size:0.75rem;font-weight:700;color:var(--fund-accent,var(--sand));background:rgba(222,172,128,0.08);padding:3px 10px;border-radius:12px}
+    [data-theme="light"] .sp-fund{background:#fff;border-color:rgba(0,0,0,0.06)}
+    [data-theme="light"] .sp-fund:hover{box-shadow:0 4px 16px rgba(0,0,0,0.06)}
+
+    /* === Support Ways === */
+    .sp-ways{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:var(--space-md);margin:var(--space-lg) 0}
+    .sp-way{position:relative;padding:var(--space-lg);background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.06);border-radius:var(--radius-lg);transition:all var(--duration) var(--ease)}
+    .sp-way:hover{transform:translateY(-3px);border-color:rgba(157,175,255,0.2)}
+    .sp-way-badge{display:inline-block;padding:3px 10px;border-radius:10px;font-size:0.7rem;font-weight:700;margin-bottom:var(--space-sm)}
+    .sp-way-badge-main{background:rgba(157,175,255,0.12);color:var(--sky)}
+    .sp-way-badge-alt{background:rgba(168,230,207,0.12);color:var(--foam)}
+    .sp-way h4{font-size:1rem;font-weight:700;color:var(--white);margin-bottom:6px}
+    .sp-way p{font-size:0.85rem;color:var(--fog);line-height:1.7;margin:0 0 var(--space-md)}
+    .sp-way-detail{font-size:0.8rem;color:var(--cloud);background:rgba(255,255,255,0.03);border-radius:var(--radius-sm);padding:var(--space-sm) var(--space-md)}
+    .sp-way-detail li{margin-bottom:4px}
+    .sp-way-detail li:last-child{margin-bottom:0}
+    [data-theme="light"] .sp-way{background:#fff;border-color:rgba(0,0,0,0.06)}
+    [data-theme="light"] .sp-way:hover{box-shadow:0 4px 16px rgba(0,0,0,0.06)}
+
+    /* === Process Steps === */
+    .sp-steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:var(--space-md);margin:var(--space-lg) 0}
+    .sp-step{position:relative;padding:var(--space-lg);background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.06);border-radius:var(--radius-lg);text-align:center;transition:all var(--duration) var(--ease)}
+    .sp-step::before{content:'';position:absolute;top:0;left:0;width:3px;height:100%;background:var(--sand);opacity:0.3;border-radius:var(--radius-lg) 0 0 var(--radius-lg)}
+    .sp-step:hover{transform:translateY(-3px);border-color:rgba(222,172,128,0.15)}
+    .sp-step-num{display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;background:var(--sand);color:var(--deep);border-radius:50%;font-size:0.85rem;font-weight:800;margin-bottom:var(--space-sm)}
+    .sp-step h4{font-size:0.92rem;font-weight:700;color:var(--white);margin-bottom:4px}
+    .sp-step p{font-size:0.82rem;color:var(--fog);line-height:1.6;margin:0}
+    [data-theme="light"] .sp-step{background:#fff;border-color:rgba(0,0,0,0.06)}
+    [data-theme="light"] .sp-step:hover{box-shadow:0 4px 12px rgba(0,0,0,0.06)}
+
+    /* === Notice Grid === */
+    .sp-notices{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:var(--space-md);margin:var(--space-lg) 0}
+    .sp-notice{display:flex;align-items:flex-start;gap:var(--space-md);padding:var(--space-md) var(--space-lg);background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.06);border-radius:var(--radius-md);transition:all var(--duration) var(--ease)}
+    .sp-notice:hover{background:rgba(255,255,255,0.04);border-color:rgba(222,172,128,0.12)}
+    .sp-notice-icon{font-size:1.2rem;flex-shrink:0;margin-top:2px}
+    .sp-notice-body h4{font-size:0.88rem;font-weight:700;color:var(--white);margin-bottom:2px}
+    .sp-notice-body p{font-size:0.8rem;color:var(--fog);line-height:1.5;margin:0}
+    [data-theme="light"] .sp-notice{background:#fff;border-color:rgba(0,0,0,0.06)}
+
+    /* === CTA === */
+    .sp-cta{text-align:center;padding:var(--space-2xl) var(--space-lg);margin:var(--space-xl) 0;background:linear-gradient(135deg,rgba(222,172,128,0.06),rgba(157,175,255,0.04));border:1px solid rgba(222,172,128,0.12);border-radius:var(--radius-xl);position:relative;overflow:hidden}
+    .sp-cta::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--sand),var(--sky),var(--foam));opacity:0.5}
+    .sp-cta h2{font-size:1.5rem;font-weight:800;margin-bottom:var(--space-sm)}
+    .sp-cta p{color:var(--fog);font-size:0.95rem;margin-bottom:var(--space-lg);max-width:480px;margin-left:auto;margin-right:auto;line-height:1.7}
+    .sp-cta-btns{display:flex;gap:var(--space-md);justify-content:center;flex-wrap:wrap}
+    .sp-cta-btn{display:inline-flex;align-items:center;gap:8px;padding:12px 28px;border-radius:var(--radius-md);font-size:0.92rem;font-weight:700;text-decoration:none;transition:all var(--duration) var(--ease)}
+    .sp-cta-btn-primary{background:linear-gradient(135deg,var(--sand),#e8c49a);color:var(--deep)}
+    .sp-cta-btn-primary:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(222,172,128,0.25)}
+    .sp-cta-btn-secondary{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.12);color:var(--cloud)}
+    .sp-cta-btn-secondary:hover{border-color:rgba(157,175,255,0.3);color:var(--white);transform:translateY(-2px)}
+    [data-theme="light"] .sp-cta{background:linear-gradient(135deg,rgba(222,172,128,0.06),rgba(74,108,247,0.03));border-color:rgba(222,172,128,0.15)}
+    [data-theme="light"] .sp-cta-btn-secondary{border-color:rgba(0,0,0,0.12);color:var(--cloud)}
+    [data-theme="light"] .sp-cta-btn-secondary:hover{border-color:rgba(74,108,247,0.3)}
+
+    /* === FAQ === */
+    .sp-faq{margin:var(--space-lg) 0}
+    .sp-faq-item{border:1px solid rgba(255,255,255,0.06);border-radius:var(--radius-md);margin-bottom:var(--space-sm);overflow:hidden;transition:border-color var(--duration) var(--ease)}
+    .sp-faq-item.open{border-color:rgba(222,172,128,0.2)}
+    .sp-faq-q{display:flex;align-items:center;justify-content:space-between;gap:var(--space-md);padding:var(--space-md) var(--space-lg);cursor:pointer;background:rgba(255,255,255,0.02);transition:all var(--duration) var(--ease);font-family:inherit;border:none;width:100%;text-align:left;color:var(--cloud);font-size:0.92rem;font-weight:600}
+    .sp-faq-q:hover{background:rgba(255,255,255,0.04)}
+    .sp-faq-q::after{content:'▸';flex-shrink:0;color:var(--fog);transition:transform var(--duration) var(--ease);font-size:0.85rem}
+    .sp-faq-item.open .sp-faq-q::after{transform:rotate(90deg)}
+    .sp-faq-item.open .sp-faq-q{color:var(--sand);background:rgba(222,172,128,0.04)}
+    .sp-faq-a{max-height:0;overflow:hidden;transition:max-height 0.35s ease,padding 0.35s ease}
+    .sp-faq-item.open .sp-faq-a{max-height:500px}
+    .sp-faq-a-inner{padding:0 var(--space-lg) var(--space-lg);color:var(--fog);font-size:0.88rem;line-height:1.8}
+    [data-theme="light"] .sp-faq-item{border-color:rgba(0,0,0,0.06)}
+    [data-theme="light"] .sp-faq-item.open{border-color:rgba(222,172,128,0.25)}
+    [data-theme="light"] .sp-faq-q{background:#fff}
+    [data-theme="light"] .sp-faq-q:hover{background:rgba(222,172,128,0.03)}
+    [data-theme="light"] .sp-faq-item.open .sp-faq-q{color:#b8860b;background:rgba(222,172,128,0.04)}
+
+    /* === Related === */
+    .sp-related-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:var(--space-md);margin:var(--space-lg) 0}
+    .sp-related-card{display:flex;align-items:center;gap:var(--space-md);padding:var(--space-md) var(--space-lg);background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.06);border-radius:var(--radius-md);text-decoration:none;color:var(--cloud);transition:all var(--duration) var(--ease)}
+    .sp-related-card:hover{background:rgba(255,255,255,0.04);border-color:rgba(222,172,128,0.15);transform:translateX(3px)}
+    .sp-related-icon{font-size:1.4rem;flex-shrink:0}
+    .sp-related-body h4{font-size:0.88rem;font-weight:700;color:var(--white);margin-bottom:2px}
+    .sp-related-body p{font-size:0.78rem;color:var(--fog);line-height:1.4;margin:0}
+    [data-theme="light"] .sp-related-card{background:#fff;border-color:rgba(0,0,0,0.06)}
+    [data-theme="light"] .sp-related-card:hover{box-shadow:0 4px 12px rgba(0,0,0,0.06)}
+
+    /* === Light Mode === */
+    [data-theme="light"] .sp-hero::before{background:radial-gradient(ellipse 60% 50% at 50% 0%,rgba(222,172,128,0.08),transparent 70%)}
+    [data-theme="light"] .sp-hero-note{background:rgba(222,172,128,0.06);border-color:rgba(222,172,128,0.12);color:#b8860b}
+
+    /* === Responsive === */
+    @media(max-width:768px){
+      .sp-trust{gap:var(--space-lg)}
+      .sp-funds-grid{grid-template-columns:1fr}
+      .sp-ways{grid-template-columns:1fr}
+      .sp-cta{padding:var(--space-xl) var(--space-lg)}
+      .sp-cta-btns{flex-direction:column;align-items:center}
+    }
   </style>
 </head>
 <body>
-  <noscript><p>正在跳轉到 <a href="會員">會員</a>...</p></noscript>
-  <script>window.location.href="會員";</script>
+  <!-- Page Loader -->
+  <div class="page-loader" id="pageLoader">
+    <span class="loader-logo">海風</span>
+    <div class="loader-wave"></div>
+    <div class="loader-dots"><span></span><span></span><span></span></div>
+  </div>
+
+  <a href="#mainContent" class="skip-link">跳到主要內容</a>
+  <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
+  <div class="bg-atmosphere"></div>
+
+  <nav class="nav">
+    <a href="首頁" class="nav-logo">
+      <picture><source srcset="assets/img/logo.webp" type="image/webp"><img src="assets/img/logo.png" alt="海風" class="nav-logo-img" width="48" height="48" fetchpriority="high"></picture>
+      <span>海風伺服器</span>
+    </a>
+    <div class="nav-right">
+      <ul class="nav-links">
+        <li><a href="首頁">首頁</a></li>
+        <li><a href="公告">公告</a></li>
+        <li class="nav-dropdown">
+          <a href="文化藝廊" class="nav-dropdown-toggle" aria-expanded="false" aria-haspopup="true">關於 <span class="arrow">▾</span></a>
+          <ul class="dropdown-menu">
+            <li><a href="文化藝廊">文化藝廊</a></li>
+            <li><a href="活動">活動</a></li>
+            <li><a href="風景照">風景照</a></li>
+            <li><a href="歷史館">歷史館</a></li>
+            <li><a href="海風團隊">海風團隊</a></li>
+          </ul>
+        </li>
+        <li><a href="海風指南">海風指南</a></li>
+        <li class="nav-dropdown">
+          <a href="社群須知" class="nav-dropdown-toggle" aria-expanded="false" aria-haspopup="true">須知 <span class="arrow">▾</span></a>
+          <ul class="dropdown-menu">
+            <li><a href="社群須知">社群須知</a></li>
+            <li><a href="贊助" class="active">支持須知</a></li>
+            <li><a href="管理通則">管理通則</a></li>
+            <li><a href="公務人員須知">公務人員須知</a></li>
+            <li><a href="設計規範">設計規範</a></li>
+            <li><a href="服務條款">服務條款</a></li>
+            <li><a href="隱私權政策">隱私權政策</a></li>
+          </ul>
+        </li>
+        <li><a href="會員">會員</a></li>
+        <li><a href="相關連結">相關連結</a></li>
+        <li class="nav-dropdown">
+          <a href="資料中心/合作夥伴" class="nav-dropdown-toggle" aria-expanded="false" aria-haspopup="true">資料中心 <span class="arrow">▾</span></a>
+          <ul class="dropdown-menu">
+            <li><a href="資料中心/合作夥伴">合作夥伴</a></li>
+            <li><a href="資料中心/支持牆">支持牆</a></li>
+            <li><a href="資料中心/線上工單">線上工單</a></li>
+            <li><a href="資料中心/違規處分">違規處分</a></li>
+          </ul>
+        </li>
+      </ul>
+      <button class="nav-theme" id="themeToggle" aria-label="切換主題"></button>
+      <button class="nav-toggle" aria-label="選單">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <div class="page">
+    <div id="mainContent">
+
+      <!-- ═══ Hero ═══ -->
+      <div class="sp-hero fade-in">
+        <div class="sp-particles" id="spParticles" aria-hidden="true"></div>
+        <div class="sp-hero-badge">💛 支持海風</div>
+        <h1><span class="sp-heart">💛</span> 讓這個家，走得更遠</h1>
+        <p class="sp-hero-desc">海風是一個由高中生團隊用心經營的養老生存伺服器。<br>每一份贊助，都會直接用在伺服器維運、活動設計與內容開發上——<br>讓這個「住起來舒服」的地方，能一直存在。</p>
+        <div class="sp-hero-note">贊助屬於自願性質，所有回饋不影響遊戲公平性</div>
+      </div>
+
+      <!-- ═══ 信任數據 ═══ -->
+      <div class="sp-trust fade-in">
+        <div class="sp-trust-item">
+          <div class="sp-trust-num">365+</div>
+          <div class="sp-trust-label">穩定營運天數</div>
+        </div>
+        <div class="sp-trust-item">
+          <div class="sp-trust-num">400+</div>
+          <div class="sp-trust-label">註冊會員</div>
+        </div>
+        <div class="sp-trust-item">
+          <div class="sp-trust-num">500+</div>
+          <div class="sp-trust-label">公告發布</div>
+        </div>
+        <div class="sp-trust-item">
+          <div class="sp-trust-num">12</div>
+          <div class="sp-trust-label">團隊成員</div>
+        </div>
+      </div>
+
+      <div class="content-section">
+
+        <!-- ═══ 資金用途 ═══ -->
+        <div class="guide-section-card fade-in" style="--card-accent:var(--sand)">
+          <h2><span class="sec-icon">📊</span> 資金用途</h2>
+          <p>每一分錢都花在刀口上。以下是贊助資金的主要用途。</p>
+
+          <div class="sp-funds-grid">
+            <div class="sp-fund" style="--fund-accent:var(--sky)">
+              <span class="sp-fund-pct">主花費</span>
+              <div class="sp-fund-icon">🖥️</div>
+              <h4>伺服器維運</h4>
+              <p>主機租賃、網域、CDN、備份空間等基礎設施費用，確保伺服器 24 小時穩定運行。</p>
+            </div>
+            <div class="sp-fund" style="--fund-accent:var(--foam)">
+              <span class="sp-fund-pct">持續</span>
+              <div class="sp-fund-icon">🎮</div>
+              <h4>活動舉辦</h4>
+              <p>珍奶日、端午節等台灣味活動的設計、開發與執行，包含自訂物品、NPC 與任務系統。</p>
+            </div>
+            <div class="sp-fund" style="--fund-accent:var(--lavender)">
+              <span class="sp-fund-pct">持續</span>
+              <div class="sp-fund-icon">📖</div>
+              <h4>內容開發</h4>
+              <p>新功能插件、指南撰寫、網站設計維護，持續提升遊戲體驗與網站品質。</p>
+            </div>
+            <div class="sp-fund" style="--fund-accent:var(--sand)">
+              <span class="sp-fund-pct">儲備</span>
+              <div class="sp-fund-icon">🛡️</div>
+              <h4>緊急預備</h4>
+              <p>突發狀況的應對資金，如主機故障、資料還原或臨時擴容需求。</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="guide-divider"></div>
+
+        <!-- ═══ 贊助方式 ═══ -->
+        <div class="guide-section-card fade-in" style="--card-accent:var(--ocean-blue)">
+          <h2><span class="sec-icon">💰</span> 贊助方式</h2>
+          <p>目前提供以下贊助管道。</p>
+
+          <div class="sp-ways">
+            <div class="sp-way">
+              <span class="sp-way-badge sp-way-badge-main">推薦</span>
+              <h4>會員月費方案</h4>
+              <p>每月 200 冷媒（1 元台幣 = 1 元冷媒），享有 29 項專屬回饋。按月贊助，隨時可取消。</p>
+              <div class="sp-way-detail">
+                <ul>
+                  <li>線上銀行轉帳</li>
+                  <li>超商中信無卡轉帳</li>
+                  <li>付款後透過線上工單通知管理員</li>
+                </ul>
+              </div>
+            </div>
+            <div class="sp-way">
+              <span class="sp-way-badge sp-way-badge-alt">替代</span>
+              <h4>單次贊助</h4>
+              <p>不想綁定月費？也可以選擇單次贊助，金額不限。所有贊助皆享有同等回饋資格。</p>
+              <div class="sp-way-detail">
+                <ul>
+                  <li>線上銀行轉帳</li>
+                  <li>超商中信無卡轉帳</li>
+                  <li>付款後透過線上工單通知管理員</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="guide-divider"></div>
+
+        <!-- ═══ 贊助流程 ═══ -->
+        <div class="guide-section-card fade-in" style="--card-accent:var(--foam)">
+          <h2><span class="sec-icon">📝</span> 贊助流程</h2>
+          <p>簡單三步驟，輕鬆完成贊助。</p>
+
+          <div class="sp-steps">
+            <div class="sp-step">
+              <div class="sp-step-num">1</div>
+              <h4>開啟線上工單</h4>
+              <p>至 Discord 開啟線上工單，選擇「應徵」類型告知想贊助</p>
+            </div>
+            <div class="sp-step">
+              <div class="sp-step-num">2</div>
+              <h4>確認方案</h4>
+              <p>每月 200 冷媒，確認贊助金額與月份</p>
+            </div>
+            <div class="sp-step">
+              <div class="sp-step-num">3</div>
+              <h4>完成付款</h4>
+              <p>線上銀行轉帳或超商中信無卡轉帳</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="guide-divider"></div>
+
+        <!-- ═══ 注意事項 ═══ -->
+        <div class="guide-section-card fade-in" style="--card-accent:var(--fog)">
+          <h2><span class="sec-icon">📌</span> 注意事項</h2>
+
+          <div class="sp-notices">
+            <div class="sp-notice">
+              <span class="sp-notice-icon">🔗</span>
+              <div class="sp-notice-body">
+                <h4>前置條件</h4>
+                <p>回饋僅給予已綁定帳號的玩家</p>
+              </div>
+            </div>
+            <div class="sp-notice">
+              <span class="sp-notice-icon">↩️</span>
+              <div class="sp-notice-body">
+                <h4>退款政策</h4>
+                <p>贊助屬於自願行為，故不予退款</p>
+              </div>
+            </div>
+            <div class="sp-notice">
+              <span class="sp-notice-icon">🔄</span>
+              <div class="sp-notice-body">
+                <h4>回饋調整</h4>
+                <p>回饋內容可能隨伺服器調整而更動</p>
+              </div>
+            </div>
+            <div class="sp-notice">
+              <span class="sp-notice-icon">⚠️</span>
+              <div class="sp-notice-body">
+                <h4>未成年者</h4>
+                <p>須經法定代理人事先同意後方可贊助</p>
+              </div>
+            </div>
+            <div class="sp-notice">
+              <span class="sp-notice-icon">🚫</span>
+              <div class="sp-notice-body">
+                <h4>違規者</h4>
+                <p>將失去回饋資格</p>
+              </div>
+            </div>
+            <div class="sp-notice">
+              <span class="sp-notice-icon">📋</span>
+              <div class="sp-notice-body">
+                <h4>同意條款</h4>
+                <p>贊助成立後視同同意本注意事項</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="guide-divider"></div>
+
+        <!-- ═══ CTA ═══ -->
+        <div class="sp-cta fade-in">
+          <h2>準備好支持海風了嗎？</h2>
+          <p>每一份支持，都是讓這個家更好的力量。<br>查看完整回饋清單，或直接開啟工單開始贊助。</p>
+          <div class="sp-cta-btns">
+            <a href="會員" class="sp-cta-btn sp-cta-btn-primary">🎁 查看會員回饋</a>
+            <a href="資料中心/線上工單" class="sp-cta-btn sp-cta-btn-secondary">📮 開啟線上工單</a>
+          </div>
+        </div>
+
+        <div class="guide-divider"></div>
+
+        <!-- ═══ 常見問題 ═══ -->
+        <div class="guide-section-card fade-in" style="--card-accent:var(--sky)">
+          <h2><span class="sec-icon">❓</span> 常見問題</h2>
+
+          <div class="sp-faq">
+            <div class="sp-faq-item">
+              <button class="sp-faq-q">贊助後多久能收到回饋？</button>
+              <div class="sp-faq-a"><div class="sp-faq-a-inner">完成付款並確認後，管理員會在 24 小時內處理回饋。如遇假日可能順延。</div></div>
+            </div>
+            <div class="sp-faq-item">
+              <button class="sp-faq-q">冷媒和台幣的匯率是多少？</button>
+              <div class="sp-faq-a"><div class="sp-faq-a-inner">1 元台幣 = 1 元冷媒。例如贊助 200 元台幣，即獲得 200 冷媒的會員資格。</div></div>
+            </div>
+            <div class="sp-faq-item">
+              <button class="sp-faq-q">可以用遊戲內貨幣購買會員嗎？</button>
+              <div class="sp-faq-a"><div class="sp-faq-a-inner">不行。會員贊助僅接受台幣付款，不支援遊戲內貨幣兌換。</div></div>
+            </div>
+            <div class="sp-faq-item">
+              <button class="sp-faq-q">停止贊助後回饋會消失嗎？</button>
+              <div class="sp-faq-a"><div class="sp-faq-a-inner">會員資格按月計算，停止贊助後當期回饋仍有效，到期後恢復為預設玩家狀態。</div></div>
+            </div>
+            <div class="sp-faq-item">
+              <button class="sp-faq-q">稱號是永久的嗎？</button>
+              <div class="sp-faq-a"><div class="sp-faq-a-inner">稱號在會員期間有效。停止贊助後，稱號會恢復為預設的「玩家」。</div></div>
+            </div>
+            <div class="sp-faq-item">
+              <button class="sp-faq-q">會員會影響遊戲平衡嗎？</button>
+              <div class="sp-faq-a"><div class="sp-faq-a-inner">不會。會員特權僅限便利性功能（隨地開啟工具、自動簽到等）和名額擴充（領地、傳送點數量），不包含任何戰鬥、資源取得或經驗加成。</div></div>
+            </div>
+            <div class="sp-faq-item">
+              <button class="sp-faq-q">未成年可以贊助嗎？</button>
+              <div class="sp-faq-a"><div class="sp-faq-a-inner">可以，但須經法定代理人（通常是父母）事先同意。建議與家長討論後再進行贊助。</div></div>
+            </div>
+            <div class="sp-faq-item">
+              <button class="sp-faq-q">有其他問題怎麼辦？</button>
+              <div class="sp-faq-a"><div class="sp-faq-a-inner">可以透過 Discord 開啟線上工單聯繫管理員，我們會盡快回覆。</div></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="guide-divider"></div>
+
+        <!-- ═══ 相關頁面 ═══ -->
+        <div class="guide-section-card fade-in" style="--card-accent:var(--lavender)">
+          <h2><span class="sec-icon">📖</span> 相關頁面</h2>
+
+          <div class="sp-related-grid">
+            <a href="會員" class="sp-related-card">
+              <span class="sp-related-icon">💎</span>
+              <div class="sp-related-body">
+                <h4>會員</h4>
+                <p>完整回饋清單與對比表</p>
+              </div>
+            </a>
+            <a href="資料中心/線上工單" class="sp-related-card">
+              <span class="sp-related-icon">📮</span>
+              <div class="sp-related-body">
+                <h4>線上工單</h4>
+                <p>開啟工單進行贊助</p>
+              </div>
+            </a>
+            <a href="資料中心/支持牆" class="sp-related-card">
+              <span class="sp-related-icon">💛</span>
+              <div class="sp-related-body">
+                <h4>支持牆</h4>
+                <p>看看誰支持了海風</p>
+              </div>
+            </a>
+            <a href="海風指南/綁定帳號" class="sp-related-card">
+              <span class="sp-related-icon">🔗</span>
+              <div class="sp-related-body">
+                <h4>綁定帳號</h4>
+                <p>贊助前請先完成帳號綁定</p>
+              </div>
+            </a>
+            <a href="服務條款" class="sp-related-card">
+              <span class="sp-related-icon">📜</span>
+              <div class="sp-related-body">
+                <h4>服務條款</h4>
+                <p>贊助相關法律條款</p>
+              </div>
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <span class="footer-logo">海風伺服器 SeaWind.cc</span>
+        <p class="footer-tagline">在風與海之間，有一個可以長久生存的地方</p>
+      </div>
+      <div class="footer-links-row">
+        <a href="資料中心/合作夥伴">合作夥伴</a>
+        <span class="footer-dot">·</span>
+        <a href="服務條款">服務條款</a>
+        <span class="footer-dot">·</span>
+        <a href="隱私權政策">隱私權政策</a>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2026 海風伺服器 · 非 Mojang 官方營運 · service@seawind.cc</p>
+      </div>
+      <p class="page-revise">網站最後修改日期 2026.05.13 / 總計修改 <span id="deployCount">—</span> 次</p>
+    </div>
+  </footer>
+
+  <!-- Page Loader + Particles + FAQ -->
+  <script>
+  (function(){
+    /* Page Loader */
+    const loader = document.getElementById('pageLoader');
+    if (loader) {
+      function hideLoader(){loader.classList.add('fade-out');setTimeout(()=>loader.remove(),600)}
+      if(document.readyState==='complete'){hideLoader()}else{window.addEventListener('load',hideLoader)}
+      setTimeout(hideLoader,3000);
+    }
+
+    /* Floating Particles */
+    const pc = document.getElementById('spParticles');
+    if (pc) {
+      for (let i = 0; i < 12; i++) {
+        const p = document.createElement('div');
+        p.className = 'sp-particle';
+        const size = 4 + Math.random() * 10;
+        p.style.cssText = `width:${size}px;height:${size}px;left:${Math.random()*100}%;animation-duration:${7+Math.random()*9}s;animation-delay:${Math.random()*5}s`;
+        pc.appendChild(p);
+      }
+    }
+
+    /* FAQ Toggle */
+    document.querySelectorAll('.sp-faq-q').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const item = btn.parentElement;
+        const wasOpen = item.classList.contains('open');
+        item.parentElement.querySelectorAll('.sp-faq-item.open').forEach(i => i.classList.remove('open'));
+        if (!wasOpen) item.classList.add('open');
+      });
+    });
+  })();
+  </script>
+  <script src="utils.js"></script>
+  <script src="main.js?v=130513b"></script>
 </body>
 </html>
