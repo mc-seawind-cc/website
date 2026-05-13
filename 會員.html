@@ -161,6 +161,40 @@
       .mem-compare{font-size:0.78rem}
       .mem-compare thead th,.mem-compare tbody td{padding:8px 10px}
     }
+
+    /* === Trust Banner === */
+    .mem-trust{display:flex;justify-content:center;gap:var(--space-xl);flex-wrap:wrap;margin:var(--space-xl) 0 var(--space-2xl);position:relative}
+    .mem-trust-item{text-align:center}
+    .mem-trust-num{font-size:2rem;font-weight:800;color:var(--sky);line-height:1}
+    .mem-trust-label{font-size:0.78rem;color:var(--fog);margin-top:4px}
+    [data-theme="light"] .mem-trust-num{color:var(--ocean-blue)}
+
+    /* === Funds Grid === */
+    .mem-funds-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:var(--space-md);margin:var(--space-lg) 0}
+    .mem-fund{position:relative;padding:var(--space-lg);background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.06);border-radius:var(--radius-lg);overflow:hidden;transition:all var(--duration) var(--ease)}
+    .mem-fund:hover{transform:translateY(-3px);border-color:rgba(157,175,255,0.15)}
+    .mem-fund::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--fund-accent,var(--sky));opacity:0.5}
+    .mem-fund-icon{font-size:1.6rem;margin-bottom:var(--space-sm)}
+    .mem-fund h4{font-size:0.92rem;font-weight:700;color:var(--white);margin-bottom:4px}
+    .mem-fund p{font-size:0.82rem;color:var(--fog);line-height:1.6;margin:0}
+    .mem-fund-pct{position:absolute;top:var(--space-md);right:var(--space-md);font-size:0.75rem;font-weight:700;color:var(--fund-accent,var(--sky));background:rgba(157,175,255,0.08);padding:3px 10px;border-radius:12px}
+    [data-theme="light"] .mem-fund{background:#fff;border-color:rgba(0,0,0,0.06)}
+    [data-theme="light"] .mem-fund:hover{box-shadow:0 4px 16px rgba(0,0,0,0.06)}
+
+    /* === Support Ways === */
+    .mem-ways{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:var(--space-md);margin:var(--space-lg) 0}
+    .mem-way{position:relative;padding:var(--space-lg);background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.06);border-radius:var(--radius-lg);transition:all var(--duration) var(--ease)}
+    .mem-way:hover{transform:translateY(-3px);border-color:rgba(157,175,255,0.15)}
+    .mem-way-badge{display:inline-block;padding:3px 10px;border-radius:10px;font-size:0.7rem;font-weight:700;margin-bottom:var(--space-sm)}
+    .mem-way-badge-main{background:rgba(157,175,255,0.12);color:var(--sky)}
+    .mem-way-badge-alt{background:rgba(168,230,207,0.12);color:var(--foam)}
+    .mem-way h4{font-size:1rem;font-weight:700;color:var(--white);margin-bottom:6px}
+    .mem-way p{font-size:0.85rem;color:var(--fog);line-height:1.7;margin:0 0 var(--space-md)}
+    .mem-way-detail{font-size:0.8rem;color:var(--cloud);background:rgba(255,255,255,0.03);border-radius:var(--radius-sm);padding:var(--space-sm) var(--space-md)}
+    .mem-way-detail li{margin-bottom:4px}
+    .mem-way-detail li:last-child{margin-bottom:0}
+    [data-theme="light"] .mem-way{background:#fff;border-color:rgba(0,0,0,0.06)}
+    [data-theme="light"] .mem-way:hover{box-shadow:0 4px 16px rgba(0,0,0,0.06)}
   </style>
 </head>
 <body>
@@ -236,6 +270,26 @@
         <h1><span class="mem-wave">🌊</span> 海風會員</h1>
         <p class="mem-hero-desc">支持海風，獲得專屬回饋。<br>每一份支持都是讓這個家更好的力量。</p>
         <div class="mem-hero-note">會員特權不影響遊戲公平，僅提供便利與名額擴充</div>
+      </div>
+
+      <!-- ═══ 信任數據 ═══ -->
+      <div class="mem-trust fade-in">
+        <div class="mem-trust-item">
+          <div class="mem-trust-num">365+</div>
+          <div class="mem-trust-label">穩定營運天數</div>
+        </div>
+        <div class="mem-trust-item">
+          <div class="mem-trust-num">400+</div>
+          <div class="mem-trust-label">註冊會員</div>
+        </div>
+        <div class="mem-trust-item">
+          <div class="mem-trust-num">500+</div>
+          <div class="mem-trust-label">公告發布</div>
+        </div>
+        <div class="mem-trust-item">
+          <div class="mem-trust-num">12</div>
+          <div class="mem-trust-label">團隊成員</div>
+        </div>
       </div>
 
       <div class="content-section">
@@ -568,10 +622,45 @@
 
         <div class="guide-divider"></div>
 
-        <!-- ═══ 贊助流程 ═══ -->
+        <!-- ═══ 贊助方式 ═══ -->
         <div class="guide-section-card fade-in" style="--card-accent:var(--ocean-blue)">
-          <h2><span class="sec-icon">💰</span> 贊助流程</h2>
-          <p>簡單三步驟，完成贊助。</p>
+          <h2><span class="sec-icon">💰</span> 贊助方式</h2>
+          <p>目前提供以下贊助管道，完成付款後即可享有會員回饋。</p>
+
+          <div class="mem-ways">
+            <div class="mem-way">
+              <span class="mem-way-badge mem-way-badge-main">推薦</span>
+              <h4>會員月費方案</h4>
+              <p>每月 200 冷媒（1 元台幣 = 1 元冷媒），享有 29 項專屬回饋。按月贊助，隨時可取消。</p>
+              <div class="mem-way-detail">
+                <ul>
+                  <li>線上銀行轉帳</li>
+                  <li>超商中信無卡轉帳</li>
+                  <li>付款後透過線上工單通知管理員</li>
+                </ul>
+              </div>
+            </div>
+            <div class="mem-way">
+              <span class="mem-way-badge mem-way-badge-alt">替代</span>
+              <h4>單次贊助</h4>
+              <p>不想綁定月費？也可以選擇單次贊助，金額不限。所有贊助皆享有同等回饋資格。</p>
+              <div class="mem-way-detail">
+                <ul>
+                  <li>線上銀行轉帳</li>
+                  <li>超商中信無卡轉帳</li>
+                  <li>付款後透過線上工單通知管理員</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="guide-divider"></div>
+
+        <!-- ═══ 贊助流程 ═══ -->
+        <div class="guide-section-card fade-in" style="--card-accent:var(--foam)">
+          <h2><span class="sec-icon">📝</span> 贊助流程</h2>
+          <p>簡單三步驟，輕鬆完成贊助。</p>
 
           <div class="mem-steps">
             <div class="mem-step">
@@ -588,6 +677,42 @@
               <div class="mem-step-num">3</div>
               <h4>完成付款</h4>
               <p>線上銀行轉帳或超商中信無卡轉帳</p>
+            </div>
+          </div>
+        </div>
+
+
+        <div class="guide-divider"></div>
+
+        <!-- ═══ 資金用途 ═══ -->
+        <div class="guide-section-card fade-in" style="--card-accent:var(--sand)">
+          <h2><span class="sec-icon">📊</span> 資金用途</h2>
+          <p>每一分錢都花在刀口上。以下是贊助資金的主要用途。</p>
+
+          <div class="mem-funds-grid">
+            <div class="mem-fund" style="--fund-accent:var(--sky)">
+              <span class="mem-fund-pct">主花費</span>
+              <div class="mem-fund-icon">🖥️</div>
+              <h4>伺服器維運</h4>
+              <p>主機租賃、網域、CDN、備份空間等基礎設施費用，確保伺服器 24 小時穩定運行。</p>
+            </div>
+            <div class="mem-fund" style="--fund-accent:var(--foam)">
+              <span class="mem-fund-pct">持續</span>
+              <div class="mem-fund-icon">🎮</div>
+              <h4>活動舉辦</h4>
+              <p>珍奶日、端午節等台灣味活動的設計、開發與執行，包含自訂物品、NPC 與任務系統。</p>
+            </div>
+            <div class="mem-fund" style="--fund-accent:var(--lavender)">
+              <span class="mem-fund-pct">持續</span>
+              <div class="mem-fund-icon">📖</div>
+              <h4>內容開發</h4>
+              <p>新功能插件、指南撰寫、網站設計維護，持續提升遊戲體驗與網站品質。</p>
+            </div>
+            <div class="mem-fund" style="--fund-accent:var(--sand)">
+              <span class="mem-fund-pct">儲備</span>
+              <div class="mem-fund-icon">🛡️</div>
+              <h4>緊急預備</h4>
+              <p>突發狀況的應對資金，如主機故障、資料還原或臨時擴容需求。</p>
             </div>
           </div>
         </div>
