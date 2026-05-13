@@ -5,13 +5,13 @@
   <link rel="canonical" href="https://www.seawind.cc/會員">
   <meta name="color-scheme" content="dark light">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>會員 — 海風</title>
-  <meta name="description" content="海風會員每月 200 冷媒，支持海風獲得領地擴充、傳送點加倍、隨地開啟工具、自動簽到、郵件免費等 29 項專屬回饋。">
+  <title>會員方案 — 海風</title>
+  <meta name="description" content="海風會員永久買斷 800 冷媒解鎖 8 項永久擴充，季卡 500 冷媒解鎖 20 項體驗功能。贈卡 30 風汐錠送朋友 7 天試用。">
   <link rel="icon" href="assets/img/logo.png">
   <link rel="apple-touch-icon" href="assets/img/logo.png">
   <link rel="manifest" href="manifest.json">
   <meta property="og:title" content="會員 — 海風">
-  <meta property="og:description" content="海風會員每月 200 冷媒，支持海風獲得 29 項專屬回饋。">
+  <meta property="og:description" content="海風會員永久買斷 800 冷媒＋季卡 500 冷媒，28 項專屬回饋。">
   <meta property="og:image" content="assets/img/logo.png">
   <meta property="og:type" content="website">
   <meta name="twitter:card" content="summary">
@@ -20,9 +20,9 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;800&family=Noto+Serif+TC:wght@700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=130513a">
-  <link rel="stylesheet" href="music-player.css?v=130513a">
-  <link rel="preload" href="music-player.js?v=130513a" as="script">
+  <link rel="stylesheet" href="style.css?v=140514a">
+  <link rel="stylesheet" href="music-player.css?v=140514a">
+  <link rel="preload" href="music-player.js?v=140514a" as="script">
   <style>
     /* ═══════════════════════════════════════
        Member Page — Redesign 2026.05.13
@@ -266,10 +266,10 @@
       <!-- ═══ Hero ═══ -->
       <div class="mem-hero fade-in">
         <div class="mem-bubbles" id="memBubbles" aria-hidden="true"></div>
-        <div class="mem-hero-badge">💎 會員方案</div>
+        <div class="mem-hero-badge">💎 會員方案 · 永久 800 ＋ 季卡 500</div>
         <h1><span class="mem-wave">🌊</span> 海風會員</h1>
-        <p class="mem-hero-desc">支持海風，獲得專屬回饋。<br>每一份支持都是讓這個家更好的力量。</p>
-        <div class="mem-hero-note">會員特權不影響遊戲公平，僅提供便利與名額擴充</div>
+        <p class="mem-hero-desc">支持海風，獲得專屬回饋。<br>永久買斷 ＋ 季卡，兩種方案自由搭配。</p>
+        <div class="mem-hero-note">永久擴充買斷留存，體驗功能季卡解鎖，贈卡讓朋友试用</div>
       </div>
 
       <!-- ═══ 信任數據 ═══ -->
@@ -294,17 +294,30 @@
 
       <div class="content-section">
 
-        <!-- ═══ Price Card ═══ -->
-        <div class="mem-price-section fade-in">
-          <div class="mem-price-card">
-            <div class="mem-price-icon">🌊</div>
-            <div class="mem-price-name">海風會員</div>
-            <div class="mem-price-amount">200</div>
-            <div class="mem-price-unit">冷媒 / 月</div>
+        <!-- ═══ Price Cards ═══ -->
+        <div class="mem-price-section fade-in" style="flex-wrap:wrap;gap:var(--space-lg)">
+          <!-- 永久買斷 -->
+          <div class="mem-price-card" style="max-width:380px">
+            <div class="mem-price-icon">📦</div>
+            <div class="mem-price-name">永久買斷</div>
+            <div class="mem-price-amount">800</div>
+            <div class="mem-price-unit">冷媒 · 一次性</div>
             <div class="mem-price-divider"></div>
             <div class="mem-price-note">
-              <strong>1 元台幣 = 1 元冷媒</strong><br>
-              每支持 1 元，可回饋 1 元冷媒
+              <strong>8 項永久擴充</strong>，買斷後數值永久保留<br>
+              領地 · 傳送點 · 商城 · 商店 · 倉庫
+            </div>
+          </div>
+          <!-- 季卡 -->
+          <div class="mem-price-card" style="max-width:380px">
+            <div class="mem-price-icon">🌊</div>
+            <div class="mem-price-name">季卡</div>
+            <div class="mem-price-amount">500</div>
+            <div class="mem-price-unit">冷媒 / 季（約 40-80 天）</div>
+            <div class="mem-price-divider"></div>
+            <div class="mem-price-note">
+              <strong>20 項體驗功能</strong>，到期自動關閉<br>
+              隨地開啟 · 簽到 · 稱號 · 榮譽標識
             </div>
           </div>
         </div>
@@ -314,8 +327,12 @@
         <!-- ═══ 會員回饋 ═══ -->
         <div class="guide-section-card fade-in" style="--card-accent:var(--foam)">
           <h2><span class="sec-icon">🎁</span> 會員回饋</h2>
-          <p>支持海風，享有以下 29 項專屬回饋。</p>
+          <p>支持海風，享有 <strong style="color:var(--sand)">8 項永久擴充</strong> ＋ <strong style="color:var(--sky)">20 項體驗功能</strong>，共 28 項專屬回饋。</p>
 
+          <div style="margin-bottom:var(--space-lg)">
+            <h3 style="font-size:1rem;font-weight:700;color:var(--sand);margin-bottom:var(--space-sm);display:flex;align-items:center;gap:8px"><span>📦</span> 永久型回饋 <span style="font-size:0.72rem;font-weight:600;padding:3px 10px;border-radius:10px;background:rgba(222,172,128,0.12);color:var(--sand)">買斷留存</span></h3>
+            <p style="font-size:0.82rem;color:var(--fog);margin:0">一次性購買，數值永久保留。取消會員後不會收回。</p>
+          </div>
           <div class="mem-perk-grid">
             <!-- 領地 -->
             <div class="mem-perk">
@@ -366,6 +383,12 @@
             </div>
 
             <!-- 隨地開啟 -->
+          </div>
+          <div style="margin:var(--space-xl) 0 var(--space-lg)">
+            <h3 style="font-size:1rem;font-weight:700;color:var(--sky);margin-bottom:var(--space-sm);display:flex;align-items:center;gap:8px"><span>⏳</span> 體驗型回饋 <span style="font-size:0.72rem;font-weight:600;padding:3px 10px;border-radius:10px;background:rgba(157,175,255,0.12);color:var(--sky)">季卡解鎖</span></h3>
+            <p style="font-size:0.82rem;color:var(--fog);margin:0">季卡期間自動啟用，到期後關閉。包含功能開關與榮譽標識。</p>
+          </div>
+          <div class="mem-perk-grid">
             <div class="mem-perk">
               <span class="mem-perk-icon">🧰</span>
               <div class="mem-perk-body">
@@ -513,7 +536,6 @@
               </div>
             </div>
 
-            <!-- 新增回饋 -->
             <div class="mem-perk">
               <span class="mem-perk-icon">📋</span>
               <div class="mem-perk-body">
@@ -554,67 +576,62 @@
                 <tr>
                   <th>項目</th>
                   <th>預設玩家</th>
-                  <th class="col-mem">🌊 會員</th>
+                  <th style="color:var(--sand)">📦 永久買斷</th>
+                  <th class="col-mem">🌊 季卡</th>
                 </tr>
               </thead>
               <tbody>
-                <!-- 領地 -->
-                <tr class="cat-row"><td colspan="3">🏰 領地</td></tr>
-                <tr><td>主領地</td><td>10+10</td><td class="val-hi">20+20</td></tr>
-                <tr><td>子領地</td><td>50+50</td><td class="val-hi">100+100</td></tr>
+                <!-- 永久型：領地 -->
+                <tr class="cat-row"><td colspan="4">📦 永久型 · 領地</td></tr>
+                <tr><td>主領地</td><td>10+10</td><td class="val-hi">20+20</td><td>10+10</td></tr>
+                <tr><td>子領地</td><td>50+50</td><td class="val-hi">100+100</td><td>50+50</td></tr>
 
-                <!-- 傳送點 -->
-                <tr class="cat-row"><td colspan="3">📍 傳送點</td></tr>
-                <tr><td>個人傳送點</td><td>20</td><td class="val-hi">40</td></tr>
-                <tr><td>公開傳送點</td><td>4+4</td><td class="val-hi">8+8</td></tr>
+                <!-- 永久型：傳送點 -->
+                <tr class="cat-row"><td colspan="4">📦 永久型 · 傳送點</td></tr>
+                <tr><td>個人傳送點</td><td>20</td><td class="val-hi">40</td><td>20</td></tr>
+                <tr><td>公開傳送點</td><td>4+4</td><td class="val-hi">8+8</td><td>4+4</td></tr>
 
-                <!-- 交易 -->
-                <tr class="cat-row"><td colspan="3">🏪 交易</td></tr>
-                <tr><td>線上商城</td><td>10</td><td class="val-hi">15</td></tr>
-                <tr><td>箱子商店</td><td>120</td><td class="val-hi">300</td></tr>
+                <!-- 永久型：交易 -->
+                <tr class="cat-row"><td colspan="4">📦 永久型 · 交易</td></tr>
+                <tr><td>線上商城</td><td>10</td><td class="val-hi">15</td><td>10</td></tr>
+                <tr><td>箱子商店</td><td>120</td><td class="val-hi">300</td><td>120</td></tr>
 
-                <!-- 隨地開啟 -->
-                <tr class="cat-row"><td colspan="3">🧰 隨地開啟</td></tr>
-                <tr><td>界伏盒</td><td class="val-no">✗</td><td class="val-yes">✓</td></tr>
-                <tr><td>工作台</td><td class="val-no">✗</td><td class="val-yes">✓</td></tr>
-                <tr><td>鍛造台</td><td class="val-no">✗</td><td class="val-yes">✓</td></tr>
-                <tr><td>製圖台</td><td class="val-no">✗</td><td class="val-yes">✓</td></tr>
-                <tr><td>紡織機</td><td class="val-no">✗</td><td class="val-yes">✓</td></tr>
-                <tr><td>鐵砧</td><td class="val-no">✗</td><td class="val-yes">✓</td></tr>
-                <tr><td>砂輪</td><td class="val-no">✗</td><td class="val-yes">✓</td></tr>
+                <!-- 永久型：倉庫 -->
+                <tr class="cat-row"><td colspan="4">📦 永久型 · 倉庫</td></tr>
+                <tr><td>大倉庫</td><td>16</td><td class="val-hi">32</td><td>16</td></tr>
+                <tr><td>小倉庫</td><td>8</td><td class="val-hi">16</td><td>8</td></tr>
 
-                <!-- 簽到 -->
-                <tr class="cat-row"><td colspan="3">📅 簽到</td></tr>
-                <tr><td>自動簽到</td><td class="val-no">✗</td><td class="val-yes">✓</td></tr>
-                <tr><td>風汐錠</td><td class="val-no">✗</td><td class="val-hi">×2</td></tr>
-                <tr><td>自訂獎勵</td><td class="val-no">✗</td><td class="val-yes">✓</td></tr>
+                <!-- 體驗型：隨地開啟 -->
+                <tr class="cat-row"><td colspan="4">⏳ 體驗型 · 隨地開啟</td></tr>
+                <tr><td>界伏盒</td><td class="val-no">✗</td><td class="val-no">✗</td><td class="val-yes">✓</td></tr>
+                <tr><td>工作台</td><td class="val-no">✗</td><td class="val-no">✗</td><td class="val-yes">✓</td></tr>
+                <tr><td>鍛造台</td><td class="val-no">✗</td><td class="val-no">✗</td><td class="val-yes">✓</td></tr>
+                <tr><td>製圖台</td><td class="val-no">✗</td><td class="val-no">✗</td><td class="val-yes">✓</td></tr>
+                <tr><td>紡織機</td><td class="val-no">✗</td><td class="val-no">✗</td><td class="val-yes">✓</td></tr>
+                <tr><td>鐵砧</td><td class="val-no">✗</td><td class="val-no">✗</td><td class="val-yes">✓</td></tr>
+                <tr><td>砂輪</td><td class="val-no">✗</td><td class="val-no">✗</td><td class="val-yes">✓</td></tr>
 
-                <!-- 稱號 -->
-                <tr class="cat-row"><td colspan="3">🏷️ 稱號</td></tr>
-                <tr><td>遊戲稱號</td><td>玩家</td><td class="val-hi">海風會員</td></tr>
-                <tr><td>Discord 稱號</td><td class="val-no">✗</td><td class="val-yes">✓</td></tr>
+                <!-- 體驗型：簽到 -->
+                <tr class="cat-row"><td colspan="4">⏳ 體驗型 · 簽到</td></tr>
+                <tr><td>自動簽到</td><td class="val-no">✗</td><td class="val-no">✗</td><td class="val-yes">✓</td></tr>
+                <tr><td>風汐錠加碼</td><td class="val-no">✗</td><td class="val-no">✗</td><td class="val-hi">×2</td></tr>
+                <tr><td>自訂獎勵</td><td class="val-no">✗</td><td class="val-no">✗</td><td class="val-yes">✓</td></tr>
 
-                <!-- 郵件 -->
-                <tr class="cat-row"><td colspan="3">✉️ 郵件</td></tr>
-                <tr><td>郵件費用</td><td>1 風幣</td><td class="val-yes">免費</td></tr>
+                <!-- 體驗型：稱號 -->
+                <tr class="cat-row"><td colspan="4">⏳ 體驗型 · 稱號</td></tr>
+                <tr><td>遊戲稱號</td><td>玩家</td><td>玩家</td><td class="val-hi">海風會員</td></tr>
+                <tr><td>Discord 稱號</td><td class="val-no">✗</td><td class="val-no">✗</td><td class="val-yes">✓</td></tr>
 
-                <!-- 倉庫 -->
-                <tr class="cat-row"><td colspan="3">🗄️ 倉庫</td></tr>
-                <tr><td>大倉庫</td><td>16</td><td class="val-hi">32</td></tr>
-                <tr><td>小倉庫</td><td>8</td><td class="val-hi">16</td></tr>
-
-                <!-- 權限 -->
-                <tr class="cat-row"><td colspan="3">🎩 權限</td></tr>
-                <tr><td>戴帽子</td><td>任務後永久</td><td>期間可用</td></tr>
-
-                <!-- 其他 -->
-                <tr class="cat-row"><td colspan="3">✨ 其他</td></tr>
-                <tr><td>變更自身大小</td><td class="val-no">✗</td><td class="val-yes">✓</td></tr>
-                <tr><td>隱藏裝備</td><td class="val-no">✗</td><td class="val-yes">✓</td></tr>
-                <tr><td>使用顏色代碼</td><td class="val-no">✗</td><td class="val-yes">✓</td></tr>
-                <tr><td>會員名單展示</td><td class="val-no">✗</td><td class="val-yes">✓</td></tr>
-                <tr><td>節日額外獎勵</td><td class="val-no">✗</td><td class="val-yes">✓</td></tr>
-                <tr><td>活動額外獎勵</td><td class="val-no">✗</td><td class="val-yes">✓</td></tr>
+                <!-- 體驗型：其他 -->
+                <tr class="cat-row"><td colspan="4">⏳ 體驗型 · 其他</td></tr>
+                <tr><td>郵件費用</td><td>1 風幣</td><td>1 風幣</td><td class="val-yes">免費</td></tr>
+                <tr><td>戴帽子</td><td>任務後永久</td><td>任務後永久</td><td>期間可用</td></tr>
+                <tr><td>變更自身大小</td><td class="val-no">✗</td><td class="val-no">✗</td><td class="val-yes">✓</td></tr>
+                <tr><td>隱藏裝備</td><td class="val-no">✗</td><td class="val-no">✗</td><td class="val-yes">✓</td></tr>
+                <tr><td>使用顏色代碼</td><td class="val-no">✗</td><td class="val-no">✗</td><td class="val-yes">✓</td></tr>
+                <tr><td>支持牆展示</td><td class="val-no">✗</td><td class="val-no">✗</td><td class="val-yes">✓</td></tr>
+                <tr><td>節日額外獎勵</td><td class="val-no">✗</td><td class="val-no">✗</td><td class="val-yes">✓</td></tr>
+                <tr><td>活動額外獎勵</td><td class="val-no">✗</td><td class="val-no">✗</td><td class="val-yes">✓</td></tr>
               </tbody>
             </table>
           </div>
@@ -630,24 +647,28 @@
 
           <div class="mem-faq">
             <div class="mem-faq-item">
+              <button class="mem-faq-q">永久買斷跟季卡有什麼差別？</button>
+              <div class="mem-faq-a"><div class="mem-faq-a-inner">永久買斷（800 冷媒）解鎖 8 項數值擴充（領地、傳送點、商城、商店、倉庫），買了就不收回。季卡（500 冷媒/季）解鎖 20 項體驗功能（隨地開啟、簽到、稱號等），到期自動關閉。兩者可以同時購買。</div></div>
+            </div>
+            <div class="mem-faq-item">
+              <button class="mem-faq-q">季卡到期後永久擴充會消失嗎？</button>
+              <div class="mem-faq-a"><div class="mem-faq-a-inner">不會。永久買斷的 8 項數值擴充跟季卡無關，買斷後永久保留。季卡到期只會關閉體驗型功能（隨地開啟、稱號等）。</div></div>
+            </div>
+            <div class="mem-faq-item">
               <button class="mem-faq-q">贊助後多久能收到回饋？</button>
               <div class="mem-faq-a"><div class="mem-faq-a-inner">完成付款並確認後，管理員會在 24 小時內處理回饋。如遇假日可能順延。</div></div>
             </div>
             <div class="mem-faq-item">
               <button class="mem-faq-q">冷媒和台幣的匯率是多少？</button>
-              <div class="mem-faq-a"><div class="mem-faq-a-inner">1 元台幣 = 1 元冷媒。例如贊助 200 元台幣，即獲得 200 冷媒的會員資格。</div></div>
-            </div>
-            <div class="mem-faq-item">
-              <button class="mem-faq-q">可以用遊戲內貨幣購買會員嗎？</button>
-              <div class="mem-faq-a"><div class="mem-faq-a-inner">不行。會員贊助僅接受台幣付款，不支援遊戲內貨幣兌換。</div></div>
+              <div class="mem-faq-a"><div class="mem-faq-a-inner">1 元台幣 = 1 元冷媒。例如贊助 500 元台幣，即獲得 500 冷媒，剛好一張季卡。</div></div>
             </div>
             <div class="mem-faq-item">
               <button class="mem-faq-q">停止贊助後回饋會消失嗎？</button>
-              <div class="mem-faq-a"><div class="mem-faq-a-inner">會員資格按月計算，停止贊助後當期回饋仍有效，到期後恢復為預設玩家狀態。</div></div>
+              <div class="mem-faq-a"><div class="mem-faq-a-inner">永久買斷的數值擴充不會消失。季卡到期後體驗型功能會關閉，但下次購買季卡會重新啟用。</div></div>
             </div>
             <div class="mem-faq-item">
-              <button class="mem-faq-q">稱號是永久的嗎？</button>
-              <div class="mem-faq-a"><div class="mem-faq-a-inner">稱號在會員期間有效。停止贊助後，稱號會恢復為預設的「玩家」。</div></div>
+              <button class="mem-faq-q">贈卡是什麼？</button>
+              <div class="mem-faq-a"><div class="mem-faq-a-inner">贈卡用 30 顆風汐錠購買，可以送朋友 7 天體驗型功能試用。朋友可以體驗隨地開啟、自動簽到等功能，但不會獲得會員稱號或永久擴充。風汐錠透過每日簽到獲得。</div></div>
             </div>
             <div class="mem-faq-item">
               <button class="mem-faq-q">會員會影響遊戲平衡嗎？</button>
@@ -722,7 +743,7 @@
       <div class="footer-bottom">
         <p>© 2026 海風伺服器 · 非 Mojang 官方營運 · service@seawind.cc</p>
       </div>
-      <p class="page-revise">網站最後修改日期 2026.05.13 / 總計修改 <span id="deployCount">—</span> 次</p>
+      <p class="page-revise">網站最後修改日期 2026.05.14 / 總計修改 <span id="deployCount">—</span> 次</p>
     </div>
   </footer>
 
@@ -761,6 +782,6 @@
   })();
   </script>
   <script src="utils.js"></script>
-  <script src="main.js?v=130513a"></script>
+  <script src="main.js?v=140514a"></script>
 </body>
 </html>
