@@ -157,7 +157,50 @@
       .mem-compare{font-size:0.78rem}
       .mem-compare thead th,.mem-compare tbody td{padding:8px 10px}
       .mem-gift{flex-direction:column;text-align:center}
+      .sp-funds-grid{grid-template-columns:1fr}
+      .sp-ways{grid-template-columns:1fr}
+      .sp-steps{grid-template-columns:1fr}
+      .sp-notices{grid-template-columns:1fr}
     }
+
+    /* === Trust Banner === */
+    .mem-trust{display:flex;justify-content:center;gap:var(--space-xl);flex-wrap:wrap;margin:var(--space-xl) 0 var(--space-2xl);position:relative}
+    .mem-trust-item{text-align:center}
+    .mem-trust-num{font-size:2rem;font-weight:800;color:var(--sky);line-height:1}
+    .mem-trust-label{font-size:0.78rem;color:var(--fog);margin-top:4px}
+    [data-theme="light"] .mem-trust-num{color:var(--ocean-blue)}
+
+    /* === Funds Grid === */
+    .sp-funds-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:var(--space-md);margin:var(--space-lg) 0}
+    .sp-fund{position:relative;padding:var(--space-lg);background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.06);border-radius:var(--radius-lg);overflow:hidden;transition:all var(--duration) var(--ease)}
+    .sp-fund:hover{transform:translateY(-3px);border-color:rgba(157,175,255,0.15)}
+    .sp-fund::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--fund-accent,var(--sky));opacity:0.5}
+    .sp-fund-icon{font-size:1.6rem;margin-bottom:var(--space-sm)}
+    .sp-fund h4{font-size:0.92rem;font-weight:700;color:var(--white);margin-bottom:4px}
+    .sp-fund p{font-size:0.82rem;color:var(--fog);line-height:1.6;margin:0}
+    .sp-fund-pct{position:absolute;top:var(--space-md);right:var(--space-md);font-size:0.75rem;font-weight:700;color:var(--fund-accent,var(--sky));background:rgba(157,175,255,0.08);padding:3px 10px;border-radius:12px}
+    [data-theme="light"] .sp-fund{background:#fff;border-color:rgba(0,0,0,0.06)}
+    [data-theme="light"] .sp-fund:hover{box-shadow:0 4px 16px rgba(0,0,0,0.06)}
+
+    /* === Process Steps === */
+    .sp-steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:var(--space-md);margin:var(--space-lg) 0}
+    .sp-step{position:relative;padding:var(--space-lg);background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.06);border-radius:var(--radius-lg);text-align:center;transition:all var(--duration) var(--ease)}
+    .sp-step::before{content:'';position:absolute;top:0;left:0;width:3px;height:100%;background:var(--foam);opacity:0.3;border-radius:var(--radius-lg) 0 0 var(--radius-lg)}
+    .sp-step:hover{transform:translateY(-3px);border-color:rgba(168,230,207,0.15)}
+    .sp-step-num{display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;background:var(--foam);color:var(--deep);border-radius:50%;font-size:0.85rem;font-weight:800;margin-bottom:var(--space-sm)}
+    .sp-step h4{font-size:0.92rem;font-weight:700;color:var(--white);margin-bottom:4px}
+    .sp-step p{font-size:0.82rem;color:var(--fog);line-height:1.6;margin:0}
+    [data-theme="light"] .sp-step{background:#fff;border-color:rgba(0,0,0,0.06)}
+    [data-theme="light"] .sp-step:hover{box-shadow:0 4px 12px rgba(0,0,0,0.06)}
+
+    /* === Notice Grid === */
+    .sp-notices{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:var(--space-md);margin:var(--space-lg) 0}
+    .sp-notice{display:flex;align-items:flex-start;gap:var(--space-md);padding:var(--space-md) var(--space-lg);background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.06);border-radius:var(--radius-md);transition:all var(--duration) var(--ease)}
+    .sp-notice:hover{background:rgba(255,255,255,0.04);border-color:rgba(157,175,255,0.12)}
+    .sp-notice-icon{font-size:1.2rem;flex-shrink:0;margin-top:2px}
+    .sp-notice-body h4{font-size:0.88rem;font-weight:700;color:var(--white);margin-bottom:2px}
+    .sp-notice-body p{font-size:0.8rem;color:var(--fog);line-height:1.5;margin:0}
+    [data-theme="light"] .sp-notice{background:#fff;border-color:rgba(0,0,0,0.06)}
   </style>
 </head>
 <body>
@@ -234,6 +277,26 @@
         <div class="mem-hero-note">贊助屬於自願性質，所有回饋不影響遊戲公平性</div>
       </div>
 
+      <!-- ═══ 信任數據 ═══ -->
+      <div class="mem-trust fade-in">
+        <div class="mem-trust-item">
+          <div class="mem-trust-num">365+</div>
+          <div class="mem-trust-label">穩定營運天數</div>
+        </div>
+        <div class="mem-trust-item">
+          <div class="mem-trust-num">400+</div>
+          <div class="mem-trust-label">註冊會員</div>
+        </div>
+        <div class="mem-trust-item">
+          <div class="mem-trust-num">500+</div>
+          <div class="mem-trust-label">公告發布</div>
+        </div>
+        <div class="mem-trust-item">
+          <div class="mem-trust-num">12</div>
+          <div class="mem-trust-label">團隊成員</div>
+        </div>
+      </div>
+
       <!-- ═══ Pricing Cards ═══ -->
       <div class="mem-pricing fade-in">
         <!-- 會員 -->
@@ -267,6 +330,119 @@
       </div>
 
       <div class="content-section">
+
+        <!-- ═══ 資金用途 ═══ -->
+        <div class="guide-section-card fade-in" style="--card-accent:var(--sand)">
+          <h2><span class="sec-icon">📊</span> 資金用途</h2>
+          <p>每一分錢都花在刀口上。以下是贊助資金的主要用途。</p>
+
+          <div class="sp-funds-grid">
+            <div class="sp-fund" style="--fund-accent:var(--sky)">
+              <span class="sp-fund-pct">主花費</span>
+              <div class="sp-fund-icon">🖥️</div>
+              <h4>伺服器維運</h4>
+              <p>主機租賃、網域、CDN、備份空間等基礎設施費用，確保伺服器 24 小時穩定運行。</p>
+            </div>
+            <div class="sp-fund" style="--fund-accent:var(--foam)">
+              <span class="sp-fund-pct">持續</span>
+              <div class="sp-fund-icon">🎮</div>
+              <h4>活動舉辦</h4>
+              <p>珍奶日、端午節等台灣味活動的設計、開發與執行，包含自訂物品、NPC 與任務系統。</p>
+            </div>
+            <div class="sp-fund" style="--fund-accent:var(--lavender)">
+              <span class="sp-fund-pct">持續</span>
+              <div class="sp-fund-icon">📖</div>
+              <h4>內容開發</h4>
+              <p>新功能插件、指南撰寫、網站設計維護，持續提升遊戲體驗與網站品質。</p>
+            </div>
+            <div class="sp-fund" style="--fund-accent:var(--sand)">
+              <span class="sp-fund-pct">儲備</span>
+              <div class="sp-fund-icon">🛡️</div>
+              <h4>緊急預備</h4>
+              <p>突發狀況的應對資金，如主機故障、資料還原或臨時擴容需求。</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="guide-divider"></div>
+
+        <!-- ═══ 贊助流程 ═══ -->
+        <div class="guide-section-card fade-in" style="--card-accent:var(--foam)">
+          <h2><span class="sec-icon">📝</span> 贊助流程</h2>
+          <p>簡單三步驟，輕鬆完成贊助。</p>
+
+          <div class="sp-steps">
+            <div class="sp-step">
+              <div class="sp-step-num">1</div>
+              <h4>開啟線上工單</h4>
+              <p>至 Discord 開啟線上工單，選擇「合作」類型告知想贊助的方案</p>
+            </div>
+            <div class="sp-step">
+              <div class="sp-step-num">2</div>
+              <h4>確認方案</h4>
+              <p>會員 800、季卡 400、組合 1,000 冷媒，選擇適合你的方案</p>
+            </div>
+            <div class="sp-step">
+              <div class="sp-step-num">3</div>
+              <h4>完成付款</h4>
+              <p>線上銀行轉帳或超商中信無卡轉帳，確認後 24 小時內處理回饋</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="guide-divider"></div>
+
+        <!-- ═══ 注意事項 ═══ -->
+        <div class="guide-section-card fade-in" style="--card-accent:var(--fog)">
+          <h2><span class="sec-icon">📌</span> 注意事項</h2>
+
+          <div class="sp-notices">
+            <div class="sp-notice">
+              <span class="sp-notice-icon">🔗</span>
+              <div class="sp-notice-body">
+                <h4>前置條件</h4>
+                <p>回饋僅給予已綁定帳號的玩家</p>
+              </div>
+            </div>
+            <div class="sp-notice">
+              <span class="sp-notice-icon">↩️</span>
+              <div class="sp-notice-body">
+                <h4>退款政策</h4>
+                <p>贊助屬於自願行為，故不予退款</p>
+              </div>
+            </div>
+            <div class="sp-notice">
+              <span class="sp-notice-icon">🔄</span>
+              <div class="sp-notice-body">
+                <h4>回饋調整</h4>
+                <p>回饋內容可能隨伺服器調整而更動</p>
+              </div>
+            </div>
+            <div class="sp-notice">
+              <span class="sp-notice-icon">⚠️</span>
+              <div class="sp-notice-body">
+                <h4>未成年者</h4>
+                <p>須經法定代理人事先同意後方可贊助</p>
+              </div>
+            </div>
+            <div class="sp-notice">
+              <span class="sp-notice-icon">🚫</span>
+              <div class="sp-notice-body">
+                <h4>違規者</h4>
+                <p>將失去回饋資格</p>
+              </div>
+            </div>
+            <div class="sp-notice">
+              <span class="sp-notice-icon">📋</span>
+              <div class="sp-notice-body">
+                <h4>同意條款</h4>
+                <p>贊助成立後視同同意本注意事項</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="guide-divider"></div>
 
         <!-- ═══ 會員 · 數值擴充 ═══ -->
         <div class="guide-section-card fade-in" style="--card-accent:var(--sand)">
@@ -493,6 +669,10 @@
             <div class="mem-faq-item">
               <button class="mem-faq-q">未成年可以贊助嗎？</button>
               <div class="mem-faq-a"><div class="mem-faq-a-inner">可以，但須經法定代理人（通常是父母）事先同意。建議與家長討論後再進行贊助。</div></div>
+            </div>
+            <div class="mem-faq-item">
+              <button class="mem-faq-q">有其他問題怎麼辦？</button>
+              <div class="mem-faq-a"><div class="mem-faq-a-inner">可以透過 Discord 開啟線上工單聯繫管理員，我們會盡快回覆。</div></div>
             </div>
           </div>
         </div>
