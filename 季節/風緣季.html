@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>🌊 風緣季 — 海風季節系統</title>
   <meta name="description" content="風緣季是海風第一個季節系統，暑假限定 73 天。完成季節任務收集風之羽，在季節商店兌換限定粒子效果、外觀、家具與稱號。免費參加，季卡玩家享額外獎勵。">
-  <meta name="robots" content="noindex">
+  
   <link rel="icon" href="../assets/img/logo.png">
   <link rel="apple-touch-icon" href="../assets/img/logo.png">
   <link rel="manifest" href="../manifest.json">
@@ -22,9 +22,9 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;800&family=Noto+Serif+TC:wght@700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../style.css?v=140514f">
-  <link rel="stylesheet" href="../music-player.css?v=140514f">
-  <link rel="preload" href="../music-player.js?v=140514f" as="script">
+  <link rel="stylesheet" href="../style.css?v=140514g">
+  <link rel="stylesheet" href="../music-player.css?v=140514g">
+  <link rel="preload" href="../music-player.js?v=140514g" as="script">
   <style>
     /* ═══ Season System Page ═══ */
 
@@ -705,6 +705,81 @@
       100% { transform: translateY(-100vh) translateX(30px) scale(0.5); opacity: 0; }
     }
 
+
+    /* ── Daily Game Loop ── */
+    .daily-loop {
+      margin: var(--space-lg) 0;
+    }
+    .dl-step {
+      display: flex;
+      align-items: flex-start;
+      gap: var(--space-md);
+      padding: var(--space-md);
+      background: var(--drift);
+      border: 1px solid rgba(157,175,255,0.06);
+      border-radius: var(--radius-md);
+      margin-bottom: var(--space-sm);
+      transition: transform 0.3s, border-color 0.3s;
+    }
+    .dl-step:hover {
+      transform: translateX(4px);
+      border-color: rgba(157,175,255,0.15);
+    }
+    .dl-num {
+      width: 36px; height: 36px;
+      background: linear-gradient(135deg, var(--season-sky), var(--season-lav));
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 900; font-size: 1rem; color: #0d1117;
+      flex-shrink: 0;
+    }
+    .dl-body { flex: 1; }
+    .dl-title {
+      font-weight: 700; color: var(--white); font-size: 0.95rem;
+      margin-bottom: 2px;
+    }
+    .dl-time {
+      font-size: 0.72rem; color: var(--fog); margin-bottom: 4px;
+      text-transform: uppercase; letter-spacing: 0.04em;
+    }
+    .dl-body p { margin: 0; font-size: 0.88rem; color: var(--cloud); line-height: 1.6; }
+
+    .daily-summary {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--space-md);
+      margin: var(--space-lg) 0;
+    }
+    .ds-item {
+      text-align: center;
+      padding: var(--space-md);
+      background: linear-gradient(135deg, rgba(157,175,255,0.06), rgba(171,114,249,0.06));
+      border-radius: var(--radius-md);
+      border: 1px solid rgba(157,175,255,0.08);
+    }
+    .ds-num {
+      font-size: 1.5rem; font-weight: 900;
+      color: var(--season-sky); line-height: 1;
+    }
+    .ds-label {
+      font-size: 0.72rem; color: var(--fog); margin-top: 4px;
+    }
+
+    .weekly-rhythm {
+      margin: var(--space-md) 0;
+    }
+    .wr-item {
+      display: flex; align-items: center; gap: var(--space-sm);
+      padding: var(--space-sm) 0;
+      color: var(--cloud); font-size: 0.88rem;
+    }
+    .wr-dot {
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: var(--season-sky);
+      flex-shrink: 0;
+    }
+
     /* ── Light Mode ── */
     [data-theme="light"] .season-section { background: #fff; border-color: rgba(0,0,0,0.06); }
     [data-theme="light"] .phase-block { background: #f8f9fa; }
@@ -719,6 +794,9 @@
     [data-theme="light"] .faq-item { background: #f8f9fa; border-color: rgba(0,0,0,0.06); }
     [data-theme="light"] .related-card { background: #f8f9fa; border-color: rgba(0,0,0,0.06); }
     [data-theme="light"] .sib-item { background: #fff; }
+    [data-theme="light"] .dl-step { background: #f8f9fa; border-color: rgba(0,0,0,0.06); }
+    [data-theme="light"] .dl-step:hover { border-color: rgba(0,0,0,0.12); }
+    [data-theme="light"] .ds-item { background: rgba(0,0,0,0.03); border-color: rgba(0,0,0,0.06); }
     [data-theme="light"] .season-info-bar { background: rgba(0,0,0,0.04); }
 
     /* ── Responsive ── */
@@ -731,6 +809,7 @@
       .up-arrow { transform: rotate(90deg); margin: var(--space-xs) 0; }
       .title-row { grid-template-columns: 1fr 1fr; }
       .shop-grid { grid-template-columns: 1fr; }
+      .daily-summary { grid-template-columns: 1fr; }
     }
 
     /* ── Print ── */
@@ -841,8 +920,8 @@
       <div class="season-info-bar fade-in">
         <div class="sib-item"><div class="sib-num">73</div><div class="sib-label">活動天數</div></div>
         <div class="sib-item"><div class="sib-num">4</div><div class="sib-label">主線章節</div></div>
-        <div class="sib-item"><div class="sib-num">1,131</div><div class="sib-label">免費碎片</div></div>
-        <div class="sib-item"><div class="sib-num">1,724</div><div class="sib-label">季卡碎片</div></div>
+        <div class="sib-item"><div class="sib-num">1,131</div><div class="sib-label">免費風之羽</div></div>
+        <div class="sib-item"><div class="sib-num">1,724</div><div class="sib-label">季卡風之羽</div></div>
       </div>
 
       <div class="s-divider"></div>
@@ -898,12 +977,12 @@
             <div class="tier-node locked">
               <div class="tier-node-icon">💎</div>
               <div class="tier-node-name">風緣流光</div>
-              <div class="tier-node-status locked-status">T2 · 80 碎片</div>
+              <div class="tier-node-status locked-status">T2 · 80 風之羽</div>
             </div>
             <div class="tier-node locked">
               <div class="tier-node-icon">🌟</div>
               <div class="tier-node-name">風緣極光</div>
-              <div class="tier-node-status locked-status">T3 · 120 碎片</div>
+              <div class="tier-node-status locked-status">T3 · 120 風之羽</div>
             </div>
           </div>
         </div>
@@ -922,12 +1001,12 @@
             <div class="tier-node locked">
               <div class="tier-node-icon">⚔️</div>
               <div class="tier-node-name">風緣之刃·疾</div>
-              <div class="tier-node-status locked-status">T2 · 100 碎片</div>
+              <div class="tier-node-status locked-status">T2 · 100 風之羽</div>
             </div>
             <div class="tier-node locked">
               <div class="tier-node-icon">🔱</div>
               <div class="tier-node-name">風緣之刃·極</div>
-              <div class="tier-node-status locked-status">T3 · 150 碎片</div>
+              <div class="tier-node-status locked-status">T3 · 150 風之羽</div>
             </div>
           </div>
         </div>
@@ -937,15 +1016,15 @@
           <div class="up-node">
             <div class="up-icon">✨</div>
             <div class="up-name">T1 微光</div>
-            <div class="up-cost">50 碎片</div>
+            <div class="up-cost">50 風之羽</div>
           </div>
-          <div class="up-arrow">→<span class="up-arrow-label">80 碎片</span></div>
+          <div class="up-arrow">→<span class="up-arrow-label">80 風之羽</span></div>
           <div class="up-node">
             <div class="up-icon">💎</div>
             <div class="up-name">T2 流光</div>
-            <div class="up-cost">80 碎片</div>
+            <div class="up-cost">80 風之羽</div>
           </div>
-          <div class="up-arrow">→<span class="up-arrow-label">120 碎片</span></div>
+          <div class="up-arrow">→<span class="up-arrow-label">120 風之羽</span></div>
           <div class="up-node">
             <div class="up-icon">🌟</div>
             <div class="up-name">T3 極光</div>
@@ -962,32 +1041,32 @@
       <!-- ═══════════ 季節任務 ═══════════ -->
       <div class="season-section fade-in">
         <h2><span class="sec-icon">📋</span> 季節任務</h2>
-        <p>完成任務獲得「風之羽」，用於季節商店兌換獎勵。季卡玩家任務碎片 +50%。</p>
+        <p>完成任務獲得「風之羽」，用於季節商店兌換獎勵。季卡玩家任務風之羽 +50%。</p>
 
         <h3>🎯 每日任務（每天重置）</h3>
         <p>每天 1 個簡單任務，5 分鐘內完成。任務池 20 組輪替。</p>
         <div class="task-preview">
-          <div class="tp-card"><div class="tp-icon">🪵</div><div class="tp-body"><h4>晨曦採集</h4><p>採集 10 個任意原木</p><div class="tp-reward">🪙 5 碎片</div></div></div>
-          <div class="tp-card"><div class="tp-icon">⛏️</div><div class="tp-body"><h4>礦工日常</h4><p>挖掘 30 個石頭</p><div class="tp-reward">🪙 5 碎片</div></div></div>
-          <div class="tp-card"><div class="tp-icon">🤝</div><div class="tp-body"><h4>鄰里問候</h4><p>拜訪一位玩家的領地</p><div class="tp-reward">🪙 5 碎片</div></div></div>
-          <div class="tp-card"><div class="tp-icon">📝</div><div class="tp-body"><h4>每日簽到</h4><p>完成每日簽到</p><div class="tp-reward">🪙 5 碎片</div></div></div>
+          <div class="tp-card"><div class="tp-icon">🪵</div><div class="tp-body"><h4>晨曦採集</h4><p>採集 10 個任意原木</p><div class="tp-reward">🪙 5 風之羽</div></div></div>
+          <div class="tp-card"><div class="tp-icon">⛏️</div><div class="tp-body"><h4>礦工日常</h4><p>挖掘 30 個石頭</p><div class="tp-reward">🪙 5 風之羽</div></div></div>
+          <div class="tp-card"><div class="tp-icon">🤝</div><div class="tp-body"><h4>鄰里問候</h4><p>拜訪一位玩家的領地</p><div class="tp-reward">🪙 5 風之羽</div></div></div>
+          <div class="tp-card"><div class="tp-icon">📝</div><div class="tp-body"><h4>每日簽到</h4><p>完成每日簽到</p><div class="tp-reward">🪙 5 風之羽</div></div></div>
         </div>
 
         <h3>📋 每週任務（每週一重置）</h3>
         <p>每週 3 個任務，需要更多時間。共 7 週 21 組任務池。</p>
         <div class="task-preview">
-          <div class="tp-card"><div class="tp-icon">🌬️</div><div class="tp-body"><h4>風緣初識</h4><p>與風緣使者 NPC 對話</p><div class="tp-reward">🪙 10 碎片</div></div></div>
-          <div class="tp-card"><div class="tp-icon">🎁</div><div class="tp-body"><h4>禮尚往來</h4><p>贈送 1 件物品給其他玩家</p><div class="tp-reward">🪙 10 碎片</div></div></div>
-          <div class="tp-card"><div class="tp-icon">🏡</div><div class="tp-body"><h4>建築交流</h4><p>參觀 3 個不同玩家的領地</p><div class="tp-reward">🪙 10 碎片</div></div></div>
+          <div class="tp-card"><div class="tp-icon">🌬️</div><div class="tp-body"><h4>風緣初識</h4><p>與風緣使者 NPC 對話</p><div class="tp-reward">🪙 10 風之羽</div></div></div>
+          <div class="tp-card"><div class="tp-icon">🎁</div><div class="tp-body"><h4>禮尚往來</h4><p>贈送 1 件物品給其他玩家</p><div class="tp-reward">🪙 10 風之羽</div></div></div>
+          <div class="tp-card"><div class="tp-icon">🏡</div><div class="tp-body"><h4>建築交流</h4><p>參觀 3 個不同玩家的領地</p><div class="tp-reward">🪙 10 風之羽</div></div></div>
         </div>
 
         <h3>📖 主線任務（分階段解鎖）</h3>
         <p>跟「風緣」主題相關的故事任務，共 4 章。</p>
         <div class="task-preview">
-          <div class="tp-card"><div class="tp-icon">🌬️</div><div class="tp-body"><h4>第一章：風起</h4><p>探索海風世界、認識風緣使者、收集風之羽</p><div class="tp-reward">50 碎片 + 稱號</div></div></div>
-          <div class="tp-card"><div class="tp-icon">🤝</div><div class="tp-body"><h4>第二章：相遇</h4><p>社交互動、拜訪其他玩家、交換禮物</p><div class="tp-reward">50 碎片 + 稱號</div></div></div>
-          <div class="tp-card"><div class="tp-icon">🏗️</div><div class="tp-body"><h4>第三章：共築</h4><p>合作建造、建造風緣主題建築</p><div class="tp-reward">50 碎片 + 稱號</div></div></div>
-          <div class="tp-card"><div class="tp-icon">🌊</div><div class="tp-body"><h4>第四章：風緣</h4><p>綜合挑戰、最終任務、風緣稱號</p><div class="tp-reward">50 碎片 + 稱號</div></div></div>
+          <div class="tp-card"><div class="tp-icon">🌬️</div><div class="tp-body"><h4>第一章：風起</h4><p>探索海風世界、認識風緣使者、收集風之羽</p><div class="tp-reward">50 風之羽 + 稱號</div></div></div>
+          <div class="tp-card"><div class="tp-icon">🤝</div><div class="tp-body"><h4>第二章：相遇</h4><p>社交互動、拜訪其他玩家、交換禮物</p><div class="tp-reward">50 風之羽 + 稱號</div></div></div>
+          <div class="tp-card"><div class="tp-icon">🏗️</div><div class="tp-body"><h4>第三章：共築</h4><p>合作建造、建造風緣主題建築</p><div class="tp-reward">50 風之羽 + 稱號</div></div></div>
+          <div class="tp-card"><div class="tp-icon">🌊</div><div class="tp-body"><h4>第四章：風緣</h4><p>綜合挑戰、最終任務、風緣稱號</p><div class="tp-reward">50 風之羽 + 稱號</div></div></div>
         </div>
 
         <h3>⚔️ 最終挑戰（結算期）</h3>
@@ -997,10 +1076,59 @@
           <div class="tp-card"><div class="tp-icon">🪶</div><div class="tp-body"><h4>風緣收藏家</h4><p>累積獲得 500 個風之羽</p></div></div>
           <div class="tp-card"><div class="tp-icon">🏗️</div><div class="tp-body"><h4>風緣建築師</h4><p>建造一個風緣主題建築</p></div></div>
         </div>
-        <p><strong>完成獎勵</strong>：100 碎片（季卡 150）+ 稱號「風緣勇者」</p>
+        <p><strong>完成獎勵</strong>：100 風之羽（季卡 150）+ 稱號「風緣勇者」</p>
       </div>
 
       <div class="s-divider"></div>
+
+
+      <div class="s-divider"></div>
+
+      <!-- ═══════════ 每日循環 ═══════════ -->
+      <div class="season-section fade-in">
+        <h2><span class="sec-icon">🔄</span> 每日在海風的一天</h2>
+        <p>風緣季的核心循環設計：上線後 10 分鐘完成主要內容，選做再加 5 分鐘。不做的話也不會落後太多。</p>
+
+        <div class="daily-loop">
+          <div class="dl-step">
+            <div class="dl-num">1</div>
+            <div class="dl-body">
+              <div class="dl-title">🎯 每日任務</div>
+              <div class="dl-time">5-10 分鐘</div>
+              <p>完成每日挑戰，獲得 <strong>5 風之羽</strong>（季卡 8）+ 原本的任務幣。</p>
+            </div>
+          </div>
+          <div class="dl-step">
+            <div class="dl-num">2</div>
+            <div class="dl-body">
+              <div class="dl-title">🌬️ 探索風緣區域</div>
+              <div class="dl-time">3-5 分鐘</div>
+              <p>大廳風緣季主題區域，每天隨機刷新 1-2 個漂浮風之羽，靠近即可收集。</p>
+            </div>
+          </div>
+          <div class="dl-step">
+            <div class="dl-num">3</div>
+            <div class="dl-body">
+              <div class="dl-title">🤝 社交互動（選做）</div>
+              <div class="dl-time">1-2 分鐘</div>
+              <p>拜訪朋友的領地，首次每天 <strong>+2 風之羽</strong>。</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="daily-summary">
+          <div class="ds-item"><div class="ds-num">~10</div><div class="ds-label">分鐘核心循環</div></div>
+          <div class="ds-item"><div class="ds-num">8-9</div><div class="ds-label">免費每日風之羽</div></div>
+          <div class="ds-item"><div class="ds-num">14-15</div><div class="ds-label">季卡每日風之羽</div></div>
+        </div>
+
+        <h3>每週節奏</h3>
+        <div class="weekly-rhythm">
+          <div class="wr-item"><span class="wr-dot"></span><strong>每天</strong>：每日任務 + 探索 + 社交</div>
+          <div class="wr-item"><span class="wr-dot"></span><strong>每週一</strong>：每週任務重置（3 個新任務）</div>
+          <div class="wr-item"><span class="wr-dot"></span><strong>每 2 週</strong>：主線新章節解鎖</div>
+        </div>
+      </div>
 
       <!-- ═══════════ 季節商店 ═══════════ -->
       <div class="season-section fade-in">
@@ -1015,21 +1143,21 @@
             <div class="shop-item-icon">✨</div>
             <div class="shop-item-name">風緣微光</div>
             <div class="shop-item-desc">淡藍色風粒子環繞身體</div>
-            <div class="shop-item-price">🪙 50 碎片</div>
+            <div class="shop-item-price">🪙 50 風之羽</div>
           </div>
           <div class="shop-item">
             <div class="shop-item-tier t2">T2</div>
             <div class="shop-item-icon">💎</div>
             <div class="shop-item-name">風緣流光</div>
             <div class="shop-item-desc">藍紫漸層流動粒子</div>
-            <div class="shop-item-price">🪙 80 碎片</div>
+            <div class="shop-item-price">🪙 80 風之羽</div>
           </div>
           <div class="shop-item">
             <div class="shop-item-tier t3">T3 · 絕版</div>
             <div class="shop-item-icon">🌟</div>
             <div class="shop-item-name">風緣極光</div>
             <div class="shop-item-desc">藍紫粉三色極光 + 風痕拖尾</div>
-            <div class="shop-item-price">🪙 120 碎片</div>
+            <div class="shop-item-price">🪙 120 風之羽</div>
           </div>
         </div>
 
@@ -1039,13 +1167,13 @@
             <div class="shop-item-icon">🪶</div>
             <div class="shop-item-name">風緣頭飾</div>
             <div class="shop-item-desc">風之羽頭飾（純裝飾）</div>
-            <div class="shop-item-price">🪙 60 碎片</div>
+            <div class="shop-item-price">🪙 60 風之羽</div>
           </div>
           <div class="shop-item">
             <div class="shop-item-icon">🧣</div>
             <div class="shop-item-name">風緣披風</div>
             <div class="shop-item-desc">淡藍色披風（純裝飾）</div>
-            <div class="shop-item-price">🪙 80 碎片</div>
+            <div class="shop-item-price">🪙 80 風之羽</div>
           </div>
         </div>
 
@@ -1055,25 +1183,42 @@
             <div class="shop-item-icon">🎐</div>
             <div class="shop-item-name">風緣風鈴</div>
             <div class="shop-item-desc">可放置，有音效</div>
-            <div class="shop-item-price">🪙 40 碎片 <span style="color:var(--fog);font-weight:400;font-size:0.75rem;">×3</span></div>
+            <div class="shop-item-price">🪙 40 風之羽 <span style="color:var(--fog);font-weight:400;font-size:0.75rem;">×3</span></div>
           </div>
           <div class="shop-item">
             <div class="shop-item-icon">🚩</div>
             <div class="shop-item-name">風緣旗幟</div>
             <div class="shop-item-desc">季節主題旗幟</div>
-            <div class="shop-item-price">🪙 30 碎片 <span style="color:var(--fog);font-weight:400;font-size:0.75rem;">×5</span></div>
+            <div class="shop-item-price">🪙 30 風之羽 <span style="color:var(--fog);font-weight:400;font-size:0.75rem;">×5</span></div>
           </div>
           <div class="shop-item">
             <div class="shop-item-icon">🟫</div>
             <div class="shop-item-name">風緣地毯</div>
             <div class="shop-item-desc">季節主題地毯</div>
-            <div class="shop-item-price">🪙 20 碎片 <span style="color:var(--fog);font-weight:400;font-size:0.75rem;">×3</span></div>
+            <div class="shop-item-price">🪙 20 風之羽 <span style="color:var(--fog);font-weight:400;font-size:0.75rem;">×3</span></div>
           </div>
           <div class="shop-item">
             <div class="shop-item-icon">🪴</div>
             <div class="shop-item-name">風緣花盆</div>
             <div class="shop-item-desc">季節主題花盆</div>
-            <div class="shop-item-price">🪙 25 碎片 <span style="color:var(--fog);font-weight:400;font-size:0.75rem;">×3</span></div>
+            <div class="shop-item-price">🪙 25 風之羽 <span style="color:var(--fog);font-weight:400;font-size:0.75rem;">×3</span></div>
+          </div>
+        </div>
+
+
+        <h3>消耗品</h3>
+        <div class="shop-grid">
+          <div class="shop-item">
+            <div class="shop-item-icon">🪙</div>
+            <div class="shop-item-name">風之羽袋</div>
+            <div class="shop-item-desc">開出 5–10 風之羽（隨機）</div>
+            <div class="shop-item-price">🪙 15 風之羽 <span style="color:var(--fog);font-weight:400;font-size:0.75rem;">無限</span></div>
+          </div>
+          <div class="shop-item">
+            <div class="shop-item-icon">🧪</div>
+            <div class="shop-item-name">風緣經驗瓶</div>
+            <div class="shop-item-desc">開出 50–100 經驗值</div>
+            <div class="shop-item-price">🪙 10 風之羽 <span style="color:var(--fog);font-weight:400;font-size:0.75rem;">無限</span></div>
           </div>
         </div>
 
@@ -1091,21 +1236,28 @@
             <div class="shop-item-icon">🌳</div>
             <div class="shop-item-name">緣分之樹</div>
             <div class="shop-item-desc">可放置的裝飾大樹</div>
-            <div class="shop-item-price">🪙 200 碎片</div>
+            <div class="shop-item-price">🪙 200 風之羽</div>
           </div>
           <div class="shop-item">
             <div class="shop-item-tier pass-only">季卡</div>
             <div class="shop-item-icon">🧣</div>
             <div class="shop-item-name">風緣守護者披風</div>
             <div class="shop-item-desc">金色披風</div>
-            <div class="shop-item-price">🪙 120 碎片</div>
+            <div class="shop-item-price">🪙 120 風之羽</div>
           </div>
           <div class="shop-item">
             <div class="shop-item-tier pass-only">季卡</div>
             <div class="shop-item-icon">🪶</div>
             <div class="shop-item-name">風緣守護者頭飾</div>
             <div class="shop-item-desc">金色風之羽頭飾</div>
-            <div class="shop-item-price">🪙 100 碎片</div>
+            <div class="shop-item-price">🪙 100 風之羽</div>
+          </div>
+          <div class="shop-item">
+            <div class="shop-item-tier pass-only">季卡</div>
+            <div class="shop-item-icon">✨</div>
+            <div class="shop-item-name">風緣星光瓶</div>
+            <div class="shop-item-desc">可放置的發光瓶子</div>
+            <div class="shop-item-price">🪙 80 風之羽 <span style="color:var(--fog);font-weight:400;font-size:0.75rem;">×2</span></div>
           </div>
         </div>
       </div>
@@ -1114,7 +1266,7 @@
 
       <!-- ═══════════ 經濟 ═══════════ -->
       <div class="season-section fade-in">
-        <h2><span class="sec-icon">📊</span> 碎片經濟</h2>
+        <h2><span class="sec-icon">📊</span> 風之羽經濟</h2>
 
         <h3>免費玩家</h3>
         <div class="eco-row">
@@ -1123,7 +1275,7 @@
           <div class="eco-box"><div class="eco-num">200</div><div class="eco-label">主線 × 4 章</div></div>
           <div class="eco-box"><div class="eco-num">100</div><div class="eco-label">最終挑戰</div></div>
         </div>
-        <div class="eco-total">免費玩家整季：1,131 碎片</div>
+        <div class="eco-total">免費玩家整季：1,131 風之羽</div>
 
         <h3>季卡玩家</h3>
         <div class="eco-row">
@@ -1133,7 +1285,7 @@
           <div class="eco-box"><div class="eco-num">150</div><div class="eco-label">最終挑戰</div></div>
           <div class="eco-box"><div class="eco-num">219</div><div class="eco-label">每日登入 × 73</div></div>
         </div>
-        <div class="eco-total">季卡玩家整季：1,724 碎片</div>
+        <div class="eco-total">季卡玩家整季：1,724 風之羽</div>
       </div>
 
       <div class="s-divider"></div>
@@ -1186,8 +1338,8 @@
         <div class="faq-item"><button class="faq-q">風緣季要花錢嗎？</button><div class="faq-a">不用。免費參加。季節期間完成任務同時獲得任務幣 + 風之羽，兩種貨幣互不干擾。季卡有額外獎勵，但免費玩家也能拿到所有核心內容（粒子 T3 + 稱號）。</div></div>
         <div class="faq-item"><button class="faq-q">風之羽會過期嗎？</button><div class="faq-a">會。9/01 23:59 失效。請在活動結束前花完。</div></div>
         <div class="faq-item"><button class="faq-q">T3 真的會絕版？</button><div class="faq-a">是的。T3 只能在風緣季期間用風之羽升級。季節結束後風之羽失效、T3 升級關閉。T1/T2 則改用風汐碎片購買，永久可得。</div></div>
-        <div class="faq-item"><button class="faq-q">風之羽怎麼取得？</button><div class="faq-a">完成每日挑戰時約 30% 機率掉落，不可交易。整季約可收集 20–25 個。</div></div>
-        <div class="faq-item"><button class="faq-q">季卡什麼時候買都行？</button><div class="faq-a">是的，隨時可買。但早買早享受——每日 3 碎片和任務 +50% 從購買當天算。</div></div>
+        <div class="faq-item"><button class="faq-q">風之羽怎麼取得？</button><div class="faq-a">完成每日任務時<strong>額外獲得</strong>（免費 5 個、季卡 8 個），同時保留原本的任務幣。此外還有每週任務、主線任務、探索風緣區域、社交互動等管道。免費玩家整季約 1,131 個，季卡約 1,724 個。</div></div>
+        <div class="faq-item"><button class="faq-q">季卡什麼時候買都行？</button><div class="faq-a">是的，隨時可買。但早買早享受——每日 3 風之羽和任務 +50% 從購買當天算。</div></div>
         <div class="faq-item"><button class="faq-q">結束後稱號會消失嗎？</button><div class="faq-a">不會。稱號、粒子、外觀、家具都是永久的。只有代幣會失效。</div></div>
         <div class="faq-item"><button class="faq-q">風之羽跟任務幣有什麼不同？</button><div class="faq-a">任務幣是永久貨幣，季節結束後繼續使用。風之羽是季節限定貨幣，季節結束後消失。完成任務時兩種同時獲得，互不干擾。</div></div>
         <div class="faq-item"><button class="faq-q">季節結束後還能買 T1/T2 嗎？</button><div class="faq-a">可以。T1/T2 在季節結束後改用風汐碎片購買，永久可得。只有 T3 升級關閉。</div></div>
@@ -1201,7 +1353,7 @@
         <div class="related-grid">
           <a href="../活動" class="related-card"><div class="related-card-title">⏳ 活動列表</div><div class="related-card-desc">查看所有進行中的活動</div></a>
           <a href="../贊助" class="related-card"><div class="related-card-title">💎 贊助方案</div><div class="related-card-desc">了解季卡與會員方案</div></a>
-          <a href="../海風指南/簽到系統" class="related-card"><div class="related-card-title">📝 簽到系統</div><div class="related-card-desc">每日簽到獲得額外碎片</div></a>
+          <a href="../海風指南/簽到系統" class="related-card"><div class="related-card-title">📝 簽到系統</div><div class="related-card-desc">每日簽到獲得額外風之羽</div></a>
           <a href="../海風指南/任務系統" class="related-card"><div class="related-card-title">📋 任務系統</div><div class="related-card-desc">了解任務系統玩法</div></a>
         </div>
       </div>
@@ -1348,8 +1500,8 @@
     }, { threshold: 0.1 });
     document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
   </script>
-  <script src="../music-player.js?v=140514f" defer></script>
-  <script src="../utils.js?v=140514f" defer></script>
-  <script src="../main.js?v=140514f" defer></script>
+  <script src="../music-player.js?v=140514g" defer></script>
+  <script src="../utils.js?v=140514g" defer></script>
+  <script src="../main.js?v=140514g" defer></script>
 </body>
 </html>
