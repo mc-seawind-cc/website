@@ -1,0 +1,1397 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <link rel="canonical" href="https://www.seawind.cc/活動/風緣季">
+  <meta name="color-scheme" content="dark light">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>🌊 2026 海風風緣季 — 海風活動</title>
+  <meta name="description" content="2026 海風風緣季：海風第一個季度活動，暑假限定 73 天。完成每日/每週/主線任務收集風緣碎片，兌換限定粒子效果、外觀、家具與稱號。季卡玩家享額外獎勵。">
+  <meta name="robots" content="noindex">
+  <link rel="icon" href="../assets/img/logo.png">
+  <link rel="apple-touch-icon" href="../assets/img/logo.png">
+  <link rel="manifest" href="../manifest.json">
+  <meta property="og:title" content="🌊 2026 海風風緣季 — 海風活動">
+  <meta property="og:description" content="海風第一個季度活動，暑假限定 73 天。完成任務收集風緣碎片，兌換限定粒子、外觀與稱號。">
+  <meta property="og:image" content="https://www.seawind.cc/assets/img/logo.png">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:image" content="https://www.seawind.cc/assets/img/logo.png">
+  <meta name="theme-color" content="#0d1117">
+  <link rel="dns-prefetch" href="//cdn.discordapp.com">
+  <link rel="dns-prefetch" href="//mc-heads.net">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;800&family=Noto+Serif+TC:wght@700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../style.css?v=140514f">
+  <link rel="stylesheet" href="../music-player.css?v=140514f">
+  <link rel="preload" href="../music-player.js?v=140514f" as="script">
+  <!-- JSON-LD Event 結構化資料 -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Event",
+    "name": "2026 海風風緣季",
+    "description": "海風第一個季度活動，暑假限定 73 天。完成任務收集風緣碎片，兌換限定粒子效果、外觀、家具與稱號。",
+    "startDate": "2026-06-20",
+    "endDate": "2026-09-01",
+    "eventStatus": "https://schema.org/EventScheduled",
+    "eventAttendanceMode": "https://schema.org/OnlineEventAttendanceMode",
+    "location": {
+      "@type": "VirtualLocation",
+      "name": "海風 Minecraft 伺服器",
+      "url": "https://www.seawind.cc"
+    },
+    "organizer": {
+      "@type": "Organization",
+      "name": "海風伺服器",
+      "url": "https://www.seawind.cc"
+    },
+    "image": "https://www.seawind.cc/assets/img/logo.png",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "TWD",
+      "availability": "https://schema.org/InStock",
+      "validFrom": "2026-06-20",
+      "validThrough": "2026-09-01"
+    },
+    "subEvent": [
+      {
+        "@type": "Event",
+        "name": "開幕期",
+        "startDate": "2026-06-20",
+        "endDate": "2026-07-04"
+      },
+      {
+        "@type": "Event",
+        "name": "正式期",
+        "startDate": "2026-07-04",
+        "endDate": "2026-08-17"
+      },
+      {
+        "@type": "Event",
+        "name": "結算期",
+        "startDate": "2026-08-17",
+        "endDate": "2026-09-01"
+      }
+    ]
+  }
+  </script>
+  <style>
+    /* ═══ Event Detail Page — Wind Fate Season ═══ */
+
+    /* ── Hero ── */
+    .event-hero {
+      text-align: center;
+      padding: var(--space-2xl) var(--space-xl) var(--space-xl);
+      position: relative;
+      overflow: hidden;
+    }
+    .event-hero::before {
+      content: '';
+      position: absolute;
+      top: -60%; left: -20%; width: 140%; height: 200%;
+      background: radial-gradient(ellipse at 30% 20%, rgba(157,175,255,0.08) 0%, transparent 60%),
+                  radial-gradient(ellipse at 70% 80%, rgba(171,114,249,0.06) 0%, transparent 50%);
+      pointer-events: none;
+      z-index: 0;
+    }
+    .event-hero > * { position: relative; z-index: 1; }
+
+    .event-hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      padding: 6px 16px;
+      border-radius: 100px;
+      background: rgba(157,175,255,0.1);
+      color: var(--sky);
+      border: 1px solid rgba(157,175,255,0.18);
+      margin-bottom: var(--space-md);
+      letter-spacing: 0.02em;
+    }
+    .event-hero h1 {
+      font-size: clamp(2rem, 5vw, 3rem);
+      font-weight: 900;
+      color: var(--white);
+      letter-spacing: -0.03em;
+      margin-bottom: var(--space-sm);
+      line-height: 1.2;
+    }
+    .event-hero-desc {
+      color: var(--fog);
+      font-size: 0.95rem;
+      max-width: 620px;
+      margin: 0 auto;
+      line-height: 1.8;
+    }
+
+    /* ── Wind Fate CSS Art ── */
+    .wf-art {
+      display: flex;
+      justify-content: center;
+      margin: var(--space-xl) 0 var(--space-md);
+    }
+    .wf-orb {
+      width: 100px;
+      height: 100px;
+      position: relative;
+    }
+    .wf-orb-core {
+      width: 60px;
+      height: 60px;
+      background: radial-gradient(circle at 35% 35%, rgba(157,175,255,0.9), rgba(171,114,249,0.7) 60%, rgba(157,175,255,0.3));
+      border-radius: 50%;
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      box-shadow: 0 0 30px rgba(157,175,255,0.4), 0 0 60px rgba(171,114,249,0.2);
+      animation: wf-core-pulse 3s ease-in-out infinite;
+    }
+    .wf-orb-ring {
+      width: 90px;
+      height: 90px;
+      border: 2px solid rgba(157,175,255,0.25);
+      border-radius: 50%;
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      animation: wf-ring-spin 8s linear infinite;
+    }
+    .wf-orb-ring::before,
+    .wf-orb-ring::after {
+      content: '';
+      position: absolute;
+      width: 8px;
+      height: 8px;
+      background: var(--sky);
+      border-radius: 50%;
+      box-shadow: 0 0 8px var(--sky);
+    }
+    .wf-orb-ring::before { top: -4px; left: 50%; transform: translateX(-50%); }
+    .wf-orb-ring::after { bottom: -4px; left: 50%; transform: translateX(-50%); }
+
+    @keyframes wf-core-pulse {
+      0%, 100% { box-shadow: 0 0 30px rgba(157,175,255,0.4), 0 0 60px rgba(171,114,249,0.2); }
+      50% { box-shadow: 0 0 40px rgba(157,175,255,0.6), 0 0 80px rgba(171,114,249,0.3); }
+    }
+    @keyframes wf-ring-spin {
+      from { transform: translate(-50%, -50%) rotate(0deg); }
+      to { transform: translate(-50%, -50%) rotate(360deg); }
+    }
+
+    /* ── Floating wind particles ── */
+    .wf-particles {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+      pointer-events: none;
+      z-index: 0;
+    }
+    .wf-particle {
+      position: absolute;
+      width: 4px;
+      height: 4px;
+      background: rgba(157,175,255,0.5);
+      border-radius: 50%;
+      animation: wf-float linear infinite;
+    }
+    @keyframes wf-float {
+      0% { transform: translateY(0) translateX(0); opacity: 0; }
+      10% { opacity: 0.7; }
+      90% { opacity: 0.3; }
+      100% { transform: translateY(-100vh) translateX(40px); opacity: 0; }
+    }
+
+    /* ── Quick Stats ── */
+    .event-quick-stats {
+      display: flex;
+      justify-content: center;
+      gap: var(--space-xl);
+      margin-top: var(--space-xl);
+      flex-wrap: wrap;
+    }
+    .eqs-item {
+      text-align: center;
+    }
+    .eqs-num {
+      font-size: 1.8rem;
+      font-weight: 900;
+      color: var(--sky);
+      line-height: 1;
+    }
+    .eqs-label {
+      font-size: 0.78rem;
+      color: var(--fog);
+      margin-top: 4px;
+    }
+
+    /* ── Info Grid ── */
+    .info-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: var(--space-md);
+      margin: var(--space-xl) 0;
+    }
+    .info-item {
+      background: var(--ocean);
+      border: 1px solid rgba(157,175,255,0.08);
+      border-radius: var(--radius-md);
+      padding: var(--space-md);
+    }
+    .info-item-label {
+      font-size: 0.78rem;
+      color: var(--fog);
+      margin-bottom: 4px;
+    }
+    .info-item-value {
+      font-weight: 700;
+      color: var(--white);
+    }
+
+    /* ── Section Card ── */
+    .section-card {
+      background: var(--ocean);
+      border: 1px solid rgba(157,175,255,0.06);
+      border-radius: var(--radius-lg);
+      padding: var(--space-xl);
+      margin-bottom: var(--space-xl);
+      position: relative;
+      overflow: hidden;
+    }
+    .section-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--sky), var(--lavender));
+      opacity: 0.6;
+    }
+    .section-card h2 {
+      font-size: 1.3rem;
+      font-weight: 800;
+      color: var(--white);
+      margin-bottom: var(--space-md);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .section-card h3 {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--white);
+      margin: var(--space-lg) 0 var(--space-sm);
+    }
+    .section-card p, .section-card li {
+      color: var(--cloud);
+      line-height: 1.8;
+      font-size: 0.92rem;
+    }
+    .section-card ul {
+      padding-left: 1.5em;
+      margin: var(--space-sm) 0;
+    }
+    .section-card li {
+      margin-bottom: 6px;
+    }
+
+    /* ── Timeline ── */
+    .wf-timeline {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0;
+      margin: var(--space-xl) 0;
+      flex-wrap: wrap;
+    }
+    .wf-tl-phase {
+      text-align: center;
+      padding: var(--space-sm) var(--space-md);
+      position: relative;
+    }
+    .wf-tl-dot {
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      background: var(--mist);
+      border: 2px solid var(--fog);
+      margin: 0 auto var(--space-xs);
+      transition: all 0.3s;
+    }
+    .wf-tl-dot.done {
+      background: var(--foam);
+      border-color: var(--foam);
+      box-shadow: 0 0 8px rgba(168,230,207,0.4);
+    }
+    .wf-tl-dot.active {
+      background: var(--sky);
+      border-color: var(--sky);
+      box-shadow: 0 0 12px rgba(157,175,255,0.5);
+      animation: tl-pulse 2s ease-in-out infinite;
+    }
+    @keyframes tl-pulse {
+      0%, 100% { box-shadow: 0 0 8px rgba(157,175,255,0.4); }
+      50% { box-shadow: 0 0 16px rgba(157,175,255,0.7); }
+    }
+    .wf-tl-label {
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--fog);
+    }
+    .wf-tl-date {
+      font-size: 0.72rem;
+      color: var(--fog);
+      opacity: 0.7;
+    }
+    .wf-tl-connector {
+      width: 40px;
+      height: 2px;
+      background: var(--mist);
+      margin: 0 4px;
+      margin-bottom: 20px;
+    }
+    .wf-tl-connector.done {
+      background: var(--foam);
+    }
+
+    /* ── Task Cards ── */
+    .task-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: var(--space-md);
+      margin: var(--space-md) 0;
+    }
+    .task-card {
+      background: var(--drift);
+      border: 1px solid rgba(157,175,255,0.06);
+      border-radius: var(--radius-md);
+      padding: var(--space-md);
+      transition: transform 0.3s, border-color 0.3s;
+    }
+    .task-card:hover {
+      transform: translateY(-3px);
+      border-color: rgba(157,175,255,0.2);
+    }
+    .task-card-header {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+    .task-card-icon {
+      font-size: 1.3rem;
+    }
+    .task-card-name {
+      font-weight: 700;
+      color: var(--white);
+      font-size: 0.95rem;
+    }
+    .task-card-desc {
+      color: var(--fog);
+      font-size: 0.85rem;
+      line-height: 1.6;
+    }
+    .task-card-reward {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      margin-top: 8px;
+      font-size: 0.78rem;
+      color: var(--sky);
+      font-weight: 600;
+    }
+
+    /* ── Shop Table ── */
+    .shop-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: var(--space-md) 0;
+      font-size: 0.88rem;
+    }
+    .shop-table th {
+      text-align: left;
+      padding: 10px 12px;
+      background: var(--drift);
+      color: var(--fog);
+      font-weight: 600;
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      border-bottom: 1px solid rgba(157,175,255,0.08);
+    }
+    .shop-table td {
+      padding: 10px 12px;
+      border-bottom: 1px solid rgba(157,175,255,0.04);
+      color: var(--cloud);
+    }
+    .shop-table tr:hover td {
+      background: rgba(157,175,255,0.03);
+    }
+    .shop-price {
+      color: var(--sky);
+      font-weight: 700;
+    }
+    .shop-tag {
+      display: inline-block;
+      padding: 2px 8px;
+      border-radius: 100px;
+      font-size: 0.72rem;
+      font-weight: 600;
+    }
+    .shop-tag-t3 {
+      background: rgba(171,114,249,0.15);
+      color: var(--lavender);
+      border: 1px solid rgba(171,114,249,0.25);
+    }
+    .shop-tag-pass {
+      background: rgba(255,187,85,0.12);
+      color: #ffbb55;
+      border: 1px solid rgba(255,187,85,0.2);
+    }
+    .shop-tag-permanent {
+      background: rgba(168,230,207,0.12);
+      color: var(--foam);
+      border: 1px solid rgba(168,230,207,0.2);
+    }
+
+    /* ── Title Cards ── */
+    .title-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: var(--space-md);
+      margin: var(--space-md) 0;
+    }
+    .title-card {
+      background: var(--drift);
+      border: 1px solid rgba(157,175,255,0.06);
+      border-radius: var(--radius-md);
+      padding: var(--space-md);
+      text-align: center;
+    }
+    .title-card-name {
+      font-weight: 800;
+      font-size: 1.1rem;
+      margin-bottom: 4px;
+    }
+    .title-card-method {
+      font-size: 0.82rem;
+      color: var(--fog);
+    }
+    .title-card-diff {
+      margin-top: 8px;
+      font-size: 0.75rem;
+      color: var(--fog);
+      opacity: 0.7;
+    }
+
+    /* ── Economy Table ── */
+    .eco-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: var(--space-md);
+      margin: var(--space-md) 0;
+    }
+    .eco-card {
+      background: var(--drift);
+      border: 1px solid rgba(157,175,255,0.06);
+      border-radius: var(--radius-md);
+      padding: var(--space-md);
+      text-align: center;
+    }
+    .eco-card-num {
+      font-size: 1.6rem;
+      font-weight: 900;
+      color: var(--sky);
+      line-height: 1;
+    }
+    .eco-card-label {
+      font-size: 0.78rem;
+      color: var(--fog);
+      margin-top: 4px;
+    }
+
+    /* ── NPC Section ── */
+    .npc-card {
+      display: flex;
+      align-items: center;
+      gap: var(--space-lg);
+      background: var(--drift);
+      border: 1px solid rgba(157,175,255,0.08);
+      border-radius: var(--radius-lg);
+      padding: var(--space-lg);
+      margin: var(--space-md) 0;
+    }
+    .npc-avatar {
+      width: 80px;
+      height: 80px;
+      border-radius: var(--radius-md);
+      background: var(--mist);
+      flex-shrink: 0;
+      image-rendering: pixelated;
+    }
+    .npc-info h3 {
+      margin: 0 0 4px;
+      color: var(--sky);
+    }
+    .npc-info p {
+      margin: 0;
+      color: var(--fog);
+      font-size: 0.88rem;
+    }
+
+    /* ── Back Link ── */
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      color: var(--fog);
+      font-size: 0.85rem;
+      text-decoration: none;
+      margin-bottom: var(--space-lg);
+      transition: color 0.3s;
+    }
+    .back-link:hover { color: var(--sky); }
+
+    /* ── Section Divider ── */
+    .guide-divider {
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(157,175,255,0.15), transparent);
+      margin: var(--space-xl) 0;
+    }
+
+    /* ── FAQ ── */
+    .guide-faq-item {
+      border: 1px solid rgba(157,175,255,0.06);
+      border-radius: var(--radius-md);
+      margin-bottom: var(--space-sm);
+      overflow: hidden;
+      background: var(--drift);
+    }
+    .guide-faq-q {
+      width: 100%;
+      background: none;
+      border: none;
+      padding: var(--space-md);
+      text-align: left;
+      color: var(--white);
+      font-weight: 600;
+      font-size: 0.92rem;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-family: inherit;
+    }
+    .guide-faq-q::after {
+      content: '▸';
+      color: var(--fog);
+      transition: transform 0.3s;
+    }
+    .guide-faq-item.open .guide-faq-q::after {
+      transform: rotate(90deg);
+    }
+    .guide-faq-a {
+      display: none;
+      padding: 0 var(--space-md) var(--space-md);
+      color: var(--cloud);
+      font-size: 0.88rem;
+      line-height: 1.8;
+    }
+    .guide-faq-item.open .guide-faq-a {
+      display: block;
+    }
+
+    /* ── Guide Entries (相關頁面) ── */
+    .guide-entries {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: var(--space-md);
+      margin: var(--space-md) 0;
+    }
+    .guide-entry {
+      background: var(--drift);
+      border: 1px solid rgba(157,175,255,0.06);
+      border-radius: var(--radius-md);
+      padding: var(--space-md);
+      text-decoration: none;
+      color: inherit;
+      transition: transform 0.3s, border-color 0.3s;
+    }
+    .guide-entry:hover {
+      transform: translateY(-3px);
+      border-color: rgba(157,175,255,0.2);
+    }
+    .guide-entry-title {
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 4px;
+    }
+    .guide-entry-desc {
+      font-size: 0.82rem;
+      color: var(--fog);
+    }
+
+    /* ── Light Mode ── */
+    [data-theme="light"] .section-card { background: #fff; border-color: rgba(0,0,0,0.06); }
+    [data-theme="light"] .section-card::before { opacity: 0.4; }
+    [data-theme="light"] .task-card { background: #f8f9fa; border-color: rgba(0,0,0,0.06); }
+    [data-theme="light"] .shop-table th { background: #f0f1f3; }
+    [data-theme="light"] .title-card { background: #f8f9fa; border-color: rgba(0,0,0,0.06); }
+    [data-theme="light"] .eco-card { background: #f8f9fa; border-color: rgba(0,0,0,0.06); }
+    [data-theme="light"] .npc-card { background: #f8f9fa; border-color: rgba(0,0,0,0.06); }
+    [data-theme="light"] .guide-faq-item { background: #f8f9fa; border-color: rgba(0,0,0,0.06); }
+    [data-theme="light"] .guide-entry { background: #f8f9fa; border-color: rgba(0,0,0,0.06); }
+    [data-theme="light"] .info-item { background: #f8f9fa; border-color: rgba(0,0,0,0.06); }
+    [data-theme="light"] .event-hero::before {
+      background: radial-gradient(ellipse at 30% 20%, rgba(157,175,255,0.06) 0%, transparent 60%),
+                  radial-gradient(ellipse at 70% 80%, rgba(171,114,249,0.04) 0%, transparent 50%);
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 768px) {
+      .event-quick-stats { gap: var(--space-lg); }
+      .eqs-num { font-size: 1.4rem; }
+      .wf-timeline { flex-direction: column; gap: var(--space-sm); }
+      .wf-tl-connector { width: 2px; height: 20px; margin: 0; }
+      .task-grid { grid-template-columns: 1fr; }
+      .npc-card { flex-direction: column; text-align: center; }
+      .title-grid { grid-template-columns: 1fr 1fr; }
+      .shop-table { font-size: 0.82rem; }
+      .shop-table th, .shop-table td { padding: 8px; }
+    }
+
+    /* ── Print ── */
+    @media print {
+      .back-link, .nav, .footer, .scroll-progress, .bg-atmosphere, .wf-particles, .wf-art { display: none !important; }
+      .event-hero { padding: 1rem 0; }
+      .section-card { break-inside: avoid; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Page Loader -->
+  <div class="page-loader" id="pageLoader">
+    <div class="loader-logo">海風</div>
+    <div class="loader-wave"></div>
+    <div class="loader-dots">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
+
+  <a href="#mainContent" class="skip-link">跳到主要內容</a>
+  <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
+  <div class="bg-atmosphere"></div>
+
+  <nav class="nav">
+    <a href="../首頁" class="nav-logo">
+      <img src="../assets/img/logo.png" alt="海風" class="nav-logo-img" width="48" height="48" fetchpriority="high">
+      <span class="nav-logo-text">海風</span>
+    </a>
+    <div class="nav-right">
+      <ul class="nav-links">
+        <li><a href="../活動" class="active">活動</a></li>
+        <li class="nav-dropdown">
+          <a href="../文化藝廊" class="nav-dropdown-toggle" aria-expanded="false" aria-haspopup="true">關於 <span class="arrow">▾</span></a>
+          <ul class="nav-dropdown-menu">
+            <li><a href="../文化藝廊">文化藝廊</a></li>
+            <li><a href="../歷史館">歷史館</a></li>
+            <li><a href="../海風團隊">海風團隊</a></li>
+            <li><a href="../設計規範">設計規範</a></li>
+          </ul>
+        </li>
+        <li class="nav-dropdown">
+          <a href="../社群須知" class="nav-dropdown-toggle" aria-expanded="false" aria-haspopup="true">須知 <span class="arrow">▾</span></a>
+          <ul class="nav-dropdown-menu">
+            <li><a href="../社群須知">社群須知</a></li>
+            <li><a href="../管理通則">管理通則</a></li>
+            <li><a href="../公務人員須知">公務人員須知</a></li>
+          </ul>
+        </li>
+        <li class="nav-dropdown">
+          <a href="../資料中心/合作夥伴" class="nav-dropdown-toggle" aria-expanded="false" aria-haspopup="true">資料中心 <span class="arrow">▾</span></a>
+          <ul class="nav-dropdown-menu">
+            <li><a href="../資料中心/合作夥伴">合作夥伴</a></li>
+            <li><a href="../資料中心/支持牆">支持牆</a></li>
+            <li><a href="../資料中心/線上工單">線上工單</a></li>
+            <li><a href="../資料中心/違規處分">違規處分</a></li>
+          </ul>
+        </li>
+        <li><a href="../海風指南">指南</a></li>
+        <li><a href="../公告">公告</a></li>
+      </ul>
+      <button class="nav-theme" id="themeToggle" aria-label="切換主題"></button>
+      <button class="nav-toggle" aria-label="選單">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <div class="page" id="mainContent">
+    <div style="max-width:900px;margin:0 auto;padding:0 var(--space-lg);">
+
+      <!-- Back Link -->
+      <a href="../活動" class="back-link">← 返回活動列表</a>
+
+      <!-- ═══ Hero ═══ -->
+      <div class="event-hero fade-in">
+        <div class="wf-particles" id="wfParticles" aria-hidden="true"></div>
+
+        <div class="event-hero-badge">🌊 季度活動 · 6/20 ~ 9/01</div>
+
+        <h1>🌊 2026 海風風緣季</h1>
+
+        <!-- CSS Art -->
+        <div class="wf-art">
+          <div class="wf-orb">
+            <div class="wf-orb-ring"></div>
+            <div class="wf-orb-core"></div>
+          </div>
+        </div>
+
+        <p class="event-hero-desc">
+          在海風相遇就是一種緣分。<br>
+          風緣季是海風第一個季度活動，暑假限定 73 天。<br>
+          完成任務收集風緣碎片，兌換限定粒子效果、外觀、家具與稱號。
+        </p>
+
+        <div class="event-quick-stats">
+          <div class="eqs-item"><div class="eqs-num">73</div><div class="eqs-label">活動天數</div></div>
+          <div class="eqs-item"><div class="eqs-num">4</div><div class="eqs-label">主線章節</div></div>
+          <div class="eqs-item"><div class="eqs-num">875</div><div class="eqs-label">免費碎片</div></div>
+        </div>
+      </div>
+
+      <div class="guide-divider"></div>
+
+      <!-- ═══ 基本資訊 ═══ -->
+      <div class="info-grid fade-in">
+        <div class="info-item">
+          <div class="info-item-label">📅 活動時間</div>
+          <div class="info-item-value">2026.06.20 ~ 09.01</div>
+        </div>
+        <div class="info-item">
+          <div class="info-item-label">🎫 參加費用</div>
+          <div class="info-item-value">免費，所有玩家自動參加</div>
+        </div>
+        <div class="info-item">
+          <div class="info-item-label">🪙 季節代幣</div>
+          <div class="info-item-value">風緣碎片</div>
+        </div>
+        <div class="info-item">
+          <div class="info-item-label">💎 季卡加碼</div>
+          <div class="info-item-value">任務碎片 +50%、每日 3 碎片</div>
+        </div>
+      </div>
+
+      <div class="guide-divider"></div>
+
+      <!-- ═══ 時程規劃 ═══ -->
+      <div class="section-card fade-in">
+        <h2><span class="sec-icon">📅</span> 時程規劃</h2>
+
+        <div class="wf-timeline" id="wfTimeline">
+          <div class="wf-tl-phase">
+            <div class="wf-tl-dot upcoming" data-start="2026-06-20" data-end="2026-07-04"></div>
+            <div class="wf-tl-label">🌅 開幕期</div>
+            <div class="wf-tl-date">6/20 ~ 7/04</div>
+          </div>
+          <div class="wf-tl-connector"></div>
+          <div class="wf-tl-phase">
+            <div class="wf-tl-dot upcoming" data-start="2026-07-04" data-end="2026-08-17"></div>
+            <div class="wf-tl-label">🌊 正式期</div>
+            <div class="wf-tl-date">7/04 ~ 8/17</div>
+          </div>
+          <div class="wf-tl-connector"></div>
+          <div class="wf-tl-phase">
+            <div class="wf-tl-dot upcoming" data-start="2026-08-17" data-end="2026-09-01"></div>
+            <div class="wf-tl-label">🏁 結算期</div>
+            <div class="wf-tl-date">8/17 ~ 9/01</div>
+          </div>
+        </div>
+
+        <h3>🌅 開幕期（6/20 ~ 7/04）</h3>
+        <ul>
+          <li>季節正式開始，所有玩家自動參加</li>
+          <li>NPC「風緣使者」現身大廳</li>
+          <li>新手引導任務（3 個教學任務，介紹季節系統）</li>
+          <li>第一週任務開跑</li>
+          <li>主線第一章「風起」解鎖</li>
+        </ul>
+
+        <h3>🌊 正式期（7/04 ~ 8/17）</h3>
+        <ul>
+          <li>每週任務輪替（共 7 輪，每週一重置）</li>
+          <li>主線任務分階段解鎖（每 2 週解鎖新章節）</li>
+          <li>第 4 週（7/18）中間活動：風緣祭</li>
+          <li>季節商店持續開放</li>
+        </ul>
+
+        <h3>🏁 結算期（8/17 ~ 9/01）</h3>
+        <ul>
+          <li>最終挑戰任務開放</li>
+          <li>獎勵兌換截止（8/31 23:59）</li>
+          <li>稱號結算發放（9/01）</li>
+          <li>代幣失效、Tier 3 升級管道關閉</li>
+        </ul>
+      </div>
+
+      <div class="guide-divider"></div>
+
+      <!-- ═══ 任務系統 ═══ -->
+      <div class="section-card fade-in">
+        <h2><span class="sec-icon">📋</span> 任務系統</h2>
+        <p>風緣季有四種任務，涵蓋每日、每週、主線與最終挑戰。完成任務獲得「風緣碎片」，用於季節商店兌換獎勵。</p>
+
+        <h3>🎯 每日挑戰（每天重置）</h3>
+        <p>每天刷新 1 個簡單任務，5 分鐘內可完成。任務池共 20 組輪替，不綁定特定玩法。</p>
+        <div class="task-grid">
+          <div class="task-card">
+            <div class="task-card-header"><span class="task-card-icon">🪵</span><span class="task-card-name">晨曦採集</span></div>
+            <div class="task-card-desc">採集 10 個任意原木</div>
+            <div class="task-card-reward">🪙 5 碎片</div>
+          </div>
+          <div class="task-card">
+            <div class="task-card-header"><span class="task-card-icon">⛏️</span><span class="task-card-name">礦工日常</span></div>
+            <div class="task-card-desc">挖掘 30 個石頭</div>
+            <div class="task-card-reward">🪙 5 碎片</div>
+          </div>
+          <div class="task-card">
+            <div class="task-card-header"><span class="task-card-icon">🏗️</span><span class="task-card-name">建築起步</span></div>
+            <div class="task-card-desc">在領地內放置 20 個方塊</div>
+            <div class="task-card-reward">🪙 5 碎片</div>
+          </div>
+          <div class="task-card">
+            <div class="task-card-header"><span class="task-card-icon">🤝</span><span class="task-card-name">鄰里問候</span></div>
+            <div class="task-card-desc">拜訪一位玩家的領地</div>
+            <div class="task-card-reward">🪙 5 碎片</div>
+          </div>
+          <div class="task-card">
+            <div class="task-card-header"><span class="task-card-icon">📝</span><span class="task-card-name">每日簽到</span></div>
+            <div class="task-card-desc">完成每日簽到</div>
+            <div class="task-card-reward">🪙 5 碎片</div>
+          </div>
+          <div class="task-card">
+            <div class="task-card-header"><span class="task-card-icon">🗺️</span><span class="task-card-name">世界漫步</span></div>
+            <div class="task-card-desc">移動距離達 500 格</div>
+            <div class="task-card-reward">🪙 5 碎片</div>
+          </div>
+        </div>
+        <p style="color:var(--fog);font-size:0.82rem;text-align:center;margin-top:var(--space-sm);">⋯ 共 20 組任務輪替，每日不重複 ⋯</p>
+
+        <h3>📋 每週任務（每週一重置）</h3>
+        <p>每週刷新 3 個任務，需要更多時間完成。共 7 週 × 3 個 = 21 個任務。</p>
+        <div class="task-grid">
+          <div class="task-card">
+            <div class="task-card-header"><span class="task-card-icon">🌬️</span><span class="task-card-name">風緣初識</span></div>
+            <div class="task-card-desc">與風緣使者 NPC 對話</div>
+            <div class="task-card-reward">🪙 10 碎片</div>
+          </div>
+          <div class="task-card">
+            <div class="task-card-header"><span class="task-card-icon">🎁</span><span class="task-card-name">禮尚往來</span></div>
+            <div class="task-card-desc">贈送 1 件物品給其他玩家</div>
+            <div class="task-card-reward">🪙 10 碎片</div>
+          </div>
+          <div class="task-card">
+            <div class="task-card-header"><span class="task-card-icon">🏡</span><span class="task-card-name">建築交流</span></div>
+            <div class="task-card-desc">參觀 3 個不同玩家的領地</div>
+            <div class="task-card-reward">🪙 10 碎片</div>
+          </div>
+        </div>
+        <p style="color:var(--fog);font-size:0.82rem;text-align:center;margin-top:var(--space-sm);">⋯ 共 21 組任務，每週抽取 3 個 ⋯</p>
+      </div>
+
+      <div class="guide-divider"></div>
+
+      <!-- ═══ 主線任務 ═══ -->
+      <div class="section-card fade-in">
+        <h2><span class="sec-icon">📖</span> 主線任務鏈：風與緣的故事</h2>
+        <p>跟「風緣」主題相關的故事任務，共 4 章，每 2 週解鎖一章。完成整章獲得額外碎片 + 專屬稱號。</p>
+
+        <h3>第一章：風起（6/20 解鎖）</h3>
+        <p style="color:var(--fog);font-style:italic;">「聽說過嗎？海風的風，是有記憶的。每一陣風，都帶著一段故事。」</p>
+        <ul>
+          <li><strong>風的呢喃</strong> — 與風緣使者對話，了解風緣季的由來</li>
+          <li><strong>風之足跡</strong> — 探索海風世界的 5 個指定地標</li>
+          <li><strong>風的記憶</strong> — 收集 10 個「風之羽」（每日任務隨機掉落）</li>
+          <li><strong>風起之處</strong> — 前往世界邊緣的指定座標</li>
+        </ul>
+        <p><strong>完成獎勵</strong>：50 碎片 + 稱號「風緣旅人」</p>
+
+        <h3>第二章：相遇（7/04 解鎖）</h3>
+        <p style="color:var(--fog);font-style:italic;">「風把人帶來，緣分讓人在這裡停留。你遇到的第一個人，是誰？」</p>
+        <ul>
+          <li><strong>緣分的開始</strong> — 拜訪 3 個不同玩家的領地</li>
+          <li><strong>禮物之心</strong> — 贈送 3 件物品給不同玩家</li>
+          <li><strong>緣分之樹</strong> — 與其他玩家一起種植一棵樹</li>
+          <li><strong>緣分的印記</strong> — 與 1 位玩家互加領地權限</li>
+        </ul>
+        <p><strong>完成獎勵</strong>：50 碎片 + 稱號「風緣探索者」</p>
+
+        <h3>第三章：共築（7/18 解鎖）</h3>
+        <p style="color:var(--fog);font-style:italic;">「一個人可以蓋一棟房子，但只有大家一起，才能蓋出一個家。」</p>
+        <ul>
+          <li><strong>風緣工坊</strong> — 在領地內建造一個「風緣主題」建築</li>
+          <li><strong>合作的力量</strong> — 與其他玩家在同一領地放置合計 100 個方塊</li>
+          <li><strong>緣分廣場</strong> — 前往大廳風緣季區域，與 NPC 對話</li>
+        </ul>
+        <p><strong>完成獎勵</strong>：50 碎片 + 稱號「風緣建造者」</p>
+
+        <h3>第四章：風緣（8/01 解鎖）</h3>
+        <p style="color:var(--fog);font-style:italic;">「風與緣，在這裡交會。這段旅程的終點，也是新的起點。」</p>
+        <ul>
+          <li><strong>風緣的意義</strong> — 完成所有前三章</li>
+          <li><strong>風緣收藏</strong> — 收集 30 個「風之羽」</li>
+          <li><strong>最終的緣分</strong> — 贈送 5 件物品給不同玩家</li>
+          <li><strong>風緣之約</strong> — 與風緣使者對話，完成最終任務</li>
+        </ul>
+        <p><strong>完成獎勵</strong>：50 碎片 + 稱號「風緣傳說」</p>
+      </div>
+
+      <div class="guide-divider"></div>
+
+      <!-- ═══ 季節商店 ═══ -->
+      <div class="section-card fade-in">
+        <h2><span class="sec-icon">🏪</span> 季節商店</h2>
+        <p>使用風緣碎片在季節商店兌換獎勵。道具分為 3 個 Tier，Tier 3 在季節結束後<strong>絕版</strong>。</p>
+
+        <h3>粒子效果（3 Tier）</h3>
+        <table class="shop-table">
+          <thead>
+            <tr><th>道具</th><th>Tier</th><th>價格</th><th>效果</th><th>季節後</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>風緣微光</td>
+              <td>T1</td>
+              <td class="shop-price">50 碎片</td>
+              <td>淡藍色風粒子環繞</td>
+              <td><span class="shop-tag shop-tag-permanent">永久可換</span></td>
+            </tr>
+            <tr>
+              <td>風緣流光</td>
+              <td>T2</td>
+              <td class="shop-price">80 碎片</td>
+              <td>藍紫漸層流動粒子</td>
+              <td><span class="shop-tag shop-tag-permanent">永久可升級</span></td>
+            </tr>
+            <tr>
+              <td>風緣極光</td>
+              <td>T3</td>
+              <td class="shop-price">120 碎片</td>
+              <td>藍紫粉三色極光 + 風痕拖尾</td>
+              <td><span class="shop-tag shop-tag-t3">✦ 季節結束絕版</span></td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h3>外觀道具</h3>
+        <table class="shop-table">
+          <thead>
+            <tr><th>道具</th><th>類型</th><th>價格</th><th>說明</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>風緣頭飾</td><td>外觀</td><td class="shop-price">60 碎片</td><td>風之羽頭飾（純裝飾）</td></tr>
+            <tr><td>風緣披風</td><td>外觀</td><td class="shop-price">80 碎片</td><td>淡藍色披風（純裝飾）</td></tr>
+          </tbody>
+        </table>
+
+        <h3>家具道具</h3>
+        <table class="shop-table">
+          <thead>
+            <tr><th>道具</th><th>價格</th><th>說明</th><th>限購</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>風緣風鈴</td><td class="shop-price">40 碎片</td><td>可放置的裝飾風鈴（有音效）</td><td>3</td></tr>
+            <tr><td>風緣旗幟</td><td class="shop-price">30 碎片</td><td>季節主題旗幟</td><td>5</td></tr>
+            <tr><td>風緣地毯</td><td class="shop-price">20 碎片</td><td>季節主題地毯</td><td>3</td></tr>
+            <tr><td>風緣花盆</td><td class="shop-price">25 碎片</td><td>季節主題花盆</td><td>3</td></tr>
+          </tbody>
+        </table>
+
+        <h3>季卡專屬</h3>
+        <table class="shop-table">
+          <thead>
+            <tr><th>道具</th><th>價格</th><th>說明</th><th>取得方式</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>風緣守護者粒子</td>
+              <td class="shop-price">—</td>
+              <td>金色粒子效果</td>
+              <td><span class="shop-tag shop-tag-pass">自動發放</span></td>
+            </tr>
+            <tr>
+              <td>風緣守護者稱號</td>
+              <td class="shop-price">—</td>
+              <td>金色稱號</td>
+              <td><span class="shop-tag shop-tag-pass">自動發放</span></td>
+            </tr>
+            <tr>
+              <td>緣分之樹</td>
+              <td class="shop-price">200 碎片</td>
+              <td>可放置的裝飾大樹</td>
+              <td><span class="shop-tag shop-tag-pass">季卡商店</span></td>
+            </tr>
+            <tr>
+              <td>風緣守護者披風</td>
+              <td class="shop-price">120 碎片</td>
+              <td>金色披風</td>
+              <td><span class="shop-tag shop-tag-pass">季卡商店</span></td>
+            </tr>
+            <tr>
+              <td>風緣守護者頭飾</td>
+              <td class="shop-price">100 碎片</td>
+              <td>金色風之羽頭飾</td>
+              <td><span class="shop-tag shop-tag-pass">季卡商店</span></td>
+            </tr>
+            <tr>
+              <td>風緣星光瓶</td>
+              <td class="shop-price">80 碎片</td>
+              <td>可放置的發光瓶子</td>
+              <td><span class="shop-tag shop-tag-pass">季卡商店</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="guide-divider"></div>
+
+      <!-- ═══ 經濟平衡 ═══ -->
+      <div class="section-card fade-in">
+        <h2><span class="sec-icon">📊</span> 經濟平衡</h2>
+
+        <h3>免費玩家</h3>
+        <div class="eco-grid">
+          <div class="eco-card"><div class="eco-card-num">365</div><div class="eco-card-label">每日任務（73 天 × 5）</div></div>
+          <div class="eco-card"><div class="eco-card-num">210</div><div class="eco-card-label">每週任務（7 週 × 30）</div></div>
+          <div class="eco-card"><div class="eco-card-num">200</div><div class="eco-card-label">主線任務（4 章 × 50）</div></div>
+          <div class="eco-card"><div class="eco-card-num">100</div><div class="eco-card-label">最終挑戰</div></div>
+        </div>
+        <p style="text-align:center;font-weight:800;color:var(--sky);font-size:1.2rem;">免費玩家整季總計：875 碎片</p>
+
+        <h3>季卡玩家</h3>
+        <div class="eco-grid">
+          <div class="eco-card"><div class="eco-card-num">584</div><div class="eco-card-label">每日任務（73 天 × 8）</div></div>
+          <div class="eco-card"><div class="eco-card-num">315</div><div class="eco-card-label">每週任務（7 週 × 45）</div></div>
+          <div class="eco-card"><div class="eco-card-num">200</div><div class="eco-card-label">主線任務（4 章 × 50）</div></div>
+          <div class="eco-card"><div class="eco-card-num">150</div><div class="eco-card-label">最終挑戰</div></div>
+          <div class="eco-card"><div class="eco-card-num">219</div><div class="eco-card-label">每日登入（73 天 × 3）</div></div>
+        </div>
+        <p style="text-align:center;font-weight:800;color:var(--sky);font-size:1.2rem;">季卡玩家整季總計：1,268 碎片</p>
+
+        <p style="color:var(--fog);font-size:0.85rem;margin-top:var(--space-md);">
+          💡 免費玩家可買到所有核心內容（粒子 T3 + 稱號 + 外觀），剩餘碎片買家具。<br>
+          💡 季卡玩家可買到全部內容（含專屬），幾乎花光所有碎片。
+        </p>
+      </div>
+
+      <div class="guide-divider"></div>
+
+      <!-- ═══ NPC ═══ -->
+      <div class="section-card fade-in">
+        <h2><span class="sec-icon">🍃</span> NPC：風緣使者</h2>
+
+        <div class="npc-card">
+          <img src="https://mc-heads.net/body/風緣使者/100" alt="風緣使者 NPC" class="npc-avatar" loading="lazy" onerror="this.src='https://mc-heads.net/body/Steve/100'">
+          <div class="npc-info">
+            <h3>§b風緣使者 §7🍃</h3>
+            <p><strong>位置</strong>：大廳（風緣季主題區域）</p>
+            <p><strong>外觀</strong>：淡藍色長袍 + 白色圍巾 + 風之羽頭飾</p>
+            <p><strong>功能</strong>：季節引導、任務對話、商店入口</p>
+          </div>
+        </div>
+
+        <h3>初次見面</h3>
+        <div style="background:var(--drift);border-radius:var(--radius-md);padding:var(--space-md);font-size:0.88rem;color:var(--cloud);line-height:2;">
+          <span style="color:var(--sky);">風緣使者</span> §f| §7你好，旅行者。<br>
+          <span style="color:var(--sky);">風緣使者</span> §f| §7你感受到了嗎？這陣風……<br>
+          <span style="color:var(--sky);">風緣使者</span> §f| §7海風的風，是有記憶的。每一陣風，都帶著一段故事。<br>
+          <span style="color:var(--sky);">風緣使者</span> §f| §7風緣季已經開始了。準備好踏上這段旅程了嗎？
+        </div>
+      </div>
+
+      <div class="guide-divider"></div>
+
+      <!-- ═══ 稱號 ═══ -->
+      <div class="section-card fade-in">
+        <h2><span class="sec-icon">🏅</span> 稱號系統</h2>
+
+        <div class="title-grid">
+          <div class="title-card">
+            <div class="title-card-name" style="color:#e6edf3;">風緣旅人</div>
+            <div class="title-card-method">完成第一章「風起」</div>
+            <div class="title-card-diff">★ 白色</div>
+          </div>
+          <div class="title-card">
+            <div class="title-card-name" style="color:#8ab4ff;">風緣探索者</div>
+            <div class="title-card-method">完成第二章「相遇」</div>
+            <div class="title-card-diff">★★ 藍色</div>
+          </div>
+          <div class="title-card">
+            <div class="title-card-name" style="color:#85e0bf;">風緣建造者</div>
+            <div class="title-card-method">完成第三章「共築」</div>
+            <div class="title-card-diff">★★ 綠色</div>
+          </div>
+          <div class="title-card">
+            <div class="title-card-name" style="color:#ff9e9e;">風緣勇者</div>
+            <div class="title-card-method">完成最終挑戰</div>
+            <div class="title-card-diff">★★★ 紅色</div>
+          </div>
+          <div class="title-card">
+            <div class="title-card-name" style="color:#ab72f9;">風緣傳說</div>
+            <div class="title-card-method">完成所有主線 + 最終挑戰</div>
+            <div class="title-card-diff">★★★★ 紫色</div>
+          </div>
+          <div class="title-card">
+            <div class="title-card-name" style="color:#ffbb55;">風緣守護者</div>
+            <div class="title-card-method">季卡專屬（自動發放）</div>
+            <div class="title-card-diff">💳 金色</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="guide-divider"></div>
+
+      <!-- ═══ 最終挑戰 ═══ -->
+      <div class="section-card fade-in">
+        <h2><span class="sec-icon">⚔️</span> 最終挑戰（8/17 ~ 9/01）</h2>
+        <p>風緣季的最後一道考驗。需要整季的準備，不能速成。</p>
+        <p><strong>參加條件</strong>：完成主線第一章（風起）</p>
+
+        <div class="task-grid">
+          <div class="task-card">
+            <div class="task-card-header"><span class="task-card-icon">📖</span><span class="task-card-name">風緣集結</span></div>
+            <div class="task-card-desc">完成所有 4 章主線</div>
+          </div>
+          <div class="task-card">
+            <div class="task-card-header"><span class="task-card-icon">🪶</span><span class="task-card-name">風緣收藏家</span></div>
+            <div class="task-card-desc">收集 30 個風之羽</div>
+          </div>
+          <div class="task-card">
+            <div class="task-card-header"><span class="task-card-icon">🏗️</span><span class="task-card-name">風緣建築師</span></div>
+            <div class="task-card-desc">建造一個風緣主題建築（截圖回報）</div>
+          </div>
+          <div class="task-card">
+            <div class="task-card-header"><span class="task-card-icon">🤝</span><span class="task-card-name">風緣大使</span></div>
+            <div class="task-card-desc">贈送 10 件物品給不同玩家</div>
+          </div>
+          <div class="task-card">
+            <div class="task-card-header"><span class="task-card-icon">🗺️</span><span class="task-card-name">風緣之旅</span></div>
+            <div class="task-card-desc">累計移動距離達 10,000 格</div>
+          </div>
+        </div>
+
+        <p><strong>完成獎勵</strong>：100 碎片（季卡 150）+ 稱號「風緣勇者」</p>
+      </div>
+
+      <div class="guide-divider"></div>
+
+      <!-- ═══ FAQ ═══ -->
+      <div class="section-card fade-in">
+        <h2><span class="sec-icon">❓</span> 常見問題</h2>
+
+        <div class="guide-faq-item">
+          <button class="guide-faq-q">風緣季要花錢嗎？</button>
+          <div class="guide-faq-a">不用。風緣季免費參加，所有玩家自動參與。季卡玩家有額外獎勵（+50% 碎片、每日 3 碎片、專屬外觀），但免費玩家也能拿到所有核心內容（粒子 T3 + 稱號）。</div>
+        </div>
+        <div class="guide-faq-item">
+          <button class="guide-faq-q">風緣碎片會過期嗎？</button>
+          <div class="guide-faq-a">會。風緣碎片在風緣季結束後（9/01 23:59）失效。請在活動結束前把碎片花完。</div>
+        </div>
+        <div class="guide-faq-item">
+          <button class="guide-faq-q">Tier 3 道具真的會絕版嗎？</button>
+          <div class="guide-faq-a">是的。T3 粒子效果（風緣極光）只能在風緣季期間升級。季節結束後，T3 升級管道關閉，已擁有 T3 的玩家保留道具，但只有 T1/T2 的玩家無法再升級。</div>
+        </div>
+        <div class="guide-faq-item">
+          <button class="guide-faq-q">風之羽怎麼取得？</button>
+          <div class="guide-faq-a">完成每日挑戰時有約 30% 機率隨機掉落。風之羽不可交易，整季約可收集 20–25 個（主線需要 30 個，綽綽有餘）。</div>
+        </div>
+        <div class="guide-faq-item">
+          <button class="guide-faq-q">季卡什麼時候買都可以嗎？</button>
+          <div class="guide-faq-a">是的，季卡在風緣季期間隨時可買。但早買早享受——每日 3 碎片和任務 +50% 從購買當天開始計算。</div>
+        </div>
+        <div class="guide-faq-item">
+          <button class="guide-faq-q">風緣季結束後稱號會消失嗎？</button>
+          <div class="guide-faq-a">不會。稱號是永久保留的。只有代幣（風緣碎片）會失效，稱號、粒子效果、外觀、家具都是永久的。</div>
+        </div>
+      </div>
+
+      <div class="guide-divider"></div>
+
+      <!-- ═══ 相關頁面 ═══ -->
+      <div class="section-card fade-in">
+        <h2><span class="sec-icon">📖</span> 相關頁面</h2>
+        <div class="guide-entries">
+          <a href="../活動" class="guide-entry">
+            <div class="guide-entry-title">⏳ 活動列表</div>
+            <div class="guide-entry-desc">查看所有進行中的活動</div>
+          </a>
+          <a href="../贊助" class="guide-entry">
+            <div class="guide-entry-title">💎 贊助方案</div>
+            <div class="guide-entry-desc">了解季卡與會員方案</div>
+          </a>
+          <a href="../海風指南/簽到系統" class="guide-entry">
+            <div class="guide-entry-title">📝 簽到系統</div>
+            <div class="guide-entry-desc">每日簽到獲得額外碎片</div>
+          </a>
+          <a href="../海風指南/任務系統" class="guide-entry">
+            <div class="guide-entry-title">📋 任務系統</div>
+            <div class="guide-entry-desc">了解任務系統玩法</div>
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <span class="footer-logo">海風伺服器 SeaWind.cc</span>
+        <p class="footer-tagline">在風與海之間，有一個可以長久生存的地方</p>
+      </div>
+      <div class="footer-links-row">
+        <a href="../資料中心/合作夥伴">合作夥伴</a>
+        <span class="footer-dot">·</span>
+        <a href="../服務條款">服務條款</a>
+        <span class="footer-dot">·</span>
+        <a href="../隱私權政策">隱私權政策</a>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2026 海風伺服器 · 非 Mojang 官方營運 · service@seawind.cc</p>
+      </div>
+      <p class="page-revise">網站最後修改日期 2026.05.14 / 總計修改 <span id="deployCount">—</span> 次</p>
+    </div>
+  </footer>
+
+  <!-- Music Player -->
+  <div id="musicPlayer"></div>
+  <div class="back-to-top" id="backToTop" aria-label="回到頂部">↑</div>
+
+  <script>
+    /* ── Page Loader ── */
+    window.addEventListener('load', () => {
+      const loader = document.getElementById('pageLoader');
+      if (loader) {
+        setTimeout(() => { loader.classList.add('fade-out'); }, 400);
+        setTimeout(() => { loader.remove(); }, 1000);
+      }
+    });
+    setTimeout(() => {
+      const loader = document.getElementById('pageLoader');
+      if (loader) { loader.classList.add('fade-out'); setTimeout(() => loader.remove(), 600); }
+    }, 3000);
+
+    /* ── Timeline Dynamic Update ── */
+    (function() {
+      const now = Date.now();
+      const phases = [
+        { start: '2026-06-20', end: '2026-07-04' },
+        { start: '2026-07-04', end: '2026-08-17' },
+        { start: '2026-08-17', end: '2026-09-01' }
+      ];
+      const dots = document.querySelectorAll('.wf-tl-dot');
+      const connectors = document.querySelectorAll('.wf-tl-connector');
+
+      phases.forEach((phase, i) => {
+        const startTime = new Date(phase.start + 'T00:00:00+08:00').getTime();
+        const endTime = new Date(phase.end + 'T00:00:00+08:00').getTime();
+        const dot = dots[i];
+        const connector = connectors[i];
+
+        if (now >= endTime) {
+          dot.classList.add('done');
+          dot.classList.remove('upcoming');
+          if (connector) connector.classList.add('done');
+        } else if (now >= startTime) {
+          dot.classList.add('active');
+          dot.classList.remove('upcoming');
+        }
+      });
+    })();
+
+    /* ── Floating Wind Particles ── */
+    (function() {
+      const container = document.getElementById('wfParticles');
+      if (!container) return;
+      for (let i = 0; i < 15; i++) {
+        const p = document.createElement('div');
+        p.className = 'wf-particle';
+        p.style.left = Math.random() * 100 + '%';
+        p.style.animationDuration = (6 + Math.random() * 8) + 's';
+        p.style.animationDelay = Math.random() * 6 + 's';
+        p.style.width = (2 + Math.random() * 4) + 'px';
+        p.style.height = p.style.width;
+        p.style.opacity = 0.2 + Math.random() * 0.4;
+        container.appendChild(p);
+      }
+    })();
+
+    /* ── FAQ Toggle ── */
+    document.querySelectorAll('.guide-faq-q').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const item = btn.parentElement;
+        const isOpen = item.classList.contains('open');
+        document.querySelectorAll('.guide-faq-item.open').forEach(i => i.classList.remove('open'));
+        if (!isOpen) item.classList.add('open');
+      });
+    });
+
+    /* ── Theme Toggle ── */
+    const themeToggle = document.getElementById('themeToggle');
+    if (themeToggle) {
+      themeToggle.addEventListener('click', () => {
+        const current = document.documentElement.getAttribute('data-theme');
+        const next = current === 'light' ? '' : 'light';
+        if (next) {
+          document.documentElement.setAttribute('data-theme', next);
+          localStorage.setItem('theme', next);
+        } else {
+          document.documentElement.removeAttribute('data-theme');
+          localStorage.removeItem('theme');
+        }
+      });
+      const saved = localStorage.getItem('theme');
+      if (saved) document.documentElement.setAttribute('data-theme', saved);
+    }
+
+    /* ── Nav Toggle (Mobile) ── */
+    const navToggle = document.querySelector('.nav-toggle');
+    if (navToggle) {
+      navToggle.addEventListener('click', () => {
+        document.querySelector('.nav-links').classList.toggle('open');
+      });
+    }
+
+    /* ── Scroll Progress ── */
+    window.addEventListener('scroll', () => {
+      const bar = document.getElementById('scrollProgress');
+      if (bar) {
+        const h = document.documentElement.scrollHeight - window.innerHeight;
+        bar.style.width = h > 0 ? (window.scrollY / h * 100) + '%' : '0%';
+      }
+    });
+
+    /* ── Fade In on Scroll ── */
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+    /* ── deployCount ── */
+    fetch('https://api.github.com/repos/mc-seawind-cc/website/commits?per_page=1')
+      .then(r => r.json())
+      .then(data => {
+        const el = document.getElementById('deployCount');
+        if (el && data && data.length) el.textContent = data.length > 0 ? '—' : '—';
+      })
+      .catch(() => {});
+  </script>
+  <script src="../music-player.js?v=140514f" defer></script>
+  <script src="../utils.js?v=140514f" defer></script>
+  <script src="../main.js?v=140514f" defer></script>
+</body>
+</html>
