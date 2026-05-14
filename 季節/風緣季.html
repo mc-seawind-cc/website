@@ -22,9 +22,9 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;800&family=Noto+Serif+TC:wght@700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../style.css?v=140514i">
-  <link rel="stylesheet" href="../music-player.css?v=140514i">
-  <link rel="preload" href="../music-player.js?v=140514i" as="script">
+  <link rel="stylesheet" href="../style.css?v=140514j">
+  <link rel="stylesheet" href="../music-player.css?v=140514j">
+  <link rel="preload" href="../music-player.js?v=140514j" as="script">
   <style>
     /* ═══ Season System Page ═══ */
 
@@ -262,58 +262,6 @@
       line-height: 1.85;
       font-size: 0.92rem;
       margin-bottom: 4px;
-    }
-
-    /* ── Phase Timeline (horizontal, season-style) ── */
-    .phase-track {
-      display: flex;
-      align-items: stretch;
-      gap: 0;
-      margin: var(--space-lg) 0;
-      border-radius: var(--radius-md);
-      overflow: hidden;
-      border: 1px solid rgba(157,175,255,0.08);
-    }
-    .phase-block {
-      flex: 1;
-      padding: var(--space-md);
-      text-align: center;
-      position: relative;
-      background: var(--drift);
-      transition: all 0.4s;
-    }
-    .phase-block.active {
-      background: linear-gradient(135deg, rgba(157,175,255,0.1), rgba(171,114,249,0.1));
-      border-top: 2px solid var(--season-sky);
-    }
-    .phase-block.done {
-      opacity: 0.6;
-    }
-    .phase-name {
-      font-weight: 800;
-      font-size: 0.92rem;
-      color: var(--white);
-      margin-bottom: 4px;
-    }
-    .phase-date {
-      font-size: 0.75rem;
-      color: var(--fog);
-    }
-    .phase-tag {
-      display: inline-block;
-      font-size: 0.68rem;
-      padding: 2px 8px;
-      border-radius: 100px;
-      margin-top: 6px;
-      font-weight: 600;
-    }
-    .phase-tag-current {
-      background: rgba(157,175,255,0.15);
-      color: var(--season-sky);
-    }
-    .phase-tag-done {
-      background: rgba(168,230,207,0.12);
-      color: var(--foam);
     }
 
     /* ── Tier Track (battle pass style) ── */
@@ -782,8 +730,6 @@
 
     /* ── Light Mode ── */
     [data-theme="light"] .season-section { background: #fff; border-color: rgba(0,0,0,0.06); }
-    [data-theme="light"] .phase-block { background: #f8f9fa; }
-    [data-theme="light"] .phase-block.active { background: linear-gradient(135deg, rgba(157,175,255,0.06), rgba(171,114,249,0.06)); }
     [data-theme="light"] .tier-node { background: #f8f9fa; border-color: rgba(0,0,0,0.06); }
     [data-theme="light"] .shop-item { background: #f8f9fa; border-color: rgba(0,0,0,0.06); }
     [data-theme="light"] .tp-card { background: #f8f9fa; border-color: rgba(0,0,0,0.06); }
@@ -802,7 +748,6 @@
     /* ── Responsive ── */
     @media (max-width: 768px) {
       .season-info-bar { grid-template-columns: repeat(2, 1fr); }
-      .phase-track { flex-direction: column; }
       .tier-row { flex-wrap: nowrap; overflow-x: auto; -webkit-overflow-scrolling: touch; }
       .npc-row { flex-direction: column; text-align: center; }
       .upgrade-path { flex-direction: column; }
@@ -898,7 +843,7 @@
           季節系統 · 第一季
         </div>
 
-        <h1>🌊 風緣季</h1>
+        <h1>風緣季</h1>
         <p class="season-hero-sub">在海風相遇，就是一種緣分</p>
 
         <div class="season-art">
@@ -912,8 +857,7 @@
 
         <p class="season-hero-desc">
           風緣季是海風的第一個季節系統。<br>
-          完成季節任務、收集風之羽、在季節商店兌換限定獎勵。<br>
-          免費參加，季卡玩家享額外加成。
+          完成季節任務、收集風之羽、在季節商店兌換限定獎勵。
         </p>
 
         <!-- Countdown -->
@@ -940,24 +884,6 @@
       <!-- ═══════════ 時程 ═══════════ -->
       <div class="season-section fade-in">
         <h2><span class="sec-icon">📅</span> 季節時程</h2>
-
-        <div class="phase-track" id="phaseTrack">
-          <div class="phase-block" data-start="2026-06-20" data-end="2026-07-04">
-            <div class="phase-name">🌅 開幕期</div>
-            <div class="phase-date">6/20 – 7/04</div>
-            <div class="phase-tag" id="phaseTag0"></div>
-          </div>
-          <div class="phase-block" data-start="2026-07-04" data-end="2026-08-17">
-            <div class="phase-name">🌊 正式期</div>
-            <div class="phase-date">7/04 – 8/17</div>
-            <div class="phase-tag" id="phaseTag1"></div>
-          </div>
-          <div class="phase-block" data-start="2026-08-17" data-end="2026-09-01">
-            <div class="phase-name">🏁 結算期</div>
-            <div class="phase-date">8/17 – 9/01</div>
-            <div class="phase-tag" id="phaseTag2"></div>
-          </div>
-        </div>
 
         <h3>🌅 開幕期</h3>
         <p>季節開跑、NPC「風緣使者」現身大廳、新手引導任務、主線第一章解鎖。</p>
@@ -1451,28 +1377,6 @@
       setInterval(update, 1000);
     })();
 
-    /* ── Phase Track ── */
-    (function() {
-      const now = Date.now();
-      const seasonStart = new Date('2026-06-20T00:00:00+08:00').getTime();
-      const blocks = document.querySelectorAll('.phase-block');
-      const tags = [document.getElementById('phaseTag0'), document.getElementById('phaseTag1'), document.getElementById('phaseTag2')];
-      blocks.forEach((block, i) => {
-        const s = new Date(block.dataset.start + 'T00:00:00+08:00').getTime();
-        const e = new Date(block.dataset.end + 'T00:00:00+08:00').getTime();
-        if (now < seasonStart) {
-          // Season hasn't started yet - show all as upcoming
-          if (tags[i]) { tags[i].className = 'phase-tag'; tags[i].textContent = '即將開始'; tags[i].style.color = 'var(--fog)'; }
-        } else if (now >= e) {
-          block.classList.add('done');
-          if (tags[i]) { tags[i].className = 'phase-tag phase-tag-done'; tags[i].textContent = '已完成'; }
-        } else if (now >= s) {
-          block.classList.add('active');
-          if (tags[i]) { tags[i].className = 'phase-tag phase-tag-current'; tags[i].textContent = '進行中'; }
-        }
-      });
-    })();
-
     /* ── Floating Particles ── */
     (function() {
       const c = document.getElementById('seasonParticles');
@@ -1531,8 +1435,8 @@
     }, { threshold: 0.1 });
     document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
   </script>
-  <script src="../music-player.js?v=140514i" defer></script>
-  <script src="../utils.js?v=140514i" defer></script>
-  <script src="../main.js?v=140514i" defer></script>
+  <script src="../music-player.js?v=140514j" defer></script>
+  <script src="../utils.js?v=140514j" defer></script>
+  <script src="../main.js?v=140514j" defer></script>
 </body>
 </html>
