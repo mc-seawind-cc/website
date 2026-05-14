@@ -22,7 +22,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;800&family=Noto+Serif+TC:wght@700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../style.css?v=140514m">
+  <link rel="stylesheet" href="../style.css?v=140514n">
   <link rel="stylesheet" href="../music-player.css?v=120512a">
   <link rel="preload" href="../music-player.js?v=120512a" as="script">
 </head>
@@ -221,7 +221,7 @@
               <table class="rules-table">
                 <thead><tr><th>類型</th><th>刷新時間</th><th>接取方式</th><th>說明</th></tr></thead>
                 <tbody>
-                  <tr><td>📅 每日任務</td><td>每天 00:00</td><td>自動接取</td><td>最穩定的收入來源，每天自動刷新，內容包含殺怪、挖礦、採集等基本操作。依稀有度不同，可獲得任務幣和風幣。</td></tr>
+                  <tr><td>📅 每日任務</td><td>每天 00:00</td><td>自動接取</td><td>最穩定的收入來源，每天自動刷新。內容包含殺怪、挖礦、採集等基本操作。有六種稀有度，難度會隨你的遊玩程度自動調整。</td></tr>
                   <tr><td>📜 卷軸任務</td><td>—</td><td>活動期間</td><td>特殊活動才會開放的任務類型，例如珍奶日、端午節等節日活動。活動結束後消失，獎勵依各活動而定。</td></tr>
                   <tr><td>⚔️ 冒險任務</td><td>—</td><td>找 NPC 接取</td><td>需要主動去找特定 NPC 才能開始，目標更具挑戰性。完成可獲得任務幣＋風幣（金額依各任務不同）。</td></tr>
                   <tr><td>🏘️ 社區任務</td><td>每天 01:00</td><td>自動接取</td><td>全服玩家一起完成的任務，大家一起累積進度。達成後獎勵社區資金和社區活躍度，不給個人貨幣。</td></tr>
@@ -236,19 +236,21 @@
           <!-- ═══ 每日任務獎勵 ═══ -->
           <div class="guide-section-card fade-in" style="--card-accent:var(--lavender)">
             <h2><span class="sec-icon">🎁</span> 每日任務獎勵</h2>
-            <p>每日任務有四種稀有度，每天系統會隨機分配 <strong>10 個</strong>任務。稀有度越高，獎勵越豐富：</p>
+            <p>每日任務有六種稀有度，每天系統會隨機分配 <strong>10 個</strong>任務。稀有度越高，獎勵越豐富：</p>
             <div class="rules-table-wrap">
               <table class="rules-table">
                 <thead><tr><th>稀有度</th><th>任務幣</th><th>風幣</th><th>說明</th></tr></thead>
                 <tbody>
-                  <tr><td>⚪ 普通</td><td>2</td><td>100</td><td>最常見的任務，每天一定會有幾個。</td></tr>
-                  <tr><td>🔵 進階</td><td>6</td><td>140</td><td>稍微少見一點，任務幣獎勵是普通的 3 倍。</td></tr>
-                  <tr><td>🟣 稀有</td><td>10</td><td>200</td><td>不太常出現，任務幣和風幣都很可觀。</td></tr>
-                  <tr><td>🟠 史詩</td><td>64</td><td>500</td><td>非常稀有，一次給 64 任務幣，遇到一定要做！</td></tr>
+                  <tr><td>⚪ 普通</td><td>2</td><td>100</td><td>最常見，每天一定會有幾個。</td></tr>
+                  <tr><td>🔵 高級</td><td>6</td><td>140</td><td>稍微少見一點，任務幣獎勵是普通的 3 倍。</td></tr>
+                  <tr><td>🟣 稀有</td><td>10</td><td>200</td><td>需要稀有材料或高難度戰鬥。</td></tr>
+                  <tr><td>🩷 罕見</td><td>15</td><td>300</td><td>非常稀有，出現機率只有 2%。</td></tr>
+                  <tr><td>🟠 史詩</td><td>64</td><td>500</td><td>極度稀有，預設玩家拿不到，需要解鎖。</td></tr>
+                  <tr><td>🌈 神話</td><td>100</td><td>800</td><td>最頂級，全服最稀有的任務。</td></tr>
                 </tbody>
               </table>
             </div>
-            <div class="callout callout-tip"><span class="callout-icon">💡</span><span>史詩任務一次就給 64 任務幣，相當於做 10 個普通任務的量。遇到的話千萬別放棄！</span></div>
+            <div class="callout callout-tip"><span class="callout-icon">💡</span><span>史詩和神話任務預設不會出現，需要透過進度解鎖。詳見下方「進度分層」說明。</span></div>
           </div>
 
           <div class="guide-divider"></div>
@@ -309,10 +311,12 @@
               <table class="rules-table">
                 <thead><tr><th>任務類型</th><th>稀有度</th><th>任務幣</th><th>風幣</th></tr></thead>
                 <tbody>
-                  <tr><td rowspan="4">📅 每日任務</td><td>⚪ 普通</td><td>2</td><td>100</td></tr>
-                  <tr><td>🔵 進階</td><td>6</td><td>140</td></tr>
+                  <tr><td rowspan="6">📅 每日任務</td><td>⚪ 普通</td><td>2</td><td>100</td></tr>
+                  <tr><td>🔵 高級</td><td>6</td><td>140</td></tr>
                   <tr><td>🟣 稀有</td><td>10</td><td>200</td></tr>
+                  <tr><td>🩷 罕見</td><td>15</td><td>300</td></tr>
                   <tr><td>🟠 史詩</td><td>64</td><td>500</td></tr>
+                  <tr><td>🌈 神話</td><td>100</td><td>800</td></tr>
                   <tr><td>📜 卷軸任務</td><td>依活動</td><td colspan="2">活動期間限定，獎勵依各活動而定。</td></tr>
                   <tr><td>⚔️ 冒險任務</td><td>冒險</td><td>2</td><td>依各任務</td></tr>
                   <tr><td>🏘️ 社區任務</td><td>社區</td><td colspan="2">社區資金 10 ＋ 社區活躍 10</td></tr>
@@ -474,7 +478,7 @@
             <div class="guide-faq">
               <div class="guide-faq-item">
                 <button class="guide-faq-q">每天會有幾個任務？</button>
-                <div class="guide-faq-a"><div class="guide-faq-a-inner">每天 00:00 系統會自動分配 <strong>10 個</strong>每日任務，內容隨機。任務有四種稀有度（普通/進階/稀有/史詩），稀有度越高獎勵越豐富，但出現機率也越低。</div></div>
+                <div class="guide-faq-a"><div class="guide-faq-a-inner">每天 00:00 系統會自動分配 <strong>10 個</strong>每日任務，內容隨機。任務有六種稀有度（普通/高級/稀有/罕見/史詩/神話），稀有度越高獎勵越豐富，但出現機率也越低。史詩和神話任務預設不會出現，需要透過進度解鎖。</div></div>
               </div>
               <div class="guide-faq-item">
                 <button class="guide-faq-q">任務忘記做會怎樣？</button>
@@ -583,7 +587,7 @@
     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="18 15 12 9 6 15"/></svg>
   </button>
 
-  <script src="../main.js?v=140514m"></script>
+  <script src="../main.js?v=140514n"></script>
   <script src="../music-player.js?v=120512a"></script>
 
   <!-- Page Loader dismiss -->
