@@ -97,7 +97,7 @@
       <p class="section-desc">每天上線做做任務，殺怪、挖礦、採集，完成就有獎勵拿。不用刻意刷，隨手做就能慢慢累積。</p>
       <div class="guide-quick-stats">
         <div class="guide-qs-item"><span class="guide-qs-icon">📋</span><span>任務類型</span><span class="guide-qs-val">4 種</span></div>
-        <div class="guide-qs-item"><span class="guide-qs-icon">🪙</span><span>獎勵</span><span class="guide-qs-val">2 種貨幣</span></div>
+        <div class="guide-qs-item"><span class="guide-qs-icon">🪙</span><span>獎勵</span><span class="guide-qs-val">任務幣＋風幣</span></div>
         <div class="guide-qs-item"><span class="guide-qs-icon">🔄</span><span>每日刷新</span><span class="guide-qs-val">00:00</span></div>
       </div>
     </div>
@@ -236,7 +236,7 @@
           <!-- ═══ 每日任務獎勵 ═══ -->
           <div class="guide-section-card fade-in" style="--card-accent:var(--lavender)">
             <h2><span class="sec-icon">🎁</span> 每日任務獎勵</h2>
-            <p>每日任務有五種稀有度，每天系統會隨機分配 <strong>10 個</strong>任務。稀有度越高，獎勵越豐富：</p>
+            <p>每日任務有四種稀有度，每天系統會隨機分配 <strong>10 個</strong>任務。稀有度越高，獎勵越豐富：</p>
             <div class="rules-table-wrap">
               <table class="rules-table">
                 <thead><tr><th>稀有度</th><th>任務幣</th><th>風幣</th><th>說明</th></tr></thead>
@@ -245,12 +245,10 @@
                   <tr><td>🔵 進階</td><td>6</td><td>140</td><td>稍微少見一點，任務幣獎勵是普通的 3 倍。</td></tr>
                   <tr><td>🟣 稀有</td><td>10</td><td>200</td><td>不太常出現，任務幣和風幣都很可觀。</td></tr>
                   <tr><td>🟠 史詩</td><td>64</td><td>500</td><td>非常稀有，一次給 64 任務幣，遇到一定要做！</td></tr>
-                  <tr><td>🌟 贊助</td><td>2</td><td>20</td><td>贊助專屬任務，只有贊助會員才會出現。</td></tr>
                 </tbody>
               </table>
             </div>
             <div class="callout callout-tip"><span class="callout-icon">💡</span><span>史詩任務一次就給 64 任務幣，相當於做 10 個普通任務的量。遇到的話千萬別放棄！</span></div>
-            <div class="callout callout-info"><span class="callout-icon">ℹ️</span><span>贊助任務只有贊助會員才會獲得，是額外的任務機會。詳見<a href="../贊助">贊助</a>頁面。</span></div>
           </div>
 
           <div class="guide-divider"></div>
@@ -311,11 +309,10 @@
               <table class="rules-table">
                 <thead><tr><th>任務類型</th><th>稀有度</th><th>任務幣</th><th>風幣</th></tr></thead>
                 <tbody>
-                  <tr><td rowspan="5">📅 每日任務</td><td>⚪ 普通</td><td>2</td><td>100</td></tr>
+                  <tr><td rowspan="4">📅 每日任務</td><td>⚪ 普通</td><td>2</td><td>100</td></tr>
                   <tr><td>🔵 進階</td><td>6</td><td>140</td></tr>
                   <tr><td>🟣 稀有</td><td>10</td><td>200</td></tr>
                   <tr><td>🟠 史詩</td><td>64</td><td>500</td></tr>
-                  <tr><td>🌟 贊助</td><td>2</td><td>20</td></tr>
                   <tr><td>📜 卷軸任務</td><td>依活動</td><td colspan="2">活動期間限定，獎勵依各活動而定。</td></tr>
                   <tr><td>⚔️ 冒險任務</td><td>冒險</td><td>2</td><td>依各任務</td></tr>
                   <tr><td>🏘️ 社區任務</td><td>社區</td><td colspan="2">社區資金 10 ＋ 社區活躍 10</td></tr>
@@ -344,25 +341,34 @@
 
           <div class="guide-divider"></div>
 
-          <!-- ═══ 常見任務內容 ═══ -->
+          <!-- ═══ 任務內容 ═══ -->
           <div class="guide-section-card fade-in" style="--card-accent:var(--sand)">
-            <h2><span class="sec-icon">🎯</span> 常見任務內容</h2>
-            <p>每日任務的內容通常圍繞著基本遊戲操作，以下是一些常見的任務類型：</p>
+            <h2><span class="sec-icon">🎯</span> 任務內容</h2>
+            <p>任務系統目前共有 <strong>125 個</strong>每日任務和 <strong>8 個</strong>冒險任務，以下是部分任務名稱：</p>
+
+            <h3 style="margin-top:var(--space-lg)">每日任務（部分）</h3>
             <div class="rules-table-wrap">
               <table class="rules-table">
-                <thead><tr><th>任務類型</th><th>範例目標</th><th>難度</th></tr></thead>
+                <thead><tr><th>稀有度</th><th>任務名稱</th></tr></thead>
                 <tbody>
-                  <tr><td>🗡️ 戰鬥類</td><td>擊殺 10 隻殭屍</td><td>⭐ 簡單</td></tr>
-                  <tr><td>⛏️ 挖礦類</td><td>挖掘 32 個鐵礦</td><td>⭐ 簡單</td></tr>
-                  <tr><td>🌾 採集類</td><td>收穫 20 個小麥</td><td>⭐ 簡單</td></tr>
-                  <tr><td>🎣 釣魚類</td><td>釣到 5 條魚</td><td>⭐⭐ 中等</td></tr>
-                  <tr><td>🍖 烹飪類</td><td>烤熟 16 個生牛肉</td><td>⭐ 簡單</td></tr>
-                  <tr><td>🏗️ 建築類</td><td>放置 64 個石頭</td><td>⭐ 簡單</td></tr>
-                  <tr><td>🌿 農業類</td><td>種植 10 棵樹苗</td><td>⭐ 簡單</td></tr>
+                  <tr><td>⚪ 普通</td><td>鋼門、眾矢之的、洗心革面、生長激素、毒素刺身、程門立雪、更衣間、打包帶走、種瓜得瓜、綠化地毯、百年歷史、我要得地衣、砍樹、採礦、釣魚、烤馬鈴薯好吃、收穫農作物、吃烤肉、剪羊毛、一天億蘋果醫生驅離我 …</td></tr>
+                  <tr><td>🔵 進階</td><td>園丁生意、周處除三害、別撿破爛、就你大隻、魔法根源敗於武力、史萊姆全家桶、服裝設計師、危險的水晶、工地魂上身、冰山溶解、金山銀山前路有、前往叢林深處探險、升級雲端硬碟、伐木工 …</td></tr>
+                  <tr><td>🟣 稀有</td><td>上好翡翠9塊9上車、與神同行、睡眠不足、燈火通明、吃烤魚、酸鹼中和、斷頭台 …</td></tr>
+                  <tr><td>🟠 史詩</td><td>拳頭即是一切、驅逐失敗、美食吃播、冰箱挑戰、凋零山莊、虧本生意、敬業樂業PLUS …</td></tr>
                 </tbody>
               </table>
             </div>
-            <div class="callout callout-info"><span class="callout-icon">ℹ️</span><span>挖礦類任務使用精準採集附魔的工具也有效，不用擔心採集方式會影響任務進度。</span></div>
+
+            <h3 style="margin-top:var(--space-lg)">冒險任務</h3>
+            <div class="rules-table-wrap">
+              <table class="rules-table">
+                <thead><tr><th>任務名稱</th></tr></thead>
+                <tbody>
+                  <tr><td>一天一蘋果，醫生遠離我、海的祝福、紅蓮熔心、千夜的試煉、純麥、河豚刺身、質量不守恆、教你如何戴上一頂帽子</td></tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="callout callout-info"><span class="callout-icon">ℹ️</span><span>以上僅列出部分任務，完整任務列表請查看<a href="https://seawind-cc.notion.site/269fa143253b803b89a5e873008dbad5?v=269fa143253b804db95b000c7bec97b7" target="_blank" rel="noopener">任務資料庫（Notion）</a>。</span></div>
           </div>
 
           <div class="guide-divider"></div>
@@ -410,7 +416,7 @@
               <li><strong>優先做高稀有度任務</strong> — 史詩任務一次給 64 任務幣，遇到千萬別錯過。</li>
               <li><strong>社區任務要參與</strong> — 雖然不給個人貨幣，但社區升級後所有人都能受益。</li>
               <li><strong>冒險任務別錯過</strong> — 雖然需要主動找 NPC，但風幣獎勵通常比每日任務高出許多。</li>
-              <li><strong>贊助任務額外機會</strong> — 贊助會員會獲得額外的贊助任務，是更多任務幣和風幣的來源。</li>
+              <li><strong>任務都有名字</strong> — 每個任務都有獨特的名稱和故事，像「拳頭即是一切」「凋零山莊」「河豚刺身」等，做任務也能看看有趣的劇情。</li>
             </ul>
           </div>
 
@@ -427,10 +433,6 @@
               <div class="guide-faq-item">
                 <button class="guide-faq-q">任務忘記做會怎樣？</button>
                 <div class="guide-faq-a"><div class="guide-faq-a-inner">每日任務每天 00:00 自動刷新，沒做完的任務會消失，無法補做。但已經獲得的獎勵都保留在帳號中。冒險任務有各自的時限，注意查看截止時間。社區任務則是全服共享進度，你的貢獻不會白費。</div></div>
-              </div>
-              <div class="guide-faq-item">
-                <button class="guide-faq-q">贊助任務一般人拿不到嗎？</button>
-                <div class="guide-faq-a"><div class="guide-faq-a-inner">是的，贊助任務是贊助會員的專屬任務，只有贊助會員才會在每日任務中看到。這是贊助的額外好處之一，讓贊助會員有更多任務可以做。詳見<a href="../贊助">贊助</a>頁面。</div></div>
               </div>
               <div class="guide-faq-item">
                 <button class="guide-faq-q">任務幣可以做什麼？</button>
