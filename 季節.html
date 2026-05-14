@@ -657,6 +657,7 @@
       entries.forEach(function(e) { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
     }, { threshold: 0.1 });
     document.querySelectorAll('.fade-in').forEach(function(el) { observer.observe(el); });
+    document.querySelectorAll('.season-card').forEach(function(el) { observer.observe(el); });
 
     /* ── FAQ Toggle ── */
     document.querySelectorAll('.sf-q').forEach(function(btn) {
