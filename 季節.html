@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <link rel="canonical" href="https://www.seawind.cc/季節">
+  <meta name="color-scheme" content="dark light">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>季節系統 — 海風伺服器</title>
+  <meta name="description" content="海風伺服器的季節系統——長期、多階段、有進度的限定體驗。目前第一季：風緣季，暑假限定 73 天。">
+  <link rel="icon" href="assets/img/logo.png">
+  <link rel="apple-touch-icon" href="assets/img/logo.png">
+  <link rel="manifest" href="manifest.json">
+  <meta property="og:title" content="季節系統 — 海風伺服器">
+  <meta property="og:description" content="海風伺服器的季節系統——長期、多階段、有進度的限定體驗。目前第一季：風緣季。">
+  <meta property="og:image" content="assets/img/logo.png">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:image" content="assets/img/logo.png">
+  <meta name="theme-color" content="#0d1117">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;800&family=Noto+Serif+TC:wght@700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css?v=140514h">
+  <link rel="stylesheet" href="music-player.css?v=140514h">
+  <link rel="preload" href="music-player.js?v=140514h" as="script">
+  <style>
+    /* ═══ Seasons Page ═══ */
+
+    /* ── Hero ── */
+    .page-hero-seasons {
+      text-align: center;
+      border-bottom: 1px solid transparent;
+      border-image: linear-gradient(90deg, transparent, rgba(157,175,255,0.15), rgba(171,114,249,0.1), transparent) 1;
+    }
+    .page-hero-seasons h1 {
+      font-size: clamp(1.8rem, 5vw, 2.8rem);
+      font-weight: 900;
+      color: var(--white);
+      letter-spacing: -0.03em;
+      margin-bottom: var(--space-xs);
+    }
+    .page-hero-seasons .section-desc {
+      color: var(--fog);
+      font-size: 0.95rem;
+      max-width: 520px;
+      margin: 0 auto;
+      line-height: 1.7;
+    }
+
+    /* ── Hero 統計條 ── */
+    .seasons-hero-stats {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-sm);
+      margin-top: var(--space-md);
+      font-size: 0.82rem;
+      color: var(--fog);
+      flex-wrap: wrap;
+    }
+    .shs-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .shs-dot {
+      width: 7px; height: 7px;
+      border-radius: 50%;
+      display: inline-block;
+    }
+    .shs-dot-live {
+      background: var(--lavender);
+      box-shadow: 0 0 6px rgba(171,114,249,0.5);
+      animation: shs-pulse 2s ease-in-out infinite;
+    }
+    @keyframes shs-pulse {
+      0%, 100% { box-shadow: 0 0 4px rgba(171,114,249,0.3); }
+      50% { box-shadow: 0 0 10px rgba(171,114,249,0.6); }
+    }
+    .shs-sep { opacity: 0.3; }
+
+    /* ── Section Label ── */
+    .seasons-section-label {
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--fog);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      margin-bottom: var(--space-lg);
+      padding-left: var(--space-xs);
+      display: flex;
+      align-items: center;
+      gap: var(--space-sm);
+      position: relative;
+    }
+    .seasons-section-label::before {
+      content: '';
+      display: block !important;
+      width: 4px;
+      height: 18px;
+      border-radius: 2px;
+      background: linear-gradient(180deg, var(--lavender), var(--sky));
+      flex-shrink: 0;
+    }
+    .seasons-section-label::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(90deg, rgba(171,114,249,0.2), rgba(157,175,255,0.08), transparent);
+    }
+    .seasons-section-label .label-icon {
+      font-size: 1rem;
+      margin-right: 2px;
+    }
+    .seasons-section-label .label-count {
+      font-size: 0.7rem;
+      font-weight: 600;
+      padding: 2px 8px;
+      border-radius: 100px;
+      background: rgba(171,114,249,0.08);
+      color: var(--lavender);
+      border: 1px solid rgba(171,114,249,0.12);
+    }
+
+    /* ── Season Card ── */
+    .seasons-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+      gap: var(--space-lg);
+      margin-bottom: var(--space-2xl);
+    }
+
+    .season-card {
+      position: relative;
+      background: rgba(0, 0, 0, 0.3);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: var(--radius-lg);
+      padding: var(--space-xl);
+      overflow: hidden;
+      transition: transform 0.4s var(--ease), box-shadow 0.4s var(--ease), border-color 0.4s var(--ease);
+      text-decoration: none;
+      color: inherit;
+      display: block;
+    }
+    .season-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 36px rgba(0, 0, 0, 0.25);
+      border-color: rgba(171, 114, 249, 0.25);
+    }
+    .season-card:focus-visible {
+      outline: 2px solid var(--lavender);
+      outline-offset: 2px;
+    }
+    .season-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--season-accent, var(--lavender)), transparent 60%, var(--season-accent, var(--lavender)));
+      opacity: 0.6;
+      transition: opacity 0.4s var(--ease), height 0.4s var(--ease);
+    }
+    .season-card:hover::before { opacity: 1; height: 4px; }
+    .season-card::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: var(--radius-lg);
+      background: radial-gradient(ellipse at 50% 0%, var(--season-accent, var(--lavender)), transparent 70%);
+      opacity: 0;
+      transition: opacity 0.4s var(--ease);
+      pointer-events: none;
+      z-index: 0;
+    }
+    .season-card:hover::after { opacity: 0.05; }
+    .season-card > * { position: relative; z-index: 1; }
+
+    /* Featured season card */
+    .season-card-featured {
+      border-color: rgba(171, 114, 249, 0.2) !important;
+      box-shadow: 0 0 0 1px rgba(171, 114, 249, 0.08), 0 8px 32px rgba(171, 114, 249, 0.06);
+    }
+    .season-card-featured:hover {
+      border-color: rgba(171, 114, 249, 0.35) !important;
+      box-shadow: 0 0 0 1px rgba(171, 114, 249, 0.15), 0 12px 40px rgba(171, 114, 249, 0.12);
+    }
+    .season-card-featured::before {
+      background: linear-gradient(90deg, var(--lavender), var(--sky), var(--lavender)) !important;
+      opacity: 0.8 !important;
+    }
+
+    .season-card-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: var(--space-md);
+      flex-wrap: wrap;
+      gap: var(--space-sm);
+    }
+    .season-card-title {
+      font-size: 1.3rem;
+      font-weight: 800;
+      color: var(--white);
+      letter-spacing: -0.01em;
+    }
+    .season-card-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 0.7rem;
+      font-weight: 700;
+      padding: 3px 10px;
+      border-radius: 100px;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+    .season-card-badge.active {
+      background: rgba(171, 114, 249, 0.12);
+      color: var(--lavender);
+      border: 1px solid rgba(171, 114, 249, 0.2);
+      animation: season-badge-glow 2.5s ease-in-out infinite;
+    }
+    @keyframes season-badge-glow {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(171, 114, 249, 0); }
+      50% { box-shadow: 0 0 8px 1px rgba(171, 114, 249, 0.15); }
+    }
+    .season-card-badge.upcoming {
+      background: rgba(255, 170, 50, 0.12);
+      color: #ffaa32;
+      border: 1px solid rgba(255, 170, 50, 0.2);
+    }
+    .season-card-badge.ended {
+      background: rgba(255, 255, 255, 0.06);
+      color: var(--fog);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .season-card-desc {
+      color: var(--cloud);
+      font-size: 0.95rem;
+      line-height: 1.7;
+      margin-bottom: var(--space-lg);
+    }
+
+    /* Tags */
+    .season-card-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-bottom: var(--space-md);
+    }
+    .season-tag {
+      display: inline-block;
+      padding: 4px 10px;
+      background: rgba(171, 114, 249, 0.1);
+      border: 1px solid rgba(171, 114, 249, 0.15);
+      border-radius: 100px;
+      font-size: 0.78rem;
+      color: var(--lavender);
+    }
+
+    /* Meta */
+    .season-card-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-md);
+      font-size: 0.8rem;
+      color: var(--fog);
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+      padding-top: var(--space-md);
+    }
+    .season-meta-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+    }
+    .season-meta-icon {
+      font-size: 0.9rem;
+      opacity: 0.6;
+    }
+
+    /* ── Season vs Event 比較 ── */
+    .season-compare {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-md);
+      margin: var(--space-lg) 0;
+    }
+    .sc-compare-col {
+      background: var(--drift);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: var(--radius-md);
+      padding: var(--space-lg);
+    }
+    .sc-compare-title {
+      font-weight: 800;
+      font-size: 0.95rem;
+      color: var(--white);
+      margin-bottom: var(--space-sm);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .sc-compare-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .sc-compare-list li {
+      color: var(--cloud);
+      font-size: 0.88rem;
+      line-height: 1.8;
+      padding: 4px 0;
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+    }
+    .sc-compare-list li::before {
+      content: '·';
+      color: var(--fog);
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    /* ── FAQ ── */
+    .season-faq {
+      margin: var(--space-lg) 0;
+    }
+    .sf-item {
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: var(--radius-md);
+      margin-bottom: var(--space-sm);
+      overflow: hidden;
+      background: var(--drift);
+    }
+    .sf-q {
+      width: 100%;
+      background: none;
+      border: none;
+      padding: var(--space-md);
+      text-align: left;
+      color: var(--white);
+      font-weight: 600;
+      font-size: 0.92rem;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-family: inherit;
+    }
+    .sf-q::after { content: '▸'; color: var(--fog); transition: transform 0.3s; }
+    .sf-item.open .sf-q::after { transform: rotate(90deg); }
+    .sf-a {
+      display: none;
+      padding: 0 var(--space-md) var(--space-md);
+      color: var(--cloud);
+      font-size: 0.88rem;
+      line-height: 1.8;
+    }
+    .sf-item.open .sf-a { display: block; }
+
+    /* ── Light Mode ── */
+    [data-theme="light"] .page-hero-seasons {
+      border-image: linear-gradient(90deg, transparent, rgba(120,100,220,0.12), rgba(74,108,247,0.08), transparent) 1;
+    }
+    [data-theme="light"] .season-card {
+      background: #ffffff;
+      border-color: rgba(0, 0, 0, 0.06);
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+    }
+    [data-theme="light"] .season-card:hover {
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+      border-color: rgba(120, 100, 220, 0.2);
+    }
+    [data-theme="light"] .season-card::before { opacity: 0.8; filter: brightness(0.7); }
+    [data-theme="light"] .season-card::after { opacity: 0; }
+    [data-theme="light"] .season-card:hover::after { opacity: 0.03; }
+    [data-theme="light"] .season-card-title { color: var(--cloud); }
+    [data-theme="light"] .season-card-desc { color: #5a6270; }
+    [data-theme="light"] .season-card-meta { border-top-color: rgba(0, 0, 0, 0.06); }
+    [data-theme="light"] .seasons-section-label::before { background: linear-gradient(180deg, #7864dc, var(--ocean-blue)); }
+    [data-theme="light"] .seasons-section-label::after { background: linear-gradient(90deg, rgba(120,100,220,0.12), rgba(74,108,247,0.06), transparent); }
+    [data-theme="light"] .seasons-section-label .label-count { background: rgba(120,100,220,0.06); color: #7864dc; border-color: rgba(120,100,220,0.1); }
+    [data-theme="light"] .season-card-featured {
+      border-color: rgba(120, 100, 220, 0.25) !important;
+      box-shadow: 0 0 0 1px rgba(120, 100, 220, 0.1), 0 8px 32px rgba(120, 100, 220, 0.08) !important;
+    }
+    [data-theme="light"] .sc-compare-col { background: #f8f9fa; border-color: rgba(0, 0, 0, 0.06); }
+    [data-theme="light"] .sc-compare-title { color: var(--cloud); }
+    [data-theme="light"] .sc-compare-list li { color: #5a6270; }
+    [data-theme="light"] .sf-item { background: #f8f9fa; border-color: rgba(0,0,0,0.06); }
+    [data-theme="light"] .seasons-hero-stats { color: #6a737d; }
+    [data-theme="light"] .shs-dot-live { background: #7864dc; box-shadow: 0 0 6px rgba(120,100,220,0.3); }
+    [data-theme="light"] .season-tag { background: rgba(120,100,220,0.08); border-color: rgba(120,100,220,0.12); color: #7864dc; }
+
+    /* ── Stagger ── */
+    .season-card {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.6s var(--ease), transform 0.6s var(--ease),
+                  box-shadow 0.4s var(--ease), border-color 0.4s var(--ease);
+    }
+    .season-card.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .seasons-grid .season-card:nth-child(1) { transition-delay: 0s; }
+    .seasons-grid .season-card:nth-child(2) { transition-delay: 0.12s; }
+    .seasons-grid .season-card:nth-child(3) { transition-delay: 0.24s; }
+
+    /* ── Responsive ── */
+    @media (max-width: 768px) {
+      .seasons-grid { grid-template-columns: 1fr; }
+      .season-compare { grid-template-columns: 1fr; }
+    }
+
+    /* ── Print ── */
+    @media print {
+      .season-card { break-inside: avoid; border: 1px solid #ccc; margin-bottom: 16px; box-shadow: none; }
+      .season-card:hover { transform: none; }
+    }
+  </style>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    "name": "海風季節系統",
+    "description": "海風伺服器的季節系統——長期、多階段、有進度的限定體驗。",
+    "url": "https://www.seawind.cc/季節.html",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "海風 SeaWind 官方網站",
+      "url": "https://www.seawind.cc"
+    }
+  }
+  </script>
+</head>
+<body>
+  <!-- Page Loader -->
+  <div class="page-loader" id="pageLoader">
+    <span class="loader-logo">海風</span>
+    <div class="loader-wave"></div>
+    <div class="loader-dots"><span></span><span></span><span></span></div>
+  </div>
+  <a href="#mainContent" class="skip-link">跳到主要內容</a>
+  <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
+  <div class="bg-atmosphere"></div>
+
+  <nav class="nav">
+    <a href="首頁" class="nav-logo">
+      <picture><source srcset="assets/img/logo.webp" type="image/webp"><img src="assets/img/logo.png" alt="海風" class="nav-logo-img" width="48" height="48" fetchpriority="high"></picture>
+      <span>海風伺服器</span>
+    </a>
+    <div class="nav-right">
+      <ul class="nav-links">
+        <li><a href="首頁">首頁</a></li>
+        <li><a href="公告">公告</a></li>
+        <li class="nav-dropdown">
+          <a href="文化藝廊" class="nav-dropdown-toggle" aria-expanded="false" aria-haspopup="true">關於 <span class="arrow">▾</span></a>
+          <ul class="dropdown-menu">
+            <li><a href="文化藝廊">文化藝廊</a></li>
+            <li><a href="活動">活動</a></li>
+            <li><a href="季節">季節</a></li>
+            <li><a href="季節" class="active">季節</a></li>
+            <li><a href="風景照">風景照</a></li>
+            <li><a href="歷史館">歷史館</a></li>
+            <li><a href="海風團隊">海風團隊</a></li>
+          </ul>
+        </li>
+        <li><a href="海風指南">海風指南</a></li>
+        <li class="nav-dropdown">
+          <a href="社群須知" class="nav-dropdown-toggle" aria-expanded="false" aria-haspopup="true">須知 <span class="arrow">▾</span></a>
+          <ul class="dropdown-menu">
+            <li><a href="社群須知">社群須知</a></li>
+            <li><a href="支持須知">支持須知</a></li>
+            <li><a href="管理通則">管理通則</a></li>
+            <li><a href="公務人員須知">公務人員須知</a></li>
+            <li><a href="設計規範">設計規範</a></li>
+            <li><a href="服務條款">服務條款</a></li>
+            <li><a href="隱私權政策">隱私權政策</a></li>
+          </ul>
+        </li>
+        <li><a href="贊助">贊助</a></li>
+        <li><a href="相關連結">相關連結</a></li>
+        <li class="nav-dropdown">
+          <a href="資料中心/合作夥伴" class="nav-dropdown-toggle" aria-expanded="false" aria-haspopup="true">資料中心 <span class="arrow">▾</span></a>
+          <ul class="dropdown-menu">
+            <li><a href="資料中心/合作夥伴">合作夥伴</a></li>
+            <li><a href="資料中心/支持牆">支持牆</a></li>
+            <li><a href="資料中心/線上工單">線上工單</a></li>
+            <li><a href="資料中心/違規處分">違規處分</a></li>
+          </ul>
+        </li>
+      </ul>
+      <button class="nav-theme" id="themeToggle" aria-label="切換主題"></button>
+      <button class="nav-toggle" aria-label="選單">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <div class="page">
+    <div id="mainContent" class="page-hero page-hero-seasons fade-in">
+      <h1>🌊 季節系統</h1>
+      <p class="section-desc">長期、多階段、有進度的限定體驗。跟一般活動不同，季節是一個完整的框架——有代幣、有任務、有商店，結束後留下永久的紀念。</p>
+      <div class="seasons-hero-stats">
+        <span class="shs-item"><span class="shs-dot shs-dot-live"></span> 風緣季 進行中</span>
+        <span class="shs-sep">·</span>
+        <span class="shs-item">第一季 · 6/20 – 9/01</span>
+      </div>
+    </div>
+
+    <div class="content-section">
+
+      <!-- 季節 vs 活動 -->
+      <div class="seasons-section-label"><span class="label-icon">💡</span> 季節 vs 活動</div>
+      <div class="season-compare">
+        <div class="sc-compare-col">
+          <div class="sc-compare-title">⏳ 一般活動</div>
+          <ul class="sc-compare-list">
+            <li>2–6 週，短期體驗</li>
+            <li>單一主題（珍奶日、端午節）</li>
+            <li>固定任務池</li>
+            <li>活動結束，代幣失效</li>
+            <li>稱號保留</li>
+          </ul>
+        </div>
+        <div class="sc-compare-col">
+          <div class="sc-compare-title">🌊 季節系統</div>
+          <ul class="sc-compare-list">
+            <li>10+ 週，長期框架</li>
+            <li>多階段、多系統</li>
+            <li>每週輪替 + 主線任務鏈</li>
+            <li>季節結束，代幣失效</li>
+            <li>稱號 + 道具永久保留</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="s-divider" style="height:1px;background:linear-gradient(90deg,transparent,rgba(157,175,255,0.12),transparent);margin:var(--space-xl) 0;"></div>
+
+      <!-- 季節列表 -->
+      <div class="seasons-section-label"><span class="label-icon">🌊</span> 季節列表 <span class="label-count">1 季</span></div>
+      <div class="seasons-grid">
+
+        <!-- 風緣季 -->
+        <a href="季節/風緣季" class="season-card season-card-featured" style="--season-accent: var(--lavender);">
+          <div class="season-card-header">
+            <span class="season-card-title">🌊 風緣季</span>
+            <span class="season-card-badge active">進行中</span>
+          </div>
+          <p class="season-card-desc">
+            海風第一個季節系統。「在海風相遇，就是一種緣分。」<br>
+            完成季節任務收集風之羽，在季節商店兌換限定粒子效果、外觀、家具與稱號。免費參加，季卡玩家享額外加成。
+          </p>
+          <div class="season-card-tags">
+            <span class="season-tag">🪶 風之羽代幣</span>
+            <span class="season-tag">🎯 每日/每週任務</span>
+            <span class="season-tag">📖 四章主線</span>
+            <span class="season-tag">✨ 三階粒子</span>
+            <span class="season-tag">🏪 季節商店</span>
+          </div>
+          <div class="season-card-meta">
+            <span class="season-meta-item"><span class="season-meta-icon">📅</span> 6/20 – 9/01（73 天）</span>
+            <span class="season-meta-item"><span class="season-meta-icon">💰</span> 免費參加</span>
+            <span class="season-meta-item" style="margin-left:auto;color:var(--lavender);font-weight:600;">查看詳情 →</span>
+          </div>
+        </a>
+
+      </div>
+
+      <!-- FAQ -->
+      <div class="seasons-section-label"><span class="label-icon">❓</span> 常見問題</div>
+      <div class="season-faq">
+        <div class="sf-item">
+          <button class="sf-q">季節跟活動有什麼不同？</button>
+          <div class="sf-a">活動是短期的單一主題體驗（如珍奶日 5 週），季節是長期的多系統框架（如風緣季 10 週）。季節有專屬代幣、每週輪替任務、主線故事、分層道具系統，內容更豐富、參與時間更長。</div>
+        </div>
+        <div class="sf-item">
+          <button class="sf-q">參加季節要花錢嗎？</button>
+          <div class="sf-a">不用。免費參加，所有玩家自動參與。季卡有額外獎勵（+50% 代幣、專屬外觀），但免費玩家也能拿到所有核心內容。</div>
+        </div>
+        <div class="sf-item">
+          <button class="sf-q">季節結束後東西會消失嗎？</button>
+          <div class="sf-a">代幣會失效，但稱號、粒子效果、外觀、家具都是永久保留的。只有 T3 道具在季節結束後絕版（無法再升級獲得）。</div>
+        </div>
+        <div class="sf-item">
+          <button class="sf-q">錯過了怎麼辦？</button>
+          <div class="sf-a">每個季節都是限定體驗。T1/T2 道具在季節結束後會改用其他貨幣購買（永久可得），但 T3 和限定稱號錯過就沒了。</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <span class="footer-logo">海風伺服器 SeaWind.cc</span>
+        <p class="footer-tagline">在風與海之間，有一個可以長久生存的地方</p>
+      </div>
+      <div class="footer-links-row">
+        <a href="資料中心/合作夥伴">合作夥伴</a>
+        <span class="footer-dot">·</span>
+        <a href="服務條款">服務條款</a>
+        <span class="footer-dot">·</span>
+        <a href="隱私權政策">隱私權政策</a>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2026 海風伺服器 · 非 Mojang 官方營運 · service@seawind.cc</p>
+      </div>
+      <p class="page-revise">網站最後修改日期 2026.05.14 / 總計修改 <span id="deployCount">—</span> 次</p>
+    </div>
+  </footer>
+
+  <div id="musicPlayer"></div>
+  <div class="back-to-top" id="backToTop" aria-label="回到頂部">↑</div>
+
+  <script>
+    /* ── Page Loader ── */
+    (function(){
+      var loader = document.getElementById('pageLoader');
+      if (!loader) return;
+      function hideLoader() { loader.classList.add('fade-out'); setTimeout(function(){ loader.remove(); }, 600); }
+      if (document.readyState === 'complete') hideLoader();
+      else window.addEventListener('load', hideLoader);
+      setTimeout(hideLoader, 3000);
+    })();
+
+    /* ── Theme ── */
+    var themeToggle = document.getElementById('themeToggle');
+    if (themeToggle) {
+      themeToggle.addEventListener('click', function() {
+        var c = document.documentElement.getAttribute('data-theme');
+        var n = c === 'light' ? '' : 'light';
+        if (n) { document.documentElement.setAttribute('data-theme', n); localStorage.setItem('theme', n); }
+        else { document.documentElement.removeAttribute('data-theme'); localStorage.removeItem('theme'); }
+      });
+      var s = localStorage.getItem('theme');
+      if (s) document.documentElement.setAttribute('data-theme', s);
+    }
+
+    /* ── Nav Toggle ── */
+    var navToggle = document.querySelector('.nav-toggle');
+    if (navToggle) navToggle.addEventListener('click', function() { document.querySelector('.nav-links').classList.toggle('open'); });
+
+    /* ── Scroll Progress ── */
+    window.addEventListener('scroll', function() {
+      var bar = document.getElementById('scrollProgress');
+      if (bar) { var h = document.documentElement.scrollHeight - window.innerHeight; bar.style.width = h > 0 ? (window.scrollY / h * 100) + '%' : '0%'; }
+    });
+
+    /* ── Fade In ── */
+    var observer = new IntersectionObserver(function(entries) {
+      entries.forEach(function(e) { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.fade-in').forEach(function(el) { observer.observe(el); });
+
+    /* ── FAQ Toggle ── */
+    document.querySelectorAll('.sf-q').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        var item = btn.parentElement;
+        var isOpen = item.classList.contains('open');
+        document.querySelectorAll('.sf-item.open').forEach(function(i) { i.classList.remove('open'); });
+        if (!isOpen) item.classList.add('open');
+      });
+    });
+  </script>
+  <script src="music-player.js?v=140514h" defer></script>
+  <script src="utils.js?v=140514h" defer></script>
+  <script src="main.js?v=140514h" defer></script>
+</body>
+</html>
