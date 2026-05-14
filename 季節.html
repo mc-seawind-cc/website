@@ -505,7 +505,7 @@
       <h1>🌊 季節系統</h1>
       <p class="section-desc">長期、多階段、有進度的限定體驗。跟一般活動不同，季節是一個完整的框架——有代幣、有任務、有商店，結束後留下永久的紀念。</p>
       <div class="seasons-hero-stats">
-        <span class="shs-item"><span class="shs-dot shs-dot-live"></span> 風緣季 進行中</span>
+        <span class="shs-item"><span class="shs-dot shs-dot-live"></span> <span id="heroSeasonStatus">風緣季 即將開始</span></span>
         <span class="shs-sep">·</span>
         <span class="shs-item">第一季 · 6/20 – 9/01</span>
       </div>
@@ -548,7 +548,7 @@
         <a href="季節/風緣季" class="season-card season-card-featured fade-in" style="--season-accent: var(--lavender);">
           <div class="season-card-header">
             <span class="season-card-title">🌊 風緣季</span>
-            <span class="season-card-badge active">進行中</span>
+            <span class="season-card-badge upcoming" id="cardSeasonBadge">即將開始</span>
           </div>
           <p class="season-card-desc">
             海風第一個季節系統。「在海風相遇，就是一種緣分。」<br>
@@ -656,6 +656,25 @@
       entries.forEach(function(e) { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
     }, { threshold: 0.1 });
     document.querySelectorAll('.fade-in').forEach(function(el) { observer.observe(el); });
+
+    /* ── Season Status Badge ── */
+    (function() {
+      var start = new Date('2026-06-20T00:00:00+08:00').getTime();
+      var end = new Date('2026-09-01T23:59:59+08:00').getTime();
+      var now = Date.now();
+      var heroStatus = document.getElementById('heroSeasonStatus');
+      var cardBadge = document.getElementById('cardSeasonBadge');
+      if (now < start) {
+        if (heroStatus) heroStatus.textContent = '風緣季 即將開始';
+        if (cardBadge) { cardBadge.textContent = '即將開始'; cardBadge.className = 'season-card-badge upcoming'; }
+      } else if (now < end) {
+        if (heroStatus) heroStatus.textContent = '風緣季 進行中';
+        if (cardBadge) { cardBadge.textContent = '進行中'; cardBadge.className = 'season-card-badge active'; }
+      } else {
+        if (heroStatus) heroStatus.textContent = '風緣季 已結束';
+        if (cardBadge) { cardBadge.textContent = '已結束'; cardBadge.className = 'season-card-badge ended'; }
+      }
+    })();
 
     /* ── FAQ Toggle ── */
     document.querySelectorAll('.sf-q').forEach(function(btn) {
