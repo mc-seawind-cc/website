@@ -546,7 +546,7 @@
       <div class="seasons-grid">
 
         <!-- 風緣季 -->
-        <a href="季節/風緣季" class="season-card season-card-featured" style="--season-accent: var(--lavender);">
+        <a href="季節/風緣季" class="season-card season-card-featured fade-in" style="--season-accent: var(--lavender);">
           <div class="season-card-header">
             <span class="season-card-title">🌊 風緣季</span>
             <span class="season-card-badge active">進行中</span>
@@ -657,7 +657,6 @@
       entries.forEach(function(e) { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
     }, { threshold: 0.1 });
     document.querySelectorAll('.fade-in').forEach(function(el) { observer.observe(el); });
-    document.querySelectorAll('.season-card').forEach(function(el) { observer.observe(el); });
 
     /* ── FAQ Toggle ── */
     document.querySelectorAll('.sf-q').forEach(function(btn) {
