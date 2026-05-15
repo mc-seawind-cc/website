@@ -3289,6 +3289,9 @@ html, body {
   .nav-dropdown.open .dropdown-menu {
     max-height: 500px;
     opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transform: none;
     padding: var(--space-xs) 0;
   }
 
