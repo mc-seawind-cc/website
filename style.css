@@ -3218,6 +3218,8 @@ html, body {
     color: var(--cloud);
     min-height: 48px;
     transition: color 0.2s, background 0.2s;
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
   }
   .nav-links > li > a:hover,
   .nav-links > li > a.active,
@@ -3232,6 +3234,8 @@ html, body {
     cursor: pointer;
     width: 100%;
     justify-content: space-between;
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
   }
   .nav-dropdown-toggle .arrow {
     font-size: 1rem;
@@ -3282,6 +3286,8 @@ html, body {
     min-height: 44px;
     position: relative;
     transition: color 0.2s, background 0.2s;
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
   }
   .nav-dropdown .dropdown-menu li a::before {
     content: '';
