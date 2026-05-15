@@ -70,7 +70,13 @@ document.addEventListener('DOMContentLoaded', () => {
     if (item.isMore) {
       a.addEventListener('click', (e) => {
         e.preventDefault();
-        if (typeof openDrawer === 'function') openDrawer();
+        const dr = document.querySelector('.nav-links');
+        const tg = document.querySelector('.nav-toggle');
+        const bd = document.querySelector('.nav-backdrop');
+        if (dr) dr.classList.add('open');
+        if (tg) tg.classList.add('active');
+        if (bd) bd.classList.add('visible');
+        tabBar.classList.add('hidden');
       });
     }
     tabBar.appendChild(a);
