@@ -1,6 +1,6 @@
 # 海風網站 AI 交接指南
 
-> 最後更新：2026.05.05
+> 最後更新：2026.05.15
 > 複製下方提示詞，貼給新的 AI 助手作為開場訊息。
 
 ---
@@ -109,6 +109,14 @@ git add -A && git commit -m "描述" && git push origin main
 6. **deployCount 自動取得**：透過 GitHub API，不用手動改
 7. **首頁動畫已完成**：不需要再調整首頁的動畫效果
 ```
+
+---
+
+---
+
+## 待辦事項
+
+- [ ] **部署內部工具頁面**：`mc-seawind-cc/internal`（private repo）已建好，需設定 Cloudflare Pages 部署，綁定子域名（如 `internal.seawind.cc`）。CSS/JS 已改為絕對路徑指向主網站，直接上傳即可用。
 
 ---
 
