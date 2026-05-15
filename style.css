@@ -3991,3 +3991,220 @@ html, body {
   .sz-stat{flex:1 1 0;min-width:0;padding:var(--space-sm)var(--space-md)}
   .sz-stat-num{font-size:1.1rem}
 }
+
+/* ═══════════════════════════════════════
+   首頁手機版適配 (Homepage Mobile)
+   2026.05.15
+   ═══════════════════════════════════════ */
+
+/* --- Hero 資訊卡：3 張 → 2+1 --- */
+@media(max-width:520px){
+  .hero-info{
+    flex-wrap:wrap;
+    gap:8px;
+  }
+  .hero-info .info-card{
+    flex:1 1 calc(50% - 4px);
+    min-width:0;
+    padding:10px 12px;
+  }
+  .hero-info .info-card:nth-child(3){
+    flex:1 1 100%;
+  }
+  .info-label{font-size:0.65rem}
+  .info-value{font-size:0.82rem}
+}
+
+/* --- Hero 整體：縮小間距：加大按鈕 --- */
+@media(max-width:768px){
+  .hero-content{
+    padding:var(--space-lg) var(--space-md);
+  }
+  .hero-actions{
+    flex-direction:column;
+    align-items:stretch;
+    gap:10px;
+    margin-bottom:24px;
+  }
+  .hero-actions .btn{
+    width:100%;
+    text-align:center;
+    padding:14px 20px;
+    font-size:0.95rem;
+  }
+  .hero-tips{
+    padding:8px 14px;
+    font-size:0.82rem;
+  }
+  .hero-tips .tips-text{
+    max-width:240px;
+  }
+}
+
+/* --- 珍奶日倒數計時：手機版精簡 --- */
+@media(max-width:480px){
+  .featured-event-inner{
+    padding:var(--space-lg) var(--space-md);
+  }
+  .featured-event-countdown{
+    gap:4px;
+    max-width:280px;
+  }
+  .countdown-block{
+    padding:6px 8px;
+    min-width:48px;
+  }
+  .countdown-num{
+    font-size:1.3rem;
+  }
+  .countdown-label{
+    font-size:0.6rem;
+  }
+  .countdown-sep{
+    font-size:1rem;
+    margin:0 1px;
+  }
+  .featured-event-timeline{
+    gap:4px;
+    font-size:0.65rem;
+  }
+  .timeline-stage{
+    padding:3px 8px;
+  }
+  .timeline-connector{
+    width:16px;
+  }
+}
+
+/* --- section-tint：手機版取消負 margin --- */
+@media(max-width:768px){
+  .section-tint{
+    margin:0;
+    padding:var(--space-lg) var(--space-md);
+    border-radius:0;
+  }
+  .content-section{
+    padding:0 var(--space-md);
+  }
+}
+
+/* --- 文化藝廊精選：手機版單欄 + 圖片比例 --- */
+@media(max-width:768px){
+  .lore-preview-grid{
+    grid-template-columns:1fr;
+    gap:var(--space-md);
+  }
+  .lore-preview-card img{
+    height:160px;
+  }
+}
+
+/* --- 特色卡片：手機版觸控友好 --- */
+@media(max-width:768px){
+  .feature-card{
+    padding:var(--space-lg) var(--space-md);
+    min-height:0;
+  }
+  .feature-card-icon{
+    width:44px;
+    height:44px;
+    margin-bottom:8px;
+  }
+  .feature-card h4{
+    font-size:0.95rem;
+  }
+  .feature-card p{
+    font-size:0.82rem;
+    line-height:1.5;
+  }
+}
+
+/* --- 加入步驟：手機版精簡卡片 --- */
+@media(max-width:768px){
+  .join-step{
+    padding:var(--space-lg) var(--space-md);
+    text-align:center;
+  }
+  .join-step-num{
+    width:32px;
+    height:32px;
+    font-size:0.9rem;
+    margin:0 auto 8px;
+  }
+  .join-step-icon{
+    margin:0 auto 8px;
+  }
+  .join-step h4{
+    font-size:0.95rem;
+  }
+  .join-step p{
+    font-size:0.82rem;
+  }
+}
+
+/* --- 明信片：手機版比例修正 --- */
+@media(max-width:600px){
+  .postcard-grid{
+    grid-template-columns:repeat(2,1fr);
+    gap:8px;
+  }
+  .postcard-item{
+    aspect-ratio:4/3;
+    border-radius:var(--radius-md);
+  }
+  .postcard-item:last-child{
+    grid-column:span 2;
+    aspect-ratio:16/9;
+  }
+  .postcard-label{
+    font-size:0.7rem;
+    padding:4px 8px;
+  }
+}
+
+/* --- section-header：手機版字型 --- */
+@media(max-width:480px){
+  .section-header h2{
+    font-size:1.3rem;
+  }
+  .section-header p,
+  .section-desc{
+    font-size:0.88rem;
+  }
+}
+
+/* --- 按鈕：手機版加大觸控區 --- */
+@media(max-width:768px){
+  .btn{
+    min-height:48px;
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+  }
+}
+
+/* --- 公告欄：手機版精簡間距 --- */
+@media(max-width:480px){
+  .bulletin-board{
+    gap:4px;
+  }
+  .bulletin-toggle{
+    padding:10px 12px;
+    min-height:48px;
+  }
+}
+
+/* --- 風景照輪播：手機版全寬 --- */
+@media(max-width:768px){
+  .photo-carousel{
+    margin:0 calc(-1 * var(--space-md));
+    padding:0 var(--space-sm);
+    border-radius:0;
+  }
+  .carousel-slide{
+    padding:0 4px;
+  }
+  .carousel-slide img{
+    border-radius:var(--radius-md);
+  }
+}
