@@ -57,25 +57,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // --- Language Toggle (繁體 ↔ 簡體) ---
-  const langBtn = document.getElementById('langToggle');
-  const savedLang = localStorage.getItem('seabreeze-lang') || 'zh-TW';
-  document.documentElement.setAttribute('lang', savedLang === 'zh-CN' ? 'zh-CN' : 'zh-Hant');
-  document.documentElement.setAttribute('data-lang', savedLang);
-  if (langBtn) {
-    langBtn.textContent = savedLang === 'zh-CN' ? '简' : '繁';
-    langBtn.title = savedLang === 'zh-CN' ? '簡體中文' : '繁體中文';
-    langBtn.addEventListener('click', () => {
-      const current = document.documentElement.getAttribute('data-lang');
-      const next = current === 'zh-CN' ? 'zh-TW' : 'zh-CN';
-      document.documentElement.setAttribute('data-lang', next);
-      document.documentElement.setAttribute('lang', next === 'zh-CN' ? 'zh-CN' : 'zh-Hant');
-      localStorage.setItem('seabreeze-lang', next);
-      langBtn.textContent = next === 'zh-CN' ? '简' : '繁';
-      langBtn.title = next === 'zh-CN' ? '簡體中文' : '繁體中文';
-    });
-  }
-
   // --- Dynamic Nav Buttons (Style + Language) ---
   (function() {
     const navRight = document.querySelector('.nav-right');
@@ -102,112 +83,7 @@ document.addEventListener('DOMContentLoaded', () => {
       else navRight.insertBefore(st, navRight.firstChild);
     }
 
-    // Language toggle button
-    if (!document.getElementById('langToggle')) {
-      const lb = document.createElement('button');
-      lb.id = 'langToggle';
-      lb.className = 'nav-lang-toggle';
-      lb.setAttribute('aria-label', '切換語言');
-      lb.textContent = document.documentElement.getAttribute('data-lang') === 'zh-CN' ? '简' : '繁';
-      lb.title = document.documentElement.getAttribute('data-lang') === 'zh-CN' ? '簡體中文' : '繁體中文';
-      lb.addEventListener('click', () => {
-        const cur = document.documentElement.getAttribute('data-lang');
-        const nxt = cur === 'zh-CN' ? 'zh-TW' : 'zh-CN';
-        document.documentElement.setAttribute('data-lang', nxt);
-        document.documentElement.setAttribute('lang', nxt === 'zh-CN' ? 'zh-CN' : 'zh-Hant');
-        localStorage.setItem('seabreeze-lang', nxt);
-        lb.textContent = nxt === 'zh-CN' ? '简' : '繁';
-        lb.title = nxt === 'zh-CN' ? '簡體中文' : '繁體中文';
-        applyNavTranslation(nxt);
-      });
-      const styleBtnEl = document.getElementById('styleToggle');
-      if (styleBtnEl) styleBtnEl.parentNode.insertBefore(lb, styleBtnEl.nextSibling);
-      else if (themeBtnEl) themeBtnEl.parentNode.insertBefore(lb, themeBtnEl.nextSibling);
-      else navRight.insertBefore(lb, navRight.firstChild);
-    }
-
-    // --- Nav Translation Map ---
-    const navTranslations = {
-      '首頁': '首页',
-      '公告': '公告',
-      '關於': '关于',
-      '文化藝廊': '文化艺廊',
-      '季節': '季节',
-      '活動': '活动',
-      '風景照': '风景照',
-      '歷史館': '历史馆',
-      '海風團隊': '海风团队',
-      '海風指南': '海风指南',
-      '須知': '须知',
-      '社群須知': '社群须知',
-      '支持須知': '支持须知',
-      '管理通則': '管理通则',
-      '公務人員須知': '公务人员须知',
-      '設計規範': '设计规范',
-      '服務條款': '服务条款',
-      '隱私權政策': '隐私权政策',
-      '贊助': '赞助',
-      '相關連結': '相关连结',
-      '資料中心': '资料中心',
-      '合作夥伴': '合作伙伴',
-      '支持牆': '支持墙',
-      '線上工單': '线上工单',
-      '違規處分': '违规处分'
-    };
-
-    function applyNavTranslation(lang) {
-      document.querySelectorAll('.nav-links a, .dropdown-menu a, .nav-dropdown-toggle').forEach(a => {
-        // Store original text on first run
-        if (!a.dataset.twText) {
-          const txt = a.textContent.replace(/\s*▾\s*$/, '').trim();
-          a.dataset.twText = txt;
-        }
-        const twText = a.dataset.twText;
-        if (lang === 'zh-CN') {
-          const cnText = navTranslations[twText];
-          if (cnText) {
-            if (a.classList.contains('nav-dropdown-toggle')) {
-              a.innerHTML = cnText + ' <span class="arrow">▾</span>';
-            } else {
-              a.textContent = cnText;
-            }
-          }
-        } else {
-          if (a.classList.contains('nav-dropdown-toggle')) {
-            a.innerHTML = twText + ' <span class="arrow">▾</span>';
-          } else {
-            a.textContent = twText;
-          }
-        }
-      });
-
-      // Footer translation
-      const footerTagline = document.querySelector('.footer-tagline');
-      if (footerTagline) {
-        if (!footerTagline.dataset.twText) footerTagline.dataset.twText = footerTagline.textContent;
-        footerTagline.textContent = lang === 'zh-CN'
-          ? '在风与海之间，有一个可以长久生存的地方'
-          : footerTagline.dataset.twText;
-      }
-      const footerCopy = document.querySelector('.footer-bottom p');
-      if (footerCopy) {
-        if (!footerCopy.dataset.twText) footerCopy.dataset.twText = footerCopy.textContent;
-        footerCopy.textContent = lang === 'zh-CN'
-          ? '© 2026 海风服务器 · 非 Mojang 官方运营 · service@seawind.cc'
-          : footerCopy.dataset.twText;
-      }
-      const footerLogo = document.querySelector('.footer-logo');
-      if (footerLogo) {
-        if (!footerLogo.dataset.twText) footerLogo.dataset.twText = footerLogo.textContent;
-        footerLogo.textContent = lang === 'zh-CN'
-          ? '海风服务器 SeaWind.cc'
-          : footerLogo.dataset.twText;
-      }
-    }
-
-    // Apply on load
-    const initLang = document.documentElement.getAttribute('data-lang');
-    if (initLang === 'zh-CN') applyNavTranslation('zh-CN');
+    // No language toggle (removed)
   })();
 
   // --- Critical: Mobile Nav Toggle (Right-side Drawer) ---

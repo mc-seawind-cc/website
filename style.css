@@ -117,15 +117,8 @@ body{font-family:var(--font-body);background:var(--deep);color:var(--cloud);line
 .nav-theme{background:none;border:none;border-radius:0;padding:6px 4px;cursor:pointer;font-size:1.1rem;color:var(--cloud);transition:color var(--duration)var(--ease);line-height:1;display:inline-flex;align-items:center;justify-content:center}
 .nav-theme svg{display:block}
 .nav-theme:hover{color:var(--white)}
-.nav-style-toggle,.nav-lang-toggle{background:none;border:none;border-radius:0;padding:6px 6px;cursor:pointer;font-size:1rem;color:var(--cloud);transition:color var(--duration)var(--ease),background var(--duration)var(--ease);line-height:1;display:inline-flex;align-items:center;justify-content:center;min-width:28px;min-height:28px}
-.nav-style-toggle:hover,.nav-lang-toggle:hover{color:var(--white);background:rgba(157,175,255,0.1)}
-.nav-lang-toggle{font-size:0.85rem;font-weight:700;letter-spacing:0.02em}
-
-/* ═══ Language Switching ═══ */
-[data-lang="zh-CN"] [data-tw],
-[data-lang="zh-TW"] [data-cn] { display: none !important; }
-[data-lang="zh-CN"] [data-cn],
-[data-lang="zh-TW"] [data-tw] { display: revert; }
+.nav-style-toggle{background:none;border:none;border-radius:0;padding:6px 6px;cursor:pointer;font-size:1rem;color:var(--cloud);transition:color var(--duration)var(--ease),background var(--duration)var(--ease);line-height:1;display:inline-flex;align-items:center;justify-content:center;min-width:28px;min-height:28px}
+.nav-style-toggle:hover{color:var(--white);background:rgba(157,175,255,0.1)}
 .nav-dropdown{position:relative;list-style:none}
 .nav-dropdown-toggle .arrow{font-size:0.7em;margin-left:2px;transition:transform var(--duration)var(--ease);display:inline-block}
 .nav-dropdown:hover .arrow,.nav-dropdown.open .arrow{transform:rotate(180deg)}
@@ -4229,4 +4222,25 @@ html, body {
   .carousel-slide img{
     border-radius:var(--radius-md);
   }
+}
+
+/* ═══ Orientation Lock (Force Portrait on Mobile) ═══ */
+@media screen and (orientation: landscape) and (max-width: 900px) {
+  body::before {
+    content: '請將手機轉為直向瀏覽 🔒';
+    position: fixed;
+    inset: 0;
+    z-index: 999999;
+    background: var(--deep, #0d1117);
+    color: var(--white, #e6edf3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+    font-weight: 700;
+    text-align: center;
+    padding: 20px;
+    font-family: "Noto Sans TC", sans-serif;
+  }
+  body > *:not(.page-loader) { display: none !important; }
 }
