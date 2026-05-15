@@ -239,7 +239,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Mobile Nav: close on outside click (backdrop handles this, but keep as fallback)
     document.addEventListener('click', (e) => {
       const navEl = document.querySelector('.nav');
-      if (links && links.classList.contains('open') && !navEl.contains(e.target) && !e.target.closest('.nav-backdrop')) {
+      if (links && links.classList.contains('open') && !navEl.contains(e.target) && !e.target.closest('.nav-backdrop') && !e.target.closest('.mobile-tab-bar')) {
         closeMobileNav();
       }
     });
