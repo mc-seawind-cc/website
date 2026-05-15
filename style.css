@@ -3997,19 +3997,16 @@ html, body {
    2026.05.15
    ═══════════════════════════════════════ */
 
-/* --- Hero 資訊卡：3 張 → 2+1 --- */
+/* --- Hero 資訊卡：手機版全部堆疊 --- */
 @media(max-width:520px){
   .hero-info{
-    flex-wrap:wrap;
+    flex-direction:column;
     gap:8px;
   }
   .hero-info .info-card{
-    flex:1 1 calc(50% - 4px);
-    min-width:0;
-    padding:10px 12px;
-  }
-  .hero-info .info-card:nth-child(3){
-    flex:1 1 100%;
+    flex:none;
+    width:100%;
+    padding:10px 14px;
   }
   .info-label{font-size:0.65rem}
   .info-value{font-size:0.82rem}
@@ -4017,14 +4014,18 @@ html, body {
 
 /* --- Hero 整體：縮小間距：加大按鈕 --- */
 @media(max-width:768px){
+  .hero{
+    min-height:auto;
+    padding:80px 20px 48px;
+  }
   .hero-content{
-    padding:var(--space-lg) var(--space-md);
+    padding:var(--space-md) var(--space-sm);
   }
   .hero-actions{
     flex-direction:column;
     align-items:stretch;
     gap:10px;
-    margin-bottom:24px;
+    margin-bottom:20px;
   }
   .hero-actions .btn{
     width:100%;
@@ -4035,9 +4036,14 @@ html, body {
   .hero-tips{
     padding:8px 14px;
     font-size:0.82rem;
+    margin-top:var(--space-sm);
   }
   .hero-tips .tips-text{
     max-width:240px;
+  }
+  /* 手機版隱藏「向下探索」指示器，自然捲動即可 */
+  .hero-scroll{
+    display:none;
   }
 }
 
@@ -4084,7 +4090,7 @@ html, body {
     border-radius:0;
   }
   .content-section{
-    padding:0 var(--space-md);
+    padding:var(--space-md) var(--space-md) 0;
   }
 }
 
