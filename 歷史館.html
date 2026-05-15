@@ -24,20 +24,16 @@
   <link rel="preload" href="music-player.js?v=120512a" as="script">
   <style>
   /* ═══════════════════════════════════════
-     海風歷史館 — 博物館式交替時間線
-     設計理念：像走進一座歷史博物館，
-     中央的時間軸是骨幹，兩側是故事。
-     不需要點擊，所有內容直接展開，
-     讓人一眼就能感受到時間的流動。
+     海風歷史館 — 黏性滾動博物館
+     設計理念：
+     每個時代是一個展廳，時代標題黏在頂部，
+     事件卡片從下方滑入，像走過一座活的歷史博物館。
      ═══════════════════════════════════════ */
 
   :root {
     --tl-line: rgba(157,175,255,0.12);
-    --tl-dot: var(--sky);
     --tl-card-bg: rgba(255,255,255,0.025);
     --tl-card-border: rgba(255,255,255,0.06);
-    --tl-era-pw: var(--sand);
-    --tl-era-sw: var(--foam);
   }
   [data-theme="light"] {
     --tl-line: rgba(0,0,0,0.08);
@@ -45,35 +41,111 @@
     --tl-card-border: rgba(0,0,0,0.06);
   }
 
-  /* ── 頁首 ── */
+  /* ── Hero ── */
   .tl-hero {
-    text-align: center;
-    padding: 120px 24px 32px;
     position: relative;
+    min-height: 70vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 120px 24px 80px;
     overflow: hidden;
   }
   .tl-hero::before {
     content: '';
     position: absolute; inset: 0;
     background:
-      radial-gradient(ellipse 600px 300px at 30% 40%, rgba(222,172,128,0.05) 0%, transparent 70%),
-      radial-gradient(ellipse 400px 300px at 70% 50%, rgba(157,175,255,0.04) 0%, transparent 70%);
+      radial-gradient(ellipse 600px 400px at 30% 50%, rgba(222,172,128,0.06) 0%, transparent 70%),
+      radial-gradient(ellipse 500px 400px at 70% 40%, rgba(157,175,255,0.05) 0%, transparent 70%),
+      radial-gradient(ellipse 300px 300px at 50% 80%, rgba(168,230,207,0.04) 0%, transparent 70%);
     pointer-events: none;
+  }
+  .tl-hero-eyebrow {
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--fog);
+    margin-bottom: 16px;
+    position: relative;
+    opacity: 0;
+    animation: tl-fadeUp 0.8s 0.2s forwards;
   }
   .tl-hero h1 {
     font-family: 'Noto Serif TC', serif;
-    font-size: clamp(2rem, 5vw, 3.2rem);
+    font-size: clamp(2.5rem, 7vw, 4.5rem);
     font-weight: 900;
     color: var(--white);
-    margin-bottom: 8px;
+    margin-bottom: 16px;
     position: relative;
+    line-height: 1.2;
+    opacity: 0;
+    animation: tl-fadeUp 0.8s 0.4s forwards;
   }
   .tl-hero-sub {
     color: var(--fog);
-    font-size: 0.92rem;
+    font-size: clamp(0.9rem, 2vw, 1.1rem);
     font-style: italic;
     letter-spacing: 0.06em;
     position: relative;
+    max-width: 480px;
+    opacity: 0;
+    animation: tl-fadeUp 0.8s 0.6s forwards;
+  }
+  .tl-hero-stats {
+    display: flex;
+    gap: 40px;
+    margin-top: 40px;
+    position: relative;
+    opacity: 0;
+    animation: tl-fadeUp 0.8s 0.8s forwards;
+  }
+  .tl-hero-stat {
+    text-align: center;
+  }
+  .tl-hero-stat-num {
+    font-family: 'Noto Serif TC', serif;
+    font-size: 2rem;
+    font-weight: 900;
+    color: var(--white);
+    display: block;
+    line-height: 1;
+  }
+  .tl-hero-stat-label {
+    font-size: 0.72rem;
+    color: var(--fog);
+    margin-top: 4px;
+    letter-spacing: 0.04em;
+  }
+  .tl-hero-scroll {
+    position: absolute;
+    bottom: 32px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    color: var(--fog);
+    font-size: 0.7rem;
+    opacity: 0;
+    animation: tl-fadeUp 0.8s 1s forwards;
+  }
+  .tl-hero-scroll-line {
+    width: 1px;
+    height: 32px;
+    background: linear-gradient(180deg, var(--fog), transparent);
+    animation: tl-scrollPulse 2s infinite;
+  }
+  @keyframes tl-scrollPulse {
+    0%, 100% { opacity: 0.3; transform: scaleY(1); }
+    50% { opacity: 1; transform: scaleY(1.3); }
+  }
+  @keyframes tl-fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
   }
 
   /* ── 篩選 ── */
@@ -83,12 +155,14 @@
     gap: 8px;
     padding: 16px 20px;
     position: sticky;
-    top: 64px;
+    top: 60px;
     z-index: 50;
-    background: var(--deep);
+    background: rgba(13,17,23,0.85);
+    -webkit-backdrop-filter: blur(16px);
+    backdrop-filter: blur(16px);
     border-bottom: 1px solid var(--tl-line);
   }
-  [data-theme="light"] .tl-filter { background: #f0f2f5; border-bottom-color: rgba(0,0,0,0.06); }
+  [data-theme="light"] .tl-filter { background: rgba(240,242,245,0.85); }
   .tl-fbtn {
     padding: 8px 20px;
     border-radius: 100px;
@@ -98,7 +172,7 @@
     font-size: 0.82rem;
     font-weight: 600;
     cursor: pointer;
-    transition: all 0.2s;
+    transition: all 0.25s;
     font-family: inherit;
     display: flex;
     align-items: center;
@@ -106,77 +180,93 @@
     white-space: nowrap;
   }
   .tl-fbtn:hover { border-color: var(--sky); color: var(--cloud); }
-  .tl-fbtn.on { background: rgba(157,175,255,0.1); border-color: rgba(157,175,255,0.3); color: var(--sky); }
+  .tl-fbtn.on { background: rgba(157,175,255,0.12); border-color: rgba(157,175,255,0.3); color: var(--sky); }
   .tl-fdot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
   .tl-fbtn[data-e="all"] .tl-fdot { background: linear-gradient(135deg, var(--sand), var(--sky)); }
   .tl-fbtn[data-e="pw"] .tl-fdot { background: var(--sand); }
   .tl-fbtn[data-e="sw"] .tl-fdot { background: var(--foam); }
   [data-theme="light"] .tl-fbtn { background: #fff; border-color: rgba(0,0,0,0.08); }
-  [data-theme="light"] .tl-fbtn.on { background: rgba(157,175,255,0.1); border-color: rgba(157,175,255,0.25); }
+  [data-theme="light"] .tl-fbtn.on { background: rgba(74,108,247,0.08); border-color: rgba(74,108,247,0.25); }
 
-  /* ── 時間線容器 ── */
-  .tl-wrap {
-    max-width: 900px;
-    margin: 0 auto;
-    padding: 0 20px 40px;
+  /* ── 時代黏性標題 ── */
+  .tl-era {
     position: relative;
   }
+  .tl-era-sticky {
+    position: sticky;
+    top: 108px;
+    z-index: 40;
+    text-align: center;
+    padding: 48px 20px 32px;
+    pointer-events: none;
+  }
+  .tl-era-sticky-inner {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s var(--ease), transform 0.6s var(--ease);
+  }
+  .tl-era-sticky-inner.vis { opacity: 1; transform: translateY(0); }
+  .tl-era-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    font-size: 1.8rem;
+  }
+  .tl-era[data-era="pw"] .tl-era-icon {
+    background: rgba(222,172,128,0.12);
+    border: 2px solid rgba(222,172,128,0.25);
+    box-shadow: 0 0 32px rgba(222,172,128,0.08);
+  }
+  .tl-era[data-era="sw"] .tl-era-icon {
+    background: rgba(168,230,207,0.1);
+    border: 2px solid rgba(168,230,207,0.2);
+    box-shadow: 0 0 32px rgba(168,230,207,0.06);
+  }
+  .tl-era-name {
+    font-family: 'Noto Serif TC', serif;
+    font-size: clamp(1.4rem, 4vw, 2rem);
+    font-weight: 900;
+    letter-spacing: 0.08em;
+  }
+  .tl-era[data-era="pw"] .tl-era-name { color: var(--sand); }
+  .tl-era[data-era="sw"] .tl-era-name { color: var(--foam); }
+  .tl-era-sub {
+    font-size: 0.82rem;
+    color: var(--fog);
+    font-style: italic;
+    max-width: 360px;
+  }
+  .tl-era-count {
+    font-size: 0.7rem;
+    color: var(--fog);
+    opacity: 0.6;
+    font-weight: 500;
+  }
 
+  /* ── 時間線容器 ── */
+  .tl-timeline {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 24px 60px;
+    position: relative;
+  }
   /* 中央軸線 */
-  .tl-wrap::before {
+  .tl-timeline::before {
     content: '';
     position: absolute;
     left: 50%;
     top: 0;
     bottom: 0;
     width: 2px;
-    background: linear-gradient(180deg, transparent, var(--tl-line) 40px, var(--tl-line) calc(100% - 40px), transparent);
+    background: linear-gradient(180deg, transparent, var(--tl-line) 60px, var(--tl-line) calc(100% - 60px), transparent);
     transform: translateX(-50%);
-  }
-
-  /* ── 時代章節 ── */
-  .tl-era {
-    position: relative;
-    padding: 40px 0 0;
-  }
-
-  /* 時代標題（置中，在軸線上） */
-  .tl-era-head {
-    text-align: center;
-    position: relative;
-    z-index: 2;
-    margin-bottom: 32px;
-  }
-  .tl-era-icon {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 56px;
-    height: 56px;
-    border-radius: 50%;
-    font-size: 1.6rem;
-    margin-bottom: 8px;
-  }
-  .tl-era[data-era="pw"] .tl-era-icon {
-    background: rgba(222,172,128,0.12);
-    border: 2px solid rgba(222,172,128,0.3);
-  }
-  .tl-era[data-era="sw"] .tl-era-icon {
-    background: rgba(168,230,207,0.1);
-    border: 2px solid rgba(168,230,207,0.25);
-  }
-  .tl-era-name {
-    font-family: 'Noto Serif TC', serif;
-    font-size: 1.5rem;
-    font-weight: 700;
-    display: block;
-  }
-  .tl-era[data-era="pw"] .tl-era-name { color: var(--tl-era-pw); }
-  .tl-era[data-era="sw"] .tl-era-name { color: var(--tl-era-sw); }
-  .tl-era-era-sub {
-    font-size: 0.82rem;
-    color: var(--fog);
-    font-style: italic;
   }
 
   /* ── 年份標記 ── */
@@ -184,18 +274,18 @@
     text-align: center;
     position: relative;
     z-index: 2;
-    margin: 24px 0 20px;
+    margin: 40px 0 28px;
   }
   .tl-year-badge {
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    padding: 6px 20px;
+    padding: 8px 28px;
     background: var(--deep);
     border: 1px solid var(--tl-line);
     border-radius: 100px;
     font-family: 'Noto Serif TC', serif;
-    font-size: 1rem;
+    font-size: 1.1rem;
     font-weight: 700;
     color: var(--white);
   }
@@ -205,10 +295,10 @@
   .tl-item {
     position: relative;
     width: 50%;
-    padding: 0 32px 32px;
+    padding: 0 32px 40px;
     opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 0.5s var(--ease), transform 0.5s var(--ease);
+    transform: translateY(32px);
+    transition: opacity 0.7s var(--ease), transform 0.7s var(--ease);
   }
   .tl-item.vis { opacity: 1; transform: translateY(0); }
   .tl-item.left { margin-left: 0; text-align: right; }
@@ -217,67 +307,68 @@
   /* 軸線圓點 */
   .tl-dot {
     position: absolute;
-    top: 8px;
-    width: 14px;
-    height: 14px;
+    top: 10px;
+    width: 16px;
+    height: 16px;
     border-radius: 50%;
     z-index: 3;
     border: 3px solid var(--deep);
-    transition: transform 0.2s, box-shadow 0.3s;
+    transition: transform 0.3s, box-shadow 0.4s;
   }
-  .tl-item.left .tl-dot { right: -7px; }
-  .tl-item.right .tl-dot { left: -7px; }
+  .tl-item.left .tl-dot { right: -8px; }
+  .tl-item.right .tl-dot { left: -8px; }
   .tl-item:hover .tl-dot { transform: scale(1.4); }
 
   /* 圓點顏色 */
-  .tl-dot.milestone { background: var(--sky); box-shadow: 0 0 0 2px var(--sky); }
-  .tl-dot.update { background: #64dcb4; box-shadow: 0 0 0 2px #64dcb4; }
-  .tl-dot.event { background: #ffaa32; box-shadow: 0 0 0 2px #ffaa32; }
-  .tl-dot.activity { background: #ff8282; box-shadow: 0 0 0 2px #ff8282; }
-  .tl-item:hover .tl-dot.milestone { box-shadow: 0 0 0 2px var(--sky), 0 0 12px rgba(157,175,255,0.4); }
-  .tl-item:hover .tl-dot.update { box-shadow: 0 0 0 2px #64dcb4, 0 0 12px rgba(100,220,180,0.4); }
-  .tl-item:hover .tl-dot.event { box-shadow: 0 0 0 2px #ffaa32, 0 0 12px rgba(255,170,50,0.4); }
-  .tl-item:hover .tl-dot.activity { box-shadow: 0 0 0 2px #ff8282, 0 0 12px rgba(255,130,130,0.4); }
+  .tl-dot.milestone { background: var(--sky); box-shadow: 0 0 0 3px rgba(157,175,255,0.2); }
+  .tl-dot.update { background: #64dcb4; box-shadow: 0 0 0 3px rgba(100,220,180,0.2); }
+  .tl-dot.event { background: #ffaa32; box-shadow: 0 0 0 3px rgba(255,170,50,0.2); }
+  .tl-dot.activity { background: #ff8282; box-shadow: 0 0 0 3px rgba(255,130,130,0.2); }
+  .tl-item:hover .tl-dot.milestone { box-shadow: 0 0 0 3px rgba(157,175,255,0.3), 0 0 16px rgba(157,175,255,0.3); }
+  .tl-item:hover .tl-dot.update { box-shadow: 0 0 0 3px rgba(100,220,180,0.3), 0 0 16px rgba(100,220,180,0.3); }
+  .tl-item:hover .tl-dot.event { box-shadow: 0 0 0 3px rgba(255,170,50,0.3), 0 0 16px rgba(255,170,50,0.3); }
+  .tl-item:hover .tl-dot.activity { box-shadow: 0 0 0 3px rgba(255,130,130,0.3), 0 0 16px rgba(255,130,130,0.3); }
 
   /* 卡片 */
   .tl-card {
     background: var(--tl-card-bg);
     border: 1px solid var(--tl-card-border);
-    border-radius: 12px;
-    padding: 16px 18px;
-    transition: all 0.3s var(--ease);
+    border-radius: 14px;
+    padding: 20px 22px;
+    transition: all 0.35s var(--ease);
     position: relative;
   }
   .tl-item:hover .tl-card {
-    border-color: rgba(157,175,255,0.15);
-    transform: translateY(-2px);
-    box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+    border-color: rgba(157,175,255,0.18);
+    transform: translateY(-3px);
+    box-shadow: 0 12px 32px rgba(0,0,0,0.18);
   }
   [data-theme="light"] .tl-item:hover .tl-card {
-    box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+    box-shadow: 0 12px 32px rgba(0,0,0,0.06);
+    border-color: rgba(74,108,247,0.15);
   }
 
-  /* 卡片連接線（到軸線） */
+  /* 卡片連接線 */
   .tl-item.left .tl-card::after {
     content: '';
     position: absolute;
-    top: 12px;
-    right: -18px;
-    width: 18px;
+    top: 14px;
+    right: -20px;
+    width: 20px;
     height: 2px;
     background: var(--tl-line);
   }
   .tl-item.right .tl-card::after {
     content: '';
     position: absolute;
-    top: 12px;
-    left: -18px;
-    width: 18px;
+    top: 14px;
+    left: -20px;
+    width: 20px;
     height: 2px;
     background: var(--tl-line);
   }
 
-  /* 里程碑加粗邊 */
+  /* 里程碑卡片 */
   .tl-item.milestone-item .tl-card {
     border-left: 3px solid var(--sky);
     background: linear-gradient(135deg, rgba(157,175,255,0.04), var(--tl-card-bg));
@@ -289,26 +380,14 @@
   }
 
   /* 卡片內部 */
-  .tl-card-date {
-    font-size: 0.7rem;
-    color: var(--fog);
-    font-weight: 500;
-    font-variant-numeric: tabular-nums;
-    margin-bottom: 4px;
-  }
-  .tl-card-title {
-    font-size: 0.95rem;
-    font-weight: 700;
-    color: var(--white);
-    margin-bottom: 4px;
-  }
   .tl-card-tag {
     display: inline-block;
-    font-size: 0.6rem;
-    padding: 2px 8px;
+    font-size: 0.65rem;
+    padding: 3px 10px;
     border-radius: 100px;
     font-weight: 600;
-    margin-bottom: 6px;
+    margin-bottom: 8px;
+    letter-spacing: 0.02em;
   }
   .tl-card-tag[data-t="里程碑"] { background: rgba(157,175,255,0.1); color: var(--sky); }
   .tl-card-tag[data-t="更新"] { background: rgba(100,220,180,0.1); color: #6dd8b4; }
@@ -318,27 +397,44 @@
   [data-theme="light"] .tl-card-tag[data-t="更新"] { background: rgba(0,150,100,0.08); color: #009664; }
   [data-theme="light"] .tl-card-tag[data-t="事件"] { background: rgba(220,140,30,0.08); color: #dc8c1e; }
   [data-theme="light"] .tl-card-tag[data-t="活動"] { background: rgba(220,80,80,0.08); color: #dc5050; }
-  .tl-card-desc {
-    font-size: 0.82rem;
+  .tl-card-date {
+    font-size: 0.72rem;
     color: var(--fog);
-    line-height: 1.7;
+    font-weight: 500;
+    font-variant-numeric: tabular-nums;
+    margin-bottom: 6px;
+  }
+  .tl-card-title {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 6px;
+    line-height: 1.4;
+  }
+  .tl-card-desc {
+    font-size: 0.85rem;
+    color: var(--fog);
+    line-height: 1.75;
   }
   [data-theme="light"] .tl-card-title { color: var(--cloud); }
   [data-theme="light"] .tl-card-desc { color: #5a6270; }
 
-  /* Timeline card images */
-  .tl-card-imgs { display:flex; gap:6px; margin-top:10px; flex-wrap:wrap; }
-  .tl-card-img { width:80px; height:110px; object-fit:cover; border-radius:6px; border:1px solid rgba(255,255,255,0.08); cursor:pointer; transition:transform 0.3s var(--ease), box-shadow 0.3s var(--ease); }
-  .tl-card-img:hover { transform:scale(1.05); box-shadow:0 4px 16px rgba(0,0,0,0.3); border-color:rgba(157,175,255,0.25); }
-  [data-theme="light"] .tl-card-img { border-color:rgba(0,0,0,0.08); }
-  [data-theme="light"] .tl-card-img:hover { box-shadow:0 4px 16px rgba(0,0,0,0.1); }
-  /* Left-aligned cards need right-aligned images */
-  .tl-item.left .tl-card-imgs { justify-content:flex-end; }
+  /* 卡片圖片 */
+  .tl-card-imgs { display:flex; gap:8px; margin-top:12px; flex-wrap:wrap; }
+  .tl-card-img {
+    width: 80px; height: 110px; object-fit: cover;
+    border-radius: 8px; border: 1px solid rgba(255,255,255,0.08);
+    cursor: pointer; transition: transform 0.35s var(--ease), box-shadow 0.35s var(--ease);
+  }
+  .tl-card-img:hover { transform: scale(1.06) translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.3); }
+  .tl-item.left .tl-card-imgs { justify-content: flex-end; }
+  [data-theme="light"] .tl-card-img { border-color: rgba(0,0,0,0.08); }
+  [data-theme="light"] .tl-card-img:hover { box-shadow: 0 8px 24px rgba(0,0,0,0.08); }
 
-  /* 結尾 */
+  /* ── 結尾 ── */
   .tl-end {
     text-align: center;
-    padding: 48px 20px 32px;
+    padding: 80px 20px 40px;
     position: relative;
     z-index: 2;
   }
@@ -346,17 +442,17 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: 48px;
-    height: 48px;
+    width: 56px;
+    height: 56px;
     border-radius: 50%;
     background: rgba(157,175,255,0.06);
     border: 2px solid var(--tl-line);
-    font-size: 1.4rem;
-    margin-bottom: 10px;
+    font-size: 1.6rem;
+    margin-bottom: 12px;
   }
   .tl-end-text {
     font-family: 'Noto Serif TC', serif;
-    font-size: 0.95rem;
+    font-size: 1rem;
     color: var(--fog);
     font-style: italic;
   }
@@ -364,23 +460,29 @@
   /* 空狀態 */
   .tl-empty {
     text-align: center;
-    padding: 60px 20px;
+    padding: 80px 20px;
     color: var(--fog);
   }
-  .tl-empty-icon { font-size: 2rem; margin-bottom: 8px; opacity: 0.4; }
+  .tl-empty-icon { font-size: 2.5rem; margin-bottom: 12px; opacity: 0.4; }
 
-  /* ── 響應式：手機改為單側時間線 ── */
+  /* ── 響應式 ── */
   @media (max-width: 768px) {
-    .tl-filter { top: 56px; }
-    .tl-wrap::before { left: 20px; }
-    .tl-item { width: 100%; padding: 0 12px 24px 44px; text-align: left; }
+    .tl-hero { min-height: 60vh; padding: 100px 20px 60px; }
+    .tl-hero-stats { gap: 24px; }
+    .tl-hero-stat-num { font-size: 1.5rem; }
+    .tl-filter { top: 52px; }
+    .tl-era-sticky { top: 96px; padding: 32px 16px 24px; }
+    .tl-timeline::before { left: 20px; }
+    .tl-item { width: 100%; padding: 0 12px 28px 48px; text-align: left; }
     .tl-item.left, .tl-item.right { margin-left: 0; text-align: left; }
-    .tl-item.left .tl-dot, .tl-item.right .tl-dot { left: 13px; right: auto; }
+    .tl-item.left .tl-dot, .tl-item.right .tl-dot { left: 12px; right: auto; }
     .tl-item.left .tl-card::after { display: none; }
-    .tl-item.right .tl-card::after { left: -20px; width: 20px; }
-    .tl-item.left.milestone-item .tl-card { border-right: none; border-left: 3px solid var(--sky); background: linear-gradient(135deg, rgba(157,175,255,0.04), var(--tl-card-bg)); }
-    .tl-era-head { padding-left: 0; }
-    .tl-year { padding-left: 0; }
+    .tl-item.right .tl-card::after { left: -24px; width: 24px; }
+    .tl-item.left.milestone-item .tl-card {
+      border-right: none; border-left: 3px solid var(--sky);
+      background: linear-gradient(135deg, rgba(157,175,255,0.04), var(--tl-card-bg));
+    }
+    .tl-card { padding: 16px 18px; }
   }
   </style>
 </head>
@@ -441,11 +543,20 @@
   </nav>
 
   <div class="page">
-    <div class="tl-hero fade-in">
+    <!-- Hero -->
+    <div class="tl-hero">
+      <span class="tl-hero-eyebrow">Est. 2023</span>
       <h1>歷史館</h1>
       <p class="tl-hero-sub">每一段過去，都造就了今天的海風。</p>
+      <div class="tl-hero-stats">
+        <div class="tl-hero-stat"><span class="tl-hero-stat-num" data-count="2">0</span><span class="tl-hero-stat-label">個時代</span></div>
+        <div class="tl-hero-stat"><span class="tl-hero-stat-num" data-count="30">0</span><span class="tl-hero-stat-label">個歷史事件</span></div>
+        <div class="tl-hero-stat"><span class="tl-hero-stat-num" data-count="3">0</span><span class="tl-hero-stat-label">年的故事</span></div>
+      </div>
+      <div class="tl-hero-scroll"><span>向下探索</span><div class="tl-hero-scroll-line"></div></div>
     </div>
 
+    <!-- 篩選 -->
     <div class="tl-filter fade-in">
       <button class="tl-fbtn on" data-e="all"><span class="tl-fdot"></span>全部時期</button>
       <button class="tl-fbtn" data-e="pw"><span class="tl-fdot"></span>純麥時期</button>
@@ -456,7 +567,7 @@
     <div id="tlEmpty" class="tl-empty" style="display:none"><div class="tl-empty-icon">📖</div><p>此時期尚無歷史事件</p></div>
   </div>
 
-              <footer class="footer">
+  <footer class="footer">
     <div class="footer-inner">
       <div class="footer-brand">
         <span class="footer-logo">海風伺服器 SeaWind.cc</span>
@@ -524,6 +635,11 @@
     { e:"sw", d:"115.04.02", iso:"2026-04-02", t:"活動", title:"生存起源活動開跑", desc:"創物之杖活動開始，分期開放至九月。玩家推動伺服器進度。" },
   ];
 
+  const ERA_META = {
+    pw: { icon: '🌾', name: '純麥時期', sub: '從一個 Discord 群組開始，在風雨中成長' },
+    sw: { icon: '🌊', name: '海風時期', sub: '帶著教訓重生，吹向更遠的海' }
+  };
+
   let curEra = 'all';
   const root = document.getElementById('tlContent');
   const empty = document.getElementById('tlEmpty');
@@ -540,21 +656,27 @@
     const eras = {};
     items.forEach(x => { (eras[x.e] = eras[x.e] || []).push(x); });
 
-    const meta = {
-      pw: { icon: '🌾', name: '純麥時期', sub: '從一個 Discord 群組開始，在風雨中成長', color: 'var(--sand)' },
-      sw: { icon: '🌊', name: '海風時期', sub: '帶著教訓重生，吹向更遠的海', color: 'var(--foam)' }
-    };
     const order = curEra === 'all' ? ['pw','sw'] : [curEra];
 
     let h = '';
     order.forEach(era => {
       const list = eras[era];
       if (!list) return;
-      const m = meta[era];
-      h += `<div class="tl-wrap"><div class="tl-era" data-era="${era}">`;
-      h += `<div class="tl-era-head"><div class="tl-era-icon">${m.icon}</div><span class="tl-era-name">${m.name}</span><span class="tl-era-era-sub">${m.sub}</span></div>`;
+      const m = ERA_META[era];
 
-      // group by year
+      // Era sticky header
+      h += `<div class="tl-era" data-era="${era}">`;
+      h += `<div class="tl-era-sticky"><div class="tl-era-sticky-inner">`;
+      h += `<div class="tl-era-icon">${m.icon}</div>`;
+      h += `<span class="tl-era-name">${m.name}</span>`;
+      h += `<span class="tl-era-sub">${m.sub}</span>`;
+      h += `<span class="tl-era-count">${list.length} 個事件</span>`;
+      h += `</div></div>`;
+
+      // Timeline
+      h += `<div class="tl-timeline">`;
+
+      // Group by year
       const yrs = {};
       list.forEach(x => { const y = x.iso.slice(0,4); (yrs[y] = yrs[y] || []).push(x); });
 
@@ -563,8 +685,9 @@
         yrs[year].forEach((x, i) => {
           const side = i % 2 === 0 ? 'left' : 'right';
           const isMs = x.t === '里程碑';
+          const dotClass = x.t === '里程碑' ? 'milestone' : x.t === '更新' ? 'update' : x.t === '活動' ? 'activity' : 'event';
           h += `<div class="tl-item ${side}${isMs ? ' milestone-item' : ''}">
-            <span class="tl-dot ${x.t === '里程碑' ? 'milestone' : x.t === '更新' ? 'update' : x.t === '活動' ? 'activity' : 'event'}"></span>
+            <span class="tl-dot ${dotClass}"></span>
             <div class="tl-card">
               <span class="tl-card-tag" data-t="${x.t}">${x.t}</span>
               <div class="tl-card-date">${x.d}</div>
@@ -581,14 +704,25 @@
     h += `<div class="tl-end"><div class="tl-end-icon">📖</div><p class="tl-end-text">歷史持續書寫中⋯⋯</p></div>`;
     root.innerHTML = h;
 
-    // reveal animation
+    // Scroll reveal observer
     const obs = new IntersectionObserver(entries => {
-      entries.forEach(en => { if (en.isIntersecting) { en.target.classList.add('vis'); obs.unobserve(en.target); } });
-    }, { threshold: 0.1, rootMargin: '0px 0px -20px 0px' });
-    root.querySelectorAll('.tl-item').forEach(el => obs.observe(el));
-    setTimeout(() => root.querySelectorAll('.tl-item:not(.vis)').forEach(el => el.classList.add('vis')), 2500);
+      entries.forEach(en => {
+        if (en.isIntersecting) {
+          en.target.classList.add('vis');
+          obs.unobserve(en.target);
+        }
+      });
+    }, { threshold: 0.08, rootMargin: '0px 0px -30px 0px' });
+    root.querySelectorAll('.tl-item, .tl-era-sticky-inner').forEach(el => obs.observe(el));
+
+    // Safety timeout
+    setTimeout(() => {
+      root.querySelectorAll('.tl-item:not(.vis)').forEach(el => el.classList.add('vis'));
+      root.querySelectorAll('.tl-era-sticky-inner:not(.vis)').forEach(el => el.classList.add('vis'));
+    }, 3000);
   }
 
+  // Filter buttons
   document.querySelectorAll('.tl-fbtn').forEach(btn => {
     btn.addEventListener('click', () => {
       document.querySelectorAll('.tl-fbtn').forEach(b => b.classList.remove('on'));
@@ -597,6 +731,30 @@
       render();
     });
   });
+
+  // Hero counter animation
+  function animateCounters() {
+    document.querySelectorAll('[data-count]').forEach(el => {
+      const target = parseInt(el.dataset.count);
+      const duration = 1200;
+      const start = performance.now();
+      function tick(now) {
+        const p = Math.min((now - start) / duration, 1);
+        const ease = 1 - Math.pow(1 - p, 3);
+        el.textContent = Math.round(target * ease);
+        if (p < 1) requestAnimationFrame(tick);
+      }
+      requestAnimationFrame(tick);
+    });
+  }
+
+  const heroObs = new IntersectionObserver(entries => {
+    entries.forEach(en => {
+      if (en.isIntersecting) { animateCounters(); heroObs.unobserve(en.target); }
+    });
+  }, { threshold: 0.3 });
+  const heroStats = document.querySelector('.tl-hero-stats');
+  if (heroStats) heroObs.observe(heroStats);
 
   render();
 })();
