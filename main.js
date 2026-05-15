@@ -70,7 +70,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (item.isMore) {
       a.addEventListener('click', (e) => {
         e.preventDefault();
-        if (toggle) toggle.click();
+        if (typeof openDrawer === 'function') openDrawer();
       });
     }
     tabBar.appendChild(a);
@@ -101,6 +101,12 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
   if (toggle && links) {
+    function openDrawer() {
+      links.classList.add('open');
+      toggle.classList.add('active');
+      navBackdrop.classList.add('visible');
+      if (tabBar) tabBar.classList.add('hidden');
+    }
     function toggleDrawer() {
       const isOpen = links.classList.toggle('open');
       toggle.classList.toggle('active');
