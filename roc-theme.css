@@ -1,0 +1,515 @@
+/* ═══════════════════════════════════════
+   華國美學 ROC Aesthetic Theme Override
+   data-style="roc" on <html> activates
+   ═══════════════════════════════════════ */
+
+/* ── Color Variables ── */
+[data-style="roc"] {
+  --deep: #1a1a2e;
+  --ocean: #16213e;
+  --drift: #0f3460;
+  --mist: #1a1a2e;
+  --sky: #0066cc;
+  --ocean-blue: #003d7a;
+  --foam: #e8f5e9;
+  --sand: #f5e6ca;
+  --lavender: #7b2d8e;
+  --white: #1a1a1a;
+  --cloud: #333333;
+  --fog: #555555;
+  --link: #0066cc;
+  --accent-red: #cc0000;
+  --accent-yellow: #ffcc00;
+  --accent-gold: #daa520;
+  --accent-cyan: #00cccc;
+
+  /* ROC-specific */
+  --roc-blue: #003399;
+  --roc-red: #cc0000;
+  --roc-silver: #c0c0c0;
+  --roc-gold: #daa520;
+  --roc-bg: #e8e8e8;
+  --roc-card-bg: #ffffff;
+  --roc-border: #999999;
+  --roc-header-bg: linear-gradient(180deg, #003399 0%, #001a66 100%);
+  --roc-section-bg: #f0f0f0;
+  --roc-table-header: #003399;
+  --roc-table-stripe: #f5f5f5;
+  --roc-announcement: #fffde7;
+  --roc-shadow: 2px 2px 0 rgba(0,0,0,0.15);
+}
+
+/* ── Dark mode override: ROC still uses light-ish bg ── */
+[data-style="roc"][data-theme="dark"] {
+  --deep: #e8e8e8;
+  --ocean: #d0d0d0;
+  --drift: #c8c8c8;
+  --mist: #e0e0e0;
+  --white: #1a1a1a;
+  --cloud: #333333;
+  --fog: #555555;
+  --roc-bg: #d8d8d8;
+  --roc-card-bg: #eeeeee;
+}
+
+/* ── Base Body ── */
+[data-style="roc"] body {
+  background: var(--roc-bg);
+  color: var(--cloud);
+  font-family: "Microsoft JhengHei", "DFKai-SB", "MingLiU", Arial, Tahoma, sans-serif;
+  -webkit-font-smoothing: none;
+  font-smooth: never;
+  text-rendering: geometricPrecision;
+  line-height: 1.6;
+}
+
+/* ── Navigation ── */
+[data-style="roc"] .nav {
+  background: var(--roc-header-bg);
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  border-bottom: 3px solid var(--roc-gold);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+  padding: 8px 16px;
+}
+
+[data-style="roc"] .nav-logo {
+  color: #ffffff;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+}
+
+[data-style="roc"] .nav-links a {
+  color: #ccccff;
+  font-weight: 600;
+  text-shadow: 0 1px 1px rgba(0,0,0,0.3);
+}
+
+[data-style="roc"] .nav-links a:hover,
+[data-style="roc"] .nav-links a.active {
+  color: #ffcc00;
+  background: rgba(255,255,255,0.1);
+}
+
+[data-style="roc"] .nav-theme,
+[data-style="roc"] .nav-style-toggle,
+[data-style="roc"] .nav-lang-toggle {
+  color: #ffffff;
+  border: 1px solid rgba(255,255,255,0.3);
+  background: rgba(255,255,255,0.1);
+}
+
+/* ── Scroll Progress ── */
+[data-style="roc"] .scroll-progress {
+  background: linear-gradient(90deg, var(--roc-red), var(--roc-gold), var(--roc-blue));
+}
+
+/* ── Hero Section ── */
+[data-style="roc"] .hero {
+  background: var(--roc-header-bg);
+  border-bottom: 4px double var(--roc-gold);
+}
+
+[data-style="roc"] .hero::after {
+  background: rgba(0,0,51,0.5);
+}
+
+[data-style="roc"] .hero h1 {
+  color: #ffffff;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.5), 0 0 20px rgba(255,204,0,0.3);
+  font-family: "DFKai-SB", "MingLiU", serif;
+}
+
+[data-style="roc"] .hero-subtitle {
+  color: #ffcc00;
+  font-weight: 700;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+}
+
+/* ── Section Cards ── */
+[data-style="roc"] .section-card,
+[data-style="roc"] .guide-section-card {
+  background: var(--roc-card-bg);
+  border: 2px solid var(--roc-border);
+  border-radius: 0;
+  box-shadow: var(--roc-shadow);
+  padding: 16px;
+  margin-bottom: 12px;
+}
+
+[data-style="roc"] .section-card h2,
+[data-style="roc"] .guide-section-card h2 {
+  color: var(--roc-blue);
+  border-bottom: 2px solid var(--roc-blue);
+  padding-bottom: 8px;
+  margin-bottom: 12px;
+  font-family: "DFKai-SB", "MingLiU", serif;
+  text-shadow: 1px 1px 0 rgba(0,0,0,0.1);
+}
+
+/* ── Tables ── */
+[data-style="roc"] .rules-table,
+[data-style="roc"] table {
+  border: 2px solid var(--roc-border);
+  border-collapse: collapse;
+  width: 100%;
+  font-size: 0.88rem;
+}
+
+[data-style="roc"] .rules-table th,
+[data-style="roc"] table th {
+  background: var(--roc-table-header);
+  color: #ffffff;
+  border: 1px solid var(--roc-border);
+  padding: 8px 10px;
+  font-weight: 700;
+  text-shadow: 0 1px 1px rgba(0,0,0,0.3);
+}
+
+[data-style="roc"] .rules-table td,
+[data-style="roc"] table td {
+  border: 1px solid var(--roc-border);
+  padding: 6px 10px;
+}
+
+[data-style="roc"] .rules-table tr:nth-child(even),
+[data-style="roc"] table tr:nth-child(even) {
+  background: var(--roc-table-stripe);
+}
+
+/* ── Buttons ── */
+[data-style="roc"] .btn,
+[data-style="roc"] .btn-primary,
+[data-style="roc"] .btn-outline {
+  border-radius: 0;
+  border: 2px outset #cccccc;
+  background: linear-gradient(180deg, #f0f0f0 0%, #d0d0d0 100%);
+  color: #000000;
+  font-weight: 700;
+  padding: 8px 16px;
+  text-shadow: none;
+  box-shadow: inset 1px 1px 0 #ffffff, inset -1px -1px 0 #808080;
+  cursor: pointer;
+  font-family: "Microsoft JhengHei", Arial, sans-serif;
+}
+
+[data-style="roc"] .btn:hover,
+[data-style="roc"] .btn-primary:hover,
+[data-style="roc"] .btn-outline:hover {
+  background: linear-gradient(180deg, #ffffff 0%, #e0e0e0 100%);
+  border-color: #999999;
+}
+
+[data-style="roc"] .btn:active,
+[data-style="roc"] .btn-primary:active {
+  border-style: inset;
+  box-shadow: inset -1px -1px 0 #ffffff, inset 1px 1px 0 #808080;
+}
+
+[data-style="roc"] .btn-primary {
+  background: linear-gradient(180deg, #0055cc 0%, #003399 100%);
+  color: #ffffff;
+  border-color: #001a66;
+  box-shadow: inset 1px 1px 0 rgba(255,255,255,0.3), inset -1px -1px 0 rgba(0,0,0,0.3);
+}
+
+/* ── Callout / Info Boxes ── */
+[data-style="roc"] .callout {
+  border-radius: 0;
+  border: 1px solid var(--roc-border);
+  padding: 10px 12px;
+  background: var(--roc-announcement);
+  font-size: 0.88rem;
+}
+
+[data-style="roc"] .callout-info {
+  border-left: 4px solid var(--roc-blue);
+  background: #e6f0ff;
+}
+
+[data-style="roc"] .callout-tip {
+  border-left: 4px solid #339933;
+  background: #eeffee;
+}
+
+[data-style="roc"] .callout-warn {
+  border-left: 4px solid var(--roc-red);
+  background: #ffeeee;
+}
+
+/* ── Announcement Bar (跑馬燈風格) ── */
+[data-style="roc"] .ann-item,
+[data-style="roc"] .bulletin-item {
+  border: 1px solid var(--roc-border);
+  border-radius: 0;
+  background: var(--roc-card-bg);
+  margin-bottom: 4px;
+  padding: 8px 12px;
+}
+
+[data-style="roc"] .ann-item:hover {
+  background: #fffff0;
+}
+
+/* ── Footer ── */
+[data-style="roc"] .footer {
+  background: var(--roc-header-bg);
+  border-top: 3px solid var(--roc-gold);
+  color: #cccccc;
+}
+
+[data-style="roc"] .footer-logo {
+  color: #ffcc00;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+}
+
+[data-style="roc"] .footer-tagline {
+  color: #aaaacc;
+}
+
+[data-style="roc"] .footer-links-row a {
+  color: #88ccff;
+}
+
+[data-style="roc"] .footer-bottom {
+  color: #999999;
+  border-top: 1px solid rgba(255,255,255,0.1);
+}
+
+/* ── Guide Sidebar ── */
+[data-style="roc"] .guide-sidebar-inner {
+  background: var(--roc-card-bg);
+  border: 2px solid var(--roc-border);
+  border-radius: 0;
+}
+
+[data-style="roc"] .guide-sidebar-title {
+  background: var(--roc-blue);
+  color: #ffffff;
+  margin: -16px -16px 12px -16px;
+  padding: 10px 16px;
+  font-weight: 700;
+  text-shadow: 0 1px 1px rgba(0,0,0,0.3);
+}
+
+[data-style="roc"] .guide-sb-link {
+  color: var(--roc-blue);
+  border-bottom: 1px dotted var(--roc-border);
+  padding: 6px 0;
+}
+
+[data-style="roc"] .guide-sb-link:hover {
+  color: var(--roc-red);
+  background: #fff8f0;
+}
+
+[data-style="roc"] .guide-sb-link.active {
+  color: var(--roc-red);
+  font-weight: 700;
+  background: #fff0e0;
+  border-left: 3px solid var(--roc-red);
+  padding-left: 8px;
+}
+
+/* ── Cards Grid ── */
+[data-style="roc"] .feature-card,
+[data-style="roc"] .guide-next-card {
+  border: 2px solid var(--roc-border);
+  border-radius: 0;
+  background: var(--roc-card-bg);
+  box-shadow: var(--roc-shadow);
+}
+
+[data-style="roc"] .feature-card:hover,
+[data-style="roc"] .guide-next-card:hover {
+  border-color: var(--roc-blue);
+  box-shadow: 3px 3px 0 rgba(0,0,0,0.2);
+}
+
+/* ── FAQ ── */
+[data-style="roc"] .guide-faq-item {
+  border: 1px solid var(--roc-border);
+  border-radius: 0;
+}
+
+[data-style="roc"] .guide-faq-q {
+  background: var(--roc-section-bg);
+  font-weight: 700;
+  color: var(--roc-blue);
+}
+
+[data-style="roc"] .guide-faq-q:hover {
+  background: #e0e8f0;
+}
+
+/* ── Links ── */
+[data-style="roc"] a {
+  color: var(--roc-blue);
+}
+
+[data-style="roc"] a:hover {
+  color: var(--roc-red);
+  text-decoration: underline;
+}
+
+/* ── Breadcrumb ── */
+[data-style="roc"] .breadcrumb {
+  background: var(--roc-section-bg);
+  border: 1px solid var(--roc-border);
+  padding: 6px 12px;
+  font-size: 0.82rem;
+}
+
+/* ── Quick Stats ── */
+[data-style="roc"] .guide-qs-item,
+[data-style="roc"] .event-quick-stats .eqs-item {
+  border: 1px solid var(--roc-border);
+  background: var(--roc-card-bg);
+  border-radius: 0;
+}
+
+/* ── Code blocks ── */
+[data-style="roc"] code {
+  background: #f0f0f0;
+  border: 1px solid #cccccc;
+  padding: 2px 6px;
+  font-family: "DFKai-SB", "MingLiU", monospace;
+  color: #cc0000;
+}
+
+/* ── Page Loader ── */
+[data-style="roc"] .page-loader {
+  background: var(--roc-header-bg);
+}
+
+[data-style="roc"] .loader-logo {
+  color: #ffcc00;
+  font-family: "DFKai-SB", "MingLiU", serif;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+}
+
+/* ── Music Player ── */
+[data-style="roc"] .music-btn {
+  background: linear-gradient(180deg, #f0f0f0, #d0d0d0);
+  border: 2px outset #cccccc;
+  color: #003399;
+  border-radius: 0;
+}
+
+/* ── Back to Top ── */
+[data-style="roc"] .back-to-top {
+  background: linear-gradient(180deg, #f0f0f0, #d0d0d0);
+  border: 2px outset #cccccc;
+  color: #003399;
+  border-radius: 0;
+}
+
+/* ── Mobile Tab Bar ── */
+[data-style="roc"] .mobile-tab-bar {
+  background: var(--roc-header-bg);
+  border-top: 3px solid var(--roc-gold);
+}
+
+[data-style="roc"] .mobile-tab-item.active {
+  color: #ffcc00;
+}
+
+/* ── Dropdown Menu ── */
+[data-style="roc"] .dropdown-menu {
+  background: #f8f8f8;
+  border: 2px solid var(--roc-border);
+  border-radius: 0;
+  box-shadow: 3px 3px 0 rgba(0,0,0,0.2);
+}
+
+[data-style="roc"] .dropdown-menu li a:hover {
+  background: #e0e8f0;
+  color: var(--roc-red);
+}
+
+/* ── Lightbox ── */
+[data-style="roc"] .lightbox {
+  background: rgba(0,0,51,0.95);
+}
+
+/* ── Banners / Marquee ── */
+[data-style="roc"] .roc-banner {
+  display: block;
+  background: var(--roc-announcement);
+  border: 2px solid var(--roc-border);
+  padding: 8px 16px;
+  margin: 8px 0;
+  font-weight: 700;
+  color: var(--roc-red);
+  text-align: center;
+  animation: roc-blink 1.5s step-end infinite;
+}
+
+@keyframes roc-blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
+}
+
+/* ── WordArt Headings ── */
+[data-style="roc"] .roc-wordart {
+  font-family: "DFKai-SB", "MingLiU", serif;
+  color: var(--roc-blue);
+  text-shadow: 2px 2px 0 rgba(0,0,0,0.2);
+  letter-spacing: 0.05em;
+}
+
+[data-style="roc"] .roc-wordart span:nth-child(1) {
+  display: inline-block;
+  transform: skewX(-5deg) scaleY(1.1);
+}
+
+[data-style="roc"] .roc-wordart span:nth-child(2) {
+  display: inline-block;
+  transform: scaleX(1.15) translateY(1px);
+}
+
+[data-style="roc"] .roc-wordart::after {
+  content: attr(data-shadow);
+  display: block;
+  transform: translate(4px, 6px) skewX(-12deg) scaleY(1.3);
+  opacity: 0.2;
+  color: var(--roc-gold);
+}
+
+/* ── Responsive ── */
+@media (max-width: 768px) {
+  [data-style="roc"] .nav {
+    background: var(--roc-header-bg);
+  }
+
+  [data-style="roc"] .nav-links {
+    background: #f0f0f0;
+    border-left: 3px solid var(--roc-blue);
+  }
+
+  [data-style="roc"] .nav-links > li > a,
+  [data-style="roc"] .nav-links > li > .nav-dropdown-toggle {
+    color: #333333;
+    border-bottom: 1px solid #cccccc;
+  }
+
+  [data-style="roc"] .nav-links > li > a:hover,
+  [data-style="roc"] .nav-links > li > a.active {
+    background: #e0e8f0;
+    color: var(--roc-red);
+  }
+
+  [data-style="roc"] .nav-backdrop {
+    background: rgba(0,0,0,0.4);
+  }
+}
+
+/* ── Print ── */
+@media print {
+  [data-style="roc"] .nav,
+  [data-style="roc"] .footer,
+  [data-style="roc"] .mobile-tab-bar,
+  [data-style="roc"] .music-player,
+  [data-style="roc"] .back-to-top {
+    display: none !important;
+  }
+}
