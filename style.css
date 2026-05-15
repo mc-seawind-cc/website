@@ -4020,6 +4020,7 @@ html, body {
   }
   .hero-content{
     padding:var(--space-md) var(--space-sm);
+    overflow:hidden;
   }
   .hero-actions{
     flex-direction:column;
