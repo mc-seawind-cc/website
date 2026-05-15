@@ -90,7 +90,7 @@ body{font-family:var(--font-body);background:var(--deep);color:var(--cloud);line
    Navigation
    ═══════════════════════════════════════ */
 
-.nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:var(--space-md)var(--space-xl);display:flex;align-items:center;justify-content:space-between;background:rgba(13,17,23,0.35);backdrop-filter:blur(28px)saturate(1.5);-webkit-backdrop-filter:blur(28px)saturate(1.5);border-bottom:1px solid rgba(255,255,255,0.06);transition:background var(--duration)var(--ease),box-shadow var(--duration)var(--ease)}
+.nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:var(--space-md)var(--space-xl);display:flex;align-items:center;justify-content:space-between;background:rgba(13,17,23,0.35);backdrop-filter:blur(28px)saturate(1.5);-webkit-backdrop-filter:blur(28px)saturate(1.5);border-bottom:1px solid rgba(255,255,255,0.06);transition:background var(--duration)var(--ease),box-shadow var(--duration)var(--ease)}
 .nav.scrolled{background:rgba(13,17,23,0.5);box-shadow:0 4px 24px rgba(0,0,0,0.3)}
 .nav-logo{display:flex;align-items:center;gap:var(--space-sm);text-decoration:none;color:var(--white);font-size:1.2rem;font-weight:700;letter-spacing:-0.02em}
 .nav-logo .logo-icon{font-size:1.4rem}
