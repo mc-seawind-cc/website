@@ -70,6 +70,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (item.isMore) {
       a.addEventListener('click', (e) => {
         e.preventDefault();
+        e.stopPropagation();
         const dr = document.querySelector('.nav-links');
         const tg = document.querySelector('.nav-toggle');
         const bd = document.querySelector('.nav-backdrop');
