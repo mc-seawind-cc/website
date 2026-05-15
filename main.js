@@ -84,16 +84,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
   document.body.appendChild(tabBar);
 
-  // Create close button inside drawer
-  if (links) {
-    const closeBtn = document.createElement('button');
-    closeBtn.className = 'nav-drawer-close';
-    closeBtn.setAttribute('aria-label', '關閉選單');
-    closeBtn.innerHTML = '✕';
-    links.prepend(closeBtn);
-
-    closeBtn.addEventListener('click', closeMobileNav);
-  }
+  // Close button removed — hamburger toggle already transforms into X
 
   function closeMobileNav() {
     if (links) links.classList.remove('open');

@@ -3204,30 +3204,6 @@ html, body {
     box-shadow: -8px 0 32px rgba(0,0,0,0.4);
   }
 
-  /* 關閉按鈕（抽屜內） */
-  .nav-drawer-close {
-    position: absolute;
-    top: 14px;
-    right: 14px;
-    width: 42px;
-    height: 42px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.15rem;
-    color: var(--fog);
-    background: none;
-    border: none;
-    cursor: pointer;
-    border-radius: var(--radius-md);
-    transition: color 0.2s, background 0.2s;
-    z-index: 115;
-  }
-  .nav-drawer-close:hover {
-    color: var(--white);
-    background: rgba(255,255,255,0.06);
-  }
-
   /* 主項目 */
   .nav-links > li {
     border-bottom: 1px solid rgba(255,255,255,0.04);
