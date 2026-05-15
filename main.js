@@ -82,17 +82,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
       }
     }
-    // Use touchend for mobile (faster response), click as fallback
-    let touchHandled = false;
-    toggle.addEventListener('touchend', (e) => {
-      e.preventDefault();
-      touchHandled = true;
-      toggleDrawer();
-      setTimeout(() => { touchHandled = false; }, 400);
-    });
-    toggle.addEventListener('click', () => {
-      if (!touchHandled) toggleDrawer();
-    });
+    toggle.addEventListener('click', toggleDrawer);
     navBackdrop.addEventListener('click', closeMobileNav);
     links.querySelectorAll('a:not(.nav-dropdown-toggle)').forEach(a => {
       a.addEventListener('click', closeMobileNav);
@@ -101,10 +91,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // --- Critical: Dropdown Toggle (mobile) ---
   document.querySelectorAll('.nav-dropdown-toggle').forEach(btn => {
-    function handleDropdownToggle(e) {
+    btn.addEventListener('click', (e) => {
       if (window.innerWidth <= 768) {
         e.preventDefault();
-        e.stopPropagation();
         const dropdown = btn.closest('.nav-dropdown');
         // Close other open dropdowns first
         document.querySelectorAll('.nav-dropdown.open').forEach(dd => {
@@ -117,15 +106,6 @@ document.addEventListener('DOMContentLoaded', () => {
         const isOpen = dropdown.classList.toggle('open');
         btn.setAttribute('aria-expanded', isOpen);
       }
-    }
-    let ddTouchHandled = false;
-    btn.addEventListener('touchend', (e) => {
-      ddTouchHandled = true;
-      handleDropdownToggle(e);
-      setTimeout(() => { ddTouchHandled = false; }, 400);
-    });
-    btn.addEventListener('click', (e) => {
-      if (!ddTouchHandled) handleDropdownToggle(e);
     });
   });
 

@@ -3148,7 +3148,7 @@ html, body {
 
   /* 手機版 nav 改用實心背景（backdrop-filter 在部分手機瀏覽器會造成全頁模糊） */
   .nav {
-    background: rgba(13,17,23,0.95);
+    background: rgba(13,17,23,0.82);
     backdrop-filter: none;
     -webkit-backdrop-filter: none;
   }
@@ -3770,7 +3770,7 @@ html, body {
 /* 淺色模式：手機導覽列（右側抽屜） */
 @media(max-width:768px){
   [data-theme="light"] .nav {
-    background: rgba(240,242,245,0.95);
+    background: rgba(240,242,245,0.82);
   }
   [data-theme="light"] .nav-links {
     background: #f8f9fb;
