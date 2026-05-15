@@ -38,23 +38,49 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // --- Critical: Mobile Nav Toggle ---
+  // --- Critical: Mobile Nav Toggle (Right-side Drawer) ---
   const toggle = document.querySelector('.nav-toggle');
   const links = document.querySelector('.nav-links');
   // Create backdrop overlay for mobile nav
   const navBackdrop = document.createElement('div');
   navBackdrop.className = 'nav-backdrop';
   document.body.appendChild(navBackdrop);
+
+  // Create close button inside drawer
+  if (links) {
+    const closeBtn = document.createElement('button');
+    closeBtn.className = 'nav-drawer-close';
+    closeBtn.setAttribute('aria-label', '關閉選單');
+    closeBtn.innerHTML = '✕';
+    links.prepend(closeBtn);
+
+    closeBtn.addEventListener('click', closeMobileNav);
+  }
+
   function closeMobileNav() {
-    links.classList.remove('open');
-    toggle.classList.remove('active');
+    if (links) links.classList.remove('open');
+    if (toggle) toggle.classList.remove('active');
     navBackdrop.classList.remove('visible');
+    // Close all dropdowns
+    document.querySelectorAll('.nav-dropdown.open').forEach(dd => {
+      dd.classList.remove('open');
+      const btn = dd.querySelector('.nav-dropdown-toggle');
+      if (btn) btn.setAttribute('aria-expanded', 'false');
+    });
   }
   if (toggle && links) {
     toggle.addEventListener('click', () => {
       const isOpen = links.classList.toggle('open');
       toggle.classList.toggle('active');
       navBackdrop.classList.toggle('visible', isOpen);
+      if (!isOpen) {
+        // Close all dropdowns when closing drawer
+        document.querySelectorAll('.nav-dropdown.open').forEach(dd => {
+          dd.classList.remove('open');
+          const btn = dd.querySelector('.nav-dropdown-toggle');
+          if (btn) btn.setAttribute('aria-expanded', 'false');
+        });
+      }
     });
     navBackdrop.addEventListener('click', closeMobileNav);
     links.querySelectorAll('a:not(.nav-dropdown-toggle)').forEach(a => {
@@ -68,6 +94,14 @@ document.addEventListener('DOMContentLoaded', () => {
       if (window.innerWidth <= 768) {
         e.preventDefault();
         const dropdown = btn.closest('.nav-dropdown');
+        // Close other open dropdowns first
+        document.querySelectorAll('.nav-dropdown.open').forEach(dd => {
+          if (dd !== dropdown) {
+            dd.classList.remove('open');
+            const otherBtn = dd.querySelector('.nav-dropdown-toggle');
+            if (otherBtn) otherBtn.setAttribute('aria-expanded', 'false');
+          }
+        });
         const isOpen = dropdown.classList.toggle('open');
         btn.setAttribute('aria-expanded', isOpen);
       }
