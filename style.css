@@ -112,16 +112,16 @@ body{font-family:var(--font-body);background:var(--deep);color:var(--cloud);line
 .nav-toggle.active span:nth-child(2){opacity:0;transform:translateX(-50%)scaleX(0)}
 .nav-toggle.active span:nth-child(3){top:17px;transform:translateX(-50%)rotate(-45deg)}
 /* Mobile nav backdrop overlay */
-.nav-backdrop{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.5);z-index:90;opacity:0;transition:opacity 0.3s ease}
-.nav-backdrop.visible{display:block;opacity:1}
+.nav-backdrop{display:block;position:fixed;inset:0;background:rgba(0,0,0,0.5);z-index:90;opacity:0;visibility:hidden;pointer-events:none;transition:opacity 0.3s ease,visibility 0.3s ease}
+.nav-backdrop.visible{opacity:1;visibility:visible;pointer-events:auto}
 .nav-theme{background:none;border:none;border-radius:0;padding:6px 4px;cursor:pointer;font-size:1.1rem;color:var(--cloud);transition:color var(--duration)var(--ease);line-height:1;display:inline-flex;align-items:center;justify-content:center}
 .nav-theme svg{display:block}
 .nav-theme:hover{color:var(--white)}
 .nav-dropdown{position:relative;list-style:none}
 .nav-dropdown-toggle .arrow{font-size:0.7em;margin-left:2px;transition:transform var(--duration)var(--ease);display:inline-block}
 .nav-dropdown:hover .arrow,.nav-dropdown.open .arrow{transform:rotate(180deg)}
-.dropdown-menu{display:block;position:absolute;top:100%;left:50%;transform:translateX(-50%) translateY(8px);min-width:200px;background:rgba(22,27,34,0.96);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border:1px solid rgba(255,255,255,0.06);border-radius:var(--radius-md);padding:var(--space-sm) var(--space-xs);list-style:none;z-index:200;box-shadow:0 12px 40px rgba(0,0,0,0.3);opacity:0;visibility:hidden;transition:opacity 0.25s var(--ease),transform 0.25s var(--ease),visibility 0.25s;pointer-events:none}
-.nav-dropdown:hover .dropdown-menu,.nav-dropdown.open .dropdown-menu{opacity:1;visibility:visible;transform:translateX(-50%) translateY(0);pointer-events:auto}
+.dropdown-menu{display:block;position:absolute;top:100%;left:50%;transform:translateX(-50%) translateY(8px);min-width:200px;background:rgba(22,27,34,0.96);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border:1px solid rgba(255,255,255,0.06);border-radius:var(--radius-md);padding:var(--space-sm) var(--space-xs);list-style:none;z-index:200;box-shadow:0 12px 40px rgba(0,0,0,0.3);opacity:0;visibility:hidden;transition:opacity 0.25s var(--ease),transform 0.25s var(--ease),visibility 0.25s}
+.nav-dropdown:hover .dropdown-menu,.nav-dropdown.open .dropdown-menu{opacity:1;visibility:visible;transform:translateX(-50%) translateY(0)}
 .dropdown-menu li a{display:block;padding:9px 14px;border-radius:var(--radius-sm);font-size:0.85rem;color:var(--fog);text-decoration:none;transition:all var(--duration)var(--ease);position:relative}
 .dropdown-menu li a:hover,.dropdown-menu li a.active{background:rgba(157,175,255,0.08);color:var(--white);padding-left:18px}
 .dropdown-menu li a::after{display:none}
@@ -3282,6 +3282,7 @@ html, body {
     max-height: 0;
     overflow: hidden;
     opacity: 0;
+    pointer-events: none;
     transition: max-height 0.35s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.25s ease, padding 0.3s ease;
     padding-top: 0;
     padding-bottom: 0;
@@ -3336,8 +3337,9 @@ html, body {
     -webkit-backdrop-filter: none;
   }
   .nav-backdrop.visible {
-    display: block;
     opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
   }
 
   /* 公告卡片觸控 */
