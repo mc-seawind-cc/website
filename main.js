@@ -46,6 +46,37 @@ document.addEventListener('DOMContentLoaded', () => {
   navBackdrop.className = 'nav-backdrop';
   document.body.appendChild(navBackdrop);
 
+  // --- Mobile Bottom Tab Bar ---
+  const tabBar = document.createElement('nav');
+  tabBar.className = 'mobile-tab-bar';
+  tabBar.setAttribute('aria-label', '手機快捷導覽');
+  const SW_BASE_M = (function() {
+    const s = document.querySelector('script[src*="main.js"]');
+    if (!s) return '';
+    const src = s.getAttribute('src') || '';
+    return src.substring(0, src.lastIndexOf('/') + 1);
+  })();
+  const tabItems = [
+    { icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-4 0a1 1 0 01-1-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 01-1 1h-2z"/></svg>', label: '首頁', href: SW_BASE_M + '首頁' },
+    { icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6 6 0 10-12 0v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"/></svg>', label: '公告', href: SW_BASE_M + '公告' },
+    { icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>', label: '指南', href: SW_BASE_M + '海風指南' },
+    { icon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg>', label: '更多', href: '#more', isMore: true }
+  ];
+  tabItems.forEach(item => {
+    const a = document.createElement('a');
+    a.className = 'mobile-tab-item' + (item.isMore ? ' mobile-tab-more' : '');
+    a.href = item.href;
+    a.innerHTML = '<span class="mobile-tab-icon">' + item.icon + '</span><span class="mobile-tab-label">' + item.label + '</span>';
+    if (item.isMore) {
+      a.addEventListener('click', (e) => {
+        e.preventDefault();
+        if (toggle) toggle.click();
+      });
+    }
+    tabBar.appendChild(a);
+  });
+  document.body.appendChild(tabBar);
+
   // Create close button inside drawer
   if (links) {
     const closeBtn = document.createElement('button');
@@ -61,6 +92,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (links) links.classList.remove('open');
     if (toggle) toggle.classList.remove('active');
     navBackdrop.classList.remove('visible');
+    if (tabBar) tabBar.classList.remove('hidden');
     // Close all dropdowns
     document.querySelectorAll('.nav-dropdown.open').forEach(dd => {
       dd.classList.remove('open');
@@ -73,6 +105,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const isOpen = links.classList.toggle('open');
       toggle.classList.toggle('active');
       navBackdrop.classList.toggle('visible', isOpen);
+      if (tabBar) tabBar.classList.toggle('hidden', isOpen);
       if (!isOpen) {
         // Close all dropdowns when closing drawer
         document.querySelectorAll('.nav-dropdown.open').forEach(dd => {
@@ -163,6 +196,16 @@ document.addEventListener('DOMContentLoaded', () => {
       const hrefClean = href.replace(/^\//, '');
       if (hrefClean === currentPageClean || (currentPageClean === 'index' && hrefClean === '首頁')) {
         a.classList.add('active');
+      }
+    });
+
+    // Active Bottom Tab Bar
+    document.querySelectorAll('.mobile-tab-item:not(.mobile-tab-more)').forEach(tab => {
+      const href = (tab.getAttribute('href') || '').replace(/\.(html?|php|asp)$/i, '');
+      if (!href) return;
+      const hrefClean = href.replace(/^\//, '');
+      if (hrefClean === currentPageClean || (currentPageClean === 'index' && hrefClean === '首頁')) {
+        tab.classList.add('active');
       }
     });
 

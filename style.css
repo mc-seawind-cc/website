@@ -3343,6 +3343,77 @@ html, body {
   }
 
   /* 公告卡片觸控 */
+
+  /* ── 手機底部快捷導覽列 ── */
+  .mobile-tab-bar {
+    display: flex;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 1020;
+    background: rgba(13,17,23,0.95);
+    border-top: 1px solid rgba(255,255,255,0.06);
+    padding: 6px 0 calc(6px + env(safe-area-inset-bottom, 0px));
+    justify-content: space-around;
+    align-items: center;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .mobile-tab-bar.hidden {
+    transform: translateY(100%);
+  }
+  .mobile-tab-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 3px;
+    padding: 6px 12px;
+    text-decoration: none;
+    color: var(--fog);
+    font-size: 0.65rem;
+    font-weight: 500;
+    border-radius: var(--radius-md);
+    transition: color 0.2s, background 0.2s;
+    -webkit-tap-highlight-color: transparent;
+    min-width: 56px;
+    min-height: 44px;
+  }
+  .mobile-tab-item:active,
+  .mobile-tab-item.active {
+    color: var(--sky);
+    background: rgba(157,175,255,0.08);
+  }
+  .mobile-tab-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 22px;
+    height: 22px;
+  }
+  .mobile-tab-icon svg {
+    width: 22px;
+    height: 22px;
+  }
+  .mobile-tab-label {
+    line-height: 1;
+    letter-spacing: 0.02em;
+  }
+  .mobile-tab-more {
+    color: var(--fog);
+  }
+  /* 淺色模式 */
+  [data-theme="light"] .mobile-tab-bar {
+    background: rgba(248,249,251,0.95);
+    border-top-color: rgba(0,0,0,0.06);
+  }
+  [data-theme="light"] .mobile-tab-item:active,
+  [data-theme="light"] .mobile-tab-item.active {
+    color: var(--ocean-blue);
+    background: rgba(74,108,247,0.08);
+  }
   .bulletin-toggle {
     padding: 14px 12px;
     min-height: 48px;
@@ -3720,6 +3791,9 @@ html, body {
 @media(max-width:768px){
   /* 導覽列樣式已整合至上方 mobile nav 區塊 */
   .nav{padding:var(--space-md)}
+  /* 底部快捷列預留空間 */
+  body{padding-bottom:64px}
+  .footer{margin-bottom:0}
   /* 手機版停用 backdrop-filter（部分手機瀏覽器會造成全頁模糊） */
   .info-card,
   .hero-tips,
