@@ -233,6 +233,10 @@
 
   <!-- 指南子頁面 -->
   <url>
+  <url>
+    <loc>https://www.seawind.cc/海風指南/階級段位.html</loc>
+    <lastmod>2026-05-16</lastmod>
+  </url>
     <loc>https://www.seawind.cc/海風指南/任務系統.html</loc>
     <lastmod>2026-05-04</lastmod>
     <changefreq>monthly</changefreq>
