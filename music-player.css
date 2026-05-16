@@ -463,9 +463,10 @@
 /* ═══ 響應式 ═══ */
 @media (max-width: 768px) {
   #floatToolbar {
-    bottom: 14px;
+    bottom: 68px; /* 高於 mobile-tab-bar */
     right: 14px;
     gap: 8px;
+    z-index: 1030; /* 高於 mobile-tab-bar 的 1020 */
   }
 
   .ft-btn {

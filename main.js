@@ -38,6 +38,11 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  // --- Screen Orientation Lock (force portrait on mobile) ---
+  if (screen.orientation && screen.orientation.lock) {
+    screen.orientation.lock('portrait').catch(() => {});
+  }
+
   // --- Critical: Mobile Nav Toggle (Right-side Drawer) ---
   const toggle = document.querySelector('.nav-toggle');
   const links = document.querySelector('.nav-links');
