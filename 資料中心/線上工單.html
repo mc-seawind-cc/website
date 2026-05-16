@@ -19,7 +19,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;800&family=Noto+Serif+TC:wght@700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../style.css?v=150515l">
+  <link rel="stylesheet" href="../style.css?v=160516a">
   <link rel="stylesheet" href="../music-player.css?v=140514b">
   <link rel="preload" href="../music-player.js?v=140514b" as="script">
   <style>
@@ -175,20 +175,83 @@
     [data-theme="light"] .pd-form-check{color:#4a5568}
 
     @media(max-width:768px){
-      .pd-body{padding:0 var(--space-md) var(--space-xl)}
-      .pd-body .section-card{padding:var(--space-lg)}
+      .pd-body{padding:0 0 var(--space-xl);max-width:100%}
+      .pd-body .section-card{padding:var(--space-lg);border-radius:0;border-left:none;border-right:none;margin-bottom:0}
       .ticket-type-grid{grid-template-columns:1fr}
       .pd-form-row{grid-template-columns:1fr}
       .pd-form-radio-grid{grid-template-columns:1fr}
       .subtype-pills{gap:6px}
       .subtype-pill{padding:6px 12px;font-size:0.82rem}
-      .ticket-layout{flex-direction:column}
-      .ticket-right{max-width:100%;transform:translateY(20px)}
-      .ticket-layout.has-type .ticket-right{max-width:100%;transform:translateY(0)}
+      .ticket-layout{flex-direction:column;gap:0}
+      .ticket-left,.ticket-right{flex:none;max-width:100%}
+      .ticket-right{transform:none;overflow:visible;opacity:1;max-width:100%}
+      .ticket-layout.has-type .ticket-right{transform:none;max-width:100%}
+
+      /* ── Mobile Wizard ── */
+      .mwizard{display:block}
+      .mwizard-progress{position:sticky;top:56px;z-index:50;display:flex;align-items:center;justify-content:center;gap:0;padding:12px 20px;background:rgba(13,17,23,0.92);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid rgba(255,255,255,0.06)}
+      .mwizard-step{display:flex;align-items:center;gap:6px;font-size:0.75rem;color:var(--fog);transition:color 0.3s}
+      .mwizard-step.active{color:var(--sky);font-weight:700}
+      .mwizard-step.done{color:var(--foam)}
+      .mwizard-dot{width:24px;height:24px;border-radius:50%;border:2px solid rgba(255,255,255,0.15);display:flex;align-items:center;justify-content:center;font-size:0.65rem;font-weight:700;transition:all 0.3s}
+      .mwizard-step.active .mwizard-dot{border-color:var(--sky);background:rgba(157,175,255,0.15);color:var(--sky)}
+      .mwizard-step.done .mwizard-dot{border-color:var(--foam);background:rgba(168,230,207,0.15);color:var(--foam)}
+      .mwizard-line{width:32px;height:2px;background:rgba(255,255,255,0.1);margin:0 6px;border-radius:1px;transition:background 0.3s}
+      .mwizard-line.done{background:var(--foam)}
+
+      .mwizard-panels{position:relative;overflow:hidden}
+      .mwizard-panel{display:none;animation:mw-slide-in 0.3s ease}
+      .mwizard-panel.active{display:block}
+      @keyframes mw-slide-in{from{opacity:0;transform:translateX(24px)}to{opacity:1;transform:translateX(0)}}
+
+      .mwizard-bottom{position:fixed;bottom:0;left:0;right:0;z-index:100;display:flex;gap:10px;padding:12px 16px;padding-bottom:calc(12px + env(safe-area-inset-bottom,0px));background:rgba(13,17,23,0.95);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-top:1px solid rgba(255,255,255,0.08)}
+      .mwizard-btn{flex:1;padding:14px 0;border:none;border-radius:var(--radius-md);font-size:0.95rem;font-weight:700;cursor:pointer;font-family:var(--font-body);transition:all 0.2s;min-height:48px}
+      .mwizard-btn-back{background:rgba(255,255,255,0.06);color:var(--cloud);border:1px solid rgba(255,255,255,0.1)}
+      .mwizard-btn-back:active{background:rgba(255,255,255,0.1)}
+      .mwizard-btn-next{background:var(--sky);color:#0d1117}
+      .mwizard-btn-next:active{opacity:0.85;transform:scale(0.98)}
+      .mwizard-btn-next:disabled{opacity:0.3;cursor:not-allowed}
+      .mwizard-btn-submit{background:var(--foam);color:#0d1117;flex:2}
+      .mwizard-btn-submit:active{opacity:0.85}
+      .mwizard-btn-submit:disabled{opacity:0.5;cursor:not-allowed}
+
+      /* Type cards app-like */
+      .mwizard-type-card{display:flex;align-items:center;gap:16px;padding:20px;border:2px solid rgba(255,255,255,0.06);border-radius:var(--radius-xl);cursor:pointer;transition:all 0.25s;background:rgba(255,255,255,0.02);margin-bottom:12px}
+      .mwizard-type-card:active{transform:scale(0.97)}
+      .mwizard-type-card.active{border-color:var(--sky);background:rgba(157,175,255,0.06);box-shadow:0 0 0 1px var(--sky),0 4px 20px rgba(157,175,255,0.1)}
+      .mwizard-type-icon{font-size:2.2rem;flex-shrink:0;width:56px;height:56px;display:flex;align-items:center;justify-content:center;border-radius:16px;background:rgba(255,255,255,0.04)}
+      .mwizard-type-info{flex:1;min-width:0}
+      .mwizard-type-name{font-size:1.05rem;font-weight:700;color:var(--white);margin-bottom:2px}
+      .mwizard-type-desc{font-size:0.78rem;color:var(--fog);line-height:1.5}
+
+      /* Subtype cards */
+      .mwizard-sub-card{display:flex;align-items:center;gap:12px;padding:14px 16px;border:2px solid rgba(255,255,255,0.06);border-radius:var(--radius-lg);cursor:pointer;transition:all 0.2s;background:rgba(255,255,255,0.02);margin-bottom:8px;font-size:0.9rem;color:var(--cloud)}
+      .mwizard-sub-card:active{transform:scale(0.97)}
+      .mwizard-sub-card.active{border-color:var(--sky);background:rgba(157,175,255,0.06);color:var(--white);font-weight:600}
+
+      /* Form adjustments */
+      .mwizard-panel .pd-form-field{margin-bottom:var(--space-lg)}
+      .mwizard-panel .pd-form-input,.mwizard-panel .pd-form-textarea,.mwizard-panel .pd-form-select{font-size:1rem;padding:14px 16px}
+      .mwizard-panel .pd-form-label{font-size:0.9rem;margin-bottom:10px}
+      .mwizard-panel .section-card{padding:var(--space-lg) var(--space-md)}
+      .mwizard-panel .pd-form-submit{display:none}
+
+      .mwizard-panel .ticket-type-grid{display:none}
+      .mwizard-panel .subtype-wrap{display:none}
+      .mwizard-panel .subtype-wrap.show{display:block}
+
+      /* Hide desktop layout on mobile */
+      .ticket-layout{display:none!important}
+
+      /* Content padding for bottom bar */
+      .page{padding-bottom:80px}
     }
 
     /* 工單頁：內容較短時不要撐滿螢幕 */
     .page{min-height:auto}
+
+    /* Mobile wizard: hidden by default, shown on mobile */
+    .mwizard{display:none}
   </style>
 </head>
 <body>
@@ -260,6 +323,55 @@
       <div class="pd-hero fade-in">
         <h1>📋 線上工單系統</h1>
         <p class="pd-hero-desc">遇到問題、有想法想提、還是想跟海風合作？<br>選個類型填一填，我們會盡快處理 ✨</p>
+      </div>
+
+      <!-- ══ Mobile Wizard Progress ══ -->
+      <div class="mwizard" id="mwizard">
+        <div class="mwizard-progress" id="mwProgress">
+          <div class="mwizard-step active" data-step="1"><span class="mwizard-dot">1</span><span>選類型</span></div>
+          <div class="mwizard-line" id="mwLine1"></div>
+          <div class="mwizard-step" data-step="2"><span class="mwizard-dot">2</span><span>選細項</span></div>
+          <div class="mwizard-line" id="mwLine2"></div>
+          <div class="mwizard-step" data-step="3"><span class="mwizard-dot">3</span><span>填表單</span></div>
+        </div>
+
+        <!-- Panel 1: Type Selection -->
+        <div class="mwizard-panel active" id="mwPanel1">
+          <div style="padding:var(--space-md)">
+            <div class="pd-note" style="margin-bottom:var(--space-lg)"><span class="pd-note-icon">💡</span><span>選一個你要開的工單類型</span></div>
+            <div class="mwizard-type-card" data-mtype="report" onclick="mwSelectType('report')">
+              <div class="mwizard-type-icon">🐛</div>
+              <div class="mwizard-type-info"><div class="mwizard-type-name">回報工單</div><div class="mwizard-type-desc">Bug、被欺負、帳號問題、規則疑問</div></div>
+            </div>
+            <div class="mwizard-type-card" data-mtype="admin" onclick="mwSelectType('admin')">
+              <div class="mwizard-type-icon">📋</div>
+              <div class="mwizard-type-info"><div class="mwizard-type-name">行政工單</div><div class="mwizard-type-desc">應徵、上訴、提議法律草案</div></div>
+            </div>
+            <div class="mwizard-type-card" data-mtype="partner" onclick="mwSelectType('partner')">
+              <div class="mwizard-type-icon">🤝</div>
+              <div class="mwizard-type-info"><div class="mwizard-type-name">合作工單</div><div class="mwizard-type-desc">合作夥伴申請</div></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Panel 2: Sub-type Selection -->
+        <div class="mwizard-panel" id="mwPanel2">
+          <div style="padding:var(--space-md)">
+            <div class="pd-note" style="margin-bottom:var(--space-lg)"><span class="pd-note-icon">📌</span><span id="mwSubtypeHint">選擇細項</span></div>
+            <div id="mwSubtypeCards"></div>
+          </div>
+        </div>
+
+        <!-- Panel 3: Form -->
+        <div class="mwizard-panel" id="mwPanel3">
+          <!-- Form content injected by JS from the original form -->
+        </div>
+
+        <!-- Bottom Navigation -->
+        <div class="mwizard-bottom" id="mwBottom">
+          <button class="mwizard-btn mwizard-btn-back" id="mwBack" onclick="mwBack()" style="display:none">← 上一步</button>
+          <button class="mwizard-btn mwizard-btn-next" id="mwNext" onclick="mwNext()" disabled>下一步 →</button>
+        </div>
       </div>
 
       <div class="pd-body">
@@ -1180,6 +1292,12 @@
         applyFields.classList.remove('show');
         ticketLayout.classList.remove('has-type');
         currentType=null;
+        /* Mobile wizard: move form back and reset */
+        var ticketRight=document.getElementById('ticketRight');
+        if(ticketRight&&formSection.parentNode!==ticketRight){
+          ticketRight.appendChild(formSection);
+        }
+        if(typeof MW!=='undefined'&&MW.reset)MW.reset();
       }else{
         resp.text().then(function(t){console.error('Webhook error:',t)});
         handleError(new Error('HTTP '+resp.status));
@@ -1200,7 +1318,271 @@
       submitText.style.display='inline';
       submitLoading.style.display='none';
     }
-  })();
+
+    /* ══════════════════════════════════════
+       Mobile Wizard
+       ══════════════════════════════════════ */
+    var MW=(function(){
+      var isMobile=window.matchMedia('(max-width:768px)').matches;
+      var wizard=document.getElementById('mwizard');
+      var desktopLayout=document.getElementById('ticketLayout');
+      var currentStep=1;
+      var mwType=null;
+
+      if(!isMobile||!wizard)return;
+
+      /* Show wizard, hide desktop layout */
+      wizard.style.display='block';
+      /* Don't hide desktop layout — just reorganize visibility */
+      document.querySelector('.pd-hero-desc').innerHTML='三步驟完成開單，簡單快速 ✨';
+
+      /* Sub-type data */
+      var SUBS={
+        report:[
+          {value:'帳號處理',icon:'🔑',label:'帳號處理'},
+          {value:'檢舉',icon:'🚨',label:'檢舉'},
+          {value:'提告',icon:'⚖️',label:'提告'},
+          {value:'疑慮',icon:'🤔',label:'疑慮'},
+          {value:'回報異常',icon:'🐛',label:'回報異常'},
+          {value:'領地問題',icon:'🏠',label:'領地問題'},
+          {value:'其他',icon:'📝',label:'其他'}
+        ],
+        admin:[
+          {value:'應徵',icon:'👤',label:'應徵'},
+          {value:'請願（上訴/申訴）',icon:'📜',label:'請願（上訴/申訴）'},
+          {value:'提議法律草案',icon:'📝',label:'提議法律草案'},
+          {value:'否決請願',icon:'🚫',label:'否決請願'},
+          {value:'規章解釋',icon:'📖',label:'規章解釋'}
+        ],
+        partner:[
+          {value:'💬 群組',icon:'💬',label:'群組'},
+          {value:'🌐 網站',icon:'🌐',label:'網站'},
+          {value:'🏗️ 工作室',icon:'🏗️',label:'工作室'},
+          {value:'🎬 創作者',icon:'🎬',label:'創作者'},
+          {value:'📦 其他',icon:'📦',label:'其他'}
+        ]
+      };
+
+      var HINTS={
+        report:'你遇到了什麼狀況？',
+        admin:'你想做什麼？',
+        partner:'你的合作類型是？'
+      };
+
+      function updateProgress(step){
+        currentStep=step;
+        document.querySelectorAll('.mwizard-step').forEach(function(s){
+          var sn=parseInt(s.dataset.step);
+          s.classList.remove('active','done');
+          if(sn<step)s.classList.add('done');
+          else if(sn===step)s.classList.add('active');
+        });
+        document.getElementById('mwLine1').className='mwizard-line'+(step>1?' done':'');
+        document.getElementById('mwLine2').className='mwizard-line'+(step>2?' done':'');
+
+        /* Panels */
+        document.querySelectorAll('.mwizard-panel').forEach(function(p){p.classList.remove('active')});
+        document.getElementById('mwPanel'+step).classList.add('active');
+
+        /* Bottom buttons */
+        var backBtn=document.getElementById('mwBack');
+        var nextBtn=document.getElementById('mwNext');
+        backBtn.style.display=step>1?'block':'none';
+
+        if(step===3){
+          nextBtn.style.display='none';
+          /* Show submit in bottom bar */
+          nextBtn.outerHTML='<button class="mwizard-btn mwizard-btn-submit" id="mwSubmit" onclick="mwSubmit()">📤 送出工單</button>';
+        }else{
+          var submitBtn2=document.getElementById('mwSubmit');
+          if(submitBtn2)submitBtn2.outerHTML='<button class="mwizard-btn mwizard-btn-next" id="mwNext" onclick="mwNext()" disabled>下一步 →</button>';
+        }
+
+        /* Scroll to top of wizard */
+        window.scrollTo({top:wizard.offsetTop-60,behavior:'smooth'});
+      }
+
+      /* Step 1: Type selection — set state directly */
+      window.mwSelectType=function(type){
+        mwType=type;
+        document.querySelectorAll('.mwizard-type-card').forEach(function(c){
+          c.classList.toggle('active',c.dataset.mtype===type);
+        });
+        /* Set desktop state directly (don't click hidden cards) */
+        typeCards.forEach(function(c){c.classList.remove('active')});
+        currentType=type;
+        Object.values(subtypeWraps).forEach(function(w){w.classList.remove('show')});
+        subtypeWraps[type].classList.add('show');
+        /* Reset subtype selections */
+        subtypeWraps[type].querySelectorAll('.subtype-pill').forEach(function(p){p.classList.remove('active')});
+        subtypeWraps[type].querySelectorAll('input').forEach(function(i){i.checked=false});
+        formSection.classList.remove('show');
+        partnerFields.classList.remove('show');
+        applyFields.classList.remove('show');
+        ticketLayout.classList.remove('has-type');
+        document.getElementById('mwNext').disabled=false;
+      };
+
+      /* Step 2: Sub-type rendered cards */
+      function renderSubCards(type){
+        var container=document.getElementById('mwSubtypeCards');
+        var hint=document.getElementById('mwSubtypeHint');
+        hint.textContent=HINTS[type]||'選擇細項';
+        container.innerHTML='';
+        (SUBS[type]||[]).forEach(function(sub){
+          var card=document.createElement('div');
+          card.className='mwizard-sub-card';
+          card.innerHTML='<span style="font-size:1.3rem">'+sub.icon+'</span><span>'+sub.label+'</span>';
+          card.onclick=function(){
+            container.querySelectorAll('.mwizard-sub-card').forEach(function(c){c.classList.remove('active')});
+            card.classList.add('active');
+            /* Set desktop subtype state directly */
+            var parent=subtypeWraps[type];
+            parent.querySelectorAll('.subtype-pill').forEach(function(p){
+              var input=p.querySelector('input');
+              if(input&&input.value===sub.value){
+                p.classList.add('active');
+                input.checked=true;
+              }else{
+                p.classList.remove('active');
+                if(input)input.checked=false;
+              }
+            });
+            /* Trigger the same logic as desktop subtype click */
+            formSection.classList.add('show');
+            ticketLayout.classList.add('has-type');
+            partnerFields.classList.remove('show');
+            applyFields.classList.remove('show');
+            if(SUB_DESC[sub.value])detailDesc.textContent=SUB_DESC[sub.value];
+            if(SUB_PLACEHOLDER[sub.value])detailInput.placeholder=SUB_PLACEHOLDER[sub.value];
+            var titleLabel=document.getElementById('titleLabel');
+            var titleDesc=document.getElementById('titleDesc');
+            var titleInput=document.getElementById('ticket-title');
+            if(SUB_TITLE[sub.value]){
+              if(titleLabel)titleLabel.innerHTML=SUB_TITLE[sub.value].label+' <span class="pd-form-required">*</span>';
+              if(titleDesc)titleDesc.textContent=SUB_TITLE[sub.value].desc;
+              if(titleInput)titleInput.placeholder=SUB_TITLE[sub.value].placeholder;
+            }
+            if(type==='partner'){
+              partnerFields.classList.add('show');
+              document.getElementById('fieldIGN').style.display='none';
+              document.getElementById('fieldCoordRes').style.display='none';
+              document.querySelectorAll('.partner-type-form').forEach(function(f){f.style.display='none'});
+              var pfMap={'💬 群組':'pf-group','🌐 網站':'pf-website','🏗️ 工作室':'pf-studio','🎬 創作者':'pf-creator','📦 其他':'pf-other'};
+              var pfId=pfMap[sub.value];
+              if(pfId){var pfEl=document.getElementById(pfId);if(pfEl)pfEl.style.display='block'}
+            }else if(type==='admin'){
+              document.getElementById('fieldIGN').style.display='';
+              document.getElementById('fieldCoordRes').style.display='none';
+              if(sub.value==='應徵')applyFields.classList.add('show');
+            }else{
+              document.getElementById('fieldIGN').style.display='';
+              document.getElementById('fieldCoordRes').style.display='';
+            }
+            document.getElementById('mwNext').disabled=false;
+          };
+          container.appendChild(card);
+        });
+      }
+
+      /* Step 3: Move form into wizard panel */
+      function mountForm(){
+        var panel3=document.getElementById('mwPanel3');
+        var formCard=formSection.cloneNode(true);
+        formCard.classList.add('show');
+        formCard.style.display='block';
+        /* Remove the old submit button from cloned form */
+        var oldSubmit=formCard.querySelector('.pd-form-submit');
+        if(oldSubmit)oldSubmit.remove();
+        panel3.innerHTML='';
+        panel3.appendChild(formCard);
+
+        /* Rebind form elements to the cloned DOM */
+        /* We use the original form for submission, so we need to sync values */
+        /* Actually, let's just move the original form instead */
+      }
+
+      /* Better approach: move the original form section into panel 3 */
+      function moveFormToPanel(){
+        var panel3=document.getElementById('mwPanel3');
+        if(formSection.parentNode===panel3)return;
+        panel3.appendChild(formSection);
+        formSection.classList.add('show');
+        formSection.style.display='block';
+        /* Hide submit button in form (we use bottom bar) */
+        var submit=formSection.querySelector('.pd-form-submit');
+        if(submit)submit.style.display='none';
+      }
+
+      window.mwNext=function(){
+        if(currentStep===1&&mwType){
+          renderSubCards(mwType);
+          updateProgress(2);
+        }else if(currentStep===2){
+          moveFormToPanel();
+          updateProgress(3);
+        }
+      };
+
+      window.mwBack=function(){
+        if(currentStep===3){
+          /* Move form back to its original position */
+          var ticketRight=document.getElementById('ticketRight');
+          if(formSection.parentNode!==ticketRight){
+            ticketRight.appendChild(formSection);
+          }
+          formSection.classList.remove('show');
+          ticketLayout.classList.remove('has-type');
+          updateProgress(2);
+        }else if(currentStep===2){
+          /* Reset sub-type selection */
+          mwType=null;
+          document.querySelectorAll('.mwizard-type-card').forEach(function(c){c.classList.remove('active')});
+          typeCards.forEach(function(c){c.classList.remove('active')});
+          currentType=null;
+          Object.values(subtypeWraps).forEach(function(w){w.classList.remove('show')});
+          formSection.classList.remove('show');
+          partnerFields.classList.remove('show');
+          applyFields.classList.remove('show');
+          ticketLayout.classList.remove('has-type');
+          updateProgress(1);
+          var nextBtn=document.getElementById('mwNext');
+          if(nextBtn)nextBtn.disabled=true;
+        }
+      };
+
+      window.mwSubmit=function(){
+        /* Trigger original form submit */
+        form.dispatchEvent(new Event('submit',{cancelable:true}));
+      };
+
+      /* Listen for form result to show it */
+      var observer=new MutationObserver(function(muts){
+        muts.forEach(function(m){
+          if(m.target===formResult&&formResult.style.display==='block'){
+            formResult.scrollIntoView({behavior:'smooth',block:'center'});
+          }
+        });
+      });
+      observer.observe(formResult,{attributes:true,attributeFilter:['style']});
+
+      /* Init */
+      updateProgress(1);
+
+      /* Public reset for after form submission */
+      return{
+        reset:function(){
+          mwType=null;
+          updateProgress(1);
+          var nextBtn=document.getElementById('mwNext');
+          if(nextBtn)nextBtn.disabled=true;
+          document.querySelectorAll('.mwizard-type-card').forEach(function(c){c.classList.remove('active')});
+          document.getElementById('mwSubtypeCards').innerHTML='';
+          var submitBtn2=document.getElementById('mwSubmit');
+          if(submitBtn2)submitBtn2.outerHTML='<button class="mwizard-btn mwizard-btn-next" id="mwNext" onclick="mwNext()" disabled>下一步 →</button>';
+        }
+      };
+    })();
   </script>
   <script src="../utils.js"></script>
   <script src="../main.js?v=160516a"></script>
