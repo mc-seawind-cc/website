@@ -255,11 +255,11 @@
       /* Hide desktop layout on mobile */
       .ticket-layout{display:none!important}
 
-      /* Hide mobile tab bar — wizard bottom bar replaces it */
-      .mobile-tab-bar{display:none!important}
+      /* Position wizard bottom bar ABOVE tab bar */
+      .mwizard-bottom{bottom:calc(56px + env(safe-area-inset-bottom,0px))!important;border-radius:var(--radius-lg) var(--radius-lg) 0 0;margin:0 8px}
 
       /* Content padding for bottom bar */
-      .page{padding-bottom:80px}
+      .page{padding-bottom:140px}
     }
 
     /* 工單頁：內容較短時不要撐滿螢幕 */
