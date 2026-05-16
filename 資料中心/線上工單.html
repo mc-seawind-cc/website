@@ -34,6 +34,7 @@
     .ticket-stat{text-align:center}
     .ticket-stat-num{display:block;font-size:1.6rem;font-weight:800;color:var(--sky);letter-spacing:-0.02em;font-variant-numeric:tabular-nums}
     .ticket-stat-label{display:block;font-size:0.72rem;color:var(--fog);margin-top:2px;text-transform:uppercase;letter-spacing:0.5px}
+    .ticket-stat-badge{height:28px;vertical-align:middle}
     .ticket-stat-divider{width:1px;height:36px;background:rgba(255,255,255,0.1)}
     @media(max-width:768px){
       .ticket-stats{gap:var(--space-lg)}
@@ -336,8 +337,7 @@
         <p class="pd-hero-desc">遇到問題、有想法想提、還是想跟海風合作？<br>選個類型填一填，我們會盡快處理 ✨</p>
         <div class="ticket-stats" id="ticketStats">
           <div class="ticket-stat">
-            <span class="ticket-stat-num" id="ticketCount">—</span>
-            <span class="ticket-stat-label">已處理工單</span>
+            <img class="ticket-stat-badge" src="https://visitor-badge.laobi.icu/badge?page_id=seawind.ticket&color=9dafff&style=flat&label=%E7%80%8F%E8%A6%BD%E4%BA%BA%E6%95%B8" alt="瀏覽人數" onerror="this.style.display='none'">
           </div>
           <div class="ticket-stat-divider"></div>
           <div class="ticket-stat">
@@ -1340,35 +1340,6 @@
       submitText.style.display='inline';
       submitLoading.style.display='none';
     }
-
-    /* ── Ticket Count ── */
-    (function(){
-      var countEl=document.getElementById('ticketCount');
-      if(!countEl)return;
-      var base=document.querySelector('script[src*="main.js"]');
-      var prefix='';
-      if(base){var s=base.getAttribute('src')||'';prefix=s.substring(0,s.lastIndexOf('/')+1)}
-      fetch(prefix+'ticket-count.json').then(function(r){return r.json()}).then(function(d){
-        if(d&&typeof d.count==='number'){
-          /* Animate count up */
-          var target=d.count;
-          var current=0;
-          var duration=1200;
-          var start=performance.now();
-          function tick(now){
-            var elapsed=now-start;
-            var progress=Math.min(elapsed/duration,1);
-            /* Ease out cubic */
-            var eased=1-Math.pow(1-progress,3);
-            current=Math.round(eased*target);
-            countEl.textContent=current;
-            if(progress<1)requestAnimationFrame(tick);
-          }
-          if(target>0)requestAnimationFrame(tick);
-          else countEl.textContent='0';
-        }
-      }).catch(function(){countEl.textContent='—'})
-    })();
 
     /* ══════════════════════════════════════
        Mobile Wizard
