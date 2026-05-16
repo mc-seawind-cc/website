@@ -20,13 +20,13 @@
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://www.seawind.cc/活動.html</loc>
+    <loc>https://www.seawind.cc/關於/活動</loc>
     <lastmod>2026-05-04</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.seawind.cc/季節.html</loc>
+    <loc>https://www.seawind.cc/關於/季節</loc>
     <lastmod>2026-05-14</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
@@ -38,19 +38,19 @@
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.seawind.cc/文化藝廊.html</loc>
+    <loc>https://www.seawind.cc/關於/文化藝廊</loc>
     <lastmod>2026-05-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.seawind.cc/社群須知.html</loc>
+    <loc>https://www.seawind.cc/須知/社群須知</loc>
     <lastmod>2026-05-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.seawind.cc/海風團隊.html</loc>
+    <loc>https://www.seawind.cc/關於/海風團隊</loc>
     <lastmod>2026-05-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
@@ -80,7 +80,7 @@
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.seawind.cc/風景照.html</loc>
+    <loc>https://www.seawind.cc/關於/風景照</loc>
     <lastmod>2026-05-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
@@ -177,43 +177,43 @@
 
   <!-- 須知/規範頁面 -->
   <url>
-    <loc>https://www.seawind.cc/支持須知.html</loc>
+    <loc>https://www.seawind.cc/須知/支持須知</loc>
     <lastmod>2026-05-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://www.seawind.cc/管理通則.html</loc>
+    <loc>https://www.seawind.cc/須知/管理通則</loc>
     <lastmod>2026-05-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://www.seawind.cc/公務人員須知.html</loc>
+    <loc>https://www.seawind.cc/須知/公務人員須知</loc>
     <lastmod>2026-05-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://www.seawind.cc/設計規範.html</loc>
+    <loc>https://www.seawind.cc/須知/設計規範</loc>
     <lastmod>2026-05-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://www.seawind.cc/服務條款.html</loc>
+    <loc>https://www.seawind.cc/須知/服務條款</loc>
     <lastmod>2026-05-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://www.seawind.cc/隱私權政策.html</loc>
+    <loc>https://www.seawind.cc/須知/隱私權政策</loc>
     <lastmod>2026-05-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://www.seawind.cc/歷史館.html</loc>
+    <loc>https://www.seawind.cc/關於/歷史館</loc>
     <lastmod>2026-05-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
