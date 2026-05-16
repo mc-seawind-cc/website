@@ -255,6 +255,9 @@
       /* Hide desktop layout on mobile */
       .ticket-layout{display:none!important}
 
+      /* Hide mobile tab bar — wizard bottom bar replaces it */
+      .mobile-tab-bar{display:none!important}
+
       /* Content padding for bottom bar */
       .page{padding-bottom:80px}
     }
@@ -1604,20 +1607,6 @@
   })();
   </script>
   <script src="../utils.js"></script>
-  <script src="../main.js?v=160516e"></script>
-  <script>
-  /* Hide mobile tab bar on this page — wizard bottom bar replaces it */
-  (function(){
-    function hideTab(tab){tab.style.display='none';}
-    var tab=document.querySelector('.mobile-tab-bar');
-    if(tab){hideTab(tab);return;}
-    /* tab bar created dynamically by main.js — observe DOM */
-    var obs=new MutationObserver(function(muts){
-      var t=document.querySelector('.mobile-tab-bar');
-      if(t){obs.disconnect();hideTab(t);}
-    });
-    obs.observe(document.body,{childList:true,subtree:true});
-  })();
-  </script>
+  <script src="../main.js?v=160516f"></script>
 </body>
 </html>
