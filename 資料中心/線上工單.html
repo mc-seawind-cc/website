@@ -1604,6 +1604,13 @@
   })();
   </script>
   <script src="../utils.js"></script>
-  <script src="../main.js?v=160516b"></script>
+  <script src="../main.js?v=160516d"></script>
+  <script>
+  /* Hide mobile tab bar on this page — wizard bottom bar replaces it */
+  (function(){
+    var tab=document.querySelector('.mobile-tab-bar');
+    if(tab)tab.style.display='none';
+  })();
+  </script>
 </body>
 </html>
