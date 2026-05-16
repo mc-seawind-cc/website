@@ -4,7 +4,7 @@
 
 // 自動偵測子目錄深度，產生正確的 base path
 const SW_BASE = (() => {
-  const path = location.pathname;
+  const path = decodeURIComponent(location.pathname);
   // 2 層子目錄（如 資料中心/合作夥伴/、海風指南/領地系統/）
   if (path.includes('/資料中心/合作夥伴/')) return '../../';
   // 1 層子目錄
@@ -192,7 +192,7 @@ document.addEventListener('DOMContentLoaded', () => {
     createHeroParticles();
 
     // Active Nav Link
-    const rawPage = location.pathname.split('/').pop() || '';
+    const rawPage = decodeURIComponent(location.pathname).split('/').pop() || '';
     const currentPageClean = rawPage.replace(/\.(html?|php|asp)$/i, '') || 'index';
     document.querySelectorAll('.nav-links a').forEach(a => {
       const href = (a.getAttribute('href') || '').replace(/\.(html?|php|asp)$/i, '');
@@ -251,7 +251,7 @@ document.addEventListener('DOMContentLoaded', () => {
   };
 
   // Standalone rain toggle button (only on 首頁, left of music player)
-  const isHome = location.pathname.endsWith('首頁.html') || location.pathname.endsWith('/') || location.pathname === '';
+  const isHome = decodeURIComponent(location.pathname).endsWith('首頁.html') || location.pathname.endsWith('/') || location.pathname === '';
   if (isHome) {
     const rainBtn = document.createElement('button');
     rainBtn.id = 'rainToggle';
