@@ -38,54 +38,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // --- Style Toggle (海風 ↔ 華國美學) ---
-  const styleBtn = document.getElementById('styleToggle');
-  const savedStyle = localStorage.getItem('seabreeze-style') || 'seawind';
-  document.documentElement.setAttribute('data-style', savedStyle);
-  const seawindIcon = '🌊';
-  const rocIcon = '🏛️';
-  if (styleBtn) {
-    styleBtn.textContent = savedStyle === 'roc' ? rocIcon : seawindIcon;
-    styleBtn.title = savedStyle === 'roc' ? '華國美學' : '海風樣式';
-    styleBtn.addEventListener('click', () => {
-      const current = document.documentElement.getAttribute('data-style');
-      const next = current === 'roc' ? 'seawind' : 'roc';
-      document.documentElement.setAttribute('data-style', next);
-      localStorage.setItem('seabreeze-style', next);
-      styleBtn.textContent = next === 'roc' ? rocIcon : seawindIcon;
-      styleBtn.title = next === 'roc' ? '華國美學' : '海風樣式';
-    });
-  }
-
-  // --- Dynamic Nav Buttons (Style + Language) ---
-  (function() {
-    const navRight = document.querySelector('.nav-right');
-    if (!navRight) return;
-    const themeBtnEl = document.getElementById('themeToggle');
-
-    // Style toggle button
-    if (!document.getElementById('styleToggle')) {
-      const st = document.createElement('button');
-      st.id = 'styleToggle';
-      st.className = 'nav-style-toggle';
-      st.setAttribute('aria-label', '切換風格');
-      st.textContent = document.documentElement.getAttribute('data-style') === 'roc' ? '🏛️' : '🌊';
-      st.title = document.documentElement.getAttribute('data-style') === 'roc' ? '華國美學' : '海風樣式';
-      st.addEventListener('click', () => {
-        const cur = document.documentElement.getAttribute('data-style');
-        const nxt = cur === 'roc' ? 'seawind' : 'roc';
-        document.documentElement.setAttribute('data-style', nxt);
-        localStorage.setItem('seabreeze-style', nxt);
-        st.textContent = nxt === 'roc' ? '🏛️' : '🌊';
-        st.title = nxt === 'roc' ? '華國美學' : '海風樣式';
-      });
-      if (themeBtnEl) themeBtnEl.parentNode.insertBefore(st, themeBtnEl.nextSibling);
-      else navRight.insertBefore(st, navRight.firstChild);
-    }
-
-    // No language toggle (removed)
-  })();
-
   // --- Critical: Mobile Nav Toggle (Right-side Drawer) ---
   const toggle = document.querySelector('.nav-toggle');
   const links = document.querySelector('.nav-links');
