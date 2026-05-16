@@ -3144,6 +3144,8 @@ html, body {
    Responsive / Media Queries
    ═══════════════════════════════════════ */
 
+/* ── 手機底部快捷導覽列（預設隱藏）── */
+.mobile-tab-bar { display: none; }
 @media (max-width: 768px) {
   /* ═══ 導覽列：右側抽屜式 ═══ */
 
