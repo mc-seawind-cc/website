@@ -19,7 +19,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;800&family=Noto+Serif+TC:wght@700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../style.css?v=160516c">
+  <link rel="stylesheet" href="../style.css?v=160516d">
   <link rel="stylesheet" href="../music-player.css?v=140514b">
   <link rel="preload" href="../music-player.js?v=140514b" as="script">
   <style>
@@ -335,12 +335,7 @@
       <div class="pd-hero fade-in">
         <h1>📋 線上工單系統</h1>
         <p class="pd-hero-desc">遇到問題、有想法想提、還是想跟海風合作？<br>選個類型填一填，我們會盡快處理 ✨</p>
-        <div class="ticket-stats" id="ticketStats">
-          <div class="ticket-stat">
-            <span class="ticket-stat-num">~7 天</span>
-            <span class="ticket-stat-label">平均回覆時間</span>
-          </div>
-        </div>
+
       </div>
 
       <!-- ══ Mobile Wizard Progress ══ -->
@@ -356,7 +351,12 @@
         <!-- Panel 1: Type Selection -->
         <div class="mwizard-panel active" id="mwPanel1">
           <div style="padding:var(--space-md)">
-            <div class="pd-note" style="margin-bottom:var(--space-lg)"><span class="pd-note-icon">💡</span><span>選一個你要開的工單類型</span></div>
+            <div class="section-card fade-in" style="margin-bottom:var(--space-lg)">
+              <h2 style="font-size:1rem;margin-bottom:var(--space-sm)">💡 小提醒</h2>
+              <div class="pd-note"><span class="pd-note-icon">📝</span><span>敘述得越清楚，處理越快。附上截圖可以加快處理速度 🙏</span></div>
+              <div class="pd-note"><span class="pd-note-icon">⏱️</span><span>大約在提交後一週內做審理跟處理，期間請留意聯絡方式有沒有回覆。超緊急的事在 Discord 群組上開單比較快！</span></div>
+              <div class="pd-note"><span class="pd-note-icon">🔒</span><span>工單會由客服與管理員處理。</span></div>
+            </div>
             <div class="mwizard-type-card" data-mtype="report" onclick="mwSelectType('report')">
               <div class="mwizard-type-icon">🐛</div>
               <div class="mwizard-type-info"><div class="mwizard-type-name">回報工單</div><div class="mwizard-type-desc">Bug、被欺負、帳號問題、規則疑問</div></div>
