@@ -1608,8 +1608,13 @@
   <script>
   /* Hide mobile tab bar on this page — wizard bottom bar replaces it */
   (function(){
-    var tab=document.querySelector('.mobile-tab-bar');
-    if(tab)tab.style.display='none';
+    function hideTab(){
+      var tab=document.querySelector('.mobile-tab-bar');
+      if(tab){tab.style.display='none';return;}
+      /* tab bar created dynamically by main.js, retry */
+      setTimeout(hideTab,200);
+    }
+    hideTab();
   })();
   </script>
 </body>
