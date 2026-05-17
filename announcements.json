@@ -1,8 +1,25 @@
 {
   "version": 2,
-  "generatedAt": "2026-05-08T09:09:00.000+08:00",
-  "count": 491,
+  "generatedAt": "2026-05-18T04:00:00.000+08:00",
+  "count": 492,
   "announcements": [
+    {
+      "tag": "更新",
+      "id": "#0300",
+      "date": "115.05.18",
+      "isoDate": "2026-05-18",
+      "timestamp": "2026-05-18T04:00:00.000+08:00",
+      "title": "網站更新",
+      "content": "- 新增線上工單。\n - 新增合作選項。\n- 指南頁面：\n - 已更新新手指引、領地、領地列表、領地權限、經濟系統。",
+      "images": [],
+      "localImages": [],
+      "reactions": [],
+      "reactionCount": 0,
+      "discordId": "",
+      "pinned": false,
+      "author": "",
+      "index": 0
+    },
     {
       "tag": "更新",
       "id": "#0299",
