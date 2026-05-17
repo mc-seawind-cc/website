@@ -21,9 +21,9 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;800&family=Noto+Serif+TC:wght@700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../style.css?v=170517a">
-  <link rel="stylesheet" href="../music-player.css?v=170517a">
-  <link rel="preload" href="../music-player.js?v=170517a" as="script">
+  <link rel="stylesheet" href="../style.css?v=170517b">
+  <link rel="stylesheet" href="../music-player.css?v=170517b">
+  <link rel="preload" href="../music-player.js?v=170517b" as="script">
   <style>
     /* ═══════════════════════════════════════
        支持牆 — Support Wall
@@ -240,8 +240,8 @@
     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="18 15 12 9 6 15"/></svg>
   </button>
 
-  <script src="../utils.js?v=170517a"></script>
-  <script src="../main.js?v=170517a"></script>
+  <script src="../utils.js?v=170517b"></script>
+  <script src="../main.js?v=170517b"></script>
   <script>
   (function(){
     /* Page Loader */
@@ -270,8 +270,12 @@
      */
     var members = [
       /* ── 範例（請替換為真實資料）── */
-      { name: "神焰",   id: "Taiwan_shihyuan", joined: "2024-01", featured: true, hue: "sand", msg: "謝謝大家一路以來的支持！" },
-      { name: "白貓",   id: "WhiteMeowGX",     joined: "2024-01", hue: "foam", msg: "海風是我第二個家。" }
+      { name: "神焰",   id: "Taiwan_shihyuan", featured: true, hue: "sand", msg: "謝謝大家一路以來的支持！" },
+      { name: "白貓",   id: "WhiteMeowGX",     hue: "foam", msg: "海風是我第二個家。" },
+      { name: "KINGKID141",    id: "KINGKID141",    hue: "sky" },
+      { name: "capybara954",   id: "capybara954",   hue: "lavender" },
+      { name: "mudrockhubby",  id: "mudrockhubby",  hue: "teal" },
+      { name: "KBOSS2077",     id: "KBOSS2077",     hue: "sand" }
     ];
 
     /* ── Hue 輪替（未指定時自動分配）── */
@@ -307,7 +311,6 @@
         '<div class="sw-info">' +
           '<div class="sw-name">' + displayName + idSmall + '</div>' +
           '<div class="sw-meta">' +
-            '<span class="sw-joined">' + m.joined + '</span>' +
           '</div>' +
           msgHtml +
         '</div>';

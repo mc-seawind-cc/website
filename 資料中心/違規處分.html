@@ -19,9 +19,9 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../style.css?v=170517a">
-  <link rel="stylesheet" href="../music-player.css?v=170517a">
-  <link rel="preload" href="../music-player.js?v=170517a" as="script">
+  <link rel="stylesheet" href="../style.css?v=170517b">
+  <link rel="stylesheet" href="../music-player.css?v=170517b">
+  <link rel="preload" href="../music-player.js?v=170517b" as="script">
   <style>
     /* ═══ 違規處分頁面 ═══ */
 
@@ -411,15 +411,15 @@
     </div>
   </footer>
 
-  <script src="../utils.js?v=170517a"></script>
-  <script src="../main.js?v=170517a"></script>
+  <script src="../utils.js?v=170517b"></script>
+  <script src="../main.js?v=170517b"></script>
   <script>
   (() => {
     'use strict';
     const listEl = document.getElementById('penList');
     const statsEl = document.getElementById('penStats');
 
-    fetch('penalties.json')
+    fetch('../penalties.json')
       .then(r => r.json())
       .then(data => {
         const items = data.penalties || [];

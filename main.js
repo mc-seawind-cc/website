@@ -255,28 +255,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initScrollRestore();
   };
 
-  // Standalone rain toggle button (only on 首頁, left of music player)
-  const isHome = decodeURIComponent(location.pathname).endsWith('首頁.html') || location.pathname.endsWith('/') || location.pathname === '';
-  if (isHome) {
-    const rainBtn = document.createElement('button');
-    rainBtn.id = 'rainToggle';
-    rainBtn.className = 'rain-toggle active';
-    rainBtn.title = '風聲';
-    rainBtn.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9.59 4.59A2 2 0 1 1 11 8H2m10.59 11.41A2 2 0 1 0 14 16H2m15.73-8.27A2.5 2.5 0 1 1 19.5 12H2"/></svg>';
-    document.body.appendChild(rainBtn);
-    rainBtn.addEventListener('click', () => {
-      if (!window._rainGain || !window._rainCtx) return;
-      if (window._rainOn) {
-        window._rainGain.gain.linearRampToValueAtTime(0, window._rainCtx.currentTime + 1);
-        window._rainOn = false;
-        rainBtn.classList.remove('active');
-      } else {
-        window._rainGain.gain.linearRampToValueAtTime(0.15, window._rainCtx.currentTime + 1);
-        window._rainOn = true;
-        rainBtn.classList.add('active');
-      }
-    });
-  }
+
 
   // Use requestIdleCallback if available, otherwise setTimeout
   if ('requestIdleCallback' in window) {
@@ -430,44 +409,7 @@ function createHeroParticles() {
     container.appendChild(p);
   }
 
-  // Rain ambient sound (Web Audio API)
-  try {
-    const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-    const bufferSize = 2 * audioCtx.sampleRate;
-    const buffer = audioCtx.createBuffer(1, bufferSize, audioCtx.sampleRate);
-    const data = buffer.getChannelData(0);
-    for (let i = 0; i < bufferSize; i++) {
-      data[i] = (Math.random() * 2 - 1) * 0.3;
-    }
-    const noise = audioCtx.createBufferSource();
-    noise.buffer = buffer;
-    noise.loop = true;
-    const filter = audioCtx.createBiquadFilter();
-    filter.type = 'lowpass';
-    filter.frequency.value = 600;
-    const gain = audioCtx.createGain();
-    gain.gain.value = 0;
-    noise.connect(filter);
-    filter.connect(gain);
-    gain.connect(audioCtx.destination);
-    noise.start();
 
-    // Expose for rain toggle
-    window._rainCtx = audioCtx;
-    window._rainGain = gain;
-    window._rainOn = true;
-
-    // Auto-start rain on first user interaction (browser autoplay policy)
-    const startRain = () => {
-      audioCtx.resume();
-      gain.gain.linearRampToValueAtTime(0.15, audioCtx.currentTime + 2);
-    };
-    document.addEventListener('click', startRain, { once: true });
-    document.addEventListener('keydown', startRain, { once: true });
-    document.addEventListener('touchstart', startRain, { once: true });
-    // Also try starting after short delay
-    setTimeout(startRain, 500);
-  } catch(e) {}
 }
 
 
