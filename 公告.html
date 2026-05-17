@@ -19,9 +19,9 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;800&family=Noto+Serif+TC:wght@700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=170517a">
-  <link rel="stylesheet" href="music-player.css?v=170517a">
-  <link rel="preload" href="music-player.js?v=170517a" as="script">
+  <link rel="stylesheet" href="style.css?v=180518a">
+  <link rel="stylesheet" href="music-player.css?v=180518a">
+  <link rel="preload" href="music-player.js?v=180518a" as="script">
   <style>
     /* ═══════════════════════════════════════
        公告頁面 v4 — 雜誌式閱讀器
@@ -431,24 +431,65 @@
 
     /* ── RWD ── */
     @media (max-width: 768px) {
-      .ann-toolbar { flex-direction: column; align-items: stretch; top: 56px; }
-      .ann-tags { gap: 6px; }
-      .ann-tag-btn { padding: 8px 12px; font-size: 0.82rem; min-height: 40px; }
-      .ann-search-wrap input { width: 100%; font-size: 16px; padding: 12px 40px 12px 16px; }
+      /* Hero 精簡 */
+      .ann-hero { padding: var(--space-lg) 0 var(--space-md); }
+      .ann-hero h1 { font-size: 1.6rem; }
+      .ann-hero .ann-subtitle { font-size: 0.85rem; }
+
+      /* 統計膠囊：兩排佈局 */
+      .ann-stats { gap: 6px; justify-content: flex-start; overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none; padding-bottom: 4px; }
+      .ann-stats::-webkit-scrollbar { display: none; }
+      .ann-pill { padding: 5px 12px; font-size: 0.75rem; white-space: nowrap; }
+
+      /* 工具列：搜尋在上、標籤在下 */
+      .ann-toolbar { flex-direction: column; align-items: stretch; top: 56px; padding: 10px 0; gap: 10px; }
+      .ann-tags { gap: 6px; overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none; flex-wrap: nowrap; }
+      .ann-tags::-webkit-scrollbar { display: none; }
+      .ann-tag-btn { padding: 8px 14px; font-size: 0.82rem; min-height: 44px; flex-shrink: 0; }
+      .ann-search-wrap { width: 100%; }
+      .ann-search-wrap input { width: 100%; font-size: 16px; padding: 12px 40px 12px 16px; border-radius: 12px; }
       .ann-search-wrap input:focus { width: 100%; }
-      .ann-art-head { padding: 16px 16px 0; gap: 12px; }
-      .ann-art-date-block { min-width: 44px; }
-      .ann-art-day { font-size: 1.4rem; }
-      .ann-art-title { font-size: 0.95rem; }
-      .ann-art-body { padding: 14px 16px 18px; }
-      .ann-images img { max-width: 160px; max-height: 120px; }
-      .ann-stats { gap: 6px; }
-      .ann-month-nav { gap: 4px; }
-      .ann-month-btn { padding: 3px 8px; font-size: 0.7rem; }
+
+      /* 月份導航：橫向滑動 */
+      .ann-month-nav { gap: 4px; overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none; flex-wrap: nowrap; padding-bottom: 4px; }
+      .ann-month-nav::-webkit-scrollbar { display: none; }
+      .ann-month-btn { padding: 6px 10px; font-size: 0.75rem; flex-shrink: 0; min-height: 36px; }
+
+      /* 文章卡片：手機優化 */
+      .ann-article { border-radius: var(--radius-md); }
+      .ann-art-head { padding: 14px 14px 0; gap: 10px; }
+      .ann-art-date-block { min-width: 40px; padding: 4px 0; }
+      .ann-art-day { font-size: 1.3rem; }
+      .ann-art-month { font-size: 0.65rem; }
+      .ann-art-title { font-size: 0.92rem; line-height: 1.45; }
+      .ann-art-meta { gap: 6px; }
+      .ann-art-tag { font-size: 0.62rem; padding: 2px 8px; }
+      .ann-art-id { font-size: 0.68rem; padding: 1px 5px; }
+      .ann-art-body { padding: 12px 14px 16px; }
+
+      /* 內文字型 */
+      .ann-content { font-size: 0.88rem; line-height: 1.85; }
+
+      /* 圖片：更緊湊 */
+      .ann-images { gap: 6px; margin-top: 10px; }
+      .ann-images img { max-width: 140px; max-height: 110px; border-radius: 8px; }
+
+      /* 月份分隔線 */
+      .ann-month-sep-text { font-size: 0.78rem; }
+
+      /* 載入更多按鈕加大 */
+      .ann-load-more .btn { min-height: 48px; padding: 12px 24px; }
     }
-    @media (max-width: 375px) {
-      .ann-art-day { font-size: 1.2rem; }
+    @media (max-width: 480px) {
+      /* 極小螢幕 */
+      .ann-hero h1 { font-size: 1.4rem; }
+      .ann-hero .ann-subtitle { font-size: 0.8rem; }
+      .ann-art-head { padding: 12px 12px 0; gap: 8px; }
+      .ann-art-day { font-size: 1.15rem; }
       .ann-art-title { font-size: 0.88rem; }
+      .ann-art-body { padding: 10px 12px 14px; }
+      .ann-content { font-size: 0.85rem; }
+      .ann-images img { max-width: 120px; max-height: 96px; }
     }
   </style>
 </head>
@@ -575,7 +616,7 @@
       <div class="footer-bottom">
         <p>© 2026 海風伺服器 · 非 Mojang 官方營運 · service@seawind.cc</p>
       </div>
-      <p class="page-revise">網站最後修改日期 2026.05.17 / 總計修改 <span id="deployCount">—</span> 次</p>
+      <p class="page-revise">網站最後修改日期 2026.05.18 / 總計修改 <span id="deployCount">—</span> 次</p>
     </div>
   </footer>
 
@@ -602,8 +643,8 @@
     setTimeout(hideLoader, 3000);
   })();
   </script>
-  <script src="utils.js?v=170517a"></script>
-  <script src="main.js?v=170517a"></script>
+  <script src="utils.js?v=180518a"></script>
+  <script src="main.js?v=180518a"></script>
   <!-- Inline announcements (最新 50 則，減少首次載入延遲) -->
   <script id="inlineAnnouncements" type="application/json">{"version": 2, "generatedAt": "2026-05-09T21:25:00.000+08:00", "count": 12, "announcements": [{"tag": "更新", "id": "#0299", "date": "115.05.08", "isoDate": "2026-05-08", "timestamp": "2026-05-08T00:00:00.000+08:00", "title": "修復 playerlist", "content": "- 修復 `/playerlist` 錯誤：「線上目前無玩家」", "images": [], "localImages": [], "reactions": [], "reactionCount": 0, "discordId": "", "pinned": false, "author": "", "index": 0}, {"tag": "維護", "id": "#0141", "date": "115.05.08", "isoDate": "2026-05-08", "timestamp": "2026-05-08T09:00:00.000+08:00", "title": "主機維護", "content": "- 將於 05/09 00:00 ~ 05/12 00:00 進行系統性維護。", "images": [], "localImages": [], "reactions": [{"emoji": "wind_charge", "count": 0}], "reactionCount": 0, "discordId": "", "pinned": false, "author": "", "index": 1}, {"tag": "維護", "id": "#0140", "date": "115.05.05", "isoDate": "2026-05-05", "timestamp": "2026-05-05T23:30:00.000+08:00", "title": "斷線重啟", "content": "- 將於晚上 11:30 - 11:45 分重啟伺服器。\n- 修復幽靈玩家問題。", "images": [], "localImages": [], "reactions": [{"emoji": "wind_charge", "count": 0}], "reactionCount": 0, "discordId": "", "pinned": false, "author": "", "index": 2}, {"tag": "更新", "id": "#0298", "date": "115.05.04", "isoDate": "2026-05-04", "timestamp": "2026-05-04T00:00:00.000+08:00", "title": "修復選單", "content": "- 選單新增地圖按鈕。\n- 修復選單顯示錯誤和各種問題。", "images": [], "localImages": [], "reactions": [], "reactionCount": 0, "discordId": "", "pinned": false, "author": "", "index": 3}, {"tag": "公告", "id": "#0139", "date": "115.05.04", "isoDate": "2026-05-04", "timestamp": "2026-05-04T00:00:00.000+08:00", "title": "票選伺服器標籤", "content": "- 請於官方群組此區域下方投票區投票：", "images": [], "localImages": [], "reactions": [{"emoji": "wind_charge", "count": 1}], "reactionCount": 1, "discordId": "", "pinned": false, "author": "", "index": 4}, {"tag": "更新", "id": "#0297", "date": "115.05.03", "isoDate": "2026-05-03", "timestamp": "2026-05-03T23:09:00.000+08:00", "title": "小修復", "content": "- 修復無法使用 /tpgui 的問題。", "images": [], "localImages": [], "reactions": [], "reactionCount": 0, "discordId": "", "pinned": false, "author": "", "index": 5}, {"tag": "更新", "id": "#0296", "date": "115.05.02", "isoDate": "2026-05-02", "timestamp": "2026-05-02T16:43:00.000+08:00", "title": "物品署名", "content": "- 將地圖署名更換為物品署名，並支持署名普通物品。", "images": [], "localImages": [], "reactions": [], "reactionCount": 0, "discordId": "", "pinned": false, "author": "", "index": 6}, {"tag": "更新", "id": "#0295", "date": "115.05.02", "isoDate": "2026-05-02", "timestamp": "2026-05-02T04:57:00.000+08:00", "title": "線上商城", "content": "- 線上商城上架預設期限為 7 日。", "images": [], "localImages": [], "reactions": [], "reactionCount": 0, "discordId": "", "pinned": false, "author": "", "index": 7}, {"tag": "更新", "id": "#0294", "date": "115.05.01", "isoDate": "2026-05-01", "timestamp": "2026-05-01T10:00:00.000+08:00", "title": "遷移作業", "content": "- 分流一：\n  - 更換分流一核心。\n  - 提升分流一記憶體及核心數量。\n- 降低分流二記憶體及核心數量，並預計於未來刪除分流二。\n- 更新官方網站。", "images": [], "localImages": [], "reactions": [], "reactionCount": 0, "discordId": "", "pinned": false, "author": "", "index": 8}, {"tag": "維護", "id": "#0138", "date": "115.05.01", "isoDate": "2026-05-01", "timestamp": "2026-05-01T08:00:00.000+08:00", "title": "維護完畢", "content": "- 伺服器維護完畢，感謝各位風子的耐心等待。\n  - 已發送維護補償，附件有效期限 60 日。\n  - 已發送活動補償，附件有效期限 2 日。\n- 分流一核心已更換。", "images": [], "localImages": [], "reactions": [], "reactionCount": 0, "discordId": "", "pinned": false, "author": "", "index": 9}, {"tag": "活動", "id": "#0029", "date": "115.05.01", "isoDate": "2026-05-01", "timestamp": "2026-05-01T16:44:00.000+08:00", "title": "海風珍奶日任務發放方式更動", "content": "每日任務卷軸由原先收信領取，改為使用簽到領取。", "images": [], "localImages": [], "reactions": [{"emoji": "wind_charge", "count": 1}], "reactionCount": 1, "discordId": "", "pinned": false, "author": "", "index": 10}, {"tag": "維護", "id": "#0137", "date": "115.04.30", "isoDate": "2026-04-30", "timestamp": "2026-04-30T18:00:00.000+08:00", "title": "維護時間延長", "content": "- 檔案有點多，維護完畢會發公告。", "images": [], "localImages": [], "reactions": [], "reactionCount": 0, "discordId": "", "pinned": false, "author": "", "index": 11}]}</script>
   <script>
