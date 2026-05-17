@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="zh-Hant" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>公告發布 — 海風內部工具</title>
+<link rel="dns-prefetch" href="//fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;800&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --deep:#0d1117;--ocean:#161b22;--drift:#1c2333;--mist:#21283b;
+  --white:#e6edf3;--cloud:#c9d1d9;--fog:#8b949e;
+  --sky:#9dafff;--ocean-blue:#578aff;--foam:#a8e6cf;--sand:#deac80;--lavender:#ab72f9;--blush:#ff9e9e;
+  --radius-sm:6px;--radius-md:10px;--radius-lg:16px;--radius-xl:24px;
+  --font-body:'Noto Sans TC',system-ui,sans-serif;
+}
+body{font-family:var(--font-body);background:var(--deep);color:var(--cloud);line-height:1.6;min-height:100vh;padding:2rem 1rem}
+.container{max-width:680px;margin:0 auto}
+h1{font-size:1.6rem;font-weight:800;color:var(--white);margin-bottom:0.5rem}
+.subtitle{color:var(--fog);font-size:0.85rem;margin-bottom:2rem}
+
+/* Form */
+.form-group{margin-bottom:1.25rem}
+label{display:block;font-size:0.82rem;font-weight:700;color:var(--fog);margin-bottom:0.4rem;text-transform:uppercase;letter-spacing:0.5px}
+input,textarea,select{width:100%;padding:0.7rem 1rem;background:var(--ocean);border:1px solid rgba(255,255,255,0.08);border-radius:var(--radius-md);color:var(--white);font-family:var(--font-body);font-size:0.92rem;transition:border-color 0.2s}
+input:focus,textarea:focus,select:focus{outline:none;border-color:var(--sky)}
+textarea{min-height:140px;resize:vertical}
+select{cursor:pointer;appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%238b949e'%3E%3Cpath d='M6 8L1 3h10z'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 12px center}
+
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.form-row-3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1rem}
+
+/* Tags */
+.tag-select{display:flex;gap:0.5rem;flex-wrap:wrap}
+.tag-option{padding:0.4rem 0.9rem;border-radius:20px;font-size:0.8rem;font-weight:600;cursor:pointer;border:2px solid transparent;transition:all 0.2s;user-select:none}
+.tag-option:hover{transform:translateY(-1px)}
+.tag-option.active{border-color:currentColor;box-shadow:0 0 12px rgba(157,175,255,0.2)}
+.tag-option[data-tag="公告"]{background:rgba(87,138,255,0.15);color:#8ab4ff}
+.tag-option[data-tag="更新"]{background:rgba(100,220,180,0.15);color:#85e0bf}
+.tag-option[data-tag="活動"]{background:rgba(255,170,50,0.15);color:#ffbb55}
+.tag-option[data-tag="維護"]{background:rgba(255,158,158,0.15);color:#ff9e9e}
+.tag-option[data-tag="修復"]{background:rgba(171,114,249,0.15);color:#c49bfa}
+
+/* Checkbox */
+.checkbox-row{display:flex;align-items:center;gap:0.5rem;margin-top:0.5rem}
+.checkbox-row input[type="checkbox"]{width:auto;accent-color:var(--sky)}
+.checkbox-row label{margin:0;font-size:0.85rem;color:var(--cloud);text-transform:none;letter-spacing:0}
+
+/* Images */
+.image-input{display:flex;gap:0.5rem}
+.image-input input{flex:1}
+.image-input button{padding:0.7rem 1rem;background:var(--mist);border:1px solid rgba(255,255,255,0.08);border-radius:var(--radius-md);color:var(--fog);cursor:pointer;font-size:0.85rem;white-space:nowrap}
+.image-input button:hover{background:var(--drift);color:var(--cloud)}
+.image-list{display:flex;gap:0.5rem;flex-wrap:wrap;margin-top:0.5rem}
+.image-chip{display:flex;align-items:center;gap:0.3rem;padding:0.3rem 0.6rem;background:var(--mist);border-radius:var(--radius-sm);font-size:0.75rem;color:var(--fog)}
+.image-chip .remove{cursor:pointer;color:var(--blush);font-weight:700}
+
+/* Preview */
+.preview{background:var(--ocean);border:1px solid rgba(255,255,255,0.06);border-radius:var(--radius-lg);padding:1.5rem;margin-top:1.5rem}
+.preview-title{font-size:1.1rem;font-weight:700;color:var(--white);margin-bottom:0.5rem}
+.preview-content{font-size:0.88rem;color:var(--cloud);white-space:pre-line;line-height:1.8}
+.preview-meta{display:flex;gap:1rem;margin-top:0.75rem;font-size:0.78rem;color:var(--fog)}
+
+/* Buttons */
+.btn-row{display:flex;gap:0.75rem;margin-top:1.5rem}
+.btn{padding:0.75rem 1.5rem;border:none;border-radius:var(--radius-md);font-family:var(--font-body);font-size:0.9rem;font-weight:700;cursor:pointer;transition:all 0.2s}
+.btn:hover{transform:translateY(-1px)}
+.btn-primary{background:linear-gradient(135deg,var(--sky),var(--ocean-blue));color:#fff}
+.btn-primary:hover{box-shadow:0 4px 16px rgba(87,138,255,0.3)}
+.btn-primary:disabled{opacity:0.5;cursor:not-allowed;transform:none}
+.btn-outline{background:transparent;border:1px solid rgba(255,255,255,0.15);color:var(--fog)}
+.btn-outline:hover{border-color:var(--sky);color:var(--sky)}
+
+/* Status */
+.status{margin-top:1rem;padding:0.75rem 1rem;border-radius:var(--radius-md);font-size:0.85rem;display:none}
+.status.show{display:block}
+.status.success{background:rgba(168,230,207,0.1);color:var(--foam);border:1px solid rgba(168,230,207,0.2)}
+.status.error{background:rgba(255,158,158,0.1);color:var(--blush);border:1px solid rgba(255,158,158,0.2)}
+.status.loading{background:rgba(157,175,255,0.1);color:var(--sky);border:1px solid rgba(157,175,255,0.2)}
+
+/* Settings */
+.settings{background:var(--ocean);border:1px solid rgba(255,255,255,0.06);border-radius:var(--radius-lg);padding:1.25rem;margin-bottom:1.5rem}
+.settings summary{cursor:pointer;font-weight:700;color:var(--fog);font-size:0.85rem}
+.settings summary:hover{color:var(--cloud)}
+.settings-body{margin-top:1rem}
+.settings-body .form-group{margin-bottom:0.75rem}
+.settings-body label{font-size:0.75rem}
+.settings-body input{font-size:0.82rem;padding:0.5rem 0.75rem}
+.settings-note{font-size:0.72rem;color:var(--fog);margin-top:0.3rem;line-height:1.5}
+</style>
+</head>
+<body>
+<div class="container">
+  <h1>📢 公告發布工具</h1>
+  <p class="subtitle">發布公告到海風網站 + Discord 頻道通知</p>
+
+  <details class="settings">
+    <summary>⚙️ 設定</summary>
+    <div class="settings-body">
+      <div class="form-group">
+        <label>GitHub Token</label>
+        <input type="password" id="ghToken" placeholder="ghp_xxx">
+        <p class="settings-note">需要 repo 權限，用於更新 announcements.json。Token 儲存在本機 localStorage。</p>
+      </div>
+      <div class="form-group">
+        <label>Discord Webhook URL</label>
+        <input type="password" id="dcWebhook" placeholder="https://discord.com/api/webhooks/...">
+        <p class="settings-note">Discord 頻道 → 整合 → Webhook → 複製 URL。</p>
+      </div>
+      <div class="form-group">
+        <label>Discord 身分組 ID（選填，用於 @tag）</label>
+        <input type="text" id="roleId" placeholder="123456789012345678">
+        <p class="settings-note">右鍵身分組 → 複製 ID。發送時會用 <code>&lt;@&amp;ID&gt;</code> 標記。</p>
+      </div>
+      <div class="form-group">
+        <label>Discord 內容 Mention（選填，如 @everyone）</label>
+        <input type="text" id="dcMention" placeholder="@everyone 或留空">
+      </div>
+      <button class="btn btn-outline" onclick="saveSettings()" style="margin-top:0.5rem">💾 儲存設定</button>
+    </div>
+  </details>
+
+  <div class="form-group">
+    <label>標籤</label>
+    <div class="tag-select" id="tagSelect">
+      <span class="tag-option active" data-tag="公告" onclick="selectTag(this)">公告</span>
+      <span class="tag-option" data-tag="更新" onclick="selectTag(this)">更新</span>
+      <span class="tag-option" data-tag="活動" onclick="selectTag(this)">活動</span>
+      <span class="tag-option" data-tag="維護" onclick="selectTag(this)">維護</span>
+      <span class="tag-option" data-tag="修復" onclick="selectTag(this)">修復</span>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label>標題</label>
+    <input type="text" id="annTitle" placeholder="公告標題" maxlength="100">
+  </div>
+
+  <div class="form-group">
+    <label>內容</label>
+    <textarea id="annContent" placeholder="公告內容（支援換行）"></textarea>
+  </div>
+
+  <div class="form-group">
+    <label>圖片連結（選填）</label>
+    <div class="image-input">
+      <input type="text" id="annImageInput" placeholder="https://i.imgur.com/xxx.png">
+      <button onclick="addImage()">＋</button>
+    </div>
+    <div class="image-list" id="imageList"></div>
+  </div>
+
+  <div class="form-row">
+    <div class="form-group">
+      <label>民國日期（選填，自動產生）</label>
+      <input type="text" id="annDate" placeholder="115.05.17">
+    </div>
+    <div class="form-group">
+      <label>編號（選填，自動產生）</label>
+      <input type="text" id="annId" placeholder="#0492">
+    </div>
+  </div>
+
+  <div class="checkbox-row">
+    <input type="checkbox" id="annPinned">
+    <label for="annPinned">📌 置頂公告</label>
+  </div>
+
+  <!-- Preview -->
+  <div class="preview" id="preview">
+    <div class="preview-title" id="previewTitle">預覽標題</div>
+    <div class="preview-content" id="previewContent">預覽內容會顯示在這裡…</div>
+    <div class="preview-meta">
+      <span id="previewTag">公告</span>
+      <span id="previewDate">—</span>
+      <span id="previewId">—</span>
+    </div>
+  </div>
+
+  <div class="btn-row">
+    <button class="btn btn-primary" id="publishBtn" onclick="publish()">🚀 發布公告</button>
+    <button class="btn btn-outline" onclick="clearForm()">清空</button>
+  </div>
+
+  <div class="status" id="status"></div>
+</div>
+
+<script>
+// ── Settings ──
+function loadSettings() {
+  document.getElementById('ghToken').value = localStorage.getItem('sw_gh_token') || '';
+  document.getElementById('dcWebhook').value = localStorage.getItem('sw_dc_webhook') || '';
+  document.getElementById('roleId').value = localStorage.getItem('sw_dc_role') || '';
+  document.getElementById('dcMention').value = localStorage.getItem('sw_dc_mention') || '';
+}
+function saveSettings() {
+  localStorage.setItem('sw_gh_token', document.getElementById('ghToken').value.trim());
+  localStorage.setItem('sw_dc_webhook', document.getElementById('dcWebhook').value.trim());
+  localStorage.setItem('sw_dc_role', document.getElementById('roleId').value.trim());
+  localStorage.setItem('sw_dc_mention', document.getElementById('dcMention').value.trim());
+  showStatus('success', '✅ 設定已儲存');
+}
+loadSettings();
+
+// ── Tag select ──
+let currentTag = '公告';
+function selectTag(el) {
+  document.querySelectorAll('.tag-option').forEach(t => t.classList.remove('active'));
+  el.classList.add('active');
+  currentTag = el.dataset.tag;
+  updatePreview();
+}
+
+// ── Images ──
+let images = [];
+function addImage() {
+  const input = document.getElementById('annImageInput');
+  const url = input.value.trim();
+  if (!url) return;
+  images.push(url);
+  input.value = '';
+  renderImages();
+}
+function removeImage(idx) {
+  images.splice(idx, 1);
+  renderImages();
+}
+function renderImages() {
+  const list = document.getElementById('imageList');
+  list.innerHTML = images.map((u, i) =>
+    '<span class="image-chip"><span class="remove" onclick="removeImage(' + i + ')">✕</span>' + u.substring(0, 40) + (u.length > 40 ? '…' : '') + '</span>'
+  ).join('');
+}
+
+// ── Preview ──
+function updatePreview() {
+  document.getElementById('previewTitle').textContent = document.getElementById('annTitle').value || '預覽標題';
+  document.getElementById('previewContent').textContent = document.getElementById('annContent').value || '預覽內容會顯示在這裡…';
+  document.getElementById('previewTag').textContent = currentTag;
+  document.getElementById('previewDate').textContent = document.getElementById('annDate').value || '—';
+  document.getElementById('previewId').textContent = document.getElementById('annId').value || '—';
+}
+document.getElementById('annTitle').addEventListener('input', updatePreview);
+document.getElementById('annContent').addEventListener('input', updatePreview);
+document.getElementById('annDate').addEventListener('input', updatePreview);
+document.getElementById('annId').addEventListener('input', updatePreview);
+
+// ── Auto-generate date & ID ──
+function autoGenerate() {
+  const now = new Date();
+  const rocYear = now.getFullYear() - 1911;
+  const mm = String(now.getMonth() + 1).padStart(2, '0');
+  const dd = String(now.getDate()).padStart(2, '0');
+  if (!document.getElementById('annDate').value) {
+    document.getElementById('annDate').value = rocYear + '.' + mm + '.' + dd;
+  }
+}
+document.getElementById('annTitle').addEventListener('focus', autoGenerate);
+
+// ── Status ──
+function showStatus(type, msg) {
+  const el = document.getElementById('status');
+  el.className = 'status show ' + type;
+  el.textContent = msg;
+}
+
+// ── Publish ──
+async function publish() {
+  const token = localStorage.getItem('sw_gh_token');
+  const webhook = localStorage.getItem('sw_dc_webhook');
+  const roleId = localStorage.getItem('sw_dc_role');
+  const dcMention = localStorage.getItem('sw_dc_mention');
+
+  if (!token) return showStatus('error', '❌ 請先在設定中填入 GitHub Token');
+  if (!webhook) return showStatus('error', '❌ 請先在設定中填入 Discord Webhook URL');
+
+  const title = document.getElementById('annTitle').value.trim();
+  const content = document.getElementById('annContent').value.trim();
+  if (!title) return showStatus('error', '❌ 請填寫標題');
+  if (!content) return showStatus('error', '❌ 請填寫內容');
+
+  const btn = document.getElementById('publishBtn');
+  btn.disabled = true;
+  showStatus('loading', '⏳ 正在取得目前公告資料…');
+
+  try {
+    // Step 1: Get current announcements.json from GitHub
+    const repo = 'mc-seawind-cc/website';
+    const apiUrl = 'https://api.github.com/repos/' + repo + '/contents/announcements.json';
+    
+    const getResp = await fetch(apiUrl, {
+      headers: { 'Authorization': 'token ' + token, 'Accept': 'application/vnd.github.v3+json' }
+    });
+    if (!getResp.ok) throw new Error('取得檔案失敗: HTTP ' + getResp.status);
+    
+    const fileData = await getResp.json();
+    const currentContent = JSON.parse(atob(fileData.content));
+    
+    // Generate ID
+    let maxNum = 0;
+    currentContent.announcements.forEach(a => {
+      const n = parseInt(a.id.replace('#', ''));
+      if (n > maxNum) maxNum = n;
+    });
+    const newId = '#' + String(maxNum + 1).padStart(4, '0');
+    
+    // Build new announcement
+    const now = new Date();
+    const rocYear = now.getFullYear() - 1911;
+    const mm = String(now.getMonth() + 1).padStart(2, '0');
+    const dd = String(now.getDate()).padStart(2, '0');
+    
+    const newAnn = {
+      tag: currentTag,
+      id: document.getElementById('annId').value.trim() || newId,
+      date: document.getElementById('annDate').value.trim() || (rocYear + '.' + mm + '.' + dd),
+      isoDate: now.toISOString().split('T')[0],
+      timestamp: now.toISOString(),
+      title: title,
+      content: content,
+      images: images.slice(),
+      pinned: document.getElementById('annPinned').checked
+    };
+
+    // Add to front of array
+    currentContent.announcements.unshift(newAnn);
+    currentContent.count = currentContent.announcements.length;
+    currentContent.generatedAt = now.toISOString();
+
+    showStatus('loading', '⏳ 正在更新網站公告…');
+
+    // Step 2: Commit updated file
+    const newContentStr = JSON.stringify(currentContent, null, 2);
+    const encoded = btoa(unescape(encodeURIComponent(newContentStr)));
+    
+    const commitResp = await fetch(apiUrl, {
+      method: 'PUT',
+      headers: {
+        'Authorization': 'token ' + token,
+        'Accept': 'application/vnd.github.v3+json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        message: '公告: ' + newId + ' ' + title,
+        content: encoded,
+        sha: fileData.sha
+      })
+    });
+    if (!commitResp.ok) {
+      const err = await commitResp.json();
+      throw new Error('更新失敗: ' + (err.message || commitResp.status));
+    }
+
+    showStatus('loading', '⏳ 正在發送 Discord 通知…');
+
+    // Step 3: Send Discord webhook
+    const tagColors = { '公告': 0x578aff, '更新': 0x64dcb4, '活動': 0xffaa32, '維護': 0xff8282, '修復': 0xab72f9 };
+    
+    let desc = content;
+    if (desc.length > 1500) desc = desc.substring(0, 1500) + '…';
+
+    const embed = {
+      title: newAnn.id + ' ' + title,
+      description: desc,
+      color: tagColors[currentTag] || 0x578aff,
+      footer: { text: '海風公告 · ' + currentTag + ' · ' + newAnn.date },
+      timestamp: now.toISOString()
+    };
+    if (images.length) embed.image = { url: images[0] };
+
+    // Build content with mention
+    let mentionContent = '';
+    if (dcMention) mentionContent = dcMention + ' ';
+    else if (roleId) mentionContent = '<@&' + roleId + '> ';
+    
+    const dcPayload = {
+      content: mentionContent + '📢 **新公告發布！**',
+      embeds: [embed]
+    };
+
+    const dcResp = await fetch(webhook, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(dcPayload)
+    });
+    if (!dcResp.ok) throw new Error('Discord 發送失敗: HTTP ' + dcResp.status);
+
+    showStatus('success', '✅ 公告發布成功！\n' + newId + ' ' + title + '\n網站已更新 + Discord 已通知');
+    clearForm();
+
+  } catch (err) {
+    showStatus('error', '❌ ' + err.message);
+  } finally {
+    btn.disabled = false;
+  }
+}
+
+function clearForm() {
+  document.getElementById('annTitle').value = '';
+  document.getElementById('annContent').value = '';
+  document.getElementById('annDate').value = '';
+  document.getElementById('annId').value = '';
+  document.getElementById('annPinned').checked = false;
+  images = [];
+  renderImages();
+  updatePreview();
+}
+</script>
+</body>
+</html>
