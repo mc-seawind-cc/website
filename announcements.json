@@ -4987,32 +4987,6 @@
       "index": 239
     },
     {
-      "tag": "更新",
-      "id": "#0147",
-      "date": "114.03.19",
-      "isoDate": "2025-03-19",
-      "timestamp": "2025-03-19T10:10:47.926+08:00",
-      "title": "完了×4",
-      "content": "- 因` 線上遊玩總人數 `無法時時顯示的問題，所以將 #▏動態．💬▕ 中的線上遊玩總人數移除，僅在 #▏同步．💬▕ 顯示。",
-      "images": [],
-      "localImages": [],
-      "reactions": [
-        {
-          "emoji": "6️⃣",
-          "count": 1
-        },
-        {
-          "emoji": "🕕",
-          "count": 1
-        }
-      ],
-      "reactionCount": 2,
-      "discordId": "1351739655275679865",
-      "pinned": false,
-      "author": "神焰.cc",
-      "index": 240
-    },
-    {
       "tag": "活動",
       "id": "#0012",
       "date": "114.03.19",
@@ -5030,49 +5004,6 @@
       "pinned": false,
       "author": "神焰.cc",
       "index": 241
-    },
-    {
-      "tag": "更新",
-      "id": "#0146",
-      "date": "114.03.18",
-      "isoDate": "2025-03-18",
-      "timestamp": "2025-03-18T21:42:35.516+08:00",
-      "title": "完了×3",
-      "content": "- 調整了一些設定，我忘了是什麼，反正可以讓伺服器更順一點。\n- 修復：\n  - Tab的一些顯示Bug×2。\n  - 經驗無法合併的問題。",
-      "images": [],
-      "localImages": [],
-      "reactions": [
-        {
-          "emoji": "coolness",
-          "count": 3
-        },
-        {
-          "emoji": "emoji_71",
-          "count": 1
-        }
-      ],
-      "reactionCount": 4,
-      "discordId": "1351551362860843060",
-      "pinned": false,
-      "author": "神焰.cc",
-      "index": 242
-    },
-    {
-      "tag": "更新",
-      "id": "#0145",
-      "date": "114.03.17",
-      "isoDate": "2025-03-17",
-      "timestamp": "2025-03-17T19:17:39.736+08:00",
-      "title": "完了×2",
-      "content": "- 設定分流重啟時間：\n  1. 分流系統：05\\:59\\:55\n  2. 分一　　：06\\:00\\:00\n  3. 分二　　：06\\:02\\:00\n  4. 分三　　：06\\:04\\:00\n- 修復：\n  - Tab的一些顯示Bug。\n  - #▏動態．💬▕的一些顯示Bug。\n- 無法修復：\n  - 遊玩總人數延遲顯示的問題。",
-      "images": [],
-      "localImages": [],
-      "reactions": [],
-      "reactionCount": 0,
-      "discordId": "1351152502250274908",
-      "pinned": false,
-      "author": "神焰.cc",
-      "index": 243
     },
     {
       "tag": "更新",
