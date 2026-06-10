@@ -1,19 +1,8 @@
 {
   "version": 2,
   "generatedAt": "2026-05-20T14:47:21.551Z",
-  "count": 493,
+  "count": 492,
   "announcements": [
-    {
-      "tag": "測試",
-      "id": "#0301",
-      "date": "115.05.20",
-      "isoDate": "2026-05-20",
-      "timestamp": "2026-05-20T14:47:21.551Z",
-      "title": "信不信我發一個公告就可以讓文件壞掉",
-      "content": "如題",
-      "images": [],
-      "pinned": false
-    },
     {
       "tag": "更新",
       "id": "#0300",
