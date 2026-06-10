@@ -2,14 +2,14 @@
 <html lang="zh-Hant">
 <head>
   <meta charset="UTF-8">
+  <link rel="canonical" href="https://www.seawind.cc/海風指南/任務系統">
   <meta name="color-scheme" content="dark light">
   <meta name="screen-orientation" content="portrait">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>任務系統 — 海風指南 — 海風</title>
-  <link rel="canonical" href="https://www.seawind.cc/海風指南/任務系統">
-  <meta name="description" content="海風伺服器任務系統完整指南：每日任務、冒險任務、社區任務的獎勵、稀有度、玩法說明。">
+  <meta name="description" content="海風任務系統：完成任務獲取風汐碎片、風幣等獎勵，含每日任務與冒險任務。">
   <meta property="og:title" content="任務系統 — 海風指南 — 海風">
-  <meta property="og:description" content="海風伺服器任務系統完整指南：每日任務、冒險任務、社區任務的獎勵、稀有度、玩法說明。">
+  <meta property="og:description" content="完成任務獲取風汐碎片、風幣等獎勵。">
   <meta property="og:image" content="../assets/img/logo.png">
   <meta property="og:type" content="website">
   <meta name="twitter:card" content="summary">
@@ -18,14 +18,12 @@
   <link rel="icon" href="../assets/img/logo.png">
   <link rel="apple-touch-icon" href="../assets/img/logo.png">
   <link rel="dns-prefetch" href="//cdn.discordapp.com">
-  <link rel="dns-prefetch" href="//truth.bahamut.com.tw">
-  <link rel="dns-prefetch" href="//api.mcsrvstat.us">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;800&family=Noto+Serif+TC:wght@700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../style.css?v=170517a">
-  <link rel="stylesheet" href="../music-player.css?v=170517a">
-  <link rel="preload" href="../music-player.js?v=170517a" as="script">
+  <link rel="stylesheet" href="../style.css?v=110611a">
+  <link rel="stylesheet" href="../music-player.css?v=110611a">
+  <link rel="preload" href="../music-player.js?v=110611a" as="script">
 </head>
 <body>
   <div class="page-loader" id="pageLoader">
@@ -35,7 +33,6 @@
   </div>
 
   <a href="#mainContent" class="skip-link">跳到主要內容</a>
-
   <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
   <div class="bg-atmosphere"></div>
 
@@ -58,7 +55,7 @@
             <li><a href="../關於/海風團隊">海風團隊</a></li>
           </ul>
         </li>
-        <li><a href="../海風指南">海風指南</a></li>
+        <li><a href="../海風指南" class="active">海風指南</a></li>
         <li class="nav-dropdown">
           <a href="../須知/社群須知" class="nav-dropdown-toggle" aria-expanded="false" aria-haspopup="true">須知 <span class="arrow">▾</span></a>
           <ul class="dropdown-menu">
@@ -77,14 +74,12 @@
           <a href="../資料中心/合作夥伴" class="nav-dropdown-toggle" aria-expanded="false" aria-haspopup="true">資料中心 <span class="arrow">▾</span></a>
           <ul class="dropdown-menu">
             <li><a href="../資料中心/合作夥伴">合作夥伴</a></li>
-            <li><a href="../資料中心/支持牆">支持牆</a></li>
-            <li><a href="../資料中心/線上工單">線上工單</a></li>
             <li><a href="../資料中心/違規處分">違規處分</a></li>
             <li><a href="https://internal.seawind.cc" target="_blank">內部網頁</a></li>
           </ul>
         </li>
       </ul>
-      <button class="nav-theme" id="themeToggle" aria-label="切換主題"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg></button>
+      <button class="nav-theme" id="themeToggle" aria-label="切換主題"></button>
       <button class="nav-toggle" aria-label="選單">
         <span></span><span></span><span></span>
       </button>
@@ -92,473 +87,43 @@
   </nav>
 
   <div class="page">
-    <!-- ═══ Hero ═══ -->
-    <div class="guide-v2-hero fade-in">
-      <h1>任務系統</h1>
-      <p class="section-desc">每天上線做做任務，殺怪、挖礦、採集，完成就有獎勵拿。不用刻意刷，隨手做就能慢慢累積。</p>
-      <div class="guide-quick-stats">
-        <div class="guide-qs-item"><span class="guide-qs-icon">📋</span><span>任務類型</span><span class="guide-qs-val">4 種</span></div>
-        <div class="guide-qs-item"><span class="guide-qs-icon">🌱</span><span>進度分層</span><span class="guide-qs-val">3 級</span></div>
-        <div class="guide-qs-item"><span class="guide-qs-icon">🔄</span><span>每日刷新</span><span class="guide-qs-val">00:00</span></div>
-      </div>
+    <div id="mainContent" class="page-hero fade-in">
+      <h1>📋 任務系統</h1>
+      <p class="section-desc">玩家在完成任務後可獲取對應獎勵。</p>
     </div>
 
-    <div class="guide-layout">
+    <div class="content-section">
+      <a href="../海風指南" class="back-link" style="display:inline-flex;align-items:center;gap:6px;font-size:0.85rem;color:var(--fog);text-decoration:none;margin-bottom:var(--space-lg);transition:color 0.2s">← 返回指南首頁</a>
 
-      <!-- 側邊導覽 -->
-      <aside class="guide-sidebar">
-        <div class="guide-sidebar-inner">
-          <div class="guide-sidebar-title">📖 海風指南</div>
-          <nav class="guide-sidebar-nav">
-            <div class="guide-sb-group">
-              <span class="guide-sb-heading">🚀 快速開始</span>
-              <a href="新手指引" class="guide-sb-link">新手指引</a>
-              <a href="伺服器選單" class="guide-sb-link">伺服器選單</a>
-              <a href="綁定帳號" class="guide-sb-link">綁定帳號</a>
-              <a href="地圖" class="guide-sb-link">地圖</a>
-            </div>
-            <div class="guide-sb-group">
-              <span class="guide-sb-heading">🛡️ 領地與保護</span>
-              <a href="領地系統" class="guide-sb-link">領地系統</a>
-              <a href="領地系統/權限" class="guide-sb-link">領地權限</a>
-              <a href="領地系統/列表" class="guide-sb-link">領地列表</a>
-              <a href="互動記錄" class="guide-sb-link">互動記錄</a>
-              <a href="物品署名" class="guide-sb-link">物品署名</a>
-            </div>
-            <div class="guide-sb-group">
-              <span class="guide-sb-heading">🚀 傳送系統</span>
-              <a href="個人傳送點" class="guide-sb-link">個人傳送點</a>
-              <a href="公共傳送點" class="guide-sb-link">公共傳送點</a>
-              <a href="電梯" class="guide-sb-link">電梯</a>
-            </div>
-            <div class="guide-sb-group">
-              <span class="guide-sb-heading">💰 經濟與交易</span>
-              <a href="經濟系統" class="guide-sb-link">經濟系統</a>
-              <a href="線上商城" class="guide-sb-link">線上商城</a>
-              <a href="箱子商店" class="guide-sb-link">箱子商店</a>
-              <a href="銀行" class="guide-sb-link">銀行</a>
-              <a href="雜貨店" class="guide-sb-link">雜貨店</a>
-              <a href="建材小舖" class="guide-sb-link">建材小舖</a>
-            </div>
-            <div class="guide-sb-group">
-              <span class="guide-sb-heading">🎒 背包與倉庫</span>
-              <a href="倉庫" class="guide-sb-link">倉庫</a>
-              <a href="玻璃展示櫃" class="guide-sb-link">玻璃展示櫃</a>
-              <a href="盔甲座編輯器" class="guide-sb-link">盔甲座編輯器</a>
-              <a href="快捷界伏盒" class="guide-sb-link">快捷界伏盒</a>
-            </div>
-            <div class="guide-sb-group">
-              <span class="guide-sb-heading">📋 任務與成長</span>
-              <a href="階級段位" class="guide-sb-link">階級段位</a>
-                            <a href="任務系統" class="guide-sb-link active">任務系統</a>
-              <a href="簽到系統" class="guide-sb-link">簽到系統</a>
-              <a href="稱號系統" class="guide-sb-link">稱號系統</a>
-            </div>
-            <div class="guide-sb-group">
-              <span class="guide-sb-heading">⛏️ 挖礦與資源</span>
-              <a href="連鎖挖掘" class="guide-sb-link">連鎖挖掘</a>
-              <a href="礦物代換" class="guide-sb-link">礦物代換</a>
-              <a href="資源再生" class="guide-sb-link">資源再生</a>
-            </div>
-            <div class="guide-sb-group">
-              <span class="guide-sb-heading">🏗️ 建築工具</span>
-              <a href="混凝土固化鍋" class="guide-sb-link">混凝土固化鍋</a>
-              <a href="真實書櫃" class="guide-sb-link">真實書櫃</a>
-              <a href="蜂窩檢視" class="guide-sb-link">蜂窩檢視</a>
-              <a href="更多動作" class="guide-sb-link">更多動作</a>
-              <a href="生存光源方塊" class="guide-sb-link">生存光源方塊</a>
-            </div>
-            <div class="guide-sb-group">
-              <span class="guide-sb-heading">🎮 遊戲功能</span>
-              <a href="特殊合成" class="guide-sb-link">特殊合成</a>
-              <a href="穿牌開箱" class="guide-sb-link">穿牌開箱</a>
-              <a href="敲門與雙開" class="guide-sb-link">敲門與雙開</a>
-              <a href="自動拾取" class="guide-sb-link">自動拾取</a>
-              <a href="垃圾桶" class="guide-sb-link">垃圾桶</a>
-              <a href="掛機系統" class="guide-sb-link">掛機系統</a>
-              <a href="自動整理" class="guide-sb-link">自動整理</a>
-              <a href="容器預覽" class="guide-sb-link">容器預覽</a>
-              <a href="地震預警" class="guide-sb-link">地震預警</a>
-              <a href="遊戲機制" class="guide-sb-link">遊戲機制</a>
-            </div>
-            <div class="guide-sb-group">
-              <span class="guide-sb-heading">💬 社群互動</span>
-              <a href="蜂聊郵政" class="guide-sb-link">蜂聊郵政</a>
-              <a href="社區系統" class="guide-sb-link">社區系統</a>
-              <a href="靈魂出竅" class="guide-sb-link">靈魂出竅</a>
-            </div>
-            <div class="guide-sb-group">
-              <span class="guide-sb-heading">🏛️ 大廳導覽</span>
-              <a href="大廳區域" class="guide-sb-link">大廳區域</a>
-              <a href="雪隱匠作" class="guide-sb-link">雪隱匠作</a>
-              <a href="風語茶屋" class="guide-sb-link">風語茶屋</a>
-            </div>
-            <div class="guide-sb-group">
-              <span class="guide-sb-heading">⭐ 會員專屬</span>
-              <a href="隱藏裝備" class="guide-sb-link">隱藏裝備</a>
-              <a href="盔甲隱身" class="guide-sb-link">盔甲隱身</a>
-            </div>
-          </nav>
+      <!-- 任務系統 -->
+      <div class="guide-section-card fade-in" style="--card-accent:var(--sky)">
+        <h2><span class="sec-icon">📖</span> 任務系統</h2>
+        <p>任務系統提供多種不同類型的任務，完成後有機會可獲得風汐碎片、風幣等獎勵。</p>
+        <p>重生點區域有多位居民，可接取各類冒險任務。</p>
+        <ul style="padding-left:1.4em;margin:6px 0;">
+          <li>每日 00:00 刷新每日任務。</li>
+          <li>每週 01:00 刷新社區任務。</li>
+        </ul>
+
+        <!-- 任務介面截圖 -->
+        <div style="margin-top:var(--space-lg);text-align:center;">
+          <img src="https://cdn.discordapp.com/attachments/1513143654028546218/1513143750774358016/image.png?ex=6a2a9cef&is=6a294b6f&hm=326fb2059ddf6a38c7fba517508dd5341d6d356d0eb0123cbf18696f678c0a64&" alt="任務系統介面" loading="lazy" style="max-width:100%;border-radius:var(--radius-lg);border:1px solid rgba(255,255,255,0.08);" onerror="this.style.display='none'">
         </div>
-      </aside>
 
-      <div class="guide-main">
-          <div class="breadcrumb fade-in">
-            <a href="../海風指南">海風指南</a>
-            <span class="sep">›</span>
-            <span class="current">任務系統</span>
+        <h3 style="margin-top:var(--space-lg)">常用指令</h3>
+        <div style="display:flex;flex-direction:column;gap:6px;">
+          <div style="display:flex;align-items:center;gap:10px;padding:10px 14px;background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.06);border-radius:var(--radius-md)">
+            <code style="color:var(--sky);font-size:0.85rem;white-space:nowrap">/plk open</code>
+            <span style="font-size:0.85rem;color:var(--cloud)">開啟每日任務列表</span>
           </div>
-
-          <div class="rules-intro fade-in">
-            <p>在海風，每天上線除了蓋房子、到處探險，還可以順手做任務來賺獎勵。任務系統會自動幫你分配一些小目標——殺幾隻怪、挖幾個礦、採幾個作物——完成就有東西拿，不用刻意去刷也能慢慢累積。</p>
-            <p>任務獎勵包含兩種貨幣：<strong>任務幣</strong>可在任務商店兌換物品，<strong>風幣</strong>是海風的通用貨幣。兩種都是穩定的收入來源，每天做做任務就能慢慢累積。</p>
+          <div style="display:flex;align-items:center;gap:10px;padding:10px 14px;background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.06);border-radius:var(--radius-md)">
+            <code style="color:var(--sky);font-size:0.85rem;white-space:nowrap">/plg me task</code>
+            <span style="font-size:0.85rem;color:var(--cloud)">開啟社區任務列表</span>
           </div>
+        </div>
+      </div>
 
-          <div class="guide-divider"></div>
-
-          <!-- ═══ 任務類型 ═══ -->
-          <div class="guide-section-card fade-in" style="--card-accent:var(--teal)">
-            <h2><span class="sec-icon">📋</span> 任務類型</h2>
-            <p>任務分成四種，刷新時間和接取方式都不太一樣：</p>
-            <div class="rules-table-wrap">
-              <table class="rules-table">
-                <thead><tr><th>類型</th><th>刷新時間</th><th>接取方式</th><th>說明</th></tr></thead>
-                <tbody>
-                  <tr><td>📅 每日任務</td><td>每天 00:00</td><td>自動接取</td><td>最穩定的收入來源，每天自動刷新。內容包含殺怪、挖礦、採集等基本操作。有五種稀有度，難度會隨你的遊玩程度自動調整。</td></tr>
-                  <tr><td>📜 卷軸任務</td><td>—</td><td>活動期間</td><td>特殊活動才會開放的任務類型，例如珍奶日、端午節等節日活動。活動結束後消失，獎勵依各活動而定。</td></tr>
-                  <tr><td>⚔️ 冒險任務</td><td>—</td><td>找 NPC 接取</td><td>需要主動去找特定 NPC 才能開始，目標更具挑戰性。完成可獲得任務幣＋風幣（金額依各任務不同）。</td></tr>
-                  <tr><td>🏘️ 社區任務</td><td>每天 01:00</td><td>自動接取</td><td>全服玩家一起完成的任務，大家一起累積進度。達成後獎勵社區資金和社區活躍度，不給個人貨幣。</td></tr>
-                </tbody>
-              </table>
-            </div>
-            <div class="callout callout-info"><span class="callout-icon">ℹ️</span><span>每日任務是最穩定的收入來源，建議每天上線第一件事就是看一下任務列表，順手完成。</span></div>
-          </div>
-
-          <div class="guide-divider"></div>
-
-          <!-- ═══ 每日任務獎勵 ═══ -->
-          <div class="guide-section-card fade-in" style="--card-accent:var(--lavender)">
-            <h2><span class="sec-icon">🎁</span> 每日任務獎勵</h2>
-            <p>每日任務有五種稀有度，每天系統會隨機分配 <strong>10 個</strong>任務。稀有度越高，獎勵越豐富：</p>
-            <div class="rules-table-wrap">
-              <table class="rules-table">
-                <thead><tr><th>稀有度</th><th>任務幣</th><th>風幣</th><th>說明</th></tr></thead>
-                <tbody>
-                  <tr><td>⚪ 普通</td><td>2</td><td>100</td><td>最常見，旅人階段 100%、常客 83%、居民 70%。</td></tr>
-                  <tr><td>🔵 進階</td><td>6</td><td>140</td><td>稍微少見一點，任務幣獎勵是普通的 3 倍。常客 13%、居民 20%。</td></tr>
-                  <tr><td>🟣 中階</td><td>10</td><td>200</td><td>需要稀有材料或高難度戰鬥。常客 4%、居民 8%。</td></tr>
-                  <tr><td>🟠 高階</td><td>64</td><td>500</td><td>極度稀有，只有居民階段才有 2% 機率遇到。</td></tr>
-                  <tr><td>🟢 冒險</td><td>2</td><td>依各任務</td><td>特殊冒險任務，不會出現在每日任務中，僅供冒險任務使用。</td></tr>
-                </tbody>
-              </table>
-            </div>
-            <div class="callout callout-tip"><span class="callout-icon">💡</span><span>高階和冒險任務預設不會出現，需要透過進度解鎖。詳見下方「進度分層」說明。</span></div>
-          </div>
-
-          <div class="guide-divider"></div>
-
-          <!-- ═══ 進度分層 ═══ -->
-          <div class="guide-section-card fade-in" style="--card-accent:var(--foam)">
-            <h2><span class="sec-icon">📈</span> 進度分層</h2>
-            <p>任務難度會隨著你的遊玩程度自動調整。等級越高，任務池越廣，遇到高稀有度任務的機會也越大。</p>
-            <div class="rules-table-wrap">
-              <table class="rules-table">
-                <thead><tr><th>等級</th><th>解鎖條件</th><th>解鎖稀有度</th></tr></thead>
-                <tbody>
-                  <tr><td>🌱 旅人</td><td>預設（新玩家自動獲得）</td><td>⚪ 普通</td></tr>
-                  <tr><td>☕ 常客</td><td>累積簽到 7 且 遊玩時數 12 小時</td><td>🔵 進階 + 🟣 一點中階</td></tr>
-                  <tr><td>🌿 居民</td><td>累積簽到 21 且 遊玩時數 50 小時</td><td>全部（按機率分配）</td></tr>
-                </tbody>
-              </table>
-            </div>
-            <div class="callout callout-tip"><span class="callout-icon">💡</span><span>簽到和遊玩時數需要「同時」達到條件才能升級。多簽到、多上線，任務就會越來越豐富。</span></div>
-          </div>
-
-          <div class="guide-divider"></div>
-
-          <!-- ═══ 冒險任務 ═══ -->
-          <div class="guide-section-card fade-in" style="--card-accent:var(--sand)">
-            <h2><span class="sec-icon">⚔️</span> 冒險任務</h2>
-            <p>冒險任務需要主動去找 NPC 接取，目標通常比每日任務更具挑戰性，獎勵也更豐富。</p>
-            <div class="rules-table-wrap">
-              <table class="rules-table">
-                <thead><tr><th>獎勵</th><th>數量</th><th>說明</th></tr></thead>
-                <tbody>
-                  <tr><td>🪙 任務幣</td><td>2</td><td>每次完成固定獲得。</td></tr>
-                  <tr><td>💰 風幣</td><td>依各任務</td><td>金額視任務難度而定，每個冒險任務不同。</td></tr>
-                </tbody>
-              </table>
-            </div>
-            <h3 style="margin-top:var(--space-lg)">接取方式</h3>
-            <ol class="steps">
-              <li>在世界中找到帶有任務標記的 NPC（通常在村莊或特定地點）。</li>
-              <li>與 NPC 對話，選擇接取任務。</li>
-              <li>按照任務要求完成目標，回報 NPC 領取獎勵。</li>
-            </ol>
-            <div class="callout callout-tip"><span class="callout-icon">💡</span><span>冒險任務的風幣獎勵通常比每日任務高出許多，有空的時候可以多探索世界找找 NPC。</span></div>
-          </div>
-
-          <div class="guide-divider"></div>
-
-          <!-- ═══ 社區任務 ═══ -->
-          <div class="guide-section-card fade-in" style="--card-accent:var(--foam)">
-            <h2><span class="sec-icon">🏘️</span> 社區任務</h2>
-            <p>社區任務是全服玩家一起完成的任務，不給個人貨幣獎勵，而是為社區帶來發展資源。</p>
-            <div class="rules-table-wrap">
-              <table class="rules-table">
-                <thead><tr><th>獎勵</th><th>數量</th><th>說明</th></tr></thead>
-                <tbody>
-                  <tr><td>🏦 社區資金</td><td>10</td><td>用於社區升級和維護。</td></tr>
-                  <tr><td>🔥 社區活躍</td><td>10</td><td>提升社區活躍度，影響社區等級。</td></tr>
-                </tbody>
-              </table>
-            </div>
-            <h3 style="margin-top:var(--space-lg)">參與方式</h3>
-            <ul class="rules-list">
-              <li>每天 01:00 自動刷新，全服玩家共享進度。</li>
-              <li>輸入 <code>/plg me task</code> 查看社區任務的當前進度。</li>
-              <li>你的個人貢獻會計入全服進度，達成目標後全服玩家都能領獎勵。</li>
-            </ul>
-            <div class="callout callout-info"><span class="callout-icon">ℹ️</span><span>社區任務的獎勵是給社區的，不是給個人的。但社區升級後所有人都能受益，所以還是值得參與。詳見<a href="社區系統">社區系統</a>。</span></div>
-          </div>
-
-          <div class="guide-divider"></div>
-
-          <!-- ═══ 獎勵總覽 ═══ -->
-          <div class="guide-section-card fade-in" style="--card-accent:var(--sky)">
-            <h2><span class="sec-icon">📊</span> 獎勵總覽</h2>
-            <p>一張表看懂所有任務類型的獎勵：</p>
-            <div class="rules-table-wrap">
-              <table class="rules-table">
-                <thead><tr><th>任務類型</th><th>稀有度</th><th>任務幣</th><th>風幣</th></tr></thead>
-                <tbody>
-                  <tr><td rowspan="5">📅 每日任務</td><td>⚪ 普通</td><td>2</td><td>100</td></tr>
-                  <tr><td>🔵 進階</td><td>6</td><td>140</td></tr>
-                  <tr><td>🟣 中階</td><td>10</td><td>200</td></tr>
-                  <tr><td>🟠 高階</td><td>64</td><td>500</td></tr>
-                  <tr><td>🟢 冒險</td><td>2</td><td>依各任務</td></tr>
-                  <tr><td>📜 卷軸任務</td><td>依活動</td><td colspan="2">活動期間限定，獎勵依各活動而定。</td></tr>
-                  <tr><td>⚔️ 冒險任務</td><td>冒險</td><td>2</td><td>依各任務</td></tr>
-                  <tr><td>🏘️ 社區任務</td><td>社區</td><td colspan="2">社區資金 10 ＋ 社區活躍 10</td></tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
-
-          <div class="guide-divider"></div>
-
-          <!-- ═══ 貨幣說明 ═══ -->
-          <div class="guide-section-card fade-in" style="--card-accent:var(--lavender)">
-            <h2><span class="sec-icon">💱</span> 任務相關貨幣</h2>
-            <p>任務會产出多種貨幣，各有不同用途：</p>
-            <div class="rules-table-wrap">
-              <table class="rules-table">
-                <thead><tr><th>貨幣</th><th>來源</th><th>用途</th><th>性質</th></tr></thead>
-                <tbody>
-                  <tr><td>🪙 任務幣</td><td>每日任務、冒險任務</td><td>在任務商店（<code>/plk shop</code>）兌換物品</td><td>綁定帳號，不能轉讓</td></tr>
-                  <tr><td>💰 風幣</td><td>每日任務、冒險任務</td><td>海風的通用貨幣，買東西、開店、交易都用它</td><td>可交易</td></tr>
-                </tbody>
-              </table>
-            </div>
-            <div class="callout callout-tip"><span class="callout-icon">💡</span><span>任務幣最值得換的是<strong>風汐碎片</strong>——這是取得風汐碎片的僅有管道之一，非常珍貴。詳見<a href="經濟系統">經濟系統</a>。</span></div>
-          </div>
-
-          <div class="guide-divider"></div>
-
-          <!-- ═══ 任務內容 ═══ -->
-          <div class="guide-section-card fade-in" style="--card-accent:var(--sand)">
-            <h2><span class="sec-icon">🎯</span> 任務內容</h2>
-            <p>任務系統目前共有 <strong>125 個</strong>每日任務和 <strong>8 個</strong>冒險任務。每個任務都有獨特的名稱——諧音梗、成語改編、網路用語，做任務也能看看有趣的名字。</p>
-            <p><strong>任務難度會隨你的遊玩程度遞進</strong>——剛加入時做簡單任務，待越久任務越有挑戰性，獎勵也越好。</p>
-
-            <h3 style="margin-top:var(--space-lg)">🌱 旅人任務（35 個）— 預設</h3>
-            <p>最基礎的操作，讓你快速熟悉海風的遊戲環境。旅人階段只會遇到普通稀有度的任務。</p>
-            <div class="rules-table-wrap">
-              <table class="rules-table">
-                <thead><tr><th>分類</th><th>任務名稱</th></tr></thead>
-                <tbody>
-                  <tr><td>🔨 基礎合成</td><td>鋼門、玻璃心、磚家、打包帶走、箭在弦上、火力全開、紙上談兵、書中自有黃金屋、棍棒出孝子、鏡花水月、火把之夜、工欲善其事</td></tr>
-                  <tr><td>⛏️ 基礎採集</td><td>砍樹、採礦、黑色幽默、鐵石心腸、銅牆鐵壁、沙漠之星、礦工日常</td></tr>
-                  <tr><td>⚔️ 基礎戰鬥</td><td>眾矢之的、殭屍道長、蜘蛛人、苦力怕的噩夢、沼澤怪物</td></tr>
-                  <tr><td>🌾 基礎農牧</td><td>種瓜得瓜、烤馬鈴薯好吃、胡蘿蔔加大棒、剪羊毛、一天億蘋果醫生驅離我、釣魚、餵食秀、牛奶農場、種子彈</td></tr>
-                  <tr><td>🗺️ 基礎探索</td><td>鋼鐵人、炭烤、骨頭先生、火藥收集、綠化地毯、甜菜根湯、蘑菇湯</td></tr>
-                </tbody>
-              </table>
-            </div>
-
-            <h3 style="margin-top:var(--space-lg)">☕ 常客任務（55 個）— 達到一定遊玩時數或累積簽到</h3>
-            <p>開始需要準備材料、探索更多區域，任務幣獎勵也更好。常客階段解鎖進階和少量中階稀有度。</p>
-            <div class="rules-table-wrap">
-              <table class="rules-table">
-                <thead><tr><th>分類</th><th>任務名稱</th></tr></thead>
-                <tbody>
-                  <tr><td>🔨 進階合成</td><td>鐵甲武士、鐵匠、書架人生、附魔大師、烤肉大餐、麵包師傅、樓梯人生、圍欄人生、壓力山大、釀酒師、園丁生意、伐木工、蠟燭工</td></tr>
-                  <tr><td>⛏️ 進階採集</td><td>紅塵滾滾、藍瘦香菇、石灰人生、黏土工坊、冰山一角、地衣收集家、前往叢林深處探險、金山銀山前路有、鋼鐵收集者、銅匠</td></tr>
-                  <tr><td>⚔️ 進階戰鬥</td><td>末影人的凝視、女巫的毒藥、劫掠者的挑戰、洞穴蜘蛛、溺殭屍、屍殼、冰霜行者</td></tr>
-                  <tr><td>🌾 進階農牧</td><td>蜂蜜時光、南瓜燈、西瓜冰、甘蔗汁、可可豆</td></tr>
-                </tbody>
-              </table>
-            </div>
-
-            <h3 style="margin-top:var(--space-lg)">🌿 居民任務（30 個）— 達到較高遊玩時數且累積簽到</h3>
-            <p>需要稀有材料或高難度戰鬥，獎勵非常可觀。居民階段解鎖全部稀有度，按照機率分配每日任務。</p>
-            <div class="rules-table-wrap">
-              <table class="rules-table">
-                <thead><tr><th>分類</th><th>任務名稱</th></tr></thead>
-                <tbody>
-                  <tr><td>🔨 中階合成</td><td>金光閃閃、箭術大師、建築師、鐵軌狂熱、染色大師、酸鹼中和、斷頭台、燈火通明、靈魂疾行、仙人掌綠</td></tr>
-                  <tr><td>⛏️ 中階採集</td><td>冰山溶解、升級雲端硬碟、礦坑探險、鑽石恆久遠、地獄探險家、熔岩行者、上好翡翠9塊9上車</td></tr>
-                  <tr><td>⚔️ 中階戰鬥</td><td>周處除三害、別撿破爛、就你大隻、魔法根源敗於武力、史萊姆全家桶、危險的水晶、末影獵人、睡眠不足</td></tr>
-                  <tr><td>🌾 中階農牧</td><td>繁殖大師、農場主人、牧場物語、養雞達人、漁夫</td></tr>
-                </tbody>
-              </table>
-            </div>
-
-            <h3 style="margin-top:var(--space-lg)">⚔️ 冒險任務（8 個）</h3>
-            <p>需要主動找 NPC 接取，目標更具挑戰性。</p>
-            <div class="rules-table-wrap">
-              <table class="rules-table">
-                <thead><tr><th>任務名稱</th></tr></thead>
-                <tbody>
-                  <tr><td>一天一蘋果醫生遠離我、海的祝福、紅蓮熔心、千夜的試煉、純麥、河豚刺身、質量不守恆、教你如何戴上一頂帽子</td></tr>
-                </tbody>
-              </table>
-            </div>
-            <div class="callout callout-tip"><span class="callout-icon">💡</span><span>進度越高，任務池越廣，遇到高稀有度任務的機會也越大。最後一個階段（居民）解鎖全部稀有度，按照機率分配每日任務。每天 00:00 隨機分配 10 個任務，從你目前等級的任務池中抽取。冒險（mythical）機率 0%，不會出現在每日任務中，僅供冒險任務使用。</span></div>
-          </div>
-
-          <div class="guide-divider"></div>
-
-          <!-- ═══ 任務商店 ═══ -->
-          <div class="guide-section-card fade-in" style="--card-accent:var(--foam)">
-            <h2><span class="sec-icon">🏪</span> 任務商店</h2>
-            <p>用任務幣在任務商店裡兌換各種物品。輸入 <code>/plk shop</code> 開啟商店介面。</p>
-            <p>商店裡有豐富的物品可以兌換，從日常消耗品到稀有道具都有：</p>
-            <ul class="rules-list">
-              <li><strong>風汐碎片</strong> — 最珍貴的兌換物，取得管道非常有限，強烈推薦優先兌換。</li>
-              <li><strong>經驗瓶</strong> — 快速提升經驗值，適合需要附魔或修復裝備的玩家。</li>
-              <li><strong>特殊材料</strong> — 一些不容易在一般遊戲中獲得的材料。</li>
-              <li><strong>消耗品</strong> — 食物、藥水等日常消耗品。</li>
-            </ul>
-            <div class="callout callout-info"><span class="callout-icon">ℹ️</span><span>任務商店的物品和價格會不定期更新，建議定期查看有沒有新的好東西可以兌換。</span></div>
-          </div>
-
-          <div class="guide-divider"></div>
-
-          <!-- ═══ 常用指令 ═══ -->
-          <div class="guide-section-card fade-in" style="--card-accent:var(--sand)">
-            <h2><span class="sec-icon">🔍</span> 常用指令</h2>
-            <div class="callout callout-tip"><span class="callout-icon">💡</span><span>提示：<code>&lt; &gt;</code> 為必選參數，<code>[ ]</code> 為可選參數。</span></div>
-            <div class="rules-table-wrap">
-              <table class="rules-table">
-                <thead><tr><th>指令</th><th>說明</th></tr></thead>
-                <tbody>
-                  <tr><td><code>/plk open</code></td><td>開啟每日任務列表，查看今天的任務目標和進度。</td></tr>
-                  <tr><td><code>/plk shop</code></td><td>開啟任務商店，用任務幣兌換物品。</td></tr>
-                  <tr><td><code>/plg me task</code></td><td>開啟社區任務列表，查看全服任務進度。</td></tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
-
-          <div class="guide-divider"></div>
-
-          <!-- ═══ 任務小技巧 ═══ -->
-          <div class="guide-section-card fade-in" style="--card-accent:var(--teal)">
-            <h2><span class="sec-icon">💡</span> 任務小技巧</h2>
-            <ul class="rules-list">
-              <li><strong>先看任務再出門</strong> — 每天上線第一件事先看任務列表，規劃一下今天的遊戲行程，順手把任務完成。</li>
-              <li><strong>搭配連鎖挖掘</strong> — 如果有挖礦類任務，配合<a href="連鎖挖掘">連鎖挖掘</a>功能可以更快完成。</li>
-              <li><strong>優先做高稀有度任務</strong> — 高階任務一次給 64 任務幣，遇到千萬別錯過。</li>
-              <li><strong>社區任務要參與</strong> — 雖然不給個人貨幣，但社區升級後所有人都能受益。</li>
-              <li><strong>冒險任務別錯過</strong> — 雖然需要主動找 NPC，但風幣獎勵通常比每日任務高出許多。</li>
-              <li><strong>任務都有名字</strong> — 每個任務都有獨特的名稱和故事，像「拳頭即是一切」「凋零山莊」「河豚刺身」等，做任務也能看看有趣的劇情。</li>
-            </ul>
-          </div>
-
-          <div class="guide-divider"></div>
-
-          <!-- ═══ FAQ ═══ -->
-          <div class="guide-section-card fade-in" style="--card-accent:#85b1e0">
-            <h2><span class="sec-icon">❓</span> 常見問題</h2>
-            <div class="guide-faq">
-              <div class="guide-faq-item">
-                <button class="guide-faq-q">每天會有幾個任務？</button>
-                <div class="guide-faq-a"><div class="guide-faq-a-inner">每天 00:00 系統會自動分配 <strong>10 個</strong>每日任務，內容隨機。任務有五種稀有度（普通/進階/中階/高階/冒險），稀有度越高獎勵越豐富，但出現機率也越低。進度分為三級（旅人/常客/居民），居民階段才會遇到高階任務。冒險任務預設不會出現，僅供冒險任務使用。</div></div>
-              </div>
-              <div class="guide-faq-item">
-                <button class="guide-faq-q">任務忘記做會怎樣？</button>
-                <div class="guide-faq-a"><div class="guide-faq-a-inner">每日任務每天 00:00 自動刷新，沒做完的任務會消失，無法補做。但已經獲得的獎勵都保留在帳號中。冒險任務有各自的時限，注意查看截止時間。社區任務則是全服共享進度，你的貢獻不會白費。</div></div>
-              </div>
-              <div class="guide-faq-item">
-                <button class="guide-faq-q">任務幣可以做什麼？</button>
-                <div class="guide-faq-a"><div class="guide-faq-a-inner">任務幣可以在任務商店（<code>/plk shop</code>）兌換各種物品。最推薦兌換的是<strong>風汐碎片</strong>，因為這是取得風汐碎片的僅有管道之一，非常珍貴。其他還有經驗瓶、特殊材料等可以選擇。詳見<a href='經濟系統'>經濟系統</a>。</div></div>
-              </div>
-              <div class="guide-faq-item">
-                <button class="guide-faq-q">任務太難怎麼辦？</button>
-                <div class="guide-faq-a"><div class="guide-faq-a-inner">每日任務的難度通常不高，大多是殺怪、挖礦、採集等基本操作，在正常遊戲過程中就能順便完成。如果真的覺得某個任務太難或太花時間，可以跳過不做，等明天刷新新的任務。冒險任務可以選擇性接取，挑自己覺得合理的就好。</div></div>
-              </div>
-              <div class="guide-faq-item">
-                <button class="guide-faq-q">任務難度會一直這麼簡單嗎？</button>
-                <div class="guide-faq-a"><div class="guide-faq-a-inner">不會。任務難度會隨著你的遊玩程度自動調整——剛加入時都是簡單的基礎任務，待越久就會遇到越有挑戰性的任務，獎勵也越好。這是為了讓新玩家不會被嚇跑，老玩家不會覺得無聊。</div></div>
-              </div>
-            </div>
-          </div>
-
-          <div class="guide-divider"></div>
-
-          <!-- ═══ 任務資料庫 ═══ -->
-          <div class="guide-section-card fade-in" style="--card-accent:var(--sand)">
-            <h2><span class="sec-icon">🔗</span> 任務資料庫</h2>
-            <p>想知道有哪些任務？查看完整的任務列表：</p>
-            <p><a href="https://seawind-cc.notion.site/269fa143253b803b89a5e873008dbad5?v=269fa143253b804db95b000c7bec97b7" target="_blank" rel="noopener">📋 任務資料庫（Notion）</a></p>
-            <p>資料庫中包含所有任務的詳細資訊，包括目標、獎勵、難度等，方便你提前規劃要優先完成哪些任務。</p>
-          </div>
-
-          <div class="guide-divider"></div>
-
-          <!-- ═══ 相關頁面 ═══ -->
-          <div class="guide-section-card fade-in" style="--card-accent:var(--ocean-blue)">
-            <h2><span class="sec-icon">📖</span> 相關頁面</h2>
-            <div class="guide-next-grid">
-              <a href="簽到系統" class="guide-next-card">
-                <span class="guide-next-icon">📅</span>
-                <div class="guide-next-body">
-                  <h4>簽到系統</h4>
-                  <p>每天簽到領獎勵</p>
-                </div>
-              </a>
-              <a href="稱號系統" class="guide-next-card">
-                <span class="guide-next-icon">🏅</span>
-                <div class="guide-next-body">
-                  <h4>稱號系統</h4>
-                  <p>名字旁邊的小標籤</p>
-                </div>
-              </a>
-              <a href="經濟系統" class="guide-next-card">
-                <span class="guide-next-icon">💰</span>
-                <div class="guide-next-body">
-                  <h4>經濟系統</h4>
-                  <p>海風的貨幣與交易</p>
-                </div>
-              </a>
-              <a href="社區系統" class="guide-next-card">
-                <span class="guide-next-icon">🏘️</span>
-                <div class="guide-next-body">
-                  <h4>社區系統</h4>
-                  <p>全服一起建設社區</p>
-                </div>
-              </a>
-            </div>
-          </div>
-
-          <div class="guide-nav fade-in">
-            <a href="簽到系統" class="btn btn-outline">← 簽到系統</a>
-            <a href="../海風指南" class="btn btn-outline">返回目錄</a>
-            <a href="稱號系統" class="btn btn-primary">稱號系統 →</a>
-          </div>
-      </div><!-- /guide-main -->
-    </div><!-- /guide-layout -->
+    </div>
   </div>
 
   <footer class="footer">
@@ -577,26 +142,12 @@
       <div class="footer-bottom">
         <p>© 2026 海風伺服器 · 非 Mojang 官方營運 · service@seawind.cc</p>
       </div>
-      <p class="page-revise">網站最後修改日期 2026.05.17 / 總計修改 <span id="deployCount">—</span> 次</p>
+      <p class="page-revise">網站最後修改日期 2026.06.11 / 總計修改 <span id="deployCount">—</span> 次</p>
     </div>
   </footer>
 
-  <!-- Music Player -->
-  <div class="music-player" id="musicPlayer">
-    <button class="music-btn" id="musicBtn" aria-label="音樂播放">
-      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
-    </button>
-  </div>
-
-  <!-- Back to Top -->
-  <button class="back-to-top" id="backToTop" aria-label="回到頂部">
-    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="18 15 12 9 6 15"/></svg>
-  </button>
-
-  <script src="../main.js?v=170517a"></script>
-  <script src="../music-player.js?v=170517a"></script>
-
-  <!-- Page Loader dismiss -->
+  <script src="../utils.js?v=110611a"></script>
+  <script src="../main.js?v=110611a"></script>
   <script>
   (function(){
     var loader = document.getElementById("pageLoader");
