@@ -120,11 +120,17 @@
     }
     .ann-tag-btn:hover { border-color: var(--sky); color: var(--cloud); }
     .ann-tag-btn.active {
-      background: rgba(157,175,255,0.1);
-      border-color: rgba(157,175,255,0.3);
-      color: var(--sky);
       font-weight: 600;
     }
+    .ann-tag-btn[data-tag="all"].active { background: rgba(157,175,255,0.1); border-color: rgba(157,175,255,0.3); color: var(--sky); }
+    .ann-tag-btn[data-tag="公告"] .tag-dot { width:6px;height:6px;border-radius:50%;background:#578aff; }
+    .ann-tag-btn[data-tag="公告"].active { background:rgba(87,138,255,0.12); border-color:rgba(87,138,255,0.35); color:#8ab4ff; }
+    .ann-tag-btn[data-tag="更新"] .tag-dot { width:6px;height:6px;border-radius:50%;background:#64dcb4; }
+    .ann-tag-btn[data-tag="更新"].active { background:rgba(100,220,180,0.12); border-color:rgba(100,220,180,0.35); color:#85e0bf; }
+    .ann-tag-btn[data-tag="活動"] .tag-dot { width:6px;height:6px;border-radius:50%;background:#ffaa32; }
+    .ann-tag-btn[data-tag="活動"].active { background:rgba(255,170,50,0.12); border-color:rgba(255,170,50,0.35); color:#ffbb55; }
+    .ann-tag-btn[data-tag="維護"] .tag-dot { width:6px;height:6px;border-radius:50%;background:#ff8282; }
+    .ann-tag-btn[data-tag="維護"].active { background:rgba(255,130,130,0.12); border-color:rgba(255,130,130,0.35); color:#ff9e9e; }
     .ann-tag-btn .badge {
       background: rgba(255,255,255,0.08);
       padding: 1px 6px;
@@ -422,7 +428,11 @@
     [data-theme="light"] .ann-art-title { color: var(--cloud); }
     [data-theme="light"] .ann-pill { background: #fff; border-color: rgba(0,0,0,0.06); }
     [data-theme="light"] .ann-tag-btn { background: #fff; border-color: rgba(0,0,0,0.08); color: var(--fog); }
-    [data-theme="light"] .ann-tag-btn.active { background: rgba(157,175,255,0.1); border-color: rgba(157,175,255,0.25); }
+    [data-theme="light"] .ann-tag-btn[data-tag="all"].active { background: rgba(157,175,255,0.1); border-color: rgba(157,175,255,0.25); }
+    [data-theme="light"] .ann-tag-btn[data-tag="公告"].active { background:rgba(74,108,247,0.08); border-color:rgba(74,108,247,0.25); color:#4a6cf7; }
+    [data-theme="light"] .ann-tag-btn[data-tag="更新"].active { background:rgba(0,150,100,0.08); border-color:rgba(0,150,100,0.25); color:#009664; }
+    [data-theme="light"] .ann-tag-btn[data-tag="活動"].active { background:rgba(220,140,30,0.08); border-color:rgba(220,140,30,0.25); color:#dc8c1e; }
+    [data-theme="light"] .ann-tag-btn[data-tag="維護"].active { background:rgba(220,80,80,0.08); border-color:rgba(220,80,80,0.25); color:#dc5050; }
     [data-theme="light"] .ann-search-wrap input { background: #fff; border-color: rgba(0,0,0,0.08); color: var(--cloud); }
     [data-theme="light"] .ann-month-sep::after { background: rgba(0,0,0,0.06); }
     [data-theme="light"] .lightbox { background: rgba(240,242,245,0.95); }
@@ -567,10 +577,10 @@
       <div class="ann-toolbar fade-in">
         <div class="ann-tags" id="annTags">
           <button class="ann-tag-btn active" data-tag="all">全部</button>
-          <button class="ann-tag-btn" data-tag="公告">公告</button>
-          <button class="ann-tag-btn" data-tag="維護">維護</button>
-          <button class="ann-tag-btn" data-tag="活動">活動</button>
-          <button class="ann-tag-btn" data-tag="更新">更新</button>
+          <button class="ann-tag-btn" data-tag="公告"><span class="tag-dot"></span>公告</button>
+          <button class="ann-tag-btn" data-tag="維護"><span class="tag-dot"></span>維護</button>
+          <button class="ann-tag-btn" data-tag="活動"><span class="tag-dot"></span>活動</button>
+          <button class="ann-tag-btn" data-tag="更新"><span class="tag-dot"></span>更新</button>
         </div>
         <div class="ann-search-wrap">
           <input type="text" id="annSearch" placeholder="搜尋公告..." autocomplete="off" aria-label="搜尋公告">
