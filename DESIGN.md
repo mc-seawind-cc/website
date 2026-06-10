@@ -1,4 +1,5 @@
 # 海風 SeaWind 網站設計文件
+| 2026.06.11 | 海風網站助手 | **fix: announcements.json 雙重編碼修復**：#0300～#0001 全部公告的 tag/title/content 欄位從雙重編碼（UTF-8 被當 Latin-1 再編碼）修正為正確 UTF-8，共 493 則。首頁/公告頁 inline JSON 原本正確不受影響。 |
 | 2026.06.11 | 海風網站助手 | **移除首頁精選活動橫幅**：①刪除珍奶日倒數計時 HTML 區塊（featured-event / countdown / timeline，36 行）；②刪除精選活動倒數計時 JS 區塊（139 行）；③cache busting → 110611a；④頁尾日期 → 2026.06.11。 |
 | 2026.05.18 | 海風網站助手 | **新增公告 #0300（網站更新——線上工單＋合作選項＋指南更新）**：announcements.json 491→492 則，首頁/公告頁 inline JSON 同步更新。 |
 | 2026.05.18 | 海風網站助手 | **公告頁手機端體驗優化**：①Hero 區精簡（padding 縮小、字型 1.8→1.6rem）；②統計膠囊改為橫向滑動（`overflow-x:auto`）避免擠壓；③標籤按鈕橫向滑動＋不換行（`flex-wrap:nowrap`），觸控區 44px；④搜尋框改為全寬＋`border-radius:12px`＋iOS 防縮放 `font-size:16px`；⑤月份導航橫向滑動＋按鈕加大（`min-height:36px`）；⑥文章卡片 padding 精簡（14px→12px）、日期區塊縮小、標籤字型縮小；⑦內文字型 0.92→0.85rem、行高微調；⑧圖片 max-width 160→120px；⑨新增 480px 斷點（極小螢幕進一步精簡）；⑩載入更多按鈕觸控區加大（`min-height:48px`）。cache busting → 180518a。頁尾日期 → 2026.05.18 |
