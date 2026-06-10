@@ -21,9 +21,9 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;800&family=Noto+Serif+TC:wght@700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=170517a">
-  <link rel="stylesheet" href="music-player.css?v=170517a">
-  <link rel="preload" href="music-player.js?v=170517a" as="script">
+  <link rel="stylesheet" href="style.css?v=110611a">
+  <link rel="stylesheet" href="music-player.css?v=110611a">
+  <link rel="preload" href="music-player.js?v=110611a" as="script">
   <style>
     /* ═══════════════════════════════════════
        Member Page — Full Redesign 2026.05.14
@@ -319,131 +319,48 @@
 <!-- ═══ 完整回饋對比 ═══ -->
         <div class="guide-section-card fade-in" style="--card-accent:var(--sky)">
           <h2><span class="sec-icon">📊</span> 回饋總覽</h2>
-          <p>會員與季卡的完整回饋一覽。</p>
+          <p>預設玩家、會員與季卡的完整回饋一覽。</p>
 
           <div class="mem-compare">
             <table>
               <thead>
                 <tr>
-                  <th>項目</th>
-                  <th colspan="3" style="text-align:center">普通玩家（隨進度成長）</th>
-                  <th class="col-mem">季卡 400</th>
+                  <th>回饋項目</th>
+                  <th>預設玩家</th>
                   <th style="color:var(--sand)">會員 800</th>
-                </tr>
-                <tr>
-                  <th></th>
-                  <th>🌱 旅人</th>
-                  <th>☕ 常客</th>
-                  <th>🌿 居民</th>
-                  <th></th>
-                  <th></th>
+                  <th class="col-mem">季卡 400</th>
                 </tr>
               </thead>
               <tbody>
-                <tr class="cat-row"><td colspan="6">📦 領地</td></tr>
-                <tr><td>主領地</td><td>4</td><td>7</td><td>10</td><td>10</td><td class="val-hi">20</td></tr>
-                <tr><td>子領地</td><td>20</td><td>35</td><td>50</td><td>50</td><td class="val-hi">100</td></tr>
+                <tr class="cat-row"><td colspan="4">📦 數量擴充</td></tr>
+                <tr><td>領地數量（主+子）</td><td>4+20</td><td class="val-hi">20+100</td><td>4+20</td></tr>
+                <tr><td>個人傳送點數量</td><td>8</td><td class="val-hi">20</td><td>8</td></tr>
+                <tr><td>公開傳送點數量</td><td>2</td><td class="val-hi">4</td><td>2</td></tr>
+                <tr><td>箱子商店數量</td><td>40</td><td class="val-hi">300</td><td>40</td></tr>
+                <tr><td>大倉庫數量</td><td>8</td><td class="val-hi">16</td><td>8</td></tr>
+                <tr><td>小倉庫數量</td><td>4</td><td class="val-hi">8</td><td>4</td></tr>
+                <tr><td>線上商城數量</td><td>5</td><td class="val-hi">15</td><td>5</td></tr>
 
-                <tr class="cat-row"><td colspan="6">📍 傳送點</td></tr>
-                <tr><td>個人傳送點</td><td>8</td><td>14</td><td>20</td><td>20</td><td class="val-hi">40</td></tr>
-                <tr><td>公開傳送點</td><td>2</td><td>3</td><td>4</td><td>4</td><td class="val-hi">8</td></tr>
+                <tr class="cat-row"><td colspan="4">🧰 隨地開啟</td></tr>
+                <tr><td>箱子/工作台/鍛造台/末影箱/講台</td><td class="val-no">✗</td><td class="val-yes">✓</td><td class="val-yes">✓</td></tr>
+                <tr><td>鐵砧</td><td class="val-no">✗</td><td class="val-yes">✓</td><td class="val-yes">✓</td></tr>
+                <tr><td>附魔台</td><td class="val-no">✗</td><td class="val-yes">✓</td><td class="val-yes">✓</td></tr>
+                <tr><td>指令方塊（僅管理員）</td><td class="val-no">✗</td><td class="val-yes">✓</td><td class="val-no">✗</td></tr>
+                <tr><td>廣播（僅管理員）</td><td class="val-no">✗</td><td class="val-yes">✓</td><td class="val-no">✗</td></tr>
 
-                <tr class="cat-row"><td colspan="6">💰 交易</td></tr>
-                <tr><td>線上商城</td><td>5</td><td>8</td><td>10</td><td>10</td><td class="val-hi">15</td></tr>
-                <tr><td>箱子商店</td><td>40</td><td>80</td><td>120</td><td>120</td><td class="val-hi">300</td></tr>
+                <tr class="cat-row"><td colspan="4">⚡ 便利功能</td></tr>
+                <tr><td>隱藏裝備顯示</td><td class="val-no">✗</td><td class="val-yes">✓</td><td class="val-no">✗</td></tr>
+                <tr><td>盔甲隱身</td><td class="val-no">✗</td><td class="val-yes">✓</td><td class="val-no">✗</td></tr>
+                <tr><td>使用粒子效果</td><td class="val-no">✗</td><td class="val-yes">✓</td><td class="val-no">✗</td></tr>
 
-                <tr class="cat-row"><td colspan="6">🗄️ 倉庫</td></tr>
-                <tr><td>大倉庫</td><td>8</td><td>12</td><td>16</td><td>16</td><td class="val-hi">32</td></tr>
-                <tr><td>小倉庫</td><td>4</td><td>6</td><td>8</td><td>8</td><td class="val-hi">16</td></tr>
-
-                <tr class="cat-row"><td colspan="6">🧰 隨地開啟（季卡和會員都有）</td></tr>
-                <tr><td>界伏盒</td><td class="val-no" colspan="3">✗</td><td class="val-yes">✓</td><td class="val-yes">✓</td></tr>
-                <tr><td>工作台</td><td class="val-no" colspan="3">✗</td><td class="val-yes">✓</td><td class="val-yes">✓</td></tr>
-                <tr><td>鍛造台</td><td class="val-no" colspan="3">✗</td><td class="val-yes">✓</td><td class="val-yes">✓</td></tr>
-                <tr><td>製圖台</td><td class="val-no" colspan="3">✗</td><td class="val-yes">✓</td><td class="val-yes">✓</td></tr>
-                <tr><td>紡織機</td><td class="val-no" colspan="3">✗</td><td class="val-yes">✓</td><td class="val-yes">✓</td></tr>
-                <tr><td>鐵砧</td><td class="val-no" colspan="3">✗</td><td class="val-yes">✓</td><td class="val-yes">✓</td></tr>
-                <tr><td>砂輪</td><td class="val-no" colspan="3">✗</td><td class="val-yes">✓</td><td class="val-yes">✓</td></tr>
-
-                <tr class="cat-row"><td colspan="6">⚡ 便利功能</td></tr>
-                <tr><td>自動簽到</td><td class="val-no" colspan="3">✗</td><td class="val-no">✗</td><td class="val-yes">✓</td></tr>
-                <tr><td>郵件免費</td><td colspan="3">1 風幣</td><td>1 風幣</td><td class="val-yes">免費</td></tr>
-                <tr><td>變更自身大小</td><td class="val-no" colspan="3">✗</td><td class="val-no">✗</td><td class="val-yes">✓</td></tr>
-                <tr><td>隱藏裝備</td><td class="val-no" colspan="3">✗</td><td class="val-no">✗</td><td class="val-yes">✓</td></tr>
-
-                <tr class="cat-row"><td colspan="6">🏅 榮譽標識</td></tr>
-                <tr><td>遊戲稱號</td><td colspan="3">玩家</td><td>玩家</td><td class="val-hi">海風會員</td></tr>
-                <tr><td>Discord 身分組</td><td class="val-no" colspan="3">✗</td><td class="val-no">✗</td><td class="val-yes">✓</td></tr>
-                <tr><td>支持牆展示</td><td class="val-no" colspan="3">✗</td><td class="val-no">✗</td><td class="val-yes">✓</td></tr>
-
-                <tr class="cat-row"><td colspan="6">🌊 季卡專屬（活動期間額外獎勵）</td></tr>
-                <tr><td>活動額外獎勵</td><td class="val-no" colspan="3">✗</td><td class="val-yes">✓</td><td class="val-no">✗</td></tr>
-                <tr><td>季節額外獎勵</td><td class="val-no" colspan="3">✗</td><td class="val-yes">✓</td><td class="val-no">✗</td></tr>
-
-                <tr class="cat-row"><td colspan="6">⏳ 待設計</td></tr>
-                <tr><td>風汐錠加碼</td><td class="val-no" colspan="3">✗</td><td class="val-no">✗</td><td class="val-hi">待設計</td></tr>
-                <tr><td>簽到自訂獎勵</td><td class="val-no" colspan="3">✗</td><td class="val-no">✗</td><td class="val-hi">待設計</td></tr>
+                <tr class="cat-row"><td colspan="4">🎁 專屬獎勵</td></tr>
+                <tr><td>簽到獲得風汐錠</td><td class="val-no">✗</td><td class="val-yes">✓（每日2個）</td><td class="val-no">✗</td></tr>
+                <tr><td>專屬稱號（金色）</td><td class="val-no">✗</td><td class="val-yes">✓</td><td class="val-no">✗</td></tr>
+                <tr><td>活動額外獎勵</td><td class="val-no">✗</td><td class="val-no">✗</td><td class="val-yes">✓</td></tr>
+                <tr><td>季節額外獎勵</td><td class="val-no">✗</td><td class="val-no">✗</td><td class="val-yes">✓</td></tr>
               </tbody>
             </table>
           </div>
-        </div>
-
-        <div class="guide-divider"></div>
-
-<!-- ═══ 任務機率 ═══ -->
-        <div class="guide-section-card fade-in" style="--card-accent:var(--lavender)">
-          <h2><span class="sec-icon">🎲</span> 各階級任務機率</h2>
-          <p>階級越高，每日任務遇到高稀有度的機率越大。以下是三個階級的任務稀有度分布：</p>
-
-          <div class="mem-compare" style="margin-top:var(--space-lg)">
-            <table>
-              <thead>
-                <tr>
-                  <th>稀有度</th>
-                  <th>任務幣</th>
-                  <th>風幣</th>
-                  <th>🌱 旅人</th>
-                  <th>☕ 常客</th>
-                  <th>🌿 居民</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>⚪ 普通</td>
-                  <td>2</td>
-                  <td>100</td>
-                  <td><strong>100%</strong></td>
-                  <td>83%</td>
-                  <td>70%</td>
-                </tr>
-                <tr>
-                  <td>🔵 進階</td>
-                  <td>6</td>
-                  <td>140</td>
-                  <td>—</td>
-                  <td>13%</td>
-                  <td>20%</td>
-                </tr>
-                <tr>
-                  <td>🟣 中階</td>
-                  <td>10</td>
-                  <td>200</td>
-                  <td>—</td>
-                  <td>4%</td>
-                  <td>8%</td>
-                </tr>
-                <tr>
-                  <td>🟠 高階</td>
-                  <td>64</td>
-                  <td>500</td>
-                  <td>—</td>
-                  <td>—</td>
-                  <td>2%</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-          <p style="margin-top:12px;font-size:0.85rem;color:var(--muted)">階級解鎖條件：旅人＝預設；常客＝簽到 7 或時數 12h；居民＝簽到 21 或時數 50h。<a href="海風指南/階級段位" style="color:var(--foam);text-decoration:underline">查看完整階級說明 →</a></p>
         </div>
 
         <div class="guide-divider"></div>
@@ -571,31 +488,7 @@
         
         <div class="guide-divider"></div>
 
-<!-- ═══ 相關頁面 ═══ -->
-        <div class="guide-section-card fade-in" style="--card-accent:var(--lavender)">
-          <h2><span class="sec-icon">📖</span> 相關頁面</h2>
 
-          <div class="mem-related-grid">
-            <a href="海風指南/綁定帳號" class="mem-related-card">
-              <span class="mem-related-icon">🔗</span>
-              <div class="mem-related-body"><h4>綁定帳號</h4><p>贊助前請先完成帳號綁定</p></div>
-            </a>
-            <a href="資料中心/線上工單" class="mem-related-card">
-              <span class="mem-related-icon">📮</span>
-              <div class="mem-related-body"><h4>線上工單</h4><p>開啟工單進行贊助</p></div>
-            </a>
-            <a href="資料中心/支持牆" class="mem-related-card">
-              <span class="mem-related-icon">💛</span>
-              <div class="mem-related-body"><h4>支持牆</h4><p>看看誰支持了海風</p></div>
-            </a>
-            <a href="須知/社群須知" class="mem-related-card">
-              <span class="mem-related-icon">📋</span>
-              <div class="mem-related-body"><h4>社群須知</h4><p>了解海風社群規範</p></div>
-            </a>
-          </div>
-        </div>
-
-      
 
 </div>
     </div>
@@ -617,7 +510,7 @@
       <div class="footer-bottom">
         <p>© 2026 海風伺服器 · 非 Mojang 官方營運 · service@seawind.cc</p>
       </div>
-      <p class="page-revise">網站最後修改日期 2026.05.17 / 總計修改 <span id="deployCount">—</span> 次</p>
+      <p class="page-revise">網站最後修改日期 2026.06.11 / 總計修改 <span id="deployCount">—</span> 次</p>
     </div>
   </footer>
 
@@ -649,7 +542,7 @@
     });
   })();
   </script>
-  <script src="utils.js?v=170517a"></script>
-  <script src="main.js?v=170517a"></script>
+  <script src="utils.js?v=110611a"></script>
+  <script src="main.js?v=110611a"></script>
 </body>
 </html>
