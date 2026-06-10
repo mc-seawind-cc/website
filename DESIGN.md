@@ -1,4 +1,5 @@
 # 海風 SeaWind 網站設計文件
+| 2026.06.11 | 海風網站助手 | **fix: 公告頁面 5月/6月/全部 無法顯示修復 + 標籤搜尋合併 + 團隊頁 icon 修復 + 維護工具公告整合**：①根本原因：`renderArticle` 中 `item.localImages.length` 在 `localImages` 為 `undefined` 時拋出 TypeError，導致整個 renderChunk 中斷（5月 10 筆、6月 5 筆無 localImages 欄位）；修復改為 `(item.localImages && item.localImages.length)` 防禦性取值；②公告頁移除上方統計膠囊（ann-stats），將標籤篩選按鈕（含 badge 計數）與搜尋欄合併為單一工具列，未選標籤時顯示全部公告；③海風團隊頁 11 個 skinmc.net 頭像 URL（被 Cloudflare 403 封鎖）全數改為 minotar.net/helm/ 格式（與 peng1234 一致）；④內部維護工具（internal.seawind.cc/維護）新增 📢 公告管理標籤，從 public announcements.json 載入公告列表，支援搜尋＋標籤篩選；⑤cache busting → 110611a；⑥頁尾日期 → 2026.06.11。 |
 | 2026.06.11 | 海風網站助手 | **新增維護工具（maintenance-tool.html）**：五大功能——①公告管理（新增/搜尋/匯出 JSON）；②處分管理（新增處分記錄）；③海風團隊（檢視成員/產生 HTML）；④活動管理（產生活動頁面模板）；⑤季節管理（產生季節頁面模板）。表單填寫→一鍵產生 JSON/HTML→複製貼上，小白也可維護。深色模式 UI，響應式設計。 |
 | 2026.06.11 | 海風網站助手 | **fix: announcements.json 雙重編碼修復**：#0300～#0001 全部公告的 tag/title/content 欄位從雙重編碼（UTF-8 被當 Latin-1 再編碼）修正為正確 UTF-8，共 493 則。首頁/公告頁 inline JSON 原本正確不受影響。 |
 | 2026.06.11 | 海風網站助手 | **移除首頁精選活動橫幅**：①刪除珍奶日倒數計時 HTML 區塊（featured-event / countdown / timeline，36 行）；②刪除精選活動倒數計時 JS 區塊（139 行）；③cache busting → 110611a；④頁尾日期 → 2026.06.11。 |
