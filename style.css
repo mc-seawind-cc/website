@@ -311,9 +311,10 @@ body{font-family:var(--font-body);background:var(--deep);color:var(--cloud);line
 [data-theme="light"] .hero::after{background:rgba(0,0,0,0.38),linear-gradient(to bottom,rgba(0,0,0,0.15)0%,transparent 30%,transparent 60%,#0f1117 100%)}
 [data-theme="light"] .hero-tips .tips-text{color:rgba(255,255,255,0.9)}
 [data-theme="light"] .hero-tips{background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.12);border-radius:var(--radius-lg);padding:10px 18px;box-shadow:0 2px 8px rgba(0,0,0,0.15);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
-[data-theme="light"] .info-card{background:rgba(255,255,255,0.8);border-color:rgba(0,0,0,0.08);box-shadow:0 1px 4px rgba(0,0,0,0.04)}
+[data-theme="light"] .info-card{background:rgba(74,108,247,0.04);border-color:rgba(74,108,247,0.15);box-shadow:0 1px 4px rgba(0,0,0,0.04)}
 [data-theme="light"] .info-card::before{background:linear-gradient(90deg,transparent,var(--ocean-blue),var(--foam),transparent);opacity:0.3}
-[data-theme="light"] .info-card:hover{background:rgba(255,255,255,0.95);border-color:rgba(0,0,0,0.12);box-shadow:0 4px 12px rgba(0,0,0,0.06);transform:translateY(-2px) scale(1.04)}
+[data-theme="light"] .info-card:hover{background:rgba(74,108,247,0.08);border-color:rgba(74,108,247,0.25);box-shadow:0 4px 12px rgba(0,0,0,0.06);transform:translateY(-2px) scale(1.04)}
+[data-theme="light"] .info-card-copy:hover{background:rgba(74,108,247,0.08);border-color:rgba(74,108,247,0.25)}
 [data-theme="light"] .info-card:hover::before{opacity:0.7}
 [data-theme="light"] .info-label{color:#7a8394}
 [data-theme="light"] .info-value{color:var(--cloud)}
