@@ -2,14 +2,14 @@
 <html lang="zh-Hant">
 <head>
   <meta charset="UTF-8">
+  <link rel="canonical" href="https://www.seawind.cc/海風指南/簽到系統">
   <meta name="color-scheme" content="dark light">
   <meta name="screen-orientation" content="portrait">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>簽到系統 — 海風指南 — 海風</title>
-  <link rel="canonical" href="https://www.seawind.cc/海風指南/簽到系統">
-  <meta name="description" content="海風伺服器簽到月曆：每天簽到或許有好東西。">
+  <meta name="description" content="海風簽到系統：每天簽到獲得風汐碎片、風幣，累積簽到解鎖稱號與額外獎勵。">
   <meta property="og:title" content="簽到系統 — 海風指南 — 海風">
-  <meta property="og:description" content="海風伺服器簽到月曆：每天簽到或許有好東西。">
+  <meta property="og:description" content="每天簽到獲得風汐碎片、風幣，累積簽到解鎖稱號與額外獎勵。">
   <meta property="og:image" content="../assets/img/logo.png">
   <meta property="og:type" content="website">
   <meta name="twitter:card" content="summary">
@@ -17,15 +17,12 @@
   <meta name="theme-color" content="#0d1117">
   <link rel="icon" href="../assets/img/logo.png">
   <link rel="apple-touch-icon" href="../assets/img/logo.png">
-  <link rel="dns-prefetch" href="//cdn.discordapp.com">
-  <link rel="dns-prefetch" href="//truth.bahamut.com.tw">
-  <link rel="dns-prefetch" href="//api.mcsrvstat.us">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;800&family=Noto+Serif+TC:wght@700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../style.css?v=170517a">
-  <link rel="stylesheet" href="../music-player.css?v=170517a">
-  <link rel="preload" href="../music-player.js?v=170517a" as="script">
+  <link rel="stylesheet" href="../style.css?v=110611a">
+  <link rel="stylesheet" href="../music-player.css?v=110611a">
+  <link rel="preload" href="../music-player.js?v=110611a" as="script">
 </head>
 <body>
   <div class="page-loader" id="pageLoader">
@@ -35,7 +32,6 @@
   </div>
 
   <a href="#mainContent" class="skip-link">跳到主要內容</a>
-
   <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
   <div class="bg-atmosphere"></div>
 
@@ -58,7 +54,7 @@
             <li><a href="../關於/海風團隊">海風團隊</a></li>
           </ul>
         </li>
-        <li><a href="../海風指南">海風指南</a></li>
+        <li><a href="../海風指南" class="active">海風指南</a></li>
         <li class="nav-dropdown">
           <a href="../須知/社群須知" class="nav-dropdown-toggle" aria-expanded="false" aria-haspopup="true">須知 <span class="arrow">▾</span></a>
           <ul class="dropdown-menu">
@@ -77,14 +73,12 @@
           <a href="../資料中心/合作夥伴" class="nav-dropdown-toggle" aria-expanded="false" aria-haspopup="true">資料中心 <span class="arrow">▾</span></a>
           <ul class="dropdown-menu">
             <li><a href="../資料中心/合作夥伴">合作夥伴</a></li>
-            <li><a href="../資料中心/支持牆">支持牆</a></li>
-            <li><a href="../資料中心/線上工單">線上工單</a></li>
             <li><a href="../資料中心/違規處分">違規處分</a></li>
             <li><a href="https://internal.seawind.cc" target="_blank">內部網頁</a></li>
           </ul>
         </li>
       </ul>
-      <button class="nav-theme" id="themeToggle" aria-label="切換主題"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg></button>
+      <button class="nav-theme" id="themeToggle" aria-label="切換主題"></button>
       <button class="nav-toggle" aria-label="選單">
         <span></span><span></span><span></span>
       </button>
@@ -92,382 +86,29 @@
   </nav>
 
   <div class="page">
-    <!-- ═══ Hero ═══ -->
-    <div class="guide-v2-hero fade-in">
-      <h1>簽到月曆</h1>
-      <p class="section-desc">每天上線先簽個到，花不到幾秒鐘就能拿獎勵。養成簽到的習慣，累積下來真的很可觀！</p>
-      <div class="guide-quick-stats">
-        <div class="guide-qs-item"><span class="guide-qs-icon">📅</span><span>頻率</span><span class="guide-qs-val">每天一次</span></div>
-        <div class="guide-qs-item"><span class="guide-qs-icon">🎁</span><span>獎勵</span><span class="guide-qs-val">隨機物品</span></div>
-        <div class="guide-qs-item"><span class="guide-qs-icon">🔥</span><span>連續</span><span class="guide-qs-val">額外稱號</span></div>
-      </div>
+    <div id="mainContent" class="page-hero fade-in">
+      <h1>📅 簽到系統</h1>
+      <p class="section-desc">每天登入簽到，都會有不同的收穫。</p>
     </div>
 
-    <div class="guide-layout">
+    <div class="content-section">
+      <a href="../海風指南" class="back-link" style="display:inline-flex;align-items:center;gap:6px;font-size:0.85rem;color:var(--fog);text-decoration:none;margin-bottom:var(--space-lg);transition:color 0.2s">← 返回指南首頁</a>
 
-      <!-- 側邊導覽 -->
-      <aside class="guide-sidebar">
-        <div class="guide-sidebar-inner">
-          <div class="guide-sidebar-title">📖 海風指南</div>
-          <nav class="guide-sidebar-nav">
-            <div class="guide-sb-group">
-              <span class="guide-sb-heading">🚀 快速開始</span>
-              <a href="新手指引" class="guide-sb-link">新手指引</a>
-              <a href="伺服器選單" class="guide-sb-link">伺服器選單</a>
-              <a href="綁定帳號" class="guide-sb-link">綁定帳號</a>
-              <a href="地圖" class="guide-sb-link">地圖</a>
-            </div>
-            <div class="guide-sb-group">
-              <span class="guide-sb-heading">🛡️ 領地與保護</span>
-              <a href="領地系統" class="guide-sb-link">領地系統</a>
-              <a href="領地系統/權限" class="guide-sb-link">領地權限</a>
-              <a href="領地系統/列表" class="guide-sb-link">領地列表</a>
-              <a href="互動記錄" class="guide-sb-link">互動記錄</a>
-              <a href="物品署名" class="guide-sb-link">物品署名</a>
-            </div>
-            <div class="guide-sb-group">
-              <span class="guide-sb-heading">🚀 傳送系統</span>
-              <a href="個人傳送點" class="guide-sb-link">個人傳送點</a>
-              <a href="公共傳送點" class="guide-sb-link">公共傳送點</a>
-              <a href="電梯" class="guide-sb-link">電梯</a>
-            </div>
-            <div class="guide-sb-group">
-              <span class="guide-sb-heading">💰 經濟與交易</span>
-              <a href="經濟系統" class="guide-sb-link">經濟系統</a>
-              <a href="線上商城" class="guide-sb-link">線上商城</a>
-              <a href="箱子商店" class="guide-sb-link">箱子商店</a>
-              <a href="銀行" class="guide-sb-link">銀行</a>
-              <a href="雜貨店" class="guide-sb-link">雜貨店</a>
-              <a href="建材小舖" class="guide-sb-link">建材小舖</a>
-            </div>
-            <div class="guide-sb-group">
-              <span class="guide-sb-heading">🎒 背包與倉庫</span>
-              <a href="倉庫" class="guide-sb-link">倉庫</a>
-              <a href="玻璃展示櫃" class="guide-sb-link">玻璃展示櫃</a>
-              <a href="盔甲座編輯器" class="guide-sb-link">盔甲座編輯器</a>
-              <a href="快捷界伏盒" class="guide-sb-link">快捷界伏盒</a>
-            </div>
-            <div class="guide-sb-group">
-              <span class="guide-sb-heading">📋 任務與成長</span>
-              <a href="階級段位" class="guide-sb-link">階級段位</a>
-                            <a href="任務系統" class="guide-sb-link">任務系統</a>
-              <a href="簽到系統" class="guide-sb-link active">簽到系統</a>
-              <a href="稱號系統" class="guide-sb-link">稱號系統</a>
-            </div>
-            <div class="guide-sb-group">
-              <span class="guide-sb-heading">⛏️ 挖礦與資源</span>
-              <a href="連鎖挖掘" class="guide-sb-link">連鎖挖掘</a>
-              <a href="礦物代換" class="guide-sb-link">礦物代換</a>
-              <a href="資源再生" class="guide-sb-link">資源再生</a>
-            </div>
-            <div class="guide-sb-group">
-              <span class="guide-sb-heading">🏗️ 建築工具</span>
-              <a href="混凝土固化鍋" class="guide-sb-link">混凝土固化鍋</a>
-              <a href="真實書櫃" class="guide-sb-link">真實書櫃</a>
-              <a href="蜂窩檢視" class="guide-sb-link">蜂窩檢視</a>
-              <a href="更多動作" class="guide-sb-link">更多動作</a>
-              <a href="生存光源方塊" class="guide-sb-link">生存光源方塊</a>
-            </div>
-            <div class="guide-sb-group">
-              <span class="guide-sb-heading">🎮 遊戲功能</span>
-              <a href="特殊合成" class="guide-sb-link">特殊合成</a>
-              <a href="穿牌開箱" class="guide-sb-link">穿牌開箱</a>
-              <a href="敲門與雙開" class="guide-sb-link">敲門與雙開</a>
-              <a href="自動拾取" class="guide-sb-link">自動拾取</a>
-              <a href="垃圾桶" class="guide-sb-link">垃圾桶</a>
-              <a href="掛機系統" class="guide-sb-link">掛機系統</a>
-              <a href="自動整理" class="guide-sb-link">自動整理</a>
-              <a href="容器預覽" class="guide-sb-link">容器預覽</a>
-              <a href="地震預警" class="guide-sb-link">地震預警</a>
-              <a href="遊戲機制" class="guide-sb-link">遊戲機制</a>
-            </div>
-            <div class="guide-sb-group">
-              <span class="guide-sb-heading">💬 社群互動</span>
-              <a href="蜂聊郵政" class="guide-sb-link">蜂聊郵政</a>
-              <a href="社區系統" class="guide-sb-link">社區系統</a>
-              <a href="靈魂出竅" class="guide-sb-link">靈魂出竅</a>
-            </div>
-            <div class="guide-sb-group">
-              <span class="guide-sb-heading">🏛️ 大廳導覽</span>
-              <a href="大廳區域" class="guide-sb-link">大廳區域</a>
-              <a href="雪隱匠作" class="guide-sb-link">雪隱匠作</a>
-              <a href="風語茶屋" class="guide-sb-link">風語茶屋</a>
-            </div>
-            <div class="guide-sb-group">
-              <span class="guide-sb-heading">⭐ 會員專屬</span>
-              <a href="隱藏裝備" class="guide-sb-link">隱藏裝備</a>
-              <a href="盔甲隱身" class="guide-sb-link">盔甲隱身</a>
-            </div>
-          </nav>
-        </div>
-      </aside>
+      <!-- 簽到系統 -->
+      <div class="guide-section-card fade-in" style="--card-accent:var(--sand)">
+        <h2><span class="sec-icon">📖</span> 簽到系統</h2>
+        <p>簽到系統是海風的重要日常玩法之一，玩家每天可以簽到一次，獲得基礎獎勵與各種額外驚喜。隨著簽到天數累積，獎勵會逐漸提升，並解鎖特殊稱號與限定內容。</p>
 
-      <div class="guide-main">
-          <div class="breadcrumb fade-in">
-            <a href="../海風指南">海風指南</a>
-            <span class="sep">›</span>
-            <span class="current">簽到月曆</span>
-          </div>
+        <h3 style="margin-top:var(--space-lg)">簽到獎勵</h3>
+        <p>平日與假日的簽到獎勵有所不同，可獲得風汐碎片、風幣，此外，系統會依據連續簽到天數與累積簽到天數發放額外獎勵。</p>
+        <ul style="padding-left:1.4em;margin:6px 0;">
+          <li>連續簽到可獲得連簽系列稱號。</li>
+          <li>累積簽到可獲得蛋糕系列稱號。</li>
+          <li>特定節日、活動期間或特殊時段簽到，可能會獲得額外獎勵。</li>
+        </ul>
+      </div>
 
-          <div class="rules-intro fade-in">
-            <p>每天上線先簽個到，花不到幾秒鐘就能拿獎勵。簽到系統追蹤你的簽到紀錄，連續簽到還有額外獎勵。一天一點、一天一點，累積下來的獎勵真的很可觀！而且在特別的日子簽到，也許會有驚喜等著你。</p>
-            <div class="callout callout-tip"><span class="callout-icon">💡</span><span>簽到是每天最簡單的收入來源，只要上線點一下就好。建議養成每天簽到的習慣，搭配<a href="任務系統">任務系統</a>一起做，雙重收入更划算。</span></div>
-          </div>
-
-          <div class="guide-divider"></div>
-
-          <!-- ═══ 簽到方式 ═══ -->
-          <div class="guide-section-card fade-in" style="--card-accent:var(--teal)">
-            <h2><span class="sec-icon">📅</span> 簽到方式</h2>
-            <p>簽到非常簡單，只需要一個指令：</p>
-            <ol class="steps">
-              <li>輸入 <code>/signin</code> 開啟簽到月曆介面。</li>
-              <li>在月曆上點擊今天的日期，完成簽到。</li>
-              <li>系統會隨機發放一份獎勵，直接送進你的背包。</li>
-            </ol>
-            <div class="callout callout-info"><span class="callout-icon">ℹ️</span><span>每天只能簽到一次，簽過之後當天無法重複簽。簽到時間以伺服器時間為準（每天 00:00 重置）。</span></div>
-          </div>
-
-          <div class="guide-divider"></div>
-
-          <!-- ═══ 簽到類型 ═══ -->
-          <div class="guide-section-card fade-in" style="--card-accent:var(--sand)">
-            <h2><span class="sec-icon">📊</span> 三種簽到追蹤</h2>
-            <p>簽到系統同時追蹤三種不同的進度，各自獨立計算：</p>
-            <div class="rules-table-wrap">
-              <table class="rules-table">
-                <thead><tr><th>類型</th><th>說明</th><th>獎勵</th></tr></thead>
-                <tbody>
-                  <tr><td>📅 每日簽到</td><td>每天可以簽到一次，免費的。</td><td>風汐碎片×2 ＋ 風幣 180。</td></tr>
-                  <tr><td>🔥 連續簽到</td><td>連續天數不中斷地簽到。</td><td>達成里程碑可獲得專屬稱號。</td></tr>
-                  <tr><td>📊 累積簽到</td><td>累計總共簽到幾天（不論是否連續）。</td><td>達到特定天數可獲得蛋糕類稱號。</td></tr>
-                </tbody>
-              </table>
-            </div>
-            <div class="callout callout-tip"><span class="callout-icon">💡</span><span>三種簽到類型各自獨立計算，每日簽到一次同時更新三種進度。即使連續簽到中斷了，累積簽到天數也不會歸零。</span></div>
-          </div>
-
-          <div class="guide-divider"></div>
-
-          <!-- ═══ 每日獎勵 ═══ -->
-          <div class="guide-section-card fade-in" style="--card-accent:var(--lavender)">
-            <h2><span class="sec-icon">🎁</span> 每日簽到獎勵</h2>
-            <p>每天簽到可以獲得固定的獎勵，不需要碰運氣：</p>
-            <div class="rules-table-wrap">
-              <table class="rules-table">
-                <thead><tr><th>簽到類型</th><th>風幣</th><th>風汐碎片</th><th>其他</th></tr></thead>
-                <tbody>
-                  <tr><td>✅ 正常簽到</td><td>180</td><td>×2</td><td>—</td></tr>
-                  <tr><td>📝 補簽</td><td>150</td><td>×1</td><td>—</td></tr>
-                </tbody>
-              </table>
-            </div>
-            <div class="callout callout-info"><span class="callout-icon">ℹ️</span><span>補簽的獎勵比正常簽到少（風幣少 30、碎片少 1 顆），所以還是每天上線簽最划算。補簽不會觸發連續簽到的進度。</span></div>
-
-            <h3 style="margin-top:var(--space-lg)">⭐ 會員加成</h3>
-            <p>低階會員享有額外的簽到獎勵加成：</p>
-            <div class="rules-table-wrap">
-              <table class="rules-table">
-                <thead><tr><th>簽到類型</th><th>風幣</th><th>風汐碎片</th><th>風汐錠</th><th>環保杯</th></tr></thead>
-                <tbody>
-                  <tr><td>✅ 正常簽到</td><td>180</td><td>×2</td><td>×2</td><td>×3</td></tr>
-                  <tr><td>📝 補簽</td><td>150</td><td>×1</td><td>—</td><td>—</td></tr>
-                </tbody>
-              </table>
-            </div>
-            <div class="callout callout-tip"><span class="callout-icon">💡</span><span>低階會員除了基本獎勵外，還能獲得風汐錠和環保杯。週末加成也會同步提升。</span></div>
-          </div>
-
-          <div class="guide-divider"></div>
-
-          <!-- ═══ 連續簽到 ═══ -->
-          <div class="guide-section-card fade-in" style="--card-accent:var(--foam)">
-            <h2><span class="sec-icon">🔥</span> 連續簽到獎勵</h2>
-            <p>連續簽到不中斷，達成特定天數可以獲得額外獎勵和專屬稱號：</p>
-            <div class="rules-table-wrap">
-              <table class="rules-table">
-                <thead><tr><th>連續天數</th><th>獎勵</th></tr></thead>
-                <tbody>
-                  <tr><td>3 天</td><td>🍎 附魔金蘋果 ×1</td></tr>
-                  <tr><td>7 天</td><td>🔩 獄髓錠 ×2 ＋ 風汐碎片 ×1</td></tr>
-                  <tr><td>90 天</td><td>🏅 永久稱號「連簽之星」</td></tr>
-                  <tr><td>360 天</td><td>🏅 永久稱號「連簽之王」</td></tr>
-                  <tr><td>630 天</td><td>🏅 永久稱號「連簽之子」</td></tr>
-                  <tr><td>900 天</td><td>🏅 永久稱號「連簽之神」</td></tr>
-                </tbody>
-              </table>
-            </div>
-            <div class="callout callout-tip"><span class="callout-icon">💡</span><span>連續簽到中斷後會重新計算天數。即使只差一天就達成里程碑，中斷了就得從頭來過。所以記得每天上線簽一下！</span></div>
-            <p style="margin-top:var(--space-md)"><strong>小提醒：</strong></p>
-            <ul class="rules-list">
-              <li>簽到時間以伺服器時間為準，每天 00:00 重置。</li>
-              <li>只要在當天 00:00 前完成簽到，就算連續。</li>
-              <li>如果今天忘記簽到，明天簽到時連續天數會從 1 重新開始。</li>
-              <li>累積簽到天數不受影響，只是連續天數歸零。</li>
-            </ul>
-          </div>
-
-          <div class="guide-divider"></div>
-
-          <!-- ═══ 累積簽到 ═══ -->
-          <div class="guide-section-card fade-in" style="--card-accent:var(--sand)">
-            <h2><span class="sec-icon">📊</span> 累積簽到稱號</h2>
-            <p>累積簽到記錄的是你總共簽到過幾天，不管是否連續。達到特定天數可以獲得專屬蛋糕類稱號：</p>
-            <div class="rules-table-wrap">
-              <table class="rules-table">
-                <thead><tr><th>累積天數</th><th>稱號</th><th>額外獎勵</th></tr></thead>
-                <tbody>
-                  <tr><td>180 天</td><td>🧀 乳酪蛋糕</td><td>風幣 2,500</td></tr>
-                  <tr><td>360 天</td><td>🍯 蜂蜜蛋糕</td><td>風幣 2,500</td></tr>
-                  <tr><td>540 天</td><td>🎂 千層蛋糕</td><td>風幣 2,500</td></tr>
-                  <tr><td>720 天</td><td>🍰 起司蛋糕</td><td>風幣 2,500</td></tr>
-                  <tr><td>900 天</td><td>👑 蛋糕之王</td><td>風幣 2,500</td></tr>
-                  <tr><td>1,000 天</td><td>💰 簽到富翁</td><td>風幣 10,000</td></tr>
-                  <tr><td>1,080 天</td><td>🍫 可可蛋糕</td><td>風幣 2,500</td></tr>
-                  <tr><td>1,260 天</td><td>🥐 酥皮蛋糕</td><td>風幣 2,500</td></tr>
-                  <tr><td>1,440 天</td><td>🧈 奶油蛋糕</td><td>風幣 2,500</td></tr>
-                </tbody>
-              </table>
-            </div>
-            <div class="callout callout-info"><span class="callout-icon">ℹ️</span><span>累積簽到天數是永久的，不會因為任何原因歸零。即使一個月沒上線，回來之後累積天數還是原來的數字。</span></div>
-          </div>
-
-          <div class="guide-divider"></div>
-
-          <!-- ═══ 特別加成 ═══ -->
-          <div class="guide-section-card fade-in" style="--card-accent:var(--lavender)">
-            <h2><span class="sec-icon">🎉</span> 特別加成</h2>
-            <p>在特定的日子或時段簽到，可以獲得額外獎勵：</p>
-
-            <h3 style="margin-top:var(--space-lg)">📅 週末加成（每週六日）</h3>
-            <div class="rules-table-wrap">
-              <table class="rules-table">
-                <thead><tr><th>日期</th><th>一般玩家額外獎勵</th><th>低階會員額外獎勵</th></tr></thead>
-                <tbody>
-                  <tr><td>🟡 星期六</td><td>金胡蘿蔔×32 ＋ 風汐碎片×4 ＋ 風幣 200</td><td>金胡蘿蔔×32 ＋ 風汐碎片×4 ＋ 風汐錠×2 ＋ 環保杯×3 ＋ 風幣 200</td></tr>
-                  <tr><td>🟡 星期日</td><td>金胡蘿蔔×32 ＋ 風汐碎片×4 ＋ 風幣 200</td><td>金胡蘿蔔×32 ＋ 風汐碎片×4 ＋ 風汐錠×2 ＋ 環保杯×3 ＋ 風幣 200</td></tr>
-                </tbody>
-              </table>
-            </div>
-
-            <h3 style="margin-top:var(--space-lg)">🌙 深夜簽到（23:00 – 03:00）</h3>
-            <p>在深夜時段簽到會獲得提醒效果，記得早點休息：</p>
-            <ul class="rules-list">
-              <li>23:00 之後簽到：凋零玫瑰×1 ＋ 牛奶桶×1 ＋ 虛弱 5 秒 ＋ 失明 5 秒</li>
-              <li>03:00 之前簽到：凋零玫瑰×1 ＋ 牛奶桶×1 ＋ 虛弱 15 秒 ＋ 失明 15 秒</li>
-            </ul>
-            <div class="callout callout-tip"><span class="callout-icon">💡</span><span>深夜簽到的負面效果只是提醒你早點睡，不影響獎勵領取。但還是建議白天簽到比較舒服！</span></div>
-
-            <h3 style="margin-top:var(--space-lg)">🎄 特殊日期</h3>
-            <p>以下日期簽到會獲得額外物品：</p>
-            <div class="rules-table-wrap">
-              <table class="rules-table">
-                <thead><tr><th>日期</th><th>額外獎勵</th></tr></thead>
-                <tbody>
-                  <tr><td>12 月 25 日（聖誕節）</td><td>🍎 蘋果 ×64</td></tr>
-                </tbody>
-              </table>
-            </div>
-            <div class="callout callout-info"><span class="callout-icon">ℹ️</span><span>特殊日期的獎勵會不定期更新，以遊戲內實際顯示為準。</span></div>
-          </div>
-
-          <div class="guide-divider"></div>
-
-          <!-- ═══ 簽到小技巧 ═══ -->
-          <div class="guide-section-card fade-in" style="--card-accent:var(--teal)">
-            <h2><span class="sec-icon">💡</span> 簽到小技巧</h2>
-            <ul class="rules-list">
-              <li><strong>每天固定時間簽到</strong> — 餐成每天上線第一件事就簽到的習慣，避免忘記。可以跟<a href="任務系統">任務系統</a>一起做。</li>
-              <li><strong>不要中斷連續簽到</strong> — 連續簽到的稱號需要不中斷才能達成。如果差一天就到里程碑，千萬別忘記。</li>
-              <li><strong>注意特別日子</strong> — 節日和紀念日可能會有額外獎勵，這些限定獎勵錯過就沒了。</li>
-              <li><strong>背包留空間</strong> — 簽到獎勵會直接送進背包，如果背包滿了可能無法領取。簽到前先確認背包有空間。</li>
-              <li><strong>搭配任務一起做</strong> — 簽到和任務是每天最穩定的兩個收入來源，一起做效率最高。</li>
-              <li><strong>週末獎勵加倍</strong> — 每週六日簽到可獲得額外的金胡蘿蔔、風汐碎片和風幣，記得週末也要上線簽到。</li>
-            </ul>
-          </div>
-
-          <div class="guide-divider"></div>
-
-          <!-- ═══ 常用指令 ═══ -->
-          <div class="guide-section-card fade-in" style="--card-accent:var(--ocean-blue)">
-            <h2><span class="sec-icon">⌨️</span> 常用指令</h2>
-            <div class="rules-table-wrap">
-              <table class="rules-table">
-                <thead><tr><th>指令</th><th>說明</th></tr></thead>
-                <tbody>
-                  <tr><td><code>/signin</code></td><td>開啟簽到月曆介面，進行每日簽到。</td></tr>
-                </tbody>
-              </table>
-            </div>
-            <div class="callout callout-tip"><span class="callout-icon">💡</span><span>簽到只需要一個指令，非常簡單。你也可以從伺服器選單中找到簽到入口。</span></div>
-          </div>
-
-          <div class="guide-divider"></div>
-
-          <!-- ═══ FAQ ═══ -->
-          <div class="guide-section-card fade-in" style="--card-accent:#85b1e0">
-            <h2><span class="sec-icon">❓</span> 常見問題</h2>
-            <div class="guide-faq">
-              <div class="guide-faq-item">
-                <button class="guide-faq-q">簽到的固定獎勵是什麼？</button>
-                <div class="guide-faq-a"><div class="guide-faq-a-inner">每日簽到固定獲得<strong>風汐碎片×2</strong>和<strong>風幣 180</strong>。週末（六日）額外再獲得金胡蘿蔔×32、風汐碎片×4、風幣 200。這些是固定獎勵，不需要碰運氣。</div></div>
-              </div>
-              <div class="guide-faq-item">
-                <button class="guide-faq-q">忘記簽到可以補簽嗎？</button>
-                <div class="guide-faq-a"><div class="guide-faq-a-inner">可以補簽，但獎勵會減少——補簽只獲得<strong>風幣 150</strong>和<strong>風汐碎片×1</strong>，比正常簽到少了 30 風幣和 1 顆碎片。而且補簽不會推進連續簽到天數，所以還是每天上線簽最划算。</div></div>
-              </div>
-              <div class="guide-faq-item">
-                <button class="guide-faq-q">連續簽到中斷了怎麼辦？</button>
-                <div class="guide-faq-a"><div class="guide-faq-a-inner">連續簽到中斷後天數會從 1 重新計算，但累積簽到天數不受影響。如果差一天就到里程碑（例如 90 天稱號），中斷了就得重新來過。建議設個鬧鐘提醒自己每天簽到！</div></div>
-              </div>
-              <div class="guide-faq-item">
-                <button class="guide-faq-q">深夜簽到有什麼不同？</button>
-                <div class="guide-faq-a"><div class="guide-faq-a-inner">在 23:00～03:00 之間簽到會觸發深夜簽到效果，除了正常獎勵外還會額外獲得一些小驚喜。夜貓子玩家的專屬福利，不過還是建議早睡早起比較健康！</div></div>
-              </div>
-              <div class="guide-faq-item">
-                <button class="guide-faq-q">會員簽到有什麼加成？</button>
-                <div class="guide-faq-a"><div class="guide-faq-a-inner">會員（贊助方案）簽到時會額外獲得<strong>風汐錠×2</strong>和<strong>環保杯×3</strong>。季卡持有者也有活動額外獎勵。詳細的贊助回饋內容可以參考贊助頁面。</div></div>
-              </div>
-            </div>
-          </div>
-
-          <div class="guide-divider"></div>
-
-          <!-- ═══ 相關頁面 ═══ -->
-          <div class="guide-section-card fade-in" style="--card-accent:var(--ocean-blue)">
-            <h2><span class="sec-icon">📖</span> 相關頁面</h2>
-            <div class="guide-next-grid">
-              <a href="任務系統" class="guide-next-card">
-                <span class="guide-next-icon">📜</span>
-                <div class="guide-next-body">
-                  <h4>任務系統</h4>
-                  <p>簽到＋任務，雙重收入來源</p>
-                </div>
-              </a>
-              <a href="稱號系統" class="guide-next-card">
-                <span class="guide-next-icon">🏅</span>
-                <div class="guide-next-body">
-                  <h4>稱號系統</h4>
-                  <p>簽到稱號的完整一覽</p>
-                </div>
-              </a>
-              <a href="經濟系統" class="guide-next-card">
-                <span class="guide-next-icon">💰</span>
-                <div class="guide-next-body">
-                  <h4>經濟系統</h4>
-                  <p>簽到賺的獎勵怎麼花？</p>
-                </div>
-              </a>
-            </div>
-          </div>
-
-          <div class="guide-nav fade-in">
-            <a href="任務系統" class="btn btn-outline">← 任務系統</a>
-            <a href="../海風指南" class="btn btn-outline">返回目錄</a>
-            <a href="稱號系統" class="btn btn-primary">稱號系統 →</a>
-          </div>
-      </div><!-- /guide-main -->
-    </div><!-- /guide-layout -->
+    </div>
   </div>
 
   <footer class="footer">
@@ -486,26 +127,12 @@
       <div class="footer-bottom">
         <p>© 2026 海風伺服器 · 非 Mojang 官方營運 · service@seawind.cc</p>
       </div>
-      <p class="page-revise">網站最後修改日期 2026.05.17 / 總計修改 <span id="deployCount">—</span> 次</p>
+      <p class="page-revise">網站最後修改日期 2026.06.11 / 總計修改 <span id="deployCount">—</span> 次</p>
     </div>
   </footer>
 
-  <!-- Music Player -->
-  <div class="music-player" id="musicPlayer">
-    <button class="music-btn" id="musicBtn" aria-label="音樂播放">
-      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
-    </button>
-  </div>
-
-  <!-- Back to Top -->
-  <button class="back-to-top" id="backToTop" aria-label="回到頂部">
-    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="18 15 12 9 6 15"/></svg>
-  </button>
-
-  <script src="../main.js?v=170517a"></script>
-  <script src="../music-player.js?v=170517a"></script>
-
-  <!-- Page Loader dismiss -->
+  <script src="../utils.js?v=110611a"></script>
+  <script src="../main.js?v=110611a"></script>
   <script>
   (function(){
     var loader = document.getElementById("pageLoader");
