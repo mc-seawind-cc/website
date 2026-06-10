@@ -319,45 +319,67 @@
 <!-- ═══ 完整回饋對比 ═══ -->
         <div class="guide-section-card fade-in" style="--card-accent:var(--sky)">
           <h2><span class="sec-icon">📊</span> 回饋總覽</h2>
-          <p>預設玩家、會員與季卡的完整回饋一覽。</p>
+          <p>預設玩家（依進度分三階）、季卡與會員的完整回饋一覽。</p>
 
           <div class="mem-compare">
             <table>
               <thead>
                 <tr>
-                  <th>回饋項目</th>
-                  <th>預設玩家</th>
-                  <th style="color:var(--sand)">會員 800</th>
-                  <th class="col-mem">季卡 400</th>
+                  <th>項目</th>
+                  <th colspan="3" style="text-align:center">普通玩家</th>
+                  <th class="col-mem">季卡 400/季</th>
+                  <th style="color:var(--sand)">會員 800（永久）</th>
+                </tr>
+                <tr>
+                  <th></th>
+                  <th>🌱 旅人</th>
+                  <th>☕ 常客</th>
+                  <th>🌿 居民</th>
+                  <th></th>
+                  <th></th>
                 </tr>
               </thead>
               <tbody>
-                <tr class="cat-row"><td colspan="4">📦 數量擴充</td></tr>
-                <tr><td>領地數量（主+子）</td><td>4+20</td><td class="val-hi">20+100</td><td>4+20</td></tr>
-                <tr><td>個人傳送點數量</td><td>8</td><td class="val-hi">20</td><td>8</td></tr>
-                <tr><td>公開傳送點數量</td><td>2</td><td class="val-hi">4</td><td>2</td></tr>
-                <tr><td>箱子商店數量</td><td>40</td><td class="val-hi">300</td><td>40</td></tr>
-                <tr><td>大倉庫數量</td><td>8</td><td class="val-hi">16</td><td>8</td></tr>
-                <tr><td>小倉庫數量</td><td>4</td><td class="val-hi">8</td><td>4</td></tr>
-                <tr><td>線上商城數量</td><td>5</td><td class="val-hi">15</td><td>5</td></tr>
+                <tr class="cat-row"><td colspan="6">📦 領地</td></tr>
+                <tr><td>主領地</td><td>4</td><td>7</td><td>10</td><td>20</td><td class="val-hi">20</td></tr>
+                <tr><td>子領地</td><td>20</td><td>35</td><td>50</td><td>100</td><td class="val-hi">100</td></tr>
 
-                <tr class="cat-row"><td colspan="4">🧰 隨地開啟</td></tr>
-                <tr><td>箱子/工作台/鍛造台/末影箱/講台</td><td class="val-no">✗</td><td class="val-yes">✓</td><td class="val-yes">✓</td></tr>
-                <tr><td>鐵砧</td><td class="val-no">✗</td><td class="val-yes">✓</td><td class="val-yes">✓</td></tr>
-                <tr><td>附魔台</td><td class="val-no">✗</td><td class="val-yes">✓</td><td class="val-yes">✓</td></tr>
-                <tr><td>指令方塊（僅管理員）</td><td class="val-no">✗</td><td class="val-yes">✓</td><td class="val-no">✗</td></tr>
-                <tr><td>廣播（僅管理員）</td><td class="val-no">✗</td><td class="val-yes">✓</td><td class="val-no">✗</td></tr>
+                <tr class="cat-row"><td colspan="6">📍 傳送點</td></tr>
+                <tr><td>個人</td><td>8</td><td>14</td><td>20</td><td>40</td><td class="val-hi">40</td></tr>
+                <tr><td>公開</td><td>2</td><td>3</td><td>4</td><td>8</td><td class="val-hi">8</td></tr>
 
-                <tr class="cat-row"><td colspan="4">⚡ 便利功能</td></tr>
-                <tr><td>隱藏裝備顯示</td><td class="val-no">✗</td><td class="val-yes">✓</td><td class="val-no">✗</td></tr>
-                <tr><td>盔甲隱身</td><td class="val-no">✗</td><td class="val-yes">✓</td><td class="val-no">✗</td></tr>
-                <tr><td>使用粒子效果</td><td class="val-no">✗</td><td class="val-yes">✓</td><td class="val-no">✗</td></tr>
+                <tr class="cat-row"><td colspan="6">💰 交易</td></tr>
+                <tr><td>線上商城</td><td>5</td><td>8</td><td>10</td><td>15</td><td class="val-hi">15</td></tr>
+                <tr><td>箱子商店</td><td>30</td><td>50</td><td>10</td><td>300</td><td class="val-hi">300</td></tr>
 
-                <tr class="cat-row"><td colspan="4">🎁 專屬獎勵</td></tr>
-                <tr><td>簽到獲得風汐錠</td><td class="val-no">✗</td><td class="val-yes">✓（每日2個）</td><td class="val-no">✗</td></tr>
-                <tr><td>專屬稱號（金色）</td><td class="val-no">✗</td><td class="val-yes">✓</td><td class="val-no">✗</td></tr>
-                <tr><td>活動額外獎勵</td><td class="val-no">✗</td><td class="val-no">✗</td><td class="val-yes">✓</td></tr>
-                <tr><td>季節額外獎勵</td><td class="val-no">✗</td><td class="val-no">✗</td><td class="val-yes">✓</td></tr>
+                <tr class="cat-row"><td colspan="6">🗄️ 倉庫</td></tr>
+                <tr><td>大倉庫</td><td>8</td><td>12</td><td>16</td><td>32</td><td class="val-hi">32</td></tr>
+                <tr><td>小倉庫</td><td>4</td><td>6</td><td>8</td><td>16</td><td class="val-hi">16</td></tr>
+
+                <tr class="cat-row"><td colspan="6">📬 郵件</td></tr>
+                <tr><td>費用</td><td>1</td><td>1</td><td>1</td><td>0</td><td class="val-hi">0</td></tr>
+
+                <tr class="cat-row"><td colspan="6">🧰 隨地開啟</td></tr>
+                <tr><td>界伏盒</td><td class="val-no" colspan="3">✗</td><td class="val-yes">✓</td><td class="val-yes">✓</td></tr>
+                <tr><td>工作台</td><td class="val-no" colspan="3">✗</td><td class="val-yes">✓</td><td class="val-yes">✓</td></tr>
+                <tr><td>鍛造台</td><td class="val-no" colspan="3">✗</td><td class="val-yes">✓</td><td class="val-yes">✓</td></tr>
+                <tr><td>製圖台</td><td class="val-no" colspan="3">✗</td><td class="val-yes">✓</td><td class="val-yes">✓</td></tr>
+                <tr><td>紡織機</td><td class="val-no" colspan="3">✗</td><td class="val-yes">✓</td><td class="val-yes">✓</td></tr>
+                <tr><td>鐵砧</td><td class="val-no" colspan="3">✗</td><td class="val-yes">✓</td><td class="val-yes">✓</td></tr>
+                <tr><td>砂輪</td><td class="val-no" colspan="3">✗</td><td class="val-yes">✓</td><td class="val-yes">✓</td></tr>
+
+                <tr class="cat-row"><td colspan="6">📅 簽到月曆</td></tr>
+                <tr><td>自動簽到</td><td class="val-no" colspan="3">✗</td><td class="val-no">✗</td><td class="val-yes">✓</td></tr>
+                <tr><td>獎勵</td><td colspan="3">—</td><td>—</td><td style="color:var(--fog)">待設計</td></tr>
+
+                <tr class="cat-row"><td colspan="6">🏅 稱號</td></tr>
+                <tr><td>遊戲稱號</td><td colspan="3">玩家</td><td>玩家</td><td class="val-hi">海風會員</td></tr>
+                <tr><td>DC 稱號</td><td colspan="3">玩家</td><td>玩家</td><td class="val-hi">海風會員</td></tr>
+
+                <tr class="cat-row"><td colspan="6">⚡ 其他</td></tr>
+                <tr><td>變更自身大小</td><td class="val-no" colspan="3">✗</td><td class="val-no">✗</td><td class="val-yes">✓</td></tr>
+                <tr><td>隱藏裝備</td><td class="val-no" colspan="3">✗</td><td class="val-no">✗</td><td class="val-yes">✓</td></tr>
+                <tr><td>使用顏色代碼</td><td class="val-no" colspan="3">✗</td><td class="val-no">✗</td><td class="val-yes">✓</td></tr>
               </tbody>
             </table>
           </div>
