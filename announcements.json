@@ -1,8 +1,164 @@
 {
   "version": 2,
-  "generatedAt": "2026-05-20T14:47:21.551Z",
-  "count": 492,
+  "generatedAt": "2026-06-11T00:00:00Z",
+  "count": 503,
   "announcements": [
+    {
+      "tag": "更新",
+      "id": "#0305",
+      "date": "115.06.08",
+      "isoDate": "2026-06-08",
+      "timestamp": "2026-06-08T00:00:00Z",
+      "title": "改善與修復",
+      "content": "- 盔甲座編輯器新增回到原樣按鈕。\n- 修復盔甲座編輯器部分功能無法使用的問題。\n- 靈魂出竅現在可以預覽容器內容了。\n- 修復在飛行模式下使用靈魂出竅時，\n - 關閉後無法繼續飛行的問題。\n - 原始位置高度會發生變化。\n- 修復靈魂出竅的飛行速度在關閉後會影響移動速度的問題。",
+      "images": [],
+      "pinned": false
+    },
+    {
+      "tag": "更新",
+      "id": "#0304",
+      "date": "115.06.07",
+      "isoDate": "2026-06-07",
+      "timestamp": "2026-06-07T00:00:00Z",
+      "title": "六七更新",
+      "content": "- 更新客服單系統。",
+      "images": [],
+      "pinned": false
+    },
+    {
+      "tag": "更新",
+      "id": "#0303",
+      "date": "115.06.05",
+      "isoDate": "2026-06-05",
+      "timestamp": "2026-06-05T00:00:00Z",
+      "title": "月初更新",
+      "content": "- 指南\n - 重新分類插件為系統、功能、機制，目的為更好的分類及管理。\n - 重新撰寫指南內容，目前已更新 6 篇。\n- 會員改為永久且修改部分功能如圖表，其餘分類為暫定。\n- 任務系統\n - 每日任務新增刷新按鈕。\n - 更新任務列表及兌換商城介面。",
+      "images": [
+        "https://media.discordapp.net/attachments/1270267126011396152/1512474260671565884/image.png?ex=6a2ad06c&is=6a297eec&hm=7a72775f0806c091aa2d47ba4e74e08cb5134012a577081d9b258d7f1e753fb9&=&format=webp&quality=lossless"
+      ],
+      "pinned": false
+    },
+    {
+      "tag": "更新",
+      "id": "#0302",
+      "date": "115.05.28",
+      "isoDate": "2026-05-28",
+      "timestamp": "2026-05-28T00:00:00Z",
+      "title": "月尾更新",
+      "content": "- 新增 `/buff` 指令打開輔助功能面板。\n - 現在部分功能都可以在此面板中調整了\n- 實現五月份更新草案。\n - 透過 `/buff` 中開啟。\n- 現在靈魂出竅的距離顯示反映狀態下的實時位置了。\n- 現在盔甲座編輯器可以在面板中透過拖拽來套用裝備了。",
+      "images": [],
+      "pinned": false
+    },
+    {
+      "tag": "更新",
+      "id": "#0301",
+      "date": "115.05.19",
+      "isoDate": "2026-05-19",
+      "timestamp": "2026-05-19T00:00:00Z",
+      "title": "更換Discord伺服器標籤",
+      "content": "- 根據投票，更換伺服器標籤為「快給我吹」。",
+      "images": [],
+      "pinned": false
+    },
+    {
+      "tag": "更新",
+      "id": "#0300",
+      "date": "115.05.12",
+      "isoDate": "2026-05-12",
+      "timestamp": "2026-05-12T00:00:00Z",
+      "title": "網站更新",
+      "content": "- 新增線上工單。\n - 新增合作選項。\n- 指南頁面：\n - 已更新新手指引、領地、領地列表、領地權限、經濟系統。",
+      "images": [],
+      "pinned": false
+    },
+    {
+      "tag": "更新",
+      "id": "#0299",
+      "date": "115.05.08",
+      "isoDate": "2026-05-08",
+      "timestamp": "2026-05-08T00:00:00Z",
+      "title": "修復",
+      "content": "- 修復 `/playerlist` 錯誤：「線上目前無玩家」",
+      "images": [],
+      "pinned": false
+    },
+    {
+      "tag": "活動",
+      "id": "#0030",
+      "date": "115.05.28",
+      "isoDate": "2026-05-28",
+      "timestamp": "2026-05-28T00:00:00Z",
+      "title": "海風珍奶日開放兌換稱號",
+      "content": "> 現可兌換稱號「海風茶王、珍奶大師」，先和店員__茶茶__買兌換券，再跟贊助商__杉杉來持__兌換稱號吧！",
+      "images": [],
+      "pinned": false
+    },
+    {
+      "tag": "維護",
+      "id": "#0147",
+      "date": "115.06.09",
+      "isoDate": "2026-06-09",
+      "timestamp": "2026-06-09T00:00:00Z",
+      "title": "維護",
+      "content": "- 將於 6/10 01:00 ~ 6/10 03:00 維護伺服器。",
+      "images": [],
+      "pinned": false
+    },
+    {
+      "tag": "維護",
+      "id": "#0146",
+      "date": "115.06.08",
+      "isoDate": "2026-06-08",
+      "timestamp": "2026-06-08T00:00:00Z",
+      "title": "斷線重啟",
+      "content": "- 將於晚上10:00-10:15分重啟伺服器。\n - 修復相關功能。",
+      "images": [],
+      "pinned": false
+    },
+    {
+      "tag": "維護",
+      "id": "#0145",
+      "date": "115.05.28",
+      "isoDate": "2026-05-28",
+      "timestamp": "2026-05-28T00:00:00Z",
+      "title": "斷線重啟",
+      "content": "- 將於中午12:30-12:45分重啟伺服器。\n - 新增相關功能與組件。",
+      "images": [],
+      "pinned": false
+    },
+    {
+      "tag": "公告",
+      "id": "#0144",
+      "date": "115.05.25",
+      "isoDate": "2026-05-25",
+      "timestamp": "2026-05-25T00:00:00Z",
+      "title": "分流二領地遷移開放申請",
+      "content": "- 如果你之前在分流二設領地，請詳閱下述連結：https://discord.com/channels/1266311059552342078/1507936464540012634/1507936464540012634",
+      "images": [],
+      "pinned": false
+    },
+    {
+      "tag": "公告",
+      "id": "#0143",
+      "date": "115.05.12",
+      "isoDate": "2026-05-12",
+      "timestamp": "2026-05-12T00:00:00Z",
+      "title": "維護補償",
+      "content": "- 維護補償已發送。",
+      "images": [],
+      "pinned": false
+    },
+    {
+      "tag": "公告",
+      "id": "#0142",
+      "date": "115.05.12",
+      "isoDate": "2026-05-12",
+      "timestamp": "2026-05-12T00:00:00Z",
+      "title": "恢復連線",
+      "content": "- 伺服器維護完成。\n - 具體補償將在數日後發放。",
+      "images": [],
+      "pinned": false
+    },
     {
       "tag": "更新",
       "id": "#0300",
@@ -19,45 +175,6 @@
       "pinned": false,
       "author": "",
       "index": 0
-    },
-    {
-      "tag": "更新",
-      "id": "#0299",
-      "date": "115.05.08",
-      "isoDate": "2026-05-08",
-      "timestamp": "2026-05-08T00:00:00.000+08:00",
-      "title": "修復 playerlist",
-      "content": "- 修復 `/playerlist` 錯誤：「線上目前無玩家」",
-      "images": [],
-      "localImages": [],
-      "reactions": [],
-      "reactionCount": 0,
-      "discordId": "",
-      "pinned": false,
-      "author": "",
-      "index": 0
-    },
-    {
-      "tag": "維護",
-      "id": "#0141",
-      "date": "115.05.08",
-      "isoDate": "2026-05-08",
-      "timestamp": "2026-05-08T09:00:00.000+08:00",
-      "title": "主機維護",
-      "content": "- 將於 05/09 00:00 ~ 05/12 00:00 進行系統性維護。",
-      "images": [],
-      "localImages": [],
-      "reactions": [
-        {
-          "emoji": "wind_charge",
-          "count": 0
-        }
-      ],
-      "reactionCount": 0,
-      "discordId": "",
-      "pinned": false,
-      "author": "",
-      "index": 1
     },
     {
       "tag": "維護",
@@ -5183,29 +5300,6 @@
       "pinned": false,
       "author": "神焰.cc",
       "index": 255
-    },
-    {
-      "tag": "更新",
-      "id": "#0141",
-      "date": "114.03.09",
-      "isoDate": "2025-03-09",
-      "timestamp": "2025-03-09T21:05:34.977+08:00",
-      "title": "換啦",
-      "content": "- 目前常駐活動兌換皆已移至`選單 - 兌換 `。\n- 成功合成出的物品會在下面。",
-      "images": [
-        "https://cdn.discordapp.com/attachments/1270267126011396152/1348280557687017552/image.png?ex=69db989e&is=69da471e&hm=202e2c1dbfbd426bc592842ff5113074f1109f0f9ac453767885fcd8e2a99244&",
-        "https://cdn.discordapp.com/attachments/1270267126011396152/1348280558148522105/image.png?ex=69db989e&is=69da471e&hm=703de49e851f950b98d734857270a534a6b6cd29796cb8d47982be49957dd5c7&"
-      ],
-      "localImages": [
-        "assets/announcements/0141_0.webp",
-        "assets/announcements/0141_1.webp"
-      ],
-      "reactions": [],
-      "reactionCount": 0,
-      "discordId": "1348280558454833216",
-      "pinned": false,
-      "author": "跩.der",
-      "index": 256
     },
     {
       "tag": "更新",
