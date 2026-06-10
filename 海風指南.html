@@ -27,7 +27,7 @@
     .guide-hero{text-align:center;padding:var(--space-2xl) var(--space-lg) var(--space-xl)}
     .guide-hero h1{font-size:clamp(2rem,5vw,2.8rem);margin-bottom:var(--space-sm)}
     .guide-hero p{color:var(--fog);font-size:1rem;max-width:500px;margin:0 auto}
-    .guide-cards{max-width:600px;margin:0 auto;display:flex;flex-direction:column;gap:16px;padding:0 var(--space-lg) var(--space-2xl)}
+    .guide-cards{max-width:800px;margin:0 auto;display:grid;grid-template-columns:repeat(2,1fr);gap:12px;padding:0 var(--space-lg) var(--space-2xl)}
     .guide-card{display:flex;align-items:center;gap:16px;padding:20px 24px;background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);border-radius:var(--radius-lg);text-decoration:none;color:inherit;transition:all 0.3s var(--ease);position:relative;overflow:hidden}
     .guide-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--sky),var(--foam));opacity:0;transition:opacity 0.3s}
     .guide-card:hover{border-color:rgba(157,175,255,0.2);transform:translateY(-3px);box-shadow:0 8px 24px rgba(0,0,0,0.15)}
@@ -40,7 +40,7 @@
     .guide-card:hover .guide-card-arrow{color:var(--sky);transform:translateX(3px)}
     [data-theme="light"] .guide-card{background:rgba(0,0,0,0.02);border-color:rgba(0,0,0,0.08)}
     [data-theme="light"] .guide-card:hover{border-color:rgba(67,97,238,0.3);box-shadow:0 8px 24px rgba(0,0,0,0.06)}
-    @media(max-width:768px){.guide-card{padding:16px}.guide-card-icon{width:40px;height:40px;font-size:1.2rem}}
+    @media(max-width:768px){.guide-cards{grid-template-columns:1fr}.guide-card{padding:16px}.guide-card-icon{width:40px;height:40px;font-size:1.2rem}}
   </style>
 </head>
 <body>

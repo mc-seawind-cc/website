@@ -3003,7 +3003,7 @@ html, body {
 .reveal-up.visible{opacity:1;transform:translateY(0)}
 
 [data-theme="light"]{--deep:#f0f2f5;--ocean:#ffffff;--drift:#e8ecf1;--mist:#dde1e8;--fog:#4a5260;--cloud:#1f2328;--white:#0d1117}
-[data-theme="light"] .scroll-progress{background:linear-gradient(90deg,var(--ocean-blue),var(--sky),var(--foam));background-size:200% 100%;animation:progress-shimmer 3s linear infinite}
+[data-theme="light"] .scroll-progress{background:linear-gradient(90deg,var(--sky),var(--foam),var(--sky));background-size:200% 100%;animation:progress-shimmer 3s linear infinite}
 [data-theme="light"] .feature-item{background:rgba(0,0,0,0.02);border-color:rgba(0,0,0,0.04)}
 [data-theme="light"] .back-link{color:var(--sky)}
 [data-theme="light"] .snowflake {
