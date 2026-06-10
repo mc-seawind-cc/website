@@ -1,7 +1,7 @@
 {
   "version": 2,
   "generatedAt": "2026-06-11T00:00:00Z",
-  "count": 503,
+  "count": 504,
   "announcements": [
     {
       "tag": "更新",
@@ -156,6 +156,17 @@
       "timestamp": "2026-05-12T00:00:00Z",
       "title": "恢復連線",
       "content": "- 伺服器維護完成。\n - 具體補償將在數日後發放。",
+      "images": [],
+      "pinned": false
+    },
+    {
+      "tag": "維護",
+      "id": "#0141",
+      "date": "115.05.08",
+      "isoDate": "2026-05-08",
+      "timestamp": "2026-05-08T00:00:00Z",
+      "title": "主機維護",
+      "content": "- 將於 05/09 00:00 ~ 05/12 00:00 進行系統性維護。",
       "images": [],
       "pinned": false
     },
