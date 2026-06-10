@@ -2080,7 +2080,7 @@ video.photo-item{cursor:pointer;height:200px;border:1px solid transparent}
 [data-theme="light"] .guide-qs-val{color:var(--cloud)}
 
 /* Section Card */
-.guide-section-card{background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.06);border-radius:var(--radius-xl);padding:var(--space-xl)var(--space-2xl);margin-bottom:var(--space-xl);position:relative;overflow:hidden}
+.guide-section-card{background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.06);border-radius:var(--radius-xl);padding:var(--space-lg)var(--space-2xl);margin-bottom:var(--space-md);position:relative;overflow:hidden}
 .guide-section-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--card-accent,var(--sky));opacity:0.6}
 .guide-section-card h2{font-size:1.3rem;font-weight:800;color:var(--white);margin-bottom:var(--space-md);display:flex;align-items:center;gap:var(--space-sm)}
 .guide-section-card h2 .sec-icon{font-size:1.2rem}
@@ -2396,7 +2396,7 @@ video.photo-item{cursor:pointer;height:200px;border:1px solid transparent}
 [data-theme="light"] .res-qs-card:hover{box-shadow:0 4px 12px rgba(0,0,0,0.06)}
 
 /* Section Divider */
-.guide-divider{height:1px;background:linear-gradient(90deg,transparent,rgba(157,175,255,0.12),transparent);margin:var(--space-xl)0}
+.guide-divider{height:1px;background:linear-gradient(90deg,transparent,rgba(157,175,255,0.12),transparent);margin:var(--space-sm)0}
 
 /* Responsive */
 @media(max-width:768px){
