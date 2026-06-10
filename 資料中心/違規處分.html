@@ -533,7 +533,7 @@
         html += `<span class="pen-detail-label">附件（檢附證據）</span>`;
         html += `<div class="pen-evidence-grid">`;
         item.images.forEach((img, idx) => {
-          html += `<img src="${esc(img)}" alt="證據截圖 ${idx+1}" class="pen-evidence-img" loading="lazy" onclick="window.open('${esc(img)}','_blank')">`;
+          const imgPath = img.startsWith("http") ? img : "../" + img; html += `<img src="${esc(imgPath)}" alt="證據截圖 ${idx+1}" class="pen-evidence-img" loading="lazy" onclick="window.open('${esc(imgPath)}','_blank')">`;
         });
         html += `</div>`;
       }
@@ -578,7 +578,7 @@
         html += `<span class="pen-detail-label">附件（檢附證據）</span>`;
         html += `<div class="pen-evidence-grid">`;
         item.images.forEach((img, idx) => {
-          html += `<img src="${esc(img)}" alt="證據截圖 ${idx+1}" class="pen-evidence-img" loading="lazy" onclick="window.open('${esc(img)}','_blank')">`;
+          const imgPath = img.startsWith("http") ? img : "../" + img; html += `<img src="${esc(imgPath)}" alt="證據截圖 ${idx+1}" class="pen-evidence-img" loading="lazy" onclick="window.open('${esc(imgPath)}','_blank')">`;
         });
         html += `</div>`;
       }
