@@ -41,6 +41,9 @@
     [data-theme="light"] .guide-card{background:rgba(0,0,0,0.02);border-color:rgba(0,0,0,0.08)}
     [data-theme="light"] .guide-card:hover{border-color:rgba(67,97,238,0.3);box-shadow:0 8px 24px rgba(0,0,0,0.06)}
     @media(max-width:768px){.guide-cards{grid-template-columns:1fr}.guide-card{padding:16px}.guide-card-icon{width:40px;height:40px;font-size:1.2rem}}
+    .guide-section-label{display:flex;align-items:center;gap:8px;max-width:800px;margin:var(--space-xl) auto var(--space-md);padding:0 var(--space-lg);font-size:0.85rem;font-weight:700;color:var(--fog)}
+    .guide-section-label .label-icon{font-size:1rem}
+    .guide-section-label .label-count{font-size:0.7rem;padding:2px 8px;border-radius:100px;background:rgba(157,175,255,0.08);color:var(--lavender);border:1px solid rgba(157,175,255,0.12)}
   </style>
 </head>
 <body>
@@ -112,20 +115,13 @@
       <p>從這裡開始你的海風生活。</p>
     </div>
 
+    <!-- 主要系統 -->
     <div class="guide-cards">
-      <a href="海風指南/新手指引" class="guide-card fade-in">
-        <div class="guide-card-icon">🚀</div>
-        <div class="guide-card-body">
-          <div class="guide-card-title">新手指引</div>
-          <div class="guide-card-desc">歡迎來到海風！從誕生地開始，探索世界、建立據點、開始你的海風生活。</div>
-        </div>
-        <div class="guide-card-arrow">→</div>
-      </a>
       <a href="海風指南/經濟系統" class="guide-card fade-in">
         <div class="guide-card-icon">💰</div>
         <div class="guide-card-body">
           <div class="guide-card-title">經濟系統</div>
-          <div class="guide-card-desc">這是「幣」經之道——風幣、任務幣、風汐碎片、石材，各有用途。</div>
+          <div class="guide-card-desc">風幣、任務幣、風汐碎片、石材，各有用途。</div>
         </div>
         <div class="guide-card-arrow">→</div>
       </a>
@@ -133,7 +129,7 @@
         <div class="guide-card-icon">🏪</div>
         <div class="guide-card-body">
           <div class="guide-card-title">交易系統</div>
-          <div class="guide-card-desc">線上商城、箱子商店、雜貨店——買賣材料、收購商品或拍賣都可以實現。</div>
+          <div class="guide-card-desc">線上商城、箱子商店、雜貨店——買賣交易都可以實現。</div>
         </div>
         <div class="guide-card-arrow">→</div>
       </a>
@@ -149,7 +145,15 @@
         <div class="guide-card-icon">📋</div>
         <div class="guide-card-body">
           <div class="guide-card-title">任務系統</div>
-          <div class="guide-card-desc">完成任務獲取風汐碎片、風幣等獎勵，含每日任務與冒險任務。</div>
+          <div class="guide-card-desc">完成任務獲取風汐碎片、風幣等獎勵。</div>
+        </div>
+        <div class="guide-card-arrow">→</div>
+      </a>
+      <a href="海風指南/社區系統" class="guide-card fade-in">
+        <div class="guide-card-icon">🏘️</div>
+        <div class="guide-card-body">
+          <div class="guide-card-title">社區系統</div>
+          <div class="guide-card-desc">成立社區、招募成員、社區任務與對戰。</div>
         </div>
         <div class="guide-card-arrow">→</div>
       </a>
@@ -157,7 +161,31 @@
         <div class="guide-card-icon">📅</div>
         <div class="guide-card-body">
           <div class="guide-card-title">簽到系統</div>
-          <div class="guide-card-desc">每天簽到獲得風汐碎片、風幣，累積簽到解鎖稱號與額外獎勵。</div>
+          <div class="guide-card-desc">每天簽到獲得風汐碎片、風幣，累積簽到解鎖稱號。</div>
+        </div>
+        <div class="guide-card-arrow">→</div>
+      </a>
+      <a href="海風指南/郵件系統" class="guide-card fade-in">
+        <div class="guide-card-icon">📬</div>
+        <div class="guide-card-body">
+          <div class="guide-card-title">郵件系統</div>
+          <div class="guide-card-desc">寄信寄物給其他玩家，跨分流也能送達。</div>
+        </div>
+        <div class="guide-card-arrow">→</div>
+      </a>
+      <a href="海風指南/稱號系統" class="guide-card fade-in">
+        <div class="guide-card-icon">🏅</div>
+        <div class="guide-card-body">
+          <div class="guide-card-title">稱號系統</div>
+          <div class="guide-card-desc">解鎖稱號、展示成就，讓別人看到你的經歷。</div>
+        </div>
+        <div class="guide-card-arrow">→</div>
+      </a>
+      <a href="海風指南/倉庫" class="guide-card fade-in">
+        <div class="guide-card-icon">📦</div>
+        <div class="guide-card-body">
+          <div class="guide-card-title">倉庫系統</div>
+          <div class="guide-card-desc">擴充背包容量，存放更多物品與資源。</div>
         </div>
         <div class="guide-card-arrow">→</div>
       </a>
@@ -165,15 +193,156 @@
         <div class="guide-card-icon">🛡️</div>
         <div class="guide-card-body">
           <div class="guide-card-title">領地系統</div>
-          <div class="guide-card-desc">免費建立、永久有效，保護你的建築和資源。支援主世界、地獄和終界。</div>
+          <div class="guide-card-desc">免費建立、永久有效，保護你的建築和資源。</div>
         </div>
         <div class="guide-card-arrow">→</div>
       </a>
+    </div>
+
+    <!-- 輔助功能 -->
+    <div class="guide-section-label fade-in"><span class="label-icon">🔧</span> 輔助功能 <span class="label-count">4</span></div>
+    <div class="guide-cards">
       <a href="海風指南/盔甲座編輯器" class="guide-card fade-in">
+        <div class="guide-card-icon">🧍</div>
+        <div class="guide-card-body">
+          <div class="guide-card-title">盔甲座編輯器</div>
+          <div class="guide-card-desc">調整盔甲座的姿勢、角度與外觀，製作裝飾擺設。</div>
+        </div>
+        <div class="guide-card-arrow">→</div>
+      </a>
+      <a href="海風指南/靈魂出竅" class="guide-card fade-in">
+        <div class="guide-card-icon">👻</div>
+        <div class="guide-card-body">
+          <div class="guide-card-title">靈魂出竅</div>
+          <div class="guide-card-desc">類似旁觀者模式，自由探索周圍環境。</div>
+        </div>
+        <div class="guide-card-arrow">→</div>
+      </a>
+      <a href="海風指南/連鎖挖掘" class="guide-card fade-in">
+        <div class="guide-card-icon">⛏️</div>
+        <div class="guide-card-body">
+          <div class="guide-card-title">連鎖挖掘</div>
+          <div class="guide-card-desc">一次挖掘相連的同類型方塊，大幅節省時間。</div>
+        </div>
+        <div class="guide-card-arrow">→</div>
+      </a>
+      <a href="海風指南/地圖" class="guide-card fade-in">
+        <div class="guide-card-icon">🗺️</div>
+        <div class="guide-card-body">
+          <div class="guide-card-title">地圖</div>
+          <div class="guide-card-desc">即時世界地圖，查看已探索區域與目前位置。</div>
+        </div>
+        <div class="guide-card-arrow">→</div>
+      </a>
+    </div>
+
+    <!-- 互動功能 -->
+    <div class="guide-section-label fade-in"><span class="label-icon">🤝</span> 互動功能 <span class="label-count">4</span></div>
+    <div class="guide-cards">
+      <a href="海風指南/互動記錄" class="guide-card fade-in">
+        <div class="guide-card-icon">📝</div>
+        <div class="guide-card-body">
+          <div class="guide-card-title">互動記錄</div>
+          <div class="guide-card-desc">查看誰動過你的東西，領地保護的輔助工具。</div>
+        </div>
+        <div class="guide-card-arrow">→</div>
+      </a>
+      <a href="海風指南/物品署名" class="guide-card fade-in">
+        <div class="guide-card-icon">✍️</div>
+        <div class="guide-card-body">
+          <div class="guide-card-title">物品署名</div>
+          <div class="guide-card-desc">在物品上留下你的名字，標記所有權。</div>
+        </div>
+        <div class="guide-card-arrow">→</div>
+      </a>
+      <a href="海風指南/自動拾取" class="guide-card fade-in">
+        <div class="guide-card-icon">🧲</div>
+        <div class="guide-card-body">
+          <div class="guide-card-title">自動拾取</div>
+          <div class="guide-card-desc">掉落物自動進入背包，不用弯腰捡。</div>
+        </div>
+        <div class="guide-card-arrow">→</div>
+      </a>
+      <a href="海風指南/穿牌開箱" class="guide-card fade-in">
+        <div class="guide-card-icon">📦</div>
+        <div class="guide-card-body">
+          <div class="guide-card-title">穿牌開箱</div>
+          <div class="guide-card-desc">用告示牌快速開啟箱子，方便整理物品。</div>
+        </div>
+        <div class="guide-card-arrow">→</div>
+      </a>
+    </div>
+
+    <!-- 遊戲機制 -->
+    <div class="guide-section-label fade-in"><span class="label-icon">⚙️</span> 遊戲機制 <span class="label-count">12</span></div>
+    <div class="guide-cards">
+      <a href="海風指南/資源再生" class="guide-card fade-in">
+        <div class="guide-card-icon">♻️</div>
+        <div class="guide-card-body">
+          <div class="guide-card-title">資源再生</div>
+        </div>
+        <div class="guide-card-arrow">→</div>
+      </a>
+      <a href="海風指南/礦物代換" class="guide-card fade-in">
+        <div class="guide-card-icon">💎</div>
+        <div class="guide-card-body">
+          <div class="guide-card-title">礦物代換</div>
+        </div>
+        <div class="guide-card-arrow">→</div>
+      </a>
+      <a href="海風指南/地震預警" class="guide-card fade-in">
+        <div class="guide-card-icon">🔔</div>
+        <div class="guide-card-body">
+          <div class="guide-card-title">地震預警</div>
+        </div>
+        <div class="guide-card-arrow">→</div>
+      </a>
+      <a href="海風指南/真實書櫃" class="guide-card fade-in">
+        <div class="guide-card-icon">📚</div>
+        <div class="guide-card-body">
+          <div class="guide-card-title">真實書櫃</div>
+        </div>
+        <div class="guide-card-arrow">→</div>
+      </a>
+      <a href="海風指南/蜂窩檢視" class="guide-card fade-in">
+        <div class="guide-card-icon">🐝</div>
+        <div class="guide-card-body">
+          <div class="guide-card-title">蜂窩檢視</div>
+        </div>
+        <div class="guide-card-arrow">→</div>
+      </a>
+      <a href="海風指南/混凝土固化鍋" class="guide-card fade-in">
+        <div class="guide-card-icon">🪣</div>
+        <div class="guide-card-body">
+          <div class="guide-card-title">混凝土固化鍋</div>
+        </div>
+        <div class="guide-card-arrow">→</div>
+      </a>
+      <a href="海風指南/特殊合成" class="guide-card fade-in">
         <div class="guide-card-icon">🔧</div>
         <div class="guide-card-body">
-          <div class="guide-card-title">輔助功能</div>
-          <div class="guide-card-desc">盔甲座編輯器、靈魂出竅、連鎖挖掘、地圖——各種便利功能，讓日常遊玩更加輕鬆。</div>
+          <div class="guide-card-title">特殊合成</div>
+        </div>
+        <div class="guide-card-arrow">→</div>
+      </a>
+      <a href="海風指南/玻璃展示櫃" class="guide-card fade-in">
+        <div class="guide-card-icon">🪟</div>
+        <div class="guide-card-body">
+          <div class="guide-card-title">玻璃展示櫃</div>
+        </div>
+        <div class="guide-card-arrow">→</div>
+      </a>
+      <a href="海風指南/更多動作" class="guide-card fade-in">
+        <div class="guide-card-icon">🕺</div>
+        <div class="guide-card-body">
+          <div class="guide-card-title">更多姿勢</div>
+        </div>
+        <div class="guide-card-arrow">→</div>
+      </a>
+      <a href="海風指南/電梯" class="guide-card fade-in">
+        <div class="guide-card-icon">🛗</div>
+        <div class="guide-card-body">
+          <div class="guide-card-title">電梯</div>
         </div>
         <div class="guide-card-arrow">→</div>
       </a>
