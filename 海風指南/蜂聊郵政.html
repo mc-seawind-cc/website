@@ -194,10 +194,10 @@
         <!-- ═══ Hero ═══ -->
         <div class="guide-v2-hero fade-in">
           <h1>🐝 蜂聊郵政</h1>
-          <p class="section-desc">海風專屬的遊戲內郵件系統。不在線也能傳訊息或寄物品給朋友，跨分流也能送達。管理員的補償和獎勵也透過這個系統發放。</p>
+          <p class="section-desc">無論是玩家之間的往來，還是官方通知，都能透過郵件完成。提供信件與包裹寄送服務，玩家即使不在線上，也能收發信件與附件。官方也會透過郵件發送活動通知、補償、獎勵等內容及資訊，建議定期查看信箱。</p>
           <div class="guide-quick-stats">
             <div class="guide-qs-item"><span class="guide-qs-icon">📬</span><span>功能</span><span class="guide-qs-val">寄信 / 寄物</span></div>
-            <div class="guide-qs-item"><span class="guide-qs-icon">💰</span><span>費用</span><span class="guide-qs-val">每次 1 風幣</span></div>
+            <div class="guide-qs-item"><span class="guide-qs-icon">💰</span><span>費用</span><span class="guide-qs-val">寄件皆 7 元</span></div>
             <div class="guide-qs-item"><span class="guide-qs-icon">🌐</span><span>範圍</span><span class="guide-qs-val">跨分流送達</span></div>
           </div>
         </div>
@@ -207,9 +207,9 @@
         <!-- ═══ 功能說明 ═══ -->
         <div class="guide-section-card fade-in" style="--card-accent:var(--foam)">
           <h2><span class="sec-icon">🐝</span> 功能說明</h2>
-          <p><strong>蜂聊郵政</strong>是海風伺服器的專屬郵件系統，讓玩家之間可以互相寄送文字訊息和物品。即使對方不在線上，信件也會存在收件人的信箱中，下次上線時就能收到。</p>
+          <p><strong>蜂聊郵政</strong>是海風伺服器的專屬郵件系統，提供信件與包裹寄送服務。即使對方不在線上，信件也會存在收件人的信箱中，下次上線時就能收到。</p>
           <p>這個系統最大的特色是<strong>跨分流送達</strong>——無論你在哪個分流，都能寄信給任何分流的玩家。管理員也會透過蜂聊郵政發放補償、獎勵或遺失物領回。</p>
-          <div class="callout callout-info"><span class="callout-icon">ℹ️</span><span>每次寄件只需 1 風幣，包含文字訊息和物品寄送，非常經濟實惠。</span></div>
+          <div class="callout callout-info"><span class="callout-icon">ℹ️</span><span>寄件費用皆為 7 元，包含文字訊息和物品寄送。</span></div>
         </div>
 
         <div class="guide-divider"></div>
@@ -222,14 +222,14 @@
             <table class="rules-table">
               <thead><tr><th>指令</th><th>說明</th></tr></thead>
               <tbody>
-                <tr><td><code>/mail send &lt;玩家&gt; &lt;訊息&gt;</code></td><td>寄送文字訊息給指定玩家。費用：1 風幣。</td></tr>
-                <tr><td><code>/mail read</code></td><td>讀取收件匣中的郵件。會顯示所有未讀和已讀的信件。</td></tr>
-                <tr><td><code>/mail clear</code></td><td>清除所有已讀郵件，釋放信箱空間。</td></tr>
-                <tr><td><code>/mail</code></td><td>開啟郵件介面，查看可用的操作選項。</td></tr>
+                <tr><td><code>/mail draft</code></td><td>開啟郵件草稿。</td></tr>
+                <tr><td><code>/mail inbox</code></td><td>開啟未讀郵件。</td></tr>
+                <tr><td><code>/mail inbox [all]</code></td><td>開啟收件匣（含已讀）。</td></tr>
+                <tr><td><code>/mail outbox</code></td><td>開啟已寄郵件。</td></tr>
               </tbody>
             </table>
           </div>
-          <div class="callout callout-tip"><span class="callout-icon">💡</span><span>建議養成定期用 <code>/mail read</code> 檢查信箱的習慣，避免錯過管理員發放的補償或獎勵。</span></div>
+          <div class="callout callout-tip"><span class="callout-icon">💡</span><span>提示：<code>&lt; &gt;</code> 為必選，<code>[ ]</code> 為可選。建議養成定期用 <code>/mail inbox</code> 檢查信箱的習慣，避免錯過管理員發放的補償或獎勵。</span></div>
         </div>
 
         <div class="guide-divider"></div>
@@ -257,11 +257,11 @@
             <div class="guide-step-card" style="--step-color:var(--sand)">
               <span class="guide-step-num">4</span>
               <h4>確認寄出</h4>
-              <p>檢查收件人和物品無誤後，確認送出。費用：1 風幣。</p>
+              <p>檢查收件人和物品無誤後，確認送出。費用：7 元。</p>
             </div>
           </div>
           <ul class="rules-list">
-            <li><strong>寄件費用</strong>：每次寄件（無論文字或物品）統一收取 1 風幣</li>
+            <li><strong>寄件費用</strong>：每次寄件（無論文字或物品）統一收取 7 元</li>
             <li><strong>離線收件</strong>：收件人不一定要在線，信件會存在信箱中，下次上線就能看到</li>
             <li><strong>跨分流送達</strong>：在分一寄給分二的朋友也沒問題，系統會自動處理</li>
             <li><strong>管理員發放</strong>：補償、獎勵或遺失物領回也會透過郵政系統處理</li>
@@ -322,7 +322,7 @@
         <div class="guide-section-card fade-in" style="--card-accent:var(--ocean-blue)">
           <h2><span class="sec-icon">⚠️</span> 注意事項</h2>
           <ul class="rules-list">
-            <li>每次寄件費用為 <strong>1 風幣</strong>，請確保錢包有足夠餘額</li>
+            <li>每次寄件費用為 <strong>7 元</strong>，請確保錢包有足夠餘額</li>
             <li>信箱有容量限制，建議定期用 <code>/mail clear</code> 清除已讀郵件</li>
             <li>寄送物品時請仔細確認收件人名稱，寄出後無法撤回</li>
             <li>管理員發放的補償和獎勵有領取期限，請盡快領取</li>
@@ -338,7 +338,7 @@
           <div class="guide-faq">
             <div class="guide-faq-item">
               <button class="guide-faq-q">寄件要多少錢？</button>
-              <div class="guide-faq-a"><div class="guide-faq-a-inner">每次寄件（無論是文字訊息還是物品）統一收取 <strong>1 風幣</strong>。費用非常低，適合日常使用。</div></div>
+              <div class="guide-faq-a"><div class="guide-faq-a-inner">每次寄件（無論是文字訊息還是物品）統一收取 <strong>7 元</strong>。費用非常低，適合日常使用。</div></div>
             </div>
             <div class="guide-faq-item">
               <button class="guide-faq-q">不在线也能收信嗎？</button>
