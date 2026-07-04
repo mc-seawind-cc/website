@@ -25,16 +25,11 @@
   <link rel="preload" href="../music-player.js?v=170517a" as="script">
 </head>
 <body>
-  <div class="page-loader" id="pageLoader">
-    <span class="loader-logo">海風</span>
-    <div class="loader-wave"></div>
-    <div class="loader-dots"><span></span><span></span><span></span></div>
-  </div>
-
   <a href="#mainContent" class="skip-link">跳到主要內容</a>
   <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
   <div class="bg-atmosphere"></div>
-    <nav class="nav">
+
+  <nav class="nav">
     <a href="../首頁" class="nav-logo">
       <picture><source srcset="../assets/img/logo.webp" type="image/webp"><img src="../assets/img/logo.png" alt="海風" class="nav-logo-img" width="48" height="48" fetchpriority="high"></picture>
       <span>海風伺服器</span>
@@ -85,10 +80,10 @@
       </button>
     </div>
   </nav>
-  <div class="page">
+
+  <div class="page" id="mainContent">
     <div class="guide-layout">
-            <!-- 側邊導覽 -->
-            <aside class="guide-sidebar">
+      <aside class="guide-sidebar">
         <div class="guide-sidebar-inner">
           <div class="guide-sidebar-title">📖 海風指南</div>
           <nav class="guide-sidebar-nav">
@@ -136,221 +131,79 @@
         </div>
       </aside>
 
-      <div class="guide-main" id="mainContent">
+      <div class="guide-main">
         <div class="breadcrumb fade-in">
           <a href="../海風指南">海風指南</a>
           <span class="sep">›</span>
           <span class="current">郵件系統</span>
         </div>
 
-        <!-- ═══ Hero ═══ -->
-        <div class="guide-v2-hero fade-in">
+        <div class="guide-hybrid-hero fade-in">
           <h1>📬 郵件系統</h1>
-          <p class="section-desc">無論是玩家之間的往來，還是官方通知，都能透過郵件完成。提供信件與包裹寄送服務，玩家即使不在線上，也能收發信件與附件。官方也會透過郵件發送活動通知、補償、獎勵等內容及資訊，建議定期查看信箱。</p>
-          <div class="guide-quick-stats">
-            <div class="guide-qs-item"><span class="guide-qs-icon">📬</span><span>功能</span><span class="guide-qs-val">寄信 / 寄物</span></div>
-            <div class="guide-qs-item"><span class="guide-qs-icon">💰</span><span>費用</span><span class="guide-qs-val">寄件皆 7 元</span></div>
-            <div class="guide-qs-item"><span class="guide-qs-icon">🌐</span><span>範圍</span><span class="guide-qs-val">跨分流送達</span></div>
-          </div>
+          <p class="section-desc">無論是玩家之間的往來，還是官方通知，都能透過郵件完成。提供信件與包裹寄送服務，玩家即使不在線上，也能收發信件與附件。</p>
         </div>
 
-        <div class="guide-divider"></div>
+        <div class="guide-hybrid-content">
 
-        <!-- ═══ 功能說明 ═══ -->
-        <div class="guide-section-card fade-in" style="--card-accent:var(--foam)">
-          <h2><span class="sec-icon">📬</span> 功能說明</h2>
-          <p><strong>郵件系統</strong>是海風伺服器的專屬郵件系統，提供信件與包裹寄送服務。即使對方不在線上，信件也會存在收件人的信箱中，下次上線時就能收到。</p>
-          <p>這個系統最大的特色是<strong>跨分流送達</strong>——無論你在哪個分流，都能寄信給任何分流的玩家。管理員也會透過郵件系統發放補償、獎勵或遺失物領回。</p>
-          <div class="callout callout-info"><span class="callout-icon">ℹ️</span><span>寄件費用皆為 7 元，包含文字訊息和物品寄送。</span></div>
-        </div>
-
-        <div class="guide-divider"></div>
-
-        <!-- ═══ 使用指令 ═══ -->
-        <div class="guide-section-card fade-in" style="--card-accent:var(--lavender)">
-          <h2><span class="sec-icon">📖</span> 使用指令</h2>
-          <p>郵件系統的操作透過指令進行，以下是常用的指令列表：</p>
-          <div class="rules-table-wrap">
-            <table class="rules-table">
-              <thead><tr><th>指令</th><th>說明</th></tr></thead>
-              <tbody>
-                <tr><td><code>/mail draft</code></td><td>開啟郵件草稿。</td></tr>
-                <tr><td><code>/mail inbox</code></td><td>開啟未讀郵件。</td></tr>
-                <tr><td><code>/mail inbox [all]</code></td><td>開啟收件匣（含已讀）。</td></tr>
-                <tr><td><code>/mail outbox</code></td><td>開啟已寄郵件。</td></tr>
-              </tbody>
-            </table>
-          </div>
-          <div class="callout callout-tip"><span class="callout-icon">💡</span><span>提示：<code>&lt; &gt;</code> 為必選，<code>[ ]</code> 為可選。建議養成定期用 <code>/mail inbox</code> 檢查信箱的習慣，避免錯過管理員發放的補償或獎勵。</span></div>
-        </div>
-
-        <div class="guide-divider"></div>
-
-        <!-- ═══ 寄送物品 ═══ -->
-        <div class="guide-section-card fade-in" style="--card-accent:var(--sand)">
-          <h2><span class="sec-icon">📦</span> 寄送物品</h2>
-          <p>除了文字訊息，郵件系統也支援<strong>物品寄送</strong>。這是在不同分流或不同上線時間的玩家之間交換物品的最方便方式。</p>
-          <div class="guide-steps-grid">
-            <div class="guide-step-card" style="--step-color:var(--sand)">
-              <span class="guide-step-num">1</span>
-              <h4>開啟郵件介面</h4>
-              <p>輸入 <code>/mail</code> 指令或從選單進入郵政系統。</p>
-            </div>
-            <div class="guide-step-card" style="--step-color:var(--sand)">
-              <span class="guide-step-num">2</span>
-              <h4>選擇收件人</h4>
-              <p>輸入對方的遊戲名稱，確認無誤。</p>
-            </div>
-            <div class="guide-step-card" style="--step-color:var(--sand)">
-              <span class="guide-step-num">3</span>
-              <h4>放入物品</h4>
-              <p>把想寄的物品從背包拖曳到郵件介面中。</p>
-            </div>
-            <div class="guide-step-card" style="--step-color:var(--sand)">
-              <span class="guide-step-num">4</span>
-              <h4>確認寄出</h4>
-              <p>檢查收件人和物品無誤後，確認送出。費用：7 元。</p>
-            </div>
-          </div>
-          <ul class="rules-list">
-            <li><strong>寄件費用</strong>：每次寄件（無論文字或物品）統一收取 7 元</li>
-            <li><strong>離線收件</strong>：收件人不一定要在線，信件會存在信箱中，下次上線就能看到</li>
-            <li><strong>跨分流送達</strong>：在分一寄給分二的朋友也沒問題，系統會自動處理</li>
-            <li><strong>管理員發放</strong>：補償、獎勵或遺失物領回也會透過郵政系統處理</li>
+          <h2>概覽</h2>
+          <p>郵件系統是海風伺服器的專屬郵件系統，讓玩家之間可以互相寄送文字訊息和物品。即使對方不在線上，信件也會存在收件人的信箱中，下次上線時就能收到。管理員也會透過郵件系統發放補償、獎勵或遺失物領回。</p>
+          <ul>
+            <li><strong>寄件費用</strong>：每次 7 元（無論文字或物品）</li>
+            <li><strong>跨分流</strong>：在任何分流都能寄給其他分流的玩家</li>
+            <li><strong>離線收件</strong>：收件人不一定要在線</li>
           </ul>
-        </div>
 
-        <div class="guide-divider"></div>
+          <h2>常用指令</h2>
+          <table class="guide-hybrid-table">
+            <thead><tr><th>指令</th><th>說明</th></tr></thead>
+            <tbody>
+              <tr><td><code>/mail draft</code></td><td>開啟郵件草稿</td></tr>
+              <tr><td><code>/mail inbox</code></td><td>開啟未讀郵件</td></tr>
+              <tr><td><code>/mail inbox [all]</code></td><td>開啟收件匣（含已讀）</td></tr>
+              <tr><td><code>/mail outbox</code></td><td>開啟已寄郵件</td></tr>
+            </tbody>
+          </table>
+          <div class="guide-hybrid-callout">💡 提示：<code>&lt; &gt;</code> 為必選，<code>[ ]</code> 為可選。建議定期用 <code>/mail inbox</code> 檢查信箱，避免錯過補償或獎勵。</div>
 
-        <!-- ═══ 跨分流寄送 ═══ -->
-        <div class="guide-section-card fade-in" style="--card-accent:var(--foam)">
-          <h2><span class="sec-icon">🌐</span> 跨分流寄送</h2>
-          <p>郵件系統最強大的功能之一就是<strong>跨分流寄送</strong>。無論你和對方在哪個分流，都能互相寄信和物品。</p>
-          <div class="guide-steps-grid" style="grid-template-columns:repeat(auto-fit,minmax(200px,1fr))">
-            <div class="guide-step-card" style="--step-color:var(--foam)">
-              <h4>📡 無視分流限制</h4>
-              <p>在分流一寄給分流二的玩家，系統會自動處理，不需要切換分流。</p>
-            </div>
-            <div class="guide-step-card" style="--step-color:var(--foam)">
-              <h4>⏰ 異步交易</h4>
-              <p>對方不在線也能寄送，適合不同上線時間的朋友之間交易物品。</p>
-            </div>
-            <div class="guide-step-card" style="--step-color:var(--foam)">
-              <h4>📢 管理員通知</h4>
-              <p>管理員發放的補償和獎勵會透過郵政系統送到，不管你在哪個分流都收得到。</p>
-            </div>
-          </div>
-          <div class="callout callout-tip"><span class="callout-icon">💡</span><span>如果有人說要補償你東西，記得查看郵件——通常會透過郵件系統寄送。用 <code>/mail read</code> 檢查有沒有新信件。</span></div>
-        </div>
+          <h2>寄送物品</h2>
+          <p>除了文字訊息，郵件系統也支援物品寄送，是在不同分流或不同上線時間的玩家之間交換物品的最方便方式。</p>
+          <ol>
+            <li>輸入 <code>/mail</code> 或從選單進入郵件介面</li>
+            <li>輸入收件人的遊戲名稱</li>
+            <li>把物品從背包拖曳到郵件介面中</li>
+            <li>確認送出（費用 7 元）</li>
+          </ol>
 
-        <div class="guide-divider"></div>
+          <h2>常見問題</h2>
 
-        <!-- ═══ 常見使用情境 ═══ -->
-        <div class="guide-section-card fade-in" style="--card-accent:var(--lavender)">
-          <h2><span class="sec-icon">💡</span> 常見使用情境</h2>
-          <div class="guide-steps-grid" style="grid-template-columns:repeat(auto-fit,minmax(200px,1fr))">
-            <div class="guide-step-card" style="--step-color:var(--lavender)">
-              <h4>🎁 送禮物給朋友</h4>
-              <p>想送東西給朋友但他不在線？用郵政系統寄過去，他下次上線就能收到。</p>
-            </div>
-            <div class="guide-step-card" style="--step-color:var(--lavender)">
-              <h4>🏪 跨分流交易</h4>
-              <p>和不同分流的玩家交易物品，不用特地切換分流見面。</p>
-            </div>
-            <div class="guide-step-card" style="--step-color:var(--lavender)">
-              <h4>📝 留訊息</h4>
-              <p>朋友不在線時留言，告訴他你來找過他或有事相告。</p>
-            </div>
-            <div class="guide-step-card" style="--step-color:var(--lavender)">
-              <h4>🏆 領取獎勵</h4>
-              <p>活動獎勵、管理員補償都會透過郵政系統發放，記得定期檢查。</p>
-            </div>
-          </div>
-        </div>
+          <h3>寄件要多少錢？</h3>
+          <p>每次寄件統一收取 <strong>7 元</strong>，無論是文字訊息還是物品。</p>
 
-        <div class="guide-divider"></div>
+          <h3>不在线也能收信嗎？</h3>
+          <p>可以。信件會存在收件人的信箱中，對方下次上線時用 <code>/mail inbox</code> 就能看到。跨分流也能送達。</p>
 
-        <!-- ═══ 注意事項 ═══ -->
-        <div class="guide-section-card fade-in" style="--card-accent:var(--ocean-blue)">
-          <h2><span class="sec-icon">⚠️</span> 注意事項</h2>
-          <ul class="rules-list">
-            <li>每次寄件費用為 <strong>7 元</strong>，請確保錢包有足夠餘額</li>
-            <li>信箱有容量限制，建議定期用 <code>/mail clear</code> 清除已讀郵件</li>
+          <h3>可以寄物品嗎？</h3>
+          <p>可以。透過郵件介面把物品放進去就能寄送。跨分流也收得到。</p>
+
+          <h3>信件有保存期限嗎？</h3>
+          <p>信件不會自動過期。但信箱有容量限制，建議定期用 <code>/mail clear</code> 清理已讀信件。</p>
+
+          <h3>可以一次寄給很多人嗎？</h3>
+          <p>目前沒有群發功能，需要一封一封寄。</p>
+
+          <h2>注意事項</h2>
+          <ul>
+            <li>寄件費用為 7 元，請確保錢包有足夠餘額</li>
             <li>寄送物品時請仔細確認收件人名稱，寄出後無法撤回</li>
             <li>管理員發放的補償和獎勵有領取期限，請盡快領取</li>
-            <li>如果遇到寄件失敗，請確認對方名稱是否正確、錢包餘額是否足夠</li>
           </ul>
-        </div>
 
-        <div class="guide-divider"></div>
-
-        <!-- ═══ FAQ ═══ -->
-        <div class="guide-section-card fade-in" style="--card-accent:#85b1e0">
-          <h2><span class="sec-icon">❓</span> 常見問題</h2>
-          <div class="guide-faq">
-            <div class="guide-faq-item">
-              <button class="guide-faq-q">寄件要多少錢？</button>
-              <div class="guide-faq-a"><div class="guide-faq-a-inner">每次寄件（無論是文字訊息還是物品）統一收取 <strong>7 元</strong>。費用非常低，適合日常使用。</div></div>
-            </div>
-            <div class="guide-faq-item">
-              <button class="guide-faq-q">不在线也能收信嗎？</button>
-              <div class="guide-faq-a"><div class="guide-faq-a-inner">可以。信件會存在收件人的信箱中，對方下次上線時用 <code>/mail read</code> 就能看到。跨分流也能送達。</div></div>
-            </div>
-            <div class="guide-faq-item">
-              <button class="guide-faq-q">可以寄物品嗎？怎麼寄？</button>
-              <div class="guide-faq-a"><div class="guide-faq-a-inner">可以。透過郵件介面把物品放進去就能寄送。跨分流也收得到，適合和不同上線時間的朋友交換物品。</div></div>
-            </div>
-            <div class="guide-faq-item">
-              <button class="guide-faq-q">信件有保存期限嗎？</button>
-              <div class="guide-faq-a"><div class="guide-faq-a-inner">信件會一直存在信箱裡，不會自動過期。但如果信箱塞滿了，新信件可能無法送達。建議定期用 <code>/mail clear</code> 清理已讀信件，保持信箱暢通。</div></div>
-            </div>
-            <div class="guide-faq-item">
-              <button class="guide-faq-q">可以一次寄給很多人嗎？</button>
-              <div class="guide-faq-a"><div class="guide-faq-a-inner">目前沒有群發功能，需要一封一封寄。如果要通知很多人，建議在 Discord 公告頻道發訊息，會比遊戲內寄信方便很多。</div></div>
-            </div>
-          </div>
-        </div>
-
-        <div class="guide-divider"></div>
-
-        <!-- ═══ 相關頁面 ═══ -->
-        <div class="guide-section-card fade-in" style="--card-accent:var(--ocean-blue)">
-          <h2><span class="sec-icon">📖</span> 相關頁面</h2>
-          <div class="guide-next-grid">
-            <a href="經濟系統" class="guide-next-card">
-              <span class="guide-next-icon">💰</span>
-              <div class="guide-next-body">
-                <h4>經濟系統</h4>
-                <p>了解風幣怎麼賺、怎麼花</p>
-              </div>
-            </a>
-            <a href="社區系統" class="guide-next-card">
-              <span class="guide-next-icon">🏘️</span>
-              <div class="guide-next-body">
-                <h4>社區系統</h4>
-                <p>更多社群互動功能</p>
-              </div>
-            </a>
-            <a href="箱子商店" class="guide-next-card">
-              <span class="guide-next-icon">🏪</span>
-              <div class="guide-next-body">
-                <h4>箱子商店</h4>
-                <p>搭配郵政進行遠距交易</p>
-              </div>
-            </a>
-          </div>
-        </div>
-
-        <div class="guide-nav fade-in">
-          <a href="簽到系統" class="btn btn-outline">← 簽到系統</a>
-          <a href="../海風指南" class="btn btn-outline">返回目錄</a>
-          <a href="社區系統" class="btn btn-primary">社區系統 →</a>
         </div>
       </div>
     </div>
   </div>
 
-    <footer class="footer">
+  <footer class="footer">
     <div class="footer-inner">
       <div class="footer-brand">
         <span class="footer-logo">海風伺服器 SeaWind.cc</span>
@@ -376,4 +229,7 @@
   <script src="../music-player.js?v=170517a"></script>
   
   </body>
+</html>
+
+</body>
 </html>
