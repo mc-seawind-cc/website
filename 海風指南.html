@@ -24,55 +24,43 @@
   <link rel="stylesheet" href="music-player.css?v=110611a">
   <link rel="preload" href="music-player.js?v=110611a" as="script">
   <style>
-    /* Guide Index — MC Wiki 風格 + 圖片 */
-    .wiki-main{max-width:960px;margin:0 auto;padding:var(--space-xl) var(--space-lg) var(--space-2xl)}
-    .wiki-heading{font-family:'Noto Serif TC',serif;font-size:clamp(1.8rem,4vw,2.4rem);font-weight:700;color:var(--white);margin-bottom:var(--space-sm);letter-spacing:-0.02em}
-    .wiki-desc{color:var(--fog);font-size:0.95rem;line-height:1.8;margin-bottom:var(--space-2xl);max-width:600px}
+    /* Guide Index — MC Wiki 全版佈局 */
+    .guide-layout{display:flex;gap:0;align-items:flex-start}
+    .guide-sidebar{width:240px;flex-shrink:0;position:sticky;top:72px}
+    .guide-main{flex:1;min-width:0;padding:var(--space-xl) var(--space-2xl) var(--space-2xl)}
+
+    /* 標題 */
+    .wiki-heading{font-family:'Noto Serif TC',serif;font-size:clamp(1.6rem,3.5vw,2.2rem);font-weight:700;color:var(--white);margin-bottom:var(--space-sm);letter-spacing:-0.02em}
+    .wiki-desc{color:var(--fog);font-size:0.92rem;line-height:1.8;margin-bottom:var(--space-2xl)}
     .wiki-desc a{color:var(--sky);text-decoration:none;border-bottom:1px solid rgba(157,175,255,0.3)}
     .wiki-desc a:hover{border-bottom-color:var(--sky)}
 
     /* 分類區塊 */
     .wiki-cat{margin-bottom:var(--space-2xl)}
-    .wiki-cat-head{display:flex;align-items:center;gap:8px;margin-bottom:var(--space-md);padding-bottom:var(--space-sm);border-bottom:2px solid rgba(255,255,255,0.08)}
-    .wiki-cat-icon{font-size:1.2rem}
-    .wiki-cat-title{font-size:1.1rem;font-weight:700;color:var(--white)}
+    .wiki-cat-head{display:flex;align-items:center;gap:8px;margin-bottom:var(--space-md);padding-bottom:6px;border-bottom:2px solid rgba(255,255,255,0.08)}
+    .wiki-cat-title{font-size:1.05rem;font-weight:700;color:var(--white)}
     [data-theme="light"] .wiki-cat-head{border-bottom-color:rgba(0,0,0,0.08)}
 
-    /* 網格 — 帶圖片 */
-    .wiki-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:1px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.06);border-radius:var(--radius-sm);overflow:hidden}
-    .wiki-cell{display:flex;flex-direction:column;align-items:center;text-align:center;padding:16px 12px;background:var(--deep);text-decoration:none;color:inherit;transition:background 0.2s;gap:8px}
-    .wiki-cell:hover{background:rgba(157,175,255,0.04)}
-    .wiki-cell-img{width:48px;height:48px;image-rendering:pixelated;image-rendering:crisp-edges;object-fit:contain;flex-shrink:0}
-    .wiki-cell-img.emoji{font-size:2rem;width:auto;height:auto;image-rendering:auto}
-    .wiki-cell-name{font-size:0.88rem;font-weight:600;color:var(--cloud);line-height:1.3}
+    /* 方形格子 — 滿版 */
+    .wiki-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(110px,1fr));gap:1px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.06);border-radius:2px;overflow:hidden}
+    .wiki-cell{display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:14px 8px;background:var(--deep);text-decoration:none;color:inherit;transition:background 0.15s;aspect-ratio:1}
+    .wiki-cell:hover{background:rgba(157,175,255,0.05)}
+    .wiki-cell-img{width:40px;height:40px;image-rendering:pixelated;object-fit:contain;flex-shrink:0;margin-bottom:6px}
+    .wiki-cell-name{font-size:0.78rem;font-weight:500;color:var(--cloud);line-height:1.3}
     .wiki-cell:hover .wiki-cell-name{color:var(--sky)}
     [data-theme="light"] .wiki-grid{background:rgba(0,0,0,0.03);border-color:rgba(0,0,0,0.06)}
     [data-theme="light"] .wiki-cell{background:#fff}
     [data-theme="light"] .wiki-cell:hover{background:rgba(74,108,247,0.03)}
 
-    /* 緊湊版 */
-    .wiki-grid-compact{grid-template-columns:repeat(auto-fill,minmax(130px,1fr))}
-    .wiki-grid-compact .wiki-cell{padding:12px 8px}
-    .wiki-grid-compact .wiki-cell-img{width:36px;height:36px}
-    .wiki-grid-compact .wiki-cell-img.emoji{font-size:1.5rem}
-    .wiki-grid-compact .wiki-cell-name{font-size:0.82rem}
-
     @media(max-width:768px){
-      .wiki-grid{grid-template-columns:repeat(3,1fr)}
-      .wiki-grid-compact{grid-template-columns:repeat(3,1fr)}
-    }
-    @media(max-width:480px){
-      .wiki-grid{grid-template-columns:repeat(2,1fr)}
-      .wiki-grid-compact{grid-template-columns:repeat(2,1fr)}
+      .guide-layout{flex-direction:column}
+      .guide-sidebar{width:100%;position:static}
+      .guide-main{padding:var(--space-lg)}
+      .wiki-grid{grid-template-columns:repeat(auto-fill,minmax(90px,1fr))}
     }
   </style>
 </head>
 <body>
-  <div class="page-loader" id="pageLoader">
-    <span class="loader-logo">海風</span>
-    <div class="loader-wave"></div>
-    <div class="loader-dots"><span></span><span></span><span></span></div>
-  </div>
   <a href="#mainContent" class="skip-link">跳到主要內容</a>
   <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
   <div class="bg-atmosphere"></div>
@@ -130,79 +118,117 @@
   </nav>
 
   <div class="page" id="mainContent">
-    <div class="wiki-main">
+    <div class="guide-layout">
 
-      <h1 class="wiki-heading fade-in">📖 海風指南</h1>
-      <p class="wiki-desc fade-in">歡迎使用海風指南，新玩家可閱<a href="海風指南/新手指引">新手指引</a>，指南不定時更新中，有疑慮歡迎至 Discord 提問。</p>
+      <aside class="guide-sidebar">
+        <div class="guide-sidebar-inner">
+          <div class="guide-sidebar-title">📖 海風指南</div>
+          <nav class="guide-sidebar-nav">
+                        <div class="guide-sb-group">
+              <span class="guide-sb-heading">📖 主要系統</span>
+              <a href="經濟系統" class="guide-sb-link">經濟系統</a>
+              <a href="交易系統" class="guide-sb-link">交易系統</a>
+              <a href="傳送系統" class="guide-sb-link">傳送系統</a>
+              <a href="任務系統" class="guide-sb-link">任務系統</a>
+              <a href="社區系統" class="guide-sb-link">社區系統</a>
+              <a href="簽到系統" class="guide-sb-link">簽到系統</a>
+              <a href="郵件系統" class="guide-sb-link active">郵件系統</a>
+              <a href="稱號系統" class="guide-sb-link">稱號系統</a>
+              <a href="倉庫" class="guide-sb-link">倉庫</a>
+              <a href="領地系統" class="guide-sb-link">領地系統</a>
+            </div>
+            <div class="guide-sb-group">
+              <span class="guide-sb-heading">🔧 輔助功能</span>
+              <a href="盔甲座編輯器" class="guide-sb-link">盔甲座編輯器</a>
+              <a href="靈魂出竅" class="guide-sb-link">靈魂出竅</a>
+              <a href="連鎖挖掘" class="guide-sb-link">連鎖挖掘</a>
+              <a href="地圖" class="guide-sb-link">地圖</a>
+            </div>
+            <div class="guide-sb-group">
+              <span class="guide-sb-heading">🤝 互動功能</span>
+              <a href="互動記錄" class="guide-sb-link">互動記錄</a>
+              <a href="物品署名" class="guide-sb-link">物品署名</a>
+              <a href="自動拾取" class="guide-sb-link">自動拾取</a>
+              <a href="穿牌開箱" class="guide-sb-link">穿牌開箱</a>
+            </div>
+            <div class="guide-sb-group">
+              <span class="guide-sb-heading">⚙️ 遊戲機制</span>
+              <a href="資源再生" class="guide-sb-link">資源再生</a>
+              <a href="礦物代換" class="guide-sb-link">礦物代換</a>
+              <a href="地震預警" class="guide-sb-link">地震預警</a>
+              <a href="真實書櫃" class="guide-sb-link">真實書櫃</a>
+              <a href="蜂窩檢視" class="guide-sb-link">蜂窩檢視</a>
+              <a href="混凝土固化鍋" class="guide-sb-link">混凝土固化鍋</a>
+              <a href="特殊合成" class="guide-sb-link">特殊合成</a>
+              <a href="玻璃展示櫃" class="guide-sb-link">玻璃展示櫃</a>
+              <a href="更多動作" class="guide-sb-link">更多動作</a>
+              <a href="電梯" class="guide-sb-link">電梯</a>
+            </div>
+          </nav>
+        </div>
+      </aside>
 
-      <!-- 主要系統 -->
-      <div class="wiki-cat fade-in">
-        <div class="wiki-cat-head">
-          <span class="wiki-cat-icon">📖</span>
-          <span class="wiki-cat-title">主要系統</span>
+      <div class="guide-main">
+        <h1 class="wiki-heading fade-in">📖 海風指南</h1>
+        <p class="wiki-desc fade-in">歡迎使用海風指南，新玩家可閱<a href="海風指南/新手指引">新手指引</a>，指南不定時更新中。</p>
+
+        <!-- 主要系統 -->
+        <div class="wiki-cat fade-in">
+          <div class="wiki-cat-head"><span class="wiki-cat-title">📖 主要系統</span></div>
+          <div class="wiki-grid">
+            <a href="海風指南/經濟系統" class="wiki-cell"><img src="assets/img/icons/emerald.png" class="wiki-cell-img" alt=""><span class="wiki-cell-name">經濟系統</span></a>
+            <a href="海風指南/交易系統" class="wiki-cell"><img src="assets/img/items/apple.png" class="wiki-cell-img" alt=""><span class="wiki-cell-name">交易系統</span></a>
+            <a href="海風指南/傳送系統" class="wiki-cell"><img src="assets/img/icons/compass.gif" class="wiki-cell-img" alt=""><span class="wiki-cell-name">傳送系統</span></a>
+            <a href="海風指南/任務系統" class="wiki-cell"><img src="assets/img/icons/book.png" class="wiki-cell-img" alt=""><span class="wiki-cell-name">任務系統</span></a>
+            <a href="海風指南/社區系統" class="wiki-cell"><img src="assets/mobs/villager.png" class="wiki-cell-img" alt=""><span class="wiki-cell-name">社區系統</span></a>
+            <a href="海風指南/簽到系統" class="wiki-cell"><img src="assets/img/icons/clock.gif" class="wiki-cell-img" alt=""><span class="wiki-cell-name">簽到系統</span></a>
+            <a href="海風指南/郵件系統" class="wiki-cell"><img src="assets/img/icons/book.png" class="wiki-cell-img" alt=""><span class="wiki-cell-name">郵件系統</span></a>
+            <a href="海風指南/稱號系統" class="wiki-cell"><img src="assets/img/icons/shield.png" class="wiki-cell-img" alt=""><span class="wiki-cell-name">稱號系統</span></a>
+            <a href="海風指南/倉庫" class="wiki-cell"><img src="assets/img/icons/campfire.png" class="wiki-cell-img" alt=""><span class="wiki-cell-name">倉庫</span></a>
+            <a href="海風指南/領地系統" class="wiki-cell"><img src="assets/img/icons/shield.png" class="wiki-cell-img" alt=""><span class="wiki-cell-name">領地系統</span></a>
+          </div>
         </div>
-        <div class="wiki-grid">
-          <a href="海風指南/經濟系統" class="wiki-cell"><img src="assets/img/icons/emerald.png" class="wiki-cell-img" alt="經濟系統"><span class="wiki-cell-name">經濟系統</span></a>
-          <a href="海風指南/交易系統" class="wiki-cell"><img src="assets/img/items/apple.png" class="wiki-cell-img" alt="交易系統"><span class="wiki-cell-name">交易系統</span></a>
-          <a href="海風指南/傳送系統" class="wiki-cell"><img src="assets/img/icons/compass.gif" class="wiki-cell-img" alt="傳送系統"><span class="wiki-cell-name">傳送系統</span></a>
-          <a href="海風指南/任務系統" class="wiki-cell"><img src="assets/img/icons/book.png" class="wiki-cell-img" alt="任務系統"><span class="wiki-cell-name">任務系統</span></a>
-          <a href="海風指南/社區系統" class="wiki-cell"><img src="assets/mobs/villager.png" class="wiki-cell-img" alt="社區系統"><span class="wiki-cell-name">社區系統</span></a>
-          <a href="海風指南/簽到系統" class="wiki-cell"><img src="assets/img/icons/clock.gif" class="wiki-cell-img" alt="簽到系統"><span class="wiki-cell-name">簽到系統</span></a>
-          <a href="海風指南/郵件系統" class="wiki-cell"><img src="assets/img/icons/book.png" class="wiki-cell-img" alt="郵件系統"><span class="wiki-cell-name">郵件系統</span></a>
-          <a href="海風指南/稱號系統" class="wiki-cell"><img src="assets/img/icons/shield.png" class="wiki-cell-img" alt="稱號系統"><span class="wiki-cell-name">稱號系統</span></a>
-          <a href="海風指南/倉庫" class="wiki-cell"><img src="assets/img/icons/campfire.png" class="wiki-cell-img" alt="倉庫"><span class="wiki-cell-name">倉庫系統</span></a>
-          <a href="海風指南/領地系統" class="wiki-cell"><img src="assets/img/icons/shield.png" class="wiki-cell-img" alt="領地系統"><span class="wiki-cell-name">領地系統</span></a>
+
+        <!-- 輔助功能 -->
+        <div class="wiki-cat fade-in">
+          <div class="wiki-cat-head"><span class="wiki-cat-title">🔧 輔助功能</span></div>
+          <div class="wiki-grid">
+            <a href="海風指南/盔甲座編輯器" class="wiki-cell"><img src="assets/img/guide-armorstand.png" class="wiki-cell-img" alt=""><span class="wiki-cell-name">盔甲座編輯器</span></a>
+            <a href="海風指南/靈魂出竅" class="wiki-cell"><img src="assets/mobs/allay.png" class="wiki-cell-img" alt=""><span class="wiki-cell-name">靈魂出竅</span></a>
+            <a href="海風指南/連鎖挖掘" class="wiki-cell"><img src="assets/img/icons/diamond_axe.png" class="wiki-cell-img" alt=""><span class="wiki-cell-name">連鎖挖掘</span></a>
+            <a href="海風指南/地圖" class="wiki-cell"><img src="assets/img/icons/compass.gif" class="wiki-cell-img" alt=""><span class="wiki-cell-name">地圖</span></a>
+          </div>
         </div>
+
+        <!-- 互動功能 -->
+        <div class="wiki-cat fade-in">
+          <div class="wiki-cat-head"><span class="wiki-cat-title">🤝 互動功能</span></div>
+          <div class="wiki-grid">
+            <a href="海風指南/互動記錄" class="wiki-cell"><img src="assets/img/icons/book.png" class="wiki-cell-img" alt=""><span class="wiki-cell-name">互動記錄</span></a>
+            <a href="海風指南/物品署名" class="wiki-cell"><img src="assets/img/icons/book.png" class="wiki-cell-img" alt=""><span class="wiki-cell-name">物品署名</span></a>
+            <a href="海風指南/自動拾取" class="wiki-cell"><img src="assets/img/items/honeycomb.png" class="wiki-cell-img" alt=""><span class="wiki-cell-name">自動拾取</span></a>
+            <a href="海風指南/穿牌開箱" class="wiki-cell"><img src="assets/img/icons/campfire.png" class="wiki-cell-img" alt=""><span class="wiki-cell-name">穿牌開箱</span></a>
+          </div>
+        </div>
+
+        <!-- 遊戲機制 -->
+        <div class="wiki-cat fade-in">
+          <div class="wiki-cat-head"><span class="wiki-cat-title">⚙️ 遊戲機制</span></div>
+          <div class="wiki-grid">
+            <a href="海風指南/資源再生" class="wiki-cell"><img src="assets/img/icons/grass-block.svg" class="wiki-cell-img" alt=""><span class="wiki-cell-name">資源再生</span></a>
+            <a href="海風指南/礦物代換" class="wiki-cell"><img src="assets/img/icons/emerald.png" class="wiki-cell-img" alt=""><span class="wiki-cell-name">礦物代換</span></a>
+            <a href="海風指南/地震預警" class="wiki-cell"><img src="assets/img/icons/campfire.png" class="wiki-cell-img" alt=""><span class="wiki-cell-name">地震預警</span></a>
+            <a href="海風指南/真實書櫃" class="wiki-cell"><img src="assets/img/icons/book.png" class="wiki-cell-img" alt=""><span class="wiki-cell-name">真實書櫃</span></a>
+            <a href="海風指南/蜂窩檢視" class="wiki-cell"><img src="assets/img/items/honeycomb.png" class="wiki-cell-img" alt=""><span class="wiki-cell-name">蜂窩檢視</span></a>
+            <a href="海風指南/混凝土固化鍋" class="wiki-cell"><img src="assets/img/items/milk_bucket.png" class="wiki-cell-img" alt=""><span class="wiki-cell-name">混凝土固化鍋</span></a>
+            <a href="海風指南/特殊合成" class="wiki-cell"><img src="assets/img/icons/crafter.svg" class="wiki-cell-img" alt=""><span class="wiki-cell-name">特殊合成</span></a>
+            <a href="海風指南/玻璃展示櫃" class="wiki-cell"><img src="assets/img/icons/crying_obsidian.png" class="wiki-cell-img" alt=""><span class="wiki-cell-name">玻璃展示櫃</span></a>
+            <a href="海風指南/更多動作" class="wiki-cell"><img src="assets/mobs/allay.png" class="wiki-cell-img" alt=""><span class="wiki-cell-name">更多姿勢</span></a>
+            <a href="海風指南/電梯" class="wiki-cell"><img src="assets/img/icons/iron-door.svg" class="wiki-cell-img" alt=""><span class="wiki-cell-name">電梯</span></a>
+          </div>
+        </div>
+
       </div>
-
-      <!-- 輔助功能 -->
-      <div class="wiki-cat fade-in">
-        <div class="wiki-cat-head">
-          <span class="wiki-cat-icon">🔧</span>
-          <span class="wiki-cat-title">輔助功能</span>
-        </div>
-        <div class="wiki-grid">
-          <a href="海風指南/盔甲座編輯器" class="wiki-cell"><img src="assets/img/guide-armorstand.png" class="wiki-cell-img" alt="盔甲座編輯器"><span class="wiki-cell-name">盔甲座編輯器</span></a>
-          <a href="海風指南/靈魂出竅" class="wiki-cell"><img src="assets/mobs/allay.png" class="wiki-cell-img" alt="靈魂出竅"><span class="wiki-cell-name">靈魂出竅</span></a>
-          <a href="海風指南/連鎖挖掘" class="wiki-cell"><img src="assets/img/icons/diamond_axe.png" class="wiki-cell-img" alt="連鎖挖掘"><span class="wiki-cell-name">連鎖挖掘</span></a>
-          <a href="海風指南/地圖" class="wiki-cell"><img src="assets/img/icons/compass.gif" class="wiki-cell-img" alt="地圖"><span class="wiki-cell-name">地圖</span></a>
-        </div>
-      </div>
-
-      <!-- 互動功能 -->
-      <div class="wiki-cat fade-in">
-        <div class="wiki-cat-head">
-          <span class="wiki-cat-icon">🤝</span>
-          <span class="wiki-cat-title">互動功能</span>
-        </div>
-        <div class="wiki-grid">
-          <a href="海風指南/互動記錄" class="wiki-cell"><img src="assets/img/icons/book.png" class="wiki-cell-img" alt="互動記錄"><span class="wiki-cell-name">互動記錄</span></a>
-          <a href="海風指南/物品署名" class="wiki-cell"><img src="assets/img/icons/book.png" class="wiki-cell-img" alt="物品署名"><span class="wiki-cell-name">物品署名</span></a>
-          <a href="海風指南/自動拾取" class="wiki-cell"><img src="assets/img/items/honeycomb.png" class="wiki-cell-img" alt="自動拾取"><span class="wiki-cell-name">自動拾取</span></a>
-          <a href="海風指南/穿牌開箱" class="wiki-cell"><img src="assets/img/icons/campfire.png" class="wiki-cell-img" alt="穿牌開箱"><span class="wiki-cell-name">穿牌開箱</span></a>
-        </div>
-      </div>
-
-      <!-- 遊戲機制 -->
-      <div class="wiki-cat fade-in">
-        <div class="wiki-cat-head">
-          <span class="wiki-cat-icon">⚙️</span>
-          <span class="wiki-cat-title">遊戲機制</span>
-        </div>
-        <div class="wiki-grid wiki-grid-compact">
-          <a href="海風指南/資源再生" class="wiki-cell"><img src="assets/img/icons/grass-block.svg" class="wiki-cell-img" alt="資源再生"><span class="wiki-cell-name">資源再生</span></a>
-          <a href="海風指南/礦物代換" class="wiki-cell"><img src="assets/img/icons/emerald.png" class="wiki-cell-img" alt="礦物代換"><span class="wiki-cell-name">礦物代換</span></a>
-          <a href="海風指南/地震預警" class="wiki-cell"><img src="assets/img/icons/campfire.png" class="wiki-cell-img" alt="地震預警"><span class="wiki-cell-name">地震預警</span></a>
-          <a href="海風指南/真實書櫃" class="wiki-cell"><img src="assets/img/icons/book.png" class="wiki-cell-img" alt="真實書櫃"><span class="wiki-cell-name">真實書櫃</span></a>
-          <a href="海風指南/蜂窩檢視" class="wiki-cell"><img src="assets/img/items/honeycomb.png" class="wiki-cell-img" alt="蜂窩檢視"><span class="wiki-cell-name">蜂窩檢視</span></a>
-          <a href="海風指南/混凝土固化鍋" class="wiki-cell"><img src="assets/img/items/milk_bucket.png" class="wiki-cell-img" alt="混凝土固化鍋"><span class="wiki-cell-name">混凝土固化鍋</span></a>
-          <a href="海風指南/特殊合成" class="wiki-cell"><img src="assets/img/icons/crafter.svg" class="wiki-cell-img" alt="特殊合成"><span class="wiki-cell-name">特殊合成</span></a>
-          <a href="海風指南/玻璃展示櫃" class="wiki-cell"><img src="assets/img/icons/crying_obsidian.png" class="wiki-cell-img" alt="玻璃展示櫃"><span class="wiki-cell-name">玻璃展示櫃</span></a>
-          <a href="海風指南/更多動作" class="wiki-cell"><img src="assets/mobs/allay.png" class="wiki-cell-img" alt="更多姿勢"><span class="wiki-cell-name">更多姿勢</span></a>
-          <a href="海風指南/電梯" class="wiki-cell"><img src="assets/img/icons/iron-door.svg" class="wiki-cell-img" alt="電梯"><span class="wiki-cell-name">電梯</span></a>
-        </div>
-      </div>
-
     </div>
   </div>
 
@@ -244,6 +270,8 @@
 </body>
 </html>
 
+</body>
+</html>
 </body>
 </html>
 </body>
