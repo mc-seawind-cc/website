@@ -781,11 +781,7 @@
 
 </head>
 <body>
-  <!-- Page Loading Screen -->
-  <div class="page-loader" id="pageLoader">
-    <span class="loader-logo">海風</span>
-    <div class="loader-wave"></div>
-    <div class="loader-dots"><span></span><span></span><span></span></div>
+  <div class="loader-dots"><span></span><span></span><span></span></div>
   </div>
   <a href="#mainContent" class="skip-link">跳到主要內容</a>
   <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
@@ -1327,21 +1323,6 @@
   <script src="../tips.js?v=180518a" defer></script>
   <script src="../../utils.js?v=180518a"></script>
   <script src="../../main.js?v=180518a"></script>
-
-  <!-- Page Loader dismiss -->
-  <script>
-  (function(){
-    var loader = document.getElementById("pageLoader");
-    if (!loader) return;
-    function hideLoader() {
-      loader.classList.add("fade-out");
-      setTimeout(function(){ loader.remove(); }, 600);
-    }
-    if (document.readyState === "complete") { hideLoader(); }
-    else { window.addEventListener("load", hideLoader); }
-    setTimeout(hideLoader, 3000);
-  })();
-  </script>
 
   <!-- 動態更新活動階段時間軸 -->
   <script>
