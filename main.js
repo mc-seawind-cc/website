@@ -152,24 +152,34 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // --- Critical: Scroll Reveal (只觸發一次，不反覆隱藏) ---
-  const revealObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-        revealObserver.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.05, rootMargin: '0px 0px -20px 0px' });
+  // 等 loader 完成後才開始 reveal 動畫
+  const revealEls = document.querySelectorAll('.fade-in, .slide-up, .zoom-in, .slide-left, .slide-right, .reveal-up');
 
-  document.querySelectorAll('.fade-in, .slide-up, .zoom-in, .slide-left, .slide-right, .reveal-up').forEach(el => revealObserver.observe(el));
+  function startRevealObserver() {
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.05, rootMargin: '0px 0px -20px 0px' });
+    revealEls.forEach(el => revealObserver.observe(el));
 
+    // Safety: reveal all remaining hidden elements after 3s
+    setTimeout(() => {
+      revealEls.forEach(el => { if (!el.classList.contains('visible')) el.classList.add('visible'); });
+    }, 3000);
+  }
 
-
-  // Safety: reveal all remaining hidden elements after 3s
-  setTimeout(() => {
-    document.querySelectorAll('.fade-in:not(.visible), .slide-up:not(.visible), .zoom-in:not(.visible), .slide-left:not(.visible), .slide-right:not(.visible), .reveal-up:not(.visible)').forEach(el => el.classList.add('visible'));
-
-  }, 3000);
+  // loader 已完成則立即開始，否則等待事件
+  if (document.body.classList.contains('loader-done')) {
+    startRevealObserver();
+  } else {
+    document.addEventListener('loaderDone', startRevealObserver, { once: true });
+    // 備案：loader 最多 ~9秒，10秒後強制開始
+    setTimeout(startRevealObserver, 10000);
+  }
 
   // --- Critical: Nav Scroll Shadow + Scroll Progress ---
   const nav = document.querySelector('.nav');
@@ -334,9 +344,20 @@ function initHeroReveal() {
   heroContent.classList.remove('hero-collapsed');
 
   // 啟動打字機效果、伺服器狀態和提示
-  setTimeout(() => initTypewriter(), 200);
-  fetchServerStatus();
-  initTips();
+  // 等 loader 完成後才啟動打字機
+  function startHeroAnimations() {
+    setTimeout(() => initTypewriter(), 200);
+    fetchServerStatus();
+    initTips();
+  }
+
+  if (document.body.classList.contains('loader-done')) {
+    startHeroAnimations();
+  } else {
+    document.addEventListener('loaderDone', startHeroAnimations, { once: true });
+    // 備案：10秒後強制啟動
+    setTimeout(startHeroAnimations, 10000);
+  }
 }
 
 // --- Scroll Position Restore (sessionStorage) ---

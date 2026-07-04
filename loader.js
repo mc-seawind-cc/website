@@ -152,18 +152,8 @@
       timers.push(t);
     }
 
-    // 跳過
-    function skip() {
-      if (skipped) return;
-      skipped = true;
-      timers.forEach(clearTimeout);
-      loader.classList.add('skip');
-      finishLoader(loader);
-    }
-
-    document.addEventListener('click', skip, { once: true });
-    document.addEventListener('keydown', skip, { once: true });
-    document.addEventListener('touchstart', skip, { once: true });
+    // 跳過（已停用）
+    function skip() { /* no-op */ }
 
     // 5 秒超時強制開始
     const startDelay = 400;
@@ -188,7 +178,12 @@
   function finishLoader(loader) {
     markLoaderShown();
     loader.classList.add('fade-out');
-    setTimeout(() => loader.remove(), 600);
+    setTimeout(() => {
+      loader.remove();
+      // 通知頁面：loader 完成
+      document.body.classList.add('loader-done');
+      document.dispatchEvent(new CustomEvent('loaderDone'));
+    }, 600);
   }
 
   function spawnParticles(container, colors, count) {
