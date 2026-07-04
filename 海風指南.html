@@ -24,46 +24,41 @@
   <link rel="stylesheet" href="music-player.css?v=110611a">
   <link rel="preload" href="music-player.js?v=110611a" as="script">
   <style>
-    /* Guide Index — Apple × Wiki */
-    .gi-hero{text-align:left;padding:var(--space-2xl) var(--space-lg) var(--space-xl);max-width:860px;margin:0 auto}
-    .gi-hero h1{font-size:clamp(2.2rem,5vw,3rem);font-weight:800;color:var(--white);letter-spacing:-0.03em;line-height:1.15;margin-bottom:var(--space-sm)}
-    .gi-hero p{color:var(--fog);font-size:1.05rem;line-height:1.8;max-width:560px}
-    .gi-container{max-width:860px;margin:0 auto;padding:0 var(--space-lg) var(--space-2xl)}
+    /* Guide Index — Minecraft Wiki 風格 */
+    .wiki-main{max-width:960px;margin:0 auto;padding:var(--space-xl) var(--space-lg) var(--space-2xl)}
+    .wiki-heading{font-family:'Noto Serif TC',serif;font-size:clamp(1.8rem,4vw,2.4rem);font-weight:700;color:var(--white);margin-bottom:var(--space-sm);letter-spacing:-0.02em}
+    .wiki-desc{color:var(--fog);font-size:0.95rem;line-height:1.8;margin-bottom:var(--space-2xl);max-width:600px}
 
-    /* Section header */
-    .gi-section{margin-top:var(--space-2xl)}
-    .gi-section-head{display:flex;align-items:center;gap:10px;margin-bottom:var(--space-md)}
-    .gi-section-icon{font-size:1.1rem}
-    .gi-section-title{font-size:1.1rem;font-weight:700;color:var(--white);letter-spacing:-0.01em}
-    .gi-section-count{font-size:0.7rem;font-weight:600;padding:2px 8px;border-radius:100px;background:rgba(157,175,255,0.08);color:var(--lavender);border:1px solid rgba(157,175,255,0.12)}
-    .gi-section-line{flex:1;height:1px;background:rgba(255,255,255,0.06)}
-    [data-theme="light"] .gi-section-line{background:rgba(0,0,0,0.06)}
+    /* 分類區塊 — 像 wiki 的 category box */
+    .wiki-cat{margin-bottom:var(--space-2xl)}
+    .wiki-cat-head{display:flex;align-items:center;gap:8px;margin-bottom:var(--space-md);padding-bottom:var(--space-sm);border-bottom:2px solid rgba(255,255,255,0.08)}
+    .wiki-cat-icon{font-size:1.2rem}
+    .wiki-cat-title{font-size:1.1rem;font-weight:700;color:var(--white);letter-spacing:-0.01em}
+    [data-theme="light"] .wiki-cat-head{border-bottom-color:rgba(0,0,0,0.08)}
 
-    /* Card grid */
-    .gi-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
-    .gi-card{display:flex;align-items:center;gap:14px;padding:16px 18px;background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.06);border-radius:var(--radius-md);text-decoration:none;color:inherit;transition:all 0.25s var(--ease)}
-    .gi-card:hover{background:rgba(255,255,255,0.04);border-color:rgba(157,175,255,0.15);transform:translateY(-2px)}
-    .gi-card-icon{width:36px;height:36px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.2rem;background:rgba(157,175,255,0.06);flex-shrink:0}
-    .gi-card-name{font-size:0.95rem;font-weight:600;color:var(--white)}
-    .gi-card-desc{font-size:0.78rem;color:var(--fog);margin-top:2px;line-height:1.5}
-    .gi-card-arrow{font-size:0.9rem;color:var(--fog);margin-left:auto;transition:all 0.2s;flex-shrink:0}
-    .gi-card:hover .gi-card-arrow{color:var(--sky);transform:translateX(2px)}
-    [data-theme="light"] .gi-card{background:rgba(0,0,0,0.01);border-color:rgba(0,0,0,0.06)}
-    [data-theme="light"] .gi-card:hover{border-color:rgba(74,108,247,0.2);background:rgba(74,108,247,0.02)}
+    /* 網格 — wiki 風格的方塊 */
+    .wiki-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:1px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.06);border-radius:var(--radius-sm);overflow:hidden}
+    .wiki-item{display:flex;align-items:center;gap:10px;padding:12px 14px;background:var(--deep);text-decoration:none;color:inherit;transition:background 0.2s}
+    .wiki-item:hover{background:rgba(157,175,255,0.04)}
+    .wiki-item-icon{font-size:1.1rem;width:24px;text-align:center;flex-shrink:0}
+    .wiki-item-name{font-size:0.9rem;font-weight:500;color:var(--cloud)}
+    .wiki-item:hover .wiki-item-name{color:var(--sky)}
+    [data-theme="light"] .wiki-grid{background:rgba(0,0,0,0.03);border-color:rgba(0,0,0,0.06)}
+    [data-theme="light"] .wiki-item{background:#fff}
+    [data-theme="light"] .wiki-item:hover{background:rgba(74,108,247,0.03)}
 
-    /* Compact grid for 遊戲機制 */
-    .gi-grid-compact{grid-template-columns:repeat(3,1fr)}
-    .gi-grid-compact .gi-card{padding:12px 14px}
-    .gi-grid-compact .gi-card-icon{width:28px;height:28px;font-size:1rem;border-radius:8px}
-    .gi-grid-compact .gi-card-name{font-size:0.88rem}
-    .gi-grid-compact .gi-card-desc{display:none}
+    /* 緊湊版 — 遊戲機制用 */
+    .wiki-grid-compact{grid-template-columns:repeat(auto-fill,minmax(150px,1fr))}
+    .wiki-grid-compact .wiki-item{padding:10px 12px}
+    .wiki-grid-compact .wiki-item-icon{font-size:1rem}
 
     @media(max-width:768px){
-      .gi-grid{grid-template-columns:1fr}
-      .gi-grid-compact{grid-template-columns:repeat(2,1fr)}
+      .wiki-grid{grid-template-columns:repeat(2,1fr)}
+      .wiki-grid-compact{grid-template-columns:repeat(2,1fr)}
     }
     @media(max-width:480px){
-      .gi-grid-compact{grid-template-columns:1fr}
+      .wiki-grid{grid-template-columns:1fr}
+      .wiki-grid-compact{grid-template-columns:1fr}
     }
   </style>
 </head>
@@ -130,87 +125,76 @@
   </nav>
 
   <div class="page" id="mainContent">
+    <div class="wiki-main">
 
-    <div class="gi-hero fade-in">
-      <h1>📖 海風指南</h1>
-      <p>從這裡開始你的海風生活。無論是經濟、傳送、任務還是各種便利功能，都能在這裡找到說明。</p>
-    </div>
-
-    <div class="gi-container">
+      <h1 class="wiki-heading fade-in">📖 海風指南</h1>
+      <p class="wiki-desc fade-in">歡迎使用海風指南，新玩家可閱<a href="海風指南/新手指引">新手指引</a>，指南不定時更新中，有疑慮歡迎至 Discord 提問。</p>
 
       <!-- 主要系統 -->
-      <div class="gi-section fade-in">
-        <div class="gi-section-head">
-          <span class="gi-section-icon">📖</span>
-          <span class="gi-section-title">主要系統</span>
-          <span class="gi-section-count">10</span>
-          <span class="gi-section-line"></span>
+      <div class="wiki-cat fade-in">
+        <div class="wiki-cat-head">
+          <span class="wiki-cat-icon">📖</span>
+          <span class="wiki-cat-title">主要系統</span>
         </div>
-        <div class="gi-grid">
-          <a href="海風指南/經濟系統" class="gi-card"><div class="gi-card-icon">💰</div><div><div class="gi-card-name">經濟系統</div><div class="gi-card-desc">風幣、任務幣、風汐碎片</div></div><span class="gi-card-arrow">→</span></a>
-          <a href="海風指南/交易系統" class="gi-card"><div class="gi-card-icon">🏪</div><div><div class="gi-card-name">交易系統</div><div class="gi-card-desc">線上商城、箱子商店</div></div><span class="gi-card-arrow">→</span></a>
-          <a href="海風指南/傳送系統" class="gi-card"><div class="gi-card-icon">📍</div><div><div class="gi-card-name">傳送系統</div><div class="gi-card-desc">公共傳送點、個人傳送點</div></div><span class="gi-card-arrow">→</span></a>
-          <a href="海風指南/任務系統" class="gi-card"><div class="gi-card-icon">📋</div><div><div class="gi-card-name">任務系統</div><div class="gi-card-desc">每日任務、冒險任務</div></div><span class="gi-card-arrow">→</span></a>
-          <a href="海風指南/社區系統" class="gi-card"><div class="gi-card-icon">🏘️</div><div><div class="gi-card-name">社區系統</div><div class="gi-card-desc">成立社區、社區任務</div></div><span class="gi-card-arrow">→</span></a>
-          <a href="海風指南/簽到系統" class="gi-card"><div class="gi-card-icon">📅</div><div><div class="gi-card-name">簽到系統</div><div class="gi-card-desc">每日簽到、累積獎勵</div></div><span class="gi-card-arrow">→</span></a>
-          <a href="海風指南/郵件系統" class="gi-card"><div class="gi-card-icon">📬</div><div><div class="gi-card-name">郵件系統</div><div class="gi-card-desc">寄信寄物、跨分流送達</div></div><span class="gi-card-arrow">→</span></a>
-          <a href="海風指南/稱號系統" class="gi-card"><div class="gi-card-icon">🏅</div><div><div class="gi-card-name">稱號系統</div><div class="gi-card-desc">解鎖稱號、展示成就</div></div><span class="gi-card-arrow">→</span></a>
-          <a href="海風指南/倉庫" class="gi-card"><div class="gi-card-icon">📦</div><div><div class="gi-card-name">倉庫系統</div><div class="gi-card-desc">擴充背包容量</div></div><span class="gi-card-arrow">→</span></a>
-          <a href="海風指南/領地系統" class="gi-card"><div class="gi-card-icon">🛡️</div><div><div class="gi-card-name">領地系統</div><div class="gi-card-desc">保護建築和資源</div></div><span class="gi-card-arrow">→</span></a>
+        <div class="wiki-grid">
+          <a href="海風指南/經濟系統" class="wiki-item"><span class="wiki-item-icon">💰</span><span class="wiki-item-name">經濟系統</span></a>
+          <a href="海風指南/交易系統" class="wiki-item"><span class="wiki-item-icon">🏪</span><span class="wiki-item-name">交易系統</span></a>
+          <a href="海風指南/傳送系統" class="wiki-item"><span class="wiki-item-icon">📍</span><span class="wiki-item-name">傳送系統</span></a>
+          <a href="海風指南/任務系統" class="wiki-item"><span class="wiki-item-icon">📋</span><span class="wiki-item-name">任務系統</span></a>
+          <a href="海風指南/社區系統" class="wiki-item"><span class="wiki-item-icon">🏘️</span><span class="wiki-item-name">社區系統</span></a>
+          <a href="海風指南/簽到系統" class="wiki-item"><span class="wiki-item-icon">📅</span><span class="wiki-item-name">簽到系統</span></a>
+          <a href="海風指南/郵件系統" class="wiki-item"><span class="wiki-item-icon">📬</span><span class="wiki-item-name">郵件系統</span></a>
+          <a href="海風指南/稱號系統" class="wiki-item"><span class="wiki-item-icon">🏅</span><span class="wiki-item-name">稱號系統</span></a>
+          <a href="海風指南/倉庫" class="wiki-item"><span class="wiki-item-icon">📦</span><span class="wiki-item-name">倉庫系統</span></a>
+          <a href="海風指南/領地系統" class="wiki-item"><span class="wiki-item-icon">🛡️</span><span class="wiki-item-name">領地系統</span></a>
         </div>
       </div>
 
       <!-- 輔助功能 -->
-      <div class="gi-section fade-in">
-        <div class="gi-section-head">
-          <span class="gi-section-icon">🔧</span>
-          <span class="gi-section-title">輔助功能</span>
-          <span class="gi-section-count">4</span>
-          <span class="gi-section-line"></span>
+      <div class="wiki-cat fade-in">
+        <div class="wiki-cat-head">
+          <span class="wiki-cat-icon">🔧</span>
+          <span class="wiki-cat-title">輔助功能</span>
         </div>
-        <div class="gi-grid">
-          <a href="海風指南/盔甲座編輯器" class="gi-card"><div class="gi-card-icon">🧍</div><div><div class="gi-card-name">盔甲座編輯器</div><div class="gi-card-desc">調整姿勢、角度與外觀</div></div><span class="gi-card-arrow">→</span></a>
-          <a href="海風指南/靈魂出竅" class="gi-card"><div class="gi-card-icon">👻</div><div><div class="gi-card-name">靈魂出竅</div><div class="gi-card-desc">旁觀者模式探索環境</div></div><span class="gi-card-arrow">→</span></a>
-          <a href="海風指南/連鎖挖掘" class="gi-card"><div class="gi-card-icon">⛏️</div><div><div class="gi-card-name">連鎖挖掘</div><div class="gi-card-desc">一次挖掘同類型方塊</div></div><span class="gi-card-arrow">→</span></a>
-          <a href="海風指南/地圖" class="gi-card"><div class="gi-card-icon">🗺️</div><div><div class="gi-card-name">地圖</div><div class="gi-card-desc">即時世界地圖</div></div><span class="gi-card-arrow">→</span></a>
+        <div class="wiki-grid">
+          <a href="海風指南/盔甲座編輯器" class="wiki-item"><span class="wiki-item-icon">🧍</span><span class="wiki-item-name">盔甲座編輯器</span></a>
+          <a href="海風指南/靈魂出竅" class="wiki-item"><span class="wiki-item-icon">👻</span><span class="wiki-item-name">靈魂出竅</span></a>
+          <a href="海風指南/連鎖挖掘" class="wiki-item"><span class="wiki-item-icon">⛏️</span><span class="wiki-item-name">連鎖挖掘</span></a>
+          <a href="海風指南/地圖" class="wiki-item"><span class="wiki-item-icon">🗺️</span><span class="wiki-item-name">地圖</span></a>
         </div>
       </div>
 
       <!-- 互動功能 -->
-      <div class="gi-section fade-in">
-        <div class="gi-section-head">
-          <span class="gi-section-icon">🤝</span>
-          <span class="gi-section-title">互動功能</span>
-          <span class="gi-section-count">4</span>
-          <span class="gi-section-line"></span>
+      <div class="wiki-cat fade-in">
+        <div class="wiki-cat-head">
+          <span class="wiki-cat-icon">🤝</span>
+          <span class="wiki-cat-title">互動功能</span>
         </div>
-        <div class="gi-grid">
-          <a href="海風指南/互動記錄" class="gi-card"><div class="gi-card-icon">📝</div><div><div class="gi-card-name">互動記錄</div><div class="gi-card-desc">查看誰動過你的東西</div></div><span class="gi-card-arrow">→</span></a>
-          <a href="海風指南/物品署名" class="gi-card"><div class="gi-card-icon">✍️</div><div><div class="gi-card-name">物品署名</div><div class="gi-card-desc">在物品上留下名字</div></div><span class="gi-card-arrow">→</span></a>
-          <a href="海風指南/自動拾取" class="gi-card"><div class="gi-card-icon">🧲</div><div><div class="gi-card-name">自動拾取</div><div class="gi-card-desc">掉落物自動進入背包</div></div><span class="gi-card-arrow">→</span></a>
-          <a href="海風指南/穿牌開箱" class="gi-card"><div class="gi-card-icon">📦</div><div><div class="gi-card-name">穿牌開箱</div><div class="gi-card-desc">告示牌快速開啟箱子</div></div><span class="gi-card-arrow">→</span></a>
+        <div class="wiki-grid">
+          <a href="海風指南/互動記錄" class="wiki-item"><span class="wiki-item-icon">📝</span><span class="wiki-item-name">互動記錄</span></a>
+          <a href="海風指南/物品署名" class="wiki-item"><span class="wiki-item-icon">✍️</span><span class="wiki-item-name">物品署名</span></a>
+          <a href="海風指南/自動拾取" class="wiki-item"><span class="wiki-item-icon">🧲</span><span class="wiki-item-name">自動拾取</span></a>
+          <a href="海風指南/穿牌開箱" class="wiki-item"><span class="wiki-item-icon">📦</span><span class="wiki-item-name">穿牌開箱</span></a>
         </div>
       </div>
 
       <!-- 遊戲機制 -->
-      <div class="gi-section fade-in">
-        <div class="gi-section-head">
-          <span class="gi-section-icon">⚙️</span>
-          <span class="gi-section-title">遊戲機制</span>
-          <span class="gi-section-count">10</span>
-          <span class="gi-section-line"></span>
+      <div class="wiki-cat fade-in">
+        <div class="wiki-cat-head">
+          <span class="wiki-cat-icon">⚙️</span>
+          <span class="wiki-cat-title">遊戲機制</span>
         </div>
-        <div class="gi-grid gi-grid-compact">
-          <a href="海風指南/資源再生" class="gi-card"><div class="gi-card-icon">♻️</div><div><div class="gi-card-name">資源再生</div></div><span class="gi-card-arrow">→</span></a>
-          <a href="海風指南/礦物代換" class="gi-card"><div class="gi-card-icon">💎</div><div><div class="gi-card-name">礦物代換</div></div><span class="gi-card-arrow">→</span></a>
-          <a href="海風指南/地震預警" class="gi-card"><div class="gi-card-icon">🔔</div><div><div class="gi-card-name">地震預警</div></div><span class="gi-card-arrow">→</span></a>
-          <a href="海風指南/真實書櫃" class="gi-card"><div class="gi-card-icon">📚</div><div><div class="gi-card-name">真實書櫃</div></div><span class="gi-card-arrow">→</span></a>
-          <a href="海風指南/蜂窩檢視" class="gi-card"><div class="gi-card-icon">🐝</div><div><div class="gi-card-name">蜂窩檢視</div></div><span class="gi-card-arrow">→</span></a>
-          <a href="海風指南/混凝土固化鍋" class="gi-card"><div class="gi-card-icon">🪣</div><div><div class="gi-card-name">混凝土固化鍋</div></div><span class="gi-card-arrow">→</span></a>
-          <a href="海風指南/特殊合成" class="gi-card"><div class="gi-card-icon">🔧</div><div><div class="gi-card-name">特殊合成</div></div><span class="gi-card-arrow">→</span></a>
-          <a href="海風指南/玻璃展示櫃" class="gi-card"><div class="gi-card-icon">🪟</div><div><div class="gi-card-name">玻璃展示櫃</div></div><span class="gi-card-arrow">→</span></a>
-          <a href="海風指南/更多動作" class="gi-card"><div class="gi-card-icon">🕺</div><div><div class="gi-card-name">更多姿勢</div></div><span class="gi-card-arrow">→</span></a>
-          <a href="海風指南/電梯" class="gi-card"><div class="gi-card-icon">🛗</div><div><div class="gi-card-name">電梯</div></div><span class="gi-card-arrow">→</span></a>
+        <div class="wiki-grid wiki-grid-compact">
+          <a href="海風指南/資源再生" class="wiki-item"><span class="wiki-item-icon">♻️</span><span class="wiki-item-name">資源再生</span></a>
+          <a href="海風指南/礦物代換" class="wiki-item"><span class="wiki-item-icon">💎</span><span class="wiki-item-name">礦物代換</span></a>
+          <a href="海風指南/地震預警" class="wiki-item"><span class="wiki-item-icon">🔔</span><span class="wiki-item-name">地震預警</span></a>
+          <a href="海風指南/真實書櫃" class="wiki-item"><span class="wiki-item-icon">📚</span><span class="wiki-item-name">真實書櫃</span></a>
+          <a href="海風指南/蜂窩檢視" class="wiki-item"><span class="wiki-item-icon">🐝</span><span class="wiki-item-name">蜂窩檢視</span></a>
+          <a href="海風指南/混凝土固化鍋" class="wiki-item"><span class="wiki-item-icon">🪣</span><span class="wiki-item-name">混凝土固化鍋</span></a>
+          <a href="海風指南/特殊合成" class="wiki-item"><span class="wiki-item-icon">🔧</span><span class="wiki-item-name">特殊合成</span></a>
+          <a href="海風指南/玻璃展示櫃" class="wiki-item"><span class="wiki-item-icon">🪟</span><span class="wiki-item-name">玻璃展示櫃</span></a>
+          <a href="海風指南/更多動作" class="wiki-item"><span class="wiki-item-icon">🕺</span><span class="wiki-item-name">更多姿勢</span></a>
+          <a href="海風指南/電梯" class="wiki-item"><span class="wiki-item-icon">🛗</span><span class="wiki-item-name">電梯</span></a>
         </div>
       </div>
 
@@ -255,5 +239,7 @@
 </body>
 </html>
 
+</body>
+</html>
 </body>
 </html>
