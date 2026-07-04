@@ -1001,6 +1001,22 @@
       });
     }
 
+    function simpleMd2html(text) {
+      if (!text) return '';
+      let html = text
+        .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+        .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
+        .replace(/`([^`]+)`/g, '<code>$1</code>')
+        .replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" target="_blank" rel="noopener">$1</a>')
+        .replace(/^> (.+)$/gm, '<blockquote>$1</blockquote>')
+        .replace(/^- (.+)$/gm, '<li>$1</li>')
+        .replace(/(<li>.*<\/li>)/s, '<ul>$1</ul>')
+        .replace(/\n/g, '<br>');
+      // Fix nested <ul> tags
+      html = html.replace(/<ul><br>/g, '<ul>').replace(/<br><\/ul>/g, '</ul>');
+      return html;
+    }
+
     function renderArticle(item, idx) {
       const tag = item.tag || '更新';
       const dateParts = item.isoDate ? item.isoDate.split('-') : ['','',''];
@@ -1025,7 +1041,7 @@
       }
 
       const processedContent = processInternalRefs(item.content);
-      const contentHtml = md2html(processedContent);
+      const contentHtml = simpleMd2html(processedContent);
 
       return `<article class="ann-article" data-tag="${tag}" id="ann-${(item.id || '').replace('#','') || idx}" style="animation-delay:${Math.min(idx - displayed, 10) * 0.06}s">
         <div class="ann-art-head">
