@@ -49,8 +49,9 @@
     if (seasonWrap) seasonWrap.style.display = 'none';
     if (scene3) scene3.style.display = 'none';
 
-    // 生成粒子
-    if (particlesEl) spawnParticles(particlesEl, ['rgba(157,175,255,0.3)', 'rgba(168,230,207,0.2)'], 8);
+    // 生成粒子（手機減量）
+    const isMobile = window.innerWidth <= 768;
+    if (particlesEl) spawnParticles(particlesEl, ['rgba(157,175,255,0.3)', 'rgba(168,230,207,0.2)'], isMobile ? 4 : 8);
 
     // 場景時間軸
     const scenes = [scene1, scene2];
@@ -101,7 +102,7 @@
 
     document.addEventListener('click', skip, { once: true });
     document.addEventListener('keydown', skip, { once: true });
-    document.addEventListener('touchstart', skip, { once: true });
+    document.addEventListener('touchstart', skip, { once: true, passive: true });
 
     // 5 秒超時強制開始
     const startDelay = 400;
