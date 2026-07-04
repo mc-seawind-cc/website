@@ -95,7 +95,7 @@
           <!-- ═══ Hero ═══ -->
       <div class="guide-v2-hero fade-in">
         <h1>個人傳送點</h1>
-          <p class="section-desc">設定你自己的記錄點，隨時傳送回家、回礦場、回商店，省下大把跑路時間。</p>
+          <p class="section-desc">在任何地方設定一個傳送點，不管跑到多遠，一個指令就能瞬間傳送過去。最多可以建立 20 個個人傳送點。</p>
           <div class="guide-quick-stats">
             <div class="guide-qs-item"><span class="guide-qs-icon">📍</span><span>上限</span><span class="guide-qs-val">20 個</span></div>
             <div class="guide-qs-item"><span class="guide-qs-icon">🌐</span><span>範圍</span><span class="guide-qs-val">全分流共用</span></div>
@@ -246,10 +246,10 @@
           <table class="rules-table">
             <thead><tr><th>指令</th><th>說明</th><th>範例</th></tr></thead>
             <tbody>
-              <tr><td><code>/home set &lt;名稱&gt;</code></td><td>在當前位置新增個人傳送點</td><td><code>/home set 家</code></td></tr>
+              <tr><td><code>/sethome &lt;名稱&gt;</code></td><td>在當前位置新增個人傳送點</td><td><code>/sethome 家</code></td></tr>
               <tr><td><code>/home &lt;名稱&gt;</code></td><td>傳送至指定的個人傳送點</td><td><code>/home 家</code></td></tr>
-              <tr><td><code>/home list</code></td><td>列出所有已設定的個人傳送點</td><td><code>/home list</code></td></tr>
-              <tr><td><code>/home del &lt;名稱&gt;</code></td><td>移除指定的個人傳送點</td><td><code>/home del 礦場</code></td></tr>
+              <tr><td><code>/home</code></td><td>列出所有已設定的個人傳送點</td><td><code>/home</code></td></tr>
+              <tr><td><code>/delhome &lt;名稱&gt;</code></td><td>移除指定的個人傳送點</td><td><code>/delhome 礦場</code></td></tr>
             </tbody>
           </table>
         </div>
@@ -270,7 +270,7 @@
           <div class="guide-step-card" style="--step-color:var(--lavender)">
             <span class="guide-step-num">2</span>
             <h4>設定傳送點</h4>
-            <p>在聊天欄輸入 <code>/home set 家</code>（名稱可自訂），系統會確認傳送點已建立</p>
+            <p>在聊天欄輸入 <code>/sethome 家</code>（名稱可自訂），系統會確認傳送點已建立</p>
           </div>
           <div class="guide-step-card" style="--step-color:var(--lavender)">
             <span class="guide-step-num">3</span>
@@ -324,9 +324,9 @@
           <h2><span class="sec-icon">📦</span> 額度管理技巧</h2>
         <ul class="rules-list">
           <li><strong>優先設定常用地點</strong> — 家、礦場、商店這些每天都去的地方優先設定，偶爾才去一次的可以之後再加。</li>
-          <li><strong>定期清理</strong> — 用 <code>/home list</code> 查看所有傳送點，刪除不再需要的（如已挖完的礦場、已關閉的商店）。</li>
+          <li><strong>定期清理</strong> — 用 <code>/home</code> 查看所有傳送點，刪除不再需要的（如已挖完的礦場、已關閉的商店）。</li>
           <li><strong>善用名稱</strong> — 取一個有意義的名稱，例如「家」、「礦場」、「商店」，而不是「a」、「b」、「c」，方便記憶和管理。</li>
-          <li><strong>探索完畢記得刪除</strong> — 探險時臨時設定的傳送點，探險結束後記得用 <code>/home del</code> 清除，騰出額度給更重要的地點。</li>
+          <li><strong>探索完畢記得刪除</strong> — 探險時臨時設定的傳送點，探險結束後記得用 <code>/delhome</code> 清除，騰出額度給更重要的地點。</li>
         </ul>
         <div class="callout callout-warn"><span class="callout-icon">⚠️</span><span>全分流共用 20 個額度。如果你在分流 A 設了 15 個，在分流 B 就只剩 5 個可以設定。刪除傳送點可以回收額度。</span></div>
       </div>
@@ -339,11 +339,11 @@
           <div class="guide-faq">
             <div class="guide-faq-item">
               <button class="guide-faq-q">怎麼設定傳送點？</button>
-              <div class="guide-faq-a"><div class="guide-faq-a-inner">站在你想記住的位置，輸入 <code>/home set 名稱</code>。例如在家門口輸入 <code>/home set 家</code>。名稱可以自己取，建議用簡短好記的。</div></div>
+              <div class="guide-faq-a"><div class="guide-faq-a-inner">站在你想記住的位置，輸入 <code>/sethome 名稱</code>。例如在家門口輸入 <code>/sethome 家</code>。名稱可以自己取，建議用簡短好記的。</div></div>
             </div>
             <div class="guide-faq-item">
               <button class="guide-faq-q">額度用完了怎麼辦？</button>
-              <div class="guide-faq-a"><div class="guide-faq-a-inner">全分流共 20 個額度。刪除不需要的傳送點來回收額度：<code>/home del 名稱</code>。建議定期用 <code>/home list</code> 檢查並清理不再使用的傳送點。</div></div>
+              <div class="guide-faq-a"><div class="guide-faq-a-inner">全分流共 20 個額度。刪除不需要的傳送點來回收額度：<code>/delhome 名稱</code>。建議定期用 <code>/home</code> 檢查並清理不再使用的傳送點。</div></div>
             </div>
             <div class="guide-faq-item">
               <button class="guide-faq-q">傳送點跨分流嗎？</button>
@@ -355,7 +355,7 @@
             </div>
             <div class="guide-faq-item">
               <button class="guide-faq-q">傳送到錯誤的位置怎麼辦？</button>
-              <div class="guide-faq-a"><div class="guide-faq-a-inner">可以用 <code>/home del 名稱</code> 刪除錯誤的傳送點，然後在正確的位置重新用 <code>/home set 名稱</code> 設定。覆蓋同名傳送點也可以：直接在新位置重新 set 同一個名稱即可。</div></div>
+              <div class="guide-faq-a"><div class="guide-faq-a-inner">可以用 <code>/delhome 名稱</code> 刪除錯誤的傳送點，然後在正確的位置重新用 <code>/sethome 名稱</code> 設定。覆蓋同名傳送點也可以：直接在新位置重新 set 同一個名稱即可。</div></div>
             </div>
           </div>
         </div>

@@ -95,11 +95,11 @@
     <!-- ═══ Hero ═══ -->
     <div class="guide-v2-hero fade-in">
       <h1>公共傳送點</h1>
-      <p class="section-desc">有些地點值得跟大家分享——礦場入口、壯觀景點、便利設施。設一個公共傳送點，全服玩家一鍵直達。</p>
+      <p class="section-desc">海風的世界很大，可以在遊戲內新增公共傳送點，讓你把值得分享的位置設成傳送地標，公開給大家使用，全服玩家都能傳送到那裡，因此通常被用於公共便利設施。請注意領地權限問題，以免發生意外。最多可以建立 4 個公共傳送點，每次建立 60 元。</p>
       <div class="guide-quick-stats">
         <div class="guide-qs-item"><span class="guide-qs-icon">🌐</span><span>額度</span><span class="guide-qs-val">每分流 4 個</span></div>
         <div class="guide-qs-item"><span class="guide-qs-icon">👥</span><span>對象</span><span class="guide-qs-val">全服可用</span></div>
-        <div class="guide-qs-item"><span class="guide-qs-icon">⌨️</span><span>指令</span><span class="guide-qs-val">/warp</span></div>
+        <div class="guide-qs-item"><span class="guide-qs-icon">⌨️</span><span>指令</span><span class="guide-qs-val">/pw</span></div>
       </div>
     </div>
 
@@ -237,14 +237,14 @@
             <p>想分享一個地點給全服玩家？幾個步驟就能完成：</p>
             <ol class="steps">
               <li>走到你想分享的位置，確保你站在正確的座標上。</li>
-              <li>輸入 <code>/warp set &lt;名稱&gt;</code> 建立傳送點。例如：<code>/warp set 日落崖</code>。</li>
+              <li>輸入 <code>/pw create &lt;名稱&gt;</code> 建立傳送點。例如：<code>/pw create 日落崖</code>。</li>
               <li>系統會確認建立成功，傳送點立刻對全服玩家可見。</li>
             </ol>
             <div class="callout callout-tip"><span class="callout-icon">💡</span><span>名稱建議取清楚好辨識的，例如「主城礦場」、「北極村莊」、「地獄門入口」。避免用亂碼、數字或太短的名稱，其他玩家才能快速找到。</span></div>
             <p style="margin-top:var(--space-md)"><strong>設定好之後，你可以進一步編輯說明：</strong></p>
             <ul class="rules-list">
-              <li><code>/warp desc &lt;名稱&gt; &lt;說明文字&gt;</code> — 為傳送點加上描述，讓其他玩家知道這個地方有什麼。</li>
-              <li>例如：<code>/warp desc 日落崖 坐標 (120, 80, -300)，超美的懸崖景點，適合看日落</code></li>
+              <li><code>/pw edit &lt;名稱&gt; &lt;說明文字&gt;</code> — 為傳送點加上描述，讓其他玩家知道這個地方有什麼。</li>
+              <li>例如：<code>/pw edit 日落崖 坐標 (120, 80, -300)，超美的懸崖景點，適合看日落</code></li>
             </ul>
           </div>
 
@@ -257,22 +257,22 @@
 
             <h3 style="margin-top:var(--space-lg)">瀏覽傳送點列表</h3>
             <ul class="rules-list">
-              <li>輸入 <code>/warp list</code> 查看目前所有公共傳送點的名稱和描述。</li>
+              <li>輸入 <code>/pw</code> 查看目前所有公共傳送點的名稱和描述。</li>
               <li>列表會顯示傳送點名稱、建立者、以及描述文字。</li>
-              <li>如果傳送點太多，可以用 <code>/warp search &lt;關鍵字&gt;</code> 搜尋。</li>
+              <li>如果傳送點太多，可以用 <code>/pw &lt;關鍵字&gt;</code> 搜尋。</li>
             </ul>
 
             <h3 style="margin-top:var(--space-lg)">傳送到指定地點</h3>
             <ul class="rules-list">
-              <li>輸入 <code>/warp &lt;名稱&gt;</code> 即可傳送。例如：<code>/warp 日落崖</code>。</li>
+              <li>輸入 <code>/pw `/pw` &lt;lt;名稱&gt;</code> 即可傳送。例如：<code>`/pw` 日落崖</code>。</li>
               <li>傳送時會有短暫的延遲，傳送過程中請不要移動。</li>
               <li>傳送到達後，你會出現在該傳送點設定時的精確位置。</li>
             </ul>
 
             <h3 style="margin-top:var(--space-lg)">搜尋傳送點</h3>
             <ul class="rules-list">
-              <li>輸入 <code>/warp search &lt;關鍵字&gt;</code> 按關鍵字搜尋傳送點。</li>
-              <li>例如想找礦場相關的傳送點：<code>/warp search 礦場</code></li>
+              <li>輸入 <code>/pw &lt;關鍵字&gt;</code> 按關鍵字搜尋傳送點。</li>
+              <li>例如想找礦場相關的傳送點：<code>/pw 礦場</code></li>
             </ul>
           </div>
 
@@ -286,10 +286,10 @@
               <table class="rules-table">
                 <thead><tr><th>操作</th><th>指令</th><th>說明</th></tr></thead>
                 <tbody>
-                  <tr><td>建立</td><td><code>/warp set &lt;名稱&gt;</code></td><td>在當前位置新增公共傳送點。</td></tr>
-                  <tr><td>編輯說明</td><td><code>/warp desc &lt;名稱&gt; &lt;文字&gt;</code></td><td>修改傳送點的描述文字。</td></tr>
-                  <tr><td>重新命名</td><td><code>/warp rename &lt;舊名&gt; &lt;新名&gt;</code></td><td>更改傳送點的名稱。</td></tr>
-                  <tr><td>刪除</td><td><code>/warp del &lt;名稱&gt;</code></td><td>刪除指定的公共傳送點（只能刪自己的）。</td></tr>
+                  <tr><td>建立</td><td><code>/pw create &lt;名稱&gt;</code></td><td>在當前位置新增公共傳送點。</td></tr>
+                  <tr><td>編輯說明</td><td><code>/pw edit &lt;名稱&gt; &lt;文字&gt;</code></td><td>修改傳送點的描述文字。</td></tr>
+                  <tr><td>重新命名</td><td><code>/pw edit &lt;舊名&gt; &lt;新名&gt;</code></td><td>更改傳送點的名稱。</td></tr>
+                  <tr><td>刪除</td><td><code>/pw delete &lt;名稱&gt;</code></td><td>刪除指定的公共傳送點（只能刪自己的）。</td></tr>
                 </tbody>
               </table>
             </div>
@@ -348,13 +348,13 @@
               <table class="rules-table">
                 <thead><tr><th>指令</th><th>說明</th></tr></thead>
                 <tbody>
-                  <tr><td><code>/warp set &lt;名稱&gt;</code></td><td>在當前位置新增公共傳送點。</td></tr>
-                  <tr><td><code>/warp &lt;名稱&gt;</code></td><td>傳送至指定的公共傳送點。</td></tr>
-                  <tr><td><code>/warp list</code></td><td>列出所有公共傳送點。</td></tr>
-                  <tr><td><code>/warp search &lt;關鍵字&gt;</code></td><td>搜尋包含關鍵字的傳送點。</td></tr>
-                  <tr><td><code>/warp desc &lt;名稱&gt; &lt;文字&gt;</code></td><td>修改傳送點的描述。</td></tr>
-                  <tr><td><code>/warp rename &lt;舊名&gt; &lt;新名&gt;</code></td><td>重新命名傳送點。</td></tr>
-                  <tr><td><code>/warp del &lt;名稱&gt;</code></td><td>刪除指定的公共傳送點。</td></tr>
+                  <tr><td><code>/pw create &lt;名稱&gt;</code></td><td>在當前位置新增公共傳送點。</td></tr>
+                  <tr><td><code>/pw `/pw` &lt;lt;名稱&gt;</code></td><td>傳送至指定的公共傳送點。</td></tr>
+                  <tr><td><code>/pw</code></td><td>列出所有公共傳送點。</td></tr>
+                  <tr><td><code>/pw &lt;關鍵字&gt;</code></td><td>搜尋包含關鍵字的傳送點。</td></tr>
+                  <tr><td><code>/pw edit &lt;名稱&gt; &lt;文字&gt;</code></td><td>修改傳送點的描述。</td></tr>
+                  <tr><td><code>/pw edit &lt;舊名&gt; &lt;新名&gt;</code></td><td>重新命名傳送點。</td></tr>
+                  <tr><td><code>/pw delete &lt;名稱&gt;</code></td><td>刪除指定的公共傳送點。</td></tr>
                 </tbody>
               </table>
             </div>
