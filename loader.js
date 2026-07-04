@@ -54,8 +54,8 @@
 
     // 場景時間軸
     const scenes = [scene1, scene2];
-    const durations = [2800, 2800];
-    const transitionMs = 600;
+    const durations = [1600, 1600];
+    const transitionMs = 400;
 
     let currentScene = 0;
     let skipped = false;
@@ -91,8 +91,17 @@
       timers.push(t);
     }
 
-    // 跳過（已停用）
-    function skip() { /* no-op */ }
+    // 跳過
+    function skip() {
+      if (skipped) return;
+      skipped = true;
+      timers.forEach(clearTimeout);
+      finishLoader(loader);
+    }
+
+    document.addEventListener('click', skip, { once: true });
+    document.addEventListener('keydown', skip, { once: true });
+    document.addEventListener('touchstart', skip, { once: true });
 
     // 5 秒超時強制開始
     const startDelay = 400;
