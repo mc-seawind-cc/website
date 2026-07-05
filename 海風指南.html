@@ -395,12 +395,24 @@
     }
 
     /* MC Wiki 風格物品格子 — 放大 */
+    .wiki-grid-wrap{
+      background:rgba(255,255,255,0.02);
+      border:1px solid rgba(255,255,255,0.08);
+      border-radius:var(--radius-md);
+      padding:var(--space-md);
+      margin-bottom:var(--space-xl);
+    }
+    [data-theme="light"] .wiki-grid-wrap{
+      background:#fff;
+      border-color:rgba(0,0,0,0.08);
+      box-shadow:0 1px 4px rgba(0,0,0,0.04);
+    }
     .wiki-grid{
       display:grid;
       grid-template-columns:repeat(auto-fill, minmax(120px, 1fr));
       gap:1px;
       background:rgba(255,255,255,0.03);
-      border:1px solid rgba(255,255,255,0.06);
+      border:none;
       border-radius:var(--radius-sm);
       overflow:hidden;
     }
@@ -848,7 +860,8 @@
       </div>
 
       <!-- 指南總覽 — MC Wiki 格子圖示 -->
-      <div class="wiki-grid fade-in">
+      <div class="wiki-grid-wrap fade-in">
+      <div class="wiki-grid">
         <a href="海風指南/經濟" class="wiki-cell"><img src="assets/img/icons/emerald.png" class="wiki-cell-img" alt="經濟"><span class="wiki-cell-name">經濟</span></a>
         <a href="海風指南/交易" class="wiki-cell"><img src="assets/img/items/apple.png" class="wiki-cell-img" alt="交易"><span class="wiki-cell-name">交易</span></a>
         <a href="海風指南/傳送" class="wiki-cell"><img src="assets/img/icons/compass.gif" class="wiki-cell-img" alt="傳送"><span class="wiki-cell-name">傳送</span></a>
@@ -860,8 +873,7 @@
         <a href="海風指南/倉庫" class="wiki-cell"><img src="assets/img/icons/campfire.png" class="wiki-cell-img" alt="倉庫"><span class="wiki-cell-name">倉庫</span></a>
         <a href="海風指南/領地" class="wiki-cell"><img src="assets/img/icons/shield.png" class="wiki-cell-img" alt="領地"><span class="wiki-cell-name">領地</span></a>
       </div>
-
-    </main>
+      </div>
 
     <!-- ═══ 右側：資訊欄 ═══ -->
     <aside class="wiki-sidebar">
