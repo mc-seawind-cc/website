@@ -164,6 +164,94 @@
       border-bottom-color:var(--sky);
     }
 
+    /* 雙欄專區 */
+    .wiki-feature-row{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:var(--space-md);
+      margin-bottom:var(--space-xl);
+    }
+    .wiki-feature{
+      background:rgba(255,255,255,0.02);
+      border:1px solid rgba(255,255,255,0.06);
+      border-radius:var(--radius-md);
+      overflow:hidden;
+    }
+    .wiki-feature-head{
+      display:flex;
+      align-items:center;
+      gap:8px;
+      padding:12px 16px;
+      font-size:0.88rem;
+      font-weight:700;
+      color:var(--white);
+      border-bottom:1px solid rgba(255,255,255,0.06);
+    }
+    .wiki-feature-head-icon{
+      font-size:1.1rem;
+      line-height:1;
+    }
+    .wiki-feature-body{
+      padding:12px 16px;
+    }
+    .wiki-feature-desc{
+      font-size:0.82rem;
+      color:var(--fog);
+      line-height:1.7;
+      margin-bottom:10px;
+    }
+    .wiki-feature-links{
+      display:flex;
+      flex-wrap:wrap;
+      gap:6px;
+    }
+    .wiki-feature-link{
+      display:inline-flex;
+      align-items:center;
+      gap:4px;
+      padding:5px 12px;
+      font-size:0.78rem;
+      font-weight:500;
+      color:var(--cloud);
+      background:rgba(157,175,255,0.06);
+      border:1px solid rgba(157,175,255,0.1);
+      border-radius:20px;
+      text-decoration:none;
+      transition:all 0.15s ease;
+    }
+    .wiki-feature-link:hover{
+      background:rgba(157,175,255,0.12);
+      border-color:rgba(157,175,255,0.2);
+      color:var(--sky);
+    }
+    .wiki-feature-link-icon{
+      font-size:0.85rem;
+      line-height:1;
+    }
+    [data-theme="light"] .wiki-feature{
+      background:#fff;
+      border-color:rgba(0,0,0,0.06);
+      box-shadow:0 1px 4px rgba(0,0,0,0.04);
+    }
+    [data-theme="light"] .wiki-feature-head{
+      border-bottom-color:rgba(0,0,0,0.06);
+    }
+    [data-theme="light"] .wiki-feature-link{
+      background:rgba(74,108,247,0.06);
+      border-color:rgba(74,108,247,0.1);
+      color:var(--cloud);
+    }
+    [data-theme="light"] .wiki-feature-link:hover{
+      background:rgba(74,108,247,0.12);
+      border-color:rgba(74,108,247,0.2);
+      color:var(--ocean-blue);
+    }
+    @media(max-width:768px){
+      .wiki-feature-row{
+        grid-template-columns:1fr;
+      }
+    }
+
     /* MC Wiki 風格分類區塊 */
     .wiki-section{
       margin-bottom:var(--space-xl);
@@ -677,6 +765,47 @@
         <p class="wiki-desc">
           歡迎使用海風指南，這裡收錄了海風伺服器的所有系統與功能說明。新玩家可先閱讀<a href="海風指南/新手指引">新手指引</a>，有疑慮歡迎至 Discord 提問。
         </p>
+      </div>
+
+      <!-- 雙欄專區 -->
+      <div class="wiki-feature-row fade-in">
+
+        <!-- 新手必讀 -->
+        <div class="wiki-feature">
+          <div class="wiki-feature-head">
+            <span class="wiki-feature-head-icon">📖</span>
+            <span>新手必讀</span>
+          </div>
+          <div class="wiki-feature-body">
+            <p class="wiki-feature-desc">第一次來到海風？從這裡開始，快速了解伺服器的核心系統與玩法。</p>
+            <div class="wiki-feature-links">
+              <a href="海風指南/新手指引" class="wiki-feature-link"><span class="wiki-feature-link-icon">📖</span>新手指引</a>
+              <a href="海風指南/經濟系統" class="wiki-feature-link"><span class="wiki-feature-link-icon">💰</span>經濟系統</a>
+              <a href="海風指南/領地系統" class="wiki-feature-link"><span class="wiki-feature-link-icon">🛡️</span>領地系統</a>
+              <a href="海風指南/簽到系統" class="wiki-feature-link"><span class="wiki-feature-link-icon">📅</span>簽到系統</a>
+              <a href="海風指南/任務系統" class="wiki-feature-link"><span class="wiki-feature-link-icon">📋</span>任務系統</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- 熱門系統 -->
+        <div class="wiki-feature">
+          <div class="wiki-feature-head">
+            <span class="wiki-feature-head-icon">🔥</span>
+            <span>熱門系統</span>
+          </div>
+          <div class="wiki-feature-body">
+            <p class="wiki-feature-desc">玩家最常查閱的系統與功能，遇到問題先來這裡找答案。</p>
+            <div class="wiki-feature-links">
+              <a href="海風指南/傳送系統" class="wiki-feature-link"><span class="wiki-feature-link-icon">🧭</span>傳送系統</a>
+              <a href="海風指南/箱子商店" class="wiki-feature-link"><span class="wiki-feature-link-icon">📦</span>箱子商店</a>
+              <a href="海風指南/連鎖挖掘" class="wiki-feature-link"><span class="wiki-feature-link-icon">⛏️</span>連鎖挖掘</a>
+              <a href="海風指南/社區系統" class="wiki-feature-link"><span class="wiki-feature-link-icon">🏘️</span>社區系統</a>
+              <a href="海風指南/交易系統" class="wiki-feature-link"><span class="wiki-feature-link-icon">🍎</span>交易系統</a>
+            </div>
+          </div>
+        </div>
+
       </div>
 
       <!-- 主要系統 -->
