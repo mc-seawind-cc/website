@@ -76,6 +76,17 @@
       font-weight:700;
       color:var(--white);
       letter-spacing:0.01em;
+      cursor:pointer;
+      user-select:none;
+    }
+    .wiki-portal-head::after{
+      content:'▾';
+      margin-left:auto;
+      font-size:0.7rem;
+      transition:transform 0.2s ease;
+    }
+    .wiki-portal.open .wiki-portal-head::after{
+      transform:rotate(180deg);
     }
     .wiki-portal-head-icon{
       font-size:1rem;
@@ -83,6 +94,13 @@
     }
     .wiki-portal-items{
       padding:6px 0;
+      max-height:500px;
+      overflow:hidden;
+      transition:max-height 0.3s ease;
+    }
+    .wiki-portal:not(.open) .wiki-portal-items{
+      max-height:0;
+      padding:0;
     }
     .wiki-portal-item{
       display:flex;
@@ -655,24 +673,9 @@
         border-bottom:1px solid rgba(255,255,255,0.06);
         padding:var(--space-md);
       }
-      .wiki-portal-items{
-        display:none;
-      }
-      .wiki-portal.open .wiki-portal-items{
-        display:block;
-      }
       .wiki-portal-head{
         cursor:pointer;
         user-select:none;
-      }
-      .wiki-portal-head::after{
-        content:'▾';
-        margin-left:auto;
-        font-size:0.7rem;
-        transition:transform 0.2s ease;
-      }
-      .wiki-portal.open .wiki-portal-head::after{
-        transform:rotate(180deg);
       }
       .wiki-grid{
         grid-template-columns:repeat(auto-fill, minmax(100px, 1fr));
@@ -766,22 +769,22 @@
       </div>
 
       <!-- 主要系統 -->
-      <div class="wiki-portal" data-category="主要系統">
+      <div class="wiki-portal open" data-category="主要系統">
         <div class="wiki-portal-head">
           <span class="wiki-portal-head-icon">📖</span>
           <span>主要系統</span>
         </div>
         <div class="wiki-portal-items">
-          <a href="海風指南/經濟系統" class="wiki-portal-item">經濟系統</a>
-          <a href="海風指南/交易系統" class="wiki-portal-item">交易系統</a>
-          <a href="海風指南/傳送系統" class="wiki-portal-item">傳送系統</a>
-          <a href="海風指南/任務系統" class="wiki-portal-item">任務系統</a>
-          <a href="海風指南/社區系統" class="wiki-portal-item">社區系統</a>
-          <a href="海風指南/簽到系統" class="wiki-portal-item">簽到系統</a>
-          <a href="海風指南/郵件系統" class="wiki-portal-item">郵件系統</a>
-          <a href="海風指南/稱號系統" class="wiki-portal-item">稱號系統</a>
+          <a href="海風指南/經濟" class="wiki-portal-item">經濟</a>
+          <a href="海風指南/交易" class="wiki-portal-item">交易</a>
+          <a href="海風指南/傳送" class="wiki-portal-item">傳送</a>
+          <a href="海風指南/任務" class="wiki-portal-item">任務</a>
+          <a href="海風指南/社區" class="wiki-portal-item">社區</a>
+          <a href="海風指南/簽到" class="wiki-portal-item">簽到</a>
+          <a href="海風指南/郵件" class="wiki-portal-item">郵件</a>
+          <a href="海風指南/稱號" class="wiki-portal-item">稱號</a>
           <a href="海風指南/倉庫" class="wiki-portal-item">倉庫</a>
-          <a href="海風指南/領地系統" class="wiki-portal-item">領地系統</a>
+          <a href="海風指南/領地" class="wiki-portal-item">領地</a>
         </div>
       </div>
 
@@ -846,16 +849,16 @@
 
       <!-- 指南總覽 — MC Wiki 格子圖示 -->
       <div class="wiki-grid fade-in">
-        <a href="海風指南/經濟系統" class="wiki-cell"><img src="assets/img/icons/emerald.png" class="wiki-cell-img" alt="經濟系統"><span class="wiki-cell-name">經濟系統</span></a>
-        <a href="海風指南/交易系統" class="wiki-cell"><img src="assets/img/items/apple.png" class="wiki-cell-img" alt="交易系統"><span class="wiki-cell-name">交易系統</span></a>
-        <a href="海風指南/傳送系統" class="wiki-cell"><img src="assets/img/icons/compass.gif" class="wiki-cell-img" alt="傳送系統"><span class="wiki-cell-name">傳送系統</span></a>
-        <a href="海風指南/任務系統" class="wiki-cell"><img src="assets/img/icons/book.png" class="wiki-cell-img" alt="任務系統"><span class="wiki-cell-name">任務系統</span></a>
-        <a href="海風指南/社區系統" class="wiki-cell"><img src="assets/mobs/villager.png" class="wiki-cell-img" alt="社區系統"><span class="wiki-cell-name">社區系統</span></a>
-        <a href="海風指南/簽到系統" class="wiki-cell"><img src="assets/img/icons/clock.gif" class="wiki-cell-img" alt="簽到系統"><span class="wiki-cell-name">簽到系統</span></a>
-        <a href="海風指南/郵件系統" class="wiki-cell"><img src="assets/img/icons/book.png" class="wiki-cell-img" alt="郵件系統"><span class="wiki-cell-name">郵件系統</span></a>
-        <a href="海風指南/稱號系統" class="wiki-cell"><img src="assets/img/icons/shield.png" class="wiki-cell-img" alt="稱號系統"><span class="wiki-cell-name">稱號系統</span></a>
+        <a href="海風指南/經濟" class="wiki-cell"><img src="assets/img/icons/emerald.png" class="wiki-cell-img" alt="經濟"><span class="wiki-cell-name">經濟</span></a>
+        <a href="海風指南/交易" class="wiki-cell"><img src="assets/img/items/apple.png" class="wiki-cell-img" alt="交易"><span class="wiki-cell-name">交易</span></a>
+        <a href="海風指南/傳送" class="wiki-cell"><img src="assets/img/icons/compass.gif" class="wiki-cell-img" alt="傳送"><span class="wiki-cell-name">傳送</span></a>
+        <a href="海風指南/任務" class="wiki-cell"><img src="assets/img/icons/book.png" class="wiki-cell-img" alt="任務"><span class="wiki-cell-name">任務</span></a>
+        <a href="海風指南/社區" class="wiki-cell"><img src="assets/mobs/villager.png" class="wiki-cell-img" alt="社區"><span class="wiki-cell-name">社區</span></a>
+        <a href="海風指南/簽到" class="wiki-cell"><img src="assets/img/icons/clock.gif" class="wiki-cell-img" alt="簽到"><span class="wiki-cell-name">簽到</span></a>
+        <a href="海風指南/郵件" class="wiki-cell"><img src="assets/img/icons/book.png" class="wiki-cell-img" alt="郵件"><span class="wiki-cell-name">郵件</span></a>
+        <a href="海風指南/稱號" class="wiki-cell"><img src="assets/img/icons/shield.png" class="wiki-cell-img" alt="稱號"><span class="wiki-cell-name">稱號</span></a>
         <a href="海風指南/倉庫" class="wiki-cell"><img src="assets/img/icons/campfire.png" class="wiki-cell-img" alt="倉庫"><span class="wiki-cell-name">倉庫</span></a>
-        <a href="海風指南/領地系統" class="wiki-cell"><img src="assets/img/icons/shield.png" class="wiki-cell-img" alt="領地系統"><span class="wiki-cell-name">領地系統</span></a>
+        <a href="海風指南/領地" class="wiki-cell"><img src="assets/img/icons/shield.png" class="wiki-cell-img" alt="領地"><span class="wiki-cell-name">領地</span></a>
       </div>
 
     </main>
@@ -871,9 +874,9 @@
         </div>
         <div class="wiki-infocard-body">
           <a href="海風指南/新手指引" class="wiki-infocard-link"><span class="wiki-infocard-link-icon">📖</span>新手指引</a>
-          <a href="海風指南/經濟系統" class="wiki-infocard-link"><span class="wiki-infocard-link-icon">💰</span>經濟系統</a>
-          <a href="海風指南/領地系統" class="wiki-infocard-link"><span class="wiki-infocard-link-icon">🛡️</span>領地系統</a>
-          <a href="海風指南/傳送系統" class="wiki-infocard-link"><span class="wiki-infocard-link-icon">🧭</span>傳送系統</a>
+          <a href="海風指南/經濟" class="wiki-infocard-link"><span class="wiki-infocard-link-icon">💰</span>經濟</a>
+          <a href="海風指南/領地" class="wiki-infocard-link"><span class="wiki-infocard-link-icon">🛡️</span>領地</a>
+          <a href="海風指南/傳送" class="wiki-infocard-link"><span class="wiki-infocard-link-icon">🧭</span>傳送</a>
         </div>
       </div>
 
@@ -884,8 +887,8 @@
           <span>熱門頁面</span>
         </div>
         <div class="wiki-infocard-body">
-          <a href="海風指南/任務系統" class="wiki-infocard-link"><span class="wiki-infocard-link-icon">📋</span>任務系統</a>
-          <a href="海風指南/簽到系統" class="wiki-infocard-link"><span class="wiki-infocard-link-icon">📅</span>簽到系統</a>
+          <a href="海風指南/任務" class="wiki-infocard-link"><span class="wiki-infocard-link-icon">📋</span>任務</a>
+          <a href="海風指南/簽到" class="wiki-infocard-link"><span class="wiki-infocard-link-icon">📅</span>簽到</a>
           <a href="海風指南/箱子商店" class="wiki-infocard-link"><span class="wiki-infocard-link-icon">📦</span>箱子商店</a>
           <a href="海風指南/連鎖挖掘" class="wiki-infocard-link"><span class="wiki-infocard-link-icon">⛏️</span>連鎖挖掘</a>
         </div>
@@ -955,15 +958,13 @@
     else { window.addEventListener("load", hideLoader); }
     setTimeout(hideLoader, 3000);
 
-    /* ── Mobile Portal Toggle ── */
-    if (window.innerWidth <= 768) {
-      document.querySelectorAll('.wiki-portal-head').forEach(function(head){
-        head.addEventListener('click', function(){
-          var portal = this.closest('.wiki-portal');
-          portal.classList.toggle('open');
-        });
+    /* ── Portal Toggle (all sizes) ── */
+    document.querySelectorAll('.wiki-portal-head').forEach(function(head){
+      head.addEventListener('click', function(){
+        var portal = this.closest('.wiki-portal');
+        portal.classList.toggle('open');
       });
-    }
+    });
 
     /* ── Guide Search ── */
     var searchInput = document.getElementById('guideSearch');
