@@ -376,10 +376,10 @@
       margin-left:auto;
     }
 
-    /* MC Wiki 風格物品格子 */
+    /* MC Wiki 風格物品格子 — 放大 */
     .wiki-grid{
       display:grid;
-      grid-template-columns:repeat(auto-fill, minmax(90px, 1fr));
+      grid-template-columns:repeat(auto-fill, minmax(120px, 1fr));
       gap:1px;
       background:rgba(255,255,255,0.03);
       border:1px solid rgba(255,255,255,0.06);
@@ -392,7 +392,7 @@
       align-items:center;
       justify-content:center;
       text-align:center;
-      padding:10px 6px;
+      padding:14px 8px;
       background:var(--deep);
       text-decoration:none;
       color:inherit;
@@ -405,8 +405,8 @@
       transform:translateY(-1px);
     }
     .wiki-cell-img{
-      width:36px;
-      height:36px;
+      width:44px;
+      height:44px;
       image-rendering:pixelated;
       object-fit:contain;
       flex-shrink:0;
@@ -417,7 +417,7 @@
       transform:scale(1.1);
     }
     .wiki-cell-name{
-      font-size:0.72rem;
+      font-size:0.82rem;
       font-weight:500;
       color:var(--cloud);
       line-height:1.2;
@@ -675,7 +675,7 @@
         transform:rotate(180deg);
       }
       .wiki-grid{
-        grid-template-columns:repeat(auto-fill, minmax(75px, 1fr));
+        grid-template-columns:repeat(auto-fill, minmax(100px, 1fr));
       }
       .wiki-sidebar{
         display:none;
@@ -691,14 +691,7 @@
         grid-template-columns:1fr;
       }
       .wiki-grid{
-        grid-template-columns:repeat(auto-fill, minmax(68px, 1fr));
-      }
-    }
-      .wiki-portals{
-        grid-template-columns:1fr;
-      }
-      .wiki-grid{
-        grid-template-columns:repeat(auto-fill, minmax(68px, 1fr));
+        grid-template-columns:repeat(auto-fill, minmax(90px, 1fr));
       }
     }
   </style>
