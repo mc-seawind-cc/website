@@ -322,35 +322,98 @@
       font-size:0.85rem;
       line-height:1;
     }
-    /* 淺色模式 */
-    [data-theme="light"] .wiki-feature{
-      border-color:rgba(0,0,0,0.08);
-    }
-    [data-theme="light"] .wiki-feature:hover{
-      box-shadow:0 8px 32px rgba(0,0,0,0.1);
-    }
-    [data-theme="light"] .wiki-feature--event .wiki-feature-bg{
+
+    /* 輔助/互動/遊戲機制區塊 */
+    .wiki-feature--aux .wiki-feature-bg,
+    .wiki-feature--full .wiki-feature-bg{
+      position:absolute;
+      inset:0;
+      z-index:0;
       background:
-        radial-gradient(ellipse 60% 80% at 30% 40%, rgba(222,172,128,0.12) 0%, transparent 70%),
-        radial-gradient(ellipse 50% 60% at 70% 60%, rgba(168,230,207,0.08) 0%, transparent 70%),
+        radial-gradient(ellipse 60% 80% at 50% 50%, rgba(157,175,255,0.06) 0%, transparent 70%),
+        linear-gradient(135deg, var(--ocean) 0%, var(--drift) 100%);
+    }
+    .wiki-feature--aux .wiki-feature-content,
+    .wiki-feature--full .wiki-feature-content{
+      position:relative;
+      z-index:2;
+      padding:20px 24px;
+      background:none;
+    }
+    .wiki-feature--aux .wiki-feature-title,
+    .wiki-feature--full .wiki-feature-title{
+      font-family:'Noto Serif TC',serif;
+      font-size:1.05rem;
+      font-weight:700;
+      color:var(--white);
+      margin-bottom:14px;
+    }
+    .wiki-feature-list{
+      display:flex;
+      flex-wrap:wrap;
+      gap:8px;
+    }
+    .wiki-feature-list-item{
+      display:inline-flex;
+      align-items:center;
+      padding:7px 16px;
+      font-size:0.82rem;
+      font-weight:500;
+      color:var(--cloud);
+      background:rgba(255,255,255,0.06);
+      border:1px solid rgba(255,255,255,0.08);
+      border-radius:var(--radius-md);
+      text-decoration:none;
+      transition:all 0.2s ease;
+    }
+    .wiki-feature-list-item:hover{
+      background:rgba(157,175,255,0.12);
+      border-color:rgba(157,175,255,0.2);
+      color:var(--sky);
+      transform:translateY(-1px);
+    }
+    .wiki-feature--full{
+      position:relative;
+      border-radius:var(--radius-lg);
+      overflow:hidden;
+      border:1px solid rgba(255,255,255,0.08);
+      margin-bottom:var(--space-xl);
+    }
+    .wiki-feature--aux{
+      position:relative;
+      border-radius:var(--radius-lg);
+      overflow:hidden;
+      min-height:auto;
+      border:1px solid rgba(255,255,255,0.08);
+    }
+    .wiki-feature--aux:hover,
+    .wiki-feature--full:hover{
+      transform:none;
+      box-shadow:none;
+    }
+    [data-theme="light"] .wiki-feature--aux .wiki-feature-bg,
+    [data-theme="light"] .wiki-feature--full .wiki-feature-bg{
+      background:
+        radial-gradient(ellipse 60% 80% at 50% 50%, rgba(157,175,255,0.06) 0%, transparent 70%),
         linear-gradient(135deg, #f0f2f5 0%, #e8eaed 100%);
     }
-    [data-theme="light"] .wiki-feature--season .wiki-feature-bg{
-      background:
-        radial-gradient(ellipse 60% 80% at 70% 30%, rgba(157,175,255,0.12) 0%, transparent 70%),
-        radial-gradient(ellipse 50% 60% at 30% 70%, rgba(168,230,207,0.08) 0%, transparent 70%),
-        linear-gradient(135deg, #e8eaed 0%, #f0f2f5 100%);
+    [data-theme="light"] .wiki-feature--aux,
+    [data-theme="light"] .wiki-feature--full{
+      border-color:rgba(0,0,0,0.08);
     }
-    [data-theme="light"] .wiki-feature-content{
-      background:linear-gradient(to top, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0.15) 60%, transparent 100%);
+    [data-theme="light"] .wiki-feature-list-item{
+      background:rgba(74,108,247,0.06);
+      border-color:rgba(74,108,247,0.08);
+      color:var(--cloud);
     }
-    [data-theme="light"] .wiki-feature-link{
-      background:rgba(255,255,255,0.15);
-      border-color:rgba(255,255,255,0.2);
+    [data-theme="light"] .wiki-feature-list-item:hover{
+      background:rgba(74,108,247,0.12);
+      border-color:rgba(74,108,247,0.2);
+      color:var(--ocean-blue);
     }
-    [data-theme="light"] .wiki-feature-link:hover{
-      background:rgba(255,255,255,0.3);
-      border-color:rgba(255,255,255,0.4);
+    [data-theme="light"] .wiki-feature--aux .wiki-feature-title,
+    [data-theme="light"] .wiki-feature--full .wiki-feature-title{
+      color:#1a1a2e;
     }
     @media(max-width:768px){
       .wiki-feature-row{
@@ -876,6 +939,56 @@
         <a href="海風指南/倉庫" class="wiki-cell"><img src="assets/img/icons/campfire.png" class="wiki-cell-img" alt="倉庫"><span class="wiki-cell-name">倉庫</span></a>
         <a href="海風指南/領地" class="wiki-cell"><img src="assets/img/icons/shield.png" class="wiki-cell-img" alt="領地"><span class="wiki-cell-name">領地</span></a>
       </div>
+      </div>
+
+      <!-- 輔助功能 + 互動功能 並排 -->
+      <div class="wiki-feature-row fade-in">
+        <div class="wiki-feature wiki-feature--aux">
+          <div class="wiki-feature-bg"></div>
+          <div class="wiki-feature-content">
+            <h2 class="wiki-feature-title">🔧 輔助功能</h2>
+            <div class="wiki-feature-list">
+              <a href="海風指南/盔甲座編輯器" class="wiki-feature-list-item">盔甲座編輯器</a>
+              <a href="海風指南/靈魂出竅" class="wiki-feature-list-item">靈魂出竅</a>
+              <a href="海風指南/連鎖挖掘" class="wiki-feature-list-item">連鎖挖掘</a>
+              <a href="海風指南/地圖" class="wiki-feature-list-item">地圖</a>
+            </div>
+          </div>
+        </div>
+        <div class="wiki-feature wiki-feature--aux">
+          <div class="wiki-feature-bg"></div>
+          <div class="wiki-feature-content">
+            <h2 class="wiki-feature-title">🤝 互動功能</h2>
+            <div class="wiki-feature-list">
+              <a href="海風指南/互動記錄" class="wiki-feature-list-item">互動記錄</a>
+              <a href="海風指南/物品署名" class="wiki-feature-list-item">物品署名</a>
+              <a href="海風指南/自動拾取" class="wiki-feature-list-item">自動拾取</a>
+              <a href="海風指南/穿牌開箱" class="wiki-feature-list-item">穿牌開箱</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 遊戲機制 -->
+      <div class="wiki-feature wiki-feature--full fade-in">
+        <div class="wiki-feature-bg"></div>
+        <div class="wiki-feature-content">
+          <h2 class="wiki-feature-title">⚙️ 遊戲機制</h2>
+          <div class="wiki-feature-list">
+            <a href="海風指南/資源再生" class="wiki-feature-list-item">資源再生</a>
+            <a href="海風指南/礦物代換" class="wiki-feature-list-item">礦物代換</a>
+            <a href="海風指南/地震預警" class="wiki-feature-list-item">地震預警</a>
+            <a href="海風指南/真實書櫃" class="wiki-feature-list-item">真實書櫃</a>
+            <a href="海風指南/蜂窩檢視" class="wiki-feature-list-item">蜂窩檢視</a>
+            <a href="海風指南/穿牌開箱" class="wiki-feature-list-item">穿牌開箱</a>
+            <a href="海風指南/混凝土固化鍋" class="wiki-feature-list-item">混凝土固化鍋</a>
+            <a href="海風指南/雙開門" class="wiki-feature-list-item">雙開門</a>
+            <a href="海風指南/特殊合成" class="wiki-feature-list-item">特殊合成</a>
+            <a href="海風指南/玻璃展示櫃" class="wiki-feature-list-item">玻璃展示櫃</a>
+            <a href="海風指南/更多動作" class="wiki-feature-list-item">更多姿勢</a>
+            <a href="海風指南/電梯" class="wiki-feature-list-item">電梯</a>
+          </div>
+        </div>
       </div>
 
     </main>
