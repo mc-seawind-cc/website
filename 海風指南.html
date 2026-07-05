@@ -28,14 +28,14 @@
        Guide Index — MC Wiki 風格
        ═══════════════════════════════════════ */
 
-    /* 頁面容器 */
+    /* 頁面容器 — 滿版全寬 */
     .wiki-page{
-      max-width:1300px;
-      margin:0 auto;
-      padding:calc(80px + var(--space-xl)) var(--space-xl) var(--space-2xl);
+      width:100%;
+      margin:0;
+      padding:calc(80px + var(--space-lg)) 0 var(--space-2xl);
       display:grid;
-      grid-template-columns:240px 1fr 260px;
-      gap:var(--space-xl);
+      grid-template-columns:260px 1fr 280px;
+      gap:0;
       align-items:start;
       content-visibility:auto;
       contain-intrinsic-size:auto 1200px;
@@ -45,13 +45,16 @@
     .wiki-portals{
       position:sticky;
       top:80px;
-      max-height:calc(100vh - 100px);
+      max-height:calc(100vh - 80px);
       overflow-y:auto;
       scrollbar-width:thin;
       scrollbar-color:rgba(157,175,255,0.15) transparent;
       display:flex;
       flex-direction:column;
       gap:var(--space-md);
+      padding:var(--space-lg) var(--space-md);
+      border-right:1px solid rgba(255,255,255,0.06);
+      background:rgba(255,255,255,0.01);
     }
     .wiki-portals::-webkit-scrollbar{width:4px}
     .wiki-portals::-webkit-scrollbar-thumb{background:rgba(157,175,255,0.15);border-radius:2px}
@@ -121,6 +124,8 @@
     /* ── 中間：主要內容區 ── */
     .wiki-content{
       min-width:0;
+      padding:var(--space-lg) var(--space-xl);
+      border-right:1px solid rgba(255,255,255,0.06);
     }
 
     /* 頁面標題區 */
@@ -250,13 +255,15 @@
     .wiki-sidebar{
       position:sticky;
       top:80px;
-      max-height:calc(100vh - 100px);
+      max-height:calc(100vh - 80px);
       overflow-y:auto;
       scrollbar-width:thin;
       scrollbar-color:rgba(157,175,255,0.15) transparent;
       display:flex;
       flex-direction:column;
       gap:var(--space-md);
+      padding:var(--space-lg) var(--space-md);
+      background:rgba(255,255,255,0.01);
     }
     .wiki-sidebar::-webkit-scrollbar{width:4px}
     .wiki-sidebar::-webkit-scrollbar-thumb{background:rgba(157,175,255,0.15);border-radius:2px}
@@ -348,6 +355,10 @@
     }
 
     /* ── Light Mode ── */
+    [data-theme="light"] .wiki-portals{
+      border-right-color:rgba(0,0,0,0.06);
+      background:rgba(0,0,0,0.01);
+    }
     [data-theme="light"] .wiki-portal{
       background:#fff;
       border-color:rgba(0,0,0,0.06);
@@ -396,6 +407,9 @@
     [data-theme="light"] .wiki-cell:hover .wiki-cell-name{
       color:var(--ocean-blue);
     }
+    [data-theme="light"] .wiki-content{
+      border-right-color:rgba(0,0,0,0.06);
+    }
     [data-theme="light"] .wiki-infocard{
       background:#fff;
       border-color:rgba(0,0,0,0.06);
@@ -423,21 +437,30 @@
       box-shadow:0 0 0 3px rgba(74,108,247,0.08);
     }
 
+    [data-theme="light"] .wiki-sidebar{
+      border-right-color:rgba(0,0,0,0.06);
+      background:rgba(0,0,0,0.01);
+    }
     /* ── 響應式 ── */
     @media(max-width:1100px){
       .wiki-page{
-        grid-template-columns:200px 1fr;
-        gap:var(--space-lg);
+        grid-template-columns:220px 1fr;
+        gap:0;
       }
       .wiki-sidebar{
         display:none;
+      }
+      .wiki-content{
+        padding:var(--space-md);
+        border-right:none;
+      }
+        border-right:none;
       }
     }
     @media(max-width:768px){
       .wiki-page{
         grid-template-columns:1fr;
-        padding:calc(72px + var(--space-md)) var(--space-md) var(--space-xl);
-        gap:var(--space-lg);
+        padding:calc(72px + var(--space-md)) 0 var(--space-xl);
       }
       .wiki-portals{
         position:static;
@@ -445,6 +468,9 @@
         display:grid;
         grid-template-columns:repeat(2, 1fr);
         gap:var(--space-sm);
+        border-right:none;
+        border-bottom:1px solid rgba(255,255,255,0.06);
+        padding:var(--space-md);
       }
       .wiki-portal-items{
         display:none;
@@ -472,7 +498,19 @@
         display:none;
       }
     }
+    @media(max-width:768px){
+      [data-theme="light"] .wiki-portals{
+        border-bottom-color:rgba(0,0,0,0.06);
+      }
+    }
     @media(max-width:480px){
+      .wiki-portals{
+        grid-template-columns:1fr;
+      }
+      .wiki-grid{
+        grid-template-columns:repeat(auto-fill, minmax(68px, 1fr));
+      }
+    }
       .wiki-portals{
         grid-template-columns:1fr;
       }
