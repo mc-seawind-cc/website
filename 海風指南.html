@@ -164,7 +164,7 @@
       border-bottom-color:var(--sky);
     }
 
-    /* 雙欄專區 */
+    /* 雙欄專區 — MC Wiki 風格大專欄 */
     .wiki-feature-row{
       display:grid;
       grid-template-columns:1fr 1fr;
@@ -172,33 +172,106 @@
       margin-bottom:var(--space-xl);
     }
     .wiki-feature{
-      background:rgba(255,255,255,0.02);
-      border:1px solid rgba(255,255,255,0.06);
-      border-radius:var(--radius-md);
+      position:relative;
+      border-radius:var(--radius-lg);
       overflow:hidden;
-    }
-    .wiki-feature-head{
+      min-height:200px;
       display:flex;
-      align-items:center;
-      gap:8px;
-      padding:12px 16px;
-      font-size:0.88rem;
+      flex-direction:column;
+      justify-content:flex-end;
+      border:1px solid rgba(255,255,255,0.08);
+      transition:transform 0.3s var(--ease), box-shadow 0.3s var(--ease);
+    }
+    .wiki-feature:hover{
+      transform:translateY(-2px);
+      box-shadow:0 8px 32px rgba(0,0,0,0.3);
+    }
+    /* 底圖漸層 */
+    .wiki-feature-bg{
+      position:absolute;
+      inset:0;
+      z-index:0;
+    }
+    .wiki-feature--event .wiki-feature-bg{
+      background:
+        radial-gradient(ellipse 60% 80% at 30% 40%, rgba(222,172,128,0.15) 0%, transparent 70%),
+        radial-gradient(ellipse 50% 60% at 70% 60%, rgba(168,230,207,0.1) 0%, transparent 70%),
+        linear-gradient(135deg, var(--ocean) 0%, var(--drift) 100%);
+    }
+    .wiki-feature--season .wiki-feature-bg{
+      background:
+        radial-gradient(ellipse 60% 80% at 70% 30%, rgba(157,175,255,0.15) 0%, transparent 70%),
+        radial-gradient(ellipse 50% 60% at 30% 70%, rgba(168,230,207,0.12) 0%, transparent 70%),
+        linear-gradient(135deg, var(--drift) 0%, var(--ocean) 100%);
+    }
+    /* 浮動粒子 */
+    .wiki-feature-particles{
+      position:absolute;
+      inset:0;
+      z-index:1;
+      overflow:hidden;
+      pointer-events:none;
+    }
+    .wiki-feature-particle{
+      position:absolute;
+      width:3px;
+      height:3px;
+      background:var(--sky);
+      border-radius:50%;
+      opacity:0;
+      animation:feature-float 6s ease-in-out infinite;
+    }
+    .wiki-feature--event .wiki-feature-particle{
+      background:var(--sand);
+    }
+    .wiki-feature--season .wiki-feature-particle{
+      background:var(--foam);
+    }
+    @keyframes feature-float{
+      0%,100%{opacity:0;transform:translateY(0)}
+      50%{opacity:0.5;transform:translateY(-40px)}
+    }
+    /* 內容 */
+    .wiki-feature-content{
+      position:relative;
+      z-index:2;
+      padding:24px 28px;
+      background:linear-gradient(to top, rgba(0,0,0,0.6) 0%, rgba(0,0,0,0.2) 60%, transparent 100%);
+    }
+    .wiki-feature-badge{
+      display:inline-block;
+      font-size:0.68rem;
+      font-weight:700;
+      letter-spacing:0.06em;
+      text-transform:uppercase;
+      padding:3px 10px;
+      border-radius:20px;
+      margin-bottom:10px;
+    }
+    .wiki-feature--event .wiki-feature-badge{
+      background:rgba(222,172,128,0.2);
+      color:var(--sand);
+      border:1px solid rgba(222,172,128,0.3);
+    }
+    .wiki-feature--season .wiki-feature-badge{
+      background:rgba(168,230,207,0.2);
+      color:var(--foam);
+      border:1px solid rgba(168,230,207,0.3);
+    }
+    .wiki-feature-title{
+      font-family:'Noto Serif TC',serif;
+      font-size:clamp(1.2rem,2.5vw,1.5rem);
       font-weight:700;
       color:var(--white);
-      border-bottom:1px solid rgba(255,255,255,0.06);
-    }
-    .wiki-feature-head-icon{
-      font-size:1.1rem;
-      line-height:1;
-    }
-    .wiki-feature-body{
-      padding:12px 16px;
+      margin-bottom:6px;
+      letter-spacing:-0.01em;
     }
     .wiki-feature-desc{
       font-size:0.82rem;
-      color:var(--fog);
+      color:var(--cloud);
       line-height:1.7;
-      margin-bottom:10px;
+      margin-bottom:14px;
+      opacity:0.85;
     }
     .wiki-feature-links{
       display:flex;
@@ -209,46 +282,64 @@
       display:inline-flex;
       align-items:center;
       gap:4px;
-      padding:5px 12px;
+      padding:5px 14px;
       font-size:0.78rem;
-      font-weight:500;
-      color:var(--cloud);
-      background:rgba(157,175,255,0.06);
-      border:1px solid rgba(157,175,255,0.1);
+      font-weight:600;
+      color:var(--white);
+      background:rgba(255,255,255,0.1);
+      border:1px solid rgba(255,255,255,0.15);
       border-radius:20px;
       text-decoration:none;
-      transition:all 0.15s ease;
+      transition:all 0.2s ease;
+      backdrop-filter:blur(8px);
+      -webkit-backdrop-filter:blur(8px);
     }
     .wiki-feature-link:hover{
-      background:rgba(157,175,255,0.12);
-      border-color:rgba(157,175,255,0.2);
-      color:var(--sky);
+      background:rgba(255,255,255,0.2);
+      border-color:rgba(255,255,255,0.3);
+      color:var(--white);
+      transform:translateY(-1px);
     }
     .wiki-feature-link-icon{
       font-size:0.85rem;
       line-height:1;
     }
+    /* 淺色模式 */
     [data-theme="light"] .wiki-feature{
-      background:#fff;
-      border-color:rgba(0,0,0,0.06);
-      box-shadow:0 1px 4px rgba(0,0,0,0.04);
+      border-color:rgba(0,0,0,0.08);
     }
-    [data-theme="light"] .wiki-feature-head{
-      border-bottom-color:rgba(0,0,0,0.06);
+    [data-theme="light"] .wiki-feature:hover{
+      box-shadow:0 8px 32px rgba(0,0,0,0.1);
+    }
+    [data-theme="light"] .wiki-feature--event .wiki-feature-bg{
+      background:
+        radial-gradient(ellipse 60% 80% at 30% 40%, rgba(222,172,128,0.12) 0%, transparent 70%),
+        radial-gradient(ellipse 50% 60% at 70% 60%, rgba(168,230,207,0.08) 0%, transparent 70%),
+        linear-gradient(135deg, #f0f2f5 0%, #e8eaed 100%);
+    }
+    [data-theme="light"] .wiki-feature--season .wiki-feature-bg{
+      background:
+        radial-gradient(ellipse 60% 80% at 70% 30%, rgba(157,175,255,0.12) 0%, transparent 70%),
+        radial-gradient(ellipse 50% 60% at 30% 70%, rgba(168,230,207,0.08) 0%, transparent 70%),
+        linear-gradient(135deg, #e8eaed 0%, #f0f2f5 100%);
+    }
+    [data-theme="light"] .wiki-feature-content{
+      background:linear-gradient(to top, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0.15) 60%, transparent 100%);
     }
     [data-theme="light"] .wiki-feature-link{
-      background:rgba(74,108,247,0.06);
-      border-color:rgba(74,108,247,0.1);
-      color:var(--cloud);
+      background:rgba(255,255,255,0.15);
+      border-color:rgba(255,255,255,0.2);
     }
     [data-theme="light"] .wiki-feature-link:hover{
-      background:rgba(74,108,247,0.12);
-      border-color:rgba(74,108,247,0.2);
-      color:var(--ocean-blue);
+      background:rgba(255,255,255,0.3);
+      border-color:rgba(255,255,255,0.4);
     }
     @media(max-width:768px){
       .wiki-feature-row{
         grid-template-columns:1fr;
+      }
+      .wiki-feature{
+        min-height:160px;
       }
     }
 
@@ -771,12 +862,17 @@
       <div class="wiki-feature-row fade-in">
 
         <!-- 活動 -->
-        <div class="wiki-feature">
-          <div class="wiki-feature-head">
-            <span class="wiki-feature-head-icon">🎉</span>
-            <span>活動</span>
+        <div class="wiki-feature wiki-feature--event">
+          <div class="wiki-feature-bg"></div>
+          <div class="wiki-feature-particles">
+            <span class="wiki-feature-particle" style="left:15%;top:30%;animation-delay:0s;animation-duration:7s"></span>
+            <span class="wiki-feature-particle" style="left:40%;top:60%;animation-delay:1.5s;animation-duration:5s"></span>
+            <span class="wiki-feature-particle" style="left:65%;top:25%;animation-delay:3s;animation-duration:8s"></span>
+            <span class="wiki-feature-particle" style="left:85%;top:50%;animation-delay:0.8s;animation-duration:6s"></span>
           </div>
-          <div class="wiki-feature-body">
+          <div class="wiki-feature-content">
+            <span class="wiki-feature-badge">限時活動</span>
+            <h2 class="wiki-feature-title">🎉 活動</h2>
             <p class="wiki-feature-desc">海風不定期舉辦各種活動，參與即可獲得限定稱號、道具與獎勵。</p>
             <div class="wiki-feature-links">
               <a href="關於/活動" class="wiki-feature-link"><span class="wiki-feature-link-icon">📋</span>活動列表</a>
@@ -788,12 +884,17 @@
         </div>
 
         <!-- 季節 -->
-        <div class="wiki-feature">
-          <div class="wiki-feature-head">
-            <span class="wiki-feature-head-icon">🌿</span>
-            <span>季節</span>
+        <div class="wiki-feature wiki-feature--season">
+          <div class="wiki-feature-bg"></div>
+          <div class="wiki-feature-particles">
+            <span class="wiki-feature-particle" style="left:20%;top:40%;animation-delay:0.5s;animation-duration:6s"></span>
+            <span class="wiki-feature-particle" style="left:50%;top:20%;animation-delay:2s;animation-duration:7s"></span>
+            <span class="wiki-feature-particle" style="left:75%;top:55%;animation-delay:1s;animation-duration:5.5s"></span>
+            <span class="wiki-feature-particle" style="left:35%;top:70%;animation-delay:3.5s;animation-duration:8s"></span>
           </div>
-          <div class="wiki-feature-body">
+          <div class="wiki-feature-content">
+            <span class="wiki-feature-badge">季節限定</span>
+            <h2 class="wiki-feature-title">🌿 季節</h2>
             <p class="wiki-feature-desc">季節是長期的主題框架，包含專屬貨幣、任務、商店與限定獎勵。</p>
             <div class="wiki-feature-links">
               <a href="關於/季節" class="wiki-feature-link"><span class="wiki-feature-link-icon">📋</span>季節列表</a>
