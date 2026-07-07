@@ -45,10 +45,6 @@
     .wiki-portals{
       position:sticky;
       top:80px;
-      max-height:calc(100vh - 80px);
-      overflow-y:auto;
-      scrollbar-width:thin;
-      scrollbar-color:rgba(157,175,255,0.15) transparent;
       display:flex;
       flex-direction:column;
       gap:var(--space-md);
@@ -56,8 +52,6 @@
       border-right:1px solid rgba(157,175,255,0.1);
       background:var(--ocean);
     }
-    .wiki-portals::-webkit-scrollbar{width:4px}
-    .wiki-portals::-webkit-scrollbar-thumb{background:rgba(157,175,255,0.15);border-radius:2px}
 
     .wiki-portal{
       background:rgba(255,255,255,0.02);
@@ -83,10 +77,7 @@
       content:'▾';
       margin-left:auto;
       font-size:0.7rem;
-      transition:transform 0.2s ease;
-    }
-    .wiki-portal.open .wiki-portal-head::after{
-      transform:rotate(180deg);
+      opacity:0.4;
     }
     .wiki-portal-head-icon{
       font-size:1rem;
@@ -102,11 +93,7 @@
       margin-left:auto;
     }
     .wiki-portal-items{
-      display:none;
       padding:6px 0;
-    }
-    .wiki-portal.open .wiki-portal-items{
-      display:block;
     }
     .wiki-portal-item{
       display:flex;
@@ -868,7 +855,7 @@
       </div>
 
       <!-- 輔助功能 -->
-      <div class="wiki-portal" data-category="輔助功能">
+      <div class="wiki-portal open" data-category="輔助功能">
         <div class="wiki-portal-head">
           <span class="wiki-portal-head-icon">🔧</span>
           <span>輔助功能</span>
@@ -883,7 +870,7 @@
       </div>
 
       <!-- 互動功能 -->
-      <div class="wiki-portal" data-category="互動功能">
+      <div class="wiki-portal open" data-category="互動功能">
         <div class="wiki-portal-head">
           <span class="wiki-portal-head-icon">🤝</span>
           <span>互動功能</span>
@@ -898,7 +885,7 @@
       </div>
 
       <!-- 遊戲機制 -->
-      <div class="wiki-portal" data-category="遊戲機制">
+      <div class="wiki-portal open" data-category="遊戲機制">
         <div class="wiki-portal-head">
           <span class="wiki-portal-head-icon">⚙️</span>
           <span>遊戲機制</span>
@@ -1161,18 +1148,7 @@
       setTimeout(hideLoader, 3000);
     }
 
-    /* ── Portal Toggle (event delegation) ── */
-    var portalsContainer = document.querySelector('.wiki-portals');
-    if (portalsContainer) {
-      portalsContainer.addEventListener('click', function(e) {
-        var head = e.target.closest('.wiki-portal-head');
-        if (!head) return;
-        var portal = head.closest('.wiki-portal');
-        if (portal) {
-          portal.classList.toggle('open');
-        }
-      });
-    }
+
 
     /* ── Guide Search ── */
     var searchInput = document.getElementById('guideSearch');
