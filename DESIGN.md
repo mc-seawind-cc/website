@@ -1,4 +1,6 @@
 # 海風 SeaWind 網站設計文件
+| 2026.07.08 | 海風網站助手 | **雙開門圖示更新**：iron-door.svg → 蒼白橡木門（Pale Oak Door Invicon）。 |
+| 2026.07.08 | 海風網站助手 | **玻璃展示櫃圖示更新**：告示牌 → 玻璃（Glass Invicon）。 |
 | 2026.07.08 | 海風網站助手 | **指南頁面左右欄設計優化**：①左側 Portal 每個連結新增 22px 物品圖示（與中間格子一致）；②Portal 分類標題新增計數膠囊（10/4/4/12）；③右側指南統計修正為實際數據（總 52 篇：主要系統 10、輔助功能 4、互動功能 4、遊戲機制 12、其他 22）；④新增「最近更新」資訊卡（新手指引/經濟系統/簽到系統）。頁尾日期 → 2026.07.08。 |
 | 2026.07.08 | 海風網站助手 | **指南頁面圖示更新（11 個）**：①盔甲座編輯器：更新為 MC Wiki Invicon 版 Armor Stand；②資源再生：grass-block.svg → 紫水晶芽床（amethyst_bud）；③礦物代換：emerald.png → 鐵礦（iron_ore）；④地震預警：campfire.png → 紅石燈（redstone_lamp）；⑤真實書櫃：book.png → 書櫃（bookshelf）；⑥蜂窩檢視：honeycomb.png → 蜂窩（beehive）；⑦混凝土固化鍋：milk_bucket.png → 鍋子（cauldron）；⑧特殊合成：crafter.svg → 工作臺（crafting_table）；⑨玻璃展示櫃：crying_obsidian.png → 告示牌（sign）；⑩更多姿勢：allay.png → 白色床（white_bed）；⑪電梯：iron-door.svg → 浮雕石英方塊（chiseled_quartz）。所有圖示來源 Minecraft Wiki Invicon。頁尾日期 → 2026.07.08。 |
 | 2026.07.05 | 海風網站助手 | **海風指南主頁 MC Wiki 風格重新設計**：①三欄佈局（左側 Portal 導覽 + 中間物品格子 + 右側資訊欄）取代舊版 MC Wiki 物品欄格子；②左側 4 個 Portal 區塊（主要系統/輔助功能/互動功能/遊戲機制），每塊有標題條 + 連結列表，手機版可折疊；③中間 4 個分類區塊，MC Wiki 風格標題條（icon + 標題 + 計數膠囊 + 2px 底線）+ 物品格子（aspect-ratio:1，hover 放大 + 顏色變化）；④右側 4 張資訊卡（快速開始/熱門頁面/指南統計/其他資源）；⑤新增即時搜尋功能（過濾格子 + portal 連結）；⑥對齊 Discord 指南列表——新增雙開門（遊戲機制）、新手指引至主要系統格子；⑥深色/淺色/響應式完整對應（1100px 雙欄、768px 單欄可折疊 portal）。cache busting → 050705a。頁尾日期 → 2026.07.05。 |
