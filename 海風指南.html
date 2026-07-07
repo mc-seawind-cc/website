@@ -92,6 +92,15 @@
       font-size:1rem;
       line-height:1;
     }
+    .wiki-portal-count{
+      font-size:0.68rem;
+      font-weight:600;
+      color:var(--fog);
+      background:rgba(157,175,255,0.08);
+      padding:2px 8px;
+      border-radius:10px;
+      margin-left:auto;
+    }
     .wiki-portal-items{
       padding:6px 0;
       max-height:500px;
@@ -105,8 +114,8 @@
     .wiki-portal-item{
       display:flex;
       align-items:center;
-      gap:8px;
-      padding:5px 14px;
+      gap:10px;
+      padding:7px 14px;
       font-size:0.8rem;
       color:var(--fog);
       text-decoration:none;
@@ -121,22 +130,16 @@
       color:var(--sky);
       font-weight:600;
     }
-    .wiki-portal-item::before{
-      content:'';
-      width:4px;
-      height:4px;
-      border-radius:50%;
-      background:currentColor;
-      opacity:0.3;
+    .wiki-portal-item-icon{
+      width:22px;
+      height:22px;
+      image-rendering:pixelated;
+      object-fit:contain;
       flex-shrink:0;
-      transition:opacity 0.15s ease;
+      transition:transform 0.15s ease;
     }
-    .wiki-portal-item:hover::before{
-      opacity:0.7;
-    }
-    .wiki-portal-item.active::before{
-      opacity:1;
-      background:var(--sky);
+    .wiki-portal-item:hover .wiki-portal-item-icon{
+      transform:scale(1.1);
     }
 
     /* ── 中間：主要內容區 ── */
@@ -851,18 +854,19 @@
         <div class="wiki-portal-head">
           <span class="wiki-portal-head-icon">📖</span>
           <span>主要系統</span>
+          <span class="wiki-portal-count">10</span>
         </div>
         <div class="wiki-portal-items">
-          <a href="海風指南/經濟" class="wiki-portal-item">經濟</a>
-          <a href="海風指南/交易" class="wiki-portal-item">交易</a>
-          <a href="海風指南/傳送" class="wiki-portal-item">傳送</a>
-          <a href="海風指南/任務" class="wiki-portal-item">任務</a>
-          <a href="海風指南/社區" class="wiki-portal-item">社區</a>
-          <a href="海風指南/簽到" class="wiki-portal-item">簽到</a>
-          <a href="海風指南/郵件" class="wiki-portal-item">郵件</a>
-          <a href="海風指南/稱號" class="wiki-portal-item">稱號</a>
-          <a href="海風指南/倉庫" class="wiki-portal-item">倉庫</a>
-          <a href="海風指南/領地" class="wiki-portal-item">領地</a>
+          <a href="海風指南/經濟" class="wiki-portal-item"><img src="assets/img/items/diamond.png" class="wiki-portal-item-icon" alt="">經濟</a>
+          <a href="海風指南/交易" class="wiki-portal-item"><img src="assets/img/items/gold_ingot.png" class="wiki-portal-item-icon" alt="">交易</a>
+          <a href="海風指南/傳送" class="wiki-portal-item"><img src="assets/img/items/ender_pearl.png" class="wiki-portal-item-icon" alt="">傳送</a>
+          <a href="海風指南/任務" class="wiki-portal-item"><img src="assets/img/items/elytra.png" class="wiki-portal-item-icon" alt="">任務</a>
+          <a href="海風指南/社區" class="wiki-portal-item"><img src="assets/img/items/diamond_horse_armor.png" class="wiki-portal-item-icon" alt="">社區</a>
+          <a href="海風指南/簽到" class="wiki-portal-item"><img src="assets/img/items/clock_item.gif" class="wiki-portal-item-icon" alt="">簽到</a>
+          <a href="海風指南/郵件" class="wiki-portal-item"><img src="assets/img/items/paper.png" class="wiki-portal-item-icon" alt="">郵件</a>
+          <a href="海風指南/稱號" class="wiki-portal-item"><img src="assets/img/items/name_tag.png" class="wiki-portal-item-icon" alt="">稱號</a>
+          <a href="海風指南/倉庫" class="wiki-portal-item"><img src="assets/img/items/barrel.png" class="wiki-portal-item-icon" alt="">倉庫</a>
+          <a href="海風指南/領地" class="wiki-portal-item"><img src="assets/img/items/wooden_hoe.png" class="wiki-portal-item-icon" alt="">領地</a>
         </div>
       </div>
 
@@ -871,12 +875,13 @@
         <div class="wiki-portal-head">
           <span class="wiki-portal-head-icon">🔧</span>
           <span>輔助功能</span>
+          <span class="wiki-portal-count">4</span>
         </div>
         <div class="wiki-portal-items">
-          <a href="海風指南/盔甲座編輯器" class="wiki-portal-item">盔甲座編輯器</a>
-          <a href="海風指南/靈魂出竅" class="wiki-portal-item">靈魂出竅</a>
-          <a href="海風指南/連鎖挖掘" class="wiki-portal-item">連鎖挖掘</a>
-          <a href="海風指南/地圖" class="wiki-portal-item">地圖</a>
+          <a href="海風指南/盔甲座編輯器" class="wiki-portal-item"><img src="assets/img/items/armor_stand.png" class="wiki-portal-item-icon" alt="">盔甲座編輯器</a>
+          <a href="海風指南/靈魂出竅" class="wiki-portal-item"><img src="assets/img/items/soul_sand.png" class="wiki-portal-item-icon" alt="">靈魂出竅</a>
+          <a href="海風指南/連鎖挖掘" class="wiki-portal-item"><img src="assets/img/items/diamond_pickaxe.png" class="wiki-portal-item-icon" alt="">連鎖挖掘</a>
+          <a href="海風指南/地圖" class="wiki-portal-item"><img src="assets/img/items/map_custom.png" class="wiki-portal-item-icon" alt="">地圖</a>
         </div>
       </div>
 
@@ -885,12 +890,13 @@
         <div class="wiki-portal-head">
           <span class="wiki-portal-head-icon">🤝</span>
           <span>互動功能</span>
+          <span class="wiki-portal-count">4</span>
         </div>
         <div class="wiki-portal-items">
-          <a href="海風指南/互動記錄" class="wiki-portal-item">互動記錄</a>
-          <a href="海風指南/物品署名" class="wiki-portal-item">物品署名</a>
-          <a href="海風指南/自動拾取" class="wiki-portal-item">自動拾取</a>
-          <a href="海風指南/穿牌開箱" class="wiki-portal-item">穿牌開箱</a>
+          <a href="海風指南/互動記錄" class="wiki-portal-item"><img src="assets/img/items/book.png" class="wiki-portal-item-icon" alt="">互動記錄</a>
+          <a href="海風指南/物品署名" class="wiki-portal-item"><img src="assets/img/items/book_and_quill.png" class="wiki-portal-item-icon" alt="">物品署名</a>
+          <a href="海風指南/自動拾取" class="wiki-portal-item"><img src="assets/img/items/hopper_minecart.png" class="wiki-portal-item-icon" alt="">自動拾取</a>
+          <a href="海風指南/穿牌開箱" class="wiki-portal-item"><img src="assets/img/items/chest_minecart_custom.png" class="wiki-portal-item-icon" alt="">穿牌開箱</a>
         </div>
       </div>
 
@@ -899,20 +905,21 @@
         <div class="wiki-portal-head">
           <span class="wiki-portal-head-icon">⚙️</span>
           <span>遊戲機制</span>
+          <span class="wiki-portal-count">12</span>
         </div>
         <div class="wiki-portal-items">
-          <a href="海風指南/資源再生" class="wiki-portal-item">資源再生</a>
-          <a href="海風指南/礦物代換" class="wiki-portal-item">礦物代換</a>
-          <a href="海風指南/地震預警" class="wiki-portal-item">地震預警</a>
-          <a href="海風指南/真實書櫃" class="wiki-portal-item">真實書櫃</a>
-          <a href="海風指南/蜂窩檢視" class="wiki-portal-item">蜂窩檢視</a>
-          <a href="海風指南/穿牌開箱" class="wiki-portal-item">穿牌開箱</a>
-          <a href="海風指南/混凝土固化鍋" class="wiki-portal-item">混凝土固化鍋</a>
-          <a href="海風指南/雙開門" class="wiki-portal-item">雙開門</a>
-          <a href="海風指南/特殊合成" class="wiki-portal-item">特殊合成</a>
-          <a href="海風指南/玻璃展示櫃" class="wiki-portal-item">玻璃展示櫃</a>
-          <a href="海風指南/更多動作" class="wiki-portal-item">更多姿勢</a>
-          <a href="海風指南/電梯" class="wiki-portal-item">電梯</a>
+          <a href="海風指南/資源再生" class="wiki-portal-item"><img src="assets/img/items/amethyst_bud.png" class="wiki-portal-item-icon" alt="">資源再生</a>
+          <a href="海風指南/礦物代換" class="wiki-portal-item"><img src="assets/img/items/iron_ore.png" class="wiki-portal-item-icon" alt="">礦物代換</a>
+          <a href="海風指南/地震預警" class="wiki-portal-item"><img src="assets/img/items/redstone_lamp.png" class="wiki-portal-item-icon" alt="">地震預警</a>
+          <a href="海風指南/真實書櫃" class="wiki-portal-item"><img src="assets/img/items/bookshelf.png" class="wiki-portal-item-icon" alt="">真實書櫃</a>
+          <a href="海風指南/蜂窩檢視" class="wiki-portal-item"><img src="assets/img/items/beehive.png" class="wiki-portal-item-icon" alt="">蜂窩檢視</a>
+          <a href="海風指南/穿牌開箱" class="wiki-portal-item"><img src="assets/img/items/chest_minecart_custom.png" class="wiki-portal-item-icon" alt="">穿牌開箱</a>
+          <a href="海風指南/混凝土固化鍋" class="wiki-portal-item"><img src="assets/img/items/cauldron.png" class="wiki-portal-item-icon" alt="">混凝土固化鍋</a>
+          <a href="海風指南/雙開門" class="wiki-portal-item"><img src="assets/img/icons/iron-door.svg" class="wiki-portal-item-icon" alt="">雙開門</a>
+          <a href="海風指南/特殊合成" class="wiki-portal-item"><img src="assets/img/items/crafting_table.png" class="wiki-portal-item-icon" alt="">特殊合成</a>
+          <a href="海風指南/玻璃展示櫃" class="wiki-portal-item"><img src="assets/img/items/sign.png" class="wiki-portal-item-icon" alt="">玻璃展示櫃</a>
+          <a href="海風指南/更多動作" class="wiki-portal-item"><img src="assets/img/items/white_bed.png" class="wiki-portal-item-icon" alt="">更多姿勢</a>
+          <a href="海風指南/電梯" class="wiki-portal-item"><img src="assets/img/items/chiseled_quartz.png" class="wiki-portal-item-icon" alt="">電梯</a>
         </div>
       </div>
 
@@ -1081,7 +1088,25 @@
           <span>指南統計</span>
         </div>
         <div class="wiki-infocard-body">
-          <div class="wiki-stat-row"><span class="wiki-stat-label">總頁數</span><span class="wiki-stat-value">10 篇</span></div>
+          <div class="wiki-stat-row"><span class="wiki-stat-label">總頁數</span><span class="wiki-stat-value">52 篇</span></div>
+          <div class="wiki-stat-row"><span class="wiki-stat-label">主要系統</span><span class="wiki-stat-value">10 篇</span></div>
+          <div class="wiki-stat-row"><span class="wiki-stat-label">輔助功能</span><span class="wiki-stat-value">4 篇</span></div>
+          <div class="wiki-stat-row"><span class="wiki-stat-label">互動功能</span><span class="wiki-stat-value">4 篇</span></div>
+          <div class="wiki-stat-row"><span class="wiki-stat-label">遊戲機制</span><span class="wiki-stat-value">12 篇</span></div>
+          <div class="wiki-stat-row"><span class="wiki-stat-label">其他</span><span class="wiki-stat-value">22 篇</span></div>
+        </div>
+      </div>
+
+      <!-- 最近更新 -->
+      <div class="wiki-infocard">
+        <div class="wiki-infocard-head">
+          <span>🔄</span>
+          <span>最近更新</span>
+        </div>
+        <div class="wiki-infocard-body">
+          <a href="海風指南/新手指引" class="wiki-infocard-link"><span class="wiki-infocard-link-icon">✨</span>新手指引</a>
+          <a href="海風指南/經濟" class="wiki-infocard-link"><span class="wiki-infocard-link-icon">✨</span>經濟系統</a>
+          <a href="海風指南/簽到" class="wiki-infocard-link"><span class="wiki-infocard-link-icon">✨</span>簽到系統</a>
         </div>
       </div>
 
