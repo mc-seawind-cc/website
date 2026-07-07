@@ -63,7 +63,6 @@
       background:rgba(255,255,255,0.02);
       border:1px solid rgba(255,255,255,0.06);
       border-radius:var(--radius-md);
-      overflow:hidden;
     }
     .wiki-portal-head{
       display:flex;
@@ -78,6 +77,7 @@
       letter-spacing:0.01em;
       cursor:pointer;
       user-select:none;
+      -webkit-tap-highlight-color:transparent;
     }
     .wiki-portal-head::after{
       content:'▾';
@@ -102,14 +102,11 @@
       margin-left:auto;
     }
     .wiki-portal-items{
+      display:none;
       padding:6px 0;
-      max-height:500px;
-      overflow:hidden;
-      transition:max-height 0.3s ease;
     }
-    .wiki-portal:not(.open) .wiki-portal-items{
-      max-height:0;
-      padding:0;
+    .wiki-portal.open .wiki-portal-items{
+      display:block;
     }
     .wiki-portal-item{
       display:flex;
@@ -1153,24 +1150,29 @@
   <script>
   (function(){
     /* ── Page Loader ── */
-    var loader = document.getElementById("pageLoader");
+    var loader = document.getElementById('pageLoader');
     if (loader) {
       function hideLoader() {
-        loader.classList.add("fade-out");
+        loader.classList.add('fade-out');
         setTimeout(function(){ loader.remove(); }, 600);
       }
-      if (document.readyState === "complete") { hideLoader(); }
-      else { window.addEventListener("load", hideLoader); }
+      if (document.readyState === 'complete') { hideLoader(); }
+      else { window.addEventListener('load', hideLoader); }
       setTimeout(hideLoader, 3000);
     }
 
-    /* ── Portal Toggle (all sizes) ── */
-    document.querySelectorAll('.wiki-portal-head').forEach(function(head){
-      head.addEventListener('click', function(){
-        var portal = this.closest('.wiki-portal');
-        portal.classList.toggle('open');
+    /* ── Portal Toggle (event delegation) ── */
+    var portalsContainer = document.querySelector('.wiki-portals');
+    if (portalsContainer) {
+      portalsContainer.addEventListener('click', function(e) {
+        var head = e.target.closest('.wiki-portal-head');
+        if (!head) return;
+        var portal = head.closest('.wiki-portal');
+        if (portal) {
+          portal.classList.toggle('open');
+        }
       });
-    });
+    }
 
     /* ── Guide Search ── */
     var searchInput = document.getElementById('guideSearch');
@@ -1178,31 +1180,21 @@
       searchInput.addEventListener('input', function(){
         var q = this.value.toLowerCase().trim();
         var cells = document.querySelectorAll('.wiki-cell');
-        var portals = document.querySelectorAll('.wiki-portal-item');
+        var items = document.querySelectorAll('.wiki-portal-item');
 
         if (!q) {
           cells.forEach(function(c){ c.style.display = ''; });
-          portals.forEach(function(p){ p.style.display = ''; });
+          items.forEach(function(p){ p.style.display = ''; });
           return;
         }
 
-        // Filter grid cells
         cells.forEach(function(cell){
           var name = cell.querySelector('.wiki-cell-name');
-          if (name && name.textContent.toLowerCase().indexOf(q) !== -1) {
-            cell.style.display = '';
-          } else {
-            cell.style.display = 'none';
-          }
+          cell.style.display = (name && name.textContent.toLowerCase().indexOf(q) !== -1) ? '' : 'none';
         });
 
-        // Filter portal items
-        portals.forEach(function(item){
-          if (item.textContent.toLowerCase().indexOf(q) !== -1) {
-            item.style.display = '';
-          } else {
-            item.style.display = 'none';
-          }
+        items.forEach(function(item){
+          item.style.display = (item.textContent.toLowerCase().indexOf(q) !== -1) ? '' : 'none';
         });
       });
     }
